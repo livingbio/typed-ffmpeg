@@ -19,7 +19,7 @@
         "noise"
       ],
       "choices": [],
-      "default": "0.001",
+      "default": 0.001,
       "description": "set noise tolerance (from 0 to DBL_MAX) (default 0.001)",
       "flags": "..F.A......",
       "max": "DBL_MAX",
@@ -33,7 +33,7 @@
         "duration"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set minimum duration in seconds (default 2)",
       "flags": "..F.A......",
       "max": null,
@@ -47,7 +47,7 @@
         "m"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "check each channel separately (default false)",
       "flags": "..F.A......",
       "max": null,

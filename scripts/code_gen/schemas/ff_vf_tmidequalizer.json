@@ -21,7 +21,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set radius (from 1 to 127) (default 5)",
       "name": "radius",
       "required": false,
@@ -32,7 +32,7 @@
         "sigma"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set sigma (from 0 to 1) (default 0.5)",
       "name": "sigma",
       "required": false,
@@ -43,7 +43,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,

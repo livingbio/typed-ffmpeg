@@ -46,7 +46,7 @@
         "bar_h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set bargraph height (from -1 to INT_MAX) (default -1)",
       "name": "bar_h",
       "required": false,
@@ -57,7 +57,7 @@
         "axis_h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set axis height (from -1 to INT_MAX) (default -1)",
       "name": "axis_h",
       "required": false,
@@ -68,7 +68,7 @@
         "sono_h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set sonogram height (from -1 to INT_MAX) (default -1)",
       "name": "sono_h",
       "required": false,
@@ -79,7 +79,7 @@
         "fullhd"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set fullhd size (default true)",
       "name": "fullhd",
       "required": false,
@@ -115,7 +115,7 @@
         "gamma"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3.0,
       "description": "set sonogram gamma (from 1 to 7) (default 3)",
       "name": "sono_g",
       "required": false,
@@ -127,7 +127,7 @@
         "gamma2"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set bargraph gamma (from 1 to 7) (default 1)",
       "name": "bar_g",
       "required": false,
@@ -138,7 +138,7 @@
         "bar_t"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set bar transparency (from 0 to 1) (default 1)",
       "name": "bar_t",
       "required": false,
@@ -150,7 +150,7 @@
         "tc"
       ],
       "choices": [],
-      "default": "0.17",
+      "default": 0.17,
       "description": "set timeclamp (from 0.002 to 1) (default 0.17)",
       "name": "timeclamp",
       "required": false,
@@ -161,7 +161,7 @@
         "attack"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set attack time (from 0 to 1) (default 0)",
       "name": "attack",
       "required": false,
@@ -172,7 +172,7 @@
         "basefreq"
       ],
       "choices": [],
-      "default": "20.0152",
+      "default": 20.0152,
       "description": "set base frequency (from 10 to 100000) (default 20.0152)",
       "name": "basefreq",
       "required": false,
@@ -183,7 +183,7 @@
         "endfreq"
       ],
       "choices": [],
-      "default": "20495.6",
+      "default": 20495.6,
       "description": "set end frequency (from 10 to 100000) (default 20495.6)",
       "name": "endfreq",
       "required": false,
@@ -194,7 +194,7 @@
         "coeffclamp"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set coeffclamp (from 0.1 to 10) (default 1)",
       "name": "coeffclamp",
       "required": false,
@@ -216,7 +216,7 @@
         "count"
       ],
       "choices": [],
-      "default": "6",
+      "default": 6,
       "description": "set transform count (from 1 to 30) (default 6)",
       "name": "count",
       "required": false,
@@ -227,7 +227,7 @@
         "fcount"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set frequency count (from 0 to 10) (default 0)",
       "name": "fcount",
       "required": false,
@@ -283,7 +283,7 @@
         "text"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "draw axis (default true)",
       "name": "axis",
       "required": false,

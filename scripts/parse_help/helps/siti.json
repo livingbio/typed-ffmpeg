@@ -18,7 +18,7 @@
         "print_summary"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "Print summary showing average values (default false)",
       "flags": "..FV.......",
       "max": null,

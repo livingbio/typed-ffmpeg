@@ -18,7 +18,7 @@
         "params"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "(default \"\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "curves"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "draw frequency response curves (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "size"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set video size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "mgain"
       ],
       "choices": [],
-      "default": "60",
+      "default": 60.0,
       "description": "set max gain (from -900 to 900) (default 60)",
       "flags": "..FV.......",
       "max": "900",
@@ -96,7 +96,7 @@
         "colors"
       ],
       "choices": [],
-      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "set channels curves colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "flags": "..FV.......",
       "max": null,

@@ -26,7 +26,7 @@
         "patch_size"
       ],
       "choices": [],
-      "default": "\"64x64\"",
+      "default": "64x64",
       "description": "set patch size (default \"64x64\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -39,7 +39,7 @@
         "nb_patches"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of patches (from 0 to 64) (default 0)",
       "flags": "..FV.....T.",
       "max": "64",

@@ -21,7 +21,7 @@
         "bitplane"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set bit plane to use for measuring noise (from 1 to 16) (default 1)",
       "name": "bitplane",
       "required": false,
@@ -32,7 +32,7 @@
         "filter"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "show noisy pixels (default false)",
       "name": "filter",
       "required": false,

@@ -18,7 +18,7 @@
         "limit"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "sleep time limit (default 2)",
       "flags": "..FVA....T.",
       "max": null,
@@ -31,7 +31,7 @@
         "speed"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "speed factor (from DBL_MIN to DBL_MAX) (default 1)",
       "flags": "..FVA....T.",
       "max": "DBL_MAX",

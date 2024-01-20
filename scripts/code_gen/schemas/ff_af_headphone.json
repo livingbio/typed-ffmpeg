@@ -27,7 +27,7 @@
         "gain"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set gain in dB (from -20 to 40) (default 0)",
       "name": "gain",
       "required": false,
@@ -38,7 +38,7 @@
         "lfe"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set lfe gain in dB (from -20 to 40) (default 0)",
       "name": "lfe",
       "required": false,
@@ -71,7 +71,7 @@
         "size"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set frame size (from 1024 to 96000) (default 1024)",
       "name": "size",
       "required": false,

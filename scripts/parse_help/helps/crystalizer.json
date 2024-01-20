@@ -18,7 +18,7 @@
         "i"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set intensity (from -10 to 10) (default 2)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -31,7 +31,7 @@
         "c"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "enable clipping (default true)",
       "flags": "..F.A....T.",
       "max": null,

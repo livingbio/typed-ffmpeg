@@ -18,7 +18,7 @@
         "min_val"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set minimum luminance value for bounding box (from 0 to 65535) (default 16)",
       "flags": "..FV.....T.",
       "max": "65535",

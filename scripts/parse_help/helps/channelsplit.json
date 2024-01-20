@@ -18,7 +18,7 @@
         "channel_layout"
       ],
       "choices": [],
-      "default": "\"stereo\"",
+      "default": "stereo",
       "description": "Input channel layout. (default \"stereo\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "channels"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "Channels to extract. (default \"all\")",
       "flags": "..F.A......",
       "max": null,

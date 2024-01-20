@@ -21,7 +21,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input level (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
@@ -32,7 +32,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output level (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
@@ -43,7 +43,7 @@
         "limit"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set limit (from 0.0625 to 1) (default 1)",
       "name": "limit",
       "required": false,
@@ -54,7 +54,7 @@
         "attack"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5.0,
       "description": "set attack (from 0.1 to 80) (default 5)",
       "name": "attack",
       "required": false,
@@ -65,7 +65,7 @@
         "release"
       ],
       "choices": [],
-      "default": "50",
+      "default": 50.0,
       "description": "set release (from 1 to 8000) (default 50)",
       "name": "release",
       "required": false,
@@ -76,7 +76,7 @@
         "asc"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable asc (default false)",
       "name": "asc",
       "required": false,
@@ -87,7 +87,7 @@
         "asc_level"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set asc level (from 0 to 1) (default 0.5)",
       "name": "asc_level",
       "required": false,
@@ -98,7 +98,7 @@
         "level"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "auto level (default true)",
       "name": "level",
       "required": false,
@@ -109,7 +109,7 @@
         "latency"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "compensate delay (default false)",
       "name": "latency",
       "required": false,

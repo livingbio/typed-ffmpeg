@@ -65,7 +65,7 @@
         "0rdiv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set rdiv for 1st plane (from 0 to INT_MAX) (default 0)",
       "name": "0rdiv",
       "required": false,
@@ -76,7 +76,7 @@
         "1rdiv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set rdiv for 2nd plane (from 0 to INT_MAX) (default 0)",
       "name": "1rdiv",
       "required": false,
@@ -87,7 +87,7 @@
         "2rdiv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set rdiv for 3rd plane (from 0 to INT_MAX) (default 0)",
       "name": "2rdiv",
       "required": false,
@@ -98,7 +98,7 @@
         "3rdiv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set rdiv for 4th plane (from 0 to INT_MAX) (default 0)",
       "name": "3rdiv",
       "required": false,
@@ -109,7 +109,7 @@
         "0bias"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set bias for 1st plane (from 0 to INT_MAX) (default 0)",
       "name": "0bias",
       "required": false,
@@ -120,7 +120,7 @@
         "1bias"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set bias for 2nd plane (from 0 to INT_MAX) (default 0)",
       "name": "1bias",
       "required": false,
@@ -131,7 +131,7 @@
         "2bias"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set bias for 3rd plane (from 0 to INT_MAX) (default 0)",
       "name": "2bias",
       "required": false,
@@ -142,7 +142,7 @@
         "3bias"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set bias for 4th plane (from 0 to INT_MAX) (default 0)",
       "name": "3bias",
       "required": false,

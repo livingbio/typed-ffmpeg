@@ -19,7 +19,7 @@
         "lr"
       ],
       "choices": [],
-      "default": "\"2\"",
+      "default": "2",
       "description": "Radius of the luma blurring box (default \"2\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "lp"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -61,7 +61,7 @@
         "cp"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -89,7 +89,7 @@
         "ap"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",

@@ -40,7 +40,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
@@ -51,7 +51,7 @@
         "jump"
       ],
       "choices": [],
-      "default": "100",
+      "default": 100,
       "description": "set the jump (from 1 to 10000) (default 100)",
       "name": "jump",
       "required": false,

@@ -57,7 +57,7 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set foreground color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "fontcolor_expr"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "set foreground color expression (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "boxcolor"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "set box color (default \"white\")",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "bordercolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set border color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -109,7 +109,7 @@
         "shadowcolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set shadow color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -122,7 +122,7 @@
         "box"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set box (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -135,7 +135,7 @@
         "boxborderw"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -148,7 +148,7 @@
         "line_spacing"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -174,7 +174,7 @@
         "x"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set x expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -187,7 +187,7 @@
         "y"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set y expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -200,7 +200,7 @@
         "shadowx"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set shadow x offset (from INT_MIN to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -213,7 +213,7 @@
         "shadowy"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set shadow y offset (from INT_MIN to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -226,7 +226,7 @@
         "borderw"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set border width (from INT_MIN to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -239,7 +239,7 @@
         "tabsize"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set tab size (from 0 to INT_MAX) (default 4)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -265,7 +265,7 @@
         "font"
       ],
       "choices": [],
-      "default": "\"Sans\"",
+      "default": "Sans",
       "description": "Font name (default \"Sans\")",
       "flags": "..FV.......",
       "max": null,
@@ -323,7 +323,7 @@
         "tc24hmax"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set 24 hours max (timecode only) (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -351,7 +351,7 @@
         "reload"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "reload text file at specified frame interval (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -364,7 +364,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": "\"1\"",
+      "default": "1",
       "description": "apply alpha while rendering (default \"1\")",
       "flags": "..FV.......",
       "max": null,
@@ -377,7 +377,7 @@
         "fix_bounds"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "check and fix text coords to avoid clipping (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -390,7 +390,7 @@
         "start_number"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",

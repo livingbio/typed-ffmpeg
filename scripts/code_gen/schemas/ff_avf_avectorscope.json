@@ -73,7 +73,7 @@
         "rc"
       ],
       "choices": [],
-      "default": "40",
+      "default": 40,
       "description": "set red contrast (from 0 to 255) (default 40)",
       "name": "rc",
       "required": false,
@@ -84,7 +84,7 @@
         "gc"
       ],
       "choices": [],
-      "default": "160",
+      "default": 160,
       "description": "set green contrast (from 0 to 255) (default 160)",
       "name": "gc",
       "required": false,
@@ -95,7 +95,7 @@
         "bc"
       ],
       "choices": [],
-      "default": "80",
+      "default": 80,
       "description": "set blue contrast (from 0 to 255) (default 80)",
       "name": "bc",
       "required": false,
@@ -106,7 +106,7 @@
         "ac"
       ],
       "choices": [],
-      "default": "255",
+      "default": 255,
       "description": "set alpha contrast (from 0 to 255) (default 255)",
       "name": "ac",
       "required": false,
@@ -117,7 +117,7 @@
         "rf"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set red fade (from 0 to 255) (default 15)",
       "name": "rf",
       "required": false,
@@ -128,7 +128,7 @@
         "gf"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10,
       "description": "set green fade (from 0 to 255) (default 10)",
       "name": "gf",
       "required": false,
@@ -139,7 +139,7 @@
         "bf"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set blue fade (from 0 to 255) (default 5)",
       "name": "bf",
       "required": false,
@@ -150,7 +150,7 @@
         "af"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set alpha fade (from 0 to 255) (default 5)",
       "name": "af",
       "required": false,
@@ -161,7 +161,7 @@
         "zoom"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set zoom factor (from 0 to 10) (default 1)",
       "name": "zoom",
       "required": false,
@@ -231,7 +231,7 @@
         "swap"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "swap x axis with y axis (default true)",
       "name": "swap",
       "required": false,

@@ -22,7 +22,7 @@
         "first"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set first frame to freeze (from 0 to I64_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "I64_MAX",
@@ -35,7 +35,7 @@
         "last"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set last frame to freeze (from 0 to I64_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "I64_MAX",
@@ -48,7 +48,7 @@
         "replace"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set frame to replace (from 0 to I64_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "I64_MAX",

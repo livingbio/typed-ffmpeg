@@ -21,7 +21,7 @@
         "limit"
       ],
       "choices": [],
-      "default": "0.0941176",
+      "default": 0.0941176,
       "description": "Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)",
       "name": "limit",
       "required": false,
@@ -32,7 +32,7 @@
         "round"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "Value by which the width/height should be divisible (from 0 to INT_MAX) (default 16)",
       "name": "round",
       "required": false,
@@ -43,7 +43,7 @@
         "reset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)",
       "name": "reset",
       "required": false,
@@ -54,7 +54,7 @@
         "skip"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "Number of initial frames to skip (from 0 to INT_MAX) (default 2)",
       "name": "skip",
       "required": false,
@@ -65,7 +65,7 @@
         "reset_count"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)",
       "name": "reset_count",
       "required": false,
@@ -76,7 +76,7 @@
         "max_outliers"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "Threshold count of outliers (from 0 to INT_MAX) (default 0)",
       "name": "max_outliers",
       "required": false,
@@ -109,7 +109,7 @@
         "high"
       ],
       "choices": [],
-      "default": "0.0980392",
+      "default": 0.0980392,
       "description": "Set high threshold for edge detection (from 0 to 1) (default 0.0980392)",
       "name": "high",
       "required": false,
@@ -120,7 +120,7 @@
         "low"
       ],
       "choices": [],
-      "default": "0.0588235",
+      "default": 0.0588235,
       "description": "Set low threshold for edge detection (from 0 to 1) (default 0.0588235)",
       "name": "low",
       "required": false,
@@ -131,7 +131,7 @@
         "mv_threshold"
       ],
       "choices": [],
-      "default": "8",
+      "default": 8,
       "description": "motion vector threshold when estimating video window size (from 0 to 100) (default 8)",
       "name": "mv_threshold",
       "required": false,

@@ -18,7 +18,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level in (from 0 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -31,7 +31,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level out (from 0 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -44,7 +44,7 @@
         "amount"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set amount (from 0 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -57,7 +57,7 @@
         "drive"
       ],
       "choices": [],
-      "default": "8.5",
+      "default": 8.5,
       "description": "set harmonics (from 0.1 to 10) (default 8.5)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -70,7 +70,7 @@
         "blend"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set blend harmonics (from -10 to 10) (default 0)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -83,7 +83,7 @@
         "freq"
       ],
       "choices": [],
-      "default": "7500",
+      "default": 7500.0,
       "description": "set scope (from 2000 to 12000) (default 7500)",
       "flags": "..F.A....T.",
       "max": "12000",
@@ -96,7 +96,7 @@
         "ceil"
       ],
       "choices": [],
-      "default": "9999",
+      "default": 9999.0,
       "description": "set ceiling (from 9999 to 20000) (default 9999)",
       "flags": "..F.A....T.",
       "max": "20000",
@@ -109,7 +109,7 @@
         "listen"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable listen mode (default false)",
       "flags": "..F.A....T.",
       "max": null,

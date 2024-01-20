@@ -25,7 +25,7 @@
         "size"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "set segment size (from 2 to 131072) (default 256)",
       "name": "size",
       "required": false,

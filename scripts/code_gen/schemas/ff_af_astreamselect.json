@@ -16,7 +16,7 @@
         "inputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "number of input streams (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,

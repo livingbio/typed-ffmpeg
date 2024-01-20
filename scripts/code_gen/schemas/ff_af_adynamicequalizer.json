@@ -21,7 +21,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set detection threshold (from 0 to 100) (default 0)",
       "name": "threshold",
       "required": false,
@@ -32,7 +32,7 @@
         "dfrequency"
       ],
       "choices": [],
-      "default": "1000",
+      "default": 1000.0,
       "description": "set detection frequency (from 2 to 1e+06) (default 1000)",
       "name": "dfrequency",
       "required": false,
@@ -43,7 +43,7 @@
         "dqfactor"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set detection Q factor (from 0.001 to 1000) (default 1)",
       "name": "dqfactor",
       "required": false,
@@ -54,7 +54,7 @@
         "tfrequency"
       ],
       "choices": [],
-      "default": "1000",
+      "default": 1000.0,
       "description": "set target frequency (from 2 to 1e+06) (default 1000)",
       "name": "tfrequency",
       "required": false,
@@ -65,7 +65,7 @@
         "tqfactor"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set target Q factor (from 0.001 to 1000) (default 1)",
       "name": "tqfactor",
       "required": false,
@@ -76,7 +76,7 @@
         "attack"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set attack duration (from 1 to 2000) (default 20)",
       "name": "attack",
       "required": false,
@@ -87,7 +87,7 @@
         "release"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200.0,
       "description": "set release duration (from 1 to 2000) (default 200)",
       "name": "release",
       "required": false,
@@ -98,7 +98,7 @@
         "ratio"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set ratio factor (from 0 to 30) (default 1)",
       "name": "ratio",
       "required": false,
@@ -109,7 +109,7 @@
         "makeup"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set makeup gain (from 0 to 100) (default 0)",
       "name": "makeup",
       "required": false,
@@ -120,7 +120,7 @@
         "range"
       ],
       "choices": [],
-      "default": "50",
+      "default": 50.0,
       "description": "set max gain (from 1 to 200) (default 50)",
       "name": "range",
       "required": false,

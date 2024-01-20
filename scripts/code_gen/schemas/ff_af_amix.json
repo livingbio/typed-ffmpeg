@@ -16,7 +16,7 @@
         "inputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "Number of inputs. (from 1 to 32767) (default 2)",
       "name": "inputs",
       "required": false,
@@ -54,7 +54,7 @@
         "dropout_transition"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)",
       "name": "dropout_transition",
       "required": false,
@@ -76,7 +76,7 @@
         "normalize"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "Scale inputs (default true)",
       "name": "normalize",
       "required": false,

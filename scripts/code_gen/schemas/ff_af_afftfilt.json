@@ -43,7 +43,7 @@
         "win_size"
       ],
       "choices": [],
-      "default": "4096",
+      "default": 4096,
       "description": "set window size (from 16 to 131072) (default 4096)",
       "name": "win_size",
       "required": false,
@@ -176,7 +176,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": "0.75",
+      "default": 0.75,
       "description": "set window overlap (from 0 to 1) (default 0.75)",
       "name": "overlap",
       "required": false,

@@ -21,7 +21,7 @@
         "freq"
       ],
       "choices": [],
-      "default": "10000",
+      "default": 10000.0,
       "description": "set central frequency (from 20 to 192000) (default 10000)",
       "name": "freq",
       "required": false,
@@ -32,7 +32,7 @@
         "slope"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set filter slope (from -1 to 1) (default 0)",
       "name": "slope",
       "required": false,
@@ -43,7 +43,7 @@
         "width"
       ],
       "choices": [],
-      "default": "1000",
+      "default": 1000.0,
       "description": "set filter width (from 100 to 10000) (default 1000)",
       "name": "width",
       "required": false,
@@ -54,7 +54,7 @@
         "order"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set filter order (from 2 to 30) (default 5)",
       "name": "order",
       "required": false,
@@ -65,7 +65,7 @@
         "level"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input level (from 0 to 4) (default 1)",
       "name": "level",
       "required": false,

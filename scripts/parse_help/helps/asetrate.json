@@ -19,7 +19,7 @@
         "r"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set the sample rate (from 1 to INT_MAX) (default 44100)",
       "flags": "..F.A......",
       "max": "INT_MAX",

@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set how many frames to use (from 2 to 129) (default 5)",
       "name": "size",
       "required": false,
@@ -81,7 +81,7 @@
         "bypass"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "leave frames unchanged (default false)",
       "name": "bypass",
       "required": false,

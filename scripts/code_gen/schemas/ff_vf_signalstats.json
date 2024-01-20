@@ -64,7 +64,7 @@
           "value": "2"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "set video filter (from -1 to 2) (default -1)",
       "name": "out",
       "required": false,

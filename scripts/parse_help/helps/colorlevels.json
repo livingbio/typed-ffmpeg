@@ -18,7 +18,7 @@
         "rimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input red black point (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "gimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input green black point (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "bimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input blue black point (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -57,7 +57,7 @@
         "aimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input alpha black point (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -70,7 +70,7 @@
         "rimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input red white point (from -1 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -83,7 +83,7 @@
         "gimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input green white point (from -1 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "bimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input blue white point (from -1 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -109,7 +109,7 @@
         "aimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input alpha white point (from -1 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -122,7 +122,7 @@
         "romin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output red black point (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -135,7 +135,7 @@
         "gomin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output green black point (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -148,7 +148,7 @@
         "bomin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output blue black point (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -161,7 +161,7 @@
         "aomin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output alpha black point (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -174,7 +174,7 @@
         "romax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output red white point (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -187,7 +187,7 @@
         "gomax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output green white point (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -200,7 +200,7 @@
         "bomax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output blue white point (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -213,7 +213,7 @@
         "aomax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output alpha white point (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",

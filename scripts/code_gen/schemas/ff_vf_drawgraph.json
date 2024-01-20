@@ -120,7 +120,7 @@
         "min"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
       "name": "min",
       "required": false,
@@ -131,7 +131,7 @@
         "max"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
       "name": "max",
       "required": false,

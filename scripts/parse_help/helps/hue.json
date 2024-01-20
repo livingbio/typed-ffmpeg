@@ -31,7 +31,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"1\"",
+      "default": "1",
       "description": "set the saturation expression (default \"1\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -57,7 +57,7 @@
         "b"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set the brightness expression (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,

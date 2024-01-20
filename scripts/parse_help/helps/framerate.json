@@ -18,7 +18,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "\"50\"",
+      "default": "50",
       "description": "required output frames per second rate (default \"50\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "interp_start"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "point to start linear interpolation (from 0 to 255) (default 15)",
       "flags": "..FV.......",
       "max": "255",
@@ -44,7 +44,7 @@
         "interp_end"
       ],
       "choices": [],
-      "default": "240",
+      "default": 240,
       "description": "point to end linear interpolation (from 0 to 255) (default 240)",
       "flags": "..FV.......",
       "max": "255",
@@ -57,7 +57,7 @@
         "scene"
       ],
       "choices": [],
-      "default": "8.2",
+      "default": 8.2,
       "description": "scene change level (from 0 to 100) (default 8.2)",
       "flags": "..FV.......",
       "max": "100",

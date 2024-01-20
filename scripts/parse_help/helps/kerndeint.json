@@ -18,7 +18,7 @@
         "thresh"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10,
       "description": "set the threshold (from 0 to 255) (default 10)",
       "flags": "..FV.......",
       "max": "255",
@@ -31,7 +31,7 @@
         "map"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set the map (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "order"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set the order (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "sharp"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set sharpening (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "twoway"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set twoway (default false)",
       "flags": "..FV.......",
       "max": null,

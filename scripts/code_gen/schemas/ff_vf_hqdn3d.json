@@ -21,7 +21,7 @@
         "luma_spatial"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "spatial luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_spatial",
       "required": false,
@@ -32,7 +32,7 @@
         "chroma_spatial"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "spatial chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_spatial",
       "required": false,
@@ -43,7 +43,7 @@
         "luma_tmp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "temporal luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_tmp",
       "required": false,
@@ -54,7 +54,7 @@
         "chroma_tmp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "temporal chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_tmp",
       "required": false,

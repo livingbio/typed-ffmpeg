@@ -18,7 +18,7 @@
         "win_size"
       ],
       "choices": [],
-      "default": "2048",
+      "default": 2048,
       "description": "set the window size (from 32 to 65536) (default 2048)",
       "flags": "..F.A......",
       "max": "65536",
@@ -177,7 +177,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set window overlap (from 0 to 1) (default 0.5)",
       "flags": "..F.A......",
       "max": "1",

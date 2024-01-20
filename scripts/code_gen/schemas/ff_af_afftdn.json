@@ -22,7 +22,7 @@
         "nr"
       ],
       "choices": [],
-      "default": "12",
+      "default": 12.0,
       "description": "set the noise reduction (from 0.01 to 97) (default 12)",
       "name": "noise_reduction",
       "required": false,
@@ -34,7 +34,7 @@
         "nf"
       ],
       "choices": [],
-      "default": "-50",
+      "default": -50.0,
       "description": "set the noise floor (from -80 to -20) (default -50)",
       "name": "noise_floor",
       "required": false,
@@ -111,7 +111,7 @@
         "rf"
       ],
       "choices": [],
-      "default": "-38",
+      "default": -38.0,
       "description": "set the residual floor (from -80 to -20) (default -38)",
       "name": "residual_floor",
       "required": false,
@@ -123,7 +123,7 @@
         "tn"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "track noise (default false)",
       "name": "track_noise",
       "required": false,
@@ -135,7 +135,7 @@
         "tr"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "track residual (default false)",
       "name": "track_residual",
       "required": false,
@@ -190,7 +190,7 @@
         "ad"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set adaptivity factor (from 0 to 1) (default 0.5)",
       "name": "adaptivity",
       "required": false,
@@ -202,7 +202,7 @@
         "fo"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set noise floor offset factor (from -2 to 2) (default 1)",
       "name": "floor_offset",
       "required": false,
@@ -247,7 +247,7 @@
         "bm"
       ],
       "choices": [],
-      "default": "1.25",
+      "default": 1.25,
       "description": "set band multiplier (from 0.2 to 5) (default 1.25)",
       "name": "band_multiplier",
       "required": false,
@@ -297,7 +297,7 @@
         "gs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set gain smooth radius (from 0 to 50) (default 0)",
       "name": "gain_smooth",
       "required": false,

@@ -53,7 +53,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,

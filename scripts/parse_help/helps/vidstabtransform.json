@@ -18,7 +18,7 @@
         "input"
       ],
       "choices": [],
-      "default": "\"transforms.trf\"",
+      "default": "transforms.trf",
       "description": "set path to the file storing the transforms (default \"transforms.trf\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "smoothing"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set number of frames*2 + 1 used for lowpass filtering (from 0 to 1000) (default 15)",
       "flags": "..FV.......",
       "max": "1000",
@@ -76,7 +76,7 @@
         "maxshift"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set maximal number of pixels to translate image (from -1 to 500) (default -1)",
       "flags": "..FV.......",
       "max": "500",
@@ -89,7 +89,7 @@
         "maxangle"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)",
       "flags": "..FV.......",
       "max": "3.14",
@@ -128,7 +128,7 @@
         "invert"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "invert transforms (from 0 to 1) (default 0)",
       "flags": "..FV.......",
       "max": "1",
@@ -141,7 +141,7 @@
         "relative"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "consider transforms as relative (from 0 to 1) (default 1)",
       "flags": "..FV.......",
       "max": "1",
@@ -154,7 +154,7 @@
         "zoom"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set percentage to zoom (>0: zoom in, <0: zoom out (from -100 to 100) (default 0)",
       "flags": "..FV.......",
       "max": "100",
@@ -167,7 +167,7 @@
         "optzoom"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom) (from 0 to 2) (default 1)",
       "flags": "..FV.......",
       "max": "2",
@@ -180,7 +180,7 @@
         "zoomspeed"
       ],
       "choices": [],
-      "default": "0.25",
+      "default": 0.25,
       "description": "for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)",
       "flags": "..FV.......",
       "max": "5",
@@ -231,7 +231,7 @@
         "tripod"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable virtual tripod mode (same as relative=0:smoothing=0) (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -244,7 +244,7 @@
         "debug"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable debug mode and writer global motions information to file (default false)",
       "flags": "..FV.......",
       "max": null,

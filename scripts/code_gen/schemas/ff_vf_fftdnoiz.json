@@ -21,7 +21,7 @@
         "sigma"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set denoise strength (from 0 to 100) (default 1)",
       "name": "sigma",
       "required": false,
@@ -32,7 +32,7 @@
         "amount"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set amount of denoising (from 0.01 to 1) (default 1)",
       "name": "amount",
       "required": false,
@@ -43,7 +43,7 @@
         "block"
       ],
       "choices": [],
-      "default": "32",
+      "default": 32,
       "description": "set block size (from 8 to 256) (default 32)",
       "name": "block",
       "required": false,
@@ -54,7 +54,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set block overlap (from 0.2 to 0.8) (default 0.5)",
       "name": "overlap",
       "required": false,
@@ -87,7 +87,7 @@
         "prev"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of previous frames for temporal denoising (from 0 to 1) (default 0)",
       "name": "prev",
       "required": false,
@@ -98,7 +98,7 @@
         "next"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of next frames for temporal denoising (from 0 to 1) (default 0)",
       "name": "next",
       "required": false,
@@ -109,7 +109,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set planes to filter (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,

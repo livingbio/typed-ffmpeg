@@ -25,7 +25,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input gain (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
@@ -58,7 +58,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "0.125",
+      "default": 0.125,
       "description": "set threshold (from 0.000976563 to 1) (default 0.125)",
       "name": "threshold",
       "required": false,
@@ -69,7 +69,7 @@
         "ratio"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set ratio (from 1 to 20) (default 2)",
       "name": "ratio",
       "required": false,
@@ -80,7 +80,7 @@
         "attack"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set attack (from 0.01 to 2000) (default 20)",
       "name": "attack",
       "required": false,
@@ -91,7 +91,7 @@
         "release"
       ],
       "choices": [],
-      "default": "250",
+      "default": 250.0,
       "description": "set release (from 0.01 to 9000) (default 250)",
       "name": "release",
       "required": false,
@@ -102,7 +102,7 @@
         "makeup"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set make up gain (from 1 to 64) (default 1)",
       "name": "makeup",
       "required": false,
@@ -113,7 +113,7 @@
         "knee"
       ],
       "choices": [],
-      "default": "2.82843",
+      "default": 2.82843,
       "description": "set knee (from 1 to 8) (default 2.82843)",
       "name": "knee",
       "required": false,
@@ -168,7 +168,7 @@
         "level_sc"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set sidechain gain (from 0.015625 to 64) (default 1)",
       "name": "level_sc",
       "required": false,
@@ -179,7 +179,7 @@
         "mix"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,

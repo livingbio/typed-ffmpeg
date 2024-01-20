@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"1920x1080\"",
+      "default": "1920x1080",
       "description": "set video size (default \"1920x1080\")",
       "flags": "..FV.......",
       "max": null,
@@ -34,7 +34,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -47,7 +47,7 @@
         "bar_h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set bargraph height (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -60,7 +60,7 @@
         "axis_h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set axis height (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -73,7 +73,7 @@
         "sono_h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set sonogram height (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -86,7 +86,7 @@
         "fullhd"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set fullhd size (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -100,7 +100,7 @@
         "volume"
       ],
       "choices": [],
-      "default": "\"16\"",
+      "default": "16",
       "description": "set sonogram volume (default \"16\")",
       "flags": "..FV.......",
       "max": null,
@@ -114,7 +114,7 @@
         "volume2"
       ],
       "choices": [],
-      "default": "\"sono_v\"",
+      "default": "sono_v",
       "description": "set bargraph volume (default \"sono_v\")",
       "flags": "..FV.......",
       "max": null,
@@ -128,7 +128,7 @@
         "gamma"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3.0,
       "description": "set sonogram gamma (from 1 to 7) (default 3)",
       "flags": "..FV.......",
       "max": "7",
@@ -142,7 +142,7 @@
         "gamma2"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set bargraph gamma (from 1 to 7) (default 1)",
       "flags": "..FV.......",
       "max": "7",
@@ -155,7 +155,7 @@
         "bar_t"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set bar transparency (from 0 to 1) (default 1)",
       "flags": "..FV.......",
       "max": "1",
@@ -169,7 +169,7 @@
         "tc"
       ],
       "choices": [],
-      "default": "0.17",
+      "default": 0.17,
       "description": "set timeclamp (from 0.002 to 1) (default 0.17)",
       "flags": "..FV.......",
       "max": "1",
@@ -182,7 +182,7 @@
         "attack"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set attack time (from 0 to 1) (default 0)",
       "flags": "..FV.......",
       "max": "1",
@@ -195,7 +195,7 @@
         "basefreq"
       ],
       "choices": [],
-      "default": "20.0152",
+      "default": 20.0152,
       "description": "set base frequency (from 10 to 100000) (default 20.0152)",
       "flags": "..FV.......",
       "max": "100000",
@@ -208,7 +208,7 @@
         "endfreq"
       ],
       "choices": [],
-      "default": "20495.6",
+      "default": 20495.6,
       "description": "set end frequency (from 10 to 100000) (default 20495.6)",
       "flags": "..FV.......",
       "max": "100000",
@@ -221,7 +221,7 @@
         "coeffclamp"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set coeffclamp (from 0.1 to 10) (default 1)",
       "flags": "..FV.......",
       "max": "10",
@@ -234,7 +234,7 @@
         "tlength"
       ],
       "choices": [],
-      "default": "\"384*tc/(384+tc*f",
+      "default": "384*tc/(384+tc*f",
       "description": "set tlength (default \"384*tc/(384+tc*f)\")",
       "flags": "..FV.......",
       "max": null,
@@ -247,7 +247,7 @@
         "count"
       ],
       "choices": [],
-      "default": "6",
+      "default": 6,
       "description": "set transform count (from 1 to 30) (default 6)",
       "flags": "..FV.......",
       "max": "30",
@@ -260,7 +260,7 @@
         "fcount"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set frequency count (from 0 to 10) (default 0)",
       "flags": "..FV.......",
       "max": "10",
@@ -299,7 +299,7 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": "\"st(0, (midi(f",
+      "default": "st(0, (midi(f",
       "description": "set font color (default \"st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))\")",
       "flags": "..FV.......",
       "max": null,
@@ -326,7 +326,7 @@
         "text"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "draw axis (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -395,7 +395,7 @@
         "cscheme"
       ],
       "choices": [],
-      "default": "\"1|0.5|0|0|0.5|1\"",
+      "default": "1|0.5|0|0|0.5|1",
       "description": "set color scheme (default \"1|0.5|0|0|0.5|1\")",
       "flags": "..FV.......",
       "max": null,

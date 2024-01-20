@@ -50,7 +50,7 @@
         "qp"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "(default false)",
       "flags": "..FV.......",
       "max": null,
@@ -123,7 +123,7 @@
         "block"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set block partitioning structure to visualize (default false)",
       "flags": "..FV.......",
       "max": null,

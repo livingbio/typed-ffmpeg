@@ -18,7 +18,7 @@
         "threshold0"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 1st plane (from 0 to 65535) (default 65535)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -31,7 +31,7 @@
         "threshold1"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 2nd plane (from 0 to 65535) (default 65535)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -44,7 +44,7 @@
         "threshold2"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 3rd plane (from 0 to 65535) (default 65535)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -57,7 +57,7 @@
         "threshold3"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 4th plane (from 0 to 65535) (default 65535)",
       "flags": "..FV.....T.",
       "max": "65535",

@@ -14,7 +14,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"640x480\"",
+      "default": "640x480",
       "description": "set frame size (default \"640x480\")",
       "flags": "..FV.......",
       "max": null,
@@ -28,7 +28,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set frame rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -41,7 +41,7 @@
         "maxiter"
       ],
       "choices": [],
-      "default": "7189",
+      "default": 7189,
       "description": "set max iterations number (from 1 to INT_MAX) (default 7189)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -54,7 +54,7 @@
         "start_x"
       ],
       "choices": [],
-      "default": "-0.743644",
+      "default": -0.743644,
       "description": "set the initial x position (from -100 to 100) (default -0.743644)",
       "flags": "..FV.......",
       "max": "100",
@@ -67,7 +67,7 @@
         "start_y"
       ],
       "choices": [],
-      "default": "-0.131826",
+      "default": -0.131826,
       "description": "set the initial y position (from -100 to 100) (default -0.131826)",
       "flags": "..FV.......",
       "max": "100",
@@ -80,7 +80,7 @@
         "start_scale"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3.0,
       "description": "set the initial scale value (from 0 to FLT_MAX) (default 3)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -93,7 +93,7 @@
         "end_scale"
       ],
       "choices": [],
-      "default": "0.3",
+      "default": 0.3,
       "description": "set the terminal scale value (from 0 to FLT_MAX) (default 0.3)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -106,7 +106,7 @@
         "end_pts"
       ],
       "choices": [],
-      "default": "400",
+      "default": 400.0,
       "description": "set the terminal pts value (from 0 to I64_MAX) (default 400)",
       "flags": "..FV.......",
       "max": "I64_MAX",
@@ -119,7 +119,7 @@
         "bailout"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10.0,
       "description": "set the bailout value (from 0 to FLT_MAX) (default 10)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -132,7 +132,7 @@
         "morphxf"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set morph x frequency (from -FLT_MAX to FLT_MAX) (default 0.01)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -145,7 +145,7 @@
         "morphyf"
       ],
       "choices": [],
-      "default": "0.0123",
+      "default": 0.0123,
       "description": "set morph y frequency (from -FLT_MAX to FLT_MAX) (default 0.0123)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -158,7 +158,7 @@
         "morphamp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set morph amplitude (from -FLT_MAX to FLT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "FLT_MAX",

@@ -18,7 +18,7 @@
         "hue"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the hue shift (from -180 to 180) (default 0)",
       "flags": "..FV.....T.",
       "max": "180",
@@ -31,7 +31,7 @@
         "saturation"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the saturation shift (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "intensity"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the intensity shift (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -113,7 +113,7 @@
         "strength"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the filtering strength (from 0 to 100) (default 1)",
       "flags": "..FV.....T.",
       "max": "100",
@@ -126,7 +126,7 @@
         "rw"
       ],
       "choices": [],
-      "default": "0.333",
+      "default": 0.333,
       "description": "set the red weight (from 0 to 1) (default 0.333)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -139,7 +139,7 @@
         "gw"
       ],
       "choices": [],
-      "default": "0.334",
+      "default": 0.334,
       "description": "set the green weight (from 0 to 1) (default 0.334)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -152,7 +152,7 @@
         "bw"
       ],
       "choices": [],
-      "default": "0.333",
+      "default": 0.333,
       "description": "set the blue weight (from 0 to 1) (default 0.333)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -165,7 +165,7 @@
         "lightness"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set the preserve lightness (default false)",
       "flags": "..FV.....T.",
       "max": null,

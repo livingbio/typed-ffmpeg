@@ -18,7 +18,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
       "max": "64",
@@ -31,7 +31,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
       "max": "64",
@@ -44,7 +44,7 @@
         "side_gain"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
       "max": "64",
@@ -95,7 +95,7 @@
         "middle_phase"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set middle phase (default false)",
       "flags": "..F.A......",
       "max": null,
@@ -108,7 +108,7 @@
         "left_delay"
       ],
       "choices": [],
-      "default": "2.05",
+      "default": 2.05,
       "description": "set left delay (from 0 to 40) (default 2.05)",
       "flags": "..F.A......",
       "max": "40",
@@ -121,7 +121,7 @@
         "left_balance"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set left balance (from -1 to 1) (default -1)",
       "flags": "..F.A......",
       "max": "1",
@@ -134,7 +134,7 @@
         "left_gain"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set left gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
       "max": "64",
@@ -147,7 +147,7 @@
         "left_phase"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set left phase (default false)",
       "flags": "..F.A......",
       "max": null,
@@ -160,7 +160,7 @@
         "right_delay"
       ],
       "choices": [],
-      "default": "2.12",
+      "default": 2.12,
       "description": "set right delay (from 0 to 40) (default 2.12)",
       "flags": "..F.A......",
       "max": "40",
@@ -173,7 +173,7 @@
         "right_balance"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set right balance (from -1 to 1) (default 1)",
       "flags": "..F.A......",
       "max": "1",
@@ -186,7 +186,7 @@
         "right_gain"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set right gain (from 0.015625 to 64) (default 1)",
       "flags": "..F.A......",
       "max": "64",
@@ -199,7 +199,7 @@
         "right_phase"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set right phase (default true)",
       "flags": "..F.A......",
       "max": null,

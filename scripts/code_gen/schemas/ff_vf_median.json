@@ -21,7 +21,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set median radius (from 1 to 127) (default 1)",
       "name": "radius",
       "required": false,
@@ -32,7 +32,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
@@ -43,7 +43,7 @@
         "radiusV"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set median vertical radius (from 0 to 127) (default 0)",
       "name": "radiusV",
       "required": false,
@@ -54,7 +54,7 @@
         "percentile"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set median percentile (from 0 to 1) (default 0.5)",
       "name": "percentile",
       "required": false,

@@ -18,7 +18,7 @@
         "disable_autoconvert"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "Disable any format conversion or resampling in the filter graph. (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "process_stereo"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "Process stereo channels together. Only apply target_gain when both channels match. (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -44,7 +44,7 @@
         "cdt_ms"
       ],
       "choices": [],
-      "default": "2000",
+      "default": 2000,
       "description": "Code detect timer period in ms. (from 100 to 60000) (default 2000)",
       "flags": "..F.A......",
       "max": "60000",
@@ -57,7 +57,7 @@
         "force_pe"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "Always extend peaks above -3dBFS even when PE is not signaled. (default false)",
       "flags": "..F.A......",
       "max": null,
@@ -133,7 +133,7 @@
           "value": "24"
         }
       ],
-      "default": "16",
+      "default": 16,
       "description": "Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)",
       "flags": "..F.A......",
       "max": "24",

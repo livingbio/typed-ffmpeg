@@ -18,7 +18,7 @@
         "n"
       ],
       "choices": [],
-      "default": "100",
+      "default": 100,
       "description": "set the frames batch size (from 2 to INT_MAX) (default 100)",
       "flags": "..FV.......",
       "max": "INT_MAX",

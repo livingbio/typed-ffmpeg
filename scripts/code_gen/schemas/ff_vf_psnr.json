@@ -37,7 +37,7 @@
         "stats_version"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "Set the format version for the stats file. (from 1 to 2) (default 1)",
       "name": "stats_version",
       "required": false,
@@ -48,7 +48,7 @@
         "output_max"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "Add raw stats (max values) to the output log. (default false)",
       "name": "output_max",
       "required": false,
@@ -86,7 +86,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
@@ -97,7 +97,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,

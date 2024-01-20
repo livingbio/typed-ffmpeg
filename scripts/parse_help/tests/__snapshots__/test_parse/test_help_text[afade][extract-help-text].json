@@ -1,10 +1,10 @@
 {
   "description": "Fade in/out input audio.",
   "input_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -46,7 +46,7 @@
         "ss"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of first sample to start fading (from 0 to I64_MAX) (default 0)",
       "flags": "..F.A....T.",
       "max": "I64_MAX",
@@ -60,7 +60,7 @@
         "ns"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set number of samples for fade duration (from 1 to I64_MAX) (default 44100)",
       "flags": "..F.A....T.",
       "max": "I64_MAX",
@@ -74,7 +74,7 @@
         "st"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set time to start fading (default 0)",
       "flags": "..F.A....T.",
       "max": null,
@@ -88,7 +88,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set fade duration (default 0)",
       "flags": "..F.A....T.",
       "max": null,
@@ -236,7 +236,7 @@
         "silence"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the silence gain (from 0 to 1) (default 0)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -249,7 +249,7 @@
         "unity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the unity gain (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -259,9 +259,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

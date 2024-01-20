@@ -18,7 +18,7 @@
         "thres"
       ],
       "choices": [],
-      "default": "30",
+      "default": 30.0,
       "description": "set y+u+v threshold (from 1 to 200) (default 30)",
       "flags": "..FV.....T.",
       "max": "200",
@@ -31,7 +31,7 @@
         "sizew"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set horizontal patch size (from 1 to 100) (default 5)",
       "flags": "..FV.....T.",
       "max": "100",
@@ -44,7 +44,7 @@
         "sizeh"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set vertical patch size (from 1 to 100) (default 5)",
       "flags": "..FV.....T.",
       "max": "100",
@@ -57,7 +57,7 @@
         "stepw"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set horizontal step (from 1 to 50) (default 1)",
       "flags": "..FV.....T.",
       "max": "50",
@@ -70,7 +70,7 @@
         "steph"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set vertical step (from 1 to 50) (default 1)",
       "flags": "..FV.....T.",
       "max": "50",
@@ -83,7 +83,7 @@
         "threy"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200.0,
       "description": "set y threshold (from 1 to 200) (default 200)",
       "flags": "..FV.....T.",
       "max": "200",
@@ -96,7 +96,7 @@
         "threu"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200.0,
       "description": "set u threshold (from 1 to 200) (default 200)",
       "flags": "..FV.....T.",
       "max": "200",
@@ -109,7 +109,7 @@
         "threv"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200.0,
       "description": "set v threshold (from 1 to 200) (default 200)",
       "flags": "..FV.....T.",
       "max": "200",

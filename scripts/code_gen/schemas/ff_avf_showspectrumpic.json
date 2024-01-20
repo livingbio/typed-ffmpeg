@@ -206,7 +206,7 @@
         "saturation"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "color saturation multiplier (from -10 to 10) (default 1)",
       "name": "saturation",
       "required": false,
@@ -361,7 +361,7 @@
         "gain"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set scale gain (from 0 to 128) (default 1)",
       "name": "gain",
       "required": false,
@@ -372,7 +372,7 @@
         "legend"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "draw legend (default true)",
       "name": "legend",
       "required": false,
@@ -383,7 +383,7 @@
         "rotation"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "color rotation (from -1 to 1) (default 0)",
       "name": "rotation",
       "required": false,
@@ -394,7 +394,7 @@
         "start"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "start frequency (from 0 to INT_MAX) (default 0)",
       "name": "start",
       "required": false,
@@ -405,7 +405,7 @@
         "stop"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "stop frequency (from 0 to INT_MAX) (default 0)",
       "name": "stop",
       "required": false,
@@ -416,7 +416,7 @@
         "drange"
       ],
       "choices": [],
-      "default": "120",
+      "default": 120.0,
       "description": "set dynamic range in dBFS (from 10 to 200) (default 120)",
       "name": "drange",
       "required": false,
@@ -427,7 +427,7 @@
         "limit"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set upper limit in dBFS (from -100 to 100) (default 0)",
       "name": "limit",
       "required": false,
@@ -438,7 +438,7 @@
         "opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set opacity strength (from 0 to 10) (default 1)",
       "name": "opacity",
       "required": false,

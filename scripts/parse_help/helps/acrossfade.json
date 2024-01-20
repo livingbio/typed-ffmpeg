@@ -23,7 +23,7 @@
         "ns"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)",
       "flags": "..F.A......",
       "max": "2.14748e+08",
@@ -37,7 +37,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set cross fade duration (default 0)",
       "flags": "..F.A......",
       "max": null,
@@ -51,7 +51,7 @@
         "o"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "overlap 1st stream end with 2nd stream start (default true)",
       "flags": "..F.A......",
       "max": null,

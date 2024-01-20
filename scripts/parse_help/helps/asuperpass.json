@@ -18,7 +18,7 @@
         "centerf"
       ],
       "choices": [],
-      "default": "1000",
+      "default": 1000.0,
       "description": "set center frequency (from 2 to 999999) (default 1000)",
       "flags": "..F.A....T.",
       "max": "999999",
@@ -31,7 +31,7 @@
         "order"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set filter order (from 4 to 20) (default 4)",
       "flags": "..F.A....T.",
       "max": "20",
@@ -44,7 +44,7 @@
         "qfactor"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set Q-factor (from 0.01 to 100) (default 1)",
       "flags": "..F.A....T.",
       "max": "100",
@@ -57,7 +57,7 @@
         "level"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input level (from 0 to 2) (default 1)",
       "flags": "..F.A....T.",
       "max": "2",

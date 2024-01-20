@@ -21,7 +21,7 @@
         "start"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the number of frames to delay input (from 0 to INT_MAX) (default 0)",
       "name": "start",
       "required": false,
@@ -32,7 +32,7 @@
         "stop"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the number of frames to add after input finished (from -1 to INT_MAX) (default 0)",
       "name": "stop",
       "required": false,
@@ -87,7 +87,7 @@
         "start_duration"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the duration to delay input (default 0)",
       "name": "start_duration",
       "required": false,
@@ -98,7 +98,7 @@
         "stop_duration"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the duration to pad input (default 0)",
       "name": "stop_duration",
       "required": false,

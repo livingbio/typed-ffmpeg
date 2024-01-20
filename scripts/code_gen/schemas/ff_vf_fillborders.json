@@ -21,7 +21,7 @@
         "left"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the left fill border (from 0 to INT_MAX) (default 0)",
       "name": "left",
       "required": false,
@@ -32,7 +32,7 @@
         "right"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the right fill border (from 0 to INT_MAX) (default 0)",
       "name": "right",
       "required": false,
@@ -43,7 +43,7 @@
         "top"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the top fill border (from 0 to INT_MAX) (default 0)",
       "name": "top",
       "required": false,
@@ -54,7 +54,7 @@
         "bottom"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the bottom fill border (from 0 to INT_MAX) (default 0)",
       "name": "bottom",
       "required": false,

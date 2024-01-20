@@ -50,7 +50,7 @@
         "flags"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "Flags to pass to libswscale (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -63,7 +63,7 @@
         "interl"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set interlacing (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -125,7 +125,7 @@
           "value": "bt2020"
         }
       ],
-      "default": "\"auto\"",
+      "default": "auto",
       "description": "set input YCbCr type (default \"auto\")",
       "flags": "..FV.......",
       "max": null,
@@ -324,7 +324,7 @@
         "in_v_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
       "max": "512",
@@ -337,7 +337,7 @@
         "in_h_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
       "max": "512",
@@ -350,7 +350,7 @@
         "out_v_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
       "max": "512",
@@ -363,7 +363,7 @@
         "out_h_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "flags": "..FV.......",
       "max": "512",
@@ -408,7 +408,7 @@
         "force_divisible_by"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
       "flags": "..FV.......",
       "max": "256",

@@ -21,7 +21,7 @@
         "max_colors"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "set the maximum number of colors to use in the palette (from 2 to 256) (default 256)",
       "name": "max_colors",
       "required": false,
@@ -32,7 +32,7 @@
         "reserve_transparent"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "reserve a palette entry for transparency (default true)",
       "name": "reserve_transparent",
       "required": false,

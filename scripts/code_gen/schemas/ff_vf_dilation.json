@@ -21,7 +21,7 @@
         "coordinates"
       ],
       "choices": [],
-      "default": "255",
+      "default": 255,
       "description": "set coordinates (from 0 to 255) (default 255)",
       "name": "coordinates",
       "required": false,
@@ -32,7 +32,7 @@
         "threshold0"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 1st plane (from 0 to 65535) (default 65535)",
       "name": "threshold0",
       "required": false,
@@ -43,7 +43,7 @@
         "threshold1"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 2nd plane (from 0 to 65535) (default 65535)",
       "name": "threshold1",
       "required": false,
@@ -54,7 +54,7 @@
         "threshold2"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 3rd plane (from 0 to 65535) (default 65535)",
       "name": "threshold2",
       "required": false,
@@ -65,7 +65,7 @@
         "threshold3"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535,
       "description": "set threshold for 4th plane (from 0 to 65535) (default 65535)",
       "name": "threshold3",
       "required": false,

@@ -1190,7 +1190,7 @@
         "npl"
       ],
       "choices": [],
-      "default": "nan",
+      "default": NaN,
       "description": "set nominal peak luminance (from 0 to DBL_MAX) (default nan)",
       "flags": "..FV.......",
       "max": "DBL_MAX",
@@ -1203,7 +1203,7 @@
         "agamma"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "allow approximate gamma (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -1216,7 +1216,7 @@
         "param_a"
       ],
       "choices": [],
-      "default": "nan",
+      "default": NaN,
       "description": "parameter A, which is parameter \"b\" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)",
       "flags": "..FV.......",
       "max": "DBL_MAX",
@@ -1229,7 +1229,7 @@
         "param_b"
       ],
       "choices": [],
-      "default": "nan",
+      "default": NaN,
       "description": "parameter B, which is parameter \"c\" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)",
       "flags": "..FV.......",
       "max": "DBL_MAX",

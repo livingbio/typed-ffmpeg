@@ -19,7 +19,7 @@
         "t"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10.0,
       "description": "set scene change detect threshold (from 0 to 100) (default 10)",
       "flags": "..FV.......",
       "max": "100",
@@ -33,7 +33,7 @@
         "s"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "Set the flag to pass scene change frames (default false)",
       "flags": "..FV.......",
       "max": null,

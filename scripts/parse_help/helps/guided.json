@@ -13,7 +13,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set the box radius (from 1 to 20) (default 3)",
       "flags": "..FV.....T.",
       "max": "20",
@@ -26,7 +26,7 @@
         "eps"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set the regularization parameter (with square) (from 0 to 1) (default 0.01)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -65,7 +65,7 @@
         "sub"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "subsampling ratio for fast mode (from 2 to 64) (default 4)",
       "flags": "..FV.....T.",
       "max": "64",
@@ -104,7 +104,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "flags": "..FV.....T.",
       "max": "15",

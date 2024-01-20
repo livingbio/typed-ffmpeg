@@ -33,7 +33,7 @@
         "mix"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output vs input mix (from -1 to 1) (default 1)",
       "name": "mix",
       "required": false,

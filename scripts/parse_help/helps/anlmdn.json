@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": "1e-05",
+      "default": 1e-05,
       "description": "set denoising strength (from 1e-05 to 10000) (default 1e-05)",
       "flags": "..F.A....T.",
       "max": "10000",
@@ -33,7 +33,7 @@
         "p"
       ],
       "choices": [],
-      "default": "0.002",
+      "default": 0.002,
       "description": "set patch duration (default 0.002)",
       "flags": "..F.A....T.",
       "max": null,
@@ -47,7 +47,7 @@
         "r"
       ],
       "choices": [],
-      "default": "0.006",
+      "default": 0.006,
       "description": "set research duration (default 0.006)",
       "flags": "..F.A....T.",
       "max": null,
@@ -94,7 +94,7 @@
         "m"
       ],
       "choices": [],
-      "default": "11",
+      "default": 11.0,
       "description": "set smooth factor (from 1 to 1000) (default 11)",
       "flags": "..F.A....T.",
       "max": "1000",

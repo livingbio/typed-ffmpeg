@@ -22,7 +22,7 @@
         "lr"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set luma radius (from 0.1 to 4) (default 1)",
       "name": "luma_radius",
       "required": false,
@@ -34,7 +34,7 @@
         "lpfr"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set luma pre-filter radius (from 0.1 to 2) (default 1)",
       "name": "luma_pre_filter_radius",
       "required": false,
@@ -46,7 +46,7 @@
         "ls"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set luma strength (from 0.1 to 100) (default 1)",
       "name": "luma_strength",
       "required": false,
@@ -58,7 +58,7 @@
         "cr"
       ],
       "choices": [],
-      "default": "-0.9",
+      "default": -0.9,
       "description": "set chroma radius (from -0.9 to 4) (default -0.9)",
       "name": "chroma_radius",
       "required": false,
@@ -70,7 +70,7 @@
         "cpfr"
       ],
       "choices": [],
-      "default": "-0.9",
+      "default": -0.9,
       "description": "set chroma pre-filter radius (from -0.9 to 2) (default -0.9)",
       "name": "chroma_pre_filter_radius",
       "required": false,
@@ -82,7 +82,7 @@
         "cs"
       ],
       "choices": [],
-      "default": "-0.9",
+      "default": -0.9,
       "description": "set chroma strength (from -0.9 to 100) (default -0.9)",
       "name": "chroma_strength",
       "required": false,

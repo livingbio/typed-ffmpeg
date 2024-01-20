@@ -69,7 +69,7 @@
           "value": "2"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "set video filter (from -1 to 2) (default -1)",
       "flags": "..FV.......",
       "max": "2",
@@ -83,7 +83,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"yellow\"",
+      "default": "yellow",
       "description": "set highlight color (default \"yellow\")",
       "flags": "..FV.......",
       "max": null,

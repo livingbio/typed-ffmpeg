@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set pixel x coordinate (from 0 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set pixel y coordinate (from 0 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -44,7 +44,7 @@
         "s0"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #0 component value (from -1 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -57,7 +57,7 @@
         "s1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #1 component value (from -1 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -70,7 +70,7 @@
         "s2"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #2 component value (from -1 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -83,7 +83,7 @@
         "s3"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #3 component value (from -1 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -96,7 +96,7 @@
         "d0"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #0 component value (from 0 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -109,7 +109,7 @@
         "d1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #1 component value (from 0 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -122,7 +122,7 @@
         "d2"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #2 component value (from 0 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",
@@ -135,7 +135,7 @@
         "d3"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #3 component value (from 0 to 65535) (default 0)",
       "flags": "..FV.......",
       "max": "65535",

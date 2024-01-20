@@ -18,7 +18,7 @@
         "s"
       ],
       "choices": [],
-      "default": "30",
+      "default": 30,
       "description": "set pixel box size (from 1 to 100) (default 30)",
       "flags": "..FV.......",
       "max": "100",

@@ -91,7 +91,7 @@
         "replace"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "replace color & alpha (default false)",
       "name": "replace",
       "required": false,

@@ -18,7 +18,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set filtering strength (from 0 to DBL_MAX) (default 2)",
       "flags": "..FV.......",
       "max": "DBL_MAX",
@@ -63,7 +63,7 @@
         "nsteps"
       ],
       "choices": [],
-      "default": "6",
+      "default": 6,
       "description": "set number of steps (from 1 to 32) (default 6)",
       "flags": "..FV.......",
       "max": "32",
@@ -76,7 +76,7 @@
         "percent"
       ],
       "choices": [],
-      "default": "85",
+      "default": 85.0,
       "description": "set percent of full denoising (from 0 to 100) (default 85)",
       "flags": "..FV.......",
       "max": "100",
@@ -89,7 +89,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set planes to filter (from 0 to 15) (default 15)",
       "flags": "..FV.......",
       "max": "15",

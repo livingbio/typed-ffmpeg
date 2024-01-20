@@ -21,7 +21,7 @@
         "tempo"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set tempo scale factor (from 0.01 to 100) (default 1)",
       "name": "tempo",
       "required": false,
@@ -32,7 +32,7 @@
         "pitch"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set pitch scale factor (from 0.01 to 100) (default 1)",
       "name": "pitch",
       "required": false,

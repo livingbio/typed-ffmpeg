@@ -21,7 +21,7 @@
         "level_height"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200,
       "description": "set level height (from 50 to 2048) (default 200)",
       "name": "level_height",
       "required": false,
@@ -32,7 +32,7 @@
         "scale_height"
       ],
       "choices": [],
-      "default": "12",
+      "default": 12,
       "description": "set scale height (from 0 to 40) (default 12)",
       "name": "scale_height",
       "required": false,
@@ -95,7 +95,7 @@
         "c"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set color components to display (from 1 to 15) (default 7)",
       "name": "components",
       "required": false,
@@ -107,7 +107,7 @@
         "f"
       ],
       "choices": [],
-      "default": "0.7",
+      "default": 0.7,
       "description": "set foreground opacity (from 0 to 1) (default 0.7)",
       "name": "fgopacity",
       "required": false,
@@ -119,7 +119,7 @@
         "b"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set background opacity (from 0 to 1) (default 0.5)",
       "name": "bgopacity",
       "required": false,

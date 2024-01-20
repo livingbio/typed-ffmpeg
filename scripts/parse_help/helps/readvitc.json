@@ -18,7 +18,7 @@
         "scan_max"
       ],
       "choices": [],
-      "default": "45",
+      "default": 45,
       "description": "maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -31,7 +31,7 @@
         "thr_b"
       ],
       "choices": [],
-      "default": "0.2",
+      "default": 0.2,
       "description": "black color threshold (from 0 to 1) (default 0.2)",
       "flags": "..FV.......",
       "max": "1",
@@ -44,7 +44,7 @@
         "thr_w"
       ],
       "choices": [],
-      "default": "0.6",
+      "default": 0.6,
       "description": "white color threshold (from 0 to 1) (default 0.6)",
       "flags": "..FV.......",
       "max": "1",

@@ -18,7 +18,7 @@
         "1thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 1st plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "flags": "..FV.....T.",
       "max": "0.5",
@@ -31,7 +31,7 @@
         "2thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 2nd plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "flags": "..FV.....T.",
       "max": "0.5",
@@ -44,7 +44,7 @@
         "3thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 3rd plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "flags": "..FV.....T.",
       "max": "0.5",
@@ -57,7 +57,7 @@
         "4thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 4th plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "flags": "..FV.....T.",
       "max": "0.5",
@@ -71,7 +71,7 @@
         "r"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set range (from INT_MIN to INT_MAX) (default 16)",
       "flags": "..FV.....T.",
       "max": "INT_MAX",
@@ -85,7 +85,7 @@
         "d"
       ],
       "choices": [],
-      "default": "6.28319",
+      "default": 6.28319,
       "description": "set direction (from -6.28319 to 6.28319) (default 6.28319)",
       "flags": "..FV.....T.",
       "max": "6.28319",
@@ -99,7 +99,7 @@
         "b"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set blur (default true)",
       "flags": "..FV.....T.",
       "max": null,
@@ -113,7 +113,7 @@
         "c"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set plane coupling (default false)",
       "flags": "..FV.....T.",
       "max": null,

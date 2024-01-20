@@ -45,7 +45,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -59,7 +59,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set video size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -142,7 +142,7 @@
         "acount"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "how much frames to accumulate (from -1 to 100) (default 1)",
       "flags": "..FV.......",
       "max": "100",
@@ -155,7 +155,7 @@
         "rheight"
       ],
       "choices": [],
-      "default": "0.1",
+      "default": 0.1,
       "description": "set histogram ratio of window height (from 0 to 1) (default 0.1)",
       "flags": "..FV.......",
       "max": "1",

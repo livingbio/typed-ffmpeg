@@ -18,7 +18,7 @@
         "cutoff"
       ],
       "choices": [],
-      "default": "250",
+      "default": 250.0,
       "description": "set virtual bass cutoff (from 100 to 500) (default 250)",
       "flags": "..F.A......",
       "max": "500",
@@ -31,7 +31,7 @@
         "strength"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3.0,
       "description": "set virtual bass strength (from 0.5 to 3) (default 3)",
       "flags": "..F.A....T.",
       "max": "3",

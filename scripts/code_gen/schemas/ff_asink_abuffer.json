@@ -76,7 +76,7 @@
         "all_channel_counts"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "accept all channel counts (default false)",
       "name": "all_channel_counts",
       "required": false,

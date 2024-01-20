@@ -19,7 +19,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"800x400\"",
+      "default": "800x400",
       "description": "set video size (default \"800x400\")",
       "flags": "..FV.......",
       "max": null,
@@ -46,7 +46,7 @@
         "rc"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set red contrast (from 0 to 255) (default 2)",
       "flags": "..FV.......",
       "max": "255",
@@ -59,7 +59,7 @@
         "gc"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set green contrast (from 0 to 255) (default 7)",
       "flags": "..FV.......",
       "max": "255",
@@ -72,7 +72,7 @@
         "bc"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set blue contrast (from 0 to 255) (default 1)",
       "flags": "..FV.......",
       "max": "255",
@@ -85,7 +85,7 @@
         "mpc"
       ],
       "choices": [],
-      "default": "\"none\"",
+      "default": "none",
       "description": "set median phase color (default \"none\")",
       "flags": "..FV.......",
       "max": null,
@@ -98,7 +98,7 @@
         "video"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set video output (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -111,7 +111,7 @@
         "phasing"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set mono and out-of-phase detection output (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -125,7 +125,7 @@
         "t"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set phase tolerance for mono detection (from 0 to 1) (default 0)",
       "flags": "..FV.......",
       "max": "1",
@@ -139,7 +139,7 @@
         "a"
       ],
       "choices": [],
-      "default": "170",
+      "default": 170.0,
       "description": "set angle threshold for out-of-phase detection (from 90 to 180) (default 170)",
       "flags": "..FV.......",
       "max": "180",
@@ -153,7 +153,7 @@
         "d"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set minimum mono or out-of-phase duration in seconds (default 2)",
       "flags": "..FV.......",
       "max": null,

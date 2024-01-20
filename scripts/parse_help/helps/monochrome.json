@@ -18,7 +18,7 @@
         "cb"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the chroma blue spot (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "cr"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the chroma red spot (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "size"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the color filter size (from 0.1 to 10) (default 1)",
       "flags": "..FV.....T.",
       "max": "10",
@@ -57,7 +57,7 @@
         "high"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the highlights strength (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",

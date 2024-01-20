@@ -18,7 +18,7 @@
         "angle"
       ],
       "choices": [],
-      "default": "45",
+      "default": 45.0,
       "description": "set angle (from 0 to 360) (default 45)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -31,7 +31,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5.0,
       "description": "set radius (from 0 to 8192) (default 5)",
       "flags": "..FV.....T.",
       "max": "8192",
@@ -44,7 +44,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set planes to filter (from 0 to 15) (default 15)",
       "flags": "..FV.....T.",
       "max": "15",

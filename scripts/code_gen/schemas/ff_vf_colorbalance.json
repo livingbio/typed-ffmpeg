@@ -21,7 +21,7 @@
         "rs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set red shadows (from -1 to 1) (default 0)",
       "name": "rs",
       "required": false,
@@ -32,7 +32,7 @@
         "gs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set green shadows (from -1 to 1) (default 0)",
       "name": "gs",
       "required": false,
@@ -43,7 +43,7 @@
         "bs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set blue shadows (from -1 to 1) (default 0)",
       "name": "bs",
       "required": false,
@@ -54,7 +54,7 @@
         "rm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set red midtones (from -1 to 1) (default 0)",
       "name": "rm",
       "required": false,
@@ -65,7 +65,7 @@
         "gm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set green midtones (from -1 to 1) (default 0)",
       "name": "gm",
       "required": false,
@@ -76,7 +76,7 @@
         "bm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set blue midtones (from -1 to 1) (default 0)",
       "name": "bm",
       "required": false,
@@ -87,7 +87,7 @@
         "rh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set red highlights (from -1 to 1) (default 0)",
       "name": "rh",
       "required": false,
@@ -98,7 +98,7 @@
         "gh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set green highlights (from -1 to 1) (default 0)",
       "name": "gh",
       "required": false,
@@ -109,7 +109,7 @@
         "bh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set blue highlights (from -1 to 1) (default 0)",
       "name": "bh",
       "required": false,
@@ -120,7 +120,7 @@
         "pl"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "preserve lightness (default false)",
       "name": "pl",
       "required": false,

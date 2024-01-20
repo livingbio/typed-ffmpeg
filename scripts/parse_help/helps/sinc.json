@@ -14,7 +14,7 @@
         "r"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "flags": "..F.A......",
       "max": "INT_MAX",
@@ -28,7 +28,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "flags": "..F.A......",
       "max": "INT_MAX",
@@ -41,7 +41,7 @@
         "hp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set high-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "flags": "..F.A......",
       "max": "INT_MAX",
@@ -54,7 +54,7 @@
         "lp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set low-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "flags": "..F.A......",
       "max": "INT_MAX",
@@ -67,7 +67,7 @@
         "phase"
       ],
       "choices": [],
-      "default": "50",
+      "default": 50.0,
       "description": "set filter phase response (from 0 to 100) (default 50)",
       "flags": "..F.A......",
       "max": "100",
@@ -80,7 +80,7 @@
         "beta"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set kaiser window beta (from -1 to 256) (default -1)",
       "flags": "..F.A......",
       "max": "256",
@@ -93,7 +93,7 @@
         "att"
       ],
       "choices": [],
-      "default": "120",
+      "default": 120.0,
       "description": "set stop-band attenuation (from 40 to 180) (default 120)",
       "flags": "..F.A......",
       "max": "180",
@@ -106,7 +106,7 @@
         "round"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable rounding (default false)",
       "flags": "..F.A......",
       "max": null,
@@ -119,7 +119,7 @@
         "hptaps"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of taps for high-pass filter (from 0 to 32768) (default 0)",
       "flags": "..F.A......",
       "max": "32768",
@@ -132,7 +132,7 @@
         "lptaps"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of taps for low-pass filter (from 0 to 32768) (default 0)",
       "flags": "..F.A......",
       "max": "32768",

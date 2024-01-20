@@ -99,7 +99,7 @@
         "dither"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set dithering (default true)",
       "name": "dither",
       "required": false,

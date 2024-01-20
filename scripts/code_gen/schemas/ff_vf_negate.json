@@ -68,7 +68,7 @@
         "negate_alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "(default false)",
       "name": "negate_alpha",
       "required": false,

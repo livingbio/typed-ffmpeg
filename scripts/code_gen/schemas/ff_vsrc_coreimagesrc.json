@@ -41,7 +41,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
@@ -63,7 +63,7 @@
         "list_filters"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "list available filters (default false)",
       "name": "list_filters",
       "required": false,
@@ -74,7 +74,7 @@
         "list_generators"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "list available generators (default false)",
       "name": "list_generators",
       "required": false,

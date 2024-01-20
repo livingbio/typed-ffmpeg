@@ -19,7 +19,7 @@
         "l"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "set codebook length (from 1 to INT_MAX) (default 256)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -33,7 +33,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -47,7 +47,7 @@
         "s"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the random seed (from -1 to UINT32_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "UINT32_MAX",
@@ -60,7 +60,7 @@
         "pal8"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set the pal8 output (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -73,7 +73,7 @@
         "use_alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "use alpha channel for mapping (default false)",
       "flags": "..FV.......",
       "max": null,

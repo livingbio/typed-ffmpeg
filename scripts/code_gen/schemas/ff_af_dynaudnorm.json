@@ -22,7 +22,7 @@
         "f"
       ],
       "choices": [],
-      "default": "500",
+      "default": 500,
       "description": "set the frame length in msec (from 10 to 8000) (default 500)",
       "name": "framelen",
       "required": false,
@@ -34,7 +34,7 @@
         "g"
       ],
       "choices": [],
-      "default": "31",
+      "default": 31,
       "description": "set the filter size (from 3 to 301) (default 31)",
       "name": "gausssize",
       "required": false,
@@ -46,7 +46,7 @@
         "p"
       ],
       "choices": [],
-      "default": "0.95",
+      "default": 0.95,
       "description": "set the peak value (from 0 to 1) (default 0.95)",
       "name": "peak",
       "required": false,
@@ -58,7 +58,7 @@
         "m"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10.0,
       "description": "set the max amplification (from 1 to 100) (default 10)",
       "name": "maxgain",
       "required": false,
@@ -70,7 +70,7 @@
         "r"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the target RMS (from 0 to 1) (default 0)",
       "name": "targetrms",
       "required": false,
@@ -82,7 +82,7 @@
         "n"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set channel coupling (default true)",
       "name": "coupling",
       "required": false,
@@ -94,7 +94,7 @@
         "c"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set DC correction (default false)",
       "name": "correctdc",
       "required": false,
@@ -106,7 +106,7 @@
         "b"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set alternative boundary mode (default false)",
       "name": "altboundary",
       "required": false,
@@ -118,7 +118,7 @@
         "s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the compress factor (from 0 to 30) (default 0)",
       "name": "compress",
       "required": false,
@@ -130,7 +130,7 @@
         "t"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the threshold value (from 0 to 1) (default 0)",
       "name": "threshold",
       "required": false,
@@ -154,7 +154,7 @@
         "o"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the frame overlap (from 0 to 1) (default 0)",
       "name": "overlap",
       "required": false,

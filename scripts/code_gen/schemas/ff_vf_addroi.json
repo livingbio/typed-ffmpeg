@@ -76,7 +76,7 @@
         "clear"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "Remove any existing regions of interest before adding the new one. (default false)",
       "name": "clear",
       "required": false,

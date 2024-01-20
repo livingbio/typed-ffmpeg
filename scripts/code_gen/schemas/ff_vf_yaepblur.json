@@ -22,7 +22,7 @@
         "r"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set window radius (from 0 to INT_MAX) (default 3)",
       "name": "radius",
       "required": false,
@@ -34,7 +34,7 @@
         "p"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
@@ -46,7 +46,7 @@
         "s"
       ],
       "choices": [],
-      "default": "128",
+      "default": 128,
       "description": "set blur strength (from 1 to INT_MAX) (default 128)",
       "name": "sigma",
       "required": false,

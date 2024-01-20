@@ -18,7 +18,7 @@
         "s"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "denoising strength (from 1 to 30) (default 1)",
       "flags": "..FV.......",
       "max": "30",
@@ -31,7 +31,7 @@
         "p"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "patch size (from 0 to 99) (default 7)",
       "flags": "..FV.......",
       "max": "99",
@@ -44,7 +44,7 @@
         "pc"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "patch size for chroma planes (from 0 to 99) (default 0)",
       "flags": "..FV.......",
       "max": "99",
@@ -57,7 +57,7 @@
         "r"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "research window (from 0 to 99) (default 15)",
       "flags": "..FV.......",
       "max": "99",
@@ -70,7 +70,7 @@
         "rc"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "research window for chroma planes (from 0 to 99) (default 0)",
       "flags": "..FV.......",
       "max": "99",

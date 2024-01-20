@@ -21,7 +21,7 @@
         "sensitivity"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set smooth sensitivity (from 0 to 1e+06) (default 2)",
       "name": "sensitivity",
       "required": false,
@@ -32,7 +32,7 @@
         "basefreq"
       ],
       "choices": [],
-      "default": "22050",
+      "default": 22050.0,
       "description": "set base frequency (from 2 to 1e+06) (default 22050)",
       "name": "basefreq",
       "required": false,

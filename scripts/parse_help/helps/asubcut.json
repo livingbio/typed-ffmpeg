@@ -18,7 +18,7 @@
         "cutoff"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set cutoff frequency (from 2 to 200) (default 20)",
       "flags": "..F.A....T.",
       "max": "200",
@@ -31,7 +31,7 @@
         "order"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10,
       "description": "set filter order (from 3 to 20) (default 10)",
       "flags": "..F.A....T.",
       "max": "20",
@@ -44,7 +44,7 @@
         "level"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input level (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",

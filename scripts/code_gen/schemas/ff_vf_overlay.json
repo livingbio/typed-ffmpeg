@@ -111,7 +111,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
@@ -174,7 +174,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "repeat overlay of the last overlay frame (default true)",
       "name": "repeatlast",
       "required": false,

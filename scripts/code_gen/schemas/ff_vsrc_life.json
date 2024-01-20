@@ -64,7 +64,7 @@
         "ratio"
       ],
       "choices": [],
-      "default": "0.618034",
+      "default": 0.618034,
       "description": "set fill ratio for filling initial grid randomly (from 0 to 1) (default 0.618034)",
       "name": "random_fill_ratio",
       "required": false,
@@ -76,7 +76,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the seed for filling the initial grid randomly (from -1 to UINT32_MAX) (default -1)",
       "name": "random_seed",
       "required": false,
@@ -87,7 +87,7 @@
         "stitch"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "stitch boundaries (default true)",
       "name": "stitch",
       "required": false,
@@ -98,7 +98,7 @@
         "mold"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set mold speed for dead cells (from 0 to 255) (default 0)",
       "name": "mold",
       "required": false,

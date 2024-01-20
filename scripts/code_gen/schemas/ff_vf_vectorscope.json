@@ -69,7 +69,7 @@
         "x"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set color component on X axis (from 0 to 2) (default 1)",
       "name": "x",
       "required": false,
@@ -80,7 +80,7 @@
         "y"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set color component on Y axis (from 0 to 2) (default 2)",
       "name": "y",
       "required": false,
@@ -92,7 +92,7 @@
         "i"
       ],
       "choices": [],
-      "default": "0.004",
+      "default": 0.004,
       "description": "set intensity (from 0 to 1) (default 0.004)",
       "name": "intensity",
       "required": false,
@@ -170,7 +170,7 @@
         "o"
       ],
       "choices": [],
-      "default": "0.75",
+      "default": 0.75,
       "description": "set graticule opacity (from 0 to 1) (default 0.75)",
       "name": "opacity",
       "required": false,
@@ -210,7 +210,7 @@
         "b"
       ],
       "choices": [],
-      "default": "0.3",
+      "default": 0.3,
       "description": "set background opacity (from 0 to 1) (default 0.3)",
       "name": "bgopacity",
       "required": false,
@@ -222,7 +222,7 @@
         "l"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set low threshold (from 0 to 1) (default 0)",
       "name": "lthreshold",
       "required": false,
@@ -234,7 +234,7 @@
         "h"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set high threshold (from 0 to 1) (default 1)",
       "name": "hthreshold",
       "required": false,
@@ -274,7 +274,7 @@
         "t0"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set 1st tint (from -1 to 1) (default 0)",
       "name": "tint0",
       "required": false,
@@ -286,7 +286,7 @@
         "t1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set 2nd tint (from -1 to 1) (default 0)",
       "name": "tint1",
       "required": false,

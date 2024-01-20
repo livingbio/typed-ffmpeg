@@ -18,7 +18,7 @@
         "strength"
       ],
       "choices": [],
-      "default": "1.2",
+      "default": 1.2,
       "description": "The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)",
       "flags": "..FV.......",
       "max": "64",
@@ -31,7 +31,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "The neighborhood to fit the gradient to. (from 4 to 32) (default 16)",
       "flags": "..FV.......",
       "max": "32",

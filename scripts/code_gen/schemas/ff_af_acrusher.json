@@ -21,7 +21,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
@@ -32,7 +32,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
@@ -43,7 +43,7 @@
         "bits"
       ],
       "choices": [],
-      "default": "8",
+      "default": 8.0,
       "description": "set bit reduction (from 1 to 64) (default 8)",
       "name": "bits",
       "required": false,
@@ -54,7 +54,7 @@
         "mix"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set mix (from 0 to 1) (default 0.5)",
       "name": "mix",
       "required": false,
@@ -87,7 +87,7 @@
         "dc"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set DC (from 0.25 to 4) (default 1)",
       "name": "dc",
       "required": false,
@@ -98,7 +98,7 @@
         "aa"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set anti-aliasing (from 0 to 1) (default 0.5)",
       "name": "aa",
       "required": false,
@@ -109,7 +109,7 @@
         "samples"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set sample reduction (from 1 to 250) (default 1)",
       "name": "samples",
       "required": false,
@@ -120,7 +120,7 @@
         "lfo"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable LFO (default false)",
       "name": "lfo",
       "required": false,
@@ -131,7 +131,7 @@
         "lforange"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set LFO depth (from 1 to 250) (default 20)",
       "name": "lforange",
       "required": false,
@@ -142,7 +142,7 @@
         "lforate"
       ],
       "choices": [],
-      "default": "0.3",
+      "default": 0.3,
       "description": "set LFO rate (from 0.01 to 200) (default 0.3)",
       "name": "lforate",
       "required": false,

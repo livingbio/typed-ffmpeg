@@ -58,7 +58,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable processing of alpha channel (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -85,7 +85,7 @@
         "si"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",

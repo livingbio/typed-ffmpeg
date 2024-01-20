@@ -14,7 +14,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"640x480\"",
+      "default": "640x480",
       "description": "set frame size (default \"640x480\")",
       "flags": "..FV.......",
       "max": null,
@@ -28,7 +28,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set frame rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -41,7 +41,7 @@
         "c0"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 1st color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -54,7 +54,7 @@
         "c1"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 2nd color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -67,7 +67,7 @@
         "c2"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 3rd color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -80,7 +80,7 @@
         "c3"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 4th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -93,7 +93,7 @@
         "c4"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 5th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -106,7 +106,7 @@
         "c5"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 6th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -119,7 +119,7 @@
         "c6"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 7th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -132,7 +132,7 @@
         "c7"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 8th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -145,7 +145,7 @@
         "x0"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line source x0 (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -158,7 +158,7 @@
         "y0"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line source y0 (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -171,7 +171,7 @@
         "x1"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line destination x1 (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -184,7 +184,7 @@
         "y1"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line destination y1 (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -198,7 +198,7 @@
         "n"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set the number of colors (from 2 to 8) (default 2)",
       "flags": "..FV.......",
       "max": "8",
@@ -211,7 +211,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "UINT32_MAX",
@@ -225,7 +225,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "flags": "..FV.......",
       "max": null,
@@ -238,7 +238,7 @@
         "speed"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set gradients rotation speed (from 1e-05 to 1) (default 0.01)",
       "flags": "..FV.......",
       "max": "1",

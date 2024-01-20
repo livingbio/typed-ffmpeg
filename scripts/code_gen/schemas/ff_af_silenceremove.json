@@ -21,7 +21,7 @@
         "start_periods"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set periods of silence parts to skip from start (from 0 to 9000) (default 0)",
       "name": "start_periods",
       "required": false,
@@ -32,7 +32,7 @@
         "start_duration"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set start duration of non-silence part (default 0)",
       "name": "start_duration",
       "required": false,
@@ -43,7 +43,7 @@
         "start_threshold"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set threshold for start silence detection (from 0 to DBL_MAX) (default 0)",
       "name": "start_threshold",
       "required": false,
@@ -54,7 +54,7 @@
         "start_silence"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set start duration of silence part to keep (default 0)",
       "name": "start_silence",
       "required": false,
@@ -87,7 +87,7 @@
         "stop_periods"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set periods of silence parts to skip from end (from -9000 to 9000) (default 0)",
       "name": "stop_periods",
       "required": false,
@@ -98,7 +98,7 @@
         "stop_duration"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set stop duration of non-silence part (default 0)",
       "name": "stop_duration",
       "required": false,
@@ -109,7 +109,7 @@
         "stop_threshold"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)",
       "name": "stop_threshold",
       "required": false,
@@ -120,7 +120,7 @@
         "stop_silence"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set stop duration of silence part to keep (default 0)",
       "name": "stop_silence",
       "required": false,
@@ -175,7 +175,7 @@
         "window"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set duration of window for silence detection (default 0.02)",
       "name": "window",
       "required": false,

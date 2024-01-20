@@ -18,7 +18,7 @@
         "frames"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set number of successive frames to mix (from 1 to 1024) (default 3)",
       "flags": "..FV.......",
       "max": "1024",
@@ -31,7 +31,7 @@
         "weights"
       ],
       "choices": [],
-      "default": "\"1 1 1\"",
+      "default": "1 1 1",
       "description": "set weight for each frame (default \"1 1 1\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -44,7 +44,7 @@
         "scale"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set scale (from 0 to 32767) (default 0)",
       "flags": "..FV.....T.",
       "max": "32767",

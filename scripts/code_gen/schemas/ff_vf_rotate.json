@@ -69,7 +69,7 @@
         "bilinear"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "use bilinear interpolation (default true)",
       "name": "bilinear",
       "required": false,

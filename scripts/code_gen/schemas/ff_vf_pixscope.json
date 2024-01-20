@@ -21,7 +21,7 @@
         "x"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set scope x offset (from 0 to 1) (default 0.5)",
       "name": "x",
       "required": false,
@@ -32,7 +32,7 @@
         "y"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set scope y offset (from 0 to 1) (default 0.5)",
       "name": "y",
       "required": false,
@@ -43,7 +43,7 @@
         "w"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set scope width (from 1 to 80) (default 7)",
       "name": "w",
       "required": false,
@@ -54,7 +54,7 @@
         "h"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set scope height (from 1 to 80) (default 7)",
       "name": "h",
       "required": false,
@@ -65,7 +65,7 @@
         "o"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set window opacity (from 0 to 1) (default 0.5)",
       "name": "o",
       "required": false,
@@ -76,7 +76,7 @@
         "wx"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set window x offset (from -1 to 1) (default -1)",
       "name": "wx",
       "required": false,
@@ -87,7 +87,7 @@
         "wy"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set window y offset (from -1 to 1) (default -1)",
       "name": "wy",
       "required": false,

@@ -18,7 +18,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the threshold value (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "tolerance"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set the tolerance value (from 0 to 1) (default 0.01)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "softness"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the softness value (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",

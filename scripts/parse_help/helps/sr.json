@@ -38,7 +38,7 @@
         "scale_factor"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "scale factor for SRCNN model (from 2 to 4) (default 2)",
       "flags": "..FV.......",
       "max": "4",
@@ -64,7 +64,7 @@
         "input"
       ],
       "choices": [],
-      "default": "\"x\"",
+      "default": "x",
       "description": "input name of the model (default \"x\")",
       "flags": "..FV.......",
       "max": null,
@@ -77,7 +77,7 @@
         "output"
       ],
       "choices": [],
-      "default": "\"y\"",
+      "default": "y",
       "description": "output name of the model (default \"y\")",
       "flags": "..FV.......",
       "max": null,

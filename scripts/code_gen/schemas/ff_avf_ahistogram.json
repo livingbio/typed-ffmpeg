@@ -126,7 +126,7 @@
         "acount"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "how much frames to accumulate (from -1 to 100) (default 1)",
       "name": "acount",
       "required": false,
@@ -137,7 +137,7 @@
         "rheight"
       ],
       "choices": [],
-      "default": "0.1",
+      "default": 0.1,
       "description": "set histogram ratio of window height (from 0 to 1) (default 0.1)",
       "name": "rheight",
       "required": false,

@@ -18,7 +18,7 @@
         "tempo"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set tempo scale factor (from 0.5 to 100) (default 1)",
       "flags": "..F.A....T.",
       "max": "100",

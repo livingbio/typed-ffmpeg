@@ -78,7 +78,7 @@
         "mb_size"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "macroblock size (from 8 to INT_MAX) (default 16)",
       "name": "mb_size",
       "required": false,
@@ -89,7 +89,7 @@
         "search_param"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "search parameter (from 4 to INT_MAX) (default 7)",
       "name": "search_param",
       "required": false,

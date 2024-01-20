@@ -21,7 +21,7 @@
         "all_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #0 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "all_seed",
       "required": false,
@@ -33,7 +33,7 @@
         "alls"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #0 strength (from 0 to 100) (default 0)",
       "name": "all_strength",
       "required": false,
@@ -77,7 +77,7 @@
         "c0_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #0 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c0_seed",
       "required": false,
@@ -89,7 +89,7 @@
         "c0s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #0 strength (from 0 to 100) (default 0)",
       "name": "c0_strength",
       "required": false,
@@ -133,7 +133,7 @@
         "c1_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #1 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c1_seed",
       "required": false,
@@ -145,7 +145,7 @@
         "c1s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #1 strength (from 0 to 100) (default 0)",
       "name": "c1_strength",
       "required": false,
@@ -189,7 +189,7 @@
         "c2_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #2 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c2_seed",
       "required": false,
@@ -201,7 +201,7 @@
         "c2s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #2 strength (from 0 to 100) (default 0)",
       "name": "c2_strength",
       "required": false,
@@ -245,7 +245,7 @@
         "c3_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #3 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c3_seed",
       "required": false,
@@ -257,7 +257,7 @@
         "c3s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #3 strength (from 0 to 100) (default 0)",
       "name": "c3_strength",
       "required": false,

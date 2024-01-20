@@ -109,7 +109,7 @@
         "box"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set box (default false)",
       "name": "box",
       "required": false,
@@ -120,7 +120,7 @@
         "boxborderw"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
       "name": "boxborderw",
       "required": false,
@@ -131,7 +131,7 @@
         "line_spacing"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)",
       "name": "line_spacing",
       "required": false,
@@ -175,7 +175,7 @@
         "shadowx"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set shadow x offset (from INT_MIN to INT_MAX) (default 0)",
       "name": "shadowx",
       "required": false,
@@ -186,7 +186,7 @@
         "shadowy"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set shadow y offset (from INT_MIN to INT_MAX) (default 0)",
       "name": "shadowy",
       "required": false,
@@ -197,7 +197,7 @@
         "borderw"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set border width (from INT_MIN to INT_MAX) (default 0)",
       "name": "borderw",
       "required": false,
@@ -208,7 +208,7 @@
         "tabsize"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set tab size (from 0 to INT_MAX) (default 4)",
       "name": "tabsize",
       "required": false,
@@ -279,7 +279,7 @@
         "tc24hmax"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set 24 hours max (timecode only) (default false)",
       "name": "tc24hmax",
       "required": false,
@@ -303,7 +303,7 @@
         "reload"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "reload text file at specified frame interval (from 0 to INT_MAX) (default 0)",
       "name": "reload",
       "required": false,
@@ -325,7 +325,7 @@
         "fix_bounds"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "check and fix text coords to avoid clipping (default false)",
       "name": "fix_bounds",
       "required": false,
@@ -336,7 +336,7 @@
         "start_number"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)",
       "name": "start_number",
       "required": false,

@@ -19,7 +19,7 @@
         "e"
       ],
       "choices": [],
-      "default": "\"1\"",
+      "default": "1",
       "description": "set an expression to use for selecting frames (default \"1\")",
       "flags": "..FV.......",
       "max": null,
@@ -33,7 +33,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set the number of outputs (from 1 to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",

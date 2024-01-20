@@ -18,7 +18,7 @@
         "outputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
       "flags": "..FVA......",
       "max": "INT_MAX",

@@ -56,7 +56,7 @@
         "pattern"
       ],
       "choices": [],
-      "default": "\"23\"",
+      "default": "23",
       "description": "pattern that describe for how many fields a frame is to be displayed (default \"23\")",
       "flags": "..FV.......",
       "max": null,
@@ -69,7 +69,7 @@
         "start_frame"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)",
       "flags": "..FV.......",
       "max": "13",

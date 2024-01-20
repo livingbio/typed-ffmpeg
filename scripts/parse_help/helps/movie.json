@@ -41,7 +41,7 @@
         "si"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "flags": "..FVA......",
       "max": "INT_MAX",
@@ -55,7 +55,7 @@
         "sp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set seekpoint (seconds) (from 0 to 9.22337e+12) (default 0)",
       "flags": "..FVA......",
       "max": "9.22337e+12",
@@ -82,7 +82,7 @@
         "loop"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set loop count (from 0 to INT_MAX) (default 1)",
       "flags": "..FVA......",
       "max": "INT_MAX",
@@ -95,7 +95,7 @@
         "discontinuity"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set discontinuity threshold (default 0)",
       "flags": "..FVA......",
       "max": null,
@@ -108,7 +108,7 @@
         "dec_threads"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the number of threads for decoding (from 0 to INT_MAX) (default 0)",
       "flags": "..FVA......",
       "max": "INT_MAX",

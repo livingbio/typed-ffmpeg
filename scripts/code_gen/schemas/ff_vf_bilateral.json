@@ -21,7 +21,7 @@
         "sigmaS"
       ],
       "choices": [],
-      "default": "0.1",
+      "default": 0.1,
       "description": "set spatial sigma (from 0 to 512) (default 0.1)",
       "name": "sigmaS",
       "required": false,
@@ -32,7 +32,7 @@
         "sigmaR"
       ],
       "choices": [],
-      "default": "0.1",
+      "default": 0.1,
       "description": "set range sigma (from 0 to 1) (default 0.1)",
       "name": "sigmaR",
       "required": false,
@@ -43,7 +43,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,

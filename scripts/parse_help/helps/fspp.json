@@ -18,7 +18,7 @@
         "quality"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set quality (from 4 to 5) (default 4)",
       "flags": "..FV.......",
       "max": "5",
@@ -31,7 +31,7 @@
         "qp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "force a constant quantizer parameter (from 0 to 64) (default 0)",
       "flags": "..FV.......",
       "max": "64",
@@ -44,7 +44,7 @@
         "strength"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set filter strength (from -15 to 32) (default 0)",
       "flags": "..FV.......",
       "max": "32",
@@ -57,7 +57,7 @@
         "use_bframe_qp"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "use B-frames' QP (default false)",
       "flags": "..FV.......",
       "max": null,

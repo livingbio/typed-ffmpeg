@@ -16,7 +16,7 @@
         "sigma"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set denoising strength (from 0 to 99999.9) (default 1)",
       "name": "sigma",
       "required": false,
@@ -27,7 +27,7 @@
         "block"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set size of local patch (from 8 to 64) (default 16)",
       "name": "block",
       "required": false,
@@ -38,7 +38,7 @@
         "bstep"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set sliding step for processing blocks (from 1 to 64) (default 4)",
       "name": "bstep",
       "required": false,
@@ -49,7 +49,7 @@
         "group"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set maximal number of similar blocks (from 1 to 256) (default 1)",
       "name": "group",
       "required": false,
@@ -60,7 +60,7 @@
         "range"
       ],
       "choices": [],
-      "default": "9",
+      "default": 9,
       "description": "set block matching range (from 1 to INT_MAX) (default 9)",
       "name": "range",
       "required": false,
@@ -71,7 +71,7 @@
         "mstep"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set step for block matching (from 1 to 64) (default 1)",
       "name": "mstep",
       "required": false,
@@ -82,7 +82,7 @@
         "thmse"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)",
       "name": "thmse",
       "required": false,
@@ -93,7 +93,7 @@
         "hdthr"
       ],
       "choices": [],
-      "default": "2.7",
+      "default": 2.7,
       "description": "set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)",
       "name": "hdthr",
       "required": false,
@@ -126,7 +126,7 @@
         "ref"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "have reference stream (default false)",
       "name": "ref",
       "required": false,
@@ -137,7 +137,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set planes to filter (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,

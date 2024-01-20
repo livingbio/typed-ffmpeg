@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set how many frames to use (from 2 to 129) (default 5)",
       "flags": "..FV.......",
       "max": "129",
@@ -89,7 +89,7 @@
         "bypass"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "leave frames unchanged (default false)",
       "flags": "..FV.......",
       "max": null,

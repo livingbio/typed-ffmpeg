@@ -41,7 +41,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
@@ -64,7 +64,7 @@
         "n"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of decimals to show (from 0 to 17) (default 0)",
       "name": "decimals",
       "required": false,

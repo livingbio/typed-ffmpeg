@@ -57,7 +57,7 @@
         "dry"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set dry gain (from 0 to 1) (default 1)",
       "name": "dry",
       "required": false,
@@ -68,7 +68,7 @@
         "wet"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set wet gain (from 0 to 1) (default 1)",
       "name": "wet",
       "required": false,
@@ -220,7 +220,7 @@
         "n"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "normalize coefficients (default true)",
       "name": "normalize",
       "required": false,
@@ -231,7 +231,7 @@
         "mix"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
@@ -242,7 +242,7 @@
         "response"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "show IR frequency response (default false)",
       "name": "response",
       "required": false,
@@ -253,7 +253,7 @@
         "channel"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set IR channel to display frequency response (from 0 to 1024) (default 0)",
       "name": "channel",
       "required": false,

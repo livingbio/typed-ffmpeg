@@ -1,10 +1,10 @@
 {
   "description": "Pick one continuous section from the input, drop the rest.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -73,7 +73,7 @@
         "durationi"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "Maximum duration of the output (default 0)",
       "flags": "..FV.......",
       "max": null,
@@ -86,7 +86,7 @@
         "start_frame"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "I64_MAX",
@@ -109,9 +109,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

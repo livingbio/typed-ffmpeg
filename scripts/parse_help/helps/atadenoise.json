@@ -18,7 +18,7 @@
         "0a"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set threshold A for 1st plane (from 0 to 0.3) (default 0.02)",
       "flags": "..FV.....T.",
       "max": "0.3",
@@ -31,7 +31,7 @@
         "0b"
       ],
       "choices": [],
-      "default": "0.04",
+      "default": 0.04,
       "description": "set threshold B for 1st plane (from 0 to 5) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "5",
@@ -44,7 +44,7 @@
         "1a"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set threshold A for 2nd plane (from 0 to 0.3) (default 0.02)",
       "flags": "..FV.....T.",
       "max": "0.3",
@@ -57,7 +57,7 @@
         "1b"
       ],
       "choices": [],
-      "default": "0.04",
+      "default": 0.04,
       "description": "set threshold B for 2nd plane (from 0 to 5) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "5",
@@ -70,7 +70,7 @@
         "2a"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set threshold A for 3rd plane (from 0 to 0.3) (default 0.02)",
       "flags": "..FV.....T.",
       "max": "0.3",
@@ -83,7 +83,7 @@
         "2b"
       ],
       "choices": [],
-      "default": "0.04",
+      "default": 0.04,
       "description": "set threshold B for 3rd plane (from 0 to 5) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "5",
@@ -96,7 +96,7 @@
         "s"
       ],
       "choices": [],
-      "default": "9",
+      "default": 9,
       "description": "set how many frames to use (from 5 to 129) (default 9)",
       "flags": "..FV.......",
       "max": "129",
@@ -148,7 +148,7 @@
         "0s"
       ],
       "choices": [],
-      "default": "32767",
+      "default": 32767.0,
       "description": "set sigma for 1st plane (from 0 to 32767) (default 32767)",
       "flags": "..FV.....T.",
       "max": "32767",
@@ -161,7 +161,7 @@
         "1s"
       ],
       "choices": [],
-      "default": "32767",
+      "default": 32767.0,
       "description": "set sigma for 2nd plane (from 0 to 32767) (default 32767)",
       "flags": "..FV.....T.",
       "max": "32767",
@@ -174,7 +174,7 @@
         "2s"
       ],
       "choices": [],
-      "default": "32767",
+      "default": 32767.0,
       "description": "set sigma for 3rd plane (from 0 to 32767) (default 32767)",
       "flags": "..FV.....T.",
       "max": "32767",

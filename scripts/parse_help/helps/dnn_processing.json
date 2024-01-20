@@ -103,7 +103,7 @@
         "async"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "use DNN async inference (ignored, use backend_configs='async=1') (default true)",
       "flags": "..FV.......",
       "max": null,

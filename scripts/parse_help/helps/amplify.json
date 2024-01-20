@@ -18,7 +18,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set radius (from 1 to 63) (default 2)",
       "flags": "..FV.......",
       "max": "63",
@@ -31,7 +31,7 @@
         "factor"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set factor (from 0 to 65535) (default 2)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -44,7 +44,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10.0,
       "description": "set threshold (from 0 to 65535) (default 10)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -57,7 +57,7 @@
         "tolerance"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set tolerance (from 0 to 65535) (default 0)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -70,7 +70,7 @@
         "low"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535.0,
       "description": "set low limit for amplification (from 0 to 65535) (default 65535)",
       "flags": "..FV.....T.",
       "max": "65535",
@@ -83,7 +83,7 @@
         "high"
       ],
       "choices": [],
-      "default": "65535",
+      "default": 65535.0,
       "description": "set high limit for amplification (from 0 to 65535) (default 65535)",
       "flags": "..FV.....T.",
       "max": "65535",

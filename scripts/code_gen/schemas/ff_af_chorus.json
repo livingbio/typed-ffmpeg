@@ -21,7 +21,7 @@
         "in_gain"
       ],
       "choices": [],
-      "default": "0.4",
+      "default": 0.4,
       "description": "set input gain (from 0 to 1) (default 0.4)",
       "name": "in_gain",
       "required": false,
@@ -32,7 +32,7 @@
         "out_gain"
       ],
       "choices": [],
-      "default": "0.4",
+      "default": 0.4,
       "description": "set output gain (from 0 to 1) (default 0.4)",
       "name": "out_gain",
       "required": false,

@@ -16,7 +16,7 @@
         "cycle"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set the number of frame from which one will be dropped (from 2 to 25) (default 5)",
       "name": "cycle",
       "required": false,
@@ -27,7 +27,7 @@
         "dupthresh"
       ],
       "choices": [],
-      "default": "1.1",
+      "default": 1.1,
       "description": "set duplicate threshold (from 0 to 100) (default 1.1)",
       "name": "dupthresh",
       "required": false,
@@ -38,7 +38,7 @@
         "scthresh"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15.0,
       "description": "set scene change threshold (from 0 to 100) (default 15)",
       "name": "scthresh",
       "required": false,
@@ -49,7 +49,7 @@
         "blockx"
       ],
       "choices": [],
-      "default": "32",
+      "default": 32,
       "description": "set the size of the x-axis blocks used during metric calculations (from 4 to 512) (default 32)",
       "name": "blockx",
       "required": false,
@@ -60,7 +60,7 @@
         "blocky"
       ],
       "choices": [],
-      "default": "32",
+      "default": 32,
       "description": "set the size of the y-axis blocks used during metric calculations (from 4 to 512) (default 32)",
       "name": "blocky",
       "required": false,
@@ -71,7 +71,7 @@
         "ppsrc"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "mark main input as a pre-processed input and activate clean source input stream (default false)",
       "name": "ppsrc",
       "required": false,
@@ -82,7 +82,7 @@
         "chroma"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "set whether or not chroma is considered in the metric calculations (default true)",
       "name": "chroma",
       "required": false,
@@ -93,7 +93,7 @@
         "mixed"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set whether or not the input only partially contains content to be decimated (default false)",
       "name": "mixed",
       "required": false,

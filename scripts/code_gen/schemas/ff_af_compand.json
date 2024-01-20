@@ -54,7 +54,7 @@
         "soft-knee"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set soft-knee (from 0.01 to 900) (default 0.01)",
       "name": "soft-knee",
       "required": false,
@@ -65,7 +65,7 @@
         "gain"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output gain (from -900 to 900) (default 0)",
       "name": "gain",
       "required": false,
@@ -76,7 +76,7 @@
         "volume"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set initial volume (from -900 to 0) (default 0)",
       "name": "volume",
       "required": false,
@@ -87,7 +87,7 @@
         "delay"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)",
       "name": "delay",
       "required": false,

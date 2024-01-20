@@ -272,7 +272,7 @@
         "duration"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set cross fade duration (default 1)",
       "name": "duration",
       "required": false,
@@ -283,7 +283,7 @@
         "offset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set cross fade start relative to first input stream (default 0)",
       "name": "offset",
       "required": false,

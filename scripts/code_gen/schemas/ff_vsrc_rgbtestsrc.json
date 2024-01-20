@@ -41,7 +41,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
@@ -64,7 +64,7 @@
         "co"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set complement colors (default false)",
       "name": "complement",
       "required": false,

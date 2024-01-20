@@ -67,7 +67,7 @@
         "keep_aspect"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "keep aspect ratio (default false)",
       "name": "keep_aspect",
       "required": false,
@@ -78,7 +78,7 @@
         "exact"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "do exact cropping (default false)",
       "name": "exact",
       "required": false,

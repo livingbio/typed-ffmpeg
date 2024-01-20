@@ -18,7 +18,7 @@
         "max_colors"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "set the maximum number of colors to use in the palette (from 2 to 256) (default 256)",
       "flags": "..FV.......",
       "max": "256",
@@ -31,7 +31,7 @@
         "reserve_transparent"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "reserve a palette entry for transparency (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "transparency_color"
       ],
       "choices": [],
-      "default": "\"lime\"",
+      "default": "lime",
       "description": "set a background color for transparency (default \"lime\")",
       "flags": "..FV.......",
       "max": null,

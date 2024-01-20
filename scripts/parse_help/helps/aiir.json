@@ -19,7 +19,7 @@
         "z"
       ],
       "choices": [],
-      "default": "\"1+0i 1-0i\"",
+      "default": "1+0i 1-0i",
       "description": "set B/numerator/zeros/reflection coefficients (default \"1+0i 1-0i\")",
       "flags": "..F.A......",
       "max": null,
@@ -33,7 +33,7 @@
         "p"
       ],
       "choices": [],
-      "default": "\"1+0i 1-0i\"",
+      "default": "1+0i 1-0i",
       "description": "set A/denominator/poles/ladder coefficients (default \"1+0i 1-0i\")",
       "flags": "..F.A......",
       "max": null,
@@ -47,7 +47,7 @@
         "k"
       ],
       "choices": [],
-      "default": "\"1|1\"",
+      "default": "1|1",
       "description": "set channels gains (default \"1|1\")",
       "flags": "..F.A......",
       "max": null,
@@ -60,7 +60,7 @@
         "dry"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set dry gain (from 0 to 1) (default 1)",
       "flags": "..F.A......",
       "max": "1",
@@ -73,7 +73,7 @@
         "wet"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set wet gain (from 0 to 1) (default 1)",
       "flags": "..F.A......",
       "max": "1",
@@ -253,7 +253,7 @@
         "n"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "normalize coefficients (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -266,7 +266,7 @@
         "mix"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set mix (from 0 to 1) (default 1)",
       "flags": "..F.A......",
       "max": "1",
@@ -279,7 +279,7 @@
         "response"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "show IR frequency response (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -292,7 +292,7 @@
         "channel"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set IR channel to display frequency response (from 0 to 1024) (default 0)",
       "flags": "..FV.......",
       "max": "1024",
@@ -305,7 +305,7 @@
         "size"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set video size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -318,7 +318,7 @@
         "rate"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

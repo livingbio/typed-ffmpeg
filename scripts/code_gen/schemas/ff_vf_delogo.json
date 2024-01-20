@@ -65,7 +65,7 @@
         "show"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "show delogo area (default false)",
       "name": "show",
       "required": false,

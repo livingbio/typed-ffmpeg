@@ -14,7 +14,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"320x240\"",
+      "default": "320x240",
       "description": "set video size (default \"320x240\")",
       "flags": "..FV.......",
       "max": null,
@@ -28,7 +28,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -42,7 +42,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "flags": "..FV.......",
       "max": null,
@@ -69,7 +69,7 @@
         "co"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set complement colors (default false)",
       "flags": "..FV.......",
       "max": null,

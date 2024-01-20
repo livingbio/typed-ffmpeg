@@ -21,7 +21,7 @@
         "length"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3.0,
       "description": "set the window length (from 0.01 to 10) (default 3)",
       "name": "length",
       "required": false,

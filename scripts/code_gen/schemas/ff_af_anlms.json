@@ -25,7 +25,7 @@
         "order"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "set the filter order (from 1 to 32767) (default 256)",
       "name": "order",
       "required": false,
@@ -36,7 +36,7 @@
         "mu"
       ],
       "choices": [],
-      "default": "0.75",
+      "default": 0.75,
       "description": "set the filter mu (from 0 to 2) (default 0.75)",
       "name": "mu",
       "required": false,
@@ -47,7 +47,7 @@
         "eps"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the filter eps (from 0 to 1) (default 1)",
       "name": "eps",
       "required": false,
@@ -58,7 +58,7 @@
         "leakage"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the filter leakage (from 0 to 1) (default 0)",
       "name": "leakage",
       "required": false,

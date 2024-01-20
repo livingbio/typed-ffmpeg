@@ -34,7 +34,7 @@
         "o"
       ],
       "choices": [],
-      "default": "0.9",
+      "default": 0.9,
       "description": "set video opacity (from 0 to 1) (default 0.9)",
       "name": "opacity",
       "required": false,

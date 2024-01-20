@@ -16,7 +16,7 @@
         "inputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set number of inputs (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
@@ -27,7 +27,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,

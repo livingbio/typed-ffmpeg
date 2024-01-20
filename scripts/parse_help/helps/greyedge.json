@@ -18,7 +18,7 @@
         "difford"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set differentiation order (from 0 to 2) (default 1)",
       "flags": "..FV.......",
       "max": "2",
@@ -31,7 +31,7 @@
         "minknorm"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set Minkowski norm (from 0 to 20) (default 1)",
       "flags": "..FV.......",
       "max": "20",
@@ -44,7 +44,7 @@
         "sigma"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set sigma (from 0 to 1024) (default 1)",
       "flags": "..FV.......",
       "max": "1024",

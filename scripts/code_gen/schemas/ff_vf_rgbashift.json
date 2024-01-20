@@ -21,7 +21,7 @@
         "rh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift red horizontally (from -255 to 255) (default 0)",
       "name": "rh",
       "required": false,
@@ -32,7 +32,7 @@
         "rv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift red vertically (from -255 to 255) (default 0)",
       "name": "rv",
       "required": false,
@@ -43,7 +43,7 @@
         "gh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift green horizontally (from -255 to 255) (default 0)",
       "name": "gh",
       "required": false,
@@ -54,7 +54,7 @@
         "gv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift green vertically (from -255 to 255) (default 0)",
       "name": "gv",
       "required": false,
@@ -65,7 +65,7 @@
         "bh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift blue horizontally (from -255 to 255) (default 0)",
       "name": "bh",
       "required": false,
@@ -76,7 +76,7 @@
         "bv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift blue vertically (from -255 to 255) (default 0)",
       "name": "bv",
       "required": false,
@@ -87,7 +87,7 @@
         "ah"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift alpha horizontally (from -255 to 255) (default 0)",
       "name": "ah",
       "required": false,
@@ -98,7 +98,7 @@
         "av"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift alpha vertically (from -255 to 255) (default 0)",
       "name": "av",
       "required": false,

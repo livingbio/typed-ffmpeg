@@ -18,7 +18,7 @@
         "layout"
       ],
       "choices": [],
-      "default": "\"6x5\"",
+      "default": "6x5",
       "description": "set grid size (default \"6x5\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "nb_frames"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set maximum number of frame to render (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -44,7 +44,7 @@
         "margin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set outer border margin in pixels (from 0 to 1024) (default 0)",
       "flags": "..FV.......",
       "max": "1024",
@@ -57,7 +57,7 @@
         "padding"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set inner border thickness in pixels (from 0 to 1024) (default 0)",
       "flags": "..FV.......",
       "max": "1024",
@@ -70,7 +70,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set the color of the unused area (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -96,7 +96,7 @@
         "init_padding"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set how many frames to initially pad (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",

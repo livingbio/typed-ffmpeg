@@ -18,7 +18,7 @@
         "max"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -31,7 +31,7 @@
         "hi"
       ],
       "choices": [],
-      "default": "768",
+      "default": 768,
       "description": "set high dropping threshold (from INT_MIN to INT_MAX) (default 768)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -44,7 +44,7 @@
         "lo"
       ],
       "choices": [],
-      "default": "320",
+      "default": 320,
       "description": "set low dropping threshold (from INT_MIN to INT_MAX) (default 320)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -57,7 +57,7 @@
         "frac"
       ],
       "choices": [],
-      "default": "0.33",
+      "default": 0.33,
       "description": "set fraction dropping threshold (from 0 to 1) (default 0.33)",
       "flags": "..FV.......",
       "max": "1",

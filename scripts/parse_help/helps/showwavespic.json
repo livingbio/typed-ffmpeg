@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"600x240\"",
+      "default": "600x240",
       "description": "set video size (default \"600x240\")",
       "flags": "..FV.......",
       "max": null,
@@ -32,7 +32,7 @@
         "split_channels"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "draw channels separately (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -45,7 +45,7 @@
         "colors"
       ],
       "choices": [],
-      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "flags": "..FV.......",
       "max": null,

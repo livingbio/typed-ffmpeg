@@ -34,7 +34,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set the number of outputs (from 1 to INT_MAX) (default 1)",
       "name": "outputs",
       "required": false,

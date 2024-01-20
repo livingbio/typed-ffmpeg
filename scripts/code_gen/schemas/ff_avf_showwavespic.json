@@ -33,7 +33,7 @@
         "split_channels"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "draw channels separately (default false)",
       "name": "split_channels",
       "required": false,

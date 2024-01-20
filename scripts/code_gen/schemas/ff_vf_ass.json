@@ -55,7 +55,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "enable processing of alpha channel (default false)",
       "name": "alpha",
       "required": false,

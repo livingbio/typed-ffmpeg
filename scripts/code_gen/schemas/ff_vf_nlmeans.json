@@ -21,7 +21,7 @@
         "s"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "denoising strength (from 1 to 30) (default 1)",
       "name": "s",
       "required": false,
@@ -32,7 +32,7 @@
         "p"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "patch size (from 0 to 99) (default 7)",
       "name": "p",
       "required": false,
@@ -43,7 +43,7 @@
         "pc"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "patch size for chroma planes (from 0 to 99) (default 0)",
       "name": "pc",
       "required": false,
@@ -54,7 +54,7 @@
         "r"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "research window (from 0 to 99) (default 15)",
       "name": "r",
       "required": false,
@@ -65,7 +65,7 @@
         "rc"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "research window for chroma planes (from 0 to 99) (default 0)",
       "name": "rc",
       "required": false,

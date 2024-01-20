@@ -21,7 +21,7 @@
         "contrast"
       ],
       "choices": [],
-      "default": "33",
+      "default": 33.0,
       "description": "set contrast (from 0 to 100) (default 33)",
       "name": "contrast",
       "required": false,

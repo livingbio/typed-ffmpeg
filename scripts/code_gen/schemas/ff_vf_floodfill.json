@@ -21,7 +21,7 @@
         "x"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set pixel x coordinate (from 0 to 65535) (default 0)",
       "name": "x",
       "required": false,
@@ -32,7 +32,7 @@
         "y"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set pixel y coordinate (from 0 to 65535) (default 0)",
       "name": "y",
       "required": false,
@@ -43,7 +43,7 @@
         "s0"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #0 component value (from -1 to 65535) (default 0)",
       "name": "s0",
       "required": false,
@@ -54,7 +54,7 @@
         "s1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #1 component value (from -1 to 65535) (default 0)",
       "name": "s1",
       "required": false,
@@ -65,7 +65,7 @@
         "s2"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #2 component value (from -1 to 65535) (default 0)",
       "name": "s2",
       "required": false,
@@ -76,7 +76,7 @@
         "s3"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set source #3 component value (from -1 to 65535) (default 0)",
       "name": "s3",
       "required": false,
@@ -87,7 +87,7 @@
         "d0"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #0 component value (from 0 to 65535) (default 0)",
       "name": "d0",
       "required": false,
@@ -98,7 +98,7 @@
         "d1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #1 component value (from 0 to 65535) (default 0)",
       "name": "d1",
       "required": false,
@@ -109,7 +109,7 @@
         "d2"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #2 component value (from 0 to 65535) (default 0)",
       "name": "d2",
       "required": false,
@@ -120,7 +120,7 @@
         "d3"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set destination #3 component value (from 0 to 65535) (default 0)",
       "name": "d3",
       "required": false,

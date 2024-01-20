@@ -56,7 +56,7 @@
         "interl"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "set interlacing (default false)",
       "name": "interl",
       "required": false,
@@ -275,7 +275,7 @@
         "in_v_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "in_v_chr_pos",
       "required": false,
@@ -286,7 +286,7 @@
         "in_h_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "in_h_chr_pos",
       "required": false,
@@ -297,7 +297,7 @@
         "out_v_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "out_v_chr_pos",
       "required": false,
@@ -308,7 +308,7 @@
         "out_h_chr_pos"
       ],
       "choices": [],
-      "default": "-513",
+      "default": -513,
       "description": "output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "out_h_chr_pos",
       "required": false,
@@ -346,7 +346,7 @@
         "force_divisible_by"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
       "name": "force_divisible_by",
       "required": false,

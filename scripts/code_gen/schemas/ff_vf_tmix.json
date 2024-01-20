@@ -21,7 +21,7 @@
         "frames"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set number of successive frames to mix (from 1 to 1024) (default 3)",
       "name": "frames",
       "required": false,
@@ -43,7 +43,7 @@
         "scale"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set scale (from 0 to 32767) (default 0)",
       "name": "scale",
       "required": false,

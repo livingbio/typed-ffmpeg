@@ -21,7 +21,7 @@
         "frames"
       ],
       "choices": [],
-      "default": "30",
+      "default": 30,
       "description": "set number of frames in cache (from 2 to 512) (default 30)",
       "name": "frames",
       "required": false,
@@ -32,7 +32,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
