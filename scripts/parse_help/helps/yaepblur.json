@@ -19,7 +19,7 @@
         "r"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set window radius (from 0 to INT_MAX) (default 3)",
       "flags": "..FV.....T.",
       "max": "INT_MAX",
@@ -33,7 +33,7 @@
         "p"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "flags": "..FV.....T.",
       "max": "15",
@@ -47,7 +47,7 @@
         "s"
       ],
       "choices": [],
-      "default": "128",
+      "default": 128,
       "description": "set blur strength (from 1 to INT_MAX) (default 128)",
       "flags": "..FV.....T.",
       "max": "INT_MAX",

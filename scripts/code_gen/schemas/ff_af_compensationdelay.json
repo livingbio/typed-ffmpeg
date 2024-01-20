@@ -21,7 +21,7 @@
         "mm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set mm distance (from 0 to 10) (default 0)",
       "name": "mm",
       "required": false,
@@ -32,7 +32,7 @@
         "cm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set cm distance (from 0 to 100) (default 0)",
       "name": "cm",
       "required": false,
@@ -43,7 +43,7 @@
         "m"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set meter distance (from 0 to 100) (default 0)",
       "name": "m",
       "required": false,
@@ -54,7 +54,7 @@
         "dry"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set dry amount (from 0 to 1) (default 0)",
       "name": "dry",
       "required": false,
@@ -65,7 +65,7 @@
         "wet"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set wet amount (from 0 to 1) (default 1)",
       "name": "wet",
       "required": false,
@@ -76,7 +76,7 @@
         "temp"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20,
       "description": "set temperature \u00b0C (from -50 to 50) (default 20)",
       "name": "temp",
       "required": false,

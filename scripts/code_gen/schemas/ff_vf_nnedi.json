@@ -21,7 +21,7 @@
         "weights"
       ],
       "choices": [],
-      "default": "nnedi3_weights.bin",
+      "default": "\"nnedi3_weights.bin\"",
       "description": "set weights file (default \"nnedi3_weights.bin\")",
       "name": "weights",
       "required": false,
@@ -96,7 +96,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set which planes to process (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,

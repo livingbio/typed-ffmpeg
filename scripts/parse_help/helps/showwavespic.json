@@ -32,7 +32,7 @@
         "split_channels"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "draw channels separately (default false)",
       "flags": "..FV.......",
       "max": null,

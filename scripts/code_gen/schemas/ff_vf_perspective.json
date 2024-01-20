@@ -21,7 +21,7 @@
         "x0"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "set top left x coordinate (default \"0\")",
       "name": "x0",
       "required": false,
@@ -32,7 +32,7 @@
         "y0"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "set top left y coordinate (default \"0\")",
       "name": "y0",
       "required": false,
@@ -43,7 +43,7 @@
         "x1"
       ],
       "choices": [],
-      "default": "W",
+      "default": "\"W\"",
       "description": "set top right x coordinate (default \"W\")",
       "name": "x1",
       "required": false,
@@ -54,7 +54,7 @@
         "y1"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "set top right y coordinate (default \"0\")",
       "name": "y1",
       "required": false,
@@ -65,7 +65,7 @@
         "x2"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "set bottom left x coordinate (default \"0\")",
       "name": "x2",
       "required": false,
@@ -76,7 +76,7 @@
         "y2"
       ],
       "choices": [],
-      "default": "H",
+      "default": "\"H\"",
       "description": "set bottom left y coordinate (default \"H\")",
       "name": "y2",
       "required": false,
@@ -87,7 +87,7 @@
         "x3"
       ],
       "choices": [],
-      "default": "W",
+      "default": "\"W\"",
       "description": "set bottom right x coordinate (default \"W\")",
       "name": "x3",
       "required": false,
@@ -98,7 +98,7 @@
         "y3"
       ],
       "choices": [],
-      "default": "H",
+      "default": "\"H\"",
       "description": "set bottom right y coordinate (default \"H\")",
       "name": "y3",
       "required": false,

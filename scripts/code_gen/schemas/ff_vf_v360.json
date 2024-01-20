@@ -422,7 +422,7 @@
         "w"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "output width (from 0 to 32767) (default 0)",
       "name": "w",
       "required": false,
@@ -433,7 +433,7 @@
         "h"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "output height (from 0 to 32767) (default 0)",
       "name": "h",
       "required": false,
@@ -498,7 +498,7 @@
         "in_forder"
       ],
       "choices": [],
-      "default": "rludfb",
+      "default": "\"rludfb\"",
       "description": "input cubemap face order (default \"rludfb\")",
       "name": "in_forder",
       "required": false,
@@ -509,7 +509,7 @@
         "out_forder"
       ],
       "choices": [],
-      "default": "rludfb",
+      "default": "\"rludfb\"",
       "description": "output cubemap face order (default \"rludfb\")",
       "name": "out_forder",
       "required": false,
@@ -520,7 +520,7 @@
         "in_frot"
       ],
       "choices": [],
-      "default": "000000",
+      "default": "\"000000\"",
       "description": "input cubemap face rotation (default \"000000\")",
       "name": "in_frot",
       "required": false,
@@ -531,7 +531,7 @@
         "out_frot"
       ],
       "choices": [],
-      "default": "000000",
+      "default": "\"000000\"",
       "description": "output cubemap face rotation (default \"000000\")",
       "name": "out_frot",
       "required": false,
@@ -542,7 +542,7 @@
         "in_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "percent input cubemap pads (from 0 to 0.1) (default 0)",
       "name": "in_pad",
       "required": false,
@@ -553,7 +553,7 @@
         "out_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "percent output cubemap pads (from 0 to 0.1) (default 0)",
       "name": "out_pad",
       "required": false,
@@ -564,7 +564,7 @@
         "fin_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "fixed input cubemap pads (from 0 to 100) (default 0)",
       "name": "fin_pad",
       "required": false,
@@ -575,7 +575,7 @@
         "fout_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "fixed output cubemap pads (from 0 to 100) (default 0)",
       "name": "fout_pad",
       "required": false,
@@ -586,7 +586,7 @@
         "yaw"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "yaw rotation (from -180 to 180) (default 0)",
       "name": "yaw",
       "required": false,
@@ -597,7 +597,7 @@
         "pitch"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "pitch rotation (from -180 to 180) (default 0)",
       "name": "pitch",
       "required": false,
@@ -608,7 +608,7 @@
         "roll"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "roll rotation (from -180 to 180) (default 0)",
       "name": "roll",
       "required": false,
@@ -619,7 +619,7 @@
         "rorder"
       ],
       "choices": [],
-      "default": "ypr",
+      "default": "\"ypr\"",
       "description": "rotation order (default \"ypr\")",
       "name": "rorder",
       "required": false,
@@ -630,7 +630,7 @@
         "h_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output horizontal field of view (from 0 to 360) (default 0)",
       "name": "h_fov",
       "required": false,
@@ -641,7 +641,7 @@
         "v_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output vertical field of view (from 0 to 360) (default 0)",
       "name": "v_fov",
       "required": false,
@@ -652,7 +652,7 @@
         "d_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output diagonal field of view (from 0 to 360) (default 0)",
       "name": "d_fov",
       "required": false,
@@ -663,7 +663,7 @@
         "h_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip out video horizontally (default false)",
       "name": "h_flip",
       "required": false,
@@ -674,7 +674,7 @@
         "v_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip out video vertically (default false)",
       "name": "v_flip",
       "required": false,
@@ -685,7 +685,7 @@
         "d_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip out video indepth (default false)",
       "name": "d_flip",
       "required": false,
@@ -696,7 +696,7 @@
         "ih_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip in video horizontally (default false)",
       "name": "ih_flip",
       "required": false,
@@ -707,7 +707,7 @@
         "iv_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip in video vertically (default false)",
       "name": "iv_flip",
       "required": false,
@@ -718,7 +718,7 @@
         "in_trans"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "transpose video input (default false)",
       "name": "in_trans",
       "required": false,
@@ -729,7 +729,7 @@
         "out_trans"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "transpose video output (default false)",
       "name": "out_trans",
       "required": false,
@@ -740,7 +740,7 @@
         "ih_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "input horizontal field of view (from 0 to 360) (default 0)",
       "name": "ih_fov",
       "required": false,
@@ -751,7 +751,7 @@
         "iv_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "input vertical field of view (from 0 to 360) (default 0)",
       "name": "iv_fov",
       "required": false,
@@ -762,7 +762,7 @@
         "id_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "input diagonal field of view (from 0 to 360) (default 0)",
       "name": "id_fov",
       "required": false,
@@ -773,7 +773,7 @@
         "h_offset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output horizontal off-axis offset (from -1 to 1) (default 0)",
       "name": "h_offset",
       "required": false,
@@ -784,7 +784,7 @@
         "v_offset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output vertical off-axis offset (from -1 to 1) (default 0)",
       "name": "v_offset",
       "required": false,
@@ -795,7 +795,7 @@
         "alpha_mask"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "build mask in alpha plane (default false)",
       "name": "alpha_mask",
       "required": false,
@@ -806,7 +806,7 @@
         "reset_rot"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "reset rotation (default false)",
       "name": "reset_rot",
       "required": false,

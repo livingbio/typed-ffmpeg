@@ -22,7 +22,7 @@
         "i"
       ],
       "choices": [],
-      "default": "-24",
+      "default": -24.0,
       "description": "set integrated loudness target (from -70 to -5) (default -24)",
       "name": "I",
       "required": false,
@@ -34,7 +34,7 @@
         "lra"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7.0,
       "description": "set loudness range target (from 1 to 50) (default 7)",
       "name": "LRA",
       "required": false,
@@ -46,7 +46,7 @@
         "tp"
       ],
       "choices": [],
-      "default": "-2",
+      "default": -2.0,
       "description": "set maximum true peak (from -9 to 0) (default -2)",
       "name": "TP",
       "required": false,
@@ -58,7 +58,7 @@
         "measured_i"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "measured IL of input file (from -99 to 0) (default 0)",
       "name": "measured_I",
       "required": false,
@@ -70,7 +70,7 @@
         "measured_lra"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "measured LRA of input file (from 0 to 99) (default 0)",
       "name": "measured_LRA",
       "required": false,
@@ -82,7 +82,7 @@
         "measured_tp"
       ],
       "choices": [],
-      "default": "99",
+      "default": 99.0,
       "description": "measured true peak of input file (from -99 to 99) (default 99)",
       "name": "measured_TP",
       "required": false,
@@ -93,7 +93,7 @@
         "measured_thresh"
       ],
       "choices": [],
-      "default": "-70",
+      "default": -70.0,
       "description": "measured threshold of input file (from -99 to 0) (default -70)",
       "name": "measured_thresh",
       "required": false,
@@ -104,7 +104,7 @@
         "offset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set offset gain (from -99 to 99) (default 0)",
       "name": "offset",
       "required": false,
@@ -115,7 +115,7 @@
         "linear"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "normalize linearly if possible (default true)",
       "name": "linear",
       "required": false,
@@ -126,7 +126,7 @@
         "dual_mono"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "treat mono input as dual-mono (default false)",
       "name": "dual_mono",
       "required": false,

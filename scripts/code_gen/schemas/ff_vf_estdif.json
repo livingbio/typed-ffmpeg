@@ -92,7 +92,7 @@
         "rslope"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "specify the search radius for edge slope tracing (from 1 to 15) (default 1)",
       "name": "rslope",
       "required": false,
@@ -103,7 +103,7 @@
         "redge"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "specify the search radius for best edge matching (from 0 to 15) (default 2)",
       "name": "redge",
       "required": false,
@@ -114,7 +114,7 @@
         "ecost"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "specify the edge cost for edge matching (from 0 to 9) (default 1)",
       "name": "ecost",
       "required": false,
@@ -125,7 +125,7 @@
         "mcost"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "specify the middle cost for edge matching (from 0 to 1) (default 0.5)",
       "name": "mcost",
       "required": false,
@@ -136,7 +136,7 @@
         "dcost"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "specify the distance cost for edge matching (from 0 to 1) (default 0.5)",
       "name": "dcost",
       "required": false,

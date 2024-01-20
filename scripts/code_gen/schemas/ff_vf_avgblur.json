@@ -21,7 +21,7 @@
         "sizeX"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set horizontal size (from 1 to 1024) (default 1)",
       "name": "sizeX",
       "required": false,
@@ -32,7 +32,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
@@ -43,7 +43,7 @@
         "sizeY"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set vertical size (from 0 to 1024) (default 0)",
       "name": "sizeY",
       "required": false,

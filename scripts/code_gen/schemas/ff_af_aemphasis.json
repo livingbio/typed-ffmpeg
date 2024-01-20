@@ -21,7 +21,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input gain (from 0 to 64) (default 1)",
       "name": "level_in",
       "required": false,
@@ -32,7 +32,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output gain (from 0 to 64) (default 1)",
       "name": "level_out",
       "required": false,

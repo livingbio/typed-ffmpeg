@@ -17,7 +17,7 @@
         "r"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
@@ -29,7 +29,7 @@
         "t"
       ],
       "choices": [],
-      "default": "22051",
+      "default": 22051,
       "description": "set number of taps (from 11 to 65535) (default 22051)",
       "name": "taps",
       "required": false,
@@ -41,7 +41,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,

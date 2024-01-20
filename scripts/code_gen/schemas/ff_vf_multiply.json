@@ -25,7 +25,7 @@
         "scale"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set scale (from 0 to 9) (default 1)",
       "name": "scale",
       "required": false,
@@ -36,7 +36,7 @@
         "offset"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set offset (from -1 to 1) (default 0.5)",
       "name": "offset",
       "required": false,

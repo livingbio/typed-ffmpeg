@@ -21,7 +21,7 @@
         "transfer"
       ],
       "choices": [],
-      "default": "p",
+      "default": "\"p\"",
       "description": "set the transfer expression (default \"p\")",
       "name": "transfer",
       "required": false,
@@ -32,7 +32,7 @@
         "attack"
       ],
       "choices": [],
-      "default": "50",
+      "default": 50.0,
       "description": "set the attack (from 1 to 1000) (default 50)",
       "name": "attack",
       "required": false,
@@ -43,7 +43,7 @@
         "release"
       ],
       "choices": [],
-      "default": "100",
+      "default": 100.0,
       "description": "set the release (from 5 to 2000) (default 100)",
       "name": "release",
       "required": false,
@@ -54,7 +54,7 @@
         "channels"
       ],
       "choices": [],
-      "default": "all",
+      "default": "\"all\"",
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,

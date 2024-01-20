@@ -70,7 +70,7 @@
         "n"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set how many samples to show in the same point (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -97,7 +97,7 @@
         "split_channels"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "draw channels separately (default false)",
       "flags": "..FV.......",
       "max": null,

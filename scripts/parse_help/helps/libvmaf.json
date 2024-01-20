@@ -62,7 +62,7 @@
         "phone_model"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "use model='enable_transform=true'. (default false)",
       "flags": "..FV......P",
       "max": null,
@@ -75,7 +75,7 @@
         "psnr"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "use feature='name=psnr'. (default false)",
       "flags": "..FV......P",
       "max": null,
@@ -88,7 +88,7 @@
         "ssim"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "use feature='name=float_ssim'. (default false)",
       "flags": "..FV......P",
       "max": null,
@@ -101,7 +101,7 @@
         "ms_ssim"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "use feature='name=float_ms_ssim'. (default false)",
       "flags": "..FV......P",
       "max": null,
@@ -127,7 +127,7 @@
         "n_threads"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "UINT32_MAX",
@@ -140,7 +140,7 @@
         "n_subsample"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "UINT32_MAX",
@@ -153,7 +153,7 @@
         "enable_conf_interval"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "model='enable_conf_interval=true'. (default false)",
       "flags": "..FV......P",
       "max": null,
@@ -224,7 +224,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "force termination when the shortest input terminates (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -237,7 +237,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "flags": "..FV.......",
       "max": null,

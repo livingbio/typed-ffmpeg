@@ -31,7 +31,7 @@
         "curves"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "draw frequency response curves (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "mgain"
       ],
       "choices": [],
-      "default": "60",
+      "default": 60.0,
       "description": "set max gain (from -900 to 900) (default 60)",
       "flags": "..FV.......",
       "max": "900",

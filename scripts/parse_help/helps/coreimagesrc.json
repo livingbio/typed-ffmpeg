@@ -42,7 +42,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "flags": "..FV.......",
       "max": null,
@@ -68,7 +68,7 @@
         "list_filters"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "list available filters (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -81,7 +81,7 @@
         "list_generators"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "list available generators (default false)",
       "flags": "..FV.......",
       "max": null,

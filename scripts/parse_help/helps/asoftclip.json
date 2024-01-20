@@ -86,7 +86,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set softclip threshold (from 1e-06 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -99,7 +99,7 @@
         "output"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set softclip output gain (from 1e-06 to 16) (default 1)",
       "flags": "..F.A....T.",
       "max": "16",
@@ -112,7 +112,7 @@
         "param"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set softclip parameter (from 0.01 to 3) (default 1)",
       "flags": "..F.A....T.",
       "max": "3",
@@ -125,7 +125,7 @@
         "oversample"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set oversample factor (from 1 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",

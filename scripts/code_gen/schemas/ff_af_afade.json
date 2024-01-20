@@ -45,7 +45,7 @@
         "ss"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of first sample to start fading (from 0 to I64_MAX) (default 0)",
       "name": "start_sample",
       "required": false,
@@ -57,7 +57,7 @@
         "ns"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set number of samples for fade duration (from 1 to I64_MAX) (default 44100)",
       "name": "nb_samples",
       "required": false,
@@ -69,7 +69,7 @@
         "st"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set time to start fading (default 0)",
       "name": "start_time",
       "required": false,
@@ -81,7 +81,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set fade duration (default 0)",
       "name": "duration",
       "required": false,
@@ -205,7 +205,7 @@
         "silence"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the silence gain (from 0 to 1) (default 0)",
       "name": "silence",
       "required": false,
@@ -216,7 +216,7 @@
         "unity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the unity gain (from 0 to 1) (default 1)",
       "name": "unity",
       "required": false,

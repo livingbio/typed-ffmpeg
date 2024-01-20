@@ -54,7 +54,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "force termination when the shortest input terminates (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -67,7 +67,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "flags": "..FV.......",
       "max": null,

@@ -105,7 +105,7 @@
         "level"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input gain (from 0 to 1) (default 1)",
       "flags": "..F.A......",
       "max": "1",

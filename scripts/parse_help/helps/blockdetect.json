@@ -18,7 +18,7 @@
         "period_min"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "Minimum period to search for (from 2 to 32) (default 3)",
       "flags": "..FV.......",
       "max": "32",
@@ -31,7 +31,7 @@
         "period_max"
       ],
       "choices": [],
-      "default": "24",
+      "default": 24,
       "description": "Maximum period to search for (from 2 to 64) (default 24)",
       "flags": "..FV.......",
       "max": "64",
@@ -44,7 +44,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "flags": "..FV.......",
       "max": "15",

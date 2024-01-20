@@ -70,7 +70,7 @@
         "show"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "show delogo area (default false)",
       "flags": "..FV.......",
       "max": null,

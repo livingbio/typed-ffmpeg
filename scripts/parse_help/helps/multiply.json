@@ -22,7 +22,7 @@
         "scale"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set scale (from 0 to 9) (default 1)",
       "flags": "..FV.....T.",
       "max": "9",
@@ -35,7 +35,7 @@
         "offset"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set offset (from -1 to 1) (default 0.5)",
       "flags": "..FV.....T.",
       "max": "1",

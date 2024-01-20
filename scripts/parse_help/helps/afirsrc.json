@@ -14,7 +14,7 @@
         "t"
       ],
       "choices": [],
-      "default": "1025",
+      "default": 1025,
       "description": "set number of taps (from 9 to 65535) (default 1025)",
       "flags": "..F.A......",
       "max": "65535",
@@ -70,7 +70,7 @@
         "r"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "flags": "..F.A......",
       "max": "INT_MAX",
@@ -84,7 +84,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "flags": "..F.A......",
       "max": "INT_MAX",

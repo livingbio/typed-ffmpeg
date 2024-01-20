@@ -44,7 +44,7 @@
         "lt"
       ],
       "choices": [],
-      "default": "0.079",
+      "default": 0.079,
       "description": "set spatial luma threshold (from 0 to 1) (default 0.079)",
       "flags": "..FV.......",
       "max": "1",
@@ -57,7 +57,7 @@
         "tl"
       ],
       "choices": [],
-      "default": "0.079",
+      "default": 0.079,
       "description": "set tolerance for temporal luma (from 0 to 1) (default 0.079)",
       "flags": "..FV.......",
       "max": "1",
@@ -70,7 +70,7 @@
         "tc"
       ],
       "choices": [],
-      "default": "0.058",
+      "default": 0.058,
       "description": "set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)",
       "flags": "..FV.......",
       "max": "1",
@@ -83,7 +83,7 @@
         "ct"
       ],
       "choices": [],
-      "default": "0.019",
+      "default": 0.019,
       "description": "set temporal chroma threshold (from 0 to 1) (default 0.019)",
       "flags": "..FV.......",
       "max": "1",

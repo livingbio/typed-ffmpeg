@@ -19,7 +19,7 @@
         "i"
       ],
       "choices": [],
-      "default": "-24",
+      "default": -24.0,
       "description": "set integrated loudness target (from -70 to -5) (default -24)",
       "flags": "..F.A......",
       "max": "-5",
@@ -33,7 +33,7 @@
         "lra"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7.0,
       "description": "set loudness range target (from 1 to 50) (default 7)",
       "flags": "..F.A......",
       "max": "50",
@@ -47,7 +47,7 @@
         "tp"
       ],
       "choices": [],
-      "default": "-2",
+      "default": -2.0,
       "description": "set maximum true peak (from -9 to 0) (default -2)",
       "flags": "..F.A......",
       "max": "0",
@@ -61,7 +61,7 @@
         "measured_i"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "measured IL of input file (from -99 to 0) (default 0)",
       "flags": "..F.A......",
       "max": "0",
@@ -75,7 +75,7 @@
         "measured_lra"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "measured LRA of input file (from 0 to 99) (default 0)",
       "flags": "..F.A......",
       "max": "99",
@@ -89,7 +89,7 @@
         "measured_tp"
       ],
       "choices": [],
-      "default": "99",
+      "default": 99.0,
       "description": "measured true peak of input file (from -99 to 99) (default 99)",
       "flags": "..F.A......",
       "max": "99",
@@ -102,7 +102,7 @@
         "measured_thresh"
       ],
       "choices": [],
-      "default": "-70",
+      "default": -70.0,
       "description": "measured threshold of input file (from -99 to 0) (default -70)",
       "flags": "..F.A......",
       "max": "0",
@@ -115,7 +115,7 @@
         "offset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set offset gain (from -99 to 99) (default 0)",
       "flags": "..F.A......",
       "max": "99",
@@ -128,7 +128,7 @@
         "linear"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "normalize linearly if possible (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -141,7 +141,7 @@
         "dual_mono"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "treat mono input as dual-mono (default false)",
       "flags": "..F.A......",
       "max": null,

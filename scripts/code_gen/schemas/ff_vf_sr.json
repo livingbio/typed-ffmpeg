@@ -38,7 +38,7 @@
         "scale_factor"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "scale factor for SRCNN model (from 2 to 4) (default 2)",
       "name": "scale_factor",
       "required": false,
@@ -60,7 +60,7 @@
         "input"
       ],
       "choices": [],
-      "default": "x",
+      "default": "\"x\"",
       "description": "input name of the model (default \"x\")",
       "name": "input",
       "required": false,
@@ -71,7 +71,7 @@
         "output"
       ],
       "choices": [],
-      "default": "y",
+      "default": "\"y\"",
       "description": "output name of the model (default \"y\")",
       "name": "output",
       "required": false,

@@ -21,7 +21,7 @@
         "blackpt"
       ],
       "choices": [],
-      "default": "black",
+      "default": "\"black\"",
       "description": "output color to which darkest input color is mapped (default \"black\")",
       "name": "blackpt",
       "required": false,
@@ -32,7 +32,7 @@
         "whitept"
       ],
       "choices": [],
-      "default": "white",
+      "default": "\"white\"",
       "description": "output color to which brightest input color is mapped (default \"white\")",
       "name": "whitept",
       "required": false,
@@ -43,7 +43,7 @@
         "smoothing"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)",
       "name": "smoothing",
       "required": false,
@@ -54,7 +54,7 @@
         "independence"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "proportion of independent to linked channel normalization (from 0 to 1) (default 1)",
       "name": "independence",
       "required": false,
@@ -65,7 +65,7 @@
         "strength"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "strength of filter, from no effect to full normalization (from 0 to 1) (default 1)",
       "name": "strength",
       "required": false,

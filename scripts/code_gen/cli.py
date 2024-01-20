@@ -26,7 +26,7 @@ def parse_help_options(filter: HelpAVFilter) -> list[FFmpegFilterOption]:
                 description=option.description,
                 typing=option.typing.capitalize(),
                 required=False,
-                default=option.default.strip('"') if option.default else None,
+                default=option.default,
                 choices=[k.model_dump() for k in option.choices],
             )
         )

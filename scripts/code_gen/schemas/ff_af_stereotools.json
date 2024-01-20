@@ -21,7 +21,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
@@ -32,7 +32,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
@@ -43,7 +43,7 @@
         "balance_in"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set balance in (from -1 to 1) (default 0)",
       "name": "balance_in",
       "required": false,
@@ -54,7 +54,7 @@
         "balance_out"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set balance out (from -1 to 1) (default 0)",
       "name": "balance_out",
       "required": false,
@@ -65,7 +65,7 @@
         "softclip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "enable softclip (default false)",
       "name": "softclip",
       "required": false,
@@ -76,7 +76,7 @@
         "mutel"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "mute L (default false)",
       "name": "mutel",
       "required": false,
@@ -87,7 +87,7 @@
         "muter"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "mute R (default false)",
       "name": "muter",
       "required": false,
@@ -98,7 +98,7 @@
         "phasel"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "phase L (default false)",
       "name": "phasel",
       "required": false,
@@ -109,7 +109,7 @@
         "phaser"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "phase R (default false)",
       "name": "phaser",
       "required": false,
@@ -187,7 +187,7 @@
         "slev"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side level (from 0.015625 to 64) (default 1)",
       "name": "slev",
       "required": false,
@@ -198,7 +198,7 @@
         "sbal"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set side balance (from -1 to 1) (default 0)",
       "name": "sbal",
       "required": false,
@@ -209,7 +209,7 @@
         "mlev"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set middle level (from 0.015625 to 64) (default 1)",
       "name": "mlev",
       "required": false,
@@ -220,7 +220,7 @@
         "mpan"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set middle pan (from -1 to 1) (default 0)",
       "name": "mpan",
       "required": false,
@@ -231,7 +231,7 @@
         "base"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set stereo base (from -1 to 1) (default 0)",
       "name": "base",
       "required": false,
@@ -242,7 +242,7 @@
         "delay"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set delay (from -20 to 20) (default 0)",
       "name": "delay",
       "required": false,
@@ -253,7 +253,7 @@
         "sclevel"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set S/C level (from 1 to 100) (default 1)",
       "name": "sclevel",
       "required": false,
@@ -264,7 +264,7 @@
         "phase"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set stereo phase (from 0 to 360) (default 0)",
       "name": "phase",
       "required": false,

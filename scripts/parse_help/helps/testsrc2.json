@@ -42,7 +42,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "flags": "..FV.......",
       "max": null,
@@ -68,7 +68,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": "255",
+      "default": 255,
       "description": "set global alpha (opacity) (from 0 to 255) (default 255)",
       "flags": "..FV.......",
       "max": "255",

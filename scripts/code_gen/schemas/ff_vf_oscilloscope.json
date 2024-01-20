@@ -21,7 +21,7 @@
         "x"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set scope x position (from 0 to 1) (default 0.5)",
       "name": "x",
       "required": false,
@@ -32,7 +32,7 @@
         "y"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set scope y position (from 0 to 1) (default 0.5)",
       "name": "y",
       "required": false,
@@ -43,7 +43,7 @@
         "s"
       ],
       "choices": [],
-      "default": "0.8",
+      "default": 0.8,
       "description": "set scope size (from 0 to 1) (default 0.8)",
       "name": "s",
       "required": false,
@@ -54,7 +54,7 @@
         "t"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set scope tilt (from 0 to 1) (default 0.5)",
       "name": "t",
       "required": false,
@@ -65,7 +65,7 @@
         "o"
       ],
       "choices": [],
-      "default": "0.8",
+      "default": 0.8,
       "description": "set trace opacity (from 0 to 1) (default 0.8)",
       "name": "o",
       "required": false,
@@ -76,7 +76,7 @@
         "tx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set trace x position (from 0 to 1) (default 0.5)",
       "name": "tx",
       "required": false,
@@ -87,7 +87,7 @@
         "ty"
       ],
       "choices": [],
-      "default": "0.9",
+      "default": 0.9,
       "description": "set trace y position (from 0 to 1) (default 0.9)",
       "name": "ty",
       "required": false,
@@ -98,7 +98,7 @@
         "tw"
       ],
       "choices": [],
-      "default": "0.8",
+      "default": 0.8,
       "description": "set trace width (from 0.1 to 1) (default 0.8)",
       "name": "tw",
       "required": false,
@@ -109,7 +109,7 @@
         "th"
       ],
       "choices": [],
-      "default": "0.3",
+      "default": 0.3,
       "description": "set trace height (from 0.1 to 1) (default 0.3)",
       "name": "th",
       "required": false,
@@ -120,7 +120,7 @@
         "c"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set components to trace (from 0 to 15) (default 7)",
       "name": "c",
       "required": false,
@@ -131,7 +131,7 @@
         "g"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "draw trace grid (default true)",
       "name": "g",
       "required": false,
@@ -142,7 +142,7 @@
         "st"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "draw statistics (default true)",
       "name": "st",
       "required": false,
@@ -153,7 +153,7 @@
         "sc"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "draw scope (default true)",
       "name": "sc",
       "required": false,

@@ -74,7 +74,7 @@
         "param"
       ],
       "choices": [],
-      "default": "nan",
+      "default": NaN,
       "description": "tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)",
       "flags": "..FV.......",
       "max": "DBL_MAX",
@@ -87,7 +87,7 @@
         "desat"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "desaturation strength (from 0 to DBL_MAX) (default 2)",
       "flags": "..FV.......",
       "max": "DBL_MAX",
@@ -100,7 +100,7 @@
         "peak"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "signal peak override (from 0 to DBL_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "DBL_MAX",

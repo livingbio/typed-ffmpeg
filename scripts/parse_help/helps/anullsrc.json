@@ -42,7 +42,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set the number of samples per requested frame (from 1 to 65535) (default 1024)",
       "flags": "..F.A......",
       "max": "65535",
@@ -56,7 +56,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set the audio duration (default -0.000001)",
       "flags": "..F.A......",
       "max": null,

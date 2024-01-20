@@ -28,7 +28,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "flags": "..FV.......",
       "max": null,
@@ -123,7 +123,7 @@
         "m"
       ],
       "choices": [],
-      "default": "30",
+      "default": 30,
       "description": "Set the maximum number of frames generated for each test (from 1 to I64_MAX) (default 30)",
       "flags": "..FV.......",
       "max": "I64_MAX",

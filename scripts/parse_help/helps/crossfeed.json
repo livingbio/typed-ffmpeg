@@ -18,7 +18,7 @@
         "strength"
       ],
       "choices": [],
-      "default": "0.2",
+      "default": 0.2,
       "description": "set crossfeed strength (from 0 to 1) (default 0.2)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "range"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set soundstage wideness (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "slope"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set curve slope (from 0.01 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -57,7 +57,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "0.9",
+      "default": 0.9,
       "description": "set level in (from 0 to 1) (default 0.9)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -70,7 +70,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level out (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -83,7 +83,7 @@
         "block_size"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the block size (from 0 to 32768) (default 0)",
       "flags": "..F.A......",
       "max": "32768",

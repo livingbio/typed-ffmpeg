@@ -18,7 +18,7 @@
         "cbh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift chroma-blue horizontally (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -31,7 +31,7 @@
         "cbv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift chroma-blue vertically (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -44,7 +44,7 @@
         "crh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift chroma-red horizontally (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -57,7 +57,7 @@
         "crv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift chroma-red vertically (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",

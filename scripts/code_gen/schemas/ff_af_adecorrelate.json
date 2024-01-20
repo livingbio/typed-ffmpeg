@@ -21,7 +21,7 @@
         "stages"
       ],
       "choices": [],
-      "default": "6",
+      "default": 6,
       "description": "set filtering stages (from 1 to 16) (default 6)",
       "name": "stages",
       "required": false,
@@ -32,7 +32,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,

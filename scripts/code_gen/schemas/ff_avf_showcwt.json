@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "640x512",
+      "default": "\"640x512\"",
       "description": "set video size (default \"640x512\")",
       "name": "size",
       "required": false,
@@ -34,7 +34,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -82,7 +82,7 @@
         "min"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set minimum frequency (from 1 to 2000) (default 20)",
       "name": "min",
       "required": false,
@@ -93,7 +93,7 @@
         "max"
       ],
       "choices": [],
-      "default": "20000",
+      "default": 20000.0,
       "description": "set maximum frequency (from 0 to 192000) (default 20000)",
       "name": "max",
       "required": false,
@@ -104,7 +104,7 @@
         "logb"
       ],
       "choices": [],
-      "default": "0.0001",
+      "default": 0.0001,
       "description": "set logarithmic basis (from 0 to 1) (default 0.0001)",
       "name": "logb",
       "required": false,
@@ -115,7 +115,7 @@
         "deviation"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set frequency deviation (from 0 to 10) (default 1)",
       "name": "deviation",
       "required": false,
@@ -126,7 +126,7 @@
         "pps"
       ],
       "choices": [],
-      "default": "64",
+      "default": 64,
       "description": "set pixels per second (from 1 to 1024) (default 64)",
       "name": "pps",
       "required": false,

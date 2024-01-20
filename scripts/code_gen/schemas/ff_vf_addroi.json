@@ -21,7 +21,7 @@
         "x"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "Region distance from left edge of frame. (default \"0\")",
       "name": "x",
       "required": false,
@@ -32,7 +32,7 @@
         "y"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "Region distance from top edge of frame. (default \"0\")",
       "name": "y",
       "required": false,
@@ -43,7 +43,7 @@
         "w"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "Region width. (default \"0\")",
       "name": "w",
       "required": false,
@@ -54,7 +54,7 @@
         "h"
       ],
       "choices": [],
-      "default": "0",
+      "default": "\"0\"",
       "description": "Region height. (default \"0\")",
       "name": "h",
       "required": false,
@@ -76,7 +76,7 @@
         "clear"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "Remove any existing regions of interest before adding the new one. (default false)",
       "name": "clear",
       "required": false,

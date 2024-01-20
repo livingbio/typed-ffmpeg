@@ -21,7 +21,7 @@
         "subfilters"
       ],
       "choices": [],
-      "default": "de",
+      "default": "\"de\"",
       "description": "set postprocess subfilters (default \"de\")",
       "name": "subfilters",
       "required": false,

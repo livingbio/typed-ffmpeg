@@ -21,7 +21,7 @@
         "rl"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the red shadow spot (from -1 to 1) (default 0)",
       "name": "rl",
       "required": false,
@@ -32,7 +32,7 @@
         "bl"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the blue shadow spot (from -1 to 1) (default 0)",
       "name": "bl",
       "required": false,
@@ -43,7 +43,7 @@
         "rh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the red highlight spot (from -1 to 1) (default 0)",
       "name": "rh",
       "required": false,
@@ -54,7 +54,7 @@
         "bh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the blue highlight spot (from -1 to 1) (default 0)",
       "name": "bh",
       "required": false,
@@ -65,7 +65,7 @@
         "saturation"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the amount of saturation (from -3 to 3) (default 1)",
       "name": "saturation",
       "required": false,

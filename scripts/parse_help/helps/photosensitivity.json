@@ -19,7 +19,7 @@
         "f"
       ],
       "choices": [],
-      "default": "30",
+      "default": 30,
       "description": "set how many frames to use (from 2 to 240) (default 30)",
       "flags": "..FV.......",
       "max": "240",
@@ -33,7 +33,7 @@
         "t"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -46,7 +46,7 @@
         "skip"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set pixels to skip when sampling frames (from 1 to 1024) (default 1)",
       "flags": "..FV.......",
       "max": "1024",
@@ -59,7 +59,7 @@
         "bypass"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "leave frames unchanged (default false)",
       "flags": "..FV.......",
       "max": null,

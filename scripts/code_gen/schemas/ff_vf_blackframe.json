@@ -21,7 +21,7 @@
         "amount"
       ],
       "choices": [],
-      "default": "98",
+      "default": 98,
       "description": "percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)",
       "name": "amount",
       "required": false,
@@ -33,7 +33,7 @@
         "thresh"
       ],
       "choices": [],
-      "default": "32",
+      "default": 32,
       "description": "threshold below which a pixel value is considered black (from 0 to 255) (default 32)",
       "name": "threshold",
       "required": false,

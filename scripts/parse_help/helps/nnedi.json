@@ -107,7 +107,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set which planes to process (from 0 to 15) (default 7)",
       "flags": "..FV.....T.",
       "max": "15",

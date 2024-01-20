@@ -84,7 +84,7 @@
         "bayer_scale"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set scale for bayer dithering (from 0 to 5) (default 2)",
       "flags": "..FV.......",
       "max": "5",
@@ -104,7 +104,7 @@
           "value": "1"
         }
       ],
-      "default": "0",
+      "default": 0,
       "description": "set frame difference mode (from 0 to 1) (default 0)",
       "flags": "..FV.......",
       "max": "1",
@@ -117,7 +117,7 @@
         "new"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "take new palette for each output frame (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -130,7 +130,7 @@
         "alpha_threshold"
       ],
       "choices": [],
-      "default": "128",
+      "default": 128,
       "description": "set the alpha threshold for transparency (from 0 to 255) (default 128)",
       "flags": "..FV.......",
       "max": "255",

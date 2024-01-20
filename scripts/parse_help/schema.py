@@ -1,6 +1,7 @@
 import json
 import pathlib
 from enum import Enum
+from typing import Literal
 
 from code_gen.schema import FFMpegIOType
 from pydantic import BaseModel
@@ -36,10 +37,27 @@ class AVOption(BaseModel):
     alias: list[str] = []
     description: str | None = None
 
-    typing: str
+    typing: Literal[
+        "boolean",
+        "duration",
+        "color",
+        "flags",
+        "dictionary",
+        "pix_fmt",
+        "int",
+        "int64",
+        "double",
+        "float",
+        "string",
+        "video_rate",
+        "image_size",
+        "rational",
+        "sample_fmt",
+        "binary",
+    ]
     min: str | None = None
     max: str | None = None
-    default: str | None = None
+    default: int | float | bool | str | None = None
     choices: list[AVChoice] = []
     flags: str = None
 

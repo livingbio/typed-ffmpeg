@@ -22,7 +22,7 @@
         "lx"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set luma matrix horizontal size (from 3 to 23) (default 5)",
       "name": "luma_msize_x",
       "required": false,
@@ -34,7 +34,7 @@
         "ly"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set luma matrix vertical size (from 3 to 23) (default 5)",
       "name": "luma_msize_y",
       "required": false,
@@ -46,7 +46,7 @@
         "la"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set luma effect strength (from -2 to 5) (default 1)",
       "name": "luma_amount",
       "required": false,
@@ -58,7 +58,7 @@
         "cx"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set chroma matrix horizontal size (from 3 to 23) (default 5)",
       "name": "chroma_msize_x",
       "required": false,
@@ -70,7 +70,7 @@
         "cy"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set chroma matrix vertical size (from 3 to 23) (default 5)",
       "name": "chroma_msize_y",
       "required": false,
@@ -82,7 +82,7 @@
         "ca"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set chroma effect strength (from -2 to 5) (default 0)",
       "name": "chroma_amount",
       "required": false,
@@ -94,7 +94,7 @@
         "ax"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set alpha matrix horizontal size (from 3 to 23) (default 5)",
       "name": "alpha_msize_x",
       "required": false,
@@ -106,7 +106,7 @@
         "ay"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set alpha matrix vertical size (from 3 to 23) (default 5)",
       "name": "alpha_msize_y",
       "required": false,
@@ -118,7 +118,7 @@
         "aa"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set alpha effect strength (from -2 to 5) (default 0)",
       "name": "alpha_amount",
       "required": false,

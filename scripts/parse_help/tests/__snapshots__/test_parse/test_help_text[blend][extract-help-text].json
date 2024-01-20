@@ -1,14 +1,14 @@
 {
   "description": "Blend two video frames into each other.",
   "input_types": [
-    [
-      "top",
-      "video"
-    ],
-    [
-      "bottom",
-      "video"
-    ]
+    {
+      "name": "top",
+      "type": "video"
+    },
+    {
+      "name": "bottom",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -1339,7 +1339,7 @@
           "value": "39"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "set blend mode for all components (from -1 to 39) (default -1)",
       "flags": "..FV.....T.",
       "max": "39",
@@ -1417,7 +1417,7 @@
         "c0_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #0 opacity (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -1430,7 +1430,7 @@
         "c1_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #1 opacity (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -1443,7 +1443,7 @@
         "c2_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #2 opacity (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -1456,7 +1456,7 @@
         "c3_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #3 opacity (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -1469,7 +1469,7 @@
         "all_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set opacity for all color components (from 0 to 1) (default 1)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -1514,7 +1514,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -1527,7 +1527,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": "true",
+      "default": true,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -1563,9 +1563,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

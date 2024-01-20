@@ -136,7 +136,7 @@
         "ls"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "swap luma fields (default false)",
       "name": "luma_swap",
       "required": false,
@@ -148,7 +148,7 @@
         "cs"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "swap chroma fields (default false)",
       "name": "chroma_swap",
       "required": false,
@@ -160,7 +160,7 @@
         "as"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "swap alpha fields (default false)",
       "name": "alpha_swap",
       "required": false,

@@ -18,7 +18,7 @@
         "f"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5.0,
       "description": "set frequency in hertz (from 0.1 to 20000) (default 5)",
       "flags": "..F.A......",
       "max": "20000",
@@ -31,7 +31,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set depth as percentage (from 0 to 1) (default 0.5)",
       "flags": "..F.A......",
       "max": "1",

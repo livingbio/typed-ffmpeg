@@ -48,7 +48,7 @@
         "qp"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "(default false)",
       "name": "qp",
       "required": false,
@@ -110,7 +110,7 @@
         "block"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "set block partitioning structure to visualize (default false)",
       "name": "block",
       "required": false,

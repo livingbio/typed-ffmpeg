@@ -21,7 +21,7 @@
         "strength"
       ],
       "choices": [],
-      "default": "0.2",
+      "default": 0.2,
       "description": "set the strength (from 0 to 1) (default 0.2)",
       "name": "strength",
       "required": false,
@@ -32,7 +32,7 @@
         "intensity"
       ],
       "choices": [],
-      "default": "0.21",
+      "default": 0.21,
       "description": "set the intensity (from 0 to 1) (default 0.21)",
       "name": "intensity",
       "required": false,

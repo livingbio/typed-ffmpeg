@@ -21,7 +21,7 @@
         "dc_Y"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "adjust gain in Y plane (from 0 to 1000) (default 0)",
       "name": "dc_Y",
       "required": false,
@@ -32,7 +32,7 @@
         "dc_U"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "adjust gain in U plane (from 0 to 1000) (default 0)",
       "name": "dc_U",
       "required": false,
@@ -43,7 +43,7 @@
         "dc_V"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "adjust gain in V plane (from 0 to 1000) (default 0)",
       "name": "dc_V",
       "required": false,
@@ -54,7 +54,7 @@
         "weight_Y"
       ],
       "choices": [],
-      "default": "1",
+      "default": "\"1\"",
       "description": "set luminance expression in Y plane (default \"1\")",
       "name": "weight_Y",
       "required": false,

@@ -21,7 +21,7 @@
         "1thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 1st plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "1thr",
       "required": false,
@@ -32,7 +32,7 @@
         "2thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 2nd plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "2thr",
       "required": false,
@@ -43,7 +43,7 @@
         "3thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 3rd plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "3thr",
       "required": false,
@@ -54,7 +54,7 @@
         "4thr"
       ],
       "choices": [],
-      "default": "0.02",
+      "default": 0.02,
       "description": "set 4th plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "4thr",
       "required": false,
@@ -66,7 +66,7 @@
         "r"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set range (from INT_MIN to INT_MAX) (default 16)",
       "name": "range",
       "required": false,
@@ -78,7 +78,7 @@
         "d"
       ],
       "choices": [],
-      "default": "6.28319",
+      "default": 6.28319,
       "description": "set direction (from -6.28319 to 6.28319) (default 6.28319)",
       "name": "direction",
       "required": false,
@@ -90,7 +90,7 @@
         "b"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "set blur (default true)",
       "name": "blur",
       "required": false,
@@ -102,7 +102,7 @@
         "c"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "set plane coupling (default false)",
       "name": "coupling",
       "required": false,

@@ -16,7 +16,7 @@
         "n"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
       "name": "n",
       "required": false,
@@ -27,7 +27,7 @@
         "v"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
       "name": "v",
       "required": false,
@@ -38,7 +38,7 @@
         "a"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
       "name": "a",
       "required": false,
@@ -49,7 +49,7 @@
         "unsafe"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "enable unsafe mode (default false)",
       "name": "unsafe",
       "required": false,

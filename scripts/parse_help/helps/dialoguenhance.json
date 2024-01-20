@@ -18,7 +18,7 @@
         "original"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set original center factor (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "enhance"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set dialogue enhance factor (from 0 to 3) (default 1)",
       "flags": "..F.A....T.",
       "max": "3",
@@ -44,7 +44,7 @@
         "voice"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set voice detection factor (from 2 to 32) (default 2)",
       "flags": "..F.A....T.",
       "max": "32",

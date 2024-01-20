@@ -18,7 +18,7 @@
         "rh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift red horizontally (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -31,7 +31,7 @@
         "rv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift red vertically (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -44,7 +44,7 @@
         "gh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift green horizontally (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -57,7 +57,7 @@
         "gv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift green vertically (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -70,7 +70,7 @@
         "bh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift blue horizontally (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -83,7 +83,7 @@
         "bv"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift blue vertically (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -96,7 +96,7 @@
         "ah"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift alpha horizontally (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -109,7 +109,7 @@
         "av"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "shift alpha vertically (from -255 to 255) (default 0)",
       "flags": "..FV.....T.",
       "max": "255",

@@ -62,7 +62,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the seed for the random mode (from -1 to UINT32_MAX) (default -1)",
       "flags": "..FVA......",
       "max": "UINT32_MAX",

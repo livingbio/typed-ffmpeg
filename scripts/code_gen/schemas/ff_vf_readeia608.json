@@ -21,7 +21,7 @@
         "scan_min"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set from which line to scan for codes (from 0 to INT_MAX) (default 0)",
       "name": "scan_min",
       "required": false,
@@ -32,7 +32,7 @@
         "scan_max"
       ],
       "choices": [],
-      "default": "29",
+      "default": 29,
       "description": "set to which line to scan for codes (from 0 to INT_MAX) (default 29)",
       "name": "scan_max",
       "required": false,
@@ -43,7 +43,7 @@
         "spw"
       ],
       "choices": [],
-      "default": "0.27",
+      "default": 0.27,
       "description": "set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)",
       "name": "spw",
       "required": false,
@@ -54,7 +54,7 @@
         "chp"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "check and apply parity bit (default false)",
       "name": "chp",
       "required": false,
@@ -65,7 +65,7 @@
         "lp"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "lowpass line prior to processing (default true)",
       "name": "lp",
       "required": false,

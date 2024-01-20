@@ -18,7 +18,7 @@
         "sigma"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set noise sigma (from 0 to 1) (default 0)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "levels"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10,
       "description": "set number of wavelet levels (from 1 to 12) (default 10)",
       "flags": "..F.A......",
       "max": "12",
@@ -100,7 +100,7 @@
         "percent"
       ],
       "choices": [],
-      "default": "85",
+      "default": 85.0,
       "description": "set percent of full denoising (from 0 to 100) (default 85)",
       "flags": "..F.A....T.",
       "max": "100",
@@ -113,7 +113,7 @@
         "profile"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "profile noise (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -126,7 +126,7 @@
         "adaptive"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "adaptive profiling of noise (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -139,7 +139,7 @@
         "samples"
       ],
       "choices": [],
-      "default": "8192",
+      "default": 8192,
       "description": "set frame size in number of samples (from 512 to 65536) (default 8192)",
       "flags": "..F.A......",
       "max": "65536",
@@ -152,7 +152,7 @@
         "softness"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set thresholding softness (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",

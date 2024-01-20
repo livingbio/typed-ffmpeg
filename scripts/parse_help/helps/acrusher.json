@@ -18,7 +18,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -31,7 +31,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -44,7 +44,7 @@
         "bits"
       ],
       "choices": [],
-      "default": "8",
+      "default": 8.0,
       "description": "set bit reduction (from 1 to 64) (default 8)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -57,7 +57,7 @@
         "mix"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set mix (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "dc"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set DC (from 0.25 to 4) (default 1)",
       "flags": "..F.A....T.",
       "max": "4",
@@ -109,7 +109,7 @@
         "aa"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set anti-aliasing (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -122,7 +122,7 @@
         "samples"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set sample reduction (from 1 to 250) (default 1)",
       "flags": "..F.A....T.",
       "max": "250",
@@ -135,7 +135,7 @@
         "lfo"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "enable LFO (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -148,7 +148,7 @@
         "lforange"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set LFO depth (from 1 to 250) (default 20)",
       "flags": "..F.A....T.",
       "max": "250",
@@ -161,7 +161,7 @@
         "lforate"
       ],
       "choices": [],
-      "default": "0.3",
+      "default": 0.3,
       "description": "set LFO rate (from 0.01 to 200) (default 0.3)",
       "flags": "..F.A....T.",
       "max": "200",

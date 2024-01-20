@@ -85,7 +85,7 @@
         "ppsrc"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "mark main input as a pre-processed input and activate clean source input stream (default false)",
       "name": "ppsrc",
       "required": false,
@@ -123,7 +123,7 @@
         "mchroma"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "set whether or not chroma is included during the match comparisons (default true)",
       "name": "mchroma",
       "required": false,
@@ -135,7 +135,7 @@
         "y1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)",
       "name": "y0",
       "required": false,
@@ -146,7 +146,7 @@
         "scthresh"
       ],
       "choices": [],
-      "default": "12",
+      "default": 12.0,
       "description": "set scene change detection threshold (from 0 to 100) (default 12)",
       "name": "scthresh",
       "required": false,
@@ -211,7 +211,7 @@
         "cthresh"
       ],
       "choices": [],
-      "default": "9",
+      "default": 9,
       "description": "set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)",
       "name": "cthresh",
       "required": false,
@@ -222,7 +222,7 @@
         "chroma"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "set whether or not chroma is considered in the combed frame decision (default false)",
       "name": "chroma",
       "required": false,
@@ -233,7 +233,7 @@
         "blockx"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)",
       "name": "blockx",
       "required": false,
@@ -244,7 +244,7 @@
         "blocky"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)",
       "name": "blocky",
       "required": false,
@@ -255,7 +255,7 @@
         "combpel"
       ],
       "choices": [],
-      "default": "80",
+      "default": 80,
       "description": "set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)",
       "name": "combpel",
       "required": false,

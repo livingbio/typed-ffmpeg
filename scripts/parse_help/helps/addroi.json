@@ -83,7 +83,7 @@
         "clear"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "Remove any existing regions of interest before adding the new one. (default false)",
       "flags": "..FV.......",
       "max": null,

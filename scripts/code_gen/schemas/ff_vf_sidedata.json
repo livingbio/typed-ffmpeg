@@ -149,7 +149,7 @@
           "value": "20"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "set side data type (from -1 to INT_MAX) (default -1)",
       "name": "type",
       "required": false,

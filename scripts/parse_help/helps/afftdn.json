@@ -19,7 +19,7 @@
         "nr"
       ],
       "choices": [],
-      "default": "12",
+      "default": 12.0,
       "description": "set the noise reduction (from 0.01 to 97) (default 12)",
       "flags": "..F.A....T.",
       "max": "97",
@@ -33,7 +33,7 @@
         "nf"
       ],
       "choices": [],
-      "default": "-50",
+      "default": -50.0,
       "description": "set the noise floor (from -80 to -20) (default -50)",
       "flags": "..F.A....T.",
       "max": "-20",
@@ -124,7 +124,7 @@
         "rf"
       ],
       "choices": [],
-      "default": "-38",
+      "default": -38.0,
       "description": "set the residual floor (from -80 to -20) (default -38)",
       "flags": "..F.A....T.",
       "max": "-20",
@@ -138,7 +138,7 @@
         "tn"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "track noise (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -152,7 +152,7 @@
         "tr"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "track residual (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -217,7 +217,7 @@
         "ad"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set adaptivity factor (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -231,7 +231,7 @@
         "fo"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set noise floor offset factor (from -2 to 2) (default 1)",
       "flags": "..F.A....T.",
       "max": "2",
@@ -284,7 +284,7 @@
         "bm"
       ],
       "choices": [],
-      "default": "1.25",
+      "default": 1.25,
       "description": "set band multiplier (from 0.2 to 5) (default 1.25)",
       "flags": "..F.A......",
       "max": "5",
@@ -343,7 +343,7 @@
         "gs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set gain smooth radius (from 0 to 50) (default 0)",
       "flags": "..F.A....T.",
       "max": "50",

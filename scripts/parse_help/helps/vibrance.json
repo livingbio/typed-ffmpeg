@@ -18,7 +18,7 @@
         "intensity"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the intensity value (from -2 to 2) (default 0)",
       "flags": "..FV.....T.",
       "max": "2",
@@ -31,7 +31,7 @@
         "rbal"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the red balance value (from -10 to 10) (default 1)",
       "flags": "..FV.....T.",
       "max": "10",
@@ -44,7 +44,7 @@
         "gbal"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the green balance value (from -10 to 10) (default 1)",
       "flags": "..FV.....T.",
       "max": "10",
@@ -57,7 +57,7 @@
         "bbal"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the blue balance value (from -10 to 10) (default 1)",
       "flags": "..FV.....T.",
       "max": "10",
@@ -70,7 +70,7 @@
         "rlum"
       ],
       "choices": [],
-      "default": "0.072186",
+      "default": 0.072186,
       "description": "set the red luma coefficient (from 0 to 1) (default 0.072186)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -83,7 +83,7 @@
         "glum"
       ],
       "choices": [],
-      "default": "0.715158",
+      "default": 0.715158,
       "description": "set the green luma coefficient (from 0 to 1) (default 0.715158)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "blum"
       ],
       "choices": [],
-      "default": "0.212656",
+      "default": 0.212656,
       "description": "set the blue luma coefficient (from 0 to 1) (default 0.212656)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -109,7 +109,7 @@
         "alternate"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "use alternate colors (default false)",
       "flags": "..FV.....T.",
       "max": null,

@@ -46,7 +46,7 @@
         "i"
       ],
       "choices": [],
-      "default": "0.04",
+      "default": 0.04,
       "description": "set intensity (from 0 to 1) (default 0.04)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -60,7 +60,7 @@
         "r"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "set mirroring (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -107,7 +107,7 @@
         "c"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set components to display (from 1 to 15) (default 1)",
       "flags": "..FV.......",
       "max": "15",
@@ -262,7 +262,7 @@
         "o"
       ],
       "choices": [],
-      "default": "0.75",
+      "default": 0.75,
       "description": "set graticule opacity (from 0 to 1) (default 0.75)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -336,7 +336,7 @@
         "b"
       ],
       "choices": [],
-      "default": "0.75",
+      "default": 0.75,
       "description": "set background opacity (from 0 to 1) (default 0.75)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -350,7 +350,7 @@
         "t0"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set 1st tint (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -364,7 +364,7 @@
         "t1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set 2nd tint (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",

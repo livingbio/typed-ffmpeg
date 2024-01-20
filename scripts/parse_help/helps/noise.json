@@ -18,7 +18,7 @@
         "all_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #0 noise seed (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -32,7 +32,7 @@
         "alls"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #0 strength (from 0 to 100) (default 0)",
       "flags": "..FV.......",
       "max": "100",
@@ -84,7 +84,7 @@
         "c0_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #0 noise seed (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -98,7 +98,7 @@
         "c0s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #0 strength (from 0 to 100) (default 0)",
       "flags": "..FV.......",
       "max": "100",
@@ -150,7 +150,7 @@
         "c1_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #1 noise seed (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -164,7 +164,7 @@
         "c1s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #1 strength (from 0 to 100) (default 0)",
       "flags": "..FV.......",
       "max": "100",
@@ -216,7 +216,7 @@
         "c2_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #2 noise seed (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -230,7 +230,7 @@
         "c2s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #2 strength (from 0 to 100) (default 0)",
       "flags": "..FV.......",
       "max": "100",
@@ -282,7 +282,7 @@
         "c3_seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set component #3 noise seed (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -296,7 +296,7 @@
         "c3s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set component #3 strength (from 0 to 100) (default 0)",
       "flags": "..FV.......",
       "max": "100",

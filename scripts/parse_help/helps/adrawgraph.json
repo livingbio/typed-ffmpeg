@@ -135,7 +135,7 @@
         "min"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -148,7 +148,7 @@
         "max"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",

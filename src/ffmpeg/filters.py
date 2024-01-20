@@ -26,9 +26,9 @@ def acrossfade(
     _crossfade0: "AudioStream",
     _crossfade1: "AudioStream",
     *,
-    nb_samples: Int = Default("44100"),
-    duration: Duration = Default("0"),
-    overlap: Boolean = Default("true"),
+    nb_samples: Int = Default(44100),
+    duration: Duration = Default(0.0),
+    overlap: Boolean = Default(1),
     curve1: Int
     | Literal[
         "nofade",
@@ -121,21 +121,21 @@ def acrossfade(
 
 def afir(
     *streams: "AudioStream",
-    dry: Float = Default("1"),
-    wet: Float = Default("1"),
-    length: Float = Default("1"),
+    dry: Float = Default(1.0),
+    wet: Float = Default(1.0),
+    length: Float = Default(1.0),
     gtype: Int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | Default = Default("peak"),
-    irgain: Float = Default("1"),
+    irgain: Float = Default(1.0),
     irfmt: Int | Literal["mono", "input"] | Default = Default("input"),
-    maxir: Float = Default("30"),
-    response: Boolean = Default("false"),
-    channel: Int = Default("0"),
-    size: Image_size = Default("hd720"),
-    rate: Video_rate = Default("25"),
-    minp: Int = Default("8192"),
-    maxp: Int = Default("8192"),
-    nbirs: Int = Default("1"),
-    ir: Int = Default("0"),
+    maxir: Float = Default(30.0),
+    response: Boolean = Default(0),
+    channel: Int = Default(0),
+    size: Image_size = Default('"hd720"'),
+    rate: Video_rate = Default('"25"'),
+    minp: Int = Default(8192),
+    maxp: Int = Default(8192),
+    nbirs: Int = Default(1),
+    ir: Int = Default(0),
     precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
     **kwargs: Any
 ) -> FilterNode:
@@ -201,7 +201,7 @@ def afir(
 
 def ainterleave(
     *streams: "AudioStream",
-    nb_inputs: Int = Default("2"),
+    nb_inputs: Int = Default(2),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> "AudioStream":
@@ -241,8 +241,8 @@ def alphamerge(
     _alpha: "VideoStream",
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -287,7 +287,7 @@ def alphamerge(
     return filter_node.video(0)
 
 
-def amerge(*streams: "AudioStream", inputs: Int = Default("2"), **kwargs: Any) -> "AudioStream":
+def amerge(*streams: "AudioStream", inputs: Int = Default(2), **kwargs: Any) -> "AudioStream":
     """
 
     Merge two or more audio streams into a single multi-channel stream.
@@ -319,11 +319,11 @@ def amerge(*streams: "AudioStream", inputs: Int = Default("2"), **kwargs: Any) -
 
 def amix(
     *streams: "AudioStream",
-    inputs: Int = Default("2"),
+    inputs: Int = Default(2),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
-    dropout_transition: Float = Default("2"),
-    weights: String = Default("1 1"),
-    normalize: Boolean = Default("true"),
+    dropout_transition: Float = Default(2.0),
+    weights: String = Default('"1 1"'),
+    normalize: Boolean = Default(1),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -392,10 +392,10 @@ def anlmf(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: Int = Default("256"),
-    mu: Float = Default("0.75"),
-    eps: Float = Default("1"),
-    leakage: Float = Default("0"),
+    order: Int = Default(256),
+    mu: Float = Default(0.75),
+    eps: Float = Default(1.0),
+    leakage: Float = Default(0.0),
     out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
     enable: str = Default(None),
     **kwargs: Any
@@ -446,10 +446,10 @@ def anlms(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: Int = Default("256"),
-    mu: Float = Default("0.75"),
-    eps: Float = Default("1"),
-    leakage: Float = Default("0"),
+    order: Int = Default(256),
+    mu: Float = Default(0.75),
+    eps: Float = Default(1.0),
+    leakage: Float = Default(0.0),
     out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
     enable: str = Default(None),
     **kwargs: Any
@@ -522,7 +522,7 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
 
 
 def astreamselect(
-    *streams: "AudioStream", inputs: Int = Default("2"), map: String = Default(None), **kwargs: Any
+    *streams: "AudioStream", inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -560,7 +560,7 @@ def axcorrelate(
     _axcorrelate0: "AudioStream",
     _axcorrelate1: "AudioStream",
     *,
-    size: Int = Default("256"),
+    size: Int = Default(256),
     algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
     **kwargs: Any
 ) -> "AudioStream":
@@ -831,20 +831,20 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | Default = Default("-1"),
+    | Default = Default(-1),
     c0_expr: String = Default(None),
     c1_expr: String = Default(None),
     c2_expr: String = Default(None),
     c3_expr: String = Default(None),
     all_expr: String = Default(None),
-    c0_opacity: Double = Default("1"),
-    c1_opacity: Double = Default("1"),
-    c2_opacity: Double = Default("1"),
-    c3_opacity: Double = Default("1"),
-    all_opacity: Double = Default("1"),
+    c0_opacity: Double = Default(1.0),
+    c1_opacity: Double = Default(1.0),
+    c2_opacity: Double = Default(1.0),
+    c3_opacity: Double = Default(1.0),
+    all_opacity: Double = Default(1.0),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -921,17 +921,17 @@ def blend(
 
 def bm3d(
     *streams: "VideoStream",
-    sigma: Float = Default("1"),
-    block: Int = Default("16"),
-    bstep: Int = Default("4"),
-    group: Int = Default("1"),
-    range: Int = Default("9"),
-    mstep: Int = Default("1"),
-    thmse: Float = Default("0"),
-    hdthr: Float = Default("2.7"),
+    sigma: Float = Default(1.0),
+    block: Int = Default(16),
+    bstep: Int = Default(4),
+    group: Int = Default(1),
+    range: Int = Default(9),
+    mstep: Int = Default(1),
+    thmse: Float = Default(0.0),
+    hdthr: Float = Default(2.7),
     estim: Int | Literal["basic", "final"] | Default = Default("basic"),
-    ref: Boolean = Default("false"),
-    planes: Int = Default("7"),
+    ref: Boolean = Default(0),
+    planes: Int = Default(7),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -991,8 +991,8 @@ def colormap(
     _source: "VideoStream",
     _target: "VideoStream",
     *,
-    patch_size: Image_size = Default("64x64"),
-    nb_patches: Int = Default("0"),
+    patch_size: Image_size = Default('"64x64"'),
+    nb_patches: Int = Default(0),
     type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
     enable: str = Default(None),
@@ -1041,10 +1041,10 @@ def colormap(
 
 def concat(
     *streams: "FilterableStream",
-    n: Int = Default("2"),
-    v: Int = Default("1"),
-    a: Int = Default("0"),
-    unsafe: Boolean = Default("false"),
+    n: Int = Default(2),
+    v: Int = Default(1),
+    a: Int = Default(0),
+    unsafe: Boolean = Default(0),
     **kwargs: Any
 ) -> FilterNode:
     """
@@ -1087,12 +1087,12 @@ def convolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: Int = Default("7"),
+    planes: Int = Default(7),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
-    noise: Float = Default("1e-07"),
+    noise: Float = Default(1e-07),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -1148,8 +1148,8 @@ def corr(
     _reference: "VideoStream",
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -1196,14 +1196,14 @@ def corr(
 
 def decimate(
     *streams: "VideoStream",
-    cycle: Int = Default("5"),
-    dupthresh: Double = Default("1.1"),
-    scthresh: Double = Default("15"),
-    blockx: Int = Default("32"),
-    blocky: Int = Default("32"),
-    ppsrc: Boolean = Default("false"),
-    chroma: Boolean = Default("true"),
-    mixed: Boolean = Default("false"),
+    cycle: Int = Default(5),
+    dupthresh: Double = Default(1.1),
+    scthresh: Double = Default(15.0),
+    blockx: Int = Default(32),
+    blocky: Int = Default(32),
+    ppsrc: Boolean = Default(0),
+    chroma: Boolean = Default(1),
+    mixed: Boolean = Default(0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1253,12 +1253,12 @@ def deconvolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: Int = Default("7"),
+    planes: Int = Default(7),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
-    noise: Float = Default("1e-07"),
+    noise: Float = Default(1e-07),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -1354,7 +1354,7 @@ def displace(
 
 
 def feedback(
-    _default: "VideoStream", _feedin: "VideoStream", *, x: Int = Default("0"), w: Int = Default("0"), **kwargs: Any
+    _default: "VideoStream", _feedin: "VideoStream", *, x: Int = Default(0), w: Int = Default(0), **kwargs: Any
 ) -> tuple["AudioStream", "AudioStream",]:
     """
 
@@ -1397,18 +1397,18 @@ def fieldmatch(
     *streams: "VideoStream",
     order: Int | Literal["auto", "bff", "tff"] | Default = Default("auto"),
     mode: Int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | Default = Default("pc_n"),
-    ppsrc: Boolean = Default("false"),
+    ppsrc: Boolean = Default(0),
     field: Int | Literal["auto", "bottom", "top"] | Default = Default("auto"),
-    mchroma: Boolean = Default("true"),
-    y0: Int = Default("0"),
-    scthresh: Double = Default("12"),
+    mchroma: Boolean = Default(1),
+    y0: Int = Default(0),
+    scthresh: Double = Default(12.0),
     combmatch: Int | Literal["none", "sc", "full"] | Default = Default("sc"),
     combdbg: Int | Literal["none", "pcn", "pcnub"] | Default = Default("none"),
-    cthresh: Int = Default("9"),
-    chroma: Boolean = Default("false"),
-    blockx: Int = Default("16"),
-    blocky: Int = Default("16"),
-    combpel: Int = Default("80"),
+    cthresh: Int = Default(9),
+    chroma: Boolean = Default(0),
+    blockx: Int = Default(16),
+    blocky: Int = Default(16),
+    combpel: Int = Default(80),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1509,9 +1509,9 @@ def freezeframes(
     _source: "VideoStream",
     _replace: "VideoStream",
     *,
-    first: Int64 = Default("0"),
-    last: Int64 = Default("0"),
-    replace: Int64 = Default("0"),
+    first: Int64 = Default(0),
+    last: Int64 = Default(0),
+    replace: Int64 = Default(0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1552,12 +1552,12 @@ def freezeframes(
 
 def guided(
     *streams: "VideoStream",
-    radius: Int = Default("3"),
-    eps: Float = Default("0.01"),
+    radius: Int = Default(3),
+    eps: Float = Default(0.01),
     mode: Int | Literal["basic", "fast"] | Default = Default("basic"),
-    sub: Int = Default("4"),
+    sub: Int = Default(4),
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
-    planes: Int = Default("1"),
+    planes: Int = Default(1),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -1609,8 +1609,8 @@ def haldclut(
     clut: Int | Literal["first", "all"] | Default = Default("all"),
     interp: Int | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"] | Default = Default("tetrahedral"),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -1662,10 +1662,10 @@ def haldclut(
 def headphone(
     *streams: "AudioStream",
     map: String = Default(None),
-    gain: Float = Default("0"),
-    lfe: Float = Default("0"),
+    gain: Float = Default(0.0),
+    lfe: Float = Default(0.0),
     type: Int | Literal["time", "freq"] | Default = Default("freq"),
-    size: Int = Default("1024"),
+    size: Int = Default(1024),
     hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
     **kwargs: Any
 ) -> "AudioStream":
@@ -1711,7 +1711,7 @@ def headphone(
 
 
 def hstack(
-    *streams: "VideoStream", inputs: Int = Default("2"), shortest: Boolean = Default("false"), **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default(2), shortest: Boolean = Default(0), **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -1748,11 +1748,11 @@ def hysteresis(
     _base: "VideoStream",
     _alt: "VideoStream",
     *,
-    planes: Int = Default("15"),
-    threshold: Int = Default("0"),
+    planes: Int = Default(15),
+    threshold: Int = Default(0),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -1806,8 +1806,8 @@ def identity(
     _reference: "VideoStream",
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -1854,7 +1854,7 @@ def identity(
 
 def interleave(
     *streams: "VideoStream",
-    nb_inputs: Int = Default("2"),
+    nb_inputs: Int = Default(2),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -1891,8 +1891,8 @@ def interleave(
 
 def join(
     *streams: "AudioStream",
-    inputs: Int = Default("2"),
-    channel_layout: String = Default("stereo"),
+    inputs: Int = Default(2),
+    channel_layout: String = Default('"stereo"'),
     map: String = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
@@ -1935,20 +1935,20 @@ def libvmaf(
     *,
     model_path: String = Default(None),
     log_path: String = Default(None),
-    log_fmt: String = Default("xml"),
-    enable_transform: Boolean = Default("false"),
-    psnr: Boolean = Default("false"),
-    ssim: Boolean = Default("false"),
-    ms_ssim: Boolean = Default("false"),
+    log_fmt: String = Default('"xml"'),
+    enable_transform: Boolean = Default(0),
+    psnr: Boolean = Default(0),
+    ssim: Boolean = Default(0),
+    ms_ssim: Boolean = Default(0),
     pool: String = Default(None),
-    n_threads: Int = Default("0"),
-    n_subsample: Int = Default("1"),
-    enable_conf_interval: Boolean = Default("false"),
-    model: String = Default("version=vmaf_v0.6.1"),
+    n_threads: Int = Default(0),
+    n_subsample: Int = Default(1),
+    enable_conf_interval: Boolean = Default(0),
+    model: String = Default('"version=vmaf_v0.6.1"'),
     feature: String = Default(None),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2018,10 +2018,10 @@ def libvmaf(
 
 def limitdiff(
     *streams: "VideoStream",
-    threshold: Float = Default("0.00392157"),
-    elasticity: Float = Default("2"),
-    reference: Boolean = Default("false"),
-    planes: Int = Default("15"),
+    threshold: Float = Default(0.00392157),
+    elasticity: Float = Default(2.0),
+    reference: Boolean = Default(0),
+    planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2066,14 +2066,14 @@ def lut2(
     _srcx: "VideoStream",
     _srcy: "VideoStream",
     *,
-    c0: String = Default("x"),
-    c1: String = Default("x"),
-    c2: String = Default("x"),
-    c3: String = Default("x"),
-    d: Int = Default("0"),
+    c0: String = Default('"x"'),
+    c1: String = Default('"x"'),
+    c2: String = Default('"x"'),
+    c3: String = Default('"x"'),
+    d: Int = Default(0),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -2133,9 +2133,9 @@ def maskedclamp(
     _dark: "VideoStream",
     _bright: "VideoStream",
     *,
-    undershoot: Int = Default("0"),
-    overshoot: Int = Default("0"),
-    planes: Int = Default("15"),
+    undershoot: Int = Default(0),
+    overshoot: Int = Default(0),
+    planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2183,7 +2183,7 @@ def maskedmax(
     _filter1: "VideoStream",
     _filter2: "VideoStream",
     *,
-    planes: Int = Default("15"),
+    planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2227,7 +2227,7 @@ def maskedmerge(
     _overlay: "VideoStream",
     _mask: "VideoStream",
     *,
-    planes: Int = Default("15"),
+    planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2271,7 +2271,7 @@ def maskedmin(
     _filter1: "VideoStream",
     _filter2: "VideoStream",
     *,
-    planes: Int = Default("15"),
+    planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2314,8 +2314,8 @@ def maskedthreshold(
     _source: "VideoStream",
     _reference: "VideoStream",
     *,
-    threshold: Int = Default("1"),
-    planes: Int = Default("15"),
+    threshold: Int = Default(1),
+    planes: Int = Default(15),
     mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
     enable: str = Default(None),
     **kwargs: Any
@@ -2360,16 +2360,16 @@ def maskedthreshold(
 
 def mergeplanes(
     *streams: "VideoStream",
-    mapping: Int = Default("-1"),
+    mapping: Int = Default(-1),
     format: Pix_fmt = Default("yuva444p"),
-    map0s: Int = Default("0"),
-    map0p: Int = Default("0"),
-    map1s: Int = Default("0"),
-    map1p: Int = Default("0"),
-    map2s: Int = Default("0"),
-    map2p: Int = Default("0"),
-    map3s: Int = Default("0"),
-    map3p: Int = Default("0"),
+    map0s: Int = Default(0),
+    map0p: Int = Default(0),
+    map1s: Int = Default(0),
+    map1p: Int = Default(0),
+    map2s: Int = Default(0),
+    map2p: Int = Default(0),
+    map3s: Int = Default(0),
+    map3p: Int = Default(0),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2420,7 +2420,7 @@ def mergeplanes(
 
 
 def midequalizer(
-    _in0: "VideoStream", _in1: "VideoStream", *, planes: Int = Default("15"), enable: str = Default(None), **kwargs: Any
+    _in0: "VideoStream", _in1: "VideoStream", *, planes: Int = Default(15), enable: str = Default(None), **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -2458,9 +2458,9 @@ def midequalizer(
 
 def mix(
     *streams: "VideoStream",
-    inputs: Int = Default("2"),
-    weights: String = Default("1 1"),
-    scale: Float = Default("0"),
+    inputs: Int = Default(2),
+    weights: String = Default('"1 1"'),
+    scale: Float = Default(0.0),
     planes: Flags = Default("F"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     enable: str = Default(None),
@@ -2512,11 +2512,11 @@ def morpho(
     mode: Int
     | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
     | Default = Default("erode"),
-    planes: Int = Default("7"),
+    planes: Int = Default(7),
     structure: Int | Literal["first", "all"] | Default = Default("all"),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -2572,8 +2572,8 @@ def msad(
     _reference: "VideoStream",
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -2622,8 +2622,8 @@ def multiply(
     _source: "VideoStream",
     _factor: "VideoStream",
     *,
-    scale: Float = Default("1"),
-    offset: Float = Default("0.5"),
+    scale: Float = Default(1.0),
+    offset: Float = Default(0.5),
     planes: Flags = Default("F"),
     enable: str = Default(None),
     **kwargs: Any
@@ -2670,15 +2670,15 @@ def overlay(
     _main: "VideoStream",
     _overlay: "VideoStream",
     *,
-    x: String = Default("0"),
-    y: String = Default("0"),
+    x: String = Default('"0"'),
+    y: String = Default('"0"'),
     eof_action: Int | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
     eval: Int | Literal["init", "frame"] | Default = Default("frame"),
-    shortest: Boolean = Default("false"),
+    shortest: Boolean = Default(0),
     format: Int
     | Literal["yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "rgb", "gbrp", "auto"]
     | Default = Default("yuv420"),
-    repeatlast: Boolean = Default("true"),
+    repeatlast: Boolean = Default(1),
     alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
@@ -2741,10 +2741,10 @@ def paletteuse(
     dither: Int
     | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
     | Default = Default("sierra2_4a"),
-    bayer_scale: Int = Default("2"),
-    diff_mode: Int | Literal["rectangle"] | Default = Default("0"),
-    new: Boolean = Default("false"),
-    alpha_threshold: Int = Default("128"),
+    bayer_scale: Int = Default(2),
+    diff_mode: Int | Literal["rectangle"] | Default = Default(0),
+    new: Boolean = Default(0),
+    alpha_threshold: Int = Default(128),
     debug_kdtree: String = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2792,8 +2792,8 @@ def paletteuse(
 
 def premultiply(
     *streams: "VideoStream",
-    planes: Int = Default("15"),
-    inplace: Boolean = Default("false"),
+    planes: Int = Default(15),
+    inplace: Boolean = Default(0),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -2835,11 +2835,11 @@ def psnr(
     _reference: "VideoStream",
     *,
     stats_file: String = Default(None),
-    stats_version: Int = Default("1"),
-    output_max: Boolean = Default("false"),
+    stats_version: Int = Default(1),
+    output_max: Boolean = Default(0),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -2896,7 +2896,7 @@ def remap(
     _ymap: "VideoStream",
     *,
     format: Int | Literal["color", "gray"] | Default = Default("color"),
-    fill: Color = Default("black"),
+    fill: Color = Default('"black"'),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2940,11 +2940,11 @@ def scale2ref(
     *,
     w: String = Default(None),
     h: String = Default(None),
-    flags: String = Default(""),
-    interl: Boolean = Default("false"),
+    flags: String = Default('""'),
+    interl: Boolean = Default(0),
     in_color_matrix: String
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
-    | Default = Default("auto"),
+    | Default = Default('"auto"'),
     out_color_matrix: String
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
     | Default = Default(None),
@@ -2954,12 +2954,12 @@ def scale2ref(
     out_range: Int
     | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
     | Default = Default("auto"),
-    in_v_chr_pos: Int = Default("-513"),
-    in_h_chr_pos: Int = Default("-513"),
-    out_v_chr_pos: Int = Default("-513"),
-    out_h_chr_pos: Int = Default("-513"),
+    in_v_chr_pos: Int = Default(-513),
+    in_h_chr_pos: Int = Default(-513),
+    out_v_chr_pos: Int = Default(-513),
+    out_h_chr_pos: Int = Default(-513),
     force_original_aspect_ratio: Int | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
-    force_divisible_by: Int = Default("1"),
+    force_divisible_by: Int = Default(1),
     param0: Double = Default("DBL_MAX"),
     param1: Double = Default("DBL_MAX"),
     eval: Int | Literal["init", "frame"] | Default = Default("init"),
@@ -3036,18 +3036,18 @@ def sidechaincompress(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: Double = Default("1"),
+    level_in: Double = Default(1.0),
     mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
-    threshold: Double = Default("0.125"),
-    ratio: Double = Default("2"),
-    attack: Double = Default("20"),
-    release: Double = Default("250"),
-    makeup: Double = Default("1"),
-    knee: Double = Default("2.82843"),
+    threshold: Double = Default(0.125),
+    ratio: Double = Default(2.0),
+    attack: Double = Default(20.0),
+    release: Double = Default(250.0),
+    makeup: Double = Default(1.0),
+    knee: Double = Default(2.82843),
     link: Int | Literal["average", "maximum"] | Default = Default("average"),
     detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
-    level_sc: Double = Default("1"),
-    mix: Double = Default("1"),
+    level_sc: Double = Default(1.0),
+    mix: Double = Default(1.0),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -3108,18 +3108,18 @@ def sidechaingate(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: Double = Default("1"),
+    level_in: Double = Default(1.0),
     mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
-    range: Double = Default("0.06125"),
-    threshold: Double = Default("0.125"),
-    ratio: Double = Default("2"),
-    attack: Double = Default("20"),
-    release: Double = Default("250"),
-    makeup: Double = Default("1"),
-    knee: Double = Default("2.82843"),
+    range: Double = Default(0.06125),
+    threshold: Double = Default(0.125),
+    ratio: Double = Default(2.0),
+    attack: Double = Default(20.0),
+    release: Double = Default(250.0),
+    makeup: Double = Default(1.0),
+    knee: Double = Default(2.82843),
     detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
     link: Int | Literal["average", "maximum"] | Default = Default("average"),
-    level_sc: Double = Default("1"),
+    level_sc: Double = Default(1.0),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
@@ -3182,14 +3182,14 @@ def sidechaingate(
 def signature(
     *streams: "VideoStream",
     detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
-    nb_inputs: Int = Default("1"),
-    filename: String = Default(""),
+    nb_inputs: Int = Default(1),
+    filename: String = Default('""'),
     format: Int | Literal["binary", "xml"] | Default = Default("binary"),
-    th_d: Int = Default("9000"),
-    th_dc: Int = Default("60000"),
-    th_xh: Int = Default("116"),
-    th_di: Int = Default("0"),
-    th_it: Double = Default("0.5"),
+    th_d: Int = Default(9000),
+    th_dc: Int = Default(60000),
+    th_xh: Int = Default(116),
+    th_di: Int = Default(0),
+    th_it: Double = Default(0.5),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3241,8 +3241,8 @@ def spectrumsynth(
     _magnitude: "VideoStream",
     _phase: "VideoStream",
     *,
-    sample_rate: Int = Default("44100"),
-    channels: Int = Default("1"),
+    sample_rate: Int = Default(44100),
+    channels: Int = Default(1),
     scale: Int | Literal["lin", "log"] | Default = Default("log"),
     slide: Int | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("fullframe"),
     win_func: Int
@@ -3271,7 +3271,7 @@ def spectrumsynth(
         "kaiser",
     ]
     | Default = Default("rect"),
-    overlap: Float = Default("1"),
+    overlap: Float = Default(1.0),
     orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
     **kwargs: Any
 ) -> "AudioStream":
@@ -3325,8 +3325,8 @@ def ssim(
     *,
     stats_file: String = Default(None),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -3374,7 +3374,7 @@ def ssim(
 
 
 def streamselect(
-    *streams: "VideoStream", inputs: Int = Default("2"), map: String = Default(None), **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -3414,7 +3414,7 @@ def threshold(
     _min: "VideoStream",
     _max: "VideoStream",
     *,
-    planes: Int = Default("15"),
+    planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -3456,8 +3456,8 @@ def threshold(
 
 def unpremultiply(
     *streams: "VideoStream",
-    planes: Int = Default("15"),
-    inplace: Boolean = Default("false"),
+    planes: Int = Default(15),
+    inplace: Boolean = Default(0),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -3498,12 +3498,12 @@ def varblur(
     _default: "VideoStream",
     _radius: "VideoStream",
     *,
-    min_r: Int = Default("0"),
-    max_r: Int = Default("8"),
-    planes: Int = Default("15"),
+    min_r: Int = Default(0),
+    max_r: Int = Default(8),
+    planes: Int = Default(15),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -3559,8 +3559,8 @@ def vif(
     _reference: "VideoStream",
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -3606,7 +3606,7 @@ def vif(
 
 
 def vstack(
-    *streams: "VideoStream", inputs: Int = Default("2"), shortest: Boolean = Default("false"), **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default(2), shortest: Boolean = Default(0), **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -3643,11 +3643,11 @@ def xcorrelate(
     _primary: "VideoStream",
     _secondary: "VideoStream",
     *,
-    planes: Int = Default("7"),
+    planes: Int = Default(7),
     secondary: Int | Literal["first", "all"] | Default = Default("all"),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -3751,8 +3751,8 @@ def xfade(
         "fadeslow",
     ]
     | Default = Default("fade"),
-    duration: Duration = Default("1"),
-    offset: Duration = Default("0"),
+    duration: Duration = Default(1.0),
+    offset: Duration = Default(0.0),
     expr: String = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
@@ -3796,12 +3796,12 @@ def xfade(
 
 def xmedian(
     *streams: "VideoStream",
-    inputs: Int = Default("3"),
-    planes: Int = Default("15"),
-    percentile: Float = Default("0.5"),
+    inputs: Int = Default(3),
+    planes: Int = Default(15),
+    percentile: Float = Default(0.5),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default("false"),
-    repeatlast: Boolean = Default("true"),
+    shortest: Boolean = Default(0),
+    repeatlast: Boolean = Default(1),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
@@ -3851,11 +3851,11 @@ def xmedian(
 
 def xstack(
     *streams: "VideoStream",
-    inputs: Int = Default("2"),
+    inputs: Int = Default(2),
     layout: String = Default(None),
     grid: Image_size = Default(None),
-    shortest: Boolean = Default("false"),
-    fill: String = Default("none"),
+    shortest: Boolean = Default(0),
+    fill: String = Default('"none"'),
     **kwargs: Any
 ) -> "VideoStream":
     """

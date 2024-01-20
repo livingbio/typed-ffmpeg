@@ -13,7 +13,7 @@
         "sigma"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set denoising strength (from 0 to 99999.9) (default 1)",
       "flags": "..FV.......",
       "max": "99999.9",
@@ -26,7 +26,7 @@
         "block"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set size of local patch (from 8 to 64) (default 16)",
       "flags": "..FV.......",
       "max": "64",
@@ -39,7 +39,7 @@
         "bstep"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set sliding step for processing blocks (from 1 to 64) (default 4)",
       "flags": "..FV.......",
       "max": "64",
@@ -52,7 +52,7 @@
         "group"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set maximal number of similar blocks (from 1 to 256) (default 1)",
       "flags": "..FV.......",
       "max": "256",
@@ -65,7 +65,7 @@
         "range"
       ],
       "choices": [],
-      "default": "9",
+      "default": 9,
       "description": "set block matching range (from 1 to INT_MAX) (default 9)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -78,7 +78,7 @@
         "mstep"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set step for block matching (from 1 to 64) (default 1)",
       "flags": "..FV.......",
       "max": "64",
@@ -91,7 +91,7 @@
         "thmse"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -104,7 +104,7 @@
         "hdthr"
       ],
       "choices": [],
-      "default": "2.7",
+      "default": 2.7,
       "description": "set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -143,7 +143,7 @@
         "ref"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "have reference stream (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -156,7 +156,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set planes to filter (from 0 to 15) (default 7)",
       "flags": "..FV.......",
       "max": "15",

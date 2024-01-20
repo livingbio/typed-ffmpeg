@@ -79,7 +79,7 @@
         "w"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10,
       "description": "set block width (from 1 to 8000) (default 10)",
       "flags": "..FV.......",
       "max": "8000",
@@ -93,7 +93,7 @@
         "h"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10,
       "description": "set block height (from 1 to 8000) (default 10)",
       "flags": "..FV.......",
       "max": "8000",
@@ -107,7 +107,7 @@
         "s"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "UINT32_MAX",

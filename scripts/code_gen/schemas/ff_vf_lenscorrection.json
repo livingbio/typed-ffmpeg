@@ -21,7 +21,7 @@
         "cx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set relative center x (from 0 to 1) (default 0.5)",
       "name": "cx",
       "required": false,
@@ -32,7 +32,7 @@
         "cy"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set relative center y (from 0 to 1) (default 0.5)",
       "name": "cy",
       "required": false,
@@ -43,7 +43,7 @@
         "k1"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set quadratic distortion factor (from -1 to 1) (default 0)",
       "name": "k1",
       "required": false,
@@ -54,7 +54,7 @@
         "k2"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set double quadratic distortion factor (from -1 to 1) (default 0)",
       "name": "k2",
       "required": false,
@@ -87,7 +87,7 @@
         "fc"
       ],
       "choices": [],
-      "default": "black@0",
+      "default": "\"black@0\"",
       "description": "set the color of the unmapped pixels (default \"black@0\")",
       "name": "fc",
       "required": false,

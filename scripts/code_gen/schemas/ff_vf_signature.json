@@ -43,7 +43,7 @@
         "nb_inputs"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "number of inputs (from 1 to INT_MAX) (default 1)",
       "name": "nb_inputs",
       "required": false,
@@ -54,7 +54,7 @@
         "filename"
       ],
       "choices": [],
-      "default": "",
+      "default": "\"\"",
       "description": "filename for output files (default \"\")",
       "name": "filename",
       "required": false,
@@ -87,7 +87,7 @@
         "th_d"
       ],
       "choices": [],
-      "default": "9000",
+      "default": 9000,
       "description": "threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)",
       "name": "th_d",
       "required": false,
@@ -98,7 +98,7 @@
         "th_dc"
       ],
       "choices": [],
-      "default": "60000",
+      "default": 60000,
       "description": "threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)",
       "name": "th_dc",
       "required": false,
@@ -109,7 +109,7 @@
         "th_xh"
       ],
       "choices": [],
-      "default": "116",
+      "default": 116,
       "description": "threshold to detect frames as similar (from 1 to INT_MAX) (default 116)",
       "name": "th_xh",
       "required": false,
@@ -120,7 +120,7 @@
         "th_di"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)",
       "name": "th_di",
       "required": false,
@@ -131,7 +131,7 @@
         "th_it"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "threshold for relation of good to all frames (from 0 to 1) (default 0.5)",
       "name": "th_it",
       "required": false,

@@ -45,7 +45,7 @@
         "nb_inputs"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "number of inputs (from 1 to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -97,7 +97,7 @@
         "th_d"
       ],
       "choices": [],
-      "default": "9000",
+      "default": 9000,
       "description": "threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -110,7 +110,7 @@
         "th_dc"
       ],
       "choices": [],
-      "default": "60000",
+      "default": 60000,
       "description": "threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -123,7 +123,7 @@
         "th_xh"
       ],
       "choices": [],
-      "default": "116",
+      "default": 116,
       "description": "threshold to detect frames as similar (from 1 to INT_MAX) (default 116)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -136,7 +136,7 @@
         "th_di"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -149,7 +149,7 @@
         "th_it"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "threshold for relation of good to all frames (from 0 to 1) (default 0.5)",
       "flags": "..FV.......",
       "max": "1",

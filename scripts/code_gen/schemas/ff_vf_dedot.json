@@ -43,7 +43,7 @@
         "lt"
       ],
       "choices": [],
-      "default": "0.079",
+      "default": 0.079,
       "description": "set spatial luma threshold (from 0 to 1) (default 0.079)",
       "name": "lt",
       "required": false,
@@ -54,7 +54,7 @@
         "tl"
       ],
       "choices": [],
-      "default": "0.079",
+      "default": 0.079,
       "description": "set tolerance for temporal luma (from 0 to 1) (default 0.079)",
       "name": "tl",
       "required": false,
@@ -65,7 +65,7 @@
         "tc"
       ],
       "choices": [],
-      "default": "0.058",
+      "default": 0.058,
       "description": "set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)",
       "name": "tc",
       "required": false,
@@ -76,7 +76,7 @@
         "ct"
       ],
       "choices": [],
-      "default": "0.019",
+      "default": 0.019,
       "description": "set temporal chroma threshold (from 0 to 1) (default 0.019)",
       "name": "ct",
       "required": false,

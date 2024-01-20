@@ -1,14 +1,14 @@
 {
   "description": "Apply Normalized Least-Mean-Fourth algorithm to first audio stream.",
   "input_types": [
-    [
-      "input",
-      "audio"
-    ],
-    [
-      "desired",
-      "audio"
-    ]
+    {
+      "name": "input",
+      "type": "audio"
+    },
+    {
+      "name": "desired",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -22,7 +22,7 @@
         "order"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "set the filter order (from 1 to 32767) (default 256)",
       "flags": "..F.A......",
       "max": "32767",
@@ -35,7 +35,7 @@
         "mu"
       ],
       "choices": [],
-      "default": "0.75",
+      "default": 0.75,
       "description": "set the filter mu (from 0 to 2) (default 0.75)",
       "flags": "..F.A....T.",
       "max": "2",
@@ -48,7 +48,7 @@
         "eps"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the filter eps (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -61,7 +61,7 @@
         "leakage"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the filter leakage (from 0 to 1) (default 0)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -109,9 +109,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

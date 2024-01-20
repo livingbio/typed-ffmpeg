@@ -110,7 +110,7 @@
         "dither"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "set dithering (default true)",
       "flags": "..FV.......",
       "max": null,

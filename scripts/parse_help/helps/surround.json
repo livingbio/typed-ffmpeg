@@ -44,7 +44,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -57,7 +57,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -70,7 +70,7 @@
         "lfe"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "output LFE (default true)",
       "flags": "..F.A....T.",
       "max": null,
@@ -83,7 +83,7 @@
         "lfe_low"
       ],
       "choices": [],
-      "default": "128",
+      "default": 128,
       "description": "LFE low cut off (from 0 to 256) (default 128)",
       "flags": "..F.A......",
       "max": "256",
@@ -96,7 +96,7 @@
         "lfe_high"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "LFE high cut off (from 0 to 512) (default 256)",
       "flags": "..F.A......",
       "max": "512",
@@ -135,7 +135,7 @@
         "smooth"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set temporal smoothness strength (from 0 to 1) (default 0)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -148,7 +148,7 @@
         "angle"
       ],
       "choices": [],
-      "default": "90",
+      "default": 90.0,
       "description": "set soundfield transform angle (from 0 to 360) (default 90)",
       "flags": "..F.A....T.",
       "max": "360",
@@ -161,7 +161,7 @@
         "focus"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set soundfield transform focus (from -1 to 1) (default 0)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -174,7 +174,7 @@
         "fc_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front center channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -187,7 +187,7 @@
         "fc_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front center channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -200,7 +200,7 @@
         "fl_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front left channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -213,7 +213,7 @@
         "fl_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front left channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -226,7 +226,7 @@
         "fr_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front right channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -239,7 +239,7 @@
         "fr_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front right channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -252,7 +252,7 @@
         "sl_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side left channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -265,7 +265,7 @@
         "sl_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side left channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -278,7 +278,7 @@
         "sr_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side right channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -291,7 +291,7 @@
         "sr_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side right channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -304,7 +304,7 @@
         "bl_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back left channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -317,7 +317,7 @@
         "bl_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back left channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -330,7 +330,7 @@
         "br_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back right channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -343,7 +343,7 @@
         "br_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back right channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -356,7 +356,7 @@
         "bc_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back center channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -369,7 +369,7 @@
         "bc_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back center channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -382,7 +382,7 @@
         "lfe_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set lfe channel input level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -395,7 +395,7 @@
         "lfe_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set lfe channel output level (from 0 to 10) (default 1)",
       "flags": "..F.A....T.",
       "max": "10",
@@ -408,7 +408,7 @@
         "allx"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set all channel's x spread (from -1 to 15) (default -1)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -421,7 +421,7 @@
         "ally"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set all channel's y spread (from -1 to 15) (default -1)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -434,7 +434,7 @@
         "fcx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front center channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -447,7 +447,7 @@
         "flx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front left channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -460,7 +460,7 @@
         "frx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front right channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -473,7 +473,7 @@
         "blx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back left channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -486,7 +486,7 @@
         "brx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back right channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -499,7 +499,7 @@
         "slx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side left channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -512,7 +512,7 @@
         "srx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side right channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -525,7 +525,7 @@
         "bcx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back center channel x spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -538,7 +538,7 @@
         "fcy"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front center channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -551,7 +551,7 @@
         "fly"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front left channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -564,7 +564,7 @@
         "fry"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front right channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -577,7 +577,7 @@
         "bly"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back left channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -590,7 +590,7 @@
         "bry"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back right channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -603,7 +603,7 @@
         "sly"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side left channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -616,7 +616,7 @@
         "sry"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side right channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -629,7 +629,7 @@
         "bcy"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back center channel y spread (from 0.06 to 15) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "15",
@@ -642,7 +642,7 @@
         "win_size"
       ],
       "choices": [],
-      "default": "4096",
+      "default": 4096,
       "description": "set window size (from 1024 to 65536) (default 4096)",
       "flags": "..F.A......",
       "max": "65536",
@@ -801,7 +801,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set window overlap (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",

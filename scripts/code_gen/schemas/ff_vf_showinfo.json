@@ -21,7 +21,7 @@
         "checksum"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "calculate checksums (default true)",
       "name": "checksum",
       "required": false,

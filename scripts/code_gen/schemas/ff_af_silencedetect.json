@@ -22,7 +22,7 @@
         "noise"
       ],
       "choices": [],
-      "default": "0.001",
+      "default": 0.001,
       "description": "set noise tolerance (from 0 to DBL_MAX) (default 0.001)",
       "name": "n",
       "required": false,
@@ -34,7 +34,7 @@
         "duration"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set minimum duration in seconds (default 2)",
       "name": "d",
       "required": false,
@@ -46,7 +46,7 @@
         "m"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "check each channel separately (default false)",
       "name": "mono",
       "required": false,

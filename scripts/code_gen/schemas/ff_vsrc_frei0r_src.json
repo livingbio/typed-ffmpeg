@@ -16,7 +16,7 @@
         "size"
       ],
       "choices": [],
-      "default": "320x240",
+      "default": "\"320x240\"",
       "description": "Dimensions of the generated video. (default \"320x240\")",
       "name": "size",
       "required": false,
@@ -27,7 +27,7 @@
         "framerate"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "(default \"25\")",
       "name": "framerate",
       "required": false,

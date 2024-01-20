@@ -18,7 +18,7 @@
         "cycle"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)",
       "flags": "..FV.......",
       "max": "240",

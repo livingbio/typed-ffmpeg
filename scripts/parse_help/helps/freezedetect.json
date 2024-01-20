@@ -19,7 +19,7 @@
         "noise"
       ],
       "choices": [],
-      "default": "0.001",
+      "default": 0.001,
       "description": "set noise tolerance (from 0 to 1) (default 0.001)",
       "flags": "..FV.......",
       "max": "1",
@@ -33,7 +33,7 @@
         "duration"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set minimum duration in seconds (default 2)",
       "flags": "..FV.......",
       "max": null,

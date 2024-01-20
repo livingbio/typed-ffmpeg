@@ -14,7 +14,7 @@
         "n"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set number of inputs (from 1 to INT_MAX) (default 2)",
       "flags": "..F.A......",
       "max": "INT_MAX",

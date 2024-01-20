@@ -21,7 +21,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "60",
+      "default": "\"60\"",
       "description": "output's frame rate (default \"60\")",
       "name": "fps",
       "required": false,
@@ -160,7 +160,7 @@
         "mb_size"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "macroblock size (from 4 to 16) (default 16)",
       "name": "mb_size",
       "required": false,
@@ -171,7 +171,7 @@
         "search_param"
       ],
       "choices": [],
-      "default": "32",
+      "default": 32,
       "description": "search parameter (from 4 to INT_MAX) (default 32)",
       "name": "search_param",
       "required": false,
@@ -182,7 +182,7 @@
         "vsbmc"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "variable-size block motion compensation (from 0 to 1) (default 0)",
       "name": "vsbmc",
       "required": false,
@@ -215,7 +215,7 @@
         "scd_threshold"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10.0,
       "description": "scene change threshold (from 0 to 100) (default 10)",
       "name": "scd_threshold",
       "required": false,

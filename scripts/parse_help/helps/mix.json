@@ -13,7 +13,7 @@
         "inputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set number of inputs (from 2 to 32767) (default 2)",
       "flags": "..FV.......",
       "max": "32767",
@@ -39,7 +39,7 @@
         "scale"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set scale (from 0 to 32767) (default 0)",
       "flags": "..FV.....T.",
       "max": "32767",

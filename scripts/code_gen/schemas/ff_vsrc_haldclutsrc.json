@@ -16,7 +16,7 @@
         "level"
       ],
       "choices": [],
-      "default": "6",
+      "default": 6,
       "description": "set level (from 2 to 16) (default 6)",
       "name": "level",
       "required": false,
@@ -28,7 +28,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -40,7 +40,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,

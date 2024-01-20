@@ -42,7 +42,7 @@
         "sr"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set sample rate (from 8000 to 384000) (default 44100)",
       "flags": "..F.A......",
       "max": "384000",
@@ -56,7 +56,7 @@
         "a"
       ],
       "choices": [],
-      "default": "0.7",
+      "default": 0.7,
       "description": "set beep amplitude (from 0 to 1) (default 0.7)",
       "flags": "..F.A......",
       "max": "1",
@@ -70,7 +70,7 @@
         "p"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set beep period (from 1 to 99) (default 3)",
       "flags": "..F.A......",
       "max": "99",
@@ -84,7 +84,7 @@
         "dl"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set flash delay (from -30 to 30) (default 0)",
       "flags": "..FV.......",
       "max": "30",
@@ -98,7 +98,7 @@
         "c"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "set delay cycle (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -112,7 +112,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set duration (default 0)",
       "flags": "..FVA......",
       "max": null,

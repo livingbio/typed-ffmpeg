@@ -1,10 +1,10 @@
 {
   "description": "Buffer audio frames, and make them available to the end of the filter graph.",
   "input_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -83,7 +83,7 @@
         "all_channel_counts"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "accept all channel counts (default false)",
       "flags": "..F.A......",
       "max": null,

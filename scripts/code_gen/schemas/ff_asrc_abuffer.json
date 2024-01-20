@@ -27,7 +27,7 @@
         "sample_rate"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "sample_rate",
       "required": false,
@@ -60,7 +60,7 @@
         "channels"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "channels",
       "required": false,

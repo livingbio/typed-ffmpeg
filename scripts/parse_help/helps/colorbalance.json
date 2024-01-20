@@ -18,7 +18,7 @@
         "rs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set red shadows (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -31,7 +31,7 @@
         "gs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set green shadows (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "bs"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set blue shadows (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -57,7 +57,7 @@
         "rm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set red midtones (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -70,7 +70,7 @@
         "gm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set green midtones (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -83,7 +83,7 @@
         "bm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set blue midtones (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -96,7 +96,7 @@
         "rh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set red highlights (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -109,7 +109,7 @@
         "gh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set green highlights (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -122,7 +122,7 @@
         "bh"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set blue highlights (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -135,7 +135,7 @@
         "pl"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "preserve lightness (default false)",
       "flags": "..FV.....T.",
       "max": null,

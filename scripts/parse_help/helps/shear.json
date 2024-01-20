@@ -18,7 +18,7 @@
         "shx"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set x shear factor (from -2 to 2) (default 0)",
       "flags": "..FV.....T.",
       "max": "2",
@@ -31,7 +31,7 @@
         "shy"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set y shear factor (from -2 to 2) (default 0)",
       "flags": "..FV.....T.",
       "max": "2",

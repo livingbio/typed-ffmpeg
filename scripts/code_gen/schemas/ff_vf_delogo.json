@@ -21,7 +21,7 @@
         "x"
       ],
       "choices": [],
-      "default": "-1",
+      "default": "\"-1\"",
       "description": "set logo x position (default \"-1\")",
       "name": "x",
       "required": false,
@@ -32,7 +32,7 @@
         "y"
       ],
       "choices": [],
-      "default": "-1",
+      "default": "\"-1\"",
       "description": "set logo y position (default \"-1\")",
       "name": "y",
       "required": false,
@@ -43,7 +43,7 @@
         "w"
       ],
       "choices": [],
-      "default": "-1",
+      "default": "\"-1\"",
       "description": "set logo width (default \"-1\")",
       "name": "w",
       "required": false,
@@ -54,7 +54,7 @@
         "h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": "\"-1\"",
       "description": "set logo height (default \"-1\")",
       "name": "h",
       "required": false,
@@ -65,7 +65,7 @@
         "show"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "show delogo area (default false)",
       "name": "show",
       "required": false,

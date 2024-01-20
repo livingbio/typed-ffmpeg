@@ -19,7 +19,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)",
       "flags": "..F.A......",
       "max": "INT_MAX",
@@ -33,7 +33,7 @@
         "p"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "pad last frame with zeros (default true)",
       "flags": "..F.A......",
       "max": null,

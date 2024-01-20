@@ -74,7 +74,7 @@
         "bilinear"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "use bilinear interpolation (default true)",
       "flags": "..FV.......",
       "max": null,

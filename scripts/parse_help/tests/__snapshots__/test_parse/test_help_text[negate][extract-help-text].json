@@ -1,10 +1,10 @@
 {
   "description": "Negate input video.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -74,7 +74,7 @@
         "negate_alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": false,
       "description": "(default false)",
       "flags": "..FV.....T.",
       "max": null,
@@ -84,9 +84,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

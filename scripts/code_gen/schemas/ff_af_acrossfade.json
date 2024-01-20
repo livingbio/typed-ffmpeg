@@ -26,7 +26,7 @@
         "ns"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)",
       "name": "nb_samples",
       "required": false,
@@ -38,7 +38,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set cross fade duration (default 0)",
       "name": "duration",
       "required": false,
@@ -50,7 +50,7 @@
         "o"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "overlap 1st stream end with 2nd stream start (default true)",
       "name": "overlap",
       "required": false,

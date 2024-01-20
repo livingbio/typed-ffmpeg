@@ -18,7 +18,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -31,7 +31,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output level (from 0.015625 to 64) (default 1)",
       "flags": "..F.A....T.",
       "max": "64",
@@ -44,7 +44,7 @@
         "limit"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set limit (from 0.0625 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -57,7 +57,7 @@
         "attack"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5.0,
       "description": "set attack (from 0.1 to 80) (default 5)",
       "flags": "..F.A....T.",
       "max": "80",
@@ -70,7 +70,7 @@
         "release"
       ],
       "choices": [],
-      "default": "50",
+      "default": 50.0,
       "description": "set release (from 1 to 8000) (default 50)",
       "flags": "..F.A....T.",
       "max": "8000",
@@ -83,7 +83,7 @@
         "asc"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "enable asc (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -96,7 +96,7 @@
         "asc_level"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set asc level (from 0 to 1) (default 0.5)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -109,7 +109,7 @@
         "level"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "auto level (default true)",
       "flags": "..F.A....T.",
       "max": null,
@@ -122,7 +122,7 @@
         "latency"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "compensate delay (default false)",
       "flags": "..F.A....T.",
       "max": null,

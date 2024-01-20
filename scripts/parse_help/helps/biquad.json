@@ -18,7 +18,7 @@
         "a0"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "(from INT_MIN to INT_MAX) (default 1)",
       "flags": "..F.A....T.",
       "max": "INT_MAX",
@@ -35,7 +35,7 @@
         "b2"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "(from INT_MIN to INT_MAX) (default 0)",
       "flags": "..F.A....T.",
       "max": "INT_MAX",
@@ -49,7 +49,7 @@
         "m"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set mix (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -77,7 +77,7 @@
         "n"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "normalize coefficients (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -193,7 +193,7 @@
         "b"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the block size (from 0 to 32768) (default 0)",
       "flags": "..F.A......",
       "max": "32768",

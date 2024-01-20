@@ -18,7 +18,7 @@
         "delay"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set delay time (from 1 to 100) (default 20)",
       "flags": "..F.A......",
       "max": "100",
@@ -31,7 +31,7 @@
         "feedback"
       ],
       "choices": [],
-      "default": "0.3",
+      "default": 0.3,
       "description": "set feedback gain (from 0 to 0.9) (default 0.3)",
       "flags": "..F.A....T.",
       "max": "0.9",
@@ -44,7 +44,7 @@
         "crossfeed"
       ],
       "choices": [],
-      "default": "0.3",
+      "default": 0.3,
       "description": "set cross feed (from 0 to 0.8) (default 0.3)",
       "flags": "..F.A....T.",
       "max": "0.8",
@@ -57,7 +57,7 @@
         "drymix"
       ],
       "choices": [],
-      "default": "0.8",
+      "default": 0.8,
       "description": "set dry-mix (from 0 to 1) (default 0.8)",
       "flags": "..F.A....T.",
       "max": "1",

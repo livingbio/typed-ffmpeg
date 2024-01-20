@@ -13,7 +13,7 @@
         "inputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "Number of input streams. (from 1 to INT_MAX) (default 2)",
       "flags": "..F.A......",
       "max": "INT_MAX",

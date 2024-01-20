@@ -22,7 +22,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -34,7 +34,7 @@
         "s"
       ],
       "choices": [],
-      "default": "800x400",
+      "default": "\"800x400\"",
       "description": "set video size (default \"800x400\")",
       "name": "size",
       "required": false,
@@ -45,7 +45,7 @@
         "rc"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set red contrast (from 0 to 255) (default 2)",
       "name": "rc",
       "required": false,
@@ -56,7 +56,7 @@
         "gc"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set green contrast (from 0 to 255) (default 7)",
       "name": "gc",
       "required": false,
@@ -67,7 +67,7 @@
         "bc"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set blue contrast (from 0 to 255) (default 1)",
       "name": "bc",
       "required": false,
@@ -78,7 +78,7 @@
         "mpc"
       ],
       "choices": [],
-      "default": "none",
+      "default": "\"none\"",
       "description": "set median phase color (default \"none\")",
       "name": "mpc",
       "required": false,
@@ -89,7 +89,7 @@
         "video"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "set video output (default true)",
       "name": "video",
       "required": false,
@@ -100,7 +100,7 @@
         "phasing"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "set mono and out-of-phase detection output (default false)",
       "name": "phasing",
       "required": false,
@@ -112,7 +112,7 @@
         "t"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set phase tolerance for mono detection (from 0 to 1) (default 0)",
       "name": "tolerance",
       "required": false,
@@ -124,7 +124,7 @@
         "a"
       ],
       "choices": [],
-      "default": "170",
+      "default": 170.0,
       "description": "set angle threshold for out-of-phase detection (from 90 to 180) (default 170)",
       "name": "angle",
       "required": false,
@@ -136,7 +136,7 @@
         "d"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set minimum mono or out-of-phase duration in seconds (default 2)",
       "name": "duration",
       "required": false,

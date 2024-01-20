@@ -22,7 +22,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -34,7 +34,7 @@
         "s"
       ],
       "choices": [],
-      "default": "hd720",
+      "default": "\"hd720\"",
       "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
@@ -45,7 +45,7 @@
         "fov"
       ],
       "choices": [],
-      "default": "90",
+      "default": 90.0,
       "description": "set camera FoV (from 40 to 150) (default 90)",
       "name": "fov",
       "required": false,
@@ -56,7 +56,7 @@
         "roll"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set camera roll (from -180 to 180) (default 0)",
       "name": "roll",
       "required": false,
@@ -67,7 +67,7 @@
         "pitch"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set camera pitch (from -180 to 180) (default 0)",
       "name": "pitch",
       "required": false,
@@ -78,7 +78,7 @@
         "yaw"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set camera yaw (from -180 to 180) (default 0)",
       "name": "yaw",
       "required": false,
@@ -91,7 +91,7 @@
         "zzoom"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set camera zoom (from 0.01 to 10) (default 1)",
       "name": "xzoom",
       "required": false,
@@ -104,7 +104,7 @@
         "zpos"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set camera position (from -60 to 60) (default 0)",
       "name": "xpos",
       "required": false,
@@ -115,7 +115,7 @@
         "length"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set length (from 1 to 60) (default 15)",
       "name": "length",
       "required": false,

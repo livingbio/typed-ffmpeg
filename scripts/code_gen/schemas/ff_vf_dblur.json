@@ -21,7 +21,7 @@
         "angle"
       ],
       "choices": [],
-      "default": "45",
+      "default": 45.0,
       "description": "set angle (from 0 to 360) (default 45)",
       "name": "angle",
       "required": false,
@@ -32,7 +32,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5.0,
       "description": "set radius (from 0 to 8192) (default 5)",
       "name": "radius",
       "required": false,
@@ -43,7 +43,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,

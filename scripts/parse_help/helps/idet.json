@@ -18,7 +18,7 @@
         "intl_thres"
       ],
       "choices": [],
-      "default": "1.04",
+      "default": 1.04,
       "description": "set interlacing threshold (from -1 to FLT_MAX) (default 1.04)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -31,7 +31,7 @@
         "prog_thres"
       ],
       "choices": [],
-      "default": "1.5",
+      "default": 1.5,
       "description": "set progressive threshold (from -1 to FLT_MAX) (default 1.5)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -44,7 +44,7 @@
         "rep_thres"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3.0,
       "description": "set repeat threshold (from -1 to FLT_MAX) (default 3)",
       "flags": "..FV.......",
       "max": "FLT_MAX",
@@ -57,7 +57,7 @@
         "half_life"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "half life of cumulative statistics (from -1 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -70,7 +70,7 @@
         "analyze_interlaced_flag"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",

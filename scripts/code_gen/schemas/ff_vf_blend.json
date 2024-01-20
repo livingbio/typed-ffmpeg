@@ -1124,7 +1124,7 @@
           "value": "39"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "set blend mode for all components (from -1 to 39) (default -1)",
       "name": "all_mode",
       "required": false,
@@ -1190,7 +1190,7 @@
         "c0_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #0 opacity (from 0 to 1) (default 1)",
       "name": "c0_opacity",
       "required": false,
@@ -1201,7 +1201,7 @@
         "c1_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #1 opacity (from 0 to 1) (default 1)",
       "name": "c1_opacity",
       "required": false,
@@ -1212,7 +1212,7 @@
         "c2_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #2 opacity (from 0 to 1) (default 1)",
       "name": "c2_opacity",
       "required": false,
@@ -1223,7 +1223,7 @@
         "c3_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set color component #3 opacity (from 0 to 1) (default 1)",
       "name": "c3_opacity",
       "required": false,
@@ -1234,7 +1234,7 @@
         "all_opacity"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set opacity for all color components (from 0 to 1) (default 1)",
       "name": "all_opacity",
       "required": false,
@@ -1272,7 +1272,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
@@ -1283,7 +1283,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,

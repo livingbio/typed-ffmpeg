@@ -19,7 +19,7 @@
         "f"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set central frequency (from 0 to 999999) (default 0)",
       "flags": "..F.A....T.",
       "max": "999999",
@@ -78,7 +78,7 @@
         "w"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set width (from 0 to 99999) (default 1)",
       "flags": "..F.A....T.",
       "max": "99999",
@@ -92,7 +92,7 @@
         "g"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set gain (from -900 to 900) (default 0)",
       "flags": "..F.A....T.",
       "max": "900",
@@ -106,7 +106,7 @@
         "m"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set mix (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
@@ -134,7 +134,7 @@
         "n"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "normalize coefficients (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -250,7 +250,7 @@
         "b"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the block size (from 0 to 32768) (default 0)",
       "flags": "..F.A......",
       "max": "32768",

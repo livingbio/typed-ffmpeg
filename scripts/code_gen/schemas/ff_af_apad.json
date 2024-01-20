@@ -21,7 +21,7 @@
         "packet_size"
       ],
       "choices": [],
-      "default": "4096",
+      "default": 4096,
       "description": "set silence packet size (from 0 to INT_MAX) (default 4096)",
       "name": "packet_size",
       "required": false,
@@ -32,7 +32,7 @@
         "pad_len"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set number of samples of silence to add (from -1 to I64_MAX) (default -1)",
       "name": "pad_len",
       "required": false,
@@ -43,7 +43,7 @@
         "whole_len"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set minimum target number of samples in the audio stream (from -1 to I64_MAX) (default -1)",
       "name": "whole_len",
       "required": false,
@@ -54,7 +54,7 @@
         "pad_dur"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set duration of silence to add (default -0.000001)",
       "name": "pad_dur",
       "required": false,
@@ -65,7 +65,7 @@
         "whole_dur"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set minimum target duration in the audio stream (default -0.000001)",
       "name": "whole_dur",
       "required": false,

@@ -21,7 +21,7 @@
         "high"
       ],
       "choices": [],
-      "default": "0.196078",
+      "default": 0.196078,
       "description": "set high threshold (from 0 to 1) (default 0.196078)",
       "name": "high",
       "required": false,
@@ -32,7 +32,7 @@
         "low"
       ],
       "choices": [],
-      "default": "0.0784314",
+      "default": 0.0784314,
       "description": "set low threshold (from 0 to 1) (default 0.0784314)",
       "name": "low",
       "required": false,

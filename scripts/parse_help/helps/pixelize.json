@@ -19,7 +19,7 @@
         "w"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set block width (from 1 to 1024) (default 16)",
       "flags": "..FV.....T.",
       "max": "1024",
@@ -33,7 +33,7 @@
         "h"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set block height (from 1 to 1024) (default 16)",
       "flags": "..FV.....T.",
       "max": "1024",

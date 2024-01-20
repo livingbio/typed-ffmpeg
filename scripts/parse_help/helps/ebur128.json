@@ -18,7 +18,7 @@
         "video"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "set video output (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "meter"
       ],
       "choices": [],
-      "default": "9",
+      "default": 9,
       "description": "set scale meter (+9 to +18) (from 9 to 18) (default 9)",
       "flags": "..FV.......",
       "max": "18",
@@ -76,7 +76,7 @@
           "value": "40"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "force frame logging level (from INT_MIN to INT_MAX) (default -1)",
       "flags": "..FVA......",
       "max": "INT_MAX",
@@ -89,7 +89,7 @@
         "metadata"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "inject metadata in the filtergraph (default false)",
       "flags": "..FVA......",
       "max": null,
@@ -134,7 +134,7 @@
         "dualmono"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "treat mono input files as dual-mono (default false)",
       "flags": "..F.A......",
       "max": null,
@@ -147,7 +147,7 @@
         "panlaw"
       ],
       "choices": [],
-      "default": "-3.0103",
+      "default": -3.0103,
       "description": "set a specific pan law for dual-mono files (from -10 to 0) (default -3.0103)",
       "flags": "..F.A......",
       "max": "0",
@@ -160,7 +160,7 @@
         "target"
       ],
       "choices": [],
-      "default": "-23",
+      "default": -23,
       "description": "set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)",
       "flags": "..FV.......",
       "max": "0",

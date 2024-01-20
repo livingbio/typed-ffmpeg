@@ -22,7 +22,7 @@
         "w"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set width (from 0 to 8192) (default 0)",
       "name": "width",
       "required": false,
@@ -85,7 +85,7 @@
         "c"
       ],
       "choices": [],
-      "default": "7",
+      "default": 7,
       "description": "set color components to display (from 1 to 15) (default 7)",
       "name": "components",
       "required": false,
@@ -97,7 +97,7 @@
         "b"
       ],
       "choices": [],
-      "default": "0.9",
+      "default": 0.9,
       "description": "set background opacity (from 0 to 1) (default 0.9)",
       "name": "bgopacity",
       "required": false,
@@ -109,7 +109,7 @@
         "e"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "display envelope (default false)",
       "name": "envelope",
       "required": false,
@@ -121,7 +121,7 @@
         "ec"
       ],
       "choices": [],
-      "default": "gold",
+      "default": "\"gold\"",
       "description": "set envelope color (default \"gold\")",
       "name": "ecolor",
       "required": false,

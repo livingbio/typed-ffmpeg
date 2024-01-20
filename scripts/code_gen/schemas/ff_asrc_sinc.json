@@ -17,7 +17,7 @@
         "r"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
@@ -29,7 +29,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
@@ -40,7 +40,7 @@
         "hp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set high-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "name": "hp",
       "required": false,
@@ -51,7 +51,7 @@
         "lp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set low-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "name": "lp",
       "required": false,
@@ -62,7 +62,7 @@
         "phase"
       ],
       "choices": [],
-      "default": "50",
+      "default": 50.0,
       "description": "set filter phase response (from 0 to 100) (default 50)",
       "name": "phase",
       "required": false,
@@ -73,7 +73,7 @@
         "beta"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set kaiser window beta (from -1 to 256) (default -1)",
       "name": "beta",
       "required": false,
@@ -84,7 +84,7 @@
         "att"
       ],
       "choices": [],
-      "default": "120",
+      "default": 120.0,
       "description": "set stop-band attenuation (from 40 to 180) (default 120)",
       "name": "att",
       "required": false,
@@ -95,7 +95,7 @@
         "round"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "enable rounding (default false)",
       "name": "round",
       "required": false,
@@ -106,7 +106,7 @@
         "hptaps"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of taps for high-pass filter (from 0 to 32768) (default 0)",
       "name": "hptaps",
       "required": false,
@@ -117,7 +117,7 @@
         "lptaps"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set number of taps for low-pass filter (from 0 to 32768) (default 0)",
       "name": "lptaps",
       "required": false,

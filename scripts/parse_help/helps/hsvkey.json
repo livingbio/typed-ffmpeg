@@ -18,7 +18,7 @@
         "hue"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the hue value (from -360 to 360) (default 0)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -31,7 +31,7 @@
         "sat"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the saturation value (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -44,7 +44,7 @@
         "val"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the value value (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -57,7 +57,7 @@
         "similarity"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -70,7 +70,7 @@
         "blend"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the hsvkey blend value (from 0 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",

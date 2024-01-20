@@ -74,7 +74,7 @@
         "negate_alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "(default false)",
       "flags": "..FV.....T.",
       "max": null,

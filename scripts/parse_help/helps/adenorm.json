@@ -18,7 +18,7 @@
         "level"
       ],
       "choices": [],
-      "default": "-351",
+      "default": -351.0,
       "description": "set level (from -451 to -90) (default -351)",
       "flags": "..F.A....T.",
       "max": "-90",

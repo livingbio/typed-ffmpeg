@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "hd720",
+      "default": "\"hd720\"",
       "description": "set monitor size (default \"hd720\")",
       "name": "size",
       "required": false,
@@ -34,7 +34,7 @@
         "o"
       ],
       "choices": [],
-      "default": "0.9",
+      "default": 0.9,
       "description": "set video opacity (from 0 to 1) (default 0.9)",
       "name": "opacity",
       "required": false,
@@ -162,7 +162,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,

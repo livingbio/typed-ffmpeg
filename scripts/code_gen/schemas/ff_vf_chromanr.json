@@ -21,7 +21,7 @@
         "thres"
       ],
       "choices": [],
-      "default": "30",
+      "default": 30.0,
       "description": "set y+u+v threshold (from 1 to 200) (default 30)",
       "name": "thres",
       "required": false,
@@ -32,7 +32,7 @@
         "sizew"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set horizontal patch size (from 1 to 100) (default 5)",
       "name": "sizew",
       "required": false,
@@ -43,7 +43,7 @@
         "sizeh"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set vertical patch size (from 1 to 100) (default 5)",
       "name": "sizeh",
       "required": false,
@@ -54,7 +54,7 @@
         "stepw"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set horizontal step (from 1 to 50) (default 1)",
       "name": "stepw",
       "required": false,
@@ -65,7 +65,7 @@
         "steph"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set vertical step (from 1 to 50) (default 1)",
       "name": "steph",
       "required": false,
@@ -76,7 +76,7 @@
         "threy"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200.0,
       "description": "set y threshold (from 1 to 200) (default 200)",
       "name": "threy",
       "required": false,
@@ -87,7 +87,7 @@
         "threu"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200.0,
       "description": "set u threshold (from 1 to 200) (default 200)",
       "name": "threu",
       "required": false,
@@ -98,7 +98,7 @@
         "threv"
       ],
       "choices": [],
-      "default": "200",
+      "default": 200.0,
       "description": "set v threshold (from 1 to 200) (default 200)",
       "name": "threv",
       "required": false,

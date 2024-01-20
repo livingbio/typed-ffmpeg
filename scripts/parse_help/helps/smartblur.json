@@ -19,7 +19,7 @@
         "lr"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set luma radius (from 0.1 to 5) (default 1)",
       "flags": "..FV.......",
       "max": "5",
@@ -33,7 +33,7 @@
         "ls"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set luma strength (from -1 to 1) (default 1)",
       "flags": "..FV.......",
       "max": "1",
@@ -47,7 +47,7 @@
         "lt"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set luma threshold (from -30 to 30) (default 0)",
       "flags": "..FV.......",
       "max": "30",
@@ -61,7 +61,7 @@
         "cr"
       ],
       "choices": [],
-      "default": "-0.9",
+      "default": -0.9,
       "description": "set chroma radius (from -0.9 to 5) (default -0.9)",
       "flags": "..FV.......",
       "max": "5",
@@ -75,7 +75,7 @@
         "cs"
       ],
       "choices": [],
-      "default": "-2",
+      "default": -2.0,
       "description": "set chroma strength (from -2 to 1) (default -2)",
       "flags": "..FV.......",
       "max": "1",
@@ -89,7 +89,7 @@
         "ct"
       ],
       "choices": [],
-      "default": "-31",
+      "default": -31,
       "description": "set chroma threshold (from -31 to 30) (default -31)",
       "flags": "..FV.......",
       "max": "30",

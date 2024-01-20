@@ -32,7 +32,7 @@
         "win_size"
       ],
       "choices": [],
-      "default": "4096",
+      "default": 4096,
       "description": "set window size (from 1024 to 65536) (default 4096)",
       "flags": "..FV.......",
       "max": "65536",

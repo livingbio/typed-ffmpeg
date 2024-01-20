@@ -21,7 +21,7 @@
         "color"
       ],
       "choices": [],
-      "default": "black",
+      "default": "\"black\"",
       "description": "set the colorkey key color (default \"black\")",
       "name": "color",
       "required": false,
@@ -32,7 +32,7 @@
         "similarity"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set the colorkey similarity value (from 1e-05 to 1) (default 0.01)",
       "name": "similarity",
       "required": false,
@@ -43,7 +43,7 @@
         "blend"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the colorkey key blend value (from 0 to 1) (default 0)",
       "name": "blend",
       "required": false,

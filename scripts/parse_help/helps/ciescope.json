@@ -247,7 +247,7 @@
         "s"
       ],
       "choices": [],
-      "default": "512",
+      "default": 512,
       "description": "set ciescope size (from 256 to 8192) (default 512)",
       "flags": "..FV.......",
       "max": "8192",
@@ -261,7 +261,7 @@
         "i"
       ],
       "choices": [],
-      "default": "0.001",
+      "default": 0.001,
       "description": "set ciescope intensity (from 0 to 1) (default 0.001)",
       "flags": "..FV.......",
       "max": "1",
@@ -274,7 +274,7 @@
         "contrast"
       ],
       "choices": [],
-      "default": "0.75",
+      "default": 0.75,
       "description": "(from 0 to 1) (default 0.75)",
       "flags": "..FV.......",
       "max": "1",
@@ -287,7 +287,7 @@
         "corrgamma"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "(default true)",
       "flags": "..FV.......",
       "max": null,
@@ -300,7 +300,7 @@
         "showwhite"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "(default false)",
       "flags": "..FV.......",
       "max": null,
@@ -313,7 +313,7 @@
         "gamma"
       ],
       "choices": [],
-      "default": "2.6",
+      "default": 2.6,
       "description": "(from 0.1 to 6) (default 2.6)",
       "flags": "..FV.......",
       "max": "6",
@@ -326,7 +326,7 @@
         "fill"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "fill with CIE colors (default true)",
       "flags": "..FV.......",
       "max": null,

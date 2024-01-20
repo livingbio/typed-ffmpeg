@@ -21,7 +21,7 @@
         "loop"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "number of loops (from -1 to INT_MAX) (default 0)",
       "name": "loop",
       "required": false,
@@ -32,7 +32,7 @@
         "size"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "max number of frames to loop (from 0 to 32767) (default 0)",
       "name": "size",
       "required": false,
@@ -43,7 +43,7 @@
         "start"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the loop start frame (from 0 to I64_MAX) (default 0)",
       "name": "start",
       "required": false,

@@ -18,7 +18,7 @@
         "loop"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "number of loops (from -1 to INT_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -31,7 +31,7 @@
         "size"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "max number of frames to loop (from 0 to 32767) (default 0)",
       "flags": "..FV.......",
       "max": "32767",
@@ -44,7 +44,7 @@
         "start"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set the loop start frame (from 0 to I64_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "I64_MAX",

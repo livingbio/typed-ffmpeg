@@ -32,7 +32,7 @@
         "all"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "use last available delay for remained channels (default false)",
       "name": "all",
       "required": false,

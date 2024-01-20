@@ -32,7 +32,7 @@
         "language"
       ],
       "choices": [],
-      "default": "eng",
+      "default": "\"eng\"",
       "description": "set language (default \"eng\")",
       "name": "language",
       "required": false,
@@ -43,7 +43,7 @@
         "whitelist"
       ],
       "choices": [],
-      "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}(",
+      "default": "\"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}(",
       "description": "set character whitelist (default \"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}()<>|/\\=*&%$#@!~ \")",
       "name": "whitelist",
       "required": false,
@@ -54,7 +54,7 @@
         "blacklist"
       ],
       "choices": [],
-      "default": "",
+      "default": "\"\"",
       "description": "set character blacklist (default \"\")",
       "name": "blacklist",
       "required": false,

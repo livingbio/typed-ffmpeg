@@ -127,7 +127,7 @@
         "replaygain_preamp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "Apply replaygain pre-amplification (from -15 to 15) (default 0)",
       "flags": "..F.A......",
       "max": "15",
@@ -140,7 +140,7 @@
         "replaygain_noclip"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "Apply replaygain clipping prevention (default true)",
       "flags": "..F.A......",
       "max": null,

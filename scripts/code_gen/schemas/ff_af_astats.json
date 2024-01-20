@@ -21,7 +21,7 @@
         "length"
       ],
       "choices": [],
-      "default": "0.05",
+      "default": 0.05,
       "description": "set the window length (from 0 to 10) (default 0.05)",
       "name": "length",
       "required": false,
@@ -32,7 +32,7 @@
         "metadata"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "inject metadata in the filtergraph (default false)",
       "name": "metadata",
       "required": false,
@@ -43,7 +43,7 @@
         "reset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)",
       "name": "reset",
       "required": false,

@@ -21,7 +21,7 @@
         "rimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input red black point (from -1 to 1) (default 0)",
       "name": "rimin",
       "required": false,
@@ -32,7 +32,7 @@
         "gimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input green black point (from -1 to 1) (default 0)",
       "name": "gimin",
       "required": false,
@@ -43,7 +43,7 @@
         "bimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input blue black point (from -1 to 1) (default 0)",
       "name": "bimin",
       "required": false,
@@ -54,7 +54,7 @@
         "aimin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set input alpha black point (from -1 to 1) (default 0)",
       "name": "aimin",
       "required": false,
@@ -65,7 +65,7 @@
         "rimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input red white point (from -1 to 1) (default 1)",
       "name": "rimax",
       "required": false,
@@ -76,7 +76,7 @@
         "gimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input green white point (from -1 to 1) (default 1)",
       "name": "gimax",
       "required": false,
@@ -87,7 +87,7 @@
         "bimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input blue white point (from -1 to 1) (default 1)",
       "name": "bimax",
       "required": false,
@@ -98,7 +98,7 @@
         "aimax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input alpha white point (from -1 to 1) (default 1)",
       "name": "aimax",
       "required": false,
@@ -109,7 +109,7 @@
         "romin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output red black point (from 0 to 1) (default 0)",
       "name": "romin",
       "required": false,
@@ -120,7 +120,7 @@
         "gomin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output green black point (from 0 to 1) (default 0)",
       "name": "gomin",
       "required": false,
@@ -131,7 +131,7 @@
         "bomin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output blue black point (from 0 to 1) (default 0)",
       "name": "bomin",
       "required": false,
@@ -142,7 +142,7 @@
         "aomin"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set output alpha black point (from 0 to 1) (default 0)",
       "name": "aomin",
       "required": false,
@@ -153,7 +153,7 @@
         "romax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output red white point (from 0 to 1) (default 1)",
       "name": "romax",
       "required": false,
@@ -164,7 +164,7 @@
         "gomax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output green white point (from 0 to 1) (default 1)",
       "name": "gomax",
       "required": false,
@@ -175,7 +175,7 @@
         "bomax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output blue white point (from 0 to 1) (default 1)",
       "name": "bomax",
       "required": false,
@@ -186,7 +186,7 @@
         "aomax"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output alpha white point (from 0 to 1) (default 1)",
       "name": "aomax",
       "required": false,

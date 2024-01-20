@@ -21,7 +21,7 @@
         "quality"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set quality (from 0 to 6) (default 3)",
       "name": "quality",
       "required": false,
@@ -32,7 +32,7 @@
         "qp"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "force a constant quantizer parameter (from 0 to 63) (default 0)",
       "name": "qp",
       "required": false,
@@ -65,7 +65,7 @@
         "use_bframe_qp"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "use B-frames' QP (default false)",
       "name": "use_bframe_qp",
       "required": false,

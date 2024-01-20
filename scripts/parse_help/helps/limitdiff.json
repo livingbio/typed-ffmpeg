@@ -13,7 +13,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "0.00392157",
+      "default": 0.00392157,
       "description": "set the threshold (from 0 to 1) (default 0.00392157)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -26,7 +26,7 @@
         "elasticity"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set the elasticity (from 0 to 10) (default 2)",
       "flags": "..FV.....T.",
       "max": "10",
@@ -39,7 +39,7 @@
         "reference"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "enable reference stream (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -52,7 +52,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set the planes to filter (from 0 to 15) (default 15)",
       "flags": "..FV.....T.",
       "max": "15",

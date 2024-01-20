@@ -68,7 +68,7 @@
         "durationi"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "Maximum duration of the output (default 0)",
       "name": "duration",
       "required": false,
@@ -79,7 +79,7 @@
         "start_frame"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)",
       "name": "start_frame",
       "required": false,

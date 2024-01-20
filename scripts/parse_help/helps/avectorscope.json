@@ -79,7 +79,7 @@
         "rc"
       ],
       "choices": [],
-      "default": "40",
+      "default": 40,
       "description": "set red contrast (from 0 to 255) (default 40)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -92,7 +92,7 @@
         "gc"
       ],
       "choices": [],
-      "default": "160",
+      "default": 160,
       "description": "set green contrast (from 0 to 255) (default 160)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -105,7 +105,7 @@
         "bc"
       ],
       "choices": [],
-      "default": "80",
+      "default": 80,
       "description": "set blue contrast (from 0 to 255) (default 80)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -118,7 +118,7 @@
         "ac"
       ],
       "choices": [],
-      "default": "255",
+      "default": 255,
       "description": "set alpha contrast (from 0 to 255) (default 255)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -131,7 +131,7 @@
         "rf"
       ],
       "choices": [],
-      "default": "15",
+      "default": 15,
       "description": "set red fade (from 0 to 255) (default 15)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -144,7 +144,7 @@
         "gf"
       ],
       "choices": [],
-      "default": "10",
+      "default": 10,
       "description": "set green fade (from 0 to 255) (default 10)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -157,7 +157,7 @@
         "bf"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set blue fade (from 0 to 255) (default 5)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -170,7 +170,7 @@
         "af"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set alpha fade (from 0 to 255) (default 5)",
       "flags": "..FV.....T.",
       "max": "255",
@@ -183,7 +183,7 @@
         "zoom"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set zoom factor (from 0 to 10) (default 1)",
       "flags": "..FV.....T.",
       "max": "10",
@@ -266,7 +266,7 @@
         "swap"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "swap x axis with y axis (default true)",
       "flags": "..FV.....T.",
       "max": null,

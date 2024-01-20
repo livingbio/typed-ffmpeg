@@ -21,7 +21,7 @@
         "chl_out"
       ],
       "choices": [],
-      "default": "5.1",
+      "default": "\"5.1\"",
       "description": "set output channel layout (default \"5.1\")",
       "name": "chl_out",
       "required": false,
@@ -32,7 +32,7 @@
         "chl_in"
       ],
       "choices": [],
-      "default": "stereo",
+      "default": "\"stereo\"",
       "description": "set input channel layout (default \"stereo\")",
       "name": "chl_in",
       "required": false,
@@ -43,7 +43,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input level (from 0 to 10) (default 1)",
       "name": "level_in",
       "required": false,
@@ -54,7 +54,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output level (from 0 to 10) (default 1)",
       "name": "level_out",
       "required": false,
@@ -65,7 +65,7 @@
         "lfe"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "output LFE (default true)",
       "name": "lfe",
       "required": false,
@@ -76,7 +76,7 @@
         "lfe_low"
       ],
       "choices": [],
-      "default": "128",
+      "default": 128,
       "description": "LFE low cut off (from 0 to 256) (default 128)",
       "name": "lfe_low",
       "required": false,
@@ -87,7 +87,7 @@
         "lfe_high"
       ],
       "choices": [],
-      "default": "256",
+      "default": 256,
       "description": "LFE high cut off (from 0 to 512) (default 256)",
       "name": "lfe_high",
       "required": false,
@@ -120,7 +120,7 @@
         "smooth"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set temporal smoothness strength (from 0 to 1) (default 0)",
       "name": "smooth",
       "required": false,
@@ -131,7 +131,7 @@
         "angle"
       ],
       "choices": [],
-      "default": "90",
+      "default": 90.0,
       "description": "set soundfield transform angle (from 0 to 360) (default 90)",
       "name": "angle",
       "required": false,
@@ -142,7 +142,7 @@
         "focus"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set soundfield transform focus (from -1 to 1) (default 0)",
       "name": "focus",
       "required": false,
@@ -153,7 +153,7 @@
         "fc_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front center channel input level (from 0 to 10) (default 1)",
       "name": "fc_in",
       "required": false,
@@ -164,7 +164,7 @@
         "fc_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front center channel output level (from 0 to 10) (default 1)",
       "name": "fc_out",
       "required": false,
@@ -175,7 +175,7 @@
         "fl_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front left channel input level (from 0 to 10) (default 1)",
       "name": "fl_in",
       "required": false,
@@ -186,7 +186,7 @@
         "fl_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front left channel output level (from 0 to 10) (default 1)",
       "name": "fl_out",
       "required": false,
@@ -197,7 +197,7 @@
         "fr_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front right channel input level (from 0 to 10) (default 1)",
       "name": "fr_in",
       "required": false,
@@ -208,7 +208,7 @@
         "fr_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set front right channel output level (from 0 to 10) (default 1)",
       "name": "fr_out",
       "required": false,
@@ -219,7 +219,7 @@
         "sl_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side left channel input level (from 0 to 10) (default 1)",
       "name": "sl_in",
       "required": false,
@@ -230,7 +230,7 @@
         "sl_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side left channel output level (from 0 to 10) (default 1)",
       "name": "sl_out",
       "required": false,
@@ -241,7 +241,7 @@
         "sr_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side right channel input level (from 0 to 10) (default 1)",
       "name": "sr_in",
       "required": false,
@@ -252,7 +252,7 @@
         "sr_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set side right channel output level (from 0 to 10) (default 1)",
       "name": "sr_out",
       "required": false,
@@ -263,7 +263,7 @@
         "bl_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back left channel input level (from 0 to 10) (default 1)",
       "name": "bl_in",
       "required": false,
@@ -274,7 +274,7 @@
         "bl_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back left channel output level (from 0 to 10) (default 1)",
       "name": "bl_out",
       "required": false,
@@ -285,7 +285,7 @@
         "br_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back right channel input level (from 0 to 10) (default 1)",
       "name": "br_in",
       "required": false,
@@ -296,7 +296,7 @@
         "br_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back right channel output level (from 0 to 10) (default 1)",
       "name": "br_out",
       "required": false,
@@ -307,7 +307,7 @@
         "bc_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back center channel input level (from 0 to 10) (default 1)",
       "name": "bc_in",
       "required": false,
@@ -318,7 +318,7 @@
         "bc_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set back center channel output level (from 0 to 10) (default 1)",
       "name": "bc_out",
       "required": false,
@@ -329,7 +329,7 @@
         "lfe_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set lfe channel input level (from 0 to 10) (default 1)",
       "name": "lfe_in",
       "required": false,
@@ -340,7 +340,7 @@
         "lfe_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set lfe channel output level (from 0 to 10) (default 1)",
       "name": "lfe_out",
       "required": false,
@@ -351,7 +351,7 @@
         "allx"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set all channel's x spread (from -1 to 15) (default -1)",
       "name": "allx",
       "required": false,
@@ -362,7 +362,7 @@
         "ally"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set all channel's y spread (from -1 to 15) (default -1)",
       "name": "ally",
       "required": false,
@@ -373,7 +373,7 @@
         "fcx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front center channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "fcx",
       "required": false,
@@ -384,7 +384,7 @@
         "flx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front left channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "flx",
       "required": false,
@@ -395,7 +395,7 @@
         "frx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front right channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "frx",
       "required": false,
@@ -406,7 +406,7 @@
         "blx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back left channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "blx",
       "required": false,
@@ -417,7 +417,7 @@
         "brx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back right channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "brx",
       "required": false,
@@ -428,7 +428,7 @@
         "slx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side left channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "slx",
       "required": false,
@@ -439,7 +439,7 @@
         "srx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side right channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "srx",
       "required": false,
@@ -450,7 +450,7 @@
         "bcx"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back center channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "bcx",
       "required": false,
@@ -461,7 +461,7 @@
         "fcy"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front center channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "fcy",
       "required": false,
@@ -472,7 +472,7 @@
         "fly"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front left channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "fly",
       "required": false,
@@ -483,7 +483,7 @@
         "fry"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set front right channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "fry",
       "required": false,
@@ -494,7 +494,7 @@
         "bly"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back left channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "bly",
       "required": false,
@@ -505,7 +505,7 @@
         "bry"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back right channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "bry",
       "required": false,
@@ -516,7 +516,7 @@
         "sly"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side left channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "sly",
       "required": false,
@@ -527,7 +527,7 @@
         "sry"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set side right channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "sry",
       "required": false,
@@ -538,7 +538,7 @@
         "bcy"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set back center channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "bcy",
       "required": false,
@@ -549,7 +549,7 @@
         "win_size"
       ],
       "choices": [],
-      "default": "4096",
+      "default": 4096,
       "description": "set window size (from 1024 to 65536) (default 4096)",
       "name": "win_size",
       "required": false,
@@ -682,7 +682,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set window overlap (from 0 to 1) (default 0.5)",
       "name": "overlap",
       "required": false,

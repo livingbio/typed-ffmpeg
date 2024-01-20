@@ -21,7 +21,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "A string describing desired output framerate (default \"25\")",
       "name": "fps",
       "required": false,

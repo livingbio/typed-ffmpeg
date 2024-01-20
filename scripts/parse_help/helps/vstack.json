@@ -13,7 +13,7 @@
         "inputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set number of inputs (from 2 to INT_MAX) (default 2)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -26,7 +26,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "force termination when the shortest input terminates (default false)",
       "flags": "..FV.......",
       "max": null,

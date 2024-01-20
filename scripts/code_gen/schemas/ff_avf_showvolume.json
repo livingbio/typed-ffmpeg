@@ -22,7 +22,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -33,7 +33,7 @@
         "b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set border width (from 0 to 5) (default 1)",
       "name": "b",
       "required": false,
@@ -44,7 +44,7 @@
         "w"
       ],
       "choices": [],
-      "default": "400",
+      "default": 400,
       "description": "set channel width (from 80 to 8192) (default 400)",
       "name": "w",
       "required": false,
@@ -55,7 +55,7 @@
         "h"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20,
       "description": "set channel height (from 1 to 900) (default 20)",
       "name": "h",
       "required": false,
@@ -66,7 +66,7 @@
         "f"
       ],
       "choices": [],
-      "default": "0.95",
+      "default": 0.95,
       "description": "set fade (from 0 to 1) (default 0.95)",
       "name": "f",
       "required": false,
@@ -77,7 +77,7 @@
         "c"
       ],
       "choices": [],
-      "default": "PEAK*255+floor((1-PEAK",
+      "default": "\"PEAK*255+floor((1-PEAK",
       "description": "set volume color expression (default \"PEAK*255+floor((1-PEAK)*255)*256+0xff000000\")",
       "name": "c",
       "required": false,
@@ -88,7 +88,7 @@
         "t"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "display channel names (default true)",
       "name": "t",
       "required": false,
@@ -99,7 +99,7 @@
         "v"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "display volume value (default true)",
       "name": "v",
       "required": false,
@@ -110,7 +110,7 @@
         "dm"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "duration for max value display (from 0 to 9000) (default 0)",
       "name": "dm",
       "required": false,
@@ -121,7 +121,7 @@
         "dmc"
       ],
       "choices": [],
-      "default": "orange",
+      "default": "\"orange\"",
       "description": "set color of the max value line (default \"orange\")",
       "name": "dmc",
       "required": false,
@@ -154,7 +154,7 @@
         "s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set step size (from 0 to 5) (default 0)",
       "name": "s",
       "required": false,
@@ -165,7 +165,7 @@
         "p"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set background opacity (from 0 to 1) (default 0)",
       "name": "p",
       "required": false,

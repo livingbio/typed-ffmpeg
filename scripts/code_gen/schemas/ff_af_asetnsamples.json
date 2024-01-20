@@ -22,7 +22,7 @@
         "n"
       ],
       "choices": [],
-      "default": "1024",
+      "default": 1024,
       "description": "set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)",
       "name": "nb_out_samples",
       "required": false,
@@ -34,7 +34,7 @@
         "p"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "pad last frame with zeros (default true)",
       "name": "pad",
       "required": false,

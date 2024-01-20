@@ -21,7 +21,7 @@
         "shift"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set DC shift (from -1 to 1) (default 0)",
       "name": "shift",
       "required": false,
@@ -32,7 +32,7 @@
         "limitergain"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set limiter gain (from 0 to 1) (default 0)",
       "name": "limitergain",
       "required": false,

@@ -21,7 +21,7 @@
         "high"
       ],
       "choices": [],
-      "default": "0.117647",
+      "default": 0.117647,
       "description": "set high threshold (from 0 to 1) (default 0.117647)",
       "name": "high",
       "required": false,
@@ -32,7 +32,7 @@
         "low"
       ],
       "choices": [],
-      "default": "0.0588235",
+      "default": 0.0588235,
       "description": "set low threshold (from 0 to 1) (default 0.0588235)",
       "name": "low",
       "required": false,
@@ -43,7 +43,7 @@
         "radius"
       ],
       "choices": [],
-      "default": "50",
+      "default": 50,
       "description": "search radius for maxima detection (from 1 to 100) (default 50)",
       "name": "radius",
       "required": false,
@@ -54,7 +54,7 @@
         "block_pct"
       ],
       "choices": [],
-      "default": "80",
+      "default": 80,
       "description": "block pooling threshold when calculating blurriness (from 1 to 100) (default 80)",
       "name": "block_pct",
       "required": false,
@@ -66,7 +66,7 @@
         "block_height"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)",
       "name": "block_width",
       "required": false,
@@ -77,7 +77,7 @@
         "planes"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,

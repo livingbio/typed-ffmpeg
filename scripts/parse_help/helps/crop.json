@@ -72,7 +72,7 @@
         "keep_aspect"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "keep aspect ratio (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -85,7 +85,7 @@
         "exact"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "do exact cropping (default false)",
       "flags": "..FV.......",
       "max": null,

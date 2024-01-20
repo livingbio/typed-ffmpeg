@@ -13,7 +13,7 @@
         "inputs"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "specify the number of inputs (from 1 to 64) (default 2)",
       "flags": "..F.A......",
       "max": "64",

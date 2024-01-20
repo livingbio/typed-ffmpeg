@@ -18,7 +18,7 @@
         "delay"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "base delay in milliseconds (from 0 to 30) (default 0)",
       "flags": "..F.A......",
       "max": "30",
@@ -31,7 +31,7 @@
         "depth"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "added swept delay in milliseconds (from 0 to 10) (default 2)",
       "flags": "..F.A......",
       "max": "10",
@@ -44,7 +44,7 @@
         "regen"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "percentage regeneration (delayed signal feedback) (from -95 to 95) (default 0)",
       "flags": "..F.A......",
       "max": "95",
@@ -57,7 +57,7 @@
         "width"
       ],
       "choices": [],
-      "default": "71",
+      "default": 71.0,
       "description": "percentage of delayed signal mixed with original (from 0 to 100) (default 71)",
       "flags": "..F.A......",
       "max": "100",
@@ -70,7 +70,7 @@
         "speed"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "sweeps per second (Hz) (from 0.1 to 10) (default 0.5)",
       "flags": "..F.A......",
       "max": "10",
@@ -121,7 +121,7 @@
         "phase"
       ],
       "choices": [],
-      "default": "25",
+      "default": 25.0,
       "description": "swept wave percentage phase-shift for multi-channel (from 0 to 100) (default 25)",
       "flags": "..F.A......",
       "max": "100",

@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set x for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set y for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -44,7 +44,7 @@
         "w"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set width for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -57,7 +57,7 @@
         "h"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set height for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -70,7 +70,7 @@
         "rx"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set x for the rectangular search area (from 0 to 64) (default 16)",
       "flags": "..FV.......",
       "max": "64",
@@ -83,7 +83,7 @@
         "ry"
       ],
       "choices": [],
-      "default": "16",
+      "default": 16,
       "description": "set y for the rectangular search area (from 0 to 64) (default 16)",
       "flags": "..FV.......",
       "max": "64",
@@ -134,7 +134,7 @@
         "blocksize"
       ],
       "choices": [],
-      "default": "8",
+      "default": 8,
       "description": "set motion search blocksize (from 4 to 128) (default 8)",
       "flags": "..FV.......",
       "max": "128",
@@ -147,7 +147,7 @@
         "contrast"
       ],
       "choices": [],
-      "default": "125",
+      "default": 125,
       "description": "set contrast threshold for blocks (from 1 to 255) (default 125)",
       "flags": "..FV.......",
       "max": "255",
@@ -199,7 +199,7 @@
         "opencl"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "ignored (default false)",
       "flags": "..FV.......",
       "max": null,

@@ -22,7 +22,7 @@
         "w"
       ],
       "choices": [],
-      "default": "55",
+      "default": 55.0,
       "description": "set window size (from 10 to 100) (default 55)",
       "name": "window",
       "required": false,
@@ -34,7 +34,7 @@
         "o"
       ],
       "choices": [],
-      "default": "75",
+      "default": 75.0,
       "description": "set window overlap (from 50 to 95) (default 75)",
       "name": "overlap",
       "required": false,
@@ -46,7 +46,7 @@
         "a"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set autoregression order (from 0 to 25) (default 2)",
       "name": "arorder",
       "required": false,
@@ -58,7 +58,7 @@
         "t"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set threshold (from 1 to 100) (default 2)",
       "name": "threshold",
       "required": false,
@@ -70,7 +70,7 @@
         "b"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set burst fusion (from 0 to 10) (default 2)",
       "name": "burst",
       "required": false,

@@ -18,7 +18,7 @@
         "cue"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)",
       "flags": "..FVA......",
       "max": "I64_MAX",
@@ -31,7 +31,7 @@
         "preroll"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "preroll duration in seconds (default 0)",
       "flags": "..FVA......",
       "max": null,
@@ -44,7 +44,7 @@
         "buffer"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "buffer duration in seconds (default 0)",
       "flags": "..FVA......",
       "max": null,

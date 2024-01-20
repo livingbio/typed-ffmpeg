@@ -38,7 +38,7 @@
         "scale_factor"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "scale factor for SRCNN model (from 2 to 4) (default 2)",
       "flags": "..FV.......",
       "max": "4",

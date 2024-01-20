@@ -18,7 +18,7 @@
         "1b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 65Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -31,7 +31,7 @@
         "2b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 92Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -44,7 +44,7 @@
         "3b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 131Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -57,7 +57,7 @@
         "4b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 185Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -70,7 +70,7 @@
         "5b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 262Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -83,7 +83,7 @@
         "6b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 370Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -96,7 +96,7 @@
         "7b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 523Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -109,7 +109,7 @@
         "8b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 740Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -122,7 +122,7 @@
         "9b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 1047Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -135,7 +135,7 @@
         "10b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 1480Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -148,7 +148,7 @@
         "11b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 2093Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -161,7 +161,7 @@
         "12b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 2960Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -174,7 +174,7 @@
         "13b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 4186Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -187,7 +187,7 @@
         "14b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 5920Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -200,7 +200,7 @@
         "15b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 8372Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -213,7 +213,7 @@
         "16b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 11840Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -226,7 +226,7 @@
         "17b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 16744Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",
@@ -239,7 +239,7 @@
         "18b"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set 20000Hz band gain (from 0 to 20) (default 1)",
       "flags": "..F.A......",
       "max": "20",

@@ -21,7 +21,7 @@
         "m1"
       ],
       "choices": [],
-      "default": "",
+      "default": "\"\"",
       "description": "set 1st metadata key (default \"\")",
       "name": "m1",
       "required": false,
@@ -32,7 +32,7 @@
         "fg1"
       ],
       "choices": [],
-      "default": "0xffff0000",
+      "default": "\"0xffff0000\"",
       "description": "set 1st foreground color expression (default \"0xffff0000\")",
       "name": "fg1",
       "required": false,
@@ -43,7 +43,7 @@
         "m2"
       ],
       "choices": [],
-      "default": "",
+      "default": "\"\"",
       "description": "set 2nd metadata key (default \"\")",
       "name": "m2",
       "required": false,
@@ -54,7 +54,7 @@
         "fg2"
       ],
       "choices": [],
-      "default": "0xff00ff00",
+      "default": "\"0xff00ff00\"",
       "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
       "name": "fg2",
       "required": false,
@@ -65,7 +65,7 @@
         "m3"
       ],
       "choices": [],
-      "default": "",
+      "default": "\"\"",
       "description": "set 3rd metadata key (default \"\")",
       "name": "m3",
       "required": false,
@@ -76,7 +76,7 @@
         "fg3"
       ],
       "choices": [],
-      "default": "0xffff00ff",
+      "default": "\"0xffff00ff\"",
       "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
       "name": "fg3",
       "required": false,
@@ -87,7 +87,7 @@
         "m4"
       ],
       "choices": [],
-      "default": "",
+      "default": "\"\"",
       "description": "set 4th metadata key (default \"\")",
       "name": "m4",
       "required": false,
@@ -98,7 +98,7 @@
         "fg4"
       ],
       "choices": [],
-      "default": "0xffffff00",
+      "default": "\"0xffffff00\"",
       "description": "set 4th foreground color expression (default \"0xffffff00\")",
       "name": "fg4",
       "required": false,
@@ -109,7 +109,7 @@
         "bg"
       ],
       "choices": [],
-      "default": "white",
+      "default": "\"white\"",
       "description": "set background color (default \"white\")",
       "name": "bg",
       "required": false,
@@ -120,7 +120,7 @@
         "min"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1.0,
       "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
       "name": "min",
       "required": false,
@@ -131,7 +131,7 @@
         "max"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
       "name": "max",
       "required": false,
@@ -207,7 +207,7 @@
         "s"
       ],
       "choices": [],
-      "default": "900x256",
+      "default": "\"900x256\"",
       "description": "set graph size (default \"900x256\")",
       "name": "size",
       "required": false,
@@ -219,7 +219,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,

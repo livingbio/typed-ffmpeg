@@ -21,7 +21,7 @@
         "level_in"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set input gain (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
@@ -32,7 +32,7 @@
         "level_out"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set output gain (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
@@ -80,7 +80,7 @@
         "amount"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set modulation (from 0 to 1) (default 1)",
       "name": "amount",
       "required": false,
@@ -91,7 +91,7 @@
         "offset_l"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set offset L (from 0 to 1) (default 0)",
       "name": "offset_l",
       "required": false,
@@ -102,7 +102,7 @@
         "offset_r"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set offset R (from 0 to 1) (default 0.5)",
       "name": "offset_r",
       "required": false,
@@ -113,7 +113,7 @@
         "width"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set pulse width (from 0 to 2) (default 1)",
       "name": "width",
       "required": false,
@@ -151,7 +151,7 @@
         "bpm"
       ],
       "choices": [],
-      "default": "120",
+      "default": 120.0,
       "description": "set BPM (from 30 to 300) (default 120)",
       "name": "bpm",
       "required": false,
@@ -162,7 +162,7 @@
         "ms"
       ],
       "choices": [],
-      "default": "500",
+      "default": 500,
       "description": "set ms (from 10 to 2000) (default 500)",
       "name": "ms",
       "required": false,
@@ -173,7 +173,7 @@
         "hz"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set frequency (from 0.01 to 100) (default 2)",
       "name": "hz",
       "required": false,

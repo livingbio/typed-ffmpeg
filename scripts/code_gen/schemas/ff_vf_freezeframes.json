@@ -25,7 +25,7 @@
         "first"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set first frame to freeze (from 0 to I64_MAX) (default 0)",
       "name": "first",
       "required": false,
@@ -36,7 +36,7 @@
         "last"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set last frame to freeze (from 0 to I64_MAX) (default 0)",
       "name": "last",
       "required": false,
@@ -47,7 +47,7 @@
         "replace"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set frame to replace (from 0 to I64_MAX) (default 0)",
       "name": "replace",
       "required": false,

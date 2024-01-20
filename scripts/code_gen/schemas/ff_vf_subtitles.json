@@ -55,7 +55,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "enable processing of alpha channel (default false)",
       "name": "alpha",
       "required": false,
@@ -78,7 +78,7 @@
         "si"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "name": "stream_index",
       "required": false,

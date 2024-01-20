@@ -21,7 +21,7 @@
         "dry"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set dry gain (from 0 to 1) (default 1)",
       "name": "dry",
       "required": false,
@@ -32,7 +32,7 @@
         "wet"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set wet gain (from 0 to 1) (default 1)",
       "name": "wet",
       "required": false,
@@ -43,7 +43,7 @@
         "boost"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set max boost (from 1 to 12) (default 2)",
       "name": "boost",
       "required": false,
@@ -54,7 +54,7 @@
         "decay"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set decay (from 0 to 1) (default 0)",
       "name": "decay",
       "required": false,
@@ -65,7 +65,7 @@
         "feedback"
       ],
       "choices": [],
-      "default": "0.9",
+      "default": 0.9,
       "description": "set feedback (from 0 to 1) (default 0.9)",
       "name": "feedback",
       "required": false,
@@ -76,7 +76,7 @@
         "cutoff"
       ],
       "choices": [],
-      "default": "100",
+      "default": 100.0,
       "description": "set cutoff (from 50 to 900) (default 100)",
       "name": "cutoff",
       "required": false,
@@ -87,7 +87,7 @@
         "slope"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set slope (from 0.0001 to 1) (default 0.5)",
       "name": "slope",
       "required": false,
@@ -98,7 +98,7 @@
         "delay"
       ],
       "choices": [],
-      "default": "20",
+      "default": 20.0,
       "description": "set delay (from 1 to 100) (default 20)",
       "name": "delay",
       "required": false,
@@ -109,7 +109,7 @@
         "channels"
       ],
       "choices": [],
-      "default": "all",
+      "default": "\"all\"",
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,

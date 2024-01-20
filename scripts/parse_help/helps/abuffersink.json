@@ -83,7 +83,7 @@
         "all_channel_counts"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "accept all channel counts (default false)",
       "flags": "..F.A......",
       "max": null,

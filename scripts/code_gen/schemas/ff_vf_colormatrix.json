@@ -62,7 +62,7 @@
           "value": "4"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "set source color matrix (from -1 to 4) (default -1)",
       "name": "src",
       "required": false,
@@ -114,7 +114,7 @@
           "value": "4"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "set destination color matrix (from -1 to 4) (default -1)",
       "name": "dst",
       "required": false,

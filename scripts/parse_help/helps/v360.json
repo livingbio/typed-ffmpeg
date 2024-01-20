@@ -498,7 +498,7 @@
         "w"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "output width (from 0 to 32767) (default 0)",
       "flags": "..FV.......",
       "max": "32767",
@@ -511,7 +511,7 @@
         "h"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "output height (from 0 to 32767) (default 0)",
       "flags": "..FV.......",
       "max": "32767",
@@ -640,7 +640,7 @@
         "in_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "percent input cubemap pads (from 0 to 0.1) (default 0)",
       "flags": "..FV.....T.",
       "max": "0.1",
@@ -653,7 +653,7 @@
         "out_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "percent output cubemap pads (from 0 to 0.1) (default 0)",
       "flags": "..FV.....T.",
       "max": "0.1",
@@ -666,7 +666,7 @@
         "fin_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "fixed input cubemap pads (from 0 to 100) (default 0)",
       "flags": "..FV.....T.",
       "max": "100",
@@ -679,7 +679,7 @@
         "fout_pad"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "fixed output cubemap pads (from 0 to 100) (default 0)",
       "flags": "..FV.....T.",
       "max": "100",
@@ -692,7 +692,7 @@
         "yaw"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "yaw rotation (from -180 to 180) (default 0)",
       "flags": "..FV.....T.",
       "max": "180",
@@ -705,7 +705,7 @@
         "pitch"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "pitch rotation (from -180 to 180) (default 0)",
       "flags": "..FV.....T.",
       "max": "180",
@@ -718,7 +718,7 @@
         "roll"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "roll rotation (from -180 to 180) (default 0)",
       "flags": "..FV.....T.",
       "max": "180",
@@ -744,7 +744,7 @@
         "h_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output horizontal field of view (from 0 to 360) (default 0)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -757,7 +757,7 @@
         "v_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output vertical field of view (from 0 to 360) (default 0)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -770,7 +770,7 @@
         "d_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output diagonal field of view (from 0 to 360) (default 0)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -783,7 +783,7 @@
         "h_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip out video horizontally (default false)",
       "flags": "..FV.....T.",
       "max": null,
@@ -796,7 +796,7 @@
         "v_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip out video vertically (default false)",
       "flags": "..FV.....T.",
       "max": null,
@@ -809,7 +809,7 @@
         "d_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip out video indepth (default false)",
       "flags": "..FV.....T.",
       "max": null,
@@ -822,7 +822,7 @@
         "ih_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip in video horizontally (default false)",
       "flags": "..FV.....T.",
       "max": null,
@@ -835,7 +835,7 @@
         "iv_flip"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "flip in video vertically (default false)",
       "flags": "..FV.....T.",
       "max": null,
@@ -848,7 +848,7 @@
         "in_trans"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "transpose video input (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -861,7 +861,7 @@
         "out_trans"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "transpose video output (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -874,7 +874,7 @@
         "ih_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "input horizontal field of view (from 0 to 360) (default 0)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -887,7 +887,7 @@
         "iv_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "input vertical field of view (from 0 to 360) (default 0)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -900,7 +900,7 @@
         "id_fov"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "input diagonal field of view (from 0 to 360) (default 0)",
       "flags": "..FV.....T.",
       "max": "360",
@@ -913,7 +913,7 @@
         "h_offset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output horizontal off-axis offset (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -926,7 +926,7 @@
         "v_offset"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "output vertical off-axis offset (from -1 to 1) (default 0)",
       "flags": "..FV.....T.",
       "max": "1",
@@ -939,7 +939,7 @@
         "alpha_mask"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "build mask in alpha plane (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -952,7 +952,7 @@
         "reset_rot"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "reset rotation (default false)",
       "flags": "..FV.....T.",
       "max": null,

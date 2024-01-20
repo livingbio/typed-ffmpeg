@@ -41,7 +41,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -64,7 +64,7 @@
         "rule"
       ],
       "choices": [],
-      "default": "110",
+      "default": 110,
       "description": "set rule (from 0 to 255) (default 110)",
       "name": "rule",
       "required": false,
@@ -76,7 +76,7 @@
         "ratio"
       ],
       "choices": [],
-      "default": "0.618034",
+      "default": 0.618034,
       "description": "set fill ratio for filling initial grid randomly (from 0 to 1) (default 0.618034)",
       "name": "random_fill_ratio",
       "required": false,
@@ -88,7 +88,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the seed for filling the initial grid randomly (from -1 to UINT32_MAX) (default -1)",
       "name": "random_seed",
       "required": false,
@@ -99,7 +99,7 @@
         "scroll"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "scroll pattern downward (default true)",
       "name": "scroll",
       "required": false,
@@ -110,7 +110,7 @@
         "start_full"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "start filling the whole video (default false)",
       "name": "start_full",
       "required": false,
@@ -121,7 +121,7 @@
         "full"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "start filling the whole video (default true)",
       "name": "full",
       "required": false,
@@ -132,7 +132,7 @@
         "stitch"
       ],
       "choices": [],
-      "default": "true",
+      "default": 1,
       "description": "stitch boundaries (default true)",
       "name": "stitch",
       "required": false,

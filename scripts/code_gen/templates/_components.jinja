@@ -25,7 +25,12 @@
 
 
 {% macro default_value(option) %}
+{% if option.default == option.default %}
 Default({{option.default.__repr__()}})
+{% else %}
+{# comparing NaN to itself results in False. #}
+Default("nan")
+{% endif %}
 {% endmacro %}
 
 

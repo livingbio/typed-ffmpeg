@@ -18,13 +18,13 @@ def test_render(snapshot: SnapshotAssertion) -> None:
             is_input_dynamic=False,
             is_output_dynamic=False,
             input_stream_typings=[
-                {"name": "input", "type": "AVMEDIA_TYPE_AUDIO"},
-                {"name": "desired", "type": "AVMEDIA_TYPE_AUDIO"},
+                {"name": "input", "type": "audio"},
+                {"name": "desired", "type": "audio"},
             ],
             output_stream_typings=[
                 {
                     "name": "default",
-                    "type": "AVMEDIA_TYPE_AUDIO",
+                    "type": "audio",
                 }
             ],
             options=[

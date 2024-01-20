@@ -22,7 +22,7 @@
         "black_min_duration"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2.0,
       "description": "set minimum detected black duration in seconds (from 0 to DBL_MAX) (default 2)",
       "name": "d",
       "required": false,
@@ -34,7 +34,7 @@
         "pic_th"
       ],
       "choices": [],
-      "default": "0.98",
+      "default": 0.98,
       "description": "set the picture black ratio threshold (from 0 to 1) (default 0.98)",
       "name": "picture_black_ratio_th",
       "required": false,
@@ -46,7 +46,7 @@
         "pix_th"
       ],
       "choices": [],
-      "default": "0.1",
+      "default": 0.1,
       "description": "set the pixel black threshold (from 0 to 1) (default 0.1)",
       "name": "pixel_black_th",
       "required": false,

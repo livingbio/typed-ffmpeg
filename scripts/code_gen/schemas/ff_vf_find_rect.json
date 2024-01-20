@@ -32,7 +32,7 @@
         "threshold"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set threshold (from 0 to 1) (default 0.5)",
       "name": "threshold",
       "required": false,
@@ -43,7 +43,7 @@
         "mipmaps"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set mipmaps (from 1 to 5) (default 3)",
       "name": "mipmaps",
       "required": false,
@@ -57,7 +57,7 @@
         "ymax"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "xmin",
       "required": false,
@@ -68,7 +68,7 @@
         "discard"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "(default false)",
       "name": "discard",
       "required": false,

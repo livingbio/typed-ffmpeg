@@ -21,7 +21,7 @@
         "hue"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the hue (from 0 to 360) (default 0)",
       "name": "hue",
       "required": false,
@@ -32,7 +32,7 @@
         "saturation"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set the saturation (from 0 to 1) (default 0.5)",
       "name": "saturation",
       "required": false,
@@ -43,7 +43,7 @@
         "lightness"
       ],
       "choices": [],
-      "default": "0.5",
+      "default": 0.5,
       "description": "set the lightness (from 0 to 1) (default 0.5)",
       "name": "lightness",
       "required": false,
@@ -54,7 +54,7 @@
         "mix"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set the mix of source lightness (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,

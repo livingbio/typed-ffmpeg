@@ -16,7 +16,7 @@
         "mapping"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set input to output plane mapping (from -1 to 8.58993e+08) (default -1)",
       "name": "mapping",
       "required": false,
@@ -38,7 +38,7 @@
         "map0s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 1st input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map0s",
       "required": false,
@@ -49,7 +49,7 @@
         "map0p"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 1st input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map0p",
       "required": false,
@@ -60,7 +60,7 @@
         "map1s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 2nd input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map1s",
       "required": false,
@@ -71,7 +71,7 @@
         "map1p"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 2nd input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map1p",
       "required": false,
@@ -82,7 +82,7 @@
         "map2s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 3rd input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map2s",
       "required": false,
@@ -93,7 +93,7 @@
         "map2p"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 3rd input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map2p",
       "required": false,
@@ -104,7 +104,7 @@
         "map3s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 4th input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map3s",
       "required": false,
@@ -115,7 +115,7 @@
         "map3p"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "set 4th input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map3p",
       "required": false,

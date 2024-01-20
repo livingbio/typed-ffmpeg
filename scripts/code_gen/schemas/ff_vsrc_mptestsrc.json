@@ -17,7 +17,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -29,7 +29,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
@@ -109,7 +109,7 @@
         "m"
       ],
       "choices": [],
-      "default": "30",
+      "default": 30,
       "description": "Set the maximum number of frames generated for each test (from 1 to I64_MAX) (default 30)",
       "name": "max_frames",
       "required": false,

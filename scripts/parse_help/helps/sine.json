@@ -14,7 +14,7 @@
         "f"
       ],
       "choices": [],
-      "default": "440",
+      "default": 440.0,
       "description": "set the sine frequency (from 0 to DBL_MAX) (default 440)",
       "flags": "..F.A......",
       "max": "DBL_MAX",
@@ -28,7 +28,7 @@
         "b"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the beep frequency factor (from 0 to DBL_MAX) (default 0)",
       "flags": "..F.A......",
       "max": "DBL_MAX",
@@ -42,7 +42,7 @@
         "r"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set the sample rate (from 1 to INT_MAX) (default 44100)",
       "flags": "..F.A......",
       "max": "INT_MAX",
@@ -56,7 +56,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set the audio duration (default 0)",
       "flags": "..F.A......",
       "max": null,

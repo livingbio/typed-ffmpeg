@@ -21,7 +21,7 @@
         "n"
       ],
       "choices": [],
-      "default": "3",
+      "default": 3,
       "description": "set scale factor (from 2 to 4) (default 3)",
       "name": "n",
       "required": false,

@@ -45,7 +45,7 @@
         "s"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0,
       "description": "Number of the first frame to which to apply the effect. (from 0 to INT_MAX) (default 0)",
       "name": "start_frame",
       "required": false,
@@ -57,7 +57,7 @@
         "n"
       ],
       "choices": [],
-      "default": "25",
+      "default": 25,
       "description": "Number of frames to which the effect should be applied. (from 1 to INT_MAX) (default 25)",
       "name": "nb_frames",
       "required": false,
@@ -68,7 +68,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "fade alpha if it is available on the input (default false)",
       "name": "alpha",
       "required": false,
@@ -80,7 +80,7 @@
         "st"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "Number of seconds of the beginning of the effect. (default 0)",
       "name": "start_time",
       "required": false,
@@ -92,7 +92,7 @@
         "d"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "Duration of the effect in seconds. (default 0)",
       "name": "duration",
       "required": false,
@@ -104,7 +104,7 @@
         "c"
       ],
       "choices": [],
-      "default": "black",
+      "default": "\"black\"",
       "description": "set color (default \"black\")",
       "name": "color",
       "required": false,

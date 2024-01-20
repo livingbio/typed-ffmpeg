@@ -18,7 +18,7 @@
         "step"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set frame step (from 1 to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",

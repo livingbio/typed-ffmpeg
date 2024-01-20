@@ -49,6 +49,46 @@ def _parse_io(line: str) -> tuple[int, str, StreamType]:
     return int(index), name, StreamType(_type.strip("()"))
 
 
+def _parse_default(default: str, type: str) -> int | float | bool | str:
+    try:
+        match (type):
+            case "boolean":
+                assert default in ("true", "false")
+                return default == "true"
+            case "duration":
+                return float(default)
+            case "color":
+                return default
+            case "flags":
+                return default
+            case "dictionary":
+                return default
+            case "pix_fmt":
+                return default
+            case "int":
+                return int(default)
+            case "int64":
+                return int(default)
+            case "double":
+                return float(default)
+            case "float":
+                return float(default)
+            case "string":
+                return default
+            case "video_rate":
+                return default
+            case "image_size":
+                return default
+            case "rational":
+                return default
+            case "sample_fmt":
+                return default
+            case "binary":
+                return default
+    except ValueError:
+        return default
+
+
 def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOption]:
     output: list[AVOption] = []
     for line in lines:
@@ -78,6 +118,8 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
                 _value = _name
 
             choices.append(AVChoice(name=_name, help=_help.strip(), value=_value.strip(), flags=_flags.strip()))
+
+        default = _parse_default(default, type)
 
         output.append(
             AVOption(

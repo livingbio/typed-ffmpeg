@@ -19,7 +19,7 @@
         "lx"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set luma matrix horizontal size (from 3 to 23) (default 5)",
       "flags": "..FV.......",
       "max": "23",
@@ -33,7 +33,7 @@
         "ly"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set luma matrix vertical size (from 3 to 23) (default 5)",
       "flags": "..FV.......",
       "max": "23",
@@ -47,7 +47,7 @@
         "la"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set luma effect strength (from -2 to 5) (default 1)",
       "flags": "..FV.......",
       "max": "5",
@@ -61,7 +61,7 @@
         "cx"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set chroma matrix horizontal size (from 3 to 23) (default 5)",
       "flags": "..FV.......",
       "max": "23",
@@ -75,7 +75,7 @@
         "cy"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set chroma matrix vertical size (from 3 to 23) (default 5)",
       "flags": "..FV.......",
       "max": "23",
@@ -89,7 +89,7 @@
         "ca"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set chroma effect strength (from -2 to 5) (default 0)",
       "flags": "..FV.......",
       "max": "5",
@@ -103,7 +103,7 @@
         "ax"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set alpha matrix horizontal size (from 3 to 23) (default 5)",
       "flags": "..FV.......",
       "max": "23",
@@ -117,7 +117,7 @@
         "ay"
       ],
       "choices": [],
-      "default": "5",
+      "default": 5,
       "description": "set alpha matrix vertical size (from 3 to 23) (default 5)",
       "flags": "..FV.......",
       "max": "23",
@@ -131,7 +131,7 @@
         "aa"
       ],
       "choices": [],
-      "default": "0",
+      "default": 0.0,
       "description": "set alpha effect strength (from -2 to 5) (default 0)",
       "flags": "..FV.......",
       "max": "5",

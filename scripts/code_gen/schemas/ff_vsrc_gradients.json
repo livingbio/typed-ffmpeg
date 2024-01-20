@@ -17,7 +17,7 @@
         "s"
       ],
       "choices": [],
-      "default": "640x480",
+      "default": "\"640x480\"",
       "description": "set frame size (default \"640x480\")",
       "name": "size",
       "required": false,
@@ -29,7 +29,7 @@
         "r"
       ],
       "choices": [],
-      "default": "25",
+      "default": "\"25\"",
       "description": "set frame rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -40,7 +40,7 @@
         "c0"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 1st color (default \"random\")",
       "name": "c0",
       "required": false,
@@ -51,7 +51,7 @@
         "c1"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 2nd color (default \"random\")",
       "name": "c1",
       "required": false,
@@ -62,7 +62,7 @@
         "c2"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 3rd color (default \"random\")",
       "name": "c2",
       "required": false,
@@ -73,7 +73,7 @@
         "c3"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 4th color (default \"random\")",
       "name": "c3",
       "required": false,
@@ -84,7 +84,7 @@
         "c4"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 5th color (default \"random\")",
       "name": "c4",
       "required": false,
@@ -95,7 +95,7 @@
         "c5"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 6th color (default \"random\")",
       "name": "c5",
       "required": false,
@@ -106,7 +106,7 @@
         "c6"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 7th color (default \"random\")",
       "name": "c6",
       "required": false,
@@ -117,7 +117,7 @@
         "c7"
       ],
       "choices": [],
-      "default": "random",
+      "default": "\"random\"",
       "description": "set 8th color (default \"random\")",
       "name": "c7",
       "required": false,
@@ -128,7 +128,7 @@
         "x0"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line source x0 (from -1 to INT_MAX) (default -1)",
       "name": "x0",
       "required": false,
@@ -139,7 +139,7 @@
         "y0"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line source y0 (from -1 to INT_MAX) (default -1)",
       "name": "y0",
       "required": false,
@@ -150,7 +150,7 @@
         "x1"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line destination x1 (from -1 to INT_MAX) (default -1)",
       "name": "x1",
       "required": false,
@@ -161,7 +161,7 @@
         "y1"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set gradient line destination y1 (from -1 to INT_MAX) (default -1)",
       "name": "y1",
       "required": false,
@@ -173,7 +173,7 @@
         "n"
       ],
       "choices": [],
-      "default": "2",
+      "default": 2,
       "description": "set the number of colors (from 2 to 8) (default 2)",
       "name": "nb_colors",
       "required": false,
@@ -184,7 +184,7 @@
         "seed"
       ],
       "choices": [],
-      "default": "-1",
+      "default": -1,
       "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
@@ -196,7 +196,7 @@
         "d"
       ],
       "choices": [],
-      "default": "-0.000001",
+      "default": -1e-06,
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
@@ -207,7 +207,7 @@
         "speed"
       ],
       "choices": [],
-      "default": "0.01",
+      "default": 0.01,
       "description": "set gradients rotation speed (from 1e-05 to 1) (default 0.01)",
       "name": "speed",
       "required": false,

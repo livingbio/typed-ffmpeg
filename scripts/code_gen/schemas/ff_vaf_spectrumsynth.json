@@ -25,7 +25,7 @@
         "sample_rate"
       ],
       "choices": [],
-      "default": "44100",
+      "default": 44100,
       "description": "set sample rate (from 15 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
@@ -36,7 +36,7 @@
         "channels"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set channels (from 1 to 8) (default 1)",
       "name": "channels",
       "required": false,
@@ -223,7 +223,7 @@
         "overlap"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1.0,
       "description": "set window overlap (from 0 to 1) (default 1)",
       "name": "overlap",
       "required": false,

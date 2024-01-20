@@ -62,7 +62,7 @@
           "value": "8"
         }
       ],
-      "default": "0",
+      "default": 0,
       "description": "Set all color properties together (from 0 to 8) (default 0)",
       "name": "all",
       "required": false,
@@ -119,7 +119,7 @@
           "value": "9"
         }
       ],
-      "default": "2",
+      "default": 2,
       "description": "Output colorspace (from 0 to 14) (default 2)",
       "name": "space",
       "required": false,
@@ -151,7 +151,7 @@
           "value": "2"
         }
       ],
-      "default": "0",
+      "default": 0,
       "description": "Output color range (from 0 to 2) (default 0)",
       "name": "range",
       "required": false,
@@ -223,7 +223,7 @@
           "value": "22"
         }
       ],
-      "default": "2",
+      "default": 2,
       "description": "Output color primaries (from 0 to 22) (default 2)",
       "name": "primaries",
       "required": false,
@@ -305,7 +305,7 @@
           "value": "15"
         }
       ],
-      "default": "2",
+      "default": 2,
       "description": "Output transfer characteristics (from 0 to 18) (default 2)",
       "name": "trc",
       "required": false,
@@ -362,7 +362,7 @@
           "value": "131"
         }
       ],
-      "default": "-1",
+      "default": -1,
       "description": "Output pixel format (from -1 to 162) (default -1)",
       "name": "format",
       "required": false,
@@ -373,7 +373,7 @@
         "fast"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "Ignore primary chromaticity and gamma correction (default false)",
       "name": "fast",
       "required": false,
@@ -474,7 +474,7 @@
           "value": "8"
         }
       ],
-      "default": "0",
+      "default": 0,
       "description": "Set all input color properties together (from 0 to 8) (default 0)",
       "name": "iall",
       "required": false,
@@ -531,7 +531,7 @@
           "value": "9"
         }
       ],
-      "default": "2",
+      "default": 2,
       "description": "Input colorspace (from 0 to 22) (default 2)",
       "name": "ispace",
       "required": false,
@@ -563,7 +563,7 @@
           "value": "2"
         }
       ],
-      "default": "0",
+      "default": 0,
       "description": "Input color range (from 0 to 2) (default 0)",
       "name": "irange",
       "required": false,
@@ -635,7 +635,7 @@
           "value": "22"
         }
       ],
-      "default": "2",
+      "default": 2,
       "description": "Input color primaries (from 0 to 22) (default 2)",
       "name": "iprimaries",
       "required": false,
@@ -717,7 +717,7 @@
           "value": "15"
         }
       ],
-      "default": "2",
+      "default": 2,
       "description": "Input transfer characteristics (from 0 to 18) (default 2)",
       "name": "itrc",
       "required": false,

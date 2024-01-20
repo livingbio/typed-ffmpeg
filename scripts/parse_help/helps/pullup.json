@@ -18,7 +18,7 @@
         "jl"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set left junk size (from 0 to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -31,7 +31,7 @@
         "jr"
       ],
       "choices": [],
-      "default": "1",
+      "default": 1,
       "description": "set right junk size (from 0 to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -44,7 +44,7 @@
         "jt"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set top junk size (from 1 to INT_MAX) (default 4)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -57,7 +57,7 @@
         "jb"
       ],
       "choices": [],
-      "default": "4",
+      "default": 4,
       "description": "set bottom junk size (from 1 to INT_MAX) (default 4)",
       "flags": "..FV.......",
       "max": "INT_MAX",
@@ -70,7 +70,7 @@
         "sb"
       ],
       "choices": [],
-      "default": "false",
+      "default": 0,
       "description": "set strict breaks (default false)",
       "flags": "..FV.......",
       "max": null,
