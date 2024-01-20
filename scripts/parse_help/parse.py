@@ -49,7 +49,10 @@ def _parse_io(line: str) -> tuple[int, str, StreamType]:
     return int(index), name, StreamType(_type.strip("()"))
 
 
-def _parse_default(default: str, type: str) -> int | float | bool | str:
+def _parse_default(default: str | None, type: str) -> int | float | bool | str:
+    if default is not None:
+        default = default.strip('"')
+
     try:
         match (type):
             case "boolean":
@@ -74,7 +77,7 @@ def _parse_default(default: str, type: str) -> int | float | bool | str:
             case "float":
                 return float(default)
             case "string":
-                return default.strip('"') if default is not None else None
+                return default
             case "video_rate":
                 return default
             case "image_size":
