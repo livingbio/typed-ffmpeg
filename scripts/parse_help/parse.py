@@ -2,7 +2,7 @@ import re
 import subprocess
 from collections import defaultdict
 
-from code_gen.schema import StreamType
+from code_gen.schema import FFMpegIOType, StreamType
 
 from .schema import AVChoice, AVFilter, AVOption
 
@@ -132,7 +132,7 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
         if inputs[0] != "none (source filter)":
             for _input in inputs:
                 index, name, _type = _parse_io(_input)
-                input_types.append((name, _type))
+                input_types.append(FFMpegIOType(name=name, type=_type))
     else:
         input_types = None
 
@@ -141,7 +141,7 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
         if outputs[0] != "none (sink filter)":
             for output in outputs:
                 index, name, _type = _parse_io(output)
-                output_types.append((name, _type))
+                output_types.append(FFMpegIOType(name=name, type=_type))
     else:
         output_types = None
 

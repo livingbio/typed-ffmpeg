@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.audio] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_af_join",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -48,7 +48,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#join"

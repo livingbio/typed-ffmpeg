@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.audio] * int(nbirs)",
   "formula_output_typings": null,
   "id": "ff_af_afir",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": true,
   "is_support_framesync": false,
@@ -246,11 +246,6 @@
       "typing": "Int"
     }
   ],
-  "output_stream_typings": [
-    {
-      "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
-    }
-  ],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#afir"
 }

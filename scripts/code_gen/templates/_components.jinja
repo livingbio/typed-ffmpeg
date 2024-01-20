@@ -14,7 +14,7 @@
 {% else %}
     {% for stream_typing in f.input_stream_typings %}
         {% if type == "method" and loop.index0 == 0 %}
-        {% elif stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
+        {% elif stream_typing.type.value == "video" %}
         {{ stream_typing.name | stream_name_safe }}: "VideoStream",
         {% else %}
         {{ stream_typing.name | stream_name_safe }}: "AudioStream",

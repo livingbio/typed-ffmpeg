@@ -1,10 +1,10 @@
 {
   "description": "Variable frame rate detect filter.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -14,9 +14,9 @@
   "name": "vfrdet",
   "options": [],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

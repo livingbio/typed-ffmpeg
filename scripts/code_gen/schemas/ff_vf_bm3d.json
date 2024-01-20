@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.video] + [StreamType.video] if ref else []",
   "formula_output_typings": null,
   "id": "ff_vf_bm3d",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -156,7 +156,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#bm3d"

@@ -1,14 +1,14 @@
 {
   "description": "Apply Normalized Least-Mean-Squares algorithm to first audio stream.",
   "input_types": [
-    [
-      "input",
-      "audio"
-    ],
-    [
-      "desired",
-      "audio"
-    ]
+    {
+      "name": "input",
+      "type": "audio"
+    },
+    {
+      "name": "desired",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -109,9 +109,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

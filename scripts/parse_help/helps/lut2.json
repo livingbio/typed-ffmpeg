@@ -1,14 +1,14 @@
 {
   "description": "Compute and apply a lookup table from two video inputs.",
   "input_types": [
-    [
-      "srcx",
-      "video"
-    ],
-    [
-      "srcy",
-      "video"
-    ]
+    {
+      "name": "srcx",
+      "type": "video"
+    },
+    {
+      "name": "srcy",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -168,9 +168,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.audio] * int(inputs)",
   "formula_output_typings": "[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
   "id": "ff_af_astreamselect",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": true,
   "is_support_framesync": false,
@@ -34,6 +34,6 @@
       "typing": "String"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect"
 }

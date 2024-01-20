@@ -1,10 +1,10 @@
 {
   "description": "Show textual information for each audio frame.",
   "input_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -14,9 +14,9 @@
   "name": "ashowinfo",
   "options": [],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

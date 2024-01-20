@@ -1,18 +1,18 @@
 {
   "description": "Merge first stream with second stream using third stream as mask.",
   "input_types": [
-    [
-      "base",
-      "video"
-    ],
-    [
-      "overlay",
-      "video"
-    ],
-    [
-      "mask",
-      "video"
-    ]
+    {
+      "name": "base",
+      "type": "video"
+    },
+    {
+      "name": "overlay",
+      "type": "video"
+    },
+    {
+      "name": "mask",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -36,9 +36,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

@@ -1355,7 +1355,7 @@ def displace(
 
 def feedback(
     _default: "VideoStream", _feedin: "VideoStream", *, x: Int = Default("0"), w: Int = Default("0"), **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+) -> tuple["AudioStream", "AudioStream",]:
     """
 
     Apply feedback video filter.
@@ -1388,8 +1388,8 @@ def feedback(
         ),
     )
     return (
-        filter_node.video(0),
-        filter_node.video(1),
+        filter_node.audio(0),
+        filter_node.audio(1),
     )
 
 
@@ -2964,7 +2964,7 @@ def scale2ref(
     param1: Double = Default("DBL_MAX"),
     eval: Int | Literal["init", "frame"] | Default = Default("init"),
     **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+) -> tuple["AudioStream", "AudioStream",]:
     """
 
     Scale the input video size and/or convert the image format to the given reference.
@@ -3027,8 +3027,8 @@ def scale2ref(
         ),
     )
     return (
-        filter_node.video(0),
-        filter_node.video(1),
+        filter_node.audio(0),
+        filter_node.audio(1),
     )
 
 

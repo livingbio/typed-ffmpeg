@@ -115,6 +115,6 @@
       "typing": "Dictionary"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#amovie"
 }

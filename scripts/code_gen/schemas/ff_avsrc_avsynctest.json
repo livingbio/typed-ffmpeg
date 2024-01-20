@@ -144,11 +144,11 @@
   "output_stream_typings": [
     {
       "name": "audio",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     },
     {
       "name": "video",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#avsynctest"

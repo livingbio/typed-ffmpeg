@@ -101,10 +101,9 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
             help_info = extract(f.name)
         except ValueError:
             typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"Unknown filter {f.name}")
+            continue
         except Exception as e:
             typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"{f.name} {e}")
-
-        if not help_info:
             continue
 
         # TODO:
@@ -121,8 +120,8 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
             is_output_dynamic=help_info.is_dynamic_outputs,
             is_support_timeline=help_info.is_support_timeline,
             is_support_framesync=help_info.is_support_framesync,
-            input_stream_typings=f.input_filter_pads,
-            output_stream_typings=f.output_filter_pads,
+            input_stream_typings=help_info.input_types,
+            output_stream_typings=help_info.output_types,
             options=parse_help_options(help_info),
         )
 

@@ -1,18 +1,18 @@
 {
   "description": "Apply custom Color Maps to video stream.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "source",
-      "video"
-    ],
-    [
-      "target",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "source",
+      "type": "video"
+    },
+    {
+      "name": "target",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -101,9 +101,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

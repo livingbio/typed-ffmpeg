@@ -1,14 +1,14 @@
 {
   "description": "Multiply two audio streams.",
   "input_types": [
-    [
-      "multiply0",
-      "audio"
-    ],
-    [
-      "multiply1",
-      "audio"
-    ]
+    {
+      "name": "multiply0",
+      "type": "audio"
+    },
+    {
+      "name": "multiply1",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -18,9 +18,9 @@
   "name": "amultiply",
   "options": [],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

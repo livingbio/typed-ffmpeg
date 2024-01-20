@@ -1,14 +1,14 @@
 {
   "description": "Cross fade one video with another video.",
   "input_types": [
-    [
-      "main",
-      "video"
-    ],
-    [
-      "xfade",
-      "video"
-    ]
+    {
+      "name": "main",
+      "type": "video"
+    },
+    {
+      "name": "xfade",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -354,9 +354,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

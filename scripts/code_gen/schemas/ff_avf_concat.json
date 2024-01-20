@@ -4,7 +4,7 @@
   "formula_input_typings": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
   "formula_output_typings": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
   "id": "ff_avf_concat",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": true,
   "is_support_framesync": false,
@@ -56,6 +56,6 @@
       "typing": "Boolean"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat"
 }

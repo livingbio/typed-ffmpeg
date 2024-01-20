@@ -1,14 +1,14 @@
 {
   "description": "Grow first stream into second stream by connecting components.",
   "input_types": [
-    [
-      "base",
-      "video"
-    ],
-    [
-      "alt",
-      "video"
-    ]
+    {
+      "name": "base",
+      "type": "video"
+    },
+    {
+      "name": "alt",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -129,9 +129,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

@@ -161,13 +161,13 @@
     }
   ],
   "output_types": [
-    [
-      "audio",
-      "audio"
-    ],
-    [
-      "video",
-      "video"
-    ]
+    {
+      "name": "audio",
+      "type": "audio"
+    },
+    {
+      "name": "video",
+      "type": "video"
+    }
   ]
 }

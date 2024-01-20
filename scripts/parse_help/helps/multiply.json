@@ -1,14 +1,14 @@
 {
   "description": "Multiply first video stream with second video stream.",
   "input_types": [
-    [
-      "source",
-      "video"
-    ],
-    [
-      "factor",
-      "video"
-    ]
+    {
+      "name": "source",
+      "type": "video"
+    },
+    {
+      "name": "factor",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -58,9 +58,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

@@ -1,14 +1,14 @@
 {
   "description": "Calculate the MSAD between two video streams.",
   "input_types": [
-    [
-      "main",
-      "video"
-    ],
-    [
-      "reference",
-      "video"
-    ]
+    {
+      "name": "main",
+      "type": "video"
+    },
+    {
+      "name": "reference",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -103,9 +103,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

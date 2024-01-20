@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.video] * int(nb_inputs)",
   "formula_output_typings": null,
   "id": "ff_af_ainterleave",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -54,7 +54,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave"

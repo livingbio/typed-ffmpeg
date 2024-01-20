@@ -1,14 +1,14 @@
 {
   "description": "Convert input spectrum videos to audio output.",
   "input_types": [
-    [
-      "magnitude",
-      "video"
-    ],
-    [
-      "phase",
-      "video"
-    ]
+    {
+      "name": "magnitude",
+      "type": "video"
+    },
+    {
+      "name": "phase",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -294,9 +294,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }
