@@ -1,0 +1,295 @@
+{
+  "description": "Draw a gradients.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "gradients",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "\"640x480\"",
+      "description": "set frame size (default \"640x480\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "\"25\"",
+      "description": "set frame rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "c0"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 1st color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c0",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "c1"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 2nd color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c1",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "c2"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 3rd color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c2",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "c3"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 4th color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c3",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "c4"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 5th color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c4",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "c5"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 6th color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c5",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "c6"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 7th color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c6",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "c7"
+      ],
+      "choices": [],
+      "default": "\"random\"",
+      "description": "set 8th color (default \"random\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c7",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "x0"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set gradient line source x0 (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "x0",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y0"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set gradient line source y0 (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "y0",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "x1"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set gradient line destination x1 (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "x1",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y1"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set gradient line destination y1 (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "y1",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nb_colors",
+        "n"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set the number of colors (from 2 to 8) (default 2)",
+      "flags": "..FV.......",
+      "max": "8",
+      "min": "2",
+      "name": "nb_colors",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "seed"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "UINT32_MAX",
+      "min": "-1",
+      "name": "seed",
+      "typing": "int64"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": "-0.000001",
+      "description": "set video duration (default -0.000001)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "speed"
+      ],
+      "choices": [],
+      "default": "0.01",
+      "description": "set gradients rotation speed (from 1e-05 to 1) (default 0.01)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "1e-05",
+      "name": "speed",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "type",
+        "t"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "set gradient type",
+          "name": "linear",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set gradient type",
+          "name": "radial",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set gradient type",
+          "name": "circular",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "set gradient type",
+          "name": "spiral",
+          "value": "3"
+        }
+      ],
+      "default": "linear",
+      "description": "set gradient type (from 0 to 3) (default linear)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
+      "name": "type",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

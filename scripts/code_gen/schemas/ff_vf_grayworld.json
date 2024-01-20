@@ -1,5 +1,5 @@
 {
-  "description": "### 11.113 grayworld\n\nA color constancy filter that applies color correction based on the grayworld\nassumption\n\nSee:\n<https://www.researchgate.net/publication/275213614_A_New_Color_Correction_Method_for_Underwater_Imaging>\n\nThe algorithm uses linear light, so input data should be linearized beforehand\n(and possibly correctly tagged).\n\n    \n    \n    ffmpeg -i INPUT -vf zscale=transfer=linear,grayworld,zscale=transfer=bt709,format=yuv420p OUTPUT\n    \n\n",
+  "description": "Adjust white balance using LAB gray world algorithm",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -29,7 +29,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#grayworld"

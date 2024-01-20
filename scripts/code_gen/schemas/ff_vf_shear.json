@@ -1,5 +1,5 @@
 {
-  "description": "### 11.230 shear\n\nApply shear transform to input video.\n\nThis filter supports the following options:\n\n**shx**\n\n    Shear factor in X-direction. Default value is 0. Allowed range is from -2 to 2. \n\n**shy**\n\n    Shear factor in Y-direction. Default value is 0. Allowed range is from -2 to 2. \n\n**fillcolor, c**\n\n    Set the color used to fill the output area not covered by the transformed video. For the general syntax of this option, check the (ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual. If the special value \"none\" is selected then no background is printed (useful for example if the background is never shown). Default value is \"black\". \n\n**interp**\n\n    Set interpolation type. Can be bilinear or nearest. Default is bilinear. \n\n",
+  "description": "Shear transform the input image.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "shx"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Shear factor in X-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set x shear factor (from -2 to 2) (default 0)",
       "name": "shx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "shy"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Shear factor in Y-direction. Default value is 0.\nAllowed range is from -2 to 2.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set y shear factor (from -2 to 2) (default 0)",
       "name": "shy",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -45,10 +45,10 @@
       ],
       "choices": [],
       "default": "black",
-      "description": "<dd><p>Set the color used to fill the output area not covered by the transformed\nvideo. For the general syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nIf the special value \"none\" is selected then no\nbackground is printed (useful for example if the background is never shown).\n</p>\n<p>Default value is \"black\".\n</p>\n</dd>",
+      "description": "set background fill color (default \"black\")",
       "name": "fillcolor",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,19 +58,19 @@
         {
           "help": "nearest neighbour",
           "name": "nearest",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "bilinear",
           "name": "bilinear",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set interpolation type. Can be <code>bilinear</code> or <code>nearest</code>. Default is <code>bilinear</code>.\n</p></dd>",
+      "default": "bilinear",
+      "description": "set interpolation (from 0 to 1) (default bilinear)",
       "name": "interp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -85,7 +85,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#shear"

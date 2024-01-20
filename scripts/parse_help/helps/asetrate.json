@@ -1,0 +1,37 @@
+{
+  "description": "Change the sample rate without altering the data.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "asetrate",
+  "options": [
+    {
+      "alias": [
+        "sample_rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "44100",
+      "description": "set the sample rate (from 1 to INT_MAX) (default 44100)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "sample_rate",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

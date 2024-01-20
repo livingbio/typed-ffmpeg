@@ -1,0 +1,88 @@
+{
+  "description": "Interlace detect Filter.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "idet",
+  "options": [
+    {
+      "alias": [
+        "intl_thres"
+      ],
+      "choices": [],
+      "default": "1.04",
+      "description": "set interlacing threshold (from -1 to FLT_MAX) (default 1.04)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "-1",
+      "name": "intl_thres",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "prog_thres"
+      ],
+      "choices": [],
+      "default": "1.5",
+      "description": "set progressive threshold (from -1 to FLT_MAX) (default 1.5)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "-1",
+      "name": "prog_thres",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rep_thres"
+      ],
+      "choices": [],
+      "default": "3",
+      "description": "set repeat threshold (from -1 to FLT_MAX) (default 3)",
+      "flags": "..FV.......",
+      "max": "FLT_MAX",
+      "min": "-1",
+      "name": "rep_thres",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "half_life"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "half life of cumulative statistics (from -1 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "half_life",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "analyze_interlaced_flag"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "analyze_interlaced_flag",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

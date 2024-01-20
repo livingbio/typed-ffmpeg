@@ -1,0 +1,89 @@
+{
+  "description": "Shear transform the input image.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "shear",
+  "options": [
+    {
+      "alias": [
+        "shx"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set x shear factor (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "shx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "shy"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set y shear factor (from -2 to 2) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "-2",
+      "name": "shy",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "fillcolor",
+        "c"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set background fill color (default \"black\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "fillcolor",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "interp"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "nearest neighbour",
+          "name": "nearest",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "bilinear",
+          "name": "bilinear",
+          "value": "1"
+        }
+      ],
+      "default": "bilinear",
+      "description": "set interpolation (from 0 to 1) (default bilinear)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "interp",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

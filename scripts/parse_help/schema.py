@@ -1,7 +1,12 @@
+import json
+import pathlib
 from enum import Enum
 
-from code_gen.schema import StreamType
+from code_gen.schema import FFMpegIOType
 from pydantic import BaseModel
+
+schema_path = pathlib.Path(__file__).parent / "helps"
+schema_path.mkdir(exist_ok=True)
 
 
 class Flag(str, Enum):
@@ -49,7 +54,18 @@ class AVFilter(BaseModel):
 
     is_dynamic_inputs: bool = False
     is_dynamic_outputs: bool = False
-    input_types: list[tuple[str, StreamType]] | None = None
-    output_types: list[tuple[str, StreamType]] | None = None
+    input_types: list[FFMpegIOType] | None = None
+    output_types: list[FFMpegIOType] | None = None
 
     options: list[AVOption] = []
+
+    @classmethod
+    def load(cls, id: str) -> "AVFilter":
+        path = schema_path / f"{id}.json"
+
+        with path.open() as ifile:
+            return AVFilter(**json.load(ifile))
+
+    def save(self) -> None:
+        with (schema_path / f"{self.name}.json").open("w") as ofile:
+            ofile.write(self.model_dump_json(indent=2))

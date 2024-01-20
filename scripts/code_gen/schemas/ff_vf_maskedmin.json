@@ -1,5 +1,5 @@
 {
-  "description": "### 11.158 maskedmin\n\nMerge the second and third input stream into output stream using absolute\ndifferences between second input stream and first input stream and absolute\ndifference between third input stream and first input stream. The picked value\nwill be from second input stream if second absolute difference is less than\nfirst one or from third input stream otherwise.\n\nThis filter accepts the following options:\n\n**planes**\n\n    Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed. \n\n",
+  "description": "Apply filtering with minimum difference of two streams.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,15 +7,15 @@
   "input_stream_typings": [
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "filter1",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "filter2",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -29,11 +29,11 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -48,7 +48,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#maskedmin"

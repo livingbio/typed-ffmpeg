@@ -1,5 +1,5 @@
 {
-  "description": "### 8.102 replaygain\n\nReplayGain scanner filter. This filter takes an audio stream as an input and\noutputs it unchanged. At end of filtering it displays `track_gain` and\n`track_peak`.\n\nThe filter accepts the following exported read-only options:\n\n**track_gain**\n\n    Exported track gain in dB at end of stream. \n\n**track_peak**\n\n    Exported track peak at end of stream. \n\n",
+  "description": "ReplayGain scanner.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -15,34 +15,11 @@
   "is_support_framesync": false,
   "is_support_timeline": false,
   "name": "replaygain",
-  "options": [
-    {
-      "alias": [
-        "track_gain"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Exported track gain in dB at end of stream.\n</p>\n</dd>",
-      "name": "track_gain",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "track_peak"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Exported track peak at end of stream.\n</p></dd>",
-      "name": "track_peak",
-      "required": false,
-      "typing": "float"
-    }
-  ],
+  "options": [],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#replaygain"

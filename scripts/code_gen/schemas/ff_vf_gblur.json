@@ -1,5 +1,5 @@
 {
-  "description": "### 11.109 gblur\n\nApply Gaussian blur filter.\n\nThe filter accepts the following options:\n\n**sigma**\n\n    Set horizontal sigma, standard deviation of Gaussian blur. Default is 0.5. \n\n**steps**\n\n    Set number of steps for Gaussian approximation. Default is 1. \n\n**planes**\n\n    Set which planes to filter. By default all planes are filtered. \n\n**sigmaV**\n\n    Set vertical sigma, if negative it will be same as sigma. Default is -1. \n\n",
+  "description": "Apply Gaussian Blur filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "sigma"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set horizontal sigma, standard deviation of Gaussian blur. Default is <code>0.5</code>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set sigma (from 0 to 1024) (default 0.5)",
       "name": "sigma",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "steps"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set number of steps for Gaussian approximation. Default is <code>1</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set number of steps (from 1 to 6) (default 1)",
       "name": "steps",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes to filter. By default all planes are filtered.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "sigmaV"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set vertical sigma, if negative it will be same as <code>sigma</code>.\nDefault is <code>-1</code>.\n</p></dd>",
+      "default": "-1",
+      "description": "set vertical sigma (from -1 to 1024) (default -1)",
       "name": "sigmaV",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#gblur"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.215 scale\n\nScale (resize) the input video, using the libswscale library.\n\nThe scale filter forces the output display aspect ratio to be the same of the\ninput, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by the next\nfilter, the scale filter will convert the input to the requested format.\n\n",
+  "description": "Scale the input video size and/or convert the image format.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "Output video width",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "Output video height",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -46,33 +46,21 @@
       ],
       "choices": [],
       "default": "",
-      "description": "Flags to pass to libswscale",
+      "description": "Flags to pass to libswscale (default \"\")",
       "name": "flags",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "interl"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set interlacing",
+      "default": "false",
+      "description": "set interlacing (default false)",
       "name": "interl",
       "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [
-        "size",
-        "s"
-      ],
-      "choices": [],
-      "default": "((void*)0)",
-      "description": "set video size",
-      "name": "size",
-      "required": false,
-      "typing": "str"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -80,51 +68,51 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "auto",
-          "value": -1
+          "value": "auto"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt601",
-          "value": "AVCOL_SPC_BT470BG"
+          "value": "bt601"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt470",
-          "value": "AVCOL_SPC_BT470BG"
+          "value": "bt470"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte170m",
-          "value": "AVCOL_SPC_BT470BG"
+          "value": "smpte170m"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt709",
-          "value": "AVCOL_SPC_BT709"
+          "value": "bt709"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fcc",
-          "value": "AVCOL_SPC_FCC"
+          "value": "fcc"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte240m",
-          "value": "AVCOL_SPC_SMPTE240M"
+          "value": "smpte240m"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt2020",
-          "value": "AVCOL_SPC_BT2020_NCL"
+          "value": "bt2020"
         }
       ],
-      "default": -1,
-      "description": "set input YCbCr type",
+      "default": "auto",
+      "description": "set input YCbCr type (default \"auto\")",
       "name": "in_color_matrix",
       "required": false,
-      "typing": "int"
+      "typing": "String"
     },
     {
       "alias": [
@@ -132,51 +120,51 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "auto",
-          "value": -1
+          "value": "auto"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt601",
-          "value": "AVCOL_SPC_BT470BG"
+          "value": "bt601"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt470",
-          "value": "AVCOL_SPC_BT470BG"
+          "value": "bt470"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte170m",
-          "value": "AVCOL_SPC_BT470BG"
+          "value": "smpte170m"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt709",
-          "value": "AVCOL_SPC_BT709"
+          "value": "bt709"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fcc",
-          "value": "AVCOL_SPC_FCC"
+          "value": "fcc"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte240m",
-          "value": "AVCOL_SPC_SMPTE240M"
+          "value": "smpte240m"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt2020",
-          "value": "AVCOL_SPC_BT2020_NCL"
+          "value": "bt2020"
         }
       ],
-      "default": "AVCOL_SPC_UNSPECIFIED",
+      "default": null,
       "description": "set output YCbCr type",
       "name": "out_color_matrix",
       "required": false,
-      "typing": "int"
+      "typing": "String"
     },
     {
       "alias": [
@@ -184,51 +172,51 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "auto",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unknown",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "full",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "limited",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "jpeg",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "mpeg",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "tv",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pc",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         }
       ],
-      "default": "AVCOL_RANGE_UNSPECIFIED",
-      "description": "set input color range",
+      "default": "auto",
+      "description": "set input color range (from 0 to 2) (default auto)",
       "name": "in_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -236,95 +224,95 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "auto",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unknown",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "full",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "limited",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "jpeg",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "mpeg",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "tv",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pc",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         }
       ],
-      "default": "AVCOL_RANGE_UNSPECIFIED",
-      "description": "set output color range",
+      "default": "auto",
+      "description": "set output color range (from 0 to 2) (default auto)",
       "name": "out_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "in_v_chr_pos"
       ],
       "choices": [],
-      "default": -513,
-      "description": "input vertical chroma position in luma grid/256",
+      "default": "-513",
+      "description": "input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "in_v_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "in_h_chr_pos"
       ],
       "choices": [],
-      "default": -513,
-      "description": "input horizontal chroma position in luma grid/256",
+      "default": "-513",
+      "description": "input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "in_h_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "out_v_chr_pos"
       ],
       "choices": [],
-      "default": -513,
-      "description": "output vertical chroma position in luma grid/256",
+      "default": "-513",
+      "description": "output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "out_v_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "out_h_chr_pos"
       ],
       "choices": [],
-      "default": -513,
-      "description": "output horizontal chroma position in luma grid/256",
+      "default": "-513",
+      "description": "output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "out_h_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -332,76 +320,87 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "disable",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "decrease",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "increase",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "decrease or increase w/h if necessary to keep the original AR",
+      "default": "disable",
+      "description": "decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)",
       "name": "force_original_aspect_ratio",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "force_divisible_by"
       ],
       "choices": [],
-      "default": 1,
-      "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
+      "default": "1",
+      "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
       "name": "force_divisible_by",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "param0"
       ],
       "choices": [],
-      "default": 1.7976931348623157e+308,
-      "description": "Scaler param 0",
+      "default": "DBL_MAX",
+      "description": "Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "name": "param0",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "param1"
       ],
       "choices": [],
-      "default": 1.7976931348623157e+308,
-      "description": "Scaler param 1",
+      "default": "DBL_MAX",
+      "description": "Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "name": "param1",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "eval"
       ],
-      "choices": [],
-      "default": "EVAL_MODE_INIT",
-      "description": "specify when to evaluate expressions",
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "help": "eval expressions during initialization and per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#scale"

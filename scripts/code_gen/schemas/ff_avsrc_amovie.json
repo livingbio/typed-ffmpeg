@@ -1,5 +1,5 @@
 {
-  "description": "### 19.1 amovie\n\nThis is the same as movie source, except it selects an audio stream by\ndefault.\n\n",
+  "description": "Read audio from a movie source.",
   "filter_type": "avsrc",
   "formula_input_typings": "[StreamType.audio] * len(streams.split('+'))",
   "formula_output_typings": "[StreamType.audio] * len(streams.split('+'))",
@@ -17,10 +17,10 @@
       ],
       "choices": [],
       "default": null,
-      "description": "((void*)0)",
+      "description": "",
       "name": "filename",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -32,7 +32,7 @@
       "description": "set format name",
       "name": "format_name",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -40,11 +40,11 @@
         "si"
       ],
       "choices": [],
-      "default": -1,
-      "description": "set stream index",
+      "default": "-1",
+      "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "name": "stream_index",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -52,11 +52,11 @@
         "sp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set seekpoint (seconds)",
+      "default": "0",
+      "description": "set seekpoint (seconds) (from 0 to 9.22337e+12) (default 0)",
       "name": "seek_point",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -64,57 +64,57 @@
         "s"
       ],
       "choices": [],
-      "default": "0",
+      "default": null,
       "description": "set streams",
       "name": "streams",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "loop"
       ],
       "choices": [],
-      "default": 1,
-      "description": "set loop count",
+      "default": "1",
+      "description": "set loop count (from 0 to INT_MAX) (default 1)",
       "name": "loop",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "discontinuity"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set discontinuity threshold",
+      "default": "0",
+      "description": "set discontinuity threshold (default 0)",
       "name": "discontinuity",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "dec_threads"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set the number of threads for decoding",
+      "default": "0",
+      "description": "set the number of threads for decoding (from 0 to INT_MAX) (default 0)",
       "name": "dec_threads",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "format_opts"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set format options for the opened file",
       "name": "format_opts",
       "required": false,
-      "typing": "str"
+      "typing": "Dictionary"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#amovie"
 }

@@ -1,0 +1,80 @@
+{
+  "description": "Set permissions for the output audio frame.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "aperms",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FVA....T.",
+          "help": "do nothing",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FVA....T.",
+          "help": "set all output frames read-only",
+          "name": "ro",
+          "value": "1"
+        },
+        {
+          "flags": "..FVA....T.",
+          "help": "set all output frames writable",
+          "name": "rw",
+          "value": "2"
+        },
+        {
+          "flags": "..FVA....T.",
+          "help": "switch permissions",
+          "name": "toggle",
+          "value": "3"
+        },
+        {
+          "flags": "..FVA....T.",
+          "help": "set permissions randomly",
+          "name": "random",
+          "value": "4"
+        }
+      ],
+      "default": "none",
+      "description": "select permissions mode (from 0 to 4) (default none)",
+      "flags": "..FVA....T.",
+      "max": "4",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "seed"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set the seed for the random mode (from -1 to UINT32_MAX) (default -1)",
+      "flags": "..FVA......",
+      "max": "UINT32_MAX",
+      "min": "-1",
+      "name": "seed",
+      "typing": "int64"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "description": "Apply DNN-based image super resolution to the input.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "sr",
+  "options": [
+    {
+      "alias": [
+        "dnn_backend"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "native backend flag",
+          "name": "native",
+          "value": "0"
+        }
+      ],
+      "default": "native",
+      "description": "DNN backend used for model execution (from 0 to 1) (default native)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "dnn_backend",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale_factor"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "scale factor for SRCNN model (from 2 to 4) (default 2)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "2",
+      "name": "scale_factor",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "model"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "path to model file specifying network architecture and its parameters",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "model",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "input"
+      ],
+      "choices": [],
+      "default": "\"x\"",
+      "description": "input name of the model (default \"x\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "input",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "output"
+      ],
+      "choices": [],
+      "default": "\"y\"",
+      "description": "output name of the model (default \"y\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "output",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

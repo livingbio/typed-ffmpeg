@@ -1,5 +1,5 @@
 {
-  "description": "### 8.11 adecorrelate\n\nApply decorrelation to input audio stream.\n\nThe filter accepts the following options:\n\n**stages**\n\n    Set decorrelation stages of filtering. Allowed range is from 1 to 16. Default value is 6. \n\n**seed**\n\n    Set random seed used for setting delay in samples across channels. \n\n",
+  "description": "Apply decorrelation to input audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "stages"
       ],
       "choices": [],
-      "default": 6,
-      "description": "<dd><p>Set decorrelation stages of filtering. Allowed\nrange is from 1 to 16. Default value is 6.\n</p>\n</dd>",
+      "default": "6",
+      "description": "set filtering stages (from 1 to 16) (default 6)",
       "name": "stages",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "seed"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set random seed used for setting delay in samples across channels.\n</p></dd>",
+      "default": "-1",
+      "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#adecorrelate"

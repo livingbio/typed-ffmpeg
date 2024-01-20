@@ -1,0 +1,26 @@
+{
+  "description": "Multiply two audio streams.",
+  "input_types": [
+    {
+      "name": "multiply0",
+      "type": "audio"
+    },
+    {
+      "name": "multiply1",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "amultiply",
+  "options": [],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.246 subtitles\n\nDraw subtitles on top of input video using the libass library.\n\nTo enable compilation of this filter you need to configure FFmpeg with\n`--enable-libass`. This filter also requires a build with libavcodec and\nlibavformat to convert the passed subtitles file to ASS (Advanced Substation\nAlpha) subtitles format.\n\nThe filter accepts the following options:\n\n**filename, f**\n\n    Set the filename of the subtitle file to read. It must be specified. \n\n**original_size**\n\n    Specify the size of the original video, the video for which the ASS file was composed. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Due to a misdesign in ASS aspect ratio arithmetic, this is necessary to correctly scale the fonts if the aspect ratio has been changed. \n\n**fontsdir**\n\n    Set a directory path containing fonts that can be used by the filter. These fonts will be used in addition to whatever the font provider uses. \n\n**alpha**\n\n    Process alpha channel, by default alpha channel is untouched. \n\n**charenc**\n\n    Set subtitles input character encoding. subtitles filter only. Only useful if not UTF-8. \n\n**stream_index, si**\n\n    Set subtitles stream index. subtitles filter only. \n\n**force_style**\n\n    Override default style or script info parameters of the subtitles. It accepts a string containing ASS style format KEY=VALUE couples separated by \",\". \n\n**wrap_unicode**\n\n    Break lines according to the Unicode Line Breaking Algorithm. Availability requires at least libass release 0.17.0 (or LIBASS_VERSION 0x01600010), and libass must have been built with libunibreak. The option is enabled by default except for native ASS. \n\nIf the first key is not specified, it is assumed that the first value\nspecifies the filename.\n\nFor example, to render the file sub.srt on top of the input video, use the\ncommand:\n\n    \n    \n    subtitles=sub.srt\n    \n\nwhich is equivalent to:\n\n    \n    \n    subtitles=filename=sub.srt\n    \n\nTo render the default subtitles stream from file video.mkv, use:\n\n    \n    \n    subtitles=video.mkv\n    \n\nTo render the second subtitles stream from that file, use:\n\n    \n    \n    subtitles=video.mkv:si=1\n    \n\nTo make the subtitles stream from sub.srt appear in 80% transparent blue\n`DejaVu Serif`, use:\n\n    \n    \n    subtitles=sub.srt:force_style='Fontname=DejaVu Serif,PrimaryColour=&HCCFF0000'\n    \n\n",
+  "description": "Render text subtitles onto input video using the libass library.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,55 +22,55 @@
         "f"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the filename of the subtitle file to read. It must be specified.\n</p>\n</dd>",
+      "default": null,
+      "description": "set the filename of file to read",
       "name": "filename",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "original_size"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify the size of the original video, the video for which the ASS file\nwas composed. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDue to a misdesign in ASS aspect ratio arithmetic, this is necessary to\ncorrectly scale the fonts if the aspect ratio has been changed.\n</p>\n</dd>",
+      "default": null,
+      "description": "set the size of the original video (used to scale fonts)",
       "name": "original_size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "fontsdir"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set a directory path containing fonts that can be used by the filter.\nThese fonts will be used in addition to whatever the font provider uses.\n</p>\n</dd>",
+      "default": null,
+      "description": "set the directory containing the fonts to read",
       "name": "fontsdir",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "alpha"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Process alpha channel, by default alpha channel is untouched.\n</p>\n</dd>",
+      "default": "false",
+      "description": "enable processing of alpha channel (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "charenc"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set subtitles input character encoding. <code>subtitles</code> filter only. Only\nuseful if not UTF-8.\n</p>\n</dd>",
+      "default": null,
+      "description": "set input character encoding",
       "name": "charenc",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -78,28 +78,28 @@
         "si"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set subtitles stream index. <code>subtitles</code> filter only.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set stream index (from -1 to INT_MAX) (default -1)",
       "name": "stream_index",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "force_style"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Override default style or script info parameters of the subtitles. It accepts a\nstring containing ASS style format <code>KEY=VALUE</code> couples separated by \",\".\n</p>\n</dd>",
+      "default": null,
+      "description": "force subtitle style",
       "name": "force_style",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#subtitles"

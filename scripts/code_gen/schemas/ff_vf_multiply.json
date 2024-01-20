@@ -1,5 +1,5 @@
 {
-  "description": "### 11.172 multiply\n\nMultiply first video stream pixels values with second video stream pixels\nvalues.\n\nThe filter accepts the following options:\n\n**scale**\n\n    Set the scale applied to second video stream. By default is 1. Allowed range is from 0 to 9. \n\n**offset**\n\n    Set the offset applied to second video stream. By default is 0.5. Allowed range is from -1 to 1. \n\n**planes**\n\n    Specify planes from input video stream that will be processed. By default all planes are processed. \n\n",
+  "description": "Multiply first video stream with second video stream.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "factor",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,33 +25,33 @@
         "scale"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the scale applied to second video stream. By default is <code>1</code>.\nAllowed range is from <code>0</code> to <code>9</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set scale (from 0 to 9) (default 1)",
       "name": "scale",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "offset"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set the offset applied to second video stream. By default is <code>0.5</code>.\nAllowed range is from <code>-1</code> to <code>1</code>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set offset (from -1 to 1) (default 0.5)",
       "name": "offset",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Specify planes from input video stream that will be processed.\nBy default all planes are processed.\n</p></dd>",
+      "default": "F",
+      "description": "set planes (default F)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [],
@@ -66,7 +66,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#multiply"

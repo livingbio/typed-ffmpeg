@@ -2,111 +2,34 @@ import re
 from typing import Any, Literal
 
 from .nodes.nodes import FilterableStream, FilterNode
-from .schema import Default, StreamType
+from .schema import (
+    Boolean,
+    Color,
+    Default,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Pix_fmt,
+    StreamType,
+    String,
+    Video_rate,
+)
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
-
-
-def aap(
-    _input: "AudioStream",
-    _desired: "AudioStream",
-    *,
-    order: int | str = Default(16),
-    projection: int | str = Default(2),
-    mu: float | int | str = Default(0.0001),
-    delta: float | int | str = Default(0.001),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | Default = Default(0),
-    enable: str | float | int = Default(None),
-    **kwargs: Any
-) -> "AudioStream":
-    """
-
-    ### 8.1 aap
-
-    Apply Affine Projection algorithm to the first audio stream using the second
-    audio stream.
-
-    This adaptive filter is used to estimate unknown audio based on multiple input
-    audio samples. Affine projection algorithm can make trade-offs between
-    computation complexity with convergence speed.
-
-    A description of the accepted options follows.
-
-    **order**
-
-        Set the filter order.
-
-    **projection**
-
-        Set the projection order.
-
-    **mu**
-
-        Set the filter mu.
-
-    **delta**
-
-        Set the coefficient to initialize internal covariance matrix.
-
-    **out_mode**
-
-        Set the filter output samples. It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-
-    **precision**
-
-        Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
-
-
-
-    Parameters:
-    ----------
-
-    :param int order: Set the filter order.
-    :param int projection: Set the projection order.
-    :param float mu: Set the filter mu.
-    :param float delta: Set the coefficient to initialize internal covariance matrix.
-    :param int out_mode: Set the filter output samples. It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-    :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
-    :param str enable: timeline editing
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#aap
-
-    """
-    filter_node = FilterNode(
-        name="aap",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _input,
-            _desired,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "order": order,
-                    "projection": projection,
-                    "mu": mu,
-                    "delta": delta,
-                    "out_mode": out_mode,
-                    "precision": precision,
-                    "enable": enable,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.audio(0)
 
 
 def acrossfade(
     _crossfade0: "AudioStream",
     _crossfade1: "AudioStream",
     *,
-    nb_samples: int | str = Default(44100),
-    duration: int | str = Default(0),
-    overlap: bool | int | str = Default(1),
-    curve1: int
+    nb_samples: Int = Default("44100"),
+    duration: Duration = Default("0"),
+    overlap: Boolean = Default("true"),
+    curve1: Int
     | Literal[
         "nofade",
         "tri",
@@ -128,13 +51,9 @@ def acrossfade(
         "losi",
         "sinc",
         "isinc",
-        "quat",
-        "quatr",
-        "qsin2",
-        "hsin2",
     ]
-    | Default = Default("TRI"),
-    curve2: int
+    | Default = Default("tri"),
+    curve2: Int
     | Literal[
         "nofade",
         "tri",
@@ -156,53 +75,22 @@ def acrossfade(
         "losi",
         "sinc",
         "isinc",
-        "quat",
-        "quatr",
-        "qsin2",
-        "hsin2",
     ]
-    | Default = Default("TRI"),
+    | Default = Default("tri"),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.5 acrossfade
-
-    Apply cross fade from one input audio stream to another input audio stream.
-    The cross fade is applied for specified duration near the end of first stream.
-
-    The filter accepts the following options:
-
-    **nb_samples, ns**
-
-        Specify the number of samples for which the cross fade effect has to last. At the end of the cross fade effect the first input audio will be completely silent. Default is 44100.
-
-    **duration, d**
-
-        Specify the duration of the cross fade effect. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples.
-
-    **overlap, o**
-
-        Should first stream end overlap with second stream start. Default is enabled.
-
-    **curve1**
-
-        Set curve for cross fade transition for first stream.
-
-    **curve2**
-
-        Set curve for cross fade transition for second stream. For description of available curve types see afade filter description.
-
-
+    Cross fade two input audio streams.
 
     Parameters:
     ----------
 
-    :param int nb_samples: Specify the number of samples for which the cross fade effect has to last. At the end of the cross fade effect the first input audio will be completely silent. Default is 44100.
-    :param int duration: Specify the duration of the cross fade effect. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples.
-    :param bool overlap: Should first stream end overlap with second stream start. Default is enabled.
-    :param int curve1: Set curve for cross fade transition for first stream.
-    :param int curve2: Set curve for cross fade transition for second stream. For description of available curve types see afade filter description.
+    :param Int nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
+    :param Duration duration: set cross fade duration (default 0)
+    :param Boolean overlap: overlap 1st stream end with 2nd stream start (default true)
+    :param Int curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
+    :param Int curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#acrossfade
 
@@ -233,148 +121,47 @@ def acrossfade(
 
 def afir(
     *streams: "AudioStream",
-    dry: float | int | str = Default(1.0),
-    wet: float | int | str = Default(1.0),
-    length: float | int | str = Default(1.0),
-    gtype: int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | Default = Default(0),
-    irnorm: float | int | str = Default(1.0),
-    irlink: bool | int | str = Default(1),
-    irgain: float | int | str = Default(1.0),
-    irfmt: int | Literal["mono", "input"] | Default = Default(1),
-    maxir: float | int | str = Default(30.0),
-    response: bool | int | str = Default(0),
-    channel: int | str = Default(0),
-    size: str | float | int = Default("hd720"),
-    rate: str | float | int = Default("25"),
-    minp: int | str = Default(8192),
-    maxp: int | str = Default(8192),
-    nbirs: int | str = Default(1),
-    ir: int | str = Default(0),
-    precision: int | Literal["auto", "float", "double"] | Default = Default(0),
-    irload: int | Literal["init", "access"] | Default = Default(0),
-    enable: str | float | int = Default(None),
+    dry: Float = Default("1"),
+    wet: Float = Default("1"),
+    length: Float = Default("1"),
+    gtype: Int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | Default = Default("peak"),
+    irgain: Float = Default("1"),
+    irfmt: Int | Literal["mono", "input"] | Default = Default("input"),
+    maxir: Float = Default("30"),
+    response: Boolean = Default("false"),
+    channel: Int = Default("0"),
+    size: Image_size = Default("hd720"),
+    rate: Video_rate = Default("25"),
+    minp: Int = Default("8192"),
+    maxp: Int = Default("8192"),
+    nbirs: Int = Default("1"),
+    ir: Int = Default("0"),
+    precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
     **kwargs: Any
-) -> "AudioStream":
+) -> FilterNode:
     """
 
-    ### 8.25 afir
-
-    Apply an arbitrary Finite Impulse Response filter.
-
-    This filter is designed for applying long FIR filters, up to 60 seconds long.
-
-    It can be used as component for digital crossover filters, room equalization,
-    cross talk cancellation, wavefield synthesis, auralization, ambiophonics,
-    ambisonics and spatialization.
-
-    This filter uses the streams higher than first one as FIR coefficients. If the
-    non-first stream holds a single channel, it will be used for all input
-    channels in the first stream, otherwise the number of channels in the non-
-    first stream must be same as the number of channels in the first stream.
-
-    It accepts the following parameters:
-
-    **dry**
-
-        Set dry gain. This sets input gain.
-
-    **wet**
-
-        Set wet gain. This sets final output gain.
-
-    **length**
-
-        Set Impulse Response filter length. Default is 1, which means whole IR is processed.
-
-    **gtype**
-
-        This option is deprecated, and does nothing.
-
-    **irnorm**
-
-        Set norm to be applied to IR coefficients before filtering. Allowed range is from -1 to 2. IR coefficients are normalized with calculated vector norm set by this option. For negative values, no norm is calculated, and IR coefficients are not modified at all. Default is 1.
-
-    **irlink**
-
-        For multichannel IR if this option is set to true, all IR channels will be normalized with maximal measured gain of all IR channels coefficients as set by irnorm option. When disabled, all IR coefficients in each IR channel will be normalized independently. Default is true.
-
-    **irgain**
-
-        Set gain to be applied to IR coefficients before filtering. Allowed range is 0 to 1. This gain is applied after any gain applied with irnorm option.
-
-    **irfmt**
-
-        Set format of IR stream. Can be mono or input. Default is input.
-
-    **maxir**
-
-        Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds. Allowed range is 0.1 to 60 seconds.
-
-    **response**
-
-        This option is deprecated, and does nothing.
-
-    **channel**
-
-        This option is deprecated, and does nothing.
-
-    **size**
-
-        This option is deprecated, and does nothing.
-
-    **rate**
-
-        This option is deprecated, and does nothing.
-
-    **minp**
-
-        Set minimal partition size used for convolution. Default is 8192. Allowed range is from 1 to 65536. Lower values decreases latency at cost of higher CPU usage.
-
-    **maxp**
-
-        Set maximal partition size used for convolution. Default is 8192. Allowed range is from 8 to 65536. Lower values may increase CPU usage.
-
-    **nbirs**
-
-        Set number of input impulse responses streams which will be switchable at runtime. Allowed range is from 1 to 32. Default is 1.
-
-    **ir**
-
-        Set IR stream which will be used for convolution, starting from 0, should always be lower than supplied value by nbirs option. Default is 0. This option can be changed at runtime via commands.
-
-    **precision**
-
-        Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
-
-    **irload**
-
-        Set when to load IR stream. Can be init or access. First one load and prepares all IRs on initialization, second one once on first access of specific IR. Default is init.
-
-
+    Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).
 
     Parameters:
     ----------
 
-    :param float dry: Set dry gain. This sets input gain.
-    :param float wet: Set wet gain. This sets final output gain.
-    :param float length: Set Impulse Response filter length. Default is 1, which means whole IR is processed.
-    :param int gtype: This option is deprecated, and does nothing.
-    :param float irnorm: Set norm to be applied to IR coefficients before filtering. Allowed range is from -1 to 2. IR coefficients are normalized with calculated vector norm set by this option. For negative values, no norm is calculated, and IR coefficients are not modified at all. Default is 1.
-    :param bool irlink: For multichannel IR if this option is set to true, all IR channels will be normalized with maximal measured gain of all IR channels coefficients as set by irnorm option. When disabled, all IR coefficients in each IR channel will be normalized independently. Default is true.
-    :param float irgain: Set gain to be applied to IR coefficients before filtering. Allowed range is 0 to 1. This gain is applied after any gain applied with irnorm option.
-    :param int irfmt: Set format of IR stream. Can be mono or input. Default is input.
-    :param float maxir: Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds. Allowed range is 0.1 to 60 seconds.
-    :param bool response: This option is deprecated, and does nothing.
-    :param int channel: This option is deprecated, and does nothing.
-    :param str size: This option is deprecated, and does nothing.
-    :param str rate: This option is deprecated, and does nothing.
-    :param int minp: Set minimal partition size used for convolution. Default is 8192. Allowed range is from 1 to 65536. Lower values decreases latency at cost of higher CPU usage.
-    :param int maxp: Set maximal partition size used for convolution. Default is 8192. Allowed range is from 8 to 65536. Lower values may increase CPU usage.
-    :param int nbirs: Set number of input impulse responses streams which will be switchable at runtime. Allowed range is from 1 to 32. Default is 1.
-    :param int ir: Set IR stream which will be used for convolution, starting from 0, should always be lower than supplied value by nbirs option. Default is 0. This option can be changed at runtime via commands.
-    :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto.
-    :param int irload: Set when to load IR stream. Can be init or access. First one load and prepares all IRs on initialization, second one once on first access of specific IR. Default is init.
-    :param str enable: timeline editing
+    :param Float dry: set dry gain (from 0 to 10) (default 1)
+    :param Float wet: set wet gain (from 0 to 10) (default 1)
+    :param Float length: set IR length (from 0 to 1) (default 1)
+    :param Int gtype: set IR auto gain type (from -1 to 4) (default peak)
+    :param Float irgain: set IR gain (from 0 to 1) (default 1)
+    :param Int irfmt: set IR format (from 0 to 1) (default input)
+    :param Float maxir: set max IR length (from 0.1 to 60) (default 30)
+    :param Boolean response: show IR frequency response (default false)
+    :param Int channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
+    :param Image_size size: set video size (default "hd720")
+    :param Video_rate rate: set video rate (default "25")
+    :param Int minp: set min partition size (from 1 to 65536) (default 8192)
+    :param Int maxp: set max partition size (from 8 to 65536) (default 8192)
+    :param Int nbirs: set number of input IRs (from 1 to 32) (default 1)
+    :param Int ir: select IR (from 0 to 31) (default 0)
+    :param Int precision: set processing precision (from 0 to 2) (default auto)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#afir
 
@@ -382,7 +169,7 @@ def afir(
     filter_node = FilterNode(
         name="afir",
         input_typings=tuple([StreamType.audio] * int(nbirs)),
-        output_typings=tuple([StreamType.audio]),
+        output_typings=None,
         inputs=(*streams,),
         kwargs=tuple(
             (
@@ -391,8 +178,6 @@ def afir(
                     "wet": wet,
                     "length": length,
                     "gtype": gtype,
-                    "irnorm": irnorm,
-                    "irlink": irlink,
                     "irgain": irgain,
                     "irfmt": irfmt,
                     "maxir": maxir,
@@ -405,66 +190,30 @@ def afir(
                     "nbirs": nbirs,
                     "ir": ir,
                     "precision": precision,
-                    "irload": irload,
-                    "enable": enable,
                 }
                 | kwargs
             ).items()
         ),
     )
-    return filter_node.audio(0)
+
+    return filter_node
 
 
 def ainterleave(
     *streams: "AudioStream",
-    nb_inputs: int | str = Default(2),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default(0),
+    nb_inputs: Int = Default("2"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 18.11 interleave, ainterleave
-
-    Temporally interleave frames from several inputs.
-
-    `interleave` works with video inputs, `ainterleave` with audio.
-
-    These filters read frames from several inputs and send the oldest queued frame
-    to the output.
-
-    Input streams must have well defined, monotonically increasing frame timestamp
-    values.
-
-    In order to submit one frame to output, these filters need to enqueue at least
-    one frame for each input, so they cannot work in case one input is not yet
-    terminated and will not receive incoming frames.
-
-    For example consider the case when one input is a `select` filter which always
-    drops input frames. The `interleave` filter will keep reading from that input,
-    but it will never be able to send new frames to output until the input sends
-    an end-of-stream signal.
-
-    Also, depending on inputs synchronization, the filters will drop frames in
-    case one input receives more frames than the other ones, and the queue is
-    already filled.
-
-    These filters accept the following options:
-
-    **nb_inputs, n**
-
-        Set the number of different inputs, it is 2 by default.
-
-    **duration**
-
-        How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
-
-
+    Temporally interleave audio inputs.
 
     Parameters:
     ----------
 
-    :param int nb_inputs: Set the number of different inputs, it is 2 by default.
-    :param int duration: How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
+    :param Int nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
+    :param Int duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave
 
@@ -491,40 +240,25 @@ def alphamerge(
     _main: "VideoStream",
     _alpha: "VideoStream",
     *,
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.3 alphamerge
-
-    Add or replace the alpha component of the primary input with the grayscale
-    value of a second input. This is intended for use with alphaextract to allow
-    the transmission or storage of frame sequences that have alpha in a format
-    that doesn’t support an alpha channel.
-
-    For example, to reconstruct full frames from a normal YUV-encoded video and a
-    separate video created with alphaextract, you might use:
-
-
-
-        movie=in_alpha.mkv [alpha]; [in][alpha] alphamerge [out]
-
-
-
+    Copy the luma value of the second input into the alpha channel of the first input.
 
     Parameters:
     ----------
 
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#alphamerge
 
@@ -540,11 +274,11 @@ def alphamerge(
         kwargs=tuple(
             (
                 {
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -553,47 +287,15 @@ def alphamerge(
     return filter_node.video(0)
 
 
-def amerge(*streams: "AudioStream", inputs: int | str = Default(2), **kwargs: Any) -> "AudioStream":
+def amerge(*streams: "AudioStream", inputs: Int = Default("2"), **kwargs: Any) -> "AudioStream":
     """
 
-    ### 8.34 amerge
-
     Merge two or more audio streams into a single multi-channel stream.
-
-    The filter accepts the following options:
-
-    **inputs**
-
-        Set the number of inputs. Default is 2.
-
-    If the channel layouts of the inputs are disjoint, and therefore compatible,
-    the channel layout of the output will be set accordingly and the channels will
-    be reordered as necessary. If the channel layouts of the inputs are not
-    disjoint, the output will have all the channels of the first input then all
-    the channels of the second input, in that order, and the channel layout of the
-    output will be the default value corresponding to the total number of
-    channels.
-
-    For example, if the first input is in 2.1 (FL+FR+LF) and the second input is
-    FC+BL+BR, then the output will be in 5.1, with the channels in the following
-    order: a1, a2, b1, a3, b2, b3 (a1 is the first channel of the first input, b1
-    is the first channel of the second input).
-
-    On the other hand, if both input are in stereo, the output channels will be in
-    the default order: a1, a2, b1, b2, and the channel layout will be arbitrarily
-    set to 4.0, which may or may not be the expected value.
-
-    All inputs must have the same sample rate, and format.
-
-    If inputs do not have the same duration, the output will stop with the
-    shortest.
-
-
 
     Parameters:
     ----------
 
-    :param int inputs: Set the number of inputs. Default is 2.
+    :param Int inputs: specify the number of inputs (from 1 to 64) (default 2)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#amerge
 
@@ -617,56 +319,25 @@ def amerge(*streams: "AudioStream", inputs: int | str = Default(2), **kwargs: An
 
 def amix(
     *streams: "AudioStream",
-    inputs: int | str = Default(2),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default(0),
-    dropout_transition: float | int | str = Default(2.0),
-    weights: str | float | int = Default("1 1"),
-    normalize: bool | int | str = Default(1),
+    inputs: Int = Default("2"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
+    dropout_transition: Float = Default("2"),
+    weights: String = Default("1 1"),
+    normalize: Boolean = Default("true"),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.35 amix
-
-    Mixes multiple audio inputs into a single output.
-
-    Note that this filter only supports float samples (the amerge and pan audio
-    filters support many formats). If the amix input has integer samples then
-    aresample will be automatically inserted to perform the conversion to float
-    samples.
-
-    It accepts the following parameters:
-
-    **inputs**
-
-        The number of inputs. If unspecified, it defaults to 2.
-
-    **duration**
-
-        How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
-
-    **dropout_transition**
-
-        The transition time, in seconds, for volume renormalization when an input stream ends. The default value is 2 seconds.
-
-    **weights**
-
-        Specify weight of each input audio stream as a sequence of numbers separated by a space. If fewer weights are specified compared to number of inputs, the last weight is assigned to the remaining inputs. Default weight for each input is 1.
-
-    **normalize**
-
-        Always scale inputs instead of only doing summation of samples. Beware of heavy clipping if inputs are not normalized prior or after filtering by this filter if this option is disabled. By default is enabled.
-
-
+    Audio mixing.
 
     Parameters:
     ----------
 
-    :param int inputs: The number of inputs. If unspecified, it defaults to 2.
-    :param int duration: How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
-    :param float dropout_transition: The transition time, in seconds, for volume renormalization when an input stream ends. The default value is 2 seconds.
-    :param str weights: Specify weight of each input audio stream as a sequence of numbers separated by a space. If fewer weights are specified compared to number of inputs, the last weight is assigned to the remaining inputs. Default weight for each input is 1.
-    :param bool normalize: Always scale inputs instead of only doing summation of samples. Beware of heavy clipping if inputs are not normalized prior or after filtering by this filter if this option is disabled. By default is enabled.
+    :param Int inputs: Number of inputs. (from 1 to 32767) (default 2)
+    :param Int duration: How to determine the end-of-stream. (from 0 to 2) (default longest)
+    :param Float dropout_transition: Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)
+    :param String weights: Set weight for each input. (default "1 1")
+    :param Boolean normalize: Scale inputs (default true)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#amix
 
@@ -695,16 +366,7 @@ def amix(
 def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: Any) -> "AudioStream":
     """
 
-    ### 8.36 amultiply
-
-    Multiply first audio stream with second audio stream and store result in
-    output audio stream. Multiplication is done by multiplying each sample from
-    first stream with sample at same position from second stream.
-
-    With this element-wise multiplication one can create amplitude fades and
-    amplitude modulations.
-
-
+    Multiply two audio streams.
 
     Parameters:
     ----------
@@ -730,64 +392,26 @@ def anlmf(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | str = Default(256),
-    mu: float | int | str = Default(0.75),
-    eps: float | int | str = Default(1.0),
-    leakage: float | int | str = Default(0.0),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | Default = Default(0),
-    enable: str | float | int = Default(None),
+    order: Int = Default("256"),
+    mu: Float = Default("0.75"),
+    eps: Float = Default("1"),
+    leakage: Float = Default("0"),
+    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.39 anlmf, anlms
-
-    Apply Normalized Least-Mean-(Squares|Fourth) algorithm to the first audio
-    stream using the second audio stream.
-
-    This adaptive filter is used to mimic a desired filter by finding the filter
-    coefficients that relate to producing the least mean square of the error
-    signal (difference between the desired, 2nd input audio stream and the actual
-    signal, the 1st input audio stream).
-
-    A description of the accepted options follows.
-
-    **order**
-
-        Set filter order.
-
-    **mu**
-
-        Set filter mu.
-
-    **eps**
-
-        Set the filter eps.
-
-    **leakage**
-
-        Set the filter leakage.
-
-    **out_mode**
-
-        It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-
-    **precision**
-
-        Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
-
-
+    Apply Normalized Least-Mean-Fourth algorithm to first audio stream.
 
     Parameters:
     ----------
 
-    :param int order: Set filter order.
-    :param float mu: Set filter mu.
-    :param float eps: Set the filter eps.
-    :param float leakage: Set the filter leakage.
-    :param int out_mode: It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-    :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+    :param Int order: set the filter order (from 1 to 32767) (default 256)
+    :param Float mu: set the filter mu (from 0 to 2) (default 0.75)
+    :param Float eps: set the filter eps (from 0 to 1) (default 1)
+    :param Float leakage: set the filter leakage (from 0 to 1) (default 0)
+    :param Int out_mode: set output mode (from 0 to 3) (default o)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
@@ -809,7 +433,6 @@ def anlmf(
                     "eps": eps,
                     "leakage": leakage,
                     "out_mode": out_mode,
-                    "precision": precision,
                     "enable": enable,
                 }
                 | kwargs
@@ -823,64 +446,26 @@ def anlms(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | str = Default(256),
-    mu: float | int | str = Default(0.75),
-    eps: float | int | str = Default(1.0),
-    leakage: float | int | str = Default(0.0),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | Default = Default(0),
-    enable: str | float | int = Default(None),
+    order: Int = Default("256"),
+    mu: Float = Default("0.75"),
+    eps: Float = Default("1"),
+    leakage: Float = Default("0"),
+    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.39 anlmf, anlms
-
-    Apply Normalized Least-Mean-(Squares|Fourth) algorithm to the first audio
-    stream using the second audio stream.
-
-    This adaptive filter is used to mimic a desired filter by finding the filter
-    coefficients that relate to producing the least mean square of the error
-    signal (difference between the desired, 2nd input audio stream and the actual
-    signal, the 1st input audio stream).
-
-    A description of the accepted options follows.
-
-    **order**
-
-        Set filter order.
-
-    **mu**
-
-        Set filter mu.
-
-    **eps**
-
-        Set the filter eps.
-
-    **leakage**
-
-        Set the filter leakage.
-
-    **out_mode**
-
-        It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-
-    **precision**
-
-        Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
-
-
+    Apply Normalized Least-Mean-Squares algorithm to first audio stream.
 
     Parameters:
     ----------
 
-    :param int order: Set filter order.
-    :param float mu: Set filter mu.
-    :param float eps: Set the filter eps.
-    :param float leakage: Set the filter leakage.
-    :param int out_mode: It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-    :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
+    :param Int order: set the filter order (from 1 to 32767) (default 256)
+    :param Float mu: set the filter mu (from 0 to 2) (default 0.75)
+    :param Float eps: set the filter eps (from 0 to 1) (default 1)
+    :param Float leakage: set the filter leakage (from 0 to 1) (default 0)
+    :param Int out_mode: set output mode (from 0 to 3) (default o)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
@@ -902,7 +487,6 @@ def anlms(
                     "eps": eps,
                     "leakage": leakage,
                     "out_mode": out_mode,
-                    "precision": precision,
                     "enable": enable,
                 }
                 | kwargs
@@ -912,153 +496,14 @@ def anlms(
     return filter_node.audio(0)
 
 
-def apsnr(
-    _input0: "AudioStream", _input1: "AudioStream", *, enable: str | float | int = Default(None), **kwargs: Any
-) -> "AudioStream":
+def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
     """
-
-    ### 8.44 apsnr
-
-    Measure Audio Peak Signal-to-Noise Ratio.
-
-    This filter takes two audio streams for input, and outputs first audio stream.
-    Results are in dB per channel at end of either input.
-
-
-
-    Parameters:
-    ----------
-
-    :param str enable: timeline editing
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#apsnr
-
-    """
-    filter_node = FilterNode(
-        name="apsnr",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _input0,
-            _input1,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "enable": enable,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.audio(0)
-
-
-def arls(
-    _input: "AudioStream",
-    _desired: "AudioStream",
-    *,
-    order: int | str = Default(16),
-    _lambda: float | int | str = Default("1.f"),
-    delta: float | int | str = Default("2.f"),
-    out_mode: int | Literal["i", "d", "o", "n", "e"] | Default = Default("OUT_MODE"),
-    precision: int | Literal["auto", "float", "double"] | Default = Default(0),
-    enable: str | float | int = Default(None),
-    **kwargs: Any
-) -> "AudioStream":
-    """
-
-    ### 8.49 arls
-
-    Apply Recursive Least Squares algorithm to the first audio stream using the
-    second audio stream.
-
-    This adaptive filter is used to mimic a desired filter by recursively finding
-    the filter coefficients that relate to producing the minimal weighted linear
-    least squares cost function of the error signal (difference between the
-    desired, 2nd input audio stream and the actual signal, the 1st input audio
-    stream).
-
-    A description of the accepted options follows.
-
-    **order**
-
-        Set the filter order.
-
-    **lambda**
-
-        Set the forgetting factor.
-
-    **delta**
-
-        Set the coefficient to initialize internal covariance matrix.
-
-    **out_mode**
-
-        Set the filter output samples. It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-
-    **precision**
-
-        Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
-
-
-
-    Parameters:
-    ----------
-
-    :param int order: Set the filter order.
-    :param float _lambda: Set the forgetting factor.
-    :param float delta: Set the coefficient to initialize internal covariance matrix.
-    :param int out_mode: Set the filter output samples. It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o.
-    :param int precision: Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format.
-    :param str enable: timeline editing
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#arls
-
-    """
-    filter_node = FilterNode(
-        name="arls",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _input,
-            _desired,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "order": order,
-                    "lambda": _lambda,
-                    "delta": delta,
-                    "out_mode": out_mode,
-                    "precision": precision,
-                    "enable": enable,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.audio(0)
-
-
-def asdr(
-    _input0: "AudioStream", _input1: "AudioStream", *, enable: str | float | int = Default(None), **kwargs: Any
-) -> "AudioStream":
-    """
-
-    ### 8.51 asdr
 
     Measure Audio Signal-to-Distortion Ratio.
 
-    This filter takes two audio streams for input, and outputs first audio stream.
-    Results are in dB per channel at end of either input.
-
-
-
     Parameters:
     ----------
 
-    :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#asdr
 
@@ -1071,89 +516,23 @@ def asdr(
             _input0,
             _input1,
         ),
-        kwargs=tuple(
-            (
-                {
-                    "enable": enable,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.audio(0)
-
-
-def asisdr(
-    _input0: "AudioStream", _input1: "AudioStream", *, enable: str | float | int = Default(None), **kwargs: Any
-) -> "AudioStream":
-    """
-
-    ### 8.55 asisdr
-
-    Measure Audio Scaled-Invariant Signal-to-Distortion Ratio.
-
-    This filter takes two audio streams for input, and outputs first audio stream.
-    Results are in dB per channel at end of either input.
-
-
-
-    Parameters:
-    ----------
-
-    :param str enable: timeline editing
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#asisdr
-
-    """
-    filter_node = FilterNode(
-        name="asisdr",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _input0,
-            _input1,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "enable": enable,
-                }
-                | kwargs
-            ).items()
-        ),
+        kwargs=tuple(({} | kwargs).items()),
     )
     return filter_node.audio(0)
 
 
 def astreamselect(
-    *streams: "AudioStream",
-    inputs: int | str = Default(2),
-    map: str | float | int = Default("((void*)0)"),
-    **kwargs: Any
+    *streams: "AudioStream", inputs: Int = Default("2"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
-    ### 11.245 streamselect, astreamselect
-
-    Select video or audio streams.
-
-    The filter accepts the following options:
-
-    **inputs**
-
-        Set number of inputs. Default is 2.
-
-    **map**
-
-        Set input indexes to remap to outputs.
-
-
+    Select audio streams
 
     Parameters:
     ----------
 
-    :param int inputs: Set number of inputs. Default is 2.
-    :param str map: Set input indexes to remap to outputs.
+    :param Int inputs: number of input streams (from 2 to INT_MAX) (default 2)
+    :param String map: input indexes to remap to outputs
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect
 
@@ -1181,39 +560,19 @@ def axcorrelate(
     _axcorrelate0: "AudioStream",
     _axcorrelate1: "AudioStream",
     *,
-    size: int | str = Default(256),
-    algo: int | Literal["slow", "fast", "best"] | Default = Default(2),
+    size: Int = Default("256"),
+    algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.68 axcorrelate
-
-    Calculate normalized windowed cross-correlation between two input audio
-    streams.
-
-    Resulted samples are always between -1 and 1 inclusive. If result is 1 it
-    means two input samples are highly correlated in that selected segment. Result
-    0 means they are not correlated at all. If result is -1 it means two input
-    samples are out of phase, which means they cancel each other.
-
-    The filter accepts the following options:
-
-    **size**
-
-        Set size of segment over which cross-correlation is calculated. Default is 256. Allowed range is from 2 to 131072.
-
-    **algo**
-
-        Set algorithm for cross-correlation. Can be slow or fast or best. Default is best. Fast algorithm assumes mean values over any given segment are always zero and thus need much less calculations to make. This is generally not true, but is valid for typical audio streams.
-
-
+    Cross-correlate two audio streams.
 
     Parameters:
     ----------
 
-    :param int size: Set size of segment over which cross-correlation is calculated. Default is 256. Allowed range is from 2 to 131072.
-    :param int algo: Set algorithm for cross-correlation. Can be slow or fast or best. Default is best. Fast algorithm assumes mean values over any given segment are always zero and thus need much less calculations to make. This is generally not true, but is valid for typical audio streams.
+    :param Int size: set segment size (from 2 to 131072) (default 256)
+    :param Int algo: set algorithm (from 0 to 1) (default slow)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#axcorrelate
 
@@ -1243,7 +602,7 @@ def blend(
     _top: "VideoStream",
     _bottom: "VideoStream",
     *,
-    c0_mode: int
+    c0_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -1288,8 +647,8 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | Default = Default(0),
-    c1_mode: int
+    | Default = Default("normal"),
+    c1_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -1334,8 +693,8 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | Default = Default(0),
-    c2_mode: int
+    | Default = Default("normal"),
+    c2_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -1380,8 +739,8 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | Default = Default(0),
-    c3_mode: int
+    | Default = Default("normal"),
+    c3_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -1426,8 +785,8 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | Default = Default(0),
-    all_mode: int
+    | Default = Default("normal"),
+    all_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -1472,103 +831,51 @@ def blend(
         "interpolate",
         "hardoverlay",
     ]
-    | Default = Default(-1),
-    c0_expr: str | float | int = Default("((void*)0)"),
-    c1_expr: str | float | int = Default("((void*)0)"),
-    c2_expr: str | float | int = Default("((void*)0)"),
-    c3_expr: str | float | int = Default("((void*)0)"),
-    all_expr: str | float | int = Default("((void*)0)"),
-    c0_opacity: float | int | str = Default(1.0),
-    c1_opacity: float | int | str = Default(1.0),
-    c2_opacity: float | int | str = Default(1.0),
-    c3_opacity: float | int | str = Default(1.0),
-    all_opacity: float | int | str = Default(1.0),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    | Default = Default("-1"),
+    c0_expr: String = Default(None),
+    c1_expr: String = Default(None),
+    c2_expr: String = Default(None),
+    c3_expr: String = Default(None),
+    all_expr: String = Default(None),
+    c0_opacity: Double = Default("1"),
+    c1_opacity: Double = Default("1"),
+    c2_opacity: Double = Default("1"),
+    c3_opacity: Double = Default("1"),
+    all_opacity: Double = Default("1"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.15 blend
-
     Blend two video frames into each other.
-
-    The `blend` filter takes two input streams and outputs one stream, the first
-    input is the "top" layer and second input is "bottom" layer. By default, the
-    output terminates when the longest input terminates.
-
-    The `tblend` (time blend) filter takes two consecutive frames from one single
-    stream, and outputs the result obtained by blending the new frame on top of
-    the old frame.
-
-    A description of the accepted options follows.
-
-    **c0_mode**
-
-    **c1_mode**
-
-    **c2_mode**
-
-    **c3_mode**
-
-    **all_mode**
-
-        Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘addition’ ‘and’ ‘average’ ‘bleach’ ‘burn’ ‘darken’ ‘difference’ ‘divide’ ‘dodge’ ‘exclusion’ ‘extremity’ ‘freeze’ ‘geometric’ ‘glow’ ‘grainextract’ ‘grainmerge’ ‘hardlight’ ‘hardmix’ ‘hardoverlay’ ‘harmonic’ ‘heat’ ‘interpolate’ ‘lighten’ ‘linearlight’ ‘multiply’ ‘multiply128’ ‘negation’ ‘normal’ ‘or’ ‘overlay’ ‘phoenix’ ‘pinlight’ ‘reflect’ ‘screen’ ‘softdifference’ ‘softlight’ ‘stain’ ‘subtract’ ‘vividlight’ ‘xor’
-
-    **c0_opacity**
-
-    **c1_opacity**
-
-    **c2_opacity**
-
-    **c3_opacity**
-
-    **all_opacity**
-
-        Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
-
-    **c0_expr**
-
-    **c1_expr**
-
-    **c2_expr**
-
-    **c3_expr**
-
-    **all_expr**
-
-        Set blend expression for specific pixel component or all pixel components in case of all_expr. Note that related mode options will be ignored if those are set. The expressions can use the following variables: N The sequential number of the filtered frame, starting from 0. X Y the coordinates of the current sample W H the width and height of currently filtered plane SW SH Width and height scale for the plane being filtered. It is the ratio between the dimensions of the current plane to the luma plane, e.g. for a yuv420p frame, the values are 1,1 for the luma plane and 0.5,0.5 for the chroma planes. T Time of the current frame, expressed in seconds. TOP, A Value of pixel component at current location for first video frame (top layer). BOTTOM, B Value of pixel component at current location for second video frame (bottom layer).
-
-    The `blend` filter also supports the framesync options.
-
-
 
     Parameters:
     ----------
 
-    :param int c0_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘addition’ ‘and’ ‘average’ ‘bleach’ ‘burn’ ‘darken’ ‘difference’ ‘divide’ ‘dodge’ ‘exclusion’ ‘extremity’ ‘freeze’ ‘geometric’ ‘glow’ ‘grainextract’ ‘grainmerge’ ‘hardlight’ ‘hardmix’ ‘hardoverlay’ ‘harmonic’ ‘heat’ ‘interpolate’ ‘lighten’ ‘linearlight’ ‘multiply’ ‘multiply128’ ‘negation’ ‘normal’ ‘or’ ‘overlay’ ‘phoenix’ ‘pinlight’ ‘reflect’ ‘screen’ ‘softdifference’ ‘softlight’ ‘stain’ ‘subtract’ ‘vividlight’ ‘xor’
-    :param int c1_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘addition’ ‘and’ ‘average’ ‘bleach’ ‘burn’ ‘darken’ ‘difference’ ‘divide’ ‘dodge’ ‘exclusion’ ‘extremity’ ‘freeze’ ‘geometric’ ‘glow’ ‘grainextract’ ‘grainmerge’ ‘hardlight’ ‘hardmix’ ‘hardoverlay’ ‘harmonic’ ‘heat’ ‘interpolate’ ‘lighten’ ‘linearlight’ ‘multiply’ ‘multiply128’ ‘negation’ ‘normal’ ‘or’ ‘overlay’ ‘phoenix’ ‘pinlight’ ‘reflect’ ‘screen’ ‘softdifference’ ‘softlight’ ‘stain’ ‘subtract’ ‘vividlight’ ‘xor’
-    :param int c2_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘addition’ ‘and’ ‘average’ ‘bleach’ ‘burn’ ‘darken’ ‘difference’ ‘divide’ ‘dodge’ ‘exclusion’ ‘extremity’ ‘freeze’ ‘geometric’ ‘glow’ ‘grainextract’ ‘grainmerge’ ‘hardlight’ ‘hardmix’ ‘hardoverlay’ ‘harmonic’ ‘heat’ ‘interpolate’ ‘lighten’ ‘linearlight’ ‘multiply’ ‘multiply128’ ‘negation’ ‘normal’ ‘or’ ‘overlay’ ‘phoenix’ ‘pinlight’ ‘reflect’ ‘screen’ ‘softdifference’ ‘softlight’ ‘stain’ ‘subtract’ ‘vividlight’ ‘xor’
-    :param int c3_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘addition’ ‘and’ ‘average’ ‘bleach’ ‘burn’ ‘darken’ ‘difference’ ‘divide’ ‘dodge’ ‘exclusion’ ‘extremity’ ‘freeze’ ‘geometric’ ‘glow’ ‘grainextract’ ‘grainmerge’ ‘hardlight’ ‘hardmix’ ‘hardoverlay’ ‘harmonic’ ‘heat’ ‘interpolate’ ‘lighten’ ‘linearlight’ ‘multiply’ ‘multiply128’ ‘negation’ ‘normal’ ‘or’ ‘overlay’ ‘phoenix’ ‘pinlight’ ‘reflect’ ‘screen’ ‘softdifference’ ‘softlight’ ‘stain’ ‘subtract’ ‘vividlight’ ‘xor’
-    :param int all_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘addition’ ‘and’ ‘average’ ‘bleach’ ‘burn’ ‘darken’ ‘difference’ ‘divide’ ‘dodge’ ‘exclusion’ ‘extremity’ ‘freeze’ ‘geometric’ ‘glow’ ‘grainextract’ ‘grainmerge’ ‘hardlight’ ‘hardmix’ ‘hardoverlay’ ‘harmonic’ ‘heat’ ‘interpolate’ ‘lighten’ ‘linearlight’ ‘multiply’ ‘multiply128’ ‘negation’ ‘normal’ ‘or’ ‘overlay’ ‘phoenix’ ‘pinlight’ ‘reflect’ ‘screen’ ‘softdifference’ ‘softlight’ ‘stain’ ‘subtract’ ‘vividlight’ ‘xor’
-    :param str c0_expr: Set blend expression for specific pixel component or all pixel components in case of all_expr. Note that related mode options will be ignored if those are set. The expressions can use the following variables: N The sequential number of the filtered frame, starting from 0. X Y the coordinates of the current sample W H the width and height of currently filtered plane SW SH Width and height scale for the plane being filtered. It is the ratio between the dimensions of the current plane to the luma plane, e.g. for a yuv420p frame, the values are 1,1 for the luma plane and 0.5,0.5 for the chroma planes. T Time of the current frame, expressed in seconds. TOP, A Value of pixel component at current location for first video frame (top layer). BOTTOM, B Value of pixel component at current location for second video frame (bottom layer).
-    :param str c1_expr: Set blend expression for specific pixel component or all pixel components in case of all_expr. Note that related mode options will be ignored if those are set. The expressions can use the following variables: N The sequential number of the filtered frame, starting from 0. X Y the coordinates of the current sample W H the width and height of currently filtered plane SW SH Width and height scale for the plane being filtered. It is the ratio between the dimensions of the current plane to the luma plane, e.g. for a yuv420p frame, the values are 1,1 for the luma plane and 0.5,0.5 for the chroma planes. T Time of the current frame, expressed in seconds. TOP, A Value of pixel component at current location for first video frame (top layer). BOTTOM, B Value of pixel component at current location for second video frame (bottom layer).
-    :param str c2_expr: Set blend expression for specific pixel component or all pixel components in case of all_expr. Note that related mode options will be ignored if those are set. The expressions can use the following variables: N The sequential number of the filtered frame, starting from 0. X Y the coordinates of the current sample W H the width and height of currently filtered plane SW SH Width and height scale for the plane being filtered. It is the ratio between the dimensions of the current plane to the luma plane, e.g. for a yuv420p frame, the values are 1,1 for the luma plane and 0.5,0.5 for the chroma planes. T Time of the current frame, expressed in seconds. TOP, A Value of pixel component at current location for first video frame (top layer). BOTTOM, B Value of pixel component at current location for second video frame (bottom layer).
-    :param str c3_expr: Set blend expression for specific pixel component or all pixel components in case of all_expr. Note that related mode options will be ignored if those are set. The expressions can use the following variables: N The sequential number of the filtered frame, starting from 0. X Y the coordinates of the current sample W H the width and height of currently filtered plane SW SH Width and height scale for the plane being filtered. It is the ratio between the dimensions of the current plane to the luma plane, e.g. for a yuv420p frame, the values are 1,1 for the luma plane and 0.5,0.5 for the chroma planes. T Time of the current frame, expressed in seconds. TOP, A Value of pixel component at current location for first video frame (top layer). BOTTOM, B Value of pixel component at current location for second video frame (bottom layer).
-    :param str all_expr: Set blend expression for specific pixel component or all pixel components in case of all_expr. Note that related mode options will be ignored if those are set. The expressions can use the following variables: N The sequential number of the filtered frame, starting from 0. X Y the coordinates of the current sample W H the width and height of currently filtered plane SW SH Width and height scale for the plane being filtered. It is the ratio between the dimensions of the current plane to the luma plane, e.g. for a yuv420p frame, the values are 1,1 for the luma plane and 0.5,0.5 for the chroma planes. T Time of the current frame, expressed in seconds. TOP, A Value of pixel component at current location for first video frame (top layer). BOTTOM, B Value of pixel component at current location for second video frame (bottom layer).
-    :param float c0_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
-    :param float c1_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
-    :param float c2_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
-    :param float c3_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
-    :param float all_opacity: Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes.
+    :param Int c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+    :param Int c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+    :param Int c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+    :param Int c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+    :param Int all_mode: set blend mode for all components (from -1 to 39) (default -1)
+    :param String c0_expr: set color component #0 expression
+    :param String c1_expr: set color component #1 expression
+    :param String c2_expr: set color component #2 expression
+    :param String c3_expr: set color component #3 expression
+    :param String all_expr: set expression for all color components
+    :param Double c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+    :param Double c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+    :param Double c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+    :param Double c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+    :param Double all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#blend
 
@@ -1599,99 +906,11 @@ def blend(
                     "c2_opacity": c2_opacity,
                     "c3_opacity": c3_opacity,
                     "all_opacity": all_opacity,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def blend_vulkan(
-    _top: "VideoStream",
-    _bottom: "VideoStream",
-    *,
-    c0_mode: int | Literal["normal", "multiply"] | Default = Default(0),
-    c1_mode: int | Literal["normal", "multiply"] | Default = Default(0),
-    c2_mode: int | Literal["normal", "multiply"] | Default = Default(0),
-    c3_mode: int | Literal["normal", "multiply"] | Default = Default(0),
-    all_mode: int | Literal["normal", "multiply"] | Default = Default(-1),
-    c0_opacity: float | int | str = Default(1.0),
-    c1_opacity: float | int | str = Default(1.0),
-    c2_opacity: float | int | str = Default(1.0),
-    c3_opacity: float | int | str = Default(1.0),
-    all_opacity: float | int | str = Default(1.0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 14.2 blend_vulkan
-
-    Blend two Vulkan frames into each other.
-
-    The `blend` filter takes two input streams and outputs one stream, the first
-    input is the "top" layer and second input is "bottom" layer. By default, the
-    output terminates when the longest input terminates.
-
-    A description of the accepted options follows.
-
-    **c0_mode**
-
-    **c1_mode**
-
-    **c2_mode**
-
-    **c3_mode**
-
-    **all_mode**
-
-        Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
-
-
-
-    Parameters:
-    ----------
-
-    :param int c0_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
-    :param int c1_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
-    :param int c2_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
-    :param int c3_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
-    :param int all_mode: Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: ‘normal’ ‘multiply’
-    :param float c0_opacity: set color component #0 opacity
-    :param float c1_opacity: set color component #1 opacity
-    :param float c2_opacity: set color component #2 opacity
-    :param float c3_opacity: set color component #3 opacity
-    :param float all_opacity: set opacity for all color components
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#blend_005fvulkan
-
-    """
-    filter_node = FilterNode(
-        name="blend_vulkan",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _top,
-            _bottom,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "c0_mode": c0_mode,
-                    "c1_mode": c1_mode,
-                    "c2_mode": c2_mode,
-                    "c3_mode": c3_mode,
-                    "all_mode": all_mode,
-                    "c0_opacity": c0_opacity,
-                    "c1_opacity": c1_opacity,
-                    "c2_opacity": c2_opacity,
-                    "c3_opacity": c3_opacity,
-                    "all_opacity": all_opacity,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -1702,88 +921,38 @@ def blend_vulkan(
 
 def bm3d(
     *streams: "VideoStream",
-    sigma: float | int | str = Default(1.0),
-    block: int | str = Default(16),
-    bstep: int | str = Default(4),
-    group: int | str = Default(1),
-    range: int | str = Default(9),
-    mstep: int | str = Default(1),
-    thmse: float | int | str = Default(0.0),
-    hdthr: float | int | str = Default(2.7),
-    estim: int | Literal["basic", "final"] | Default = Default("BASIC"),
-    ref: bool | int | str = Default(0),
-    planes: int | str = Default(7),
-    enable: str | float | int = Default(None),
+    sigma: Float = Default("1"),
+    block: Int = Default("16"),
+    bstep: Int = Default("4"),
+    group: Int = Default("1"),
+    range: Int = Default("9"),
+    mstep: Int = Default("1"),
+    thmse: Float = Default("0"),
+    hdthr: Float = Default("2.7"),
+    estim: Int | Literal["basic", "final"] | Default = Default("basic"),
+    ref: Boolean = Default("false"),
+    planes: Int = Default("7"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.18 bm3d
-
-    Denoise frames using Block-Matching 3D algorithm.
-
-    The filter accepts the following options.
-
-    **sigma**
-
-        Set denoising strength. Default value is 1. Allowed range is from 0 to 999.9. The denoising algorithm is very sensitive to sigma, so adjust it according to the source.
-
-    **block**
-
-        Set local patch size. This sets dimensions in 2D.
-
-    **bstep**
-
-        Set sliding step for processing blocks. Default value is 4. Allowed range is from 1 to 64. Smaller values allows processing more reference blocks and is slower.
-
-    **group**
-
-        Set maximal number of similar blocks for 3rd dimension. Default value is 1. When set to 1, no block matching is done. Larger values allows more blocks in single group. Allowed range is from 1 to 256.
-
-    **range**
-
-        Set radius for search block matching. Default is 9. Allowed range is from 1 to INT32_MAX.
-
-    **mstep**
-
-        Set step between two search locations for block matching. Default is 1. Allowed range is from 1 to 64. Smaller is slower.
-
-    **thmse**
-
-        Set threshold of mean square error for block matching. Valid range is 0 to INT32_MAX.
-
-    **hdthr**
-
-        Set thresholding parameter for hard thresholding in 3D transformed domain. Larger values results in stronger hard-thresholding filtering in frequency domain.
-
-    **estim**
-
-        Set filtering estimation mode. Can be basic or final. Default is basic.
-
-    **ref**
-
-        If enabled, filter will use 2nd stream for block matching. Default is disabled for basic value of estim option, and always enabled if value of estim is final.
-
-    **planes**
-
-        Set planes to filter. Default is all available except alpha.
-
-
+    Block-Matching 3D denoiser.
 
     Parameters:
     ----------
 
-    :param float sigma: Set denoising strength. Default value is 1. Allowed range is from 0 to 999.9. The denoising algorithm is very sensitive to sigma, so adjust it according to the source.
-    :param int block: Set local patch size. This sets dimensions in 2D.
-    :param int bstep: Set sliding step for processing blocks. Default value is 4. Allowed range is from 1 to 64. Smaller values allows processing more reference blocks and is slower.
-    :param int group: Set maximal number of similar blocks for 3rd dimension. Default value is 1. When set to 1, no block matching is done. Larger values allows more blocks in single group. Allowed range is from 1 to 256.
-    :param int range: Set radius for search block matching. Default is 9. Allowed range is from 1 to INT32_MAX.
-    :param int mstep: Set step between two search locations for block matching. Default is 1. Allowed range is from 1 to 64. Smaller is slower.
-    :param float thmse: Set threshold of mean square error for block matching. Valid range is 0 to INT32_MAX.
-    :param float hdthr: Set thresholding parameter for hard thresholding in 3D transformed domain. Larger values results in stronger hard-thresholding filtering in frequency domain.
-    :param int estim: Set filtering estimation mode. Can be basic or final. Default is basic.
-    :param bool ref: If enabled, filter will use 2nd stream for block matching. Default is disabled for basic value of estim option, and always enabled if value of estim is final.
-    :param int planes: Set planes to filter. Default is all available except alpha.
+    :param Float sigma: set denoising strength (from 0 to 99999.9) (default 1)
+    :param Int block: set size of local patch (from 8 to 64) (default 16)
+    :param Int bstep: set sliding step for processing blocks (from 1 to 64) (default 4)
+    :param Int group: set maximal number of similar blocks (from 1 to 256) (default 1)
+    :param Int range: set block matching range (from 1 to INT_MAX) (default 9)
+    :param Int mstep: set step for block matching (from 1 to 64) (default 1)
+    :param Float thmse: set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)
+    :param Float hdthr: set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)
+    :param Int estim: set filtering estimation mode (from 0 to 1) (default basic)
+    :param Boolean ref: have reference stream (default false)
+    :param Int planes: set planes to filter (from 0 to 15) (default 7)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#bm3d
@@ -1822,50 +991,24 @@ def colormap(
     _source: "VideoStream",
     _target: "VideoStream",
     *,
-    patch_size: str | float | int = Default("64x64"),
-    nb_patches: int | str = Default(0),
-    type: int | Literal["relative", "absolute"] | Default = Default(1),
-    kernel: int | Literal["euclidean", "weuclidean"] | Default = Default(0),
-    enable: str | float | int = Default(None),
+    patch_size: Image_size = Default("64x64"),
+    nb_patches: Int = Default("0"),
+    type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
+    kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.39 colormap
-
-    Apply custom color maps to video stream.
-
-    This filter needs three input video streams. First stream is video stream that
-    is going to be filtered out. Second and third video stream specify color
-    patches for source color to target color mapping.
-
-    The filter accepts the following options:
-
-    **patch_size**
-
-        Set the source and target video stream patch size in pixels.
-
-    **nb_patches**
-
-        Set the max number of used patches from source and target video stream. Default value is number of patches available in additional video streams. Max allowed number of patches is 64.
-
-    **type**
-
-        Set the adjustments used for target colors. Can be relative or absolute. Defaults is absolute.
-
-    **kernel**
-
-        Set the kernel used to measure color differences between mapped colors. The accepted values are: ‘euclidean’ ‘weuclidean’ Default is euclidean.
-
-
+    Apply custom Color Maps to video stream.
 
     Parameters:
     ----------
 
-    :param str patch_size: Set the source and target video stream patch size in pixels.
-    :param int nb_patches: Set the max number of used patches from source and target video stream. Default value is number of patches available in additional video streams. Max allowed number of patches is 64.
-    :param int type: Set the adjustments used for target colors. Can be relative or absolute. Defaults is absolute.
-    :param int kernel: Set the kernel used to measure color differences between mapped colors. The accepted values are: ‘euclidean’ ‘weuclidean’ Default is euclidean.
+    :param Image_size patch_size: set patch size (default "64x64")
+    :param Int nb_patches: set number of patches (from 0 to 64) (default 0)
+    :param Int type: set the target type used (from 0 to 1) (default absolute)
+    :param Int kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#colormap
@@ -1898,73 +1041,23 @@ def colormap(
 
 def concat(
     *streams: "FilterableStream",
-    n: int | str = Default(2),
-    v: int | str = Default(1),
-    a: int | str = Default(0),
-    unsafe: bool | int | str = Default(0),
+    n: Int = Default("2"),
+    v: Int = Default("1"),
+    a: Int = Default("0"),
+    unsafe: Boolean = Default("false"),
     **kwargs: Any
 ) -> FilterNode:
     """
 
-    ### 18.9 concat
-
-    Concatenate audio and video streams, joining them together one after the
-    other.
-
-    The filter works on segments of synchronized video and audio streams. All
-    segments must have the same number of streams of each type, and that will also
-    be the number of streams at output.
-
-    The filter accepts the following options:
-
-    **n**
-
-        Set the number of segments. Default is 2.
-
-    **v**
-
-        Set the number of output video streams, that is also the number of video streams in each segment. Default is 1.
-
-    **a**
-
-        Set the number of output audio streams, that is also the number of audio streams in each segment. Default is 0.
-
-    **unsafe**
-
-        Activate unsafe mode: do not fail if segments have a different format.
-
-    The filter has v+a outputs: first v video outputs, then a audio outputs.
-
-    There are nx(v+a) inputs: first the inputs for the first segment, in the same
-    order as the outputs, then the inputs for the second segment, etc.
-
-    Related streams do not always have exactly the same duration, for various
-    reasons including codec frame size or sloppy authoring. For that reason,
-    related synchronized streams (e.g. a video and its audio track) should be
-    concatenated at once. The concat filter will use the duration of the longest
-    stream in each segment (except the last one), and if necessary pad shorter
-    audio streams with silence.
-
-    For this filter to work correctly, all segments must start at timestamp 0.
-
-    All corresponding streams must have the same parameters in all segments; the
-    filtering system will automatically select a common pixel format for video
-    streams, and a common sample format, sample rate and channel layout for audio
-    streams, but other settings, such as resolution, must be converted explicitly
-    by the user.
-
-    Different frame rates are acceptable but will result in variable frame rate at
-    output; be sure to configure the output file to handle it.
-
-
+    Concatenate audio and video streams.
 
     Parameters:
     ----------
 
-    :param int n: Set the number of segments. Default is 2.
-    :param int v: Set the number of output video streams, that is also the number of video streams in each segment. Default is 1.
-    :param int a: Set the number of output audio streams, that is also the number of audio streams in each segment. Default is 0.
-    :param bool unsafe: Activate unsafe mode: do not fail if segments have a different format.
+    :param Int n: specify the number of segments (from 1 to INT_MAX) (default 2)
+    :param Int v: specify the number of video streams (from 0 to INT_MAX) (default 1)
+    :param Int a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
+    :param Boolean unsafe: enable unsafe mode (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#concat
 
@@ -1994,48 +1087,31 @@ def convolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: int | str = Default(7),
-    impulse: int | Literal["first", "all"] | Default = Default(1),
-    noise: float | int | str = Default(1e-07),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    planes: Int = Default("7"),
+    impulse: Int | Literal["first", "all"] | Default = Default("all"),
+    noise: Float = Default("1e-07"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.45 convolve
-
-    Apply 2D convolution of video stream in frequency domain using second stream
-    as impulse.
-
-    The filter accepts the following options:
-
-    **planes**
-
-        Set which planes to process.
-
-    **impulse**
-
-        Set which impulse video frames will be processed, can be first or all. Default is all.
-
-    The `convolve` filter also supports the framesync options.
-
-
+    Convolve first video stream with second video stream.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes to process.
-    :param int impulse: Set which impulse video frames will be processed, can be first or all. Default is all.
-    :param float noise: set noise
+    :param Int planes: set planes to convolve (from 0 to 15) (default 7)
+    :param Int impulse: when to process impulses (from 0 to 1) (default all)
+    :param Float noise: set noise (from 0 to 1) (default 1e-07)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#convolve
 
@@ -2054,11 +1130,11 @@ def convolve(
                     "planes": planes,
                     "impulse": impulse,
                     "noise": noise,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2071,50 +1147,25 @@ def corr(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.48 corr
-
-    Obtain the correlation between two input videos.
-
-    This filter takes two input videos.
-
-    Both input videos must have the same resolution and pixel format for this
-    filter to work correctly. Also it assumes that both inputs have the same
-    number of frames, which are compared one by one.
-
-    The obtained per component, average, min and max correlation is printed
-    through the logging system.
-
-    The filter stores the calculated correlation of each frame in frame metadata.
-
-    This filter also supports the framesync options.
-
-    In the below example the input file main.mpg being processed is compared with
-    the reference file ref.mpg.
-
-
-
-        ffmpeg -i main.mpg -i ref.mpg -lavfi corr -f null -
-
-
-
+    Calculate the correlation between two video streams.
 
     Parameters:
     ----------
 
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#corr
 
@@ -2130,11 +1181,11 @@ def corr(
         kwargs=tuple(
             (
                 {
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2145,67 +1196,31 @@ def corr(
 
 def decimate(
     *streams: "VideoStream",
-    cycle: int | str = Default(5),
-    dupthresh: float | int | str = Default(1.1),
-    scthresh: float | int | str = Default(15.0),
-    blockx: int | str = Default(32),
-    blocky: int | str = Default(32),
-    ppsrc: bool | int | str = Default(0),
-    chroma: bool | int | str = Default(1),
-    mixed: bool | int | str = Default(0),
+    cycle: Int = Default("5"),
+    dupthresh: Double = Default("1.1"),
+    scthresh: Double = Default("15"),
+    blockx: Int = Default("32"),
+    blocky: Int = Default("32"),
+    ppsrc: Boolean = Default("false"),
+    chroma: Boolean = Default("true"),
+    mixed: Boolean = Default("false"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.59 decimate
-
-    Drop duplicated frames at regular intervals.
-
-    The filter accepts the following options:
-
-    **cycle**
-
-        Set the number of frames from which one will be dropped. Setting this to N means one frame in every batch of N frames will be dropped. Default is 5.
-
-    **dupthresh**
-
-        Set the threshold for duplicate detection. If the difference metric for a frame is less than or equal to this value, then it is declared as duplicate. Default is 1.1
-
-    **scthresh**
-
-        Set scene change threshold. Default is 15.
-
-    **blockx**
-
-    **blocky**
-
-        Set the size of the x and y-axis blocks used during metric calculations. Larger blocks give better noise suppression, but also give worse detection of small movements. Must be a power of two. Default is 32.
-
-    **ppsrc**
-
-        Mark main input as a pre-processed input and activate clean source input stream. This allows the input to be pre-processed with various filters to help the metrics calculation while keeping the frame selection lossless. When set to 1, the first stream is for the pre-processed input, and the second stream is the clean source from where the kept frames are chosen. Default is 0.
-
-    **chroma**
-
-        Set whether or not chroma is considered in the metric calculations. Default is 1.
-
-    **mixed**
-
-        Set whether or not the input only partially contains content to be decimated. Default is false. If enabled video output stream will be in variable frame rate.
-
-
+    Decimate frames (post field matching filter).
 
     Parameters:
     ----------
 
-    :param int cycle: Set the number of frames from which one will be dropped. Setting this to N means one frame in every batch of N frames will be dropped. Default is 5.
-    :param float dupthresh: Set the threshold for duplicate detection. If the difference metric for a frame is less than or equal to this value, then it is declared as duplicate. Default is 1.1
-    :param float scthresh: Set scene change threshold. Default is 15.
-    :param int blockx: Set the size of the x and y-axis blocks used during metric calculations. Larger blocks give better noise suppression, but also give worse detection of small movements. Must be a power of two. Default is 32.
-    :param int blocky: Set the size of the x and y-axis blocks used during metric calculations. Larger blocks give better noise suppression, but also give worse detection of small movements. Must be a power of two. Default is 32.
-    :param bool ppsrc: Mark main input as a pre-processed input and activate clean source input stream. This allows the input to be pre-processed with various filters to help the metrics calculation while keeping the frame selection lossless. When set to 1, the first stream is for the pre-processed input, and the second stream is the clean source from where the kept frames are chosen. Default is 0.
-    :param bool chroma: Set whether or not chroma is considered in the metric calculations. Default is 1.
-    :param bool mixed: Set whether or not the input only partially contains content to be decimated. Default is false. If enabled video output stream will be in variable frame rate.
+    :param Int cycle: set the number of frame from which one will be dropped (from 2 to 25) (default 5)
+    :param Double dupthresh: set duplicate threshold (from 0 to 100) (default 1.1)
+    :param Double scthresh: set scene change threshold (from 0 to 100) (default 15)
+    :param Int blockx: set the size of the x-axis blocks used during metric calculations (from 4 to 512) (default 32)
+    :param Int blocky: set the size of the y-axis blocks used during metric calculations (from 4 to 512) (default 32)
+    :param Boolean ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
+    :param Boolean chroma: set whether or not chroma is considered in the metric calculations (default true)
+    :param Boolean mixed: set whether or not the input only partially contains content to be decimated (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#decimate
 
@@ -2238,52 +1253,31 @@ def deconvolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: int | str = Default(7),
-    impulse: int | Literal["first", "all"] | Default = Default(1),
-    noise: float | int | str = Default(1e-07),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    planes: Int = Default("7"),
+    impulse: Int | Literal["first", "all"] | Default = Default("all"),
+    noise: Float = Default("1e-07"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.60 deconvolve
-
-    Apply 2D deconvolution of video stream in frequency domain using second stream
-    as impulse.
-
-    The filter accepts the following options:
-
-    **planes**
-
-        Set which planes to process.
-
-    **impulse**
-
-        Set which impulse video frames will be processed, can be first or all. Default is all.
-
-    **noise**
-
-        Set noise when doing divisions. Default is 0.0000001. Useful when width and height are not same and not power of 2 or if stream prior to convolving had noise.
-
-    The `deconvolve` filter also supports the framesync options.
-
-
+    Deconvolve first video stream with second video stream.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes to process.
-    :param int impulse: Set which impulse video frames will be processed, can be first or all. Default is all.
-    :param float noise: Set noise when doing divisions. Default is 0.0000001. Useful when width and height are not same and not power of 2 or if stream prior to convolving had noise.
+    :param Int planes: set planes to deconvolve (from 0 to 15) (default 7)
+    :param Int impulse: when to process impulses (from 0 to 1) (default all)
+    :param Float noise: set noise (from 0 to 1) (default 1e-07)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#deconvolve
 
@@ -2302,11 +1296,11 @@ def deconvolve(
                     "planes": planes,
                     "impulse": impulse,
                     "noise": noise,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2320,39 +1314,18 @@ def displace(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    edge: int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("EDGE_SMEAR"),
-    enable: str | float | int = Default(None),
+    edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.71 displace
-
-    Displace pixels as indicated by second and third input stream.
-
-    It takes three input streams and outputs one stream, the first input is the
-    source, and second and third input are displacement maps.
-
-    The second input specifies how much to displace pixels along the x-axis, while
-    the third input specifies how much to displace pixels along the y-axis. If one
-    of displacement map streams terminates, last frame from that displacement map
-    will be used.
-
-    Note that once generated, displacements maps can be reused over and over
-    again.
-
-    A description of the accepted options follows.
-
-    **edge**
-
-        Set displace behavior for pixels that are out of range. Available values are: ‘blank’ Missing pixels are replaced by black pixels. ‘smear’ Adjacent pixels will spread out to replace missing pixels. ‘wrap’ Out of range pixels are wrapped so they point to pixels of other side. ‘mirror’ Out of range pixels will be replaced with mirrored pixels. Default is ‘smear’.
-
-
+    Displace pixels.
 
     Parameters:
     ----------
 
-    :param int edge: Set displace behavior for pixels that are out of range. Available values are: ‘blank’ Missing pixels are replaced by black pixels. ‘smear’ Adjacent pixels will spread out to replace missing pixels. ‘wrap’ Out of range pixels are wrapped so they point to pixels of other side. ‘mirror’ Out of range pixels will be replaced with mirrored pixels. Default is ‘smear’.
+    :param Int edge: set edge mode (from 0 to 3) (default smear)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#displace
@@ -2381,53 +1354,17 @@ def displace(
 
 
 def feedback(
-    _default: "VideoStream",
-    _feedin: "VideoStream",
-    *,
-    x: int | str = Default(0),
-    y: int | str = Default(0),
-    w: int | str = Default(0),
-    h: int | str = Default(0),
-    enable: str | float | int = Default(None),
-    **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+    _default: "VideoStream", _feedin: "VideoStream", *, x: Int = Default("0"), w: Int = Default("0"), **kwargs: Any
+) -> tuple["AudioStream", "AudioStream",]:
     """
 
-    ### 11.89 feedback
-
     Apply feedback video filter.
-
-    This filter pass cropped input frames to 2nd output. From there it can be
-    filtered with other video filters. After filter receives frame from 2nd input,
-    that frame is combined on top of original frame from 1st input and passed to
-    1st output.
-
-    The typical usage is filter only part of frame.
-
-    The filter accepts the following options:
-
-    **x**
-
-    **y**
-
-        Set the top left crop position.
-
-    **w**
-
-    **h**
-
-        Set the crop size.
-
-
 
     Parameters:
     ----------
 
-    :param int x: Set the top left crop position.
-    :param int y: Set the top left crop position.
-    :param int w: Set the crop size.
-    :param int h: Set the crop size.
-    :param str enable: timeline editing
+    :param Int x: set top left crop position (from 0 to INT_MAX) (default 0)
+    :param Int w: set crop size (from 0 to INT_MAX) (default 0)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#feedback
 
@@ -2444,153 +1381,57 @@ def feedback(
             (
                 {
                     "x": x,
-                    "y": y,
                     "w": w,
-                    "h": h,
-                    "enable": enable,
                 }
                 | kwargs
             ).items()
         ),
     )
     return (
-        filter_node.video(0),
-        filter_node.video(1),
+        filter_node.audio(0),
+        filter_node.audio(1),
     )
 
 
 def fieldmatch(
     *streams: "VideoStream",
-    order: int | Literal["auto", "bff", "tff"] | Default = Default("FM_PARITY_AUTO"),
-    mode: int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | Default = Default("MODE_PC_N"),
-    ppsrc: bool | int | str = Default(0),
-    field: int | Literal["auto", "bottom", "top"] | Default = Default("FM_PARITY_AUTO"),
-    mchroma: bool | int | str = Default(1),
-    y0: int | str = Default(0),
-    y1: int | str = Default(0),
-    scthresh: float | int | str = Default(12.0),
-    combmatch: int | Literal["none", "sc", "full"] | Default = Default("COMBMATCH_SC"),
-    combdbg: int | Literal["none", "pcn", "pcnub"] | Default = Default("COMBDBG_NONE"),
-    cthresh: int | str = Default(9),
-    chroma: bool | int | str = Default(0),
-    blockx: int | str = Default(16),
-    blocky: int | str = Default(16),
-    combpel: int | str = Default(80),
+    order: Int | Literal["auto", "bff", "tff"] | Default = Default("auto"),
+    mode: Int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | Default = Default("pc_n"),
+    ppsrc: Boolean = Default("false"),
+    field: Int | Literal["auto", "bottom", "top"] | Default = Default("auto"),
+    mchroma: Boolean = Default("true"),
+    y0: Int = Default("0"),
+    scthresh: Double = Default("12"),
+    combmatch: Int | Literal["none", "sc", "full"] | Default = Default("sc"),
+    combdbg: Int | Literal["none", "pcn", "pcnub"] | Default = Default("none"),
+    cthresh: Int = Default("9"),
+    chroma: Boolean = Default("false"),
+    blockx: Int = Default("16"),
+    blocky: Int = Default("16"),
+    combpel: Int = Default("80"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.94 fieldmatch
-
-    Field matching filter for inverse telecine. It is meant to reconstruct the
-    progressive frames from a telecined stream. The filter does not drop
-    duplicated frames, so to achieve a complete inverse telecine `fieldmatch`
-    needs to be followed by a decimation filter such as decimate in the
-    filtergraph.
-
-    The separation of the field matching and the decimation is notably motivated
-    by the possibility of inserting a de-interlacing filter fallback between the
-    two. If the source has mixed telecined and real interlaced content,
-    `fieldmatch` will not be able to match fields for the interlaced parts. But
-    these remaining combed frames will be marked as interlaced, and thus can be
-    de-interlaced by a later filter such as yadif before decimation.
-
-    In addition to the various configuration options, `fieldmatch` can take an
-    optional second stream, activated through the ppsrc option. If enabled, the
-    frames reconstruction will be based on the fields and frames from this second
-    stream. This allows the first input to be pre-processed in order to help the
-    various algorithms of the filter, while keeping the output lossless (assuming
-    the fields are matched properly). Typically, a field-aware denoiser, or
-    brightness/contrast adjustments can help.
-
-    Note that this filter uses the same algorithms as TIVTC/TFM (AviSynth project)
-    and VIVTC/VFM (VapourSynth project). The later is a light clone of TFM from
-    which `fieldmatch` is based on. While the semantic and usage are very close,
-    some behaviour and options names can differ.
-
-    The decimate filter currently only works for constant frame rate input. If
-    your input has mixed telecined (30fps) and progressive content with a lower
-    framerate like 24fps use the following filterchain to produce the necessary
-    cfr stream: `dejudder,fps=30000/1001,fieldmatch,decimate`.
-
-    The filter accepts the following options:
-
-    **order**
-
-        Specify the assumed field order of the input stream. Available values are: ‘auto’ Auto detect parity (use FFmpeg’s internal parity value). ‘bff’ Assume bottom field first. ‘tff’ Assume top field first. Note that it is sometimes recommended not to trust the parity announced by the stream. Default value is auto.
-
-    **mode**
-
-        Set the matching mode or strategy to use. pc mode is the safest in the sense that it won’t risk creating jerkiness due to duplicate frames when possible, but if there are bad edits or blended fields it will end up outputting combed frames when a good match might actually exist. On the other hand, pcn_ub mode is the most risky in terms of creating jerkiness, but will almost always find a good frame if there is one. The other values are all somewhere in between pc and pcn_ub in terms of risking jerkiness and creating duplicate frames versus finding good matches in sections with bad edits, orphaned fields, blended fields, etc. More details about p/c/n/u/b are available in p/c/n/u/b meaning section. Available values are: ‘pc’ 2-way matching (p/c) ‘pc_n’ 2-way matching, and trying 3rd match if still combed (p/c + n) ‘pc_u’ 2-way matching, and trying 3rd match (same order) if still combed (p/c + u) ‘pc_n_ub’ 2-way matching, trying 3rd match if still combed, and trying 4th/5th matches if still combed (p/c + n + u/b) ‘pcn’ 3-way matching (p/c/n) ‘pcn_ub’ 3-way matching, and trying 4th/5th matches if all 3 of the original matches are detected as combed (p/c/n + u/b) The parenthesis at the end indicate the matches that would be used for that mode assuming order=tff (and field on auto or top). In terms of speed pc mode is by far the fastest and pcn_ub is the slowest. Default value is pc_n.
-
-    **ppsrc**
-
-        Mark the main input stream as a pre-processed input, and enable the secondary input stream as the clean source to pick the fields from. See the filter introduction for more details. It is similar to the clip2 feature from VFM/TFM. Default value is 0 (disabled).
-
-    **field**
-
-        Set the field to match from. It is recommended to set this to the same value as order unless you experience matching failures with that setting. In certain circumstances changing the field that is used to match from can have a large impact on matching performance. Available values are: ‘auto’ Automatic (same value as order). ‘bottom’ Match from the bottom field. ‘top’ Match from the top field. Default value is auto.
-
-    **mchroma**
-
-        Set whether or not chroma is included during the match comparisons. In most cases it is recommended to leave this enabled. You should set this to 0 only if your clip has bad chroma problems such as heavy rainbowing or other artifacts. Setting this to 0 could also be used to speed things up at the cost of some accuracy. Default value is 1.
-
-    **y0**
-
-    **y1**
-
-        These define an exclusion band which excludes the lines between y0 and y1 from being included in the field matching decision. An exclusion band can be used to ignore subtitles, a logo, or other things that may interfere with the matching. y0 sets the starting scan line and y1 sets the ending line; all lines in between y0 and y1 (including y0 and y1) will be ignored. Setting y0 and y1 to the same value will disable the feature. y0 and y1 defaults to 0.
-
-    **scthresh**
-
-        Set the scene change detection threshold as a percentage of maximum change on the luma plane. Good values are in the [8.0, 14.0] range. Scene change detection is only relevant in case combmatch=sc. The range for scthresh is [0.0, 100.0]. Default value is 12.0.
-
-    **combmatch**
-
-        When combatch is not none, fieldmatch will take into account the combed scores of matches when deciding what match to use as the final match. Available values are: ‘none’ No final matching based on combed scores. ‘sc’ Combed scores are only used when a scene change is detected. ‘full’ Use combed scores all the time. Default is sc.
-
-    **combdbg**
-
-        Force fieldmatch to calculate the combed metrics for certain matches and print them. This setting is known as micout in TFM/VFM vocabulary. Available values are: ‘none’ No forced calculation. ‘pcn’ Force p/c/n calculations. ‘pcnub’ Force p/c/n/u/b calculations. Default value is none.
-
-    **cthresh**
-
-        This is the area combing threshold used for combed frame detection. This essentially controls how "strong" or "visible" combing must be to be detected. Larger values mean combing must be more visible and smaller values mean combing can be less visible or strong and still be detected. Valid settings are from -1 (every pixel will be detected as combed) to 255 (no pixel will be detected as combed). This is basically a pixel difference value. A good range is [8, 12]. Default value is 9.
-
-    **chroma**
-
-        Sets whether or not chroma is considered in the combed frame decision. Only disable this if your source has chroma problems (rainbowing, etc.) that are causing problems for the combed frame detection with chroma enabled. Actually, using chroma=0 is usually more reliable, except for the case where there is chroma only combing in the source. Default value is 0.
-
-    **blockx**
-
-    **blocky**
-
-        Respectively set the x-axis and y-axis size of the window used during combed frame detection. This has to do with the size of the area in which combpel pixels are required to be detected as combed for a frame to be declared combed. See the combpel parameter description for more info. Possible values are any number that is a power of 2 starting at 4 and going up to 512. Default value is 16.
-
-    **combpel**
-
-        The number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed. While cthresh controls how "visible" the combing must be, this setting controls "how much" combing there must be in any localized area (a window defined by the blockx and blocky settings) on the frame. Minimum value is 0 and maximum is blocky x blockx (at which point no frames will ever be detected as combed). This setting is known as MI in TFM/VFM vocabulary. Default value is 80.
-
-
+    Field matching for inverse telecine.
 
     Parameters:
     ----------
 
-    :param int order: Specify the assumed field order of the input stream. Available values are: ‘auto’ Auto detect parity (use FFmpeg’s internal parity value). ‘bff’ Assume bottom field first. ‘tff’ Assume top field first. Note that it is sometimes recommended not to trust the parity announced by the stream. Default value is auto.
-    :param int mode: Set the matching mode or strategy to use. pc mode is the safest in the sense that it won’t risk creating jerkiness due to duplicate frames when possible, but if there are bad edits or blended fields it will end up outputting combed frames when a good match might actually exist. On the other hand, pcn_ub mode is the most risky in terms of creating jerkiness, but will almost always find a good frame if there is one. The other values are all somewhere in between pc and pcn_ub in terms of risking jerkiness and creating duplicate frames versus finding good matches in sections with bad edits, orphaned fields, blended fields, etc. More details about p/c/n/u/b are available in p/c/n/u/b meaning section. Available values are: ‘pc’ 2-way matching (p/c) ‘pc_n’ 2-way matching, and trying 3rd match if still combed (p/c + n) ‘pc_u’ 2-way matching, and trying 3rd match (same order) if still combed (p/c + u) ‘pc_n_ub’ 2-way matching, trying 3rd match if still combed, and trying 4th/5th matches if still combed (p/c + n + u/b) ‘pcn’ 3-way matching (p/c/n) ‘pcn_ub’ 3-way matching, and trying 4th/5th matches if all 3 of the original matches are detected as combed (p/c/n + u/b) The parenthesis at the end indicate the matches that would be used for that mode assuming order=tff (and field on auto or top). In terms of speed pc mode is by far the fastest and pcn_ub is the slowest. Default value is pc_n.
-    :param bool ppsrc: Mark the main input stream as a pre-processed input, and enable the secondary input stream as the clean source to pick the fields from. See the filter introduction for more details. It is similar to the clip2 feature from VFM/TFM. Default value is 0 (disabled).
-    :param int field: Set the field to match from. It is recommended to set this to the same value as order unless you experience matching failures with that setting. In certain circumstances changing the field that is used to match from can have a large impact on matching performance. Available values are: ‘auto’ Automatic (same value as order). ‘bottom’ Match from the bottom field. ‘top’ Match from the top field. Default value is auto.
-    :param bool mchroma: Set whether or not chroma is included during the match comparisons. In most cases it is recommended to leave this enabled. You should set this to 0 only if your clip has bad chroma problems such as heavy rainbowing or other artifacts. Setting this to 0 could also be used to speed things up at the cost of some accuracy. Default value is 1.
-    :param int y0: These define an exclusion band which excludes the lines between y0 and y1 from being included in the field matching decision. An exclusion band can be used to ignore subtitles, a logo, or other things that may interfere with the matching. y0 sets the starting scan line and y1 sets the ending line; all lines in between y0 and y1 (including y0 and y1) will be ignored. Setting y0 and y1 to the same value will disable the feature. y0 and y1 defaults to 0.
-    :param int y1: These define an exclusion band which excludes the lines between y0 and y1 from being included in the field matching decision. An exclusion band can be used to ignore subtitles, a logo, or other things that may interfere with the matching. y0 sets the starting scan line and y1 sets the ending line; all lines in between y0 and y1 (including y0 and y1) will be ignored. Setting y0 and y1 to the same value will disable the feature. y0 and y1 defaults to 0.
-    :param float scthresh: Set the scene change detection threshold as a percentage of maximum change on the luma plane. Good values are in the [8.0, 14.0] range. Scene change detection is only relevant in case combmatch=sc. The range for scthresh is [0.0, 100.0]. Default value is 12.0.
-    :param int combmatch: When combatch is not none, fieldmatch will take into account the combed scores of matches when deciding what match to use as the final match. Available values are: ‘none’ No final matching based on combed scores. ‘sc’ Combed scores are only used when a scene change is detected. ‘full’ Use combed scores all the time. Default is sc.
-    :param int combdbg: Force fieldmatch to calculate the combed metrics for certain matches and print them. This setting is known as micout in TFM/VFM vocabulary. Available values are: ‘none’ No forced calculation. ‘pcn’ Force p/c/n calculations. ‘pcnub’ Force p/c/n/u/b calculations. Default value is none.
-    :param int cthresh: This is the area combing threshold used for combed frame detection. This essentially controls how "strong" or "visible" combing must be to be detected. Larger values mean combing must be more visible and smaller values mean combing can be less visible or strong and still be detected. Valid settings are from -1 (every pixel will be detected as combed) to 255 (no pixel will be detected as combed). This is basically a pixel difference value. A good range is [8, 12]. Default value is 9.
-    :param bool chroma: Sets whether or not chroma is considered in the combed frame decision. Only disable this if your source has chroma problems (rainbowing, etc.) that are causing problems for the combed frame detection with chroma enabled. Actually, using chroma=0 is usually more reliable, except for the case where there is chroma only combing in the source. Default value is 0.
-    :param int blockx: Respectively set the x-axis and y-axis size of the window used during combed frame detection. This has to do with the size of the area in which combpel pixels are required to be detected as combed for a frame to be declared combed. See the combpel parameter description for more info. Possible values are any number that is a power of 2 starting at 4 and going up to 512. Default value is 16.
-    :param int blocky: Respectively set the x-axis and y-axis size of the window used during combed frame detection. This has to do with the size of the area in which combpel pixels are required to be detected as combed for a frame to be declared combed. See the combpel parameter description for more info. Possible values are any number that is a power of 2 starting at 4 and going up to 512. Default value is 16.
-    :param int combpel: The number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed. While cthresh controls how "visible" the combing must be, this setting controls "how much" combing there must be in any localized area (a window defined by the blockx and blocky settings) on the frame. Minimum value is 0 and maximum is blocky x blockx (at which point no frames will ever be detected as combed). This setting is known as MI in TFM/VFM vocabulary. Default value is 80.
+    :param Int order: specify the assumed field order (from -1 to 1) (default auto)
+    :param Int mode: set the matching mode or strategy to use (from 0 to 5) (default pc_n)
+    :param Boolean ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
+    :param Int field: set the field to match from (from -1 to 1) (default auto)
+    :param Boolean mchroma: set whether or not chroma is included during the match comparisons (default true)
+    :param Int y0: define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)
+    :param Double scthresh: set scene change detection threshold (from 0 to 100) (default 12)
+    :param Int combmatch: set combmatching mode (from 0 to 2) (default sc)
+    :param Int combdbg: enable comb debug (from 0 to 2) (default none)
+    :param Int cthresh: set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)
+    :param Boolean chroma: set whether or not chroma is considered in the combed frame decision (default false)
+    :param Int blockx: set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
+    :param Int blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
+    :param Int combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#fieldmatch
 
@@ -2609,7 +1450,6 @@ def fieldmatch(
                     "field": field,
                     "mchroma": mchroma,
                     "y0": y0,
-                    "y1": y1,
                     "scthresh": scthresh,
                     "combmatch": combmatch,
                     "combdbg": combdbg,
@@ -2630,42 +1470,17 @@ def framepack(
     _left: "VideoStream",
     _right: "VideoStream",
     *,
-    format: int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("AV_STEREO3D_SIDEBYSIDE"),
+    format: Int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.102 framepack
-
-    Pack two different video streams into a stereoscopic video, setting proper
-    metadata on supported codecs. The two views should have the same size and
-    framerate and processing will stop when the shorter video ends. Please note
-    that you may conveniently adjust view properties with the scale and fps
-    filters.
-
-    It accepts the following parameters:
-
-    **format**
-
-        The desired packing format. Supported values are: sbs The views are next to each other (default). tab The views are on top of each other. lines The views are packed by line. columns The views are packed by column. frameseq The views are temporally interleaved.
-
-    Some examples:
-
-
-
-        # Convert left and right views into a frame-sequential video
-        ffmpeg -i LEFT -i RIGHT -filter_complex framepack=frameseq OUTPUT
-
-        # Convert views into a side-by-side video with the same output resolution as the input
-        ffmpeg -i LEFT -i RIGHT -filter_complex [0:v]scale=w=iw/2[left],[1:v]scale=w=iw/2[right],[left][right]framepack=sbs OUTPUT
-
-
-
+    Generate a frame packed stereoscopic video.
 
     Parameters:
     ----------
 
-    :param int format: The desired packing format. Supported values are: sbs The views are next to each other (default). tab The views are on top of each other. lines The views are packed by line. columns The views are packed by column. frameseq The views are temporally interleaved.
+    :param Int format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#framepack
 
@@ -2694,41 +1509,21 @@ def freezeframes(
     _source: "VideoStream",
     _replace: "VideoStream",
     *,
-    first: int | str = Default(0),
-    last: int | str = Default(0),
-    replace: int | str = Default(0),
+    first: Int64 = Default("0"),
+    last: Int64 = Default("0"),
+    replace: Int64 = Default("0"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.106 freezeframes
-
     Freeze video frames.
-
-    This filter freezes video frames using frame from 2nd input.
-
-    The filter accepts the following options:
-
-    **first**
-
-        Set number of first frame from which to start freeze.
-
-    **last**
-
-        Set number of last frame from which to end freeze.
-
-    **replace**
-
-        Set number of frame from 2nd input which will be used instead of replaced frames.
-
-
 
     Parameters:
     ----------
 
-    :param int first: Set number of first frame from which to start freeze.
-    :param int last: Set number of last frame from which to end freeze.
-    :param int replace: Set number of frame from 2nd input which will be used instead of replaced frames.
+    :param Int64 first: set first frame to freeze (from 0 to I64_MAX) (default 0)
+    :param Int64 last: set last frame to freeze (from 0 to I64_MAX) (default 0)
+    :param Int64 replace: set frame to replace (from 0 to I64_MAX) (default 0)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#freezeframes
 
@@ -2757,58 +1552,28 @@ def freezeframes(
 
 def guided(
     *streams: "VideoStream",
-    radius: int | str = Default(3),
-    eps: float | int | str = Default(0.01),
-    mode: int | Literal["basic", "fast"] | Default = Default("BASIC"),
-    sub: int | str = Default(4),
-    guidance: int | Literal["off", "on"] | Default = Default("OFF"),
-    planes: int | str = Default(1),
-    enable: str | float | int = Default(None),
+    radius: Int = Default("3"),
+    eps: Float = Default("0.01"),
+    mode: Int | Literal["basic", "fast"] | Default = Default("basic"),
+    sub: Int = Default("4"),
+    guidance: Int | Literal["off", "on"] | Default = Default("off"),
+    planes: Int = Default("1"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.115 guided
-
-    Apply guided filter for edge-preserving smoothing, dehazing and so on.
-
-    The filter accepts the following options:
-
-    **radius**
-
-        Set the box radius in pixels. Allowed range is 1 to 20. Default is 3.
-
-    **eps**
-
-        Set regularization parameter (with square). Allowed range is 0 to 1. Default is 0.01.
-
-    **mode**
-
-        Set filter mode. Can be basic or fast. Default is basic.
-
-    **sub**
-
-        Set subsampling ratio for fast mode. Range is 2 to 64. Default is 4. No subsampling occurs in basic mode.
-
-    **guidance**
-
-        Set guidance mode. Can be off or on. Default is off. If off, single input is required. If on, two inputs of the same resolution and pixel format are required. The second input serves as the guidance.
-
-    **planes**
-
-        Set planes to filter. Default is first only.
-
-
+    Apply Guided filter.
 
     Parameters:
     ----------
 
-    :param int radius: Set the box radius in pixels. Allowed range is 1 to 20. Default is 3.
-    :param float eps: Set regularization parameter (with square). Allowed range is 0 to 1. Default is 0.01.
-    :param int mode: Set filter mode. Can be basic or fast. Default is basic.
-    :param int sub: Set subsampling ratio for fast mode. Range is 2 to 64. Default is 4. No subsampling occurs in basic mode.
-    :param int guidance: Set guidance mode. Can be off or on. Default is off. If off, single input is required. If on, two inputs of the same resolution and pixel format are required. The second input serves as the guidance.
-    :param int planes: Set planes to filter. Default is first only.
+    :param Int radius: set the box radius (from 1 to 20) (default 3)
+    :param Float eps: set the regularization parameter (with square) (from 0 to 1) (default 0.01)
+    :param Int mode: set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)
+    :param Int sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
+    :param Int guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
+    :param Int planes: set planes to filter (from 0 to 15) (default 1)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#guided
@@ -2841,60 +1606,29 @@ def haldclut(
     _main: "VideoStream",
     _clut: "VideoStream",
     *,
-    clut: int | Literal["first", "all"] | Default = Default(1),
-    interp: int
-    | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
-    | Default = Default("INTERPOLATE_TETRAHEDRAL"),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    clut: Int | Literal["first", "all"] | Default = Default("all"),
+    interp: Int | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"] | Default = Default("tetrahedral"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.116 haldclut
-
-    Apply a Hald CLUT to a video stream.
-
-    First input is the video stream to process, and second one is the Hald CLUT.
-    The Hald CLUT input can be a simple picture or a complete video stream.
-
-    The filter accepts the following options:
-
-    **clut**
-
-        Set which CLUT video frames will be processed from second input stream, can be first or all. Default is all.
-
-    **shortest**
-
-        Force termination when the shortest input terminates. Default is 0.
-
-    **repeatlast**
-
-        Continue applying the last CLUT after the end of the stream. A value of 0 disable the filter after the last frame of the CLUT is reached. Default is 1.
-
-    `haldclut` also has the same interpolation options as lut3d (both filters
-    share the same internals).
-
-    This filter also supports the framesync options.
-
-    More information about the Hald CLUT can be found on Eskil Steenberg’s website
-    (Hald CLUT author) at <http://www.quelsolaar.com/technology/clut.html>.
-
-
+    Adjust colors using a Hald CLUT.
 
     Parameters:
     ----------
 
-    :param int clut: Set which CLUT video frames will be processed from second input stream, can be first or all. Default is all.
-    :param int interp: select interpolation mode
+    :param Int clut: when to process CLUT (from 0 to 1) (default all)
+    :param Int interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#haldclut
 
@@ -2912,11 +1646,11 @@ def haldclut(
                 {
                     "clut": clut,
                     "interp": interp,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -2927,59 +1661,27 @@ def haldclut(
 
 def headphone(
     *streams: "AudioStream",
-    map: str | float | int = Default("((void*)0)"),
-    gain: float | int | str = Default(0.0),
-    lfe: float | int | str = Default(0.0),
-    type: int | Literal["time", "freq"] | Default = Default(1),
-    size: int | str = Default(1024),
-    hrir: int | Literal["stereo", "multich"] | Default = Default(0),
+    map: String = Default(None),
+    gain: Float = Default("0"),
+    lfe: Float = Default("0"),
+    type: Int | Literal["time", "freq"] | Default = Default("freq"),
+    size: Int = Default("1024"),
+    hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.93 headphone
-
-    Apply head-related transfer functions (HRTFs) to create virtual loudspeakers
-    around the user for binaural listening via headphones. The HRIRs are provided
-    via additional streams, for each channel one stereo input stream is needed.
-
-    The filter accepts the following options:
-
-    **map**
-
-        Set mapping of input streams for convolution. The argument is a ’|’-separated list of channel names in order as they are given as additional stream inputs for filter. This also specify number of input streams. Number of input streams must be not less than number of channels in first stream plus one.
-
-    **gain**
-
-        Set gain applied to audio. Value is in dB. Default is 0.
-
-    **type**
-
-        Set processing type. Can be time or freq. time is processing audio in time domain which is slow. freq is processing audio in frequency domain which is fast. Default is freq.
-
-    **lfe**
-
-        Set custom gain for LFE channels. Value is in dB. Default is 0.
-
-    **size**
-
-        Set size of frame in number of samples which will be processed at once. Default value is 1024. Allowed range is from 1024 to 96000.
-
-    **hrir**
-
-        Set format of hrir stream. Default value is stereo. Alternative value is multich. If value is set to stereo, number of additional streams should be greater or equal to number of input channels in first input stream. Also each additional stream should have stereo number of channels. If value is set to multich, number of additional streams should be exactly one. Also number of input channels of additional stream should be equal or greater than twice number of channels of first input stream.
-
-
+    Apply headphone binaural spatialization with HRTFs in additional streams.
 
     Parameters:
     ----------
 
-    :param str map: Set mapping of input streams for convolution. The argument is a ’|’-separated list of channel names in order as they are given as additional stream inputs for filter. This also specify number of input streams. Number of input streams must be not less than number of channels in first stream plus one.
-    :param float gain: Set gain applied to audio. Value is in dB. Default is 0.
-    :param float lfe: Set custom gain for LFE channels. Value is in dB. Default is 0.
-    :param int type: Set processing type. Can be time or freq. time is processing audio in time domain which is slow. freq is processing audio in frequency domain which is fast. Default is freq.
-    :param int size: Set size of frame in number of samples which will be processed at once. Default value is 1024. Allowed range is from 1024 to 96000.
-    :param int hrir: Set format of hrir stream. Default value is stereo. Alternative value is multich. If value is set to stereo, number of additional streams should be greater or equal to number of input channels in first input stream. Also each additional stream should have stereo number of channels. If value is set to multich, number of additional streams should be exactly one. Also number of input channels of additional stream should be equal or greater than twice number of channels of first input stream.
+    :param String map: set channels convolution mappings
+    :param Float gain: set gain in dB (from -20 to 40) (default 0)
+    :param Float lfe: set lfe gain in dB (from -20 to 40) (default 0)
+    :param Int type: set processing (from 0 to 1) (default freq)
+    :param Int size: set frame size (from 1024 to 96000) (default 1024)
+    :param Int hrir: set hrir format (from 0 to 1) (default stereo)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#headphone
 
@@ -3009,36 +1711,17 @@ def headphone(
 
 
 def hstack(
-    *streams: "VideoStream", inputs: int | str = Default(2), shortest: bool | int | str = Default(0), **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default("2"), shortest: Boolean = Default("false"), **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.126 hstack
-
-    Stack input videos horizontally.
-
-    All streams must be of same pixel format and of same height.
-
-    Note that this filter is faster than using overlay and pad filter to create
-    same output.
-
-    The filter accepts the following option:
-
-    **inputs**
-
-        Set number of input streams. Default is 2.
-
-    **shortest**
-
-        If set to 1, force the output to terminate when the shortest input terminates. Default value is 0.
-
-
+    Stack video inputs horizontally.
 
     Parameters:
     ----------
 
-    :param int inputs: Set number of input streams. Default is 2.
-    :param bool shortest: If set to 1, force the output to terminate when the shortest input terminates. Default value is 0.
+    :param Int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack
 
@@ -3061,174 +1744,33 @@ def hstack(
     return filter_node.video(0)
 
 
-def hstack_qsv(
-    *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    shortest: bool | int | str = Default(0),
-    height: int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 15.1 hstack_qsv
-
-    Stack input videos horizontally.
-
-    This is the QSV variant of the hstack filter, each input stream may have
-    different height, this filter will scale down/up each input stream while
-    keeping the original aspect.
-
-    It accepts the following options:
-
-    **inputs**
-
-        See hstack.
-
-    **shortest**
-
-        See hstack.
-
-    **height**
-
-        Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
-
-
-
-    Parameters:
-    ----------
-
-    :param int inputs: See hstack.
-    :param bool shortest: See hstack.
-    :param int height: Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack_005fqsv
-
-    """
-    filter_node = FilterNode(
-        name="hstack_qsv",
-        input_typings=None,
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                    "height": height,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def hstack_vaapi(
-    *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    shortest: bool | int | str = Default(0),
-    height: int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 13.3 hstack_vaapi
-
-    Stack input videos horizontally.
-
-    This is the VA-API variant of the hstack filter, each input stream may have
-    different height, this filter will scale down/up each input stream while
-    keeping the original aspect.
-
-    It accepts the following options:
-
-    **inputs**
-
-        See hstack.
-
-    **shortest**
-
-        See hstack.
-
-    **height**
-
-        Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
-
-
-
-    Parameters:
-    ----------
-
-    :param int inputs: See hstack.
-    :param bool shortest: See hstack.
-    :param int height: Set height of output. If set to 0, this filter will set height of output to height of the first input stream. Default value is 0.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack_005fvaapi
-
-    """
-    filter_node = FilterNode(
-        name="hstack_vaapi",
-        input_typings=None,
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                    "height": height,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
 def hysteresis(
     _base: "VideoStream",
     _alt: "VideoStream",
     *,
-    planes: int | str = Default("0xF"),
-    threshold: int | str = Default(0),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    planes: Int = Default("15"),
+    threshold: Int = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.131 hysteresis
-
-    Grow first stream into second stream by connecting components. This makes it
-    possible to build more robust edge masks.
-
-    This filter accepts the following options:
-
-    **planes**
-
-        Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
-
-    **threshold**
-
-        Set threshold which is used in filtering. If pixel component value is higher than this value filter algorithm for connecting components is activated. By default value is 0.
-
-    The `hysteresis` filter also supports the framesync options.
-
-
+    Grow first stream into second stream by connecting components.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
-    :param int threshold: Set threshold which is used in filtering. If pixel component value is higher than this value filter algorithm for connecting components is activated. By default value is 0.
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Int threshold: set threshold (from 0 to 65535) (default 0)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#hysteresis
 
@@ -3246,11 +1788,11 @@ def hysteresis(
                 {
                     "planes": planes,
                     "threshold": threshold,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -3263,51 +1805,25 @@ def identity(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.134 identity
-
-    Obtain the identity score between two input videos.
-
-    This filter takes two input videos.
-
-    Both input videos must have the same resolution and pixel format for this
-    filter to work correctly. Also it assumes that both inputs have the same
-    number of frames, which are compared one by one.
-
-    The obtained per component, average, min and max identity score is printed
-    through the logging system.
-
-    The filter stores the calculated identity scores of each frame in frame
-    metadata.
-
-    This filter also supports the framesync options.
-
-    In the below example the input file main.mpg being processed is compared with
-    the reference file ref.mpg.
-
-
-
-        ffmpeg -i main.mpg -i ref.mpg -lavfi identity -f null -
-
-
-
+    Calculate the Identity between two video streams.
 
     Parameters:
     ----------
 
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#identity
 
@@ -3323,11 +1839,11 @@ def identity(
         kwargs=tuple(
             (
                 {
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -3338,54 +1854,19 @@ def identity(
 
 def interleave(
     *streams: "VideoStream",
-    nb_inputs: int | str = Default(2),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default(0),
+    nb_inputs: Int = Default("2"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 18.11 interleave, ainterleave
-
-    Temporally interleave frames from several inputs.
-
-    `interleave` works with video inputs, `ainterleave` with audio.
-
-    These filters read frames from several inputs and send the oldest queued frame
-    to the output.
-
-    Input streams must have well defined, monotonically increasing frame timestamp
-    values.
-
-    In order to submit one frame to output, these filters need to enqueue at least
-    one frame for each input, so they cannot work in case one input is not yet
-    terminated and will not receive incoming frames.
-
-    For example consider the case when one input is a `select` filter which always
-    drops input frames. The `interleave` filter will keep reading from that input,
-    but it will never be able to send new frames to output until the input sends
-    an end-of-stream signal.
-
-    Also, depending on inputs synchronization, the filters will drop frames in
-    case one input receives more frames than the other ones, and the queue is
-    already filled.
-
-    These filters accept the following options:
-
-    **nb_inputs, n**
-
-        Set the number of different inputs, it is 2 by default.
-
-    **duration**
-
-        How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
-
-
+    Temporally interleave video inputs.
 
     Parameters:
     ----------
 
-    :param int nb_inputs: Set the number of different inputs, it is 2 by default.
-    :param int duration: How to determine the end-of-stream. longest The duration of the longest input. (default) shortest The duration of the shortest input. first The duration of the first input.
+    :param Int nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
+    :param Int duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave
 
@@ -3410,59 +1891,21 @@ def interleave(
 
 def join(
     *streams: "AudioStream",
-    inputs: int | str = Default(2),
-    channel_layout: str | float | int = Default("stereo"),
-    map: str | float | int = Default(None),
+    inputs: Int = Default("2"),
+    channel_layout: String = Default("stereo"),
+    map: String = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.95 join
-
-    Join multiple input streams into one multi-channel stream.
-
-    It accepts the following parameters:
-
-    **inputs**
-
-        The number of input streams. It defaults to 2.
-
-    **channel_layout**
-
-        The desired output channel layout. It defaults to stereo.
-
-    **map**
-
-        Map channels from inputs to output. The argument is a ’|’-separated list of mappings, each in the input_idx.in_channel-out_channel form. input_idx is the 0-based index of the input stream. in_channel can be either the name of the input channel (e.g. FL for front left) or its index in the specified input stream. out_channel is the name of the output channel.
-
-    The filter will attempt to guess the mappings when they are not specified
-    explicitly. It does so by first trying to find an unused matching input
-    channel and if that fails it picks the first unused input channel.
-
-    Join 3 inputs (with properly set channel layouts):
-
-
-
-        ffmpeg -i INPUT1 -i INPUT2 -i INPUT3 -filter_complex join=inputs=3 OUTPUT
-
-
-    Build a 5.1 output from 6 single-channel streams:
-
-
-
-        ffmpeg -i fl -i fr -i fc -i sl -i sr -i lfe -filter_complex
-        'join=inputs=6:channel_layout=5.1:map=0.0-FL|1.0-FR|2.0-FC|3.0-SL|4.0-SR|5.0-LFE'
-        out
-
-
-
+    Join multiple audio streams into multi-channel output.
 
     Parameters:
     ----------
 
-    :param int inputs: The number of input streams. It defaults to 2.
-    :param str channel_layout: The desired output channel layout. It defaults to stereo.
-    :param str map: Map channels from inputs to output. The argument is a ’|’-separated list of mappings, each in the input_idx.in_channel-out_channel form. input_idx is the 0-based index of the input stream. in_channel can be either the name of the input channel (e.g. FL for front left) or its index in the specified input stream. out_channel is the name of the output channel.
+    :param Int inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
+    :param String channel_layout: Channel layout of the output stream. (default "stereo")
+    :param String map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#join
 
@@ -3486,493 +1929,53 @@ def join(
     return filter_node.audio(0)
 
 
-def ladspa(
-    *streams: "AudioStream",
-    file: str | float | int = Default(None),
-    plugin: str | float | int = Default(None),
-    controls: str | float | int = Default(None),
-    sample_rate: int | str = Default(44100),
-    nb_samples: int | str = Default(1024),
-    duration: int | str = Default(-1),
-    latency: bool | int | str = Default(0),
-    **kwargs: Any
-) -> "AudioStream":
-    """
-
-    ### 8.96 ladspa
-
-    Load a LADSPA (Linux Audio Developer’s Simple Plugin API) plugin.
-
-    To enable compilation of this filter you need to configure FFmpeg with
-    `--enable-ladspa`.
-
-    **file, f**
-
-        Specifies the name of LADSPA plugin library to load. If the environment variable LADSPA_PATH is defined, the LADSPA plugin is searched in each one of the directories specified by the colon separated list in LADSPA_PATH, otherwise in the standard LADSPA paths, which are in this order: HOME/.ladspa/lib/, /usr/local/lib/ladspa/, /usr/lib/ladspa/.
-
-    **plugin, p**
-
-        Specifies the plugin within the library. Some libraries contain only one plugin, but others contain many of them. If this is not set filter will list all available plugins within the specified library.
-
-    **controls, c**
-
-        Set the ’|’ separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). Controls need to be defined using the following syntax: c0=value0|c1=value1|c2=value2|..., where valuei is the value set on the i-th control. Alternatively they can be also defined using the following syntax: value0|value1|value2|..., where valuei is the value set on the i-th control. If controls is set to help, all available controls and their valid ranges are printed.
-
-    **sample_rate, s**
-
-        Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-
-    **nb_samples, n**
-
-        Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-
-    **duration, d**
-
-        Set the minimum duration of the sourced audio. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-
-    **latency, l**
-
-        Enable latency compensation, by default is disabled. Only used if plugin have inputs.
-
-
-
-    Parameters:
-    ----------
-
-    :param str file: Specifies the name of LADSPA plugin library to load. If the environment variable LADSPA_PATH is defined, the LADSPA plugin is searched in each one of the directories specified by the colon separated list in LADSPA_PATH, otherwise in the standard LADSPA paths, which are in this order: HOME/.ladspa/lib/, /usr/local/lib/ladspa/, /usr/lib/ladspa/.
-    :param str plugin: Specifies the plugin within the library. Some libraries contain only one plugin, but others contain many of them. If this is not set filter will list all available plugins within the specified library.
-    :param str controls: Set the ’|’ separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). Controls need to be defined using the following syntax: c0=value0|c1=value1|c2=value2|..., where valuei is the value set on the i-th control. Alternatively they can be also defined using the following syntax: value0|value1|value2|..., where valuei is the value set on the i-th control. If controls is set to help, all available controls and their valid ranges are printed.
-    :param int sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-    :param int nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-    :param int duration: Set the minimum duration of the sourced audio. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-    :param bool latency: Enable latency compensation, by default is disabled. Only used if plugin have inputs.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#ladspa
-
-    """
-    filter_node = FilterNode(
-        name="ladspa",
-        input_typings=None,
-        output_typings=tuple([StreamType.audio]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "file": file,
-                    "plugin": plugin,
-                    "controls": controls,
-                    "sample_rate": sample_rate,
-                    "nb_samples": nb_samples,
-                    "duration": duration,
-                    "latency": latency,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.audio(0)
-
-
-def libplacebo(
-    *streams: "VideoStream",
-    inputs: int | str = Default(1),
-    w: str | float | int = Default("iw"),
-    h: str | float | int = Default("ih"),
-    fps: str | float | int = Default("none"),
-    crop_x: str | float | int = Default("(iw-cw)/2"),
-    crop_y: str | float | int = Default("(ih-ch)/2"),
-    crop_w: str | float | int = Default("iw"),
-    crop_h: str | float | int = Default("ih"),
-    pos_x: str | float | int = Default("(ow-pw)/2"),
-    pos_y: str | float | int = Default("(oh-ph)/2"),
-    pos_w: str | float | int = Default("ow"),
-    pos_h: str | float | int = Default("oh"),
-    format: str | float | int = Default(None),
-    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | Default = Default(0),
-    force_divisible_by: int | str = Default(1),
-    normalize_sar: bool | int | str = Default(0),
-    pad_crop_ratio: float | int | str = Default(0.0),
-    fillcolor: str | float | int = Default("black"),
-    corner_rounding: float | int | str = Default(0.0),
-    extra_opts: str | float | int = Default(None),
-    colorspace: int
-    | Literal[
-        "auto", "gbr", "bt709", "unknown", "bt470bg", "smpte170m", "smpte240m", "ycgco", "bt2020nc", "bt2020c", "ictcp"
-    ]
-    | Default = Default(-1),
-    range: int
-    | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
-    | Default = Default(-1),
-    color_primaries: int
-    | Literal[
-        "auto",
-        "bt709",
-        "unknown",
-        "bt470m",
-        "bt470bg",
-        "smpte170m",
-        "smpte240m",
-        "film",
-        "bt2020",
-        "smpte428",
-        "smpte431",
-        "smpte432",
-        "jedec-p22",
-        "ebu3213",
-    ]
-    | Default = Default(-1),
-    color_trc: int
-    | Literal[
-        "auto",
-        "bt709",
-        "unknown",
-        "bt470m",
-        "bt470bg",
-        "smpte170m",
-        "smpte240m",
-        "linear",
-        "iec61966-2-4",
-        "bt1361e",
-        "iec61966-2-1",
-        "bt2020-10",
-        "bt2020-12",
-        "smpte2084",
-        "arib-std-b67",
-    ]
-    | Default = Default(-1),
-    upscaler: str | float | int = Default("spline36"),
-    downscaler: str | float | int = Default("mitchell"),
-    frame_mixer: str | float | int = Default("none"),
-    lut_entries: int | str = Default(0),
-    antiringing: float | int | str = Default(0.0),
-    sigmoid: bool | int | str = Default(1),
-    apply_filmgrain: bool | int | str = Default(1),
-    apply_dolbyvision: bool | int | str = Default(1),
-    deband: bool | int | str = Default(0),
-    deband_iterations: int | str = Default(1),
-    deband_threshold: float | int | str = Default(4.0),
-    deband_radius: float | int | str = Default(16.0),
-    deband_grain: float | int | str = Default(6.0),
-    brightness: float | int | str = Default(0.0),
-    contrast: float | int | str = Default(1.0),
-    saturation: float | int | str = Default(1.0),
-    hue: float | int | str = Default(0.0),
-    gamma: float | int | str = Default(1.0),
-    peak_detect: bool | int | str = Default(1),
-    smoothing_period: float | int | str = Default(100.0),
-    minimum_peak: float | int | str = Default(1.0),
-    scene_threshold_low: float | int | str = Default(5.5),
-    scene_threshold_high: float | int | str = Default(10.0),
-    percentile: float | int | str = Default(99.995),
-    gamut_mode: int
-    | Literal["clip", "perceptual", "relative", "saturation", "absolute", "desaturate", "darken", "warn", "linear"]
-    | Default = Default("GAMUT_MAP_PERCEPTUAL"),
-    tonemapping: int
-    | Literal["auto", "clip", "bt.2390", "bt.2446a", "spline", "reinhard", "mobius", "hable", "gamma", "linear"]
-    | Default = Default("TONE_MAP_AUTO"),
-    tonemapping_param: float | int | str = Default(0.0),
-    inverse_tonemapping: bool | int | str = Default(0),
-    tonemapping_lut_size: int | str = Default(256),
-    contrast_recovery: float | int | str = Default(0.3),
-    contrast_smoothness: float | int | str = Default(3.5),
-    desaturation_strength: float | int | str = Default(-1.0),
-    desaturation_exponent: float | int | str = Default(-1.0),
-    gamut_warning: bool | int | str = Default(0),
-    gamut_clipping: bool | int | str = Default(0),
-    intent: int
-    | Literal["perceptual", "relative", "absolute", "saturation"]
-    | Default = Default("PL_INTENT_PERCEPTUAL"),
-    tonemapping_mode: int | Literal["auto", "rgb", "max", "hybrid", "luma"] | Default = Default(0),
-    tonemapping_crosstalk: float | int | str = Default(0.04),
-    overshoot: float | int | str = Default(0.05),
-    hybrid_mix: float | int | str = Default(0.2),
-    dithering: int
-    | Literal["none", "blue", "ordered", "ordered_fixed", "white"]
-    | Default = Default("PL_DITHER_BLUE_NOISE"),
-    dither_lut_size: int | str = Default(6),
-    dither_temporal: bool | int | str = Default(0),
-    cones: str | Literal["l", "m", "s"] | Default = Default(0),
-    cone_strength: float | int | str = Default(0.0),
-    custom_shader_path: str | float | int = Default(None),
-    custom_shader_bin: str | float | int = Default(None),
-    skip_aa: bool | int | str = Default(0),
-    polar_cutoff: float | int | str = Default(0.0),
-    disable_linear: bool | int | str = Default(0),
-    disable_builtin: bool | int | str = Default(0),
-    force_icc_lut: bool | int | str = Default(0),
-    force_dither: bool | int | str = Default(0),
-    disable_fbos: bool | int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 11.144 libplacebo
-
-    Flexible GPU-accelerated processing filter based on libplacebo
-    (<https://code.videolan.org/videolan/libplacebo>).
-
-
-
-    Parameters:
-    ----------
-
-    :param int inputs: Number of inputs
-    :param str w: Output video frame width
-    :param str h: Output video frame height
-    :param str fps: Output video frame rate
-    :param str crop_x: Input video crop x
-    :param str crop_y: Input video crop y
-    :param str crop_w: Input video crop w
-    :param str crop_h: Input video crop h
-    :param str pos_x: Output video placement x
-    :param str pos_y: Output video placement y
-    :param str pos_w: Output video placement w
-    :param str pos_h: Output video placement h
-    :param str format: Output video format
-    :param int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR
-    :param int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used
-    :param bool normalize_sar: force SAR normalization to 1:1 by adjusting pos_x/y/w/h
-    :param float pad_crop_ratio: ratio between padding and cropping when normalizing SAR (0=pad, 1=crop)
-    :param str fillcolor: Background fill color
-    :param float corner_rounding: Corner rounding radius
-    :param str extra_opts: Pass extra libplacebo-specific options using a :-separated list of key=value pairs
-    :param int colorspace: select colorspace
-    :param int range: select color range
-    :param int color_primaries: select color primaries
-    :param int color_trc: select color transfer
-    :param str upscaler: Upscaler function
-    :param str downscaler: Downscaler function
-    :param str frame_mixer: Frame mixing function
-    :param int lut_entries: Number of scaler LUT entries
-    :param float antiringing: Antiringing strength (for non-EWA filters)
-    :param bool sigmoid: Enable sigmoid upscaling
-    :param bool apply_filmgrain: Apply film grain metadata
-    :param bool apply_dolbyvision: Apply Dolby Vision metadata
-    :param bool deband: Enable debanding
-    :param int deband_iterations: Deband iterations
-    :param float deband_threshold: Deband threshold
-    :param float deband_radius: Deband radius
-    :param float deband_grain: Deband grain
-    :param float brightness: Brightness boost
-    :param float contrast: Contrast gain
-    :param float saturation: Saturation gain
-    :param float hue: Hue shift
-    :param float gamma: Gamma adjustment
-    :param bool peak_detect: Enable dynamic peak detection for HDR tone-mapping
-    :param float smoothing_period: Peak detection smoothing period
-    :param float minimum_peak: Peak detection minimum peak
-    :param float scene_threshold_low: Scene change low threshold
-    :param float scene_threshold_high: Scene change high threshold
-    :param float percentile: Peak detection percentile
-    :param int gamut_mode: Gamut-mapping mode
-    :param int tonemapping: Tone-mapping algorithm
-    :param float tonemapping_param: Tunable parameter for some tone-mapping functions
-    :param bool inverse_tonemapping: Inverse tone mapping (range expansion)
-    :param int tonemapping_lut_size: Tone-mapping LUT size
-    :param float contrast_recovery: HDR contrast recovery strength
-    :param float contrast_smoothness: HDR contrast recovery smoothness
-    :param float desaturation_strength: Desaturation strength
-    :param float desaturation_exponent: Desaturation exponent
-    :param bool gamut_warning: Highlight out-of-gamut colors
-    :param bool gamut_clipping: Enable desaturating colorimetric gamut clipping
-    :param int intent: Rendering intent
-    :param int tonemapping_mode: Tone-mapping mode
-    :param float tonemapping_crosstalk: Crosstalk factor for tone-mapping
-    :param float overshoot: Tone-mapping overshoot margin
-    :param float hybrid_mix: Tone-mapping hybrid LMS mixing coefficient
-    :param int dithering: Dither method to use
-    :param int dither_lut_size: Dithering LUT size
-    :param bool dither_temporal: Enable temporal dithering
-    :param str cones: Colorblindness adaptation model
-    :param float cone_strength: Colorblindness adaptation strength
-    :param str custom_shader_path: Path to custom user shader (mpv .hook format)
-    :param str custom_shader_bin: Custom user shader as binary (mpv .hook format)
-    :param bool skip_aa: Skip anti-aliasing
-    :param float polar_cutoff: Polar LUT cutoff
-    :param bool disable_linear: Disable linear scaling
-    :param bool disable_builtin: Disable built-in scalers
-    :param bool force_icc_lut: Deprecated, does nothing
-    :param bool force_dither: Force dithering
-    :param bool disable_fbos: Force-disable FBOs
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#libplacebo
-
-    """
-    filter_node = FilterNode(
-        name="libplacebo",
-        input_typings=tuple([StreamType.video] * int(inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "w": w,
-                    "h": h,
-                    "fps": fps,
-                    "crop_x": crop_x,
-                    "crop_y": crop_y,
-                    "crop_w": crop_w,
-                    "crop_h": crop_h,
-                    "pos_x": pos_x,
-                    "pos_y": pos_y,
-                    "pos_w": pos_w,
-                    "pos_h": pos_h,
-                    "format": format,
-                    "force_original_aspect_ratio": force_original_aspect_ratio,
-                    "force_divisible_by": force_divisible_by,
-                    "normalize_sar": normalize_sar,
-                    "pad_crop_ratio": pad_crop_ratio,
-                    "fillcolor": fillcolor,
-                    "corner_rounding": corner_rounding,
-                    "extra_opts": extra_opts,
-                    "colorspace": colorspace,
-                    "range": range,
-                    "color_primaries": color_primaries,
-                    "color_trc": color_trc,
-                    "upscaler": upscaler,
-                    "downscaler": downscaler,
-                    "frame_mixer": frame_mixer,
-                    "lut_entries": lut_entries,
-                    "antiringing": antiringing,
-                    "sigmoid": sigmoid,
-                    "apply_filmgrain": apply_filmgrain,
-                    "apply_dolbyvision": apply_dolbyvision,
-                    "deband": deband,
-                    "deband_iterations": deband_iterations,
-                    "deband_threshold": deband_threshold,
-                    "deband_radius": deband_radius,
-                    "deband_grain": deband_grain,
-                    "brightness": brightness,
-                    "contrast": contrast,
-                    "saturation": saturation,
-                    "hue": hue,
-                    "gamma": gamma,
-                    "peak_detect": peak_detect,
-                    "smoothing_period": smoothing_period,
-                    "minimum_peak": minimum_peak,
-                    "scene_threshold_low": scene_threshold_low,
-                    "scene_threshold_high": scene_threshold_high,
-                    "percentile": percentile,
-                    "gamut_mode": gamut_mode,
-                    "tonemapping": tonemapping,
-                    "tonemapping_param": tonemapping_param,
-                    "inverse_tonemapping": inverse_tonemapping,
-                    "tonemapping_lut_size": tonemapping_lut_size,
-                    "contrast_recovery": contrast_recovery,
-                    "contrast_smoothness": contrast_smoothness,
-                    "desaturation_strength": desaturation_strength,
-                    "desaturation_exponent": desaturation_exponent,
-                    "gamut_warning": gamut_warning,
-                    "gamut_clipping": gamut_clipping,
-                    "intent": intent,
-                    "tonemapping_mode": tonemapping_mode,
-                    "tonemapping_crosstalk": tonemapping_crosstalk,
-                    "overshoot": overshoot,
-                    "hybrid_mix": hybrid_mix,
-                    "dithering": dithering,
-                    "dither_lut_size": dither_lut_size,
-                    "dither_temporal": dither_temporal,
-                    "cones": cones,
-                    "cone-strength": cone_strength,
-                    "custom_shader_path": custom_shader_path,
-                    "custom_shader_bin": custom_shader_bin,
-                    "skip_aa": skip_aa,
-                    "polar_cutoff": polar_cutoff,
-                    "disable_linear": disable_linear,
-                    "disable_builtin": disable_builtin,
-                    "force_icc_lut": force_icc_lut,
-                    "force_dither": force_dither,
-                    "disable_fbos": disable_fbos,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
 def libvmaf(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    log_path: str | float | int = Default("((void*)0)"),
-    log_fmt: str | float | int = Default("xml"),
-    pool: str | float | int = Default("((void*)0)"),
-    n_threads: int | str = Default(0),
-    n_subsample: int | str = Default(1),
-    model: str | float | int = Default("version=vmaf_v0.6.1"),
-    feature: str | float | int = Default("((void*)0)"),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    model_path: String = Default(None),
+    log_path: String = Default(None),
+    log_fmt: String = Default("xml"),
+    enable_transform: Boolean = Default("false"),
+    psnr: Boolean = Default("false"),
+    ssim: Boolean = Default("false"),
+    ms_ssim: Boolean = Default("false"),
+    pool: String = Default(None),
+    n_threads: Int = Default("0"),
+    n_subsample: Int = Default("1"),
+    enable_conf_interval: Boolean = Default("false"),
+    model: String = Default("version=vmaf_v0.6.1"),
+    feature: String = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.145 libvmaf
-
-    Calculate the VMAF (Video Multi-Method Assessment Fusion) score for a
-    reference/distorted pair of input videos.
-
-    The first input is the distorted video, and the second input is the reference
-    video.
-
-    The obtained VMAF score is printed through the logging system.
-
-    It requires Netflix’s vmaf library (libvmaf) as a pre-requisite. After
-    installing the library it can be enabled using: `./configure --enable-
-    libvmaf`.
-
-    The filter has following options:
-
-    **model**
-
-        A ‘|‘ delimited list of vmaf models. Each model can be configured with a number of parameters. Default value: "version=vmaf_v0.6.1"
-
-    **feature**
-
-        A ‘|‘ delimited list of features. Each feature can be configured with a number of parameters.
-
-    **log_path**
-
-        Set the file path to be used to store log files.
-
-    **log_fmt**
-
-        Set the format of the log file (xml, json, csv, or sub).
-
-    **pool**
-
-        Set the pool method to be used for computing vmaf. Options are min, harmonic_mean or mean (default).
-
-    **n_threads**
-
-        Set number of threads to be used when initializing libvmaf. Default value: 0, no threads.
-
-    **n_subsample**
-
-        Set frame subsampling interval to be used.
-
-    This filter also supports the framesync options.
-
-
+    Calculate the VMAF between two video streams.
 
     Parameters:
     ----------
 
-    :param str log_path: Set the file path to be used to store log files.
-    :param str log_fmt: Set the format of the log file (xml, json, csv, or sub).
-    :param str pool: Set the pool method to be used for computing vmaf. Options are min, harmonic_mean or mean (default).
-    :param int n_threads: Set number of threads to be used when initializing libvmaf. Default value: 0, no threads.
-    :param int n_subsample: Set frame subsampling interval to be used.
-    :param str model: A ‘|‘ delimited list of vmaf models. Each model can be configured with a number of parameters. Default value: "version=vmaf_v0.6.1"
-    :param str feature: A ‘|‘ delimited list of features. Each feature can be configured with a number of parameters.
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
+    :param String model_path: use model='path=...'.
+    :param String log_path: Set the file path to be used to write log.
+    :param String log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
+    :param Boolean enable_transform: use model='enable_transform=true'. (default false)
+    :param Boolean psnr: use feature='name=psnr'. (default false)
+    :param Boolean ssim: use feature='name=float_ssim'. (default false)
+    :param Boolean ms_ssim: use feature='name=float_ms_ssim'. (default false)
+    :param String pool: Set the pool method to be used for computing vmaf.
+    :param Int n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
+    :param Int n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
+    :param Boolean enable_conf_interval: model='enable_conf_interval=true'. (default false)
+    :param String model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
+    :param String feature: Set the feature to be used for computing vmaf.
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf
 
@@ -3988,88 +1991,17 @@ def libvmaf(
         kwargs=tuple(
             (
                 {
+                    "model_path": model_path,
                     "log_path": log_path,
                     "log_fmt": log_fmt,
+                    "enable_transform": enable_transform,
+                    "psnr": psnr,
+                    "ssim": ssim,
+                    "ms_ssim": ms_ssim,
                     "pool": pool,
                     "n_threads": n_threads,
                     "n_subsample": n_subsample,
-                    "model": model,
-                    "feature": feature,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def libvmaf_cuda(
-    _main: "VideoStream",
-    _reference: "VideoStream",
-    *,
-    log_path: str | float | int = Default("((void*)0)"),
-    log_fmt: str | float | int = Default("xml"),
-    pool: str | float | int = Default("((void*)0)"),
-    n_threads: int | str = Default(0),
-    n_subsample: int | str = Default(1),
-    model: str | float | int = Default("version=vmaf_v0.6.1"),
-    feature: str | float | int = Default("((void*)0)"),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 11.146 libvmaf_cuda
-
-    This is the CUDA variant of the libvmaf filter. It only accepts CUDA frames.
-
-    It requires Netflix’s vmaf library (libvmaf) as a pre-requisite. After
-    installing the library it can be enabled using: `./configure --enable-nonfree
-    --enable-ffnvcodec --enable-libvmaf`.
-
-
-
-    Parameters:
-    ----------
-
-    :param str log_path: Set the file path to be used to write log.
-    :param str log_fmt: Set the format of the log (csv, json, xml, or sub).
-    :param str pool: Set the pool method to be used for computing vmaf.
-    :param int n_threads: Set number of threads to be used when computing vmaf.
-    :param int n_subsample: Set interval for frame subsampling used when computing vmaf.
-    :param str model: Set the model to be used for computing vmaf.
-    :param str feature: Set the feature to be used for computing vmaf.
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf_005fcuda
-
-    """
-    filter_node = FilterNode(
-        name="libvmaf_cuda",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "log_path": log_path,
-                    "log_fmt": log_fmt,
-                    "pool": pool,
-                    "n_threads": n_threads,
-                    "n_subsample": n_subsample,
+                    "enable_conf_interval": enable_conf_interval,
                     "model": model,
                     "feature": feature,
                     "eof_action": eof_action,
@@ -4086,47 +2018,24 @@ def libvmaf_cuda(
 
 def limitdiff(
     *streams: "VideoStream",
-    threshold: float | int | str = Default("1/255.f"),
-    elasticity: float | int | str = Default("2.f"),
-    reference: bool | int | str = Default(0),
-    planes: int | str = Default("0xF"),
-    enable: str | float | int = Default(None),
+    threshold: Float = Default("0.00392157"),
+    elasticity: Float = Default("2"),
+    reference: Boolean = Default("false"),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.147 limitdiff
-
-    Apply limited difference filter using second and optionally third video
-    stream.
-
-    The filter accepts the following options:
-
-    **threshold**
-
-        Set the threshold to use when allowing certain differences between video streams. Any absolute difference value lower or exact than this threshold will pick pixel components from first video stream.
-
-    **elasticity**
-
-        Set the elasticity of soft thresholding when processing video streams. This value multiplied with first one sets second threshold. Any absolute difference value greater or exact than second threshold will pick pixel components from second video stream. For values between those two threshold linear interpolation between first and second video stream will be used.
-
-    **reference**
-
-        Enable the reference (third) video stream processing. By default is disabled. If set, this video stream will be used for calculating absolute difference with first video stream.
-
-    **planes**
-
-        Specify which planes will be processed. Defaults to all available.
-
-
+    Apply filtering with limiting difference.
 
     Parameters:
     ----------
 
-    :param float threshold: Set the threshold to use when allowing certain differences between video streams. Any absolute difference value lower or exact than this threshold will pick pixel components from first video stream.
-    :param float elasticity: Set the elasticity of soft thresholding when processing video streams. This value multiplied with first one sets second threshold. Any absolute difference value greater or exact than second threshold will pick pixel components from second video stream. For values between those two threshold linear interpolation between first and second video stream will be used.
-    :param bool reference: Enable the reference (third) video stream processing. By default is disabled. If set, this video stream will be used for calculating absolute difference with first video stream.
-    :param int planes: Specify which planes will be processed. Defaults to all available.
+    :param Float threshold: set the threshold (from 0 to 1) (default 0.00392157)
+    :param Float elasticity: set the elasticity (from 0 to 10) (default 2)
+    :param Boolean reference: enable reference stream (default false)
+    :param Int planes: set the planes to filter (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#limitdiff
@@ -4157,98 +2066,35 @@ def lut2(
     _srcx: "VideoStream",
     _srcy: "VideoStream",
     *,
-    c0: str | float | int = Default("x"),
-    c1: str | float | int = Default("x"),
-    c2: str | float | int = Default("x"),
-    c3: str | float | int = Default("x"),
-    d: int | str = Default(0),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    c0: String = Default("x"),
+    c1: String = Default("x"),
+    c2: String = Default("x"),
+    c3: String = Default("x"),
+    d: Int = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.154 lut2, tlut2
-
-    The `lut2` filter takes two input streams and outputs one stream.
-
-    The `tlut2` (time lut2) filter takes two consecutive frames from one single
-    stream.
-
-    This filter accepts the following parameters:
-
-    **c0**
-
-        set first pixel component expression
-
-    **c1**
-
-        set second pixel component expression
-
-    **c2**
-
-        set third pixel component expression
-
-    **c3**
-
-        set fourth pixel component expression, corresponds to the alpha component
-
-    **d**
-
-        set output bit depth, only available for lut2 filter. By default is 0, which means bit depth is automatically picked from first input format.
-
-    The `lut2` filter also supports the framesync options.
-
-    Each of them specifies the expression to use for computing the lookup table
-    for the corresponding pixel component values.
-
-    The exact component associated to each of the c* options depends on the format
-    in inputs.
-
-    The expressions can contain the following constants:
-
-    **w**
-
-    **h**
-
-        The input width and height.
-
-    **x**
-
-        The first input value for the pixel component.
-
-    **y**
-
-        The second input value for the pixel component.
-
-    **bdx**
-
-        The first input video bit depth.
-
-    **bdy**
-
-        The second input video bit depth.
-
-    All expressions default to "x".
-
-
+    Compute and apply a lookup table from two video inputs.
 
     Parameters:
     ----------
 
-    :param str c0: set first pixel component expression
-    :param str c1: set second pixel component expression
-    :param str c2: set third pixel component expression
-    :param str c3: set fourth pixel component expression, corresponds to the alpha component
-    :param int d: set output bit depth, only available for lut2 filter. By default is 0, which means bit depth is automatically picked from first input format.
+    :param String c0: set component #0 expression (default "x")
+    :param String c1: set component #1 expression (default "x")
+    :param String c2: set component #2 expression (default "x")
+    :param String c3: set component #3 expression (default "x")
+    :param Int d: set output depth (from 0 to 16) (default 0)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2
 
@@ -4269,11 +2115,11 @@ def lut2(
                     "c2": c2,
                     "c3": c3,
                     "d": d,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4282,121 +2128,27 @@ def lut2(
     return filter_node.video(0)
 
 
-def lv2(
-    *streams: "AudioStream",
-    plugin: str | float | int = Default(None),
-    controls: str | float | int = Default(None),
-    sample_rate: int | str = Default(44100),
-    nb_samples: int | str = Default(1024),
-    duration: int | str = Default(-1),
-    **kwargs: Any
-) -> "AudioStream":
-    """
-
-    ### 8.99 lv2
-
-    Load a LV2 (LADSPA Version 2) plugin.
-
-    To enable compilation of this filter you need to configure FFmpeg with
-    `--enable-lv2`.
-
-    **plugin, p**
-
-        Specifies the plugin URI. You may need to escape ’:’.
-
-    **controls, c**
-
-        Set the ’|’ separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). If controls is set to help, all available controls and their valid ranges are printed.
-
-    **sample_rate, s**
-
-        Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-
-    **nb_samples, n**
-
-        Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-
-    **duration, d**
-
-        Set the minimum duration of the sourced audio. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-
-
-
-    Parameters:
-    ----------
-
-    :param str plugin: Specifies the plugin URI. You may need to escape ’:’.
-    :param str controls: Set the ’|’ separated list of controls which are zero or more floating point values that determine the behavior of the loaded plugin (for example delay, threshold or gain). If controls is set to help, all available controls and their valid ranges are printed.
-    :param int sample_rate: Specify the sample rate, default to 44100. Only used if plugin have zero inputs.
-    :param int nb_samples: Set the number of samples per channel per each output frame, default is 1024. Only used if plugin have zero inputs.
-    :param int duration: Set the minimum duration of the sourced audio. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Note that the resulting duration may be greater than the specified duration, as the generated audio is always cut at the end of a complete frame. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. Only used if plugin have zero inputs.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#lv2
-
-    """
-    filter_node = FilterNode(
-        name="lv2",
-        input_typings=None,
-        output_typings=tuple([StreamType.audio]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "plugin": plugin,
-                    "controls": controls,
-                    "sample_rate": sample_rate,
-                    "nb_samples": nb_samples,
-                    "duration": duration,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.audio(0)
-
-
 def maskedclamp(
     _base: "VideoStream",
     _dark: "VideoStream",
     _bright: "VideoStream",
     *,
-    undershoot: int | str = Default(0),
-    overshoot: int | str = Default(0),
-    planes: int | str = Default("0xF"),
-    enable: str | float | int = Default(None),
+    undershoot: Int = Default("0"),
+    overshoot: Int = Default("0"),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.155 maskedclamp
-
-    Clamp the first input stream with the second input and third input stream.
-
-    Returns the value of first stream to be between second input stream -
-    `undershoot` and third input stream + `overshoot`.
-
-    This filter accepts the following options:
-
-    **undershoot**
-
-        Default value is 0.
-
-    **overshoot**
-
-        Default value is 0.
-
-    **planes**
-
-        Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
-
-
+    Clamp first stream with second stream and third stream.
 
     Parameters:
     ----------
 
-    :param int undershoot: Default value is 0.
-    :param int overshoot: Default value is 0.
-    :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param Int undershoot: set undershoot (from 0 to 65535) (default 0)
+    :param Int overshoot: set overshoot (from 0 to 65535) (default 0)
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedclamp
@@ -4431,32 +2183,18 @@ def maskedmax(
     _filter1: "VideoStream",
     _filter2: "VideoStream",
     *,
-    planes: int | str = Default("0xF"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.156 maskedmax
-
-    Merge the second and third input stream into output stream using absolute
-    differences between second input stream and first input stream and absolute
-    difference between third input stream and first input stream. The picked value
-    will be from second input stream if second absolute difference is greater than
-    first one or from third input stream otherwise.
-
-    This filter accepts the following options:
-
-    **planes**
-
-        Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
-
-
+    Apply filtering with maximum difference of two streams.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmax
@@ -4489,35 +2227,18 @@ def maskedmerge(
     _overlay: "VideoStream",
     _mask: "VideoStream",
     *,
-    planes: int | str = Default("0xF"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.157 maskedmerge
-
-    Merge the first input stream with the second input stream using per pixel
-    weights in the third input stream.
-
-    A value of 0 in the third stream pixel component means that pixel component
-    from first stream is returned unchanged, while maximum value (eg. 255 for
-    8-bit videos) means that pixel component from second stream is returned
-    unchanged. Intermediate values define the amount of merging between both input
-    stream’s pixel components.
-
-    This filter accepts the following options:
-
-    **planes**
-
-        Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
-
-
+    Merge first stream with second stream using third stream as mask.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmerge
@@ -4550,32 +2271,18 @@ def maskedmin(
     _filter1: "VideoStream",
     _filter2: "VideoStream",
     *,
-    planes: int | str = Default("0xF"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.158 maskedmin
-
-    Merge the second and third input stream into output stream using absolute
-    differences between second input stream and first input stream and absolute
-    difference between third input stream and first input stream. The picked value
-    will be from second input stream if second absolute difference is less than
-    first one or from third input stream otherwise.
-
-    This filter accepts the following options:
-
-    **planes**
-
-        Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
-
-
+    Apply filtering with minimum difference of two streams.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed.
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmin
@@ -4607,46 +2314,22 @@ def maskedthreshold(
     _source: "VideoStream",
     _reference: "VideoStream",
     *,
-    threshold: int | str = Default(1),
-    planes: int | str = Default("0xF"),
-    mode: int | Literal["abs", "diff"] | Default = Default(0),
-    enable: str | float | int = Default(None),
+    threshold: Int = Default("1"),
+    planes: Int = Default("15"),
+    mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.159 maskedthreshold
-
-    Pick pixels comparing absolute difference of two video streams with fixed
-    threshold.
-
-    If absolute difference between pixel component of first and second video
-    stream is equal or lower than user supplied threshold than pixel component
-    from first video stream is picked, otherwise pixel component from second video
-    stream is picked.
-
-    This filter accepts the following options:
-
-    **threshold**
-
-        Set threshold used when picking pixels from absolute difference from two input video streams.
-
-    **planes**
-
-        Set which planes will be processed as bitmap, unprocessed planes will be copied from second stream. By default value 0xf, all planes will be processed.
-
-    **mode**
-
-        Set mode of filter operation. Can be abs or diff. Default is abs.
-
-
+    Pick pixels comparing absolute difference of two streams with threshold.
 
     Parameters:
     ----------
 
-    :param int threshold: Set threshold used when picking pixels from absolute difference from two input video streams.
-    :param int planes: Set which planes will be processed as bitmap, unprocessed planes will be copied from second stream. By default value 0xf, all planes will be processed.
-    :param int mode: Set mode of filter operation. Can be abs or diff. Default is abs.
+    :param Int threshold: set threshold (from 0 to 65535) (default 1)
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Int mode: set mode (from 0 to 1) (default abs)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold
@@ -4677,72 +2360,35 @@ def maskedthreshold(
 
 def mergeplanes(
     *streams: "VideoStream",
-    mapping: int | str = Default(-1),
-    format: str | float | int = Default("AV_PIX_FMT_YUVA444P"),
-    map0s: int | str = Default(0),
-    map0p: int | str = Default(0),
-    map1s: int | str = Default(0),
-    map1p: int | str = Default(0),
-    map2s: int | str = Default(0),
-    map2p: int | str = Default(0),
-    map3s: int | str = Default(0),
-    map3p: int | str = Default(0),
+    mapping: Int = Default("-1"),
+    format: Pix_fmt = Default("yuva444p"),
+    map0s: Int = Default("0"),
+    map0p: Int = Default("0"),
+    map1s: Int = Default("0"),
+    map1p: Int = Default("0"),
+    map2s: Int = Default("0"),
+    map2p: Int = Default("0"),
+    map3s: Int = Default("0"),
+    map3p: Int = Default("0"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.163 mergeplanes
-
-    Merge color channel components from several video streams.
-
-    The filter accepts up to 4 input streams, and merge selected input planes to
-    the output video.
-
-    This filter accepts the following options:
-
-    **mapping**
-
-        Set input to output plane mapping. Default is 0. The mappings is specified as a bitmap. It should be specified as a hexadecimal number in the form 0xAa[Bb[Cc[Dd]]]. ’Aa’ describes the mapping for the first plane of the output stream. ’A’ sets the number of the input stream to use (from 0 to 3), and ’a’ the plane number of the corresponding input to use (from 0 to 3). The rest of the mappings is similar, ’Bb’ describes the mapping for the output stream second plane, ’Cc’ describes the mapping for the output stream third plane and ’Dd’ describes the mapping for the output stream fourth plane.
-
-    **format**
-
-        Set output pixel format. Default is yuva444p.
-
-    **map0s**
-
-    **map1s**
-
-    **map2s**
-
-    **map3s**
-
-        Set input to output stream mapping for output Nth plane. Default is 0.
-
-    **map0p**
-
-    **map1p**
-
-    **map2p**
-
-    **map3p**
-
-        Set input to output plane mapping for output Nth plane. Default is 0.
-
-
+    Merge planes.
 
     Parameters:
     ----------
 
-    :param int mapping: Set input to output plane mapping. Default is 0. The mappings is specified as a bitmap. It should be specified as a hexadecimal number in the form 0xAa[Bb[Cc[Dd]]]. ’Aa’ describes the mapping for the first plane of the output stream. ’A’ sets the number of the input stream to use (from 0 to 3), and ’a’ the plane number of the corresponding input to use (from 0 to 3). The rest of the mappings is similar, ’Bb’ describes the mapping for the output stream second plane, ’Cc’ describes the mapping for the output stream third plane and ’Dd’ describes the mapping for the output stream fourth plane.
-    :param str format: Set output pixel format. Default is yuva444p.
-    :param int map0s: Set input to output stream mapping for output Nth plane. Default is 0.
-    :param int map0p: Set input to output plane mapping for output Nth plane. Default is 0.
-    :param int map1s: Set input to output stream mapping for output Nth plane. Default is 0.
-    :param int map1p: Set input to output plane mapping for output Nth plane. Default is 0.
-    :param int map2s: Set input to output stream mapping for output Nth plane. Default is 0.
-    :param int map2p: Set input to output plane mapping for output Nth plane. Default is 0.
-    :param int map3s: Set input to output stream mapping for output Nth plane. Default is 0.
-    :param int map3p: Set input to output plane mapping for output Nth plane. Default is 0.
+    :param Int mapping: set input to output plane mapping (from -1 to 8.58993e+08) (default -1)
+    :param Pix_fmt format: set output pixel format (default yuva444p)
+    :param Int map0s: set 1st input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map0p: set 1st input to output plane mapping (from 0 to 3) (default 0)
+    :param Int map1s: set 2nd input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map1p: set 2nd input to output plane mapping (from 0 to 3) (default 0)
+    :param Int map2s: set 3rd input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map2p: set 3rd input to output plane mapping (from 0 to 3) (default 0)
+    :param Int map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#mergeplanes
 
@@ -4774,39 +2420,16 @@ def mergeplanes(
 
 
 def midequalizer(
-    _in0: "VideoStream",
-    _in1: "VideoStream",
-    *,
-    planes: int | str = Default("0xF"),
-    enable: str | float | int = Default(None),
-    **kwargs: Any
+    _in0: "VideoStream", _in1: "VideoStream", *, planes: Int = Default("15"), enable: str = Default(None), **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.165 midequalizer
-
-    Apply Midway Image Equalization effect using two video streams.
-
-    Midway Image Equalization adjusts a pair of images to have the same histogram,
-    while maintaining their dynamics as much as possible. It’s useful for e.g.
-    matching exposures from a pair of stereo cameras.
-
-    This filter has two inputs and one output, which must be of same pixel format,
-    but may be of different sizes. The output of filter is first input adjusted
-    with midway histogram of both inputs.
-
-    This filter accepts the following option:
-
-    **planes**
-
-        Set which planes to process. Default is 15, which is all available planes.
-
-
+    Apply Midway Equalization.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes to process. Default is 15, which is all available planes.
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#midequalizer
@@ -4835,52 +2458,26 @@ def midequalizer(
 
 def mix(
     *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    weights: str | float | int = Default("1 1"),
-    scale: float | int | str = Default(0.0),
-    planes: str | float | int = Default(15),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default(0),
-    enable: str | float | int = Default(None),
+    inputs: Int = Default("2"),
+    weights: String = Default("1 1"),
+    scale: Float = Default("0"),
+    planes: Flags = Default("F"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.167 mix
-
-    Mix several video input streams into one video stream.
-
-    A description of the accepted options follows.
-
-    **inputs**
-
-        The number of inputs. If unspecified, it defaults to 2.
-
-    **weights**
-
-        Specify weight of each input video stream as sequence. Each weight is separated by space. If number of weights is smaller than number of frames last specified weight will be used for all remaining unset weights.
-
-    **scale**
-
-        Specify scale, if it is set it will be multiplied with sum of each weight multiplied with pixel values to give final destination pixel value. By default scale is auto scaled to sum of weights.
-
-    **planes**
-
-        Set which planes to filter. Default is all. Allowed range is from 0 to 15.
-
-    **duration**
-
-        Specify how end of stream is determined. ‘longest’ The duration of the longest input. (default) ‘shortest’ The duration of the shortest input. ‘first’ The duration of the first input.
-
-
+    Mix video inputs.
 
     Parameters:
     ----------
 
-    :param int inputs: The number of inputs. If unspecified, it defaults to 2.
-    :param str weights: Specify weight of each input video stream as sequence. Each weight is separated by space. If number of weights is smaller than number of frames last specified weight will be used for all remaining unset weights.
-    :param float scale: Specify scale, if it is set it will be multiplied with sum of each weight multiplied with pixel values to give final destination pixel value. By default scale is auto scaled to sum of weights.
-    :param str planes: Set which planes to filter. Default is all. Allowed range is from 0 to 15.
-    :param int duration: Specify how end of stream is determined. ‘longest’ The duration of the longest input. (default) ‘shortest’ The duration of the shortest input. ‘first’ The duration of the first input.
+    :param Int inputs: set number of inputs (from 2 to 32767) (default 2)
+    :param String weights: set weight for each input (default "1 1")
+    :param Float scale: set scale (from 0 to 32767) (default 0)
+    :param Flags planes: set what planes to filter (default F)
+    :param Int duration: how to determine end of stream (from 0 to 2) (default longest)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#mix
@@ -4912,56 +2509,33 @@ def morpho(
     _default: "VideoStream",
     _structure: "VideoStream",
     *,
-    mode: int | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"] | Default = Default(0),
-    planes: int | str = Default(7),
-    structure: int | Literal["first", "all"] | Default = Default(1),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    mode: Int
+    | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
+    | Default = Default("erode"),
+    planes: Int = Default("7"),
+    structure: Int | Literal["first", "all"] | Default = Default("all"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.169 morpho
-
-    This filter allows to apply main morphological grayscale transforms, erode and
-    dilate with arbitrary structures set in second input stream.
-
-    Unlike naive implementation and much slower performance in erosion and
-    dilation filters, when speed is critical `morpho` filter should be used
-    instead.
-
-    A description of accepted options follows,
-
-    **mode**
-
-        Set morphological transform to apply, can be: ‘erode’ ‘dilate’ ‘open’ ‘close’ ‘gradient’ ‘tophat’ ‘blackhat’ Default is erode.
-
-    **planes**
-
-        Set planes to filter, by default all planes except alpha are filtered.
-
-    **structure**
-
-        Set which structure video frames will be processed from second input stream, can be first or all. Default is all.
-
-    The `morpho` filter also supports the framesync options.
-
-
+    Apply Morphological filter.
 
     Parameters:
     ----------
 
-    :param int mode: Set morphological transform to apply, can be: ‘erode’ ‘dilate’ ‘open’ ‘close’ ‘gradient’ ‘tophat’ ‘blackhat’ Default is erode.
-    :param int planes: Set planes to filter, by default all planes except alpha are filtered.
-    :param int structure: Set which structure video frames will be processed from second input stream, can be first or all. Default is all.
+    :param Int mode: set morphological transform (from 0 to 6) (default erode)
+    :param Int planes: set planes to filter (from 0 to 15) (default 7)
+    :param Int structure: when to process structures (from 0 to 1) (default all)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#morpho
 
@@ -4980,11 +2554,11 @@ def morpho(
                     "mode": mode,
                     "planes": planes,
                     "structure": structure,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -4997,50 +2571,25 @@ def msad(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.171 msad
-
-    Obtain the MSAD (Mean Sum of Absolute Differences) between two input videos.
-
-    This filter takes two input videos.
-
-    Both input videos must have the same resolution and pixel format for this
-    filter to work correctly. Also it assumes that both inputs have the same
-    number of frames, which are compared one by one.
-
-    The obtained per component, average, min and max MSAD is printed through the
-    logging system.
-
-    The filter stores the calculated MSAD of each frame in frame metadata.
-
-    This filter also supports the framesync options.
-
-    In the below example the input file main.mpg being processed is compared with
-    the reference file ref.mpg.
-
-
-
-        ffmpeg -i main.mpg -i ref.mpg -lavfi msad -f null -
-
-
-
+    Calculate the MSAD between two video streams.
 
     Parameters:
     ----------
 
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#msad
 
@@ -5056,11 +2605,11 @@ def msad(
         kwargs=tuple(
             (
                 {
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -5073,41 +2622,22 @@ def multiply(
     _source: "VideoStream",
     _factor: "VideoStream",
     *,
-    scale: float | int | str = Default(1.0),
-    offset: float | int | str = Default(0.5),
-    planes: str | float | int = Default("0xF"),
-    enable: str | float | int = Default(None),
+    scale: Float = Default("1"),
+    offset: Float = Default("0.5"),
+    planes: Flags = Default("F"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.172 multiply
-
-    Multiply first video stream pixels values with second video stream pixels
-    values.
-
-    The filter accepts the following options:
-
-    **scale**
-
-        Set the scale applied to second video stream. By default is 1. Allowed range is from 0 to 9.
-
-    **offset**
-
-        Set the offset applied to second video stream. By default is 0.5. Allowed range is from -1 to 1.
-
-    **planes**
-
-        Specify planes from input video stream that will be processed. By default all planes are processed.
-
-
+    Multiply first video stream with second video stream.
 
     Parameters:
     ----------
 
-    :param float scale: Set the scale applied to second video stream. By default is 1. Allowed range is from 0 to 9.
-    :param float offset: Set the offset applied to second video stream. By default is 0.5. Allowed range is from -1 to 1.
-    :param str planes: Specify planes from input video stream that will be processed. By default all planes are processed.
+    :param Float scale: set scale (from 0 to 9) (default 1)
+    :param Float offset: set offset (from -1 to 1) (default 0.5)
+    :param Flags planes: set planes (default F)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#multiply
@@ -5140,127 +2670,37 @@ def overlay(
     _main: "VideoStream",
     _overlay: "VideoStream",
     *,
-    x: str | float | int = Default("0"),
-    y: str | float | int = Default("0"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("EOF_ACTION_REPEAT"),
-    eval: int | str = Default("EVAL_MODE_FRAME"),
-    shortest: bool | int | str = Default(0),
-    format: int | str = Default("OVERLAY_FORMAT_YUV420"),
-    repeatlast: bool | int | str = Default(1),
-    alpha: int | str = Default(0),
-    enable: str | float | int = Default(None),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    x: String = Default("0"),
+    y: String = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
+    eval: Int | Literal["init", "frame"] | Default = Default("frame"),
+    shortest: Boolean = Default("false"),
+    format: Int
+    | Literal["yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "rgb", "gbrp", "auto"]
+    | Default = Default("yuv420"),
+    repeatlast: Boolean = Default("true"),
+    alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.183 overlay
-
-    Overlay one video on top of another.
-
-    It takes two inputs and has one output. The first input is the "main" video on
-    which the second input is overlaid.
-
-    It accepts the following parameters:
-
-    A description of the accepted options follows.
-
-    **x**
-
-    **y**
-
-        Set the expression for the x and y coordinates of the overlaid video on the main video. Default value is "0" for both expressions. In case the expression is invalid, it is set to a huge value (meaning that the overlay will not be displayed within the output visible area).
-
-    **eof_action**
-
-        See framesync.
-
-    **eval**
-
-        Set when the expressions for x, and y are evaluated. It accepts the following values: ‘init’ only evaluate expressions once during the filter initialization or when a command is processed ‘frame’ evaluate expressions for each incoming frame Default value is ‘frame’.
-
-    **shortest**
-
-        See framesync.
-
-    **format**
-
-        Set the format for the output video. It accepts the following values: ‘yuv420’ force YUV 4:2:0 8-bit planar output ‘yuv420p10’ force YUV 4:2:0 10-bit planar output ‘yuv422’ force YUV 4:2:2 8-bit planar output ‘yuv422p10’ force YUV 4:2:2 10-bit planar output ‘yuv444’ force YUV 4:4:4 8-bit planar output ‘yuv444p10’ force YUV 4:4:4 10-bit planar output ‘rgb’ force RGB 8-bit packed output ‘gbrp’ force RGB 8-bit planar output ‘auto’ automatically pick format Default value is ‘yuv420’.
-
-    **repeatlast**
-
-        See framesync.
-
-    **alpha**
-
-        Set format of alpha of the overlaid video, it can be straight or premultiplied. Default is straight.
-
-    The x, and y expressions can contain the following parameters.
-
-    **main_w, W**
-
-    **main_h, H**
-
-        The main input width and height.
-
-    **overlay_w, w**
-
-    **overlay_h, h**
-
-        The overlay input width and height.
-
-    **x**
-
-    **y**
-
-        The computed values for x and y. They are evaluated for each new frame.
-
-    **hsub**
-
-    **vsub**
-
-        horizontal and vertical chroma subsample values of the output format. For example for the pixel format "yuv422p" hsub is 2 and vsub is 1.
-
-    **n**
-
-        the number of input frame, starting from 0
-
-    **pos**
-
-        the position in the file of the input frame, NAN if unknown; deprecated, do not use
-
-    **t**
-
-        The timestamp, expressed in seconds. It’s NAN if the input timestamp is unknown.
-
-    This filter also supports the framesync options.
-
-    Note that the n, t variables are available only when evaluation is done _per
-    frame_ , and will evaluate to NAN when eval is set to ‘init’.
-
-    Be aware that frames are taken from each input video in timestamp order,
-    hence, if their initial timestamps differ, it is a good idea to pass the two
-    inputs through a setpts=PTS-STARTPTS filter to have them begin in the same
-    zero timestamp, as the example for the movie filter does.
-
-    You can chain together more overlays but you should test the efficiency of
-    such approach.
-
-
+    Overlay a video source on top of the input.
 
     Parameters:
     ----------
 
-    :param str x: Set the expression for the x and y coordinates of the overlaid video on the main video. Default value is "0" for both expressions. In case the expression is invalid, it is set to a huge value (meaning that the overlay will not be displayed within the output visible area).
-    :param str y: Set the expression for the x and y coordinates of the overlaid video on the main video. Default value is "0" for both expressions. In case the expression is invalid, it is set to a huge value (meaning that the overlay will not be displayed within the output visible area).
-    :param int eof_action: See framesync.
-    :param int eval: Set when the expressions for x, and y are evaluated. It accepts the following values: ‘init’ only evaluate expressions once during the filter initialization or when a command is processed ‘frame’ evaluate expressions for each incoming frame Default value is ‘frame’.
-    :param bool shortest: See framesync.
-    :param int format: Set the format for the output video. It accepts the following values: ‘yuv420’ force YUV 4:2:0 8-bit planar output ‘yuv420p10’ force YUV 4:2:0 10-bit planar output ‘yuv422’ force YUV 4:2:2 8-bit planar output ‘yuv422p10’ force YUV 4:2:2 10-bit planar output ‘yuv444’ force YUV 4:4:4 8-bit planar output ‘yuv444p10’ force YUV 4:4:4 10-bit planar output ‘rgb’ force RGB 8-bit packed output ‘gbrp’ force RGB 8-bit planar output ‘auto’ automatically pick format Default value is ‘yuv420’.
-    :param bool repeatlast: See framesync.
-    :param int alpha: Set format of alpha of the overlaid video, it can be straight or premultiplied. Default is straight.
+    :param String x: set the x expression (default "0")
+    :param String y: set the y expression (default "0")
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Int eval: specify when to evaluate expressions (from 0 to 1) (default frame)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Int format: set output format (from 0 to 7) (default yuv420)
+    :param Boolean repeatlast: repeat overlay of the last overlay frame (default true)
+    :param Int alpha: alpha format (from 0 to 1) (default straight)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay
 
@@ -5284,323 +2724,8 @@ def overlay(
                     "format": format,
                     "repeatlast": repeatlast,
                     "alpha": alpha,
+                    "ts_sync_mode": ts_sync_mode,
                     "enable": enable,
-                    "ts_sync_mode": ts_sync_mode,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def overlay_cuda(
-    _main: "VideoStream",
-    _overlay: "VideoStream",
-    *,
-    x: str | float | int = Default("0"),
-    y: str | float | int = Default("0"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("EOF_ACTION_REPEAT"),
-    eval: int | str = Default("EVAL_MODE_FRAME"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 11.184 overlay_cuda
-
-    Overlay one video on top of another.
-
-    This is the CUDA variant of the overlay filter. It only accepts CUDA frames.
-    The underlying input pixel formats have to match.
-
-    It takes two inputs and has one output. The first input is the "main" video on
-    which the second input is overlaid.
-
-    It accepts the following parameters:
-
-    **x**
-
-    **y**
-
-        Set expressions for the x and y coordinates of the overlaid video on the main video. They can contain the following parameters: main_w, W main_h, H The main input width and height. overlay_w, w overlay_h, h The overlay input width and height. x y The computed values for x and y. They are evaluated for each new frame. n The ordinal index of the main input frame, starting from 0. pos The byte offset position in the file of the main input frame, NAN if unknown. Deprecated, do not use. t The timestamp of the main input frame, expressed in seconds, NAN if unknown. Default value is "0" for both expressions.
-
-    **eval**
-
-        Set when the expressions for x and y are evaluated. It accepts the following values: init Evaluate expressions once during filter initialization or when a command is processed. frame Evaluate expressions for each incoming frame Default value is frame.
-
-    **eof_action**
-
-        See framesync.
-
-    **shortest**
-
-        See framesync.
-
-    **repeatlast**
-
-        See framesync.
-
-    This filter also supports the framesync options.
-
-
-
-    Parameters:
-    ----------
-
-    :param str x: Set expressions for the x and y coordinates of the overlaid video on the main video. They can contain the following parameters: main_w, W main_h, H The main input width and height. overlay_w, w overlay_h, h The overlay input width and height. x y The computed values for x and y. They are evaluated for each new frame. n The ordinal index of the main input frame, starting from 0. pos The byte offset position in the file of the main input frame, NAN if unknown. Deprecated, do not use. t The timestamp of the main input frame, expressed in seconds, NAN if unknown. Default value is "0" for both expressions.
-    :param str y: Set expressions for the x and y coordinates of the overlaid video on the main video. They can contain the following parameters: main_w, W main_h, H The main input width and height. overlay_w, w overlay_h, h The overlay input width and height. x y The computed values for x and y. They are evaluated for each new frame. n The ordinal index of the main input frame, starting from 0. pos The byte offset position in the file of the main input frame, NAN if unknown. Deprecated, do not use. t The timestamp of the main input frame, expressed in seconds, NAN if unknown. Default value is "0" for both expressions.
-    :param int eof_action: See framesync.
-    :param int eval: Set when the expressions for x and y are evaluated. It accepts the following values: init Evaluate expressions once during filter initialization or when a command is processed. frame Evaluate expressions for each incoming frame Default value is frame.
-    :param bool shortest: See framesync.
-    :param bool repeatlast: See framesync.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fcuda
-
-    """
-    filter_node = FilterNode(
-        name="overlay_cuda",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _overlay,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "x": x,
-                    "y": y,
-                    "eof_action": eof_action,
-                    "eval": eval,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def overlay_opencl(
-    _main: "VideoStream",
-    _overlay: "VideoStream",
-    *,
-    x: int | str = Default(0),
-    y: int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 12.9 overlay_opencl
-
-    Overlay one video on top of another.
-
-    It takes two inputs and has one output. The first input is the "main" video on
-    which the second input is overlaid. This filter requires same memory layout
-    for all the inputs. So, format conversion may be needed.
-
-    The filter accepts the following options:
-
-    **x**
-
-        Set the x coordinate of the overlaid video on the main video. Default value is 0.
-
-    **y**
-
-        Set the y coordinate of the overlaid video on the main video. Default value is 0.
-
-
-
-    Parameters:
-    ----------
-
-    :param int x: Set the x coordinate of the overlaid video on the main video. Default value is 0.
-    :param int y: Set the y coordinate of the overlaid video on the main video. Default value is 0.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fopencl
-
-    """
-    filter_node = FilterNode(
-        name="overlay_opencl",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _overlay,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "x": x,
-                    "y": y,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def overlay_vaapi(
-    _main: "VideoStream",
-    _overlay: "VideoStream",
-    *,
-    x: str | float | int = Default("0"),
-    y: str | float | int = Default("0"),
-    w: str | float | int = Default("overlay_iw"),
-    h: str | float | int = Default("overlay_ih*w/overlay_iw"),
-    alpha: float | int | str = Default(1.0),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("EOF_ACTION_REPEAT"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 13.1 overlay_vaapi
-
-    Overlay one video on the top of another.
-
-    It takes two inputs and has one output. The first input is the "main" video on
-    which the second input is overlaid.
-
-    The filter accepts the following options:
-
-    **x**
-
-    **y**
-
-        Set expressions for the x and y coordinates of the overlaid video on the main video. Default value is "0" for both expressions.
-
-    **w**
-
-    **h**
-
-        Set expressions for the width and height the overlaid video on the main video. Default values are ’overlay_iw’ for ’w’ and ’overlay_ih*w/overlay_iw’ for ’h’. The expressions can contain the following parameters: main_w, W main_h, H The main input width and height. overlay_iw overlay_ih The overlay input width and height. overlay_w, w overlay_h, h The overlay output width and height. overlay_x, x overlay_y, y Position of the overlay layer inside of main
-
-    **alpha**
-
-        Set transparency of overlaid video. Allowed range is 0.0 to 1.0. Higher value means lower transparency. Default value is 1.0.
-
-    **eof_action**
-
-        See framesync.
-
-    **shortest**
-
-        See framesync.
-
-    **repeatlast**
-
-        See framesync.
-
-    This filter also supports the framesync options.
-
-
-
-    Parameters:
-    ----------
-
-    :param str x: Set expressions for the x and y coordinates of the overlaid video on the main video. Default value is "0" for both expressions.
-    :param str y: Set expressions for the x and y coordinates of the overlaid video on the main video. Default value is "0" for both expressions.
-    :param str w: Set expressions for the width and height the overlaid video on the main video. Default values are ’overlay_iw’ for ’w’ and ’overlay_ih*w/overlay_iw’ for ’h’. The expressions can contain the following parameters: main_w, W main_h, H The main input width and height. overlay_iw overlay_ih The overlay input width and height. overlay_w, w overlay_h, h The overlay output width and height. overlay_x, x overlay_y, y Position of the overlay layer inside of main
-    :param str h: Set expressions for the width and height the overlaid video on the main video. Default values are ’overlay_iw’ for ’w’ and ’overlay_ih*w/overlay_iw’ for ’h’. The expressions can contain the following parameters: main_w, W main_h, H The main input width and height. overlay_iw overlay_ih The overlay input width and height. overlay_w, w overlay_h, h The overlay output width and height. overlay_x, x overlay_y, y Position of the overlay layer inside of main
-    :param float alpha: Set transparency of overlaid video. Allowed range is 0.0 to 1.0. Higher value means lower transparency. Default value is 1.0.
-    :param int eof_action: See framesync.
-    :param bool shortest: See framesync.
-    :param bool repeatlast: See framesync.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvaapi
-
-    """
-    filter_node = FilterNode(
-        name="overlay_vaapi",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _overlay,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "x": x,
-                    "y": y,
-                    "w": w,
-                    "h": h,
-                    "alpha": alpha,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def overlay_vulkan(
-    _main: "VideoStream",
-    _overlay: "VideoStream",
-    *,
-    x: int | str = Default(0),
-    y: int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 14.11 overlay_vulkan
-
-    Overlay one video on top of another.
-
-    It takes two inputs and has one output. The first input is the "main" video on
-    which the second input is overlaid. This filter requires all inputs to use the
-    same pixel format. So, format conversion may be needed.
-
-    The filter accepts the following options:
-
-    **x**
-
-        Set the x coordinate of the overlaid video on the main video. Default value is 0.
-
-    **y**
-
-        Set the y coordinate of the overlaid video on the main video. Default value is 0.
-
-
-
-    Parameters:
-    ----------
-
-    :param int x: Set the x coordinate of the overlaid video on the main video. Default value is 0.
-    :param int y: Set the y coordinate of the overlaid video on the main video. Default value is 0.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay_005fvulkan
-
-    """
-    filter_node = FilterNode(
-        name="overlay_vulkan",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _overlay,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "x": x,
-                    "y": y,
                 }
                 | kwargs
             ).items()
@@ -5613,58 +2738,29 @@ def paletteuse(
     _default: "VideoStream",
     _palette: "VideoStream",
     *,
-    dither: int
+    dither: Int
     | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
-    | Default = Default("DITHERING_SIERRA2_4A"),
-    bayer_scale: int | str = Default(2),
-    diff_mode: int | Literal["rectangle"] | Default = Default("DIFF_MODE_NONE"),
-    new: bool | int | str = Default(0),
-    alpha_threshold: int | str = Default(128),
-    debug_kdtree: str | float | int = Default("((void*)0)"),
+    | Default = Default("sierra2_4a"),
+    bayer_scale: Int = Default("2"),
+    diff_mode: Int | Literal["rectangle"] | Default = Default("0"),
+    new: Boolean = Default("false"),
+    alpha_threshold: Int = Default("128"),
+    debug_kdtree: String = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.188 paletteuse
-
     Use a palette to downsample an input video stream.
-
-    The filter takes two inputs: one video stream and a palette. The palette must
-    be a 256 pixels image.
-
-    It accepts the following options:
-
-    **dither**
-
-        Select dithering mode. Available algorithms are: ‘bayer’ Ordered 8x8 bayer dithering (deterministic) ‘heckbert’ Dithering as defined by Paul Heckbert in 1982 (simple error diffusion). Note: this dithering is sometimes considered "wrong" and is included as a reference. ‘floyd_steinberg’ Floyd and Steingberg dithering (error diffusion) ‘sierra2’ Frankie Sierra dithering v2 (error diffusion) ‘sierra2_4a’ Frankie Sierra dithering v2 "Lite" (error diffusion) ‘sierra3’ Frankie Sierra dithering v3 (error diffusion) ‘burkes’ Burkes dithering (error diffusion) ‘atkinson’ Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion) ‘none’ Disable dithering. Default is sierra2_4a.
-
-    **bayer_scale**
-
-        When bayer dithering is selected, this option defines the scale of the pattern (how much the crosshatch pattern is visible). A low value means more visible pattern for less banding, and higher value means less visible pattern at the cost of more banding. The option must be an integer value in the range [0,5]. Default is 2.
-
-    **diff_mode**
-
-        If set, define the zone to process ‘rectangle’ Only the changing rectangle will be reprocessed. This is similar to GIF cropping/offsetting compression mechanism. This option can be useful for speed if only a part of the image is changing, and has use cases such as limiting the scope of the error diffusal dither to the rectangle that bounds the moving scene (it leads to more deterministic output if the scene doesn’t change much, and as a result less moving noise and better GIF compression). Default is none.
-
-    **new**
-
-        Take new palette for each output frame.
-
-    **alpha_threshold**
-
-        Sets the alpha threshold for transparency. Alpha values above this threshold will be treated as completely opaque, and values below this threshold will be treated as completely transparent. The option must be an integer value in the range [0,255]. Default is 128.
-
-
 
     Parameters:
     ----------
 
-    :param int dither: Select dithering mode. Available algorithms are: ‘bayer’ Ordered 8x8 bayer dithering (deterministic) ‘heckbert’ Dithering as defined by Paul Heckbert in 1982 (simple error diffusion). Note: this dithering is sometimes considered "wrong" and is included as a reference. ‘floyd_steinberg’ Floyd and Steingberg dithering (error diffusion) ‘sierra2’ Frankie Sierra dithering v2 (error diffusion) ‘sierra2_4a’ Frankie Sierra dithering v2 "Lite" (error diffusion) ‘sierra3’ Frankie Sierra dithering v3 (error diffusion) ‘burkes’ Burkes dithering (error diffusion) ‘atkinson’ Atkinson dithering by Bill Atkinson at Apple Computer (error diffusion) ‘none’ Disable dithering. Default is sierra2_4a.
-    :param int bayer_scale: When bayer dithering is selected, this option defines the scale of the pattern (how much the crosshatch pattern is visible). A low value means more visible pattern for less banding, and higher value means less visible pattern at the cost of more banding. The option must be an integer value in the range [0,5]. Default is 2.
-    :param int diff_mode: If set, define the zone to process ‘rectangle’ Only the changing rectangle will be reprocessed. This is similar to GIF cropping/offsetting compression mechanism. This option can be useful for speed if only a part of the image is changing, and has use cases such as limiting the scope of the error diffusal dither to the rectangle that bounds the moving scene (it leads to more deterministic output if the scene doesn’t change much, and as a result less moving noise and better GIF compression). Default is none.
-    :param bool new: Take new palette for each output frame.
-    :param int alpha_threshold: Sets the alpha threshold for transparency. Alpha values above this threshold will be treated as completely opaque, and values below this threshold will be treated as completely transparent. The option must be an integer value in the range [0,255]. Default is 128.
-    :param str debug_kdtree: save Graphviz graph of the kdtree in specified file
+    :param Int dither: select dithering mode (from 0 to 8) (default sierra2_4a)
+    :param Int bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
+    :param Int diff_mode: set frame difference mode (from 0 to 1) (default 0)
+    :param Boolean new: take new palette for each output frame (default false)
+    :param Int alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
+    :param String debug_kdtree: save Graphviz graph of the kdtree in specified file
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#paletteuse
 
@@ -5696,37 +2792,20 @@ def paletteuse(
 
 def premultiply(
     *streams: "VideoStream",
-    planes: int | str = Default("0xF"),
-    inplace: bool | int | str = Default(0),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    inplace: Boolean = Default("false"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.197 premultiply
-
-    Apply alpha premultiply effect to input video stream using first plane of
-    second stream as alpha.
-
-    Both streams must have same dimensions and same pixel format.
-
-    The filter accepts the following option:
-
-    **planes**
-
-        Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.
-
-    **inplace**
-
-        Do not require 2nd input for processing, instead use alpha plane from input stream.
-
-
+    PreMultiply first stream with first plane of second stream.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.
-    :param bool inplace: Do not require 2nd input for processing, instead use alpha plane from input stream.
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Boolean inplace: enable inplace mode (default false)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#premultiply
@@ -5751,289 +2830,35 @@ def premultiply(
     return filter_node.video(0)
 
 
-def program_opencl(
-    *streams: "VideoStream",
-    source: str | float | int = Default("((void*)0)"),
-    kernel: str | float | int = Default("((void*)0)"),
-    inputs: int | str = Default(1),
-    size: str | float | int = Default("((void*)0)"),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 12.12 program_opencl
-
-    Filter video using an OpenCL program.
-
-    **source**
-
-        OpenCL program source file.
-
-    **kernel**
-
-        Kernel name in program.
-
-    **inputs**
-
-        Number of inputs to the filter. Defaults to 1.
-
-    **size, s**
-
-        Size of output frames. Defaults to the same as the first input.
-
-    The `program_opencl` filter also supports the framesync options.
-
-    The program source file must contain a kernel function with the given name,
-    which will be run once for each plane of the output. Each run on a plane gets
-    enqueued as a separate 2D global NDRange with one work-item for each pixel to
-    be generated. The global ID offset for each work-item is therefore the
-    coordinates of a pixel in the destination image.
-
-    The kernel function needs to take the following arguments:
-
-      * Destination image, __write_only image2d_t.
-
-    This image will become the output; the kernel should write all of it.
-
-      * Frame index, unsigned int.
-
-    This is a counter starting from zero and increasing by one for each frame.
-
-      * Source images, __read_only image2d_t.
-
-    These are the most recent images on each input. The kernel may read from them
-    to generate the output, but they can’t be written to.
-
-    Example programs:
-
-      * Copy the input to the output (output must be the same size as the input).
-
-            __kernel void copy(__write_only image2d_t destination,
-                           unsigned int index,
-                           __read_only  image2d_t source)
-        {
-            const sampler_t sampler = CLK_NORMALIZED_COORDS_FALSE;
-
-            int2 location = (int2)(get_global_id(0), get_global_id(1));
-
-            float4 value = read_imagef(source, sampler, location);
-
-            write_imagef(destination, location, value);
-        }
-
-
-      * Apply a simple transformation, rotating the input by an amount increasing with the index counter. Pixel values are linearly interpolated by the sampler, and the output need not have the same dimensions as the input.
-
-            __kernel void rotate_image(__write_only image2d_t dst,
-                                   unsigned int index,
-                                   __read_only  image2d_t src)
-        {
-            const sampler_t sampler = (CLK_NORMALIZED_COORDS_FALSE |
-                                       CLK_FILTER_LINEAR);
-
-            float angle = (float)index / 100.0f;
-
-            float2 dst_dim = convert_float2(get_image_dim(dst));
-            float2 src_dim = convert_float2(get_image_dim(src));
-
-            float2 dst_cen = dst_dim / 2.0f;
-            float2 src_cen = src_dim / 2.0f;
-
-            int2   dst_loc = (int2)(get_global_id(0), get_global_id(1));
-
-            float2 dst_pos = convert_float2(dst_loc) - dst_cen;
-            float2 src_pos = {
-                cos(angle) * dst_pos.x - sin(angle) * dst_pos.y,
-                sin(angle) * dst_pos.x + cos(angle) * dst_pos.y
-            };
-            src_pos = src_pos * src_dim / dst_dim;
-
-            float2 src_loc = src_pos + src_cen;
-
-            if (src_loc.x < 0.0f      || src_loc.y < 0.0f ||
-                src_loc.x > src_dim.x || src_loc.y > src_dim.y)
-                write_imagef(dst, dst_loc, 0.5f);
-            else
-                write_imagef(dst, dst_loc, read_imagef(src, sampler, src_loc));
-        }
-
-
-      * Blend two inputs together, with the amount of each input used varying with the index counter.
-
-            __kernel void blend_images(__write_only image2d_t dst,
-                                   unsigned int index,
-                                   __read_only  image2d_t src1,
-                                   __read_only  image2d_t src2)
-        {
-            const sampler_t sampler = (CLK_NORMALIZED_COORDS_FALSE |
-                                       CLK_FILTER_LINEAR);
-
-            float blend = (cos((float)index / 50.0f) + 1.0f) / 2.0f;
-
-            int2  dst_loc = (int2)(get_global_id(0), get_global_id(1));
-            int2 src1_loc = dst_loc * get_image_dim(src1) / get_image_dim(dst);
-            int2 src2_loc = dst_loc * get_image_dim(src2) / get_image_dim(dst);
-
-            float4 val1 = read_imagef(src1, sampler, src1_loc);
-            float4 val2 = read_imagef(src2, sampler, src2_loc);
-
-            write_imagef(dst, dst_loc, val1 * blend + val2 * (1.0f - blend));
-        }
-
-
-
-
-    Parameters:
-    ----------
-
-    :param str source: OpenCL program source file.
-    :param str kernel: Kernel name in program.
-    :param int inputs: Number of inputs to the filter. Defaults to 1.
-    :param str size: Size of output frames. Defaults to the same as the first input.
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#program_005fopencl
-
-    """
-    filter_node = FilterNode(
-        name="program_opencl",
-        input_typings=None,
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "source": source,
-                    "kernel": kernel,
-                    "inputs": inputs,
-                    "size": size,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
 def psnr(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    stats_file: str | float | int = Default("((void*)0)"),
-    stats_version: int | str = Default(1),
-    output_max: bool | int | str = Default(0),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    stats_file: String = Default(None),
+    stats_version: Int = Default("1"),
+    output_max: Boolean = Default("false"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.200 psnr
-
-    Obtain the average, maximum and minimum PSNR (Peak Signal to Noise Ratio)
-    between two input videos.
-
-    This filter takes in input two input videos, the first input is considered the
-    "main" source and is passed unchanged to the output. The second input is used
-    as a "reference" video for computing the PSNR.
-
-    Both video inputs must have the same resolution and pixel format for this
-    filter to work correctly. Also it assumes that both inputs have the same
-    number of frames, which are compared one by one.
-
-    The obtained average PSNR is printed through the logging system.
-
-    The filter stores the accumulated MSE (mean squared error) of each frame, and
-    at the end of the processing it is averaged across all frames equally, and the
-    following formula is applied to obtain the PSNR:
-
-
-
-        PSNR = 10*log10(MAX^2/MSE)
-
-
-    Where MAX is the average of the maximum values of each component of the image.
-
-    The description of the accepted parameters follows.
-
-    **stats_file, f**
-
-        If specified the filter will use the named file to save the PSNR of each individual frame. When filename equals "-" the data is sent to standard output.
-
-    **stats_version**
-
-        Specifies which version of the stats file format to use. Details of each format are written below. Default value is 1.
-
-    **stats_add_max**
-
-        Determines whether the max value is output to the stats log. Default value is 0. Requires stats_version >= 2. If this is set and stats_version < 2, the filter will return an error.
-
-    This filter also supports the framesync options.
-
-    The file printed if stats_file is selected, contains a sequence of key/value
-    pairs of the form key:value for each compared couple of frames.
-
-    If a stats_version greater than 1 is specified, a header line precedes the
-    list of per-frame-pair stats, with key value pairs following the frame format
-    with the following parameters:
-
-    **psnr_log_version**
-
-        The version of the log file format. Will match stats_version.
-
-    **fields**
-
-        A comma separated list of the per-frame-pair parameters included in the log.
-
-    A description of each shown per-frame-pair parameter follows:
-
-    **n**
-
-        sequential number of the input frame, starting from 1
-
-    **mse_avg**
-
-        Mean Square Error pixel-by-pixel average difference of the compared frames, averaged over all the image components.
-
-    **mse_y, mse_u, mse_v, mse_r, mse_g, mse_b, mse_a**
-
-        Mean Square Error pixel-by-pixel average difference of the compared frames for the component specified by the suffix.
-
-    **psnr_y, psnr_u, psnr_v, psnr_r, psnr_g, psnr_b, psnr_a**
-
-        Peak Signal to Noise ratio of the compared frames for the component specified by the suffix.
-
-    **max_avg, max_y, max_u, max_v**
-
-        Maximum allowed value for each channel, and average over all channels.
-
-
+    Calculate the PSNR between two video streams.
 
     Parameters:
     ----------
 
-    :param str stats_file: If specified the filter will use the named file to save the PSNR of each individual frame. When filename equals "-" the data is sent to standard output.
-    :param int stats_version: Specifies which version of the stats file format to use. Details of each format are written below. Default value is 1.
-    :param bool output_max: Add raw stats (max values) to the output log.
+    :param String stats_file: Set file where to store per-frame difference information
+    :param Int stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
+    :param Boolean output_max: Add raw stats (max values) to the output log. (default false)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#psnr
 
@@ -6052,11 +2877,11 @@ def psnr(
                     "stats_file": stats_file,
                     "stats_version": stats_version,
                     "output_max": output_max,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -6070,39 +2895,19 @@ def remap(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    format: int | str = Default(0),
-    fill: str | float | int = Default("black"),
+    format: Int | Literal["color", "gray"] | Default = Default("color"),
+    fill: Color = Default("black"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.206 remap
-
-    Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream.
-
-    Destination pixel at position (X, Y) will be picked from source (x, y)
-    position where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of
-    range, zero value for pixel will be used for destination pixel.
-
-    Xmap and Ymap input video streams must be of same dimensions. Output video
-    stream will have Xmap/Ymap video stream dimensions. Xmap and Ymap input video
-    streams are 16bit depth, single channel.
-
-    **format**
-
-        Specify pixel format of output from this filter. Can be color or gray. Default is color.
-
-    **fill**
-
-        Specify the color of the unmapped pixels. For the syntax of this option, check the (ffmpeg-utils)"Color" section in the ffmpeg-utils manual. Default color is black.
-
-
+    Remap pixels.
 
     Parameters:
     ----------
 
-    :param int format: Specify pixel format of output from this filter. Can be color or gray. Default is color.
-    :param str fill: Specify the color of the unmapped pixels. For the syntax of this option, check the (ffmpeg-utils)"Color" section in the ffmpeg-utils manual. Default color is black.
+    :param Int format: set output format (from 0 to 1) (default color)
+    :param Color fill: set the color of the unmapped pixels (default "black")
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#remap
 
@@ -6129,171 +2934,61 @@ def remap(
     return filter_node.video(0)
 
 
-def remap_opencl(
-    _source: "VideoStream",
-    _xmap: "VideoStream",
-    _ymap: "VideoStream",
-    *,
-    interp: int | Literal["near", "linear"] | Default = Default(1),
-    fill: str | float | int = Default("black"),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 12.13 remap_opencl
-
-    Remap pixels using 2nd: Xmap and 3rd: Ymap input video stream.
-
-    Destination pixel at position (X, Y) will be picked from source (x, y)
-    position where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of
-    range, zero value for pixel will be used for destination pixel.
-
-    Xmap and Ymap input video streams must be of same dimensions. Output video
-    stream will have Xmap/Ymap video stream dimensions. Xmap and Ymap input video
-    streams are 32bit float pixel format, single channel.
-
-    **interp**
-
-        Specify interpolation used for remapping of pixels. Allowed values are near and linear. Default value is linear.
-
-    **fill**
-
-        Specify the color of the unmapped pixels. For the syntax of this option, check the (ffmpeg-utils)"Color" section in the ffmpeg-utils manual. Default color is black.
-
-
-
-    Parameters:
-    ----------
-
-    :param int interp: Specify interpolation used for remapping of pixels. Allowed values are near and linear. Default value is linear.
-    :param str fill: Specify the color of the unmapped pixels. For the syntax of this option, check the (ffmpeg-utils)"Color" section in the ffmpeg-utils manual. Default color is black.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#remap_005fopencl
-
-    """
-    filter_node = FilterNode(
-        name="remap_opencl",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _xmap,
-            _ymap,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "interp": interp,
-                    "fill": fill,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
 def scale2ref(
     _default: "VideoStream",
     _ref: "VideoStream",
     *,
-    w: str | float | int = Default(None),
-    h: str | float | int = Default(None),
-    flags: str | float | int = Default(""),
-    interl: bool | int | str = Default(0),
-    size: str | float | int = Default("((void*)0)"),
-    in_color_matrix: int
+    w: String = Default(None),
+    h: String = Default(None),
+    flags: String = Default(""),
+    interl: Boolean = Default("false"),
+    in_color_matrix: String
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
-    | Default = Default(-1),
-    out_color_matrix: int
+    | Default = Default("auto"),
+    out_color_matrix: String
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
-    | Default = Default("AVCOL_SPC_UNSPECIFIED"),
-    in_range: int
+    | Default = Default(None),
+    in_range: Int
     | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-    | Default = Default("AVCOL_RANGE_UNSPECIFIED"),
-    out_range: int
+    | Default = Default("auto"),
+    out_range: Int
     | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-    | Default = Default("AVCOL_RANGE_UNSPECIFIED"),
-    in_v_chr_pos: int | str = Default(-513),
-    in_h_chr_pos: int | str = Default(-513),
-    out_v_chr_pos: int | str = Default(-513),
-    out_h_chr_pos: int | str = Default(-513),
-    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | Default = Default(0),
-    force_divisible_by: int | str = Default(1),
-    param0: float | int | str = Default(1.7976931348623157e308),
-    param1: float | int | str = Default(1.7976931348623157e308),
-    eval: int | str = Default("EVAL_MODE_INIT"),
+    | Default = Default("auto"),
+    in_v_chr_pos: Int = Default("-513"),
+    in_h_chr_pos: Int = Default("-513"),
+    out_v_chr_pos: Int = Default("-513"),
+    out_h_chr_pos: Int = Default("-513"),
+    force_original_aspect_ratio: Int | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
+    force_divisible_by: Int = Default("1"),
+    param0: Double = Default("DBL_MAX"),
+    param1: Double = Default("DBL_MAX"),
+    eval: Int | Literal["init", "frame"] | Default = Default("init"),
     **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+) -> tuple["AudioStream", "AudioStream",]:
     """
 
-    ### 11.218 scale2ref
-
-    Scale (resize) the input video, based on a reference video.
-
-    See the scale filter for available options, scale2ref supports the same but
-    uses the reference video instead of the main input as basis. scale2ref also
-    supports the following additional constants for the w and h options:
-
-    **main_w**
-
-    **main_h**
-
-        The main input video’s width and height
-
-    **main_a**
-
-        The same as main_w / main_h
-
-    **main_sar**
-
-        The main input video’s sample aspect ratio
-
-    **main_dar, mdar**
-
-        The main input video’s display aspect ratio. Calculated from (main_w / main_h) * main_sar.
-
-    **main_hsub**
-
-    **main_vsub**
-
-        The main input video’s horizontal and vertical chroma subsample values. For example for the pixel format "yuv422p" hsub is 2 and vsub is 1.
-
-    **main_n**
-
-        The (sequential) number of the main input frame, starting from 0. Only available with eval=frame.
-
-    **main_t**
-
-        The presentation timestamp of the main input frame, expressed as a number of seconds. Only available with eval=frame.
-
-    **main_pos**
-
-        The position (byte offset) of the frame in the main input stream, or NaN if this information is unavailable and/or meaningless (for example in case of synthetic video). Only available with eval=frame.
-
-
+    Scale the input video size and/or convert the image format to the given reference.
 
     Parameters:
     ----------
 
-    :param str w: Output video width
-    :param str h: Output video height
-    :param str flags: Flags to pass to libswscale
-    :param bool interl: set interlacing
-    :param str size: set video size
-    :param int in_color_matrix: set input YCbCr type
-    :param int out_color_matrix: set output YCbCr type
-    :param int in_range: set input color range
-    :param int out_range: set output color range
-    :param int in_v_chr_pos: input vertical chroma position in luma grid/256
-    :param int in_h_chr_pos: input horizontal chroma position in luma grid/256
-    :param int out_v_chr_pos: output vertical chroma position in luma grid/256
-    :param int out_h_chr_pos: output horizontal chroma position in luma grid/256
-    :param int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR
-    :param int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used
-    :param float param0: Scaler param 0
-    :param float param1: Scaler param 1
-    :param int eval: specify when to evaluate expressions
+    :param String w: Output video width
+    :param String h: Output video height
+    :param String flags: Flags to pass to libswscale (default "")
+    :param Boolean interl: set interlacing (default false)
+    :param String in_color_matrix: set input YCbCr type (default "auto")
+    :param String out_color_matrix: set output YCbCr type
+    :param Int in_range: set input color range (from 0 to 2) (default auto)
+    :param Int out_range: set output color range (from 0 to 2) (default auto)
+    :param Int in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+    :param Int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+    :param Double param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+    :param Double param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+    :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#scale2ref
 
@@ -6313,7 +3008,6 @@ def scale2ref(
                     "h": h,
                     "flags": flags,
                     "interl": interl,
-                    "size": size,
                     "in_color_matrix": in_color_matrix,
                     "out_color_matrix": out_color_matrix,
                     "in_range": in_range,
@@ -6333,113 +3027,8 @@ def scale2ref(
         ),
     )
     return (
-        filter_node.video(0),
-        filter_node.video(1),
-    )
-
-
-def scale2ref_npp(
-    _default: "VideoStream",
-    _ref: "VideoStream",
-    *,
-    w: str | float | int = Default(None),
-    h: str | float | int = Default(None),
-    format: str | float | int = Default("same"),
-    s: str | float | int = Default("((void*)0)"),
-    interp_algo: int
-    | Literal["nn", "linear", "cubic", "cubic2p_bspline", "cubic2p_catmullrom", "cubic2p_b05c03", "super", "lanczos"]
-    | Default = Default("NPPI_INTER_CUBIC"),
-    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | Default = Default(0),
-    force_divisible_by: int | str = Default(1),
-    eval: int | Literal["init", "frame"] | Default = Default("EVAL_MODE_INIT"),
-    **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
-    """
-
-    ### 11.219 scale2ref_npp
-
-    Use the NVIDIA Performance Primitives (libnpp) to scale (resize) the input
-    video, based on a reference video.
-
-    See the scale_npp filter for available options, scale2ref_npp supports the
-    same but uses the reference video instead of the main input as basis.
-    scale2ref_npp also supports the following additional constants for the w and h
-    options:
-
-    **main_w**
-
-    **main_h**
-
-        The main input video’s width and height
-
-    **main_a**
-
-        The same as main_w / main_h
-
-    **main_sar**
-
-        The main input video’s sample aspect ratio
-
-    **main_dar, mdar**
-
-        The main input video’s display aspect ratio. Calculated from (main_w / main_h) * main_sar.
-
-    **main_n**
-
-        The (sequential) number of the main input frame, starting from 0. Only available with eval=frame.
-
-    **main_t**
-
-        The presentation timestamp of the main input frame, expressed as a number of seconds. Only available with eval=frame.
-
-    **main_pos**
-
-        The position (byte offset) of the frame in the main input stream, or NaN if this information is unavailable and/or meaningless (for example in case of synthetic video). Only available with eval=frame.
-
-
-
-    Parameters:
-    ----------
-
-    :param str w: Output video width
-    :param str h: Output video height
-    :param str format: Output pixel format
-    :param str s: Output video size
-    :param int interp_algo: Interpolation algorithm used for resizing
-    :param int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR
-    :param int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used
-    :param int eval: specify when to evaluate expressions
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#scale2ref_005fnpp
-
-    """
-    filter_node = FilterNode(
-        name="scale2ref_npp",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video, StreamType.video]),
-        inputs=(
-            _default,
-            _ref,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "w": w,
-                    "h": h,
-                    "format": format,
-                    "s": s,
-                    "interp_algo": interp_algo,
-                    "force_original_aspect_ratio": force_original_aspect_ratio,
-                    "force_divisible_by": force_divisible_by,
-                    "eval": eval,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return (
-        filter_node.video(0),
-        filter_node.video(1),
+        filter_node.audio(0),
+        filter_node.audio(1),
     )
 
 
@@ -6447,97 +3036,39 @@ def sidechaincompress(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: float | int | str = Default(1.0),
-    mode: int | Literal["downward", "upward"] | Default = Default(0),
-    threshold: float | int | str = Default(0.125),
-    ratio: float | int | str = Default(2.0),
-    attack: float | int | str = Default(20.0),
-    release: float | int | str = Default(250.0),
-    makeup: float | int | str = Default(1.0),
-    knee: float | int | str = Default(2.82843),
-    link: int | Literal["average", "maximum"] | Default = Default(0),
-    detection: int | Literal["peak", "rms"] | Default = Default(1),
-    level_sc: float | int | str = Default(1.0),
-    mix: float | int | str = Default(1.0),
+    level_in: Double = Default("1"),
+    mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
+    threshold: Double = Default("0.125"),
+    ratio: Double = Default("2"),
+    attack: Double = Default("20"),
+    release: Double = Default("250"),
+    makeup: Double = Default("1"),
+    knee: Double = Default("2.82843"),
+    link: Int | Literal["average", "maximum"] | Default = Default("average"),
+    detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
+    level_sc: Double = Default("1"),
+    mix: Double = Default("1"),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.105 sidechaincompress
-
-    This filter acts like normal compressor but has the ability to compress
-    detected signal using second input signal. It needs two input streams and
-    returns one output stream. First input stream will be processed depending on
-    second stream signal. The filtered signal then can be filtered with other
-    filters in later stages of processing. See pan and amerge filter.
-
-    The filter accepts the following options:
-
-    **level_in**
-
-        Set input gain. Default is 1. Range is between 0.015625 and 64.
-
-    **mode**
-
-        Set mode of compressor operation. Can be upward or downward. Default is downward.
-
-    **threshold**
-
-        If a signal of second stream raises above this level it will affect the gain reduction of first stream. By default is 0.125. Range is between 0.00097563 and 1.
-
-    **ratio**
-
-        Set a ratio about which the signal is reduced. 1:2 means that if the level raised 4dB above the threshold, it will be only 2dB above after the reduction. Default is 2. Range is between 1 and 20.
-
-    **attack**
-
-        Amount of milliseconds the signal has to rise above the threshold before gain reduction starts. Default is 20. Range is between 0.01 and 2000.
-
-    **release**
-
-        Amount of milliseconds the signal has to fall below the threshold before reduction is decreased again. Default is 250. Range is between 0.01 and 9000.
-
-    **makeup**
-
-        Set the amount by how much signal will be amplified after processing. Default is 1. Range is from 1 to 64.
-
-    **knee**
-
-        Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.82843. Range is between 1 and 8.
-
-    **link**
-
-        Choose if the average level between all channels of side-chain stream or the louder(maximum) channel of side-chain stream affects the reduction. Default is average.
-
-    **detection**
-
-        Should the exact signal be taken in case of peak or an RMS one in case of rms. Default is rms which is mainly smoother.
-
-    **level_sc**
-
-        Set sidechain gain. Default is 1. Range is between 0.015625 and 64.
-
-    **mix**
-
-        How much to use compressed signal in output. Default is 1. Range is between 0 and 1.
-
-
+    Sidechain compressor.
 
     Parameters:
     ----------
 
-    :param float level_in: Set input gain. Default is 1. Range is between 0.015625 and 64.
-    :param int mode: Set mode of compressor operation. Can be upward or downward. Default is downward.
-    :param float threshold: If a signal of second stream raises above this level it will affect the gain reduction of first stream. By default is 0.125. Range is between 0.00097563 and 1.
-    :param float ratio: Set a ratio about which the signal is reduced. 1:2 means that if the level raised 4dB above the threshold, it will be only 2dB above after the reduction. Default is 2. Range is between 1 and 20.
-    :param float attack: Amount of milliseconds the signal has to rise above the threshold before gain reduction starts. Default is 20. Range is between 0.01 and 2000.
-    :param float release: Amount of milliseconds the signal has to fall below the threshold before reduction is decreased again. Default is 250. Range is between 0.01 and 9000.
-    :param float makeup: Set the amount by how much signal will be amplified after processing. Default is 1. Range is from 1 to 64.
-    :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.82843. Range is between 1 and 8.
-    :param int link: Choose if the average level between all channels of side-chain stream or the louder(maximum) channel of side-chain stream affects the reduction. Default is average.
-    :param int detection: Should the exact signal be taken in case of peak or an RMS one in case of rms. Default is rms which is mainly smoother.
-    :param float level_sc: Set sidechain gain. Default is 1. Range is between 0.015625 and 64.
-    :param float mix: How much to use compressed signal in output. Default is 1. Range is between 0 and 1.
+    :param Double level_in: set input gain (from 0.015625 to 64) (default 1)
+    :param Int mode: set mode (from 0 to 1) (default downward)
+    :param Double threshold: set threshold (from 0.000976563 to 1) (default 0.125)
+    :param Double ratio: set ratio (from 1 to 20) (default 2)
+    :param Double attack: set attack (from 0.01 to 2000) (default 20)
+    :param Double release: set release (from 0.01 to 9000) (default 250)
+    :param Double makeup: set make up gain (from 1 to 64) (default 1)
+    :param Double knee: set knee (from 1 to 8) (default 2.82843)
+    :param Int link: set link type (from 0 to 1) (default average)
+    :param Int detection: set detection (from 0 to 1) (default rms)
+    :param Double level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+    :param Double mix: set mix (from 0 to 1) (default 1)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress
 
@@ -6577,102 +3108,40 @@ def sidechaingate(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: float | int | str = Default(1.0),
-    mode: int | Literal["downward", "upward"] | Default = Default(0),
-    range: float | int | str = Default(0.06125),
-    threshold: float | int | str = Default(0.125),
-    ratio: float | int | str = Default(2.0),
-    attack: float | int | str = Default(20.0),
-    release: float | int | str = Default(250.0),
-    makeup: float | int | str = Default(1.0),
-    knee: float | int | str = Default(2.828427125),
-    detection: int | Literal["peak", "rms"] | Default = Default(1),
-    link: int | Literal["average", "maximum"] | Default = Default(0),
-    level_sc: float | int | str = Default(1.0),
-    enable: str | float | int = Default(None),
+    level_in: Double = Default("1"),
+    mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
+    range: Double = Default("0.06125"),
+    threshold: Double = Default("0.125"),
+    ratio: Double = Default("2"),
+    attack: Double = Default("20"),
+    release: Double = Default("250"),
+    makeup: Double = Default("1"),
+    knee: Double = Default("2.82843"),
+    detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
+    link: Int | Literal["average", "maximum"] | Default = Default("average"),
+    level_sc: Double = Default("1"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 8.106 sidechaingate
-
-    A sidechain gate acts like a normal (wideband) gate but has the ability to
-    filter the detected signal before sending it to the gain reduction stage.
-    Normally a gate uses the full range signal to detect a level above the
-    threshold. For example: If you cut all lower frequencies from your sidechain
-    signal the gate will decrease the volume of your track only if not enough
-    highs appear. With this technique you are able to reduce the resonation of a
-    natural drum or remove "rumbling" of muted strokes from a heavily distorted
-    guitar. It needs two input streams and returns one output stream. First input
-    stream will be processed depending on second stream signal.
-
-    The filter accepts the following options:
-
-    **level_in**
-
-        Set input level before filtering. Default is 1. Allowed range is from 0.015625 to 64.
-
-    **mode**
-
-        Set the mode of operation. Can be upward or downward. Default is downward. If set to upward mode, higher parts of signal will be amplified, expanding dynamic range in upward direction. Otherwise, in case of downward lower parts of signal will be reduced.
-
-    **range**
-
-        Set the level of gain reduction when the signal is below the threshold. Default is 0.06125. Allowed range is from 0 to 1. Setting this to 0 disables reduction and then filter behaves like expander.
-
-    **threshold**
-
-        If a signal rises above this level the gain reduction is released. Default is 0.125. Allowed range is from 0 to 1.
-
-    **ratio**
-
-        Set a ratio about which the signal is reduced. Default is 2. Allowed range is from 1 to 9000.
-
-    **attack**
-
-        Amount of milliseconds the signal has to rise above the threshold before gain reduction stops. Default is 20 milliseconds. Allowed range is from 0.01 to 9000.
-
-    **release**
-
-        Amount of milliseconds the signal has to fall below the threshold before the reduction is increased again. Default is 250 milliseconds. Allowed range is from 0.01 to 9000.
-
-    **makeup**
-
-        Set amount of amplification of signal after processing. Default is 1. Allowed range is from 1 to 64.
-
-    **knee**
-
-        Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.828427125. Allowed range is from 1 to 8.
-
-    **detection**
-
-        Choose if exact signal should be taken for detection or an RMS like one. Default is rms. Can be peak or rms.
-
-    **link**
-
-        Choose if the average level between all channels or the louder channel affects the reduction. Default is average. Can be average or maximum.
-
-    **level_sc**
-
-        Set sidechain gain. Default is 1. Range is from 0.015625 to 64.
-
-
+    Audio sidechain gate.
 
     Parameters:
     ----------
 
-    :param float level_in: Set input level before filtering. Default is 1. Allowed range is from 0.015625 to 64.
-    :param int mode: Set the mode of operation. Can be upward or downward. Default is downward. If set to upward mode, higher parts of signal will be amplified, expanding dynamic range in upward direction. Otherwise, in case of downward lower parts of signal will be reduced.
-    :param float range: Set the level of gain reduction when the signal is below the threshold. Default is 0.06125. Allowed range is from 0 to 1. Setting this to 0 disables reduction and then filter behaves like expander.
-    :param float threshold: If a signal rises above this level the gain reduction is released. Default is 0.125. Allowed range is from 0 to 1.
-    :param float ratio: Set a ratio about which the signal is reduced. Default is 2. Allowed range is from 1 to 9000.
-    :param float attack: Amount of milliseconds the signal has to rise above the threshold before gain reduction stops. Default is 20 milliseconds. Allowed range is from 0.01 to 9000.
-    :param float release: Amount of milliseconds the signal has to fall below the threshold before the reduction is increased again. Default is 250 milliseconds. Allowed range is from 0.01 to 9000.
-    :param float makeup: Set amount of amplification of signal after processing. Default is 1. Allowed range is from 1 to 64.
-    :param float knee: Curve the sharp knee around the threshold to enter gain reduction more softly. Default is 2.828427125. Allowed range is from 1 to 8.
-    :param int detection: Choose if exact signal should be taken for detection or an RMS like one. Default is rms. Can be peak or rms.
-    :param int link: Choose if the average level between all channels or the louder channel affects the reduction. Default is average. Can be average or maximum.
-    :param float level_sc: Set sidechain gain. Default is 1. Range is from 0.015625 to 64.
+    :param Double level_in: set input level (from 0.015625 to 64) (default 1)
+    :param Int mode: set mode (from 0 to 1) (default downward)
+    :param Double range: set max gain reduction (from 0 to 1) (default 0.06125)
+    :param Double threshold: set threshold (from 0 to 1) (default 0.125)
+    :param Double ratio: set ratio (from 1 to 9000) (default 2)
+    :param Double attack: set attack (from 0.01 to 9000) (default 20)
+    :param Double release: set release (from 0.01 to 9000) (default 250)
+    :param Double makeup: set makeup gain (from 1 to 64) (default 1)
+    :param Double knee: set knee (from 1 to 8) (default 2.82843)
+    :param Int detection: set detection (from 0 to 1) (default rms)
+    :param Int link: set link (from 0 to 1) (default average)
+    :param Double level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#sidechaingate
@@ -6712,78 +3181,33 @@ def sidechaingate(
 
 def signature(
     *streams: "VideoStream",
-    detectmode: int | Literal["off", "full", "fast"] | Default = Default("MODE_OFF"),
-    nb_inputs: int | str = Default(1),
-    filename: str | float | int = Default(""),
-    format: int | Literal["binary", "xml"] | Default = Default("FORMAT_BINARY"),
-    th_d: int | str = Default(9000),
-    th_dc: int | str = Default(60000),
-    th_xh: int | str = Default(116),
-    th_di: int | str = Default(0),
-    th_it: float | int | str = Default(0.5),
+    detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
+    nb_inputs: Int = Default("1"),
+    filename: String = Default(""),
+    format: Int | Literal["binary", "xml"] | Default = Default("binary"),
+    th_d: Int = Default("9000"),
+    th_dc: Int = Default("60000"),
+    th_xh: Int = Default("116"),
+    th_di: Int = Default("0"),
+    th_it: Double = Default("0.5"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.237 signature
-
-    Calculates the MPEG-7 Video Signature. The filter can handle more than one
-    input. In this case the matching between the inputs can be calculated
-    additionally. The filter always passes through the first input. The signature
-    of each stream can be written into a file.
-
-    It accepts the following options:
-
-    **detectmode**
-
-        Enable or disable the matching process. Available values are: ‘off’ Disable the calculation of a matching (default). ‘full’ Calculate the matching for the whole video and output whether the whole video matches or only parts. ‘fast’ Calculate only until a matching is found or the video ends. Should be faster in some cases.
-
-    **nb_inputs**
-
-        Set the number of inputs. The option value must be a non negative integer. Default value is 1.
-
-    **filename**
-
-        Set the path to which the output is written. If there is more than one input, the path must be a prototype, i.e. must contain %d or %0nd (where n is a positive integer), that will be replaced with the input number. If no filename is specified, no output will be written. This is the default.
-
-    **format**
-
-        Choose the output format. Available values are: ‘binary’ Use the specified binary representation (default). ‘xml’ Use the specified xml representation.
-
-    **th_d**
-
-        Set threshold to detect one word as similar. The option value must be an integer greater than zero. The default value is 9000.
-
-    **th_dc**
-
-        Set threshold to detect all words as similar. The option value must be an integer greater than zero. The default value is 60000.
-
-    **th_xh**
-
-        Set threshold to detect frames as similar. The option value must be an integer greater than zero. The default value is 116.
-
-    **th_di**
-
-        Set the minimum length of a sequence in frames to recognize it as matching sequence. The option value must be a non negative integer value. The default value is 0.
-
-    **th_it**
-
-        Set the minimum relation, that matching frames to all frames must have. The option value must be a double value between 0 and 1. The default value is 0.5.
-
-
+    Calculate the MPEG-7 video signature
 
     Parameters:
     ----------
 
-    :param int detectmode: Enable or disable the matching process. Available values are: ‘off’ Disable the calculation of a matching (default). ‘full’ Calculate the matching for the whole video and output whether the whole video matches or only parts. ‘fast’ Calculate only until a matching is found or the video ends. Should be faster in some cases.
-    :param int nb_inputs: Set the number of inputs. The option value must be a non negative integer. Default value is 1.
-    :param str filename: Set the path to which the output is written. If there is more than one input, the path must be a prototype, i.e. must contain %d or %0nd (where n is a positive integer), that will be replaced with the input number. If no filename is specified, no output will be written. This is the default.
-    :param int format: Choose the output format. Available values are: ‘binary’ Use the specified binary representation (default). ‘xml’ Use the specified xml representation.
-    :param int th_d: Set threshold to detect one word as similar. The option value must be an integer greater than zero. The default value is 9000.
-    :param int th_dc: Set threshold to detect all words as similar. The option value must be an integer greater than zero. The default value is 60000.
-    :param int th_xh: Set threshold to detect frames as similar. The option value must be an integer greater than zero. The default value is 116.
-    :param int th_di: Set the minimum length of a sequence in frames to recognize it as matching sequence. The option value must be a non negative integer value. The default value is 0.
-    :param float th_it: Set the minimum relation, that matching frames to all frames must have. The option value must be a double value between 0 and 1. The default value is 0.5.
+    :param Int detectmode: set the detectmode (from 0 to 2) (default off)
+    :param Int nb_inputs: number of inputs (from 1 to INT_MAX) (default 1)
+    :param String filename: filename for output files (default "")
+    :param Int format: set output format (from 0 to 1) (default binary)
+    :param Int th_d: threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)
+    :param Int th_dc: threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)
+    :param Int th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
+    :param Int th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
+    :param Double th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#signature
 
@@ -6817,11 +3241,11 @@ def spectrumsynth(
     _magnitude: "VideoStream",
     _phase: "VideoStream",
     *,
-    sample_rate: int | str = Default(44100),
-    channels: int | str = Default(1),
-    scale: int | Literal["lin", "log"] | Default = Default("LOG"),
-    slide: int | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("FULLFRAME"),
-    win_func: int
+    sample_rate: Int = Default("44100"),
+    channels: Int = Default("1"),
+    scale: Int | Literal["lin", "log"] | Default = Default("log"),
+    slide: Int | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("fullframe"),
+    win_func: Int
     | Literal[
         "rect",
         "bartlett",
@@ -6846,72 +3270,25 @@ def spectrumsynth(
         "bohman",
         "kaiser",
     ]
-    | Default = Default(0),
-    overlap: float | int | str = Default(1.0),
-    orientation: int | Literal["vertical", "horizontal"] | Default = Default("VERTICAL"),
+    | Default = Default("rect"),
+    overlap: Float = Default("1"),
+    orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
     **kwargs: Any
 ) -> "AudioStream":
     """
 
-    ### 18.32 spectrumsynth
-
-    Synthesize audio from 2 input video spectrums, first input stream represents
-    magnitude across time and second represents phase across time. The filter will
-    transform from frequency domain as displayed in videos back to time domain as
-    presented in audio output.
-
-    This filter is primarily created for reversing processed showspectrum filter
-    outputs, but can synthesize sound from other spectrograms too. But in such
-    case results are going to be poor if the phase data is not available, because
-    in such cases phase data need to be recreated, usually it’s just recreated
-    from random noise. For best results use gray only output (`channel` color mode
-    in showspectrum filter) and `log` scale for magnitude video and `lin` scale
-    for phase video. To produce phase, for 2nd video, use `data` option. Inputs
-    videos should generally use `fullframe` slide mode as that saves resources
-    needed for decoding video.
-
-    The filter accepts the following options:
-
-    **sample_rate**
-
-        Specify sample rate of output audio, the sample rate of audio from which spectrum was generated may differ.
-
-    **channels**
-
-        Set number of channels represented in input video spectrums.
-
-    **scale**
-
-        Set scale which was used when generating magnitude input spectrum. Can be lin or log. Default is log.
-
-    **slide**
-
-        Set slide which was used when generating inputs spectrums. Can be replace, scroll, fullframe or rscroll. Default is fullframe.
-
-    **win_func**
-
-        Set window function used for resynthesis.
-
-    **overlap**
-
-        Set window overlap. In range [0, 1]. Default is 1, which means optimal overlap for selected window function will be picked.
-
-    **orientation**
-
-        Set orientation of input videos. Can be vertical or horizontal. Default is vertical.
-
-
+    Convert input spectrum videos to audio output.
 
     Parameters:
     ----------
 
-    :param int sample_rate: Specify sample rate of output audio, the sample rate of audio from which spectrum was generated may differ.
-    :param int channels: Set number of channels represented in input video spectrums.
-    :param int scale: Set scale which was used when generating magnitude input spectrum. Can be lin or log. Default is log.
-    :param int slide: Set slide which was used when generating inputs spectrums. Can be replace, scroll, fullframe or rscroll. Default is fullframe.
-    :param int win_func: Set window function used for resynthesis.
-    :param float overlap: Set window overlap. In range [0, 1]. Default is 1, which means optimal overlap for selected window function will be picked.
-    :param int orientation: Set orientation of input videos. Can be vertical or horizontal. Default is vertical.
+    :param Int sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
+    :param Int channels: set channels (from 1 to 8) (default 1)
+    :param Int scale: set input amplitude scale (from 0 to 1) (default log)
+    :param Int slide: set input sliding mode (from 0 to 3) (default fullframe)
+    :param Int win_func: set window function (from 0 to 20) (default rect)
+    :param Float overlap: set window overlap (from 0 to 1) (default 1)
+    :param Int orientation: set orientation (from 0 to 1) (default vertical)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth
 
@@ -6946,70 +3323,27 @@ def ssim(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    stats_file: str | float | int = Default("((void*)0)"),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    stats_file: String = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.243 ssim
-
-    Obtain the SSIM (Structural SImilarity Metric) between two input videos.
-
-    This filter takes in input two input videos, the first input is considered the
-    "main" source and is passed unchanged to the output. The second input is used
-    as a "reference" video for computing the SSIM.
-
-    Both video inputs must have the same resolution and pixel format for this
-    filter to work correctly. Also it assumes that both inputs have the same
-    number of frames, which are compared one by one.
-
-    The filter stores the calculated SSIM of each frame.
-
-    The description of the accepted parameters follows.
-
-    **stats_file, f**
-
-        If specified the filter will use the named file to save the SSIM of each individual frame. When filename equals "-" the data is sent to standard output.
-
-    The file printed if stats_file is selected, contains a sequence of key/value
-    pairs of the form key:value for each compared couple of frames.
-
-    A description of each shown parameter follows:
-
-    **n**
-
-        sequential number of the input frame, starting from 1
-
-    **Y, U, V, R, G, B**
-
-        SSIM of the compared frames for the component specified by the suffix.
-
-    **All**
-
-        SSIM of the compared frames for the whole frame.
-
-    **dB**
-
-        Same as above but in dB representation.
-
-    This filter also supports the framesync options.
-
-
+    Calculate the SSIM between two video streams.
 
     Parameters:
     ----------
 
-    :param str stats_file: If specified the filter will use the named file to save the SSIM of each individual frame. When filename equals "-" the data is sent to standard output.
+    :param String stats_file: Set file where to store per-frame difference information
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#ssim
 
@@ -7026,11 +3360,11 @@ def ssim(
             (
                 {
                     "stats_file": stats_file,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -7040,34 +3374,17 @@ def ssim(
 
 
 def streamselect(
-    *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    map: str | float | int = Default("((void*)0)"),
-    **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default("2"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
-    ### 11.245 streamselect, astreamselect
-
-    Select video or audio streams.
-
-    The filter accepts the following options:
-
-    **inputs**
-
-        Set number of inputs. Default is 2.
-
-    **map**
-
-        Set input indexes to remap to outputs.
-
-
+    Select video streams
 
     Parameters:
     ----------
 
-    :param int inputs: Set number of inputs. Default is 2.
-    :param str map: Set input indexes to remap to outputs.
+    :param Int inputs: number of input streams (from 2 to INT_MAX) (default 2)
+    :param String map: input indexes to remap to outputs
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect
 
@@ -7097,38 +3414,18 @@ def threshold(
     _min: "VideoStream",
     _max: "VideoStream",
     *,
-    planes: int | str = Default(15),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.253 threshold
-
-    Apply threshold effect to video stream.
-
-    This filter needs four video streams to perform thresholding. First stream is
-    stream we are filtering. Second stream is holding threshold values, third
-    stream is holding min values, and last, fourth stream is holding max values.
-
-    The filter accepts the following option:
-
-    **planes**
-
-        Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.
-
-    For example if first stream pixel’s component value is less then threshold
-    value of pixel component from 2nd threshold stream, third stream value will
-    picked, otherwise fourth stream pixel component value will be picked.
-
-    Using color source filter one can perform various types of thresholding:
-
-
+    Threshold first video stream using other video streams.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed.
+    :param Int planes: set planes to filter (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#threshold
@@ -7159,37 +3456,20 @@ def threshold(
 
 def unpremultiply(
     *streams: "VideoStream",
-    planes: int | str = Default("0xF"),
-    inplace: bool | int | str = Default(0),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    inplace: Boolean = Default("false"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.266 unpremultiply
-
-    Apply alpha unpremultiply effect to input video stream using first plane of
-    second stream as alpha.
-
-    Both streams must have same dimensions and same pixel format.
-
-    The filter accepts the following option:
-
-    **planes**
-
-        Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed. If the format has 1 or 2 components, then luma is bit 0. If the format has 3 or 4 components: for RGB formats bit 0 is green, bit 1 is blue and bit 2 is red; for YUV formats bit 0 is luma, bit 1 is chroma-U and bit 2 is chroma-V. If present, the alpha channel is always the last bit.
-
-    **inplace**
-
-        Do not require 2nd input for processing, instead use alpha plane from input stream.
-
-
+    UnPreMultiply first stream with first plane of second stream.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed. If the format has 1 or 2 components, then luma is bit 0. If the format has 3 or 4 components: for RGB formats bit 0 is green, bit 1 is blue and bit 2 is red; for YUV formats bit 0 is luma, bit 1 is chroma-U and bit 2 is chroma-V. If present, the alpha channel is always the last bit.
-    :param bool inplace: Do not require 2nd input for processing, instead use alpha plane from input stream.
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Boolean inplace: enable inplace mode (default false)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#unpremultiply
@@ -7218,52 +3498,31 @@ def varblur(
     _default: "VideoStream",
     _radius: "VideoStream",
     *,
-    min_r: int | str = Default(0),
-    max_r: int | str = Default(8),
-    planes: int | str = Default("0xF"),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    min_r: Int = Default("0"),
+    max_r: Int = Default("8"),
+    planes: Int = Default("15"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.272 varblur
-
-    Apply variable blur filter by using 2nd video stream to set blur radius. The
-    2nd stream must have the same dimensions.
-
-    This filter accepts the following options:
-
-    **min_r**
-
-        Set min allowed radius. Allowed range is from 0 to 254. Default is 0.
-
-    **max_r**
-
-        Set max allowed radius. Allowed range is from 1 to 255. Default is 8.
-
-    **planes**
-
-        Set which planes to process. By default, all are used.
-
-    The `varblur` filter also supports the framesync options.
-
-
+    Apply Variable Blur filter.
 
     Parameters:
     ----------
 
-    :param int min_r: Set min allowed radius. Allowed range is from 0 to 254. Default is 0.
-    :param int max_r: Set max allowed radius. Allowed range is from 1 to 255. Default is 8.
-    :param int planes: Set which planes to process. By default, all are used.
+    :param Int min_r: set min blur radius (from 0 to 254) (default 0)
+    :param Int max_r: set max blur radius (from 1 to 255) (default 8)
+    :param Int planes: set planes to filter (from 0 to 15) (default 15)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#varblur
 
@@ -7282,11 +3541,11 @@ def varblur(
                     "min_r": min_r,
                     "max_r": max_r,
                     "planes": planes,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -7299,49 +3558,25 @@ def vif(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.279 vif
-
-    Obtain the average VIF (Visual Information Fidelity) between two input videos.
-
-    This filter takes two input videos.
-
-    Both input videos must have the same resolution and pixel format for this
-    filter to work correctly. Also it assumes that both inputs have the same
-    number of frames, which are compared one by one.
-
-    The obtained average VIF score is printed through the logging system.
-
-    The filter stores the calculated VIF score of each frame.
-
-    This filter also supports the framesync options.
-
-    In the below example the input file main.mpg being processed is compared with
-    the reference file ref.mpg.
-
-
-
-        ffmpeg -i main.mpg -i ref.mpg -lavfi vif -f null -
-
-
-
+    Calculate the VIF between two video streams.
 
     Parameters:
     ----------
 
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#vif
 
@@ -7357,11 +3592,11 @@ def vif(
         kwargs=tuple(
             (
                 {
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -7371,36 +3606,17 @@ def vif(
 
 
 def vstack(
-    *streams: "VideoStream", inputs: int | str = Default(2), shortest: bool | int | str = Default(0), **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default("2"), shortest: Boolean = Default("false"), **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.282 vstack
-
-    Stack input videos vertically.
-
-    All streams must be of same pixel format and of same width.
-
-    Note that this filter is faster than using overlay and pad filter to create
-    same output.
-
-    The filter accepts the following options:
-
-    **inputs**
-
-        Set number of input streams. Default is 2.
-
-    **shortest**
-
-        If set to 1, force the output to terminate when the shortest input terminates. Default value is 0.
-
-
+    Stack video inputs vertically.
 
     Parameters:
     ----------
 
-    :param int inputs: Set number of input streams. Default is 2.
-    :param bool shortest: If set to 1, force the output to terminate when the shortest input terminates. Default value is 0.
+    :param Int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack
 
@@ -7423,177 +3639,33 @@ def vstack(
     return filter_node.video(0)
 
 
-def vstack_qsv(
-    *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    shortest: bool | int | str = Default(0),
-    width: int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 15.2 vstack_qsv
-
-    Stack input videos vertically.
-
-    This is the QSV variant of the vstack filter, each input stream may have
-    different width, this filter will scale down/up each input stream while
-    keeping the original aspect.
-
-    It accepts the following options:
-
-    **inputs**
-
-        See vstack.
-
-    **shortest**
-
-        See vstack.
-
-    **width**
-
-        Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
-
-
-
-    Parameters:
-    ----------
-
-    :param int inputs: See vstack.
-    :param bool shortest: See vstack.
-    :param int width: Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack_005fqsv
-
-    """
-    filter_node = FilterNode(
-        name="vstack_qsv",
-        input_typings=None,
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                    "width": width,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def vstack_vaapi(
-    *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    shortest: bool | int | str = Default(0),
-    width: int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 13.4 vstack_vaapi
-
-    Stack input videos vertically.
-
-    This is the VA-API variant of the vstack filter, each input stream may have
-    different width, this filter will scale down/up each input stream while
-    keeping the original aspect.
-
-    It accepts the following options:
-
-    **inputs**
-
-        See vstack.
-
-    **shortest**
-
-        See vstack.
-
-    **width**
-
-        Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
-
-
-
-    Parameters:
-    ----------
-
-    :param int inputs: See vstack.
-    :param bool shortest: See vstack.
-    :param int width: Set width of output. If set to 0, this filter will set width of output to width of the first input stream. Default value is 0.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack_005fvaapi
-
-    """
-    filter_node = FilterNode(
-        name="vstack_vaapi",
-        input_typings=None,
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                    "width": width,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
 def xcorrelate(
     _primary: "VideoStream",
     _secondary: "VideoStream",
     *,
-    planes: int | str = Default(7),
-    secondary: int | Literal["first", "all"] | Default = Default(1),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    planes: Int = Default("7"),
+    secondary: Int | Literal["first", "all"] | Default = Default("all"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.287 xcorrelate
-
-    Apply normalized cross-correlation between first and second input video
-    stream.
-
-    Second input video stream dimensions must be lower than first input video
-    stream.
-
-    The filter accepts the following options:
-
-    **planes**
-
-        Set which planes to process.
-
-    **secondary**
-
-        Set which secondary video frames will be processed from second input video stream, can be first or all. Default is all.
-
-    The `xcorrelate` filter also supports the framesync options.
-
-
+    Cross-correlate first video stream with second video stream.
 
     Parameters:
     ----------
 
-    :param int planes: Set which planes to process.
-    :param int secondary: Set which secondary video frames will be processed from second input video stream, can be first or all. Default is all.
+    :param Int planes: set planes to cross-correlate (from 0 to 15) (default 7)
+    :param Int secondary: when to process secondary frame (from 0 to 1) (default all)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xcorrelate
 
@@ -7611,11 +3683,11 @@ def xcorrelate(
                 {
                     "planes": planes,
                     "secondary": secondary,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -7628,7 +3700,7 @@ def xfade(
     _main: "VideoStream",
     _xfade: "VideoStream",
     *,
-    transition: int
+    transition: Int
     | Literal[
         "custom",
         "fade",
@@ -7677,62 +3749,24 @@ def xfade(
         "zoomin",
         "fadefast",
         "fadeslow",
-        "hlwind",
-        "hrwind",
-        "vuwind",
-        "vdwind",
-        "coverleft",
-        "coverright",
-        "coverup",
-        "coverdown",
-        "revealleft",
-        "revealright",
-        "revealup",
-        "revealdown",
     ]
-    | Default = Default("FADE"),
-    duration: int | str = Default(1000000),
-    offset: int | str = Default(0),
-    expr: str | float | int = Default("((void*)0)"),
+    | Default = Default("fade"),
+    duration: Duration = Default("1"),
+    offset: Duration = Default("0"),
+    expr: String = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.288 xfade
-
-    Apply cross fade from one input video stream to another input video stream.
-    The cross fade is applied for specified duration.
-
-    Both inputs must be constant frame-rate and have the same resolution, pixel
-    format, frame rate and timebase.
-
-    The filter accepts the following options:
-
-    **transition**
-
-        Set one of available transition effects: ‘custom’ ‘fade’ ‘wipeleft’ ‘wiperight’ ‘wipeup’ ‘wipedown’ ‘slideleft’ ‘slideright’ ‘slideup’ ‘slidedown’ ‘circlecrop’ ‘rectcrop’ ‘distance’ ‘fadeblack’ ‘fadewhite’ ‘radial’ ‘smoothleft’ ‘smoothright’ ‘smoothup’ ‘smoothdown’ ‘circleopen’ ‘circleclose’ ‘vertopen’ ‘vertclose’ ‘horzopen’ ‘horzclose’ ‘dissolve’ ‘pixelize’ ‘diagtl’ ‘diagtr’ ‘diagbl’ ‘diagbr’ ‘hlslice’ ‘hrslice’ ‘vuslice’ ‘vdslice’ ‘hblur’ ‘fadegrays’ ‘wipetl’ ‘wipetr’ ‘wipebl’ ‘wipebr’ ‘squeezeh’ ‘squeezev’ ‘zoomin’ ‘fadefast’ ‘fadeslow’ ‘hlwind’ ‘hrwind’ ‘vuwind’ ‘vdwind’ ‘coverleft’ ‘coverright’ ‘coverup’ ‘coverdown’ ‘revealleft’ ‘revealright’ ‘revealup’ ‘revealdown’ Default transition effect is fade.
-
-    **duration**
-
-        Set cross fade duration in seconds. Range is 0 to 60 seconds. Default duration is 1 second.
-
-    **offset**
-
-        Set cross fade start relative to first input stream in seconds. Default offset is 0.
-
-    **expr**
-
-        Set expression for custom transition effect. The expressions can use the following variables and functions: X Y The coordinates of the current sample. W H The width and height of the image. P Progress of transition effect. PLANE Currently processed plane. A Return value of first input at current location and plane. B Return value of second input at current location and plane. a0(x, y) a1(x, y) a2(x, y) a3(x, y) Return the value of the pixel at location (x,y) of the first/second/third/fourth component of first input. b0(x, y) b1(x, y) b2(x, y) b3(x, y) Return the value of the pixel at location (x,y) of the first/second/third/fourth component of second input.
-
-
+    Cross fade one video with another video.
 
     Parameters:
     ----------
 
-    :param int transition: Set one of available transition effects: ‘custom’ ‘fade’ ‘wipeleft’ ‘wiperight’ ‘wipeup’ ‘wipedown’ ‘slideleft’ ‘slideright’ ‘slideup’ ‘slidedown’ ‘circlecrop’ ‘rectcrop’ ‘distance’ ‘fadeblack’ ‘fadewhite’ ‘radial’ ‘smoothleft’ ‘smoothright’ ‘smoothup’ ‘smoothdown’ ‘circleopen’ ‘circleclose’ ‘vertopen’ ‘vertclose’ ‘horzopen’ ‘horzclose’ ‘dissolve’ ‘pixelize’ ‘diagtl’ ‘diagtr’ ‘diagbl’ ‘diagbr’ ‘hlslice’ ‘hrslice’ ‘vuslice’ ‘vdslice’ ‘hblur’ ‘fadegrays’ ‘wipetl’ ‘wipetr’ ‘wipebl’ ‘wipebr’ ‘squeezeh’ ‘squeezev’ ‘zoomin’ ‘fadefast’ ‘fadeslow’ ‘hlwind’ ‘hrwind’ ‘vuwind’ ‘vdwind’ ‘coverleft’ ‘coverright’ ‘coverup’ ‘coverdown’ ‘revealleft’ ‘revealright’ ‘revealup’ ‘revealdown’ Default transition effect is fade.
-    :param int duration: Set cross fade duration in seconds. Range is 0 to 60 seconds. Default duration is 1 second.
-    :param int offset: Set cross fade start relative to first input stream in seconds. Default offset is 0.
-    :param str expr: Set expression for custom transition effect. The expressions can use the following variables and functions: X Y The coordinates of the current sample. W H The width and height of the image. P Progress of transition effect. PLANE Currently processed plane. A Return value of first input at current location and plane. B Return value of second input at current location and plane. a0(x, y) a1(x, y) a2(x, y) a3(x, y) Return the value of the pixel at location (x,y) of the first/second/third/fourth component of first input. b0(x, y) b1(x, y) b2(x, y) b3(x, y) Return the value of the pixel at location (x,y) of the first/second/third/fourth component of second input.
+    :param Int transition: set cross fade transition (from -1 to 45) (default fade)
+    :param Duration duration: set cross fade duration (default 1)
+    :param Duration offset: set cross fade start relative to first input stream (default 0)
+    :param String expr: set expression for custom transition
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xfade
 
@@ -7760,188 +3794,33 @@ def xfade(
     return filter_node.video(0)
 
 
-def xfade_opencl(
-    _main: "VideoStream",
-    _xfade: "VideoStream",
-    *,
-    transition: int
-    | Literal[
-        "custom",
-        "fade",
-        "wipeleft",
-        "wiperight",
-        "wipeup",
-        "wipedown",
-        "slideleft",
-        "slideright",
-        "slideup",
-        "slidedown",
-    ]
-    | Default = Default(1),
-    source: str | float | int = Default("((void*)0)"),
-    kernel: str | float | int = Default("((void*)0)"),
-    duration: int | str = Default(1000000),
-    offset: int | str = Default(0),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 12.18 xfade_opencl
-
-    Cross fade two videos with custom transition effect by using OpenCL.
-
-    It accepts the following options:
-
-    **transition**
-
-        Set one of possible transition effects. custom Select custom transition effect, the actual transition description will be picked from source and kernel options. fade wipeleft wiperight wipeup wipedown slideleft slideright slideup slidedown Default transition is fade.
-
-    **source**
-
-        OpenCL program source file for custom transition.
-
-    **kernel**
-
-        Set name of kernel to use for custom transition from program source file.
-
-    **duration**
-
-        Set duration of video transition.
-
-    **offset**
-
-        Set time of start of transition relative to first video.
-
-    The program source file must contain a kernel function with the given name,
-    which will be run once for each plane of the output. Each run on a plane gets
-    enqueued as a separate 2D global NDRange with one work-item for each pixel to
-    be generated. The global ID offset for each work-item is therefore the
-    coordinates of a pixel in the destination image.
-
-    The kernel function needs to take the following arguments:
-
-      * Destination image, __write_only image2d_t.
-
-    This image will become the output; the kernel should write all of it.
-
-      * First Source image, __read_only image2d_t. Second Source image, __read_only image2d_t.
-
-    These are the most recent images on each input. The kernel may read from them
-    to generate the output, but they can’t be written to.
-
-      * Transition progress, float. This value is always between 0 and 1 inclusive.
-
-    Example programs:
-
-      * Apply dots curtain transition effect:
-
-            __kernel void blend_images(__write_only image2d_t dst,
-                                   __read_only  image2d_t src1,
-                                   __read_only  image2d_t src2,
-                                   float progress)
-        {
-            const sampler_t sampler = (CLK_NORMALIZED_COORDS_FALSE |
-                                       CLK_FILTER_LINEAR);
-            int2  p = (int2)(get_global_id(0), get_global_id(1));
-            float2 rp = (float2)(get_global_id(0), get_global_id(1));
-            float2 dim = (float2)(get_image_dim(src1).x, get_image_dim(src1).y);
-            rp = rp / dim;
-
-            float2 dots = (float2)(20.0, 20.0);
-            float2 center = (float2)(0,0);
-            float2 unused;
-
-            float4 val1 = read_imagef(src1, sampler, p);
-            float4 val2 = read_imagef(src2, sampler, p);
-            bool next = distance(fract(rp * dots, &unused), (float2)(0.5, 0.5)) < (progress / distance(rp, center));
-
-            write_imagef(dst, p, next ? val1 : val2);
-        }
-
-
-
-
-    Parameters:
-    ----------
-
-    :param int transition: Set one of possible transition effects. custom Select custom transition effect, the actual transition description will be picked from source and kernel options. fade wipeleft wiperight wipeup wipedown slideleft slideright slideup slidedown Default transition is fade.
-    :param str source: OpenCL program source file for custom transition.
-    :param str kernel: Set name of kernel to use for custom transition from program source file.
-    :param int duration: Set duration of video transition.
-    :param int offset: Set time of start of transition relative to first video.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#xfade_005fopencl
-
-    """
-    filter_node = FilterNode(
-        name="xfade_opencl",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _xfade,
-        ),
-        kwargs=tuple(
-            (
-                {
-                    "transition": transition,
-                    "source": source,
-                    "kernel": kernel,
-                    "duration": duration,
-                    "offset": offset,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
 def xmedian(
     *streams: "VideoStream",
-    inputs: int | str = Default(3),
-    planes: int | str = Default(15),
-    percentile: float | int | str = Default(0.5),
-    enable: str | float | int = Default(None),
-    eof_action: str | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default(0),
-    repeatlast: bool | int | str = Default(1),
-    ts_sync_mode: str | Literal["default", "nearest"] | Default = Default("default"),
+    inputs: Int = Default("3"),
+    planes: Int = Default("15"),
+    percentile: Float = Default("0.5"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.289 xmedian
-
-    Pick median pixels from several input videos.
-
-    The filter accepts the following options:
-
-    **inputs**
-
-        Set number of inputs. Default is 3. Allowed range is from 3 to 255. If number of inputs is even number, than result will be mean value between two median values.
-
-    **planes**
-
-        Set which planes to filter. Default value is 15, by which all planes are processed.
-
-    **percentile**
-
-        Set median percentile. Default value is 0.5. Default value of 0.5 will pick always median values, while 0 will pick minimum values, and 1 maximum values.
-
-
+    Pick median pixels from several video inputs.
 
     Parameters:
     ----------
 
-    :param int inputs: Set number of inputs. Default is 3. Allowed range is from 3 to 255. If number of inputs is even number, than result will be mean value between two median values.
-    :param int planes: Set which planes to filter. Default value is 15, by which all planes are processed.
-    :param float percentile: Set median percentile. Default value is 0.5. Default value of 0.5 will pick always median values, while 0 will pick minimum values, and 1 maximum values.
+    :param Int inputs: set number of inputs (from 3 to 255) (default 3)
+    :param Int planes: set planes to filter (from 0 to 15) (default 15)
+    :param Float percentile: set percentile (from 0 to 1) (default 0.5)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
-    :param str eof_action: The action to take when EOF is encountered on the secondary input; it accepts one of the following values
-    :param bool shortest: Force the output to terminate when the shortest input terminates.
-    :param bool repeatlast: force the filter to extend the last frame of secondary streams until the end of the primary stream.
-    :param str ts_sync_mode: How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xmedian
 
@@ -7957,11 +3836,11 @@ def xmedian(
                     "inputs": inputs,
                     "planes": planes,
                     "percentile": percentile,
-                    "enable": enable,
                     "eof_action": eof_action,
                     "shortest": shortest,
                     "repeatlast": repeatlast,
                     "ts_sync_mode": ts_sync_mode,
+                    "enable": enable,
                 }
                 | kwargs
             ).items()
@@ -7972,53 +3851,25 @@ def xmedian(
 
 def xstack(
     *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    layout: str | float | int = Default("((void*)0)"),
-    grid: str | float | int = Default("((void*)0)"),
-    shortest: bool | int | str = Default(0),
-    fill: str | float | int = Default("none"),
+    inputs: Int = Default("2"),
+    layout: String = Default(None),
+    grid: Image_size = Default(None),
+    shortest: Boolean = Default("false"),
+    fill: String = Default("none"),
     **kwargs: Any
 ) -> "VideoStream":
     """
 
-    ### 11.290 xstack
-
     Stack video inputs into custom layout.
-
-    All streams must be of same pixel format.
-
-    The filter accepts the following options:
-
-    **inputs**
-
-        Set number of input streams. Default is 2.
-
-    **layout**
-
-        Specify layout of inputs. This option requires the desired layout configuration to be explicitly set by the user. This sets position of each video input in output. Each input is separated by ’|’. The first number represents the column, and the second number represents the row. Numbers start at 0 and are separated by ’_’. Optionally one can use wX and hX, where X is video input from which to take width or height. Multiple values can be used when separated by ’+’. In such case values are summed together. Note that if inputs are of different sizes gaps may appear, as not all of the output video frame will be filled. Similarly, videos can overlap each other if their position doesn’t leave enough space for the full frame of adjoining videos. For 2 inputs, a default layout of 0_0|w0_0 (equivalent to grid=2x1) is set. In all other cases, a layout or a grid must be set by the user. Either grid or layout can be specified at a time. Specifying both will result in an error.
-
-    **grid**
-
-        Specify a fixed size grid of inputs. This option is used to create a fixed size grid of the input streams. Set the grid size in the form COLUMNSxROWS. There must be ROWS * COLUMNS input streams and they will be arranged as a grid with ROWS rows and COLUMNS columns. When using this option, each input stream within a row must have the same height and all the rows must have the same width. If grid is set, then inputs option is ignored and is implicitly set to ROWS * COLUMNS. For 2 inputs, a default grid of 2x1 (equivalent to layout=0_0|w0_0) is set. In all other cases, a layout or a grid must be set by the user. Either grid or layout can be specified at a time. Specifying both will result in an error.
-
-    **shortest**
-
-        If set to 1, force the output to terminate when the shortest input terminates. Default value is 0.
-
-    **fill**
-
-        If set to valid color, all unused pixels will be filled with that color. By default fill is set to none, so it is disabled.
-
-
 
     Parameters:
     ----------
 
-    :param int inputs: Set number of input streams. Default is 2.
-    :param str layout: Specify layout of inputs. This option requires the desired layout configuration to be explicitly set by the user. This sets position of each video input in output. Each input is separated by ’|’. The first number represents the column, and the second number represents the row. Numbers start at 0 and are separated by ’_’. Optionally one can use wX and hX, where X is video input from which to take width or height. Multiple values can be used when separated by ’+’. In such case values are summed together. Note that if inputs are of different sizes gaps may appear, as not all of the output video frame will be filled. Similarly, videos can overlap each other if their position doesn’t leave enough space for the full frame of adjoining videos. For 2 inputs, a default layout of 0_0|w0_0 (equivalent to grid=2x1) is set. In all other cases, a layout or a grid must be set by the user. Either grid or layout can be specified at a time. Specifying both will result in an error.
-    :param str grid: Specify a fixed size grid of inputs. This option is used to create a fixed size grid of the input streams. Set the grid size in the form COLUMNSxROWS. There must be ROWS * COLUMNS input streams and they will be arranged as a grid with ROWS rows and COLUMNS columns. When using this option, each input stream within a row must have the same height and all the rows must have the same width. If grid is set, then inputs option is ignored and is implicitly set to ROWS * COLUMNS. For 2 inputs, a default grid of 2x1 (equivalent to layout=0_0|w0_0) is set. In all other cases, a layout or a grid must be set by the user. Either grid or layout can be specified at a time. Specifying both will result in an error.
-    :param bool shortest: If set to 1, force the output to terminate when the shortest input terminates. Default value is 0.
-    :param str fill: If set to valid color, all unused pixels will be filled with that color. By default fill is set to none, so it is disabled.
+    :param Int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    :param String layout: set custom layout
+    :param Image_size grid: set fixed size grid layout
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param String fill: set the color for unused pixels (default "none")
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack
 
@@ -8035,170 +3886,6 @@ def xstack(
                     "layout": layout,
                     "grid": grid,
                     "shortest": shortest,
-                    "fill": fill,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def xstack_qsv(
-    *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    shortest: bool | int | str = Default(0),
-    layout: str | float | int = Default("((void*)0)"),
-    grid: str | float | int = Default("((void*)0)"),
-    grid_tile_size: str | float | int = Default("((void*)0)"),
-    fill: str | float | int = Default("none"),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 15.3 xstack_qsv
-
-    Stack video inputs into custom layout.
-
-    This is the QSV variant of the xstack filter.
-
-    It accepts the following options:
-
-    **inputs**
-
-        See xstack.
-
-    **shortest**
-
-        See xstack.
-
-    **layout**
-
-        See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_qsv=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
-
-    **grid**
-
-        See xstack.
-
-    **grid_tile_size**
-
-        Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
-
-    **fill**
-
-        See xstack.
-
-
-
-    Parameters:
-    ----------
-
-    :param int inputs: See xstack.
-    :param bool shortest: See xstack.
-    :param str layout: See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_qsv=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
-    :param str grid: See xstack.
-    :param str grid_tile_size: Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
-    :param str fill: See xstack.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack_005fqsv
-
-    """
-    filter_node = FilterNode(
-        name="xstack_qsv",
-        input_typings=None,
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                    "layout": layout,
-                    "grid": grid,
-                    "grid_tile_size": grid_tile_size,
-                    "fill": fill,
-                }
-                | kwargs
-            ).items()
-        ),
-    )
-    return filter_node.video(0)
-
-
-def xstack_vaapi(
-    *streams: "VideoStream",
-    inputs: int | str = Default(2),
-    shortest: bool | int | str = Default(0),
-    layout: str | float | int = Default("((void*)0)"),
-    grid: str | float | int = Default("((void*)0)"),
-    grid_tile_size: str | float | int = Default("((void*)0)"),
-    fill: str | float | int = Default("none"),
-    **kwargs: Any
-) -> "VideoStream":
-    """
-
-    ### 13.5 xstack_vaapi
-
-    Stack video inputs into custom layout.
-
-    This is the VA-API variant of the xstack filter, each input stream may have
-    different size, this filter will scale down/up each input stream to the given
-    output size, or the size of the first input stream.
-
-    It accepts the following options:
-
-    **inputs**
-
-        See xstack.
-
-    **shortest**
-
-        See xstack.
-
-    **layout**
-
-        See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_vaapi=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
-
-    **grid**
-
-        See xstack.
-
-    **grid_tile_size**
-
-        Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
-
-    **fill**
-
-        See xstack.
-
-
-
-    Parameters:
-    ----------
-
-    :param int inputs: See xstack.
-    :param bool shortest: See xstack.
-    :param str layout: See xstack. Moreover, this permits the user to supply output size for each input stream. xstack_vaapi=inputs=4:layout=0_0_1920x1080|0_h0_1920x1080|w0_0_1920x1080|w0_h0_1920x1080
-    :param str grid: See xstack.
-    :param str grid_tile_size: Set output size for each input stream when grid is set. If this option is not set, this filter will set output size by default to the size of the first input stream. For the syntax of this option, check the (ffmpeg-utils)"Video size" section in the ffmpeg-utils manual.
-    :param str fill: See xstack.
-
-    Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack_005fvaapi
-
-    """
-    filter_node = FilterNode(
-        name="xstack_vaapi",
-        input_typings=None,
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                    "layout": layout,
-                    "grid": grid,
-                    "grid_tile_size": grid_tile_size,
                     "fill": fill,
                 }
                 | kwargs

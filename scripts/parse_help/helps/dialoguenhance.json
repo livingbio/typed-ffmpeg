@@ -1,0 +1,62 @@
+{
+  "description": "Audio Dialogue Enhancement.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "dialoguenhance",
+  "options": [
+    {
+      "alias": [
+        "original"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set original center factor (from 0 to 1) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "original",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "enhance"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set dialogue enhance factor (from 0 to 3) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "3",
+      "min": "0",
+      "name": "enhance",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "voice"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set voice detection factor (from 2 to 32) (default 2)",
+      "flags": "..F.A....T.",
+      "max": "32",
+      "min": "2",
+      "name": "voice",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.119 histogram\n\nCompute and draw a color distribution histogram for the input video.\n\nThe computed histogram is a representation of the color component distribution\nin an image.\n\nStandard histogram displays the color components distribution in an image.\nDisplays color graph for each color component. Shows distribution of the Y, U,\nV, A or R, G, B components, depending on input format, in the current frame.\nBelow each graph a color component scale meter is shown.\n\nThe filter accepts the following options:\n\n**level_height**\n\n    Set height of level. Default value is 200. Allowed range is [50, 2048]. \n\n**scale_height**\n\n    Set height of color scale. Default value is 12. Allowed range is [0, 40]. \n\n**display_mode**\n\n    Set display mode. It accepts the following values: \u2018stack\u2019 Per color component graphs are placed below each other. \u2018parade\u2019 Per color component graphs are placed side by side. \u2018overlay\u2019 Presents information identical to that in the parade, except that the graphs representing color components are superimposed directly over one another. Default is stack. \n\n**levels_mode**\n\n    Set mode. Can be either linear, or logarithmic. Default is linear. \n\n**components**\n\n    Set what color components to display. Default is 7. \n\n**fgopacity**\n\n    Set foreground opacity. Default is 0.7. \n\n**bgopacity**\n\n    Set background opacity. Default is 0.5. \n\n**colors_mode**\n\n    Set colors mode. It accepts the following values: \u2018whiteonblack\u2019 \u2018blackonwhite\u2019 \u2018whiteongray\u2019 \u2018blackongray\u2019 \u2018coloronblack\u2019 \u2018coloronwhite\u2019 \u2018colorongray\u2019 \u2018blackoncolor\u2019 \u2018whiteoncolor\u2019 \u2018grayoncolor\u2019 Default is whiteonblack. \n\n",
+  "description": "Compute and draw a histogram.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "level_height"
       ],
       "choices": [],
-      "default": 200,
-      "description": "<dd><p>Set height of level. Default value is <code>200</code>.\nAllowed range is [50, 2048].\n</p>\n</dd>",
+      "default": "200",
+      "description": "set level height (from 50 to 2048) (default 200)",
       "name": "level_height",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "scale_height"
       ],
       "choices": [],
-      "default": 12,
-      "description": "<dd><p>Set height of color scale. Default value is <code>12</code>.\nAllowed range is [0, 40].\n</p>\n</dd>",
+      "default": "12",
+      "description": "set scale height (from 0 to 40) (default 12)",
       "name": "scale_height",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -45,26 +45,26 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "overlay",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "parade",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "stack",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 2,
-      "description": "<dd><p>Set display mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>stack</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed below each other.\n</p>\n</dd>\n<dt>\u2018<samp>parade</samp>\u2019</dt>\n<dd><p>Per color component graphs are placed side by side.\n</p>\n</dd>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dd><p>Presents information identical to that in the <code>parade</code>, except\nthat the graphs representing color components are superimposed directly\nover one another.\n</p></dd>\n</dl>\n<p>Default is <code>stack</code>.\n</p>\n</dd>",
+      "default": "stack",
+      "description": "set display mode (from 0 to 2) (default stack)",
       "name": "display_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -73,21 +73,21 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "linear",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "logarithmic",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set mode. Can be either <code>linear</code>, or <code>logarithmic</code>.\nDefault is <code>linear</code>.\n</p>\n</dd>",
+      "default": "linear",
+      "description": "set levels mode (from 0 to 1) (default linear)",
       "name": "levels_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -95,11 +95,11 @@
         "c"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set what color components to display.\nDefault is <code>7</code>.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set color components to display (from 1 to 15) (default 7)",
       "name": "components",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -107,11 +107,11 @@
         "f"
       ],
       "choices": [],
-      "default": 0.7,
-      "description": "<dd><p>Set foreground opacity. Default is <code>0.7</code>.\n</p>\n</dd>",
+      "default": "0.7",
+      "description": "set foreground opacity (from 0 to 1) (default 0.7)",
       "name": "fgopacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -119,11 +119,11 @@
         "b"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set background opacity. Default is <code>0.5</code>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set background opacity (from 0 to 1) (default 0.5)",
       "name": "bgopacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -132,67 +132,67 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "whiteonblack",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "blackonwhite",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "whiteongray",
-          "value": 2
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "blackongray",
-          "value": 3
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "coloronblack",
-          "value": 4
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "coloronwhite",
-          "value": 5
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "colorongray",
-          "value": 6
+          "value": "6"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "blackoncolor",
-          "value": 7
+          "value": "7"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "whiteoncolor",
-          "value": 8
+          "value": "8"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "grayoncolor",
-          "value": 9
+          "value": "9"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set colors mode.\nIt accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>whiteonblack</samp>\u2019</dt>\n<dt>\u2018<samp>blackonwhite</samp>\u2019</dt>\n<dt>\u2018<samp>whiteongray</samp>\u2019</dt>\n<dt>\u2018<samp>blackongray</samp>\u2019</dt>\n<dt>\u2018<samp>coloronblack</samp>\u2019</dt>\n<dt>\u2018<samp>coloronwhite</samp>\u2019</dt>\n<dt>\u2018<samp>colorongray</samp>\u2019</dt>\n<dt>\u2018<samp>blackoncolor</samp>\u2019</dt>\n<dt>\u2018<samp>whiteoncolor</samp>\u2019</dt>\n<dt>\u2018<samp>grayoncolor</samp>\u2019</dt>\n</dl>\n<p>Default is <code>whiteonblack</code>.\n</p></dd>",
+      "default": "whiteonblack",
+      "description": "set colors mode (from 0 to 9) (default whiteonblack)",
       "name": "colors_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#histogram"

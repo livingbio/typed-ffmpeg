@@ -1,0 +1,91 @@
+{
+  "description": "Find a user specified object.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "find_rect",
+  "options": [
+    {
+      "alias": [
+        "object"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "object bitmap filename",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "object",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "threshold"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set threshold (from 0 to 1) (default 0.5)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "threshold",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "mipmaps"
+      ],
+      "choices": [],
+      "default": "3",
+      "description": "set mipmaps (from 1 to 5) (default 3)",
+      "flags": "..FV.......",
+      "max": "5",
+      "min": "1",
+      "name": "mipmaps",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "xmin",
+        "ymin",
+        "xmax",
+        "ymax"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "xmin",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "discard"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "(default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "discard",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

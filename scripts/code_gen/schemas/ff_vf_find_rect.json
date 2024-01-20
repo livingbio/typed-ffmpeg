@@ -1,5 +1,5 @@
 {
-  "description": "### 11.98 find_rect\n\nFind a rectangular object in the input video.\n\nThe object to search for must be specified as a gray8 image specified with the\nobject option.\n\nFor each possible match, a score is computed. If the score reaches the\nspecified threshold, the object is considered found.\n\nIf the input video contains multiple instances of the object, the filter will\nfind only one of them.\n\nWhen an object is found, the following metadata entries are set in the\nmatching frame:\n\n**lavfi.rect.w**\n\n    width of object \n\n**lavfi.rect.h**\n\n    height of object \n\n**lavfi.rect.x**\n\n    x position of object \n\n**lavfi.rect.y**\n\n    y position of object \n\n**lavfi.rect.score**\n\n    match score of the found object \n\nIt accepts the following options:\n\n**object**\n\n    Filepath of the object image, needs to be in gray8. \n\n**threshold**\n\n    Detection threshold, expressed as a decimal number in the range 0-1. A threshold value of 0.01 means only exact matches, a threshold of 0.99 means almost everything matches. Default value is 0.5. \n\n**mipmaps**\n\n    Number of mipmaps, default is 3. \n\n**xmin, ymin, xmax, ymax**\n\n    Specifies the rectangle in which to search. \n\n**discard**\n\n    Discard frames where object is not detected. Default is disabled. \n\n",
+  "description": "Find a user specified object.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,94 +21,64 @@
         "object"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Filepath of the object image, needs to be in gray8.\n</p>\n</dd>",
+      "default": null,
+      "description": "object bitmap filename",
       "name": "object",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "threshold"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Detection threshold, expressed as a decimal number in the range 0-1.\n</p>\n<p>A threshold value of 0.01 means only exact matches, a threshold of 0.99 means\nalmost everything matches.\n</p>\n<p>Default value is 0.5.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set threshold (from 0 to 1) (default 0.5)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "mipmaps"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Number of mipmaps, default is 3.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set mipmaps (from 1 to 5) (default 3)",
       "name": "mipmaps",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
-        "xmin"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "xmin",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "ymin"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "ymin",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "xmax"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "xmax",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
+        "xmin",
+        "ymin",
+        "xmax",
         "ymax"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specifies the rectangle in which to search.\n</p>\n</dd>",
-      "name": "ymax",
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
+      "name": "xmin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "discard"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Discard frames where object is not detected. Default is disabled.\n</p></dd>",
+      "default": "false",
+      "description": "(default false)",
       "name": "discard",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#find_005frect"

@@ -1,5 +1,5 @@
 {
-  "description": "### 18.21 settb, asettb\n\nSet the timebase to use for the output frames timestamps. It is mainly useful\nfor testing timebase configuration.\n\nIt accepts the following parameters:\n\n**expr, tb**\n\n    The expression which is evaluated into the output timebase. \n\nThe value for tb is an arithmetic expression representing a rational. The\nexpression can contain the constants \"AVTB\" (the default timebase), \"intb\"\n(the input timebase) and \"sr\" (the sample rate, audio only). Default value is\n\"intb\".\n\n",
+  "description": "Set timebase for the video output link.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -23,16 +23,16 @@
       ],
       "choices": [],
       "default": "intb",
-      "description": "<dd><p>The expression which is evaluated into the output timebase.\n</p>\n</dd>",
+      "description": "set expression determining the output timebase (default \"intb\")",
       "name": "expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb"

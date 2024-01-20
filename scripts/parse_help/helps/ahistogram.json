@@ -1,0 +1,225 @@
+{
+  "description": "Convert input audio to histogram video output.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "ahistogram",
+  "options": [
+    {
+      "alias": [
+        "dmode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "all channels use single histogram",
+          "name": "single",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "each channel have own histogram",
+          "name": "separate",
+          "value": "1"
+        }
+      ],
+      "default": "single",
+      "description": "set method to display channels (from 0 to 1) (default single)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "dmode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "\"hd720\"",
+      "description": "set video size (default \"hd720\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "square root",
+          "name": "sqrt",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubic root",
+          "name": "cbrt",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "reverse logarithmic",
+          "name": "rlog",
+          "value": "4"
+        }
+      ],
+      "default": "log",
+      "description": "set display scale (from 0 to 4) (default log)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "0",
+      "name": "scale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ascale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        }
+      ],
+      "default": "log",
+      "description": "set amplitude scale (from 0 to 1) (default log)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "ascale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "acount"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "how much frames to accumulate (from -1 to 100) (default 1)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "-1",
+      "name": "acount",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "rheight"
+      ],
+      "choices": [],
+      "default": "0.1",
+      "description": "set histogram ratio of window height (from 0 to 1) (default 0.1)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "rheight",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "slide"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "replace old rows with new",
+          "name": "replace",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "scroll from top to bottom",
+          "name": "scroll",
+          "value": "1"
+        }
+      ],
+      "default": "replace",
+      "description": "set sonogram sliding (from 0 to 1) (default replace)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "slide",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hmode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "use absolute samples",
+          "name": "abs",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "use unchanged samples",
+          "name": "sign",
+          "value": "1"
+        }
+      ],
+      "default": "abs",
+      "description": "set histograms mode (from 0 to 1) (default abs)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "hmode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

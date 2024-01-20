@@ -1,5 +1,5 @@
 {
-  "description": "### 11.88 fade\n\nApply a fade-in/out effect to the input video.\n\nIt accepts the following parameters:\n\n**type, t**\n\n    The effect type can be either \"in\" for a fade-in, or \"out\" for a fade-out effect. Default is in. \n\n**start_frame, s**\n\n    Specify the number of the frame to start applying the fade effect at. Default is 0. \n\n**nb_frames, n**\n\n    The number of frames that the fade effect lasts. At the end of the fade-in effect, the output video will have the same intensity as the input video. At the end of the fade-out transition, the output video will be filled with the selected color. Default is 25. \n\n**alpha**\n\n    If set to 1, fade only alpha channel, if one exists on the input. Default value is 0. \n\n**start_time, st**\n\n    Specify the timestamp (in seconds) of the frame to start to apply the fade effect. If both start_frame and start_time are specified, the fade will start at whichever comes last. Default is 0. \n\n**duration, d**\n\n    The number of seconds for which the fade effect has to last. At the end of the fade-in effect the output video will have the same intensity as the input video, at the end of the fade-out transition the output video will be filled with the selected color. If both duration and nb_frames are specified, duration is used. Default is 0 (nb_frames is used by default). \n\n**color, c**\n\n    Specify the color of the fade. Default is \"black\". \n\n",
+  "description": "Fade in/out input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,12 +21,23 @@
         "type",
         "t"
       ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>The effect type can be either \"in\" for a fade-in, or \"out\" for a fade-out\neffect.\nDefault is <code>in</code>.\n</p>\n</dd>",
+      "choices": [
+        {
+          "help": "fade-in",
+          "name": "in",
+          "value": "0"
+        },
+        {
+          "help": "fade-out",
+          "name": "out",
+          "value": "1"
+        }
+      ],
+      "default": "in",
+      "description": "set the fade direction (from 0 to 1) (default in)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -34,11 +45,11 @@
         "s"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specify the number of the frame to start applying the fade\neffect at. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "Number of the first frame to which to apply the effect. (from 0 to INT_MAX) (default 0)",
       "name": "start_frame",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -46,22 +57,22 @@
         "n"
       ],
       "choices": [],
-      "default": 25,
-      "description": "<dd><p>The number of frames that the fade effect lasts. At the end of the\nfade-in effect, the output video will have the same intensity as the input video.\nAt the end of the fade-out transition, the output video will be filled with the\nselected <samp>color</samp>.\nDefault is 25.\n</p>\n</dd>",
+      "default": "25",
+      "description": "Number of frames to which the effect should be applied. (from 1 to INT_MAX) (default 25)",
       "name": "nb_frames",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "alpha"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If set to 1, fade only alpha channel, if one exists on the input.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "fade alpha if it is available on the input (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -69,11 +80,11 @@
         "st"
       ],
       "choices": [],
-      "default": "0.",
-      "description": "<dd><p>Specify the timestamp (in seconds) of the frame to start to apply the fade\neffect. If both start_frame and start_time are specified, the fade will start at\nwhichever comes last.  Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "Number of seconds of the beginning of the effect. (default 0)",
       "name": "start_time",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -81,11 +92,11 @@
         "d"
       ],
       "choices": [],
-      "default": "0.",
-      "description": "<dd><p>The number of seconds for which the fade effect has to last. At the end of the\nfade-in effect the output video will have the same intensity as the input video,\nat the end of the fade-out transition the output video will be filled with the\nselected <samp>color</samp>.\nIf both duration and nb_frames are specified, duration is used. Default is 0\n(nb_frames is used by default).\n</p>\n</dd>",
+      "default": "0",
+      "description": "Duration of the effect in seconds. (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -94,10 +105,10 @@
       ],
       "choices": [],
       "default": "black",
-      "description": "<dd><p>Specify the color of the fade. Default is \"black\".\n</p></dd>",
+      "description": "set color (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [],
@@ -112,7 +123,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#fade"

@@ -1,0 +1,192 @@
+{
+  "description": "2D Video Oscilloscope.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "oscilloscope",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set scope x position (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "x",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set scope y position (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "y",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "choices": [],
+      "default": "0.8",
+      "description": "set scope size (from 0 to 1) (default 0.8)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "s",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "t"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set scope tilt (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "t",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "o"
+      ],
+      "choices": [],
+      "default": "0.8",
+      "description": "set trace opacity (from 0 to 1) (default 0.8)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "o",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tx"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set trace x position (from 0 to 1) (default 0.5)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "tx",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "ty"
+      ],
+      "choices": [],
+      "default": "0.9",
+      "description": "set trace y position (from 0 to 1) (default 0.9)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "ty",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "tw"
+      ],
+      "choices": [],
+      "default": "0.8",
+      "description": "set trace width (from 0.1 to 1) (default 0.8)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0.1",
+      "name": "tw",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "th"
+      ],
+      "choices": [],
+      "default": "0.3",
+      "description": "set trace height (from 0.1 to 1) (default 0.3)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0.1",
+      "name": "th",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "c"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set components to trace (from 0 to 15) (default 7)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "c",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "g"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "draw trace grid (default true)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "g",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "st"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "draw statistics (default true)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "st",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "sc"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "draw scope (default true)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "sc",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

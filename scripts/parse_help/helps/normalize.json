@@ -1,0 +1,88 @@
+{
+  "description": "Normalize RGB video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "normalize",
+  "options": [
+    {
+      "alias": [
+        "blackpt"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "output color to which darkest input color is mapped (default \"black\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "blackpt",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "whitept"
+      ],
+      "choices": [],
+      "default": "\"white\"",
+      "description": "output color to which brightest input color is mapped (default \"white\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "whitept",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "smoothing"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)",
+      "flags": "..FV.......",
+      "max": "2.68435e+08",
+      "min": "0",
+      "name": "smoothing",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "independence"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "proportion of independent to linked channel normalization (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "independence",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "strength"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "strength of filter, from no effect to full normalization (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "strength",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

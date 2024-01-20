@@ -1,0 +1,249 @@
+{
+  "description": "EBU R128 scanner.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "ebur128",
+  "options": [
+    {
+      "alias": [
+        "video"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set video output (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "video",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "choices": [],
+      "default": "\"640x480\"",
+      "description": "set video size (default \"640x480\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "meter"
+      ],
+      "choices": [],
+      "default": "9",
+      "description": "set scale meter (+9 to +18) (from 9 to 18) (default 9)",
+      "flags": "..FV.......",
+      "max": "18",
+      "min": "9",
+      "name": "meter",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "framelog"
+      ],
+      "choices": [
+        {
+          "flags": "..FVA......",
+          "help": "logging disabled",
+          "name": "quiet",
+          "value": "-8"
+        },
+        {
+          "flags": "..FVA......",
+          "help": "information logging level",
+          "name": "info",
+          "value": "32"
+        },
+        {
+          "flags": "..FVA......",
+          "help": "verbose logging level",
+          "name": "verbose",
+          "value": "40"
+        }
+      ],
+      "default": "-1",
+      "description": "force frame logging level (from INT_MIN to INT_MAX) (default -1)",
+      "flags": "..FVA......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "framelog",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "metadata"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "inject metadata in the filtergraph (default false)",
+      "flags": "..FVA......",
+      "max": null,
+      "min": null,
+      "name": "metadata",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "peak"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "disable any peak mode",
+          "name": "none",
+          "value": "none"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "enable peak-sample mode",
+          "name": "sample",
+          "value": "sample"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "enable true-peak mode",
+          "name": "true",
+          "value": "true"
+        }
+      ],
+      "default": "0",
+      "description": "set peak mode (default 0)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "peak",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "dualmono"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "treat mono input files as dual-mono (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "dualmono",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "panlaw"
+      ],
+      "choices": [],
+      "default": "-3.0103",
+      "description": "set a specific pan law for dual-mono files (from -10 to 0) (default -3.0103)",
+      "flags": "..F.A......",
+      "max": "0",
+      "min": "-10",
+      "name": "panlaw",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "target"
+      ],
+      "choices": [],
+      "default": "-23",
+      "description": "set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)",
+      "flags": "..FV.......",
+      "max": "0",
+      "min": "-23",
+      "name": "target",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gauge"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "display momentary value",
+          "name": "momentary",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "display momentary value",
+          "name": "m",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "display short-term value",
+          "name": "shortterm",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "display short-term value",
+          "name": "s",
+          "value": "1"
+        }
+      ],
+      "default": "momentary",
+      "description": "set gauge display type (from 0 to 1) (default momentary)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "gauge",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "display absolute values (LUFS)",
+          "name": "absolute",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "display absolute values (LUFS)",
+          "name": "LUFS",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "display values relative to target (LU)",
+          "name": "relative",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "display values relative to target (LU)",
+          "name": "LU",
+          "value": "1"
+        }
+      ],
+      "default": "absolute",
+      "description": "sets display method for the stats (from 0 to 1) (default absolute)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "scale",
+      "typing": "int"
+    }
+  ],
+  "output_types": null
+}

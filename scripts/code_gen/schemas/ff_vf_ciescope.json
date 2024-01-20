@@ -1,5 +1,5 @@
 {
-  "description": "### 11.29 ciescope\n\nDisplay CIE color diagram with pixels overlaid onto it.\n\nThe filter accepts the following options:\n\n**system**\n\n    Set color system. \u2018ntsc, 470m\u2019 \u2018ebu, 470bg\u2019 \u2018smpte\u2019 \u2018240m\u2019 \u2018apple\u2019 \u2018widergb\u2019 \u2018cie1931\u2019 \u2018rec709, hdtv\u2019 \u2018uhdtv, rec2020\u2019 \u2018dcip3\u2019 \n\n**cie**\n\n    Set CIE system. \u2018xyy\u2019 \u2018ucs\u2019 \u2018luv\u2019 \n\n**gamuts**\n\n    Set what gamuts to draw. See system option for available values. \n\n**size, s**\n\n    Set ciescope size, by default set to 512. \n\n**intensity, i**\n\n    Set intensity used to map input pixel values to CIE diagram. \n\n**contrast**\n\n    Set contrast used to draw tongue colors that are out of active color system gamut. \n\n**corrgamma**\n\n    Correct gamma displayed on scope, by default enabled. \n\n**showwhite**\n\n    Show white point on CIE diagram, by default disabled. \n\n**gamma**\n\n    Set input gamma. Used only with XYZ input color space. \n\n**fill**\n\n    Fill with CIE colors. By default is enabled. \n\n",
+  "description": "Video CIE scope.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -24,79 +24,79 @@
         {
           "help": "NTSC 1953 Y'I'O' (ITU-R BT.470 System M)",
           "name": "ntsc",
-          "value": "NTSCsystem"
+          "value": "0"
         },
         {
           "help": "NTSC 1953 Y'I'O' (ITU-R BT.470 System M)",
           "name": "470m",
-          "value": "NTSCsystem"
+          "value": "0"
         },
         {
           "help": "EBU Y'U'V' (PAL/SECAM) (ITU-R BT.470 System B, G)",
           "name": "ebu",
-          "value": "EBUsystem"
+          "value": "1"
         },
         {
           "help": "EBU Y'U'V' (PAL/SECAM) (ITU-R BT.470 System B, G)",
           "name": "470bg",
-          "value": "EBUsystem"
+          "value": "1"
         },
         {
           "help": "SMPTE-C RGB",
           "name": "smpte",
-          "value": "SMPTEsystem"
+          "value": "2"
         },
         {
           "help": "SMPTE-240M Y'PbPr",
           "name": "240m",
-          "value": "SMPTE240Msystem"
+          "value": "3"
         },
         {
           "help": "Apple RGB",
           "name": "apple",
-          "value": "APPLEsystem"
+          "value": "4"
         },
         {
           "help": "Adobe Wide Gamut RGB",
           "name": "widergb",
-          "value": "wRGBsystem"
+          "value": "5"
         },
         {
           "help": "CIE 1931 RGB",
           "name": "cie1931",
-          "value": "CIE1931system"
+          "value": "6"
         },
         {
           "help": "ITU.BT-709 Y'CbCr",
           "name": "hdtv",
-          "value": "Rec709system"
+          "value": "7"
         },
         {
           "help": "ITU.BT-709 Y'CbCr",
           "name": "rec709",
-          "value": "Rec709system"
+          "value": "7"
         },
         {
           "help": "ITU-R.BT-2020",
           "name": "uhdtv",
-          "value": "Rec2020system"
+          "value": "8"
         },
         {
           "help": "ITU-R.BT-2020",
           "name": "rec2020",
-          "value": "Rec2020system"
+          "value": "8"
         },
         {
           "help": "DCI-P3",
           "name": "dcip3",
-          "value": "DCIP3"
+          "value": "9"
         }
       ],
-      "default": "Rec709system",
-      "description": "<dd><p>Set color system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>ntsc, 470m</samp>\u2019</dt>\n<dt>\u2018<samp>ebu, 470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte</samp>\u2019</dt>\n<dt>\u2018<samp>240m</samp>\u2019</dt>\n<dt>\u2018<samp>apple</samp>\u2019</dt>\n<dt>\u2018<samp>widergb</samp>\u2019</dt>\n<dt>\u2018<samp>cie1931</samp>\u2019</dt>\n<dt>\u2018<samp>rec709, hdtv</samp>\u2019</dt>\n<dt>\u2018<samp>uhdtv, rec2020</samp>\u2019</dt>\n<dt>\u2018<samp>dcip3</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "hdtv",
+      "description": "set color system (from 0 to 9) (default hdtv)",
       "name": "system",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -106,24 +106,24 @@
         {
           "help": "CIE 1931 xyY",
           "name": "xyy",
-          "value": "XYY"
+          "value": "0"
         },
         {
           "help": "CIE 1960 UCS",
           "name": "ucs",
-          "value": "UCS"
+          "value": "1"
         },
         {
           "help": "CIE 1976 Luv",
           "name": "luv",
-          "value": "LUV"
+          "value": "2"
         }
       ],
-      "default": "XYY",
-      "description": "<dd><p>Set CIE system.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>xyy</samp>\u2019</dt>\n<dt>\u2018<samp>ucs</samp>\u2019</dt>\n<dt>\u2018<samp>luv</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "xyy",
+      "description": "set cie system (from 0 to 2) (default xyy)",
       "name": "cie",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -131,81 +131,81 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ntsc",
-          "value": "1<<NTSCsystem"
+          "value": "ntsc"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "470m",
-          "value": "1<<NTSCsystem"
+          "value": "470m"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ebu",
-          "value": "1<<EBUsystem"
+          "value": "ebu"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "470bg",
-          "value": "1<<EBUsystem"
+          "value": "470bg"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte",
-          "value": "1<<SMPTEsystem"
+          "value": "smpte"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "240m",
-          "value": "1<<SMPTE240Msystem"
+          "value": "240m"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "apple",
-          "value": "1<<APPLEsystem"
+          "value": "apple"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "widergb",
-          "value": "1<<wRGBsystem"
+          "value": "widergb"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "cie1931",
-          "value": "1<<CIE1931system"
+          "value": "cie1931"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "hdtv",
-          "value": "1<<Rec709system"
+          "value": "hdtv"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "rec709",
-          "value": "1<<Rec709system"
+          "value": "rec709"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "uhdtv",
-          "value": "1<<Rec2020system"
+          "value": "uhdtv"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "rec2020",
-          "value": "1<<Rec2020system"
+          "value": "rec2020"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "dcip3",
-          "value": "1<<DCIP3"
+          "value": "dcip3"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set what gamuts to draw.\n</p>\n<p>See <code>system</code> option for available values.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set what gamuts to draw (default 0)",
       "name": "gamuts",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -213,11 +213,11 @@
         "s"
       ],
       "choices": [],
-      "default": 512,
-      "description": "<dd><p>Set ciescope size, by default set to 512.\n</p>\n</dd>",
+      "default": "512",
+      "description": "set ciescope size (from 256 to 8192) (default 512)",
       "name": "size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -225,72 +225,72 @@
         "i"
       ],
       "choices": [],
-      "default": 0.001,
-      "description": "<dd><p>Set intensity used to map input pixel values to CIE diagram.\n</p>\n</dd>",
+      "default": "0.001",
+      "description": "set ciescope intensity (from 0 to 1) (default 0.001)",
       "name": "intensity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "contrast"
       ],
       "choices": [],
-      "default": 0.75,
-      "description": "<dd><p>Set contrast used to draw tongue colors that are out of active color system gamut.\n</p>\n</dd>",
+      "default": "0.75",
+      "description": "(from 0 to 1) (default 0.75)",
       "name": "contrast",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "corrgamma"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Correct gamma displayed on scope, by default enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "(default true)",
       "name": "corrgamma",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "showwhite"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Show white point on CIE diagram, by default disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "(default false)",
       "name": "showwhite",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "gamma"
       ],
       "choices": [],
-      "default": 2.6,
-      "description": "<dd><p>Set input gamma. Used only with XYZ input color space.\n</p>\n</dd>",
+      "default": "2.6",
+      "description": "(from 0.1 to 6) (default 2.6)",
       "name": "gamma",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "fill"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Fill with CIE colors. By default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "fill with CIE colors (default true)",
       "name": "fill",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#ciescope"

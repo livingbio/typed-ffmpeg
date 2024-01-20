@@ -1,0 +1,62 @@
+{
+  "description": "Limit pixels components to the specified range.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "limiter",
+  "options": [
+    {
+      "alias": [
+        "min"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set min value (from 0 to 65535) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "min",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "max"
+      ],
+      "choices": [],
+      "default": "65535",
+      "description": "set max value (from 0 to 65535) (default 65535)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "max",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

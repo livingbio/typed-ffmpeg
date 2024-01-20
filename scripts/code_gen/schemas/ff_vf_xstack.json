@@ -1,10 +1,10 @@
 {
-  "description": "### 11.290 xstack\n\nStack video inputs into custom layout.\n\nAll streams must be of same pixel format.\n\nThe filter accepts the following options:\n\n**inputs**\n\n    Set number of input streams. Default is 2. \n\n**layout**\n\n    Specify layout of inputs. This option requires the desired layout configuration to be explicitly set by the user. This sets position of each video input in output. Each input is separated by \u2019|\u2019. The first number represents the column, and the second number represents the row. Numbers start at 0 and are separated by \u2019_\u2019. Optionally one can use wX and hX, where X is video input from which to take width or height. Multiple values can be used when separated by \u2019+\u2019. In such case values are summed together. Note that if inputs are of different sizes gaps may appear, as not all of the output video frame will be filled. Similarly, videos can overlap each other if their position doesn\u2019t leave enough space for the full frame of adjoining videos. For 2 inputs, a default layout of 0_0|w0_0 (equivalent to grid=2x1) is set. In all other cases, a layout or a grid must be set by the user. Either grid or layout can be specified at a time. Specifying both will result in an error. \n\n**grid**\n\n    Specify a fixed size grid of inputs. This option is used to create a fixed size grid of the input streams. Set the grid size in the form COLUMNSxROWS. There must be ROWS * COLUMNS input streams and they will be arranged as a grid with ROWS rows and COLUMNS columns. When using this option, each input stream within a row must have the same height and all the rows must have the same width. If grid is set, then inputs option is ignored and is implicitly set to ROWS * COLUMNS. For 2 inputs, a default grid of 2x1 (equivalent to layout=0_0|w0_0) is set. In all other cases, a layout or a grid must be set by the user. Either grid or layout can be specified at a time. Specifying both will result in an error. \n\n**shortest**\n\n    If set to 1, force the output to terminate when the shortest input terminates. Default value is 0. \n\n**fill**\n\n    If set to valid color, all unused pixels will be filled with that color. By default fill is set to none, so it is disabled. \n\n",
+  "description": "Stack video inputs into custom layout.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_vf_xstack",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -16,44 +16,44 @@
         "inputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set number of input streams. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set number of inputs (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "layout"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify layout of inputs.\nThis option requires the desired layout configuration to be explicitly set by the user.\nThis sets position of each video input in output. Each input\nis separated by \u2019|\u2019.\nThe first number represents the column, and the second number represents the row.\nNumbers start at 0 and are separated by \u2019_\u2019. Optionally one can use wX and hX,\nwhere X is video input from which to take width or height.\nMultiple values can be used when separated by \u2019+\u2019. In such\ncase values are summed together.\n</p>\n<p>Note that if inputs are of different sizes gaps may appear, as not all of\nthe output video frame will be filled. Similarly, videos can overlap each\nother if their position doesn\u2019t leave enough space for the full frame of\nadjoining videos.\n</p>\n<p>For 2 inputs, a default layout of <code>0_0|w0_0</code> (equivalent to\n<code>grid=2x1</code>) is set. In all other cases, a layout or a grid must be set by\nthe user. Either <code>grid</code> or <code>layout</code> can be specified at a time.\nSpecifying both will result in an error.\n</p>\n</dd>",
+      "default": null,
+      "description": "set custom layout",
       "name": "layout",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "grid"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify a fixed size grid of inputs.\nThis option is used to create a fixed size grid of the input streams. Set the\ngrid size in the form <code>COLUMNSxROWS</code>. There must be <code>ROWS * COLUMNS</code>\ninput streams and they will be arranged as a grid with <code>ROWS</code> rows and\n<code>COLUMNS</code> columns. When using this option, each input stream within a row\nmust have the same height and all the rows must have the same width.\n</p>\n<p>If <code>grid</code> is set, then <code>inputs</code> option is ignored and is implicitly\nset to <code>ROWS * COLUMNS</code>.\n</p>\n<p>For 2 inputs, a default grid of <code>2x1</code> (equivalent to\n<code>layout=0_0|w0_0</code>) is set. In all other cases, a layout or a grid must be\nset by the user. Either <code>grid</code> or <code>layout</code> can be specified at a time.\nSpecifying both will result in an error.\n</p>\n</dd>",
+      "default": null,
+      "description": "set fixed size grid layout",
       "name": "grid",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "shortest"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -61,16 +61,16 @@
       ],
       "choices": [],
       "default": "none",
-      "description": "<dd><p>If set to valid color, all unused pixels will be filled with that color.\nBy default fill is set to none, so it is disabled.\n</p></dd>",
+      "description": "set the color for unused pixels (default \"none\")",
       "name": "fill",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#xstack"

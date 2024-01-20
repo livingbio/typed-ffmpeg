@@ -1,0 +1,189 @@
+{
+  "description": "Manipulate audio frame side data.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "asidedata",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "select frame",
+          "name": "select",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "delete side data",
+          "name": "delete",
+          "value": "1"
+        }
+      ],
+      "default": "select",
+      "description": "set a mode of operation (from 0 to 1) (default select)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "PANSCAN",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "A53_CC",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "STEREO3D",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "MATRIXENCODING",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "DOWNMIX_INFO",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "REPLAYGAIN",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "DISPLAYMATRIX",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "AFD",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "MOTION_VECTORS",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "SKIP_SAMPLES",
+          "value": "9"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "AUDIO_SERVICE_TYPE",
+          "value": "10"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "MASTERING_DISPLAY_METADATA",
+          "value": "11"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "GOP_TIMECODE",
+          "value": "12"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "SPHERICAL",
+          "value": "13"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "CONTENT_LIGHT_LEVEL",
+          "value": "14"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "ICC_PROFILE",
+          "value": "15"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "S12M_TIMECOD",
+          "value": "16"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "DYNAMIC_HDR_PLUS",
+          "value": "17"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "REGIONS_OF_INTEREST",
+          "value": "18"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "DETECTION_BOUNDING_BOXES",
+          "value": "22"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "SEI_UNREGISTERED",
+          "value": "20"
+        }
+      ],
+      "default": "-1",
+      "description": "set side data type (from -1 to INT_MAX) (default -1)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "type",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

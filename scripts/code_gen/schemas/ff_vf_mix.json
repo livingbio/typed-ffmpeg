@@ -1,10 +1,10 @@
 {
-  "description": "### 11.167 mix\n\nMix several video input streams into one video stream.\n\nA description of the accepted options follows.\n\n**inputs**\n\n    The number of inputs. If unspecified, it defaults to 2. \n\n**weights**\n\n    Specify weight of each input video stream as sequence. Each weight is separated by space. If number of weights is smaller than number of frames last specified weight will be used for all remaining unset weights. \n\n**scale**\n\n    Specify scale, if it is set it will be multiplied with sum of each weight multiplied with pixel values to give final destination pixel value. By default scale is auto scaled to sum of weights. \n\n**planes**\n\n    Set which planes to filter. Default is all. Allowed range is from 0 to 15. \n\n**duration**\n\n    Specify how end of stream is determined. \u2018longest\u2019 The duration of the longest input. (default) \u2018shortest\u2019 The duration of the shortest input. \u2018first\u2019 The duration of the first input. \n\n",
+  "description": "Mix video inputs.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_vf_mix",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -16,11 +16,11 @@
         "inputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>The number of inputs. If unspecified, it defaults to 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set number of inputs (from 2 to 32767) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -28,32 +28,32 @@
       ],
       "choices": [],
       "default": "1 1",
-      "description": "<dd><p>Specify weight of each input video stream as sequence.\nEach weight is separated by space. If number of weights\nis smaller than number of <var>frames</var> last specified\nweight will be used for all remaining unset weights.\n</p>\n</dd>",
+      "description": "set weight for each input (default \"1 1\")",
       "name": "weights",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "scale"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Specify scale, if it is set it will be multiplied with sum\nof each weight multiplied with pixel values to give final destination\npixel value. By default <var>scale</var> is auto scaled to sum of weights.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set scale (from 0 to 32767) (default 0)",
       "name": "scale",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p>\n</dd>",
+      "default": "F",
+      "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -63,24 +63,24 @@
         {
           "help": "Duration of longest input",
           "name": "longest",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "Duration of shortest input",
           "name": "shortest",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "Duration of first input",
           "name": "first",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Specify how end of stream is determined.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>longest</samp>\u2019</dt>\n<dd><p>The duration of the longest input. (default)\n</p>\n</dd>\n<dt>\u2018<samp>shortest</samp>\u2019</dt>\n<dd><p>The duration of the shortest input.\n</p>\n</dd>\n<dt>\u2018<samp>first</samp>\u2019</dt>\n<dd><p>The duration of the first input.\n</p></dd>\n</dl>\n</dd>",
+      "default": "longest",
+      "description": "how to determine end of stream (from 0 to 2) (default longest)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -95,7 +95,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#mix"

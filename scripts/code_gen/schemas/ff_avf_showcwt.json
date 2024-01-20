@@ -1,5 +1,5 @@
 {
-  "description": "### 18.23 showcwt\n\nConvert input audio to video output representing frequency spectrum using\nContinuous Wavelet Transform and Morlet wavelet.\n\nThe filter accepts the following options:\n\n**size, s**\n\n    Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is 640x512. \n\n**rate, r**\n\n    Set the output frame rate. Default value is 25. \n\n**scale**\n\n    Set the frequency scale used. Allowed values are: linear log bark mel erbs sqrt cbrt qdrt fm Default value is linear. \n\n**iscale**\n\n    Set the intensity scale used. Allowed values are: linear log sqrt cbrt qdrt Default value is log. \n\n**min**\n\n    Set the minimum frequency that will be used in output. Default is 20 Hz. \n\n**max**\n\n    Set the maximum frequency that will be used in output. Default is 20000 Hz. The real frequency upper limit depends on input audio\u2019s sample rate and such will be enforced on this value when it is set to value greater than Nyquist frequency. \n\n**imin**\n\n    Set the minimum intensity that will be used in output. \n\n**imax**\n\n    Set the maximum intensity that will be used in output. \n\n**logb**\n\n    Set the logarithmic basis for brightness strength when mapping calculated magnitude values to pixel values. Allowed range is from 0 to 1. Default value is 0.0001. \n\n**deviation**\n\n    Set the frequency deviation. Lower values than 1 are more frequency oriented, while higher values than 1 are more time oriented. Allowed range is from 0 to 10. Default value is 1. \n\n**pps**\n\n    Set the number of pixel output per each second in one row. Allowed range is from 1 to 1024. Default value is 64. \n\n**mode**\n\n    Set the output visual mode. Allowed values are: magnitude Show magnitude. phase Show only phase. magphase Show combination of magnitude and phase. Magnitude is mapped to brightness and phase to color. channel Show unique color per channel magnitude. stereo Show unique color per stereo difference. Default value is magnitude. \n\n**slide**\n\n    Set the output slide method. Allowed values are: replace scroll frame \n\n**direction**\n\n    Set the direction method for output slide method. Allowed values are: lr Direction from left to right. rl Direction from right to left. ud Direction from up to down. du Direction from down to up. \n\n**bar**\n\n    Set the ratio of bargraph display to display size. Default is 0. \n\n**rotation**\n\n    Set color rotation, must be in [-1.0, 1.0] range. Default value is 0. \n\n",
+  "description": "Convert input audio to a CWT (Continuous Wavelet Transform) spectrum video output.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -23,10 +23,10 @@
       ],
       "choices": [],
       "default": "640x512",
-      "description": "<dd><p>Specify the video size for the output. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>640x512</code>.\n</p>\n</dd>",
+      "description": "set video size (default \"640x512\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -35,10 +35,10 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n</dd>",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -48,168 +48,89 @@
         {
           "help": "linear",
           "name": "linear",
-          "value": "FSCALE_LINEAR"
+          "value": "0"
         },
         {
           "help": "logarithmic",
-          "name": "log",
-          "value": "FSCALE_LOG"
+          "name": "log2",
+          "value": "1"
         },
         {
           "help": "bark",
           "name": "bark",
-          "value": "FSCALE_BARK"
+          "value": "2"
         },
         {
           "help": "mel",
           "name": "mel",
-          "value": "FSCALE_MEL"
+          "value": "3"
         },
         {
           "help": "erbs",
           "name": "erbs",
-          "value": "FSCALE_ERBS"
-        },
-        {
-          "help": "sqrt",
-          "name": "sqrt",
-          "value": "FSCALE_SQRT"
-        },
-        {
-          "help": "cbrt",
-          "name": "cbrt",
-          "value": "FSCALE_CBRT"
-        },
-        {
-          "help": "qdrt",
-          "name": "qdrt",
-          "value": "FSCALE_QDRT"
-        },
-        {
-          "help": "fm",
-          "name": "fm",
-          "value": "FSCALE_FM"
+          "value": "4"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the frequency scale used. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>linear</samp></dt>\n<dt><samp>log</samp></dt>\n<dt><samp>bark</samp></dt>\n<dt><samp>mel</samp></dt>\n<dt><samp>erbs</samp></dt>\n<dt><samp>sqrt</samp></dt>\n<dt><samp>cbrt</samp></dt>\n<dt><samp>qdrt</samp></dt>\n<dt><samp>fm</samp></dt>\n</dl>\n<p>Default value is <code>linear</code>.\n</p>\n</dd>",
+      "default": "linear",
+      "description": "set frequency scale (from 0 to 4) (default linear)",
       "name": "scale",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "iscale"
-      ],
-      "choices": [
-        {
-          "help": "linear",
-          "name": "linear",
-          "value": "ISCALE_LINEAR"
-        },
-        {
-          "help": "logarithmic",
-          "name": "log",
-          "value": "ISCALE_LOG"
-        },
-        {
-          "help": "sqrt",
-          "name": "sqrt",
-          "value": "ISCALE_SQRT"
-        },
-        {
-          "help": "cbrt",
-          "name": "cbrt",
-          "value": "ISCALE_CBRT"
-        },
-        {
-          "help": "qdrt",
-          "name": "qdrt",
-          "value": "ISCALE_QDRT"
-        }
-      ],
-      "default": 0,
-      "description": "<dd><p>Set the intensity scale used. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>linear</samp></dt>\n<dt><samp>log</samp></dt>\n<dt><samp>sqrt</samp></dt>\n<dt><samp>cbrt</samp></dt>\n<dt><samp>qdrt</samp></dt>\n</dl>\n<p>Default value is <code>log</code>.\n</p>\n</dd>",
-      "name": "iscale",
-      "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "min"
       ],
       "choices": [],
-      "default": 20.0,
-      "description": "<dd><p>Set the minimum frequency that will be used in output.\nDefault is <code>20</code> Hz.\n</p>\n</dd>",
+      "default": "20",
+      "description": "set minimum frequency (from 1 to 2000) (default 20)",
       "name": "min",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "max"
       ],
       "choices": [],
-      "default": 20000.0,
-      "description": "<dd><p>Set the maximum frequency that will be used in output.\nDefault is <code>20000</code> Hz. The real frequency upper limit\ndepends on input audio\u2019s sample rate and such will be enforced\non this value when it is set to value greater than Nyquist frequency.\n</p>\n</dd>",
+      "default": "20000",
+      "description": "set maximum frequency (from 0 to 192000) (default 20000)",
       "name": "max",
       "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "imin"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the minimum intensity that will be used in output.\n</p>\n</dd>",
-      "name": "imin",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "imax"
-      ],
-      "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the maximum intensity that will be used in output.\n</p>\n</dd>",
-      "name": "imax",
-      "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "logb"
       ],
       "choices": [],
-      "default": 0.0001,
-      "description": "<dd><p>Set the logarithmic basis for brightness strength when\nmapping calculated magnitude values to pixel values.\nAllowed range is from <code>0</code> to <code>1</code>.\nDefault value is <code>0.0001</code>.\n</p>\n</dd>",
+      "default": "0.0001",
+      "description": "set logarithmic basis (from 0 to 1) (default 0.0001)",
       "name": "logb",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "deviation"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the frequency deviation.\nLower values than <code>1</code> are more frequency oriented,\nwhile higher values than <code>1</code> are more time oriented.\nAllowed range is from <code>0</code> to <code>10</code>.\nDefault value is <code>1</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set frequency deviation (from 0 to 10) (default 1)",
       "name": "deviation",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "pps"
       ],
       "choices": [],
-      "default": 64,
-      "description": "<dd><p>Set the number of pixel output per each second in one row.\nAllowed range is from <code>1</code> to <code>1024</code>.\nDefault value is <code>64</code>.\n</p>\n</dd>",
+      "default": "64",
+      "description": "set pixels per second (from 1 to 1024) (default 64)",
       "name": "pps",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -219,34 +140,34 @@
         {
           "help": "magnitude",
           "name": "magnitude",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "phase",
           "name": "phase",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "magnitude+phase",
           "name": "magphase",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "color per channel",
           "name": "channel",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "stereo difference",
           "name": "stereo",
-          "value": 4
+          "value": "4"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the output visual mode. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>magnitude</samp></dt>\n<dd><p>Show magnitude.\n</p></dd>\n<dt><samp>phase</samp></dt>\n<dd><p>Show only phase.\n</p></dd>\n<dt><samp>magphase</samp></dt>\n<dd><p>Show combination of magnitude and phase.\nMagnitude is mapped to brightness and phase to color.\n</p></dd>\n<dt><samp>channel</samp></dt>\n<dd><p>Show unique color per channel magnitude.\n</p></dd>\n<dt><samp>stereo</samp></dt>\n<dd><p>Show unique color per stereo difference.\n</p></dd>\n</dl>\n<p>Default value is <code>magnitude</code>.\n</p>\n</dd>",
+      "default": "magnitude",
+      "description": "set output mode (from 0 to 4) (default magnitude)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -256,24 +177,24 @@
         {
           "help": "replace",
           "name": "replace",
-          "value": "SLIDE_REPLACE"
+          "value": "0"
         },
         {
           "help": "scroll",
           "name": "scroll",
-          "value": "SLIDE_SCROLL"
+          "value": "1"
         },
         {
           "help": "frame",
           "name": "frame",
-          "value": "SLIDE_FRAME"
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the output slide method. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>replace</samp></dt>\n<dt><samp>scroll</samp></dt>\n<dt><samp>frame</samp></dt>\n</dl>\n</dd>",
+      "default": "replace",
+      "description": "set slide mode (from 0 to 2) (default replace)",
       "name": "slide",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -283,57 +204,35 @@
         {
           "help": "left to right",
           "name": "lr",
-          "value": "DIRECTION_LR"
+          "value": "0"
         },
         {
           "help": "right to left",
           "name": "rl",
-          "value": "DIRECTION_RL"
+          "value": "1"
         },
         {
           "help": "up to down",
           "name": "ud",
-          "value": "DIRECTION_UD"
+          "value": "2"
         },
         {
           "help": "down to up",
           "name": "du",
-          "value": "DIRECTION_DU"
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the direction method for output slide method. Allowed values are:\n</p>\n<dl compact=\"compact\">\n<dt><samp>lr</samp></dt>\n<dd><p>Direction from left to right.\n</p></dd>\n<dt><samp>rl</samp></dt>\n<dd><p>Direction from right to left.\n</p></dd>\n<dt><samp>ud</samp></dt>\n<dd><p>Direction from up to down.\n</p></dd>\n<dt><samp>du</samp></dt>\n<dd><p>Direction from down to up.\n</p></dd>\n</dl>\n</dd>",
+      "default": "lr",
+      "description": "set direction mode (from 0 to 3) (default lr)",
       "name": "direction",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "bar"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the ratio of bargraph display to display size. Default is 0.\n</p>\n</dd>",
-      "name": "bar",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "rotation"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set color rotation, must be in [-1.0, 1.0] range.\nDefault value is <code>0</code>.\n</p></dd>",
-      "name": "rotation",
-      "required": false,
-      "typing": "float"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#showcwt"

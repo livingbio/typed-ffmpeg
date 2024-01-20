@@ -1,0 +1,77 @@
+{
+  "description": "Scroll input video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "scroll",
+  "options": [
+    {
+      "alias": [
+        "horizontal",
+        "h"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the horizontal scrolling speed (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "horizontal",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "vertical",
+        "v"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the vertical scrolling speed (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "vertical",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "hpos"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set initial horizontal position (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "hpos",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "vpos"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set initial vertical position (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "vpos",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.204 readeia608\n\nRead closed captioning (EIA-608) information from the top lines of a video\nframe.\n\nThis filter adds frame metadata for `lavfi.readeia608.X.cc` and\n`lavfi.readeia608.X.line`, where `X` is the number of the identified line with\nEIA-608 data (starting from 0). A description of each metadata value follows:\n\n**lavfi.readeia608.X.cc**\n\n    The two bytes stored as EIA-608 data (printed in hexadecimal). \n\n**lavfi.readeia608.X.line**\n\n    The number of the line on which the EIA-608 data was identified and read. \n\nThis filter accepts the following options:\n\n**scan_min**\n\n    Set the line to start scanning for EIA-608 data. Default is 0. \n\n**scan_max**\n\n    Set the line to end scanning for EIA-608 data. Default is 29. \n\n**spw**\n\n    Set the ratio of width reserved for sync code detection. Default is 0.27. Allowed range is [0.1 - 0.7]. \n\n**chp**\n\n    Enable checking the parity bit. In the event of a parity error, the filter will output 0x00 for that character. Default is false. \n\n**lp**\n\n    Lowpass lines prior to further processing. Default is enabled. \n\n",
+  "description": "Read EIA-608 Closed Caption codes from input video and write them to frame metadata.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,55 +21,55 @@
         "scan_min"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the line to start scanning for EIA-608 data. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set from which line to scan for codes (from 0 to INT_MAX) (default 0)",
       "name": "scan_min",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "scan_max"
       ],
       "choices": [],
-      "default": 29,
-      "description": "<dd><p>Set the line to end scanning for EIA-608 data. Default is <code>29</code>.\n</p>\n</dd>",
+      "default": "29",
+      "description": "set to which line to scan for codes (from 0 to INT_MAX) (default 29)",
       "name": "scan_max",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "spw"
       ],
       "choices": [],
-      "default": 0.27,
-      "description": "<dd><p>Set the ratio of width reserved for sync code detection.\nDefault is <code>0.27</code>. Allowed range is <code>[0.1 - 0.7]</code>.\n</p>\n</dd>",
+      "default": "0.27",
+      "description": "set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)",
       "name": "spw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "chp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable checking the parity bit. In the event of a parity error, the filter will output\n<code>0x00</code> for that character. Default is false.\n</p>\n</dd>",
+      "default": "false",
+      "description": "check and apply parity bit (default false)",
       "name": "chp",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "lp"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Lowpass lines prior to further processing. Default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "lowpass line prior to processing (default true)",
       "name": "lp",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -84,7 +84,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#readeia608"

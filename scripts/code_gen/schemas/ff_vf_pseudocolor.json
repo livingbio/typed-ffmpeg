@@ -1,5 +1,5 @@
 {
-  "description": "### 11.199 pseudocolor\n\nAlter frame colors in video with pseudocolors.\n\nThis filter accepts the following options:\n\n**c0**\n\n    set pixel first component expression \n\n**c1**\n\n    set pixel second component expression \n\n**c2**\n\n    set pixel third component expression \n\n**c3**\n\n    set pixel fourth component expression, corresponds to the alpha component \n\n**index, i**\n\n    set component to use as base for altering colors \n\n**preset, p**\n\n    Pick one of built-in LUTs. By default is set to none. Available LUTs: \u2018magma\u2019 \u2018inferno\u2019 \u2018plasma\u2019 \u2018viridis\u2019 \u2018turbo\u2019 \u2018cividis\u2019 \u2018range1\u2019 \u2018range2\u2019 \u2018shadows\u2019 \u2018highlights\u2019 \u2018solar\u2019 \u2018nominal\u2019 \u2018preferred\u2019 \u2018total\u2019 \u2018spectral\u2019 \u2018cool\u2019 \u2018heat\u2019 \u2018fiery\u2019 \u2018blues\u2019 \u2018green\u2019 \u2018helix\u2019 \n\n**opacity**\n\n    Set opacity of output colors. Allowed range is from 0 to 1. Default value is set to 1. \n\nEach of the expression options specifies the expression to use for computing\nthe lookup table for the corresponding pixel component values.\n\nThe expressions can contain the following constants and functions:\n\n**w**\n\n**h**\n\n    The input width and height. \n\n**val**\n\n    The input value for the pixel component. \n\n**ymin, umin, vmin, amin**\n\n    The minimum allowed component value. \n\n**ymax, umax, vmax, amax**\n\n    The maximum allowed component value. \n\nAll expressions default to \"val\".\n\n",
+  "description": "Make pseudocolored video frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "val",
-      "description": "<dd><p>set pixel first component expression\n</p>\n</dd>",
+      "description": "set component #0 expression (default \"val\")",
       "name": "c0",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "val",
-      "description": "<dd><p>set pixel second component expression\n</p>\n</dd>",
+      "description": "set component #1 expression (default \"val\")",
       "name": "c1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "val",
-      "description": "<dd><p>set pixel third component expression\n</p>\n</dd>",
+      "description": "set component #2 expression (default \"val\")",
       "name": "c2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,10 +55,10 @@
       ],
       "choices": [],
       "default": "val",
-      "description": "<dd><p>set pixel fourth component expression, corresponds to the alpha component\n</p>\n</dd>",
+      "description": "set component #3 expression (default \"val\")",
       "name": "c3",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -66,11 +66,11 @@
         "i"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>set component to use as base for altering colors\n</p>\n</dd>",
+      "default": "0",
+      "description": "set component as base (from 0 to 3) (default 0)",
       "name": "index",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -79,132 +79,102 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "none",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "magma",
-          "value": "PRESET_MAGMA"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "inferno",
-          "value": "PRESET_INFERNO"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "plasma",
-          "value": "PRESET_PLASMA"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "viridis",
-          "value": "PRESET_VIRIDIS"
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "turbo",
-          "value": "PRESET_TURBO"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "cividis",
-          "value": "PRESET_CIVIDIS"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "range1",
-          "value": "PRESET_RANGE1"
+          "value": "6"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "range2",
-          "value": "PRESET_RANGE2"
+          "value": "7"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "shadows",
-          "value": "PRESET_SHADOWS"
+          "value": "8"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "highlights",
-          "value": "PRESET_HIGHLIGHTS"
+          "value": "9"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "solar",
-          "value": "PRESET_SOLAR"
+          "value": "10"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "nominal",
-          "value": "PRESET_NOMINAL"
+          "value": "11"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "preferred",
-          "value": "PRESET_PREFERRED"
+          "value": "12"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "total",
-          "value": "PRESET_TOTAL"
+          "value": "13"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "spectral",
-          "value": "PRESET_SPECTRAL"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "cool",
-          "value": "PRESET_COOL"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "heat",
-          "value": "PRESET_HEAT"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "fiery",
-          "value": "PRESET_FIERY"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "blues",
-          "value": "PRESET_BLUES"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "green",
-          "value": "PRESET_GREEN"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "helix",
-          "value": "PRESET_HELIX"
+          "value": "14"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Pick one of built-in LUTs. By default is set to none.\n</p>\n<p>Available LUTs:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>magma</samp>\u2019</dt>\n<dt>\u2018<samp>inferno</samp>\u2019</dt>\n<dt>\u2018<samp>plasma</samp>\u2019</dt>\n<dt>\u2018<samp>viridis</samp>\u2019</dt>\n<dt>\u2018<samp>turbo</samp>\u2019</dt>\n<dt>\u2018<samp>cividis</samp>\u2019</dt>\n<dt>\u2018<samp>range1</samp>\u2019</dt>\n<dt>\u2018<samp>range2</samp>\u2019</dt>\n<dt>\u2018<samp>shadows</samp>\u2019</dt>\n<dt>\u2018<samp>highlights</samp>\u2019</dt>\n<dt>\u2018<samp>solar</samp>\u2019</dt>\n<dt>\u2018<samp>nominal</samp>\u2019</dt>\n<dt>\u2018<samp>preferred</samp>\u2019</dt>\n<dt>\u2018<samp>total</samp>\u2019</dt>\n<dt>\u2018<samp>spectral</samp>\u2019</dt>\n<dt>\u2018<samp>cool</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>fiery</samp>\u2019</dt>\n<dt>\u2018<samp>blues</samp>\u2019</dt>\n<dt>\u2018<samp>green</samp>\u2019</dt>\n<dt>\u2018<samp>helix</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "none",
+      "description": "set preset (from -1 to 14) (default none)",
       "name": "preset",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set opacity of output colors. Allowed range is from 0 to 1.\nDefault value is set to 1.\n</p></dd>",
+      "default": "1",
+      "description": "set pseudocolor opacity (from 0 to 1) (default 1)",
       "name": "opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -219,7 +189,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#pseudocolor"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.50 crop\n\nCrop the input video to given dimensions.\n\nIt accepts the following parameters:\n\n**w, out_w**\n\n    The width of the output video. It defaults to iw. This expression is evaluated only once during the filter configuration, or when the \u2018w\u2019 or \u2018out_w\u2019 command is sent. \n\n**h, out_h**\n\n    The height of the output video. It defaults to ih. This expression is evaluated only once during the filter configuration, or when the \u2018h\u2019 or \u2018out_h\u2019 command is sent. \n\n**x**\n\n    The horizontal position, in the input video, of the left edge of the output video. It defaults to (in_w-out_w)/2. This expression is evaluated per-frame. \n\n**y**\n\n    The vertical position, in the input video, of the top edge of the output video. It defaults to (in_h-out_h)/2. This expression is evaluated per-frame. \n\n**keep_aspect**\n\n    If set to 1 will force the output display aspect ratio to be the same of the input, by changing the output sample aspect ratio. It defaults to 0. \n\n**exact**\n\n    Enable exact cropping. If enabled, subsampled videos will be cropped at exact width/height/x/y as specified and will not be rounded to nearest smaller value. It defaults to 0. \n\nThe out_w, out_h, x, y parameters are expressions containing the following\nconstants:\n\n**x**\n\n**y**\n\n    The computed values for x and y. They are evaluated for each new frame. \n\n**in_w**\n\n**in_h**\n\n    The input width and height. \n\n**iw**\n\n**ih**\n\n    These are the same as in_w and in_h. \n\n**out_w**\n\n**out_h**\n\n    The output (cropped) width and height. \n\n**ow**\n\n**oh**\n\n    These are the same as out_w and out_h. \n\n**a**\n\n    same as iw / ih \n\n**sar**\n\n    input sample aspect ratio \n\n**dar**\n\n    input display aspect ratio, it is the same as (iw / ih) * sar \n\n**hsub**\n\n**vsub**\n\n    horizontal and vertical chroma subsample values. For example for the pixel format \"yuv422p\" hsub is 2 and vsub is 1. \n\n**n**\n\n    The number of the input frame, starting from 0. \n\n**pos**\n\n    the position in the file of the input frame, NAN if unknown; deprecated, do not use \n\n**t**\n\n    The timestamp expressed in seconds. It\u2019s NAN if the input timestamp is unknown. \n\nThe expression for out_w may depend on the value of out_h, and the expression\nfor out_h may depend on out_w, but they cannot depend on x and y, as x and y\nare evaluated after out_w and out_h.\n\nThe x and y parameters specify the expressions for the position of the top-\nleft corner of the output (non-cropped) area. They are evaluated for each\nframe. If the evaluated value is not valid, it is approximated to the nearest\nvalid value.\n\nThe expression for x may depend on y, and the expression for y may depend on\nx.\n\n",
+  "description": "Crop the input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -23,10 +23,10 @@
       ],
       "choices": [],
       "default": "iw",
-      "description": "<dd><p>The width of the output video. It defaults to <code>iw</code>.\nThis expression is evaluated only once during the filter\nconfiguration, or when the \u2018<samp>w</samp>\u2019 or \u2018<samp>out_w</samp>\u2019 command is sent.\n</p>\n</dd>",
+      "description": "set the width crop area expression (default \"iw\")",
       "name": "out_w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -35,60 +35,60 @@
       ],
       "choices": [],
       "default": "ih",
-      "description": "<dd><p>The height of the output video. It defaults to <code>ih</code>.\nThis expression is evaluated only once during the filter\nconfiguration, or when the \u2018<samp>h</samp>\u2019 or \u2018<samp>out_h</samp>\u2019 command is sent.\n</p>\n</dd>",
+      "description": "set the height crop area expression (default \"ih\")",
       "name": "out_h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "x"
       ],
       "choices": [],
-      "default": "(in_w-out_w)/2",
-      "description": "<dd><p>The horizontal position, in the input video, of the left edge of the output\nvideo. It defaults to <code>(in_w-out_w)/2</code>.\nThis expression is evaluated per-frame.\n</p>\n</dd>",
+      "default": "(in_w-out_w",
+      "description": "set the x crop area expression (default \"(in_w-out_w)/2\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "y"
       ],
       "choices": [],
-      "default": "(in_h-out_h)/2",
-      "description": "<dd><p>The vertical position, in the input video, of the top edge of the output video.\nIt defaults to <code>(in_h-out_h)/2</code>.\nThis expression is evaluated per-frame.\n</p>\n</dd>",
+      "default": "(in_h-out_h",
+      "description": "set the y crop area expression (default \"(in_h-out_h)/2\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "keep_aspect"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If set to 1 will force the output display aspect ratio\nto be the same of the input, by changing the output sample aspect\nratio. It defaults to 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "keep aspect ratio (default false)",
       "name": "keep_aspect",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "exact"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable exact cropping. If enabled, subsampled videos will be cropped at exact\nwidth/height/x/y as specified and will not be rounded to nearest smaller value.\nIt defaults to 0.\n</p></dd>",
+      "default": "false",
+      "description": "do exact cropping (default false)",
       "name": "exact",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#crop"

@@ -1,5 +1,5 @@
 {
-  "description": "### 9.1 abuffer\n\nBuffer audio frames, and make them available to the filter chain.\n\nThis source is mainly intended for a programmatic use, in particular through\nthe interface defined in libavfilter/buffersrc.h.\n\nIt accepts the following parameters:\n\n**time_base**\n\n    The timebase which will be used for timestamps of submitted frames. It must be either a floating-point number or in numerator/denominator form. \n\n**sample_rate**\n\n    The sample rate of the incoming audio buffers. \n\n**sample_fmt**\n\n    The sample format of the incoming audio buffers. Either a sample format name or its corresponding integer representation from the enum AVSampleFormat in libavutil/samplefmt.h \n\n**channel_layout**\n\n    The channel layout of the incoming audio buffers. Either a channel layout name from channel_layout_map in libavutil/channel_layout.c or its corresponding integer representation from the AV_CH_LAYOUT_* macros in libavutil/channel_layout.h \n\n**channels**\n\n    The number of channels of the incoming audio buffers. If both channels and channel_layout are specified, then they must be consistent. \n\n",
+  "description": "Buffer audio frames, and make them accessible to the filterchain.",
   "filter_type": "asrc",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -16,33 +16,33 @@
         "time_base"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>The timebase which will be used for timestamps of submitted frames. It must be\neither a floating-point number or in <var>numerator</var>/<var>denominator</var> form.\n</p>\n</dd>",
+      "default": "0/1",
+      "description": "(from 0 to INT_MAX) (default 0/1)",
       "name": "time_base",
       "required": false,
-      "typing": "float"
+      "typing": "Rational"
     },
     {
       "alias": [
         "sample_rate"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The sample rate of the incoming audio buffers.\n</p>\n</dd>",
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
       "name": "sample_rate",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "sample_fmt"
       ],
       "choices": [],
-      "default": "AV_SAMPLE_FMT_NONE",
-      "description": "<dd><p>The sample format of the incoming audio buffers.\nEither a sample format name or its corresponding integer representation from\nthe enum AVSampleFormat in <samp>libavutil/samplefmt.h</samp>\n</p>\n</dd>",
+      "default": "none",
+      "description": "(default none)",
       "name": "sample_fmt",
       "required": false,
-      "typing": "str"
+      "typing": "Sample_fmt"
     },
     {
       "alias": [
@@ -50,27 +50,27 @@
       ],
       "choices": [],
       "default": null,
-      "description": "<dd><p>The channel layout of the incoming audio buffers.\nEither a channel layout name from channel_layout_map in\n<samp>libavutil/channel_layout.c</samp> or its corresponding integer representation\nfrom the AV_CH_LAYOUT_* macros in <samp>libavutil/channel_layout.h</samp>\n</p>\n</dd>",
+      "description": "",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "channels"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The number of channels of the incoming audio buffers.\nIf both <var>channels</var> and <var>channel_layout</var> are specified, then they\nmust be consistent.\n</p>\n</dd>",
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
       "name": "channels",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#abuffer"

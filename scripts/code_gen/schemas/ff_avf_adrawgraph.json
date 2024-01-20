@@ -1,5 +1,5 @@
 {
-  "description": "### 18.3 adrawgraph\n\nDraw a graph using input audio metadata.\n\nSee drawgraph\n\n",
+  "description": "Draw a graph using input audio metadata.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "set 1st metadata key",
+      "description": "set 1st metadata key (default \"\")",
       "name": "m1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "0xffff0000",
-      "description": "set 1st foreground color expression",
+      "description": "set 1st foreground color expression (default \"0xffff0000\")",
       "name": "fg1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "set 2nd metadata key",
+      "description": "set 2nd metadata key (default \"\")",
       "name": "m2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,10 +55,10 @@
       ],
       "choices": [],
       "default": "0xff00ff00",
-      "description": "set 2nd foreground color expression",
+      "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
       "name": "fg2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -66,10 +66,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "set 3rd metadata key",
+      "description": "set 3rd metadata key (default \"\")",
       "name": "m3",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -77,10 +77,10 @@
       ],
       "choices": [],
       "default": "0xffff00ff",
-      "description": "set 3rd foreground color expression",
+      "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
       "name": "fg3",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -88,10 +88,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "set 4th metadata key",
+      "description": "set 4th metadata key (default \"\")",
       "name": "m4",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -99,10 +99,10 @@
       ],
       "choices": [],
       "default": "0xffffff00",
-      "description": "set 4th foreground color expression",
+      "description": "set 4th foreground color expression (default \"0xffffff00\")",
       "name": "fg4",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -110,32 +110,32 @@
       ],
       "choices": [],
       "default": "white",
-      "description": "set background color",
+      "description": "set background color (default \"white\")",
       "name": "bg",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
         "min"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "set minimal value",
+      "default": "-1",
+      "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
       "name": "min",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "max"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set maximal value",
+      "default": "1",
+      "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
       "name": "max",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -145,24 +145,24 @@
         {
           "help": "draw bars",
           "name": "bar",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "draw dots",
           "name": "dot",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "draw lines",
           "name": "line",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 2,
-      "description": "set graph mode",
+      "default": "line",
+      "description": "set graph mode (from 0 to 2) (default line)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -172,34 +172,34 @@
         {
           "help": "draw new frames",
           "name": "frame",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "replace old columns with new",
           "name": "replace",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "scroll from right to left",
           "name": "scroll",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "scroll from left to right",
           "name": "rscroll",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "display graph in single frame",
           "name": "picture",
-          "value": 4
+          "value": "4"
         }
       ],
-      "default": 0,
-      "description": "set slide mode",
+      "default": "frame",
+      "description": "set slide mode (from 0 to 4) (default frame)",
       "name": "slide",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -208,10 +208,10 @@
       ],
       "choices": [],
       "default": "900x256",
-      "description": "set graph size",
+      "description": "set graph size (default \"900x256\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -220,16 +220,16 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "set video rate",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#adrawgraph"

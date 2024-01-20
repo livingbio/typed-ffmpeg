@@ -1,0 +1,75 @@
+{
+  "description": "Compute and apply a lookup table from two successive frames.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "tlut2",
+  "options": [
+    {
+      "alias": [
+        "c0"
+      ],
+      "choices": [],
+      "default": "\"x\"",
+      "description": "set component #0 expression (default \"x\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c0",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "c1"
+      ],
+      "choices": [],
+      "default": "\"x\"",
+      "description": "set component #1 expression (default \"x\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c1",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "c2"
+      ],
+      "choices": [],
+      "default": "\"x\"",
+      "description": "set component #2 expression (default \"x\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c2",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "c3"
+      ],
+      "choices": [],
+      "default": "\"x\"",
+      "description": "set component #3 expression (default \"x\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c3",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

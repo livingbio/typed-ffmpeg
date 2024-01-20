@@ -1,10 +1,10 @@
 {
-  "description": "### 11.126 hstack\n\nStack input videos horizontally.\n\nAll streams must be of same pixel format and of same height.\n\nNote that this filter is faster than using overlay and pad filter to create\nsame output.\n\nThe filter accepts the following option:\n\n**inputs**\n\n    Set number of input streams. Default is 2. \n\n**shortest**\n\n    If set to 1, force the output to terminate when the shortest input terminates. Default value is 0. \n\n",
+  "description": "Stack video inputs horizontally.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_vf_hstack",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -16,28 +16,28 @@
         "inputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set number of input streams. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set number of inputs (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "shortest"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If set to 1, force the output to terminate when the shortest input\nterminates. Default value is 0.\n</p></dd>",
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hstack"

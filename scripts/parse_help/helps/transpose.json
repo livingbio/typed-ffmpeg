@@ -1,0 +1,93 @@
+{
+  "description": "Transpose input video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "transpose",
+  "options": [
+    {
+      "alias": [
+        "dir"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "rotate counter-clockwise with vertical flip",
+          "name": "cclock_flip",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "rotate clockwise",
+          "name": "clock",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "rotate counter-clockwise",
+          "name": "cclock",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "rotate clockwise with vertical flip",
+          "name": "clock_flip",
+          "value": "3"
+        }
+      ],
+      "default": "cclock_flip",
+      "description": "set transpose direction (from 0 to 7) (default cclock_flip)",
+      "flags": "..FV.......",
+      "max": "7",
+      "min": "0",
+      "name": "dir",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "passthrough"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "always apply transposition",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "preserve portrait geometry",
+          "name": "portrait",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "preserve landscape geometry",
+          "name": "landscape",
+          "value": "1"
+        }
+      ],
+      "default": "none",
+      "description": "do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "passthrough",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "description": "Return random frames.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "random",
+  "options": [
+    {
+      "alias": [
+        "frames"
+      ],
+      "choices": [],
+      "default": "30",
+      "description": "set number of frames in cache (from 2 to 512) (default 30)",
+      "flags": "..FV.......",
+      "max": "512",
+      "min": "2",
+      "name": "frames",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "seed"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "UINT32_MAX",
+      "min": "-1",
+      "name": "seed",
+      "typing": "int64"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

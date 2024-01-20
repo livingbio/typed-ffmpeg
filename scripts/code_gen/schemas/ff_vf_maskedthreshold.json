@@ -1,5 +1,5 @@
 {
-  "description": "### 11.159 maskedthreshold\n\nPick pixels comparing absolute difference of two video streams with fixed\nthreshold.\n\nIf absolute difference between pixel component of first and second video\nstream is equal or lower than user supplied threshold than pixel component\nfrom first video stream is picked, otherwise pixel component from second video\nstream is picked.\n\nThis filter accepts the following options:\n\n**threshold**\n\n    Set threshold used when picking pixels from absolute difference from two input video streams. \n\n**planes**\n\n    Set which planes will be processed as bitmap, unprocessed planes will be copied from second stream. By default value 0xf, all planes will be processed. \n\n**mode**\n\n    Set mode of filter operation. Can be abs or diff. Default is abs. \n\n",
+  "description": "Pick pixels comparing absolute difference of two streams with threshold.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "reference",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,22 +25,22 @@
         "threshold"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set threshold used when picking pixels from absolute difference from two input\nvideo streams.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set threshold (from 0 to 65535) (default 1)",
       "name": "threshold",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from second stream.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -50,19 +50,19 @@
         {
           "help": "",
           "name": "abs",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "",
           "name": "diff",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set mode of filter operation. Can be <code>abs</code> or <code>diff</code>.\nDefault is <code>abs</code>.\n</p></dd>",
+      "default": "abs",
+      "description": "set mode (from 0 to 1) (default abs)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -77,7 +77,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold"

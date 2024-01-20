@@ -1,5 +1,5 @@
 {
-  "description": "### 11.202 qp\n\nChange video quantization parameters (QP).\n\nThe filter accepts the following option:\n\n**qp**\n\n    Set expression for quantization parameter. \n\nThe expression is evaluated through the eval API and can contain, among\nothers, the following constants:\n\n**known**\n\n    1 if index is not 129, 0 otherwise. \n\n**qp**\n\n    Sequential index starting from -129 to 128. \n\n",
+  "description": "Change video quantization parameters.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "qp"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set expression for quantization parameter.\n</p></dd>",
+      "default": null,
+      "description": "set qp expression",
       "name": "qp",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -40,7 +40,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#qp"

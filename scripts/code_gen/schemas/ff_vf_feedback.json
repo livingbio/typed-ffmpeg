@@ -1,5 +1,5 @@
 {
-  "description": "### 11.89 feedback\n\nApply feedback video filter.\n\nThis filter pass cropped input frames to 2nd output. From there it can be\nfiltered with other video filters. After filter receives frame from 2nd input,\nthat frame is combined on top of original frame from 1st input and passed to\n1st output.\n\nThe typical usage is filter only part of frame.\n\nThe filter accepts the following options:\n\n**x**\n\n**y**\n\n    Set the top left crop position. \n\n**w**\n\n**h**\n\n    Set the crop size. \n\n",
+  "description": "Apply feedback video filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,81 +7,52 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "feedin",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
   "is_support_framesync": false,
-  "is_support_timeline": true,
+  "is_support_timeline": false,
   "name": "feedback",
   "options": [
     {
       "alias": [
-        "x"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
-      "name": "x",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
+        "x",
         "y"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the top left crop position.\n</p>\n</dd>",
-      "name": "y",
+      "default": "0",
+      "description": "set top left crop position (from 0 to INT_MAX) (default 0)",
+      "name": "x",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
-        "w"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the crop size.\n</p></dd>",
-      "name": "w",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
+        "w",
         "h"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the crop size.\n</p></dd>",
-      "name": "h",
+      "default": "0",
+      "description": "set crop size (from 0 to INT_MAX) (default 0)",
+      "name": "w",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "feedout",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#feedback"

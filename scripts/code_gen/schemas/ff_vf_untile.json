@@ -1,5 +1,5 @@
 {
-  "description": "### 11.268 untile\n\nDecompose a video made of tiled images into the individual images.\n\nThe frame rate of the output video is the frame rate of the input video\nmultiplied by the number of tiles.\n\nThis filter does the reverse of tile.\n\nThe filter accepts the following options:\n\n**layout**\n\n    Set the grid size (i.e. the number of lines and columns). For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. \n\n",
+  "description": "Untile a frame into a sequence of frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,16 +22,16 @@
       ],
       "choices": [],
       "default": "6x5",
-      "description": "<dd><p>Set the grid size (i.e. the number of lines and columns). For the syntax of\nthis option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\n</p></dd>",
+      "description": "set grid size (default \"6x5\")",
       "name": "layout",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#untile"

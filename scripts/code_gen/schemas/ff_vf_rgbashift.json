@@ -1,5 +1,5 @@
 {
-  "description": "### 11.211 rgbashift\n\nShift R/G/B/A pixels horizontally and/or vertically.\n\nThe filter accepts the following options:\n\n**rh**\n\n    Set amount to shift red horizontally. \n\n**rv**\n\n    Set amount to shift red vertically. \n\n**gh**\n\n    Set amount to shift green horizontally. \n\n**gv**\n\n    Set amount to shift green vertically. \n\n**bh**\n\n    Set amount to shift blue horizontally. \n\n**bv**\n\n    Set amount to shift blue vertically. \n\n**ah**\n\n    Set amount to shift alpha horizontally. \n\n**av**\n\n    Set amount to shift alpha vertically. \n\n**edge**\n\n    Set edge mode, can be smear, default, or warp. \n\n",
+  "description": "Shift RGBA.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,88 +21,88 @@
         "rh"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift red horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift red horizontally (from -255 to 255) (default 0)",
       "name": "rh",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "rv"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift red vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift red vertically (from -255 to 255) (default 0)",
       "name": "rv",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "gh"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift green horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift green horizontally (from -255 to 255) (default 0)",
       "name": "gh",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "gv"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift green vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift green vertically (from -255 to 255) (default 0)",
       "name": "gv",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "bh"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift blue horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift blue horizontally (from -255 to 255) (default 0)",
       "name": "bh",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "bv"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift blue vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift blue vertically (from -255 to 255) (default 0)",
       "name": "bv",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "ah"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift alpha horizontally.\n</p></dd>",
+      "default": "0",
+      "description": "shift alpha horizontally (from -255 to 255) (default 0)",
       "name": "ah",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "av"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set amount to shift alpha vertically.\n</p></dd>",
+      "default": "0",
+      "description": "shift alpha vertically (from -255 to 255) (default 0)",
       "name": "av",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -110,21 +110,21 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "smear",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "wrap",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set edge mode, can be <var>smear</var>, default, or <var>warp</var>.\n</p></dd>",
+      "default": "smear",
+      "description": "set edge operation (from 0 to 1) (default smear)",
       "name": "edge",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -139,7 +139,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#rgbashift"

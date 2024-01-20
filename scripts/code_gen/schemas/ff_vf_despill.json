@@ -1,5 +1,5 @@
 {
-  "description": "### 11.68 despill\n\nRemove unwanted contamination of foreground colors, caused by reflected color\nof greenscreen or bluescreen.\n\nThis filter accepts the following options:\n\n**type**\n\n    Set what type of despill to use. \n\n**mix**\n\n    Set how spillmap will be generated. \n\n**expand**\n\n    Set how much to get rid of still remaining spill. \n\n**red**\n\n    Controls amount of red in spill area. \n\n**green**\n\n    Controls amount of green in spill area. Should be -1 for greenscreen. \n\n**blue**\n\n    Controls amount of blue in spill area. Should be -1 for bluescreen. \n\n**brightness**\n\n    Controls brightness of spill area, preserving colors. \n\n**alpha**\n\n    Modify alpha from generated spillmap. \n\n",
+  "description": "Despill video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -24,96 +24,96 @@
         {
           "help": "greenscreen",
           "name": "green",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "bluescreen",
           "name": "blue",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set what type of despill to use.\n</p>\n</dd>",
+      "default": "green",
+      "description": "set the screen type (from 0 to 1) (default green)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "mix"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set how spillmap will be generated.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set the spillmap mix (from 0 to 1) (default 0.5)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "expand"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set how much to get rid of still remaining spill.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the spillmap expand (from 0 to 1) (default 0)",
       "name": "expand",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "red"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Controls amount of red in spill area.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set red scale (from -100 to 100) (default 0)",
       "name": "red",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "green"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Controls amount of green in spill area.\nShould be -1 for greenscreen.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set green scale (from -100 to 100) (default -1)",
       "name": "green",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "blue"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Controls amount of blue in spill area.\nShould be -1 for bluescreen.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set blue scale (from -100 to 100) (default 0)",
       "name": "blue",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "brightness"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Controls brightness of spill area, preserving colors.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set brightness (from -10 to 10) (default 0)",
       "name": "brightness",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "alpha"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Modify alpha from generated spillmap.\n</p></dd>",
+      "default": "false",
+      "description": "change alpha component (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -128,7 +128,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#despill"

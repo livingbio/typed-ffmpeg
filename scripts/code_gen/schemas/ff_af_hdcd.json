@@ -1,5 +1,5 @@
 {
-  "description": "### 8.92 hdcd\n\nDecodes High Definition Compatible Digital (HDCD) data. A 16-bit PCM stream\nwith embedded HDCD codes is expanded into a 20-bit PCM stream.\n\nThe filter supports the Peak Extend and Low-level Gain Adjustment features of\nHDCD, and detects the Transient Filter flag.\n\n    \n    \n    ffmpeg -i HDCD16.flac -af hdcd OUT24.flac\n    \n\nWhen using the filter with wav, note the default encoding for wav is 16-bit,\nso the resulting 20-bit stream will be truncated back to 16-bit. Use something\nlike `-acodec pcm_s24le` after the filter to get 24-bit PCM output.\n\n    \n    \n    ffmpeg -i HDCD16.wav -af hdcd OUT16.wav\n    ffmpeg -i HDCD16.wav -af hdcd -c:a pcm_s24le OUT24.wav\n    \n\nThe filter accepts the following options:\n\n**disable_autoconvert**\n\n    Disable any automatic format conversion or resampling in the filter graph. \n\n**process_stereo**\n\n    Process the stereo channels together. If target_gain does not match between channels, consider it invalid and use the last valid target_gain. \n\n**cdt_ms**\n\n    Set the code detect timer period in ms. \n\n**force_pe**\n\n    Always extend peaks above -3dBFS even if PE isn\u2019t signaled. \n\n**analyze_mode**\n\n    Replace audio with a solid tone and adjust the amplitude to signal some specific aspect of the decoding process. The output file can be loaded in an audio editor alongside the original to aid analysis. analyze_mode=pe:force_pe=true can be used to see all samples above the PE level. Modes are: \u20180, off\u2019 Disabled \u20181, lle\u2019 Gain adjustment level at each sample \u20182, pe\u2019 Samples where peak extend occurs \u20183, cdt\u2019 Samples where the code detect timer is active \u20184, tgm\u2019 Samples where the target gain does not match between channels \n\n",
+  "description": "Apply High Definition Compatible Digital (HDCD) decoding.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "disable_autoconvert"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Disable any automatic format conversion or resampling in the filter graph.\n</p>\n</dd>",
+      "default": "true",
+      "description": "Disable any format conversion or resampling in the filter graph. (default true)",
       "name": "disable_autoconvert",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "process_stereo"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Process the stereo channels together. If target_gain does not match between\nchannels, consider it invalid and use the last valid target_gain.\n</p>\n</dd>",
+      "default": "true",
+      "description": "Process stereo channels together. Only apply target_gain when both channels match. (default true)",
       "name": "process_stereo",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "cdt_ms"
       ],
       "choices": [],
-      "default": 2000,
-      "description": "<dd><p>Set the code detect timer period in ms.\n</p>\n</dd>",
+      "default": "2000",
+      "description": "Code detect timer period in ms. (from 100 to 60000) (default 2000)",
       "name": "cdt_ms",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "force_pe"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Always extend peaks above -3dBFS even if PE isn\u2019t signaled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "Always extend peaks above -3dBFS even when PE is not signaled. (default false)",
       "name": "force_pe",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -68,34 +68,34 @@
         {
           "help": "disabled",
           "name": "off",
-          "value": "HDCD_ANA_OFF"
+          "value": "0"
         },
         {
           "help": "gain adjustment level at each sample",
           "name": "lle",
-          "value": "HDCD_ANA_LLE"
+          "value": "1"
         },
         {
           "help": "samples where peak extend occurs",
           "name": "pe",
-          "value": "HDCD_ANA_PE"
+          "value": "2"
         },
         {
           "help": "samples where the code detect timer is active",
           "name": "cdt",
-          "value": "HDCD_ANA_CDT"
+          "value": "3"
         },
         {
           "help": "samples where the target gain does not match between channels",
           "name": "tgm",
-          "value": "HDCD_ANA_TGM"
+          "value": "4"
         }
       ],
-      "default": "HDCD_ANA_OFF",
-      "description": "<dd><p>Replace audio with a solid tone and adjust the amplitude to signal some\nspecific aspect of the decoding process. The output file can be loaded in\nan audio editor alongside the original to aid analysis.\n</p>\n<p><code>analyze_mode=pe:force_pe=true</code> can be used to see all samples above the PE level.\n</p>\n<p>Modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0, off</samp>\u2019</dt>\n<dd><p>Disabled\n</p></dd>\n<dt>\u2018<samp>1, lle</samp>\u2019</dt>\n<dd><p>Gain adjustment level at each sample\n</p></dd>\n<dt>\u2018<samp>2, pe</samp>\u2019</dt>\n<dd><p>Samples where peak extend occurs\n</p></dd>\n<dt>\u2018<samp>3, cdt</samp>\u2019</dt>\n<dd><p>Samples where the code detect timer is active\n</p></dd>\n<dt>\u2018<samp>4, tgm</samp>\u2019</dt>\n<dd><p>Samples where the target gain does not match between channels\n</p></dd>\n</dl>\n</dd>",
+      "default": "off",
+      "description": "Replace audio with solid tone and signal some processing aspect in the amplitude. (from 0 to 4) (default off)",
       "name": "analyze_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -105,30 +105,30 @@
         {
           "help": "16-bit (in s32 or s16)",
           "name": "16",
-          "value": 16
+          "value": "16"
         },
         {
           "help": "20-bit (in s32)",
           "name": "20",
-          "value": 20
+          "value": "20"
         },
         {
           "help": "24-bit (in s32)",
           "name": "24",
-          "value": 24
+          "value": "24"
         }
       ],
-      "default": 16,
-      "description": "Valid bits per sample (location of the true LSB).",
+      "default": "16",
+      "description": "Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)",
       "name": "bits_per_sample",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hdcd"

@@ -1,5 +1,5 @@
 {
-  "description": "### 16.5 gradients\n\nGenerate several gradients.\n\n**size, s**\n\n    Set frame size. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is \"640x480\". \n\n**rate, r**\n\n    Set frame rate, expressed as number of frames per second. Default value is \"25\". \n\n**c0, c1, c2, c3, c4, c5, c6, c7**\n\n    Set 8 colors. Default values for colors is to pick random one. \n\n**x0, y0, y0, y1**\n\n    Set gradient line source and destination points. If negative or out of range, random ones are picked. \n\n**nb_colors, n**\n\n    Set number of colors to use at once. Allowed range is from 2 to 8. Default value is 2. \n\n**seed**\n\n    Set seed for picking gradient line points. \n\n**duration, d**\n\n    Set the duration of the sourced video. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. If not specified, or the expressed duration is negative, the video is supposed to be generated forever. \n\n**speed**\n\n    Set speed of gradients rotation. \n\n**type, t**\n\n    Set type of gradients. Available values are: \u2018linear\u2019 \u2018radial\u2019 \u2018circular\u2019 \u2018spiral\u2019 \u2018square\u2019 Default type is linear. \n\n",
+  "description": "Draw a gradients.",
   "filter_type": "vsrc",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -18,10 +18,10 @@
       ],
       "choices": [],
       "default": "640x480",
-      "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"640x480\".\n</p>\n</dd>",
+      "description": "set frame size (default \"640x480\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -30,10 +30,10 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
+      "description": "set frame rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -41,10 +41,10 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 1st color (default \"random\")",
       "name": "c0",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -52,10 +52,10 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 2nd color (default \"random\")",
       "name": "c1",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -63,10 +63,10 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 3rd color (default \"random\")",
       "name": "c2",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -74,10 +74,10 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 4th color (default \"random\")",
       "name": "c3",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -85,10 +85,10 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 5th color (default \"random\")",
       "name": "c4",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -96,10 +96,10 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 6th color (default \"random\")",
       "name": "c5",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -107,10 +107,10 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 7th color (default \"random\")",
       "name": "c6",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -118,54 +118,54 @@
       ],
       "choices": [],
       "default": "random",
-      "description": "<dd><p>Set 8 colors. Default values for colors is to pick random one.\n</p>\n</dd>",
+      "description": "set 8th color (default \"random\")",
       "name": "c7",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
         "x0"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set gradient line source and destination points. If negative or out of range, random ones\nare picked.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set gradient line source x0 (from -1 to INT_MAX) (default -1)",
       "name": "x0",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "y0"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set gradient line source and destination points. If negative or out of range, random ones\nare picked.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set gradient line source y0 (from -1 to INT_MAX) (default -1)",
       "name": "y0",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "x1"
       ],
       "choices": [],
-      "default": -1,
-      "description": "set gradient line destination x1",
+      "default": "-1",
+      "description": "set gradient line destination x1 (from -1 to INT_MAX) (default -1)",
       "name": "x1",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "y1"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set gradient line source and destination points. If negative or out of range, random ones\nare picked.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set gradient line destination y1 (from -1 to INT_MAX) (default -1)",
       "name": "y1",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -173,22 +173,22 @@
         "n"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set number of colors to use at once. Allowed range is from 2 to 8. Default value is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set the number of colors (from 2 to 8) (default 2)",
       "name": "nb_colors",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "seed"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set seed for picking gradient line points.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -196,22 +196,22 @@
         "d"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set the duration of the sourced video. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the video is\nsupposed to be generated forever.\n</p>\n</dd>",
+      "default": "-0.000001",
+      "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "speed"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Set speed of gradients rotation.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set gradients rotation speed (from 1e-05 to 1) (default 0.01)",
       "name": "speed",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -220,42 +220,37 @@
       ],
       "choices": [
         {
-          "help": "set linear gradient",
+          "help": "set gradient type",
           "name": "linear",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "set radial gradient",
+          "help": "set gradient type",
           "name": "radial",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "set circular gradient",
+          "help": "set gradient type",
           "name": "circular",
-          "value": 2
+          "value": "2"
         },
         {
-          "help": "set spiral gradient",
+          "help": "set gradient type",
           "name": "spiral",
-          "value": 3
-        },
-        {
-          "help": "set square gradient",
-          "name": "square",
-          "value": 4
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set type of gradients.\nAvailable values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dt>\u2018<samp>radial</samp>\u2019</dt>\n<dt>\u2018<samp>circular</samp>\u2019</dt>\n<dt>\u2018<samp>spiral</samp>\u2019</dt>\n<dt>\u2018<samp>square</samp>\u2019</dt>\n</dl>\n<p>Default type is <var>linear</var>.\n</p></dd>",
+      "default": "linear",
+      "description": "set gradient type (from 0 to 3) (default linear)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#gradients"

@@ -50,7 +50,7 @@
         "flags"
       ],
       "choices": [],
-      "default": null,
+      "default": "\"\"",
       "description": "Flags to pass to libswscale (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -125,7 +125,7 @@
           "value": "bt2020"
         }
       ],
-      "default": null,
+      "default": "\"auto\"",
       "description": "set input YCbCr type (default \"auto\")",
       "flags": "..FV.......",
       "max": null,

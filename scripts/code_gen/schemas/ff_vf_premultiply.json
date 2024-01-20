@@ -1,10 +1,10 @@
 {
-  "description": "### 11.197 premultiply\n\nApply alpha premultiply effect to input video stream using first plane of\nsecond stream as alpha.\n\nBoth streams must have same dimensions and same pixel format.\n\nThe filter accepts the following option:\n\n**planes**\n\n    Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed. \n\n**inplace**\n\n    Do not require 2nd input for processing, instead use alpha plane from input stream. \n\n",
+  "description": "PreMultiply first stream with first plane of second stream.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] + [StreamType.video] if inplace else []",
   "formula_output_typings": null,
   "id": "ff_vf_premultiply",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -16,22 +16,22 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "inplace"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Do not require 2nd input for processing, instead use alpha plane from input stream.\n</p></dd>",
+      "default": "false",
+      "description": "enable inplace mode (default false)",
       "name": "inplace",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -46,7 +46,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#premultiply"

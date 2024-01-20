@@ -1,0 +1,144 @@
+{
+  "description": "Fill borders of the input video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "fillborders",
+  "options": [
+    {
+      "alias": [
+        "left"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the left fill border (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "left",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "right"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the right fill border (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "right",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "top"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the top fill border (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "top",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bottom"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the bottom fill border (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "bottom",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "smear",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "mirror",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "fixed",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "wrap",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "fade",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "margins",
+          "value": "6"
+        }
+      ],
+      "default": "smear",
+      "description": "set the fill borders mode (from 0 to 6) (default smear)",
+      "flags": "..FV.....T.",
+      "max": "6",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "color"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set the color for the fixed/fade mode (default \"black\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "color",
+      "typing": "color"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

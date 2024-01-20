@@ -1,5 +1,5 @@
 {
-  "description": "### 11.157 maskedmerge\n\nMerge the first input stream with the second input stream using per pixel\nweights in the third input stream.\n\nA value of 0 in the third stream pixel component means that pixel component\nfrom first stream is returned unchanged, while maximum value (eg. 255 for\n8-bit videos) means that pixel component from second stream is returned\nunchanged. Intermediate values define the amount of merging between both input\nstream\u2019s pixel components.\n\nThis filter accepts the following options:\n\n**planes**\n\n    Set which planes will be processed as bitmap, unprocessed planes will be copied from first stream. By default value 0xf, all planes will be processed. \n\n",
+  "description": "Merge first stream with second stream using third stream as mask.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,15 +7,15 @@
   "input_stream_typings": [
     {
       "name": "base",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "overlay",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "mask",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -29,11 +29,11 @@
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes will be processed as bitmap, unprocessed planes will be\ncopied from first stream.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -48,7 +48,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#maskedmerge"

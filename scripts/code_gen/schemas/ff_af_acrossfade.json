@@ -1,5 +1,5 @@
 {
-  "description": "### 8.5 acrossfade\n\nApply cross fade from one input audio stream to another input audio stream.\nThe cross fade is applied for specified duration near the end of first stream.\n\nThe filter accepts the following options:\n\n**nb_samples, ns**\n\n    Specify the number of samples for which the cross fade effect has to last. At the end of the cross fade effect the first input audio will be completely silent. Default is 44100. \n\n**duration, d**\n\n    Specify the duration of the cross fade effect. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples. \n\n**overlap, o**\n\n    Should first stream end overlap with second stream start. Default is enabled. \n\n**curve1**\n\n    Set curve for cross fade transition for first stream. \n\n**curve2**\n\n    Set curve for cross fade transition for second stream. For description of available curve types see afade filter description. \n\n",
+  "description": "Cross fade two input audio streams.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "crossfade0",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     },
     {
       "name": "crossfade1",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -26,11 +26,11 @@
         "ns"
       ],
       "choices": [],
-      "default": 44100,
-      "description": "<dd><p>Specify the number of samples for which the cross fade effect has to last.\nAt the end of the cross fade effect the first input audio will be completely\nsilent. Default is 44100.\n</p>\n</dd>",
+      "default": "44100",
+      "description": "set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)",
       "name": "nb_samples",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -38,11 +38,11 @@
         "d"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specify the duration of the cross fade effect. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nBy default the duration is determined by <var>nb_samples</var>.\nIf set this option is used instead of <var>nb_samples</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set cross fade duration (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -50,11 +50,11 @@
         "o"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Should first stream end overlap with second stream start. Default is enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "overlap 1st stream end with 2nd stream start (default true)",
       "name": "overlap",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -65,129 +65,109 @@
         {
           "help": "no fade; keep audio as-is",
           "name": "nofade",
-          "value": "NONE"
+          "value": "-1"
         },
         {
           "help": "linear slope",
           "name": "tri",
-          "value": "TRI"
+          "value": "0"
         },
         {
           "help": "quarter of sine wave",
           "name": "qsin",
-          "value": "QSIN"
+          "value": "1"
         },
         {
           "help": "exponential sine wave",
           "name": "esin",
-          "value": "ESIN"
+          "value": "2"
         },
         {
           "help": "half of sine wave",
           "name": "hsin",
-          "value": "HSIN"
+          "value": "3"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "LOG"
+          "value": "4"
         },
         {
           "help": "inverted parabola",
           "name": "ipar",
-          "value": "IPAR"
+          "value": "5"
         },
         {
           "help": "quadratic",
           "name": "qua",
-          "value": "QUA"
+          "value": "6"
         },
         {
           "help": "cubic",
           "name": "cub",
-          "value": "CUB"
+          "value": "7"
         },
         {
           "help": "square root",
           "name": "squ",
-          "value": "SQU"
+          "value": "8"
         },
         {
           "help": "cubic root",
           "name": "cbr",
-          "value": "CBR"
+          "value": "9"
         },
         {
           "help": "parabola",
           "name": "par",
-          "value": "PAR"
+          "value": "10"
         },
         {
           "help": "exponential",
           "name": "exp",
-          "value": "EXP"
+          "value": "11"
         },
         {
           "help": "inverted quarter of sine wave",
           "name": "iqsin",
-          "value": "IQSIN"
+          "value": "12"
         },
         {
           "help": "inverted half of sine wave",
           "name": "ihsin",
-          "value": "IHSIN"
+          "value": "13"
         },
         {
           "help": "double-exponential seat",
           "name": "dese",
-          "value": "DESE"
+          "value": "14"
         },
         {
           "help": "double-exponential sigmoid",
           "name": "desi",
-          "value": "DESI"
+          "value": "15"
         },
         {
           "help": "logistic sigmoid",
           "name": "losi",
-          "value": "LOSI"
+          "value": "16"
         },
         {
           "help": "sine cardinal function",
           "name": "sinc",
-          "value": "SINC"
+          "value": "17"
         },
         {
           "help": "inverted sine cardinal function",
           "name": "isinc",
-          "value": "ISINC"
-        },
-        {
-          "help": "quartic",
-          "name": "quat",
-          "value": "QUAT"
-        },
-        {
-          "help": "quartic root",
-          "name": "quatr",
-          "value": "QUATR"
-        },
-        {
-          "help": "squared quarter of sine wave",
-          "name": "qsin2",
-          "value": "QSIN2"
-        },
-        {
-          "help": "squared half of sine wave",
-          "name": "hsin2",
-          "value": "HSIN2"
+          "value": "18"
         }
       ],
-      "default": "TRI",
-      "description": "<dd><p>Set curve for cross fade transition for first stream.\n</p>\n</dd>",
+      "default": "tri",
+      "description": "set fade curve type for 1st stream (from -1 to 18) (default tri)",
       "name": "curve1",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -198,135 +178,115 @@
         {
           "help": "no fade; keep audio as-is",
           "name": "nofade",
-          "value": "NONE"
+          "value": "-1"
         },
         {
           "help": "linear slope",
           "name": "tri",
-          "value": "TRI"
+          "value": "0"
         },
         {
           "help": "quarter of sine wave",
           "name": "qsin",
-          "value": "QSIN"
+          "value": "1"
         },
         {
           "help": "exponential sine wave",
           "name": "esin",
-          "value": "ESIN"
+          "value": "2"
         },
         {
           "help": "half of sine wave",
           "name": "hsin",
-          "value": "HSIN"
+          "value": "3"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "LOG"
+          "value": "4"
         },
         {
           "help": "inverted parabola",
           "name": "ipar",
-          "value": "IPAR"
+          "value": "5"
         },
         {
           "help": "quadratic",
           "name": "qua",
-          "value": "QUA"
+          "value": "6"
         },
         {
           "help": "cubic",
           "name": "cub",
-          "value": "CUB"
+          "value": "7"
         },
         {
           "help": "square root",
           "name": "squ",
-          "value": "SQU"
+          "value": "8"
         },
         {
           "help": "cubic root",
           "name": "cbr",
-          "value": "CBR"
+          "value": "9"
         },
         {
           "help": "parabola",
           "name": "par",
-          "value": "PAR"
+          "value": "10"
         },
         {
           "help": "exponential",
           "name": "exp",
-          "value": "EXP"
+          "value": "11"
         },
         {
           "help": "inverted quarter of sine wave",
           "name": "iqsin",
-          "value": "IQSIN"
+          "value": "12"
         },
         {
           "help": "inverted half of sine wave",
           "name": "ihsin",
-          "value": "IHSIN"
+          "value": "13"
         },
         {
           "help": "double-exponential seat",
           "name": "dese",
-          "value": "DESE"
+          "value": "14"
         },
         {
           "help": "double-exponential sigmoid",
           "name": "desi",
-          "value": "DESI"
+          "value": "15"
         },
         {
           "help": "logistic sigmoid",
           "name": "losi",
-          "value": "LOSI"
+          "value": "16"
         },
         {
           "help": "sine cardinal function",
           "name": "sinc",
-          "value": "SINC"
+          "value": "17"
         },
         {
           "help": "inverted sine cardinal function",
           "name": "isinc",
-          "value": "ISINC"
-        },
-        {
-          "help": "quartic",
-          "name": "quat",
-          "value": "QUAT"
-        },
-        {
-          "help": "quartic root",
-          "name": "quatr",
-          "value": "QUATR"
-        },
-        {
-          "help": "squared quarter of sine wave",
-          "name": "qsin2",
-          "value": "QSIN2"
-        },
-        {
-          "help": "squared half of sine wave",
-          "name": "hsin2",
-          "value": "HSIN2"
+          "value": "18"
         }
       ],
-      "default": "TRI",
-      "description": "<dd><p>Set curve for cross fade transition for second stream.\n</p>\n<p>For description of available curve types see <a href=\"#afade\">afade</a> filter description.\n</p></dd>",
+      "default": "tri",
+      "description": "set fade curve type for 2nd stream (from -1 to 18) (default tri)",
       "name": "curve2",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrossfade"

@@ -1,33 +1,12 @@
 import enum
 import json
 import pathlib
-from typing import Literal
 
-from parse_c.schema import AVFilterPad, AVFilterPadType, AVOptionType, Choice, FilterType
+from parse_c.schema import Choice, FilterType
 from pydantic import BaseModel, HttpUrl
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
 schema_path.mkdir(exist_ok=True)
-
-TYPING_MAP: dict[AVOptionType, str] = {
-    AVOptionType.AV_OPT_TYPE_BOOL: "bool",
-    AVOptionType.AV_OPT_TYPE_INT: "int",
-    AVOptionType.AV_OPT_TYPE_INT64: "int",
-    AVOptionType.AV_OPT_TYPE_FLOAT: "float",
-    AVOptionType.AV_OPT_TYPE_DOUBLE: "float",
-    AVOptionType.AV_OPT_TYPE_STRING: "str",
-    AVOptionType.AV_OPT_TYPE_FLAGS: "str",
-    AVOptionType.AV_OPT_TYPE_COLOR: "str",
-    AVOptionType.AV_OPT_TYPE_RATIONAL: "float",
-    AVOptionType.AV_OPT_TYPE_IMAGE_SIZE: "str",
-    AVOptionType.AV_OPT_TYPE_VIDEO_RATE: "str",
-    AVOptionType.AV_OPT_TYPE_DURATION: "int",
-    AVOptionType.AV_OPT_TYPE_PIXEL_FMT: "str",
-    AVOptionType.AV_OPT_TYPE_CHLAYOUT: "str",
-    AVOptionType.AV_OPT_TYPE_SAMPLE_FMT: "str",
-    AVOptionType.AV_OPT_TYPE_DICT: "str",
-    AVOptionType.AV_OPT_TYPE_BINARY: "str",
-}
 
 
 class StreamType(str, enum.Enum):
@@ -43,7 +22,7 @@ class FFmpegFilterOption(BaseModel):
     alias: list[str] = []
     description: str | None = None
 
-    typing: Literal["bool", "int", "float", "str"]
+    typing: str
     default: str | int | float | None = None
     required: bool = False
     choices: list[Choice] = []
@@ -62,25 +41,17 @@ class FFmpegFilterOption(BaseModel):
         return self.default
 
 
-def _convert_to_stream_type(typings: list[AVFilterPadType]) -> list[StreamType]:
-    output: list[StreamType] = []
-    for typing in typings:
-        if typing == AVFilterPadType.video:
-            output.append(StreamType.video)
-        elif typing == AVFilterPadType.audio:
-            output.append(StreamType.audio)
-        else:
-            raise ValueError(f"Unknown stream type {typing}")
-
-    return output
+class FFMpegIOType(BaseModel):
+    name: str
+    type: StreamType
 
 
 class FFmpegFilter(BaseModel):
     id: str
-    filter_type: FilterType
+    filter_type: FilterType = None
 
-    name: str
-    description: str
+    name: str = None
+    description: str = None
     ref: HttpUrl = None
 
     is_input_dynamic: bool = False
@@ -88,8 +59,8 @@ class FFmpegFilter(BaseModel):
     is_support_timeline: bool = False
     is_support_framesync: bool = False
 
-    input_stream_typings: list[AVFilterPad] = []
-    output_stream_typings: list[AVFilterPad] = []
+    input_stream_typings: list[FFMpegIOType] | None = None
+    output_stream_typings: list[FFMpegIOType] | None = None
     formula_input_typings: str | None = None
     formula_output_typings: str | None = None
 
@@ -105,13 +76,13 @@ class FFmpegFilter(BaseModel):
     def input_types(self) -> str | None:
         if self.is_input_dynamic:
             return self.formula_input_typings
-        return str(_convert_to_stream_type(k.type for k in self.input_stream_typings))
+        return str([k.type for k in self.input_stream_typings])
 
     @property
     def output_types(self) -> str | None:
         if self.is_output_dynamic:
             return self.formula_output_typings
-        return str(_convert_to_stream_type(k.type for k in self.output_stream_typings))
+        return str([k.type for k in self.output_stream_typings])
 
     @classmethod
     def load(cls, id: str) -> "FFmpegFilter":

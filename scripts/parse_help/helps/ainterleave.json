@@ -1,0 +1,64 @@
+{
+  "description": "Temporally interleave audio inputs.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "ainterleave",
+  "options": [
+    {
+      "alias": [
+        "nb_inputs",
+        "n"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set number of inputs (from 1 to INT_MAX) (default 2)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "nb_inputs",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "Duration of longest input",
+          "name": "longest",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Duration of shortest input",
+          "name": "shortest",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Duration of first input",
+          "name": "first",
+          "value": "2"
+        }
+      ],
+      "default": "longest",
+      "description": "how to determine the end-of-stream (from 0 to 2) (default longest)",
+      "flags": "..F.A......",
+      "max": "2",
+      "min": "0",
+      "name": "duration",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

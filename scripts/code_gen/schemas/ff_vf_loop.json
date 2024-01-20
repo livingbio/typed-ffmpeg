@@ -1,5 +1,5 @@
 {
-  "description": "### 11.149 loop\n\nLoop video frames.\n\nThe filter accepts the following options:\n\n**loop**\n\n    Set the number of loops. Setting this value to -1 will result in infinite loops. Default is 0. \n\n**size**\n\n    Set maximal size in number of frames. Default is 0. \n\n**start**\n\n    Set first frame of loop. Default is 0. \n\n**time**\n\n    Set the time of loop start in seconds. Only used if option named start is set to -1. \n\n",
+  "description": "Loop video frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,50 +21,39 @@
         "loop"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of loops. Setting this value to -1 will result in infinite loops.\nDefault is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "number of loops (from -1 to INT_MAX) (default 0)",
       "name": "loop",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "size"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set maximal size in number of frames. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "max number of frames to loop (from 0 to 32767) (default 0)",
       "name": "size",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "start"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set first frame of loop. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the loop start frame (from 0 to I64_MAX) (default 0)",
       "name": "start",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "time"
-      ],
-      "choices": [],
-      "default": "9223372036854775807LL",
-      "description": "<dd><p>Set the time of loop start in seconds.\nOnly used if option named <var>start</var> is set to <code>-1</code>.\n</p></dd>",
-      "name": "time",
-      "required": false,
-      "typing": "int"
+      "typing": "Int64"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#loop"

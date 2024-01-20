@@ -1,0 +1,153 @@
+{
+  "description": "Fill area with same color with another color.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "floodfill",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set pixel x coordinate (from 0 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "0",
+      "name": "x",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set pixel y coordinate (from 0 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "0",
+      "name": "y",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s0"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set source #0 component value (from -1 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "-1",
+      "name": "s0",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s1"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set source #1 component value (from -1 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "-1",
+      "name": "s1",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s2"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set source #2 component value (from -1 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "-1",
+      "name": "s2",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "s3"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set source #3 component value (from -1 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "-1",
+      "name": "s3",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d0"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set destination #0 component value (from 0 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "0",
+      "name": "d0",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d1"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set destination #1 component value (from 0 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "0",
+      "name": "d1",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d2"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set destination #2 component value (from 0 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "0",
+      "name": "d2",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "d3"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set destination #3 component value (from 0 to 65535) (default 0)",
+      "flags": "..FV.......",
+      "max": "65535",
+      "min": "0",
+      "name": "d3",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

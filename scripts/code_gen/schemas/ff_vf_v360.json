@@ -1,5 +1,5 @@
 {
-  "description": "### 11.270 v360\n\nConvert 360 videos between various formats.\n\nThe filter accepts the following options:\n\n**input**\n\n**output**\n\n    Set format of the input/output video. Available formats: \u2018e\u2019 \u2018equirect\u2019 Equirectangular projection. \u2018c3x2\u2019 \u2018c6x1\u2019 \u2018c1x6\u2019 Cubemap with 3x2/6x1/1x6 layout. Format specific options: in_pad out_pad Set padding proportion for the input/output cubemap. Values in decimals. Example values: \u20180\u2019 No padding. \u20180.01\u2019 1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels) Default value is \u20180\u2019. Maximum value is \u20180.1\u2019. fin_pad fout_pad Set fixed padding for the input/output cubemap. Values in pixels. Default value is \u20180\u2019. If greater than zero it overrides other padding options. in_forder out_forder Set order of faces for the input/output cubemap. Choose one direction for each position. Designation of directions: \u2018r\u2019 right \u2018l\u2019 left \u2018u\u2019 up \u2018d\u2019 down \u2018f\u2019 forward \u2018b\u2019 back Default value is \u2018rludfb\u2019. in_frot out_frot Set rotation of faces for the input/output cubemap. Choose one angle for each position. Designation of angles: \u20180\u2019 0 degrees clockwise \u20181\u2019 90 degrees clockwise \u20182\u2019 180 degrees clockwise \u20183\u2019 270 degrees clockwise Default value is \u2018000000\u2019. \u2018eac\u2019 Equi-Angular Cubemap. \u2018flat\u2019 \u2018gnomonic\u2019 \u2018rectilinear\u2019 Regular video. Format specific options: h_fov v_fov d_fov Set output horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. ih_fov iv_fov id_fov Set input horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. \u2018dfisheye\u2019 Dual fisheye. Format specific options: h_fov v_fov d_fov Set output horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. ih_fov iv_fov id_fov Set input horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. \u2018barrel\u2019 \u2018fb\u2019 \u2018barrelsplit\u2019 Facebook\u2019s 360 formats. \u2018sg\u2019 Stereographic format. Format specific options: h_fov v_fov d_fov Set output horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. ih_fov iv_fov id_fov Set input horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. \u2018mercator\u2019 Mercator format. \u2018ball\u2019 Ball format, gives significant distortion toward the back. \u2018hammer\u2019 Hammer-Aitoff map projection format. \u2018sinusoidal\u2019 Sinusoidal map projection format. \u2018fisheye\u2019 Fisheye projection. Format specific options: h_fov v_fov d_fov Set output horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. ih_fov iv_fov id_fov Set input horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. \u2018pannini\u2019 Pannini projection. Format specific options: h_fov Set output pannini parameter. ih_fov Set input pannini parameter. \u2018cylindrical\u2019 Cylindrical projection. Format specific options: h_fov v_fov d_fov Set output horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. ih_fov iv_fov id_fov Set input horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. \u2018perspective\u2019 Perspective projection. (output only) Format specific options: v_fov Set perspective parameter. \u2018tetrahedron\u2019 Tetrahedron projection. \u2018tsp\u2019 Truncated square pyramid projection. \u2018he\u2019 \u2018hequirect\u2019 Half equirectangular projection. \u2018equisolid\u2019 Equisolid format. Format specific options: h_fov v_fov d_fov Set output horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. ih_fov iv_fov id_fov Set input horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. \u2018og\u2019 Orthographic format. Format specific options: h_fov v_fov d_fov Set output horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. ih_fov iv_fov id_fov Set input horizontal/vertical/diagonal field of view. Values in degrees. If diagonal field of view is set it overrides horizontal and vertical field of view. \u2018octahedron\u2019 Octahedron projection. \u2018cylindricalea\u2019 Cylindrical Equal Area projection. \n\n**interp**\n\n    Set interpolation method. Note: more complex interpolation methods require much more memory to run. Available methods: \u2018near\u2019 \u2018nearest\u2019 Nearest neighbour. \u2018line\u2019 \u2018linear\u2019 Bilinear interpolation. \u2018lagrange9\u2019 Lagrange9 interpolation. \u2018cube\u2019 \u2018cubic\u2019 Bicubic interpolation. \u2018lanc\u2019 \u2018lanczos\u2019 Lanczos interpolation. \u2018sp16\u2019 \u2018spline16\u2019 Spline16 interpolation. \u2018gauss\u2019 \u2018gaussian\u2019 Gaussian interpolation. \u2018mitchell\u2019 Mitchell interpolation. Default value is \u2018line\u2019. \n\n**w**\n\n**h**\n\n    Set the output video resolution. Default resolution depends on formats. \n\n**in_stereo**\n\n**out_stereo**\n\n    Set the input/output stereo format. \u20182d\u2019 2D mono \u2018sbs\u2019 Side by side \u2018tb\u2019 Top bottom Default value is \u20182d\u2019 for input and output format. \n\n**yaw**\n\n**pitch**\n\n**roll**\n\n    Set rotation for the output video. Values in degrees. \n\n**rorder**\n\n    Set rotation order for the output video. Choose one item for each position. \u2018y, Y\u2019 yaw \u2018p, P\u2019 pitch \u2018r, R\u2019 roll Default value is \u2018ypr\u2019. \n\n**h_flip**\n\n**v_flip**\n\n**d_flip**\n\n    Flip the output video horizontally(swaps left-right)/vertically(swaps up-down)/in-depth(swaps back-forward). Boolean values. \n\n**ih_flip**\n\n**iv_flip**\n\n    Set if input video is flipped horizontally/vertically. Boolean values. \n\n**in_trans**\n\n    Set if input video is transposed. Boolean value, by default disabled. \n\n**out_trans**\n\n    Set if output video needs to be transposed. Boolean value, by default disabled. \n\n**h_offset**\n\n**v_offset**\n\n    Set output horizontal/vertical off-axis offset. Default is set to 0. Allowed range is from -1 to 1. \n\n**alpha_mask**\n\n    Build mask in alpha plane for all unmapped pixels by marking them fully transparent. Boolean value, by default disabled. \n\n**reset_rot**\n\n    Reset rotation of output video. Boolean value, by default disabled. \n\n",
+  "description": "Convert 360 projection of video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -24,154 +24,154 @@
         {
           "help": "equirectangular",
           "name": "e",
-          "value": "EQUIRECTANGULAR"
+          "value": "0"
         },
         {
           "help": "equirectangular",
           "name": "equirect",
-          "value": "EQUIRECTANGULAR"
+          "value": "0"
         },
         {
           "help": "cubemap 3x2",
           "name": "c3x2",
-          "value": "CUBEMAP_3_2"
+          "value": "1"
         },
         {
           "help": "cubemap 6x1",
           "name": "c6x1",
-          "value": "CUBEMAP_6_1"
+          "value": "2"
         },
         {
           "help": "equi-angular cubemap",
           "name": "eac",
-          "value": "EQUIANGULAR"
+          "value": "3"
         },
         {
           "help": "dual fisheye",
           "name": "dfisheye",
-          "value": "DUAL_FISHEYE"
+          "value": "5"
         },
         {
           "help": "regular video",
           "name": "flat",
-          "value": "FLAT"
+          "value": "4"
         },
         {
           "help": "regular video",
           "name": "rectilinear",
-          "value": "FLAT"
+          "value": "4"
         },
         {
           "help": "regular video",
           "name": "gnomonic",
-          "value": "FLAT"
+          "value": "4"
         },
         {
           "help": "barrel facebook's 360 format",
           "name": "barrel",
-          "value": "BARREL"
+          "value": "6"
         },
         {
           "help": "barrel facebook's 360 format",
           "name": "fb",
-          "value": "BARREL"
+          "value": "6"
         },
         {
           "help": "cubemap 1x6",
           "name": "c1x6",
-          "value": "CUBEMAP_1_6"
+          "value": "7"
         },
         {
           "help": "stereographic",
           "name": "sg",
-          "value": "STEREOGRAPHIC"
+          "value": "8"
         },
         {
           "help": "mercator",
           "name": "mercator",
-          "value": "MERCATOR"
+          "value": "9"
         },
         {
           "help": "ball",
           "name": "ball",
-          "value": "BALL"
+          "value": "10"
         },
         {
           "help": "hammer",
           "name": "hammer",
-          "value": "HAMMER"
+          "value": "11"
         },
         {
           "help": "sinusoidal",
           "name": "sinusoidal",
-          "value": "SINUSOIDAL"
+          "value": "12"
         },
         {
           "help": "fisheye",
           "name": "fisheye",
-          "value": "FISHEYE"
+          "value": "13"
         },
         {
           "help": "pannini",
           "name": "pannini",
-          "value": "PANNINI"
+          "value": "14"
         },
         {
           "help": "cylindrical",
           "name": "cylindrical",
-          "value": "CYLINDRICAL"
+          "value": "15"
         },
         {
           "help": "tetrahedron",
           "name": "tetrahedron",
-          "value": "TETRAHEDRON"
+          "value": "17"
         },
         {
           "help": "barrel split facebook's 360 format",
           "name": "barrelsplit",
-          "value": "BARREL_SPLIT"
+          "value": "18"
         },
         {
           "help": "truncated square pyramid",
           "name": "tsp",
-          "value": "TSPYRAMID"
+          "value": "19"
         },
         {
           "help": "half equirectangular",
           "name": "hequirect",
-          "value": "HEQUIRECTANGULAR"
+          "value": "20"
         },
         {
           "help": "half equirectangular",
           "name": "he",
-          "value": "HEQUIRECTANGULAR"
+          "value": "20"
         },
         {
           "help": "equisolid",
           "name": "equisolid",
-          "value": "EQUISOLID"
+          "value": "21"
         },
         {
           "help": "orthographic",
           "name": "og",
-          "value": "ORTHOGRAPHIC"
+          "value": "22"
         },
         {
           "help": "octahedron",
           "name": "octahedron",
-          "value": "OCTAHEDRON"
+          "value": "23"
         },
         {
           "help": "cylindrical equal area",
           "name": "cylindricalea",
-          "value": "CYLINDRICALEA"
+          "value": "24"
         }
       ],
-      "default": "EQUIRECTANGULAR",
-      "description": "<dd><p>Set format of the input/output video.\n</p>\n<p>Available formats:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>e</samp>\u2019</dt>\n<dt>\u2018<samp>equirect</samp>\u2019</dt>\n<dd><p>Equirectangular projection.\n</p>\n</dd>\n<dt>\u2018<samp>c3x2</samp>\u2019</dt>\n<dt>\u2018<samp>c6x1</samp>\u2019</dt>\n<dt>\u2018<samp>c1x6</samp>\u2019</dt>\n<dd><p>Cubemap with 3x2/6x1/1x6 layout.\n</p>\n<p>Format specific options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>in_pad</samp></dt>\n<dt><samp>out_pad</samp></dt>\n<dd><p>Set padding proportion for the input/output cubemap. Values in decimals.\n</p>\n<p>Example values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0</samp>\u2019</dt>\n<dd><p>No padding.\n</p></dd>\n<dt>\u2018<samp>0.01</samp>\u2019</dt>\n<dd><p>1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>0</samp>\u2019</b>.\nMaximum value is <b>\u2018<samp>0.1</samp>\u2019</b>.\n</p>\n</dd>\n<dt><samp>fin_pad</samp></dt>\n<dt><samp>fout_pad</samp></dt>\n<dd><p>Set fixed padding for the input/output cubemap. Values in pixels.\n</p>\n<p>Default value is <b>\u2018<samp>0</samp>\u2019</b>. If greater than zero it overrides other padding options.\n</p>\n</dd>\n<dt><samp>in_forder</samp></dt>\n<dt><samp>out_forder</samp></dt>\n<dd><p>Set order of faces for the input/output cubemap. Choose one direction for each position.\n</p>\n<p>Designation of directions:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dd><p>right\n</p></dd>\n<dt>\u2018<samp>l</samp>\u2019</dt>\n<dd><p>left\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>up\n</p></dd>\n<dt>\u2018<samp>d</samp>\u2019</dt>\n<dd><p>down\n</p></dd>\n<dt>\u2018<samp>f</samp>\u2019</dt>\n<dd><p>forward\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>back\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>rludfb</samp>\u2019</b>.\n</p>\n</dd>\n<dt><samp>in_frot</samp></dt>\n<dt><samp>out_frot</samp></dt>\n<dd><p>Set rotation of faces for the input/output cubemap. Choose one angle for each position.\n</p>\n<p>Designation of angles:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0</samp>\u2019</dt>\n<dd><p>0 degrees clockwise\n</p></dd>\n<dt>\u2018<samp>1</samp>\u2019</dt>\n<dd><p>90 degrees clockwise\n</p></dd>\n<dt>\u2018<samp>2</samp>\u2019</dt>\n<dd><p>180 degrees clockwise\n</p></dd>\n<dt>\u2018<samp>3</samp>\u2019</dt>\n<dd><p>270 degrees clockwise\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>000000</samp>\u2019</b>.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>eac</samp>\u2019</dt>\n<dd><p>Equi-Angular Cubemap.\n</p>\n</dd>\n<dt>\u2018<samp>flat</samp>\u2019</dt>\n<dt>\u2018<samp>gnomonic</samp>\u2019</dt>\n<dt>\u2018<samp>rectilinear</samp>\u2019</dt>\n<dd><p>Regular video.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>dfisheye</samp>\u2019</dt>\n<dd><p>Dual fisheye.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>barrel</samp>\u2019</dt>\n<dt>\u2018<samp>fb</samp>\u2019</dt>\n<dt>\u2018<samp>barrelsplit</samp>\u2019</dt>\n<dd><p>Facebook\u2019s 360 formats.\n</p>\n</dd>\n<dt>\u2018<samp>sg</samp>\u2019</dt>\n<dd><p>Stereographic format.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>mercator</samp>\u2019</dt>\n<dd><p>Mercator format.\n</p>\n</dd>\n<dt>\u2018<samp>ball</samp>\u2019</dt>\n<dd><p>Ball format, gives significant distortion toward the back.\n</p>\n</dd>\n<dt>\u2018<samp>hammer</samp>\u2019</dt>\n<dd><p>Hammer-Aitoff map projection format.\n</p>\n</dd>\n<dt>\u2018<samp>sinusoidal</samp>\u2019</dt>\n<dd><p>Sinusoidal map projection format.\n</p>\n</dd>\n<dt>\u2018<samp>fisheye</samp>\u2019</dt>\n<dd><p>Fisheye projection.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>pannini</samp>\u2019</dt>\n<dd><p>Pannini projection.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dd><p>Set output pannini parameter.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dd><p>Set input pannini parameter.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>cylindrical</samp>\u2019</dt>\n<dd><p>Cylindrical projection.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>perspective</samp>\u2019</dt>\n<dd><p>Perspective projection. <i>(output only)</i>\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>v_fov</samp></dt>\n<dd><p>Set perspective parameter.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>tetrahedron</samp>\u2019</dt>\n<dd><p>Tetrahedron projection.\n</p>\n</dd>\n<dt>\u2018<samp>tsp</samp>\u2019</dt>\n<dd><p>Truncated square pyramid projection.\n</p>\n</dd>\n<dt>\u2018<samp>he</samp>\u2019</dt>\n<dt>\u2018<samp>hequirect</samp>\u2019</dt>\n<dd><p>Half equirectangular projection.\n</p>\n</dd>\n<dt>\u2018<samp>equisolid</samp>\u2019</dt>\n<dd><p>Equisolid format.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>og</samp>\u2019</dt>\n<dd><p>Orthographic format.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>octahedron</samp>\u2019</dt>\n<dd><p>Octahedron projection.\n</p>\n</dd>\n<dt>\u2018<samp>cylindricalea</samp>\u2019</dt>\n<dd><p>Cylindrical Equal Area projection.\n</p></dd>\n</dl>\n</dd>",
+      "default": "e",
+      "description": "set input projection (from 0 to 24) (default e)",
       "name": "input",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -181,159 +181,159 @@
         {
           "help": "equirectangular",
           "name": "e",
-          "value": "EQUIRECTANGULAR"
+          "value": "0"
         },
         {
           "help": "equirectangular",
           "name": "equirect",
-          "value": "EQUIRECTANGULAR"
+          "value": "0"
         },
         {
           "help": "cubemap 3x2",
           "name": "c3x2",
-          "value": "CUBEMAP_3_2"
+          "value": "1"
         },
         {
           "help": "cubemap 6x1",
           "name": "c6x1",
-          "value": "CUBEMAP_6_1"
+          "value": "2"
         },
         {
           "help": "equi-angular cubemap",
           "name": "eac",
-          "value": "EQUIANGULAR"
+          "value": "3"
         },
         {
           "help": "dual fisheye",
           "name": "dfisheye",
-          "value": "DUAL_FISHEYE"
+          "value": "5"
         },
         {
           "help": "regular video",
           "name": "flat",
-          "value": "FLAT"
+          "value": "4"
         },
         {
           "help": "regular video",
           "name": "rectilinear",
-          "value": "FLAT"
+          "value": "4"
         },
         {
           "help": "regular video",
           "name": "gnomonic",
-          "value": "FLAT"
+          "value": "4"
         },
         {
           "help": "barrel facebook's 360 format",
           "name": "barrel",
-          "value": "BARREL"
+          "value": "6"
         },
         {
           "help": "barrel facebook's 360 format",
           "name": "fb",
-          "value": "BARREL"
+          "value": "6"
         },
         {
           "help": "cubemap 1x6",
           "name": "c1x6",
-          "value": "CUBEMAP_1_6"
+          "value": "7"
         },
         {
           "help": "stereographic",
           "name": "sg",
-          "value": "STEREOGRAPHIC"
+          "value": "8"
         },
         {
           "help": "mercator",
           "name": "mercator",
-          "value": "MERCATOR"
+          "value": "9"
         },
         {
           "help": "ball",
           "name": "ball",
-          "value": "BALL"
+          "value": "10"
         },
         {
           "help": "hammer",
           "name": "hammer",
-          "value": "HAMMER"
+          "value": "11"
         },
         {
           "help": "sinusoidal",
           "name": "sinusoidal",
-          "value": "SINUSOIDAL"
+          "value": "12"
         },
         {
           "help": "fisheye",
           "name": "fisheye",
-          "value": "FISHEYE"
+          "value": "13"
         },
         {
           "help": "pannini",
           "name": "pannini",
-          "value": "PANNINI"
+          "value": "14"
         },
         {
           "help": "cylindrical",
           "name": "cylindrical",
-          "value": "CYLINDRICAL"
+          "value": "15"
         },
         {
           "help": "perspective",
           "name": "perspective",
-          "value": "PERSPECTIVE"
+          "value": "16"
         },
         {
           "help": "tetrahedron",
           "name": "tetrahedron",
-          "value": "TETRAHEDRON"
+          "value": "17"
         },
         {
           "help": "barrel split facebook's 360 format",
           "name": "barrelsplit",
-          "value": "BARREL_SPLIT"
+          "value": "18"
         },
         {
           "help": "truncated square pyramid",
           "name": "tsp",
-          "value": "TSPYRAMID"
+          "value": "19"
         },
         {
           "help": "half equirectangular",
           "name": "hequirect",
-          "value": "HEQUIRECTANGULAR"
+          "value": "20"
         },
         {
           "help": "half equirectangular",
           "name": "he",
-          "value": "HEQUIRECTANGULAR"
+          "value": "20"
         },
         {
           "help": "equisolid",
           "name": "equisolid",
-          "value": "EQUISOLID"
+          "value": "21"
         },
         {
           "help": "orthographic",
           "name": "og",
-          "value": "ORTHOGRAPHIC"
+          "value": "22"
         },
         {
           "help": "octahedron",
           "name": "octahedron",
-          "value": "OCTAHEDRON"
+          "value": "23"
         },
         {
           "help": "cylindrical equal area",
           "name": "cylindricalea",
-          "value": "CYLINDRICALEA"
+          "value": "24"
         }
       ],
-      "default": "CUBEMAP_3_2",
-      "description": "<dd><p>Set format of the input/output video.\n</p>\n<p>Available formats:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>e</samp>\u2019</dt>\n<dt>\u2018<samp>equirect</samp>\u2019</dt>\n<dd><p>Equirectangular projection.\n</p>\n</dd>\n<dt>\u2018<samp>c3x2</samp>\u2019</dt>\n<dt>\u2018<samp>c6x1</samp>\u2019</dt>\n<dt>\u2018<samp>c1x6</samp>\u2019</dt>\n<dd><p>Cubemap with 3x2/6x1/1x6 layout.\n</p>\n<p>Format specific options:\n</p>\n<dl compact=\"compact\">\n<dt><samp>in_pad</samp></dt>\n<dt><samp>out_pad</samp></dt>\n<dd><p>Set padding proportion for the input/output cubemap. Values in decimals.\n</p>\n<p>Example values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0</samp>\u2019</dt>\n<dd><p>No padding.\n</p></dd>\n<dt>\u2018<samp>0.01</samp>\u2019</dt>\n<dd><p>1% of face is padding. For example, with 1920x1280 resolution face size would be 640x640 and padding would be 3 pixels from each side. (640 * 0.01 = 6 pixels)\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>0</samp>\u2019</b>.\nMaximum value is <b>\u2018<samp>0.1</samp>\u2019</b>.\n</p>\n</dd>\n<dt><samp>fin_pad</samp></dt>\n<dt><samp>fout_pad</samp></dt>\n<dd><p>Set fixed padding for the input/output cubemap. Values in pixels.\n</p>\n<p>Default value is <b>\u2018<samp>0</samp>\u2019</b>. If greater than zero it overrides other padding options.\n</p>\n</dd>\n<dt><samp>in_forder</samp></dt>\n<dt><samp>out_forder</samp></dt>\n<dd><p>Set order of faces for the input/output cubemap. Choose one direction for each position.\n</p>\n<p>Designation of directions:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dd><p>right\n</p></dd>\n<dt>\u2018<samp>l</samp>\u2019</dt>\n<dd><p>left\n</p></dd>\n<dt>\u2018<samp>u</samp>\u2019</dt>\n<dd><p>up\n</p></dd>\n<dt>\u2018<samp>d</samp>\u2019</dt>\n<dd><p>down\n</p></dd>\n<dt>\u2018<samp>f</samp>\u2019</dt>\n<dd><p>forward\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>back\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>rludfb</samp>\u2019</b>.\n</p>\n</dd>\n<dt><samp>in_frot</samp></dt>\n<dt><samp>out_frot</samp></dt>\n<dd><p>Set rotation of faces for the input/output cubemap. Choose one angle for each position.\n</p>\n<p>Designation of angles:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>0</samp>\u2019</dt>\n<dd><p>0 degrees clockwise\n</p></dd>\n<dt>\u2018<samp>1</samp>\u2019</dt>\n<dd><p>90 degrees clockwise\n</p></dd>\n<dt>\u2018<samp>2</samp>\u2019</dt>\n<dd><p>180 degrees clockwise\n</p></dd>\n<dt>\u2018<samp>3</samp>\u2019</dt>\n<dd><p>270 degrees clockwise\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>000000</samp>\u2019</b>.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>eac</samp>\u2019</dt>\n<dd><p>Equi-Angular Cubemap.\n</p>\n</dd>\n<dt>\u2018<samp>flat</samp>\u2019</dt>\n<dt>\u2018<samp>gnomonic</samp>\u2019</dt>\n<dt>\u2018<samp>rectilinear</samp>\u2019</dt>\n<dd><p>Regular video.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>dfisheye</samp>\u2019</dt>\n<dd><p>Dual fisheye.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>barrel</samp>\u2019</dt>\n<dt>\u2018<samp>fb</samp>\u2019</dt>\n<dt>\u2018<samp>barrelsplit</samp>\u2019</dt>\n<dd><p>Facebook\u2019s 360 formats.\n</p>\n</dd>\n<dt>\u2018<samp>sg</samp>\u2019</dt>\n<dd><p>Stereographic format.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>mercator</samp>\u2019</dt>\n<dd><p>Mercator format.\n</p>\n</dd>\n<dt>\u2018<samp>ball</samp>\u2019</dt>\n<dd><p>Ball format, gives significant distortion toward the back.\n</p>\n</dd>\n<dt>\u2018<samp>hammer</samp>\u2019</dt>\n<dd><p>Hammer-Aitoff map projection format.\n</p>\n</dd>\n<dt>\u2018<samp>sinusoidal</samp>\u2019</dt>\n<dd><p>Sinusoidal map projection format.\n</p>\n</dd>\n<dt>\u2018<samp>fisheye</samp>\u2019</dt>\n<dd><p>Fisheye projection.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>pannini</samp>\u2019</dt>\n<dd><p>Pannini projection.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dd><p>Set output pannini parameter.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dd><p>Set input pannini parameter.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>cylindrical</samp>\u2019</dt>\n<dd><p>Cylindrical projection.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>perspective</samp>\u2019</dt>\n<dd><p>Perspective projection. <i>(output only)</i>\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>v_fov</samp></dt>\n<dd><p>Set perspective parameter.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>tetrahedron</samp>\u2019</dt>\n<dd><p>Tetrahedron projection.\n</p>\n</dd>\n<dt>\u2018<samp>tsp</samp>\u2019</dt>\n<dd><p>Truncated square pyramid projection.\n</p>\n</dd>\n<dt>\u2018<samp>he</samp>\u2019</dt>\n<dt>\u2018<samp>hequirect</samp>\u2019</dt>\n<dd><p>Half equirectangular projection.\n</p>\n</dd>\n<dt>\u2018<samp>equisolid</samp>\u2019</dt>\n<dd><p>Equisolid format.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>og</samp>\u2019</dt>\n<dd><p>Orthographic format.\n</p>\n<p>Format specific options:\n</p><dl compact=\"compact\">\n<dt><samp>h_fov</samp></dt>\n<dt><samp>v_fov</samp></dt>\n<dt><samp>d_fov</samp></dt>\n<dd><p>Set output horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p>\n</dd>\n<dt><samp>ih_fov</samp></dt>\n<dt><samp>iv_fov</samp></dt>\n<dt><samp>id_fov</samp></dt>\n<dd><p>Set input horizontal/vertical/diagonal field of view. Values in degrees.\n</p>\n<p>If diagonal field of view is set it overrides horizontal and vertical field of view.\n</p></dd>\n</dl>\n</dd>\n<dt>\u2018<samp>octahedron</samp>\u2019</dt>\n<dd><p>Octahedron projection.\n</p>\n</dd>\n<dt>\u2018<samp>cylindricalea</samp>\u2019</dt>\n<dd><p>Cylindrical Equal Area projection.\n</p></dd>\n</dl>\n</dd>",
+      "default": "c3x2",
+      "description": "set output projection (from 0 to 24) (default c3x2)",
       "name": "output",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -343,101 +343,101 @@
         {
           "help": "nearest neighbour",
           "name": "near",
-          "value": "NEAREST"
+          "value": "0"
         },
         {
           "help": "nearest neighbour",
           "name": "nearest",
-          "value": "NEAREST"
+          "value": "0"
         },
         {
           "help": "bilinear interpolation",
           "name": "line",
-          "value": "BILINEAR"
+          "value": "1"
         },
         {
           "help": "bilinear interpolation",
           "name": "linear",
-          "value": "BILINEAR"
+          "value": "1"
         },
         {
           "help": "lagrange9 interpolation",
           "name": "lagrange9",
-          "value": "LAGRANGE9"
+          "value": "2"
         },
         {
           "help": "bicubic interpolation",
           "name": "cube",
-          "value": "BICUBIC"
+          "value": "3"
         },
         {
           "help": "bicubic interpolation",
           "name": "cubic",
-          "value": "BICUBIC"
+          "value": "3"
         },
         {
           "help": "lanczos interpolation",
           "name": "lanc",
-          "value": "LANCZOS"
+          "value": "4"
         },
         {
           "help": "lanczos interpolation",
           "name": "lanczos",
-          "value": "LANCZOS"
+          "value": "4"
         },
         {
           "help": "spline16 interpolation",
           "name": "sp16",
-          "value": "SPLINE16"
+          "value": "5"
         },
         {
           "help": "spline16 interpolation",
           "name": "spline16",
-          "value": "SPLINE16"
+          "value": "5"
         },
         {
           "help": "gaussian interpolation",
           "name": "gauss",
-          "value": "GAUSSIAN"
+          "value": "6"
         },
         {
           "help": "gaussian interpolation",
           "name": "gaussian",
-          "value": "GAUSSIAN"
+          "value": "6"
         },
         {
           "help": "mitchell interpolation",
           "name": "mitchell",
-          "value": "MITCHELL"
+          "value": "7"
         }
       ],
-      "default": "BILINEAR",
-      "description": "<dd><p>Set interpolation method.<br/>\n<i>Note: more complex interpolation methods require much more memory to run.</i>\n</p>\n<p>Available methods:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>near</samp>\u2019</dt>\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dd><p>Nearest neighbour.\n</p></dd>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dd><p>Bilinear interpolation.\n</p></dd>\n<dt>\u2018<samp>lagrange9</samp>\u2019</dt>\n<dd><p>Lagrange9 interpolation.\n</p></dd>\n<dt>\u2018<samp>cube</samp>\u2019</dt>\n<dt>\u2018<samp>cubic</samp>\u2019</dt>\n<dd><p>Bicubic interpolation.\n</p></dd>\n<dt>\u2018<samp>lanc</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dd><p>Lanczos interpolation.\n</p></dd>\n<dt>\u2018<samp>sp16</samp>\u2019</dt>\n<dt>\u2018<samp>spline16</samp>\u2019</dt>\n<dd><p>Spline16 interpolation.\n</p></dd>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>gaussian</samp>\u2019</dt>\n<dd><p>Gaussian interpolation.\n</p></dd>\n<dt>\u2018<samp>mitchell</samp>\u2019</dt>\n<dd><p>Mitchell interpolation.\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>line</samp>\u2019</b>.\n</p>\n</dd>",
+      "default": "line",
+      "description": "set interpolation method (from 0 to 7) (default line)",
       "name": "interp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "w"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the output video resolution.\n</p>\n<p>Default resolution depends on formats.\n</p>\n</dd>",
+      "default": "0",
+      "description": "output width (from 0 to 32767) (default 0)",
       "name": "w",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "h"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the output video resolution.\n</p>\n<p>Default resolution depends on formats.\n</p>\n</dd>",
+      "default": "0",
+      "description": "output height (from 0 to 32767) (default 0)",
       "name": "h",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -447,24 +447,24 @@
         {
           "help": "2d mono",
           "name": "2d",
-          "value": "STEREO_2D"
+          "value": "0"
         },
         {
           "help": "side by side",
           "name": "sbs",
-          "value": "STEREO_SBS"
+          "value": "1"
         },
         {
           "help": "top bottom",
           "name": "tb",
-          "value": "STEREO_TB"
+          "value": "2"
         }
       ],
-      "default": "STEREO_2D",
-      "description": "<dd><p>Set the input/output stereo format.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>2d</samp>\u2019</dt>\n<dd><p>2D mono\n</p></dd>\n<dt>\u2018<samp>sbs</samp>\u2019</dt>\n<dd><p>Side by side\n</p></dd>\n<dt>\u2018<samp>tb</samp>\u2019</dt>\n<dd><p>Top bottom\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>2d</samp>\u2019</b> for input and output format.\n</p>\n</dd>",
+      "default": "2d",
+      "description": "input stereo format (from 0 to 2) (default 2d)",
       "name": "in_stereo",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -474,24 +474,24 @@
         {
           "help": "2d mono",
           "name": "2d",
-          "value": "STEREO_2D"
+          "value": "0"
         },
         {
           "help": "side by side",
           "name": "sbs",
-          "value": "STEREO_SBS"
+          "value": "1"
         },
         {
           "help": "top bottom",
           "name": "tb",
-          "value": "STEREO_TB"
+          "value": "2"
         }
       ],
-      "default": "STEREO_2D",
-      "description": "<dd><p>Set the input/output stereo format.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>2d</samp>\u2019</dt>\n<dd><p>2D mono\n</p></dd>\n<dt>\u2018<samp>sbs</samp>\u2019</dt>\n<dd><p>Side by side\n</p></dd>\n<dt>\u2018<samp>tb</samp>\u2019</dt>\n<dd><p>Top bottom\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>2d</samp>\u2019</b> for input and output format.\n</p>\n</dd>",
+      "default": "2d",
+      "description": "output stereo format (from 0 to 2) (default 2d)",
       "name": "out_stereo",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -499,10 +499,10 @@
       ],
       "choices": [],
       "default": "rludfb",
-      "description": "input cubemap face order",
+      "description": "input cubemap face order (default \"rludfb\")",
       "name": "in_forder",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -510,10 +510,10 @@
       ],
       "choices": [],
       "default": "rludfb",
-      "description": "output cubemap face order",
+      "description": "output cubemap face order (default \"rludfb\")",
       "name": "out_forder",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -521,10 +521,10 @@
       ],
       "choices": [],
       "default": "000000",
-      "description": "input cubemap face rotation",
+      "description": "input cubemap face rotation (default \"000000\")",
       "name": "in_frot",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -532,87 +532,87 @@
       ],
       "choices": [],
       "default": "000000",
-      "description": "output cubemap face rotation",
+      "description": "output cubemap face rotation (default \"000000\")",
       "name": "out_frot",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "in_pad"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "percent input cubemap pads",
+      "default": "0",
+      "description": "percent input cubemap pads (from 0 to 0.1) (default 0)",
       "name": "in_pad",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "out_pad"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "percent output cubemap pads",
+      "default": "0",
+      "description": "percent output cubemap pads (from 0 to 0.1) (default 0)",
       "name": "out_pad",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fin_pad"
       ],
       "choices": [],
-      "default": 0,
-      "description": "fixed input cubemap pads",
+      "default": "0",
+      "description": "fixed input cubemap pads (from 0 to 100) (default 0)",
       "name": "fin_pad",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "fout_pad"
       ],
       "choices": [],
-      "default": 0,
-      "description": "fixed output cubemap pads",
+      "default": "0",
+      "description": "fixed output cubemap pads (from 0 to 100) (default 0)",
       "name": "fout_pad",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "yaw"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set rotation for the output video. Values in degrees.\n</p>\n</dd>",
+      "default": "0",
+      "description": "yaw rotation (from -180 to 180) (default 0)",
       "name": "yaw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "pitch"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set rotation for the output video. Values in degrees.\n</p>\n</dd>",
+      "default": "0",
+      "description": "pitch rotation (from -180 to 180) (default 0)",
       "name": "pitch",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "roll"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set rotation for the output video. Values in degrees.\n</p>\n</dd>",
+      "default": "0",
+      "description": "roll rotation (from -180 to 180) (default 0)",
       "name": "roll",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -620,203 +620,203 @@
       ],
       "choices": [],
       "default": "ypr",
-      "description": "<dd><p>Set rotation order for the output video. Choose one item for each position.\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>y, Y</samp>\u2019</dt>\n<dd><p>yaw\n</p></dd>\n<dt>\u2018<samp>p, P</samp>\u2019</dt>\n<dd><p>pitch\n</p></dd>\n<dt>\u2018<samp>r, R</samp>\u2019</dt>\n<dd><p>roll\n</p></dd>\n</dl>\n<p>Default value is <b>\u2018<samp>ypr</samp>\u2019</b>.\n</p>\n</dd>",
+      "description": "rotation order (default \"ypr\")",
       "name": "rorder",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "h_fov"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "output horizontal field of view",
+      "default": "0",
+      "description": "output horizontal field of view (from 0 to 360) (default 0)",
       "name": "h_fov",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "v_fov"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "output vertical field of view",
+      "default": "0",
+      "description": "output vertical field of view (from 0 to 360) (default 0)",
       "name": "v_fov",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "d_fov"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "output diagonal field of view",
+      "default": "0",
+      "description": "output diagonal field of view (from 0 to 360) (default 0)",
       "name": "d_fov",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "h_flip"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Flip the output video horizontally(swaps left-right)/vertically(swaps up-down)/in-depth(swaps back-forward). Boolean values.\n</p>\n</dd>",
+      "default": "false",
+      "description": "flip out video horizontally (default false)",
       "name": "h_flip",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "v_flip"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Flip the output video horizontally(swaps left-right)/vertically(swaps up-down)/in-depth(swaps back-forward). Boolean values.\n</p>\n</dd>",
+      "default": "false",
+      "description": "flip out video vertically (default false)",
       "name": "v_flip",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "d_flip"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Flip the output video horizontally(swaps left-right)/vertically(swaps up-down)/in-depth(swaps back-forward). Boolean values.\n</p>\n</dd>",
+      "default": "false",
+      "description": "flip out video indepth (default false)",
       "name": "d_flip",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "ih_flip"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set if input video is flipped horizontally/vertically. Boolean values.\n</p>\n</dd>",
+      "default": "false",
+      "description": "flip in video horizontally (default false)",
       "name": "ih_flip",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "iv_flip"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set if input video is flipped horizontally/vertically. Boolean values.\n</p>\n</dd>",
+      "default": "false",
+      "description": "flip in video vertically (default false)",
       "name": "iv_flip",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "in_trans"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set if input video is transposed. Boolean value, by default disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "transpose video input (default false)",
       "name": "in_trans",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "out_trans"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set if output video needs to be transposed. Boolean value, by default disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "transpose video output (default false)",
       "name": "out_trans",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "ih_fov"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "input horizontal field of view",
+      "default": "0",
+      "description": "input horizontal field of view (from 0 to 360) (default 0)",
       "name": "ih_fov",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "iv_fov"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "input vertical field of view",
+      "default": "0",
+      "description": "input vertical field of view (from 0 to 360) (default 0)",
       "name": "iv_fov",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "id_fov"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "input diagonal field of view",
+      "default": "0",
+      "description": "input diagonal field of view (from 0 to 360) (default 0)",
       "name": "id_fov",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "h_offset"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set output horizontal/vertical off-axis offset. Default is set to 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "output horizontal off-axis offset (from -1 to 1) (default 0)",
       "name": "h_offset",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "v_offset"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set output horizontal/vertical off-axis offset. Default is set to 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "output vertical off-axis offset (from -1 to 1) (default 0)",
       "name": "v_offset",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "alpha_mask"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Build mask in alpha plane for all unmapped pixels by marking them fully transparent. Boolean value, by default disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "build mask in alpha plane (default false)",
       "name": "alpha_mask",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "reset_rot"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Reset rotation of output video. Boolean value, by default disabled.\n</p></dd>",
+      "default": "false",
+      "description": "reset rotation (default false)",
       "name": "reset_rot",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#v360"

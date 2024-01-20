@@ -1,5 +1,5 @@
 {
-  "description": "### 9.9 hilbert\n\nGenerate odd-tap Hilbert transform FIR coefficients.\n\nThe resulting stream can be used with afir filter for phase-shifting the\nsignal by 90 degrees.\n\nThis is used in many matrix coding schemes and for analytic signal generation.\nThe process is often written as a multiplication by i (or j), the imaginary\nunit.\n\nThe filter accepts the following options:\n\n**sample_rate, s**\n\n    Set sample rate, default is 44100. \n\n**taps, t**\n\n    Set length of FIR filter, default is 22051. \n\n**nb_samples, n**\n\n    Set number of samples per each frame. \n\n**win_func, w**\n\n    Set window function to be used when generating FIR coefficients. \n\n",
+  "description": "Generate a Hilbert transform FIR coefficients.",
   "filter_type": "asrc",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -17,11 +17,11 @@
         "r"
       ],
       "choices": [],
-      "default": 44100,
-      "description": "<dd><p>Set sample rate, default is 44100.\n</p>\n</dd>",
+      "default": "44100",
+      "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -29,11 +29,11 @@
         "t"
       ],
       "choices": [],
-      "default": 22051,
-      "description": "<dd><p>Set length of FIR filter, default is 22051.\n</p>\n</dd>",
+      "default": "22051",
+      "description": "set number of taps (from 11 to 65535) (default 22051)",
       "name": "taps",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -41,11 +41,11 @@
         "n"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set number of samples per each frame.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -56,235 +56,235 @@
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         },
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         }
       ],
-      "default": "WFUNC_BLACKMAN",
-      "description": "<dd><p>Set window function to be used when generating FIR coefficients.\n</p></dd>",
+      "default": "blackman",
+      "description": "set window function (from 0 to 20) (default blackman)",
       "name": "win_func",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hilbert"

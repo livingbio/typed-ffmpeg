@@ -1,5 +1,5 @@
 {
-  "description": "### 11.125 hqx\n\nApply a high-quality magnification filter designed for pixel art. This filter\nwas originally created by Maxim Stepin.\n\nIt accepts the following option:\n\n**n**\n\n    Set the scaling dimension: 2 for hq2x, 3 for hq3x and 4 for hq4x. Default is 3. \n\n",
+  "description": "Scale the input by 2, 3 or 4 using the hq*x magnification algorithm.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,17 +21,17 @@
         "n"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set the scaling dimension: <code>2</code> for <code>hq2x</code>, <code>3</code> for\n<code>hq3x</code> and <code>4</code> for <code>hq4x</code>.\nDefault is <code>3</code>.\n</p></dd>",
+      "default": "3",
+      "description": "set scale factor (from 2 to 4) (default 3)",
       "name": "n",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hqx"

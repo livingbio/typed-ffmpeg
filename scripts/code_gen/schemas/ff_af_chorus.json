@@ -1,5 +1,5 @@
 {
-  "description": "### 8.76 chorus\n\nAdd a chorus effect to the audio.\n\nCan make a single vocal sound like a chorus, but can also be applied to\ninstrumentation.\n\nChorus resembles an echo effect with a short delay, but whereas with echo the\ndelay is constant, with chorus, it is varied using using sinusoidal or\ntriangular modulation. The modulation depth defines the range the modulated\ndelay is played before or after the delay. Hence the delayed sound will sound\nslower or faster, that is the delayed sound tuned around the original one,\nlike in a chorus where some vocals are slightly off key.\n\nIt accepts the following parameters:\n\n**in_gain**\n\n    Set input gain. Default is 0.4. \n\n**out_gain**\n\n    Set output gain. Default is 0.4. \n\n**delays**\n\n    Set delays. A typical delay is around 40ms to 60ms. \n\n**decays**\n\n    Set decays. \n\n**speeds**\n\n    Set speeds. \n\n**depths**\n\n    Set depths. \n\n",
+  "description": "Add a chorus effect to the audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,72 +21,72 @@
         "in_gain"
       ],
       "choices": [],
-      "default": 0.4,
-      "description": "<dd><p>Set input gain. Default is 0.4.\n</p>\n</dd>",
+      "default": "0.4",
+      "description": "set input gain (from 0 to 1) (default 0.4)",
       "name": "in_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "out_gain"
       ],
       "choices": [],
-      "default": 0.4,
-      "description": "<dd><p>Set output gain. Default is 0.4.\n</p>\n</dd>",
+      "default": "0.4",
+      "description": "set output gain (from 0 to 1) (default 0.4)",
       "name": "out_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "delays"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set delays. A typical delay is around 40ms to 60ms.\n</p>\n</dd>",
+      "default": null,
+      "description": "set delays",
       "name": "delays",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "decays"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set decays.\n</p>\n</dd>",
+      "default": null,
+      "description": "set decays",
       "name": "decays",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "speeds"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set speeds.\n</p>\n</dd>",
+      "default": null,
+      "description": "set speeds",
       "name": "speeds",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "depths"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set depths.\n</p></dd>",
+      "default": null,
+      "description": "set depths",
       "name": "depths",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#chorus"

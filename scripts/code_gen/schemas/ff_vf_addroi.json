@@ -1,5 +1,5 @@
 {
-  "description": "### 11.1 addroi\n\nMark a region of interest in a video frame.\n\nThe frame data is passed through unchanged, but metadata is attached to the\nframe indicating regions of interest which can affect the behaviour of later\nencoding. Multiple regions can be marked by applying the filter multiple\ntimes.\n\n**x**\n\n    Region distance in pixels from the left edge of the frame. \n\n**y**\n\n    Region distance in pixels from the top edge of the frame. \n\n**w**\n\n    Region width in pixels. \n\n**h**\n\n    Region height in pixels. The parameters x, y, w and h are expressions, and may contain the following variables: iw Width of the input frame. ih Height of the input frame. \n\n**qoffset**\n\n    Quantisation offset to apply within the region. This must be a real value in the range -1 to +1. A value of zero indicates no quality change. A negative value asks for better quality (less quantisation), while a positive value asks for worse quality (greater quantisation). The range is calibrated so that the extreme values indicate the largest possible offset - if the rest of the frame is encoded with the worst possible quality, an offset of -1 indicates that this region should be encoded with the best possible quality anyway. Intermediate values are then interpolated in some codec-dependent way. For example, in 10-bit H.264 the quantisation parameter varies between -12 and 51. A typical qoffset value of -1/10 therefore indicates that this region should be encoded with a QP around one-tenth of the full range better than the rest of the frame. So, if most of the frame were to be encoded with a QP of around 30, this region would get a QP of around 24 (an offset of approximately -1/10 * (51 - -12) = -6.3). An extreme value of -1 would indicate that this region should be encoded with the best possible quality regardless of the treatment of the rest of the frame - that is, should be encoded at a QP of -12. \n\n**clear**\n\n    If set to true, remove any existing regions of interest marked on the frame before adding the new one. \n\n",
+  "description": "Add region of interest to frame.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Region distance in pixels from the left edge of the frame.\n</p></dd>",
+      "description": "Region distance from left edge of frame. (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Region distance in pixels from the top edge of the frame.\n</p></dd>",
+      "description": "Region distance from top edge of frame. (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Region width in pixels.\n</p></dd>",
+      "description": "Region width. (default \"0\")",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,38 +55,38 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Region height in pixels.\n</p>\n<p>The parameters <var>x</var>, <var>y</var>, <var>w</var> and <var>h</var> are expressions,\nand may contain the following variables:\n</p><dl compact=\"compact\">\n<dt><samp>iw</samp></dt>\n<dd><p>Width of the input frame.\n</p></dd>\n<dt><samp>ih</samp></dt>\n<dd><p>Height of the input frame.\n</p></dd>\n</dl>\n</dd>",
+      "description": "Region height. (default \"0\")",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "qoffset"
       ],
       "choices": [],
-      "default": -0.1,
-      "description": "<dd><p>Quantisation offset to apply within the region.\n</p>\n<p>This must be a real value in the range -1 to +1.  A value of zero\nindicates no quality change.  A negative value asks for better quality\n(less quantisation), while a positive value asks for worse quality\n(greater quantisation).\n</p>\n<p>The range is calibrated so that the extreme values indicate the\nlargest possible offset - if the rest of the frame is encoded with the\nworst possible quality, an offset of -1 indicates that this region\nshould be encoded with the best possible quality anyway.  Intermediate\nvalues are then interpolated in some codec-dependent way.\n</p>\n<p>For example, in 10-bit H.264 the quantisation parameter varies between\n-12 and 51.  A typical qoffset value of -1/10 therefore indicates that\nthis region should be encoded with a QP around one-tenth of the full\nrange better than the rest of the frame.  So, if most of the frame\nwere to be encoded with a QP of around 30, this region would get a QP\nof around 24 (an offset of approximately -1/10 * (51 - -12) = -6.3).\nAn extreme value of -1 would indicate that this region should be\nencoded with the best possible quality regardless of the treatment of\nthe rest of the frame - that is, should be encoded at a QP of -12.\n</p></dd>",
+      "default": "-1/10",
+      "description": "Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)",
       "name": "qoffset",
       "required": false,
-      "typing": "float"
+      "typing": "Rational"
     },
     {
       "alias": [
         "clear"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If set to true, remove any existing regions of interest marked on the\nframe before adding the new one.\n</p></dd>",
+      "default": "false",
+      "description": "Remove any existing regions of interest before adding the new one. (default false)",
       "name": "clear",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#addroi"

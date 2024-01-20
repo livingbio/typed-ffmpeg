@@ -1,5 +1,5 @@
 {
-  "description": "### 8.28 afwtdn\n\nReduce broadband noise from input samples using Wavelets.\n\nA description of the accepted options follows.\n\n**sigma**\n\n    Set the noise sigma, allowed range is from 0 to 1. Default value is 0. This option controls strength of denoising applied to input samples. Most useful way to set this option is via decibels, eg. -45dB. \n\n**levels**\n\n    Set the number of wavelet levels of decomposition. Allowed range is from 1 to 12. Default value is 10. Setting this too low make denoising performance very poor. \n\n**wavet**\n\n    Set wavelet type for decomposition of input frame. They are sorted by number of coefficients, from lowest to highest. More coefficients means worse filtering speed, but overall better quality. Available wavelets are: \u2018sym2\u2019 \u2018sym4\u2019 \u2018rbior68\u2019 \u2018deb10\u2019 \u2018sym10\u2019 \u2018coif5\u2019 \u2018bl3\u2019 \n\n**percent**\n\n    Set percent of full denoising. Allowed range is from 0 to 100 percent. Default value is 85 percent or partial denoising. \n\n**profile**\n\n    If enabled, first input frame will be used as noise profile. If first frame samples contain non-noise performance will be very poor. \n\n**adaptive**\n\n    If enabled, input frames are analyzed for presence of noise. If noise is detected with high possibility then input frame profile will be used for processing following frames, until new noise frame is detected. \n\n**samples**\n\n    Set size of single frame in number of samples. Allowed range is from 512 to 65536. Default frame size is 8192 samples. \n\n**softness**\n\n    Set softness applied inside thresholding function. Allowed range is from 0 to 10. Default softness is 1. \n\n",
+  "description": "Denoise audio stream using Wavelets.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "sigma"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the noise sigma, allowed range is from 0 to 1.\nDefault value is 0.\nThis option controls strength of denoising applied to input samples.\nMost useful way to set this option is via decibels, eg. -45dB.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set noise sigma (from 0 to 1) (default 0)",
       "name": "sigma",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "levels"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set the number of wavelet levels of decomposition.\nAllowed range is from 1 to 12.\nDefault value is 10.\nSetting this too low make denoising performance very poor.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set number of wavelet levels (from 1 to 12) (default 10)",
       "name": "levels",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -46,99 +46,99 @@
         {
           "help": "sym2",
           "name": "sym2",
-          "value": "SYM2"
+          "value": "0"
         },
         {
           "help": "sym4",
           "name": "sym4",
-          "value": "SYM4"
+          "value": "1"
         },
         {
           "help": "rbior68",
           "name": "rbior68",
-          "value": "RBIOR68"
+          "value": "2"
         },
         {
           "help": "deb10",
           "name": "deb10",
-          "value": "DEB10"
+          "value": "3"
         },
         {
           "help": "sym10",
           "name": "sym10",
-          "value": "SYM10"
+          "value": "4"
         },
         {
           "help": "coif5",
           "name": "coif5",
-          "value": "COIF5"
+          "value": "5"
         },
         {
           "help": "bl3",
           "name": "bl3",
-          "value": "BL3"
+          "value": "6"
         }
       ],
-      "default": "SYM10",
-      "description": "<dd><p>Set wavelet type for decomposition of input frame.\nThey are sorted by number of coefficients, from lowest to highest.\nMore coefficients means worse filtering speed, but overall better quality.\nAvailable wavelets are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>sym2</samp>\u2019</dt>\n<dt>\u2018<samp>sym4</samp>\u2019</dt>\n<dt>\u2018<samp>rbior68</samp>\u2019</dt>\n<dt>\u2018<samp>deb10</samp>\u2019</dt>\n<dt>\u2018<samp>sym10</samp>\u2019</dt>\n<dt>\u2018<samp>coif5</samp>\u2019</dt>\n<dt>\u2018<samp>bl3</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "sym10",
+      "description": "set wavelet type (from 0 to 6) (default sym10)",
       "name": "wavet",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "percent"
       ],
       "choices": [],
-      "default": 85.0,
-      "description": "<dd><p>Set percent of full denoising. Allowed range is from 0 to 100 percent.\nDefault value is 85 percent or partial denoising.\n</p>\n</dd>",
+      "default": "85",
+      "description": "set percent of full denoising (from 0 to 100) (default 85)",
       "name": "percent",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "profile"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If enabled, first input frame will be used as noise profile.\nIf first frame samples contain non-noise performance will be very poor.\n</p>\n</dd>",
+      "default": "false",
+      "description": "profile noise (default false)",
       "name": "profile",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "adaptive"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If enabled, input frames are analyzed for presence of noise.\nIf noise is detected with high possibility then input frame profile will be\nused for processing following frames, until new noise frame is detected.\n</p>\n</dd>",
+      "default": "false",
+      "description": "adaptive profiling of noise (default false)",
       "name": "adaptive",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "samples"
       ],
       "choices": [],
-      "default": 8192,
-      "description": "<dd><p>Set size of single frame in number of samples. Allowed range is from 512 to\n65536. Default frame size is 8192 samples.\n</p>\n</dd>",
+      "default": "8192",
+      "description": "set frame size in number of samples (from 512 to 65536) (default 8192)",
       "name": "samples",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "softness"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set softness applied inside thresholding function. Allowed range is from 0 to\n10. Default softness is 1.\n</p></dd>",
+      "default": "1",
+      "description": "set thresholding softness (from 0 to 10) (default 1)",
       "name": "softness",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -153,7 +153,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#afwtdn"

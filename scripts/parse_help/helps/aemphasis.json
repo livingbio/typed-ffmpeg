@@ -1,0 +1,143 @@
+{
+  "description": "Audio emphasis.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "aemphasis",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input gain (from 0 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "64",
+      "min": "0",
+      "name": "level_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output gain (from 0 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "64",
+      "min": "0",
+      "name": "level_out",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "reproduction",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "production",
+          "value": "1"
+        }
+      ],
+      "default": "reproduction",
+      "description": "set filter mode (from 0 to 1) (default reproduction)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "Columbia",
+          "name": "col",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "EMI",
+          "name": "emi",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "BSI (78RPM)",
+          "name": "bsi",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "RIAA",
+          "name": "riaa",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "Compact Disc (CD)",
+          "name": "cd",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "50\u00b5s (FM)",
+          "name": "50fm",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "75\u00b5s (FM)",
+          "name": "75fm",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "50\u00b5s (FM-KF)",
+          "name": "50kf",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "75\u00b5s (FM-KF)",
+          "name": "75kf",
+          "value": "8"
+        }
+      ],
+      "default": "cd",
+      "description": "set filter type (from 0 to 8) (default cd)",
+      "flags": "..F.A....T.",
+      "max": "8",
+      "min": "0",
+      "name": "type",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

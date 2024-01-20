@@ -1,0 +1,75 @@
+{
+  "description": "Turns a certain color range into gray.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "chromahold",
+  "options": [
+    {
+      "alias": [
+        "color"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set the chromahold key color (default \"black\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "color",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "similarity"
+      ],
+      "choices": [],
+      "default": "0.01",
+      "description": "set the chromahold similarity value (from 1e-05 to 1) (default 0.01)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "1e-05",
+      "name": "similarity",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "blend"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the chromahold blend value (from 0 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "blend",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "yuv"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "color parameter is in yuv instead of rgb (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "yuv",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

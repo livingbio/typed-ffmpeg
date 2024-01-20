@@ -1,0 +1,107 @@
+{
+  "description": "Blur the input video without impacting the outlines.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "smartblur",
+  "options": [
+    {
+      "alias": [
+        "luma_radius",
+        "lr"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set luma radius (from 0.1 to 5) (default 1)",
+      "flags": "..FV.......",
+      "max": "5",
+      "min": "0.1",
+      "name": "luma_radius",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "luma_strength",
+        "ls"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set luma strength (from -1 to 1) (default 1)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-1",
+      "name": "luma_strength",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "luma_threshold",
+        "lt"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set luma threshold (from -30 to 30) (default 0)",
+      "flags": "..FV.......",
+      "max": "30",
+      "min": "-30",
+      "name": "luma_threshold",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chroma_radius",
+        "cr"
+      ],
+      "choices": [],
+      "default": "-0.9",
+      "description": "set chroma radius (from -0.9 to 5) (default -0.9)",
+      "flags": "..FV.......",
+      "max": "5",
+      "min": "-0.9",
+      "name": "chroma_radius",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_strength",
+        "cs"
+      ],
+      "choices": [],
+      "default": "-2",
+      "description": "set chroma strength (from -2 to 1) (default -2)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-2",
+      "name": "chroma_strength",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "chroma_threshold",
+        "ct"
+      ],
+      "choices": [],
+      "default": "-31",
+      "description": "set chroma threshold (from -31 to 30) (default -31)",
+      "flags": "..FV.......",
+      "max": "30",
+      "min": "-31",
+      "name": "chroma_threshold",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

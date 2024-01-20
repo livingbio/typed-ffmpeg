@@ -1,0 +1,131 @@
+{
+  "description": "Detect and draw edge.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "edgedetect",
+  "options": [
+    {
+      "alias": [
+        "high"
+      ],
+      "choices": [],
+      "default": "0.196078",
+      "description": "set high threshold (from 0 to 1) (default 0.196078)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "high",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "low"
+      ],
+      "choices": [],
+      "default": "0.0784314",
+      "description": "set low threshold (from 0 to 1) (default 0.0784314)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "low",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "white/gray wires on black",
+          "name": "wires",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mix colors",
+          "name": "colormix",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "detect edges on planes",
+          "name": "canny",
+          "value": "2"
+        }
+      ],
+      "default": "wires",
+      "description": "set mode (from 0 to 2) (default wires)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "filter luma plane",
+          "name": "y",
+          "value": "y"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "filter u plane",
+          "name": "u",
+          "value": "u"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "filter v plane",
+          "name": "v",
+          "value": "v"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "filter red plane",
+          "name": "r",
+          "value": "r"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "filter green plane",
+          "name": "g",
+          "value": "g"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "filter blue plane",
+          "name": "b",
+          "value": "b"
+        }
+      ],
+      "default": "y+u+v+r+g+b",
+      "description": "set planes to filter (default y+u+v+r+g+b)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "planes",
+      "typing": "flags"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

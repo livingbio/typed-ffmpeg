@@ -1,0 +1,381 @@
+{
+  "description": "Convert video stereoscopic 3D view.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "stereo3d",
+  "options": [
+    {
+      "alias": [
+        "in"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "above below half height left first",
+          "name": "ab2l",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below half height left first",
+          "name": "tb2l",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below half height right first",
+          "name": "ab2r",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below half height right first",
+          "name": "tb2r",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below left first",
+          "name": "abl",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below left first",
+          "name": "tbl",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below right first",
+          "name": "abr",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below right first",
+          "name": "tbr",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "alternating frames left first",
+          "name": "al",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "alternating frames right first",
+          "name": "ar",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side half width left first",
+          "name": "sbs2l",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side half width right first",
+          "name": "sbs2r",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side left first",
+          "name": "sbsl",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side right first",
+          "name": "sbsr",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave rows left first",
+          "name": "irl",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave rows right first",
+          "name": "irr",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave columns left first",
+          "name": "icl",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave columns right first",
+          "name": "icr",
+          "value": "31"
+        }
+      ],
+      "default": "sbsl",
+      "description": "set input format (from 16 to 32) (default sbsl)",
+      "flags": "..FV.......",
+      "max": "32",
+      "min": "16",
+      "name": "in",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "out"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "above below half height left first",
+          "name": "ab2l",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below half height left first",
+          "name": "tb2l",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below half height right first",
+          "name": "ab2r",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below half height right first",
+          "name": "tb2r",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below left first",
+          "name": "abl",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below left first",
+          "name": "tbl",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below right first",
+          "name": "abr",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "above below right first",
+          "name": "tbr",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph green magenta color",
+          "name": "agmc",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph green magenta dubois",
+          "name": "agmd",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph green magenta gray",
+          "name": "agmg",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph green magenta half color",
+          "name": "agmh",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "alternating frames left first",
+          "name": "al",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "alternating frames right first",
+          "name": "ar",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph red blue gray",
+          "name": "arbg",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph red cyan color",
+          "name": "arcc",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph red cyan dubois",
+          "name": "arcd",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph red cyan gray",
+          "name": "arcg",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph red cyan half color",
+          "name": "arch",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph red green gray",
+          "name": "argg",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph yellow blue color",
+          "name": "aybc",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph yellow blue dubois",
+          "name": "aybd",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph yellow blue gray",
+          "name": "aybg",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "anaglyph yellow blue half color",
+          "name": "aybh",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave rows left first",
+          "name": "irl",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave rows right first",
+          "name": "irr",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mono left",
+          "name": "ml",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "mono right",
+          "name": "mr",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side half width left first",
+          "name": "sbs2l",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side half width right first",
+          "name": "sbs2r",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side left first",
+          "name": "sbsl",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "side by side right first",
+          "name": "sbsr",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "checkerboard left first",
+          "name": "chl",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "checkerboard right first",
+          "name": "chr",
+          "value": "29"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave columns left first",
+          "name": "icl",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "interleave columns right first",
+          "name": "icr",
+          "value": "31"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "HDMI frame pack",
+          "name": "hdmi",
+          "value": "32"
+        }
+      ],
+      "default": "arcd",
+      "description": "set output format (from 0 to 32) (default arcd)",
+      "flags": "..FV.......",
+      "max": "32",
+      "min": "0",
+      "name": "out",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.14 blackframe\n\nDetect frames that are (almost) completely black. Can be useful to detect\nchapter transitions or commercials. Output lines consist of the frame number\nof the detected frame, the percentage of blackness, the position in the file\nif known or -1 and the timestamp in seconds.\n\nIn order to display the output lines, you need to set the loglevel at least to\nthe AV_LOG_INFO value.\n\nThis filter exports frame metadata `lavfi.blackframe.pblack`. The value\nrepresents the percentage of pixels in the picture that are below the\nthreshold value.\n\nIt accepts the following parameters:\n\n**amount**\n\n    The percentage of the pixels that have to be below the threshold; it defaults to 98. \n\n**threshold, thresh**\n\n    The threshold below which a pixel value is considered black; it defaults to 32. \n\n",
+  "description": "Detect frames that are (almost) black.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "amount"
       ],
       "choices": [],
-      "default": 98,
-      "description": "<dd><p>The percentage of the pixels that have to be below the threshold; it defaults to\n<code>98</code>.\n</p>\n</dd>",
+      "default": "98",
+      "description": "percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)",
       "name": "amount",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -33,17 +33,17 @@
         "thresh"
       ],
       "choices": [],
-      "default": 32,
-      "description": "<dd><p>The threshold below which a pixel value is considered black; it defaults to\n<code>32</code>.\n</p>\n</dd>",
+      "default": "32",
+      "description": "threshold below which a pixel value is considered black (from 0 to 255) (default 32)",
       "name": "threshold",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#blackframe"

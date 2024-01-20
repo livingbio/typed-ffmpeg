@@ -1,0 +1,108 @@
+{
+  "description": "Render ASS subtitles onto input video using the libass library.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "ass",
+  "options": [
+    {
+      "alias": [
+        "filename",
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the filename of file to read",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filename",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "original_size"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the size of the original video (used to scale fonts)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "original_size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "fontsdir"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the directory containing the fonts to read",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fontsdir",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "enable processing of alpha channel (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "alpha",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "shaping"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "simple shaping",
+          "name": "simple",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "complex shaping",
+          "name": "complex",
+          "value": "1"
+        }
+      ],
+      "default": "auto",
+      "description": "set shaping engine (from -1 to 1) (default auto)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-1",
+      "name": "shaping",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

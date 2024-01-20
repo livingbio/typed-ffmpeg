@@ -1,5 +1,5 @@
 {
-  "description": "### 8.31 alimiter\n\nThe limiter prevents an input signal from rising over a desired threshold.\nThis limiter uses lookahead technology to prevent your signal from distorting.\nIt means that there is a small delay after the signal is processed. Keep in\nmind that the delay it produces is the attack time you set.\n\nThe filter accepts the following options:\n\n**level_in**\n\n    Set input gain. Default is 1. \n\n**level_out**\n\n    Set output gain. Default is 1. \n\n**limit**\n\n    Don\u2019t let signals above this level pass the limiter. Default is 1. \n\n**attack**\n\n    The limiter will reach its attenuation level in this amount of time in milliseconds. Default is 5 milliseconds. \n\n**release**\n\n    Come back from limiting to attenuation 1.0 in this amount of milliseconds. Default is 50 milliseconds. \n\n**asc**\n\n    When gain reduction is always needed ASC takes care of releasing to an average reduction level rather than reaching a reduction of 0 in the release time. \n\n**asc_level**\n\n    Select how much the release time is affected by ASC, 0 means nearly no changes in release time while 1 produces higher release times. \n\n**level**\n\n    Auto level output signal. Default is enabled. This normalizes audio back to 0dB if enabled. \n\n**latency**\n\n    Compensate the delay introduced by using the lookahead buffer set with attack parameter. Also flush the valid audio data in the lookahead buffer when the stream hits EOF. \n\nDepending on picked setting it is recommended to upsample input 2x or 4x times\nwith aresample before applying this filter.\n\n",
+  "description": "Audio lookahead limiter.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "main",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,99 +21,99 @@
         "level_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input gain. Default is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input level (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "level_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set output gain. Default is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output level (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "limit"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Don\u2019t let signals above this level pass the limiter. Default is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set limit (from 0.0625 to 1) (default 1)",
       "name": "limit",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "attack"
       ],
       "choices": [],
-      "default": 5.0,
-      "description": "<dd><p>The limiter will reach its attenuation level in this amount of time in\nmilliseconds. Default is 5 milliseconds.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set attack (from 0.1 to 80) (default 5)",
       "name": "attack",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "release"
       ],
       "choices": [],
-      "default": 50.0,
-      "description": "<dd><p>Come back from limiting to attenuation 1.0 in this amount of milliseconds.\nDefault is 50 milliseconds.\n</p>\n</dd>",
+      "default": "50",
+      "description": "set release (from 1 to 8000) (default 50)",
       "name": "release",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "asc"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>When gain reduction is always needed ASC takes care of releasing to an\naverage reduction level rather than reaching a reduction of 0 in the release\ntime.\n</p>\n</dd>",
+      "default": "false",
+      "description": "enable asc (default false)",
       "name": "asc",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "asc_level"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Select how much the release time is affected by ASC, 0 means nearly no changes\nin release time while 1 produces higher release times.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set asc level (from 0 to 1) (default 0.5)",
       "name": "asc_level",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "level"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Auto level output signal. Default is enabled.\nThis normalizes audio back to 0dB if enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "auto level (default true)",
       "name": "level",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "latency"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Compensate the delay introduced by using the lookahead buffer set with attack\nparameter. Also flush the valid audio data in the lookahead buffer when the\nstream hits EOF.\n</p></dd>",
+      "default": "false",
+      "description": "compensate delay (default false)",
       "name": "latency",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -128,7 +128,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#alimiter"

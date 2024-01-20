@@ -1,0 +1,216 @@
+{
+  "description": "Audio pulsator.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "apulsator",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input gain (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A......",
+      "max": "64",
+      "min": "0.015625",
+      "name": "level_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output gain (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A......",
+      "max": "64",
+      "min": "0.015625",
+      "name": "level_out",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "sine",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "triangle",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "square",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "sawup",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "sawdown",
+          "value": "4"
+        }
+      ],
+      "default": "sine",
+      "description": "set mode (from 0 to 4) (default sine)",
+      "flags": "..F.A......",
+      "max": "4",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "amount"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set modulation (from 0 to 1) (default 1)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "amount",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "offset_l"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set offset L (from 0 to 1) (default 0)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "offset_l",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "offset_r"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set offset R (from 0 to 1) (default 0.5)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "offset_r",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "width"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set pulse width (from 0 to 2) (default 1)",
+      "flags": "..F.A......",
+      "max": "2",
+      "min": "0",
+      "name": "width",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "timing"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "bpm",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "ms",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "hz",
+          "value": "2"
+        }
+      ],
+      "default": "hz",
+      "description": "set timing (from 0 to 2) (default hz)",
+      "flags": "..F.A......",
+      "max": "2",
+      "min": "0",
+      "name": "timing",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bpm"
+      ],
+      "choices": [],
+      "default": "120",
+      "description": "set BPM (from 30 to 300) (default 120)",
+      "flags": "..F.A......",
+      "max": "300",
+      "min": "30",
+      "name": "bpm",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ms"
+      ],
+      "choices": [],
+      "default": "500",
+      "description": "set ms (from 10 to 2000) (default 500)",
+      "flags": "..F.A......",
+      "max": "2000",
+      "min": "10",
+      "name": "ms",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hz"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set frequency (from 0.01 to 100) (default 2)",
+      "flags": "..F.A......",
+      "max": "100",
+      "min": "0.01",
+      "name": "hz",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

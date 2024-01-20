@@ -1,5 +1,5 @@
 {
-  "description": "### 11.112 graphmonitor\n\nShow various filtergraph stats.\n\nWith this filter one can debug complete filtergraph. Especially issues with\nlinks filling with queued frames.\n\nThe filter accepts the following options:\n\n**size, s**\n\n    Set video output size. Default is hd720. \n\n**opacity, o**\n\n    Set video opacity. Default is 0.9. Allowed range is from 0 to 1. \n\n**mode, m**\n\n    Set output mode flags. Available values for flags are: \u2018full\u2019 No any filtering. Default. \u2018compact\u2019 Show only filters with queued frames. \u2018nozero\u2019 Show only filters with non-zero stats. \u2018noeof\u2019 Show only filters with non-eof stat. \u2018nodisabled\u2019 Show only filters that are enabled in timeline. \n\n**flags, f**\n\n    Set flags which enable which stats are shown in video. Available values for flags are: \u2018none\u2019 All flags turned off. \u2018all\u2019 All flags turned on. \u2018queue\u2019 Display number of queued frames in each link. \u2018frame_count_in\u2019 Display number of frames taken from filter. \u2018frame_count_out\u2019 Display number of frames given out from filter. \u2018frame_count_delta\u2019 Display delta number of frames between above two values. \u2018pts\u2019 Display current filtered frame pts. \u2018pts_delta\u2019 Display pts delta between current and previous frame. \u2018time\u2019 Display current filtered frame time. \u2018time_delta\u2019 Display time delta between current and previous frame. \u2018timebase\u2019 Display time base for filter link. \u2018format\u2019 Display used format for filter link. \u2018size\u2019 Display video size or number of audio channels in case of audio used by filter link. \u2018rate\u2019 Display video frame rate or sample rate in case of audio used by filter link. \u2018eof\u2019 Display link output status. \u2018sample_count_in\u2019 Display number of samples taken from filter. \u2018sample_count_out\u2019 Display number of samples given out from filter. \u2018sample_count_delta\u2019 Display delta number of samples between above two values. \u2018disabled\u2019 Show the timeline filter status. \n\n**rate, r**\n\n    Set upper limit for video rate of output stream, Default value is 25. This guarantee that output video frame rate will not be higher than this value. \n\n",
+  "description": "Show various filtergraph stats.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -23,10 +23,10 @@
       ],
       "choices": [],
       "default": "hd720",
-      "description": "<dd><p>Set video output size. Default is <var>hd720</var>.\n</p>\n</dd>",
+      "description": "set monitor size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -34,11 +34,11 @@
         "o"
       ],
       "choices": [],
-      "default": 0.9,
-      "description": "<dd><p>Set video opacity. Default is <var>0.9</var>. Allowed range is from <var>0</var> to <var>1</var>.\n</p>\n</dd>",
+      "default": "0.9",
+      "description": "set video opacity (from 0 to 1) (default 0.9)",
       "name": "opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,36 +47,21 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "full",
-          "value": "MODE_FULL"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "compact",
-          "value": "MODE_COMPACT"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "nozero",
-          "value": "MODE_NOZERO"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "noeof",
-          "value": "MODE_NOEOF"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "nodisabled",
-          "value": "MODE_NODISABLED"
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set output mode flags.\n</p>\n<p>Available values for flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>No any filtering. Default.\n</p></dd>\n<dt>\u2018<samp>compact</samp>\u2019</dt>\n<dd><p>Show only filters with queued frames.\n</p></dd>\n<dt>\u2018<samp>nozero</samp>\u2019</dt>\n<dd><p>Show only filters with non-zero stats.\n</p></dd>\n<dt>\u2018<samp>noeof</samp>\u2019</dt>\n<dd><p>Show only filters with non-eof stat.\n</p></dd>\n<dt>\u2018<samp>nodisabled</samp>\u2019</dt>\n<dd><p>Show only filters that are enabled in timeline.\n</p></dd>\n</dl>\n</dd>",
+      "default": "full",
+      "description": "set mode (from 0 to 1) (default full)",
       "name": "mode",
       "required": false,
-      "typing": "str"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -85,106 +70,91 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
-          "name": "none",
-          "value": "FLAG_NONE"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "all",
-          "value": 2147483647
-        },
-        {
-          "help": "((void*)0)",
+          "help": "",
           "name": "queue",
-          "value": "FLAG_QUEUE"
+          "value": "queue"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "frame_count_in",
-          "value": "FLAG_FCOUT"
+          "value": "frame_count_in"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "frame_count_out",
-          "value": "FLAG_FCIN"
+          "value": "frame_count_out"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "frame_count_delta",
-          "value": "FLAG_FC_DELTA"
+          "value": "frame_count_delta"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pts",
-          "value": "FLAG_PTS"
+          "value": "pts"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pts_delta",
-          "value": "FLAG_PTS_DELTA"
+          "value": "pts_delta"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "time",
-          "value": "FLAG_TIME"
+          "value": "time"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "time_delta",
-          "value": "FLAG_TIME_DELTA"
+          "value": "time_delta"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "timebase",
-          "value": "FLAG_TB"
+          "value": "timebase"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "format",
-          "value": "FLAG_FMT"
+          "value": "format"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "size",
-          "value": "FLAG_SIZE"
+          "value": "size"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "rate",
-          "value": "FLAG_RATE"
+          "value": "rate"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "eof",
-          "value": "FLAG_EOF"
+          "value": "eof"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sample_count_in",
-          "value": "FLAG_SCOUT"
+          "value": "sample_count_in"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sample_count_out",
-          "value": "FLAG_SCIN"
+          "value": "sample_count_out"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sample_count_delta",
-          "value": "FLAG_SC_DELTA"
-        },
-        {
-          "help": "((void*)0)",
-          "name": "disabled",
-          "value": "FLAG_DISABLED"
+          "value": "sample_count_delta"
         }
       ],
-      "default": "FLAG_QUEUE",
-      "description": "<dd><p>Set flags which enable which stats are shown in video.\n</p>\n<p>Available values for flags are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>All flags turned off.\n</p>\n</dd>\n<dt>\u2018<samp>all</samp>\u2019</dt>\n<dd><p>All flags turned on.\n</p>\n</dd>\n<dt>\u2018<samp>queue</samp>\u2019</dt>\n<dd><p>Display number of queued frames in each link.\n</p>\n</dd>\n<dt>\u2018<samp>frame_count_in</samp>\u2019</dt>\n<dd><p>Display number of frames taken from filter.\n</p>\n</dd>\n<dt>\u2018<samp>frame_count_out</samp>\u2019</dt>\n<dd><p>Display number of frames given out from filter.\n</p>\n</dd>\n<dt>\u2018<samp>frame_count_delta</samp>\u2019</dt>\n<dd><p>Display delta number of frames between above two values.\n</p>\n</dd>\n<dt>\u2018<samp>pts</samp>\u2019</dt>\n<dd><p>Display current filtered frame pts.\n</p>\n</dd>\n<dt>\u2018<samp>pts_delta</samp>\u2019</dt>\n<dd><p>Display pts delta between current and previous frame.\n</p>\n</dd>\n<dt>\u2018<samp>time</samp>\u2019</dt>\n<dd><p>Display current filtered frame time.\n</p>\n</dd>\n<dt>\u2018<samp>time_delta</samp>\u2019</dt>\n<dd><p>Display time delta between current and previous frame.\n</p>\n</dd>\n<dt>\u2018<samp>timebase</samp>\u2019</dt>\n<dd><p>Display time base for filter link.\n</p>\n</dd>\n<dt>\u2018<samp>format</samp>\u2019</dt>\n<dd><p>Display used format for filter link.\n</p>\n</dd>\n<dt>\u2018<samp>size</samp>\u2019</dt>\n<dd><p>Display video size or number of audio channels in case of audio used by filter link.\n</p>\n</dd>\n<dt>\u2018<samp>rate</samp>\u2019</dt>\n<dd><p>Display video frame rate or sample rate in case of audio used by filter link.\n</p>\n</dd>\n<dt>\u2018<samp>eof</samp>\u2019</dt>\n<dd><p>Display link output status.\n</p>\n</dd>\n<dt>\u2018<samp>sample_count_in</samp>\u2019</dt>\n<dd><p>Display number of samples taken from filter.\n</p>\n</dd>\n<dt>\u2018<samp>sample_count_out</samp>\u2019</dt>\n<dd><p>Display number of samples given out from filter.\n</p>\n</dd>\n<dt>\u2018<samp>sample_count_delta</samp>\u2019</dt>\n<dd><p>Display delta number of samples between above two values.\n</p>\n</dd>\n<dt>\u2018<samp>disabled</samp>\u2019</dt>\n<dd><p>Show the timeline filter status.\n</p></dd>\n</dl>\n</dd>",
+      "default": "queue",
+      "description": "set flags (default queue)",
       "name": "flags",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -193,16 +163,16 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set upper limit for video rate of output stream, Default value is <var>25</var>.\nThis guarantee that output video frame rate will not be higher than this value.\n</p></dd>",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#graphmonitor"

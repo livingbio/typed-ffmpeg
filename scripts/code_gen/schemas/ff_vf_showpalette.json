@@ -1,5 +1,5 @@
 {
-  "description": "### 11.232 showpalette\n\nDisplays the 256 colors palette of each frame. This filter is only relevant\nfor pal8 pixel format frames.\n\nIt accepts the following option:\n\n**s**\n\n    Set the size of the box used to represent one palette color entry. Default is 30 (for a 30x30 pixel box). \n\n",
+  "description": "Display frame palette.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,17 +21,17 @@
         "s"
       ],
       "choices": [],
-      "default": 30,
-      "description": "<dd><p>Set the size of the box used to represent one palette color entry. Default is\n<code>30</code> (for a <code>30x30</code> pixel box).\n</p></dd>",
+      "default": "30",
+      "description": "set pixel box size (from 1 to 100) (default 30)",
       "name": "s",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#showpalette"

@@ -1,0 +1,36 @@
+{
+  "description": "Change video quantization parameters.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "qp",
+  "options": [
+    {
+      "alias": [
+        "qp"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set qp expression",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "qp",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

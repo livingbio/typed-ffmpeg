@@ -1,0 +1,17 @@
+{
+  "description": "Do absolutely nothing with the input audio.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "anullsink",
+  "options": [],
+  "output_types": []
+}

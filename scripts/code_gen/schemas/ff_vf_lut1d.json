@@ -1,5 +1,5 @@
 {
-  "description": "### 11.150 lut1d\n\nApply a 1D LUT to an input video.\n\nThe filter accepts the following options:\n\n**file**\n\n    Set the 1D LUT file name. Currently supported formats: \u2018cube\u2019 Iridas \u2018csp\u2019 cineSpace \n\n**interp**\n\n    Select interpolation mode. Available values are: \u2018nearest\u2019 Use values from the nearest defined point. \u2018linear\u2019 Interpolate values using the linear interpolation. \u2018cosine\u2019 Interpolate values using the cosine interpolation. \u2018cubic\u2019 Interpolate values using the cubic interpolation. \u2018spline\u2019 Interpolate values using the spline interpolation. \n\n",
+  "description": "Adjust colors using a 1D LUT.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "file"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the 1D LUT file name.\n</p>\n<p>Currently supported formats:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>cube</samp>\u2019</dt>\n<dd><p>Iridas\n</p></dd>\n<dt>\u2018<samp>csp</samp>\u2019</dt>\n<dd><p>cineSpace\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set 1D LUT file name",
       "name": "file",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -35,34 +35,34 @@
         {
           "help": "use values from the nearest defined points",
           "name": "nearest",
-          "value": "INTERPOLATE_1D_NEAREST"
+          "value": "0"
         },
         {
           "help": "use values from the linear interpolation",
           "name": "linear",
-          "value": "INTERPOLATE_1D_LINEAR"
+          "value": "1"
         },
         {
           "help": "use values from the cosine interpolation",
           "name": "cosine",
-          "value": "INTERPOLATE_1D_COSINE"
+          "value": "3"
         },
         {
           "help": "use values from the cubic interpolation",
           "name": "cubic",
-          "value": "INTERPOLATE_1D_CUBIC"
+          "value": "2"
         },
         {
           "help": "use values from the spline interpolation",
           "name": "spline",
-          "value": "INTERPOLATE_1D_SPLINE"
+          "value": "4"
         }
       ],
-      "default": "INTERPOLATE_1D_LINEAR",
-      "description": "<dd><p>Select interpolation mode.\n</p>\n<p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>nearest</samp>\u2019</dt>\n<dd><p>Use values from the nearest defined point.\n</p></dd>\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dd><p>Interpolate values using the linear interpolation.\n</p></dd>\n<dt>\u2018<samp>cosine</samp>\u2019</dt>\n<dd><p>Interpolate values using the cosine interpolation.\n</p></dd>\n<dt>\u2018<samp>cubic</samp>\u2019</dt>\n<dd><p>Interpolate values using the cubic interpolation.\n</p></dd>\n<dt>\u2018<samp>spline</samp>\u2019</dt>\n<dd><p>Interpolate values using the spline interpolation.\n</p></dd>\n</dl>\n</dd>",
+      "default": "linear",
+      "description": "select interpolation mode (from 0 to 4) (default linear)",
       "name": "interp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -77,7 +77,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#lut1d"

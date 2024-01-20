@@ -1,5 +1,5 @@
 {
-  "description": "### 11.104 framestep\n\nSelect one frame every N-th frame.\n\nThis filter accepts the following option:\n\n**step**\n\n    Select frame after every step frames. Allowed values are positive integers higher than 0. Default value is 1. \n\n",
+  "description": "Select one frame every N frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "step"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Select frame after every <code>step</code> frames.\nAllowed values are positive integers higher than 0. Default value is <code>1</code>.\n</p></dd>",
+      "default": "1",
+      "description": "set frame step (from 1 to INT_MAX) (default 1)",
       "name": "step",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -40,7 +40,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#framestep"

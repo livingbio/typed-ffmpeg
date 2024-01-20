@@ -1,5 +1,5 @@
 {
-  "description": "### 8.42 aphaser\n\nAdd a phasing effect to the input audio.\n\nA phaser filter creates series of peaks and troughs in the frequency spectrum.\nThe position of the peaks and troughs are modulated so that they vary over\ntime, creating a sweeping effect.\n\nA description of the accepted parameters follows.\n\n**in_gain**\n\n    Set input gain. Default is 0.4. \n\n**out_gain**\n\n    Set output gain. Default is 0.74 \n\n**delay**\n\n    Set delay in milliseconds. Default is 3.0. \n\n**decay**\n\n    Set decay. Default is 0.4. \n\n**speed**\n\n    Set modulation speed in Hz. Default is 0.5. \n\n**type**\n\n    Set modulation type. Default is triangular. It accepts the following values: \u2018triangular, t\u2019 \u2018sinusoidal, s\u2019 \n\n",
+  "description": "Add a phasing effect to the audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,55 +21,55 @@
         "in_gain"
       ],
       "choices": [],
-      "default": 0.4,
-      "description": "<dd><p>Set input gain. Default is 0.4.\n</p>\n</dd>",
+      "default": "0.4",
+      "description": "set input gain (from 0 to 1) (default 0.4)",
       "name": "in_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "out_gain"
       ],
       "choices": [],
-      "default": 0.74,
-      "description": "<dd><p>Set output gain. Default is 0.74\n</p>\n</dd>",
+      "default": "0.74",
+      "description": "set output gain (from 0 to 1e+09) (default 0.74)",
       "name": "out_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "delay"
       ],
       "choices": [],
-      "default": 3.0,
-      "description": "<dd><p>Set delay in milliseconds. Default is 3.0.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set delay in milliseconds (from 0 to 5) (default 3)",
       "name": "delay",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "decay"
       ],
       "choices": [],
-      "default": 0.4,
-      "description": "<dd><p>Set decay. Default is 0.4.\n</p>\n</dd>",
+      "default": "0.4",
+      "description": "set decay (from 0 to 0.99) (default 0.4)",
       "name": "decay",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "speed"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set modulation speed in Hz. Default is 0.5.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set modulation speed (from 0.1 to 2) (default 0.5)",
       "name": "speed",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -77,37 +77,37 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "triangular",
-          "value": "WAVE_TRI"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "t",
-          "value": "WAVE_TRI"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "sinusoidal",
-          "value": "WAVE_SIN"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "s",
-          "value": "WAVE_SIN"
+          "value": "0"
         }
       ],
-      "default": "WAVE_TRI",
-      "description": "<dd><p>Set modulation type. Default is triangular.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>triangular, t</samp>\u2019</dt>\n<dt>\u2018<samp>sinusoidal, s</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "triangular",
+      "description": "set modulation type (from 0 to 1) (default triangular)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#aphaser"

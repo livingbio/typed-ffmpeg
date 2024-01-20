@@ -1,5 +1,5 @@
 {
-  "description": "### 18.30 showwavespic\n\nConvert input audio to a single video frame, representing the samples waves.\n\nThe filter accepts the following options:\n\n**size, s**\n\n    Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is 600x240. \n\n**split_channels**\n\n    Set if channels should be drawn separately or overlap. Default value is 0. \n\n**colors**\n\n    Set colors separated by \u2019|\u2019 which are going to be used for drawing of each channel. \n\n**scale**\n\n    Set amplitude scale. Available values are: \u2018lin\u2019 Linear. \u2018log\u2019 Logarithmic. \u2018sqrt\u2019 Square root. \u2018cbrt\u2019 Cubic root. Default is linear. \n\n**draw**\n\n    Set the draw mode. Available values are: \u2018scale\u2019 Scale pixel values for each drawn sample. \u2018full\u2019 Draw every sample directly. Default value is scale. \n\n**filter**\n\n    Set the filter mode. Available values are: \u2018average\u2019 Use average samples values for each drawn sample. \u2018peak\u2019 Use peak samples values for each drawn sample. Default value is average. \n\n",
+  "description": "Convert input audio to a video output single picture.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -23,21 +23,21 @@
       ],
       "choices": [],
       "default": "600x240",
-      "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>600x240</code>.\n</p>\n</dd>",
+      "description": "set video size (default \"600x240\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "split_channels"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set if channels should be drawn separately or overlap. Default value is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "draw channels separately (default false)",
       "name": "split_channels",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -45,10 +45,10 @@
       ],
       "choices": [],
       "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
-      "description": "<dd><p>Set colors separated by \u2019|\u2019 which are going to be used for drawing of each channel.\n</p>\n</dd>",
+      "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,29 +58,29 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": "SCALE_LIN"
+          "value": "0"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "SCALE_LOG"
+          "value": "1"
         },
         {
           "help": "square root",
           "name": "sqrt",
-          "value": "SCALE_SQRT"
+          "value": "2"
         },
         {
           "help": "cubic root",
           "name": "cbrt",
-          "value": "SCALE_CBRT"
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set amplitude scale.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>lin</samp>\u2019</dt>\n<dd><p>Linear.\n</p>\n</dd>\n<dt>\u2018<samp>log</samp>\u2019</dt>\n<dd><p>Logarithmic.\n</p>\n</dd>\n<dt>\u2018<samp>sqrt</samp>\u2019</dt>\n<dd><p>Square root.\n</p>\n</dd>\n<dt>\u2018<samp>cbrt</samp>\u2019</dt>\n<dd><p>Cubic root.\n</p></dd>\n</dl>\n<p>Default is linear.\n</p>\n</dd>",
+      "default": "lin",
+      "description": "set amplitude scale (from 0 to 3) (default lin)",
       "name": "scale",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -90,19 +90,19 @@
         {
           "help": "scale pixel values for each drawn sample",
           "name": "scale",
-          "value": "DRAW_SCALE"
+          "value": "0"
         },
         {
           "help": "draw every pixel for sample directly",
           "name": "full",
-          "value": "DRAW_FULL"
+          "value": "1"
         }
       ],
-      "default": "DRAW_SCALE",
-      "description": "<dd><p>Set the draw mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>scale</samp>\u2019</dt>\n<dd><p>Scale pixel values for each drawn sample.\n</p>\n</dd>\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Draw every sample directly.\n</p></dd>\n</dl>\n<p>Default value is <code>scale</code>.\n</p>\n</dd>",
+      "default": "scale",
+      "description": "set draw mode (from 0 to 1) (default scale)",
       "name": "draw",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -112,25 +112,25 @@
         {
           "help": "use average samples",
           "name": "average",
-          "value": "FILTER_AVERAGE"
+          "value": "0"
         },
         {
           "help": "use peak samples",
           "name": "peak",
-          "value": "FILTER_PEAK"
+          "value": "1"
         }
       ],
-      "default": "FILTER_AVERAGE",
-      "description": "<dd><p>Set the filter mode.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dd><p>Use average samples values for each drawn sample.\n</p>\n</dd>\n<dt>\u2018<samp>peak</samp>\u2019</dt>\n<dd><p>Use peak samples values for each drawn sample.\n</p></dd>\n</dl>\n<p>Default value is <code>average</code>.\n</p></dd>",
+      "default": "average",
+      "description": "set filter mode (from 0 to 1) (default average)",
       "name": "filter",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#showwavespic"

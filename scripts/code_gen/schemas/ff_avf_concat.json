@@ -1,10 +1,10 @@
 {
-  "description": "### 18.9 concat\n\nConcatenate audio and video streams, joining them together one after the\nother.\n\nThe filter works on segments of synchronized video and audio streams. All\nsegments must have the same number of streams of each type, and that will also\nbe the number of streams at output.\n\nThe filter accepts the following options:\n\n**n**\n\n    Set the number of segments. Default is 2. \n\n**v**\n\n    Set the number of output video streams, that is also the number of video streams in each segment. Default is 1. \n\n**a**\n\n    Set the number of output audio streams, that is also the number of audio streams in each segment. Default is 0. \n\n**unsafe**\n\n    Activate unsafe mode: do not fail if segments have a different format. \n\nThe filter has v+a outputs: first v video outputs, then a audio outputs.\n\nThere are nx(v+a) inputs: first the inputs for the first segment, in the same\norder as the outputs, then the inputs for the second segment, etc.\n\nRelated streams do not always have exactly the same duration, for various\nreasons including codec frame size or sloppy authoring. For that reason,\nrelated synchronized streams (e.g. a video and its audio track) should be\nconcatenated at once. The concat filter will use the duration of the longest\nstream in each segment (except the last one), and if necessary pad shorter\naudio streams with silence.\n\nFor this filter to work correctly, all segments must start at timestamp 0.\n\nAll corresponding streams must have the same parameters in all segments; the\nfiltering system will automatically select a common pixel format for video\nstreams, and a common sample format, sample rate and channel layout for audio\nstreams, but other settings, such as resolution, must be converted explicitly\nby the user.\n\nDifferent frame rates are acceptable but will result in variable frame rate at\noutput; be sure to configure the output file to handle it.\n\n",
+  "description": "Concatenate audio and video streams.",
   "filter_type": "avf",
   "formula_input_typings": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
   "formula_output_typings": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
   "id": "ff_avf_concat",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": true,
   "is_support_framesync": false,
@@ -16,46 +16,46 @@
         "n"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>Set the number of segments. Default is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
       "name": "n",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "v"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set the number of output video streams, that is also the number of video\nstreams in each segment. Default is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
       "name": "v",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "a"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of output audio streams, that is also the number of audio\nstreams in each segment. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
       "name": "a",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "unsafe"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Activate unsafe mode: do not fail if segments have a different format.\n</p>\n</dd>",
+      "default": "false",
+      "description": "enable unsafe mode (default false)",
       "name": "unsafe",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat"
 }

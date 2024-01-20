@@ -1,5 +1,5 @@
 {
-  "description": "### 8.80 crystalizer\n\nSimple algorithm for audio noise sharpening.\n\nThis filter linearly increases differences between each audio sample.\n\nThe filter accepts the following options:\n\n**i**\n\n    Sets the intensity of effect (default: 2.0). Must be in range between -10.0 to 0 (unchanged sound) to 10.0 (maximum effect). To inverse filtering use negative value. \n\n**c**\n\n    Enable clipping. By default is enabled. \n\n",
+  "description": "Simple audio noise sharpening filter.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "i"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>Sets the intensity of effect (default: 2.0). Must be in range between -10.0 to 0\n(unchanged sound) to 10.0 (maximum effect).\nTo inverse filtering use negative value.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set intensity (from -10 to 10) (default 2)",
       "name": "i",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "c"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Enable clipping. By default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "enable clipping (default true)",
       "name": "c",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#crystalizer"

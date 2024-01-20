@@ -1,0 +1,314 @@
+{
+  "description": "Field matching for inverse telecine.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "fieldmatch",
+  "options": [
+    {
+      "alias": [
+        "order"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "auto detect parity",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "assume bottom field first",
+          "name": "bff",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "assume top field first",
+          "name": "tff",
+          "value": "1"
+        }
+      ],
+      "default": "auto",
+      "description": "specify the assumed field order (from -1 to 1) (default auto)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-1",
+      "name": "order",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "2-way match (p/c)",
+          "name": "pc",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "2-way match + 3rd match on combed (p/c + u)",
+          "name": "pc_n",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "2-way match + 3rd match (same order) on combed (p/c + u)",
+          "name": "pc_u",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "2-way match + 3rd match on combed + 4th/5th matches if still combed (p/c + u + u/b)",
+          "name": "pc_n_ub",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "3-way match (p/c/n)",
+          "name": "pcn",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "3-way match + 4th/5th matches on combed (p/c/n + u/b)",
+          "name": "pcn_ub",
+          "value": "5"
+        }
+      ],
+      "default": "pc_n",
+      "description": "set the matching mode or strategy to use (from 0 to 5) (default pc_n)",
+      "flags": "..FV.......",
+      "max": "5",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "ppsrc"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "mark main input as a pre-processed input and activate clean source input stream (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "ppsrc",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "field"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "automatic (same value as 'order')",
+          "name": "auto",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "bottom field",
+          "name": "bottom",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "top field",
+          "name": "top",
+          "value": "1"
+        }
+      ],
+      "default": "auto",
+      "description": "set the field to match from (from -1 to 1) (default auto)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-1",
+      "name": "field",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mchroma"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "set whether or not chroma is included during the match comparisons (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "mchroma",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "y0",
+        "y1"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "y0",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scthresh"
+      ],
+      "choices": [],
+      "default": "12",
+      "description": "set scene change detection threshold (from 0 to 100) (default 12)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "0",
+      "name": "scthresh",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "combmatch"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "disable combmatching",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "enable combmatching only on scene change",
+          "name": "sc",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "enable combmatching all the time",
+          "name": "full",
+          "value": "2"
+        }
+      ],
+      "default": "sc",
+      "description": "set combmatching mode (from 0 to 2) (default sc)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "combmatch",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "combdbg"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "no forced calculation",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "calculate p/c/n",
+          "name": "pcn",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "calculate p/c/n/u/b",
+          "name": "pcnub",
+          "value": "2"
+        }
+      ],
+      "default": "none",
+      "description": "enable comb debug (from 0 to 2) (default none)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "combdbg",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cthresh"
+      ],
+      "choices": [],
+      "default": "9",
+      "description": "set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "-1",
+      "name": "cthresh",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "chroma"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set whether or not chroma is considered in the combed frame decision (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "chroma",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "blockx"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)",
+      "flags": "..FV.......",
+      "max": "512",
+      "min": "4",
+      "name": "blockx",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "blocky"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)",
+      "flags": "..FV.......",
+      "max": "512",
+      "min": "4",
+      "name": "blocky",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "combpel"
+      ],
+      "choices": [],
+      "default": "80",
+      "description": "set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "combpel",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

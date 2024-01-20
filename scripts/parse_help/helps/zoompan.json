@@ -1,0 +1,102 @@
+{
+  "description": "Apply Zoom & Pan effect.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "zoompan",
+  "options": [
+    {
+      "alias": [
+        "zoom",
+        "z"
+      ],
+      "choices": [],
+      "default": "\"1\"",
+      "description": "set the zoom expression (default \"1\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "zoom",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set the x expression (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "x",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set the y expression (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "y",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "d"
+      ],
+      "choices": [],
+      "default": "\"90\"",
+      "description": "set the duration expression (default \"90\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "d",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "s"
+      ],
+      "choices": [],
+      "default": "\"hd720\"",
+      "description": "set the output image size (default \"hd720\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "s",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "fps"
+      ],
+      "choices": [],
+      "default": "\"25\"",
+      "description": "set the output framerate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fps",
+      "typing": "video_rate"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

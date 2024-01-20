@@ -1,5 +1,5 @@
 {
-  "description": "### 11.54 datascope\n\nVideo data analysis filter.\n\nThis filter shows hexadecimal pixel values of part of video.\n\nThe filter accepts the following options:\n\n**size, s**\n\n    Set output video size. \n\n**x**\n\n    Set x offset from where to pick pixels. \n\n**y**\n\n    Set y offset from where to pick pixels. \n\n**mode**\n\n    Set scope mode, can be one of the following: \u2018mono\u2019 Draw hexadecimal pixel values with white color on black background. \u2018color\u2019 Draw hexadecimal pixel values with input video pixel color on black background. \u2018color2\u2019 Draw hexadecimal pixel values on color background picked from input video, the text color is picked in such way so its always visible. \n\n**axis**\n\n    Draw rows and columns numbers on left and top of video. \n\n**opacity**\n\n    Set background opacity. \n\n**format**\n\n    Set display number format. Can be hex, or dec. Default is hex. \n\n**components**\n\n    Set pixel components to display. By default all pixel components are displayed. \n\n",
+  "description": "Video data analysis.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -23,32 +23,32 @@
       ],
       "choices": [],
       "default": "hd720",
-      "description": "<dd><p>Set output video size.\n</p>\n</dd>",
+      "description": "set output size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "x"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set x offset from where to pick pixels.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set x offset (from 0 to INT_MAX) (default 0)",
       "name": "x",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "y"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set y offset from where to pick pixels.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set y offset (from 0 to INT_MAX) (default 0)",
       "name": "y",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -56,48 +56,48 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "mono",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "color",
-          "value": 1
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "color2",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set scope mode, can be one of the following:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>mono</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with white color on black background.\n</p>\n</dd>\n<dt>\u2018<samp>color</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values with input video pixel color on black\nbackground.\n</p>\n</dd>\n<dt>\u2018<samp>color2</samp>\u2019</dt>\n<dd><p>Draw hexadecimal pixel values on color background picked from input video,\nthe text color is picked in such way so its always visible.\n</p></dd>\n</dl>\n</dd>",
+      "default": "mono",
+      "description": "set scope mode (from 0 to 2) (default mono)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "axis"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Draw rows and columns numbers on left and top of video.\n</p>\n</dd>",
+      "default": "false",
+      "description": "draw column/row numbers (default false)",
       "name": "axis",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "opacity"
       ],
       "choices": [],
-      "default": 0.75,
-      "description": "<dd><p>Set background opacity.\n</p>\n</dd>",
+      "default": "0.75",
+      "description": "set background opacity (from 0 to 1) (default 0.75)",
       "name": "opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -105,38 +105,38 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "hex",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "dec",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set display number format. Can be <code>hex</code>, or <code>dec</code>. Default is <code>hex</code>.\n</p>\n</dd>",
+      "default": "hex",
+      "description": "set display number format (from 0 to 1) (default hex)",
       "name": "format",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "components"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set pixel components to display. By default all pixel components are displayed.\n</p></dd>",
+      "default": "15",
+      "description": "set components to display (from 1 to 15) (default 15)",
       "name": "components",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#datascope"

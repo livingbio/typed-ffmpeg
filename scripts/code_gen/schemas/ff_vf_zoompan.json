@@ -1,5 +1,5 @@
 {
-  "description": "### 11.294 zoompan\n\nApply Zoom & Pan effect.\n\nThis filter accepts the following options:\n\n**zoom, z**\n\n    Set the zoom expression. Range is 1-10. Default is 1. \n\n**x**\n\n**y**\n\n    Set the x and y expression. Default is 0. \n\n**d**\n\n    Set the duration expression in number of frames. This sets for how many number of frames effect will last for single input image. Default is 90. \n\n**s**\n\n    Set the output image size, default is \u2019hd720\u2019. \n\n**fps**\n\n    Set the output frame rate, default is \u201925\u2019. \n\nEach expression can contain the following constants:\n\n**in_w, iw**\n\n    Input width. \n\n**in_h, ih**\n\n    Input height. \n\n**out_w, ow**\n\n    Output width. \n\n**out_h, oh**\n\n    Output height. \n\n**in**\n\n    Input frame count. \n\n**on**\n\n    Output frame count. \n\n**in_time, it**\n\n    The input timestamp expressed in seconds. It\u2019s NAN if the input timestamp is unknown. \n\n**out_time, time, ot**\n\n    The output timestamp expressed in seconds. \n\n**x**\n\n**y**\n\n    Last calculated \u2019x\u2019 and \u2019y\u2019 position from \u2019x\u2019 and \u2019y\u2019 expression for current input frame. \n\n**px**\n\n**py**\n\n    \u2019x\u2019 and \u2019y\u2019 of last output frame of previous input frame or 0 when there was not yet such frame (first input frame). \n\n**zoom**\n\n    Last calculated zoom from \u2019z\u2019 expression for current input frame. \n\n**pzoom**\n\n    Last calculated zoom of last output frame of previous input frame. \n\n**duration**\n\n    Number of output frames for current input frame. Calculated from \u2019d\u2019 expression for each input frame. \n\n**pduration**\n\n    number of output frames created for previous input frame \n\n**a**\n\n    Rational number: input width / input height \n\n**sar**\n\n    sample aspect ratio \n\n**dar**\n\n    display aspect ratio \n\n",
+  "description": "Apply Zoom & Pan effect.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -23,10 +23,10 @@
       ],
       "choices": [],
       "default": "1",
-      "description": "<dd><p>Set the zoom expression. Range is 1-10. Default is 1.\n</p>\n</dd>",
+      "description": "set the zoom expression (default \"1\")",
       "name": "zoom",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -34,10 +34,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
+      "description": "set the x expression (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -45,10 +45,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Set the x and y expression. Default is 0.\n</p>\n</dd>",
+      "description": "set the y expression (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -56,10 +56,10 @@
       ],
       "choices": [],
       "default": "90",
-      "description": "<dd><p>Set the duration expression in number of frames.\nThis sets for how many number of frames effect will last for\nsingle input image. Default is 90.\n</p>\n</dd>",
+      "description": "set the duration expression (default \"90\")",
       "name": "d",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -67,10 +67,10 @@
       ],
       "choices": [],
       "default": "hd720",
-      "description": "<dd><p>Set the output image size, default is \u2019hd720\u2019.\n</p>\n</dd>",
+      "description": "set the output image size (default \"hd720\")",
       "name": "s",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -78,16 +78,16 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set the output frame rate, default is \u201925\u2019.\n</p></dd>",
+      "description": "set the output framerate (default \"25\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#zoompan"

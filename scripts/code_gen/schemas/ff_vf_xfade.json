@@ -1,5 +1,5 @@
 {
-  "description": "### 11.288 xfade\n\nApply cross fade from one input video stream to another input video stream.\nThe cross fade is applied for specified duration.\n\nBoth inputs must be constant frame-rate and have the same resolution, pixel\nformat, frame rate and timebase.\n\nThe filter accepts the following options:\n\n**transition**\n\n    Set one of available transition effects: \u2018custom\u2019 \u2018fade\u2019 \u2018wipeleft\u2019 \u2018wiperight\u2019 \u2018wipeup\u2019 \u2018wipedown\u2019 \u2018slideleft\u2019 \u2018slideright\u2019 \u2018slideup\u2019 \u2018slidedown\u2019 \u2018circlecrop\u2019 \u2018rectcrop\u2019 \u2018distance\u2019 \u2018fadeblack\u2019 \u2018fadewhite\u2019 \u2018radial\u2019 \u2018smoothleft\u2019 \u2018smoothright\u2019 \u2018smoothup\u2019 \u2018smoothdown\u2019 \u2018circleopen\u2019 \u2018circleclose\u2019 \u2018vertopen\u2019 \u2018vertclose\u2019 \u2018horzopen\u2019 \u2018horzclose\u2019 \u2018dissolve\u2019 \u2018pixelize\u2019 \u2018diagtl\u2019 \u2018diagtr\u2019 \u2018diagbl\u2019 \u2018diagbr\u2019 \u2018hlslice\u2019 \u2018hrslice\u2019 \u2018vuslice\u2019 \u2018vdslice\u2019 \u2018hblur\u2019 \u2018fadegrays\u2019 \u2018wipetl\u2019 \u2018wipetr\u2019 \u2018wipebl\u2019 \u2018wipebr\u2019 \u2018squeezeh\u2019 \u2018squeezev\u2019 \u2018zoomin\u2019 \u2018fadefast\u2019 \u2018fadeslow\u2019 \u2018hlwind\u2019 \u2018hrwind\u2019 \u2018vuwind\u2019 \u2018vdwind\u2019 \u2018coverleft\u2019 \u2018coverright\u2019 \u2018coverup\u2019 \u2018coverdown\u2019 \u2018revealleft\u2019 \u2018revealright\u2019 \u2018revealup\u2019 \u2018revealdown\u2019 Default transition effect is fade. \n\n**duration**\n\n    Set cross fade duration in seconds. Range is 0 to 60 seconds. Default duration is 1 second. \n\n**offset**\n\n    Set cross fade start relative to first input stream in seconds. Default offset is 0. \n\n**expr**\n\n    Set expression for custom transition effect. The expressions can use the following variables and functions: X Y The coordinates of the current sample. W H The width and height of the image. P Progress of transition effect. PLANE Currently processed plane. A Return value of first input at current location and plane. B Return value of second input at current location and plane. a0(x, y) a1(x, y) a2(x, y) a3(x, y) Return the value of the pixel at location (x,y) of the first/second/third/fourth component of first input. b0(x, y) b1(x, y) b2(x, y) b3(x, y) Return the value of the pixel at location (x,y) of the first/second/third/fourth component of second input. \n\n",
+  "description": "Cross fade one video with another video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "main",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "xfade",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -28,343 +28,283 @@
         {
           "help": "custom transition",
           "name": "custom",
-          "value": "CUSTOM"
+          "value": "-1"
         },
         {
           "help": "fade transition",
           "name": "fade",
-          "value": "FADE"
+          "value": "0"
         },
         {
           "help": "wipe left transition",
           "name": "wipeleft",
-          "value": "WIPELEFT"
+          "value": "1"
         },
         {
           "help": "wipe right transition",
           "name": "wiperight",
-          "value": "WIPERIGHT"
+          "value": "2"
         },
         {
           "help": "wipe up transition",
           "name": "wipeup",
-          "value": "WIPEUP"
+          "value": "3"
         },
         {
           "help": "wipe down transition",
           "name": "wipedown",
-          "value": "WIPEDOWN"
+          "value": "4"
         },
         {
           "help": "slide left transition",
           "name": "slideleft",
-          "value": "SLIDELEFT"
+          "value": "5"
         },
         {
           "help": "slide right transition",
           "name": "slideright",
-          "value": "SLIDERIGHT"
+          "value": "6"
         },
         {
           "help": "slide up transition",
           "name": "slideup",
-          "value": "SLIDEUP"
+          "value": "7"
         },
         {
           "help": "slide down transition",
           "name": "slidedown",
-          "value": "SLIDEDOWN"
+          "value": "8"
         },
         {
           "help": "circle crop transition",
           "name": "circlecrop",
-          "value": "CIRCLECROP"
+          "value": "9"
         },
         {
           "help": "rect crop transition",
           "name": "rectcrop",
-          "value": "RECTCROP"
+          "value": "10"
         },
         {
           "help": "distance transition",
           "name": "distance",
-          "value": "DISTANCE"
+          "value": "11"
         },
         {
           "help": "fadeblack transition",
           "name": "fadeblack",
-          "value": "FADEBLACK"
+          "value": "12"
         },
         {
           "help": "fadewhite transition",
           "name": "fadewhite",
-          "value": "FADEWHITE"
+          "value": "13"
         },
         {
           "help": "radial transition",
           "name": "radial",
-          "value": "RADIAL"
+          "value": "14"
         },
         {
           "help": "smoothleft transition",
           "name": "smoothleft",
-          "value": "SMOOTHLEFT"
+          "value": "15"
         },
         {
           "help": "smoothright transition",
           "name": "smoothright",
-          "value": "SMOOTHRIGHT"
+          "value": "16"
         },
         {
           "help": "smoothup transition",
           "name": "smoothup",
-          "value": "SMOOTHUP"
+          "value": "17"
         },
         {
           "help": "smoothdown transition",
           "name": "smoothdown",
-          "value": "SMOOTHDOWN"
+          "value": "18"
         },
         {
           "help": "circleopen transition",
           "name": "circleopen",
-          "value": "CIRCLEOPEN"
+          "value": "19"
         },
         {
           "help": "circleclose transition",
           "name": "circleclose",
-          "value": "CIRCLECLOSE"
+          "value": "20"
         },
         {
           "help": "vert open transition",
           "name": "vertopen",
-          "value": "VERTOPEN"
+          "value": "21"
         },
         {
           "help": "vert close transition",
           "name": "vertclose",
-          "value": "VERTCLOSE"
+          "value": "22"
         },
         {
           "help": "horz open transition",
           "name": "horzopen",
-          "value": "HORZOPEN"
+          "value": "23"
         },
         {
           "help": "horz close transition",
           "name": "horzclose",
-          "value": "HORZCLOSE"
+          "value": "24"
         },
         {
           "help": "dissolve transition",
           "name": "dissolve",
-          "value": "DISSOLVE"
+          "value": "25"
         },
         {
           "help": "pixelize transition",
           "name": "pixelize",
-          "value": "PIXELIZE"
+          "value": "26"
         },
         {
           "help": "diag tl transition",
           "name": "diagtl",
-          "value": "DIAGTL"
+          "value": "27"
         },
         {
           "help": "diag tr transition",
           "name": "diagtr",
-          "value": "DIAGTR"
+          "value": "28"
         },
         {
           "help": "diag bl transition",
           "name": "diagbl",
-          "value": "DIAGBL"
+          "value": "29"
         },
         {
           "help": "diag br transition",
           "name": "diagbr",
-          "value": "DIAGBR"
+          "value": "30"
         },
         {
           "help": "hl slice transition",
           "name": "hlslice",
-          "value": "HLSLICE"
+          "value": "31"
         },
         {
           "help": "hr slice transition",
           "name": "hrslice",
-          "value": "HRSLICE"
+          "value": "32"
         },
         {
           "help": "vu slice transition",
           "name": "vuslice",
-          "value": "VUSLICE"
+          "value": "33"
         },
         {
           "help": "vd slice transition",
           "name": "vdslice",
-          "value": "VDSLICE"
+          "value": "34"
         },
         {
           "help": "hblur transition",
           "name": "hblur",
-          "value": "HBLUR"
+          "value": "35"
         },
         {
           "help": "fadegrays transition",
           "name": "fadegrays",
-          "value": "FADEGRAYS"
+          "value": "36"
         },
         {
           "help": "wipe tl transition",
           "name": "wipetl",
-          "value": "WIPETL"
+          "value": "37"
         },
         {
           "help": "wipe tr transition",
           "name": "wipetr",
-          "value": "WIPETR"
+          "value": "38"
         },
         {
           "help": "wipe bl transition",
           "name": "wipebl",
-          "value": "WIPEBL"
+          "value": "39"
         },
         {
           "help": "wipe br transition",
           "name": "wipebr",
-          "value": "WIPEBR"
+          "value": "40"
         },
         {
           "help": "squeeze h transition",
           "name": "squeezeh",
-          "value": "SQUEEZEH"
+          "value": "41"
         },
         {
           "help": "squeeze v transition",
           "name": "squeezev",
-          "value": "SQUEEZEV"
+          "value": "42"
         },
         {
           "help": "zoom in transition",
           "name": "zoomin",
-          "value": "ZOOMIN"
+          "value": "43"
         },
         {
           "help": "fast fade transition",
           "name": "fadefast",
-          "value": "FADEFAST"
+          "value": "44"
         },
         {
           "help": "slow fade transition",
           "name": "fadeslow",
-          "value": "FADESLOW"
-        },
-        {
-          "help": "hl wind transition",
-          "name": "hlwind",
-          "value": "HLWIND"
-        },
-        {
-          "help": "hr wind transition",
-          "name": "hrwind",
-          "value": "HRWIND"
-        },
-        {
-          "help": "vu wind transition",
-          "name": "vuwind",
-          "value": "VUWIND"
-        },
-        {
-          "help": "vd wind transition",
-          "name": "vdwind",
-          "value": "VDWIND"
-        },
-        {
-          "help": "cover left transition",
-          "name": "coverleft",
-          "value": "COVERLEFT"
-        },
-        {
-          "help": "cover right transition",
-          "name": "coverright",
-          "value": "COVERRIGHT"
-        },
-        {
-          "help": "cover up transition",
-          "name": "coverup",
-          "value": "COVERUP"
-        },
-        {
-          "help": "cover down transition",
-          "name": "coverdown",
-          "value": "COVERDOWN"
-        },
-        {
-          "help": "reveal left transition",
-          "name": "revealleft",
-          "value": "REVEALLEFT"
-        },
-        {
-          "help": "reveal right transition",
-          "name": "revealright",
-          "value": "REVEALRIGHT"
-        },
-        {
-          "help": "reveal up transition",
-          "name": "revealup",
-          "value": "REVEALUP"
-        },
-        {
-          "help": "reveal down transition",
-          "name": "revealdown",
-          "value": "REVEALDOWN"
+          "value": "45"
         }
       ],
-      "default": "FADE",
-      "description": "<dd><p>Set one of available transition effects:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>custom</samp>\u2019</dt>\n<dt>\u2018<samp>fade</samp>\u2019</dt>\n<dt>\u2018<samp>wipeleft</samp>\u2019</dt>\n<dt>\u2018<samp>wiperight</samp>\u2019</dt>\n<dt>\u2018<samp>wipeup</samp>\u2019</dt>\n<dt>\u2018<samp>wipedown</samp>\u2019</dt>\n<dt>\u2018<samp>slideleft</samp>\u2019</dt>\n<dt>\u2018<samp>slideright</samp>\u2019</dt>\n<dt>\u2018<samp>slideup</samp>\u2019</dt>\n<dt>\u2018<samp>slidedown</samp>\u2019</dt>\n<dt>\u2018<samp>circlecrop</samp>\u2019</dt>\n<dt>\u2018<samp>rectcrop</samp>\u2019</dt>\n<dt>\u2018<samp>distance</samp>\u2019</dt>\n<dt>\u2018<samp>fadeblack</samp>\u2019</dt>\n<dt>\u2018<samp>fadewhite</samp>\u2019</dt>\n<dt>\u2018<samp>radial</samp>\u2019</dt>\n<dt>\u2018<samp>smoothleft</samp>\u2019</dt>\n<dt>\u2018<samp>smoothright</samp>\u2019</dt>\n<dt>\u2018<samp>smoothup</samp>\u2019</dt>\n<dt>\u2018<samp>smoothdown</samp>\u2019</dt>\n<dt>\u2018<samp>circleopen</samp>\u2019</dt>\n<dt>\u2018<samp>circleclose</samp>\u2019</dt>\n<dt>\u2018<samp>vertopen</samp>\u2019</dt>\n<dt>\u2018<samp>vertclose</samp>\u2019</dt>\n<dt>\u2018<samp>horzopen</samp>\u2019</dt>\n<dt>\u2018<samp>horzclose</samp>\u2019</dt>\n<dt>\u2018<samp>dissolve</samp>\u2019</dt>\n<dt>\u2018<samp>pixelize</samp>\u2019</dt>\n<dt>\u2018<samp>diagtl</samp>\u2019</dt>\n<dt>\u2018<samp>diagtr</samp>\u2019</dt>\n<dt>\u2018<samp>diagbl</samp>\u2019</dt>\n<dt>\u2018<samp>diagbr</samp>\u2019</dt>\n<dt>\u2018<samp>hlslice</samp>\u2019</dt>\n<dt>\u2018<samp>hrslice</samp>\u2019</dt>\n<dt>\u2018<samp>vuslice</samp>\u2019</dt>\n<dt>\u2018<samp>vdslice</samp>\u2019</dt>\n<dt>\u2018<samp>hblur</samp>\u2019</dt>\n<dt>\u2018<samp>fadegrays</samp>\u2019</dt>\n<dt>\u2018<samp>wipetl</samp>\u2019</dt>\n<dt>\u2018<samp>wipetr</samp>\u2019</dt>\n<dt>\u2018<samp>wipebl</samp>\u2019</dt>\n<dt>\u2018<samp>wipebr</samp>\u2019</dt>\n<dt>\u2018<samp>squeezeh</samp>\u2019</dt>\n<dt>\u2018<samp>squeezev</samp>\u2019</dt>\n<dt>\u2018<samp>zoomin</samp>\u2019</dt>\n<dt>\u2018<samp>fadefast</samp>\u2019</dt>\n<dt>\u2018<samp>fadeslow</samp>\u2019</dt>\n<dt>\u2018<samp>hlwind</samp>\u2019</dt>\n<dt>\u2018<samp>hrwind</samp>\u2019</dt>\n<dt>\u2018<samp>vuwind</samp>\u2019</dt>\n<dt>\u2018<samp>vdwind</samp>\u2019</dt>\n<dt>\u2018<samp>coverleft</samp>\u2019</dt>\n<dt>\u2018<samp>coverright</samp>\u2019</dt>\n<dt>\u2018<samp>coverup</samp>\u2019</dt>\n<dt>\u2018<samp>coverdown</samp>\u2019</dt>\n<dt>\u2018<samp>revealleft</samp>\u2019</dt>\n<dt>\u2018<samp>revealright</samp>\u2019</dt>\n<dt>\u2018<samp>revealup</samp>\u2019</dt>\n<dt>\u2018<samp>revealdown</samp>\u2019</dt>\n</dl>\n<p>Default transition effect is fade.\n</p>\n</dd>",
+      "default": "fade",
+      "description": "set cross fade transition (from -1 to 45) (default fade)",
       "name": "transition",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "duration"
       ],
       "choices": [],
-      "default": 1000000,
-      "description": "<dd><p>Set cross fade duration in seconds.\nRange is 0 to 60 seconds.\nDefault duration is 1 second.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set cross fade duration (default 1)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "offset"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set cross fade start relative to first input stream in seconds.\nDefault offset is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set cross fade start relative to first input stream (default 0)",
       "name": "offset",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set expression for custom transition effect.\n</p>\n<p>The expressions can use the following variables and functions:\n</p>\n<dl compact=\"compact\">\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>The coordinates of the current sample.\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>The width and height of the image.\n</p>\n</dd>\n<dt><samp>P</samp></dt>\n<dd><p>Progress of transition effect.\n</p>\n</dd>\n<dt><samp>PLANE</samp></dt>\n<dd><p>Currently processed plane.\n</p>\n</dd>\n<dt><samp>A</samp></dt>\n<dd><p>Return value of first input at current location and plane.\n</p>\n</dd>\n<dt><samp>B</samp></dt>\n<dd><p>Return value of second input at current location and plane.\n</p>\n</dd>\n<dt><samp>a0(x, y)</samp></dt>\n<dt><samp>a1(x, y)</samp></dt>\n<dt><samp>a2(x, y)</samp></dt>\n<dt><samp>a3(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nfirst/second/third/fourth component of first input.\n</p>\n</dd>\n<dt><samp>b0(x, y)</samp></dt>\n<dt><samp>b1(x, y)</samp></dt>\n<dt><samp>b2(x, y)</samp></dt>\n<dt><samp>b3(x, y)</samp></dt>\n<dd><p>Return the value of the pixel at location (<var>x</var>,<var>y</var>) of the\nfirst/second/third/fourth component of second input.\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set expression for custom transition",
       "name": "expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#xfade"

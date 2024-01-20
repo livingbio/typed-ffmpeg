@@ -1,5 +1,5 @@
 {
-  "description": "### 8.114 surround\n\nApply audio surround upmix filter.\n\nThis filter allows to produce multichannel output from audio stream.\n\nThe filter accepts the following options:\n\n**chl_out**\n\n    Set output channel layout. By default, this is 5.1. See (ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual for the required syntax. \n\n**chl_in**\n\n    Set input channel layout. By default, this is stereo. See (ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual for the required syntax. \n\n**level_in**\n\n    Set input volume level. By default, this is 1. \n\n**level_out**\n\n    Set output volume level. By default, this is 1. \n\n**lfe**\n\n    Enable LFE channel output if output channel layout has it. By default, this is enabled. \n\n**lfe_low**\n\n    Set LFE low cut off frequency. By default, this is 128 Hz. \n\n**lfe_high**\n\n    Set LFE high cut off frequency. By default, this is 256 Hz. \n\n**lfe_mode**\n\n    Set LFE mode, can be add or sub. Default is add. In add mode, LFE channel is created from input audio and added to output. In sub mode, LFE channel is created from input audio and added to output but also all non-LFE output channels are subtracted with output LFE channel. \n\n**smooth**\n\n    Set temporal smoothness strength, used to gradually change factors when transforming stereo sound in time. Allowed range is from 0.0 to 1.0. Useful to improve output quality with focus option values greater than 0.0. Default is 0.0. Only values inside this range and without edges are effective. \n\n**angle**\n\n    Set angle of stereo surround transform, Allowed range is from 0 to 360. Default is 90. \n\n**focus**\n\n    Set focus of stereo surround transform, Allowed range is from -1 to 1. Default is 0. \n\n**fc_in**\n\n    Set front center input volume. By default, this is 1. \n\n**fc_out**\n\n    Set front center output volume. By default, this is 1. \n\n**fl_in**\n\n    Set front left input volume. By default, this is 1. \n\n**fl_out**\n\n    Set front left output volume. By default, this is 1. \n\n**fr_in**\n\n    Set front right input volume. By default, this is 1. \n\n**fr_out**\n\n    Set front right output volume. By default, this is 1. \n\n**sl_in**\n\n    Set side left input volume. By default, this is 1. \n\n**sl_out**\n\n    Set side left output volume. By default, this is 1. \n\n**sr_in**\n\n    Set side right input volume. By default, this is 1. \n\n**sr_out**\n\n    Set side right output volume. By default, this is 1. \n\n**bl_in**\n\n    Set back left input volume. By default, this is 1. \n\n**bl_out**\n\n    Set back left output volume. By default, this is 1. \n\n**br_in**\n\n    Set back right input volume. By default, this is 1. \n\n**br_out**\n\n    Set back right output volume. By default, this is 1. \n\n**bc_in**\n\n    Set back center input volume. By default, this is 1. \n\n**bc_out**\n\n    Set back center output volume. By default, this is 1. \n\n**lfe_in**\n\n    Set LFE input volume. By default, this is 1. \n\n**lfe_out**\n\n    Set LFE output volume. By default, this is 1. \n\n**allx**\n\n    Set spread usage of stereo image across X axis for all channels. Allowed range is from -1 to 15. By default this value is negative -1, and thus unused. \n\n**ally**\n\n    Set spread usage of stereo image across Y axis for all channels. Allowed range is from -1 to 15. By default this value is negative -1, and thus unused. \n\n**fcx, flx, frx, blx, brx, slx, srx, bcx**\n\n    Set spread usage of stereo image across X axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5. \n\n**fcy, fly, fry, bly, bry, sly, sry, bcy**\n\n    Set spread usage of stereo image across Y axis for each channel. Allowed range is from 0.06 to 15. By default this value is 0.5. \n\n**win_size**\n\n    Set window size. Allowed range is from 1024 to 65536. Default size is 4096. \n\n**win_func**\n\n    Set window function. It accepts the following values: \u2018rect\u2019 \u2018bartlett\u2019 \u2018hann, hanning\u2019 \u2018hamming\u2019 \u2018blackman\u2019 \u2018welch\u2019 \u2018flattop\u2019 \u2018bharris\u2019 \u2018bnuttall\u2019 \u2018bhann\u2019 \u2018sine\u2019 \u2018nuttall\u2019 \u2018lanczos\u2019 \u2018gauss\u2019 \u2018tukey\u2019 \u2018dolph\u2019 \u2018cauchy\u2019 \u2018parzen\u2019 \u2018poisson\u2019 \u2018bohman\u2019 \u2018kaiser\u2019 Default is hann. \n\n**overlap**\n\n    Set window overlap. If set to 1, the recommended overlap for selected window function will be picked. Default is 0.5. \n\n",
+  "description": "Apply audio surround upmix filter.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "5.1",
-      "description": "<dd><p>Set output channel layout. By default, this is <var>5.1</var>.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p>\n</dd>",
+      "description": "set output channel layout (default \"5.1\")",
       "name": "chl_out",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,65 +33,65 @@
       ],
       "choices": [],
       "default": "stereo",
-      "description": "<dd><p>Set input channel layout. By default, this is <var>stereo</var>.\n</p>\n<p>See <a href=\"ffmpeg-utils.html#channel-layout-syntax\">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>\nfor the required syntax.\n</p>\n</dd>",
+      "description": "set input channel layout (default \"stereo\")",
       "name": "chl_in",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "level_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input volume level. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input level (from 0 to 10) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "level_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set output volume level. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output level (from 0 to 10) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "lfe"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Enable LFE channel output if output channel layout has it. By default, this is enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "output LFE (default true)",
       "name": "lfe",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "lfe_low"
       ],
       "choices": [],
-      "default": 128,
-      "description": "<dd><p>Set LFE low cut off frequency. By default, this is <var>128</var> Hz.\n</p>\n</dd>",
+      "default": "128",
+      "description": "LFE low cut off (from 0 to 256) (default 128)",
       "name": "lfe_low",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "lfe_high"
       ],
       "choices": [],
-      "default": 256,
-      "description": "<dd><p>Set LFE high cut off frequency. By default, this is <var>256</var> Hz.\n</p>\n</dd>",
+      "default": "256",
+      "description": "LFE high cut off (from 0 to 512) (default 256)",
       "name": "lfe_high",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -101,459 +101,459 @@
         {
           "help": "just add LFE channel",
           "name": "add",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "subtract LFE channel with others",
+          "help": "substract LFE channel with others",
           "name": "sub",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set LFE mode, can be <var>add</var> or <var>sub</var>. Default is <var>add</var>.\nIn <var>add</var> mode, LFE channel is created from input audio and added to output.\nIn <var>sub</var> mode, LFE channel is created from input audio and added to output but\nalso all non-LFE output channels are subtracted with output LFE channel.\n</p>\n</dd>",
+      "default": "add",
+      "description": "set LFE channel mode (from 0 to 1) (default add)",
       "name": "lfe_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "smooth"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set temporal smoothness strength, used to gradually change factors when transforming\nstereo sound in time. Allowed range is from <var>0.0</var> to <var>1.0</var>.\nUseful to improve output quality with <var>focus</var> option values greater than <var>0.0</var>.\nDefault is <var>0.0</var>. Only values inside this range and without edges are effective.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set temporal smoothness strength (from 0 to 1) (default 0)",
       "name": "smooth",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "angle"
       ],
       "choices": [],
-      "default": 90.0,
-      "description": "<dd><p>Set angle of stereo surround transform, Allowed range is from <var>0</var> to <var>360</var>.\nDefault is <var>90</var>.\n</p>\n</dd>",
+      "default": "90",
+      "description": "set soundfield transform angle (from 0 to 360) (default 90)",
       "name": "angle",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "focus"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set focus of stereo surround transform, Allowed range is from <var>-1</var> to <var>1</var>.\nDefault is <var>0</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set soundfield transform focus (from -1 to 1) (default 0)",
       "name": "focus",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fc_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set front center input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set front center channel input level (from 0 to 10) (default 1)",
       "name": "fc_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fc_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set front center output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set front center channel output level (from 0 to 10) (default 1)",
       "name": "fc_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fl_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set front left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set front left channel input level (from 0 to 10) (default 1)",
       "name": "fl_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fl_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set front left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set front left channel output level (from 0 to 10) (default 1)",
       "name": "fl_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fr_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set front right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set front right channel input level (from 0 to 10) (default 1)",
       "name": "fr_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fr_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set front right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set front right channel output level (from 0 to 10) (default 1)",
       "name": "fr_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "sl_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set side left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set side left channel input level (from 0 to 10) (default 1)",
       "name": "sl_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "sl_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set side left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set side left channel output level (from 0 to 10) (default 1)",
       "name": "sl_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "sr_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set side right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set side right channel input level (from 0 to 10) (default 1)",
       "name": "sr_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "sr_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set side right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set side right channel output level (from 0 to 10) (default 1)",
       "name": "sr_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bl_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set back left input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set back left channel input level (from 0 to 10) (default 1)",
       "name": "bl_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bl_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set back left output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set back left channel output level (from 0 to 10) (default 1)",
       "name": "bl_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "br_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set back right input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set back right channel input level (from 0 to 10) (default 1)",
       "name": "br_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "br_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set back right output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set back right channel output level (from 0 to 10) (default 1)",
       "name": "br_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bc_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set back center input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set back center channel input level (from 0 to 10) (default 1)",
       "name": "bc_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bc_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set back center output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set back center channel output level (from 0 to 10) (default 1)",
       "name": "bc_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "lfe_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set LFE input volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set lfe channel input level (from 0 to 10) (default 1)",
       "name": "lfe_in",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "lfe_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set LFE output volume. By default, this is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set lfe channel output level (from 0 to 10) (default 1)",
       "name": "lfe_out",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "allx"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for all channels.\nAllowed range is from <var>-1</var> to <var>15</var>.\nBy default this value is negative <var>-1</var>, and thus unused.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set all channel's x spread (from -1 to 15) (default -1)",
       "name": "allx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "ally"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for all channels.\nAllowed range is from <var>-1</var> to <var>15</var>.\nBy default this value is negative <var>-1</var>, and thus unused.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set all channel's y spread (from -1 to 15) (default -1)",
       "name": "ally",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fcx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set front center channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "fcx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "flx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set front left channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "flx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "frx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set front right channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "frx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "blx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set back left channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "blx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "brx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set back right channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "brx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "slx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set side left channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "slx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "srx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set side right channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "srx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bcx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across X axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set back center channel x spread (from 0.06 to 15) (default 0.5)",
       "name": "bcx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fcy"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set front center channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "fcy",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fly"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set front left channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "fly",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "fry"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set front right channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "fry",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bly"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set back left channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "bly",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bry"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set back right channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "bry",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "sly"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set side left channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "sly",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "sry"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set side right channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "sry",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bcy"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set spread usage of stereo image across Y axis for each channel.\nAllowed range is from <var>0.06</var> to <var>15</var>.\nBy default this value is <var>0.5</var>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set back center channel y spread (from 0.06 to 15) (default 0.5)",
       "name": "bcy",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "win_size"
       ],
       "choices": [],
-      "default": 4096,
-      "description": "<dd><p>Set window size. Allowed range is from <var>1024</var> to <var>65536</var>. Default size is <var>4096</var>.\n</p>\n</dd>",
+      "default": "4096",
+      "description": "set window size (from 1024 to 65536) (default 4096)",
       "name": "win_size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -563,136 +563,136 @@
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         }
       ],
-      "default": "WFUNC_HANNING",
-      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "overlap"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set window overlap. If set to 1, the recommended overlap for selected\nwindow function will be picked. Default is <code>0.5</code>.\n</p></dd>",
+      "default": "0.5",
+      "description": "set window overlap (from 0 to 1) (default 0.5)",
       "name": "overlap",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#surround"

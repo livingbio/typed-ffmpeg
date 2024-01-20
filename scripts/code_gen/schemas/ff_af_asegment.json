@@ -1,5 +1,5 @@
 {
-  "description": "### 18.16 segment, asegment\n\nSplit single input stream into multiple streams.\n\nThis filter does opposite of concat filters.\n\n`segment` works on video frames, `asegment` on audio samples.\n\nThis filter accepts the following options:\n\n**timestamps**\n\n    Timestamps of output segments separated by \u2019|\u2019. The first segment will run from the beginning of the input stream. The last segment will run until the end of the input stream \n\n**frames, samples**\n\n    Exact frame/sample count to split the segments. \n\nIn all cases, prefixing an each segment with \u2019+\u2019 will make it relative to the\nprevious segment.\n\n",
+  "description": "Segment audio stream.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": "[StreamType.audio] * len(str(timestamps or samples).split('|'))",
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,24 +21,24 @@
         "timestamps"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Timestamps of output segments separated by \u2019|\u2019. The first segment will run\nfrom the beginning of the input stream. The last segment will run until\nthe end of the input stream\n</p>\n</dd>",
+      "default": null,
+      "description": "timestamps of input at which to split input",
       "name": "timestamps",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "samples"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Exact frame/sample count to split the segments.\n</p></dd>",
+      "default": null,
+      "description": "samples at which to split input",
       "name": "samples",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment"
 }

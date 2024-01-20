@@ -1,0 +1,118 @@
+{
+  "description": "Draw a colored grid on the input video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "drawgrid",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set horizontal offset (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "x",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set vertical offset (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "y",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set width of grid cell (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "width",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "height",
+        "h"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set height of grid cell (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "height",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "color",
+        "c"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set color of the grid (default \"black\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "color",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "thickness",
+        "t"
+      ],
+      "choices": [],
+      "default": "\"1\"",
+      "description": "set grid line thickness (default \"1\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "thickness",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "replace"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "replace color & alpha (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "replace",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

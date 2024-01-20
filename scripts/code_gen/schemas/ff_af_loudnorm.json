@@ -1,5 +1,5 @@
 {
-  "description": "### 8.97 loudnorm\n\nEBU R128 loudness normalization. Includes both dynamic and linear\nnormalization modes. Support for both single pass (livestreams, files) and\ndouble pass (files) modes. This algorithm can target IL, LRA, and maximum true\npeak. In dynamic mode, to accurately detect true peaks, the audio stream will\nbe upsampled to 192 kHz. Use the `-ar` option or `aresample` filter to\nexplicitly set an output sample rate.\n\nThe filter accepts the following options:\n\n**I, i**\n\n    Set integrated loudness target. Range is -70.0 - -5.0. Default value is -24.0. \n\n**LRA, lra**\n\n    Set loudness range target. Range is 1.0 - 50.0. Default value is 7.0. \n\n**TP, tp**\n\n    Set maximum true peak. Range is -9.0 - +0.0. Default value is -2.0. \n\n**measured_I, measured_i**\n\n    Measured IL of input file. Range is -99.0 - +0.0. \n\n**measured_LRA, measured_lra**\n\n    Measured LRA of input file. Range is 0.0 - 99.0. \n\n**measured_TP, measured_tp**\n\n    Measured true peak of input file. Range is -99.0 - +99.0. \n\n**measured_thresh**\n\n    Measured threshold of input file. Range is -99.0 - +0.0. \n\n**offset**\n\n    Set offset gain. Gain is applied before the true-peak limiter. Range is -99.0 - +99.0. Default is +0.0. \n\n**linear**\n\n    Normalize by linearly scaling the source audio. measured_I, measured_LRA, measured_TP, and measured_thresh must all be specified. Target LRA shouldn\u2019t be lower than source LRA and the change in integrated loudness shouldn\u2019t result in a true peak which exceeds the target TP. If any of these conditions aren\u2019t met, normalization mode will revert to dynamic. Options are true or false. Default is true. \n\n**dual_mono**\n\n    Treat mono input files as \"dual-mono\". If a mono file is intended for playback on a stereo system, its EBU R128 measurement will be perceptually incorrect. If set to true, this option will compensate for this effect. Multi-channel input files are not affected by this option. Options are true or false. Default is false. \n\n**print_format**\n\n    Set print format for stats. Options are summary, json, or none. Default value is none. \n\n",
+  "description": "EBU R128 loudness normalization",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "i"
       ],
       "choices": [],
-      "default": -24.0,
-      "description": "<dd><p>Set integrated loudness target.\nRange is -70.0 - -5.0. Default value is -24.0.\n</p>\n</dd>",
+      "default": "-24",
+      "description": "set integrated loudness target (from -70 to -5) (default -24)",
       "name": "I",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -34,11 +34,11 @@
         "lra"
       ],
       "choices": [],
-      "default": 7.0,
-      "description": "<dd><p>Set loudness range target.\nRange is 1.0 - 50.0. Default value is 7.0.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set loudness range target (from 1 to 50) (default 7)",
       "name": "LRA",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -46,11 +46,11 @@
         "tp"
       ],
       "choices": [],
-      "default": -2.0,
-      "description": "<dd><p>Set maximum true peak.\nRange is -9.0 - +0.0. Default value is -2.0.\n</p>\n</dd>",
+      "default": "-2",
+      "description": "set maximum true peak (from -9 to 0) (default -2)",
       "name": "TP",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -58,11 +58,11 @@
         "measured_i"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Measured IL of input file.\nRange is -99.0 - +0.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "measured IL of input file (from -99 to 0) (default 0)",
       "name": "measured_I",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -70,11 +70,11 @@
         "measured_lra"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Measured LRA of input file.\nRange is  0.0 - 99.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "measured LRA of input file (from 0 to 99) (default 0)",
       "name": "measured_LRA",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -82,55 +82,55 @@
         "measured_tp"
       ],
       "choices": [],
-      "default": 99.0,
-      "description": "<dd><p>Measured true peak of input file.\nRange is  -99.0 - +99.0.\n</p>\n</dd>",
+      "default": "99",
+      "description": "measured true peak of input file (from -99 to 99) (default 99)",
       "name": "measured_TP",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "measured_thresh"
       ],
       "choices": [],
-      "default": -70.0,
-      "description": "<dd><p>Measured threshold of input file.\nRange is -99.0 - +0.0.\n</p>\n</dd>",
+      "default": "-70",
+      "description": "measured threshold of input file (from -99 to 0) (default -70)",
       "name": "measured_thresh",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "offset"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set offset gain. Gain is applied before the true-peak limiter.\nRange is  -99.0 - +99.0. Default is +0.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set offset gain (from -99 to 99) (default 0)",
       "name": "offset",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "linear"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Normalize by linearly scaling the source audio.\n<code>measured_I</code>, <code>measured_LRA</code>, <code>measured_TP</code>,\nand <code>measured_thresh</code> must all be specified. Target LRA shouldn\u2019t\nbe lower than source LRA and the change in integrated loudness shouldn\u2019t\nresult in a true peak which exceeds the target TP. If any of these\nconditions aren\u2019t met, normalization mode will revert to <var>dynamic</var>.\nOptions are <code>true</code> or <code>false</code>. Default is <code>true</code>.\n</p>\n</dd>",
+      "default": "true",
+      "description": "normalize linearly if possible (default true)",
       "name": "linear",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "dual_mono"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Treat mono input files as \"dual-mono\". If a mono file is intended for playback\non a stereo system, its EBU R128 measurement will be perceptually incorrect.\nIf set to <code>true</code>, this option will compensate for this effect.\nMulti-channel input files are not affected by this option.\nOptions are true or false. Default is false.\n</p>\n</dd>",
+      "default": "false",
+      "description": "treat mono input as dual-mono (default false)",
       "name": "dual_mono",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -138,32 +138,32 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "none",
-          "value": "NONE"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "json",
-          "value": "JSON"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "summary",
-          "value": "SUMMARY"
+          "value": "2"
         }
       ],
-      "default": "NONE",
-      "description": "<dd><p>Set print format for stats. Options are summary, json, or none.\nDefault value is none.\n</p></dd>",
+      "default": "none",
+      "description": "set print format for stats (from 0 to 2) (default none)",
       "name": "print_format",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#loudnorm"

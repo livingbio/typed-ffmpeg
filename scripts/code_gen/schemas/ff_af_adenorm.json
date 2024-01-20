@@ -1,5 +1,5 @@
 {
-  "description": "### 8.13 adenorm\n\nRemedy denormals in audio by adding extremely low-level noise.\n\nThis filter shall be placed before any filter that can produce denormals.\n\nA description of the accepted parameters follows.\n\n**level**\n\n    Set level of added noise in dB. Default is -351. Allowed range is from -451 to -90. \n\n**type**\n\n    Set type of added noise. dc Add DC signal. ac Add AC signal. square Add square signal. pulse Add pulse signal. Default is dc. \n\n",
+  "description": "Remedy denormals by adding extremely low-level noise.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "level"
       ],
       "choices": [],
-      "default": -351.0,
-      "description": "<dd><p>Set level of added noise in dB. Default is <code>-351</code>.\nAllowed range is from -451 to -90.\n</p>\n</dd>",
+      "default": "-351",
+      "description": "set level (from -451 to -90) (default -351)",
       "name": "level",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -33,31 +33,31 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "dc",
-          "value": "DC_TYPE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ac",
-          "value": "AC_TYPE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "square",
-          "value": "SQ_TYPE"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pulse",
-          "value": "PS_TYPE"
+          "value": "3"
         }
       ],
-      "default": "DC_TYPE",
-      "description": "<dd><p>Set type of added noise.\n</p>\n<dl compact=\"compact\">\n<dt><samp>dc</samp></dt>\n<dd><p>Add DC signal.\n</p></dd>\n<dt><samp>ac</samp></dt>\n<dd><p>Add AC signal.\n</p></dd>\n<dt><samp>square</samp></dt>\n<dd><p>Add square signal.\n</p></dd>\n<dt><samp>pulse</samp></dt>\n<dd><p>Add pulse signal.\n</p></dd>\n</dl>\n<p>Default is <code>dc</code>.\n</p></dd>",
+      "default": "dc",
+      "description": "set type (from 0 to 3) (default dc)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -72,7 +72,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#adenorm"

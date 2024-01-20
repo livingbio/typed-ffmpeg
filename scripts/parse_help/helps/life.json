@@ -1,0 +1,166 @@
+{
+  "description": "Create life.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "life",
+  "options": [
+    {
+      "alias": [
+        "filename",
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set source file",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filename",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set video size",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "rule"
+      ],
+      "choices": [],
+      "default": "\"B3/S23\"",
+      "description": "set rule (default \"B3/S23\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rule",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "random_fill_ratio",
+        "ratio"
+      ],
+      "choices": [],
+      "default": "0.618034",
+      "description": "set fill ratio for filling initial grid randomly (from 0 to 1) (default 0.618034)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "random_fill_ratio",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "random_seed",
+        "seed"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set the seed for filling the initial grid randomly (from -1 to UINT32_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "UINT32_MAX",
+      "min": "-1",
+      "name": "random_seed",
+      "typing": "int64"
+    },
+    {
+      "alias": [
+        "stitch"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "stitch boundaries (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "stitch",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "mold"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set mold speed for dead cells (from 0 to 255) (default 0)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "0",
+      "name": "mold",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "life_color"
+      ],
+      "choices": [],
+      "default": "\"white\"",
+      "description": "set life color (default \"white\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "life_color",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "death_color"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set death color (default \"black\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "death_color",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "mold_color"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set mold color (default \"black\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "mold_color",
+      "typing": "color"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

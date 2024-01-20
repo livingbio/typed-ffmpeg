@@ -1,0 +1,183 @@
+{
+  "description": "Apply hue-saturation-intensity adjustments.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "huesaturation",
+  "options": [
+    {
+      "alias": [
+        "hue"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the hue shift (from -180 to 180) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "180",
+      "min": "-180",
+      "name": "hue",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "saturation"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the saturation shift (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "saturation",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "intensity"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the intensity shift (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "intensity",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "set reds",
+          "name": "r",
+          "value": "r"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set yellows",
+          "name": "y",
+          "value": "y"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set greens",
+          "name": "g",
+          "value": "g"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set cyans",
+          "name": "c",
+          "value": "c"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set blues",
+          "name": "b",
+          "value": "b"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set magentas",
+          "name": "m",
+          "value": "m"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "set all colors",
+          "name": "a",
+          "value": "a"
+        }
+      ],
+      "default": "r+y+g+c+b+m+a",
+      "description": "set colors range (default r+y+g+c+b+m+a)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "colors",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "strength"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set the filtering strength (from 0 to 100) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "100",
+      "min": "0",
+      "name": "strength",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rw"
+      ],
+      "choices": [],
+      "default": "0.333",
+      "description": "set the red weight (from 0 to 1) (default 0.333)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "rw",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gw"
+      ],
+      "choices": [],
+      "default": "0.334",
+      "description": "set the green weight (from 0 to 1) (default 0.334)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "gw",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bw"
+      ],
+      "choices": [],
+      "default": "0.333",
+      "description": "set the blue weight (from 0 to 1) (default 0.333)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "bw",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lightness"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set the preserve lightness (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "lightness",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

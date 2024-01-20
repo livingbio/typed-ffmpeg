@@ -1,5 +1,5 @@
 {
-  "description": "### 11.80 elbg\n\nApply a posterize effect using the ELBG (Enhanced LBG) algorithm.\n\nFor each input image, the filter will compute the optimal mapping from the\ninput to the output given the codebook length, that is the number of distinct\noutput colors.\n\nThis filter accepts the following options.\n\n**codebook_length, l**\n\n    Set codebook length. The value must be a positive integer, and represents the number of distinct output colors. Default value is 256. \n\n**nb_steps, n**\n\n    Set the maximum number of iterations to apply for computing the optimal mapping. The higher the value the better the result and the higher the computation time. Default value is 1. \n\n**seed, s**\n\n    Set a random seed, must be an integer included between 0 and UINT32_MAX. If not specified, or if explicitly set to -1, the filter will try to use a good random seed on a best effort basis. \n\n**pal8**\n\n    Set pal8 output pixel format. This option does not work with codebook length greater than 256. Default is disabled. \n\n**use_alpha**\n\n    Include alpha values in the quantization calculation. Allows creating palettized output images (e.g. PNG8) with multiple alpha smooth blending. \n\n",
+  "description": "Apply posterize effect, using the ELBG algorithm.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "l"
       ],
       "choices": [],
-      "default": 256,
-      "description": "<dd><p>Set codebook length. The value must be a positive integer, and\nrepresents the number of distinct output colors. Default value is 256.\n</p>\n</dd>",
+      "default": "256",
+      "description": "set codebook length (from 1 to INT_MAX) (default 256)",
       "name": "codebook_length",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -34,11 +34,11 @@
         "n"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set the maximum number of iterations to apply for computing the optimal\nmapping. The higher the value the better the result and the higher the\ncomputation time. Default value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)",
       "name": "nb_steps",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -46,39 +46,39 @@
         "s"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set a random seed, must be an integer included between 0 and\nUINT32_MAX. If not specified, or if explicitly set to -1, the filter\nwill try to use a good random seed on a best effort basis.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set the random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "pal8"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set pal8 output pixel format. This option does not work with codebook\nlength greater than 256. Default is disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set the pal8 output (default false)",
       "name": "pal8",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "use_alpha"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Include alpha values in the quantization calculation. Allows creating\npalettized output images (e.g. PNG8) with multiple alpha smooth blending.\n</p></dd>",
+      "default": "false",
+      "description": "use alpha channel for mapping (default false)",
       "name": "use_alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#elbg"

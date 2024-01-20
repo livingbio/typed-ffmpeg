@@ -1,5 +1,5 @@
 {
-  "description": "### 8.17 adynamicsmooth\n\nApply dynamic smoothing to input audio stream.\n\nA description of the accepted options follows.\n\n**sensitivity**\n\n    Set an amount of sensitivity to frequency fluctations. Default is 2. Allowed range is from 0 to 1e+06. \n\n**basefreq**\n\n    Set a base frequency for smoothing. Default value is 22050. Allowed range is from 2 to 1e+06. \n\n",
+  "description": "Apply Dynamic Smoothing of input audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "sensitivity"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>Set an amount of sensitivity to frequency fluctations. Default is 2.\nAllowed range is from 0 to 1e+06.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set smooth sensitivity (from 0 to 1e+06) (default 2)",
       "name": "sensitivity",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "basefreq"
       ],
       "choices": [],
-      "default": 22050.0,
-      "description": "<dd><p>Set a base frequency for smoothing. Default value is 22050.\nAllowed range is from 2 to 1e+06.\n</p></dd>",
+      "default": "22050",
+      "description": "set base frequency (from 2 to 1e+06) (default 22050)",
       "name": "basefreq",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth"

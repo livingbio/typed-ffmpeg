@@ -1,5 +1,5 @@
 {
-  "description": "### 11.182 oscilloscope\n\n2D Video Oscilloscope.\n\nUseful to measure spatial impulse, step responses, chroma delays, etc.\n\nIt accepts the following parameters:\n\n**x**\n\n    Set scope center x position. \n\n**y**\n\n    Set scope center y position. \n\n**s**\n\n    Set scope size, relative to frame diagonal. \n\n**t**\n\n    Set scope tilt/rotation. \n\n**o**\n\n    Set trace opacity. \n\n**tx**\n\n    Set trace center x position. \n\n**ty**\n\n    Set trace center y position. \n\n**tw**\n\n    Set trace width, relative to width of frame. \n\n**th**\n\n    Set trace height, relative to height of frame. \n\n**c**\n\n    Set which components to trace. By default it traces first three components. \n\n**g**\n\n    Draw trace grid. By default is enabled. \n\n**st**\n\n    Draw some statistics. By default is enabled. \n\n**sc**\n\n    Draw scope. By default is enabled. \n\n",
+  "description": "2D Video Oscilloscope.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,143 +21,143 @@
         "x"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope center x position.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope x position (from 0 to 1) (default 0.5)",
       "name": "x",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "y"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope center y position.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope y position (from 0 to 1) (default 0.5)",
       "name": "y",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "s"
       ],
       "choices": [],
-      "default": 0.8,
-      "description": "<dd><p>Set scope size, relative to frame diagonal.\n</p>\n</dd>",
+      "default": "0.8",
+      "description": "set scope size (from 0 to 1) (default 0.8)",
       "name": "s",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "t"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set scope tilt/rotation.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set scope tilt (from 0 to 1) (default 0.5)",
       "name": "t",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "o"
       ],
       "choices": [],
-      "default": 0.8,
-      "description": "<dd><p>Set trace opacity.\n</p>\n</dd>",
+      "default": "0.8",
+      "description": "set trace opacity (from 0 to 1) (default 0.8)",
       "name": "o",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "tx"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set trace center x position.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set trace x position (from 0 to 1) (default 0.5)",
       "name": "tx",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "ty"
       ],
       "choices": [],
-      "default": 0.9,
-      "description": "<dd><p>Set trace center y position.\n</p>\n</dd>",
+      "default": "0.9",
+      "description": "set trace y position (from 0 to 1) (default 0.9)",
       "name": "ty",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "tw"
       ],
       "choices": [],
-      "default": 0.8,
-      "description": "<dd><p>Set trace width, relative to width of frame.\n</p>\n</dd>",
+      "default": "0.8",
+      "description": "set trace width (from 0.1 to 1) (default 0.8)",
       "name": "tw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "th"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Set trace height, relative to height of frame.\n</p>\n</dd>",
+      "default": "0.3",
+      "description": "set trace height (from 0.1 to 1) (default 0.3)",
       "name": "th",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "c"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set which components to trace. By default it traces first three components.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set components to trace (from 0 to 15) (default 7)",
       "name": "c",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "g"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Draw trace grid. By default is enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "draw trace grid (default true)",
       "name": "g",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "st"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Draw some statistics. By default is enabled.\n</p>\n</dd>",
+      "default": "true",
+      "description": "draw statistics (default true)",
       "name": "st",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "sc"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Draw scope. By default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "draw scope (default true)",
       "name": "sc",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -172,7 +172,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#oscilloscope"

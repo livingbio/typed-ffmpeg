@@ -1,0 +1,221 @@
+{
+  "description": "Apply arbitrary expressions to samples in frequency domain.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "afftfilt",
+  "options": [
+    {
+      "alias": [
+        "real"
+      ],
+      "choices": [],
+      "default": "\"re\"",
+      "description": "set channels real expressions (default \"re\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "real",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "imag"
+      ],
+      "choices": [],
+      "default": "\"im\"",
+      "description": "set channels imaginary expressions (default \"im\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "imag",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "win_size"
+      ],
+      "choices": [],
+      "default": "4096",
+      "description": "set window size (from 16 to 131072) (default 4096)",
+      "flags": "..F.A......",
+      "max": "131072",
+      "min": "16",
+      "name": "win_size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Hann",
+          "name": "hann",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Welch",
+          "name": "welch",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "6"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "7"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "8"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "11"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Sine",
+          "name": "sine",
+          "value": "9"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "10"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "12"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "13"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "14"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "15"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "16"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "17"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "18"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "19"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "20"
+        }
+      ],
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
+      "flags": "..F.A......",
+      "max": "20",
+      "min": "0",
+      "name": "win_func",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "overlap"
+      ],
+      "choices": [],
+      "default": "0.75",
+      "description": "set window overlap (from 0 to 1) (default 0.75)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "overlap",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

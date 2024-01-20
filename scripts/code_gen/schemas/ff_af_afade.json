@@ -1,5 +1,5 @@
 {
-  "description": "### 8.22 afade\n\nApply fade-in/out effect to input audio.\n\nA description of the accepted parameters follows.\n\n**type, t**\n\n    Specify the effect type, can be either in for fade-in, or out for a fade-out effect. Default is in. \n\n**start_sample, ss**\n\n    Specify the number of the start sample for starting to apply the fade effect. Default is 0. \n\n**nb_samples, ns**\n\n    Specify the number of samples for which the fade effect has to last. At the end of the fade-in effect the output audio will have the same volume as the input audio, at the end of the fade-out transition the output audio will be silence. Default is 44100. \n\n**start_time, st**\n\n    Specify the start time of the fade effect. Default is 0. The value must be specified as a time duration; see (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. If set this option is used instead of start_sample. \n\n**duration, d**\n\n    Specify the duration of the fade effect. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. At the end of the fade-in effect the output audio will have the same volume as the input audio, at the end of the fade-out transition the output audio will be silence. By default the duration is determined by nb_samples. If set this option is used instead of nb_samples. \n\n**curve**\n\n    Set curve for fade transition. It accepts the following values: tri select triangular, linear slope (default) qsin select quarter of sine wave hsin select half of sine wave esin select exponential sine wave log select logarithmic ipar select inverted parabola qua select quadratic cub select cubic squ select square root cbr select cubic root par select parabola exp select exponential iqsin select inverted quarter of sine wave ihsin select inverted half of sine wave dese select double-exponential seat desi select double-exponential sigmoid losi select logistic sigmoid sinc select sine cardinal function isinc select inverted sine cardinal function quat select quartic quatr select quartic root qsin2 select squared quarter of sine wave hsin2 select squared half of sine wave nofade no fade applied \n\n**silence**\n\n    Set the initial gain for fade-in or final gain for fade-out. Default value is 0.0. \n\n**unity**\n\n    Set the initial gain for fade-out or final gain for fade-in. Default value is 1.0. \n\n",
+  "description": "Fade in/out input audio.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,19 +25,19 @@
         {
           "help": "fade-in",
           "name": "in",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "fade-out",
           "name": "out",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Specify the effect type, can be either <code>in</code> for fade-in, or\n<code>out</code> for a fade-out effect. Default is <code>in</code>.\n</p>\n</dd>",
+      "default": "in",
+      "description": "set the fade direction (from 0 to 1) (default in)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -45,11 +45,11 @@
         "ss"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specify the number of the start sample for starting to apply the fade\neffect. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set number of first sample to start fading (from 0 to I64_MAX) (default 0)",
       "name": "start_sample",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -57,11 +57,11 @@
         "ns"
       ],
       "choices": [],
-      "default": 44100,
-      "description": "<dd><p>Specify the number of samples for which the fade effect has to last. At\nthe end of the fade-in effect the output audio will have the same\nvolume as the input audio, at the end of the fade-out transition\nthe output audio will be silence. Default is 44100.\n</p>\n</dd>",
+      "default": "44100",
+      "description": "set number of samples for fade duration (from 1 to I64_MAX) (default 44100)",
       "name": "nb_samples",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -69,11 +69,11 @@
         "st"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specify the start time of the fade effect. Default is 0.\nThe value must be specified as a time duration; see\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nIf set this option is used instead of <var>start_sample</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set time to start fading (default 0)",
       "name": "start_time",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -81,11 +81,11 @@
         "d"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specify the duration of the fade effect. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\nAt the end of the fade-in effect the output audio will have the same\nvolume as the input audio, at the end of the fade-out transition\nthe output audio will be silence.\nBy default the duration is determined by <var>nb_samples</var>.\nIf set this option is used instead of <var>nb_samples</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set fade duration (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -96,151 +96,131 @@
         {
           "help": "no fade; keep audio as-is",
           "name": "nofade",
-          "value": "NONE"
+          "value": "-1"
         },
         {
           "help": "linear slope",
           "name": "tri",
-          "value": "TRI"
+          "value": "0"
         },
         {
           "help": "quarter of sine wave",
           "name": "qsin",
-          "value": "QSIN"
+          "value": "1"
         },
         {
           "help": "exponential sine wave",
           "name": "esin",
-          "value": "ESIN"
+          "value": "2"
         },
         {
           "help": "half of sine wave",
           "name": "hsin",
-          "value": "HSIN"
+          "value": "3"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": "LOG"
+          "value": "4"
         },
         {
           "help": "inverted parabola",
           "name": "ipar",
-          "value": "IPAR"
+          "value": "5"
         },
         {
           "help": "quadratic",
           "name": "qua",
-          "value": "QUA"
+          "value": "6"
         },
         {
           "help": "cubic",
           "name": "cub",
-          "value": "CUB"
+          "value": "7"
         },
         {
           "help": "square root",
           "name": "squ",
-          "value": "SQU"
+          "value": "8"
         },
         {
           "help": "cubic root",
           "name": "cbr",
-          "value": "CBR"
+          "value": "9"
         },
         {
           "help": "parabola",
           "name": "par",
-          "value": "PAR"
+          "value": "10"
         },
         {
           "help": "exponential",
           "name": "exp",
-          "value": "EXP"
+          "value": "11"
         },
         {
           "help": "inverted quarter of sine wave",
           "name": "iqsin",
-          "value": "IQSIN"
+          "value": "12"
         },
         {
           "help": "inverted half of sine wave",
           "name": "ihsin",
-          "value": "IHSIN"
+          "value": "13"
         },
         {
           "help": "double-exponential seat",
           "name": "dese",
-          "value": "DESE"
+          "value": "14"
         },
         {
           "help": "double-exponential sigmoid",
           "name": "desi",
-          "value": "DESI"
+          "value": "15"
         },
         {
           "help": "logistic sigmoid",
           "name": "losi",
-          "value": "LOSI"
+          "value": "16"
         },
         {
           "help": "sine cardinal function",
           "name": "sinc",
-          "value": "SINC"
+          "value": "17"
         },
         {
           "help": "inverted sine cardinal function",
           "name": "isinc",
-          "value": "ISINC"
-        },
-        {
-          "help": "quartic",
-          "name": "quat",
-          "value": "QUAT"
-        },
-        {
-          "help": "quartic root",
-          "name": "quatr",
-          "value": "QUATR"
-        },
-        {
-          "help": "squared quarter of sine wave",
-          "name": "qsin2",
-          "value": "QSIN2"
-        },
-        {
-          "help": "squared half of sine wave",
-          "name": "hsin2",
-          "value": "HSIN2"
+          "value": "18"
         }
       ],
-      "default": "TRI",
-      "description": "<dd><p>Set curve for fade transition.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>tri</samp></dt>\n<dd><p>select triangular, linear slope (default)\n</p></dd>\n<dt><samp>qsin</samp></dt>\n<dd><p>select quarter of sine wave\n</p></dd>\n<dt><samp>hsin</samp></dt>\n<dd><p>select half of sine wave\n</p></dd>\n<dt><samp>esin</samp></dt>\n<dd><p>select exponential sine wave\n</p></dd>\n<dt><samp>log</samp></dt>\n<dd><p>select logarithmic\n</p></dd>\n<dt><samp>ipar</samp></dt>\n<dd><p>select inverted parabola\n</p></dd>\n<dt><samp>qua</samp></dt>\n<dd><p>select quadratic\n</p></dd>\n<dt><samp>cub</samp></dt>\n<dd><p>select cubic\n</p></dd>\n<dt><samp>squ</samp></dt>\n<dd><p>select square root\n</p></dd>\n<dt><samp>cbr</samp></dt>\n<dd><p>select cubic root\n</p></dd>\n<dt><samp>par</samp></dt>\n<dd><p>select parabola\n</p></dd>\n<dt><samp>exp</samp></dt>\n<dd><p>select exponential\n</p></dd>\n<dt><samp>iqsin</samp></dt>\n<dd><p>select inverted quarter of sine wave\n</p></dd>\n<dt><samp>ihsin</samp></dt>\n<dd><p>select inverted half of sine wave\n</p></dd>\n<dt><samp>dese</samp></dt>\n<dd><p>select double-exponential seat\n</p></dd>\n<dt><samp>desi</samp></dt>\n<dd><p>select double-exponential sigmoid\n</p></dd>\n<dt><samp>losi</samp></dt>\n<dd><p>select logistic sigmoid\n</p></dd>\n<dt><samp>sinc</samp></dt>\n<dd><p>select sine cardinal function\n</p></dd>\n<dt><samp>isinc</samp></dt>\n<dd><p>select inverted sine cardinal function\n</p></dd>\n<dt><samp>quat</samp></dt>\n<dd><p>select quartic\n</p></dd>\n<dt><samp>quatr</samp></dt>\n<dd><p>select quartic root\n</p></dd>\n<dt><samp>qsin2</samp></dt>\n<dd><p>select squared quarter of sine wave\n</p></dd>\n<dt><samp>hsin2</samp></dt>\n<dd><p>select squared half of sine wave\n</p></dd>\n<dt><samp>nofade</samp></dt>\n<dd><p>no fade applied\n</p></dd>\n</dl>\n</dd>",
+      "default": "tri",
+      "description": "set fade curve type (from -1 to 18) (default tri)",
       "name": "curve",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "silence"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the initial gain for fade-in or final gain for fade-out.\nDefault value is <code>0.0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the silence gain (from 0 to 1) (default 0)",
       "name": "silence",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "unity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the initial gain for fade-out or final gain for fade-in.\nDefault value is <code>1.0</code>.\n</p></dd>",
+      "default": "1",
+      "description": "set the unity gain (from 0 to 1) (default 1)",
       "name": "unity",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -255,7 +235,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#afade"

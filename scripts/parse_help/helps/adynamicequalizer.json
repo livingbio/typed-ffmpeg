@@ -1,0 +1,275 @@
+{
+  "description": "Apply Dynamic Equalization of input audio.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "adynamicequalizer",
+  "options": [
+    {
+      "alias": [
+        "threshold"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set detection threshold (from 0 to 100) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "100",
+      "min": "0",
+      "name": "threshold",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "dfrequency"
+      ],
+      "choices": [],
+      "default": "1000",
+      "description": "set detection frequency (from 2 to 1e+06) (default 1000)",
+      "flags": "..F.A....T.",
+      "max": "1e+06",
+      "min": "2",
+      "name": "dfrequency",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "dqfactor"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set detection Q factor (from 0.001 to 1000) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1000",
+      "min": "0.001",
+      "name": "dqfactor",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "tfrequency"
+      ],
+      "choices": [],
+      "default": "1000",
+      "description": "set target frequency (from 2 to 1e+06) (default 1000)",
+      "flags": "..F.A....T.",
+      "max": "1e+06",
+      "min": "2",
+      "name": "tfrequency",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "tqfactor"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set target Q factor (from 0.001 to 1000) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1000",
+      "min": "0.001",
+      "name": "tqfactor",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "attack"
+      ],
+      "choices": [],
+      "default": "20",
+      "description": "set attack duration (from 1 to 2000) (default 20)",
+      "flags": "..F.A....T.",
+      "max": "2000",
+      "min": "1",
+      "name": "attack",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "release"
+      ],
+      "choices": [],
+      "default": "200",
+      "description": "set release duration (from 1 to 2000) (default 200)",
+      "flags": "..F.A....T.",
+      "max": "2000",
+      "min": "1",
+      "name": "release",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "ratio"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set ratio factor (from 0 to 30) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "30",
+      "min": "0",
+      "name": "ratio",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "makeup"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set makeup gain (from 0 to 100) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "100",
+      "min": "0",
+      "name": "makeup",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "choices": [],
+      "default": "50",
+      "description": "set max gain (from 1 to 200) (default 50)",
+      "flags": "..F.A....T.",
+      "max": "200",
+      "min": "1",
+      "name": "range",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "listen",
+          "value": "-1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "cut",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "boost",
+          "value": "1"
+        }
+      ],
+      "default": "cut",
+      "description": "set mode (from -1 to 1) (default cut)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tftype"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "bell",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lowshelf",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "highshelf",
+          "value": "2"
+        }
+      ],
+      "default": "bell",
+      "description": "set target filter type (from 0 to 2) (default bell)",
+      "flags": "..F.A....T.",
+      "max": "2",
+      "min": "0",
+      "name": "tftype",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "direction"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "downward",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "upward",
+          "value": "1"
+        }
+      ],
+      "default": "downward",
+      "description": "set direction (from 0 to 1) (default downward)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "direction",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "auto"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "disabled",
+          "value": "-1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "off",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "on",
+          "value": "1"
+        }
+      ],
+      "default": "disabled",
+      "description": "set auto threshold (from -1 to 1) (default disabled)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "auto",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

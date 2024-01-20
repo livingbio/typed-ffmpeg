@@ -1,0 +1,98 @@
+{
+  "description": "Pixelize video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "pixelize",
+  "options": [
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "set block width (from 1 to 1024) (default 16)",
+      "flags": "..FV.....T.",
+      "max": "1024",
+      "min": "1",
+      "name": "width",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "height",
+        "h"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "set block height (from 1 to 1024) (default 16)",
+      "flags": "..FV.....T.",
+      "max": "1024",
+      "min": "1",
+      "name": "height",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode",
+        "m"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "average",
+          "name": "avg",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "minimum",
+          "name": "min",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "maximum",
+          "name": "max",
+          "value": "2"
+        }
+      ],
+      "default": "avg",
+      "description": "set the pixelize mode (from 0 to 2) (default avg)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes",
+        "p"
+      ],
+      "choices": [],
+      "default": "F",
+      "description": "set what planes to filter (default F)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "planes",
+      "typing": "flags"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

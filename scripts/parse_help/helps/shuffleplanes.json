@@ -1,0 +1,75 @@
+{
+  "description": "Shuffle video planes.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "shuffleplanes",
+  "options": [
+    {
+      "alias": [
+        "map0"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "Index of the input plane to be used as the first output plane  (from 0 to 3) (default 0)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
+      "name": "map0",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map1"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "Index of the input plane to be used as the second output plane  (from 0 to 3) (default 1)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
+      "name": "map1",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map2"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "Index of the input plane to be used as the third output plane  (from 0 to 3) (default 2)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
+      "name": "map2",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "map3"
+      ],
+      "choices": [],
+      "default": "3",
+      "description": "Index of the input plane to be used as the fourth output plane  (from 0 to 3) (default 3)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
+      "name": "map3",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import re
 import subprocess
 from collections import defaultdict
 
-from code_gen.schema import StreamType
+from code_gen.schema import FFMpegIOType, StreamType
 
 from .schema import AVChoice, AVFilter, AVOption
 
@@ -60,12 +60,12 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
             output[-1].alias.append(name)
             continue
 
-        if match := re.findall("\(default ([\-\w]+)\)", help):
+        if match := re.findall(r"\(default ([^\)]+)\)", help):
             default = match[0]
         else:
             default = None
 
-        if match := re.findall("\(from ([\-\w]+) to ([\-\w]+)\)", help):
+        if match := re.findall(r"\(from ([^\)]+) to ([^\)]+)\)", help):
             min, max = match[0]
         else:
             min = None
@@ -96,6 +96,19 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
     return output
 
 
+def _remove_repeat_options(options: list[AVOption]) -> list[AVOption]:
+    names = set()
+    output = []
+    for option in options:
+        if option.name in names:
+            continue
+
+        names.add(option.name)
+        output.append(option)
+
+    return output
+
+
 def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
     text = help_text(filter_name)
 
@@ -119,7 +132,7 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
         if inputs[0] != "none (source filter)":
             for _input in inputs:
                 index, name, _type = _parse_io(_input)
-                input_types.append((name, _type))
+                input_types.append(FFMpegIOType(name=name, type=_type))
     else:
         input_types = None
 
@@ -128,7 +141,7 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
         if outputs[0] != "none (sink filter)":
             for output in outputs:
                 index, name, _type = _parse_io(output)
-                output_types.append((name, _type))
+                output_types.append(FFMpegIOType(name=name, type=_type))
     else:
         output_types = None
 
@@ -139,6 +152,8 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
     for item in tree[""]:
         if "AVOptions:" in item:
             options.extend(_parse_options(tree[item], tree))
+
+    options = _remove_repeat_options(options)
 
     return AVFilter(
         name=filter_name,
@@ -152,3 +167,12 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
         output_types=output_types,
         options=options,
     )
+
+
+def extract(filter_name: str) -> AVFilter:
+    # try:
+    #     return AVFilter.load(filter_name)
+    # except IOError:
+    filter = extract_avfilter_info_from_help(filter_name=filter_name)
+    filter.save()
+    return filter

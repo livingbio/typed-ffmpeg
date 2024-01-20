@@ -1,5 +1,5 @@
 {
-  "description": "### 11.241 spp\n\nApply a simple postprocessing filter that compresses and decompresses the\nimage at several (or - in the case of quality level `6` - all) shifts and\naverage the results.\n\nThe filter accepts the following options:\n\n**quality**\n\n    Set quality. This option defines the number of levels for averaging. It accepts an integer in the range 0-6. If set to 0, the filter will have no effect. A value of 6 means the higher quality. For each increment of that value the speed drops by a factor of approximately 2. Default value is 3. \n\n**qp**\n\n    Force a constant quantization parameter. If not set, the filter will use the QP from the video stream (if available). \n\n**mode**\n\n    Set thresholding mode. Available modes are: \u2018hard\u2019 Set hard thresholding (default). \u2018soft\u2019 Set soft thresholding (better de-ringing effect, but likely blurrier). \n\n**use_bframe_qp**\n\n    Enable the use of the QP from the B-Frames if set to 1. Using this option may cause flicker since the B-Frames have often larger QP. Default is 0 (not enabled). \n\n",
+  "description": "Apply a simple post processing filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "quality"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set quality. This option defines the number of levels for averaging. It accepts\nan integer in the range 0-6. If set to <code>0</code>, the filter will have no\neffect. A value of <code>6</code> means the higher quality. For each increment of\nthat value the speed drops by a factor of approximately 2.  Default value is\n<code>3</code>.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set quality (from 0 to 6) (default 3)",
       "name": "quality",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "qp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Force a constant quantization parameter. If not set, the filter will use the QP\nfrom the video stream (if available).\n</p>\n</dd>",
+      "default": "0",
+      "description": "force a constant quantizer parameter (from 0 to 63) (default 0)",
       "name": "qp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -46,30 +46,30 @@
         {
           "help": "hard thresholding",
           "name": "hard",
-          "value": "MODE_HARD"
+          "value": "0"
         },
         {
           "help": "soft thresholding",
           "name": "soft",
-          "value": "MODE_SOFT"
+          "value": "1"
         }
       ],
-      "default": "MODE_HARD",
-      "description": "<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>Set hard thresholding (default).\n</p></dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n</dl>\n</dd>",
+      "default": "hard",
+      "description": "set thresholding mode (from 0 to 1) (default hard)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "use_bframe_qp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>. Using this\noption may cause flicker since the B-Frames have often larger QP. Default is\n<code>0</code> (not enabled).\n</p></dd>",
+      "default": "false",
+      "description": "use B-frames' QP (default false)",
       "name": "use_bframe_qp",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -84,7 +84,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#spp"

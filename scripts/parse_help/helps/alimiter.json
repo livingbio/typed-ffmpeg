@@ -1,0 +1,140 @@
+{
+  "description": "Audio lookahead limiter.",
+  "input_types": [
+    {
+      "name": "main",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "alimiter",
+  "options": [
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input level (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "64",
+      "min": "0.015625",
+      "name": "level_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set output level (from 0.015625 to 64) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "64",
+      "min": "0.015625",
+      "name": "level_out",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "limit"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set limit (from 0.0625 to 1) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0.0625",
+      "name": "limit",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "attack"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set attack (from 0.1 to 80) (default 5)",
+      "flags": "..F.A....T.",
+      "max": "80",
+      "min": "0.1",
+      "name": "attack",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "release"
+      ],
+      "choices": [],
+      "default": "50",
+      "description": "set release (from 1 to 8000) (default 50)",
+      "flags": "..F.A....T.",
+      "max": "8000",
+      "min": "1",
+      "name": "release",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "asc"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "enable asc (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "asc",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "asc_level"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set asc level (from 0 to 1) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "asc_level",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "auto level (default true)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "level",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "latency"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "compensate delay (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "latency",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

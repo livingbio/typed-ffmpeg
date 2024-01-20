@@ -1,0 +1,153 @@
+{
+  "description": "Adjust the color balance.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "colorbalance",
+  "options": [
+    {
+      "alias": [
+        "rs"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set red shadows (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "rs",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gs"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set green shadows (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "gs",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bs"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set blue shadows (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "bs",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rm"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set red midtones (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "rm",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gm"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set green midtones (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "gm",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bm"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set blue midtones (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "bm",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "rh"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set red highlights (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "rh",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gh"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set green highlights (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "gh",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "bh"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set blue highlights (from -1 to 1) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "-1",
+      "name": "bh",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "pl"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "preserve lightness (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "pl",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

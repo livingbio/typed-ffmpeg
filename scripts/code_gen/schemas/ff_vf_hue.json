@@ -1,5 +1,5 @@
 {
-  "description": "### 11.129 hue\n\nModify the hue and/or the saturation of the input.\n\nIt accepts the following parameters:\n\n**h**\n\n    Specify the hue angle as a number of degrees. It accepts an expression, and defaults to \"0\". \n\n**s**\n\n    Specify the saturation in the [-10,10] range. It accepts an expression and defaults to \"1\". \n\n**H**\n\n    Specify the hue angle as a number of radians. It accepts an expression, and defaults to \"0\". \n\n**b**\n\n    Specify the brightness in the [-10,10] range. It accepts an expression and defaults to \"0\". \n\nh and H are mutually exclusive, and can\u2019t be specified at the same time.\n\nThe b, h, H and s option values are expressions containing the following\nconstants:\n\n**n**\n\n    frame count of the input frame starting from 0 \n\n**pts**\n\n    presentation timestamp of the input frame expressed in time base units \n\n**r**\n\n    frame rate of the input video, NAN if the input frame rate is unknown \n\n**t**\n\n    timestamp expressed in seconds, NAN if the input timestamp is unknown \n\n**tb**\n\n    time base of the input video \n\n",
+  "description": "Adjust the hue and saturation of the input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "h"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify the hue angle as a number of degrees. It accepts an expression,\nand defaults to \"0\".\n</p>\n</dd>",
+      "default": null,
+      "description": "set the hue angle degrees expression",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,21 +33,21 @@
       ],
       "choices": [],
       "default": "1",
-      "description": "<dd><p>Specify the saturation in the [-10,10] range. It accepts an expression and\ndefaults to \"1\".\n</p>\n</dd>",
+      "description": "set the saturation expression (default \"1\")",
       "name": "s",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "H"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify the hue angle as a number of radians. It accepts an\nexpression, and defaults to \"0\".\n</p>\n</dd>",
+      "default": null,
+      "description": "set the hue angle radians expression",
       "name": "H",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,10 +55,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Specify the brightness in the [-10,10] range. It accepts an expression and\ndefaults to \"0\".\n</p></dd>",
+      "description": "set the brightness expression (default \"0\")",
       "name": "b",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hue"

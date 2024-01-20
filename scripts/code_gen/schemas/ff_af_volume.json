@@ -1,5 +1,5 @@
 {
-  "description": "### 8.120 volume\n\nAdjust the input audio volume.\n\nIt accepts the following parameters:\n\n**volume**\n\n    Set audio volume expression. Output values are clipped to the maximum value. The output audio volume is given by the relation: output_volume = volume * input_volume The default value for volume is \"1.0\". \n\n**precision**\n\n    This parameter represents the mathematical precision. It determines which input sample formats will be allowed, which affects the precision of the volume scaling. fixed 8-bit fixed-point; this limits input sample format to U8, S16, and S32. float 32-bit floating-point; this limits input sample format to FLT. (default) double 64-bit floating-point; this limits input sample format to DBL. \n\n**replaygain**\n\n    Choose the behaviour on encountering ReplayGain side data in input frames. drop Remove ReplayGain side data, ignoring its contents (the default). ignore Ignore ReplayGain side data, but leave it in the frame. track Prefer the track gain, if present. album Prefer the album gain, if present. \n\n**replaygain_preamp**\n\n    Pre-amplification gain in dB to apply to the selected replaygain gain. Default value for replaygain_preamp is 0.0. \n\n**replaygain_noclip**\n\n    Prevent clipping by limiting the gain applied. Default value for replaygain_noclip is 1. \n\n**eval**\n\n    Set when the volume expression is evaluated. It accepts the following values: \u2018once\u2019 only evaluate expression once during the filter initialization, or when the \u2018volume\u2019 command is sent \u2018frame\u2019 evaluate expression for each incoming frame Default value is \u2018once\u2019. \n\nThe volume expression can contain the following parameters.\n\n**n**\n\n    frame number (starting at zero) \n\n**nb_channels**\n\n    number of channels \n\n**nb_consumed_samples**\n\n    number of samples consumed by the filter \n\n**nb_samples**\n\n    number of samples in the current frame \n\n**pos**\n\n    original frame position in the file; deprecated, do not use \n\n**pts**\n\n    frame PTS \n\n**sample_rate**\n\n    sample rate \n\n**startpts**\n\n    PTS at start of stream \n\n**startt**\n\n    time at start of stream \n\n**t**\n\n    frame time \n\n**tb**\n\n    timestamp timebase \n\n**volume**\n\n    last set volume value \n\nNote that when eval is set to \u2018once\u2019 only the sample_rate and tb variables are\navailable, all other variables will evaluate to NAN.\n\n",
+  "description": "Change input volume.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set audio volume expression.\n</p>\n<p>Output values are clipped to the maximum value.\n</p>\n<p>The output audio volume is given by the relation:\n</p><div class=\"example\">\n<pre class=\"example\"><var>output_volume</var> = <var>volume</var> * <var>input_volume</var>\n</pre></div>\n<p>The default value for <var>volume</var> is \"1.0\".\n</p>\n</dd>",
+      "description": "set volume adjustment expression (default \"1.0\")",
       "name": "volume",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -35,35 +35,46 @@
         {
           "help": "select 8-bit fixed-point",
           "name": "fixed",
-          "value": "PRECISION_FIXED"
+          "value": "0"
         },
         {
           "help": "select 32-bit floating-point",
           "name": "float",
-          "value": "PRECISION_FLOAT"
+          "value": "1"
         },
         {
           "help": "select 64-bit floating-point",
           "name": "double",
-          "value": "PRECISION_DOUBLE"
+          "value": "2"
         }
       ],
-      "default": "PRECISION_FLOAT",
-      "description": "<dd><p>This parameter represents the mathematical precision.\n</p>\n<p>It determines which input sample formats will be allowed, which affects the\nprecision of the volume scaling.\n</p>\n<dl compact=\"compact\">\n<dt><samp>fixed</samp></dt>\n<dd><p>8-bit fixed-point; this limits input sample format to U8, S16, and S32.\n</p></dd>\n<dt><samp>float</samp></dt>\n<dd><p>32-bit floating-point; this limits input sample format to FLT. (default)\n</p></dd>\n<dt><samp>double</samp></dt>\n<dd><p>64-bit floating-point; this limits input sample format to DBL.\n</p></dd>\n</dl>\n</dd>",
+      "default": "float",
+      "description": "select mathematical precision (from 0 to 2) (default float)",
       "name": "precision",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "eval"
       ],
-      "choices": [],
-      "default": "EVAL_MODE_ONCE",
-      "description": "<dd><p>Set when the volume expression is evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>once</samp>\u2019</dt>\n<dd><p>only evaluate expression once during the filter initialization, or\nwhen the \u2018<samp>volume</samp>\u2019 command is sent\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expression for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>once</samp>\u2019.\n</p></dd>",
+      "choices": [
+        {
+          "help": "eval volume expression once",
+          "name": "once",
+          "value": "0"
+        },
+        {
+          "help": "eval volume expression per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "once",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default once)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -73,51 +84,51 @@
         {
           "help": "replaygain side data is dropped",
           "name": "drop",
-          "value": "REPLAYGAIN_DROP"
+          "value": "0"
         },
         {
           "help": "replaygain side data is ignored",
           "name": "ignore",
-          "value": "REPLAYGAIN_IGNORE"
+          "value": "1"
         },
         {
           "help": "track gain is preferred",
           "name": "track",
-          "value": "REPLAYGAIN_TRACK"
+          "value": "2"
         },
         {
           "help": "album gain is preferred",
           "name": "album",
-          "value": "REPLAYGAIN_ALBUM"
+          "value": "3"
         }
       ],
-      "default": "REPLAYGAIN_DROP",
-      "description": "<dd><p>Choose the behaviour on encountering ReplayGain side data in input frames.\n</p>\n<dl compact=\"compact\">\n<dt><samp>drop</samp></dt>\n<dd><p>Remove ReplayGain side data, ignoring its contents (the default).\n</p>\n</dd>\n<dt><samp>ignore</samp></dt>\n<dd><p>Ignore ReplayGain side data, but leave it in the frame.\n</p>\n</dd>\n<dt><samp>track</samp></dt>\n<dd><p>Prefer the track gain, if present.\n</p>\n</dd>\n<dt><samp>album</samp></dt>\n<dd><p>Prefer the album gain, if present.\n</p></dd>\n</dl>\n</dd>",
+      "default": "drop",
+      "description": "Apply replaygain side data when present (from 0 to 3) (default drop)",
       "name": "replaygain",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "replaygain_preamp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Pre-amplification gain in dB to apply to the selected replaygain gain.\n</p>\n<p>Default value for <var>replaygain_preamp</var> is 0.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "Apply replaygain pre-amplification (from -15 to 15) (default 0)",
       "name": "replaygain_preamp",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "replaygain_noclip"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Prevent clipping by limiting the gain applied.\n</p>\n<p>Default value for <var>replaygain_noclip</var> is 1.\n</p>\n</dd>",
+      "default": "true",
+      "description": "Apply replaygain clipping prevention (default true)",
       "name": "replaygain_noclip",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -132,7 +143,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#volume"

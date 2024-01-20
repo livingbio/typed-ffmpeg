@@ -1,5 +1,5 @@
 {
-  "description": "### 11.7 avgblur\n\nApply average blur filter.\n\nThe filter accepts the following options:\n\n**sizeX**\n\n    Set horizontal radius size. \n\n**planes**\n\n    Set which planes to filter. By default all planes are filtered. \n\n**sizeY**\n\n    Set vertical radius size, if zero it will be same as sizeX. Default is 0. \n\n",
+  "description": "Apply Average Blur filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,33 +21,33 @@
         "sizeX"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set horizontal radius size.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set horizontal size (from 1 to 1024) (default 1)",
       "name": "sizeX",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes to filter. By default all planes are filtered.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "sizeY"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set vertical radius size, if zero it will be same as <code>sizeX</code>.\nDefault is <code>0</code>.\n</p></dd>",
+      "default": "0",
+      "description": "set vertical size (from 0 to 1024) (default 0)",
       "name": "sizeY",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -62,7 +62,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#avgblur"

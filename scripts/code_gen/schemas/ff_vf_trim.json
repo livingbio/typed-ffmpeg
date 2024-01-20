@@ -1,5 +1,5 @@
 {
-  "description": "### 11.265 trim\n\nTrim the input so that the output contains one continuous subpart of the\ninput.\n\nIt accepts the following parameters:\n\n**start**\n\n    Specify the time of the start of the kept section, i.e. the frame with the timestamp start will be the first frame in the output. \n\n**end**\n\n    Specify the time of the first frame that will be dropped, i.e. the frame immediately preceding the one with the timestamp end will be the last frame in the output. \n\n**start_pts**\n\n    This is the same as start, except this option sets the start timestamp in timebase units instead of seconds. \n\n**end_pts**\n\n    This is the same as end, except this option sets the end timestamp in timebase units instead of seconds. \n\n**duration**\n\n    The maximum duration of the output in seconds. \n\n**start_frame**\n\n    The number of the first frame that should be passed to the output. \n\n**end_frame**\n\n    The number of the first frame that should be dropped. \n\nstart, end, and duration are expressed as time duration specifications; see\n[(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1)\nmanual](ffmpeg-utils.html#time-duration-syntax) for the accepted syntax.\n\nNote that the first two sets of the start/end options and the duration option\nlook at the frame timestamp, while the _frame variants simply count the frames\nthat pass through the filter. Also note that this filter does not modify the\ntimestamps. If you wish for the output timestamps to start at zero, insert a\nsetpts filter after the trim filter.\n\nIf multiple start or end options are set, this filter tries to be greedy and\nkeep all the frames that match at least one of the specified constraints. To\nkeep only the part that matches all the constraints at once, chain multiple\ntrim filters.\n\nThe defaults are such that all the input is kept. So it is possible to set\ne.g. just the end values to keep everything before the specified time.\n\nExamples:\n\n  * Drop everything except the second minute of input: \n    \n        ffmpeg -i INPUT -vf trim=60:120\n    \n\n  * Keep only the first second: \n    \n        ffmpeg -i INPUT -vf trim=duration=1\n    \n\n",
+  "description": "Pick one continuous section from the input, drop the rest.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "starti"
       ],
       "choices": [],
-      "default": "9223372036854775807LL",
-      "description": "Timestamp of the first frame that should be passed",
+      "default": "INT64_MAX",
+      "description": "Timestamp of the first frame that should be passed (default INT64_MAX)",
       "name": "start",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -34,33 +34,33 @@
         "endi"
       ],
       "choices": [],
-      "default": "9223372036854775807LL",
-      "description": "Timestamp of the first frame that should be dropped again",
+      "default": "INT64_MAX",
+      "description": "Timestamp of the first frame that should be dropped again (default INT64_MAX)",
       "name": "end",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "start_pts"
       ],
       "choices": [],
-      "default": "((int64_t)(0x8000000000000000ULL))",
-      "description": "Timestamp of the first frame that should be  passed",
+      "default": "I64_MIN",
+      "description": "Timestamp of the first frame that should be  passed (from I64_MIN to I64_MAX) (default I64_MIN)",
       "name": "start_pts",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "end_pts"
       ],
       "choices": [],
-      "default": "((int64_t)(0x8000000000000000ULL))",
-      "description": "Timestamp of the first frame that should be dropped again",
+      "default": "I64_MIN",
+      "description": "Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)",
       "name": "end_pts",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -68,39 +68,39 @@
         "durationi"
       ],
       "choices": [],
-      "default": 0,
-      "description": "Maximum duration of the output",
+      "default": "0",
+      "description": "Maximum duration of the output (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "start_frame"
       ],
       "choices": [],
-      "default": -1,
-      "description": "Number of the first frame that should be passed to the output",
+      "default": "-1",
+      "description": "Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)",
       "name": "start_frame",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "end_frame"
       ],
       "choices": [],
-      "default": "9223372036854775807LL",
-      "description": "Number of the first frame that should be dropped again",
+      "default": "I64_MAX",
+      "description": "Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)",
       "name": "end_frame",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#trim"

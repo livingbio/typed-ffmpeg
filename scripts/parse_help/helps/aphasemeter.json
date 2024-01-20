@@ -1,0 +1,166 @@
+{
+  "description": "Convert input audio to phase meter video output.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "aphasemeter",
+  "options": [
+    {
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "\"25\"",
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "\"800x400\"",
+      "description": "set video size (default \"800x400\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "rc"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set red contrast (from 0 to 255) (default 2)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "0",
+      "name": "rc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gc"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set green contrast (from 0 to 255) (default 7)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "0",
+      "name": "gc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "bc"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set blue contrast (from 0 to 255) (default 1)",
+      "flags": "..FV.......",
+      "max": "255",
+      "min": "0",
+      "name": "bc",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mpc"
+      ],
+      "choices": [],
+      "default": "\"none\"",
+      "description": "set median phase color (default \"none\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "mpc",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "video"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "set video output (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "video",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "phasing"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set mono and out-of-phase detection output (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "phasing",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "tolerance",
+        "t"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set phase tolerance for mono detection (from 0 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "tolerance",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "angle",
+        "a"
+      ],
+      "choices": [],
+      "default": "170",
+      "description": "set angle threshold for out-of-phase detection (from 90 to 180) (default 170)",
+      "flags": "..FV.......",
+      "max": "180",
+      "min": "90",
+      "name": "angle",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set minimum mono or out-of-phase duration in seconds (default 2)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    }
+  ],
+  "output_types": null
+}

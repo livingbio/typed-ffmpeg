@@ -1,0 +1,120 @@
+{
+  "description": "Pullup from field sequence to frames.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "pullup",
+  "options": [
+    {
+      "alias": [
+        "jl"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set left junk size (from 0 to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "jl",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "jr"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set right junk size (from 0 to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "jr",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "jt"
+      ],
+      "choices": [],
+      "default": "4",
+      "description": "set top junk size (from 1 to INT_MAX) (default 4)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "jt",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "jb"
+      ],
+      "choices": [],
+      "default": "4",
+      "description": "set bottom junk size (from 1 to INT_MAX) (default 4)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "jb",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sb"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set strict breaks (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "sb",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "mp"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "luma",
+          "name": "y",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "chroma blue",
+          "name": "u",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "chroma red",
+          "name": "v",
+          "value": "2"
+        }
+      ],
+      "default": "y",
+      "description": "set metric plane (from 0 to 2) (default y)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mp",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

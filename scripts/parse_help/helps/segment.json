@@ -1,0 +1,44 @@
+{
+  "description": "Segment video stream.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "segment",
+  "options": [
+    {
+      "alias": [
+        "timestamps"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "timestamps of input at which to split input",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "timestamps",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "frames"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "frames at which to split input",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "frames",
+      "typing": "string"
+    }
+  ],
+  "output_types": null
+}

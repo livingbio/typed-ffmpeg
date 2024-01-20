@@ -1,0 +1,91 @@
+{
+  "description": "Phase shift fields.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "phase",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "progressive",
+          "name": "p",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "top first",
+          "name": "t",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "bottom first",
+          "name": "b",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "top first analyze",
+          "name": "T",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "bottom first analyze",
+          "name": "B",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "analyze",
+          "name": "u",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "full analyze",
+          "name": "U",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "auto",
+          "name": "a",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "auto analyze",
+          "name": "A",
+          "value": "8"
+        }
+      ],
+      "default": "A",
+      "description": "set phase mode (from 0 to 8) (default A)",
+      "flags": "..FV.....T.",
+      "max": "8",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

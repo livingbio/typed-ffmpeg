@@ -1,5 +1,5 @@
 {
-  "description": "### 11.36 colorkey\n\nRGB colorspace color keying. This filter operates on 8-bit RGB format frames\nby setting the alpha component of each pixel which falls within the similarity\nradius of the key color to 0. The alpha value for pixels outside the\nsimilarity radius depends on the value of the blend option.\n\nThe filter accepts the following options:\n\n**color**\n\n    Set the color for which alpha will be set to 0 (full transparency). See (ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual. Default is black. \n\n**similarity**\n\n    Set the radius from the key color within which other colors also have full transparency. The computed distance is related to the unit fractional distance in 3D space between the RGB values of the key color and the pixel\u2019s color. Range is 0.01 to 1.0. 0.01 matches within a very small radius around the exact key color, while 1.0 matches everything. Default is 0.01. \n\n**blend**\n\n    Set how the alpha value for pixels that fall outside the similarity radius is computed. 0.0 makes pixels either fully transparent or fully opaque. Higher values result in semi-transparent pixels, with greater transparency the more similar the pixel color is to the key color. Range is 0.0 to 1.0. Default is 0.0. \n\n",
+  "description": "Turns a certain color into transparency. Operates on RGB colors.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,32 +22,32 @@
       ],
       "choices": [],
       "default": "black",
-      "description": "<dd><p>Set the color for which alpha will be set to 0 (full transparency).\nSee <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nDefault is <code>black</code>.\n</p>\n</dd>",
+      "description": "set the colorkey key color (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
         "similarity"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Set the radius from the key color within which other colors also have full transparency.\nThe computed distance is related to the unit fractional distance in 3D space between the RGB values\nof the key color and the pixel\u2019s color. Range is 0.01 to 1.0. 0.01 matches within a very small radius\naround the exact key color, while 1.0 matches everything.\nDefault is <code>0.01</code>.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set the colorkey similarity value (from 1e-05 to 1) (default 0.01)",
       "name": "similarity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "blend"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set how the alpha value for pixels that fall outside the similarity radius is computed.\n0.0 makes pixels either fully transparent or fully opaque.\nHigher values result in semi-transparent pixels, with greater transparency\nthe more similar the pixel color is to the key color.\nRange is 0.0 to 1.0. Default is <code>0.0</code>.\n</p></dd>",
+      "default": "0",
+      "description": "set the colorkey key blend value (from 0 to 1) (default 0)",
       "name": "blend",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -62,7 +62,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorkey"

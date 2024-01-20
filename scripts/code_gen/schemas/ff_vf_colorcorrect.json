@@ -1,5 +1,5 @@
 {
-  "description": "### 11.33 colorcorrect\n\nAdjust color white balance selectively for blacks and whites. This filter\noperates in YUV colorspace.\n\nThe filter accepts the following options:\n\n**rl**\n\n    Set the red shadow spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**bl**\n\n    Set the blue shadow spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**rh**\n\n    Set the red highlight spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**bh**\n\n    Set the blue highlight spot. Allowed range is from -1.0 to 1.0. Default value is 0. \n\n**saturation**\n\n    Set the amount of saturation. Allowed range is from -3.0 to 3.0. Default value is 1. \n\n**analyze**\n\n    If set to anything other than manual it will analyze every frame and use derived parameters for filtering output frame. Possible values are: \u2018manual\u2019 \u2018average\u2019 \u2018minmax\u2019 \u2018median\u2019 Default value is manual. \n\n",
+  "description": "Adjust color white balance selectively for blacks and whites.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,55 +21,55 @@
         "rl"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the red shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red shadow spot (from -1 to 1) (default 0)",
       "name": "rl",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bl"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the blue shadow spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue shadow spot (from -1 to 1) (default 0)",
       "name": "bl",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "rh"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the red highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red highlight spot (from -1 to 1) (default 0)",
       "name": "rh",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bh"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the blue highlight spot. Allowed range is from -1.0 to 1.0.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue highlight spot (from -1 to 1) (default 0)",
       "name": "bh",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "saturation"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the amount of saturation. Allowed range is from -3.0 to 3.0.\nDefault value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the amount of saturation (from -3 to 3) (default 1)",
       "name": "saturation",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -79,29 +79,29 @@
         {
           "help": "manually set options",
           "name": "manual",
-          "value": "MANUAL"
+          "value": "0"
         },
         {
           "help": "use average pixels",
           "name": "average",
-          "value": "AVERAGE"
+          "value": "1"
         },
         {
           "help": "use minmax pixels",
           "name": "minmax",
-          "value": "MINMAX"
+          "value": "2"
         },
         {
           "help": "use median pixels",
           "name": "median",
-          "value": "MEDIAN"
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>If set to anything other than <code>manual</code> it will analyze every frame and use derived\nparameters for filtering output frame.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>manual</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>minmax</samp>\u2019</dt>\n<dt>\u2018<samp>median</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>manual</code>.\n</p></dd>",
+      "default": "manual",
+      "description": "set the analyze mode (from 0 to 3) (default manual)",
       "name": "analyze",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -116,7 +116,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorcorrect"

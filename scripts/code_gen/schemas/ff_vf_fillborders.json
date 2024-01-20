@@ -1,5 +1,5 @@
 {
-  "description": "### 11.97 fillborders\n\nFill borders of the input video, without changing video stream dimensions.\nSometimes video can have garbage at the four edges and you may not want to\ncrop video input to keep size multiple of some number.\n\nThis filter accepts the following options:\n\n**left**\n\n    Number of pixels to fill from left border. \n\n**right**\n\n    Number of pixels to fill from right border. \n\n**top**\n\n    Number of pixels to fill from top border. \n\n**bottom**\n\n    Number of pixels to fill from bottom border. \n\n**mode**\n\n    Set fill mode. It accepts the following values: \u2018smear\u2019 fill pixels using outermost pixels \u2018mirror\u2019 fill pixels using mirroring (half sample symmetric) \u2018fixed\u2019 fill pixels with constant value \u2018reflect\u2019 fill pixels using reflecting (whole sample symmetric) \u2018wrap\u2019 fill pixels using wrapping \u2018fade\u2019 fade pixels to constant value \u2018margins\u2019 fill pixels at top and bottom with weighted averages pixels near borders Default is smear. \n\n**color**\n\n    Set color for pixels in fixed or fade mode. Default is black. \n\n",
+  "description": "Fill borders of the input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "left"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from left border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the left fill border (from 0 to INT_MAX) (default 0)",
       "name": "left",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "right"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from right border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the right fill border (from 0 to INT_MAX) (default 0)",
       "name": "right",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "top"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from top border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the top fill border (from 0 to INT_MAX) (default 0)",
       "name": "top",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "bottom"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Number of pixels to fill from bottom border.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the bottom fill border (from 0 to INT_MAX) (default 0)",
       "name": "bottom",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -66,46 +66,46 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smear",
-          "value": "FM_SMEAR"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "mirror",
-          "value": "FM_MIRROR"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fixed",
-          "value": "FM_FIXED"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "reflect",
-          "value": "FM_REFLECT"
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "wrap",
-          "value": "FM_WRAP"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fade",
-          "value": "FM_FADE"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "margins",
-          "value": "FM_MARGINS"
+          "value": "6"
         }
       ],
-      "default": "FM_SMEAR",
-      "description": "<dd><p>Set fill mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>smear</samp>\u2019</dt>\n<dd><p>fill pixels using outermost pixels\n</p>\n</dd>\n<dt>\u2018<samp>mirror</samp>\u2019</dt>\n<dd><p>fill pixels using mirroring (half sample symmetric)\n</p>\n</dd>\n<dt>\u2018<samp>fixed</samp>\u2019</dt>\n<dd><p>fill pixels with constant value\n</p>\n</dd>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dd><p>fill pixels using reflecting (whole sample symmetric)\n</p>\n</dd>\n<dt>\u2018<samp>wrap</samp>\u2019</dt>\n<dd><p>fill pixels using wrapping\n</p>\n</dd>\n<dt>\u2018<samp>fade</samp>\u2019</dt>\n<dd><p>fade pixels to constant value\n</p>\n</dd>\n<dt>\u2018<samp>margins</samp>\u2019</dt>\n<dd><p>fill pixels at top and bottom with weighted averages pixels near borders\n</p></dd>\n</dl>\n<p>Default is <var>smear</var>.\n</p>\n</dd>",
+      "default": "smear",
+      "description": "set the fill borders mode (from 0 to 6) (default smear)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -113,10 +113,10 @@
       ],
       "choices": [],
       "default": "black",
-      "description": "<dd><p>Set color for pixels in fixed or fade mode. Default is <var>black</var>.\n</p></dd>",
+      "description": "set the color for the fixed/fade mode (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [],
@@ -131,7 +131,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#fillborders"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.281 vmafmotion\n\nObtain the average VMAF motion score of a video. It is one of the component\nmetrics of VMAF.\n\nThe obtained average motion score is printed through the logging system.\n\nThe filter accepts the following options:\n\n**stats_file**\n\n    If specified, the filter will use the named file to save the motion score of each frame with respect to the previous frame. When filename equals \"-\" the data is sent to standard output. \n\nExample:\n\n    \n    \n    ffmpeg -i ref.mpg -vf vmafmotion -f null -\n    \n\n",
+  "description": "Calculate the VMAF Motion score.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "reference",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,17 +21,17 @@
         "stats_file"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>If specified, the filter will use the named file to save the motion score of\neach frame with respect to the previous frame.\nWhen filename equals \"-\" the data is sent to standard output.\n</p></dd>",
+      "default": null,
+      "description": "Set file where to store per-frame difference information",
       "name": "stats_file",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#vmafmotion"

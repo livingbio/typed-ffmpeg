@@ -1,5 +1,5 @@
 {
-  "description": "### 11.82 epx\n\nApply the EPX magnification filter which is designed for pixel art.\n\nIt accepts the following option:\n\n**n**\n\n    Set the scaling dimension: 2 for 2xEPX, 3 for 3xEPX. Default is 3. \n\n",
+  "description": "Scale the input using EPX algorithm.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,17 +21,17 @@
         "n"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set the scaling dimension: <code>2</code> for <code>2xEPX</code>, <code>3</code> for\n<code>3xEPX</code>.\nDefault is <code>3</code>.\n</p></dd>",
+      "default": "3",
+      "description": "set scale factor (from 2 to 3) (default 3)",
       "name": "n",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#epx"

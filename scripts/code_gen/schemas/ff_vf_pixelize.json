@@ -1,5 +1,5 @@
 {
-  "description": "### 11.193 pixelize\n\nApply pixelization to video stream.\n\nThe filter accepts the following options:\n\n**width, w**\n\n**height, h**\n\n    Set block dimensions that will be used for pixelization. Default value is 16. \n\n**mode, m**\n\n    Set the mode of pixelization used. Possible values are: \u2018avg\u2019 \u2018min\u2019 \u2018max\u2019 Default value is avg. \n\n**planes, p**\n\n    Set what planes to filter. Default is to filter all planes. \n\n",
+  "description": "Pixelize video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "w"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>Set block dimensions that will be used for pixelization.\nDefault value is <code>16</code>.\n</p>\n</dd>",
+      "default": "16",
+      "description": "set block width (from 1 to 1024) (default 16)",
       "name": "width",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -34,11 +34,11 @@
         "h"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>Set block dimensions that will be used for pixelization.\nDefault value is <code>16</code>.\n</p>\n</dd>",
+      "default": "16",
+      "description": "set block height (from 1 to 1024) (default 16)",
       "name": "height",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -49,24 +49,24 @@
         {
           "help": "average",
           "name": "avg",
-          "value": "PIXELIZE_AVG"
+          "value": "0"
         },
         {
           "help": "minimum",
           "name": "min",
-          "value": "PIXELIZE_MIN"
+          "value": "1"
         },
         {
           "help": "maximum",
           "name": "max",
-          "value": "PIXELIZE_MAX"
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the mode of pixelization used.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dt>\u2018<samp>min</samp>\u2019</dt>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n</dl>\n<p>Default value is <code>avg</code>.\n</p>\n</dd>",
+      "default": "avg",
+      "description": "set the pixelize mode (from 0 to 2) (default avg)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -74,11 +74,11 @@
         "p"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set what planes to filter. Default is to filter all planes.\n</p></dd>",
+      "default": "F",
+      "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [],
@@ -93,7 +93,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#pixelize"

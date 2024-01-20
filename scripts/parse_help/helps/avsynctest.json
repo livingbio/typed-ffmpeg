@@ -1,0 +1,173 @@
+{
+  "description": "Generate an Audio Video Sync Test.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "avsynctest",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "\"hd720\"",
+      "description": "set frame size (default \"hd720\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "framerate",
+        "fr"
+      ],
+      "choices": [],
+      "default": "\"30\"",
+      "description": "set frame rate (default \"30\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "framerate",
+      "typing": "video_rate"
+    },
+    {
+      "alias": [
+        "samplerate",
+        "sr"
+      ],
+      "choices": [],
+      "default": "44100",
+      "description": "set sample rate (from 8000 to 384000) (default 44100)",
+      "flags": "..F.A......",
+      "max": "384000",
+      "min": "8000",
+      "name": "samplerate",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "amplitude",
+        "a"
+      ],
+      "choices": [],
+      "default": "0.7",
+      "description": "set beep amplitude (from 0 to 1) (default 0.7)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "amplitude",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "period",
+        "p"
+      ],
+      "choices": [],
+      "default": "3",
+      "description": "set beep period (from 1 to 99) (default 3)",
+      "flags": "..F.A......",
+      "max": "99",
+      "min": "1",
+      "name": "period",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "delay",
+        "dl"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set flash delay (from -30 to 30) (default 0)",
+      "flags": "..FV.......",
+      "max": "30",
+      "min": "-30",
+      "name": "delay",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "cycle",
+        "c"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "set delay cycle (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "cycle",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set duration (default 0)",
+      "flags": "..FVA......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "fg"
+      ],
+      "choices": [],
+      "default": "\"white\"",
+      "description": "set foreground color (default \"white\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "bg"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set background color (default \"black\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "bg",
+      "typing": "color"
+    },
+    {
+      "alias": [
+        "ag"
+      ],
+      "choices": [],
+      "default": "\"gray\"",
+      "description": "set additional color (default \"gray\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "ag",
+      "typing": "color"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "audio",
+      "type": "audio"
+    },
+    {
+      "name": "video",
+      "type": "video"
+    }
+  ]
+}

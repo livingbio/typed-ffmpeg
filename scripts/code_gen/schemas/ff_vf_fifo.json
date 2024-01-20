@@ -1,5 +1,5 @@
 {
-  "description": "### 11.96 fifo, afifo\n\nBuffer input images and send them when they are requested.\n\nIt is mainly useful when auto-inserted by the libavfilter framework.\n\nIt does not take parameters.\n\n",
+  "description": "Buffer input images and send them when they are requested.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -19,7 +19,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#fifo_002c-afifo"

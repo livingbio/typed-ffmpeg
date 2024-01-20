@@ -1,0 +1,49 @@
+{
+  "description": "Benchmark part of a filtergraph.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "abench",
+  "options": [
+    {
+      "alias": [
+        "action"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "start timer",
+          "name": "start",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "stop timer",
+          "name": "stop",
+          "value": "1"
+        }
+      ],
+      "default": "start",
+      "description": "set action (from 0 to 1) (default start)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "action",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

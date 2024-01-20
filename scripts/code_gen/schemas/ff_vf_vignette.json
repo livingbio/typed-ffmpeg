@@ -1,5 +1,5 @@
 {
-  "description": "### 11.280 vignette\n\nMake or reverse a natural vignetting effect.\n\nThe filter accepts the following options:\n\n**angle, a**\n\n    Set lens angle expression as a number of radians. The value is clipped in the [0,PI/2] range. Default value: \"PI/5\" \n\n**x0**\n\n**y0**\n\n    Set center coordinates expressions. Respectively \"w/2\" and \"h/2\" by default. \n\n**mode**\n\n    Set forward/backward mode. Available modes are: \u2018forward\u2019 The larger the distance from the central point, the darker the image becomes. \u2018backward\u2019 The larger the distance from the central point, the brighter the image becomes. This can be used to reverse a vignette effect, though there is no automatic detection to extract the lens angle and other settings (yet). It can also be used to create a burning effect. Default value is \u2018forward\u2019. \n\n**eval**\n\n    Set evaluation mode for the expressions (angle, x0, y0). It accepts the following values: \u2018init\u2019 Evaluate expressions only once during the filter initialization. \u2018frame\u2019 Evaluate expressions for each incoming frame. This is way slower than the \u2018init\u2019 mode since it requires all the scalers to be re-computed, but it allows advanced dynamic expressions. Default value is \u2018init\u2019. \n\n**dither**\n\n    Set dithering to reduce the circular banding effects. Default is 1 (enabled). \n\n**aspect**\n\n    Set vignette aspect. This setting allows one to adjust the shape of the vignette. Setting this value to the SAR of the input will make a rectangular vignetting following the dimensions of the video. Default is 1/1. \n\n",
+  "description": "Make or reverse a vignette effect.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -23,10 +23,10 @@
       ],
       "choices": [],
       "default": "PI/5",
-      "description": "<dd><p>Set lens angle expression as a number of radians.\n</p>\n<p>The value is clipped in the <code>[0,PI/2]</code> range.\n</p>\n<p>Default value: <code>\"PI/5\"</code>\n</p>\n</dd>",
+      "description": "set lens angle (default \"PI/5\")",
       "name": "angle",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -34,10 +34,10 @@
       ],
       "choices": [],
       "default": "w/2",
-      "description": "<dd><p>Set center coordinates expressions. Respectively <code>\"w/2\"</code> and <code>\"h/2\"</code>\nby default.\n</p>\n</dd>",
+      "description": "set circle center position on x-axis (default \"w/2\")",
       "name": "x0",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -45,10 +45,10 @@
       ],
       "choices": [],
       "default": "h/2",
-      "description": "<dd><p>Set center coordinates expressions. Respectively <code>\"w/2\"</code> and <code>\"h/2\"</code>\nby default.\n</p>\n</dd>",
+      "description": "set circle center position on y-axis (default \"h/2\")",
       "name": "y0",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -56,54 +56,65 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "forward",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "backward",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set forward/backward mode.\n</p>\n<p>Available modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>forward</samp>\u2019</dt>\n<dd><p>The larger the distance from the central point, the darker the image becomes.\n</p>\n</dd>\n<dt>\u2018<samp>backward</samp>\u2019</dt>\n<dd><p>The larger the distance from the central point, the brighter the image becomes.\nThis can be used to reverse a vignette effect, though there is no automatic\ndetection to extract the lens <samp>angle</samp> and other settings (yet). It can\nalso be used to create a burning effect.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>forward</samp>\u2019.\n</p>\n</dd>",
+      "default": "forward",
+      "description": "set forward/backward mode (from 0 to 1) (default forward)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "eval"
       ],
-      "choices": [],
-      "default": "EVAL_MODE_INIT",
-      "description": "<dd><p>Set evaluation mode for the expressions (<samp>angle</samp>, <samp>x0</samp>, <samp>y0</samp>).\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>Evaluate expressions only once during the filter initialization.\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Evaluate expressions for each incoming frame. This is way slower than the\n\u2018<samp>init</samp>\u2019 mode since it requires all the scalers to be re-computed, but it\nallows advanced dynamic expressions.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p>\n</dd>",
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "help": "eval expressions for each frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "dither"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set dithering to reduce the circular banding effects. Default is <code>1</code>\n(enabled).\n</p>\n</dd>",
+      "default": "true",
+      "description": "set dithering (default true)",
       "name": "dither",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "aspect"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set vignette aspect. This setting allows one to adjust the shape of the vignette.\nSetting this value to the SAR of the input will make a rectangular vignetting\nfollowing the dimensions of the video.\n</p>\n<p>Default is <code>1/1</code>.\n</p></dd>",
+      "default": "1/1",
+      "description": "set aspect ratio (from 0 to DBL_MAX) (default 1/1)",
       "name": "aspect",
       "required": false,
-      "typing": "float"
+      "typing": "Rational"
     },
     {
       "alias": [],
@@ -118,7 +129,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#vignette"

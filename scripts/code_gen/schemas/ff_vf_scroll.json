@@ -1,5 +1,5 @@
 {
-  "description": "### 11.222 scroll\n\nScroll input video horizontally and/or vertically by constant speed.\n\nThe filter accepts the following options:\n\n**horizontal, h**\n\n    Set the horizontal scrolling speed. Default is 0. Allowed range is from -1 to 1. Negative values changes scrolling direction. \n\n**vertical, v**\n\n    Set the vertical scrolling speed. Default is 0. Allowed range is from -1 to 1. Negative values changes scrolling direction. \n\n**hpos**\n\n    Set the initial horizontal scrolling position. Default is 0. Allowed range is from 0 to 1. \n\n**vpos**\n\n    Set the initial vertical scrolling position. Default is 0. Allowed range is from 0 to 1. \n\n",
+  "description": "Scroll input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "h"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the horizontal scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the horizontal scrolling speed (from -1 to 1) (default 0)",
       "name": "horizontal",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -34,33 +34,33 @@
         "v"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the vertical scrolling speed. Default is 0. Allowed range is from -1 to 1.\nNegative values changes scrolling direction.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the vertical scrolling speed (from -1 to 1) (default 0)",
       "name": "vertical",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "hpos"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the initial horizontal scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set initial horizontal position (from 0 to 1) (default 0)",
       "name": "hpos",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "vpos"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the initial vertical scrolling position. Default is 0. Allowed range is from 0 to 1.\n</p></dd>",
+      "default": "0",
+      "description": "set initial vertical position (from 0 to 1) (default 0)",
       "name": "vpos",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -75,7 +75,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#scroll"

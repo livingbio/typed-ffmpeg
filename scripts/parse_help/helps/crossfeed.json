@@ -1,0 +1,101 @@
+{
+  "description": "Apply headphone crossfeed filter.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "crossfeed",
+  "options": [
+    {
+      "alias": [
+        "strength"
+      ],
+      "choices": [],
+      "default": "0.2",
+      "description": "set crossfeed strength (from 0 to 1) (default 0.2)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "strength",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set soundstage wideness (from 0 to 1) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "range",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "slope"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set curve slope (from 0.01 to 1) (default 0.5)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0.01",
+      "name": "slope",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level_in"
+      ],
+      "choices": [],
+      "default": "0.9",
+      "description": "set level in (from 0 to 1) (default 0.9)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "level_in",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "level_out"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set level out (from 0 to 1) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "level_out",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "block_size"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the block size (from 0 to 32768) (default 0)",
+      "flags": "..F.A......",
+      "max": "32768",
+      "min": "0",
+      "name": "block_size",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

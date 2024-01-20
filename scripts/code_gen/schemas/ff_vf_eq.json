@@ -1,5 +1,5 @@
 {
-  "description": "### 11.83 eq\n\nSet brightness, contrast, saturation and approximate gamma adjustment.\n\nThe filter accepts the following options:\n\n**contrast**\n\n    Set the contrast expression. The value must be a float value in range -1000.0 to 1000.0. The default value is \"1\". \n\n**brightness**\n\n    Set the brightness expression. The value must be a float value in range -1.0 to 1.0. The default value is \"0\". \n\n**saturation**\n\n    Set the saturation expression. The value must be a float in range 0.0 to 3.0. The default value is \"1\". \n\n**gamma**\n\n    Set the gamma expression. The value must be a float in range 0.1 to 10.0. The default value is \"1\". \n\n**gamma_r**\n\n    Set the gamma expression for red. The value must be a float in range 0.1 to 10.0. The default value is \"1\". \n\n**gamma_g**\n\n    Set the gamma expression for green. The value must be a float in range 0.1 to 10.0. The default value is \"1\". \n\n**gamma_b**\n\n    Set the gamma expression for blue. The value must be a float in range 0.1 to 10.0. The default value is \"1\". \n\n**gamma_weight**\n\n    Set the gamma weight expression. It can be used to reduce the effect of a high gamma value on bright image areas, e.g. keep them from getting overamplified and just plain white. The value must be a float in range 0.0 to 1.0. A value of 0.0 turns the gamma correction all the way down while 1.0 leaves it at its full strength. Default is \"1\". \n\n**eval**\n\n    Set when the expressions for brightness, contrast, saturation and gamma expressions are evaluated. It accepts the following values: \u2018init\u2019 only evaluate expressions once during the filter initialization or when a command is processed \u2018frame\u2019 evaluate expressions for each incoming frame Default value is \u2018init\u2019. \n\nThe expressions accept the following parameters:\n\n**n**\n\n    frame count of the input frame starting from 0 \n\n**pos**\n\n    byte position of the corresponding packet in the input file, NAN if unspecified; deprecated, do not use \n\n**r**\n\n    frame rate of the input video, NAN if the input frame rate is unknown \n\n**t**\n\n    timestamp expressed in seconds, NAN if the input timestamp is unknown \n\n",
+  "description": "Adjust brightness, contrast, gamma, and saturation.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set the contrast expression. The value must be a float value in range\n<code>-1000.0</code> to <code>1000.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "description": "set the contrast adjustment, negative values give a negative image (default \"1.0\")",
       "name": "contrast",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "0.0",
-      "description": "<dd><p>Set the brightness expression. The value must be a float value in\nrange <code>-1.0</code> to <code>1.0</code>. The default value is \"0\".\n</p>\n</dd>",
+      "description": "set the brightness adjustment (default \"0.0\")",
       "name": "brightness",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set the saturation expression. The value must be a float in\nrange <code>0.0</code> to <code>3.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "description": "set the saturation adjustment (default \"1.0\")",
       "name": "saturation",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,10 +55,10 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set the gamma expression. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>.  The default value is \"1\".\n</p>\n</dd>",
+      "description": "set the initial gamma value (default \"1.0\")",
       "name": "gamma",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -66,10 +66,10 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set the gamma expression for red. The value must be a float in\nrange <code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "description": "gamma value for red (default \"1.0\")",
       "name": "gamma_r",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -77,10 +77,10 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set the gamma expression for green. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "description": "gamma value for green (default \"1.0\")",
       "name": "gamma_g",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -88,10 +88,10 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set the gamma expression for blue. The value must be a float in range\n<code>0.1</code> to <code>10.0</code>. The default value is \"1\".\n</p>\n</dd>",
+      "description": "gamma value for blue (default \"1.0\")",
       "name": "gamma_b",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -99,21 +99,32 @@
       ],
       "choices": [],
       "default": "1.0",
-      "description": "<dd><p>Set the gamma weight expression. It can be used to reduce the effect\nof a high gamma value on bright image areas, e.g. keep them from\ngetting overamplified and just plain white. The value must be a float\nin range <code>0.0</code> to <code>1.0</code>. A value of <code>0.0</code> turns the\ngamma correction all the way down while <code>1.0</code> leaves it at its\nfull strength. Default is \"1\".\n</p>\n</dd>",
+      "description": "set the gamma weight which reduces the effect of gamma on bright areas (default \"1.0\")",
       "name": "gamma_weight",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "eval"
       ],
-      "choices": [],
-      "default": "EVAL_MODE_INIT",
-      "description": "<dd><p>Set when the expressions for brightness, contrast, saturation and\ngamma expressions are evaluated.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>init</samp>\u2019</dt>\n<dd><p>only evaluate expressions once during the filter initialization or\nwhen a command is processed\n</p>\n</dd>\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>evaluate expressions for each incoming frame\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>init</samp>\u2019.\n</p></dd>",
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "help": "eval expressions per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -128,7 +139,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#eq"

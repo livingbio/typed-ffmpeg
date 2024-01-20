@@ -1,5 +1,5 @@
 {
-  "description": "### 11.16 blockdetect\n\nDetermines blockiness of frames without altering the input frames.\n\nBased on Remco Muijs and Ihor Kirenko: \"A no-reference blocking artifact\nmeasure for adaptive video processing.\" 2005 13th European signal processing\nconference.\n\nThe filter accepts the following options:\n\n**period_min**\n\n**period_max**\n\n    Set minimum and maximum values for determining pixel grids (periods). Default values are [3,24]. \n\n**planes**\n\n    Set planes to filter. Default is first only. \n\n",
+  "description": "Blockdetect filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,39 +21,39 @@
         "period_min"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>Set minimum and maximum values for determining pixel grids (periods).\nDefault values are [3,24].\n</p>\n</dd>",
+      "default": "3",
+      "description": "Minimum period to search for (from 2 to 32) (default 3)",
       "name": "period_min",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "period_max"
       ],
       "choices": [],
-      "default": 24,
-      "description": "<dd><p>Set minimum and maximum values for determining pixel grids (periods).\nDefault values are [3,24].\n</p>\n</dd>",
+      "default": "24",
+      "description": "Maximum period to search for (from 2 to 64) (default 24)",
       "name": "period_max",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
+      "default": "1",
+      "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#blockdetect"

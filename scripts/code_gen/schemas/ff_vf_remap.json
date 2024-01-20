@@ -1,5 +1,5 @@
 {
-  "description": "### 11.206 remap\n\nRemap pixels using 2nd: Xmap and 3rd: Ymap input video stream.\n\nDestination pixel at position (X, Y) will be picked from source (x, y)\nposition where x = Xmap(X, Y) and y = Ymap(X, Y). If mapping values are out of\nrange, zero value for pixel will be used for destination pixel.\n\nXmap and Ymap input video streams must be of same dimensions. Output video\nstream will have Xmap/Ymap video stream dimensions. Xmap and Ymap input video\nstreams are 16bit depth, single channel.\n\n**format**\n\n    Specify pixel format of output from this filter. Can be color or gray. Default is color. \n\n**fill**\n\n    Specify the color of the unmapped pixels. For the syntax of this option, check the (ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual. Default color is black. \n\n",
+  "description": "Remap pixels.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,15 +7,15 @@
   "input_stream_typings": [
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "xmap",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "ymap",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -28,12 +28,23 @@
       "alias": [
         "format"
       ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Specify pixel format of output from this filter. Can be <code>color</code> or <code>gray</code>.\nDefault is <code>color</code>.\n</p>\n</dd>",
+      "choices": [
+        {
+          "help": "",
+          "name": "color",
+          "value": "0"
+        },
+        {
+          "help": "",
+          "name": "gray",
+          "value": "1"
+        }
+      ],
+      "default": "color",
+      "description": "set output format (from 0 to 1) (default color)",
       "name": "format",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -41,16 +52,16 @@
       ],
       "choices": [],
       "default": "black",
-      "description": "<dd><p>Specify the color of the unmapped pixels. For the syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils\nmanual</a>. Default color is <code>black</code>.\n</p></dd>",
+      "description": "set the color of the unmapped pixels (default \"black\")",
       "name": "fill",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#remap"

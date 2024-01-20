@@ -1,0 +1,40 @@
+{
+  "description": "Apply Midway Equalization.",
+  "input_types": [
+    {
+      "name": "in0",
+      "type": "video"
+    },
+    {
+      "name": "in1",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "midequalizer",
+  "options": [
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "description": "Cut subwoofer frequencies.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "asubcut",
+  "options": [
+    {
+      "alias": [
+        "cutoff"
+      ],
+      "choices": [],
+      "default": "20",
+      "description": "set cutoff frequency (from 2 to 200) (default 20)",
+      "flags": "..F.A....T.",
+      "max": "200",
+      "min": "2",
+      "name": "cutoff",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "order"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set filter order (from 3 to 20) (default 10)",
+      "flags": "..F.A....T.",
+      "max": "20",
+      "min": "3",
+      "name": "order",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "level"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set input level (from 0 to 1) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "level",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

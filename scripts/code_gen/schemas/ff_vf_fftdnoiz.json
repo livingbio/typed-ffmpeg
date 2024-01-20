@@ -1,5 +1,5 @@
 {
-  "description": "### 11.90 fftdnoiz\n\nDenoise frames using 3D FFT (frequency domain filtering).\n\nThe filter accepts the following options:\n\n**sigma**\n\n    Set the noise sigma constant. This sets denoising strength. Default value is 1. Allowed range is from 0 to 30. Using very high sigma with low overlap may give blocking artifacts. \n\n**amount**\n\n    Set amount of denoising. By default all detected noise is reduced. Default value is 1. Allowed range is from 0 to 1. \n\n**block**\n\n    Set size of block in pixels, Default is 32, can be 8 to 256. \n\n**overlap**\n\n    Set block overlap. Default is 0.5. Allowed range is from 0.2 to 0.8. \n\n**method**\n\n    Set denoising method. Default is wiener, can also be hard. \n\n**prev**\n\n    Set number of previous frames to use for denoising. By default is set to 0. \n\n**next**\n\n    Set number of next frames to to use for denoising. By default is set to 0. \n\n**planes**\n\n    Set planes which will be filtered, by default are all available filtered except alpha. \n\n",
+  "description": "Denoise frames using 3D FFT.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "sigma"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the noise sigma constant. This sets denoising strength.\nDefault value is 1. Allowed range is from 0 to 30.\nUsing very high sigma with low overlap may give blocking artifacts.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set denoise strength (from 0 to 100) (default 1)",
       "name": "sigma",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "amount"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set amount of denoising. By default all detected noise is reduced.\nDefault value is 1. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set amount of denoising (from 0.01 to 1) (default 1)",
       "name": "amount",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "block"
       ],
       "choices": [],
-      "default": 32,
-      "description": "<dd><p>Set size of block in pixels, Default is 32, can be 8 to 256.\n</p>\n</dd>",
+      "default": "32",
+      "description": "set block size (from 8 to 256) (default 32)",
       "name": "block",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "overlap"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set block overlap. Default is 0.5. Allowed range is from 0.2 to 0.8.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set block overlap (from 0.2 to 0.8) (default 0.5)",
       "name": "overlap",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -68,52 +68,52 @@
         {
           "help": "wiener method",
           "name": "wiener",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "hard thresholding",
           "name": "hard",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set denoising method. Default is <code>wiener</code>, can also be <code>hard</code>.\n</p>\n</dd>",
+      "default": "wiener",
+      "description": "set method of denoising (from 0 to 1) (default wiener)",
       "name": "method",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "prev"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of previous frames to use for denoising. By default is set to 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set number of previous frames for temporal denoising (from 0 to 1) (default 0)",
       "name": "prev",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "next"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set number of next frames to to use for denoising. By default is set to 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set number of next frames for temporal denoising (from 0 to 1) (default 0)",
       "name": "next",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set planes which will be filtered, by default are all available filtered\nexcept alpha.\n</p></dd>",
+      "default": "7",
+      "description": "set planes to filter (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -123,119 +123,119 @@
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         }
       ],
-      "default": "WFUNC_HANNING",
-      "description": "set window function",
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
       "name": "window",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -250,7 +250,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz"

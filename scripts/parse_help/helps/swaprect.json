@@ -1,0 +1,101 @@
+{
+  "description": "Swap 2 rectangular objects in video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "swaprect",
+  "options": [
+    {
+      "alias": [
+        "w"
+      ],
+      "choices": [],
+      "default": "\"w/2\"",
+      "description": "set rect width (default \"w/2\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "w",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "h"
+      ],
+      "choices": [],
+      "default": "\"h/2\"",
+      "description": "set rect height (default \"h/2\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "h",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "x1"
+      ],
+      "choices": [],
+      "default": "\"w/2\"",
+      "description": "set 1st rect x top left coordinate (default \"w/2\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "x1",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "y1"
+      ],
+      "choices": [],
+      "default": "\"h/2\"",
+      "description": "set 1st rect y top left coordinate (default \"h/2\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "y1",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "x2"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set 2nd rect x top left coordinate (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "x2",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "y2"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set 2nd rect y top left coordinate (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "y2",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

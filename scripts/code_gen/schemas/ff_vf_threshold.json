@@ -1,5 +1,5 @@
 {
-  "description": "### 11.253 threshold\n\nApply threshold effect to video stream.\n\nThis filter needs four video streams to perform thresholding. First stream is\nstream we are filtering. Second stream is holding threshold values, third\nstream is holding min values, and last, fourth stream is holding max values.\n\nThe filter accepts the following option:\n\n**planes**\n\n    Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed. \n\nFor example if first stream pixel\u2019s component value is less then threshold\nvalue of pixel component from 2nd threshold stream, third stream value will\npicked, otherwise fourth stream pixel component value will be picked.\n\nUsing color source filter one can perform various types of thresholding:\n\n",
+  "description": "Threshold first video stream using other video streams.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,19 +7,19 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "threshold",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "min",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "max",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -33,11 +33,11 @@
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p></dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -52,7 +52,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#threshold"

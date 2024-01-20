@@ -1,5 +1,5 @@
 {
-  "description": "### 11.276 vflip\n\nFlip the input video vertically.\n\nFor example, to vertically flip a video with `ffmpeg`:\n\n    \n    \n    ffmpeg -i in.avi -vf \"vflip\" out.avi\n    \n\n",
+  "description": "Flip the input video vertically.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -29,7 +29,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#vflip"

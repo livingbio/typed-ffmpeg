@@ -1,10 +1,10 @@
 {
-  "description": "### 11.163 mergeplanes\n\nMerge color channel components from several video streams.\n\nThe filter accepts up to 4 input streams, and merge selected input planes to\nthe output video.\n\nThis filter accepts the following options:\n\n**mapping**\n\n    Set input to output plane mapping. Default is 0. The mappings is specified as a bitmap. It should be specified as a hexadecimal number in the form 0xAa[Bb[Cc[Dd]]]. \u2019Aa\u2019 describes the mapping for the first plane of the output stream. \u2019A\u2019 sets the number of the input stream to use (from 0 to 3), and \u2019a\u2019 the plane number of the corresponding input to use (from 0 to 3). The rest of the mappings is similar, \u2019Bb\u2019 describes the mapping for the output stream second plane, \u2019Cc\u2019 describes the mapping for the output stream third plane and \u2019Dd\u2019 describes the mapping for the output stream fourth plane. \n\n**format**\n\n    Set output pixel format. Default is yuva444p. \n\n**map0s**\n\n**map1s**\n\n**map2s**\n\n**map3s**\n\n    Set input to output stream mapping for output Nth plane. Default is 0. \n\n**map0p**\n\n**map1p**\n\n**map2p**\n\n**map3p**\n\n    Set input to output plane mapping for output Nth plane. Default is 0. \n\n",
+  "description": "Merge planes.",
   "filter_type": "vf",
   "formula_input_typings": "[StreamType.video] * int(max(hex(int(mapping))[2::2]))",
   "formula_output_typings": null,
   "id": "ff_vf_mergeplanes",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -16,116 +16,116 @@
         "mapping"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set input to output plane mapping. Default is <code>0</code>.\n</p>\n<p>The mappings is specified as a bitmap. It should be specified as a\nhexadecimal number in the form 0xAa[Bb[Cc[Dd]]]. \u2019Aa\u2019 describes the\nmapping for the first plane of the output stream. \u2019A\u2019 sets the number of\nthe input stream to use (from 0 to 3), and \u2019a\u2019 the plane number of the\ncorresponding input to use (from 0 to 3). The rest of the mappings is\nsimilar, \u2019Bb\u2019 describes the mapping for the output stream second\nplane, \u2019Cc\u2019 describes the mapping for the output stream third plane and\n\u2019Dd\u2019 describes the mapping for the output stream fourth plane.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set input to output plane mapping (from -1 to 8.58993e+08) (default -1)",
       "name": "mapping",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "format"
       ],
       "choices": [],
-      "default": "AV_PIX_FMT_YUVA444P",
-      "description": "<dd><p>Set output pixel format. Default is <code>yuva444p</code>.\n</p>\n</dd>",
+      "default": "yuva444p",
+      "description": "set output pixel format (default yuva444p)",
       "name": "format",
       "required": false,
-      "typing": "str"
+      "typing": "Pix_fmt"
     },
     {
       "alias": [
         "map0s"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set 1st input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map0s",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map0p"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
+      "default": "0",
+      "description": "set 1st input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map0p",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map1s"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set 2nd input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map1s",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map1p"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
+      "default": "0",
+      "description": "set 2nd input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map1p",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map2s"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set 3rd input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map2s",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map2p"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
+      "default": "0",
+      "description": "set 3rd input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map2p",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map3s"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output stream mapping for output Nth plane. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set 4th input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map3s",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map3p"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set input to output plane mapping for output Nth plane. Default is <code>0</code>.\n</p></dd>",
+      "default": "0",
+      "description": "set 4th input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map3p",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#mergeplanes"

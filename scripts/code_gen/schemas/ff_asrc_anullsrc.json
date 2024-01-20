@@ -1,5 +1,5 @@
 {
-  "description": "### 9.6 anullsrc\n\nThe null audio source, return unprocessed audio frames. It is mainly useful as\na template and to be employed in analysis / debugging tools, or as the source\nfor filters which ignore the input data (for example the sox synth filter).\n\nThis source accepts the following options:\n\n**channel_layout, cl**\n\n     Specifies the channel layout, and can be either an integer or a string representing a channel layout. The default value of channel_layout is \"stereo\". Check the channel_layout_map definition in libavutil/channel_layout.c for the mapping between strings and channel layout values. \n\n**sample_rate, r**\n\n    Specifies the sample rate, and defaults to 44100. \n\n**nb_samples, n**\n\n    Set the number of samples per requested frames. \n\n**duration, d**\n\n    Set the duration of the sourced audio. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. If not specified, or the expressed duration is negative, the audio is supposed to be generated forever. \n\n",
+  "description": "Null audio source, return empty audio frames.",
   "filter_type": "asrc",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -18,10 +18,10 @@
       ],
       "choices": [],
       "default": "stereo",
-      "description": "<dd>\n<p>Specifies the channel layout, and can be either an integer or a string\nrepresenting a channel layout. The default value of <var>channel_layout</var>\nis \"stereo\".\n</p>\n<p>Check the channel_layout_map definition in\n<samp>libavutil/channel_layout.c</samp> for the mapping between strings and\nchannel layout values.\n</p>\n</dd>",
+      "description": "set channel_layout (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -29,11 +29,11 @@
         "r"
       ],
       "choices": [],
-      "default": 44100,
-      "description": "<dd><p>Specifies the sample rate, and defaults to 44100.\n</p>\n</dd>",
+      "default": "44100",
+      "description": "set sample rate (default \"44100\")",
       "name": "sample_rate",
       "required": false,
-      "typing": "int"
+      "typing": "String"
     },
     {
       "alias": [
@@ -41,11 +41,11 @@
         "n"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set the number of samples per requested frames.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set the number of samples per requested frame (from 1 to 65535) (default 1024)",
       "name": "nb_samples",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -53,17 +53,17 @@
         "d"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set the duration of the sourced audio. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax.\n</p>\n<p>If not specified, or the expressed duration is negative, the audio is\nsupposed to be generated forever.\n</p></dd>",
+      "default": "-0.000001",
+      "description": "set the audio duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#anullsrc"

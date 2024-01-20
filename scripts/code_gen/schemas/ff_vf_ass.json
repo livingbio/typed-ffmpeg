@@ -1,5 +1,5 @@
 {
-  "description": "### 11.5 ass\n\nSame as the subtitles filter, except that it doesn\u2019t require libavcodec and\nlibavformat to work. On the other hand, it is limited to ASS (Advanced\nSubstation Alpha) subtitles files.\n\nThis filter accepts the following option in addition to the common options\nfrom the subtitles filter:\n\n**shaping**\n\n    Set the shaping engine Available values are: \u2018auto\u2019 The default libass shaping engine, which is the best available. \u2018simple\u2019 Fast, font-agnostic shaper that can do only substitutions \u2018complex\u2019 Slower shaper using OpenType for substitutions and positioning The default is auto. \n\n",
+  "description": "Render ASS subtitles onto input video using the libass library.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,44 +22,44 @@
         "f"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set the filename of file to read",
       "name": "filename",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "original_size"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set the size of the original video (used to scale fonts)",
       "name": "original_size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "fontsdir"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set the directory containing the fonts to read",
       "name": "fontsdir",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "alpha"
       ],
       "choices": [],
-      "default": 0,
-      "description": "enable processing of alpha channel",
+      "default": "false",
+      "description": "enable processing of alpha channel (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -67,32 +67,32 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
           "help": "simple shaping",
           "name": "simple",
-          "value": "ASS_SHAPING_SIMPLE"
+          "value": "0"
         },
         {
           "help": "complex shaping",
           "name": "complex",
-          "value": "ASS_SHAPING_COMPLEX"
+          "value": "1"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Set the shaping engine\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>The default libass shaping engine, which is the best available.\n</p></dd>\n<dt>\u2018<samp>simple</samp>\u2019</dt>\n<dd><p>Fast, font-agnostic shaper that can do only substitutions\n</p></dd>\n<dt>\u2018<samp>complex</samp>\u2019</dt>\n<dd><p>Slower shaper using OpenType for substitutions and positioning\n</p></dd>\n</dl>\n<p>The default is <code>auto</code>.\n</p></dd>",
+      "default": "auto",
+      "description": "set shaping engine (from -1 to 1) (default auto)",
       "name": "shaping",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#ass"

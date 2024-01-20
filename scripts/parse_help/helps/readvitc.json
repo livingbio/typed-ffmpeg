@@ -1,0 +1,62 @@
+{
+  "description": "Read vertical interval timecode and write it to frame metadata.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "readvitc",
+  "options": [
+    {
+      "alias": [
+        "scan_max"
+      ],
+      "choices": [],
+      "default": "45",
+      "description": "maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "scan_max",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "thr_b"
+      ],
+      "choices": [],
+      "default": "0.2",
+      "description": "black color threshold (from 0 to 1) (default 0.2)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "thr_b",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "thr_w"
+      ],
+      "choices": [],
+      "default": "0.6",
+      "description": "white color threshold (from 0 to 1) (default 0.6)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "thr_w",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

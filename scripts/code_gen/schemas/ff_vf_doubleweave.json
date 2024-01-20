@@ -1,5 +1,5 @@
 {
-  "description": "### 11.285 weave, doubleweave\n\nThe `weave` takes a field-based video input and join each two sequential\nfields into single frame, producing a new double height clip with half the\nframe rate and half the frame count.\n\nThe `doubleweave` works same as `weave` but without halving frame rate and\nframe count.\n\nIt accepts the following option:\n\n**first_field**\n\n    Set first field. Available values are: \u2018top, t\u2019 Set the frame as top-field-first. \u2018bottom, b\u2019 Set the frame as bottom-field-first. \n\n",
+  "description": "Weave input video fields into double number of frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -24,35 +24,35 @@
         {
           "help": "set top field first",
           "name": "top",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "set top field first",
           "name": "t",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "set bottom field first",
           "name": "bottom",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "set bottom field first",
           "name": "b",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set first field. Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>top, t</samp>\u2019</dt>\n<dd><p>Set the frame as top-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>bottom, b</samp>\u2019</dt>\n<dd><p>Set the frame as bottom-field-first.\n</p></dd>\n</dl>\n</dd>",
+      "default": "top",
+      "description": "set first field (from 0 to 1) (default top)",
       "name": "first_field",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave"

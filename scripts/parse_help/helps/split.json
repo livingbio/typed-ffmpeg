@@ -1,0 +1,31 @@
+{
+  "description": "Pass on the input to N video outputs.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "split",
+  "options": [
+    {
+      "alias": [
+        "outputs"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+      "flags": "..FVA......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "outputs",
+      "typing": "int"
+    }
+  ],
+  "output_types": null
+}

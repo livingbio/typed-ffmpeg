@@ -1,0 +1,49 @@
+{
+  "description": "Apply tremolo effect.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "tremolo",
+  "options": [
+    {
+      "alias": [
+        "f"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "set frequency in hertz (from 0.1 to 20000) (default 5)",
+      "flags": "..F.A......",
+      "max": "20000",
+      "min": "0.1",
+      "name": "f",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "d"
+      ],
+      "choices": [],
+      "default": "0.5",
+      "description": "set depth as percentage (from 0 to 1) (default 0.5)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "d",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

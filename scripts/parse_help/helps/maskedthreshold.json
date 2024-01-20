@@ -1,0 +1,79 @@
+{
+  "description": "Pick pixels comparing absolute difference of two streams with threshold.",
+  "input_types": [
+    {
+      "name": "source",
+      "type": "video"
+    },
+    {
+      "name": "reference",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "maskedthreshold",
+  "options": [
+    {
+      "alias": [
+        "threshold"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set threshold (from 0 to 65535) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "65535",
+      "min": "0",
+      "name": "threshold",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes (from 0 to 15) (default 15)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "abs",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "diff",
+          "value": "1"
+        }
+      ],
+      "default": "abs",
+      "description": "set mode (from 0 to 1) (default abs)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

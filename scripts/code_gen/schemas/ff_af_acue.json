@@ -1,5 +1,5 @@
 {
-  "description": "### 8.8 acue\n\nDelay audio filtering until a given wallclock timestamp. See the cue filter.\n\n",
+  "description": "Delay filtering to match a cue.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,39 +21,39 @@
         "cue"
       ],
       "choices": [],
-      "default": 0,
-      "description": "cue unix timestamp in microseconds",
+      "default": "0",
+      "description": "cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)",
       "name": "cue",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "preroll"
       ],
       "choices": [],
-      "default": 0,
-      "description": "preroll duration in seconds",
+      "default": "0",
+      "description": "preroll duration in seconds (default 0)",
       "name": "preroll",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "buffer"
       ],
       "choices": [],
-      "default": 0,
-      "description": "buffer duration in seconds",
+      "default": "0",
+      "description": "buffer duration in seconds (default 0)",
       "name": "buffer",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#acue"

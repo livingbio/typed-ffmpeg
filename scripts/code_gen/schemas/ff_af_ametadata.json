@@ -1,5 +1,5 @@
 {
-  "description": "### 18.13 metadata, ametadata\n\nManipulate frame metadata.\n\nThis filter accepts the following options:\n\n**mode**\n\n    Set mode of operation of the filter. Can be one of the following: \u2018select\u2019 If both value and key is set, select frames which have such metadata. If only key is set, select every frame that has such key in metadata. \u2018add\u2019 Add new metadata key and value. If key is already available do nothing. \u2018modify\u2019 Modify value of already present key. \u2018delete\u2019 If value is set, delete only keys that have such value. Otherwise, delete key. If key is not set, delete all metadata values in the frame. \u2018print\u2019 Print key and its value if metadata was found. If key is not set print all metadata values available in frame. \n\n**key**\n\n    Set key used with all modes. Must be set for all modes except print and delete. \n\n**value**\n\n    Set metadata value which will be used. This option is mandatory for modify and add mode. \n\n**function**\n\n    Which function to use when comparing metadata value and value. Can be one of following: \u2018same_str\u2019 Values are interpreted as strings, returns true if metadata value is same as value. \u2018starts_with\u2019 Values are interpreted as strings, returns true if metadata value starts with the value option string. \u2018less\u2019 Values are interpreted as floats, returns true if metadata value is less than value. \u2018equal\u2019 Values are interpreted as floats, returns true if value is equal with metadata value. \u2018greater\u2019 Values are interpreted as floats, returns true if metadata value is greater than value. \u2018expr\u2019 Values are interpreted as floats, returns true if expression from option expr evaluates to true. \u2018ends_with\u2019 Values are interpreted as strings, returns true if metadata value ends with the value option string. \n\n**expr**\n\n    Set expression which is used when function is set to expr. The expression is evaluated through the eval API and can contain the following constants: VALUE1, FRAMEVAL Float representation of value from metadata key. VALUE2, USERVAL Float representation of value as supplied by user in value option. \n\n**file**\n\n    If specified in print mode, output is written to the named file. Instead of plain filename any writable url can be specified. Filename \u201c-\u201d is a shorthand for standard output. If file option is not set, output is written to the log with AV_LOG_INFO loglevel. \n\n**direct**\n\n    Reduces buffering in print mode when output is written to a URL set using file. \n\n",
+  "description": "Manipulate audio frame metadata.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -24,56 +24,56 @@
         {
           "help": "select frame",
           "name": "select",
-          "value": "METADATA_SELECT"
+          "value": "0"
         },
         {
           "help": "add new metadata",
           "name": "add",
-          "value": "METADATA_ADD"
+          "value": "1"
         },
         {
           "help": "modify metadata",
           "name": "modify",
-          "value": "METADATA_MODIFY"
+          "value": "2"
         },
         {
           "help": "delete metadata",
           "name": "delete",
-          "value": "METADATA_DELETE"
+          "value": "3"
         },
         {
           "help": "print metadata",
           "name": "print",
-          "value": "METADATA_PRINT"
+          "value": "4"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set mode of operation of the filter.\n</p>\n<p>Can be one of the following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>select</samp>\u2019</dt>\n<dd><p>If both <code>value</code> and <code>key</code> is set, select frames\nwhich have such metadata. If only <code>key</code> is set, select\nevery frame that has such key in metadata.\n</p>\n</dd>\n<dt>\u2018<samp>add</samp>\u2019</dt>\n<dd><p>Add new metadata <code>key</code> and <code>value</code>. If key is already available\ndo nothing.\n</p>\n</dd>\n<dt>\u2018<samp>modify</samp>\u2019</dt>\n<dd><p>Modify value of already present key.\n</p>\n</dd>\n<dt>\u2018<samp>delete</samp>\u2019</dt>\n<dd><p>If <code>value</code> is set, delete only keys that have such value.\nOtherwise, delete key. If <code>key</code> is not set, delete all metadata values in\nthe frame.\n</p>\n</dd>\n<dt>\u2018<samp>print</samp>\u2019</dt>\n<dd><p>Print key and its value if metadata was found. If <code>key</code> is not set print all\nmetadata values available in frame.\n</p></dd>\n</dl>\n</dd>",
+      "default": "select",
+      "description": "set a mode of operation (from 0 to 4) (default select)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "key"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set key used with all modes. Must be set for all modes except <code>print</code> and <code>delete</code>.\n</p>\n</dd>",
+      "default": null,
+      "description": "set metadata key",
       "name": "key",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "value"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set metadata value which will be used. This option is mandatory for\n<code>modify</code> and <code>add</code> mode.\n</p>\n</dd>",
+      "default": null,
+      "description": "set metadata value",
       "name": "value",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -81,79 +81,79 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "same_str",
-          "value": "METADATAF_SAME_STR"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "starts_with",
-          "value": "METADATAF_STARTS_WITH"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "less",
-          "value": "METADATAF_LESS"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "equal",
-          "value": "METADATAF_EQUAL"
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "greater",
-          "value": "METADATAF_GREATER"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "expr",
-          "value": "METADATAF_EXPR"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ends_with",
-          "value": "METADATAF_ENDS_WITH"
+          "value": "6"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Which function to use when comparing metadata value and <code>value</code>.\n</p>\n<p>Can be one of following:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>same_str</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings, returns true if metadata value is same as <code>value</code>.\n</p>\n</dd>\n<dt>\u2018<samp>starts_with</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings, returns true if metadata value starts with\nthe <code>value</code> option string.\n</p>\n</dd>\n<dt>\u2018<samp>less</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if metadata value is less than <code>value</code>.\n</p>\n</dd>\n<dt>\u2018<samp>equal</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if <code>value</code> is equal with metadata value.\n</p>\n</dd>\n<dt>\u2018<samp>greater</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if metadata value is greater than <code>value</code>.\n</p>\n</dd>\n<dt>\u2018<samp>expr</samp>\u2019</dt>\n<dd><p>Values are interpreted as floats, returns true if expression from option <code>expr</code>\nevaluates to true.\n</p>\n</dd>\n<dt>\u2018<samp>ends_with</samp>\u2019</dt>\n<dd><p>Values are interpreted as strings, returns true if metadata value ends with\nthe <code>value</code> option string.\n</p></dd>\n</dl>\n</dd>",
+      "default": "same_str",
+      "description": "function for comparing values (from 0 to 6) (default same_str)",
       "name": "function",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set expression which is used when <code>function</code> is set to <code>expr</code>.\nThe expression is evaluated through the eval API and can contain the following\nconstants:\n</p>\n<dl compact=\"compact\">\n<dt><samp>VALUE1, FRAMEVAL</samp></dt>\n<dd><p>Float representation of <code>value</code> from metadata key.\n</p>\n</dd>\n<dt><samp>VALUE2, USERVAL</samp></dt>\n<dd><p>Float representation of <code>value</code> as supplied by user in <code>value</code> option.\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set expression for expr function",
       "name": "expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "file"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>If specified in <code>print</code> mode, output is written to the named file. Instead of\nplain filename any writable url can be specified. Filename \u201c-\u201d is a shorthand\nfor standard output. If <code>file</code> option is not set, output is written to the log\nwith AV_LOG_INFO loglevel.\n</p>\n</dd>",
+      "default": null,
+      "description": "set file where to print metadata information",
       "name": "file",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "direct"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Reduces buffering in print mode when output is written to a URL set using <var>file</var>.\n</p>\n</dd>",
+      "default": "false",
+      "description": "reduce buffering when printing to user-set file or pipe (default false)",
       "name": "direct",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -168,7 +168,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata"

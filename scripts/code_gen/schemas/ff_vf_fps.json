@@ -1,5 +1,5 @@
 {
-  "description": "### 11.101 fps\n\nConvert the video to specified constant frame rate by duplicating or dropping\nframes as necessary.\n\nIt accepts the following parameters:\n\n**fps**\n\n    The desired output frame rate. It accepts expressions containing the following constants: \u2018source_fps\u2019 The input\u2019s frame rate \u2018ntsc\u2019 NTSC frame rate of 30000/1001 \u2018pal\u2019 PAL frame rate of 25.0 \u2018film\u2019 Film frame rate of 24.0 \u2018ntsc_film\u2019 NTSC-film frame rate of 24000/1001 The default is 25. \n\n**start_time**\n\n    Assume the first PTS should be the given value, in seconds. This allows for padding/trimming at the start of stream. By default, no assumption is made about the first frame\u2019s expected PTS, so no padding or trimming is done. For example, this could be set to 0 to pad the beginning with duplicates of the first frame if a video stream starts after the audio stream or to trim any frames with a negative PTS. \n\n**round**\n\n    Timestamp (PTS) rounding method. Possible values are: zero round towards 0 inf round away from 0 down round towards -infinity up round towards +infinity near round to nearest The default is near. \n\n**eof_action**\n\n    Action performed when reading the last frame. Possible values are: round Use same timestamp rounding method as used for other frames. pass Pass through last frame if input duration has not been reached yet. The default is round. \n\nAlternatively, the options can be specified as a flat string:\nfps[:start_time[:round]].\n\nSee also the setpts filter.\n\n",
+  "description": "Force constant framerate.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,21 +22,21 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>The desired output frame rate. It accepts expressions containing the following\nconstants:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>source_fps</samp>\u2019</dt>\n<dd><p>The input\u2019s frame rate\n</p>\n</dd>\n<dt>\u2018<samp>ntsc</samp>\u2019</dt>\n<dd><p>NTSC frame rate of <code>30000/1001</code>\n</p>\n</dd>\n<dt>\u2018<samp>pal</samp>\u2019</dt>\n<dd><p>PAL frame rate of <code>25.0</code>\n</p>\n</dd>\n<dt>\u2018<samp>film</samp>\u2019</dt>\n<dd><p>Film frame rate of <code>24.0</code>\n</p>\n</dd>\n<dt>\u2018<samp>ntsc_film</samp>\u2019</dt>\n<dd><p>NTSC-film frame rate of <code>24000/1001</code>\n</p></dd>\n</dl>\n<p>The default is <code>25</code>.\n</p>\n</dd>",
+      "description": "A string describing desired output framerate (default \"25\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "start_time"
       ],
       "choices": [],
-      "default": 1.7976931348623157e+308,
-      "description": "<dd><p>Assume the first PTS should be the given value, in seconds. This allows for\npadding/trimming at the start of stream. By default, no assumption is made\nabout the first frame\u2019s expected PTS, so no padding or trimming is done.\nFor example, this could be set to 0 to pad the beginning with duplicates of\nthe first frame if a video stream starts after the audio stream or to trim any\nframes with a negative PTS.\n</p>\n</dd>",
+      "default": "DBL_MAX",
+      "description": "Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "name": "start_time",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -46,34 +46,34 @@
         {
           "help": "round towards 0",
           "name": "zero",
-          "value": "AV_ROUND_ZERO"
+          "value": "0"
         },
         {
           "help": "round away from 0",
           "name": "inf",
-          "value": "AV_ROUND_INF"
+          "value": "1"
         },
         {
           "help": "round towards -infty",
           "name": "down",
-          "value": "AV_ROUND_DOWN"
+          "value": "2"
         },
         {
           "help": "round towards +infty",
           "name": "up",
-          "value": "AV_ROUND_UP"
+          "value": "3"
         },
         {
           "help": "round to nearest",
           "name": "near",
-          "value": "AV_ROUND_NEAR_INF"
+          "value": "5"
         }
       ],
-      "default": "AV_ROUND_NEAR_INF",
-      "description": "<dd><p>Timestamp (PTS) rounding method.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><samp>zero</samp></dt>\n<dd><p>round towards 0\n</p></dd>\n<dt><samp>inf</samp></dt>\n<dd><p>round away from 0\n</p></dd>\n<dt><samp>down</samp></dt>\n<dd><p>round towards -infinity\n</p></dd>\n<dt><samp>up</samp></dt>\n<dd><p>round towards +infinity\n</p></dd>\n<dt><samp>near</samp></dt>\n<dd><p>round to nearest\n</p></dd>\n</dl>\n<p>The default is <code>near</code>.\n</p>\n</dd>",
+      "default": "near",
+      "description": "set rounding method for timestamps (from 0 to 5) (default near)",
       "name": "round",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -83,25 +83,25 @@
         {
           "help": "round similar to other frames",
           "name": "round",
-          "value": "EOF_ACTION_ROUND"
+          "value": "0"
         },
         {
           "help": "pass through last frame",
           "name": "pass",
-          "value": "EOF_ACTION_PASS"
+          "value": "1"
         }
       ],
-      "default": "EOF_ACTION_ROUND",
-      "description": "<dd><p>Action performed when reading the last frame.\n</p>\n<p>Possible values are:\n</p><dl compact=\"compact\">\n<dt><samp>round</samp></dt>\n<dd><p>Use same timestamp rounding method as used for other frames.\n</p></dd>\n<dt><samp>pass</samp></dt>\n<dd><p>Pass through last frame if input duration has not been reached yet.\n</p></dd>\n</dl>\n<p>The default is <code>round</code>.\n</p>\n</dd>",
+      "default": "round",
+      "description": "action performed for last frame (from 0 to 1) (default round)",
       "name": "eof_action",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#fps"

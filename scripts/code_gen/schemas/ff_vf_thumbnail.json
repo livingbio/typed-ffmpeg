@@ -1,5 +1,5 @@
 {
-  "description": "### 11.254 thumbnail\n\nSelect the most representative frame in a given sequence of consecutive\nframes.\n\nThe filter accepts the following options:\n\n**n**\n\n    Set the frames batch size to analyze; in a set of n frames, the filter will pick one of them, and then handle the next batch of n frames until the end. Default is 100. \n\n**log**\n\n    Set the log level to display picked frame stats. Default is info. \n\nSince the filter keeps track of the whole frames sequence, a bigger n value\nwill result in a higher memory usage, so a high value is not recommended.\n\n",
+  "description": "Select the most representative frame in a given sequence of consecutive frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "n"
       ],
       "choices": [],
-      "default": 100,
-      "description": "<dd><p>Set the frames batch size to analyze; in a set of <var>n</var> frames, the filter\nwill pick one of them, and then handle the next batch of <var>n</var> frames until\nthe end. Default is <code>100</code>.\n</p>\n</dd>",
+      "default": "100",
+      "description": "set the frames batch size (from 2 to INT_MAX) (default 100)",
       "name": "n",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -35,24 +35,24 @@
         {
           "help": "logging disabled",
           "name": "quiet",
-          "value": -8
+          "value": "-8"
         },
         {
           "help": "information logging level",
           "name": "info",
-          "value": 32
+          "value": "32"
         },
         {
           "help": "verbose logging level",
           "name": "verbose",
-          "value": 40
+          "value": "40"
         }
       ],
-      "default": 32,
-      "description": "<dd><p>Set the log level to display picked frame stats.\nDefault is <code>info</code>.\n</p></dd>",
+      "default": "info",
+      "description": "force stats logging level (from INT_MIN to INT_MAX) (default info)",
       "name": "log",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -67,7 +67,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#thumbnail"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.55 dblur\n\nApply Directional blur filter.\n\nThe filter accepts the following options:\n\n**angle**\n\n    Set angle of directional blur. Default is 45. \n\n**radius**\n\n    Set radius of directional blur. Default is 5. \n\n**planes**\n\n    Set which planes to filter. By default all planes are filtered. \n\n",
+  "description": "Apply Directional Blur filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,33 +21,33 @@
         "angle"
       ],
       "choices": [],
-      "default": 45.0,
-      "description": "<dd><p>Set angle of directional blur. Default is <code>45</code>.\n</p>\n</dd>",
+      "default": "45",
+      "description": "set angle (from 0 to 360) (default 45)",
       "name": "angle",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "radius"
       ],
       "choices": [],
-      "default": 5.0,
-      "description": "<dd><p>Set radius of directional blur. Default is <code>5</code>.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set radius (from 0 to 8192) (default 5)",
       "name": "radius",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": "0xF",
-      "description": "<dd><p>Set which planes to filter. By default all planes are filtered.\n</p></dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -62,7 +62,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#dblur"

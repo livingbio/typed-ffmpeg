@@ -1,0 +1,188 @@
+{
+  "description": "Manipulate video frame metadata.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "metadata",
+  "options": [
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "select frame",
+          "name": "select",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "add new metadata",
+          "name": "add",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "modify metadata",
+          "name": "modify",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "delete metadata",
+          "name": "delete",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "print metadata",
+          "name": "print",
+          "value": "4"
+        }
+      ],
+      "default": "select",
+      "description": "set a mode of operation (from 0 to 4) (default select)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "key"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set metadata key",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "key",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "value"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set metadata value",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "value",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "function"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "same_str",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "starts_with",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "less",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "equal",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "greater",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "expr",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "ends_with",
+          "value": "6"
+        }
+      ],
+      "default": "same_str",
+      "description": "function for comparing values (from 0 to 6) (default same_str)",
+      "flags": "..FV.......",
+      "max": "6",
+      "min": "0",
+      "name": "function",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set expression for expr function",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "expr",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "file"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set file where to print metadata information",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "file",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "direct"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "reduce buffering when printing to user-set file or pipe (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "direct",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

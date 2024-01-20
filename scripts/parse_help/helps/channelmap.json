@@ -1,0 +1,49 @@
+{
+  "description": "Remap audio channels.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "channelmap",
+  "options": [
+    {
+      "alias": [
+        "map"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "A comma-separated list of input channel numbers in output order.",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "map",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "channel_layout"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "Output channel layout.",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "channel_layout",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 18.12 latency, alatency\n\nMeasure filtering latency.\n\nReport previous filter filtering latency, delay in number of audio samples for\naudio filters or number of video frames for video filters.\n\nOn end of input stream, filter will report min and max measured latency for\nprevious running filter in filtergraph.\n\n",
+  "description": "Report video filtering latency.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -29,7 +29,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency"

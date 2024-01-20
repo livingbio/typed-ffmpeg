@@ -1,5 +1,5 @@
 {
-  "description": "### 11.196 pp7\n\nApply Postprocessing filter 7. It is variant of the spp filter, similar to spp\n= 6 with 7 point DCT, where only the center sample is used after IDCT.\n\nThe filter accepts the following options:\n\n**qp**\n\n    Force a constant quantization parameter. It accepts an integer in range 0 to 63. If not set, the filter will use the QP from the video stream (if available). \n\n**mode**\n\n    Set thresholding mode. Available modes are: \u2018hard\u2019 Set hard thresholding. \u2018soft\u2019 Set soft thresholding (better de-ringing effect, but likely blurrier). \u2018medium\u2019 Set medium thresholding (good results, default). \n\n",
+  "description": "Apply Postprocessing 7 filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "qp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Force a constant quantization parameter. It accepts an integer in range\n0 to 63. If not set, the filter will use the QP from the video stream\n(if available).\n</p>\n</dd>",
+      "default": "0",
+      "description": "force a constant quantizer parameter (from 0 to 64) (default 0)",
       "name": "qp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -35,24 +35,24 @@
         {
           "help": "hard thresholding",
           "name": "hard",
-          "value": "MODE_HARD"
+          "value": "0"
         },
         {
           "help": "soft thresholding",
           "name": "soft",
-          "value": "MODE_SOFT"
+          "value": "1"
         },
         {
           "help": "medium thresholding",
           "name": "medium",
-          "value": "MODE_MEDIUM"
+          "value": "2"
         }
       ],
-      "default": "MODE_MEDIUM",
-      "description": "<dd><p>Set thresholding mode. Available modes are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>Set hard thresholding.\n</p></dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>Set soft thresholding (better de-ringing effect, but likely blurrier).\n</p></dd>\n<dt>\u2018<samp>medium</samp>\u2019</dt>\n<dd><p>Set medium thresholding (good results, default).\n</p></dd>\n</dl>\n</dd>",
+      "default": "medium",
+      "description": "set thresholding mode (from 0 to 2) (default medium)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -67,7 +67,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#pp7"

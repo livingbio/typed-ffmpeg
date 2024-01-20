@@ -1,5 +1,5 @@
 {
-  "description": "### 11.139 kerndeint\n\nDeinterlace input video by applying Donald Graft\u2019s adaptive kernel\ndeinterling. Work on interlaced parts of a video to produce progressive\nframes.\n\nThe description of the accepted parameters follows.\n\n**thresh**\n\n    Set the threshold which affects the filter\u2019s tolerance when determining if a pixel line must be processed. It must be an integer in the range [0,255] and defaults to 10. A value of 0 will result in applying the process on every pixels. \n\n**map**\n\n    Paint pixels exceeding the threshold value to white if set to 1. Default is 0. \n\n**order**\n\n    Set the fields order. Swap fields if set to 1, leave fields alone if 0. Default is 0. \n\n**sharp**\n\n    Enable additional sharpening if set to 1. Default is 0. \n\n**twoway**\n\n    Enable twoway sharpening if set to 1. Default is 0. \n\n",
+  "description": "Apply kernel deinterlacing to the input.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,61 +21,61 @@
         "thresh"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set the threshold which affects the filter\u2019s tolerance when\ndetermining if a pixel line must be processed. It must be an integer\nin the range [0,255] and defaults to 10. A value of 0 will result in\napplying the process on every pixels.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set the threshold (from 0 to 255) (default 10)",
       "name": "thresh",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Paint pixels exceeding the threshold value to white if set to 1.\nDefault is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set the map (default false)",
       "name": "map",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "order"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the fields order. Swap fields if set to 1, leave fields alone if\n0. Default is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set the order (default false)",
       "name": "order",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "sharp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable additional sharpening if set to 1. Default is 0.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set sharpening (default false)",
       "name": "sharp",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "twoway"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable twoway sharpening if set to 1. Default is 0.\n</p></dd>",
+      "default": "false",
+      "description": "set twoway (default false)",
       "name": "twoway",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#kerndeint"

@@ -1,0 +1,117 @@
+{
+  "description": "Apply Normalized Least-Mean-Squares algorithm to first audio stream.",
+  "input_types": [
+    {
+      "name": "input",
+      "type": "audio"
+    },
+    {
+      "name": "desired",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "anlms",
+  "options": [
+    {
+      "alias": [
+        "order"
+      ],
+      "choices": [],
+      "default": "256",
+      "description": "set the filter order (from 1 to 32767) (default 256)",
+      "flags": "..F.A......",
+      "max": "32767",
+      "min": "1",
+      "name": "order",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mu"
+      ],
+      "choices": [],
+      "default": "0.75",
+      "description": "set the filter mu (from 0 to 2) (default 0.75)",
+      "flags": "..F.A....T.",
+      "max": "2",
+      "min": "0",
+      "name": "mu",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "eps"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set the filter eps (from 0 to 1) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "eps",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "leakage"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the filter leakage (from 0 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "leakage",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "out_mode"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "input",
+          "name": "i",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "desired",
+          "name": "d",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "output",
+          "name": "o",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "noise",
+          "name": "n",
+          "value": "3"
+        }
+      ],
+      "default": "o",
+      "description": "set output mode (from 0 to 3) (default o)",
+      "flags": "..F.A....T.",
+      "max": "3",
+      "min": "0",
+      "name": "out_mode",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

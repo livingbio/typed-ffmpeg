@@ -1,5 +1,5 @@
 {
-  "description": "### 8.41 apad\n\nPad the end of an audio stream with silence.\n\nThis can be used together with `ffmpeg` -shortest to extend audio streams to\nthe same length as the video stream.\n\nA description of the accepted options follows.\n\n**packet_size**\n\n    Set silence packet size. Default value is 4096. \n\n**pad_len**\n\n    Set the number of samples of silence to add to the end. After the value is reached, the stream is terminated. This option is mutually exclusive with whole_len. \n\n**whole_len**\n\n    Set the minimum total number of samples in the output audio stream. If the value is longer than the input audio length, silence is added to the end, until the value is reached. This option is mutually exclusive with pad_len. \n\n**pad_dur**\n\n    Specify the duration of samples of silence to add. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Used only if set to non-negative value. \n\n**whole_dur**\n\n    Specify the minimum total duration in the output audio stream. See (ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual for the accepted syntax. Used only if set to non-negative value. If the value is longer than the input audio length, silence is added to the end, until the value is reached. This option is mutually exclusive with pad_dur \n\nIf neither the pad_len nor the whole_len nor pad_dur nor whole_dur option is\nset, the filter will add silence to the end of the input stream indefinitely.\n\nNote that for ffmpeg 4.4 and earlier a zero pad_dur or whole_dur also caused\nthe filter to add silence indefinitely.\n\n",
+  "description": "Pad audio with silence.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,55 +21,55 @@
         "packet_size"
       ],
       "choices": [],
-      "default": 4096,
-      "description": "<dd><p>Set silence packet size. Default value is 4096.\n</p>\n</dd>",
+      "default": "4096",
+      "description": "set silence packet size (from 0 to INT_MAX) (default 4096)",
       "name": "packet_size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "pad_len"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set the number of samples of silence to add to the end. After the\nvalue is reached, the stream is terminated. This option is mutually\nexclusive with <samp>whole_len</samp>.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set number of samples of silence to add (from -1 to I64_MAX) (default -1)",
       "name": "pad_len",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "whole_len"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set the minimum total number of samples in the output audio stream. If\nthe value is longer than the input audio length, silence is added to\nthe end, until the value is reached. This option is mutually exclusive\nwith <samp>pad_len</samp>.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set minimum target number of samples in the audio stream (from -1 to I64_MAX) (default -1)",
       "name": "whole_len",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "pad_dur"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Specify the duration of samples of silence to add. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value.\n</p>\n</dd>",
+      "default": "-0.000001",
+      "description": "set duration of silence to add (default -0.000001)",
       "name": "pad_dur",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "whole_dur"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Specify the minimum total duration in the output audio stream. See\n<a href=\"ffmpeg-utils.html#time-duration-syntax\">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>\nfor the accepted syntax. Used only if set to non-negative value. If the value is longer than\nthe input audio length, silence is added to the end, until the value is reached.\nThis option is mutually exclusive with <samp>pad_dur</samp>\n</p></dd>",
+      "default": "-0.000001",
+      "description": "set minimum target duration in the audio stream (default -0.000001)",
       "name": "whole_dur",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [],
@@ -84,7 +84,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#apad"

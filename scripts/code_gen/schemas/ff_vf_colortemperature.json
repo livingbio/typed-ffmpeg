@@ -1,5 +1,5 @@
 {
-  "description": "### 11.43 colortemperature\n\nAdjust color temperature in video to simulate variations in ambient color\ntemperature.\n\nThe filter accepts the following options:\n\n**temperature**\n\n    Set the temperature in Kelvin. Allowed range is from 1000 to 40000. Default value is 6500 K. \n\n**mix**\n\n    Set mixing with filtered output. Allowed range is from 0 to 1. Default value is 1. \n\n**pl**\n\n    Set the amount of preserving lightness. Allowed range is from 0 to 1. Default value is 0. \n\n",
+  "description": "Adjust color temperature of video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,33 +21,33 @@
         "temperature"
       ],
       "choices": [],
-      "default": 6500.0,
-      "description": "<dd><p>Set the temperature in Kelvin. Allowed range is from 1000 to 40000.\nDefault value is 6500 K.\n</p>\n</dd>",
+      "default": "6500",
+      "description": "set the temperature in Kelvin (from 1000 to 40000) (default 6500)",
       "name": "temperature",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "mix"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set mixing with filtered output. Allowed range is from 0 to 1.\nDefault value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the mix with filtered output (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "pl"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the amount of preserving lightness. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>",
+      "default": "0",
+      "description": "set the amount of preserving lightness (from 0 to 1) (default 0)",
       "name": "pl",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -62,7 +62,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colortemperature"

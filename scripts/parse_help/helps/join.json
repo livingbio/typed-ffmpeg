@@ -1,0 +1,57 @@
+{
+  "description": "Join multiple audio streams into multi-channel output.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "join",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "Number of input streams. (from 1 to INT_MAX) (default 2)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "inputs",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "channel_layout"
+      ],
+      "choices": [],
+      "default": "\"stereo\"",
+      "description": "Channel layout of the output stream. (default \"stereo\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "channel_layout",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "map"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "map",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

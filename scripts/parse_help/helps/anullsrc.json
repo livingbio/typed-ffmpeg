@@ -1,0 +1,74 @@
+{
+  "description": "Null audio source, return empty audio frames.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "anullsrc",
+  "options": [
+    {
+      "alias": [
+        "channel_layout",
+        "cl"
+      ],
+      "choices": [],
+      "default": "\"stereo\"",
+      "description": "set channel_layout (default \"stereo\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "channel_layout",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "sample_rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "\"44100\"",
+      "description": "set sample rate (default \"44100\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "sample_rate",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "nb_samples",
+        "n"
+      ],
+      "choices": [],
+      "default": "1024",
+      "description": "set the number of samples per requested frame (from 1 to 65535) (default 1024)",
+      "flags": "..F.A......",
+      "max": "65535",
+      "min": "1",
+      "name": "nb_samples",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration",
+        "d"
+      ],
+      "choices": [],
+      "default": "-0.000001",
+      "description": "set the audio duration (default -0.000001)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

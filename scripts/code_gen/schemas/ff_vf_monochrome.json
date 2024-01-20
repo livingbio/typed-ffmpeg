@@ -1,5 +1,5 @@
 {
-  "description": "### 11.168 monochrome\n\nConvert video to gray using custom color filter.\n\nA description of the accepted options follows.\n\n**cb**\n\n    Set the chroma blue spot. Allowed range is from -1 to 1. Default value is 0. \n\n**cr**\n\n    Set the chroma red spot. Allowed range is from -1 to 1. Default value is 0. \n\n**size**\n\n    Set the color filter size. Allowed range is from .1 to 10. Default value is 1. \n\n**high**\n\n    Set the highlights strength. Allowed range is from 0 to 1. Default value is 0. \n\n",
+  "description": "Convert video to gray using custom color filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "cb"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the chroma blue spot. Allowed range is from -1 to 1.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the chroma blue spot (from -1 to 1) (default 0)",
       "name": "cb",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "cr"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the chroma red spot. Allowed range is from -1 to 1.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the chroma red spot (from -1 to 1) (default 0)",
       "name": "cr",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "size"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the color filter size. Allowed range is from .1 to 10.\nDefault value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the color filter size (from 0.1 to 10) (default 1)",
       "name": "size",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "high"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the highlights strength. Allowed range is from 0 to 1.\nDefault value is 0.\n</p></dd>",
+      "default": "0",
+      "description": "set the highlights strength (from 0 to 1) (default 0)",
       "name": "high",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#monochrome"

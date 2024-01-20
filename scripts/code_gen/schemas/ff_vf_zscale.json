@@ -1,5 +1,5 @@
 {
-  "description": "### 11.295 zscale\n\nScale (resize) the input video, using the z.lib library:\n<https://github.com/sekrit-twc/zimg>. To enable compilation of this filter,\nyou need to configure FFmpeg with `--enable-libzimg`.\n\nThe zscale filter forces the output display aspect ratio to be the same as the\ninput, by changing the output sample aspect ratio.\n\nIf the input image format is different from the format requested by the next\nfilter, the zscale filter will convert the input to the requested format.\n\n",
+  "description": "Apply resizing, colorspace and bit depth conversion.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "Output video width",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "Output video height",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -46,11 +46,11 @@
         "s"
       ],
       "choices": [],
-      "default": "((void*)0)",
+      "default": null,
       "description": "set video size",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -59,31 +59,31 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "none",
-          "value": "ZIMG_DITHER_NONE"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "ordered",
-          "value": "ZIMG_DITHER_ORDERED"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "random",
-          "value": "ZIMG_DITHER_RANDOM"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "error_diffusion",
-          "value": "ZIMG_DITHER_ERROR_DIFFUSION"
+          "value": "3"
         }
       ],
-      "default": 0,
-      "description": "set dither type",
+      "default": "none",
+      "description": "set dither type (from 0 to 3) (default none)",
       "name": "dither",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -92,41 +92,41 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "point",
-          "value": "ZIMG_RESIZE_POINT"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bilinear",
-          "value": "ZIMG_RESIZE_BILINEAR"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bicubic",
-          "value": "ZIMG_RESIZE_BICUBIC"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "spline16",
-          "value": "ZIMG_RESIZE_SPLINE16"
+          "value": "3"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "spline36",
-          "value": "ZIMG_RESIZE_SPLINE36"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "lanczos",
-          "value": "ZIMG_RESIZE_LANCZOS"
+          "value": "5"
         }
       ],
-      "default": "ZIMG_RESIZE_BILINEAR",
-      "description": "set filter type",
+      "default": "bilinear",
+      "description": "set filter type (from 0 to 5) (default bilinear)",
       "name": "filter",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -136,41 +136,41 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "limited",
-          "value": "ZIMG_RANGE_LIMITED"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "full",
-          "value": "ZIMG_RANGE_FULL"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "tv",
-          "value": "ZIMG_RANGE_LIMITED"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "pc",
-          "value": "ZIMG_RANGE_FULL"
+          "value": "1"
         }
       ],
-      "default": -1,
-      "description": "set color range",
+      "default": "input",
+      "description": "set color range (from -1 to 1) (default input)",
       "name": "out_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -179,106 +179,106 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "709",
-          "value": "ZIMG_PRIMARIES_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unspecified",
-          "value": "ZIMG_PRIMARIES_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "170m",
-          "value": "ZIMG_PRIMARIES_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "240m",
-          "value": "ZIMG_PRIMARIES_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020",
-          "value": "ZIMG_PRIMARIES_2020"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": "ZIMG_PRIMARIES_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt709",
-          "value": "ZIMG_PRIMARIES_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470m",
-          "value": "ZIMG_PRIMARIES_470_M"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470bg",
-          "value": "ZIMG_PRIMARIES_470_BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte170m",
-          "value": "ZIMG_PRIMARIES_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte240m",
-          "value": "ZIMG_PRIMARIES_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "film",
-          "value": "ZIMG_PRIMARIES_FILM"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt2020",
-          "value": "ZIMG_PRIMARIES_2020"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte428",
-          "value": "ZIMG_PRIMARIES_ST428"
+          "value": "10"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte431",
-          "value": "ZIMG_PRIMARIES_ST431_2"
+          "value": "11"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte432",
-          "value": "ZIMG_PRIMARIES_ST432_1"
+          "value": "12"
         },
         {
-          "help": "0",
-          "name": "jedec-p22",
-          "value": "ZIMG_PRIMARIES_EBU3213_E"
+          "help": "",
+          "name": "p22",
+          "value": "22"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "ebu3213",
-          "value": "ZIMG_PRIMARIES_EBU3213_E"
+          "value": "22"
         }
       ],
-      "default": -1,
-      "description": "set color primaries",
+      "default": "input",
+      "description": "set color primaries (from -1 to INT_MAX) (default input)",
       "name": "primaries",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -287,121 +287,121 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "709",
-          "value": "ZIMG_TRANSFER_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unspecified",
-          "value": "ZIMG_TRANSFER_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "601",
-          "value": "ZIMG_TRANSFER_601"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "linear",
-          "value": "ZIMG_TRANSFER_LINEAR"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_10",
-          "value": "ZIMG_TRANSFER_2020_10"
+          "value": "14"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_12",
-          "value": "ZIMG_TRANSFER_2020_12"
+          "value": "15"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": "ZIMG_TRANSFER_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470m",
-          "value": "ZIMG_TRANSFER_470_M"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470bg",
-          "value": "ZIMG_TRANSFER_470_BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte170m",
-          "value": "ZIMG_TRANSFER_601"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte240m",
-          "value": "ZIMG_TRANSFER_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt709",
-          "value": "ZIMG_TRANSFER_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "linear",
-          "value": "ZIMG_TRANSFER_LINEAR"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "log100",
-          "value": "ZIMG_TRANSFER_LOG_100"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "log316",
-          "value": "ZIMG_TRANSFER_LOG_316"
+          "value": "10"
         },
         {
-          "help": "0",
-          "name": "bt2020-10",
-          "value": "ZIMG_TRANSFER_2020_10"
+          "help": "",
+          "name": "10",
+          "value": "14"
         },
         {
-          "help": "0",
-          "name": "bt2020-12",
-          "value": "ZIMG_TRANSFER_2020_12"
+          "help": "",
+          "name": "12",
+          "value": "15"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte2084",
-          "value": "ZIMG_TRANSFER_ST2084"
+          "value": "16"
         },
         {
-          "help": "0",
-          "name": "iec61966-2-4",
-          "value": "ZIMG_TRANSFER_IEC_61966_2_4"
+          "help": "",
+          "name": "4",
+          "value": "11"
         },
         {
-          "help": "0",
-          "name": "iec61966-2-1",
-          "value": "ZIMG_TRANSFER_IEC_61966_2_1"
+          "help": "",
+          "name": "1",
+          "value": "13"
         },
         {
-          "help": "0",
-          "name": "arib-std-b67",
-          "value": "ZIMG_TRANSFER_ARIB_B67"
+          "help": "",
+          "name": "b67",
+          "value": "18"
         }
       ],
-      "default": -1,
-      "description": "set transfer characteristic",
+      "default": "input",
+      "description": "set transfer characteristic (from -1 to INT_MAX) (default input)",
       "name": "transfer",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -410,111 +410,111 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "709",
-          "value": "ZIMG_MATRIX_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unspecified",
-          "value": "ZIMG_MATRIX_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "470bg",
-          "value": "ZIMG_MATRIX_470BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "170m",
-          "value": "ZIMG_MATRIX_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_ncl",
-          "value": "ZIMG_MATRIX_2020_NCL"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_cl",
-          "value": "ZIMG_MATRIX_2020_CL"
+          "value": "10"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": "ZIMG_MATRIX_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "gbr",
-          "value": "ZIMG_MATRIX_RGB"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt709",
-          "value": "ZIMG_MATRIX_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "fcc",
-          "value": "ZIMG_MATRIX_FCC"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470bg",
-          "value": "ZIMG_MATRIX_470BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte170m",
-          "value": "ZIMG_MATRIX_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte240m",
-          "value": "ZIMG_MATRIX_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "ycgco",
-          "value": "ZIMG_MATRIX_YCGCO"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt2020nc",
-          "value": "ZIMG_MATRIX_2020_NCL"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt2020c",
-          "value": "ZIMG_MATRIX_2020_CL"
+          "value": "10"
         },
         {
-          "help": "0",
-          "name": "chroma-derived-nc",
-          "value": "ZIMG_MATRIX_CHROMATICITY_DERIVED_NCL"
+          "help": "",
+          "name": "nc",
+          "value": "12"
         },
         {
-          "help": "0",
-          "name": "chroma-derived-c",
-          "value": "ZIMG_MATRIX_CHROMATICITY_DERIVED_CL"
+          "help": "",
+          "name": "c",
+          "value": "13"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "ictcp",
-          "value": "ZIMG_MATRIX_ICTCP"
+          "value": "14"
         }
       ],
-      "default": -1,
-      "description": "set colorspace matrix",
+      "default": "input",
+      "description": "set colorspace matrix (from -1 to INT_MAX) (default input)",
       "name": "matrix",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -524,41 +524,41 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "limited",
-          "value": "ZIMG_RANGE_LIMITED"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "full",
-          "value": "ZIMG_RANGE_FULL"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "tv",
-          "value": "ZIMG_RANGE_LIMITED"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "pc",
-          "value": "ZIMG_RANGE_FULL"
+          "value": "1"
         }
       ],
-      "default": -1,
-      "description": "set input color range",
+      "default": "input",
+      "description": "set input color range (from -1 to 1) (default input)",
       "name": "in_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -567,106 +567,106 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "709",
-          "value": "ZIMG_PRIMARIES_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unspecified",
-          "value": "ZIMG_PRIMARIES_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "170m",
-          "value": "ZIMG_PRIMARIES_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "240m",
-          "value": "ZIMG_PRIMARIES_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020",
-          "value": "ZIMG_PRIMARIES_2020"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": "ZIMG_PRIMARIES_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt709",
-          "value": "ZIMG_PRIMARIES_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470m",
-          "value": "ZIMG_PRIMARIES_470_M"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470bg",
-          "value": "ZIMG_PRIMARIES_470_BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte170m",
-          "value": "ZIMG_PRIMARIES_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte240m",
-          "value": "ZIMG_PRIMARIES_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "film",
-          "value": "ZIMG_PRIMARIES_FILM"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt2020",
-          "value": "ZIMG_PRIMARIES_2020"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte428",
-          "value": "ZIMG_PRIMARIES_ST428"
+          "value": "10"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte431",
-          "value": "ZIMG_PRIMARIES_ST431_2"
+          "value": "11"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte432",
-          "value": "ZIMG_PRIMARIES_ST432_1"
+          "value": "12"
         },
         {
-          "help": "0",
-          "name": "jedec-p22",
-          "value": "ZIMG_PRIMARIES_EBU3213_E"
+          "help": "",
+          "name": "p22",
+          "value": "22"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "ebu3213",
-          "value": "ZIMG_PRIMARIES_EBU3213_E"
+          "value": "22"
         }
       ],
-      "default": -1,
-      "description": "set input color primaries",
+      "default": "input",
+      "description": "set input color primaries (from -1 to INT_MAX) (default input)",
       "name": "primariesin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -675,121 +675,121 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "709",
-          "value": "ZIMG_TRANSFER_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unspecified",
-          "value": "ZIMG_TRANSFER_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "601",
-          "value": "ZIMG_TRANSFER_601"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "linear",
-          "value": "ZIMG_TRANSFER_LINEAR"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_10",
-          "value": "ZIMG_TRANSFER_2020_10"
+          "value": "14"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_12",
-          "value": "ZIMG_TRANSFER_2020_12"
+          "value": "15"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": "ZIMG_TRANSFER_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470m",
-          "value": "ZIMG_TRANSFER_470_M"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470bg",
-          "value": "ZIMG_TRANSFER_470_BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte170m",
-          "value": "ZIMG_TRANSFER_601"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte240m",
-          "value": "ZIMG_TRANSFER_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt709",
-          "value": "ZIMG_TRANSFER_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "linear",
-          "value": "ZIMG_TRANSFER_LINEAR"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "log100",
-          "value": "ZIMG_TRANSFER_LOG_100"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "log316",
-          "value": "ZIMG_TRANSFER_LOG_316"
+          "value": "10"
         },
         {
-          "help": "0",
-          "name": "bt2020-10",
-          "value": "ZIMG_TRANSFER_2020_10"
+          "help": "",
+          "name": "10",
+          "value": "14"
         },
         {
-          "help": "0",
-          "name": "bt2020-12",
-          "value": "ZIMG_TRANSFER_2020_12"
+          "help": "",
+          "name": "12",
+          "value": "15"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte2084",
-          "value": "ZIMG_TRANSFER_ST2084"
+          "value": "16"
         },
         {
-          "help": "0",
-          "name": "iec61966-2-4",
-          "value": "ZIMG_TRANSFER_IEC_61966_2_4"
+          "help": "",
+          "name": "4",
+          "value": "11"
         },
         {
-          "help": "0",
-          "name": "iec61966-2-1",
-          "value": "ZIMG_TRANSFER_IEC_61966_2_1"
+          "help": "",
+          "name": "1",
+          "value": "13"
         },
         {
-          "help": "0",
-          "name": "arib-std-b67",
-          "value": "ZIMG_TRANSFER_ARIB_B67"
+          "help": "",
+          "name": "b67",
+          "value": "18"
         }
       ],
-      "default": -1,
-      "description": "set input transfer characteristic",
+      "default": "input",
+      "description": "set input transfer characteristic (from -1 to INT_MAX) (default input)",
       "name": "transferin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -798,111 +798,111 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "709",
-          "value": "ZIMG_MATRIX_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unspecified",
-          "value": "ZIMG_MATRIX_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "470bg",
-          "value": "ZIMG_MATRIX_470BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "170m",
-          "value": "ZIMG_MATRIX_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_ncl",
-          "value": "ZIMG_MATRIX_2020_NCL"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "2020_cl",
-          "value": "ZIMG_MATRIX_2020_CL"
+          "value": "10"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "unknown",
-          "value": "ZIMG_MATRIX_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "gbr",
-          "value": "ZIMG_MATRIX_RGB"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt709",
-          "value": "ZIMG_MATRIX_709"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "fcc",
-          "value": "ZIMG_MATRIX_FCC"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt470bg",
-          "value": "ZIMG_MATRIX_470BG"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte170m",
-          "value": "ZIMG_MATRIX_170M"
+          "value": "6"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "smpte240m",
-          "value": "ZIMG_MATRIX_240M"
+          "value": "7"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "ycgco",
-          "value": "ZIMG_MATRIX_YCGCO"
+          "value": "8"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt2020nc",
-          "value": "ZIMG_MATRIX_2020_NCL"
+          "value": "9"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bt2020c",
-          "value": "ZIMG_MATRIX_2020_CL"
+          "value": "10"
         },
         {
-          "help": "0",
-          "name": "chroma-derived-nc",
-          "value": "ZIMG_MATRIX_CHROMATICITY_DERIVED_NCL"
+          "help": "",
+          "name": "nc",
+          "value": "12"
         },
         {
-          "help": "0",
-          "name": "chroma-derived-c",
-          "value": "ZIMG_MATRIX_CHROMATICITY_DERIVED_CL"
+          "help": "",
+          "name": "c",
+          "value": "13"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "ictcp",
-          "value": "ZIMG_MATRIX_ICTCP"
+          "value": "14"
         }
       ],
-      "default": -1,
-      "description": "set input colorspace matrix",
+      "default": "input",
+      "description": "set input colorspace matrix (from -1 to INT_MAX) (default input)",
       "name": "matrixin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -911,46 +911,46 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "left",
-          "value": "ZIMG_CHROMA_LEFT"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "center",
-          "value": "ZIMG_CHROMA_CENTER"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "topleft",
-          "value": "ZIMG_CHROMA_TOP_LEFT"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "top",
-          "value": "ZIMG_CHROMA_TOP"
+          "value": "3"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bottomleft",
-          "value": "ZIMG_CHROMA_BOTTOM_LEFT"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bottom",
-          "value": "ZIMG_CHROMA_BOTTOM"
+          "value": "5"
         }
       ],
-      "default": -1,
-      "description": "set output chroma location",
+      "default": "input",
+      "description": "set output chroma location (from -1 to 5) (default input)",
       "name": "chromal",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -959,96 +959,96 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "input",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "left",
-          "value": "ZIMG_CHROMA_LEFT"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "center",
-          "value": "ZIMG_CHROMA_CENTER"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "topleft",
-          "value": "ZIMG_CHROMA_TOP_LEFT"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "top",
-          "value": "ZIMG_CHROMA_TOP"
+          "value": "3"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bottomleft",
-          "value": "ZIMG_CHROMA_BOTTOM_LEFT"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "bottom",
-          "value": "ZIMG_CHROMA_BOTTOM"
+          "value": "5"
         }
       ],
-      "default": -1,
-      "description": "set input chroma location",
+      "default": "input",
+      "description": "set input chroma location (from -1 to 5) (default input)",
       "name": "chromalin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "npl"
       ],
       "choices": [],
-      "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": "set nominal peak luminance",
+      "default": "nan",
+      "description": "set nominal peak luminance (from 0 to DBL_MAX) (default nan)",
       "name": "npl",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "agamma"
       ],
       "choices": [],
-      "default": 1,
-      "description": "allow approximate gamma",
+      "default": "true",
+      "description": "allow approximate gamma (default true)",
       "name": "agamma",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "param_a"
       ],
       "choices": [],
-      "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": "parameter A, which is parameter \\\"b\\\" for bicubic, and the number of filter taps for lanczos",
+      "default": "nan",
+      "description": "parameter A, which is parameter \"b\" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)",
       "name": "param_a",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "param_b"
       ],
       "choices": [],
-      "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": "parameter B, which is parameter \\\"c\\\" for bicubic",
+      "default": "nan",
+      "description": "parameter B, which is parameter \"c\" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)",
       "name": "param_b",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#zscale"

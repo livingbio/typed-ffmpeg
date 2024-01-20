@@ -1,0 +1,170 @@
+{
+  "description": "Denoise audio stream using Wavelets.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "afwtdn",
+  "options": [
+    {
+      "alias": [
+        "sigma"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set noise sigma (from 0 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "sigma",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "levels"
+      ],
+      "choices": [],
+      "default": "10",
+      "description": "set number of wavelet levels (from 1 to 12) (default 10)",
+      "flags": "..F.A......",
+      "max": "12",
+      "min": "1",
+      "name": "levels",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "wavet"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "sym2",
+          "name": "sym2",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "sym4",
+          "name": "sym4",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "rbior68",
+          "name": "rbior68",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "deb10",
+          "name": "deb10",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "sym10",
+          "name": "sym10",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "coif5",
+          "name": "coif5",
+          "value": "5"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "bl3",
+          "name": "bl3",
+          "value": "6"
+        }
+      ],
+      "default": "sym10",
+      "description": "set wavelet type (from 0 to 6) (default sym10)",
+      "flags": "..F.A......",
+      "max": "6",
+      "min": "0",
+      "name": "wavet",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "percent"
+      ],
+      "choices": [],
+      "default": "85",
+      "description": "set percent of full denoising (from 0 to 100) (default 85)",
+      "flags": "..F.A....T.",
+      "max": "100",
+      "min": "0",
+      "name": "percent",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "profile"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "profile noise (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "profile",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "adaptive"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "adaptive profiling of noise (default false)",
+      "flags": "..F.A....T.",
+      "max": null,
+      "min": null,
+      "name": "adaptive",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "samples"
+      ],
+      "choices": [],
+      "default": "8192",
+      "description": "set frame size in number of samples (from 512 to 65536) (default 8192)",
+      "flags": "..F.A......",
+      "max": "65536",
+      "min": "512",
+      "name": "samples",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "softness"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set thresholding softness (from 0 to 10) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "10",
+      "min": "0",
+      "name": "softness",
+      "typing": "double"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

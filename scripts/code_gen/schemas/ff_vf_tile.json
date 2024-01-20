@@ -1,5 +1,5 @@
 {
-  "description": "### 11.255 tile\n\nTile several successive frames together.\n\nThe untile filter can do the reverse.\n\nThe filter accepts the following options:\n\n**layout**\n\n    Set the grid size in the form COLUMNSxROWS. Range is up to UINT_MAX cells. Default is 6x5. \n\n**nb_frames**\n\n    Set the maximum number of frames to render in the given area. It must be less than or equal to wxh. The default value is 0, meaning all the area will be used. \n\n**margin**\n\n    Set the outer border margin in pixels. Range is 0 to 1024. Default is 0. \n\n**padding**\n\n    Set the inner border thickness (i.e. the number of pixels between frames). For more advanced padding options (such as having different values for the edges), refer to the pad video filter. Range is 0 to 1024. Default is 0. \n\n**color**\n\n    Specify the color of the unused area. For the syntax of this option, check the (ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual. The default value of color is \"black\". \n\n**overlap**\n\n    Set the number of frames to overlap when tiling several successive frames together. The value must be between 0 and nb_frames - 1. Default is 0. \n\n**init_padding**\n\n    Set the number of frames to initially be empty before displaying first output frame. This controls how soon will one get first output frame. The value must be between 0 and nb_frames - 1. Default is 0. \n\n",
+  "description": "Tile several successive frames together.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,43 +22,43 @@
       ],
       "choices": [],
       "default": "6x5",
-      "description": "<dd><p>Set the grid size in the form <code>COLUMNSxROWS</code>. Range is up to UINT_MAX cells.\nDefault is <code>6x5</code>.\n</p>\n</dd>",
+      "description": "set grid size (default \"6x5\")",
       "name": "layout",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "nb_frames"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the maximum number of frames to render in the given area. It must be less\nthan or equal to <var>w</var>x<var>h</var>. The default value is <code>0</code>, meaning all\nthe area will be used.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set maximum number of frame to render (from 0 to INT_MAX) (default 0)",
       "name": "nb_frames",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "margin"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the outer border margin in pixels. Range is 0 to 1024. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set outer border margin in pixels (from 0 to 1024) (default 0)",
       "name": "margin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "padding"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the inner border thickness (i.e. the number of pixels between frames). For\nmore advanced padding options (such as having different values for the edges),\nrefer to the pad video filter. Range is 0 to 1024. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set inner border thickness in pixels (from 0 to 1024) (default 0)",
       "name": "padding",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -66,38 +66,38 @@
       ],
       "choices": [],
       "default": "black",
-      "description": "<dd><p>Specify the color of the unused area. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>.\nThe default value of <var>color</var> is \"black\".\n</p>\n</dd>",
+      "description": "set the color of the unused area (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
         "overlap"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of frames to overlap when tiling several successive frames together.\nThe value must be between <code>0</code> and <var>nb_frames - 1</var>. Default is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)",
       "name": "overlap",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "init_padding"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of frames to initially be empty before displaying first output frame.\nThis controls how soon will one get first output frame.\nThe value must be between <code>0</code> and <var>nb_frames - 1</var>. Default is <code>0</code>.\n</p></dd>",
+      "default": "0",
+      "description": "set how many frames to initially pad (from 0 to INT_MAX) (default 0)",
       "name": "init_padding",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#tile"

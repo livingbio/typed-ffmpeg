@@ -1,5 +1,5 @@
 {
-  "description": "### 11.185 owdenoise\n\nApply Overcomplete Wavelet denoiser.\n\nThe filter accepts the following options:\n\n**depth**\n\n    Set depth. Larger depth values will denoise lower frequency components more, but slow down filtering. Must be an int in the range 8-16, default is 8. \n\n**luma_strength, ls**\n\n    Set luma strength. Must be a double value in the range 0-1000, default is 1.0. \n\n**chroma_strength, cs**\n\n    Set chroma strength. Must be a double value in the range 0-1000, default is 1.0. \n\n",
+  "description": "Denoise using wavelets.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "depth"
       ],
       "choices": [],
-      "default": 8,
-      "description": "<dd><p>Set depth.\n</p>\n<p>Larger depth values will denoise lower frequency components more, but\nslow down filtering.\n</p>\n<p>Must be an int in the range 8-16, default is <code>8</code>.\n</p>\n</dd>",
+      "default": "8",
+      "description": "set depth (from 8 to 16) (default 8)",
       "name": "depth",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -33,11 +33,11 @@
         "ls"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set luma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set luma strength (from 0 to 1000) (default 1)",
       "name": "luma_strength",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -45,11 +45,11 @@
         "cs"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set chroma strength.\n</p>\n<p>Must be a double value in the range 0-1000, default is <code>1.0</code>.\n</p></dd>",
+      "default": "1",
+      "description": "set chroma strength (from 0 to 1000) (default 1)",
       "name": "chroma_strength",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -64,7 +64,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#owdenoise"

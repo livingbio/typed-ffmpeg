@@ -1,0 +1,83 @@
+{
+  "description": "Buffer audio frames, and make them accessible to the filterchain.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "abuffer",
+  "options": [
+    {
+      "alias": [
+        "time_base"
+      ],
+      "choices": [],
+      "default": "0/1",
+      "description": "(from 0 to INT_MAX) (default 0/1)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "time_base",
+      "typing": "rational"
+    },
+    {
+      "alias": [
+        "sample_rate"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "sample_rate",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "sample_fmt"
+      ],
+      "choices": [],
+      "default": "none",
+      "description": "(default none)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "sample_fmt",
+      "typing": "sample_fmt"
+    },
+    {
+      "alias": [
+        "channel_layout"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "channel_layout",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "channels"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "(from 0 to INT_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "channels",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

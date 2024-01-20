@@ -1,5 +1,5 @@
 {
-  "description": "### 11.130 huesaturation\n\nApply hue-saturation-intensity adjustments to input video stream.\n\nThis filter operates in RGB colorspace.\n\nThis filter accepts the following options:\n\n**hue**\n\n    Set the hue shift in degrees to apply. Default is 0. Allowed range is from -180 to 180. \n\n**saturation**\n\n    Set the saturation shift. Default is 0. Allowed range is from -1 to 1. \n\n**intensity**\n\n    Set the intensity shift. Default is 0. Allowed range is from -1 to 1. \n\n**colors**\n\n    Set which primary and complementary colors are going to be adjusted. This options is set by providing one or multiple values. This can select multiple colors at once. By default all colors are selected. \u2018r\u2019 Adjust reds. \u2018y\u2019 Adjust yellows. \u2018g\u2019 Adjust greens. \u2018c\u2019 Adjust cyans. \u2018b\u2019 Adjust blues. \u2018m\u2019 Adjust magentas. \u2018a\u2019 Adjust all colors. \n\n**strength**\n\n    Set strength of filtering. Allowed range is from 0 to 100. Default value is 1. \n\n**rw, gw, bw**\n\n    Set weight for each RGB component. Allowed range is from 0 to 1. By default is set to 0.333, 0.334, 0.333. Those options are used in saturation and lightess processing. \n\n**lightness**\n\n    Set preserving lightness, by default is disabled. Adjusting hues can change lightness from original RGB triplet, with this option enabled lightness is kept at same value. \n\n",
+  "description": "Apply hue-saturation-intensity adjustments.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,33 +21,33 @@
         "hue"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the hue shift in degrees to apply. Default is 0.\nAllowed range is from -180 to 180.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the hue shift (from -180 to 180) (default 0)",
       "name": "hue",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "saturation"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the saturation shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the saturation shift (from -1 to 1) (default 0)",
       "name": "saturation",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "intensity"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the intensity shift. Default is 0.\nAllowed range is from -1 to 1.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the intensity shift (from -1 to 1) (default 0)",
       "name": "intensity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -57,99 +57,99 @@
         {
           "help": "set reds",
           "name": "r",
-          "value": "(1 << 0)"
+          "value": "r"
         },
         {
           "help": "set yellows",
           "name": "y",
-          "value": "(1 << 1)"
+          "value": "y"
         },
         {
           "help": "set greens",
           "name": "g",
-          "value": "(1 << 2)"
+          "value": "g"
         },
         {
           "help": "set cyans",
           "name": "c",
-          "value": "(1 << 3)"
+          "value": "c"
         },
         {
           "help": "set blues",
           "name": "b",
-          "value": "(1 << 4)"
+          "value": "b"
         },
         {
           "help": "set magentas",
           "name": "m",
-          "value": "(1 << 5)"
+          "value": "m"
         },
         {
           "help": "set all colors",
           "name": "a",
-          "value": "0x3F"
+          "value": "a"
         }
       ],
-      "default": "0x3F",
-      "description": "<dd><p>Set which primary and complementary colors are going to be adjusted.\nThis options is set by providing one or multiple values.\nThis can select multiple colors at once. By default all colors are selected.\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>r</samp>\u2019</dt>\n<dd><p>Adjust reds.\n</p></dd>\n<dt>\u2018<samp>y</samp>\u2019</dt>\n<dd><p>Adjust yellows.\n</p></dd>\n<dt>\u2018<samp>g</samp>\u2019</dt>\n<dd><p>Adjust greens.\n</p></dd>\n<dt>\u2018<samp>c</samp>\u2019</dt>\n<dd><p>Adjust cyans.\n</p></dd>\n<dt>\u2018<samp>b</samp>\u2019</dt>\n<dd><p>Adjust blues.\n</p></dd>\n<dt>\u2018<samp>m</samp>\u2019</dt>\n<dd><p>Adjust magentas.\n</p></dd>\n<dt>\u2018<samp>a</samp>\u2019</dt>\n<dd><p>Adjust all colors.\n</p></dd>\n</dl>\n</dd>",
+      "default": "r+y+g+c+b+m+a",
+      "description": "set colors range (default r+y+g+c+b+m+a)",
       "name": "colors",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
         "strength"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set strength of filtering. Allowed range is from 0 to 100.\nDefault value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the filtering strength (from 0 to 100) (default 1)",
       "name": "strength",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "rw"
       ],
       "choices": [],
-      "default": 0.333,
-      "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
+      "default": "0.333",
+      "description": "set the red weight (from 0 to 1) (default 0.333)",
       "name": "rw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "gw"
       ],
       "choices": [],
-      "default": 0.334,
-      "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
+      "default": "0.334",
+      "description": "set the green weight (from 0 to 1) (default 0.334)",
       "name": "gw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bw"
       ],
       "choices": [],
-      "default": 0.333,
-      "description": "<dd><p>Set weight for each RGB component. Allowed range is from 0 to 1.\nBy default is set to 0.333, 0.334, 0.333.\nThose options are used in saturation and lightess processing.\n</p>\n</dd>",
+      "default": "0.333",
+      "description": "set the blue weight (from 0 to 1) (default 0.333)",
       "name": "bw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "lightness"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set preserving lightness, by default is disabled.\nAdjusting hues can change lightness from original RGB triplet,\nwith this option enabled lightness is kept at same value.\n</p></dd>",
+      "default": "false",
+      "description": "set the preserve lightness (default false)",
       "name": "lightness",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -164,7 +164,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#huesaturation"

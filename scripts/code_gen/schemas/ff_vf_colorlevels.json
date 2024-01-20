@@ -1,5 +1,5 @@
 {
-  "description": "### 11.38 colorlevels\n\nAdjust video input frames using levels.\n\nThe filter accepts the following options:\n\n**rimin**\n\n**gimin**\n\n**bimin**\n\n**aimin**\n\n    Adjust red, green, blue and alpha input black point. Allowed ranges for options are [-1.0, 1.0]. Defaults are 0. \n\n**rimax**\n\n**gimax**\n\n**bimax**\n\n**aimax**\n\n    Adjust red, green, blue and alpha input white point. Allowed ranges for options are [-1.0, 1.0]. Defaults are 1. Input levels are used to lighten highlights (bright tones), darken shadows (dark tones), change the balance of bright and dark tones. \n\n**romin**\n\n**gomin**\n\n**bomin**\n\n**aomin**\n\n    Adjust red, green, blue and alpha output black point. Allowed ranges for options are [0, 1.0]. Defaults are 0. \n\n**romax**\n\n**gomax**\n\n**bomax**\n\n**aomax**\n\n    Adjust red, green, blue and alpha output white point. Allowed ranges for options are [0, 1.0]. Defaults are 1. Output levels allows manual selection of a constrained output level range. \n\n**preserve**\n\n    Set preserve color mode. The accepted values are: \u2018none\u2019 Disable color preserving, this is default. \u2018lum\u2019 Preserve luminance. \u2018max\u2019 Preserve max value of RGB triplet. \u2018avg\u2019 Preserve average value of RGB triplet. \u2018sum\u2019 Preserve sum value of RGB triplet. \u2018nrm\u2019 Preserve normalized value of RGB triplet. \u2018pwr\u2019 Preserve power value of RGB triplet. \n\n",
+  "description": "Adjust the color levels.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,176 +21,176 @@
         "rimin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set input red black point (from -1 to 1) (default 0)",
       "name": "rimin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "gimin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set input green black point (from -1 to 1) (default 0)",
       "name": "gimin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bimin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set input blue black point (from -1 to 1) (default 0)",
       "name": "bimin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "aimin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input black point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set input alpha black point (from -1 to 1) (default 0)",
       "name": "aimin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "rimax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input red white point (from -1 to 1) (default 1)",
       "name": "rimax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "gimax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input green white point (from -1 to 1) (default 1)",
       "name": "gimax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bimax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input blue white point (from -1 to 1) (default 1)",
       "name": "bimax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "aimax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha input white point.\nAllowed ranges for options are <code>[-1.0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Input levels are used to lighten highlights (bright tones), darken shadows\n(dark tones), change the balance of bright and dark tones.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input alpha white point (from -1 to 1) (default 1)",
       "name": "aimax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "romin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set output red black point (from 0 to 1) (default 0)",
       "name": "romin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "gomin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set output green black point (from 0 to 1) (default 0)",
       "name": "gomin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bomin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set output blue black point (from 0 to 1) (default 0)",
       "name": "bomin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "aomin"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output black point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set output alpha black point (from 0 to 1) (default 0)",
       "name": "aomin",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "romax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output red white point (from 0 to 1) (default 1)",
       "name": "romax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "gomax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output green white point (from 0 to 1) (default 1)",
       "name": "gomax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bomax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output blue white point (from 0 to 1) (default 1)",
       "name": "bomax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "aomax"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust red, green, blue and alpha output white point.\nAllowed ranges for options are <code>[0, 1.0]</code>. Defaults are <code>1</code>.\n</p>\n<p>Output levels allows manual selection of a constrained output level range.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set output alpha white point (from 0 to 1) (default 1)",
       "name": "aomax",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -200,44 +200,44 @@
         {
           "help": "disabled",
           "name": "none",
-          "value": "P_NONE"
+          "value": "0"
         },
         {
           "help": "luminance",
           "name": "lum",
-          "value": "P_LUM"
+          "value": "1"
         },
         {
           "help": "max",
           "name": "max",
-          "value": "P_MAX"
+          "value": "2"
         },
         {
           "help": "average",
           "name": "avg",
-          "value": "P_AVG"
+          "value": "3"
         },
         {
           "help": "sum",
           "name": "sum",
-          "value": "P_SUM"
+          "value": "4"
         },
         {
           "help": "norm",
           "name": "nrm",
-          "value": "P_NRM"
+          "value": "5"
         },
         {
           "help": "power",
           "name": "pwr",
-          "value": "P_PWR"
+          "value": "6"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set preserve color mode. The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable color preserving, this is default.\n</p></dd>\n<dt>\u2018<samp>lum</samp>\u2019</dt>\n<dd><p>Preserve luminance.\n</p></dd>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n<dd><p>Preserve max value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dd><p>Preserve average value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>sum</samp>\u2019</dt>\n<dd><p>Preserve sum value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>nrm</samp>\u2019</dt>\n<dd><p>Preserve normalized value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>pwr</samp>\u2019</dt>\n<dd><p>Preserve power value of RGB triplet.\n</p></dd>\n</dl>\n</dd>",
+      "default": "none",
+      "description": "set preserve color mode (from 0 to 6) (default none)",
       "name": "preserve",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -252,7 +252,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorlevels"

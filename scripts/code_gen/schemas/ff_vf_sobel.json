@@ -1,5 +1,5 @@
 {
-  "description": "### 11.240 sobel\n\nApply sobel operator to input video stream.\n\nThe filter accepts the following option:\n\n**planes**\n\n    Set which planes will be processed, unprocessed planes will be copied. By default value 0xf, all planes will be processed. \n\n**scale**\n\n    Set value which will be multiplied with filtered result. \n\n**delta**\n\n    Set value which will be added to filtered result. \n\n",
+  "description": "Apply sobel operator.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,33 +21,33 @@
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set which planes will be processed, unprocessed planes will be copied.\nBy default value 0xf, all planes will be processed.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "scale"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set value which will be multiplied with filtered result.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set scale (from 0 to 65535) (default 1)",
       "name": "scale",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "delta"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set value which will be added to filtered result.\n</p></dd>",
+      "default": "0",
+      "description": "set delta (from -65535 to 65535) (default 0)",
       "name": "delta",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -62,7 +62,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#sobel"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.15 blend\n\nBlend two video frames into each other.\n\nThe `blend` filter takes two input streams and outputs one stream, the first\ninput is the \"top\" layer and second input is \"bottom\" layer. By default, the\noutput terminates when the longest input terminates.\n\nThe `tblend` (time blend) filter takes two consecutive frames from one single\nstream, and outputs the result obtained by blending the new frame on top of\nthe old frame.\n\nA description of the accepted options follows.\n\n**c0_mode**\n\n**c1_mode**\n\n**c2_mode**\n\n**c3_mode**\n\n**all_mode**\n\n    Set blend mode for specific pixel component or all pixel components in case of all_mode. Default value is normal. Available values for component modes are: \u2018addition\u2019 \u2018and\u2019 \u2018average\u2019 \u2018bleach\u2019 \u2018burn\u2019 \u2018darken\u2019 \u2018difference\u2019 \u2018divide\u2019 \u2018dodge\u2019 \u2018exclusion\u2019 \u2018extremity\u2019 \u2018freeze\u2019 \u2018geometric\u2019 \u2018glow\u2019 \u2018grainextract\u2019 \u2018grainmerge\u2019 \u2018hardlight\u2019 \u2018hardmix\u2019 \u2018hardoverlay\u2019 \u2018harmonic\u2019 \u2018heat\u2019 \u2018interpolate\u2019 \u2018lighten\u2019 \u2018linearlight\u2019 \u2018multiply\u2019 \u2018multiply128\u2019 \u2018negation\u2019 \u2018normal\u2019 \u2018or\u2019 \u2018overlay\u2019 \u2018phoenix\u2019 \u2018pinlight\u2019 \u2018reflect\u2019 \u2018screen\u2019 \u2018softdifference\u2019 \u2018softlight\u2019 \u2018stain\u2019 \u2018subtract\u2019 \u2018vividlight\u2019 \u2018xor\u2019 \n\n**c0_opacity**\n\n**c1_opacity**\n\n**c2_opacity**\n\n**c3_opacity**\n\n**all_opacity**\n\n    Set blend opacity for specific pixel component or all pixel components in case of all_opacity. Only used in combination with pixel component blend modes. \n\n**c0_expr**\n\n**c1_expr**\n\n**c2_expr**\n\n**c3_expr**\n\n**all_expr**\n\n    Set blend expression for specific pixel component or all pixel components in case of all_expr. Note that related mode options will be ignored if those are set. The expressions can use the following variables: N The sequential number of the filtered frame, starting from 0. X Y the coordinates of the current sample W H the width and height of currently filtered plane SW SH Width and height scale for the plane being filtered. It is the ratio between the dimensions of the current plane to the luma plane, e.g. for a yuv420p frame, the values are 1,1 for the luma plane and 0.5,0.5 for the chroma planes. T Time of the current frame, expressed in seconds. TOP, A Value of pixel component at current location for first video frame (top layer). BOTTOM, B Value of pixel component at current location for second video frame (bottom layer). \n\nThe `blend` filter also supports the framesync options.\n\n",
+  "description": "Blend two video frames into each other.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "top",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "bottom",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -28,219 +28,219 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "normal",
+      "description": "set component #0 blend mode (from 0 to 39) (default normal)",
       "name": "c0_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -250,219 +250,219 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "normal",
+      "description": "set component #1 blend mode (from 0 to 39) (default normal)",
       "name": "c1_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -472,219 +472,219 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "normal",
+      "description": "set component #2 blend mode (from 0 to 39) (default normal)",
       "name": "c2_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -694,219 +694,219 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "normal",
+      "description": "set component #3 blend mode (from 0 to 39) (default normal)",
       "name": "c3_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -916,329 +916,400 @@
         {
           "help": "",
           "name": "addition",
-          "value": "BLEND_ADDITION"
+          "value": "1"
         },
         {
           "help": "",
           "name": "addition128",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "grainmerge",
-          "value": "BLEND_GRAINMERGE"
+          "value": "28"
         },
         {
           "help": "",
           "name": "and",
-          "value": "BLEND_AND"
+          "value": "2"
         },
         {
           "help": "",
           "name": "average",
-          "value": "BLEND_AVERAGE"
+          "value": "3"
         },
         {
           "help": "",
           "name": "burn",
-          "value": "BLEND_BURN"
+          "value": "4"
         },
         {
           "help": "",
           "name": "darken",
-          "value": "BLEND_DARKEN"
+          "value": "5"
         },
         {
           "help": "",
           "name": "difference",
-          "value": "BLEND_DIFFERENCE"
+          "value": "6"
         },
         {
           "help": "",
           "name": "difference128",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "grainextract",
-          "value": "BLEND_GRAINEXTRACT"
+          "value": "7"
         },
         {
           "help": "",
           "name": "divide",
-          "value": "BLEND_DIVIDE"
+          "value": "8"
         },
         {
           "help": "",
           "name": "dodge",
-          "value": "BLEND_DODGE"
+          "value": "9"
         },
         {
           "help": "",
           "name": "exclusion",
-          "value": "BLEND_EXCLUSION"
+          "value": "10"
         },
         {
           "help": "",
           "name": "extremity",
-          "value": "BLEND_EXTREMITY"
+          "value": "32"
         },
         {
           "help": "",
           "name": "freeze",
-          "value": "BLEND_FREEZE"
+          "value": "31"
         },
         {
           "help": "",
           "name": "glow",
-          "value": "BLEND_GLOW"
+          "value": "27"
         },
         {
           "help": "",
           "name": "hardlight",
-          "value": "BLEND_HARDLIGHT"
+          "value": "11"
         },
         {
           "help": "",
           "name": "hardmix",
-          "value": "BLEND_HARDMIX"
+          "value": "25"
         },
         {
           "help": "",
           "name": "heat",
-          "value": "BLEND_HEAT"
+          "value": "30"
         },
         {
           "help": "",
           "name": "lighten",
-          "value": "BLEND_LIGHTEN"
+          "value": "12"
         },
         {
           "help": "",
           "name": "linearlight",
-          "value": "BLEND_LINEARLIGHT"
+          "value": "26"
         },
         {
           "help": "",
           "name": "multiply",
-          "value": "BLEND_MULTIPLY"
+          "value": "13"
         },
         {
           "help": "",
           "name": "multiply128",
-          "value": "BLEND_MULTIPLY128"
+          "value": "29"
         },
         {
           "help": "",
           "name": "negation",
-          "value": "BLEND_NEGATION"
+          "value": "14"
         },
         {
           "help": "",
           "name": "normal",
-          "value": "BLEND_NORMAL"
+          "value": "0"
         },
         {
           "help": "",
           "name": "or",
-          "value": "BLEND_OR"
+          "value": "15"
         },
         {
           "help": "",
           "name": "overlay",
-          "value": "BLEND_OVERLAY"
+          "value": "16"
         },
         {
           "help": "",
           "name": "phoenix",
-          "value": "BLEND_PHOENIX"
+          "value": "17"
         },
         {
           "help": "",
           "name": "pinlight",
-          "value": "BLEND_PINLIGHT"
+          "value": "18"
         },
         {
           "help": "",
           "name": "reflect",
-          "value": "BLEND_REFLECT"
+          "value": "19"
         },
         {
           "help": "",
           "name": "screen",
-          "value": "BLEND_SCREEN"
+          "value": "20"
         },
         {
           "help": "",
           "name": "softlight",
-          "value": "BLEND_SOFTLIGHT"
+          "value": "21"
         },
         {
           "help": "",
           "name": "subtract",
-          "value": "BLEND_SUBTRACT"
+          "value": "22"
         },
         {
           "help": "",
           "name": "vividlight",
-          "value": "BLEND_VIVIDLIGHT"
+          "value": "23"
         },
         {
           "help": "",
           "name": "xor",
-          "value": "BLEND_XOR"
+          "value": "24"
         },
         {
           "help": "",
           "name": "softdifference",
-          "value": "BLEND_SOFTDIFFERENCE"
+          "value": "33"
         },
         {
           "help": "",
           "name": "geometric",
-          "value": "BLEND_GEOMETRIC"
+          "value": "34"
         },
         {
           "help": "",
           "name": "harmonic",
-          "value": "BLEND_HARMONIC"
+          "value": "35"
         },
         {
           "help": "",
           "name": "bleach",
-          "value": "BLEND_BLEACH"
+          "value": "36"
         },
         {
           "help": "",
           "name": "stain",
-          "value": "BLEND_STAIN"
+          "value": "37"
         },
         {
           "help": "",
           "name": "interpolate",
-          "value": "BLEND_INTERPOLATE"
+          "value": "38"
         },
         {
           "help": "",
           "name": "hardoverlay",
-          "value": "BLEND_HARDOVERLAY"
+          "value": "39"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Set blend mode for specific pixel component or all pixel components in case\nof <var>all_mode</var>. Default value is <code>normal</code>.\n</p>\n<p>Available values for component modes are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>addition</samp>\u2019</dt>\n<dt>\u2018<samp>and</samp>\u2019</dt>\n<dt>\u2018<samp>average</samp>\u2019</dt>\n<dt>\u2018<samp>bleach</samp>\u2019</dt>\n<dt>\u2018<samp>burn</samp>\u2019</dt>\n<dt>\u2018<samp>darken</samp>\u2019</dt>\n<dt>\u2018<samp>difference</samp>\u2019</dt>\n<dt>\u2018<samp>divide</samp>\u2019</dt>\n<dt>\u2018<samp>dodge</samp>\u2019</dt>\n<dt>\u2018<samp>exclusion</samp>\u2019</dt>\n<dt>\u2018<samp>extremity</samp>\u2019</dt>\n<dt>\u2018<samp>freeze</samp>\u2019</dt>\n<dt>\u2018<samp>geometric</samp>\u2019</dt>\n<dt>\u2018<samp>glow</samp>\u2019</dt>\n<dt>\u2018<samp>grainextract</samp>\u2019</dt>\n<dt>\u2018<samp>grainmerge</samp>\u2019</dt>\n<dt>\u2018<samp>hardlight</samp>\u2019</dt>\n<dt>\u2018<samp>hardmix</samp>\u2019</dt>\n<dt>\u2018<samp>hardoverlay</samp>\u2019</dt>\n<dt>\u2018<samp>harmonic</samp>\u2019</dt>\n<dt>\u2018<samp>heat</samp>\u2019</dt>\n<dt>\u2018<samp>interpolate</samp>\u2019</dt>\n<dt>\u2018<samp>lighten</samp>\u2019</dt>\n<dt>\u2018<samp>linearlight</samp>\u2019</dt>\n<dt>\u2018<samp>multiply</samp>\u2019</dt>\n<dt>\u2018<samp>multiply128</samp>\u2019</dt>\n<dt>\u2018<samp>negation</samp>\u2019</dt>\n<dt>\u2018<samp>normal</samp>\u2019</dt>\n<dt>\u2018<samp>or</samp>\u2019</dt>\n<dt>\u2018<samp>overlay</samp>\u2019</dt>\n<dt>\u2018<samp>phoenix</samp>\u2019</dt>\n<dt>\u2018<samp>pinlight</samp>\u2019</dt>\n<dt>\u2018<samp>reflect</samp>\u2019</dt>\n<dt>\u2018<samp>screen</samp>\u2019</dt>\n<dt>\u2018<samp>softdifference</samp>\u2019</dt>\n<dt>\u2018<samp>softlight</samp>\u2019</dt>\n<dt>\u2018<samp>stain</samp>\u2019</dt>\n<dt>\u2018<samp>subtract</samp>\u2019</dt>\n<dt>\u2018<samp>vividlight</samp>\u2019</dt>\n<dt>\u2018<samp>xor</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "-1",
+      "description": "set blend mode for all components (from -1 to 39) (default -1)",
       "name": "all_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "c0_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set color component #0 expression",
       "name": "c0_expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "c1_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set color component #1 expression",
       "name": "c1_expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "c2_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set color component #2 expression",
       "name": "c2_expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "c3_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set color component #3 expression",
       "name": "c3_expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "all_expr"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set blend expression for specific pixel component or all pixel components in case\nof <var>all_expr</var>. Note that related mode options will be ignored if those are set.\n</p>\n<p>The expressions can use the following variables:\n</p>\n<dl compact=\"compact\">\n<dt><samp>N</samp></dt>\n<dd><p>The sequential number of the filtered frame, starting from <code>0</code>.\n</p>\n</dd>\n<dt><samp>X</samp></dt>\n<dt><samp>Y</samp></dt>\n<dd><p>the coordinates of the current sample\n</p>\n</dd>\n<dt><samp>W</samp></dt>\n<dt><samp>H</samp></dt>\n<dd><p>the width and height of currently filtered plane\n</p>\n</dd>\n<dt><samp>SW</samp></dt>\n<dt><samp>SH</samp></dt>\n<dd><p>Width and height scale for the plane being filtered. It is the\nratio between the dimensions of the current plane to the luma plane,\ne.g. for a <code>yuv420p</code> frame, the values are <code>1,1</code> for\nthe luma plane and <code>0.5,0.5</code> for the chroma planes.\n</p>\n</dd>\n<dt><samp>T</samp></dt>\n<dd><p>Time of the current frame, expressed in seconds.\n</p>\n</dd>\n<dt><samp>TOP, A</samp></dt>\n<dd><p>Value of pixel component at current location for first video frame (top layer).\n</p>\n</dd>\n<dt><samp>BOTTOM, B</samp></dt>\n<dd><p>Value of pixel component at current location for second video frame (bottom layer).\n</p></dd>\n</dl>\n</dd>",
+      "default": null,
+      "description": "set expression for all color components",
       "name": "all_expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "c0_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set color component #0 opacity (from 0 to 1) (default 1)",
       "name": "c0_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "c1_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set color component #1 opacity (from 0 to 1) (default 1)",
       "name": "c1_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "c2_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set color component #2 opacity (from 0 to 1) (default 1)",
       "name": "c2_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "c3_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set color component #3 opacity (from 0 to 1) (default 1)",
       "name": "c3_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "all_opacity"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set blend opacity for specific pixel component or all pixel components in case\nof <var>all_opacity</var>. Only used in combination with pixel component blend modes.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set opacity for all color components (from 0 to 1) (default 1)",
       "name": "all_opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
+    },
+    {
+      "alias": [
+        "eof_action"
+      ],
+      "choices": [
+        {
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        }
+      ],
+      "default": "repeat",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+      "name": "eof_action",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
+      "name": "shortest",
+      "required": false,
+      "typing": "Boolean"
+    },
+    {
+      "alias": [
+        "repeatlast"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
+      "name": "repeatlast",
+      "required": false,
+      "typing": "Boolean"
+    },
+    {
+      "alias": [
+        "ts_sync_mode"
+      ],
+      "choices": [
+        {
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+          "name": "default",
+          "value": "0"
+        },
+        {
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
+          "name": "nearest",
+          "value": "1"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
+      "name": "ts_sync_mode",
+      "required": false,
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -1248,75 +1319,12 @@
       "name": "enable",
       "required": false,
       "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Repeat the last frame.",
-          "name": "repeat",
-          "value": "repeat"
-        },
-        {
-          "help": "End both streams.",
-          "name": "endall",
-          "value": "endall"
-        },
-        {
-          "help": "Pass the main input through.",
-          "name": "pass",
-          "value": "pass"
-        }
-      ],
-      "default": "repeat",
-      "description": "The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
-      "name": "eof_action",
-      "required": false,
-      "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 0,
-      "description": "Force the output to terminate when the shortest input terminates.",
-      "name": "shortest",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 1,
-      "description": "force the filter to extend the last frame of secondary streams until the end of the primary stream.",
-      "name": "repeatlast",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
-          "name": "default",
-          "value": "default"
-        },
-        {
-          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
-          "name": "nearest",
-          "value": "nearest"
-        }
-      ],
-      "default": "default",
-      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
-      "name": "ts_sync_mode",
-      "required": false,
-      "typing": "str"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#blend"

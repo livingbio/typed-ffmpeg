@@ -1,5 +1,5 @@
 {
-  "description": "### 8.52 asetnsamples\n\nSet the number of samples per each output audio frame.\n\nThe last output packet may contain a different number of samples, as the\nfilter will flush all the remaining samples when the input audio signals its\nend.\n\nThe filter accepts the following options:\n\n**nb_out_samples, n**\n\n    Set the number of frames per each output audio frame. The number is intended as the number of samples per each channel. Default value is 1024. \n\n**pad, p**\n\n    If set to 1, the filter will pad the last audio frame with zeroes, so that the last frame will contain the same number of samples as the previous ones. Default value is 1. \n\nFor example, to set the number of per-frame samples to 1234 and disable\npadding for the last frame, use:\n\n    \n    \n    asetnsamples=n=1234:p=0\n    \n\n",
+  "description": "Set the number of samples for each output audio frames.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,13 +7,13 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
   "is_output_dynamic": false,
   "is_support_framesync": false,
-  "is_support_timeline": true,
+  "is_support_timeline": false,
   "name": "asetnsamples",
   "options": [
     {
@@ -22,11 +22,11 @@
         "n"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set the number of frames per each output audio frame. The number is\nintended as the number of samples <em>per each channel</em>.\nDefault value is 1024.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)",
       "name": "nb_out_samples",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -34,26 +34,17 @@
         "p"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>If set to 1, the filter will pad the last audio frame with zeroes, so\nthat the last frame will contain the same number of samples as the\nprevious ones. Default value is 1.\n</p></dd>",
+      "default": "true",
+      "description": "pad last frame with zeros (default true)",
       "name": "pad",
       "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#asetnsamples"

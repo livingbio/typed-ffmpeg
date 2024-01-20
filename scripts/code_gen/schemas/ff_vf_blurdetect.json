@@ -1,5 +1,5 @@
 {
-  "description": "### 11.17 blurdetect\n\nDetermines blurriness of frames without altering the input frames.\n\nBased on Marziliano, Pina, et al. \"A no-reference perceptual blur metric.\"\nAllows for a block-based abbreviation.\n\nThe filter accepts the following options:\n\n**low**\n\n**high**\n\n    Set low and high threshold values used by the Canny thresholding algorithm. The high threshold selects the \"strong\" edge pixels, which are then connected through 8-connectivity with the \"weak\" edge pixels selected by the low threshold. low and high threshold values must be chosen in the range [0,1], and low should be lesser or equal to high. Default value for low is 20/255, and default value for high is 50/255. \n\n**radius**\n\n    Define the radius to search around an edge pixel for local maxima. \n\n**block_pct**\n\n    Determine blurriness only for the most significant blocks, given in percentage. \n\n**block_width**\n\n    Determine blurriness for blocks of width block_width. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of block_height. \n\n**block_height**\n\n    Determine blurriness for blocks of height block_height. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of block_width. \n\n**planes**\n\n    Set planes to filter. Default is first only. \n\n",
+  "description": "Blurdetect filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,83 +21,73 @@
         "high"
       ],
       "choices": [],
-      "default": "30/255.",
-      "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
+      "default": "0.117647",
+      "description": "set high threshold (from 0 to 1) (default 0.117647)",
       "name": "high",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "low"
       ],
       "choices": [],
-      "default": "15/255.",
-      "description": "<dd><p>Set low and high threshold values used by the Canny thresholding\nalgorithm.\n</p>\n<p>The high threshold selects the \"strong\" edge pixels, which are then\nconnected through 8-connectivity with the \"weak\" edge pixels selected\nby the low threshold.\n</p>\n<p><var>low</var> and <var>high</var> threshold values must be chosen in the range\n[0,1], and <var>low</var> should be lesser or equal to <var>high</var>.\n</p>\n<p>Default value for <var>low</var> is <code>20/255</code>, and default value for <var>high</var>\nis <code>50/255</code>.\n</p>\n</dd>",
+      "default": "0.0588235",
+      "description": "set low threshold (from 0 to 1) (default 0.0588235)",
       "name": "low",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "radius"
       ],
       "choices": [],
-      "default": 50,
-      "description": "<dd><p>Define the radius to search around an edge pixel for local maxima.\n</p>\n</dd>",
+      "default": "50",
+      "description": "search radius for maxima detection (from 1 to 100) (default 50)",
       "name": "radius",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "block_pct"
       ],
       "choices": [],
-      "default": 80,
-      "description": "<dd><p>Determine blurriness only for the most significant blocks, given in percentage.\n</p>\n</dd>",
+      "default": "80",
+      "description": "block pooling threshold when calculating blurriness (from 1 to 100) (default 80)",
       "name": "block_pct",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
-        "block_width"
-      ],
-      "choices": [],
-      "default": -1,
-      "description": "<dd><p>Determine blurriness for blocks of width <var>block_width</var>. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of <var>block_height</var>.\n</p>\n</dd>",
-      "name": "block_width",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
+        "block_width",
         "block_height"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Determine blurriness for blocks of height <var>block_height</var>. If set to any value smaller 1, no blocks are used and the whole image is processed as one no matter of <var>block_width</var>.\n</p>\n</dd>",
-      "name": "block_height",
+      "default": "-1",
+      "description": "block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)",
+      "name": "block_width",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set planes to filter. Default is first only.\n</p></dd>",
+      "default": "1",
+      "description": "set planes to filter (from 0 to 15) (default 1)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#blurdetect"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.174 nlmeans\n\nDenoise frames using Non-Local Means algorithm.\n\nEach pixel is adjusted by looking for other pixels with similar contexts. This\ncontext similarity is defined by comparing their surrounding patches of size\npxp. Patches are searched in an area of rxr around the pixel.\n\nNote that the research area defines centers for patches, which means some\npatches will be made of pixels outside that research area.\n\nThe filter accepts the following options.\n\n**s**\n\n    Set denoising strength. Default is 1.0. Must be in range [1.0, 30.0]. \n\n**p**\n\n    Set patch size. Default is 7. Must be odd number in range [0, 99]. \n\n**pc**\n\n    Same as p but for chroma planes. The default value is 0 and means automatic. \n\n**r**\n\n    Set research size. Default is 15. Must be odd number in range [0, 99]. \n\n**rc**\n\n    Same as r but for chroma planes. The default value is 0 and means automatic. \n\n",
+  "description": "Non-local means denoiser.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,55 +21,55 @@
         "s"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set denoising strength. Default is 1.0. Must be in range [1.0, 30.0].\n</p>\n</dd>",
+      "default": "1",
+      "description": "denoising strength (from 1 to 30) (default 1)",
       "name": "s",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "p"
       ],
       "choices": [],
-      "default": "3*2+1",
-      "description": "<dd><p>Set patch size. Default is 7. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "default": "7",
+      "description": "patch size (from 0 to 99) (default 7)",
       "name": "p",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "pc"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Same as <samp>p</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p>\n</dd>",
+      "default": "0",
+      "description": "patch size for chroma planes (from 0 to 99) (default 0)",
       "name": "pc",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "r"
       ],
       "choices": [],
-      "default": "7*2+1",
-      "description": "<dd><p>Set research size. Default is 15. Must be odd number in range [0, 99].\n</p>\n</dd>",
+      "default": "15",
+      "description": "research window (from 0 to 99) (default 15)",
       "name": "r",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "rc"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Same as <samp>r</samp> but for chroma planes.\n</p>\n<p>The default value is <var>0</var> and means automatic.\n</p></dd>",
+      "default": "0",
+      "description": "research window for chroma planes (from 0 to 99) (default 0)",
       "name": "rc",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -84,7 +84,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#nlmeans"

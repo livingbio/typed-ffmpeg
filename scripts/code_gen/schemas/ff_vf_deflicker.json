@@ -1,5 +1,5 @@
 {
-  "description": "### 11.63 deflicker\n\nRemove temporal frame luminance variations.\n\nIt accepts the following options:\n\n**size, s**\n\n    Set moving-average filter size in frames. Default is 5. Allowed range is 2 - 129. \n\n**mode, m**\n\n    Set averaging mode to smooth temporal luminance variations. Available values are: \u2018am\u2019 Arithmetic mean \u2018gm\u2019 Geometric mean \u2018hm\u2019 Harmonic mean \u2018qm\u2019 Quadratic mean \u2018cm\u2019 Cubic mean \u2018pm\u2019 Power mean \u2018median\u2019 Median \n\n**bypass**\n\n    Do not actually modify frame. Useful when one only wants metadata. \n\n",
+  "description": "Remove temporal frame luminance variations.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "s"
       ],
       "choices": [],
-      "default": 5,
-      "description": "<dd><p>Set moving-average filter size in frames. Default is 5. Allowed range is 2 - 129.\n</p>\n</dd>",
+      "default": "5",
+      "description": "set how many frames to use (from 2 to 129) (default 5)",
       "name": "size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -37,61 +37,61 @@
         {
           "help": "arithmetic mean",
           "name": "am",
-          "value": "ARITHMETIC_MEAN"
+          "value": "0"
         },
         {
           "help": "geometric mean",
           "name": "gm",
-          "value": "GEOMETRIC_MEAN"
+          "value": "1"
         },
         {
           "help": "harmonic mean",
           "name": "hm",
-          "value": "HARMONIC_MEAN"
+          "value": "2"
         },
         {
           "help": "quadratic mean",
           "name": "qm",
-          "value": "QUADRATIC_MEAN"
+          "value": "3"
         },
         {
           "help": "cubic mean",
           "name": "cm",
-          "value": "CUBIC_MEAN"
+          "value": "4"
         },
         {
           "help": "power mean",
           "name": "pm",
-          "value": "POWER_MEAN"
+          "value": "5"
         },
         {
           "help": "median",
           "name": "median",
-          "value": "MEDIAN"
+          "value": "6"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set averaging mode to smooth temporal luminance variations.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>am</samp>\u2019</dt>\n<dd><p>Arithmetic mean\n</p>\n</dd>\n<dt>\u2018<samp>gm</samp>\u2019</dt>\n<dd><p>Geometric mean\n</p>\n</dd>\n<dt>\u2018<samp>hm</samp>\u2019</dt>\n<dd><p>Harmonic mean\n</p>\n</dd>\n<dt>\u2018<samp>qm</samp>\u2019</dt>\n<dd><p>Quadratic mean\n</p>\n</dd>\n<dt>\u2018<samp>cm</samp>\u2019</dt>\n<dd><p>Cubic mean\n</p>\n</dd>\n<dt>\u2018<samp>pm</samp>\u2019</dt>\n<dd><p>Power mean\n</p>\n</dd>\n<dt>\u2018<samp>median</samp>\u2019</dt>\n<dd><p>Median\n</p></dd>\n</dl>\n</dd>",
+      "default": "am",
+      "description": "set how to smooth luminance (from 0 to 6) (default am)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "bypass"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Do not actually modify frame. Useful when one only wants metadata.\n</p></dd>",
+      "default": "false",
+      "description": "leave frames unchanged (default false)",
       "name": "bypass",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#deflicker"

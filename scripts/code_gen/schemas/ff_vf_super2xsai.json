@@ -1,5 +1,5 @@
 {
-  "description": "### 11.247 super2xsai\n\nScale the input by 2x and smooth using the Super2xSaI (Scale and Interpolate)\npixel art scaling algorithm.\n\nUseful for enlarging pixel art images without reducing sharpness.\n\n",
+  "description": "Scale the input by 2x using the Super2xSaI pixel art algorithm.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -19,7 +19,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#super2xsai"

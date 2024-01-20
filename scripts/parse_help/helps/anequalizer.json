@@ -1,0 +1,109 @@
+{
+  "description": "Apply high-order audio parametric multi band equalizer.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "anequalizer",
+  "options": [
+    {
+      "alias": [
+        "params"
+      ],
+      "choices": [],
+      "default": "\"\"",
+      "description": "(default \"\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "params",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "curves"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "draw frequency response curves (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "curves",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "choices": [],
+      "default": "\"hd720\"",
+      "description": "set video size (default \"hd720\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "mgain"
+      ],
+      "choices": [],
+      "default": "60",
+      "description": "set max gain (from -900 to 900) (default 60)",
+      "flags": "..FV.......",
+      "max": "900",
+      "min": "-900",
+      "name": "mgain",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "fscale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "1"
+        }
+      ],
+      "default": "log",
+      "description": "set frequency scale (from 0 to 1) (default log)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "fscale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "colors"
+      ],
+      "choices": [],
+      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "description": "set channels curves colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "colors",
+      "typing": "string"
+    }
+  ],
+  "output_types": null
+}

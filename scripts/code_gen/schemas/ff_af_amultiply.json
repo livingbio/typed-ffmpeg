@@ -1,5 +1,5 @@
 {
-  "description": "### 8.36 amultiply\n\nMultiply first audio stream with second audio stream and store result in\noutput audio stream. Multiplication is done by multiplying each sample from\nfirst stream with sample at same position from second stream.\n\nWith this element-wise multiplication one can create amplitude fades and\namplitude modulations.\n\n",
+  "description": "Multiply two audio streams.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "multiply0",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     },
     {
       "name": "multiply1",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -23,7 +23,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#amultiply"

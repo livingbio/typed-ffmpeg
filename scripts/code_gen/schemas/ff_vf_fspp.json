@@ -1,5 +1,5 @@
 {
-  "description": "### 11.108 fspp\n\nApply fast and simple postprocessing. It is a faster version of spp.\n\nIt splits (I)DCT into horizontal/vertical passes. Unlike the simple post-\nprocessing filter, one of them is performed once per block, not per pixel.\nThis allows for much higher speed.\n\nThe filter accepts the following options:\n\n**quality**\n\n    Set quality. This option defines the number of levels for averaging. It accepts an integer in the range 4-5. Default value is 4. \n\n**qp**\n\n    Force a constant quantization parameter. It accepts an integer in range 0-63. If not set, the filter will use the QP from the video stream (if available). \n\n**strength**\n\n    Set filter strength. It accepts an integer in range -15 to 32. Lower values mean more details but also more artifacts, while higher values make the image smoother but also blurrier. Default value is 0 \u2212 PSNR optimal. \n\n**use_bframe_qp**\n\n    Enable the use of the QP from the B-Frames if set to 1. Using this option may cause flicker since the B-Frames have often larger QP. Default is 0 (not enabled). \n\n",
+  "description": "Apply Fast Simple Post-processing filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "quality"
       ],
       "choices": [],
-      "default": 4,
-      "description": "<dd><p>Set quality. This option defines the number of levels for averaging. It accepts\nan integer in the range 4-5. Default value is <code>4</code>.\n</p>\n</dd>",
+      "default": "4",
+      "description": "set quality (from 4 to 5) (default 4)",
       "name": "quality",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "qp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Force a constant quantization parameter. It accepts an integer in range 0-63.\nIf not set, the filter will use the QP from the video stream (if available).\n</p>\n</dd>",
+      "default": "0",
+      "description": "force a constant quantizer parameter (from 0 to 64) (default 0)",
       "name": "qp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "strength"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set filter strength. It accepts an integer in range -15 to 32. Lower values mean\nmore details but also more artifacts, while higher values make the image smoother\nbut also blurrier. Default value is <code>0</code> \u2212 PSNR optimal.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set filter strength (from -15 to 32) (default 0)",
       "name": "strength",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "use_bframe_qp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable the use of the QP from the B-Frames if set to <code>1</code>. Using this\noption may cause flicker since the B-Frames have often larger QP. Default is\n<code>0</code> (not enabled).\n</p>\n</dd>",
+      "default": "false",
+      "description": "use B-frames' QP (default false)",
       "name": "use_bframe_qp",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#fspp"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.228 setparams\n\nForce frame parameter for the output video frame.\n\nThe `setparams` filter marks interlace and color range for the output frames.\nIt does not change the input frame, but only sets the corresponding property,\nwhich affects how the frame is treated by filters/encoders.\n\n**field_mode**\n\n    Available values are: \u2018auto\u2019 Keep the same field property (default). \u2018bff\u2019 Mark the frame as bottom-field-first. \u2018tff\u2019 Mark the frame as top-field-first. \u2018prog\u2019 Mark the frame as progressive. \n\n**range**\n\n    Available values are: \u2018auto\u2019 Keep the same color range property (default). \u2018unspecified, unknown\u2019 Mark the frame as unspecified color range. \u2018limited, tv, mpeg\u2019 Mark the frame as limited range. \u2018full, pc, jpeg\u2019 Mark the frame as full range. \n\n**color_primaries**\n\n    Set the color primaries. Available values are: \u2018auto\u2019 Keep the same color primaries property (default). \u2018bt709\u2019 \u2018unknown\u2019 \u2018bt470m\u2019 \u2018bt470bg\u2019 \u2018smpte170m\u2019 \u2018smpte240m\u2019 \u2018film\u2019 \u2018bt2020\u2019 \u2018smpte428\u2019 \u2018smpte431\u2019 \u2018smpte432\u2019 \u2018jedec-p22\u2019 \n\n**color_trc**\n\n    Set the color transfer. Available values are: \u2018auto\u2019 Keep the same color trc property (default). \u2018bt709\u2019 \u2018unknown\u2019 \u2018bt470m\u2019 \u2018bt470bg\u2019 \u2018smpte170m\u2019 \u2018smpte240m\u2019 \u2018linear\u2019 \u2018log100\u2019 \u2018log316\u2019 \u2018iec61966-2-4\u2019 \u2018bt1361e\u2019 \u2018iec61966-2-1\u2019 \u2018bt2020-10\u2019 \u2018bt2020-12\u2019 \u2018smpte2084\u2019 \u2018smpte428\u2019 \u2018arib-std-b67\u2019 \n\n**colorspace**\n\n    Set the colorspace. Available values are: \u2018auto\u2019 Keep the same colorspace property (default). \u2018gbr\u2019 \u2018bt709\u2019 \u2018unknown\u2019 \u2018fcc\u2019 \u2018bt470bg\u2019 \u2018smpte170m\u2019 \u2018smpte240m\u2019 \u2018ycgco\u2019 \u2018bt2020nc\u2019 \u2018bt2020c\u2019 \u2018smpte2085\u2019 \u2018chroma-derived-nc\u2019 \u2018chroma-derived-c\u2019 \u2018ictcp\u2019 \n\n",
+  "description": "Force field, or color property for the output video frame.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -24,29 +24,29 @@
         {
           "help": "keep the same input field",
           "name": "auto",
-          "value": "MODE_AUTO"
+          "value": "-1"
         },
         {
           "help": "mark as bottom-field-first",
           "name": "bff",
-          "value": "MODE_BFF"
+          "value": "0"
         },
         {
           "help": "mark as top-field-first",
           "name": "tff",
-          "value": "MODE_TFF"
+          "value": "1"
         },
         {
           "help": "mark as progressive",
           "name": "prog",
-          "value": "MODE_PROG"
+          "value": "2"
         }
       ],
-      "default": "MODE_AUTO",
-      "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same field property (default).\n</p>\n</dd>\n<dt>\u2018<samp>bff</samp>\u2019</dt>\n<dd><p>Mark the frame as bottom-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>tff</samp>\u2019</dt>\n<dd><p>Mark the frame as top-field-first.\n</p>\n</dd>\n<dt>\u2018<samp>prog</samp>\u2019</dt>\n<dd><p>Mark the frame as progressive.\n</p></dd>\n</dl>\n</dd>",
+      "default": "auto",
+      "description": "select interlace mode (from -1 to 2) (default auto)",
       "name": "field_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -56,54 +56,54 @@
         {
           "help": "keep the same color range",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unspecified",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unknown",
-          "value": "AVCOL_RANGE_UNSPECIFIED"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "limited",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "tv",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "mpeg",
-          "value": "AVCOL_RANGE_MPEG"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "full",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "pc",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "jpeg",
-          "value": "AVCOL_RANGE_JPEG"
+          "value": "2"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Available values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color range property (default).\n</p>\n</dd>\n<dt>\u2018<samp>unspecified, unknown</samp>\u2019</dt>\n<dd><p>Mark the frame as unspecified color range.\n</p>\n</dd>\n<dt>\u2018<samp>limited, tv, mpeg</samp>\u2019</dt>\n<dd><p>Mark the frame as limited range.\n</p>\n</dd>\n<dt>\u2018<samp>full, pc, jpeg</samp>\u2019</dt>\n<dd><p>Mark the frame as full range.\n</p></dd>\n</dl>\n</dd>",
+      "default": "auto",
+      "description": "select color range (from -1 to 2) (default auto)",
       "name": "range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -113,79 +113,79 @@
         {
           "help": "keep the same color primaries",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt709",
-          "value": "AVCOL_PRI_BT709"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unknown",
-          "value": "AVCOL_PRI_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt470m",
-          "value": "AVCOL_PRI_BT470M"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt470bg",
-          "value": "AVCOL_PRI_BT470BG"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte170m",
-          "value": "AVCOL_PRI_SMPTE170M"
+          "value": "6"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte240m",
-          "value": "AVCOL_PRI_SMPTE240M"
+          "value": "7"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "film",
-          "value": "AVCOL_PRI_FILM"
+          "value": "8"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt2020",
-          "value": "AVCOL_PRI_BT2020"
+          "value": "9"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte428",
-          "value": "AVCOL_PRI_SMPTE428"
+          "value": "10"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte431",
-          "value": "AVCOL_PRI_SMPTE431"
+          "value": "11"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte432",
-          "value": "AVCOL_PRI_SMPTE432"
+          "value": "12"
         },
         {
-          "help": "((void*)0)",
-          "name": "jedec-p22",
-          "value": "AVCOL_PRI_JEDEC_P22"
+          "help": "",
+          "name": "p22",
+          "value": "22"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ebu3213",
-          "value": "AVCOL_PRI_EBU3213"
+          "value": "22"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Set the color primaries.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color primaries property (default).\n</p>\n</dd>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dt>\u2018<samp>unknown</samp>\u2019</dt>\n<dt>\u2018<samp>bt470m</samp>\u2019</dt>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dt>\u2018<samp>film</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020</samp>\u2019</dt>\n<dt>\u2018<samp>smpte428</samp>\u2019</dt>\n<dt>\u2018<samp>smpte431</samp>\u2019</dt>\n<dt>\u2018<samp>smpte432</samp>\u2019</dt>\n<dt>\u2018<samp>jedec-p22</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "auto",
+      "description": "select color primaries (from -1 to 22) (default auto)",
       "name": "color_primaries",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -195,99 +195,99 @@
         {
           "help": "keep the same color transfer",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt709",
-          "value": "AVCOL_TRC_BT709"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unknown",
-          "value": "AVCOL_TRC_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt470m",
-          "value": "AVCOL_TRC_GAMMA22"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt470bg",
-          "value": "AVCOL_TRC_GAMMA28"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte170m",
-          "value": "AVCOL_TRC_SMPTE170M"
+          "value": "6"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte240m",
-          "value": "AVCOL_TRC_SMPTE240M"
+          "value": "7"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "linear",
-          "value": "AVCOL_TRC_LINEAR"
+          "value": "8"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "log100",
-          "value": "AVCOL_TRC_LOG"
+          "value": "9"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "log316",
-          "value": "AVCOL_TRC_LOG_SQRT"
+          "value": "10"
         },
         {
-          "help": "((void*)0)",
-          "name": "iec61966-2-4",
-          "value": "AVCOL_TRC_IEC61966_2_4"
+          "help": "",
+          "name": "4",
+          "value": "11"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt1361e",
-          "value": "AVCOL_TRC_BT1361_ECG"
+          "value": "12"
         },
         {
-          "help": "((void*)0)",
-          "name": "iec61966-2-1",
-          "value": "AVCOL_TRC_IEC61966_2_1"
+          "help": "",
+          "name": "1",
+          "value": "13"
         },
         {
-          "help": "((void*)0)",
-          "name": "bt2020-10",
-          "value": "AVCOL_TRC_BT2020_10"
+          "help": "",
+          "name": "10",
+          "value": "14"
         },
         {
-          "help": "((void*)0)",
-          "name": "bt2020-12",
-          "value": "AVCOL_TRC_BT2020_12"
+          "help": "",
+          "name": "12",
+          "value": "15"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte2084",
-          "value": "AVCOL_TRC_SMPTE2084"
+          "value": "16"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte428",
-          "value": "AVCOL_TRC_SMPTE428"
+          "value": "17"
         },
         {
-          "help": "((void*)0)",
-          "name": "arib-std-b67",
-          "value": "AVCOL_TRC_ARIB_STD_B67"
+          "help": "",
+          "name": "b67",
+          "value": "18"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Set the color transfer.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same color trc property (default).\n</p>\n</dd>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dt>\u2018<samp>unknown</samp>\u2019</dt>\n<dt>\u2018<samp>bt470m</samp>\u2019</dt>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dt>\u2018<samp>linear</samp>\u2019</dt>\n<dt>\u2018<samp>log100</samp>\u2019</dt>\n<dt>\u2018<samp>log316</samp>\u2019</dt>\n<dt>\u2018<samp>iec61966-2-4</samp>\u2019</dt>\n<dt>\u2018<samp>bt1361e</samp>\u2019</dt>\n<dt>\u2018<samp>iec61966-2-1</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020-10</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020-12</samp>\u2019</dt>\n<dt>\u2018<samp>smpte2084</samp>\u2019</dt>\n<dt>\u2018<samp>smpte428</samp>\u2019</dt>\n<dt>\u2018<samp>arib-std-b67</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "auto",
+      "description": "select color transfer (from -1 to 18) (default auto)",
       "name": "color_trc",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -297,90 +297,90 @@
         {
           "help": "keep the same colorspace",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "gbr",
-          "value": "AVCOL_SPC_RGB"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt709",
-          "value": "AVCOL_SPC_BT709"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "unknown",
-          "value": "AVCOL_SPC_UNSPECIFIED"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "fcc",
-          "value": "AVCOL_SPC_FCC"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt470bg",
-          "value": "AVCOL_SPC_BT470BG"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte170m",
-          "value": "AVCOL_SPC_SMPTE170M"
+          "value": "6"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte240m",
-          "value": "AVCOL_SPC_SMPTE240M"
+          "value": "7"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ycgco",
-          "value": "AVCOL_SPC_YCGCO"
+          "value": "8"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt2020nc",
-          "value": "AVCOL_SPC_BT2020_NCL"
+          "value": "9"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bt2020c",
-          "value": "AVCOL_SPC_BT2020_CL"
+          "value": "10"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "smpte2085",
-          "value": "AVCOL_SPC_SMPTE2085"
+          "value": "11"
         },
         {
-          "help": "((void*)0)",
-          "name": "chroma-derived-nc",
-          "value": "AVCOL_SPC_CHROMA_DERIVED_NCL"
+          "help": "",
+          "name": "nc",
+          "value": "12"
         },
         {
-          "help": "((void*)0)",
-          "name": "chroma-derived-c",
-          "value": "AVCOL_SPC_CHROMA_DERIVED_CL"
+          "help": "",
+          "name": "c",
+          "value": "13"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "ictcp",
-          "value": "AVCOL_SPC_ICTCP"
+          "value": "14"
         }
       ],
-      "default": -1,
-      "description": "<dd><p>Set the colorspace.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>auto</samp>\u2019</dt>\n<dd><p>Keep the same colorspace property (default).\n</p>\n</dd>\n<dt>\u2018<samp>gbr</samp>\u2019</dt>\n<dt>\u2018<samp>bt709</samp>\u2019</dt>\n<dt>\u2018<samp>unknown</samp>\u2019</dt>\n<dt>\u2018<samp>fcc</samp>\u2019</dt>\n<dt>\u2018<samp>bt470bg</samp>\u2019</dt>\n<dt>\u2018<samp>smpte170m</samp>\u2019</dt>\n<dt>\u2018<samp>smpte240m</samp>\u2019</dt>\n<dt>\u2018<samp>ycgco</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020nc</samp>\u2019</dt>\n<dt>\u2018<samp>bt2020c</samp>\u2019</dt>\n<dt>\u2018<samp>smpte2085</samp>\u2019</dt>\n<dt>\u2018<samp>chroma-derived-nc</samp>\u2019</dt>\n<dt>\u2018<samp>chroma-derived-c</samp>\u2019</dt>\n<dt>\u2018<samp>ictcp</samp>\u2019</dt>\n</dl>\n</dd>",
+      "default": "auto",
+      "description": "select colorspace (from -1 to 14) (default auto)",
       "name": "colorspace",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#setparams"

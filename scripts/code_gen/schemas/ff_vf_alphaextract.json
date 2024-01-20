@@ -1,5 +1,5 @@
 {
-  "description": "### 11.2 alphaextract\n\nExtract the alpha component from the input as a grayscale video. This is\nespecially useful with the alphamerge filter.\n\n",
+  "description": "Extract an alpha channel as a grayscale image component.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -19,7 +19,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#alphaextract"

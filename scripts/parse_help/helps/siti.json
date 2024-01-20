@@ -1,0 +1,36 @@
+{
+  "description": "Calculate spatial information (SI) and temporal information (TI).",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "siti",
+  "options": [
+    {
+      "alias": [
+        "print_summary"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "Print summary showing average values (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "print_summary",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

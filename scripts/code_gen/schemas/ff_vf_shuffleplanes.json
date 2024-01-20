@@ -1,5 +1,5 @@
 {
-  "description": "### 11.235 shuffleplanes\n\nReorder and/or duplicate video planes.\n\nIt accepts the following parameters:\n\n**map0**\n\n    The index of the input plane to be used as the first output plane. \n\n**map1**\n\n    The index of the input plane to be used as the second output plane. \n\n**map2**\n\n    The index of the input plane to be used as the third output plane. \n\n**map3**\n\n    The index of the input plane to be used as the fourth output plane. \n\nThe first plane has the index 0. The default is to keep the input unchanged.\n\n",
+  "description": "Shuffle video planes.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "map0"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The index of the input plane to be used as the first output plane.\n</p>\n</dd>",
+      "default": "0",
+      "description": "Index of the input plane to be used as the first output plane  (from 0 to 3) (default 0)",
       "name": "map0",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map1"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>The index of the input plane to be used as the second output plane.\n</p>\n</dd>",
+      "default": "1",
+      "description": "Index of the input plane to be used as the second output plane  (from 0 to 3) (default 1)",
       "name": "map1",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map2"
       ],
       "choices": [],
-      "default": 2,
-      "description": "<dd><p>The index of the input plane to be used as the third output plane.\n</p>\n</dd>",
+      "default": "2",
+      "description": "Index of the input plane to be used as the third output plane  (from 0 to 3) (default 2)",
       "name": "map2",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "map3"
       ],
       "choices": [],
-      "default": 3,
-      "description": "<dd><p>The index of the input plane to be used as the fourth output plane.\n</p>\n</dd>",
+      "default": "3",
+      "description": "Index of the input plane to be used as the fourth output plane  (from 0 to 3) (default 3)",
       "name": "map3",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.120 hqdn3d\n\nThis is a high precision/quality 3d denoise filter. It aims to reduce image\nnoise, producing smooth images and making still images really still. It should\nenhance compressibility.\n\nIt accepts the following optional parameters:\n\n**luma_spatial**\n\n    A non-negative floating point number which specifies spatial luma strength. It defaults to 4.0. \n\n**chroma_spatial**\n\n    A non-negative floating point number which specifies spatial chroma strength. It defaults to 3.0*luma_spatial/4.0. \n\n**luma_tmp**\n\n    A floating point number which specifies luma temporal strength. It defaults to 6.0*luma_spatial/4.0. \n\n**chroma_tmp**\n\n    A floating point number which specifies chroma temporal strength. It defaults to luma_tmp*chroma_spatial/luma_spatial. \n\n",
+  "description": "Apply a High Quality 3D Denoiser.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "luma_spatial"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A non-negative floating point number which specifies spatial luma strength.\nIt defaults to 4.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "spatial luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_spatial",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "chroma_spatial"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A non-negative floating point number which specifies spatial chroma strength.\nIt defaults to 3.0*<var>luma_spatial</var>/4.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "spatial chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_spatial",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "luma_tmp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A floating point number which specifies luma temporal strength. It defaults to\n6.0*<var>luma_spatial</var>/4.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "temporal luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_tmp",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "chroma_tmp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>A floating point number which specifies chroma temporal strength. It defaults to\n<var>luma_tmp</var>*<var>chroma_spatial</var>/<var>luma_spatial</var>.\n</p></dd>",
+      "default": "0",
+      "description": "temporal chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_tmp",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hqdn3d"

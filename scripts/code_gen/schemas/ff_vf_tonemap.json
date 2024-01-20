@@ -1,5 +1,5 @@
 {
-  "description": "### 11.261 tonemap\n\nTone map colors from different dynamic ranges.\n\nThis filter expects data in single precision floating point, as it needs to\noperate on (and can output) out-of-range values. Another filter, such as\nzscale, is needed to convert the resulting frame to a usable format.\n\nThe tonemapping algorithms implemented only work on linear light, so input\ndata should be linearized beforehand (and possibly correctly tagged).\n\n    \n    \n    ffmpeg -i INPUT -vf zscale=transfer=linear,tonemap=clip,zscale=transfer=bt709,format=yuv420p OUTPUT\n    \n\n",
+  "description": "Conversion to/from different dynamic ranges.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,85 +22,85 @@
       ],
       "choices": [
         {
-          "help": "0",
+          "help": "",
           "name": "none",
-          "value": "TONEMAP_NONE"
+          "value": "0"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "linear",
-          "value": "TONEMAP_LINEAR"
+          "value": "1"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "gamma",
-          "value": "TONEMAP_GAMMA"
+          "value": "2"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "clip",
-          "value": "TONEMAP_CLIP"
+          "value": "3"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "reinhard",
-          "value": "TONEMAP_REINHARD"
+          "value": "4"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "hable",
-          "value": "TONEMAP_HABLE"
+          "value": "5"
         },
         {
-          "help": "0",
+          "help": "",
           "name": "mobius",
-          "value": "TONEMAP_MOBIUS"
+          "value": "6"
         }
       ],
-      "default": "TONEMAP_NONE",
-      "description": "tonemap algorithm selection",
+      "default": "none",
+      "description": "tonemap algorithm selection (from 0 to 6) (default none)",
       "name": "tonemap",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "param"
       ],
       "choices": [],
-      "default": "__builtin_nanf(\"0x7fc00000\")",
-      "description": "tonemap parameter",
+      "default": "nan",
+      "description": "tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)",
       "name": "param",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "desat"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "desaturation strength",
+      "default": "2",
+      "description": "desaturation strength (from 0 to DBL_MAX) (default 2)",
       "name": "desat",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "peak"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "signal peak override",
+      "default": "0",
+      "description": "signal peak override (from 0 to DBL_MAX) (default 0)",
       "name": "peak",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#tonemap"

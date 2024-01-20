@@ -1,5 +1,5 @@
 {
-  "description": "### 11.169 morpho\n\nThis filter allows to apply main morphological grayscale transforms, erode and\ndilate with arbitrary structures set in second input stream.\n\nUnlike naive implementation and much slower performance in erosion and\ndilation filters, when speed is critical `morpho` filter should be used\ninstead.\n\nA description of accepted options follows,\n\n**mode**\n\n    Set morphological transform to apply, can be: \u2018erode\u2019 \u2018dilate\u2019 \u2018open\u2019 \u2018close\u2019 \u2018gradient\u2019 \u2018tophat\u2019 \u2018blackhat\u2019 Default is erode. \n\n**planes**\n\n    Set planes to filter, by default all planes except alpha are filtered. \n\n**structure**\n\n    Set which structure video frames will be processed from second input stream, can be first or all. Default is all. \n\nThe `morpho` filter also supports the framesync options.\n\n",
+  "description": "Apply Morphological filter.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "structure",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,57 +26,57 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "erode",
-          "value": "ERODE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "dilate",
-          "value": "DILATE"
+          "value": "1"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "open",
-          "value": "OPEN"
+          "value": "2"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "close",
-          "value": "CLOSE"
+          "value": "3"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "gradient",
-          "value": "GRADIENT"
+          "value": "4"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "tophat",
-          "value": "TOPHAT"
+          "value": "5"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "blackhat",
-          "value": "BLACKHAT"
+          "value": "6"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set morphological transform to apply, can be:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>erode</samp>\u2019</dt>\n<dt>\u2018<samp>dilate</samp>\u2019</dt>\n<dt>\u2018<samp>open</samp>\u2019</dt>\n<dt>\u2018<samp>close</samp>\u2019</dt>\n<dt>\u2018<samp>gradient</samp>\u2019</dt>\n<dt>\u2018<samp>tophat</samp>\u2019</dt>\n<dt>\u2018<samp>blackhat</samp>\u2019</dt>\n</dl>\n<p>Default is <code>erode</code>.\n</p>\n</dd>",
+      "default": "erode",
+      "description": "set morphological transform (from 0 to 6) (default erode)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Set planes to filter, by default all planes except alpha are filtered.\n</p>\n</dd>",
+      "default": "7",
+      "description": "set planes to filter (from 0 to 15) (default 7)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -86,19 +86,90 @@
         {
           "help": "process only first structure, ignore rest",
           "name": "first",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "process all structure",
           "name": "all",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set which structure video frames will be processed from second input stream,\ncan be <var>first</var> or <var>all</var>. Default is <var>all</var>.\n</p></dd>",
+      "default": "all",
+      "description": "when to process structures (from 0 to 1) (default all)",
       "name": "structure",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
+    },
+    {
+      "alias": [
+        "eof_action"
+      ],
+      "choices": [
+        {
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        }
+      ],
+      "default": "repeat",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+      "name": "eof_action",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
+      "name": "shortest",
+      "required": false,
+      "typing": "Boolean"
+    },
+    {
+      "alias": [
+        "repeatlast"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
+      "name": "repeatlast",
+      "required": false,
+      "typing": "Boolean"
+    },
+    {
+      "alias": [
+        "ts_sync_mode"
+      ],
+      "choices": [
+        {
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+          "name": "default",
+          "value": "0"
+        },
+        {
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
+          "name": "nearest",
+          "value": "1"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
+      "name": "ts_sync_mode",
+      "required": false,
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -108,75 +179,12 @@
       "name": "enable",
       "required": false,
       "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Repeat the last frame.",
-          "name": "repeat",
-          "value": "repeat"
-        },
-        {
-          "help": "End both streams.",
-          "name": "endall",
-          "value": "endall"
-        },
-        {
-          "help": "Pass the main input through.",
-          "name": "pass",
-          "value": "pass"
-        }
-      ],
-      "default": "repeat",
-      "description": "The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
-      "name": "eof_action",
-      "required": false,
-      "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 0,
-      "description": "Force the output to terminate when the shortest input terminates.",
-      "name": "shortest",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 1,
-      "description": "force the filter to extend the last frame of secondary streams until the end of the primary stream.",
-      "name": "repeatlast",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
-          "name": "default",
-          "value": "default"
-        },
-        {
-          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
-          "name": "nearest",
-          "value": "nearest"
-        }
-      ],
-      "default": "default",
-      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
-      "name": "ts_sync_mode",
-      "required": false,
-      "typing": "str"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#morpho"

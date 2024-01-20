@@ -1,0 +1,532 @@
+{
+  "description": "Convert input audio to a spectrum video output single picture.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "showspectrumpic",
+  "options": [
+    {
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "\"4096x2048\"",
+      "description": "set video size (default \"4096x2048\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "combined mode",
+          "name": "combined",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "separate mode",
+          "name": "separate",
+          "value": "1"
+        }
+      ],
+      "default": "combined",
+      "description": "set channel display mode (from 0 to 1) (default combined)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "color"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "separate color for each channel",
+          "name": "channel",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "intensity based coloring",
+          "name": "intensity",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "rainbow based coloring",
+          "name": "rainbow",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "moreland based coloring",
+          "name": "moreland",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "nebulae based coloring",
+          "name": "nebulae",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fire based coloring",
+          "name": "fire",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fiery based coloring",
+          "name": "fiery",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fruit based coloring",
+          "name": "fruit",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cool based coloring",
+          "name": "cool",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "magma based coloring",
+          "name": "magma",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "green based coloring",
+          "name": "green",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "viridis based coloring",
+          "name": "viridis",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "plasma based coloring",
+          "name": "plasma",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cividis based coloring",
+          "name": "cividis",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "terrain based coloring",
+          "name": "terrain",
+          "value": "14"
+        }
+      ],
+      "default": "intensity",
+      "description": "set channel coloring (from 0 to 14) (default intensity)",
+      "flags": "..FV.......",
+      "max": "14",
+      "min": "0",
+      "name": "color",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "scale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "square root",
+          "name": "sqrt",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cubic root",
+          "name": "cbrt",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "4th root",
+          "name": "4thrt",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "5th root",
+          "name": "5thrt",
+          "value": "5"
+        }
+      ],
+      "default": "log",
+      "description": "set display scale (from 0 to 5) (default log)",
+      "flags": "..FV.......",
+      "max": "5",
+      "min": "0",
+      "name": "scale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fscale"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "linear",
+          "name": "lin",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "logarithmic",
+          "name": "log",
+          "value": "1"
+        }
+      ],
+      "default": "lin",
+      "description": "set frequency scale (from 0 to 1) (default lin)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "fscale",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "saturation"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "color saturation multiplier (from -10 to 10) (default 1)",
+      "flags": "..FV.......",
+      "max": "10",
+      "min": "-10",
+      "name": "saturation",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "win_func"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "Rectangular",
+          "name": "rect",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bartlett",
+          "name": "bartlett",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hann",
+          "name": "hann",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hanning",
+          "name": "hanning",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Hamming",
+          "name": "hamming",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman",
+          "name": "blackman",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Welch",
+          "name": "welch",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Flat-top",
+          "name": "flattop",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman-Harris",
+          "name": "bharris",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Blackman-Nuttall",
+          "name": "bnuttall",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bartlett-Hann",
+          "name": "bhann",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Sine",
+          "name": "sine",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Nuttall",
+          "name": "nuttall",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Lanczos",
+          "name": "lanczos",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Gauss",
+          "name": "gauss",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Tukey",
+          "name": "tukey",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Dolph-Chebyshev",
+          "name": "dolph",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Cauchy",
+          "name": "cauchy",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Parzen",
+          "name": "parzen",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Poisson",
+          "name": "poisson",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Bohman",
+          "name": "bohman",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "Kaiser",
+          "name": "kaiser",
+          "value": "20"
+        }
+      ],
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
+      "flags": "..FV.......",
+      "max": "20",
+      "min": "0",
+      "name": "win_func",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "orientation"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "vertical",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "horizontal",
+          "value": "1"
+        }
+      ],
+      "default": "vertical",
+      "description": "set orientation (from 0 to 1) (default vertical)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "orientation",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "gain"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set scale gain (from 0 to 128) (default 1)",
+      "flags": "..FV.......",
+      "max": "128",
+      "min": "0",
+      "name": "gain",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "legend"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "draw legend (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "legend",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "rotation"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "color rotation (from -1 to 1) (default 0)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-1",
+      "name": "rotation",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "start"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "start frequency (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "start",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "stop"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "stop frequency (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "stop",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "drange"
+      ],
+      "choices": [],
+      "default": "120",
+      "description": "set dynamic range in dBFS (from 10 to 200) (default 120)",
+      "flags": "..FV.......",
+      "max": "200",
+      "min": "10",
+      "name": "drange",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "limit"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set upper limit in dBFS (from -100 to 100) (default 0)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "-100",
+      "name": "limit",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "opacity"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set opacity strength (from 0 to 10) (default 1)",
+      "flags": "..FV.......",
+      "max": "10",
+      "min": "0",
+      "name": "opacity",
+      "typing": "float"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

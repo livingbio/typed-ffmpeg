@@ -1,0 +1,179 @@
+{
+  "description": "Apply CMYK adjustments to specific color ranges.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "selectivecolor",
+  "options": [
+    {
+      "alias": [
+        "correction_method"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "absolute",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "relative",
+          "value": "1"
+        }
+      ],
+      "default": "absolute",
+      "description": "select correction method (from 0 to 1) (default absolute)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "correction_method",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "reds"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust red regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "reds",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "yellows"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust yellow regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "yellows",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "greens"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust green regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "greens",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "cyans"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust cyan regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "cyans",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "blues"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust blue regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "blues",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "magentas"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust magenta regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "magentas",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "whites"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust white regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "whites",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "neutrals"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust neutral regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "neutrals",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "blacks"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "adjust black regions",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "blacks",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "psfile"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set Photoshop selectivecolor file name",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "psfile",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

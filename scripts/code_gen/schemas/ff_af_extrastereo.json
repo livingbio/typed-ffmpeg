@@ -1,5 +1,5 @@
 {
-  "description": "### 8.88 extrastereo\n\nLinearly increases the difference between left and right channels which adds\nsome sort of \"live\" effect to playback.\n\nThe filter accepts the following options:\n\n**m**\n\n    Sets the difference coefficient (default: 2.5). 0.0 means mono sound (average of both channels), with 1.0 sound will be unchanged, with -1.0 left and right channels will be swapped. \n\n**c**\n\n    Enable clipping. By default is enabled. \n\n",
+  "description": "Increase difference between stereo audio channels.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "m"
       ],
       "choices": [],
-      "default": 2.5,
-      "description": "<dd><p>Sets the difference coefficient (default: 2.5). 0.0 means mono sound\n(average of both channels), with 1.0 sound will be unchanged, with\n-1.0 left and right channels will be swapped.\n</p>\n</dd>",
+      "default": "2.5",
+      "description": "set the difference coefficient (from -10 to 10) (default 2.5)",
       "name": "m",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "c"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Enable clipping. By default is enabled.\n</p></dd>",
+      "default": "true",
+      "description": "enable clipping (default true)",
       "name": "c",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#extrastereo"

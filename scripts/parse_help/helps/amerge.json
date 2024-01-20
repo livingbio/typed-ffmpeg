@@ -1,0 +1,31 @@
+{
+  "description": "Merge two or more audio streams into a single multi-channel stream.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "amerge",
+  "options": [
+    {
+      "alias": [
+        "inputs"
+      ],
+      "choices": [],
+      "default": "2",
+      "description": "specify the number of inputs (from 1 to 64) (default 2)",
+      "flags": "..F.A......",
+      "max": "64",
+      "min": "1",
+      "name": "inputs",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

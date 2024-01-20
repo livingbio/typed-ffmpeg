@@ -1,5 +1,5 @@
 {
-  "description": "### 11.210 reverse\n\nReverse a video clip.\n\nWarning: This filter requires memory to buffer the entire clip, so trimming is\nsuggested.\n\n",
+  "description": "Reverse a clip.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -19,7 +19,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse"

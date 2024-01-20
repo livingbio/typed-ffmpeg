@@ -1,5 +1,5 @@
 {
-  "description": "### 11.32 colorcontrast\n\nAdjust color contrast between RGB components.\n\nThe filter accepts the following options:\n\n**rc**\n\n    Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0. \n\n**gm**\n\n    Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0. \n\n**by**\n\n    Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0. \n\n**rcw**\n\n**gmw**\n\n**byw**\n\n    Set the weight of each rc, gm, by option value. Default value is 0.0. Allowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled. \n\n**pl**\n\n    Set the amount of preserving lightness. Default value is 0.0. Allowed range is from 0.0 to 1.0. \n\n",
+  "description": "Adjust color contrast between RGB components.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,77 +21,77 @@
         "rc"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the red-cyan contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red-cyan contrast (from -1 to 1) (default 0)",
       "name": "rc",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "gm"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the green-magenta contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the green-magenta contrast (from -1 to 1) (default 0)",
       "name": "gm",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "by"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the blue-yellow contrast. Defaults is 0.0. Allowed range is from -1.0 to 1.0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue-yellow contrast (from -1 to 1) (default 0)",
       "name": "by",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "rcw"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red-cyan weight (from 0 to 1) (default 0)",
       "name": "rcw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "gmw"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the green-magenta weight (from 0 to 1) (default 0)",
       "name": "gmw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "byw"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the weight of each <code>rc</code>, <code>gm</code>, <code>by</code> option value. Default value is 0.0.\nAllowed range is from 0.0 to 1.0. If all weights are 0.0 filtering is disabled.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue-yellow weight (from 0 to 1) (default 0)",
       "name": "byw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "pl"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the amount of preserving lightness. Default value is 0.0. Allowed range is from 0.0 to 1.0.\n</p></dd>",
+      "default": "0",
+      "description": "set the amount of preserving lightness (from 0 to 1) (default 0)",
       "name": "pl",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -106,7 +106,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorcontrast"

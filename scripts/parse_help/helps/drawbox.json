@@ -1,0 +1,131 @@
+{
+  "description": "Draw a colored box on the input video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "drawbox",
+  "options": [
+    {
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set horizontal position of the left box edge (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "x",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set vertical position of the top box edge (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "y",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "width",
+        "w"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set width of the box (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "width",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "height",
+        "h"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set height of the box (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "height",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "color",
+        "c"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set color of the box (default \"black\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "color",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "thickness",
+        "t"
+      ],
+      "choices": [],
+      "default": "\"3\"",
+      "description": "set the box thickness (default \"3\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "thickness",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "replace"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "replace color & alpha (default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "replace",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "box_source"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "use datas from bounding box in side data",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "box_source",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

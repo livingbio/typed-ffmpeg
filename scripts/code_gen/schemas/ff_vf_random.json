@@ -1,5 +1,5 @@
 {
-  "description": "### 11.203 random\n\nFlush video frames from internal cache of frames into a random order. No frame\nis discarded. Inspired by frei0r nervous filter.\n\n**frames**\n\n    Set size in number of frames of internal cache, in range from 2 to 512. Default is 30. \n\n**seed**\n\n    Set seed for random number generator, must be an integer included between 0 and UINT32_MAX. If not specified, or if explicitly set to less than 0, the filter will try to use a good random seed on a best effort basis. \n\n",
+  "description": "Return random frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,28 +21,28 @@
         "frames"
       ],
       "choices": [],
-      "default": 30,
-      "description": "<dd><p>Set size in number of frames of internal cache, in range from <code>2</code> to\n<code>512</code>. Default is <code>30</code>.\n</p>\n</dd>",
+      "default": "30",
+      "description": "set number of frames in cache (from 2 to 512) (default 30)",
       "name": "frames",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "seed"
       ],
       "choices": [],
-      "default": -1,
-      "description": "<dd><p>Set seed for random number generator, must be an integer included between\n<code>0</code> and <code>UINT32_MAX</code>. If not specified, or if explicitly set to\nless than <code>0</code>, the filter will try to use a good random seed on a\nbest effort basis.\n</p></dd>",
+      "default": "-1",
+      "description": "set the seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#random"

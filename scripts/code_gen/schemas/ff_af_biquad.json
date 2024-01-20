@@ -1,5 +1,5 @@
 {
-  "description": "### 8.72 biquad\n\nApply a biquad IIR filter with the given coefficients. Where b0, b1, b2 and\na0, a1, a2 are the numerator and denominator coefficients respectively. and\nchannels, c specify which channels to filter, by default all available are\nfiltered.\n\n",
+  "description": "Apply a biquad IIR filter with the given coefficients.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,66 +21,26 @@
         "a0"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "((void*)0)",
+      "default": "1",
+      "description": "(from INT_MIN to INT_MAX) (default 1)",
       "name": "a0",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
-        "a1"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "((void*)0)",
-      "name": "a1",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "a2"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "((void*)0)",
-      "name": "a2",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "b0"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "((void*)0)",
-      "name": "b0",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "b1"
-      ],
-      "choices": [],
-      "default": 0.0,
-      "description": "((void*)0)",
-      "name": "b1",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
+        "a1",
+        "a2",
+        "b0",
+        "b1",
         "b2"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "((void*)0)",
-      "name": "b2",
+      "default": "0",
+      "description": "(from INT_MIN to INT_MAX) (default 0)",
+      "name": "a1",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -88,11 +48,11 @@
         "m"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "set mix",
+      "default": "1",
+      "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -101,10 +61,10 @@
       ],
       "choices": [],
       "default": "all",
-      "description": "set channels to filter",
+      "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -112,11 +72,11 @@
         "n"
       ],
       "choices": [],
-      "default": 0,
-      "description": "normalize coefficients",
+      "default": "false",
+      "description": "normalize coefficients (default false)",
       "name": "normalize",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -127,44 +87,44 @@
         {
           "help": "direct form I",
           "name": "di",
-          "value": "DI"
+          "value": "0"
         },
         {
           "help": "direct form II",
           "name": "dii",
-          "value": "DII"
+          "value": "1"
         },
         {
           "help": "transposed direct form I",
           "name": "tdi",
-          "value": "TDI"
+          "value": "2"
         },
         {
           "help": "transposed direct form II",
           "name": "tdii",
-          "value": "TDII"
+          "value": "3"
         },
         {
           "help": "lattice-ladder form",
           "name": "latt",
-          "value": "LATT"
+          "value": "4"
         },
         {
           "help": "state variable filter form",
           "name": "svf",
-          "value": "SVF"
+          "value": "5"
         },
         {
           "help": "zero-delay filter form",
           "name": "zdf",
-          "value": "ZDF"
+          "value": "6"
         }
       ],
-      "default": "DI",
-      "description": "set transform type",
+      "default": "di",
+      "description": "set transform type (from 0 to 6) (default di)",
       "name": "transform",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -175,34 +135,34 @@
         {
           "help": "automatic",
           "name": "auto",
-          "value": -1
+          "value": "-1"
         },
         {
           "help": "signed 16-bit",
           "name": "s16",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "signed 32-bit",
           "name": "s32",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "floating-point single",
           "name": "f32",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "floating-point double",
           "name": "f64",
-          "value": 3
+          "value": "3"
         }
       ],
-      "default": -1,
-      "description": "set filtering precision",
+      "default": "auto",
+      "description": "set filtering precision (from -1 to 3) (default auto)",
       "name": "precision",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -210,11 +170,11 @@
         "b"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set the block size",
+      "default": "0",
+      "description": "set the block size (from 0 to 32768) (default 0)",
       "name": "blocksize",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -229,7 +189,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#biquad"

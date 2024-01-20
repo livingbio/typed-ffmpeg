@@ -1,0 +1,70 @@
+{
+  "description": "Remap pixels.",
+  "input_types": [
+    {
+      "name": "source",
+      "type": "video"
+    },
+    {
+      "name": "xmap",
+      "type": "video"
+    },
+    {
+      "name": "ymap",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "remap",
+  "options": [
+    {
+      "alias": [
+        "format"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "color",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "",
+          "name": "gray",
+          "value": "1"
+        }
+      ],
+      "default": "color",
+      "description": "set output format (from 0 to 1) (default color)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "format",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "fill"
+      ],
+      "choices": [],
+      "default": "\"black\"",
+      "description": "set the color of the unmapped pixels (default \"black\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fill",
+      "typing": "color"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

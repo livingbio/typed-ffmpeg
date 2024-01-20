@@ -1,0 +1,102 @@
+{
+  "description": "Blurdetect filter.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "blurdetect",
+  "options": [
+    {
+      "alias": [
+        "high"
+      ],
+      "choices": [],
+      "default": "0.117647",
+      "description": "set high threshold (from 0 to 1) (default 0.117647)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "high",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "low"
+      ],
+      "choices": [],
+      "default": "0.0588235",
+      "description": "set low threshold (from 0 to 1) (default 0.0588235)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "low",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "radius"
+      ],
+      "choices": [],
+      "default": "50",
+      "description": "search radius for maxima detection (from 1 to 100) (default 50)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "1",
+      "name": "radius",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "block_pct"
+      ],
+      "choices": [],
+      "default": "80",
+      "description": "block pooling threshold when calculating blurriness (from 1 to 100) (default 80)",
+      "flags": "..FV.......",
+      "max": "100",
+      "min": "1",
+      "name": "block_pct",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "block_width",
+        "block_height"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "block_width",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set planes to filter (from 0 to 15) (default 1)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

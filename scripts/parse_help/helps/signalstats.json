@@ -1,0 +1,101 @@
+{
+  "description": "Generate statistics from video analysis.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "signalstats",
+  "options": [
+    {
+      "alias": [
+        "stat"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "analyze pixels for temporal outliers",
+          "name": "tout",
+          "value": "tout"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "analyze video lines for vertical line repetition",
+          "name": "vrep",
+          "value": "vrep"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "analyze for pixels outside of broadcast range",
+          "name": "brng",
+          "value": "brng"
+        }
+      ],
+      "default": "0",
+      "description": "set statistics filters (default 0)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "stat",
+      "typing": "flags"
+    },
+    {
+      "alias": [
+        "out"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "highlight pixels that depict temporal outliers",
+          "name": "tout",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "highlight video lines that depict vertical line repetition",
+          "name": "vrep",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "highlight pixels that are outside of broadcast range",
+          "name": "brng",
+          "value": "2"
+        }
+      ],
+      "default": "-1",
+      "description": "set video filter (from -1 to 2) (default -1)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "-1",
+      "name": "out",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "c",
+        "color"
+      ],
+      "choices": [],
+      "default": "\"yellow\"",
+      "description": "set highlight color (default \"yellow\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "c",
+      "typing": "color"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

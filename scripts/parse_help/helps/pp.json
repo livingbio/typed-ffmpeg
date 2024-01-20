@@ -1,0 +1,36 @@
+{
+  "description": "Filter video using libpostproc.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "pp",
+  "options": [
+    {
+      "alias": [
+        "subfilters"
+      ],
+      "choices": [],
+      "default": "\"de\"",
+      "description": "set postprocess subfilters (default \"de\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "subfilters",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

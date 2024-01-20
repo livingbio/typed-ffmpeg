@@ -1,5 +1,5 @@
 {
-  "description": "### 11.34 colorchannelmixer\n\nAdjust video input frames by re-mixing color channels.\n\nThis filter modifies a color channel by adding the values associated to the\nother channels of the same pixels. For example if the value to modify is red,\nthe output value will be:\n\n    \n    \n    red=red*rr + blue*rb + green*rg + alpha*ra\n    \n\nThe filter accepts the following options:\n\n**rr**\n\n**rg**\n\n**rb**\n\n**ra**\n\n    Adjust contribution of input red, green, blue and alpha channels for output red channel. Default is 1 for rr, and 0 for rg, rb and ra. \n\n**gr**\n\n**gg**\n\n**gb**\n\n**ga**\n\n    Adjust contribution of input red, green, blue and alpha channels for output green channel. Default is 1 for gg, and 0 for gr, gb and ga. \n\n**br**\n\n**bg**\n\n**bb**\n\n**ba**\n\n    Adjust contribution of input red, green, blue and alpha channels for output blue channel. Default is 1 for bb, and 0 for br, bg and ba. \n\n**ar**\n\n**ag**\n\n**ab**\n\n**aa**\n\n    Adjust contribution of input red, green, blue and alpha channels for output alpha channel. Default is 1 for aa, and 0 for ar, ag and ab. Allowed ranges for options are [-2.0, 2.0]. \n\n**pc**\n\n    Set preserve color mode. The accepted values are: \u2018none\u2019 Disable color preserving, this is default. \u2018lum\u2019 Preserve luminance. \u2018max\u2019 Preserve max value of RGB triplet. \u2018avg\u2019 Preserve average value of RGB triplet. \u2018sum\u2019 Preserve sum value of RGB triplet. \u2018nrm\u2019 Preserve normalized value of RGB triplet. \u2018pwr\u2019 Preserve power value of RGB triplet. \n\n**pa**\n\n    Set the preserve color amount when changing colors. Allowed range is from [0.0, 1.0]. Default is 0.0, thus disabled. \n\n",
+  "description": "Adjust colors by mixing color channels.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,176 +21,176 @@
         "rr"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the red gain for the red channel (from -2 to 2) (default 1)",
       "name": "rr",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "rg"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the green gain for the red channel (from -2 to 2) (default 0)",
       "name": "rg",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "rb"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue gain for the red channel (from -2 to 2) (default 0)",
       "name": "rb",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "ra"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output red channel.\nDefault is <code>1</code> for <var>rr</var>, and <code>0</code> for <var>rg</var>, <var>rb</var> and <var>ra</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the alpha gain for the red channel (from -2 to 2) (default 0)",
       "name": "ra",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "gr"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red gain for the green channel (from -2 to 2) (default 0)",
       "name": "gr",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "gg"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the green gain for the green channel (from -2 to 2) (default 1)",
       "name": "gg",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "gb"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue gain for the green channel (from -2 to 2) (default 0)",
       "name": "gb",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "ga"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output green channel.\nDefault is <code>1</code> for <var>gg</var>, and <code>0</code> for <var>gr</var>, <var>gb</var> and <var>ga</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the alpha gain for the green channel (from -2 to 2) (default 0)",
       "name": "ga",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "br"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red gain for the blue channel (from -2 to 2) (default 0)",
       "name": "br",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bg"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the green gain for the blue channel (from -2 to 2) (default 0)",
       "name": "bg",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bb"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the blue gain for the blue channel (from -2 to 2) (default 1)",
       "name": "bb",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "ba"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output blue channel.\nDefault is <code>1</code> for <var>bb</var>, and <code>0</code> for <var>br</var>, <var>bg</var> and <var>ba</var>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the alpha gain for the blue channel (from -2 to 2) (default 0)",
       "name": "ba",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "ar"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the red gain for the alpha channel (from -2 to 2) (default 0)",
       "name": "ar",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "ag"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the green gain for the alpha channel (from -2 to 2) (default 0)",
       "name": "ag",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "ab"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the blue gain for the alpha channel (from -2 to 2) (default 0)",
       "name": "ab",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "aa"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Adjust contribution of input red, green, blue and alpha channels for output alpha channel.\nDefault is <code>1</code> for <var>aa</var>, and <code>0</code> for <var>ar</var>, <var>ag</var> and <var>ab</var>.\n</p>\n<p>Allowed ranges for options are <code>[-2.0, 2.0]</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the alpha gain for the alpha channel (from -2 to 2) (default 1)",
       "name": "aa",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -200,55 +200,55 @@
         {
           "help": "disabled",
           "name": "none",
-          "value": "P_NONE"
+          "value": "0"
         },
         {
           "help": "luminance",
           "name": "lum",
-          "value": "P_LUM"
+          "value": "1"
         },
         {
           "help": "max",
           "name": "max",
-          "value": "P_MAX"
+          "value": "2"
         },
         {
           "help": "average",
           "name": "avg",
-          "value": "P_AVG"
+          "value": "3"
         },
         {
           "help": "sum",
           "name": "sum",
-          "value": "P_SUM"
+          "value": "4"
         },
         {
           "help": "norm",
           "name": "nrm",
-          "value": "P_NRM"
+          "value": "5"
         },
         {
           "help": "power",
           "name": "pwr",
-          "value": "P_PWR"
+          "value": "6"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set preserve color mode. The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>none</samp>\u2019</dt>\n<dd><p>Disable color preserving, this is default.\n</p></dd>\n<dt>\u2018<samp>lum</samp>\u2019</dt>\n<dd><p>Preserve luminance.\n</p></dd>\n<dt>\u2018<samp>max</samp>\u2019</dt>\n<dd><p>Preserve max value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>avg</samp>\u2019</dt>\n<dd><p>Preserve average value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>sum</samp>\u2019</dt>\n<dd><p>Preserve sum value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>nrm</samp>\u2019</dt>\n<dd><p>Preserve normalized value of RGB triplet.\n</p></dd>\n<dt>\u2018<samp>pwr</samp>\u2019</dt>\n<dd><p>Preserve power value of RGB triplet.\n</p></dd>\n</dl>\n</dd>",
+      "default": "none",
+      "description": "set the preserve color mode (from 0 to 6) (default none)",
       "name": "pc",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "pa"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the preserve color amount when changing colors. Allowed range is from <code>[0.0, 1.0]</code>.\nDefault is <code>0.0</code>, thus disabled.\n</p></dd>",
+      "default": "0",
+      "description": "set the preserve color amount (from 0 to 1) (default 0)",
       "name": "pa",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -263,7 +263,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorchannelmixer"

@@ -1,5 +1,5 @@
 {
-  "description": "### 8.6 acrossover\n\nSplit audio stream into several bands.\n\nThis filter splits audio stream into two or more frequency ranges. Summing all\nstreams back will give flat output.\n\nThe filter accepts the following options:\n\n**split**\n\n    Set split frequencies. Those must be positive and increasing. \n\n**order**\n\n    Set filter order for each band split. This controls filter roll-off or steepness of filter transfer function. Available values are: \u20182nd\u2019 12 dB per octave. \u20184th\u2019 24 dB per octave. \u20186th\u2019 36 dB per octave. \u20188th\u2019 48 dB per octave. \u201810th\u2019 60 dB per octave. \u201812th\u2019 72 dB per octave. \u201814th\u2019 84 dB per octave. \u201816th\u2019 96 dB per octave. \u201818th\u2019 108 dB per octave. \u201820th\u2019 120 dB per octave. Default is 4th. \n\n**level**\n\n    Set input gain level. Allowed range is from 0 to 1. Default value is 1. \n\n**gains**\n\n    Set output gain for each band. Default value is 1 for all bands. \n\n**precision**\n\n    Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto. \n\n",
+  "description": "Split audio into per-bands streams.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": "[StreamType.audio] * len(re.split(r'[ |]+', str(split)))",
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "500",
-      "description": "<dd><p>Set split frequencies. Those must be positive and increasing.\n</p>\n</dd>",
+      "description": "set split frequencies (default \"500\")",
       "name": "split",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -35,70 +35,70 @@
         {
           "help": "2nd order (12 dB/8ve)",
           "name": "2nd",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "4th order (24 dB/8ve)",
           "name": "4th",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "6th order (36 dB/8ve)",
           "name": "6th",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "8th order (48 dB/8ve)",
           "name": "8th",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "10th order (60 dB/8ve)",
           "name": "10th",
-          "value": 4
+          "value": "4"
         },
         {
           "help": "12th order (72 dB/8ve)",
           "name": "12th",
-          "value": 5
+          "value": "5"
         },
         {
           "help": "14th order (84 dB/8ve)",
           "name": "14th",
-          "value": 6
+          "value": "6"
         },
         {
           "help": "16th order (96 dB/8ve)",
           "name": "16th",
-          "value": 7
+          "value": "7"
         },
         {
           "help": "18th order (108 dB/8ve)",
           "name": "18th",
-          "value": 8
+          "value": "8"
         },
         {
           "help": "20th order (120 dB/8ve)",
           "name": "20th",
-          "value": 9
+          "value": "9"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set filter order for each band split. This controls filter roll-off or steepness\nof filter transfer function.\nAvailable values are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>2nd</samp>\u2019</dt>\n<dd><p>12 dB per octave.\n</p></dd>\n<dt>\u2018<samp>4th</samp>\u2019</dt>\n<dd><p>24 dB per octave.\n</p></dd>\n<dt>\u2018<samp>6th</samp>\u2019</dt>\n<dd><p>36 dB per octave.\n</p></dd>\n<dt>\u2018<samp>8th</samp>\u2019</dt>\n<dd><p>48 dB per octave.\n</p></dd>\n<dt>\u2018<samp>10th</samp>\u2019</dt>\n<dd><p>60 dB per octave.\n</p></dd>\n<dt>\u2018<samp>12th</samp>\u2019</dt>\n<dd><p>72 dB per octave.\n</p></dd>\n<dt>\u2018<samp>14th</samp>\u2019</dt>\n<dd><p>84 dB per octave.\n</p></dd>\n<dt>\u2018<samp>16th</samp>\u2019</dt>\n<dd><p>96 dB per octave.\n</p></dd>\n<dt>\u2018<samp>18th</samp>\u2019</dt>\n<dd><p>108 dB per octave.\n</p></dd>\n<dt>\u2018<samp>20th</samp>\u2019</dt>\n<dd><p>120 dB per octave.\n</p></dd>\n</dl>\n<p>Default is <var>4th</var>.\n</p>\n</dd>",
+      "default": "4th",
+      "description": "set filter order (from 0 to 9) (default 4th)",
       "name": "order",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "level"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set input gain (from 0 to 1) (default 1)",
       "name": "level",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -106,10 +106,10 @@
       ],
       "choices": [],
       "default": "1.f",
-      "description": "set output bands gain",
+      "description": "set output bands gain (default \"1.f\")",
       "name": "gain",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -119,26 +119,26 @@
         {
           "help": "set auto processing precision",
           "name": "auto",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "set single-floating point processing precision",
           "name": "float",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "set double-floating point processing precision",
           "name": "double",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n<p>Default value is <code>auto</code>.\n</p></dd>",
+      "default": "auto",
+      "description": "set processing precision (from 0 to 2) (default auto)",
       "name": "precision",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrossover"
 }

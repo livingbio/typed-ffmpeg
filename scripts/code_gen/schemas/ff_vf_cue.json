@@ -1,5 +1,5 @@
 {
-  "description": "### 11.52 cue\n\nDelay video filtering until a given wallclock timestamp. The filter first\npasses on preroll amount of frames, then it buffers at most buffer amount of\nframes and waits for the cue. After reaching the cue it forwards the buffered\nframes and also any subsequent frames coming in its input.\n\nThe filter can be used synchronize the output of multiple ffmpeg processes for\nrealtime output devices like decklink. By putting the delay in the filtering\nchain and pre-buffering frames the process can pass on data to output almost\nimmediately after the target wallclock timestamp is reached.\n\nPerfect frame accuracy cannot be guaranteed, but the result is good enough for\nsome use cases.\n\n**cue**\n\n    The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0. \n\n**preroll**\n\n    The duration of content to pass on as preroll expressed in seconds. Default is 0. \n\n**buffer**\n\n    The maximum duration of content to buffer before waiting for the cue expressed in seconds. Default is 0. \n\n",
+  "description": "Delay filtering to match a cue.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,39 +21,39 @@
         "cue"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The cue timestamp expressed in a UNIX timestamp in microseconds. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)",
       "name": "cue",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
         "preroll"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The duration of content to pass on as preroll expressed in seconds. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "preroll duration in seconds (default 0)",
       "name": "preroll",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
         "buffer"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>The maximum duration of content to buffer before waiting for the cue expressed\nin seconds. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "buffer duration in seconds (default 0)",
       "name": "buffer",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#cue"

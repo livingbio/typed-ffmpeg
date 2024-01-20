@@ -1,5 +1,5 @@
 {
-  "description": "### 11.103 framerate\n\nChange the frame rate by interpolating new video output frames from the source\nframes.\n\nThis filter is not designed to function correctly with interlaced media. If\nyou wish to change the frame rate of interlaced media then you are required to\ndeinterlace before this filter and re-interlace after this filter.\n\nA description of the accepted options follows.\n\n**fps**\n\n    Specify the output frames per second. This option can also be specified as a value alone. The default is 50. \n\n**interp_start**\n\n    Specify the start of a range where the output frame will be created as a linear interpolation of two frames. The range is [0-255], the default is 15. \n\n**interp_end**\n\n    Specify the end of a range where the output frame will be created as a linear interpolation of two frames. The range is [0-255], the default is 240. \n\n**scene**\n\n    Specify the level at which a scene change is detected as a value between 0 and 100 to indicate a new scene; a low value reflects a low probability for the current frame to introduce a new scene, while a higher value means the current frame is more likely to be one. The default is 8.2. \n\n**flags**\n\n    Specify flags influencing the filter process. Available value for flags is: scene_change_detect, scd Enable scene change detection using the value of the option scene. This flag is enabled by default. \n\n",
+  "description": "Upsamples or downsamples progressive source between specified frame rates.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,43 +22,43 @@
       ],
       "choices": [],
       "default": "50",
-      "description": "<dd><p>Specify the output frames per second. This option can also be specified\nas a value alone. The default is <code>50</code>.\n</p>\n</dd>",
+      "description": "required output frames per second rate (default \"50\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
         "interp_start"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Specify the start of a range where the output frame will be created as a\nlinear interpolation of two frames. The range is [<code>0</code>-<code>255</code>],\nthe default is <code>15</code>.\n</p>\n</dd>",
+      "default": "15",
+      "description": "point to start linear interpolation (from 0 to 255) (default 15)",
       "name": "interp_start",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "interp_end"
       ],
       "choices": [],
-      "default": 240,
-      "description": "<dd><p>Specify the end of a range where the output frame will be created as a\nlinear interpolation of two frames. The range is [<code>0</code>-<code>255</code>],\nthe default is <code>240</code>.\n</p>\n</dd>",
+      "default": "240",
+      "description": "point to end linear interpolation (from 0 to 255) (default 240)",
       "name": "interp_end",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "scene"
       ],
       "choices": [],
-      "default": 8.2,
-      "description": "<dd><p>Specify the level at which a scene change is detected as a value between\n0 and 100 to indicate a new scene; a low value reflects a low\nprobability for the current frame to introduce a new scene, while a higher\nvalue means the current frame is more likely to be one.\nThe default is <code>8.2</code>.\n</p>\n</dd>",
+      "default": "8.2",
+      "description": "scene change level (from 0 to 100) (default 8.2)",
       "name": "scene",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -68,25 +68,25 @@
         {
           "help": "enable scene change detection",
           "name": "scene_change_detect",
-          "value": 1
+          "value": "scene_change_detect"
         },
         {
           "help": "enable scene change detection",
           "name": "scd",
-          "value": 1
+          "value": "scd"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Specify flags influencing the filter process.\n</p>\n<p>Available value for <var>flags</var> is:\n</p>\n<dl compact=\"compact\">\n<dt><samp>scene_change_detect, scd</samp></dt>\n<dd><p>Enable scene change detection using the value of the option <var>scene</var>.\nThis flag is enabled by default.\n</p></dd>\n</dl>\n</dd>",
+      "default": "scene_change_detect+scd",
+      "description": "set flags (default scene_change_detect+scd)",
       "name": "flags",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#framerate"

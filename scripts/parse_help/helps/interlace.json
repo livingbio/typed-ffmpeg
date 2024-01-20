@@ -1,0 +1,81 @@
+{
+  "description": "Convert progressive video into interlaced.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "interlace",
+  "options": [
+    {
+      "alias": [
+        "scan"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "top field first",
+          "name": "tff",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "bottom field first",
+          "name": "bff",
+          "value": "1"
+        }
+      ],
+      "default": "tff",
+      "description": "scanning mode (from 0 to 1) (default tff)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "scan",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lowpass"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "disable vertical low-pass filter",
+          "name": "off",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "linear vertical low-pass filter",
+          "name": "linear",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "complex vertical low-pass filter",
+          "name": "complex",
+          "value": "2"
+        }
+      ],
+      "default": "linear",
+      "description": "set vertical low-pass filter (from 0 to 2) (default linear)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "lowpass",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

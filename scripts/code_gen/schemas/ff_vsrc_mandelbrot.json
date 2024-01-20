@@ -1,5 +1,5 @@
 {
-  "description": "### 16.6 mandelbrot\n\nGenerate a Mandelbrot set fractal, and progressively zoom towards the point\nspecified with start_x and start_y.\n\nThis source accepts the following options:\n\n**end_pts**\n\n    Set the terminal pts value. Default value is 400. \n\n**end_scale**\n\n    Set the terminal scale value. Must be a floating point value. Default value is 0.3. \n\n**inner**\n\n    Set the inner coloring mode, that is the algorithm used to draw the Mandelbrot fractal internal region. It shall assume one of the following values: black Set black mode. convergence Show time until convergence. mincol Set color based on point closest to the origin of the iterations. period Set period mode. Default value is mincol. \n\n**bailout**\n\n    Set the bailout value. Default value is 10.0. \n\n**maxiter**\n\n    Set the maximum of iterations performed by the rendering algorithm. Default value is 7189. \n\n**outer**\n\n    Set outer coloring mode. It shall assume one of following values: iteration_count Set iteration count mode. normalized_iteration_count set normalized iteration count mode. Default value is normalized_iteration_count. \n\n**rate, r**\n\n    Set frame rate, expressed as number of frames per second. Default value is \"25\". \n\n**size, s**\n\n    Set frame size. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is \"640x480\". \n\n**start_scale**\n\n    Set the initial scale value. Default value is 3.0. \n\n**start_x**\n\n    Set the initial x position. Must be a floating point value between -100 and 100. Default value is -0.743643887037158704752191506114774. \n\n**start_y**\n\n    Set the initial y position. Must be a floating point value between -100 and 100. Default value is -0.131825904205311970493132056385139. \n\n",
+  "description": "Render a Mandelbrot fractal.",
   "filter_type": "vsrc",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -18,10 +18,10 @@
       ],
       "choices": [],
       "default": "640x480",
-      "description": "<dd><p>Set frame size. For the syntax of this option, check the <a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video\nsize\" section in the ffmpeg-utils manual</a>. Default value is \"640x480\".\n</p>\n</dd>",
+      "description": "set frame size (default \"640x480\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -30,120 +30,120 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
+      "description": "set frame rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
         "maxiter"
       ],
       "choices": [],
-      "default": 7189,
-      "description": "<dd><p>Set the maximum of iterations performed by the rendering\nalgorithm. Default value is 7189.\n</p>\n</dd>",
+      "default": "7189",
+      "description": "set max iterations number (from 1 to INT_MAX) (default 7189)",
       "name": "maxiter",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "start_x"
       ],
       "choices": [],
-      "default": -0.7436438870371587,
-      "description": "<dd><p>Set the initial x position. Must be a floating point value between\n-100 and 100. Default value is -0.743643887037158704752191506114774.\n</p>\n</dd>",
+      "default": "-0.743644",
+      "description": "set the initial x position (from -100 to 100) (default -0.743644)",
       "name": "start_x",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "start_y"
       ],
       "choices": [],
-      "default": -0.13182590420531198,
-      "description": "<dd><p>Set the initial y position. Must be a floating point value between\n-100 and 100. Default value is -0.131825904205311970493132056385139.\n</p></dd>",
+      "default": "-0.131826",
+      "description": "set the initial y position (from -100 to 100) (default -0.131826)",
       "name": "start_y",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "start_scale"
       ],
       "choices": [],
-      "default": 3.0,
-      "description": "<dd><p>Set the initial scale value. Default value is 3.0.\n</p>\n</dd>",
+      "default": "3",
+      "description": "set the initial scale value (from 0 to FLT_MAX) (default 3)",
       "name": "start_scale",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "end_scale"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Set the terminal scale value.\nMust be a floating point value. Default value is 0.3.\n</p>\n</dd>",
+      "default": "0.3",
+      "description": "set the terminal scale value (from 0 to FLT_MAX) (default 0.3)",
       "name": "end_scale",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "end_pts"
       ],
       "choices": [],
-      "default": 400.0,
-      "description": "<dd><p>Set the terminal pts value. Default value is 400.\n</p>\n</dd>",
+      "default": "400",
+      "description": "set the terminal pts value (from 0 to I64_MAX) (default 400)",
       "name": "end_pts",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bailout"
       ],
       "choices": [],
-      "default": 10.0,
-      "description": "<dd><p>Set the bailout value. Default value is 10.0.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set the bailout value (from 0 to FLT_MAX) (default 10)",
       "name": "bailout",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "morphxf"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "set morph x frequency",
+      "default": "0.01",
+      "description": "set morph x frequency (from -FLT_MAX to FLT_MAX) (default 0.01)",
       "name": "morphxf",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "morphyf"
       ],
       "choices": [],
-      "default": 0.0123,
-      "description": "set morph y frequency",
+      "default": "0.0123",
+      "description": "set morph y frequency (from -FLT_MAX to FLT_MAX) (default 0.0123)",
       "name": "morphyf",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "morphamp"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set morph amplitude",
+      "default": "0",
+      "description": "set morph amplitude (from -FLT_MAX to FLT_MAX) (default 0)",
       "name": "morphamp",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -153,29 +153,29 @@
         {
           "help": "set iteration count mode",
           "name": "iteration_count",
-          "value": "ITERATION_COUNT"
+          "value": "0"
         },
         {
           "help": "set normalized iteration count mode",
           "name": "normalized_iteration_count",
-          "value": "NORMALIZED_ITERATION_COUNT"
+          "value": "1"
         },
         {
           "help": "set white mode",
           "name": "white",
-          "value": "WHITE"
+          "value": "2"
         },
         {
           "help": "set outz mode",
           "name": "outz",
-          "value": "OUTZ"
+          "value": "3"
         }
       ],
-      "default": "NORMALIZED_ITERATION_COUNT",
-      "description": "<dd><p>Set outer coloring mode.\nIt shall assume one of following values:\n</p><dl compact=\"compact\">\n<dt><samp>iteration_count</samp></dt>\n<dd><p>Set iteration count mode.\n</p></dd>\n<dt><samp>normalized_iteration_count</samp></dt>\n<dd><p>set normalized iteration count mode.\n</p></dd>\n</dl>\n<p>Default value is <var>normalized_iteration_count</var>.\n</p>\n</dd>",
+      "default": "normalized_iteration_count",
+      "description": "set outer coloring mode (from 0 to INT_MAX) (default normalized_iteration_count)",
       "name": "outer",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -185,35 +185,35 @@
         {
           "help": "set black mode",
           "name": "black",
-          "value": "BLACK"
+          "value": "0"
         },
         {
           "help": "set period mode",
           "name": "period",
-          "value": "PERIOD"
+          "value": "1"
         },
         {
           "help": "show time until convergence",
           "name": "convergence",
-          "value": "CONVTIME"
+          "value": "2"
         },
         {
           "help": "color based on point closest to the origin of the iterations",
           "name": "mincol",
-          "value": "MINCOL"
+          "value": "3"
         }
       ],
-      "default": "MINCOL",
-      "description": "<dd><p>Set the inner coloring mode, that is the algorithm used to draw the\nMandelbrot fractal internal region.\n</p>\n<p>It shall assume one of the following values:\n</p><dl compact=\"compact\">\n<dt><samp>black</samp></dt>\n<dd><p>Set black mode.\n</p></dd>\n<dt><samp>convergence</samp></dt>\n<dd><p>Show time until convergence.\n</p></dd>\n<dt><samp>mincol</samp></dt>\n<dd><p>Set color based on point closest to the origin of the iterations.\n</p></dd>\n<dt><samp>period</samp></dt>\n<dd><p>Set period mode.\n</p></dd>\n</dl>\n<p>Default value is <var>mincol</var>.\n</p>\n</dd>",
+      "default": "mincol",
+      "description": "set inner coloring mode (from 0 to INT_MAX) (default mincol)",
       "name": "inner",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#mandelbrot"

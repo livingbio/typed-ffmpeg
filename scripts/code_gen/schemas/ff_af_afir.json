@@ -1,14 +1,14 @@
 {
-  "description": "### 8.25 afir\n\nApply an arbitrary Finite Impulse Response filter.\n\nThis filter is designed for applying long FIR filters, up to 60 seconds long.\n\nIt can be used as component for digital crossover filters, room equalization,\ncross talk cancellation, wavefield synthesis, auralization, ambiophonics,\nambisonics and spatialization.\n\nThis filter uses the streams higher than first one as FIR coefficients. If the\nnon-first stream holds a single channel, it will be used for all input\nchannels in the first stream, otherwise the number of channels in the non-\nfirst stream must be same as the number of channels in the first stream.\n\nIt accepts the following parameters:\n\n**dry**\n\n    Set dry gain. This sets input gain. \n\n**wet**\n\n    Set wet gain. This sets final output gain. \n\n**length**\n\n    Set Impulse Response filter length. Default is 1, which means whole IR is processed. \n\n**gtype**\n\n    This option is deprecated, and does nothing. \n\n**irnorm**\n\n    Set norm to be applied to IR coefficients before filtering. Allowed range is from -1 to 2. IR coefficients are normalized with calculated vector norm set by this option. For negative values, no norm is calculated, and IR coefficients are not modified at all. Default is 1. \n\n**irlink**\n\n    For multichannel IR if this option is set to true, all IR channels will be normalized with maximal measured gain of all IR channels coefficients as set by irnorm option. When disabled, all IR coefficients in each IR channel will be normalized independently. Default is true. \n\n**irgain**\n\n    Set gain to be applied to IR coefficients before filtering. Allowed range is 0 to 1. This gain is applied after any gain applied with irnorm option. \n\n**irfmt**\n\n    Set format of IR stream. Can be mono or input. Default is input. \n\n**maxir**\n\n    Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds. Allowed range is 0.1 to 60 seconds. \n\n**response**\n\n    This option is deprecated, and does nothing. \n\n**channel**\n\n    This option is deprecated, and does nothing. \n\n**size**\n\n    This option is deprecated, and does nothing. \n\n**rate**\n\n    This option is deprecated, and does nothing. \n\n**minp**\n\n    Set minimal partition size used for convolution. Default is 8192. Allowed range is from 1 to 65536. Lower values decreases latency at cost of higher CPU usage. \n\n**maxp**\n\n    Set maximal partition size used for convolution. Default is 8192. Allowed range is from 8 to 65536. Lower values may increase CPU usage. \n\n**nbirs**\n\n    Set number of input impulse responses streams which will be switchable at runtime. Allowed range is from 1 to 32. Default is 1. \n\n**ir**\n\n    Set IR stream which will be used for convolution, starting from 0, should always be lower than supplied value by nbirs option. Default is 0. This option can be changed at runtime via commands. \n\n**precision**\n\n    Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. Default value is auto. \n\n**irload**\n\n    Set when to load IR stream. Can be init or access. First one load and prepares all IRs on initialization, second one once on first access of specific IR. Default is init. \n\n",
+  "description": "Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).",
   "filter_type": "af",
   "formula_input_typings": "[StreamType.audio] * int(nbirs)",
   "formula_output_typings": null,
   "id": "ff_af_afir",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
-  "is_output_dynamic": false,
+  "is_output_dynamic": true,
   "is_support_framesync": false,
-  "is_support_timeline": true,
+  "is_support_timeline": false,
   "name": "afir",
   "options": [
     {
@@ -16,33 +16,33 @@
         "dry"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set dry gain. This sets input gain.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set dry gain (from 0 to 10) (default 1)",
       "name": "dry",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "wet"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set wet gain. This sets final output gain.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set wet gain (from 0 to 10) (default 1)",
       "name": "wet",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "length"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set Impulse Response filter length. Default is 1, which means whole IR is processed.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set IR length (from 0 to 1) (default 1)",
       "name": "length",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -52,72 +52,50 @@
         {
           "help": "without auto gain",
           "name": "none",
-          "value": -1
+          "value": "-1"
         },
         {
           "help": "peak gain",
           "name": "peak",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "DC gain",
           "name": "dc",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "gain to noise",
           "name": "gn",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "AC gain",
           "name": "ac",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "RMS gain",
           "name": "rms",
-          "value": 4
+          "value": "4"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
+      "default": "peak",
+      "description": "set IR auto gain type (from -1 to 4) (default peak)",
       "name": "gtype",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "irnorm"
-      ],
-      "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set norm to be applied to IR coefficients before filtering.\nAllowed range is from <var>-1</var> to <var>2</var>.\nIR coefficients are normalized with calculated vector norm set by this option.\nFor negative values, no norm is calculated, and IR coefficients are not modified at all.\nDefault is <var>1</var>.\n</p>\n</dd>",
-      "name": "irnorm",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "irlink"
-      ],
-      "choices": [],
-      "default": 1,
-      "description": "<dd><p>For multichannel IR if this option is set to <var>true</var>, all IR channels will be\nnormalized with maximal measured gain of all IR channels coefficients as set by <code>irnorm</code> option.\nWhen disabled, all IR coefficients in each IR channel will be normalized independently.\nDefault is <var>true</var>.\n</p>\n</dd>",
-      "name": "irlink",
-      "required": false,
-      "typing": "bool"
+      "typing": "Int"
     },
     {
       "alias": [
         "irgain"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set gain to be applied to IR coefficients before filtering.\nAllowed range is 0 to 1. This gain is applied after any gain applied with <var>irnorm</var> option.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set IR gain (from 0 to 1) (default 1)",
       "name": "irgain",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -127,52 +105,52 @@
         {
           "help": "single channel",
           "name": "mono",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "same as input",
           "name": "input",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set format of IR stream. Can be <code>mono</code> or <code>input</code>.\nDefault is <code>input</code>.\n</p>\n</dd>",
+      "default": "input",
+      "description": "set IR format (from 0 to 1) (default input)",
       "name": "irfmt",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "maxir"
       ],
       "choices": [],
-      "default": 30.0,
-      "description": "<dd><p>Set max allowed Impulse Response filter duration in seconds. Default is 30 seconds.\nAllowed range is 0.1 to 60 seconds.\n</p>\n</dd>",
+      "default": "30",
+      "description": "set max IR length (from 0.1 to 60) (default 30)",
       "name": "maxir",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "response"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
+      "default": "false",
+      "description": "show IR frequency response (default false)",
       "name": "response",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "channel"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set IR channel to display frequency response (from 0 to 1024) (default 0)",
       "name": "channel",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -180,10 +158,10 @@
       ],
       "choices": [],
       "default": "hd720",
-      "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
+      "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -191,54 +169,54 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>This option is deprecated, and does nothing.\n</p>\n</dd>",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
         "minp"
       ],
       "choices": [],
-      "default": 8192,
-      "description": "<dd><p>Set minimal partition size used for convolution. Default is <var>8192</var>.\nAllowed range is from <var>1</var> to <var>65536</var>.\nLower values decreases latency at cost of higher CPU usage.\n</p>\n</dd>",
+      "default": "8192",
+      "description": "set min partition size (from 1 to 65536) (default 8192)",
       "name": "minp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "maxp"
       ],
       "choices": [],
-      "default": 8192,
-      "description": "<dd><p>Set maximal partition size used for convolution. Default is <var>8192</var>.\nAllowed range is from <var>8</var> to <var>65536</var>.\nLower values may increase CPU usage.\n</p>\n</dd>",
+      "default": "8192",
+      "description": "set max partition size (from 8 to 65536) (default 8192)",
       "name": "maxp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "nbirs"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set number of input impulse responses streams which will be switchable at runtime.\nAllowed range is from <var>1</var> to <var>32</var>. Default is <var>1</var>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set number of input IRs (from 1 to 32) (default 1)",
       "name": "nbirs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "ir"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set IR stream which will be used for convolution, starting from <var>0</var>, should always be\nlower than supplied value by <code>nbirs</code> option. Default is <var>0</var>.\nThis option can be changed at runtime via <a href=\"#commands\">commands</a>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "select IR (from 0 to 31) (default 0)",
       "name": "ir",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -248,62 +226,26 @@
         {
           "help": "set auto processing precision",
           "name": "auto",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "set single-floating point processing precision",
           "name": "float",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "set double-floating point processing precision",
           "name": "double",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n<p>Default value is auto.\n</p>\n</dd>",
+      "default": "auto",
+      "description": "set processing precision (from 0 to 2) (default auto)",
       "name": "precision",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "irload"
-      ],
-      "choices": [
-        {
-          "help": "load all IRs on init",
-          "name": "init",
-          "value": 0
-        },
-        {
-          "help": "load IR on access",
-          "name": "access",
-          "value": 1
-        }
-      ],
-      "default": 0,
-      "description": "<dd><p>Set when to load IR stream. Can be <code>init</code> or <code>access</code>.\nFirst one load and prepares all IRs on initialization, second one\nonce on first access of specific IR.\nDefault is <code>init</code>.\n</p></dd>",
-      "name": "irload",
-      "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
+      "typing": "Int"
     }
   ],
-  "output_stream_typings": [
-    {
-      "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
-    }
-  ],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#afir"
 }

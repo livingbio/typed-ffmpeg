@@ -1,5 +1,5 @@
 {
-  "description": "### 8.57 aspectralstats\n\nDisplay frequency domain statistical information about the audio channels.\nStatistics are calculated and stored as metadata for each audio channel and\nfor each audio frame.\n\nIt accepts the following option:\n\n**win_size**\n\n    Set the window length in samples. Default value is 2048. Allowed range is from 32 to 65536. \n\n**win_func**\n\n    Set window function. It accepts the following values: \u2018rect\u2019 \u2018bartlett\u2019 \u2018hann, hanning\u2019 \u2018hamming\u2019 \u2018blackman\u2019 \u2018welch\u2019 \u2018flattop\u2019 \u2018bharris\u2019 \u2018bnuttall\u2019 \u2018bhann\u2019 \u2018sine\u2019 \u2018nuttall\u2019 \u2018lanczos\u2019 \u2018gauss\u2019 \u2018tukey\u2019 \u2018dolph\u2019 \u2018cauchy\u2019 \u2018parzen\u2019 \u2018poisson\u2019 \u2018bohman\u2019 \u2018kaiser\u2019 Default is hann. \n\n**overlap**\n\n    Set window overlap. Allowed range is from 0 to 1. Default value is 0.5. \n\n**measure**\n\n    Select the parameters which are measured. The metadata keys can be used as flags, default is all which measures everything. none disables all measurement. \n\nA list of each metadata key follows:\n\n**mean**\n\n**variance**\n\n**centroid**\n\n**spread**\n\n**skewness**\n\n**kurtosis**\n\n**entropy**\n\n**flatness**\n\n**crest**\n\n**flux**\n\n**slope**\n\n**decrease**\n\n**rolloff**\n\n",
+  "description": "Show frequency domain statistics about audio frames.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "win_size"
       ],
       "choices": [],
-      "default": 2048,
-      "description": "<dd><p>Set the window length in samples. Default value is 2048.\nAllowed range is from 32 to 65536.\n</p>\n</dd>",
+      "default": "2048",
+      "description": "set the window size (from 32 to 65536) (default 2048)",
       "name": "win_size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -35,130 +35,130 @@
         {
           "help": "Rectangular",
           "name": "rect",
-          "value": "WFUNC_RECT"
+          "value": "0"
         },
         {
           "help": "Bartlett",
           "name": "bartlett",
-          "value": "WFUNC_BARTLETT"
+          "value": "4"
         },
         {
           "help": "Hann",
           "name": "hann",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hanning",
           "name": "hanning",
-          "value": "WFUNC_HANNING"
+          "value": "1"
         },
         {
           "help": "Hamming",
           "name": "hamming",
-          "value": "WFUNC_HAMMING"
+          "value": "2"
         },
         {
           "help": "Blackman",
           "name": "blackman",
-          "value": "WFUNC_BLACKMAN"
+          "value": "3"
         },
         {
           "help": "Welch",
           "name": "welch",
-          "value": "WFUNC_WELCH"
+          "value": "5"
         },
         {
           "help": "Flat-top",
           "name": "flattop",
-          "value": "WFUNC_FLATTOP"
+          "value": "6"
         },
         {
           "help": "Blackman-Harris",
           "name": "bharris",
-          "value": "WFUNC_BHARRIS"
+          "value": "7"
         },
         {
           "help": "Blackman-Nuttall",
           "name": "bnuttall",
-          "value": "WFUNC_BNUTTALL"
+          "value": "8"
         },
         {
           "help": "Bartlett-Hann",
           "name": "bhann",
-          "value": "WFUNC_BHANN"
+          "value": "11"
         },
         {
           "help": "Sine",
           "name": "sine",
-          "value": "WFUNC_SINE"
+          "value": "9"
         },
         {
           "help": "Nuttall",
           "name": "nuttall",
-          "value": "WFUNC_NUTTALL"
+          "value": "10"
         },
         {
           "help": "Lanczos",
           "name": "lanczos",
-          "value": "WFUNC_LANCZOS"
+          "value": "12"
         },
         {
           "help": "Gauss",
           "name": "gauss",
-          "value": "WFUNC_GAUSS"
+          "value": "13"
         },
         {
           "help": "Tukey",
           "name": "tukey",
-          "value": "WFUNC_TUKEY"
+          "value": "14"
         },
         {
           "help": "Dolph-Chebyshev",
           "name": "dolph",
-          "value": "WFUNC_DOLPH"
+          "value": "15"
         },
         {
           "help": "Cauchy",
           "name": "cauchy",
-          "value": "WFUNC_CAUCHY"
+          "value": "16"
         },
         {
           "help": "Parzen",
           "name": "parzen",
-          "value": "WFUNC_PARZEN"
+          "value": "17"
         },
         {
           "help": "Poisson",
           "name": "poisson",
-          "value": "WFUNC_POISSON"
+          "value": "18"
         },
         {
           "help": "Bohman",
           "name": "bohman",
-          "value": "WFUNC_BOHMAN"
+          "value": "19"
         },
         {
           "help": "Kaiser",
           "name": "kaiser",
-          "value": "WFUNC_KAISER"
+          "value": "20"
         }
       ],
-      "default": "WFUNC_HANNING",
-      "description": "<dd><p>Set window function.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>rect</samp>\u2019</dt>\n<dt>\u2018<samp>bartlett</samp>\u2019</dt>\n<dt>\u2018<samp>hann, hanning</samp>\u2019</dt>\n<dt>\u2018<samp>hamming</samp>\u2019</dt>\n<dt>\u2018<samp>blackman</samp>\u2019</dt>\n<dt>\u2018<samp>welch</samp>\u2019</dt>\n<dt>\u2018<samp>flattop</samp>\u2019</dt>\n<dt>\u2018<samp>bharris</samp>\u2019</dt>\n<dt>\u2018<samp>bnuttall</samp>\u2019</dt>\n<dt>\u2018<samp>bhann</samp>\u2019</dt>\n<dt>\u2018<samp>sine</samp>\u2019</dt>\n<dt>\u2018<samp>nuttall</samp>\u2019</dt>\n<dt>\u2018<samp>lanczos</samp>\u2019</dt>\n<dt>\u2018<samp>gauss</samp>\u2019</dt>\n<dt>\u2018<samp>tukey</samp>\u2019</dt>\n<dt>\u2018<samp>dolph</samp>\u2019</dt>\n<dt>\u2018<samp>cauchy</samp>\u2019</dt>\n<dt>\u2018<samp>parzen</samp>\u2019</dt>\n<dt>\u2018<samp>poisson</samp>\u2019</dt>\n<dt>\u2018<samp>bohman</samp>\u2019</dt>\n<dt>\u2018<samp>kaiser</samp>\u2019</dt>\n</dl>\n<p>Default is <code>hann</code>.\n</p>\n</dd>",
+      "default": "hann",
+      "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "overlap"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set window overlap. Allowed range is from <code>0</code>\nto <code>1</code>. Default value is <code>0.5</code>.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set window overlap (from 0 to 1) (default 0.5)",
       "name": "overlap",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -168,90 +168,90 @@
         {
           "help": "",
           "name": "none",
-          "value": 0
+          "value": "none"
         },
         {
           "help": "",
           "name": "all",
-          "value": "(2147483647 *2U +1U)"
+          "value": "all"
         },
         {
           "help": "",
           "name": "mean",
-          "value": "(1 << 0)"
+          "value": "mean"
         },
         {
           "help": "",
           "name": "variance",
-          "value": "(1 << 1)"
+          "value": "variance"
         },
         {
           "help": "",
           "name": "centroid",
-          "value": "(1 << 2)"
+          "value": "centroid"
         },
         {
           "help": "",
           "name": "spread",
-          "value": "(1 << 3)"
+          "value": "spread"
         },
         {
           "help": "",
           "name": "skewness",
-          "value": "(1 << 4)"
+          "value": "skewness"
         },
         {
           "help": "",
           "name": "kurtosis",
-          "value": "(1 << 5)"
+          "value": "kurtosis"
         },
         {
           "help": "",
           "name": "entropy",
-          "value": "(1 << 6)"
+          "value": "entropy"
         },
         {
           "help": "",
           "name": "flatness",
-          "value": "(1 << 7)"
+          "value": "flatness"
         },
         {
           "help": "",
           "name": "crest",
-          "value": "(1 << 8)"
+          "value": "crest"
         },
         {
           "help": "",
           "name": "flux",
-          "value": "(1 << 9)"
+          "value": "flux"
         },
         {
           "help": "",
           "name": "slope",
-          "value": "(1 << 10)"
+          "value": "slope"
         },
         {
           "help": "",
           "name": "decrease",
-          "value": "(1 << 11)"
+          "value": "decrease"
         },
         {
           "help": "",
           "name": "rolloff",
-          "value": "(1 << 12)"
+          "value": "rolloff"
         }
       ],
-      "default": "(2147483647 *2U +1U)",
-      "description": "<dd><p>Select the parameters which are measured. The metadata keys can\nbe used as flags, default is <samp>all</samp> which measures everything.\n<samp>none</samp> disables all measurement.\n</p></dd>",
+      "default": "all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff",
+      "description": "select the parameters which are measured (default all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff)",
       "name": "measure",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#aspectralstats"

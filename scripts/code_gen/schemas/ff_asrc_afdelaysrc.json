@@ -1,5 +1,5 @@
 {
-  "description": "### 9.3 afdelaysrc\n\nGenerate a fractional delay FIR coefficients.\n\nThe resulting stream can be used with afir filter for filtering the audio\nsignal.\n\nThe filter accepts the following options:\n\n**delay, d**\n\n    Set the fractional delay. Default is 0. \n\n**sample_rate, r**\n\n    Set the sample rate, default is 44100. \n\n**nb_samples, n**\n\n    Set the number of samples per each frame. Default is 1024. \n\n**taps, t**\n\n    Set the number of filter coefficients in output audio stream. Default value is 0. \n\n**channel_layout, c**\n\n    Specifies the channel layout, and can be a string representing a channel layout. The default value of channel_layout is \"stereo\". \n\n",
+  "description": "Generate a Fractional delay FIR coefficients.",
   "filter_type": "asrc",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -17,11 +17,11 @@
         "d"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the fractional delay. Default is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set fractional delay (from 0 to 32767) (default 0)",
       "name": "delay",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -29,11 +29,11 @@
         "r"
       ],
       "choices": [],
-      "default": 44100,
-      "description": "<dd><p>Set the sample rate, default is 44100.\n</p>\n</dd>",
+      "default": "44100",
+      "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -41,11 +41,11 @@
         "n"
       ],
       "choices": [],
-      "default": 1024,
-      "description": "<dd><p>Set the number of samples per each frame. Default is 1024.\n</p>\n</dd>",
+      "default": "1024",
+      "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -53,11 +53,11 @@
         "t"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the number of filter coefficients in output audio stream.\nDefault value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set number of taps for delay filter (from 0 to 32768) (default 0)",
       "name": "taps",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -66,16 +66,16 @@
       ],
       "choices": [],
       "default": "stereo",
-      "description": "<dd><p>Specifies the channel layout, and can be a string representing a channel layout.\nThe default value of <var>channel_layout</var> is \"stereo\".\n</p></dd>",
+      "description": "set channel layout (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#afdelaysrc"

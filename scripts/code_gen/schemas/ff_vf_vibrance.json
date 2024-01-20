@@ -1,5 +1,5 @@
 {
-  "description": "### 11.278 vibrance\n\nBoost or alter saturation.\n\nThe filter accepts the following options:\n\n**intensity**\n\n    Set strength of boost if positive value or strength of alter if negative value. Default is 0. Allowed range is from -2 to 2. \n\n**rbal**\n\n    Set the red balance. Default is 1. Allowed range is from -10 to 10. \n\n**gbal**\n\n    Set the green balance. Default is 1. Allowed range is from -10 to 10. \n\n**bbal**\n\n    Set the blue balance. Default is 1. Allowed range is from -10 to 10. \n\n**rlum**\n\n    Set the red luma coefficient. \n\n**glum**\n\n    Set the green luma coefficient. \n\n**blum**\n\n    Set the blue luma coefficient. \n\n**alternate**\n\n    If intensity is negative and this is set to 1, colors will change, otherwise colors will be less saturated, more towards gray. \n\n",
+  "description": "Boost or alter saturation.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,88 +21,88 @@
         "intensity"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set strength of boost if positive value or strength of alter if negative value.\nDefault is 0. Allowed range is from -2 to 2.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the intensity value (from -2 to 2) (default 0)",
       "name": "intensity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "rbal"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the red balance. Default is 1. Allowed range is from -10 to 10.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the red balance value (from -10 to 10) (default 1)",
       "name": "rbal",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "gbal"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the green balance. Default is 1. Allowed range is from -10 to 10.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the green balance value (from -10 to 10) (default 1)",
       "name": "gbal",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "bbal"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set the blue balance. Default is 1. Allowed range is from -10 to 10.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set the blue balance value (from -10 to 10) (default 1)",
       "name": "bbal",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "rlum"
       ],
       "choices": [],
-      "default": 0.072186,
-      "description": "<dd><p>Set the red luma coefficient.\n</p>\n</dd>",
+      "default": "0.072186",
+      "description": "set the red luma coefficient (from 0 to 1) (default 0.072186)",
       "name": "rlum",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "glum"
       ],
       "choices": [],
-      "default": 0.715158,
-      "description": "<dd><p>Set the green luma coefficient.\n</p>\n</dd>",
+      "default": "0.715158",
+      "description": "set the green luma coefficient (from 0 to 1) (default 0.715158)",
       "name": "glum",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "blum"
       ],
       "choices": [],
-      "default": 0.212656,
-      "description": "<dd><p>Set the blue luma coefficient.\n</p>\n</dd>",
+      "default": "0.212656",
+      "description": "set the blue luma coefficient (from 0 to 1) (default 0.212656)",
       "name": "blum",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "alternate"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>If <code>intensity</code> is negative and this is set to 1, colors will change,\notherwise colors will be less saturated, more towards gray.\n</p></dd>",
+      "default": "false",
+      "description": "use alternate colors (default false)",
       "name": "alternate",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -117,7 +117,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#vibrance"

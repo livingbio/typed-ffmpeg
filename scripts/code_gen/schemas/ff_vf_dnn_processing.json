@@ -1,5 +1,5 @@
 {
-  "description": "### 11.74 dnn_processing\n\nDo image processing with deep neural networks. It works together with another\nfilter which converts the pixel format of the Frame to what the dnn network\nrequires.\n\nThe filter accepts the following options:\n\n**dnn_backend**\n\n    Specify which DNN backend to use for model loading and execution. This option accepts the following values: \u2018tensorflow\u2019 TensorFlow backend. To enable this backend you need to install the TensorFlow for C library (see https://www.tensorflow.org/install/lang_c) and configure FFmpeg with --enable-libtensorflow \u2018openvino\u2019 OpenVINO backend. To enable this backend you need to build and install the OpenVINO for C library (see https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md) and configure FFmpeg with --enable-libopenvino (\u2013extra-cflags=-I... \u2013extra-ldflags=-L... might be needed if the header files and libraries are not installed into system path) \n\n**model**\n\n    Set path to model file specifying network architecture and its parameters. Note that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format. \n\n**input**\n\n    Set the input name of the dnn network. \n\n**output**\n\n    Set the output name of the dnn network. \n\n**backend_configs**\n\n    Set the configs to be passed into backend. To use async execution, set async (default: set). Roll back to sync execution if the backend does not support async. For tensorflow backend, you can set its configs with sess_config options, please use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system. \n\n",
+  "description": "Apply DNN processing filter to the input.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -20,74 +20,90 @@
       "alias": [
         "dnn_backend"
       ],
-      "choices": [],
-      "default": "DNN_TF",
-      "description": "<dd><p>Specify which DNN backend to use for model loading and execution. This option accepts\nthe following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>tensorflow</samp>\u2019</dt>\n<dd><p>TensorFlow backend. To enable this backend you\nneed to install the TensorFlow for C library (see\n<a href=\"https://www.tensorflow.org/install/lang_c\">https://www.tensorflow.org/install/lang_c</a>) and configure FFmpeg with\n<code>--enable-libtensorflow</code>\n</p>\n</dd>\n<dt>\u2018<samp>openvino</samp>\u2019</dt>\n<dd><p>OpenVINO backend. To enable this backend you\nneed to build and install the OpenVINO for C library (see\n<a href=\"https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md\">https://github.com/openvinotoolkit/openvino/blob/master/build-instruction.md</a>) and configure FFmpeg with\n<code>--enable-libopenvino</code> (\u2013extra-cflags=-I... \u2013extra-ldflags=-L... might\nbe needed if the header files and libraries are not installed into system path)\n</p>\n</dd>\n</dl>\n</dd>",
+      "choices": [
+        {
+          "help": "native backend flag",
+          "name": "native",
+          "value": "0"
+        }
+      ],
+      "default": "native",
+      "description": "DNN backend (from INT_MIN to INT_MAX) (default native)",
       "name": "dnn_backend",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "model"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set path to model file specifying network architecture and its parameters.\nNote that different backends use different file formats. TensorFlow, OpenVINO backend can load files for only its format.\n</p>\n</dd>",
+      "default": null,
+      "description": "path to model file",
       "name": "model",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "input"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the input name of the dnn network.\n</p>\n</dd>",
+      "default": null,
+      "description": "input name of the model",
       "name": "input",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "output"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the output name of the dnn network.\n</p>\n</dd>",
+      "default": null,
+      "description": "output name of the model",
       "name": "output",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
-        "backend_configs",
+        "backend_configs"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "backend configs",
+      "name": "backend_configs",
+      "required": false,
+      "typing": "String"
+    },
+    {
+      "alias": [
         "options"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Set the configs to be passed into backend. To use async execution, set async (default: set).\nRoll back to sync execution if the backend does not support async.\n</p>\n<p>For tensorflow backend, you can set its configs with <samp>sess_config</samp> options,\nplease use tools/python/tf_sess_config.py to get the configs of TensorFlow backend for your system.\n</p>\n</dd>",
-      "name": "backend_configs",
+      "default": null,
+      "description": "backend configs (deprecated, use backend_configs)",
+      "name": "options",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "async"
       ],
       "choices": [],
-      "default": 1,
-      "description": "use DNN async inference (ignored, use backend_configs='async=1')",
+      "default": "true",
+      "description": "use DNN async inference (ignored, use backend_configs='async=1') (default true)",
       "name": "async",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing"

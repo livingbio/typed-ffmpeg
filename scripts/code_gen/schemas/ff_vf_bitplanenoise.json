@@ -1,5 +1,5 @@
 {
-  "description": "### 11.12 bitplanenoise\n\nShow and measure bit plane noise.\n\nThe filter accepts the following options:\n\n**bitplane**\n\n    Set which plane to analyze. Default is 1. \n\n**filter**\n\n    Filter out noisy pixels from bitplane set above. Default is disabled. \n\n",
+  "description": "Measure bit plane noise.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "bitplane"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set which plane to analyze. Default is <code>1</code>.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set bit plane to use for measuring noise (from 1 to 16) (default 1)",
       "name": "bitplane",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "filter"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Filter out noisy pixels from <code>bitplane</code> set above.\nDefault is disabled.\n</p></dd>",
+      "default": "false",
+      "description": "show noisy pixels (default false)",
       "name": "filter",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.248 swaprect\n\nSwap two rectangular objects in video.\n\nThis filter accepts the following options:\n\n**w**\n\n    Set object width. \n\n**h**\n\n    Set object height. \n\n**x1**\n\n    Set 1st rect x coordinate. \n\n**y1**\n\n    Set 1st rect y coordinate. \n\n**x2**\n\n    Set 2nd rect x coordinate. \n\n**y2**\n\n    Set 2nd rect y coordinate. All expressions are evaluated once for each frame. \n\nThe all options are expressions containing the following constants:\n\n**w**\n\n**h**\n\n    The input width and height. \n\n**a**\n\n    same as w / h \n\n**sar**\n\n    input sample aspect ratio \n\n**dar**\n\n    input display aspect ratio, it is the same as (w / h) * sar \n\n**n**\n\n    The number of the input frame, starting from 0. \n\n**t**\n\n    The timestamp expressed in seconds. It\u2019s NAN if the input timestamp is unknown. \n\n**pos**\n\n    the position in the file of the input frame, NAN if unknown; deprecated, do not use \n\n",
+  "description": "Swap 2 rectangular objects in video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "w/2",
-      "description": "<dd><p>Set object width.\n</p>\n</dd>",
+      "description": "set rect width (default \"w/2\")",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "h/2",
-      "description": "<dd><p>Set object height.\n</p>\n</dd>",
+      "description": "set rect height (default \"h/2\")",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "w/2",
-      "description": "<dd><p>Set 1st rect x coordinate.\n</p>\n</dd>",
+      "description": "set 1st rect x top left coordinate (default \"w/2\")",
       "name": "x1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,10 +55,10 @@
       ],
       "choices": [],
       "default": "h/2",
-      "description": "<dd><p>Set 1st rect y coordinate.\n</p>\n</dd>",
+      "description": "set 1st rect y top left coordinate (default \"h/2\")",
       "name": "y1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -66,10 +66,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Set 2nd rect x coordinate.\n</p>\n</dd>",
+      "description": "set 2nd rect x top left coordinate (default \"0\")",
       "name": "x2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -77,10 +77,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>Set 2nd rect y coordinate.\n</p>\n<p>All expressions are evaluated once for each frame.\n</p></dd>",
+      "description": "set 2nd rect y top left coordinate (default \"0\")",
       "name": "y2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -95,7 +95,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#swaprect"

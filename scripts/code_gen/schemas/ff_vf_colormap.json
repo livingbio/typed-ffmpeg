@@ -1,5 +1,5 @@
 {
-  "description": "### 11.39 colormap\n\nApply custom color maps to video stream.\n\nThis filter needs three input video streams. First stream is video stream that\nis going to be filtered out. Second and third video stream specify color\npatches for source color to target color mapping.\n\nThe filter accepts the following options:\n\n**patch_size**\n\n    Set the source and target video stream patch size in pixels. \n\n**nb_patches**\n\n    Set the max number of used patches from source and target video stream. Default value is number of patches available in additional video streams. Max allowed number of patches is 64. \n\n**type**\n\n    Set the adjustments used for target colors. Can be relative or absolute. Defaults is absolute. \n\n**kernel**\n\n    Set the kernel used to measure color differences between mapped colors. The accepted values are: \u2018euclidean\u2019 \u2018weuclidean\u2019 Default is euclidean. \n\n",
+  "description": "Apply custom Color Maps to video stream.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,15 +7,15 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "target",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -30,21 +30,21 @@
       ],
       "choices": [],
       "default": "64x64",
-      "description": "<dd><p>Set the source and target video stream patch size in pixels.\n</p>\n</dd>",
+      "description": "set patch size (default \"64x64\")",
       "name": "patch_size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "nb_patches"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the max number of used patches from source and target video stream.\nDefault value is number of patches available in additional video streams.\nMax allowed number of patches is <code>64</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set number of patches (from 0 to 64) (default 0)",
       "name": "nb_patches",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -54,19 +54,19 @@
         {
           "help": "the target colors are relative",
           "name": "relative",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "the target colors are absolute",
           "name": "absolute",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Set the adjustments used for target colors. Can be <code>relative</code> or <code>absolute</code>.\nDefaults is <code>absolute</code>.\n</p>\n</dd>",
+      "default": "absolute",
+      "description": "set the target type used (from 0 to 1) (default absolute)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -76,19 +76,19 @@
         {
           "help": "square root of sum of squared differences",
           "name": "euclidean",
-          "value": "EUCLIDEAN"
+          "value": "0"
         },
         {
           "help": "weighted square root of sum of squared differences",
           "name": "weuclidean",
-          "value": "WEUCLIDEAN"
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set the kernel used to measure color differences between mapped colors.\n</p>\n<p>The accepted values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>euclidean</samp>\u2019</dt>\n<dt>\u2018<samp>weuclidean</samp>\u2019</dt>\n</dl>\n<p>Default is <code>euclidean</code>.\n</p></dd>",
+      "default": "euclidean",
+      "description": "set the kernel used for measuring color difference (from 0 to 1) (default euclidean)",
       "name": "kernel",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -103,7 +103,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colormap"

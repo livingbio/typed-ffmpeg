@@ -1,0 +1,114 @@
+{
+  "description": "Extract relative transformations, pass 1 of 2 for stabilization (see vidstabtransform for pass 2).",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "vidstabdetect",
+  "options": [
+    {
+      "alias": [
+        "result"
+      ],
+      "choices": [],
+      "default": "\"transforms.trf\"",
+      "description": "path to the file used to write the transforms (default \"transforms.trf\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "result",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "shakiness"
+      ],
+      "choices": [],
+      "default": "5",
+      "description": "how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)",
+      "flags": "..FV.......",
+      "max": "10",
+      "min": "1",
+      "name": "shakiness",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "accuracy"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "(>=shakiness) 1: low 15: high (slow) (from 1 to 15) (default 15)",
+      "flags": "..FV.......",
+      "max": "15",
+      "min": "1",
+      "name": "accuracy",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "stepsize"
+      ],
+      "choices": [],
+      "default": "6",
+      "description": "region around minimum is scanned with 1 pixel resolution (from 1 to 32) (default 6)",
+      "flags": "..FV.......",
+      "max": "32",
+      "min": "1",
+      "name": "stepsize",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mincontrast"
+      ],
+      "choices": [],
+      "default": "0.25",
+      "description": "below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "mincontrast",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "show"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "show",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "tripod"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "tripod",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

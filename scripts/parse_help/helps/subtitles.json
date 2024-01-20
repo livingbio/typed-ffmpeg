@@ -1,0 +1,116 @@
+{
+  "description": "Render text subtitles onto input video using the libass library.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "subtitles",
+  "options": [
+    {
+      "alias": [
+        "filename",
+        "f"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the filename of file to read",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filename",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "original_size"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the size of the original video (used to scale fonts)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "original_size",
+      "typing": "image_size"
+    },
+    {
+      "alias": [
+        "fontsdir"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the directory containing the fonts to read",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fontsdir",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "enable processing of alpha channel (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "alpha",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "charenc"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set input character encoding",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "charenc",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "stream_index",
+        "si"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set stream index (from -1 to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "-1",
+      "name": "stream_index",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "force_style"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "force subtitle style",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "force_style",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

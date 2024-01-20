@@ -1,5 +1,5 @@
 {
-  "description": "### 11.224 selectivecolor\n\nAdjust cyan, magenta, yellow and black (CMYK) to certain ranges of colors\n(such as \"reds\", \"yellows\", \"greens\", \"cyans\", ...). The adjustment range is\ndefined by the \"purity\" of the color (that is, how saturated it already is).\n\nThis filter is similar to the Adobe Photoshop Selective Color tool.\n\nThe filter accepts the following options:\n\n**correction_method**\n\n    Select color correction method. Available values are: \u2018absolute\u2019 Specified adjustments are applied \"as-is\" (added/subtracted to original pixel component value). \u2018relative\u2019 Specified adjustments are relative to the original component value. Default is absolute. \n\n**reds**\n\n    Adjustments for red pixels (pixels where the red component is the maximum) \n\n**yellows**\n\n    Adjustments for yellow pixels (pixels where the blue component is the minimum) \n\n**greens**\n\n    Adjustments for green pixels (pixels where the green component is the maximum) \n\n**cyans**\n\n    Adjustments for cyan pixels (pixels where the red component is the minimum) \n\n**blues**\n\n    Adjustments for blue pixels (pixels where the blue component is the maximum) \n\n**magentas**\n\n    Adjustments for magenta pixels (pixels where the green component is the minimum) \n\n**whites**\n\n    Adjustments for white pixels (pixels where all components are greater than 128) \n\n**neutrals**\n\n    Adjustments for all pixels except pure black and pure white \n\n**blacks**\n\n    Adjustments for black pixels (pixels where all components are lesser than 128) \n\n**psfile**\n\n    Specify a Photoshop selective color file (.asv) to import the settings from. \n\nAll the adjustment settings (reds, yellows, ...) accept up to 4 space\nseparated floating point adjustment values in the [-1,1] range, respectively\nto adjust the amount of cyan, magenta, yellow and black for the pixels of its\nrange.\n\n",
+  "description": "Apply CMYK adjustments to specific color ranges.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,131 +22,131 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "absolute",
-          "value": "CORRECTION_METHOD_ABSOLUTE"
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "relative",
-          "value": "CORRECTION_METHOD_RELATIVE"
+          "value": "1"
         }
       ],
-      "default": "CORRECTION_METHOD_ABSOLUTE",
-      "description": "<dd><p>Select color correction method.\n</p>\n<p>Available values are:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>absolute</samp>\u2019</dt>\n<dd><p>Specified adjustments are applied \"as-is\" (added/subtracted to original pixel\ncomponent value).\n</p></dd>\n<dt>\u2018<samp>relative</samp>\u2019</dt>\n<dd><p>Specified adjustments are relative to the original component value.\n</p></dd>\n</dl>\n<p>Default is <code>absolute</code>.\n</p></dd>",
+      "default": "absolute",
+      "description": "select correction method (from 0 to 1) (default absolute)",
       "name": "correction_method",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "reds"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for red pixels (pixels where the red component is the maximum)\n</p></dd>",
+      "default": null,
+      "description": "adjust red regions",
       "name": "reds",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "yellows"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for yellow pixels (pixels where the blue component is the minimum)\n</p></dd>",
+      "default": null,
+      "description": "adjust yellow regions",
       "name": "yellows",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "greens"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for green pixels (pixels where the green component is the maximum)\n</p></dd>",
+      "default": null,
+      "description": "adjust green regions",
       "name": "greens",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "cyans"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for cyan pixels (pixels where the red component is the minimum)\n</p></dd>",
+      "default": null,
+      "description": "adjust cyan regions",
       "name": "cyans",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "blues"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for blue pixels (pixels where the blue component is the maximum)\n</p></dd>",
+      "default": null,
+      "description": "adjust blue regions",
       "name": "blues",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "magentas"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for magenta pixels (pixels where the green component is the minimum)\n</p></dd>",
+      "default": null,
+      "description": "adjust magenta regions",
       "name": "magentas",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "whites"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for white pixels (pixels where all components are greater than 128)\n</p></dd>",
+      "default": null,
+      "description": "adjust white regions",
       "name": "whites",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "neutrals"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for all pixels except pure black and pure white\n</p></dd>",
+      "default": null,
+      "description": "adjust neutral regions",
       "name": "neutrals",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "blacks"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Adjustments for black pixels (pixels where all components are lesser than 128)\n</p></dd>",
+      "default": null,
+      "description": "adjust black regions",
       "name": "blacks",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "psfile"
       ],
       "choices": [],
-      "default": "((void*)0)",
-      "description": "<dd><p>Specify a Photoshop selective color file (<code>.asv</code>) to import the settings from.\n</p></dd>",
+      "default": null,
+      "description": "set Photoshop selectivecolor file name",
       "name": "psfile",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -161,7 +161,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#selectivecolor"

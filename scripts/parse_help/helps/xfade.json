@@ -1,0 +1,362 @@
+{
+  "description": "Cross fade one video with another video.",
+  "input_types": [
+    {
+      "name": "main",
+      "type": "video"
+    },
+    {
+      "name": "xfade",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "xfade",
+  "options": [
+    {
+      "alias": [
+        "transition"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "custom transition",
+          "name": "custom",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fade transition",
+          "name": "fade",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe left transition",
+          "name": "wipeleft",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe right transition",
+          "name": "wiperight",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe up transition",
+          "name": "wipeup",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe down transition",
+          "name": "wipedown",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "slide left transition",
+          "name": "slideleft",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "slide right transition",
+          "name": "slideright",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "slide up transition",
+          "name": "slideup",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "slide down transition",
+          "name": "slidedown",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "circle crop transition",
+          "name": "circlecrop",
+          "value": "9"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "rect crop transition",
+          "name": "rectcrop",
+          "value": "10"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "distance transition",
+          "name": "distance",
+          "value": "11"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fadeblack transition",
+          "name": "fadeblack",
+          "value": "12"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fadewhite transition",
+          "name": "fadewhite",
+          "value": "13"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "radial transition",
+          "name": "radial",
+          "value": "14"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "smoothleft transition",
+          "name": "smoothleft",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "smoothright transition",
+          "name": "smoothright",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "smoothup transition",
+          "name": "smoothup",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "smoothdown transition",
+          "name": "smoothdown",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "circleopen transition",
+          "name": "circleopen",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "circleclose transition",
+          "name": "circleclose",
+          "value": "20"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "vert open transition",
+          "name": "vertopen",
+          "value": "21"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "vert close transition",
+          "name": "vertclose",
+          "value": "22"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "horz open transition",
+          "name": "horzopen",
+          "value": "23"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "horz close transition",
+          "name": "horzclose",
+          "value": "24"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "dissolve transition",
+          "name": "dissolve",
+          "value": "25"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "pixelize transition",
+          "name": "pixelize",
+          "value": "26"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "diag tl transition",
+          "name": "diagtl",
+          "value": "27"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "diag tr transition",
+          "name": "diagtr",
+          "value": "28"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "diag bl transition",
+          "name": "diagbl",
+          "value": "29"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "diag br transition",
+          "name": "diagbr",
+          "value": "30"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hl slice transition",
+          "name": "hlslice",
+          "value": "31"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hr slice transition",
+          "name": "hrslice",
+          "value": "32"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "vu slice transition",
+          "name": "vuslice",
+          "value": "33"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "vd slice transition",
+          "name": "vdslice",
+          "value": "34"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hblur transition",
+          "name": "hblur",
+          "value": "35"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fadegrays transition",
+          "name": "fadegrays",
+          "value": "36"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe tl transition",
+          "name": "wipetl",
+          "value": "37"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe tr transition",
+          "name": "wipetr",
+          "value": "38"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe bl transition",
+          "name": "wipebl",
+          "value": "39"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "wipe br transition",
+          "name": "wipebr",
+          "value": "40"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "squeeze h transition",
+          "name": "squeezeh",
+          "value": "41"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "squeeze v transition",
+          "name": "squeezev",
+          "value": "42"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "zoom in transition",
+          "name": "zoomin",
+          "value": "43"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "fast fade transition",
+          "name": "fadefast",
+          "value": "44"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "slow fade transition",
+          "name": "fadeslow",
+          "value": "45"
+        }
+      ],
+      "default": "fade",
+      "description": "set cross fade transition (from -1 to 45) (default fade)",
+      "flags": "..FV.......",
+      "max": "45",
+      "min": "-1",
+      "name": "transition",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "duration"
+      ],
+      "choices": [],
+      "default": "1",
+      "description": "set cross fade duration (default 1)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "offset"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set cross fade start relative to first input stream (default 0)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "offset",
+      "typing": "duration"
+    },
+    {
+      "alias": [
+        "expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set expression for custom transition",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "expr",
+      "typing": "string"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.141 lagfun\n\nSlowly update darker pixels.\n\nThis filter makes short flashes of light appear longer. This filter accepts\nthe following options:\n\n**decay**\n\n    Set factor for decaying. Default is .95. Allowed range is from 0 to 1. \n\n**planes**\n\n    Set which planes to filter. Default is all. Allowed range is from 0 to 15. \n\n",
+  "description": "Slowly update darker pixels.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "decay"
       ],
       "choices": [],
-      "default": 0.95,
-      "description": "<dd><p>Set factor for decaying. Default is .95. Allowed range is from 0 to 1.\n</p>\n</dd>",
+      "default": "0.95",
+      "description": "set decay (from 0 to 1) (default 0.95)",
       "name": "decay",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set which planes to filter. Default is all. Allowed range is from 0 to 15.\n</p></dd>",
+      "default": "F",
+      "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#lagfun"

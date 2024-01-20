@@ -1,0 +1,127 @@
+{
+  "description": "Deblock video.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "deblock",
+  "options": [
+    {
+      "alias": [
+        "filter"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "weak",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "strong",
+          "value": "1"
+        }
+      ],
+      "default": "strong",
+      "description": "set type of filter (from 0 to 1) (default strong)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "filter",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "block"
+      ],
+      "choices": [],
+      "default": "8",
+      "description": "set size of block (from 4 to 512) (default 8)",
+      "flags": "..FV.....T.",
+      "max": "512",
+      "min": "4",
+      "name": "block",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "alpha"
+      ],
+      "choices": [],
+      "default": "0.098",
+      "description": "set 1st detection threshold (from 0 to 1) (default 0.098)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "alpha",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "beta"
+      ],
+      "choices": [],
+      "default": "0.05",
+      "description": "set 2nd detection threshold (from 0 to 1) (default 0.05)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "beta",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "gamma"
+      ],
+      "choices": [],
+      "default": "0.05",
+      "description": "set 3rd detection threshold (from 0 to 1) (default 0.05)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "gamma",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "delta"
+      ],
+      "choices": [],
+      "default": "0.05",
+      "description": "set 4th detection threshold (from 0 to 1) (default 0.05)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "delta",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

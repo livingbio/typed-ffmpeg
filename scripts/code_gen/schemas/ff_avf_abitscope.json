@@ -1,5 +1,5 @@
 {
-  "description": "### 18.2 abitscope\n\nConvert input audio to a video output, displaying the audio bit scope.\n\nThe filter accepts the following options:\n\n**rate, r**\n\n    Set frame rate, expressed as number of frames per second. Default value is \"25\". \n\n**size, s**\n\n    Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is 1024x256. \n\n**colors**\n\n    Specify list of colors separated by space or by \u2019|\u2019 which will be used to draw channels. Unrecognized or missing colors will be replaced by white color. \n\n**mode, m**\n\n    Set output mode. Can be bars or trace. Default is bars. \n\n",
+  "description": "Convert input audio to audio bit scope video output.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -23,10 +23,10 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -35,10 +35,10 @@
       ],
       "choices": [],
       "default": "1024x256",
-      "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>1024x256</code>.\n</p>\n</dd>",
+      "description": "set video size (default \"1024x256\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -46,10 +46,10 @@
       ],
       "choices": [],
       "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
-      "description": "<dd><p>Specify list of colors separated by space or by \u2019|\u2019 which will be used to\ndraw channels. Unrecognized or missing colors will be replaced\nby white color.\n</p>\n</dd>",
+      "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,27 +58,27 @@
       ],
       "choices": [
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "bars",
-          "value": 0
+          "value": "0"
         },
         {
-          "help": "((void*)0)",
+          "help": "",
           "name": "trace",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set output mode. Can be <code>bars</code> or <code>trace</code>. Default is <code>bars</code>.\n</p></dd>",
+      "default": "bars",
+      "description": "set output mode (from 0 to 1) (default bars)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#abitscope"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.170 mpdecimate\n\nDrop frames that do not differ greatly from the previous frame in order to\nreduce frame rate.\n\nThe main use of this filter is for very-low-bitrate encoding (e.g. streaming\nover dialup modem), but it could in theory be used for fixing movies that were\ninverse-telecined incorrectly.\n\nA description of the accepted options follows.\n\n**max**\n\n    Set the maximum number of consecutive frames which can be dropped (if positive), or the minimum interval between dropped frames (if negative). If the value is 0, the frame is dropped disregarding the number of previous sequentially dropped frames. Default value is 0. \n\n**keep**\n\n    Set the maximum number of consecutive similar frames to ignore before to start dropping them. If the value is 0, the frame is dropped disregarding the number of previous sequentially similar frames. Default value is 0. \n\n**hi**\n\n**lo**\n\n**frac**\n\n    Set the dropping threshold values. Values for hi and lo are for 8x8 pixel blocks and represent actual pixel value differences, so a threshold of 64 corresponds to 1 unit of difference for each pixel, or the same spread out differently over the block. A frame is a candidate for dropping if no 8x8 blocks differ by more than a threshold of hi, and if no more than frac blocks (1 meaning the whole image) differ by more than a threshold of lo. Default value for hi is 64*12, default value for lo is 64*5, and default value for frac is 0.33. \n\n",
+  "description": "Remove near-duplicate frames.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,61 +21,50 @@
         "max"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the maximum number of consecutive frames which can be dropped (if\npositive), or the minimum interval between dropped frames (if\nnegative). If the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially dropped frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)",
       "name": "max",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "keep"
-      ],
-      "choices": [],
-      "default": 0,
-      "description": "<dd><p>Set the maximum number of consecutive similar frames to ignore before to start dropping them.\nIf the value is 0, the frame is dropped disregarding the\nnumber of previous sequentially similar frames.\n</p>\n<p>Default value is 0.\n</p>\n</dd>",
-      "name": "keep",
-      "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "hi"
       ],
       "choices": [],
-      "default": "64*12",
-      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "default": "768",
+      "description": "set high dropping threshold (from INT_MIN to INT_MAX) (default 768)",
       "name": "hi",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "lo"
       ],
       "choices": [],
-      "default": "64*5",
-      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "default": "320",
+      "description": "set low dropping threshold (from INT_MIN to INT_MAX) (default 320)",
       "name": "lo",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "frac"
       ],
       "choices": [],
-      "default": 0.33,
-      "description": "<dd><p>Set the dropping threshold values.\n</p>\n<p>Values for <samp>hi</samp> and <samp>lo</samp> are for 8x8 pixel blocks and\nrepresent actual pixel value differences, so a threshold of 64\ncorresponds to 1 unit of difference for each pixel, or the same spread\nout differently over the block.\n</p>\n<p>A frame is a candidate for dropping if no 8x8 blocks differ by more\nthan a threshold of <samp>hi</samp>, and if no more than <samp>frac</samp> blocks (1\nmeaning the whole image) differ by more than a threshold of <samp>lo</samp>.\n</p>\n<p>Default value for <samp>hi</samp> is 64*12, default value for <samp>lo</samp> is\n64*5, and default value for <samp>frac</samp> is 0.33.\n</p></dd>",
+      "default": "0.33",
+      "description": "set fraction dropping threshold (from 0 to 1) (default 0.33)",
       "name": "frac",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#mpdecimate"

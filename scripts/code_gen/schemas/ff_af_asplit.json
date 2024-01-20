@@ -1,5 +1,5 @@
 {
-  "description": "### 18.33 split, asplit\n\nSplit input into several identical outputs.\n\n`asplit` works with audio input, `split` with video.\n\nThe filter accepts a single parameter which specifies the number of outputs.\nIf unspecified, it defaults to 2.\n\n",
+  "description": "Pass on the audio input to N audio outputs.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": "[StreamType.audio] * int(outputs)",
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,13 +21,13 @@
         "outputs"
       ],
       "choices": [],
-      "default": 2,
-      "description": "set number of outputs",
+      "default": "2",
+      "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
       "name": "outputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit"
 }

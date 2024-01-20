@@ -1,0 +1,51 @@
+{
+  "description": "Set the frame display aspect ratio.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "setdar",
+  "options": [
+    {
+      "alias": [
+        "dar",
+        "ratio",
+        "r"
+      ],
+      "choices": [],
+      "default": "\"0\"",
+      "description": "set display aspect ratio (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "dar",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "max"
+      ],
+      "choices": [],
+      "default": "100",
+      "description": "set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "max",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

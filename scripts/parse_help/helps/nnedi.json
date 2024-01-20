@@ -1,0 +1,333 @@
+{
+  "description": "Apply neural network edge directed interpolation intra-only deinterlacer.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": true,
+  "name": "nnedi",
+  "options": [
+    {
+      "alias": [
+        "weights"
+      ],
+      "choices": [],
+      "default": "\"nnedi3_weights.bin\"",
+      "description": "set weights file (default \"nnedi3_weights.bin\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "weights",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "deint"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "deinterlace all frames",
+          "name": "all",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "only deinterlace frames marked as interlaced",
+          "name": "interlaced",
+          "value": "1"
+        }
+      ],
+      "default": "all",
+      "description": "set which frames to deinterlace (from 0 to 1) (default all)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "deint",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "field"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "use frame flags, both fields",
+          "name": "af",
+          "value": "-2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "use frame flags, single field",
+          "name": "a",
+          "value": "-1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "use top field only",
+          "name": "t",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "use bottom field only",
+          "name": "b",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "use both fields, top first",
+          "name": "tf",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "use both fields, bottom first",
+          "name": "bf",
+          "value": "3"
+        }
+      ],
+      "default": "a",
+      "description": "set mode of operation (from -2 to 3) (default a)",
+      "flags": "..FV.....T.",
+      "max": "3",
+      "min": "-2",
+      "name": "field",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "planes"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set which planes to process (from 0 to 15) (default 7)",
+      "flags": "..FV.....T.",
+      "max": "15",
+      "min": "0",
+      "name": "planes",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nsize"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "s8x6",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "s16x6",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "s32x6",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "s48x6",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "s8x4",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "s16x4",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "s32x4",
+          "value": "6"
+        }
+      ],
+      "default": "s32x4",
+      "description": "set size of local neighborhood around each pixel, used by the predictor neural network (from 0 to 6) (default s32x4)",
+      "flags": "..FV.....T.",
+      "max": "6",
+      "min": "0",
+      "name": "nsize",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nns"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "n16",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "n32",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "n64",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "n128",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "n256",
+          "value": "4"
+        }
+      ],
+      "default": "n32",
+      "description": "set number of neurons in predictor neural network (from 0 to 4) (default n32)",
+      "flags": "..FV.....T.",
+      "max": "4",
+      "min": "0",
+      "name": "nns",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "qual"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "fast",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "slow",
+          "value": "2"
+        }
+      ],
+      "default": "fast",
+      "description": "set quality (from 1 to 2) (default fast)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "1",
+      "name": "qual",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "etype"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "weights trained to minimize absolute error",
+          "name": "a",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "weights trained to minimize absolute error",
+          "name": "abs",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "weights trained to minimize squared error",
+          "name": "s",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "weights trained to minimize squared error",
+          "name": "mse",
+          "value": "1"
+        }
+      ],
+      "default": "a",
+      "description": "set which set of weights to use in the predictor (from 0 to 1) (default a)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "etype",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "pscrn"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "original",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "new",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "new2",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "new3",
+          "value": "4"
+        }
+      ],
+      "default": "new",
+      "description": "set prescreening (from 0 to 4) (default new)",
+      "flags": "..FV.....T.",
+      "max": "4",
+      "min": "0",
+      "name": "pscrn",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

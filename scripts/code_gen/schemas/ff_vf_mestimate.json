@@ -1,5 +1,5 @@
 {
-  "description": "### 11.164 mestimate\n\nEstimate and export motion vectors using block matching algorithms. Motion\nvectors are stored in frame side data to be used by other filters.\n\nThis filter accepts the following options:\n\n**method**\n\n    Specify the motion estimation method. Accepts one of the following values: \u2018esa\u2019 Exhaustive search algorithm. \u2018tss\u2019 Three step search algorithm. \u2018tdls\u2019 Two dimensional logarithmic search algorithm. \u2018ntss\u2019 New three step search algorithm. \u2018fss\u2019 Four step search algorithm. \u2018ds\u2019 Diamond search algorithm. \u2018hexbs\u2019 Hexagon-based search algorithm. \u2018epzs\u2019 Enhanced predictive zonal search algorithm. \u2018umh\u2019 Uneven multi-hexagon search algorithm. Default value is \u2018esa\u2019. \n\n**mb_size**\n\n    Macroblock size. Default 16. \n\n**search_param**\n\n    Search parameter. Default 7. \n\n",
+  "description": "Generate motion vectors.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -24,82 +24,82 @@
         {
           "help": "exhaustive search",
           "name": "esa",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "three step search",
           "name": "tss",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "two dimensional logarithmic search",
           "name": "tdls",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "new three step search",
           "name": "ntss",
-          "value": 4
+          "value": "4"
         },
         {
           "help": "four step search",
           "name": "fss",
-          "value": 5
+          "value": "5"
         },
         {
           "help": "diamond search",
           "name": "ds",
-          "value": 6
+          "value": "6"
         },
         {
           "help": "hexagon-based search",
           "name": "hexbs",
-          "value": 7
+          "value": "7"
         },
         {
           "help": "enhanced predictive zonal search",
           "name": "epzs",
-          "value": 8
+          "value": "8"
         },
         {
           "help": "uneven multi-hexagon search",
           "name": "umh",
-          "value": 9
+          "value": "9"
         }
       ],
-      "default": 1,
-      "description": "<dd><p>Specify the motion estimation method. Accepts one of the following values:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>esa</samp>\u2019</dt>\n<dd><p>Exhaustive search algorithm.\n</p></dd>\n<dt>\u2018<samp>tss</samp>\u2019</dt>\n<dd><p>Three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>tdls</samp>\u2019</dt>\n<dd><p>Two dimensional logarithmic search algorithm.\n</p></dd>\n<dt>\u2018<samp>ntss</samp>\u2019</dt>\n<dd><p>New three step search algorithm.\n</p></dd>\n<dt>\u2018<samp>fss</samp>\u2019</dt>\n<dd><p>Four step search algorithm.\n</p></dd>\n<dt>\u2018<samp>ds</samp>\u2019</dt>\n<dd><p>Diamond search algorithm.\n</p></dd>\n<dt>\u2018<samp>hexbs</samp>\u2019</dt>\n<dd><p>Hexagon-based search algorithm.\n</p></dd>\n<dt>\u2018<samp>epzs</samp>\u2019</dt>\n<dd><p>Enhanced predictive zonal search algorithm.\n</p></dd>\n<dt>\u2018<samp>umh</samp>\u2019</dt>\n<dd><p>Uneven multi-hexagon search algorithm.\n</p></dd>\n</dl>\n<p>Default value is \u2018<samp>esa</samp>\u2019.\n</p>\n</dd>",
+      "default": "esa",
+      "description": "motion estimation method (from 1 to 9) (default esa)",
       "name": "method",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "mb_size"
       ],
       "choices": [],
-      "default": 16,
-      "description": "<dd><p>Macroblock size. Default <code>16</code>.\n</p>\n</dd>",
+      "default": "16",
+      "description": "macroblock size (from 8 to INT_MAX) (default 16)",
       "name": "mb_size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "search_param"
       ],
       "choices": [],
-      "default": 7,
-      "description": "<dd><p>Search parameter. Default <code>7</code>.\n</p></dd>",
+      "default": "7",
+      "description": "search parameter (from 4 to INT_MAX) (default 7)",
       "name": "search_param",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#mestimate"

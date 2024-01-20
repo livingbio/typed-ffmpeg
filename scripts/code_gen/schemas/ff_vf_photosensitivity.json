@@ -1,5 +1,5 @@
 {
-  "description": "### 11.191 photosensitivity\n\nReduce various flashes in video, so to help users with epilepsy.\n\nIt accepts the following options:\n\n**frames, f**\n\n    Set how many frames to use when filtering. Default is 30. \n\n**threshold, t**\n\n    Set detection threshold factor. Default is 1. Lower is stricter. \n\n**skip**\n\n    Set how many pixels to skip when sampling frames. Default is 1. Allowed range is from 1 to 1024. \n\n**bypass**\n\n    Leave frames unchanged. Default is disabled. \n\n",
+  "description": "Filter out photosensitive epilepsy seizure-inducing flashes.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "f"
       ],
       "choices": [],
-      "default": 30,
-      "description": "<dd><p>Set how many frames to use when filtering. Default is 30.\n</p>\n</dd>",
+      "default": "30",
+      "description": "set how many frames to use (from 2 to 240) (default 30)",
       "name": "frames",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -34,39 +34,39 @@
         "t"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set detection threshold factor. Default is 1.\nLower is stricter.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "skip"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Set how many pixels to skip when sampling frames. Default is 1.\nAllowed range is from 1 to 1024.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set pixels to skip when sampling frames (from 1 to 1024) (default 1)",
       "name": "skip",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "bypass"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Leave frames unchanged. Default is disabled.\n</p></dd>",
+      "default": "false",
+      "description": "leave frames unchanged (default false)",
       "name": "bypass",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#photosensitivity"

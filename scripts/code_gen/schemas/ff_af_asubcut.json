@@ -1,5 +1,5 @@
 {
-  "description": "### 8.61 asubcut\n\nCut subwoofer frequencies.\n\nThis filter allows to set custom, steeper roll off than highpass filter, and\nthus is able to more attenuate frequency content in stop-band.\n\nThe filter accepts the following options:\n\n**cutoff**\n\n    Set cutoff frequency in Hertz. Allowed range is 2 to 200. Default value is 20. \n\n**order**\n\n    Set filter order. Available values are from 3 to 20. Default value is 10. \n\n**level**\n\n    Set input gain level. Allowed range is from 0 to 1. Default value is 1. \n\n",
+  "description": "Cut subwoofer frequencies.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,33 +21,33 @@
         "cutoff"
       ],
       "choices": [],
-      "default": 20.0,
-      "description": "<dd><p>Set cutoff frequency in Hertz. Allowed range is 2 to 200.\nDefault value is 20.\n</p>\n</dd>",
+      "default": "20",
+      "description": "set cutoff frequency (from 2 to 200) (default 20)",
       "name": "cutoff",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "order"
       ],
       "choices": [],
-      "default": 10,
-      "description": "<dd><p>Set filter order. Available values are from 3 to 20.\nDefault value is 10.\n</p>\n</dd>",
+      "default": "10",
+      "description": "set filter order (from 3 to 20) (default 10)",
       "name": "order",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "level"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set input gain level. Allowed range is from 0 to 1. Default value is 1.\n</p></dd>",
+      "default": "1",
+      "description": "set input level (from 0 to 1) (default 1)",
       "name": "level",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -62,7 +62,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#asubcut"

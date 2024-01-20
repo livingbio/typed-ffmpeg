@@ -1,5 +1,5 @@
 {
-  "description": "### 11.65 delogo\n\nSuppress a TV station logo by a simple interpolation of the surrounding\npixels. Just set a rectangle covering the logo and watch it disappear (and\nsometimes something even uglier appear - your mileage may vary).\n\nIt accepts the following parameters:\n\n**x**\n\n**y**\n\n    Specify the top left corner coordinates of the logo. They must be specified. \n\n**w**\n\n**h**\n\n    Specify the width and height of the logo to clear. They must be specified. \n\n**show**\n\n    When set to 1, a green rectangle is drawn on the screen to simplify finding the right x, y, w, and h parameters. The default value is 0. The rectangle is drawn on the outermost pixels which will be (partly) replaced with interpolated values. The values of the next pixels immediately outside this rectangle in each direction will be used to compute the interpolated pixel values inside the rectangle. \n\n",
+  "description": "Remove logo from input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "-1",
-      "description": "<dd><p>Specify the top left corner coordinates of the logo. They must be\nspecified.\n</p>\n</dd>",
+      "description": "set logo x position (default \"-1\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "-1",
-      "description": "<dd><p>Specify the top left corner coordinates of the logo. They must be\nspecified.\n</p>\n</dd>",
+      "description": "set logo y position (default \"-1\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "-1",
-      "description": "<dd><p>Specify the width and height of the logo to clear. They must be\nspecified.\n</p>\n</dd>",
+      "description": "set logo width (default \"-1\")",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,21 +55,21 @@
       ],
       "choices": [],
       "default": "-1",
-      "description": "<dd><p>Specify the width and height of the logo to clear. They must be\nspecified.\n</p>\n</dd>",
+      "description": "set logo height (default \"-1\")",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "show"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>When set to 1, a green rectangle is drawn on the screen to simplify\nfinding the right <var>x</var>, <var>y</var>, <var>w</var>, and <var>h</var> parameters.\nThe default value is 0.\n</p>\n<p>The rectangle is drawn on the outermost pixels which will be (partly)\nreplaced with interpolated values. The values of the next pixels\nimmediately outside this rectangle in each direction will be used to\ncompute the interpolated pixel values inside the rectangle.\n</p>\n</dd>",
+      "default": "false",
+      "description": "show delogo area (default false)",
       "name": "show",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -84,7 +84,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#delogo"

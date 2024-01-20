@@ -1,5 +1,5 @@
 {
-  "description": "### 11.271 vaguedenoiser\n\nApply a wavelet based denoiser.\n\nIt transforms each frame from the video input into the wavelet domain, using\nCohen-Daubechies-Feauveau 9/7. Then it applies some filtering to the obtained\ncoefficients. It does an inverse wavelet transform after. Due to wavelet\nproperties, it should give a nice smoothed result, and reduced noise, without\nblurring picture features.\n\nThis filter accepts the following options:\n\n**threshold**\n\n    The filtering strength. The higher, the more filtered the video will be. Hard thresholding can use a higher threshold than soft thresholding before the video looks overfiltered. Default value is 2. \n\n**method**\n\n    The filtering method the filter will use. It accepts the following values: \u2018hard\u2019 All values under the threshold will be zeroed. \u2018soft\u2019 All values under the threshold will be zeroed. All values above will be reduced by the threshold. \u2018garrote\u2019 Scales or nullifies coefficients - intermediary between (more) soft and (less) hard thresholding. Default is garrote. \n\n**nsteps**\n\n    Number of times, the wavelet will decompose the picture. Picture can\u2019t be decomposed beyond a particular point (typically, 8 for a 640x480 frame - as 2^9 = 512 > 480). Valid values are integers between 1 and 32. Default value is 6. \n\n**percent**\n\n    Partial of full denoising (limited coefficients shrinking), from 0 to 100. Default value is 85. \n\n**planes**\n\n    A list of the planes to process. By default all planes are processed. \n\n**type**\n\n    The threshold type the filter will use. It accepts the following values: \u2018universal\u2019 Threshold used is same for all decompositions. \u2018bayes\u2019 Threshold used depends also on each decomposition coefficients. Default is universal. \n\n",
+  "description": "Apply a Wavelet based Denoiser.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,11 +21,11 @@
         "threshold"
       ],
       "choices": [],
-      "default": 2.0,
-      "description": "<dd><p>The filtering strength. The higher, the more filtered the video will be.\nHard thresholding can use a higher threshold than soft thresholding\nbefore the video looks overfiltered. Default value is 2.\n</p>\n</dd>",
+      "default": "2",
+      "description": "set filtering strength (from 0 to DBL_MAX) (default 2)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -35,57 +35,57 @@
         {
           "help": "hard thresholding",
           "name": "hard",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "soft thresholding",
           "name": "soft",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "garrote thresholding",
           "name": "garrote",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 2,
-      "description": "<dd><p>The filtering method the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>hard</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed.\n</p>\n</dd>\n<dt>\u2018<samp>soft</samp>\u2019</dt>\n<dd><p>All values under the threshold will be zeroed. All values above will be\nreduced by the threshold.\n</p>\n</dd>\n<dt>\u2018<samp>garrote</samp>\u2019</dt>\n<dd><p>Scales or nullifies coefficients - intermediary between (more) soft and\n(less) hard thresholding.\n</p></dd>\n</dl>\n<p>Default is garrote.\n</p>\n</dd>",
+      "default": "garrote",
+      "description": "set filtering method (from 0 to 2) (default garrote)",
       "name": "method",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "nsteps"
       ],
       "choices": [],
-      "default": 6,
-      "description": "<dd><p>Number of times, the wavelet will decompose the picture. Picture can\u2019t\nbe decomposed beyond a particular point (typically, 8 for a 640x480\nframe - as 2^9 = 512 &gt; 480). Valid values are integers between 1 and 32. Default value is 6.\n</p>\n</dd>",
+      "default": "6",
+      "description": "set number of steps (from 1 to 32) (default 6)",
       "name": "nsteps",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "percent"
       ],
       "choices": [],
-      "default": 85.0,
-      "description": "<dd><p>Partial of full denoising (limited coefficients shrinking), from 0 to 100. Default value is 85.\n</p>\n</dd>",
+      "default": "85",
+      "description": "set percent of full denoising (from 0 to 100) (default 85)",
       "name": "percent",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "planes"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>A list of the planes to process. By default all planes are processed.\n</p>\n</dd>",
+      "default": "15",
+      "description": "set planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -95,19 +95,19 @@
         {
           "help": "universal (VisuShrink)",
           "name": "universal",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "bayes (BayesShrink)",
           "name": "bayes",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>The threshold type the filter will use.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>universal</samp>\u2019</dt>\n<dd><p>Threshold used is same for all decompositions.\n</p>\n</dd>\n<dt>\u2018<samp>bayes</samp>\u2019</dt>\n<dd><p>Threshold used depends also on each decomposition coefficients.\n</p></dd>\n</dl>\n<p>Default is universal.\n</p></dd>",
+      "default": "universal",
+      "description": "set threshold type (from 0 to 1) (default universal)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -122,7 +122,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser"

@@ -1,5 +1,5 @@
 {
-  "description": "### 11.76 drawgraph\n\nDraw a graph using input video metadata.\n\nIt accepts the following parameters:\n\n**m1**\n\n    Set 1st frame metadata key from which metadata values will be used to draw a graph. \n\n**fg1**\n\n    Set 1st foreground color expression. \n\n**m2**\n\n    Set 2nd frame metadata key from which metadata values will be used to draw a graph. \n\n**fg2**\n\n    Set 2nd foreground color expression. \n\n**m3**\n\n    Set 3rd frame metadata key from which metadata values will be used to draw a graph. \n\n**fg3**\n\n    Set 3rd foreground color expression. \n\n**m4**\n\n    Set 4th frame metadata key from which metadata values will be used to draw a graph. \n\n**fg4**\n\n    Set 4th foreground color expression. \n\n**min**\n\n    Set minimal value of metadata value. \n\n**max**\n\n    Set maximal value of metadata value. \n\n**bg**\n\n    Set graph background color. Default is white. \n\n**mode**\n\n    Set graph mode. Available values for mode is: \u2018bar\u2019 \u2018dot\u2019 \u2018line\u2019 Default is line. \n\n**slide**\n\n    Set slide mode. Available values for slide is: \u2018frame\u2019 Draw new frame when right border is reached. \u2018replace\u2019 Replace old columns with new ones. \u2018scroll\u2019 Scroll from right to left. \u2018rscroll\u2019 Scroll from left to right. \u2018picture\u2019 Draw single picture. Default is frame. \n\n**size**\n\n    Set size of graph video. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. The default value is 900x256. \n\n**rate, r**\n\n    Set the output frame rate. Default value is 25. The foreground color expressions can use the following variables: MIN Minimal value of metadata value. MAX Maximal value of metadata value. VAL Current metadata key value. The color is defined as 0xAABBGGRR. \n\nExample using metadata from signalstats filter:\n\n    \n    \n    signalstats,drawgraph=lavfi.signalstats.YAVG:min=0:max=255\n    \n\nExample using metadata from ebur128 filter:\n\n    \n    \n    ebur128=metadata=1,adrawgraph=lavfi.r128.M:min=-120:max=5\n    \n\n",
+  "description": "Draw a graph using input video metadata.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "<dd><p>Set 1st frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "description": "set 1st metadata key (default \"\")",
       "name": "m1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "0xffff0000",
-      "description": "<dd><p>Set 1st foreground color expression.\n</p>\n</dd>",
+      "description": "set 1st foreground color expression (default \"0xffff0000\")",
       "name": "fg1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "<dd><p>Set 2nd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "description": "set 2nd metadata key (default \"\")",
       "name": "m2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,10 +55,10 @@
       ],
       "choices": [],
       "default": "0xff00ff00",
-      "description": "<dd><p>Set 2nd foreground color expression.\n</p>\n</dd>",
+      "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
       "name": "fg2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -66,10 +66,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "<dd><p>Set 3rd frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "description": "set 3rd metadata key (default \"\")",
       "name": "m3",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -77,10 +77,10 @@
       ],
       "choices": [],
       "default": "0xffff00ff",
-      "description": "<dd><p>Set 3rd foreground color expression.\n</p>\n</dd>",
+      "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
       "name": "fg3",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -88,10 +88,10 @@
       ],
       "choices": [],
       "default": "",
-      "description": "<dd><p>Set 4th frame metadata key from which metadata values will be used to draw a graph.\n</p>\n</dd>",
+      "description": "set 4th metadata key (default \"\")",
       "name": "m4",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -99,10 +99,10 @@
       ],
       "choices": [],
       "default": "0xffffff00",
-      "description": "<dd><p>Set 4th foreground color expression.\n</p>\n</dd>",
+      "description": "set 4th foreground color expression (default \"0xffffff00\")",
       "name": "fg4",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -110,32 +110,32 @@
       ],
       "choices": [],
       "default": "white",
-      "description": "<dd><p>Set graph background color. Default is white.\n</p>\n</dd>",
+      "description": "set background color (default \"white\")",
       "name": "bg",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
         "min"
       ],
       "choices": [],
-      "default": -1.0,
-      "description": "<dd><p>Set minimal value of metadata value.\n</p>\n</dd>",
+      "default": "-1",
+      "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
       "name": "min",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "max"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set maximal value of metadata value.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
       "name": "max",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -145,24 +145,24 @@
         {
           "help": "draw bars",
           "name": "bar",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "draw dots",
           "name": "dot",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "draw lines",
           "name": "line",
-          "value": 2
+          "value": "2"
         }
       ],
-      "default": 2,
-      "description": "<dd><p>Set graph mode.\n</p>\n<p>Available values for mode is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>bar</samp>\u2019</dt>\n<dt>\u2018<samp>dot</samp>\u2019</dt>\n<dt>\u2018<samp>line</samp>\u2019</dt>\n</dl>\n<p>Default is <code>line</code>.\n</p>\n</dd>",
+      "default": "line",
+      "description": "set graph mode (from 0 to 2) (default line)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -172,34 +172,34 @@
         {
           "help": "draw new frames",
           "name": "frame",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "replace old columns with new",
           "name": "replace",
-          "value": 1
+          "value": "1"
         },
         {
           "help": "scroll from right to left",
           "name": "scroll",
-          "value": 2
+          "value": "2"
         },
         {
           "help": "scroll from left to right",
           "name": "rscroll",
-          "value": 3
+          "value": "3"
         },
         {
           "help": "display graph in single frame",
           "name": "picture",
-          "value": 4
+          "value": "4"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set slide mode.\n</p>\n<p>Available values for slide is:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>frame</samp>\u2019</dt>\n<dd><p>Draw new frame when right border is reached.\n</p>\n</dd>\n<dt>\u2018<samp>replace</samp>\u2019</dt>\n<dd><p>Replace old columns with new ones.\n</p>\n</dd>\n<dt>\u2018<samp>scroll</samp>\u2019</dt>\n<dd><p>Scroll from right to left.\n</p>\n</dd>\n<dt>\u2018<samp>rscroll</samp>\u2019</dt>\n<dd><p>Scroll from left to right.\n</p>\n</dd>\n<dt>\u2018<samp>picture</samp>\u2019</dt>\n<dd><p>Draw single picture.\n</p></dd>\n</dl>\n<p>Default is <code>frame</code>.\n</p>\n</dd>",
+      "default": "frame",
+      "description": "set slide mode (from 0 to 4) (default frame)",
       "name": "slide",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -208,10 +208,10 @@
       ],
       "choices": [],
       "default": "900x256",
-      "description": "<dd><p>Set size of graph video. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nThe default value is <code>900x256</code>.\n</p>\n</dd>",
+      "description": "set graph size (default \"900x256\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -220,16 +220,16 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set the output frame rate. Default value is <code>25</code>.\n</p>\n<p>The foreground color expressions can use the following variables:\n</p><dl compact=\"compact\">\n<dt><samp>MIN</samp></dt>\n<dd><p>Minimal value of metadata value.\n</p>\n</dd>\n<dt><samp>MAX</samp></dt>\n<dd><p>Maximal value of metadata value.\n</p>\n</dd>\n<dt><samp>VAL</samp></dt>\n<dd><p>Current metadata key value.\n</p></dd>\n</dl>\n<p>The color is defined as 0xAABBGGRR.\n</p></dd>",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawgraph"

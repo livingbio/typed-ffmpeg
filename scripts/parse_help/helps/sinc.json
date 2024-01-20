@@ -1,0 +1,150 @@
+{
+  "description": "Generate a sinc kaiser-windowed low-pass, high-pass, band-pass, or band-reject FIR coefficients.",
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "sinc",
+  "options": [
+    {
+      "alias": [
+        "sample_rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "44100",
+      "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "sample_rate",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "nb_samples",
+        "n"
+      ],
+      "choices": [],
+      "default": "1024",
+      "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "nb_samples",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hp"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set high-pass filter frequency (from 0 to INT_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "hp",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lp"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set low-pass filter frequency (from 0 to INT_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "lp",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "phase"
+      ],
+      "choices": [],
+      "default": "50",
+      "description": "set filter phase response (from 0 to 100) (default 50)",
+      "flags": "..F.A......",
+      "max": "100",
+      "min": "0",
+      "name": "phase",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "beta"
+      ],
+      "choices": [],
+      "default": "-1",
+      "description": "set kaiser window beta (from -1 to 256) (default -1)",
+      "flags": "..F.A......",
+      "max": "256",
+      "min": "-1",
+      "name": "beta",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "att"
+      ],
+      "choices": [],
+      "default": "120",
+      "description": "set stop-band attenuation (from 40 to 180) (default 120)",
+      "flags": "..F.A......",
+      "max": "180",
+      "min": "40",
+      "name": "att",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "round"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "enable rounding (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "round",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "hptaps"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set number of taps for high-pass filter (from 0 to 32768) (default 0)",
+      "flags": "..F.A......",
+      "max": "32768",
+      "min": "0",
+      "name": "hptaps",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "lptaps"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set number of taps for low-pass filter (from 0 to 32768) (default 0)",
+      "flags": "..F.A......",
+      "max": "32768",
+      "min": "0",
+      "name": "lptaps",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

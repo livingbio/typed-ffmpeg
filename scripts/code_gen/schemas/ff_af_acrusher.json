@@ -1,5 +1,5 @@
 {
-  "description": "### 8.7 acrusher\n\nReduce audio bit resolution.\n\nThis filter is bit crusher with enhanced functionality. A bit crusher is used\nto audibly reduce number of bits an audio signal is sampled with. This doesn\u2019t\nchange the bit depth at all, it just produces the effect. Material reduced in\nbit depth sounds more harsh and \"digital\". This filter is able to even round\nto continuous values instead of discrete bit depths. Additionally it has a D/C\noffset which results in different crushing of the lower and the upper half of\nthe signal. An Anti-Aliasing setting is able to produce \"softer\" crushing\nsounds.\n\nAnother feature of this filter is the logarithmic mode. This setting switches\nfrom linear distances between bits to logarithmic ones. The result is a much\nmore \"natural\" sounding crusher which doesn\u2019t gate low signals for example.\nThe human ear has a logarithmic perception, so this kind of crushing is much\nmore pleasant. Logarithmic crushing is also able to get anti-aliased.\n\nThe filter accepts the following options:\n\n**level_in**\n\n    Set level in. \n\n**level_out**\n\n    Set level out. \n\n**bits**\n\n    Set bit reduction. \n\n**mix**\n\n    Set mixing amount. \n\n**mode**\n\n    Can be linear: lin or logarithmic: log. \n\n**dc**\n\n    Set DC. \n\n**aa**\n\n    Set anti-aliasing. \n\n**samples**\n\n    Set sample reduction. \n\n**lfo**\n\n    Enable LFO. By default disabled. \n\n**lforange**\n\n    Set LFO range. \n\n**lforate**\n\n    Set LFO rate. \n\n",
+  "description": "Reduce audio bit resolution.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -21,44 +21,44 @@
         "level_in"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set level in.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set level in (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "level_out"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set level out.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set level out (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "bits"
       ],
       "choices": [],
-      "default": 8.0,
-      "description": "<dd><p>Set bit reduction.\n</p>\n</dd>",
+      "default": "8",
+      "description": "set bit reduction (from 1 to 64) (default 8)",
       "name": "bits",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "mix"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set mixing amount.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set mix (from 0 to 1) (default 0.5)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -68,85 +68,85 @@
         {
           "help": "linear",
           "name": "lin",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "logarithmic",
           "name": "log",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Can be linear: <code>lin</code> or logarithmic: <code>log</code>.\n</p>\n</dd>",
+      "default": "lin",
+      "description": "set mode (from 0 to 1) (default lin)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "dc"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set DC.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set DC (from 0.25 to 4) (default 1)",
       "name": "dc",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "aa"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "<dd><p>Set anti-aliasing.\n</p>\n</dd>",
+      "default": "0.5",
+      "description": "set anti-aliasing (from 0 to 1) (default 0.5)",
       "name": "aa",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "samples"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "<dd><p>Set sample reduction.\n</p>\n</dd>",
+      "default": "1",
+      "description": "set sample reduction (from 1 to 250) (default 1)",
       "name": "samples",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "lfo"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Enable LFO. By default disabled.\n</p>\n</dd>",
+      "default": "false",
+      "description": "enable LFO (default false)",
       "name": "lfo",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
         "lforange"
       ],
       "choices": [],
-      "default": 20.0,
-      "description": "<dd><p>Set LFO range.\n</p>\n</dd>",
+      "default": "20",
+      "description": "set LFO depth (from 1 to 250) (default 20)",
       "name": "lforange",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "lforate"
       ],
       "choices": [],
-      "default": 0.3,
-      "description": "<dd><p>Set LFO rate.\n</p></dd>",
+      "default": "0.3",
+      "description": "set LFO rate (from 0.01 to 200) (default 0.3)",
       "name": "lforate",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -161,7 +161,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#acrusher"

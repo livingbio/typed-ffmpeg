@@ -1,5 +1,5 @@
 {
-  "description": "### 18.1 a3dscope\n\nConvert input audio to 3d scope video output.\n\nThe filter accepts the following options:\n\n**rate, r**\n\n    Set frame rate, expressed as number of frames per second. Default value is \"25\". \n\n**size, s**\n\n    Specify the video size for the output. For the syntax of this option, check the (ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual. Default value is hd720. \n\n**fov**\n\n    Set the camera field of view. Default is 90 degrees. Allowed range is from 40 to 150. \n\n**roll**\n\n    Set the camera roll. \n\n**pitch**\n\n    Set the camera pitch. \n\n**yaw**\n\n    Set the camera yaw. \n\n**xzoom**\n\n    Set the camera zoom on X-axis. \n\n**yzoom**\n\n    Set the camera zoom on Y-axis. \n\n**zzoom**\n\n    Set the camera zoom on Z-axis. \n\n**xpos**\n\n    Set the camera position on X-axis. \n\n**ypos**\n\n    Set the camera position on Y-axis. \n\n**zpos**\n\n    Set the camera position on Z-axis. \n\n**length**\n\n    Set the length of displayed audio waves in number of frames. \n\n",
+  "description": "Convert input audio to 3d scope video output.",
   "filter_type": "avf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -23,10 +23,10 @@
       ],
       "choices": [],
       "default": "25",
-      "description": "<dd><p>Set frame rate, expressed as number of frames per second. Default\nvalue is \"25\".\n</p>\n</dd>",
+      "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -35,137 +35,97 @@
       ],
       "choices": [],
       "default": "hd720",
-      "description": "<dd><p>Specify the video size for the output. For the syntax of this option, check the\n<a href=\"ffmpeg-utils.html#video-size-syntax\">(ffmpeg-utils)\"Video size\" section in the ffmpeg-utils manual</a>.\nDefault value is <code>hd720</code>.\n</p>\n</dd>",
+      "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
         "fov"
       ],
       "choices": [],
-      "default": "90.f",
-      "description": "<dd><p>Set the camera field of view. Default is 90 degrees.\nAllowed range is from 40 to 150.\n</p>\n</dd>",
+      "default": "90",
+      "description": "set camera FoV (from 40 to 150) (default 90)",
       "name": "fov",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "roll"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set the camera roll.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set camera roll (from -180 to 180) (default 0)",
       "name": "roll",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "pitch"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set the camera pitch.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set camera pitch (from -180 to 180) (default 0)",
       "name": "pitch",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "yaw"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set the camera yaw.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set camera yaw (from -180 to 180) (default 0)",
       "name": "yaw",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
-        "xzoom"
-      ],
-      "choices": [],
-      "default": "1.f",
-      "description": "<dd><p>Set the camera zoom on X-axis.\n</p>\n</dd>",
-      "name": "xzoom",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "yzoom"
-      ],
-      "choices": [],
-      "default": "1.f",
-      "description": "<dd><p>Set the camera zoom on Y-axis.\n</p>\n</dd>",
-      "name": "yzoom",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
+        "xzoom",
+        "yzoom",
         "zzoom"
       ],
       "choices": [],
-      "default": "1.f",
-      "description": "<dd><p>Set the camera zoom on Z-axis.\n</p>\n</dd>",
-      "name": "zzoom",
+      "default": "1",
+      "description": "set camera zoom (from 0.01 to 10) (default 1)",
+      "name": "xzoom",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
-        "xpos"
-      ],
-      "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set the camera position on X-axis.\n</p>\n</dd>",
-      "name": "xpos",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "ypos"
-      ],
-      "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set the camera position on Y-axis.\n</p>\n</dd>",
-      "name": "ypos",
-      "required": false,
-      "typing": "float"
-    },
-    {
-      "alias": [
+        "xpos",
+        "ypos",
         "zpos"
       ],
       "choices": [],
-      "default": "0.f",
-      "description": "<dd><p>Set the camera position on Z-axis.\n</p>\n</dd>",
-      "name": "zpos",
+      "default": "0",
+      "description": "set camera position (from -60 to 60) (default 0)",
+      "name": "xpos",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "length"
       ],
       "choices": [],
-      "default": 15,
-      "description": "<dd><p>Set the length of displayed audio waves in number of frames.\n</p></dd>",
+      "default": "15",
+      "description": "set length (from 1 to 60) (default 15)",
       "name": "length",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#a3dscope"

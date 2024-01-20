@@ -1,5 +1,5 @@
 {
-  "description": "### 11.77 drawgrid\n\nDraw a grid on the input image.\n\nIt accepts the following parameters:\n\n**x**\n\n**y**\n\n    The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0. \n\n**width, w**\n\n**height, h**\n\n    The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the input width and height, respectively, minus thickness, so image gets framed. Default to 0. \n\n**color, c**\n\n    Specify the color of the grid. For the general syntax of this option, check the (ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual. If the special value invert is used, the grid color is the same as the video with inverted luma. \n\n**thickness, t**\n\n    The expression which sets the thickness of the grid line. Default value is 1. See below for the list of accepted constants. \n\n**replace**\n\n    Applicable if the input has alpha. With 1 the pixels of the painted grid will overwrite the video\u2019s color and alpha pixels. Default is 0, which composites the grid onto the input, leaving the video\u2019s alpha intact. \n\nThe parameters for x, y, w and h and t are expressions containing the\nfollowing constants:\n\n**dar**\n\n    The input display aspect ratio, it is the same as (w / h) * sar. \n\n**hsub**\n\n**vsub**\n\n    horizontal and vertical chroma subsample values. For example for the pixel format \"yuv422p\" hsub is 2 and vsub is 1. \n\n**in_h, ih**\n\n**in_w, iw**\n\n    The input grid cell width and height. \n\n**sar**\n\n    The input sample aspect ratio. \n\n**x**\n\n**y**\n\n    The x and y coordinates of some point of grid intersection (meant to configure offset). \n\n**w**\n\n**h**\n\n    The width and height of the drawn cell. \n\n**t**\n\n    The thickness of the drawn cell. These constants allow the x, y, w, h and t expressions to refer to each other, so you may for example specify y=x/dar or h=w/dar. \n\n",
+  "description": "Draw a colored grid on the input video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.\n</p>\n</dd>",
+      "description": "set horizontal offset (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>The expressions which specify the coordinates of some point of grid intersection (meant to configure offset). Both default to 0.\n</p>\n</dd>",
+      "description": "set vertical offset (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -45,10 +45,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the\ninput width and height, respectively, minus <code>thickness</code>, so image gets\nframed. Default to 0.\n</p>\n</dd>",
+      "description": "set width of grid cell (default \"0\")",
       "name": "width",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -57,10 +57,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "<dd><p>The expressions which specify the width and height of the grid cell, if 0 they are interpreted as the\ninput width and height, respectively, minus <code>thickness</code>, so image gets\nframed. Default to 0.\n</p>\n</dd>",
+      "description": "set height of grid cell (default \"0\")",
       "name": "height",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -69,10 +69,10 @@
       ],
       "choices": [],
       "default": "black",
-      "description": "<dd><p>Specify the color of the grid. For the general syntax of this option,\ncheck the <a href=\"ffmpeg-utils.html#color-syntax\">(ffmpeg-utils)\"Color\" section in the ffmpeg-utils manual</a>. If the special\nvalue <code>invert</code> is used, the grid color is the same as the\nvideo with inverted luma.\n</p>\n</dd>",
+      "description": "set color of the grid (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -81,21 +81,21 @@
       ],
       "choices": [],
       "default": "1",
-      "description": "<dd><p>The expression which sets the thickness of the grid line. Default value is <code>1</code>.\n</p>\n<p>See below for the list of accepted constants.\n</p>\n</dd>",
+      "description": "set grid line thickness (default \"1\")",
       "name": "thickness",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
         "replace"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Applicable if the input has alpha. With <code>1</code> the pixels of the painted grid\nwill overwrite the video\u2019s color and alpha pixels.\nDefault is <code>0</code>, which composites the grid onto the input, leaving the video\u2019s alpha intact.\n</p></dd>",
+      "default": "false",
+      "description": "replace color & alpha (default false)",
       "name": "replace",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -110,7 +110,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawgrid"

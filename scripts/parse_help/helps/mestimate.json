@@ -1,0 +1,117 @@
+{
+  "description": "Generate motion vectors.",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "mestimate",
+  "options": [
+    {
+      "alias": [
+        "method"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "exhaustive search",
+          "name": "esa",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "three step search",
+          "name": "tss",
+          "value": "2"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "two dimensional logarithmic search",
+          "name": "tdls",
+          "value": "3"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "new three step search",
+          "name": "ntss",
+          "value": "4"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "four step search",
+          "name": "fss",
+          "value": "5"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "diamond search",
+          "name": "ds",
+          "value": "6"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hexagon-based search",
+          "name": "hexbs",
+          "value": "7"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "enhanced predictive zonal search",
+          "name": "epzs",
+          "value": "8"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "uneven multi-hexagon search",
+          "name": "umh",
+          "value": "9"
+        }
+      ],
+      "default": "esa",
+      "description": "motion estimation method (from 1 to 9) (default esa)",
+      "flags": "..FV.......",
+      "max": "9",
+      "min": "1",
+      "name": "method",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "mb_size"
+      ],
+      "choices": [],
+      "default": "16",
+      "description": "macroblock size (from 8 to INT_MAX) (default 16)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "8",
+      "name": "mb_size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "search_param"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "search parameter (from 4 to INT_MAX) (default 7)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "4",
+      "name": "search_param",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "### 8.38 anlmdn\n\nReduce broadband noise in audio samples using Non-Local Means algorithm.\n\nEach sample is adjusted by looking for other samples with similar contexts.\nThis context similarity is defined by comparing their surrounding patches of\nsize p. Patches are searched in an area of r around the sample.\n\nThe filter accepts the following options:\n\n**strength, s**\n\n    Set denoising strength. Allowed range is from 0.00001 to 10000. Default value is 0.00001. \n\n**patch, p**\n\n    Set patch radius duration. Allowed range is from 1 to 100 milliseconds. Default value is 2 milliseconds. \n\n**research, r**\n\n    Set research radius duration. Allowed range is from 2 to 300 milliseconds. Default value is 6 milliseconds. \n\n**output, o**\n\n    Set the output mode. It accepts the following values: i Pass input unchanged. o Pass noise filtered out. n Pass only noise. Default value is o. \n\n**smooth, m**\n\n    Set smooth factor. Default value is 11. Allowed range is from 1 to 1000. \n\n",
+  "description": "Reduce broadband noise from stream using Non-Local Means.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -22,11 +22,11 @@
         "s"
       ],
       "choices": [],
-      "default": 1e-05,
-      "description": "<dd><p>Set denoising strength. Allowed range is from 0.00001 to 10000. Default value is 0.00001.\n</p>\n</dd>",
+      "default": "1e-05",
+      "description": "set denoising strength (from 1e-05 to 10000) (default 1e-05)",
       "name": "strength",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -34,11 +34,11 @@
         "p"
       ],
       "choices": [],
-      "default": 2000,
-      "description": "<dd><p>Set patch radius duration. Allowed range is from 1 to 100 milliseconds.\nDefault value is 2 milliseconds.\n</p>\n</dd>",
+      "default": "0.002",
+      "description": "set patch duration (default 0.002)",
       "name": "patch",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -46,11 +46,11 @@
         "r"
       ],
       "choices": [],
-      "default": 6000,
-      "description": "<dd><p>Set research radius duration. Allowed range is from 2 to 300 milliseconds.\nDefault value is 6 milliseconds.\n</p>\n</dd>",
+      "default": "0.006",
+      "description": "set research duration (default 0.006)",
       "name": "research",
       "required": false,
-      "typing": "int"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -61,24 +61,24 @@
         {
           "help": "input",
           "name": "i",
-          "value": "IN_MODE"
+          "value": "0"
         },
         {
           "help": "output",
           "name": "o",
-          "value": "OUT_MODE"
+          "value": "1"
         },
         {
           "help": "noise",
           "name": "n",
-          "value": "NOISE_MODE"
+          "value": "2"
         }
       ],
-      "default": "OUT_MODE",
-      "description": "<dd><p>Set the output mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass input unchanged.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass noise filtered out.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>Pass only noise.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
+      "default": "o",
+      "description": "set output mode (from 0 to 2) (default o)",
       "name": "output",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -86,11 +86,11 @@
         "m"
       ],
       "choices": [],
-      "default": 11.0,
-      "description": "<dd><p>Set smooth factor. Default value is <var>11</var>. Allowed range is from <var>1</var> to <var>1000</var>.\n</p></dd>",
+      "default": "11",
+      "description": "set smooth factor (from 1 to 1000) (default 11)",
       "name": "smooth",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -105,7 +105,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#anlmdn"

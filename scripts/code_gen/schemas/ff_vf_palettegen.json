@@ -1,5 +1,5 @@
 {
-  "description": "### 11.187 palettegen\n\nGenerate one palette for a whole video stream.\n\nIt accepts the following options:\n\n**max_colors**\n\n    Set the maximum number of colors to quantize in the palette. Note: the palette will still contain 256 colors; the unused palette entries will be black. \n\n**reserve_transparent**\n\n    Create a palette of 255 colors maximum and reserve the last one for transparency. Reserving the transparency color is useful for GIF optimization. If not set, the maximum of colors in the palette will be 256. You probably want to disable this option for a standalone image. Set by default. \n\n**transparency_color**\n\n    Set the color that will be used as background for transparency. \n\n**stats_mode**\n\n    Set statistics mode. It accepts the following values: \u2018full\u2019 Compute full frame histograms. \u2018diff\u2019 Compute histograms only for the part that differs from previous frame. This might be relevant to give more importance to the moving part of your input if the background is static. \u2018single\u2019 Compute new histogram for each frame. Default value is full. \n\nThe filter also exports the frame metadata `lavfi.color_quant_ratio`\n(`nb_color_in / nb_color_out`) which you can use to evaluate the degree of\ncolor quantization of the palette. This information is also visible at info\nlogging level.\n\n",
+  "description": "Find the optimal palette for a given stream.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,22 +21,22 @@
         "max_colors"
       ],
       "choices": [],
-      "default": 256,
-      "description": "<dd><p>Set the maximum number of colors to quantize in the palette.\nNote: the palette will still contain 256 colors; the unused palette entries\nwill be black.\n</p>\n</dd>",
+      "default": "256",
+      "description": "set the maximum number of colors to use in the palette (from 2 to 256) (default 256)",
       "name": "max_colors",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "reserve_transparent"
       ],
       "choices": [],
-      "default": 1,
-      "description": "<dd><p>Create a palette of 255 colors maximum and reserve the last one for\ntransparency. Reserving the transparency color is useful for GIF optimization.\nIf not set, the maximum of colors in the palette will be 256. You probably want\nto disable this option for a standalone image.\nSet by default.\n</p>\n</dd>",
+      "default": "true",
+      "description": "reserve a palette entry for transparency (default true)",
       "name": "reserve_transparent",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "lime",
-      "description": "<dd><p>Set the color that will be used as background for transparency.\n</p>\n</dd>",
+      "description": "set a background color for transparency (default \"lime\")",
       "name": "transparency_color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -57,30 +57,30 @@
         {
           "help": "compute full frame histograms",
           "name": "full",
-          "value": "STATS_MODE_ALL_FRAMES"
+          "value": "0"
         },
         {
           "help": "compute histograms only for the part that differs from previous frame",
           "name": "diff",
-          "value": "STATS_MODE_DIFF_FRAMES"
+          "value": "1"
         },
         {
           "help": "compute new histogram for each frame",
           "name": "single",
-          "value": "STATS_MODE_SINGLE_FRAMES"
+          "value": "2"
         }
       ],
-      "default": "STATS_MODE_ALL_FRAMES",
-      "description": "<dd><p>Set statistics mode.\n</p>\n<p>It accepts the following values:\n</p><dl compact=\"compact\">\n<dt>\u2018<samp>full</samp>\u2019</dt>\n<dd><p>Compute full frame histograms.\n</p></dd>\n<dt>\u2018<samp>diff</samp>\u2019</dt>\n<dd><p>Compute histograms only for the part that differs from previous frame. This\nmight be relevant to give more importance to the moving part of your input if\nthe background is static.\n</p></dd>\n<dt>\u2018<samp>single</samp>\u2019</dt>\n<dd><p>Compute new histogram for each frame.\n</p></dd>\n</dl>\n<p>Default value is <var>full</var>.\n</p></dd>",
+      "default": "full",
+      "description": "set statistics mode (from 0 to 2) (default full)",
       "name": "stats_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#palettegen"

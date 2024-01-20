@@ -1,0 +1,191 @@
+{
+  "description": "EBU R128 loudness normalization",
+  "input_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "loudnorm",
+  "options": [
+    {
+      "alias": [
+        "I",
+        "i"
+      ],
+      "choices": [],
+      "default": "-24",
+      "description": "set integrated loudness target (from -70 to -5) (default -24)",
+      "flags": "..F.A......",
+      "max": "-5",
+      "min": "-70",
+      "name": "I",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "LRA",
+        "lra"
+      ],
+      "choices": [],
+      "default": "7",
+      "description": "set loudness range target (from 1 to 50) (default 7)",
+      "flags": "..F.A......",
+      "max": "50",
+      "min": "1",
+      "name": "LRA",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "TP",
+        "tp"
+      ],
+      "choices": [],
+      "default": "-2",
+      "description": "set maximum true peak (from -9 to 0) (default -2)",
+      "flags": "..F.A......",
+      "max": "0",
+      "min": "-9",
+      "name": "TP",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "measured_I",
+        "measured_i"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "measured IL of input file (from -99 to 0) (default 0)",
+      "flags": "..F.A......",
+      "max": "0",
+      "min": "-99",
+      "name": "measured_I",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "measured_LRA",
+        "measured_lra"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "measured LRA of input file (from 0 to 99) (default 0)",
+      "flags": "..F.A......",
+      "max": "99",
+      "min": "0",
+      "name": "measured_LRA",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "measured_TP",
+        "measured_tp"
+      ],
+      "choices": [],
+      "default": "99",
+      "description": "measured true peak of input file (from -99 to 99) (default 99)",
+      "flags": "..F.A......",
+      "max": "99",
+      "min": "-99",
+      "name": "measured_TP",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "measured_thresh"
+      ],
+      "choices": [],
+      "default": "-70",
+      "description": "measured threshold of input file (from -99 to 0) (default -70)",
+      "flags": "..F.A......",
+      "max": "0",
+      "min": "-99",
+      "name": "measured_thresh",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "offset"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set offset gain (from -99 to 99) (default 0)",
+      "flags": "..F.A......",
+      "max": "99",
+      "min": "-99",
+      "name": "offset",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "linear"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "normalize linearly if possible (default true)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "linear",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "dual_mono"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "treat mono input as dual-mono (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "dual_mono",
+      "typing": "boolean"
+    },
+    {
+      "alias": [
+        "print_format"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "none",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "json",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "",
+          "name": "summary",
+          "value": "2"
+        }
+      ],
+      "default": "none",
+      "description": "set print format for stats (from 0 to 2) (default none)",
+      "flags": "..F.A......",
+      "max": "2",
+      "min": "0",
+      "name": "print_format",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

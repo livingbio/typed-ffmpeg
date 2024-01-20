@@ -1,5 +1,5 @@
 {
-  "description": "### 11.3 alphamerge\n\nAdd or replace the alpha component of the primary input with the grayscale\nvalue of a second input. This is intended for use with alphaextract to allow\nthe transmission or storage of frame sequences that have alpha in a format\nthat doesn\u2019t support an alpha channel.\n\nFor example, to reconstruct full frames from a normal YUV-encoded video and a\nseparate video created with alphaextract, you might use:\n\n    \n    \n    movie=in_alpha.mkv [alpha]; [in][alpha] alphamerge [out]\n    \n\n",
+  "description": "Copy the luma value of the second input into the alpha channel of the first input.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "main",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "alpha",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,6 +21,77 @@
   "name": "alphamerge",
   "options": [
     {
+      "alias": [
+        "eof_action"
+      ],
+      "choices": [
+        {
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        }
+      ],
+      "default": "repeat",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+      "name": "eof_action",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": "false",
+      "description": "force termination when the shortest input terminates (default false)",
+      "name": "shortest",
+      "required": false,
+      "typing": "Boolean"
+    },
+    {
+      "alias": [
+        "repeatlast"
+      ],
+      "choices": [],
+      "default": "true",
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
+      "name": "repeatlast",
+      "required": false,
+      "typing": "Boolean"
+    },
+    {
+      "alias": [
+        "ts_sync_mode"
+      ],
+      "choices": [
+        {
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+          "name": "default",
+          "value": "0"
+        },
+        {
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
+          "name": "nearest",
+          "value": "1"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
+      "name": "ts_sync_mode",
+      "required": false,
+      "typing": "Int"
+    },
+    {
       "alias": [],
       "choices": [],
       "default": null,
@@ -28,75 +99,12 @@
       "name": "enable",
       "required": false,
       "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Repeat the last frame.",
-          "name": "repeat",
-          "value": "repeat"
-        },
-        {
-          "help": "End both streams.",
-          "name": "endall",
-          "value": "endall"
-        },
-        {
-          "help": "Pass the main input through.",
-          "name": "pass",
-          "value": "pass"
-        }
-      ],
-      "default": "repeat",
-      "description": "The action to take when EOF is encountered on the secondary input; it accepts one of the following values",
-      "name": "eof_action",
-      "required": false,
-      "typing": "str"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 0,
-      "description": "Force the output to terminate when the shortest input terminates.",
-      "name": "shortest",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": 1,
-      "description": "force the filter to extend the last frame of secondary streams until the end of the primary stream.",
-      "name": "repeatlast",
-      "required": false,
-      "typing": "bool"
-    },
-    {
-      "alias": [],
-      "choices": [
-        {
-          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame.",
-          "name": "default",
-          "value": "default"
-        },
-        {
-          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame.",
-          "name": "nearest",
-          "value": "nearest"
-        }
-      ],
-      "default": "default",
-      "description": "How strictly to sync streams based on secondary input timestamps; it accepts one of the following values:",
-      "name": "ts_sync_mode",
-      "required": false,
-      "typing": "str"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#alphamerge"

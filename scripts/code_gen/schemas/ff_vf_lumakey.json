@@ -1,5 +1,5 @@
 {
-  "description": "### 11.152 lumakey\n\nTurn certain luma values into transparency.\n\nThe filter accepts the following options:\n\n**threshold**\n\n    Set the luma which will be used as base for transparency. Default value is 0. \n\n**tolerance**\n\n    Set the range of luma values to be keyed out. Default value is 0.01. \n\n**softness**\n\n    Set the range of softness. Default value is 0. Use this to control gradual transition from zero to full transparency. \n\n",
+  "description": "Turns a certain luma into transparency.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -21,33 +21,33 @@
         "threshold"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the luma which will be used as base for transparency.\nDefault value is <code>0</code>.\n</p>\n</dd>",
+      "default": "0",
+      "description": "set the threshold value (from 0 to 1) (default 0)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "tolerance"
       ],
       "choices": [],
-      "default": 0.01,
-      "description": "<dd><p>Set the range of luma values to be keyed out.\nDefault value is <code>0.01</code>.\n</p>\n</dd>",
+      "default": "0.01",
+      "description": "set the tolerance value (from 0 to 1) (default 0.01)",
       "name": "tolerance",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
         "softness"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "<dd><p>Set the range of softness. Default value is <code>0</code>.\nUse this to control gradual transition from zero to full transparency.\n</p></dd>",
+      "default": "0",
+      "description": "set the softness value (from 0 to 1) (default 0)",
       "name": "softness",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -62,7 +62,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#lumakey"

@@ -1,0 +1,122 @@
+{
+  "description": "Apply headphone binaural spatialization with HRTFs in additional streams.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "headphone",
+  "options": [
+    {
+      "alias": [
+        "map"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set channels convolution mappings",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "map",
+      "typing": "string"
+    },
+    {
+      "alias": [
+        "gain"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set gain in dB (from -20 to 40) (default 0)",
+      "flags": "..F.A......",
+      "max": "40",
+      "min": "-20",
+      "name": "gain",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "lfe"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set lfe gain in dB (from -20 to 40) (default 0)",
+      "flags": "..F.A......",
+      "max": "40",
+      "min": "-20",
+      "name": "lfe",
+      "typing": "float"
+    },
+    {
+      "alias": [
+        "type"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "time domain",
+          "name": "time",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "frequency domain",
+          "name": "freq",
+          "value": "1"
+        }
+      ],
+      "default": "freq",
+      "description": "set processing (from 0 to 1) (default freq)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "type",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "size"
+      ],
+      "choices": [],
+      "default": "1024",
+      "description": "set frame size (from 1024 to 96000) (default 1024)",
+      "flags": "..F.A......",
+      "max": "96000",
+      "min": "1024",
+      "name": "size",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "hrir"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "hrir files have exactly 2 channels",
+          "name": "stereo",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "single multichannel hrir file",
+          "name": "multich",
+          "value": "1"
+        }
+      ],
+      "default": "stereo",
+      "description": "set hrir format (from 0 to 1) (default stereo)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "hrir",
+      "typing": "int"
+    }
+  ],
+  "output_types": [
+    {
+      "name": "default",
+      "type": "audio"
+    }
+  ]
+}

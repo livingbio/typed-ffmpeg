@@ -1,5 +1,5 @@
 {
-  "description": "### 11.189 perspective\n\nCorrect perspective of video not recorded perpendicular to the screen.\n\nA description of the accepted parameters follows.\n\n**x0**\n\n**y0**\n\n**x1**\n\n**y1**\n\n**x2**\n\n**y2**\n\n**x3**\n\n**y3**\n\n    Set coordinates expression for top left, top right, bottom left and bottom right corners. Default values are 0:0:W:0:0:H:W:H with which perspective will remain unchanged. If the sense option is set to source, then the specified points will be sent to the corners of the destination. If the sense option is set to destination, then the corners of the source will be sent to the specified coordinates. The expressions can use the following variables: W H the width and height of video frame. in Input frame count. on Output frame count. \n\n**interpolation**\n\n    Set interpolation for perspective correction. It accepts the following values: \u2018linear\u2019 \u2018cubic\u2019 Default value is \u2018linear\u2019. \n\n**sense**\n\n    Set interpretation of coordinate options. It accepts the following values: \u20180, source\u2019 Send point in the source specified by the given coordinates to the corners of the destination. \u20181, destination\u2019 Send the corners of the source to the point in the destination specified by the given coordinates. Default value is \u2018source\u2019. \n\n**eval**\n\n    Set when the expressions for coordinates x0,y0,...x3,y3 are evaluated. It accepts the following values: \u2018init\u2019 only evaluate expressions once during the filter initialization or when a command is processed \u2018frame\u2019 evaluate expressions for each incoming frame Default value is \u2018init\u2019. \n\n",
+  "description": "Correct the perspective of video.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -22,10 +22,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "set top left x coordinate",
+      "description": "set top left x coordinate (default \"0\")",
       "name": "x0",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,10 +33,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "set top left y coordinate",
+      "description": "set top left y coordinate (default \"0\")",
       "name": "y0",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -44,10 +44,10 @@
       ],
       "choices": [],
       "default": "W",
-      "description": "set top right x coordinate",
+      "description": "set top right x coordinate (default \"W\")",
       "name": "x1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -55,10 +55,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "set top right y coordinate",
+      "description": "set top right y coordinate (default \"0\")",
       "name": "y1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -66,10 +66,10 @@
       ],
       "choices": [],
       "default": "0",
-      "description": "set bottom left x coordinate",
+      "description": "set bottom left x coordinate (default \"0\")",
       "name": "x2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -77,10 +77,10 @@
       ],
       "choices": [],
       "default": "H",
-      "description": "set bottom left y coordinate",
+      "description": "set bottom left y coordinate (default \"H\")",
       "name": "y2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -88,10 +88,10 @@
       ],
       "choices": [],
       "default": "W",
-      "description": "set bottom right x coordinate",
+      "description": "set bottom right x coordinate (default \"W\")",
       "name": "x3",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -99,10 +99,10 @@
       ],
       "choices": [],
       "default": "H",
-      "description": "set bottom right y coordinate",
+      "description": "set bottom right y coordinate (default \"H\")",
       "name": "y3",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -112,19 +112,19 @@
         {
           "help": "",
           "name": "linear",
-          "value": 0
+          "value": "0"
         },
         {
           "help": "",
           "name": "cubic",
-          "value": 1
+          "value": "1"
         }
       ],
-      "default": 0,
-      "description": "set interpolation",
+      "default": "linear",
+      "description": "set interpolation (from 0 to 1) (default linear)",
       "name": "interpolation",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -134,30 +134,41 @@
         {
           "help": "specify locations in source to send to corners in destination",
           "name": "source",
-          "value": "PERSPECTIVE_SENSE_SOURCE"
+          "value": "0"
         },
         {
           "help": "specify locations in destination to send corners of source",
           "name": "destination",
-          "value": "PERSPECTIVE_SENSE_DESTINATION"
+          "value": "1"
         }
       ],
-      "default": "PERSPECTIVE_SENSE_SOURCE",
-      "description": "specify the sense of the coordinates",
+      "default": "source",
+      "description": "specify the sense of the coordinates (from 0 to 1) (default source)",
       "name": "sense",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "eval"
       ],
-      "choices": [],
-      "default": "EVAL_MODE_INIT",
-      "description": "specify when to evaluate expressions",
+      "choices": [
+        {
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "help": "eval expressions per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -172,7 +183,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#perspective"

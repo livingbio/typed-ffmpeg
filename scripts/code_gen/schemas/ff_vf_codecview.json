@@ -1,5 +1,5 @@
 {
-  "description": "### 11.30 codecview\n\nVisualize information exported by some codecs.\n\nSome codecs can export information through frames using side-data or other\nmeans. For example, some MPEG based codecs export motion vectors through the\nexport_mvs flag in the codec flags2 option.\n\nThe filter accepts the following option:\n\n**block**\n\n    Display block partition structure using the luma plane. \n\n**mv**\n\n    Set motion vectors to visualize. Available flags for mv are: \u2018pf\u2019 forward predicted MVs of P-frames \u2018bf\u2019 forward predicted MVs of B-frames \u2018bb\u2019 backward predicted MVs of B-frames \n\n**qp**\n\n    Display quantization parameters using the chroma planes. \n\n**mv_type, mvt**\n\n    Set motion vectors type to visualize. Includes MVs from all frames unless specified by frame_type option. Available flags for mv_type are: \u2018fp\u2019 forward predicted MVs \u2018bp\u2019 backward predicted MVs \n\n**frame_type, ft**\n\n    Set frame type to visualize motion vectors of. Available flags for frame_type are: \u2018if\u2019 intra-coded frames (I-frames) \u2018pf\u2019 predicted frames (P-frames) \u2018bf\u2019 bi-directionally predicted frames (B-frames) \n\n",
+  "description": "Visualize information about some codecs.",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -24,35 +24,35 @@
         {
           "help": "forward predicted MVs of P-frames",
           "name": "pf",
-          "value": "(1<<0)"
+          "value": "pf"
         },
         {
           "help": "forward predicted MVs of B-frames",
           "name": "bf",
-          "value": "(1<<1)"
+          "value": "bf"
         },
         {
           "help": "backward predicted MVs of B-frames",
           "name": "bb",
-          "value": "(1<<2)"
+          "value": "bb"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set motion vectors to visualize.\n</p>\n<p>Available flags for <var>mv</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>pf</samp>\u2019</dt>\n<dd><p>forward predicted MVs of P-frames\n</p></dd>\n<dt>\u2018<samp>bf</samp>\u2019</dt>\n<dd><p>forward predicted MVs of B-frames\n</p></dd>\n<dt>\u2018<samp>bb</samp>\u2019</dt>\n<dd><p>backward predicted MVs of B-frames\n</p></dd>\n</dl>\n</dd>",
+      "default": "0",
+      "description": "set motion vectors to visualize (default 0)",
       "name": "mv",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
         "qp"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Display quantization parameters using the chroma planes.\n</p>\n</dd>",
+      "default": "false",
+      "description": "(default false)",
       "name": "qp",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -63,19 +63,19 @@
         {
           "help": "forward predicted MVs",
           "name": "fp",
-          "value": "(1<<0)"
+          "value": "fp"
         },
         {
           "help": "backward predicted MVs",
           "name": "bp",
-          "value": "(1<<1)"
+          "value": "bp"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set motion vectors type to visualize. Includes MVs from all frames unless specified by <var>frame_type</var> option.\n</p>\n<p>Available flags for <var>mv_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>fp</samp>\u2019</dt>\n<dd><p>forward predicted MVs\n</p></dd>\n<dt>\u2018<samp>bp</samp>\u2019</dt>\n<dd><p>backward predicted MVs\n</p></dd>\n</dl>\n</dd>",
+      "default": "0",
+      "description": "set motion vectors type (default 0)",
       "name": "mv_type",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -86,35 +86,35 @@
         {
           "help": "I-frames",
           "name": "if",
-          "value": "(1<<0)"
+          "value": "if"
         },
         {
           "help": "P-frames",
           "name": "pf",
-          "value": "(1<<1)"
+          "value": "pf"
         },
         {
           "help": "B-frames",
           "name": "bf",
-          "value": "(1<<2)"
+          "value": "bf"
         }
       ],
-      "default": 0,
-      "description": "<dd><p>Set frame type to visualize motion vectors of.\n</p>\n<p>Available flags for <var>frame_type</var> are:\n</p>\n<dl compact=\"compact\">\n<dt>\u2018<samp>if</samp>\u2019</dt>\n<dd><p>intra-coded frames (I-frames)\n</p></dd>\n<dt>\u2018<samp>pf</samp>\u2019</dt>\n<dd><p>predicted frames (P-frames)\n</p></dd>\n<dt>\u2018<samp>bf</samp>\u2019</dt>\n<dd><p>bi-directionally predicted frames (B-frames)\n</p></dd>\n</dl>\n</dd>",
+      "default": "0",
+      "description": "set frame types to visualize motion vectors of (default 0)",
       "name": "frame_type",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
         "block"
       ],
       "choices": [],
-      "default": 0,
-      "description": "<dd><p>Display block partition structure using the luma plane.\n</p>\n</dd>",
+      "default": "false",
+      "description": "set block partitioning structure to visualize (default false)",
       "name": "block",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -129,7 +129,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#codecview"
