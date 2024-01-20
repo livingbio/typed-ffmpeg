@@ -21,7 +21,7 @@
         "c0"
       ],
       "choices": [],
-      "default": "\"val\"",
+      "default": "val",
       "description": "set component #0 expression (default \"val\")",
       "name": "c0",
       "required": false,
@@ -32,7 +32,7 @@
         "c1"
       ],
       "choices": [],
-      "default": "\"val\"",
+      "default": "val",
       "description": "set component #1 expression (default \"val\")",
       "name": "c1",
       "required": false,
@@ -43,7 +43,7 @@
         "c2"
       ],
       "choices": [],
-      "default": "\"val\"",
+      "default": "val",
       "description": "set component #2 expression (default \"val\")",
       "name": "c2",
       "required": false,
@@ -54,7 +54,7 @@
         "c3"
       ],
       "choices": [],
-      "default": "\"val\"",
+      "default": "val",
       "description": "set component #3 expression (default \"val\")",
       "name": "c3",
       "required": false,

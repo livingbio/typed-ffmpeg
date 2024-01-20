@@ -44,7 +44,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set background fill color (default \"black\")",
       "name": "fillcolor",
       "required": false,

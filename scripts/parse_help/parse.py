@@ -74,7 +74,7 @@ def _parse_default(default: str, type: str) -> int | float | bool | str:
             case "float":
                 return float(default)
             case "string":
-                return default
+                return default.strip('"') if default is not None else None
             case "video_rate":
                 return default
             case "image_size":

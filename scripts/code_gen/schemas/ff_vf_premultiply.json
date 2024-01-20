@@ -27,7 +27,7 @@
         "inplace"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable inplace mode (default false)",
       "name": "inplace",
       "required": false,

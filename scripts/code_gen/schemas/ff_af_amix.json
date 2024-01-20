@@ -65,7 +65,7 @@
         "weights"
       ],
       "choices": [],
-      "default": "\"1 1\"",
+      "default": "1 1",
       "description": "Set weight for each input. (default \"1 1\")",
       "name": "weights",
       "required": false,
@@ -76,7 +76,7 @@
         "normalize"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "Scale inputs (default true)",
       "name": "normalize",
       "required": false,

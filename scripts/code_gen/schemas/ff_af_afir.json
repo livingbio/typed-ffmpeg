@@ -135,7 +135,7 @@
         "response"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "show IR frequency response (default false)",
       "name": "response",
       "required": false,

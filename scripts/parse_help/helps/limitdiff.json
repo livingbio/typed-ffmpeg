@@ -39,7 +39,7 @@
         "reference"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable reference stream (default false)",
       "flags": "..FV.......",
       "max": null,

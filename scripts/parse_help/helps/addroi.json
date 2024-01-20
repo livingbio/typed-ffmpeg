@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "Region distance from left edge of frame. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "Region distance from top edge of frame. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "w"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "Region width. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "Region height. (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "clear"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "Remove any existing regions of interest before adding the new one. (default false)",
       "flags": "..FV.......",
       "max": null,

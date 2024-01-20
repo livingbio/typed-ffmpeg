@@ -41,7 +41,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"44100\"",
+      "default": "44100",
       "description": "set the sample rate (default \"44100\")",
       "flags": "..F.A......",
       "max": null,

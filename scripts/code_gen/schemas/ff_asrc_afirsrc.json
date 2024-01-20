@@ -29,7 +29,7 @@
         "f"
       ],
       "choices": [],
-      "default": "\"0 1\"",
+      "default": "0 1",
       "description": "set frequency points (default \"0 1\")",
       "name": "frequency",
       "required": false,
@@ -41,7 +41,7 @@
         "m"
       ],
       "choices": [],
-      "default": "\"1 1\"",
+      "default": "1 1",
       "description": "set magnitude values (default \"1 1\")",
       "name": "magnitude",
       "required": false,
@@ -53,7 +53,7 @@
         "p"
       ],
       "choices": [],
-      "default": "\"0 0\"",
+      "default": "0 0",
       "description": "set phase values (default \"0 0\")",
       "name": "phase",
       "required": false,

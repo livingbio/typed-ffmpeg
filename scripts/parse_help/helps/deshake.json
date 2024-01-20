@@ -199,7 +199,7 @@
         "opencl"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "ignored (default false)",
       "flags": "..FV.......",
       "max": null,

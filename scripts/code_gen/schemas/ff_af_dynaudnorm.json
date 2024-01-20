@@ -82,7 +82,7 @@
         "n"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set channel coupling (default true)",
       "name": "coupling",
       "required": false,
@@ -94,7 +94,7 @@
         "c"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set DC correction (default false)",
       "name": "correctdc",
       "required": false,
@@ -106,7 +106,7 @@
         "b"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set alternative boundary mode (default false)",
       "name": "altboundary",
       "required": false,
@@ -142,7 +142,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,

@@ -50,7 +50,7 @@
         "flags"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "Flags to pass to libswscale (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -63,7 +63,7 @@
         "interl"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set interlacing (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -125,7 +125,7 @@
           "value": "bt2020"
         }
       ],
-      "default": "\"auto\"",
+      "default": "auto",
       "description": "set input YCbCr type (default \"auto\")",
       "flags": "..FV.......",
       "max": null,

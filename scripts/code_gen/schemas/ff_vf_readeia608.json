@@ -54,7 +54,7 @@
         "chp"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "check and apply parity bit (default false)",
       "name": "chp",
       "required": false,
@@ -65,7 +65,7 @@
         "lp"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "lowpass line prior to processing (default true)",
       "name": "lp",
       "required": false,

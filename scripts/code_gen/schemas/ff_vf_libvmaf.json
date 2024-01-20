@@ -47,7 +47,7 @@
         "log_fmt"
       ],
       "choices": [],
-      "default": "\"xml\"",
+      "default": "xml",
       "description": "Set the format of the log (csv, json, xml, or sub). (default \"xml\")",
       "name": "log_fmt",
       "required": false,
@@ -59,7 +59,7 @@
         "phone_model"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use model='enable_transform=true'. (default false)",
       "name": "enable_transform",
       "required": false,
@@ -70,7 +70,7 @@
         "psnr"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use feature='name=psnr'. (default false)",
       "name": "psnr",
       "required": false,
@@ -81,7 +81,7 @@
         "ssim"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use feature='name=float_ssim'. (default false)",
       "name": "ssim",
       "required": false,
@@ -92,7 +92,7 @@
         "ms_ssim"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use feature='name=float_ms_ssim'. (default false)",
       "name": "ms_ssim",
       "required": false,
@@ -136,7 +136,7 @@
         "enable_conf_interval"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "model='enable_conf_interval=true'. (default false)",
       "name": "enable_conf_interval",
       "required": false,
@@ -147,7 +147,7 @@
         "model"
       ],
       "choices": [],
-      "default": "\"version=vmaf_v0.6.1\"",
+      "default": "version=vmaf_v0.6.1",
       "description": "Set the model to be used for computing vmaf. (default \"version=vmaf_v0.6.1\")",
       "name": "model",
       "required": false,
@@ -196,7 +196,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
@@ -207,7 +207,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,

@@ -101,7 +101,7 @@
         "profile"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "profile noise (default false)",
       "name": "profile",
       "required": false,
@@ -112,7 +112,7 @@
         "adaptive"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "adaptive profiling of noise (default false)",
       "name": "adaptive",
       "required": false,

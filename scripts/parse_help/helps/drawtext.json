@@ -70,7 +70,7 @@
         "fontcolor_expr"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "set foreground color expression (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -122,7 +122,7 @@
         "box"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set box (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -174,7 +174,7 @@
         "x"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set x expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -187,7 +187,7 @@
         "y"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set y expression (default \"0\")",
       "flags": "..FV.......",
       "max": null,
@@ -265,7 +265,7 @@
         "font"
       ],
       "choices": [],
-      "default": "\"Sans\"",
+      "default": "Sans",
       "description": "Font name (default \"Sans\")",
       "flags": "..FV.......",
       "max": null,
@@ -323,7 +323,7 @@
         "tc24hmax"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set 24 hours max (timecode only) (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -364,7 +364,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": "\"1\"",
+      "default": "1",
       "description": "apply alpha while rendering (default \"1\")",
       "flags": "..FV.......",
       "max": null,
@@ -377,7 +377,7 @@
         "fix_bounds"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "check and fix text coords to avoid clipping (default false)",
       "flags": "..FV.......",
       "max": null,

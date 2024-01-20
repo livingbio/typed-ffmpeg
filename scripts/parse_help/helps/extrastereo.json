@@ -31,7 +31,7 @@
         "c"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "enable clipping (default true)",
       "flags": "..F.A....T.",
       "max": null,

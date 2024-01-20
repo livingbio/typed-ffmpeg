@@ -145,7 +145,7 @@
         "lightness"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set the preserve lightness (default false)",
       "name": "lightness",
       "required": false,

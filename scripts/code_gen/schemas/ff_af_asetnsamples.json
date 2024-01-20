@@ -34,7 +34,7 @@
         "p"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "pad last frame with zeros (default true)",
       "name": "pad",
       "required": false,

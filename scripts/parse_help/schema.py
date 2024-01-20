@@ -57,7 +57,7 @@ class AVOption(BaseModel):
     ]
     min: str | None = None
     max: str | None = None
-    default: int | float | bool | str | None = None
+    default: bool | int | float | str | None = None
     choices: list[AVChoice] = []
     flags: str = None
 

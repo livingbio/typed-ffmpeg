@@ -89,7 +89,7 @@
         "n"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set channel coupling (default true)",
       "flags": "..F.A....T.",
       "max": null,
@@ -103,7 +103,7 @@
         "c"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set DC correction (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -117,7 +117,7 @@
         "b"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set alternative boundary mode (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -159,7 +159,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "set channels to filter (default \"all\")",
       "flags": "..F.A....T.",
       "max": null,

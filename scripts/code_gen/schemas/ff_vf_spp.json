@@ -65,7 +65,7 @@
         "use_bframe_qp"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use B-frames' QP (default false)",
       "name": "use_bframe_qp",
       "required": false,

@@ -94,7 +94,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
@@ -106,7 +106,7 @@
         "i"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set inverted filtering (default false)",
       "name": "invert",
       "required": false,
@@ -118,7 +118,7 @@
         "l"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set linked channels filtering (default false)",
       "name": "link",
       "required": false,

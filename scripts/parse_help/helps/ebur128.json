@@ -18,7 +18,7 @@
         "video"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set video output (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -89,7 +89,7 @@
         "metadata"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "inject metadata in the filtergraph (default false)",
       "flags": "..FVA......",
       "max": null,
@@ -134,7 +134,7 @@
         "dualmono"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "treat mono input files as dual-mono (default false)",
       "flags": "..F.A......",
       "max": null,

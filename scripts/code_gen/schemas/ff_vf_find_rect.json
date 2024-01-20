@@ -68,7 +68,7 @@
         "discard"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "(default false)",
       "name": "discard",
       "required": false,

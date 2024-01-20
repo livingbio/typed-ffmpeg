@@ -19,7 +19,7 @@
         "z"
       ],
       "choices": [],
-      "default": "\"1+0i 1-0i\"",
+      "default": "1+0i 1-0i",
       "description": "set B/numerator/zeros/reflection coefficients (default \"1+0i 1-0i\")",
       "flags": "..F.A......",
       "max": null,
@@ -33,7 +33,7 @@
         "p"
       ],
       "choices": [],
-      "default": "\"1+0i 1-0i\"",
+      "default": "1+0i 1-0i",
       "description": "set A/denominator/poles/ladder coefficients (default \"1+0i 1-0i\")",
       "flags": "..F.A......",
       "max": null,
@@ -47,7 +47,7 @@
         "k"
       ],
       "choices": [],
-      "default": "\"1|1\"",
+      "default": "1|1",
       "description": "set channels gains (default \"1|1\")",
       "flags": "..F.A......",
       "max": null,
@@ -253,7 +253,7 @@
         "n"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "normalize coefficients (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -279,7 +279,7 @@
         "response"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "show IR frequency response (default false)",
       "flags": "..FV.......",
       "max": null,

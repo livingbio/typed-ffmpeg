@@ -19,7 +19,7 @@
         "a"
       ],
       "choices": [],
-      "default": "\"0\"",
+      "default": "0",
       "description": "set angle (in radians) (default \"0\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -33,7 +33,7 @@
         "ow"
       ],
       "choices": [],
-      "default": "\"iw\"",
+      "default": "iw",
       "description": "set output width expression (default \"iw\")",
       "flags": "..FV.......",
       "max": null,
@@ -47,7 +47,7 @@
         "oh"
       ],
       "choices": [],
-      "default": "\"ih\"",
+      "default": "ih",
       "description": "set output height expression (default \"ih\")",
       "flags": "..FV.......",
       "max": null,
@@ -61,7 +61,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set background fill color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -74,7 +74,7 @@
         "bilinear"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "use bilinear interpolation (default true)",
       "flags": "..FV.......",
       "max": null,

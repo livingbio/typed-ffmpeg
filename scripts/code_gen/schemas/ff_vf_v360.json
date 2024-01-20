@@ -498,7 +498,7 @@
         "in_forder"
       ],
       "choices": [],
-      "default": "\"rludfb\"",
+      "default": "rludfb",
       "description": "input cubemap face order (default \"rludfb\")",
       "name": "in_forder",
       "required": false,
@@ -509,7 +509,7 @@
         "out_forder"
       ],
       "choices": [],
-      "default": "\"rludfb\"",
+      "default": "rludfb",
       "description": "output cubemap face order (default \"rludfb\")",
       "name": "out_forder",
       "required": false,
@@ -520,7 +520,7 @@
         "in_frot"
       ],
       "choices": [],
-      "default": "\"000000\"",
+      "default": "000000",
       "description": "input cubemap face rotation (default \"000000\")",
       "name": "in_frot",
       "required": false,
@@ -531,7 +531,7 @@
         "out_frot"
       ],
       "choices": [],
-      "default": "\"000000\"",
+      "default": "000000",
       "description": "output cubemap face rotation (default \"000000\")",
       "name": "out_frot",
       "required": false,
@@ -619,7 +619,7 @@
         "rorder"
       ],
       "choices": [],
-      "default": "\"ypr\"",
+      "default": "ypr",
       "description": "rotation order (default \"ypr\")",
       "name": "rorder",
       "required": false,
@@ -663,7 +663,7 @@
         "h_flip"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "flip out video horizontally (default false)",
       "name": "h_flip",
       "required": false,
@@ -674,7 +674,7 @@
         "v_flip"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "flip out video vertically (default false)",
       "name": "v_flip",
       "required": false,
@@ -685,7 +685,7 @@
         "d_flip"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "flip out video indepth (default false)",
       "name": "d_flip",
       "required": false,
@@ -696,7 +696,7 @@
         "ih_flip"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "flip in video horizontally (default false)",
       "name": "ih_flip",
       "required": false,
@@ -707,7 +707,7 @@
         "iv_flip"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "flip in video vertically (default false)",
       "name": "iv_flip",
       "required": false,
@@ -718,7 +718,7 @@
         "in_trans"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "transpose video input (default false)",
       "name": "in_trans",
       "required": false,
@@ -729,7 +729,7 @@
         "out_trans"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "transpose video output (default false)",
       "name": "out_trans",
       "required": false,
@@ -795,7 +795,7 @@
         "alpha_mask"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "build mask in alpha plane (default false)",
       "name": "alpha_mask",
       "required": false,
@@ -806,7 +806,7 @@
         "reset_rot"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "reset rotation (default false)",
       "name": "reset_rot",
       "required": false,

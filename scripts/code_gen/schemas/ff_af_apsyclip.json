@@ -54,7 +54,7 @@
         "diff"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable difference (default false)",
       "name": "diff",
       "required": false,
@@ -87,7 +87,7 @@
         "level"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set auto level (default false)",
       "name": "level",
       "required": false,

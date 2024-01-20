@@ -58,7 +58,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable processing of alpha channel (default false)",
       "flags": "..FV.......",
       "max": null,

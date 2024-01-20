@@ -84,7 +84,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"PEAK*255+floor((1-PEAK",
+      "default": "PEAK*255+floor((1-PEAK",
       "description": "set volume color expression (default \"PEAK*255+floor((1-PEAK)*255)*256+0xff000000\")",
       "flags": "..FV.......",
       "max": null,
@@ -97,7 +97,7 @@
         "t"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "display channel names (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -110,7 +110,7 @@
         "v"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "display volume value (default true)",
       "flags": "..FV.......",
       "max": null,

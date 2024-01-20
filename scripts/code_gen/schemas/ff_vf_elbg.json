@@ -57,7 +57,7 @@
         "pal8"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set the pal8 output (default false)",
       "name": "pal8",
       "required": false,
@@ -68,7 +68,7 @@
         "use_alpha"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use alpha channel for mapping (default false)",
       "name": "use_alpha",
       "required": false,

@@ -21,7 +21,7 @@
         "real"
       ],
       "choices": [],
-      "default": "\"re\"",
+      "default": "re",
       "description": "set channels real expressions (default \"re\")",
       "name": "real",
       "required": false,
@@ -32,7 +32,7 @@
         "imag"
       ],
       "choices": [],
-      "default": "\"im\"",
+      "default": "im",
       "description": "set channels imaginary expressions (default \"im\")",
       "name": "imag",
       "required": false,

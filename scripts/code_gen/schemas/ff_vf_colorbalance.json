@@ -120,7 +120,7 @@
         "pl"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "preserve lightness (default false)",
       "name": "pl",
       "required": false,

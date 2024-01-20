@@ -103,7 +103,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "set channels to filter (default \"all\")",
       "flags": "..F.A....T.",
       "max": null,
@@ -117,7 +117,7 @@
         "i"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set inverted filtering (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -131,7 +131,7 @@
         "l"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set linked channels filtering (default false)",
       "flags": "..F.A....T.",
       "max": null,

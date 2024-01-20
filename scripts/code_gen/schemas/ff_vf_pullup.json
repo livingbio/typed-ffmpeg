@@ -65,7 +65,7 @@
         "sb"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set strict breaks (default false)",
       "name": "sb",
       "required": false,

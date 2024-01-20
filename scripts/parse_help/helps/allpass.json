@@ -106,7 +106,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "set channels to filter (default \"all\")",
       "flags": "..F.A....T.",
       "max": null,
@@ -120,7 +120,7 @@
         "n"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "normalize coefficients (default false)",
       "flags": "..F.A....T.",
       "max": null,

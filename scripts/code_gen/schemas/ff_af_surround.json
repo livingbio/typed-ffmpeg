@@ -21,7 +21,7 @@
         "chl_out"
       ],
       "choices": [],
-      "default": "\"5.1\"",
+      "default": "5.1",
       "description": "set output channel layout (default \"5.1\")",
       "name": "chl_out",
       "required": false,
@@ -32,7 +32,7 @@
         "chl_in"
       ],
       "choices": [],
-      "default": "\"stereo\"",
+      "default": "stereo",
       "description": "set input channel layout (default \"stereo\")",
       "name": "chl_in",
       "required": false,
@@ -65,7 +65,7 @@
         "lfe"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "output LFE (default true)",
       "name": "lfe",
       "required": false,

@@ -52,7 +52,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -65,7 +65,7 @@
         "fill"
       ],
       "choices": [],
-      "default": "\"none\"",
+      "default": "none",
       "description": "set the color for unused pixels (default \"none\")",
       "flags": "..FV.......",
       "max": null,

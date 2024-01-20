@@ -18,7 +18,7 @@
         "real"
       ],
       "choices": [],
-      "default": "\"re\"",
+      "default": "re",
       "description": "set channels real expressions (default \"re\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "imag"
       ],
       "choices": [],
-      "default": "\"im\"",
+      "default": "im",
       "description": "set channels imaginary expressions (default \"im\")",
       "flags": "..F.A......",
       "max": null,

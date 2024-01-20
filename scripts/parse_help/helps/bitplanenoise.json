@@ -31,7 +31,7 @@
         "filter"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "show noisy pixels (default false)",
       "flags": "..FV.......",
       "max": null,

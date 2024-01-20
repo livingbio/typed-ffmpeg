@@ -58,7 +58,7 @@
         "filename"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "filename for output files (default \"\")",
       "flags": "..FV.......",
       "max": null,

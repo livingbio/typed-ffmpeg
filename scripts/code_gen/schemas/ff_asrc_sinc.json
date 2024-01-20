@@ -95,7 +95,7 @@
         "round"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable rounding (default false)",
       "name": "round",
       "required": false,

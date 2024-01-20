@@ -1203,7 +1203,7 @@
         "agamma"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "allow approximate gamma (default true)",
       "flags": "..FV.......",
       "max": null,

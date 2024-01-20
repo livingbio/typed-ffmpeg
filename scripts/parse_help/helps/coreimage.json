@@ -18,7 +18,7 @@
         "list_filters"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "list available filters (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "list_generators"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "list available generators (default false)",
       "flags": "..FV.......",
       "max": null,

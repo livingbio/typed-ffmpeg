@@ -69,7 +69,7 @@
         "co"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set complement colors (default false)",
       "flags": "..FV.......",
       "max": null,

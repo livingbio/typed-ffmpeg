@@ -231,7 +231,7 @@
         "swap"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "swap x axis with y axis (default true)",
       "name": "swap",
       "required": false,

@@ -31,7 +31,7 @@
         "reserve_transparent"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "reserve a palette entry for transparency (default true)",
       "flags": "..FV.......",
       "max": null,

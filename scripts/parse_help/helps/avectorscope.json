@@ -266,7 +266,7 @@
         "swap"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "swap x axis with y axis (default true)",
       "flags": "..FV.....T.",
       "max": null,

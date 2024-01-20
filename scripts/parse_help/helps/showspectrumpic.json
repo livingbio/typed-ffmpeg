@@ -436,7 +436,7 @@
         "legend"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw legend (default true)",
       "flags": "..FV.......",
       "max": null,

@@ -54,7 +54,7 @@
         "yuv"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "color parameter is in yuv instead of rgb (default false)",
       "name": "yuv",
       "required": false,

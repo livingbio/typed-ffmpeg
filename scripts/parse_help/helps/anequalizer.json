@@ -18,7 +18,7 @@
         "params"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "(default \"\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "curves"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "draw frequency response curves (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "colors"
       ],
       "choices": [],
-      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "set channels curves colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "flags": "..FV.......",
       "max": null,

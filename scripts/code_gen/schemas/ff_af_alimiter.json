@@ -76,7 +76,7 @@
         "asc"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable asc (default false)",
       "name": "asc",
       "required": false,
@@ -98,7 +98,7 @@
         "level"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "auto level (default true)",
       "name": "level",
       "required": false,
@@ -109,7 +109,7 @@
         "latency"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "compensate delay (default false)",
       "name": "latency",
       "required": false,

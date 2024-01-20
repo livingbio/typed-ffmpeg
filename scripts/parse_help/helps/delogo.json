@@ -18,7 +18,7 @@
         "x"
       ],
       "choices": [],
-      "default": "\"-1\"",
+      "default": "-1",
       "description": "set logo x position (default \"-1\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "y"
       ],
       "choices": [],
-      "default": "\"-1\"",
+      "default": "-1",
       "description": "set logo y position (default \"-1\")",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "w"
       ],
       "choices": [],
-      "default": "\"-1\"",
+      "default": "-1",
       "description": "set logo width (default \"-1\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "h"
       ],
       "choices": [],
-      "default": "\"-1\"",
+      "default": "-1",
       "description": "set logo height (default \"-1\")",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "show"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "show delogo area (default false)",
       "flags": "..FV.......",
       "max": null,

@@ -148,7 +148,7 @@
         "g"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw trace grid (default true)",
       "flags": "..FV.....T.",
       "max": null,
@@ -161,7 +161,7 @@
         "st"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw statistics (default true)",
       "flags": "..FV.....T.",
       "max": null,
@@ -174,7 +174,7 @@
         "sc"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw scope (default true)",
       "flags": "..FV.....T.",
       "max": null,

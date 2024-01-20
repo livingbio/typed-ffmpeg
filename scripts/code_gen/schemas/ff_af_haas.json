@@ -86,7 +86,7 @@
         "middle_phase"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set middle phase (default false)",
       "name": "middle_phase",
       "required": false,
@@ -130,7 +130,7 @@
         "left_phase"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set left phase (default false)",
       "name": "left_phase",
       "required": false,
@@ -174,7 +174,7 @@
         "right_phase"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set right phase (default true)",
       "name": "right_phase",
       "required": false,

@@ -57,7 +57,7 @@
         "r"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set mirroring (default true)",
       "name": "mirror",
       "required": false,

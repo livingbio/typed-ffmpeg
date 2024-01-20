@@ -52,7 +52,7 @@
         "unsafe"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable unsafe mode (default false)",
       "flags": "..FVA......",
       "max": null,

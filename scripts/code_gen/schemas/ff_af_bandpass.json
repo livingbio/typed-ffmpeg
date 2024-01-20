@@ -83,7 +83,7 @@
         "csg"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use constant skirt gain (default false)",
       "name": "csg",
       "required": false,
@@ -107,7 +107,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"all\"",
+      "default": "all",
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
@@ -119,7 +119,7 @@
         "n"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "normalize coefficients (default false)",
       "name": "normalize",
       "required": false,

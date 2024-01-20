@@ -170,7 +170,7 @@
         "direct"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "reduce buffering when printing to user-set file or pipe (default false)",
       "flags": "..F.A......",
       "max": null,

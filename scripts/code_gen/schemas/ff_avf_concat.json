@@ -49,7 +49,7 @@
         "unsafe"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable unsafe mode (default false)",
       "name": "unsafe",
       "required": false,

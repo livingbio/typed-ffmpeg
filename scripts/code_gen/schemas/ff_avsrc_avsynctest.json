@@ -89,7 +89,7 @@
         "c"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set delay cycle (default false)",
       "name": "cycle",
       "required": false,

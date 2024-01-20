@@ -120,7 +120,7 @@
         "lfo"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable LFO (default false)",
       "name": "lfo",
       "required": false,

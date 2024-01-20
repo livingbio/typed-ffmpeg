@@ -55,7 +55,7 @@
         "rule"
       ],
       "choices": [],
-      "default": "\"B3/S23\"",
+      "default": "B3/S23",
       "description": "set rule (default \"B3/S23\")",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "stitch"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "stitch boundaries (default true)",
       "flags": "..FV.......",
       "max": null,

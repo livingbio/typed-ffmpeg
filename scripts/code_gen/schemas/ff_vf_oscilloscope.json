@@ -131,7 +131,7 @@
         "g"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw trace grid (default true)",
       "name": "g",
       "required": false,
@@ -142,7 +142,7 @@
         "st"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw statistics (default true)",
       "name": "st",
       "required": false,
@@ -153,7 +153,7 @@
         "sc"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw scope (default true)",
       "name": "sc",
       "required": false,

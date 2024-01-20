@@ -54,7 +54,7 @@
         "filename"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "filename for output files (default \"\")",
       "name": "filename",
       "required": false,

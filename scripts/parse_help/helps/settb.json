@@ -19,7 +19,7 @@
         "tb"
       ],
       "choices": [],
-      "default": "\"intb\"",
+      "default": "intb",
       "description": "set expression determining the output timebase (default \"intb\")",
       "flags": "..FV.......",
       "max": null,

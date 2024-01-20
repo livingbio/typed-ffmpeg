@@ -143,7 +143,7 @@
         "ref"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "have reference stream (default false)",
       "flags": "..FV.......",
       "max": null,

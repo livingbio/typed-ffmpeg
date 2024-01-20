@@ -21,7 +21,7 @@
         "params"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "(default \"\")",
       "name": "params",
       "required": false,
@@ -32,7 +32,7 @@
         "curves"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "draw frequency response curves (default false)",
       "name": "curves",
       "required": false,
@@ -87,7 +87,7 @@
         "colors"
       ],
       "choices": [],
-      "default": "\"red|green|blue|yellow|orange|lime|pink|magenta|brown\"",
+      "default": "red|green|blue|yellow|orange|lime|pink|magenta|brown",
       "description": "set channels curves colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,

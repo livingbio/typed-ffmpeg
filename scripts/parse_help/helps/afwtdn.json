@@ -113,7 +113,7 @@
         "profile"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "profile noise (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -126,7 +126,7 @@
         "adaptive"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "adaptive profiling of noise (default false)",
       "flags": "..F.A....T.",
       "max": null,

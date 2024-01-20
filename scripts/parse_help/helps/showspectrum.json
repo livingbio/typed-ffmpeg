@@ -564,7 +564,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "\"auto\"",
+      "default": "auto",
       "description": "set video rate (default \"auto\")",
       "flags": "..FV.......",
       "max": null,
@@ -577,7 +577,7 @@
         "legend"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "draw legend (default false)",
       "flags": "..FV.......",
       "max": null,

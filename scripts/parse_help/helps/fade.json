@@ -73,7 +73,7 @@
         "alpha"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "fade alpha if it is available on the input (default false)",
       "flags": "..FV.......",
       "max": null,

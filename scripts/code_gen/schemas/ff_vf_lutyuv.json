@@ -21,7 +21,7 @@
         "c0"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set component #0 expression (default \"clipval\")",
       "name": "c0",
       "required": false,
@@ -32,7 +32,7 @@
         "c1"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set component #1 expression (default \"clipval\")",
       "name": "c1",
       "required": false,
@@ -43,7 +43,7 @@
         "c2"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set component #2 expression (default \"clipval\")",
       "name": "c2",
       "required": false,
@@ -54,7 +54,7 @@
         "c3"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set component #3 expression (default \"clipval\")",
       "name": "c3",
       "required": false,
@@ -65,7 +65,7 @@
         "y"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set Y expression (default \"clipval\")",
       "name": "y",
       "required": false,
@@ -76,7 +76,7 @@
         "u"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set U expression (default \"clipval\")",
       "name": "u",
       "required": false,
@@ -87,7 +87,7 @@
         "v"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set V expression (default \"clipval\")",
       "name": "v",
       "required": false,
@@ -98,7 +98,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set R expression (default \"clipval\")",
       "name": "r",
       "required": false,
@@ -109,7 +109,7 @@
         "g"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set G expression (default \"clipval\")",
       "name": "g",
       "required": false,
@@ -120,7 +120,7 @@
         "b"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set B expression (default \"clipval\")",
       "name": "b",
       "required": false,
@@ -131,7 +131,7 @@
         "a"
       ],
       "choices": [],
-      "default": "\"clipval\"",
+      "default": "clipval",
       "description": "set A expression (default \"clipval\")",
       "name": "a",
       "required": false,

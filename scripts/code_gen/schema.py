@@ -23,7 +23,7 @@ class FFmpegFilterOption(BaseModel):
     description: str | None = None
 
     typing: str
-    default: str | int | float | None = None
+    default: bool | int | float | str | None = None
     required: bool = False
     choices: list[Choice] = []
 

@@ -21,7 +21,7 @@
         "video"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set video output (default false)",
       "name": "video",
       "required": false,
@@ -81,7 +81,7 @@
         "metadata"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "inject metadata in the filtergraph (default false)",
       "name": "metadata",
       "required": false,
@@ -119,7 +119,7 @@
         "dualmono"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "treat mono input files as dual-mono (default false)",
       "name": "dualmono",
       "required": false,

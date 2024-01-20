@@ -31,7 +31,7 @@
         "language"
       ],
       "choices": [],
-      "default": "\"eng\"",
+      "default": "eng",
       "description": "set language (default \"eng\")",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "whitelist"
       ],
       "choices": [],
-      "default": "\"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}(",
+      "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}(",
       "description": "set character whitelist (default \"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}()<>|/\\=*&%$#@!~ \")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "blacklist"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "set character blacklist (default \"\")",
       "flags": "..FV.......",
       "max": null,

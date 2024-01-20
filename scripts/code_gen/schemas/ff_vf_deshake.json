@@ -174,7 +174,7 @@
         "opencl"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "ignored (default false)",
       "name": "opencl",
       "required": false,

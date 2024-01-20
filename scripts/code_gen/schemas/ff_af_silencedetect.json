@@ -46,7 +46,7 @@
         "m"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "check each channel separately (default false)",
       "name": "mono",
       "required": false,

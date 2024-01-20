@@ -99,7 +99,7 @@
         "b"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set blur (default true)",
       "flags": "..FV.....T.",
       "max": null,
@@ -113,7 +113,7 @@
         "c"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set plane coupling (default false)",
       "flags": "..FV.....T.",
       "max": null,

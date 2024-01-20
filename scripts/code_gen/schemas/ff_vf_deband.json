@@ -90,7 +90,7 @@
         "b"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set blur (default true)",
       "name": "blur",
       "required": false,
@@ -102,7 +102,7 @@
         "c"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set plane coupling (default false)",
       "name": "coupling",
       "required": false,

@@ -78,7 +78,7 @@
         "ppsrc"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "mark main input as a pre-processed input and activate clean source input stream (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -91,7 +91,7 @@
         "chroma"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set whether or not chroma is considered in the metric calculations (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -104,7 +104,7 @@
         "mixed"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set whether or not the input only partially contains content to be decimated (default false)",
       "flags": "..FV.......",
       "max": null,

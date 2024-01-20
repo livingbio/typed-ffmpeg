@@ -32,7 +32,7 @@
         "map"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set the map (default false)",
       "name": "map",
       "required": false,
@@ -43,7 +43,7 @@
         "order"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set the order (default false)",
       "name": "order",
       "required": false,
@@ -54,7 +54,7 @@
         "sharp"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set sharpening (default false)",
       "name": "sharp",
       "required": false,
@@ -65,7 +65,7 @@
         "twoway"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set twoway (default false)",
       "name": "twoway",
       "required": false,

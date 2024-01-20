@@ -1272,7 +1272,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
@@ -1283,7 +1283,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,

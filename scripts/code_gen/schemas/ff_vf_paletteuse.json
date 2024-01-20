@@ -105,7 +105,7 @@
         "new"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "take new palette for each output frame (default false)",
       "name": "new",
       "required": false,

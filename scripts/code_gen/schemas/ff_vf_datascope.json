@@ -82,7 +82,7 @@
         "axis"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "draw column/row numbers (default false)",
       "name": "axis",
       "required": false,

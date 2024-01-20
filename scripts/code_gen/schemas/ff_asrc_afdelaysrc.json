@@ -65,7 +65,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"stereo\"",
+      "default": "stereo",
       "description": "set channel layout (default \"stereo\")",
       "name": "channel_layout",
       "required": false,

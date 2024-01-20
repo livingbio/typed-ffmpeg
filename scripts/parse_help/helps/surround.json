@@ -18,7 +18,7 @@
         "chl_out"
       ],
       "choices": [],
-      "default": "\"5.1\"",
+      "default": "5.1",
       "description": "set output channel layout (default \"5.1\")",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "chl_in"
       ],
       "choices": [],
-      "default": "\"stereo\"",
+      "default": "stereo",
       "description": "set input channel layout (default \"stereo\")",
       "flags": "..F.A......",
       "max": null,
@@ -70,7 +70,7 @@
         "lfe"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "output LFE (default true)",
       "flags": "..F.A....T.",
       "max": null,

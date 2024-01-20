@@ -65,7 +65,7 @@
         "softclip"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable softclip (default false)",
       "name": "softclip",
       "required": false,
@@ -76,7 +76,7 @@
         "mutel"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "mute L (default false)",
       "name": "mutel",
       "required": false,
@@ -87,7 +87,7 @@
         "muter"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "mute R (default false)",
       "name": "muter",
       "required": false,
@@ -98,7 +98,7 @@
         "phasel"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "phase L (default false)",
       "name": "phasel",
       "required": false,
@@ -109,7 +109,7 @@
         "phaser"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "phase R (default false)",
       "name": "phaser",
       "required": false,

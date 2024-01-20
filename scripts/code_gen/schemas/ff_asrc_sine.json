@@ -64,7 +64,7 @@
         "samples_per_frame"
       ],
       "choices": [],
-      "default": "\"1024\"",
+      "default": "1024",
       "description": "set the number of samples per frame (default \"1024\")",
       "name": "samples_per_frame",
       "required": false,

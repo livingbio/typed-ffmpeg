@@ -128,7 +128,7 @@
         "linear"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "normalize linearly if possible (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -141,7 +141,7 @@
         "dual_mono"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "treat mono input as dual-mono (default false)",
       "flags": "..F.A......",
       "max": null,

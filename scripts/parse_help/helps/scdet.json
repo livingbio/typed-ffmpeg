@@ -33,7 +33,7 @@
         "s"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "Set the flag to pass scene change frames (default false)",
       "flags": "..FV.......",
       "max": null,

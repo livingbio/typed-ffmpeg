@@ -22,7 +22,7 @@
         "a"
       ],
       "choices": [],
-      "default": "\"PI/5\"",
+      "default": "PI/5",
       "description": "set lens angle (default \"PI/5\")",
       "name": "angle",
       "required": false,
@@ -33,7 +33,7 @@
         "x0"
       ],
       "choices": [],
-      "default": "\"w/2\"",
+      "default": "w/2",
       "description": "set circle center position on x-axis (default \"w/2\")",
       "name": "x0",
       "required": false,
@@ -44,7 +44,7 @@
         "y0"
       ],
       "choices": [],
-      "default": "\"h/2\"",
+      "default": "h/2",
       "description": "set circle center position on y-axis (default \"h/2\")",
       "name": "y0",
       "required": false,
@@ -99,7 +99,7 @@
         "dither"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set dithering (default true)",
       "name": "dither",
       "required": false,

@@ -28,7 +28,7 @@
         "f"
       ],
       "choices": [],
-      "default": "\"0 1\"",
+      "default": "0 1",
       "description": "set frequency points (default \"0 1\")",
       "flags": "..F.A......",
       "max": null,
@@ -42,7 +42,7 @@
         "m"
       ],
       "choices": [],
-      "default": "\"1 1\"",
+      "default": "1 1",
       "description": "set magnitude values (default \"1 1\")",
       "flags": "..F.A......",
       "max": null,
@@ -56,7 +56,7 @@
         "p"
       ],
       "choices": [],
-      "default": "\"0 0\"",
+      "default": "0 0",
       "description": "set phase values (default \"0 0\")",
       "flags": "..F.A......",
       "max": null,

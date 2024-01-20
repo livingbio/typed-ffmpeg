@@ -57,7 +57,7 @@
         "weight_Y"
       ],
       "choices": [],
-      "default": "\"1\"",
+      "default": "1",
       "description": "set luminance expression in Y plane (default \"1\")",
       "flags": "..FV.......",
       "max": null,

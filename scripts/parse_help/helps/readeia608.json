@@ -57,7 +57,7 @@
         "chp"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "check and apply parity bit (default false)",
       "flags": "..FV.....T.",
       "max": null,
@@ -70,7 +70,7 @@
         "lp"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "lowpass line prior to processing (default true)",
       "flags": "..FV.....T.",
       "max": null,

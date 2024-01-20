@@ -18,7 +18,7 @@
         "disable_autoconvert"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "Disable any format conversion or resampling in the filter graph. (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -31,7 +31,7 @@
         "process_stereo"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "Process stereo channels together. Only apply target_gain when both channels match. (default true)",
       "flags": "..F.A......",
       "max": null,
@@ -57,7 +57,7 @@
         "force_pe"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "Always extend peaks above -3dBFS even when PE is not signaled. (default false)",
       "flags": "..F.A......",
       "max": null,

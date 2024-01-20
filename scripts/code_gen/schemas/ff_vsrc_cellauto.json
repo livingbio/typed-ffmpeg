@@ -99,7 +99,7 @@
         "scroll"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "scroll pattern downward (default true)",
       "name": "scroll",
       "required": false,
@@ -110,7 +110,7 @@
         "start_full"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "start filling the whole video (default false)",
       "name": "start_full",
       "required": false,
@@ -121,7 +121,7 @@
         "full"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "start filling the whole video (default true)",
       "name": "full",
       "required": false,
@@ -132,7 +132,7 @@
         "stitch"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "stitch boundaries (default true)",
       "name": "stitch",
       "required": false,

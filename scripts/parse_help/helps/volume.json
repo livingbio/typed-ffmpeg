@@ -18,7 +18,7 @@
         "volume"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "set volume adjustment expression (default \"1.0\")",
       "flags": "..F.A....T.",
       "max": null,
@@ -140,7 +140,7 @@
         "replaygain_noclip"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "Apply replaygain clipping prevention (default true)",
       "flags": "..F.A......",
       "max": null,

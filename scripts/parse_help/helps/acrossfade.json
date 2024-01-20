@@ -51,7 +51,7 @@
         "o"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "overlap 1st stream end with 2nd stream start (default true)",
       "flags": "..F.A......",
       "max": null,

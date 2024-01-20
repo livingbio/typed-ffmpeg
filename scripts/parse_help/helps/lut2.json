@@ -22,7 +22,7 @@
         "c0"
       ],
       "choices": [],
-      "default": "\"x\"",
+      "default": "x",
       "description": "set component #0 expression (default \"x\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -35,7 +35,7 @@
         "c1"
       ],
       "choices": [],
-      "default": "\"x\"",
+      "default": "x",
       "description": "set component #1 expression (default \"x\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -48,7 +48,7 @@
         "c2"
       ],
       "choices": [],
-      "default": "\"x\"",
+      "default": "x",
       "description": "set component #2 expression (default \"x\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -61,7 +61,7 @@
         "c3"
       ],
       "choices": [],
-      "default": "\"x\"",
+      "default": "x",
       "description": "set component #3 expression (default \"x\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -119,7 +119,7 @@
         "shortest"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "force termination when the shortest input terminates (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -132,7 +132,7 @@
         "repeatlast"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "flags": "..FV.......",
       "max": null,

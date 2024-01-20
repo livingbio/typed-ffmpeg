@@ -21,7 +21,7 @@
         "input"
       ],
       "choices": [],
-      "default": "\"transforms.trf\"",
+      "default": "transforms.trf",
       "description": "set path to the file storing the transforms (default \"transforms.trf\")",
       "name": "input",
       "required": false,
@@ -201,7 +201,7 @@
         "tripod"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable virtual tripod mode (same as relative=0:smoothing=0) (default false)",
       "name": "tripod",
       "required": false,
@@ -212,7 +212,7 @@
         "debug"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable debug mode and writer global motions information to file (default false)",
       "name": "debug",
       "required": false,

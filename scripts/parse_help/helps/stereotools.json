@@ -70,7 +70,7 @@
         "softclip"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable softclip (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -83,7 +83,7 @@
         "mutel"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "mute L (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -96,7 +96,7 @@
         "muter"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "mute R (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -109,7 +109,7 @@
         "phasel"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "phase L (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -122,7 +122,7 @@
         "phaser"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "phase R (default false)",
       "flags": "..F.A....T.",
       "max": null,

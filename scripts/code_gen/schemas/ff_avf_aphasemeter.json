@@ -78,7 +78,7 @@
         "mpc"
       ],
       "choices": [],
-      "default": "\"none\"",
+      "default": "none",
       "description": "set median phase color (default \"none\")",
       "name": "mpc",
       "required": false,
@@ -89,7 +89,7 @@
         "video"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set video output (default true)",
       "name": "video",
       "required": false,
@@ -100,7 +100,7 @@
         "phasing"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set mono and out-of-phase detection output (default false)",
       "name": "phasing",
       "required": false,

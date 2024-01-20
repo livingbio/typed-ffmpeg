@@ -21,7 +21,7 @@
         "print_summary"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "Print summary showing average values (default false)",
       "name": "print_summary",
       "required": false,

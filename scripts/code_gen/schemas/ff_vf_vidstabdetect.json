@@ -21,7 +21,7 @@
         "result"
       ],
       "choices": [],
-      "default": "\"transforms.trf\"",
+      "default": "transforms.trf",
       "description": "path to the file used to write the transforms (default \"transforms.trf\")",
       "name": "result",
       "required": false,

@@ -57,7 +57,7 @@
         "diff"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable difference (default false)",
       "flags": "..F.A....T.",
       "max": null,
@@ -96,7 +96,7 @@
         "level"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set auto level (default false)",
       "flags": "..F.A....T.",
       "max": null,

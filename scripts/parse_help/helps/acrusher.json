@@ -135,7 +135,7 @@
         "lfo"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "enable LFO (default false)",
       "flags": "..F.A....T.",
       "max": null,

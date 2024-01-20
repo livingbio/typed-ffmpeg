@@ -60,7 +60,7 @@
         "pal8"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set the pal8 output (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -73,7 +73,7 @@
         "use_alpha"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use alpha channel for mapping (default false)",
       "flags": "..FV.......",
       "max": null,

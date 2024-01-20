@@ -57,7 +57,7 @@
         "use_bframe_qp"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "use B-frames' QP (default false)",
       "flags": "..FV.......",
       "max": null,

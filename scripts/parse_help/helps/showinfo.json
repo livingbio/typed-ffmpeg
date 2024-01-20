@@ -18,7 +18,7 @@
         "checksum"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "calculate checksums (default true)",
       "flags": "..FV.......",
       "max": null,

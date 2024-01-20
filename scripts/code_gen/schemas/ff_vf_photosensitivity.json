@@ -56,7 +56,7 @@
         "bypass"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "leave frames unchanged (default false)",
       "name": "bypass",
       "required": false,

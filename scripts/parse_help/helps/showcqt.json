@@ -86,7 +86,7 @@
         "fullhd"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "set fullhd size (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -100,7 +100,7 @@
         "volume"
       ],
       "choices": [],
-      "default": "\"16\"",
+      "default": "16",
       "description": "set sonogram volume (default \"16\")",
       "flags": "..FV.......",
       "max": null,
@@ -114,7 +114,7 @@
         "volume2"
       ],
       "choices": [],
-      "default": "\"sono_v\"",
+      "default": "sono_v",
       "description": "set bargraph volume (default \"sono_v\")",
       "flags": "..FV.......",
       "max": null,
@@ -234,7 +234,7 @@
         "tlength"
       ],
       "choices": [],
-      "default": "\"384*tc/(384+tc*f",
+      "default": "384*tc/(384+tc*f",
       "description": "set tlength (default \"384*tc/(384+tc*f)\")",
       "flags": "..FV.......",
       "max": null,
@@ -299,7 +299,7 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": "\"st(0, (midi(f",
+      "default": "st(0, (midi(f",
       "description": "set font color (default \"st(0, (midi(f)-59.5)/12);st(1, if(between(ld(0),0,1), 0.5-0.5*cos(2*PI*ld(0)), 0));r(1-ld(1)) + b(ld(1))\")",
       "flags": "..FV.......",
       "max": null,
@@ -326,7 +326,7 @@
         "text"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "draw axis (default true)",
       "flags": "..FV.......",
       "max": null,
@@ -395,7 +395,7 @@
         "cscheme"
       ],
       "choices": [],
-      "default": "\"1|0.5|0|0|0.5|1\"",
+      "default": "1|0.5|0|0|0.5|1",
       "description": "set color scheme (default \"1|0.5|0|0|0.5|1\")",
       "flags": "..FV.......",
       "max": null,

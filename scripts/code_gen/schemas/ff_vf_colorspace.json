@@ -373,7 +373,7 @@
         "fast"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "Ignore primary chromaticity and gamma correction (default false)",
       "name": "fast",
       "required": false,

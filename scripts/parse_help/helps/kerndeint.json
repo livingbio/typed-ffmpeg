@@ -31,7 +31,7 @@
         "map"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set the map (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "order"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set the order (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "sharp"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set sharpening (default false)",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "twoway"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set twoway (default false)",
       "flags": "..FV.......",
       "max": null,

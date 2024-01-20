@@ -21,7 +21,7 @@
         "gain"
       ],
       "choices": [],
-      "default": "\"gain_interpolate(f",
+      "default": "gain_interpolate(f",
       "description": "set gain curve (default \"gain_interpolate(f)\")",
       "name": "gain",
       "required": false,
@@ -127,7 +127,7 @@
         "fixed"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set fixed frame samples (default false)",
       "name": "fixed",
       "required": false,
@@ -138,7 +138,7 @@
         "multi"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set multi channels mode (default false)",
       "name": "multi",
       "required": false,
@@ -149,7 +149,7 @@
         "zero_phase"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set zero phase mode (default false)",
       "name": "zero_phase",
       "required": false,
@@ -235,7 +235,7 @@
         "fft2"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set 2-channels fft (default false)",
       "name": "fft2",
       "required": false,
@@ -246,7 +246,7 @@
         "min_phase"
       ],
       "choices": [],
-      "default": 0,
+      "default": false,
       "description": "set minimum phase mode (default false)",
       "name": "min_phase",
       "required": false,

@@ -18,7 +18,7 @@
         "m1"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "set 1st metadata key (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -31,7 +31,7 @@
         "fg1"
       ],
       "choices": [],
-      "default": "\"0xffff0000\"",
+      "default": "0xffff0000",
       "description": "set 1st foreground color expression (default \"0xffff0000\")",
       "flags": "..FV.......",
       "max": null,
@@ -44,7 +44,7 @@
         "m2"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "set 2nd metadata key (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -57,7 +57,7 @@
         "fg2"
       ],
       "choices": [],
-      "default": "\"0xff00ff00\"",
+      "default": "0xff00ff00",
       "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
       "flags": "..FV.......",
       "max": null,
@@ -70,7 +70,7 @@
         "m3"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "set 3rd metadata key (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "fg3"
       ],
       "choices": [],
-      "default": "\"0xffff00ff\"",
+      "default": "0xffff00ff",
       "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "m4"
       ],
       "choices": [],
-      "default": "\"\"",
+      "default": "",
       "description": "set 4th metadata key (default \"\")",
       "flags": "..FV.......",
       "max": null,
@@ -109,7 +109,7 @@
         "fg4"
       ],
       "choices": [],
-      "default": "\"0xffffff00\"",
+      "default": "0xffffff00",
       "description": "set 4th foreground color expression (default \"0xffffff00\")",
       "flags": "..FV.......",
       "max": null,

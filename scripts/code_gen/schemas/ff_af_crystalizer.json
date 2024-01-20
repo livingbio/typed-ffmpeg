@@ -32,7 +32,7 @@
         "c"
       ],
       "choices": [],
-      "default": 1,
+      "default": true,
       "description": "enable clipping (default true)",
       "name": "c",
       "required": false,

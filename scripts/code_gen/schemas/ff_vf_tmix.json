@@ -32,7 +32,7 @@
         "weights"
       ],
       "choices": [],
-      "default": "\"1 1 1\"",
+      "default": "1 1 1",
       "description": "set weight for each frame (default \"1 1 1\")",
       "name": "weights",
       "required": false,

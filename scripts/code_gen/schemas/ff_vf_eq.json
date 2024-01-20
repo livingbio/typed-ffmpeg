@@ -21,7 +21,7 @@
         "contrast"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "set the contrast adjustment, negative values give a negative image (default \"1.0\")",
       "name": "contrast",
       "required": false,
@@ -32,7 +32,7 @@
         "brightness"
       ],
       "choices": [],
-      "default": "\"0.0\"",
+      "default": "0.0",
       "description": "set the brightness adjustment (default \"0.0\")",
       "name": "brightness",
       "required": false,
@@ -43,7 +43,7 @@
         "saturation"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "set the saturation adjustment (default \"1.0\")",
       "name": "saturation",
       "required": false,
@@ -54,7 +54,7 @@
         "gamma"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "set the initial gamma value (default \"1.0\")",
       "name": "gamma",
       "required": false,
@@ -65,7 +65,7 @@
         "gamma_r"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "gamma value for red (default \"1.0\")",
       "name": "gamma_r",
       "required": false,
@@ -76,7 +76,7 @@
         "gamma_g"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "gamma value for green (default \"1.0\")",
       "name": "gamma_g",
       "required": false,
@@ -87,7 +87,7 @@
         "gamma_b"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "gamma value for blue (default \"1.0\")",
       "name": "gamma_b",
       "required": false,
@@ -98,7 +98,7 @@
         "gamma_weight"
       ],
       "choices": [],
-      "default": "\"1.0\"",
+      "default": "1.0",
       "description": "set the gamma weight which reduces the effect of gamma on bright areas (default \"1.0\")",
       "name": "gamma_weight",
       "required": false,
