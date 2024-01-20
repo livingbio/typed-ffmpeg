@@ -72,7 +72,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set the color of the padded area border (default \"black\")",
       "flags": "..FV.......",
       "max": null,

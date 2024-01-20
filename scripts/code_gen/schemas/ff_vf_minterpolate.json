@@ -21,7 +21,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "\"60\"",
+      "default": "60",
       "description": "output's frame rate (default \"60\")",
       "name": "fps",
       "required": false,

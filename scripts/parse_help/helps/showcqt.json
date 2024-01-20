@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"1920x1080\"",
+      "default": "1920x1080",
       "description": "set video size (default \"1920x1080\")",
       "flags": "..FV.......",
       "max": null,
@@ -34,7 +34,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

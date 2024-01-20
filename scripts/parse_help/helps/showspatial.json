@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"512x512\"",
+      "default": "512x512",
       "description": "set video size (default \"512x512\")",
       "flags": "..FV.......",
       "max": null,
@@ -192,7 +192,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

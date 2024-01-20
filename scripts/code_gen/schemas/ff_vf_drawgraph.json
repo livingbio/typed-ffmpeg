@@ -109,7 +109,7 @@
         "bg"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "set background color (default \"white\")",
       "name": "bg",
       "required": false,
@@ -207,7 +207,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"900x256\"",
+      "default": "900x256",
       "description": "set graph size (default \"900x256\")",
       "name": "size",
       "required": false,
@@ -219,7 +219,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,

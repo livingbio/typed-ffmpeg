@@ -135,7 +135,7 @@
         "ec"
       ],
       "choices": [],
-      "default": "\"gold\"",
+      "default": "gold",
       "description": "set envelope color (default \"gold\")",
       "flags": "..FV.......",
       "max": null,

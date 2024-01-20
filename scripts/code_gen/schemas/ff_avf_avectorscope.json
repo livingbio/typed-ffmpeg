@@ -50,7 +50,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -62,7 +62,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"400x400\"",
+      "default": "400x400",
       "description": "set video size (default \"400x400\")",
       "name": "size",
       "required": false,

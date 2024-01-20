@@ -42,7 +42,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -122,7 +122,7 @@
         "life_color"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "set life color (default \"white\")",
       "flags": "..FV.......",
       "max": null,
@@ -135,7 +135,7 @@
         "death_color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set death color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -148,7 +148,7 @@
         "mold_color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set mold color (default \"black\")",
       "flags": "..FV.......",
       "max": null,

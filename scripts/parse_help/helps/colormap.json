@@ -26,7 +26,7 @@
         "patch_size"
       ],
       "choices": [],
-      "default": "\"64x64\"",
+      "default": "64x64",
       "description": "set patch size (default \"64x64\")",
       "flags": "..FV.....T.",
       "max": null,

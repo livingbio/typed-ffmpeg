@@ -14,7 +14,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"640x480\"",
+      "default": "640x480",
       "description": "set frame size (default \"640x480\")",
       "flags": "..FV.......",
       "max": null,
@@ -28,7 +28,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set frame rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

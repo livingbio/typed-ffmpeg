@@ -57,7 +57,7 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set foreground color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -83,7 +83,7 @@
         "boxcolor"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "set box color (default \"white\")",
       "flags": "..FV.......",
       "max": null,
@@ -96,7 +96,7 @@
         "bordercolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set border color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -109,7 +109,7 @@
         "shadowcolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set shadow color (default \"black\")",
       "flags": "..FV.......",
       "max": null,

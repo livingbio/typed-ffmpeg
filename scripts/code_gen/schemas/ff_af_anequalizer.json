@@ -43,7 +43,7 @@
         "size"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,

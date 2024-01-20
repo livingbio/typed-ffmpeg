@@ -54,7 +54,7 @@
         "fontcolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set foreground color (default \"black\")",
       "name": "fontcolor",
       "required": false,
@@ -76,7 +76,7 @@
         "boxcolor"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "set box color (default \"white\")",
       "name": "boxcolor",
       "required": false,
@@ -87,7 +87,7 @@
         "bordercolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set border color (default \"black\")",
       "name": "bordercolor",
       "required": false,
@@ -98,7 +98,7 @@
         "shadowcolor"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set shadow color (default \"black\")",
       "name": "shadowcolor",
       "required": false,

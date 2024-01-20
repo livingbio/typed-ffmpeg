@@ -13,7 +13,7 @@
         "size"
       ],
       "choices": [],
-      "default": "\"320x240\"",
+      "default": "320x240",
       "description": "Dimensions of the generated video. (default \"320x240\")",
       "flags": "..FV.......",
       "max": null,
@@ -26,7 +26,7 @@
         "framerate"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "(default \"25\")",
       "flags": "..FV.......",
       "max": null,

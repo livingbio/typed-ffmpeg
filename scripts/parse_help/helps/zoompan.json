@@ -71,7 +71,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set the output image size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -84,7 +84,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set the output framerate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

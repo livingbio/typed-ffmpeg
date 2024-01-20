@@ -130,8 +130,8 @@ def afir(
     maxir: Float = Default(30.0),
     response: Boolean = Default(False),
     channel: Int = Default(0),
-    size: Image_size = Default('"hd720"'),
-    rate: Video_rate = Default('"25"'),
+    size: Image_size = Default("hd720"),
+    rate: Video_rate = Default("25"),
     minp: Int = Default(8192),
     maxp: Int = Default(8192),
     nbirs: Int = Default(1),
@@ -991,7 +991,7 @@ def colormap(
     _source: "VideoStream",
     _target: "VideoStream",
     *,
-    patch_size: Image_size = Default('"64x64"'),
+    patch_size: Image_size = Default("64x64"),
     nb_patches: Int = Default(0),
     type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
@@ -2896,7 +2896,7 @@ def remap(
     _ymap: "VideoStream",
     *,
     format: Int | Literal["color", "gray"] | Default = Default("color"),
-    fill: Color = Default('"black"'),
+    fill: Color = Default("black"),
     **kwargs: Any
 ) -> "VideoStream":
     """

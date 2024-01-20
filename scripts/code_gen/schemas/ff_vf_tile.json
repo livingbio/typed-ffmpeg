@@ -21,7 +21,7 @@
         "layout"
       ],
       "choices": [],
-      "default": "\"6x5\"",
+      "default": "6x5",
       "description": "set grid size (default \"6x5\")",
       "name": "layout",
       "required": false,
@@ -65,7 +65,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set the color of the unused area (default \"black\")",
       "name": "color",
       "required": false,

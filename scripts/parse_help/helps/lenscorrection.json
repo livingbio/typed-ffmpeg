@@ -96,7 +96,7 @@
         "fc"
       ],
       "choices": [],
-      "default": "\"black@0\"",
+      "default": "black@0",
       "description": "set the color of the unmapped pixels (default \"black@0\")",
       "flags": "..FV.....T.",
       "max": null,

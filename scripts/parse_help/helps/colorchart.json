@@ -14,7 +14,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -54,7 +54,7 @@
         "patch_size"
       ],
       "choices": [],
-      "default": "\"64x64\"",
+      "default": "64x64",
       "description": "set the single patch size (default \"64x64\")",
       "flags": "..FV.......",
       "max": null,

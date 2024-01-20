@@ -37,8 +37,8 @@ class AudioStream(FilterableStream):
     def a3dscope(
         self,
         *,
-        rate: Video_rate = Default('"25"'),
-        size: Image_size = Default('"hd720"'),
+        rate: Video_rate = Default("25"),
+        size: Image_size = Default("hd720"),
         fov: Float = Default(90.0),
         roll: Float = Default(0.0),
         pitch: Float = Default(0.0),
@@ -126,8 +126,8 @@ class AudioStream(FilterableStream):
     def abitscope(
         self,
         *,
-        rate: Video_rate = Default('"25"'),
-        size: Image_size = Default('"1024x256"'),
+        rate: Video_rate = Default("25"),
+        size: Image_size = Default("1024x256"),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
         mode: Int | Literal["bars", "trace"] | Default = Default("bars"),
         **kwargs: Any,
@@ -794,13 +794,13 @@ class AudioStream(FilterableStream):
         fg3: String = Default("0xffff00ff"),
         m4: String = Default(""),
         fg4: String = Default("0xffffff00"),
-        bg: Color = Default('"white"'),
+        bg: Color = Default("white"),
         min: Float = Default(-1.0),
         max: Float = Default(1.0),
         mode: Int | Literal["bar", "dot", "line"] | Default = Default("line"),
         slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
-        size: Image_size = Default('"900x256"'),
-        rate: Video_rate = Default('"25"'),
+        size: Image_size = Default("900x256"),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1678,7 +1678,7 @@ class AudioStream(FilterableStream):
     def agraphmonitor(
         self,
         *,
-        size: Image_size = Default('"hd720"'),
+        size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
         mode: Int | Literal["full", "compact"] | Default = Default("full"),
         flags: Flags
@@ -1701,7 +1701,7 @@ class AudioStream(FilterableStream):
             "sample_count_delta",
         ]
         | Default = Default("queue"),
-        rate: Video_rate = Default('"25"'),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1744,8 +1744,8 @@ class AudioStream(FilterableStream):
         self,
         *,
         dmode: Int | Literal["single", "separate"] | Default = Default("single"),
-        rate: Video_rate = Default('"25"'),
-        size: Image_size = Default('"hd720"'),
+        rate: Video_rate = Default("25"),
+        size: Image_size = Default("hd720"),
         scale: Int | Literal["log", "sqrt", "cbrt", "lin", "rlog"] | Default = Default("log"),
         ascale: Int | Literal["log", "lin"] | Default = Default("log"),
         acount: Int = Default(1),
@@ -1814,8 +1814,8 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         response: Boolean = Default(False),
         channel: Int = Default(0),
-        size: Image_size = Default('"hd720"'),
-        rate: Video_rate = Default('"25"'),
+        size: Image_size = Default("hd720"),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -2176,7 +2176,7 @@ class AudioStream(FilterableStream):
         *,
         params: String = Default(""),
         curves: Boolean = Default(False),
-        size: Image_size = Default('"hd720"'),
+        size: Image_size = Default("hd720"),
         mgain: Double = Default(60.0),
         fscale: Int | Literal["lin", "log"] | Default = Default("log"),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
@@ -2492,8 +2492,8 @@ class AudioStream(FilterableStream):
     def aphasemeter(
         self,
         *,
-        rate: Video_rate = Default('"25"'),
-        size: Image_size = Default('"800x400"'),
+        rate: Video_rate = Default("25"),
+        size: Image_size = Default("800x400"),
         rc: Int = Default(2),
         gc: Int = Default(7),
         bc: Int = Default(1),
@@ -3863,8 +3863,8 @@ class AudioStream(FilterableStream):
         self,
         *,
         mode: Int | Literal["lissajous", "lissajous_xy", "polar"] | Default = Default("lissajous"),
-        rate: Video_rate = Default('"25"'),
-        size: Image_size = Default('"400x400"'),
+        rate: Video_rate = Default("25"),
+        size: Image_size = Default("400x400"),
         rc: Int = Default(40),
         gc: Int = Default(160),
         bc: Int = Default(80),
@@ -4821,7 +4821,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         video: Boolean = Default(False),
-        size: Image_size = Default('"640x480"'),
+        size: Image_size = Default("640x480"),
         meter: Int = Default(9),
         framelog: Int | Literal["quiet", "info", "verbose"] | Default = Default(-1),
         metadata: Boolean = Default(False),
@@ -5714,8 +5714,8 @@ class AudioStream(FilterableStream):
     def showcqt(
         self,
         *,
-        size: Image_size = Default('"1920x1080"'),
-        fps: Video_rate = Default('"25"'),
+        size: Image_size = Default("1920x1080"),
+        fps: Video_rate = Default("25"),
         bar_h: Int = Default(-1),
         axis_h: Int = Default(-1),
         sono_h: Int = Default(-1),
@@ -5825,7 +5825,7 @@ class AudioStream(FilterableStream):
     def showcwt(
         self,
         *,
-        size: Image_size = Default('"640x512"'),
+        size: Image_size = Default("640x512"),
         rate: String = Default("25"),
         scale: Int | Literal["linear", "log2", "bark", "mel", "erbs"] | Default = Default("linear"),
         min: Float = Default(20.0),
@@ -5889,8 +5889,8 @@ class AudioStream(FilterableStream):
     def showfreqs(
         self,
         *,
-        size: Image_size = Default('"1024x512"'),
-        rate: Video_rate = Default('"25"'),
+        size: Image_size = Default("1024x512"),
+        rate: Video_rate = Default("25"),
         mode: Int | Literal["line", "bar", "dot"] | Default = Default("bar"),
         ascale: Int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("log"),
         fscale: Int | Literal["lin", "log", "rlog"] | Default = Default("lin"),
@@ -5987,7 +5987,7 @@ class AudioStream(FilterableStream):
     def showspatial(
         self,
         *,
-        size: Image_size = Default('"512x512"'),
+        size: Image_size = Default("512x512"),
         win_size: Int = Default(4096),
         win_func: Int
         | Literal[
@@ -6015,7 +6015,7 @@ class AudioStream(FilterableStream):
             "kaiser",
         ]
         | Default = Default("hann"),
-        rate: Video_rate = Default('"25"'),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6055,7 +6055,7 @@ class AudioStream(FilterableStream):
     def showspectrum(
         self,
         *,
-        size: Image_size = Default('"640x512"'),
+        size: Image_size = Default("640x512"),
         slide: Int | Literal["replace", "scroll", "fullframe", "rscroll", "lreplace"] | Default = Default("replace"),
         mode: Int | Literal["combined", "separate"] | Default = Default("combined"),
         color: Int
@@ -6189,7 +6189,7 @@ class AudioStream(FilterableStream):
     def showspectrumpic(
         self,
         *,
-        size: Image_size = Default('"4096x2048"'),
+        size: Image_size = Default("4096x2048"),
         mode: Int | Literal["combined", "separate"] | Default = Default("combined"),
         color: Int
         | Literal[
@@ -6311,7 +6311,7 @@ class AudioStream(FilterableStream):
     def showvolume(
         self,
         *,
-        rate: Video_rate = Default('"25"'),
+        rate: Video_rate = Default("25"),
         b: Int = Default(1),
         w: Int = Default(400),
         h: Int = Default(20),
@@ -6320,7 +6320,7 @@ class AudioStream(FilterableStream):
         t: Boolean = Default(True),
         v: Boolean = Default(True),
         dm: Double = Default(0.0),
-        dmc: Color = Default('"orange"'),
+        dmc: Color = Default("orange"),
         o: Int | Literal["h", "v"] | Default = Default("h"),
         s: Int = Default(0),
         p: Float = Default(0.0),
@@ -6387,10 +6387,10 @@ class AudioStream(FilterableStream):
     def showwaves(
         self,
         *,
-        size: Image_size = Default('"600x240"'),
+        size: Image_size = Default("600x240"),
         mode: Int | Literal["point", "line", "p2p", "cline"] | Default = Default("point"),
         n: Int = Default(0),
-        rate: Video_rate = Default('"25"'),
+        rate: Video_rate = Default("25"),
         split_channels: Boolean = Default(False),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
@@ -6442,7 +6442,7 @@ class AudioStream(FilterableStream):
     def showwavespic(
         self,
         *,
-        size: Image_size = Default('"600x240"'),
+        size: Image_size = Default("600x240"),
         split_channels: Boolean = Default(False),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),

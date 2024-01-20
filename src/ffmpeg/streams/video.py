@@ -1168,7 +1168,7 @@ class VideoStream(FilterableStream):
     def chromahold(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default(0.01),
         blend: Float = Default(0.0),
         yuv: Boolean = Default(False),
@@ -1214,7 +1214,7 @@ class VideoStream(FilterableStream):
     def chromakey(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default(0.01),
         blend: Float = Default(0.0),
         yuv: Boolean = Default(False),
@@ -1773,7 +1773,7 @@ class VideoStream(FilterableStream):
     def colorhold(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default(0.01),
         blend: Float = Default(0.0),
         enable: str = Default(None),
@@ -1862,7 +1862,7 @@ class VideoStream(FilterableStream):
     def colorkey(
         self,
         *,
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         similarity: Float = Default(0.01),
         blend: Float = Default(0.0),
         enable: str = Default(None),
@@ -1992,7 +1992,7 @@ class VideoStream(FilterableStream):
         _source: "VideoStream",
         _target: "VideoStream",
         *,
-        patch_size: Image_size = Default('"64x64"'),
+        patch_size: Image_size = Default("64x64"),
         nb_patches: Int = Default(0),
         type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
         kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
@@ -2809,7 +2809,7 @@ class VideoStream(FilterableStream):
     def datascope(
         self,
         *,
-        size: Image_size = Default('"hd720"'),
+        size: Image_size = Default("hd720"),
         x: Int = Default(0),
         y: Int = Default(0),
         mode: Int | Literal["mono", "color", "color2"] | Default = Default("mono"),
@@ -3912,13 +3912,13 @@ class VideoStream(FilterableStream):
         fg3: String = Default("0xffff00ff"),
         m4: String = Default(""),
         fg4: String = Default("0xffffff00"),
-        bg: Color = Default('"white"'),
+        bg: Color = Default("white"),
         min: Float = Default(-1.0),
         max: Float = Default(1.0),
         mode: Int | Literal["bar", "dot", "line"] | Default = Default("line"),
         slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
-        size: Image_size = Default('"900x256"'),
-        rate: Video_rate = Default('"25"'),
+        size: Image_size = Default("900x256"),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -4038,11 +4038,11 @@ class VideoStream(FilterableStream):
         fontfile: String = Default(None),
         text: String = Default(None),
         textfile: String = Default(None),
-        fontcolor: Color = Default('"black"'),
+        fontcolor: Color = Default("black"),
         fontcolor_expr: String = Default(""),
-        boxcolor: Color = Default('"white"'),
-        bordercolor: Color = Default('"black"'),
-        shadowcolor: Color = Default('"black"'),
+        boxcolor: Color = Default("white"),
+        bordercolor: Color = Default("black"),
+        shadowcolor: Color = Default("black"),
         box: Boolean = Default(False),
         boxborderw: Int = Default(0),
         line_spacing: Int = Default(0),
@@ -4579,7 +4579,7 @@ class VideoStream(FilterableStream):
         alpha: Boolean = Default(False),
         start_time: Duration = Default(0.0),
         duration: Duration = Default(0.0),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4939,7 +4939,7 @@ class VideoStream(FilterableStream):
         mode: Int
         | Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"]
         | Default = Default("smear"),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5206,7 +5206,7 @@ class VideoStream(FilterableStream):
     def framerate(
         self,
         *,
-        fps: Video_rate = Default('"50"'),
+        fps: Video_rate = Default("50"),
         interp_start: Int = Default(15),
         interp_end: Int = Default(240),
         scene: Double = Default(8.2),
@@ -5583,7 +5583,7 @@ class VideoStream(FilterableStream):
     def graphmonitor(
         self,
         *,
-        size: Image_size = Default('"hd720"'),
+        size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
         mode: Int | Literal["full", "compact"] | Default = Default("full"),
         flags: Flags
@@ -5606,7 +5606,7 @@ class VideoStream(FilterableStream):
             "sample_count_delta",
         ]
         | Default = Default("queue"),
-        rate: Video_rate = Default('"25"'),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6733,7 +6733,7 @@ class VideoStream(FilterableStream):
         k1: Double = Default(0.0),
         k2: Double = Default(0.0),
         i: Int | Literal["nearest", "bilinear"] | Default = Default("nearest"),
-        fc: Color = Default('"black@0"'),
+        fc: Color = Default("black@0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7793,7 +7793,7 @@ class VideoStream(FilterableStream):
     def minterpolate(
         self,
         *,
-        fps: Video_rate = Default('"60"'),
+        fps: Video_rate = Default("60"),
         mi_mode: Int | Literal["dup", "blend", "mci"] | Default = Default("mci"),
         mc_mode: Int | Literal["obmc", "aobmc"] | Default = Default("obmc"),
         me_mode: Int | Literal["bidir", "bilat"] | Default = Default("bilat"),
@@ -8361,8 +8361,8 @@ class VideoStream(FilterableStream):
     def normalize(
         self,
         *,
-        blackpt: Color = Default('"black"'),
-        whitept: Color = Default('"white"'),
+        blackpt: Color = Default("black"),
+        whitept: Color = Default("white"),
         smoothing: Int = Default(0),
         independence: Float = Default(1.0),
         strength: Float = Default(1.0),
@@ -8661,7 +8661,7 @@ class VideoStream(FilterableStream):
         height: String = Default("ih"),
         x: String = Default("0"),
         y: String = Default("0"),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         aspect: Rational = Default("0/1"),
         **kwargs: Any,
@@ -8711,7 +8711,7 @@ class VideoStream(FilterableStream):
         *,
         max_colors: Int = Default(256),
         reserve_transparent: Boolean = Default(True),
-        transparency_color: Color = Default('"lime"'),
+        transparency_color: Color = Default("lime"),
         stats_mode: Int | Literal["full", "diff", "single"] | Default = Default("full"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9592,7 +9592,7 @@ class VideoStream(FilterableStream):
         _ymap: "VideoStream",
         *,
         format: Int | Literal["color", "gray"] | Default = Default("color"),
-        fill: Color = Default('"black"'),
+        fill: Color = Default("black"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -11043,7 +11043,7 @@ class VideoStream(FilterableStream):
         *,
         stat: Flags | Literal["tout", "vrep", "brng"] | Default = Default("0"),
         out: Int | Literal["tout", "vrep", "brng"] | Default = Default(-1),
-        c: Color = Default('"yellow"'),
+        c: Color = Default("yellow"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12060,7 +12060,7 @@ class VideoStream(FilterableStream):
         components: Int = Default(7),
         bgopacity: Float = Default(0.9),
         envelope: Boolean = Default(False),
-        ecolor: Color = Default('"gold"'),
+        ecolor: Color = Default("gold"),
         slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("replace"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12194,11 +12194,11 @@ class VideoStream(FilterableStream):
     def tile(
         self,
         *,
-        layout: Image_size = Default('"6x5"'),
+        layout: Image_size = Default("6x5"),
         nb_frames: Int = Default(0),
         margin: Int = Default(0),
         padding: Int = Default(0),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         overlap: Int = Default(0),
         init_padding: Int = Default(0),
         **kwargs: Any,
@@ -12513,7 +12513,7 @@ class VideoStream(FilterableStream):
         stop_mode: Int | Literal["add", "clone"] | Default = Default("add"),
         start_duration: Duration = Default(0.0),
         stop_duration: Duration = Default(0.0),
-        color: Color = Default('"black"'),
+        color: Color = Default("black"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12706,7 +12706,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def untile(self, *, layout: Image_size = Default('"6x5"'), **kwargs: Any) -> "VideoStream":
+    def untile(self, *, layout: Image_size = Default("6x5"), **kwargs: Any) -> "VideoStream":
         """
 
         Untile a frame into a sequence of frames.
@@ -13970,8 +13970,8 @@ class VideoStream(FilterableStream):
         x: String = Default("0"),
         y: String = Default("0"),
         d: String = Default("90"),
-        s: Image_size = Default('"hd720"'),
-        fps: Video_rate = Default('"25"'),
+        s: Image_size = Default("hd720"),
+        fps: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """

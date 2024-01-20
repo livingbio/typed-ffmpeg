@@ -14,7 +14,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"640x480\"",
+      "default": "640x480",
       "description": "set frame size (default \"640x480\")",
       "flags": "..FV.......",
       "max": null,
@@ -28,7 +28,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set frame rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,
@@ -41,7 +41,7 @@
         "c0"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 1st color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -54,7 +54,7 @@
         "c1"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 2nd color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -67,7 +67,7 @@
         "c2"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 3rd color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -80,7 +80,7 @@
         "c3"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 4th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -93,7 +93,7 @@
         "c4"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 5th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -106,7 +106,7 @@
         "c5"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 6th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -119,7 +119,7 @@
         "c6"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 7th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,
@@ -132,7 +132,7 @@
         "c7"
       ],
       "choices": [],
-      "default": "\"random\"",
+      "default": "random",
       "description": "set 8th color (default \"random\")",
       "flags": "..FV.......",
       "max": null,

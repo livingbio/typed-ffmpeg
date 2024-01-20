@@ -14,7 +14,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set color (default \"black\")",
       "flags": "..FV.....T.",
       "max": null,
@@ -28,7 +28,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"320x240\"",
+      "default": "320x240",
       "description": "set video size (default \"320x240\")",
       "flags": "..FV.......",
       "max": null,
@@ -42,7 +42,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

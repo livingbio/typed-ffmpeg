@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set output size (default \"hd720\")",
       "name": "size",
       "required": false,

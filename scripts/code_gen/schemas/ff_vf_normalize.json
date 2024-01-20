@@ -21,7 +21,7 @@
         "blackpt"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "output color to which darkest input color is mapped (default \"black\")",
       "name": "blackpt",
       "required": false,
@@ -32,7 +32,7 @@
         "whitept"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "output color to which brightest input color is mapped (default \"white\")",
       "name": "whitept",
       "required": false,

@@ -19,7 +19,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"4096x2048\"",
+      "default": "4096x2048",
       "description": "set video size (default \"4096x2048\")",
       "flags": "..FV.......",
       "max": null,

@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"600x240\"",
+      "default": "600x240",
       "description": "set video size (default \"600x240\")",
       "name": "size",
       "required": false,

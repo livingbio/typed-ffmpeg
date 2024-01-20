@@ -14,7 +14,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"hd720\"",
+      "default": "hd720",
       "description": "set frame size (default \"hd720\")",
       "flags": "..FV.......",
       "max": null,
@@ -28,7 +28,7 @@
         "fr"
       ],
       "choices": [],
-      "default": "\"30\"",
+      "default": "30",
       "description": "set frame rate (default \"30\")",
       "flags": "..FV.......",
       "max": null,
@@ -125,7 +125,7 @@
         "fg"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "set foreground color (default \"white\")",
       "flags": "..FV.......",
       "max": null,
@@ -138,7 +138,7 @@
         "bg"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set background color (default \"black\")",
       "flags": "..FV.......",
       "max": null,
@@ -151,7 +151,7 @@
         "ag"
       ],
       "choices": [],
-      "default": "\"gray\"",
+      "default": "gray",
       "description": "set additional color (default \"gray\")",
       "flags": "..FV.......",
       "max": null,

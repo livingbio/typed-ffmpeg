@@ -18,7 +18,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set the colorhold key color (default \"black\")",
       "flags": "..FV.....T.",
       "max": null,

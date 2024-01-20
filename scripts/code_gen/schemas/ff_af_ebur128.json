@@ -32,7 +32,7 @@
         "size"
       ],
       "choices": [],
-      "default": "\"640x480\"",
+      "default": "640x480",
       "description": "set video size (default \"640x480\")",
       "name": "size",
       "required": false,

@@ -18,7 +18,7 @@
         "fps"
       ],
       "choices": [],
-      "default": "\"50\"",
+      "default": "50",
       "description": "required output frames per second rate (default \"50\")",
       "flags": "..FV.......",
       "max": null,

@@ -83,7 +83,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"yellow\"",
+      "default": "yellow",
       "description": "set highlight color (default \"yellow\")",
       "flags": "..FV.......",
       "max": null,

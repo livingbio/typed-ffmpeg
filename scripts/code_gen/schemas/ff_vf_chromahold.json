@@ -21,7 +21,7 @@
         "color"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set the chromahold key color (default \"black\")",
       "name": "color",
       "required": false,

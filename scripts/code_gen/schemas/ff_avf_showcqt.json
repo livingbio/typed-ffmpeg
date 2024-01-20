@@ -22,7 +22,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"1920x1080\"",
+      "default": "1920x1080",
       "description": "set video size (default \"1920x1080\")",
       "name": "size",
       "required": false,
@@ -35,7 +35,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "name": "fps",
       "required": false,

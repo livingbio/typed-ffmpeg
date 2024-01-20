@@ -22,7 +22,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
@@ -121,7 +121,7 @@
         "dmc"
       ],
       "choices": [],
-      "default": "\"orange\"",
+      "default": "orange",
       "description": "set color of the max value line (default \"orange\")",
       "name": "dmc",
       "required": false,

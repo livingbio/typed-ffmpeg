@@ -122,7 +122,7 @@
         "bg"
       ],
       "choices": [],
-      "default": "\"white\"",
+      "default": "white",
       "description": "set background color (default \"white\")",
       "flags": "..FV.......",
       "max": null,
@@ -238,7 +238,7 @@
         "s"
       ],
       "choices": [],
-      "default": "\"900x256\"",
+      "default": "900x256",
       "description": "set graph size (default \"900x256\")",
       "flags": "..FV.......",
       "max": null,
@@ -252,7 +252,7 @@
         "r"
       ],
       "choices": [],
-      "default": "\"25\"",
+      "default": "25",
       "description": "set video rate (default \"25\")",
       "flags": "..FV.......",
       "max": null,

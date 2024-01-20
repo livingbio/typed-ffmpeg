@@ -104,7 +104,7 @@
         "c"
       ],
       "choices": [],
-      "default": "\"black\"",
+      "default": "black",
       "description": "set color (default \"black\")",
       "name": "color",
       "required": false,
