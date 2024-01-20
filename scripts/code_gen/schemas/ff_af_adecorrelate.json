@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set filtering stages (from 1 to 16) (default 6)",
       "name": "stages",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#adecorrelate"

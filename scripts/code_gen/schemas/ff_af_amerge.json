@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.audio] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_af_amerge",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -20,13 +20,13 @@
       "description": "specify the number of inputs (from 1 to 64) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#amerge"

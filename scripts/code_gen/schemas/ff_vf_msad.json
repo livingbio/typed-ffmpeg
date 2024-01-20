@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "main",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "reference",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -45,7 +45,7 @@
       "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
       "name": "eof_action",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -56,7 +56,7 @@
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -67,7 +67,7 @@
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -89,7 +89,7 @@
       "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
       "name": "ts_sync_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -104,7 +104,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#msad"

@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -66,13 +66,13 @@
       "description": "select interlace mode (from 0 to 7) (default merge)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#tinterlace"

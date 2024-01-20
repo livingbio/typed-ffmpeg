@@ -1,14 +1,14 @@
 {
   "description": "Blend two video frames into each other.",
   "input_types": [
-    [
-      "top",
-      "video"
-    ],
-    [
-      "bottom",
-      "video"
-    ]
+    {
+      "name": "top",
+      "type": "video"
+    },
+    {
+      "name": "bottom",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -1563,9 +1563,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

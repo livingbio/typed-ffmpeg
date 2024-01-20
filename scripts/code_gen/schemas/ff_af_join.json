@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.audio] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_af_join",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -20,7 +20,7 @@
       "description": "Number of input streams. (from 1 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "Channel layout of the output stream. (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -42,13 +42,13 @@
       "description": "A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.",
       "name": "map",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#join"

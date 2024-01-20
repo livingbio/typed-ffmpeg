@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "reference",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,13 +25,13 @@
       "description": "Set file where to store per-frame difference information",
       "name": "stats_file",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#vmafmotion"

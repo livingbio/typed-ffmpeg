@@ -1,14 +1,14 @@
 {
   "description": "Audio sidechain gate.",
   "input_types": [
-    [
-      "main",
-      "audio"
-    ],
-    [
-      "sidechain",
-      "audio"
-    ]
+    {
+      "name": "main",
+      "type": "audio"
+    },
+    {
+      "name": "sidechain",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -214,9 +214,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set rect width (default \"w/2\")",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set rect height (default \"h/2\")",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set 1st rect x top left coordinate (default \"w/2\")",
       "name": "x1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set 1st rect y top left coordinate (default \"h/2\")",
       "name": "y1",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set 2nd rect x top left coordinate (default \"0\")",
       "name": "x2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set 2nd rect y top left coordinate (default \"0\")",
       "name": "y2",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -95,7 +95,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#swaprect"

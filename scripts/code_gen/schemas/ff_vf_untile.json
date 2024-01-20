@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,13 +25,13 @@
       "description": "set grid size (default \"6x5\")",
       "name": "layout",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#untile"

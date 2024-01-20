@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,13 +25,13 @@
       "description": "set the window length (from 0.01 to 10) (default 3)",
       "name": "length",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#drmeter"

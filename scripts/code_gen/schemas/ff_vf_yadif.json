@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -46,7 +46,7 @@
       "description": "specify the interlacing mode (from 0 to 3) (default send_frame)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "specify the assumed picture field parity (from -1 to 1) (default auto)",
       "name": "parity",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "specify which frames to deinterlace (from 0 to 1) (default all)",
       "name": "deint",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -110,7 +110,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#yadif"

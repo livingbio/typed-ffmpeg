@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set the peak value (from 0 to 1) (default 0.95)",
       "name": "peak",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set the max expansion factor (from 1 to 50) (default 2)",
       "name": "expansion",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set the max compression factor (from 1 to 50) (default 2)",
       "name": "compression",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set the threshold value (from 0 to 1) (default 0)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "set the expansion raising amount (from 0 to 1) (default 0.001)",
       "name": "raise",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "set the compression raising amount (from 0 to 1) (default 0.001)",
       "name": "fall",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -98,7 +98,7 @@
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -110,7 +110,7 @@
       "description": "set inverted filtering (default false)",
       "name": "invert",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -122,7 +122,7 @@
       "description": "set linked channels filtering (default false)",
       "name": "link",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -134,7 +134,7 @@
       "description": "set the RMS value (from 0 to 1) (default 0)",
       "name": "rms",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -149,7 +149,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#speechnorm"

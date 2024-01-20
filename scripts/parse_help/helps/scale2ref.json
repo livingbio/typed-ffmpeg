@@ -1,14 +1,14 @@
 {
   "description": "Scale the input video size and/or convert the image format to the given reference.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "ref",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "ref",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -470,13 +470,13 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "ref",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "ref",
+      "type": "video"
+    }
   ]
 }

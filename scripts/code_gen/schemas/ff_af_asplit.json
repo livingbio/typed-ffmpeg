@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,9 +25,9 @@
       "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
       "name": "outputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit"
 }

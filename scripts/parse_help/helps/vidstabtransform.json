@@ -1,10 +1,10 @@
 {
   "description": "Transform the frames, pass 2 of 2 for stabilization (see vidstabdetect for pass 1).",
   "input_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -254,9 +254,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

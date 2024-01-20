@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set the red shadow spot (from -1 to 1) (default 0)",
       "name": "rl",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the blue shadow spot (from -1 to 1) (default 0)",
       "name": "bl",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the red highlight spot (from -1 to 1) (default 0)",
       "name": "rh",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the blue highlight spot (from -1 to 1) (default 0)",
       "name": "bh",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set the amount of saturation (from -3 to 3) (default 1)",
       "name": "saturation",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -101,7 +101,7 @@
       "description": "set the analyze mode (from 0 to 3) (default manual)",
       "name": "analyze",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -116,7 +116,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colorcorrect"

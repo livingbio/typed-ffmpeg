@@ -1,14 +1,14 @@
 {
   "description": "Apply Variable Blur filter.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "radius",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "radius",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -142,9 +142,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

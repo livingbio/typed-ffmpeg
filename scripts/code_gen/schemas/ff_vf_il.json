@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -52,7 +52,7 @@
       "description": "select luma mode (from 0 to 2) (default none)",
       "name": "luma_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -90,7 +90,7 @@
       "description": "select chroma mode (from 0 to 2) (default none)",
       "name": "chroma_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -128,7 +128,7 @@
       "description": "select alpha mode (from 0 to 2) (default none)",
       "name": "alpha_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -140,7 +140,7 @@
       "description": "swap luma fields (default false)",
       "name": "luma_swap",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -152,7 +152,7 @@
       "description": "swap chroma fields (default false)",
       "name": "chroma_swap",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -164,7 +164,7 @@
       "description": "swap alpha fields (default false)",
       "name": "alpha_swap",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -179,7 +179,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#il"

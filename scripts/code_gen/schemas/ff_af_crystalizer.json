@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set intensity (from -10 to 10) (default 2)",
       "name": "i",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "enable clipping (default true)",
       "name": "c",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -51,7 +51,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#crystalizer"

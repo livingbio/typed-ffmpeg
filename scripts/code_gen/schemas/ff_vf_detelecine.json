@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -46,7 +46,7 @@
       "description": "select first field (from 0 to 1) (default top)",
       "name": "first_field",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "pattern that describe for how many fields a frame is to be displayed (default \"23\")",
       "name": "pattern",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -68,13 +68,13 @@
       "description": "position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)",
       "name": "start_frame",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#detelecine"

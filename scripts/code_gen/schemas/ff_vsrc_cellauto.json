@@ -21,7 +21,7 @@
       "description": "read initial pattern from file",
       "name": "filename",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set initial pattern",
       "name": "pattern",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "set video size",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -68,7 +68,7 @@
       "description": "set rule (from 0 to 255) (default 110)",
       "name": "rule",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set fill ratio for filling initial grid randomly (from 0 to 1) (default 0.618034)",
       "name": "random_fill_ratio",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -92,7 +92,7 @@
       "description": "set the seed for filling the initial grid randomly (from -1 to UINT32_MAX) (default -1)",
       "name": "random_seed",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -103,7 +103,7 @@
       "description": "scroll pattern downward (default true)",
       "name": "scroll",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -114,7 +114,7 @@
       "description": "start filling the whole video (default false)",
       "name": "start_full",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -125,7 +125,7 @@
       "description": "start filling the whole video (default true)",
       "name": "full",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -136,13 +136,13 @@
       "description": "stitch boundaries (default true)",
       "name": "stitch",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#cellauto"

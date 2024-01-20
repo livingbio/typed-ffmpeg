@@ -1,10 +1,10 @@
 {
   "description": "Adjust color white balance selectively for blacks and whites.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -118,9 +118,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

@@ -1,18 +1,18 @@
 {
   "description": "Clamp first stream with second stream and third stream.",
   "input_types": [
-    [
-      "base",
-      "video"
-    ],
-    [
-      "dark",
-      "video"
-    ],
-    [
-      "bright",
-      "video"
-    ]
+    {
+      "name": "base",
+      "type": "video"
+    },
+    {
+      "name": "dark",
+      "type": "video"
+    },
+    {
+      "name": "bright",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -62,9 +62,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

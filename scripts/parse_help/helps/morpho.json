@@ -1,14 +1,14 @@
 {
   "description": "Apply Morphological filter.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "structure",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "structure",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -198,9 +198,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

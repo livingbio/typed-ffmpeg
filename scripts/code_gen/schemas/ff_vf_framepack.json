@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "left",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "right",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -55,13 +55,13 @@
       "description": "Frame pack output format (from 0 to INT_MAX) (default sbs)",
       "name": "format",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "packed",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#framepack"

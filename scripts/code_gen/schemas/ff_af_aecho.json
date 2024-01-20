@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set signal input gain (from 0 to 1) (default 0.6)",
       "name": "in_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set signal output gain (from 0 to 1) (default 0.3)",
       "name": "out_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set list of signal delays (default \"1000\")",
       "name": "delays",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,13 +58,13 @@
       "description": "set list of signal decays (default \"0.5\")",
       "name": "decays",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#aecho"

@@ -1,14 +1,14 @@
 {
   "description": "Cross-correlate two audio streams.",
   "input_types": [
-    [
-      "axcorrelate0",
-      "audio"
-    ],
-    [
-      "axcorrelate1",
-      "audio"
-    ]
+    {
+      "name": "axcorrelate0",
+      "type": "audio"
+    },
+    {
+      "name": "axcorrelate1",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -58,9 +58,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

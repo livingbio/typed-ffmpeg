@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set high threshold (from 0 to 1) (default 0.196078)",
       "name": "high",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set low threshold (from 0 to 1) (default 0.0784314)",
       "name": "low",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "set mode (from 0 to 2) (default wires)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -105,7 +105,7 @@
       "description": "set planes to filter (default y+u+v+r+g+b)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [],
@@ -120,7 +120,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#edgedetect"

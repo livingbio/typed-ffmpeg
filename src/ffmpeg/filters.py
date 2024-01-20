@@ -2,7 +2,22 @@ import re
 from typing import Any, Literal
 
 from .nodes.nodes import FilterableStream, FilterNode
-from .schema import Default, StreamType
+from .schema import (
+    Boolean,
+    Color,
+    Default,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Pix_fmt,
+    StreamType,
+    String,
+    Video_rate,
+)
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
 
@@ -11,10 +26,10 @@ def acrossfade(
     _crossfade0: "AudioStream",
     _crossfade1: "AudioStream",
     *,
-    nb_samples: int | str = Default("44100"),
-    duration: str | float | int = Default("0"),
-    overlap: bool | int | str = Default("true"),
-    curve1: int
+    nb_samples: Int = Default("44100"),
+    duration: Duration = Default("0"),
+    overlap: Boolean = Default("true"),
+    curve1: Int
     | Literal[
         "nofade",
         "tri",
@@ -38,7 +53,7 @@ def acrossfade(
         "isinc",
     ]
     | Default = Default("tri"),
-    curve2: int
+    curve2: Int
     | Literal[
         "nofade",
         "tri",
@@ -71,11 +86,11 @@ def acrossfade(
     Parameters:
     ----------
 
-    :param int nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
-    :param str duration: set cross fade duration (default 0)
-    :param bool overlap: overlap 1st stream end with 2nd stream start (default true)
-    :param int curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
-    :param int curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
+    :param Int nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
+    :param Duration duration: set cross fade duration (default 0)
+    :param Boolean overlap: overlap 1st stream end with 2nd stream start (default true)
+    :param Int curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
+    :param Int curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#acrossfade
 
@@ -106,22 +121,22 @@ def acrossfade(
 
 def afir(
     *streams: "AudioStream",
-    dry: float | int | str = Default("1"),
-    wet: float | int | str = Default("1"),
-    length: float | int | str = Default("1"),
-    gtype: int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | Default = Default("peak"),
-    irgain: float | int | str = Default("1"),
-    irfmt: int | Literal["mono", "input"] | Default = Default("input"),
-    maxir: float | int | str = Default("30"),
-    response: bool | int | str = Default("false"),
-    channel: int | str = Default("0"),
-    size: str | float | int = Default("hd720"),
-    rate: str | float | int = Default("25"),
-    minp: int | str = Default("8192"),
-    maxp: int | str = Default("8192"),
-    nbirs: int | str = Default("1"),
-    ir: int | str = Default("0"),
-    precision: int | Literal["auto", "float", "double"] | Default = Default("auto"),
+    dry: Float = Default("1"),
+    wet: Float = Default("1"),
+    length: Float = Default("1"),
+    gtype: Int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | Default = Default("peak"),
+    irgain: Float = Default("1"),
+    irfmt: Int | Literal["mono", "input"] | Default = Default("input"),
+    maxir: Float = Default("30"),
+    response: Boolean = Default("false"),
+    channel: Int = Default("0"),
+    size: Image_size = Default("hd720"),
+    rate: Video_rate = Default("25"),
+    minp: Int = Default("8192"),
+    maxp: Int = Default("8192"),
+    nbirs: Int = Default("1"),
+    ir: Int = Default("0"),
+    precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
     **kwargs: Any
 ) -> FilterNode:
     """
@@ -131,22 +146,22 @@ def afir(
     Parameters:
     ----------
 
-    :param float dry: set dry gain (from 0 to 10) (default 1)
-    :param float wet: set wet gain (from 0 to 10) (default 1)
-    :param float length: set IR length (from 0 to 1) (default 1)
-    :param int gtype: set IR auto gain type (from -1 to 4) (default peak)
-    :param float irgain: set IR gain (from 0 to 1) (default 1)
-    :param int irfmt: set IR format (from 0 to 1) (default input)
-    :param float maxir: set max IR length (from 0.1 to 60) (default 30)
-    :param bool response: show IR frequency response (default false)
-    :param int channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
-    :param str size: set video size (default "hd720")
-    :param str rate: set video rate (default "25")
-    :param int minp: set min partition size (from 1 to 65536) (default 8192)
-    :param int maxp: set max partition size (from 8 to 65536) (default 8192)
-    :param int nbirs: set number of input IRs (from 1 to 32) (default 1)
-    :param int ir: select IR (from 0 to 31) (default 0)
-    :param int precision: set processing precision (from 0 to 2) (default auto)
+    :param Float dry: set dry gain (from 0 to 10) (default 1)
+    :param Float wet: set wet gain (from 0 to 10) (default 1)
+    :param Float length: set IR length (from 0 to 1) (default 1)
+    :param Int gtype: set IR auto gain type (from -1 to 4) (default peak)
+    :param Float irgain: set IR gain (from 0 to 1) (default 1)
+    :param Int irfmt: set IR format (from 0 to 1) (default input)
+    :param Float maxir: set max IR length (from 0.1 to 60) (default 30)
+    :param Boolean response: show IR frequency response (default false)
+    :param Int channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
+    :param Image_size size: set video size (default "hd720")
+    :param Video_rate rate: set video rate (default "25")
+    :param Int minp: set min partition size (from 1 to 65536) (default 8192)
+    :param Int maxp: set max partition size (from 8 to 65536) (default 8192)
+    :param Int nbirs: set number of input IRs (from 1 to 32) (default 1)
+    :param Int ir: select IR (from 0 to 31) (default 0)
+    :param Int precision: set processing precision (from 0 to 2) (default auto)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#afir
 
@@ -186,8 +201,8 @@ def afir(
 
 def ainterleave(
     *streams: "AudioStream",
-    nb_inputs: int | str = Default("2"),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
+    nb_inputs: Int = Default("2"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -197,8 +212,8 @@ def ainterleave(
     Parameters:
     ----------
 
-    :param int nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
-    :param int duration: how to determine the end-of-stream (from 0 to 2) (default longest)
+    :param Int nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
+    :param Int duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave
 
@@ -225,11 +240,11 @@ def alphamerge(
     _main: "VideoStream",
     _alpha: "VideoStream",
     *,
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -239,10 +254,10 @@ def alphamerge(
     Parameters:
     ----------
 
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#alphamerge
@@ -272,7 +287,7 @@ def alphamerge(
     return filter_node.video(0)
 
 
-def amerge(*streams: "AudioStream", inputs: int | str = Default("2"), **kwargs: Any) -> "AudioStream":
+def amerge(*streams: "AudioStream", inputs: Int = Default("2"), **kwargs: Any) -> "AudioStream":
     """
 
     Merge two or more audio streams into a single multi-channel stream.
@@ -280,7 +295,7 @@ def amerge(*streams: "AudioStream", inputs: int | str = Default("2"), **kwargs: 
     Parameters:
     ----------
 
-    :param int inputs: specify the number of inputs (from 1 to 64) (default 2)
+    :param Int inputs: specify the number of inputs (from 1 to 64) (default 2)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#amerge
 
@@ -304,11 +319,11 @@ def amerge(*streams: "AudioStream", inputs: int | str = Default("2"), **kwargs: 
 
 def amix(
     *streams: "AudioStream",
-    inputs: int | str = Default("2"),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
-    dropout_transition: float | int | str = Default("2"),
-    weights: str | float | int = Default("1 1"),
-    normalize: bool | int | str = Default("true"),
+    inputs: Int = Default("2"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
+    dropout_transition: Float = Default("2"),
+    weights: String = Default("1 1"),
+    normalize: Boolean = Default("true"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -318,11 +333,11 @@ def amix(
     Parameters:
     ----------
 
-    :param int inputs: Number of inputs. (from 1 to 32767) (default 2)
-    :param int duration: How to determine the end-of-stream. (from 0 to 2) (default longest)
-    :param float dropout_transition: Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)
-    :param str weights: Set weight for each input. (default "1 1")
-    :param bool normalize: Scale inputs (default true)
+    :param Int inputs: Number of inputs. (from 1 to 32767) (default 2)
+    :param Int duration: How to determine the end-of-stream. (from 0 to 2) (default longest)
+    :param Float dropout_transition: Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)
+    :param String weights: Set weight for each input. (default "1 1")
+    :param Boolean normalize: Scale inputs (default true)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#amix
 
@@ -377,12 +392,12 @@ def anlmf(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | str = Default("256"),
-    mu: float | int | str = Default("0.75"),
-    eps: float | int | str = Default("1"),
-    leakage: float | int | str = Default("0"),
-    out_mode: int | Literal["i", "d", "o", "n"] | Default = Default("o"),
-    enable: str | float | int = Default(None),
+    order: Int = Default("256"),
+    mu: Float = Default("0.75"),
+    eps: Float = Default("1"),
+    leakage: Float = Default("0"),
+    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -392,11 +407,11 @@ def anlmf(
     Parameters:
     ----------
 
-    :param int order: set the filter order (from 1 to 32767) (default 256)
-    :param float mu: set the filter mu (from 0 to 2) (default 0.75)
-    :param float eps: set the filter eps (from 0 to 1) (default 1)
-    :param float leakage: set the filter leakage (from 0 to 1) (default 0)
-    :param int out_mode: set output mode (from 0 to 3) (default o)
+    :param Int order: set the filter order (from 1 to 32767) (default 256)
+    :param Float mu: set the filter mu (from 0 to 2) (default 0.75)
+    :param Float eps: set the filter eps (from 0 to 1) (default 1)
+    :param Float leakage: set the filter leakage (from 0 to 1) (default 0)
+    :param Int out_mode: set output mode (from 0 to 3) (default o)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
@@ -431,12 +446,12 @@ def anlms(
     _input: "AudioStream",
     _desired: "AudioStream",
     *,
-    order: int | str = Default("256"),
-    mu: float | int | str = Default("0.75"),
-    eps: float | int | str = Default("1"),
-    leakage: float | int | str = Default("0"),
-    out_mode: int | Literal["i", "d", "o", "n"] | Default = Default("o"),
-    enable: str | float | int = Default(None),
+    order: Int = Default("256"),
+    mu: Float = Default("0.75"),
+    eps: Float = Default("1"),
+    leakage: Float = Default("0"),
+    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -446,11 +461,11 @@ def anlms(
     Parameters:
     ----------
 
-    :param int order: set the filter order (from 1 to 32767) (default 256)
-    :param float mu: set the filter mu (from 0 to 2) (default 0.75)
-    :param float eps: set the filter eps (from 0 to 1) (default 1)
-    :param float leakage: set the filter leakage (from 0 to 1) (default 0)
-    :param int out_mode: set output mode (from 0 to 3) (default o)
+    :param Int order: set the filter order (from 1 to 32767) (default 256)
+    :param Float mu: set the filter mu (from 0 to 2) (default 0.75)
+    :param Float eps: set the filter eps (from 0 to 1) (default 1)
+    :param Float leakage: set the filter leakage (from 0 to 1) (default 0)
+    :param Int out_mode: set output mode (from 0 to 3) (default o)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms
@@ -507,7 +522,7 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
 
 
 def astreamselect(
-    *streams: "AudioStream", inputs: int | str = Default("2"), map: str | float | int = Default(None), **kwargs: Any
+    *streams: "AudioStream", inputs: Int = Default("2"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -516,8 +531,8 @@ def astreamselect(
     Parameters:
     ----------
 
-    :param int inputs: number of input streams (from 2 to INT_MAX) (default 2)
-    :param str map: input indexes to remap to outputs
+    :param Int inputs: number of input streams (from 2 to INT_MAX) (default 2)
+    :param String map: input indexes to remap to outputs
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect
 
@@ -545,8 +560,8 @@ def axcorrelate(
     _axcorrelate0: "AudioStream",
     _axcorrelate1: "AudioStream",
     *,
-    size: int | str = Default("256"),
-    algo: int | Literal["slow", "fast"] | Default = Default("slow"),
+    size: Int = Default("256"),
+    algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -556,8 +571,8 @@ def axcorrelate(
     Parameters:
     ----------
 
-    :param int size: set segment size (from 2 to 131072) (default 256)
-    :param int algo: set algorithm (from 0 to 1) (default slow)
+    :param Int size: set segment size (from 2 to 131072) (default 256)
+    :param Int algo: set algorithm (from 0 to 1) (default slow)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#axcorrelate
 
@@ -587,7 +602,7 @@ def blend(
     _top: "VideoStream",
     _bottom: "VideoStream",
     *,
-    c0_mode: int
+    c0_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -633,7 +648,7 @@ def blend(
         "hardoverlay",
     ]
     | Default = Default("normal"),
-    c1_mode: int
+    c1_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -679,7 +694,7 @@ def blend(
         "hardoverlay",
     ]
     | Default = Default("normal"),
-    c2_mode: int
+    c2_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -725,7 +740,7 @@ def blend(
         "hardoverlay",
     ]
     | Default = Default("normal"),
-    c3_mode: int
+    c3_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -771,7 +786,7 @@ def blend(
         "hardoverlay",
     ]
     | Default = Default("normal"),
-    all_mode: int
+    all_mode: Int
     | Literal[
         "addition",
         "addition128",
@@ -817,21 +832,21 @@ def blend(
         "hardoverlay",
     ]
     | Default = Default("-1"),
-    c0_expr: str | float | int = Default(None),
-    c1_expr: str | float | int = Default(None),
-    c2_expr: str | float | int = Default(None),
-    c3_expr: str | float | int = Default(None),
-    all_expr: str | float | int = Default(None),
-    c0_opacity: float | int | str = Default("1"),
-    c1_opacity: float | int | str = Default("1"),
-    c2_opacity: float | int | str = Default("1"),
-    c3_opacity: float | int | str = Default("1"),
-    all_opacity: float | int | str = Default("1"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    c0_expr: String = Default(None),
+    c1_expr: String = Default(None),
+    c2_expr: String = Default(None),
+    c3_expr: String = Default(None),
+    all_expr: String = Default(None),
+    c0_opacity: Double = Default("1"),
+    c1_opacity: Double = Default("1"),
+    c2_opacity: Double = Default("1"),
+    c3_opacity: Double = Default("1"),
+    all_opacity: Double = Default("1"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -841,25 +856,25 @@ def blend(
     Parameters:
     ----------
 
-    :param int c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
-    :param int c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
-    :param int c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
-    :param int c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
-    :param int all_mode: set blend mode for all components (from -1 to 39) (default -1)
-    :param str c0_expr: set color component #0 expression
-    :param str c1_expr: set color component #1 expression
-    :param str c2_expr: set color component #2 expression
-    :param str c3_expr: set color component #3 expression
-    :param str all_expr: set expression for all color components
-    :param float c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
-    :param float c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
-    :param float c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
-    :param float c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
-    :param float all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+    :param Int c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+    :param Int c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+    :param Int c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+    :param Int all_mode: set blend mode for all components (from -1 to 39) (default -1)
+    :param String c0_expr: set color component #0 expression
+    :param String c1_expr: set color component #1 expression
+    :param String c2_expr: set color component #2 expression
+    :param String c3_expr: set color component #3 expression
+    :param String all_expr: set expression for all color components
+    :param Double c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+    :param Double c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+    :param Double c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+    :param Double c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+    :param Double all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#blend
@@ -906,18 +921,18 @@ def blend(
 
 def bm3d(
     *streams: "VideoStream",
-    sigma: float | int | str = Default("1"),
-    block: int | str = Default("16"),
-    bstep: int | str = Default("4"),
-    group: int | str = Default("1"),
-    range: int | str = Default("9"),
-    mstep: int | str = Default("1"),
-    thmse: float | int | str = Default("0"),
-    hdthr: float | int | str = Default("2.7"),
-    estim: int | Literal["basic", "final"] | Default = Default("basic"),
-    ref: bool | int | str = Default("false"),
-    planes: int | str = Default("7"),
-    enable: str | float | int = Default(None),
+    sigma: Float = Default("1"),
+    block: Int = Default("16"),
+    bstep: Int = Default("4"),
+    group: Int = Default("1"),
+    range: Int = Default("9"),
+    mstep: Int = Default("1"),
+    thmse: Float = Default("0"),
+    hdthr: Float = Default("2.7"),
+    estim: Int | Literal["basic", "final"] | Default = Default("basic"),
+    ref: Boolean = Default("false"),
+    planes: Int = Default("7"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -927,17 +942,17 @@ def bm3d(
     Parameters:
     ----------
 
-    :param float sigma: set denoising strength (from 0 to 99999.9) (default 1)
-    :param int block: set size of local patch (from 8 to 64) (default 16)
-    :param int bstep: set sliding step for processing blocks (from 1 to 64) (default 4)
-    :param int group: set maximal number of similar blocks (from 1 to 256) (default 1)
-    :param int range: set block matching range (from 1 to INT_MAX) (default 9)
-    :param int mstep: set step for block matching (from 1 to 64) (default 1)
-    :param float thmse: set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)
-    :param float hdthr: set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)
-    :param int estim: set filtering estimation mode (from 0 to 1) (default basic)
-    :param bool ref: have reference stream (default false)
-    :param int planes: set planes to filter (from 0 to 15) (default 7)
+    :param Float sigma: set denoising strength (from 0 to 99999.9) (default 1)
+    :param Int block: set size of local patch (from 8 to 64) (default 16)
+    :param Int bstep: set sliding step for processing blocks (from 1 to 64) (default 4)
+    :param Int group: set maximal number of similar blocks (from 1 to 256) (default 1)
+    :param Int range: set block matching range (from 1 to INT_MAX) (default 9)
+    :param Int mstep: set step for block matching (from 1 to 64) (default 1)
+    :param Float thmse: set threshold of mean square error for block matching (from 0 to INT_MAX) (default 0)
+    :param Float hdthr: set hard threshold for 3D transfer domain (from 0 to INT_MAX) (default 2.7)
+    :param Int estim: set filtering estimation mode (from 0 to 1) (default basic)
+    :param Boolean ref: have reference stream (default false)
+    :param Int planes: set planes to filter (from 0 to 15) (default 7)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#bm3d
@@ -976,11 +991,11 @@ def colormap(
     _source: "VideoStream",
     _target: "VideoStream",
     *,
-    patch_size: str | float | int = Default("64x64"),
-    nb_patches: int | str = Default("0"),
-    type: int | Literal["relative", "absolute"] | Default = Default("absolute"),
-    kernel: int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
-    enable: str | float | int = Default(None),
+    patch_size: Image_size = Default("64x64"),
+    nb_patches: Int = Default("0"),
+    type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
+    kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -990,10 +1005,10 @@ def colormap(
     Parameters:
     ----------
 
-    :param str patch_size: set patch size (default "64x64")
-    :param int nb_patches: set number of patches (from 0 to 64) (default 0)
-    :param int type: set the target type used (from 0 to 1) (default absolute)
-    :param int kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
+    :param Image_size patch_size: set patch size (default "64x64")
+    :param Int nb_patches: set number of patches (from 0 to 64) (default 0)
+    :param Int type: set the target type used (from 0 to 1) (default absolute)
+    :param Int kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#colormap
@@ -1026,10 +1041,10 @@ def colormap(
 
 def concat(
     *streams: "FilterableStream",
-    n: int | str = Default("2"),
-    v: int | str = Default("1"),
-    a: int | str = Default("0"),
-    unsafe: bool | int | str = Default("false"),
+    n: Int = Default("2"),
+    v: Int = Default("1"),
+    a: Int = Default("0"),
+    unsafe: Boolean = Default("false"),
     **kwargs: Any
 ) -> FilterNode:
     """
@@ -1039,10 +1054,10 @@ def concat(
     Parameters:
     ----------
 
-    :param int n: specify the number of segments (from 1 to INT_MAX) (default 2)
-    :param int v: specify the number of video streams (from 0 to INT_MAX) (default 1)
-    :param int a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
-    :param bool unsafe: enable unsafe mode (default false)
+    :param Int n: specify the number of segments (from 1 to INT_MAX) (default 2)
+    :param Int v: specify the number of video streams (from 0 to INT_MAX) (default 1)
+    :param Int a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
+    :param Boolean unsafe: enable unsafe mode (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#concat
 
@@ -1072,14 +1087,14 @@ def convolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: int | str = Default("7"),
-    impulse: int | Literal["first", "all"] | Default = Default("all"),
-    noise: float | int | str = Default("1e-07"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("7"),
+    impulse: Int | Literal["first", "all"] | Default = Default("all"),
+    noise: Float = Default("1e-07"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1089,13 +1104,13 @@ def convolve(
     Parameters:
     ----------
 
-    :param int planes: set planes to convolve (from 0 to 15) (default 7)
-    :param int impulse: when to process impulses (from 0 to 1) (default all)
-    :param float noise: set noise (from 0 to 1) (default 1e-07)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int planes: set planes to convolve (from 0 to 15) (default 7)
+    :param Int impulse: when to process impulses (from 0 to 1) (default all)
+    :param Float noise: set noise (from 0 to 1) (default 1e-07)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#convolve
@@ -1132,11 +1147,11 @@ def corr(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1146,10 +1161,10 @@ def corr(
     Parameters:
     ----------
 
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#corr
@@ -1181,14 +1196,14 @@ def corr(
 
 def decimate(
     *streams: "VideoStream",
-    cycle: int | str = Default("5"),
-    dupthresh: float | int | str = Default("1.1"),
-    scthresh: float | int | str = Default("15"),
-    blockx: int | str = Default("32"),
-    blocky: int | str = Default("32"),
-    ppsrc: bool | int | str = Default("false"),
-    chroma: bool | int | str = Default("true"),
-    mixed: bool | int | str = Default("false"),
+    cycle: Int = Default("5"),
+    dupthresh: Double = Default("1.1"),
+    scthresh: Double = Default("15"),
+    blockx: Int = Default("32"),
+    blocky: Int = Default("32"),
+    ppsrc: Boolean = Default("false"),
+    chroma: Boolean = Default("true"),
+    mixed: Boolean = Default("false"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1198,14 +1213,14 @@ def decimate(
     Parameters:
     ----------
 
-    :param int cycle: set the number of frame from which one will be dropped (from 2 to 25) (default 5)
-    :param float dupthresh: set duplicate threshold (from 0 to 100) (default 1.1)
-    :param float scthresh: set scene change threshold (from 0 to 100) (default 15)
-    :param int blockx: set the size of the x-axis blocks used during metric calculations (from 4 to 512) (default 32)
-    :param int blocky: set the size of the y-axis blocks used during metric calculations (from 4 to 512) (default 32)
-    :param bool ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
-    :param bool chroma: set whether or not chroma is considered in the metric calculations (default true)
-    :param bool mixed: set whether or not the input only partially contains content to be decimated (default false)
+    :param Int cycle: set the number of frame from which one will be dropped (from 2 to 25) (default 5)
+    :param Double dupthresh: set duplicate threshold (from 0 to 100) (default 1.1)
+    :param Double scthresh: set scene change threshold (from 0 to 100) (default 15)
+    :param Int blockx: set the size of the x-axis blocks used during metric calculations (from 4 to 512) (default 32)
+    :param Int blocky: set the size of the y-axis blocks used during metric calculations (from 4 to 512) (default 32)
+    :param Boolean ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
+    :param Boolean chroma: set whether or not chroma is considered in the metric calculations (default true)
+    :param Boolean mixed: set whether or not the input only partially contains content to be decimated (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#decimate
 
@@ -1238,14 +1253,14 @@ def deconvolve(
     _main: "VideoStream",
     _impulse: "VideoStream",
     *,
-    planes: int | str = Default("7"),
-    impulse: int | Literal["first", "all"] | Default = Default("all"),
-    noise: float | int | str = Default("1e-07"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("7"),
+    impulse: Int | Literal["first", "all"] | Default = Default("all"),
+    noise: Float = Default("1e-07"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1255,13 +1270,13 @@ def deconvolve(
     Parameters:
     ----------
 
-    :param int planes: set planes to deconvolve (from 0 to 15) (default 7)
-    :param int impulse: when to process impulses (from 0 to 1) (default all)
-    :param float noise: set noise (from 0 to 1) (default 1e-07)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int planes: set planes to deconvolve (from 0 to 15) (default 7)
+    :param Int impulse: when to process impulses (from 0 to 1) (default all)
+    :param Float noise: set noise (from 0 to 1) (default 1e-07)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#deconvolve
@@ -1299,8 +1314,8 @@ def displace(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    edge: int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
-    enable: str | float | int = Default(None),
+    edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1310,7 +1325,7 @@ def displace(
     Parameters:
     ----------
 
-    :param int edge: set edge mode (from 0 to 3) (default smear)
+    :param Int edge: set edge mode (from 0 to 3) (default smear)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#displace
@@ -1339,13 +1354,8 @@ def displace(
 
 
 def feedback(
-    _default: "VideoStream",
-    _feedin: "VideoStream",
-    *,
-    x: int | str = Default("0"),
-    w: int | str = Default("0"),
-    **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+    _default: "VideoStream", _feedin: "VideoStream", *, x: Int = Default("0"), w: Int = Default("0"), **kwargs: Any
+) -> tuple["AudioStream", "AudioStream",]:
     """
 
     Apply feedback video filter.
@@ -1353,8 +1363,8 @@ def feedback(
     Parameters:
     ----------
 
-    :param int x: set top left crop position (from 0 to INT_MAX) (default 0)
-    :param int w: set crop size (from 0 to INT_MAX) (default 0)
+    :param Int x: set top left crop position (from 0 to INT_MAX) (default 0)
+    :param Int w: set crop size (from 0 to INT_MAX) (default 0)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#feedback
 
@@ -1378,27 +1388,27 @@ def feedback(
         ),
     )
     return (
-        filter_node.video(0),
-        filter_node.video(1),
+        filter_node.audio(0),
+        filter_node.audio(1),
     )
 
 
 def fieldmatch(
     *streams: "VideoStream",
-    order: int | Literal["auto", "bff", "tff"] | Default = Default("auto"),
-    mode: int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | Default = Default("pc_n"),
-    ppsrc: bool | int | str = Default("false"),
-    field: int | Literal["auto", "bottom", "top"] | Default = Default("auto"),
-    mchroma: bool | int | str = Default("true"),
-    y0: int | str = Default("0"),
-    scthresh: float | int | str = Default("12"),
-    combmatch: int | Literal["none", "sc", "full"] | Default = Default("sc"),
-    combdbg: int | Literal["none", "pcn", "pcnub"] | Default = Default("none"),
-    cthresh: int | str = Default("9"),
-    chroma: bool | int | str = Default("false"),
-    blockx: int | str = Default("16"),
-    blocky: int | str = Default("16"),
-    combpel: int | str = Default("80"),
+    order: Int | Literal["auto", "bff", "tff"] | Default = Default("auto"),
+    mode: Int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | Default = Default("pc_n"),
+    ppsrc: Boolean = Default("false"),
+    field: Int | Literal["auto", "bottom", "top"] | Default = Default("auto"),
+    mchroma: Boolean = Default("true"),
+    y0: Int = Default("0"),
+    scthresh: Double = Default("12"),
+    combmatch: Int | Literal["none", "sc", "full"] | Default = Default("sc"),
+    combdbg: Int | Literal["none", "pcn", "pcnub"] | Default = Default("none"),
+    cthresh: Int = Default("9"),
+    chroma: Boolean = Default("false"),
+    blockx: Int = Default("16"),
+    blocky: Int = Default("16"),
+    combpel: Int = Default("80"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1408,20 +1418,20 @@ def fieldmatch(
     Parameters:
     ----------
 
-    :param int order: specify the assumed field order (from -1 to 1) (default auto)
-    :param int mode: set the matching mode or strategy to use (from 0 to 5) (default pc_n)
-    :param bool ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
-    :param int field: set the field to match from (from -1 to 1) (default auto)
-    :param bool mchroma: set whether or not chroma is included during the match comparisons (default true)
-    :param int y0: define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)
-    :param float scthresh: set scene change detection threshold (from 0 to 100) (default 12)
-    :param int combmatch: set combmatching mode (from 0 to 2) (default sc)
-    :param int combdbg: enable comb debug (from 0 to 2) (default none)
-    :param int cthresh: set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)
-    :param bool chroma: set whether or not chroma is considered in the combed frame decision (default false)
-    :param int blockx: set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
-    :param int blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
-    :param int combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
+    :param Int order: specify the assumed field order (from -1 to 1) (default auto)
+    :param Int mode: set the matching mode or strategy to use (from 0 to 5) (default pc_n)
+    :param Boolean ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
+    :param Int field: set the field to match from (from -1 to 1) (default auto)
+    :param Boolean mchroma: set whether or not chroma is included during the match comparisons (default true)
+    :param Int y0: define an exclusion band which excludes the lines between y0 and y1 from the field matching decision (from 0 to INT_MAX) (default 0)
+    :param Double scthresh: set scene change detection threshold (from 0 to 100) (default 12)
+    :param Int combmatch: set combmatching mode (from 0 to 2) (default sc)
+    :param Int combdbg: enable comb debug (from 0 to 2) (default none)
+    :param Int cthresh: set the area combing threshold used for combed frame detection (from -1 to 255) (default 9)
+    :param Boolean chroma: set whether or not chroma is considered in the combed frame decision (default false)
+    :param Int blockx: set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
+    :param Int blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
+    :param Int combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#fieldmatch
 
@@ -1460,7 +1470,7 @@ def framepack(
     _left: "VideoStream",
     _right: "VideoStream",
     *,
-    format: int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
+    format: Int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1470,7 +1480,7 @@ def framepack(
     Parameters:
     ----------
 
-    :param int format: Frame pack output format (from 0 to INT_MAX) (default sbs)
+    :param Int format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#framepack
 
@@ -1499,9 +1509,9 @@ def freezeframes(
     _source: "VideoStream",
     _replace: "VideoStream",
     *,
-    first: int | str = Default("0"),
-    last: int | str = Default("0"),
-    replace: int | str = Default("0"),
+    first: Int64 = Default("0"),
+    last: Int64 = Default("0"),
+    replace: Int64 = Default("0"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1511,9 +1521,9 @@ def freezeframes(
     Parameters:
     ----------
 
-    :param int first: set first frame to freeze (from 0 to I64_MAX) (default 0)
-    :param int last: set last frame to freeze (from 0 to I64_MAX) (default 0)
-    :param int replace: set frame to replace (from 0 to I64_MAX) (default 0)
+    :param Int64 first: set first frame to freeze (from 0 to I64_MAX) (default 0)
+    :param Int64 last: set last frame to freeze (from 0 to I64_MAX) (default 0)
+    :param Int64 replace: set frame to replace (from 0 to I64_MAX) (default 0)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#freezeframes
 
@@ -1542,13 +1552,13 @@ def freezeframes(
 
 def guided(
     *streams: "VideoStream",
-    radius: int | str = Default("3"),
-    eps: float | int | str = Default("0.01"),
-    mode: int | Literal["basic", "fast"] | Default = Default("basic"),
-    sub: int | str = Default("4"),
-    guidance: int | Literal["off", "on"] | Default = Default("off"),
-    planes: int | str = Default("1"),
-    enable: str | float | int = Default(None),
+    radius: Int = Default("3"),
+    eps: Float = Default("0.01"),
+    mode: Int | Literal["basic", "fast"] | Default = Default("basic"),
+    sub: Int = Default("4"),
+    guidance: Int | Literal["off", "on"] | Default = Default("off"),
+    planes: Int = Default("1"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1558,12 +1568,12 @@ def guided(
     Parameters:
     ----------
 
-    :param int radius: set the box radius (from 1 to 20) (default 3)
-    :param float eps: set the regularization parameter (with square) (from 0 to 1) (default 0.01)
-    :param int mode: set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)
-    :param int sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
-    :param int guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
-    :param int planes: set planes to filter (from 0 to 15) (default 1)
+    :param Int radius: set the box radius (from 1 to 20) (default 3)
+    :param Float eps: set the regularization parameter (with square) (from 0 to 1) (default 0.01)
+    :param Int mode: set filtering mode (0: basic mode; 1: fast mode) (from 0 to 1) (default basic)
+    :param Int sub: subsampling ratio for fast mode (from 2 to 64) (default 4)
+    :param Int guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
+    :param Int planes: set planes to filter (from 0 to 15) (default 1)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#guided
@@ -1596,13 +1606,13 @@ def haldclut(
     _main: "VideoStream",
     _clut: "VideoStream",
     *,
-    clut: int | Literal["first", "all"] | Default = Default("all"),
-    interp: int | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"] | Default = Default("tetrahedral"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    clut: Int | Literal["first", "all"] | Default = Default("all"),
+    interp: Int | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"] | Default = Default("tetrahedral"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1612,12 +1622,12 @@ def haldclut(
     Parameters:
     ----------
 
-    :param int clut: when to process CLUT (from 0 to 1) (default all)
-    :param int interp: select interpolation mode (from 0 to 4) (default tetrahedral)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int clut: when to process CLUT (from 0 to 1) (default all)
+    :param Int interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#haldclut
@@ -1651,12 +1661,12 @@ def haldclut(
 
 def headphone(
     *streams: "AudioStream",
-    map: str | float | int = Default(None),
-    gain: float | int | str = Default("0"),
-    lfe: float | int | str = Default("0"),
-    type: int | Literal["time", "freq"] | Default = Default("freq"),
-    size: int | str = Default("1024"),
-    hrir: int | Literal["stereo", "multich"] | Default = Default("stereo"),
+    map: String = Default(None),
+    gain: Float = Default("0"),
+    lfe: Float = Default("0"),
+    type: Int | Literal["time", "freq"] | Default = Default("freq"),
+    size: Int = Default("1024"),
+    hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -1666,12 +1676,12 @@ def headphone(
     Parameters:
     ----------
 
-    :param str map: set channels convolution mappings
-    :param float gain: set gain in dB (from -20 to 40) (default 0)
-    :param float lfe: set lfe gain in dB (from -20 to 40) (default 0)
-    :param int type: set processing (from 0 to 1) (default freq)
-    :param int size: set frame size (from 1024 to 96000) (default 1024)
-    :param int hrir: set hrir format (from 0 to 1) (default stereo)
+    :param String map: set channels convolution mappings
+    :param Float gain: set gain in dB (from -20 to 40) (default 0)
+    :param Float lfe: set lfe gain in dB (from -20 to 40) (default 0)
+    :param Int type: set processing (from 0 to 1) (default freq)
+    :param Int size: set frame size (from 1024 to 96000) (default 1024)
+    :param Int hrir: set hrir format (from 0 to 1) (default stereo)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#headphone
 
@@ -1701,10 +1711,7 @@ def headphone(
 
 
 def hstack(
-    *streams: "VideoStream",
-    inputs: int | str = Default("2"),
-    shortest: bool | int | str = Default("false"),
-    **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default("2"), shortest: Boolean = Default("false"), **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -1713,8 +1720,8 @@ def hstack(
     Parameters:
     ----------
 
-    :param int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
-    :param bool shortest: force termination when the shortest input terminates (default false)
+    :param Int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#hstack
 
@@ -1741,13 +1748,13 @@ def hysteresis(
     _base: "VideoStream",
     _alt: "VideoStream",
     *,
-    planes: int | str = Default("15"),
-    threshold: int | str = Default("0"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    threshold: Int = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1757,12 +1764,12 @@ def hysteresis(
     Parameters:
     ----------
 
-    :param int planes: set planes (from 0 to 15) (default 15)
-    :param int threshold: set threshold (from 0 to 65535) (default 0)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Int threshold: set threshold (from 0 to 65535) (default 0)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#hysteresis
@@ -1798,11 +1805,11 @@ def identity(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1812,10 +1819,10 @@ def identity(
     Parameters:
     ----------
 
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#identity
@@ -1847,8 +1854,8 @@ def identity(
 
 def interleave(
     *streams: "VideoStream",
-    nb_inputs: int | str = Default("2"),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
+    nb_inputs: Int = Default("2"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1858,8 +1865,8 @@ def interleave(
     Parameters:
     ----------
 
-    :param int nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
-    :param int duration: how to determine the end-of-stream (from 0 to 2) (default longest)
+    :param Int nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
+    :param Int duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave
 
@@ -1884,9 +1891,9 @@ def interleave(
 
 def join(
     *streams: "AudioStream",
-    inputs: int | str = Default("2"),
-    channel_layout: str | float | int = Default("stereo"),
-    map: str | float | int = Default(None),
+    inputs: Int = Default("2"),
+    channel_layout: String = Default("stereo"),
+    map: String = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -1896,9 +1903,9 @@ def join(
     Parameters:
     ----------
 
-    :param int inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
-    :param str channel_layout: Channel layout of the output stream. (default "stereo")
-    :param str map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
+    :param Int inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
+    :param String channel_layout: Channel layout of the output stream. (default "stereo")
+    :param String map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#join
 
@@ -1926,23 +1933,23 @@ def libvmaf(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    model_path: str | float | int = Default(None),
-    log_path: str | float | int = Default(None),
-    log_fmt: str | float | int = Default("xml"),
-    enable_transform: bool | int | str = Default("false"),
-    psnr: bool | int | str = Default("false"),
-    ssim: bool | int | str = Default("false"),
-    ms_ssim: bool | int | str = Default("false"),
-    pool: str | float | int = Default(None),
-    n_threads: int | str = Default("0"),
-    n_subsample: int | str = Default("1"),
-    enable_conf_interval: bool | int | str = Default("false"),
-    model: str | float | int = Default("version=vmaf_v0.6.1"),
-    feature: str | float | int = Default(None),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
+    model_path: String = Default(None),
+    log_path: String = Default(None),
+    log_fmt: String = Default("xml"),
+    enable_transform: Boolean = Default("false"),
+    psnr: Boolean = Default("false"),
+    ssim: Boolean = Default("false"),
+    ms_ssim: Boolean = Default("false"),
+    pool: String = Default(None),
+    n_threads: Int = Default("0"),
+    n_subsample: Int = Default("1"),
+    enable_conf_interval: Boolean = Default("false"),
+    model: String = Default("version=vmaf_v0.6.1"),
+    feature: String = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -1952,23 +1959,23 @@ def libvmaf(
     Parameters:
     ----------
 
-    :param str model_path: use model='path=...'.
-    :param str log_path: Set the file path to be used to write log.
-    :param str log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
-    :param bool enable_transform: use model='enable_transform=true'. (default false)
-    :param bool psnr: use feature='name=psnr'. (default false)
-    :param bool ssim: use feature='name=float_ssim'. (default false)
-    :param bool ms_ssim: use feature='name=float_ms_ssim'. (default false)
-    :param str pool: Set the pool method to be used for computing vmaf.
-    :param int n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
-    :param int n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
-    :param bool enable_conf_interval: model='enable_conf_interval=true'. (default false)
-    :param str model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
-    :param str feature: Set the feature to be used for computing vmaf.
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param String model_path: use model='path=...'.
+    :param String log_path: Set the file path to be used to write log.
+    :param String log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
+    :param Boolean enable_transform: use model='enable_transform=true'. (default false)
+    :param Boolean psnr: use feature='name=psnr'. (default false)
+    :param Boolean ssim: use feature='name=float_ssim'. (default false)
+    :param Boolean ms_ssim: use feature='name=float_ms_ssim'. (default false)
+    :param String pool: Set the pool method to be used for computing vmaf.
+    :param Int n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
+    :param Int n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
+    :param Boolean enable_conf_interval: model='enable_conf_interval=true'. (default false)
+    :param String model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
+    :param String feature: Set the feature to be used for computing vmaf.
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf
 
@@ -2011,11 +2018,11 @@ def libvmaf(
 
 def limitdiff(
     *streams: "VideoStream",
-    threshold: float | int | str = Default("0.00392157"),
-    elasticity: float | int | str = Default("2"),
-    reference: bool | int | str = Default("false"),
-    planes: int | str = Default("15"),
-    enable: str | float | int = Default(None),
+    threshold: Float = Default("0.00392157"),
+    elasticity: Float = Default("2"),
+    reference: Boolean = Default("false"),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2025,10 +2032,10 @@ def limitdiff(
     Parameters:
     ----------
 
-    :param float threshold: set the threshold (from 0 to 1) (default 0.00392157)
-    :param float elasticity: set the elasticity (from 0 to 10) (default 2)
-    :param bool reference: enable reference stream (default false)
-    :param int planes: set the planes to filter (from 0 to 15) (default 15)
+    :param Float threshold: set the threshold (from 0 to 1) (default 0.00392157)
+    :param Float elasticity: set the elasticity (from 0 to 10) (default 2)
+    :param Boolean reference: enable reference stream (default false)
+    :param Int planes: set the planes to filter (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#limitdiff
@@ -2059,16 +2066,16 @@ def lut2(
     _srcx: "VideoStream",
     _srcy: "VideoStream",
     *,
-    c0: str | float | int = Default("x"),
-    c1: str | float | int = Default("x"),
-    c2: str | float | int = Default("x"),
-    c3: str | float | int = Default("x"),
-    d: int | str = Default("0"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    c0: String = Default("x"),
+    c1: String = Default("x"),
+    c2: String = Default("x"),
+    c3: String = Default("x"),
+    d: Int = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2078,15 +2085,15 @@ def lut2(
     Parameters:
     ----------
 
-    :param str c0: set component #0 expression (default "x")
-    :param str c1: set component #1 expression (default "x")
-    :param str c2: set component #2 expression (default "x")
-    :param str c3: set component #3 expression (default "x")
-    :param int d: set output depth (from 0 to 16) (default 0)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param String c0: set component #0 expression (default "x")
+    :param String c1: set component #1 expression (default "x")
+    :param String c2: set component #2 expression (default "x")
+    :param String c3: set component #3 expression (default "x")
+    :param Int d: set output depth (from 0 to 16) (default 0)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2
@@ -2126,10 +2133,10 @@ def maskedclamp(
     _dark: "VideoStream",
     _bright: "VideoStream",
     *,
-    undershoot: int | str = Default("0"),
-    overshoot: int | str = Default("0"),
-    planes: int | str = Default("15"),
-    enable: str | float | int = Default(None),
+    undershoot: Int = Default("0"),
+    overshoot: Int = Default("0"),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2139,9 +2146,9 @@ def maskedclamp(
     Parameters:
     ----------
 
-    :param int undershoot: set undershoot (from 0 to 65535) (default 0)
-    :param int overshoot: set overshoot (from 0 to 65535) (default 0)
-    :param int planes: set planes (from 0 to 15) (default 15)
+    :param Int undershoot: set undershoot (from 0 to 65535) (default 0)
+    :param Int overshoot: set overshoot (from 0 to 65535) (default 0)
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedclamp
@@ -2176,8 +2183,8 @@ def maskedmax(
     _filter1: "VideoStream",
     _filter2: "VideoStream",
     *,
-    planes: int | str = Default("15"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2187,7 +2194,7 @@ def maskedmax(
     Parameters:
     ----------
 
-    :param int planes: set planes (from 0 to 15) (default 15)
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmax
@@ -2220,8 +2227,8 @@ def maskedmerge(
     _overlay: "VideoStream",
     _mask: "VideoStream",
     *,
-    planes: int | str = Default("15"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2231,7 +2238,7 @@ def maskedmerge(
     Parameters:
     ----------
 
-    :param int planes: set planes (from 0 to 15) (default 15)
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmerge
@@ -2264,8 +2271,8 @@ def maskedmin(
     _filter1: "VideoStream",
     _filter2: "VideoStream",
     *,
-    planes: int | str = Default("15"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2275,7 +2282,7 @@ def maskedmin(
     Parameters:
     ----------
 
-    :param int planes: set planes (from 0 to 15) (default 15)
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmin
@@ -2307,10 +2314,10 @@ def maskedthreshold(
     _source: "VideoStream",
     _reference: "VideoStream",
     *,
-    threshold: int | str = Default("1"),
-    planes: int | str = Default("15"),
-    mode: int | Literal["abs", "diff"] | Default = Default("abs"),
-    enable: str | float | int = Default(None),
+    threshold: Int = Default("1"),
+    planes: Int = Default("15"),
+    mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2320,9 +2327,9 @@ def maskedthreshold(
     Parameters:
     ----------
 
-    :param int threshold: set threshold (from 0 to 65535) (default 1)
-    :param int planes: set planes (from 0 to 15) (default 15)
-    :param int mode: set mode (from 0 to 1) (default abs)
+    :param Int threshold: set threshold (from 0 to 65535) (default 1)
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Int mode: set mode (from 0 to 1) (default abs)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold
@@ -2353,16 +2360,16 @@ def maskedthreshold(
 
 def mergeplanes(
     *streams: "VideoStream",
-    mapping: int | str = Default("-1"),
-    format: str | float | int = Default("yuva444p"),
-    map0s: int | str = Default("0"),
-    map0p: int | str = Default("0"),
-    map1s: int | str = Default("0"),
-    map1p: int | str = Default("0"),
-    map2s: int | str = Default("0"),
-    map2p: int | str = Default("0"),
-    map3s: int | str = Default("0"),
-    map3p: int | str = Default("0"),
+    mapping: Int = Default("-1"),
+    format: Pix_fmt = Default("yuva444p"),
+    map0s: Int = Default("0"),
+    map0p: Int = Default("0"),
+    map1s: Int = Default("0"),
+    map1p: Int = Default("0"),
+    map2s: Int = Default("0"),
+    map2p: Int = Default("0"),
+    map3s: Int = Default("0"),
+    map3p: Int = Default("0"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2372,16 +2379,16 @@ def mergeplanes(
     Parameters:
     ----------
 
-    :param int mapping: set input to output plane mapping (from -1 to 8.58993e+08) (default -1)
-    :param str format: set output pixel format (default yuva444p)
-    :param int map0s: set 1st input to output stream mapping (from 0 to 3) (default 0)
-    :param int map0p: set 1st input to output plane mapping (from 0 to 3) (default 0)
-    :param int map1s: set 2nd input to output stream mapping (from 0 to 3) (default 0)
-    :param int map1p: set 2nd input to output plane mapping (from 0 to 3) (default 0)
-    :param int map2s: set 3rd input to output stream mapping (from 0 to 3) (default 0)
-    :param int map2p: set 3rd input to output plane mapping (from 0 to 3) (default 0)
-    :param int map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
-    :param int map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
+    :param Int mapping: set input to output plane mapping (from -1 to 8.58993e+08) (default -1)
+    :param Pix_fmt format: set output pixel format (default yuva444p)
+    :param Int map0s: set 1st input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map0p: set 1st input to output plane mapping (from 0 to 3) (default 0)
+    :param Int map1s: set 2nd input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map1p: set 2nd input to output plane mapping (from 0 to 3) (default 0)
+    :param Int map2s: set 3rd input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map2p: set 3rd input to output plane mapping (from 0 to 3) (default 0)
+    :param Int map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
+    :param Int map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#mergeplanes
 
@@ -2413,12 +2420,7 @@ def mergeplanes(
 
 
 def midequalizer(
-    _in0: "VideoStream",
-    _in1: "VideoStream",
-    *,
-    planes: int | str = Default("15"),
-    enable: str | float | int = Default(None),
-    **kwargs: Any
+    _in0: "VideoStream", _in1: "VideoStream", *, planes: Int = Default("15"), enable: str = Default(None), **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -2427,7 +2429,7 @@ def midequalizer(
     Parameters:
     ----------
 
-    :param int planes: set planes (from 0 to 15) (default 15)
+    :param Int planes: set planes (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#midequalizer
@@ -2456,12 +2458,12 @@ def midequalizer(
 
 def mix(
     *streams: "VideoStream",
-    inputs: int | str = Default("2"),
-    weights: str | float | int = Default("1 1"),
-    scale: float | int | str = Default("0"),
-    planes: str | float | int = Default("F"),
-    duration: int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
-    enable: str | float | int = Default(None),
+    inputs: Int = Default("2"),
+    weights: String = Default("1 1"),
+    scale: Float = Default("0"),
+    planes: Flags = Default("F"),
+    duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2471,11 +2473,11 @@ def mix(
     Parameters:
     ----------
 
-    :param int inputs: set number of inputs (from 2 to 32767) (default 2)
-    :param str weights: set weight for each input (default "1 1")
-    :param float scale: set scale (from 0 to 32767) (default 0)
-    :param str planes: set what planes to filter (default F)
-    :param int duration: how to determine end of stream (from 0 to 2) (default longest)
+    :param Int inputs: set number of inputs (from 2 to 32767) (default 2)
+    :param String weights: set weight for each input (default "1 1")
+    :param Float scale: set scale (from 0 to 32767) (default 0)
+    :param Flags planes: set what planes to filter (default F)
+    :param Int duration: how to determine end of stream (from 0 to 2) (default longest)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#mix
@@ -2507,16 +2509,16 @@ def morpho(
     _default: "VideoStream",
     _structure: "VideoStream",
     *,
-    mode: int
+    mode: Int
     | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
     | Default = Default("erode"),
-    planes: int | str = Default("7"),
-    structure: int | Literal["first", "all"] | Default = Default("all"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("7"),
+    structure: Int | Literal["first", "all"] | Default = Default("all"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2526,13 +2528,13 @@ def morpho(
     Parameters:
     ----------
 
-    :param int mode: set morphological transform (from 0 to 6) (default erode)
-    :param int planes: set planes to filter (from 0 to 15) (default 7)
-    :param int structure: when to process structures (from 0 to 1) (default all)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int mode: set morphological transform (from 0 to 6) (default erode)
+    :param Int planes: set planes to filter (from 0 to 15) (default 7)
+    :param Int structure: when to process structures (from 0 to 1) (default all)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#morpho
@@ -2569,11 +2571,11 @@ def msad(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2583,10 +2585,10 @@ def msad(
     Parameters:
     ----------
 
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#msad
@@ -2620,10 +2622,10 @@ def multiply(
     _source: "VideoStream",
     _factor: "VideoStream",
     *,
-    scale: float | int | str = Default("1"),
-    offset: float | int | str = Default("0.5"),
-    planes: str | float | int = Default("F"),
-    enable: str | float | int = Default(None),
+    scale: Float = Default("1"),
+    offset: Float = Default("0.5"),
+    planes: Flags = Default("F"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2633,9 +2635,9 @@ def multiply(
     Parameters:
     ----------
 
-    :param float scale: set scale (from 0 to 9) (default 1)
-    :param float offset: set offset (from -1 to 1) (default 0.5)
-    :param str planes: set planes (default F)
+    :param Float scale: set scale (from 0 to 9) (default 1)
+    :param Float offset: set offset (from -1 to 1) (default 0.5)
+    :param Flags planes: set planes (default F)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#multiply
@@ -2668,18 +2670,18 @@ def overlay(
     _main: "VideoStream",
     _overlay: "VideoStream",
     *,
-    x: str | float | int = Default("0"),
-    y: str | float | int = Default("0"),
-    eof_action: int | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
-    eval: int | Literal["init", "frame"] | Default = Default("frame"),
-    shortest: bool | int | str = Default("false"),
-    format: int
+    x: String = Default("0"),
+    y: String = Default("0"),
+    eof_action: Int | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
+    eval: Int | Literal["init", "frame"] | Default = Default("frame"),
+    shortest: Boolean = Default("false"),
+    format: Int
     | Literal["yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "rgb", "gbrp", "auto"]
     | Default = Default("yuv420"),
-    repeatlast: bool | int | str = Default("true"),
-    alpha: int | Literal["straight", "premultiplied"] | Default = Default("straight"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    repeatlast: Boolean = Default("true"),
+    alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2689,15 +2691,15 @@ def overlay(
     Parameters:
     ----------
 
-    :param str x: set the x expression (default "0")
-    :param str y: set the y expression (default "0")
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param int eval: specify when to evaluate expressions (from 0 to 1) (default frame)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param int format: set output format (from 0 to 7) (default yuv420)
-    :param bool repeatlast: repeat overlay of the last overlay frame (default true)
-    :param int alpha: alpha format (from 0 to 1) (default straight)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param String x: set the x expression (default "0")
+    :param String y: set the y expression (default "0")
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Int eval: specify when to evaluate expressions (from 0 to 1) (default frame)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Int format: set output format (from 0 to 7) (default yuv420)
+    :param Boolean repeatlast: repeat overlay of the last overlay frame (default true)
+    :param Int alpha: alpha format (from 0 to 1) (default straight)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay
@@ -2736,14 +2738,14 @@ def paletteuse(
     _default: "VideoStream",
     _palette: "VideoStream",
     *,
-    dither: int
+    dither: Int
     | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
     | Default = Default("sierra2_4a"),
-    bayer_scale: int | str = Default("2"),
-    diff_mode: int | Literal["rectangle"] | Default = Default("0"),
-    new: bool | int | str = Default("false"),
-    alpha_threshold: int | str = Default("128"),
-    debug_kdtree: str | float | int = Default(None),
+    bayer_scale: Int = Default("2"),
+    diff_mode: Int | Literal["rectangle"] | Default = Default("0"),
+    new: Boolean = Default("false"),
+    alpha_threshold: Int = Default("128"),
+    debug_kdtree: String = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2753,12 +2755,12 @@ def paletteuse(
     Parameters:
     ----------
 
-    :param int dither: select dithering mode (from 0 to 8) (default sierra2_4a)
-    :param int bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
-    :param int diff_mode: set frame difference mode (from 0 to 1) (default 0)
-    :param bool new: take new palette for each output frame (default false)
-    :param int alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
-    :param str debug_kdtree: save Graphviz graph of the kdtree in specified file
+    :param Int dither: select dithering mode (from 0 to 8) (default sierra2_4a)
+    :param Int bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
+    :param Int diff_mode: set frame difference mode (from 0 to 1) (default 0)
+    :param Boolean new: take new palette for each output frame (default false)
+    :param Int alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
+    :param String debug_kdtree: save Graphviz graph of the kdtree in specified file
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#paletteuse
 
@@ -2790,9 +2792,9 @@ def paletteuse(
 
 def premultiply(
     *streams: "VideoStream",
-    planes: int | str = Default("15"),
-    inplace: bool | int | str = Default("false"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    inplace: Boolean = Default("false"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2802,8 +2804,8 @@ def premultiply(
     Parameters:
     ----------
 
-    :param int planes: set planes (from 0 to 15) (default 15)
-    :param bool inplace: enable inplace mode (default false)
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Boolean inplace: enable inplace mode (default false)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#premultiply
@@ -2832,14 +2834,14 @@ def psnr(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    stats_file: str | float | int = Default(None),
-    stats_version: int | str = Default("1"),
-    output_max: bool | int | str = Default("false"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    stats_file: String = Default(None),
+    stats_version: Int = Default("1"),
+    output_max: Boolean = Default("false"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2849,13 +2851,13 @@ def psnr(
     Parameters:
     ----------
 
-    :param str stats_file: Set file where to store per-frame difference information
-    :param int stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
-    :param bool output_max: Add raw stats (max values) to the output log. (default false)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param String stats_file: Set file where to store per-frame difference information
+    :param Int stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
+    :param Boolean output_max: Add raw stats (max values) to the output log. (default false)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#psnr
@@ -2893,8 +2895,8 @@ def remap(
     _xmap: "VideoStream",
     _ymap: "VideoStream",
     *,
-    format: int | Literal["color", "gray"] | Default = Default("color"),
-    fill: str | float | int = Default("black"),
+    format: Int | Literal["color", "gray"] | Default = Default("color"),
+    fill: Color = Default("black"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -2904,8 +2906,8 @@ def remap(
     Parameters:
     ----------
 
-    :param int format: set output format (from 0 to 1) (default color)
-    :param str fill: set the color of the unmapped pixels (default "black")
+    :param Int format: set output format (from 0 to 1) (default color)
+    :param Color fill: set the color of the unmapped pixels (default "black")
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#remap
 
@@ -2936,33 +2938,33 @@ def scale2ref(
     _default: "VideoStream",
     _ref: "VideoStream",
     *,
-    w: str | float | int = Default(None),
-    h: str | float | int = Default(None),
-    flags: str | float | int = Default(""),
-    interl: bool | int | str = Default("false"),
-    in_color_matrix: str
+    w: String = Default(None),
+    h: String = Default(None),
+    flags: String = Default(""),
+    interl: Boolean = Default("false"),
+    in_color_matrix: String
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
     | Default = Default("auto"),
-    out_color_matrix: str
+    out_color_matrix: String
     | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
     | Default = Default(None),
-    in_range: int
+    in_range: Int
     | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
     | Default = Default("auto"),
-    out_range: int
+    out_range: Int
     | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
     | Default = Default("auto"),
-    in_v_chr_pos: int | str = Default("-513"),
-    in_h_chr_pos: int | str = Default("-513"),
-    out_v_chr_pos: int | str = Default("-513"),
-    out_h_chr_pos: int | str = Default("-513"),
-    force_original_aspect_ratio: int | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
-    force_divisible_by: int | str = Default("1"),
-    param0: float | int | str = Default("DBL_MAX"),
-    param1: float | int | str = Default("DBL_MAX"),
-    eval: int | Literal["init", "frame"] | Default = Default("init"),
+    in_v_chr_pos: Int = Default("-513"),
+    in_h_chr_pos: Int = Default("-513"),
+    out_v_chr_pos: Int = Default("-513"),
+    out_h_chr_pos: Int = Default("-513"),
+    force_original_aspect_ratio: Int | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
+    force_divisible_by: Int = Default("1"),
+    param0: Double = Default("DBL_MAX"),
+    param1: Double = Default("DBL_MAX"),
+    eval: Int | Literal["init", "frame"] | Default = Default("init"),
     **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+) -> tuple["AudioStream", "AudioStream",]:
     """
 
     Scale the input video size and/or convert the image format to the given reference.
@@ -2970,23 +2972,23 @@ def scale2ref(
     Parameters:
     ----------
 
-    :param str w: Output video width
-    :param str h: Output video height
-    :param str flags: Flags to pass to libswscale (default "")
-    :param bool interl: set interlacing (default false)
-    :param str in_color_matrix: set input YCbCr type (default "auto")
-    :param str out_color_matrix: set output YCbCr type
-    :param int in_range: set input color range (from 0 to 2) (default auto)
-    :param int out_range: set output color range (from 0 to 2) (default auto)
-    :param int in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-    :param int in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-    :param int out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-    :param int out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-    :param int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
-    :param int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
-    :param float param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-    :param float param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-    :param int eval: specify when to evaluate expressions (from 0 to 1) (default init)
+    :param String w: Output video width
+    :param String h: Output video height
+    :param String flags: Flags to pass to libswscale (default "")
+    :param Boolean interl: set interlacing (default false)
+    :param String in_color_matrix: set input YCbCr type (default "auto")
+    :param String out_color_matrix: set output YCbCr type
+    :param Int in_range: set input color range (from 0 to 2) (default auto)
+    :param Int out_range: set output color range (from 0 to 2) (default auto)
+    :param Int in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+    :param Int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+    :param Int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+    :param Double param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+    :param Double param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+    :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#scale2ref
 
@@ -3025,8 +3027,8 @@ def scale2ref(
         ),
     )
     return (
-        filter_node.video(0),
-        filter_node.video(1),
+        filter_node.audio(0),
+        filter_node.audio(1),
     )
 
 
@@ -3034,18 +3036,18 @@ def sidechaincompress(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: float | int | str = Default("1"),
-    mode: int | Literal["downward", "upward"] | Default = Default("downward"),
-    threshold: float | int | str = Default("0.125"),
-    ratio: float | int | str = Default("2"),
-    attack: float | int | str = Default("20"),
-    release: float | int | str = Default("250"),
-    makeup: float | int | str = Default("1"),
-    knee: float | int | str = Default("2.82843"),
-    link: int | Literal["average", "maximum"] | Default = Default("average"),
-    detection: int | Literal["peak", "rms"] | Default = Default("rms"),
-    level_sc: float | int | str = Default("1"),
-    mix: float | int | str = Default("1"),
+    level_in: Double = Default("1"),
+    mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
+    threshold: Double = Default("0.125"),
+    ratio: Double = Default("2"),
+    attack: Double = Default("20"),
+    release: Double = Default("250"),
+    makeup: Double = Default("1"),
+    knee: Double = Default("2.82843"),
+    link: Int | Literal["average", "maximum"] | Default = Default("average"),
+    detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
+    level_sc: Double = Default("1"),
+    mix: Double = Default("1"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -3055,18 +3057,18 @@ def sidechaincompress(
     Parameters:
     ----------
 
-    :param float level_in: set input gain (from 0.015625 to 64) (default 1)
-    :param int mode: set mode (from 0 to 1) (default downward)
-    :param float threshold: set threshold (from 0.000976563 to 1) (default 0.125)
-    :param float ratio: set ratio (from 1 to 20) (default 2)
-    :param float attack: set attack (from 0.01 to 2000) (default 20)
-    :param float release: set release (from 0.01 to 9000) (default 250)
-    :param float makeup: set make up gain (from 1 to 64) (default 1)
-    :param float knee: set knee (from 1 to 8) (default 2.82843)
-    :param int link: set link type (from 0 to 1) (default average)
-    :param int detection: set detection (from 0 to 1) (default rms)
-    :param float level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
-    :param float mix: set mix (from 0 to 1) (default 1)
+    :param Double level_in: set input gain (from 0.015625 to 64) (default 1)
+    :param Int mode: set mode (from 0 to 1) (default downward)
+    :param Double threshold: set threshold (from 0.000976563 to 1) (default 0.125)
+    :param Double ratio: set ratio (from 1 to 20) (default 2)
+    :param Double attack: set attack (from 0.01 to 2000) (default 20)
+    :param Double release: set release (from 0.01 to 9000) (default 250)
+    :param Double makeup: set make up gain (from 1 to 64) (default 1)
+    :param Double knee: set knee (from 1 to 8) (default 2.82843)
+    :param Int link: set link type (from 0 to 1) (default average)
+    :param Int detection: set detection (from 0 to 1) (default rms)
+    :param Double level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+    :param Double mix: set mix (from 0 to 1) (default 1)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress
 
@@ -3106,19 +3108,19 @@ def sidechaingate(
     _main: "AudioStream",
     _sidechain: "AudioStream",
     *,
-    level_in: float | int | str = Default("1"),
-    mode: int | Literal["downward", "upward"] | Default = Default("downward"),
-    range: float | int | str = Default("0.06125"),
-    threshold: float | int | str = Default("0.125"),
-    ratio: float | int | str = Default("2"),
-    attack: float | int | str = Default("20"),
-    release: float | int | str = Default("250"),
-    makeup: float | int | str = Default("1"),
-    knee: float | int | str = Default("2.82843"),
-    detection: int | Literal["peak", "rms"] | Default = Default("rms"),
-    link: int | Literal["average", "maximum"] | Default = Default("average"),
-    level_sc: float | int | str = Default("1"),
-    enable: str | float | int = Default(None),
+    level_in: Double = Default("1"),
+    mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
+    range: Double = Default("0.06125"),
+    threshold: Double = Default("0.125"),
+    ratio: Double = Default("2"),
+    attack: Double = Default("20"),
+    release: Double = Default("250"),
+    makeup: Double = Default("1"),
+    knee: Double = Default("2.82843"),
+    detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
+    link: Int | Literal["average", "maximum"] | Default = Default("average"),
+    level_sc: Double = Default("1"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -3128,18 +3130,18 @@ def sidechaingate(
     Parameters:
     ----------
 
-    :param float level_in: set input level (from 0.015625 to 64) (default 1)
-    :param int mode: set mode (from 0 to 1) (default downward)
-    :param float range: set max gain reduction (from 0 to 1) (default 0.06125)
-    :param float threshold: set threshold (from 0 to 1) (default 0.125)
-    :param float ratio: set ratio (from 1 to 9000) (default 2)
-    :param float attack: set attack (from 0.01 to 9000) (default 20)
-    :param float release: set release (from 0.01 to 9000) (default 250)
-    :param float makeup: set makeup gain (from 1 to 64) (default 1)
-    :param float knee: set knee (from 1 to 8) (default 2.82843)
-    :param int detection: set detection (from 0 to 1) (default rms)
-    :param int link: set link (from 0 to 1) (default average)
-    :param float level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
+    :param Double level_in: set input level (from 0.015625 to 64) (default 1)
+    :param Int mode: set mode (from 0 to 1) (default downward)
+    :param Double range: set max gain reduction (from 0 to 1) (default 0.06125)
+    :param Double threshold: set threshold (from 0 to 1) (default 0.125)
+    :param Double ratio: set ratio (from 1 to 9000) (default 2)
+    :param Double attack: set attack (from 0.01 to 9000) (default 20)
+    :param Double release: set release (from 0.01 to 9000) (default 250)
+    :param Double makeup: set makeup gain (from 1 to 64) (default 1)
+    :param Double knee: set knee (from 1 to 8) (default 2.82843)
+    :param Int detection: set detection (from 0 to 1) (default rms)
+    :param Int link: set link (from 0 to 1) (default average)
+    :param Double level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#sidechaingate
@@ -3179,15 +3181,15 @@ def sidechaingate(
 
 def signature(
     *streams: "VideoStream",
-    detectmode: int | Literal["off", "full", "fast"] | Default = Default("off"),
-    nb_inputs: int | str = Default("1"),
-    filename: str | float | int = Default(""),
-    format: int | Literal["binary", "xml"] | Default = Default("binary"),
-    th_d: int | str = Default("9000"),
-    th_dc: int | str = Default("60000"),
-    th_xh: int | str = Default("116"),
-    th_di: int | str = Default("0"),
-    th_it: float | int | str = Default("0.5"),
+    detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
+    nb_inputs: Int = Default("1"),
+    filename: String = Default(""),
+    format: Int | Literal["binary", "xml"] | Default = Default("binary"),
+    th_d: Int = Default("9000"),
+    th_dc: Int = Default("60000"),
+    th_xh: Int = Default("116"),
+    th_di: Int = Default("0"),
+    th_it: Double = Default("0.5"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3197,15 +3199,15 @@ def signature(
     Parameters:
     ----------
 
-    :param int detectmode: set the detectmode (from 0 to 2) (default off)
-    :param int nb_inputs: number of inputs (from 1 to INT_MAX) (default 1)
-    :param str filename: filename for output files (default "")
-    :param int format: set output format (from 0 to 1) (default binary)
-    :param int th_d: threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)
-    :param int th_dc: threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)
-    :param int th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
-    :param int th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
-    :param float th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
+    :param Int detectmode: set the detectmode (from 0 to 2) (default off)
+    :param Int nb_inputs: number of inputs (from 1 to INT_MAX) (default 1)
+    :param String filename: filename for output files (default "")
+    :param Int format: set output format (from 0 to 1) (default binary)
+    :param Int th_d: threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)
+    :param Int th_dc: threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)
+    :param Int th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
+    :param Int th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
+    :param Double th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#signature
 
@@ -3239,11 +3241,11 @@ def spectrumsynth(
     _magnitude: "VideoStream",
     _phase: "VideoStream",
     *,
-    sample_rate: int | str = Default("44100"),
-    channels: int | str = Default("1"),
-    scale: int | Literal["lin", "log"] | Default = Default("log"),
-    slide: int | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("fullframe"),
-    win_func: int
+    sample_rate: Int = Default("44100"),
+    channels: Int = Default("1"),
+    scale: Int | Literal["lin", "log"] | Default = Default("log"),
+    slide: Int | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("fullframe"),
+    win_func: Int
     | Literal[
         "rect",
         "bartlett",
@@ -3269,8 +3271,8 @@ def spectrumsynth(
         "kaiser",
     ]
     | Default = Default("rect"),
-    overlap: float | int | str = Default("1"),
-    orientation: int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
+    overlap: Float = Default("1"),
+    orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -3280,13 +3282,13 @@ def spectrumsynth(
     Parameters:
     ----------
 
-    :param int sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
-    :param int channels: set channels (from 1 to 8) (default 1)
-    :param int scale: set input amplitude scale (from 0 to 1) (default log)
-    :param int slide: set input sliding mode (from 0 to 3) (default fullframe)
-    :param int win_func: set window function (from 0 to 20) (default rect)
-    :param float overlap: set window overlap (from 0 to 1) (default 1)
-    :param int orientation: set orientation (from 0 to 1) (default vertical)
+    :param Int sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
+    :param Int channels: set channels (from 1 to 8) (default 1)
+    :param Int scale: set input amplitude scale (from 0 to 1) (default log)
+    :param Int slide: set input sliding mode (from 0 to 3) (default fullframe)
+    :param Int win_func: set window function (from 0 to 20) (default rect)
+    :param Float overlap: set window overlap (from 0 to 1) (default 1)
+    :param Int orientation: set orientation (from 0 to 1) (default vertical)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth
 
@@ -3321,12 +3323,12 @@ def ssim(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    stats_file: str | float | int = Default(None),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    stats_file: String = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3336,11 +3338,11 @@ def ssim(
     Parameters:
     ----------
 
-    :param str stats_file: Set file where to store per-frame difference information
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param String stats_file: Set file where to store per-frame difference information
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#ssim
@@ -3372,7 +3374,7 @@ def ssim(
 
 
 def streamselect(
-    *streams: "VideoStream", inputs: int | str = Default("2"), map: str | float | int = Default(None), **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default("2"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -3381,8 +3383,8 @@ def streamselect(
     Parameters:
     ----------
 
-    :param int inputs: number of input streams (from 2 to INT_MAX) (default 2)
-    :param str map: input indexes to remap to outputs
+    :param Int inputs: number of input streams (from 2 to INT_MAX) (default 2)
+    :param String map: input indexes to remap to outputs
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect
 
@@ -3412,8 +3414,8 @@ def threshold(
     _min: "VideoStream",
     _max: "VideoStream",
     *,
-    planes: int | str = Default("15"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3423,7 +3425,7 @@ def threshold(
     Parameters:
     ----------
 
-    :param int planes: set planes to filter (from 0 to 15) (default 15)
+    :param Int planes: set planes to filter (from 0 to 15) (default 15)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#threshold
@@ -3454,9 +3456,9 @@ def threshold(
 
 def unpremultiply(
     *streams: "VideoStream",
-    planes: int | str = Default("15"),
-    inplace: bool | int | str = Default("false"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("15"),
+    inplace: Boolean = Default("false"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3466,8 +3468,8 @@ def unpremultiply(
     Parameters:
     ----------
 
-    :param int planes: set planes (from 0 to 15) (default 15)
-    :param bool inplace: enable inplace mode (default false)
+    :param Int planes: set planes (from 0 to 15) (default 15)
+    :param Boolean inplace: enable inplace mode (default false)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#unpremultiply
@@ -3496,14 +3498,14 @@ def varblur(
     _default: "VideoStream",
     _radius: "VideoStream",
     *,
-    min_r: int | str = Default("0"),
-    max_r: int | str = Default("8"),
-    planes: int | str = Default("15"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    min_r: Int = Default("0"),
+    max_r: Int = Default("8"),
+    planes: Int = Default("15"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3513,13 +3515,13 @@ def varblur(
     Parameters:
     ----------
 
-    :param int min_r: set min blur radius (from 0 to 254) (default 0)
-    :param int max_r: set max blur radius (from 1 to 255) (default 8)
-    :param int planes: set planes to filter (from 0 to 15) (default 15)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int min_r: set min blur radius (from 0 to 254) (default 0)
+    :param Int max_r: set max blur radius (from 1 to 255) (default 8)
+    :param Int planes: set planes to filter (from 0 to 15) (default 15)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#varblur
@@ -3556,11 +3558,11 @@ def vif(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3570,10 +3572,10 @@ def vif(
     Parameters:
     ----------
 
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#vif
@@ -3604,10 +3606,7 @@ def vif(
 
 
 def vstack(
-    *streams: "VideoStream",
-    inputs: int | str = Default("2"),
-    shortest: bool | int | str = Default("false"),
-    **kwargs: Any
+    *streams: "VideoStream", inputs: Int = Default("2"), shortest: Boolean = Default("false"), **kwargs: Any
 ) -> "VideoStream":
     """
 
@@ -3616,8 +3615,8 @@ def vstack(
     Parameters:
     ----------
 
-    :param int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
-    :param bool shortest: force termination when the shortest input terminates (default false)
+    :param Int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#vstack
 
@@ -3644,13 +3643,13 @@ def xcorrelate(
     _primary: "VideoStream",
     _secondary: "VideoStream",
     *,
-    planes: int | str = Default("7"),
-    secondary: int | Literal["first", "all"] | Default = Default("all"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    planes: Int = Default("7"),
+    secondary: Int | Literal["first", "all"] | Default = Default("all"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3660,12 +3659,12 @@ def xcorrelate(
     Parameters:
     ----------
 
-    :param int planes: set planes to cross-correlate (from 0 to 15) (default 7)
-    :param int secondary: when to process secondary frame (from 0 to 1) (default all)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int planes: set planes to cross-correlate (from 0 to 15) (default 7)
+    :param Int secondary: when to process secondary frame (from 0 to 1) (default all)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xcorrelate
@@ -3701,7 +3700,7 @@ def xfade(
     _main: "VideoStream",
     _xfade: "VideoStream",
     *,
-    transition: int
+    transition: Int
     | Literal[
         "custom",
         "fade",
@@ -3752,9 +3751,9 @@ def xfade(
         "fadeslow",
     ]
     | Default = Default("fade"),
-    duration: str | float | int = Default("1"),
-    offset: str | float | int = Default("0"),
-    expr: str | float | int = Default(None),
+    duration: Duration = Default("1"),
+    offset: Duration = Default("0"),
+    expr: String = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3764,10 +3763,10 @@ def xfade(
     Parameters:
     ----------
 
-    :param int transition: set cross fade transition (from -1 to 45) (default fade)
-    :param str duration: set cross fade duration (default 1)
-    :param str offset: set cross fade start relative to first input stream (default 0)
-    :param str expr: set expression for custom transition
+    :param Int transition: set cross fade transition (from -1 to 45) (default fade)
+    :param Duration duration: set cross fade duration (default 1)
+    :param Duration offset: set cross fade start relative to first input stream (default 0)
+    :param String expr: set expression for custom transition
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xfade
 
@@ -3797,14 +3796,14 @@ def xfade(
 
 def xmedian(
     *streams: "VideoStream",
-    inputs: int | str = Default("3"),
-    planes: int | str = Default("15"),
-    percentile: float | int | str = Default("0.5"),
-    eof_action: int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: bool | int | str = Default("false"),
-    repeatlast: bool | int | str = Default("true"),
-    ts_sync_mode: int | Literal["default", "nearest"] | Default = Default("default"),
-    enable: str | float | int = Default(None),
+    inputs: Int = Default("3"),
+    planes: Int = Default("15"),
+    percentile: Float = Default("0.5"),
+    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+    shortest: Boolean = Default("false"),
+    repeatlast: Boolean = Default("true"),
+    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+    enable: str = Default(None),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3814,13 +3813,13 @@ def xmedian(
     Parameters:
     ----------
 
-    :param int inputs: set number of inputs (from 3 to 255) (default 3)
-    :param int planes: set planes to filter (from 0 to 15) (default 15)
-    :param float percentile: set percentile (from 0 to 1) (default 0.5)
-    :param int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param bool repeatlast: extend last frame of secondary streams beyond EOF (default true)
-    :param int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+    :param Int inputs: set number of inputs (from 3 to 255) (default 3)
+    :param Int planes: set planes to filter (from 0 to 15) (default 15)
+    :param Float percentile: set percentile (from 0 to 1) (default 0.5)
+    :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+    :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
     :param str enable: timeline editing
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xmedian
@@ -3852,11 +3851,11 @@ def xmedian(
 
 def xstack(
     *streams: "VideoStream",
-    inputs: int | str = Default("2"),
-    layout: str | float | int = Default(None),
-    grid: str | float | int = Default(None),
-    shortest: bool | int | str = Default("false"),
-    fill: str | float | int = Default("none"),
+    inputs: Int = Default("2"),
+    layout: String = Default(None),
+    grid: Image_size = Default(None),
+    shortest: Boolean = Default("false"),
+    fill: String = Default("none"),
     **kwargs: Any
 ) -> "VideoStream":
     """
@@ -3866,11 +3865,11 @@ def xstack(
     Parameters:
     ----------
 
-    :param int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
-    :param str layout: set custom layout
-    :param str grid: set fixed size grid layout
-    :param bool shortest: force termination when the shortest input terminates (default false)
-    :param str fill: set the color for unused pixels (default "none")
+    :param Int inputs: set number of inputs (from 2 to INT_MAX) (default 2)
+    :param String layout: set custom layout
+    :param Image_size grid: set fixed size grid layout
+    :param Boolean shortest: force termination when the shortest input terminates (default false)
+    :param String fill: set the color for unused pixels (default "none")
 
     Ref: https://ffmpeg.org/ffmpeg-filters.html#xstack
 

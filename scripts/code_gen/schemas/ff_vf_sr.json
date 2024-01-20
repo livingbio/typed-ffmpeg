@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -31,7 +31,7 @@
       "description": "DNN backend used for model execution (from 0 to 1) (default native)",
       "name": "dnn_backend",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "scale factor for SRCNN model (from 2 to 4) (default 2)",
       "name": "scale_factor",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "path to model file specifying network architecture and its parameters",
       "name": "model",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "input name of the model (default \"x\")",
       "name": "input",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -75,13 +75,13 @@
       "description": "output name of the model (default \"y\")",
       "name": "output",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#sr"

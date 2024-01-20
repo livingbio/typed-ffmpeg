@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -46,7 +46,7 @@
       "description": "Frame mapping mode (default read+write)",
       "name": "mode",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "Derive a new device of this type",
       "name": "derive_device",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -68,13 +68,13 @@
       "description": "Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)",
       "name": "reverse",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hwmap"

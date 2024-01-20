@@ -1,14 +1,14 @@
 {
   "description": "Apply Midway Equalization.",
   "input_types": [
-    [
-      "in0",
-      "video"
-    ],
-    [
-      "in1",
-      "video"
-    ]
+    {
+      "name": "in0",
+      "type": "video"
+    },
+    {
+      "name": "in1",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -32,9 +32,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

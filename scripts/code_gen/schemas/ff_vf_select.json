@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set an expression to use for selecting frames (default \"1\")",
       "name": "expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,9 +38,9 @@
       "description": "set the number of outputs (from 1 to INT_MAX) (default 1)",
       "name": "outputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect"
 }

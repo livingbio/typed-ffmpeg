@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -31,7 +31,7 @@
       "description": "DNN backend (from INT_MIN to INT_MAX) (default native)",
       "name": "dnn_backend",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "path to model file",
       "name": "model",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "input name of the model",
       "name": "input",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "output name of the model",
       "name": "output",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "backend configs",
       "name": "backend_configs",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "backend configs (deprecated, use backend_configs)",
       "name": "options",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -97,13 +97,13 @@
       "description": "use DNN async inference (ignored, use backend_configs='async=1') (default true)",
       "name": "async",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing"

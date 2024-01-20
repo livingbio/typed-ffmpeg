@@ -1,14 +1,14 @@
 {
   "description": "Apply feedback video filter.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "feedin",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "feedin",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -47,13 +47,13 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "feedout",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "feedout",
+      "type": "video"
+    }
   ]
 }

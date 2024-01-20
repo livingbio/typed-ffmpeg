@@ -331,9 +331,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

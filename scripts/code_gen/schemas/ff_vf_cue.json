@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)",
       "name": "cue",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "preroll duration in seconds (default 0)",
       "name": "preroll",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -47,13 +47,13 @@
       "description": "buffer duration in seconds (default 0)",
       "name": "buffer",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#cue"

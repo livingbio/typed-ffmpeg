@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "factor",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -29,7 +29,7 @@
       "description": "set scale (from 0 to 9) (default 1)",
       "name": "scale",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -40,7 +40,7 @@
       "description": "set offset (from -1 to 1) (default 0.5)",
       "name": "offset",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -51,7 +51,7 @@
       "description": "set planes (default F)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [],
@@ -66,7 +66,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#multiply"

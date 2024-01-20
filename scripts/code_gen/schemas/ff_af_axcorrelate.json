@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "axcorrelate0",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     },
     {
       "name": "axcorrelate1",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -29,7 +29,7 @@
       "description": "set segment size (from 2 to 131072) (default 256)",
       "name": "size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -51,13 +51,13 @@
       "description": "set algorithm (from 0 to 1) (default slow)",
       "name": "algo",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#axcorrelate"

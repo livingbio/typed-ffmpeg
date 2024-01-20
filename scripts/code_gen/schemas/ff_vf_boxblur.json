@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "Radius of the luma blurring box (default \"2\")",
       "name": "luma_radius",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)",
       "name": "luma_power",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "Radius of the chroma blurring box",
       "name": "chroma_radius",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)",
       "name": "chroma_power",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "Radius of the alpha blurring box",
       "name": "alpha_radius",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)",
       "name": "alpha_power",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -101,7 +101,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#boxblur"

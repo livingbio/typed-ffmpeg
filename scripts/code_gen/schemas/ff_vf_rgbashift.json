@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "shift red horizontally (from -255 to 255) (default 0)",
       "name": "rh",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "shift red vertically (from -255 to 255) (default 0)",
       "name": "rv",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "shift green horizontally (from -255 to 255) (default 0)",
       "name": "gh",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "shift green vertically (from -255 to 255) (default 0)",
       "name": "gv",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "shift blue horizontally (from -255 to 255) (default 0)",
       "name": "bh",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "shift blue vertically (from -255 to 255) (default 0)",
       "name": "bv",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "shift alpha horizontally (from -255 to 255) (default 0)",
       "name": "ah",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "shift alpha vertically (from -255 to 255) (default 0)",
       "name": "av",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set edge operation (from 0 to 1) (default smear)",
       "name": "edge",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -139,7 +139,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#rgbashift"

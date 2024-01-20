@@ -1,10 +1,10 @@
 {
   "description": "Filter audio signal according to a specified expression.",
   "input_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -42,9 +42,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

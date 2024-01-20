@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set the '|'-separated list of channels expressions",
       "name": "exprs",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set channel layout",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -52,7 +52,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#aeval"

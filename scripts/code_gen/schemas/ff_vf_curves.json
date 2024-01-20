@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -81,7 +81,7 @@
       "description": "select a color curves preset (from 0 to 10) (default none)",
       "name": "preset",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "set master points coordinates",
       "name": "master",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -105,7 +105,7 @@
       "description": "set red points coordinates",
       "name": "red",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -117,7 +117,7 @@
       "description": "set green points coordinates",
       "name": "green",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -129,7 +129,7 @@
       "description": "set blue points coordinates",
       "name": "blue",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -140,7 +140,7 @@
       "description": "set points coordinates for all components",
       "name": "all",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -151,7 +151,7 @@
       "description": "set Photoshop curves file name",
       "name": "psfile",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -162,7 +162,7 @@
       "description": "save Gnuplot script of the curves in specified file",
       "name": "plot",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -184,7 +184,7 @@
       "description": "specify the kind of interpolation (from 0 to 1) (default natural)",
       "name": "interp",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -199,7 +199,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#curves"

@@ -1,14 +1,14 @@
 {
   "description": "Pick pixels comparing absolute difference of two streams with threshold.",
   "input_types": [
-    [
-      "source",
-      "video"
-    ],
-    [
-      "reference",
-      "video"
-    ]
+    {
+      "name": "source",
+      "type": "video"
+    },
+    {
+      "name": "reference",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -71,9 +71,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

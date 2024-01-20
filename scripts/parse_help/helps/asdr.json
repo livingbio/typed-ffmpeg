@@ -1,14 +1,14 @@
 {
   "description": "Measure Audio Signal-to-Distortion Ratio.",
   "input_types": [
-    [
-      "input0",
-      "audio"
-    ],
-    [
-      "input1",
-      "audio"
-    ]
+    {
+      "name": "input0",
+      "type": "audio"
+    },
+    {
+      "name": "input1",
+      "type": "audio"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -18,9 +18,9 @@
   "name": "asdr",
   "options": [],
   "output_types": [
-    [
-      "default",
-      "audio"
-    ]
+    {
+      "name": "default",
+      "type": "audio"
+    }
   ]
 }

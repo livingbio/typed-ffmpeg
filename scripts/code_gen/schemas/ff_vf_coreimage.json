@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "list available filters (default false)",
       "name": "list_filters",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "list available generators (default false)",
       "name": "list_generators",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "names and options of filters to apply",
       "name": "filter",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,13 +58,13 @@
       "description": "output rectangle within output image",
       "name": "output_rect",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#coreimage"

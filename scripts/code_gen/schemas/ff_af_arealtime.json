@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "sleep time limit (default 2)",
       "name": "limit",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -36,13 +36,13 @@
       "description": "speed factor (from DBL_MIN to DBL_MAX) (default 1)",
       "name": "speed",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime"

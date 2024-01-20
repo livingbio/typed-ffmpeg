@@ -21,7 +21,7 @@
       "description": "set frame size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set frame rate (default \"30\")",
       "name": "framerate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set sample rate (from 8000 to 384000) (default 44100)",
       "name": "samplerate",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "set beep amplitude (from 0 to 1) (default 0.7)",
       "name": "amplitude",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set beep period (from 1 to 99) (default 3)",
       "name": "period",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -81,7 +81,7 @@
       "description": "set flash delay (from -30 to 30) (default 0)",
       "name": "delay",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "set delay cycle (default false)",
       "name": "cycle",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -105,7 +105,7 @@
       "description": "set duration (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -116,7 +116,7 @@
       "description": "set foreground color (default \"white\")",
       "name": "fg",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -127,7 +127,7 @@
       "description": "set background color (default \"black\")",
       "name": "bg",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -138,17 +138,17 @@
       "description": "set additional color (default \"gray\")",
       "name": "ag",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     }
   ],
   "output_stream_typings": [
     {
       "name": "audio",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     },
     {
       "name": "video",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#avsynctest"

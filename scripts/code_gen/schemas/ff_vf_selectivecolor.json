@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -36,7 +36,7 @@
       "description": "select correction method (from 0 to 1) (default absolute)",
       "name": "correction_method",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "adjust red regions",
       "name": "reds",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "adjust yellow regions",
       "name": "yellows",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "adjust green regions",
       "name": "greens",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "adjust cyan regions",
       "name": "cyans",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "adjust blue regions",
       "name": "blues",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "adjust magenta regions",
       "name": "magentas",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "adjust white regions",
       "name": "whites",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "adjust neutral regions",
       "name": "neutrals",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "adjust black regions",
       "name": "blacks",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "set Photoshop selectivecolor file name",
       "name": "psfile",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -161,7 +161,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#selectivecolor"

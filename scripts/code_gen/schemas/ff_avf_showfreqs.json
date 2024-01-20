@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set video size (default \"1024x512\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -65,7 +65,7 @@
       "description": "set display mode (from 0 to 2) (default bar)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -97,7 +97,7 @@
       "description": "set amplitude scale (from 0 to 3) (default log)",
       "name": "ascale",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set frequency scale (from 0 to 2) (default lin)",
       "name": "fscale",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set window size (from 16 to 65536) (default 2048)",
       "name": "win_size",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -257,7 +257,7 @@
       "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -268,7 +268,7 @@
       "description": "set window overlap (from 0 to 1) (default 1)",
       "name": "overlap",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -279,7 +279,7 @@
       "description": "set time averaging (from 0 to INT_MAX) (default 1)",
       "name": "averaging",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -290,7 +290,7 @@
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -312,7 +312,7 @@
       "description": "set channel mode (from 0 to 1) (default combined)",
       "name": "cmode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -323,7 +323,7 @@
       "description": "set minimum amplitude (from FLT_MIN to 1e-06) (default 1e-06)",
       "name": "minamp",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -350,7 +350,7 @@
       "description": "set data mode (from 0 to 2) (default magnitude)",
       "name": "data",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -361,13 +361,13 @@
       "description": "set channels to draw (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#showfreqs"

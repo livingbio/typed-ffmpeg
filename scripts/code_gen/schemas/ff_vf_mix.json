@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.video] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_vf_mix",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -20,7 +20,7 @@
       "description": "set number of inputs (from 2 to 32767) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set weight for each input (default \"1 1\")",
       "name": "weights",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "set scale (from 0 to 32767) (default 0)",
       "name": "scale",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "how to determine end of stream (from 0 to 2) (default longest)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -95,7 +95,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#mix"

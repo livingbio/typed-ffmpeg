@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.video] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_vf_hstack",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -20,7 +20,7 @@
       "description": "set number of inputs (from 2 to INT_MAX) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,13 +31,13 @@
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hstack"

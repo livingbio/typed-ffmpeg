@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.video] + ([StreamType.video] if ppsrc else [])",
   "formula_output_typings": null,
   "id": "ff_vf_decimate",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -20,7 +20,7 @@
       "description": "set the number of frame from which one will be dropped (from 2 to 25) (default 5)",
       "name": "cycle",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set duplicate threshold (from 0 to 100) (default 1.1)",
       "name": "dupthresh",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "set scene change threshold (from 0 to 100) (default 15)",
       "name": "scthresh",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "set the size of the x-axis blocks used during metric calculations (from 4 to 512) (default 32)",
       "name": "blockx",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "set the size of the y-axis blocks used during metric calculations (from 4 to 512) (default 32)",
       "name": "blocky",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "mark main input as a pre-processed input and activate clean source input stream (default false)",
       "name": "ppsrc",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "set whether or not chroma is considered in the metric calculations (default true)",
       "name": "chroma",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -97,13 +97,13 @@
       "description": "set whether or not the input only partially contains content to be decimated (default false)",
       "name": "mixed",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#decimate"

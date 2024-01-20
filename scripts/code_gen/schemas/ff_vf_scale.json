@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "Output video width",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "Output video height",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "Flags to pass to libswscale (default \"\")",
       "name": "flags",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "set interlacing (default false)",
       "name": "interl",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -112,7 +112,7 @@
       "description": "set input YCbCr type (default \"auto\")",
       "name": "in_color_matrix",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -164,7 +164,7 @@
       "description": "set output YCbCr type",
       "name": "out_color_matrix",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -216,7 +216,7 @@
       "description": "set input color range (from 0 to 2) (default auto)",
       "name": "in_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -268,7 +268,7 @@
       "description": "set output color range (from 0 to 2) (default auto)",
       "name": "out_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -279,7 +279,7 @@
       "description": "input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "in_v_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -290,7 +290,7 @@
       "description": "input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "in_h_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -301,7 +301,7 @@
       "description": "output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "out_v_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -312,7 +312,7 @@
       "description": "output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
       "name": "out_h_chr_pos",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -339,7 +339,7 @@
       "description": "decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)",
       "name": "force_original_aspect_ratio",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -350,7 +350,7 @@
       "description": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
       "name": "force_divisible_by",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -361,7 +361,7 @@
       "description": "Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "name": "param0",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -372,7 +372,7 @@
       "description": "Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
       "name": "param1",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -394,13 +394,13 @@
       "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#scale"

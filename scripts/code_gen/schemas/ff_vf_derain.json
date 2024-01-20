@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -36,7 +36,7 @@
       "description": "filter type(derain/dehaze) (from 0 to 1) (default derain)",
       "name": "filter_type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "DNN backend (from 0 to 1) (default native)",
       "name": "dnn_backend",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "path to model file",
       "name": "model",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "input name of the model (default \"x\")",
       "name": "input",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "output name of the model (default \"y\")",
       "name": "output",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [],
@@ -101,7 +101,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#derain"

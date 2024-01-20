@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set detection threshold (from 0 to 100) (default 0)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set detection frequency (from 2 to 1e+06) (default 1000)",
       "name": "dfrequency",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set detection Q factor (from 0.001 to 1000) (default 1)",
       "name": "dqfactor",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set target frequency (from 2 to 1e+06) (default 1000)",
       "name": "tfrequency",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set target Q factor (from 0.001 to 1000) (default 1)",
       "name": "tqfactor",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set attack duration (from 1 to 2000) (default 20)",
       "name": "attack",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set release duration (from 1 to 2000) (default 200)",
       "name": "release",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set ratio factor (from 0 to 30) (default 1)",
       "name": "ratio",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set makeup gain (from 0 to 100) (default 0)",
       "name": "makeup",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set max gain (from 1 to 200) (default 50)",
       "name": "range",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -151,7 +151,7 @@
       "description": "set mode (from -1 to 1) (default cut)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -178,7 +178,7 @@
       "description": "set target filter type (from 0 to 2) (default bell)",
       "name": "tftype",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -200,7 +200,7 @@
       "description": "set direction (from 0 to 1) (default downward)",
       "name": "direction",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -227,7 +227,7 @@
       "description": "set auto threshold (from -1 to 1) (default disabled)",
       "name": "auto",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -242,7 +242,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer"

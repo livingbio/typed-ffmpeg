@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "Output video width",
       "name": "w",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "Output video height",
       "name": "h",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set video size",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -83,7 +83,7 @@
       "description": "set dither type (from 0 to 3) (default none)",
       "name": "dither",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -126,7 +126,7 @@
       "description": "set filter type (from 0 to 5) (default bilinear)",
       "name": "filter",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -170,7 +170,7 @@
       "description": "set color range (from -1 to 1) (default input)",
       "name": "out_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -278,7 +278,7 @@
       "description": "set color primaries (from -1 to INT_MAX) (default input)",
       "name": "primaries",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -401,7 +401,7 @@
       "description": "set transfer characteristic (from -1 to INT_MAX) (default input)",
       "name": "transfer",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -514,7 +514,7 @@
       "description": "set colorspace matrix (from -1 to INT_MAX) (default input)",
       "name": "matrix",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -558,7 +558,7 @@
       "description": "set input color range (from -1 to 1) (default input)",
       "name": "in_range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -666,7 +666,7 @@
       "description": "set input color primaries (from -1 to INT_MAX) (default input)",
       "name": "primariesin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -789,7 +789,7 @@
       "description": "set input transfer characteristic (from -1 to INT_MAX) (default input)",
       "name": "transferin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -902,7 +902,7 @@
       "description": "set input colorspace matrix (from -1 to INT_MAX) (default input)",
       "name": "matrixin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -950,7 +950,7 @@
       "description": "set output chroma location (from -1 to 5) (default input)",
       "name": "chromal",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -998,7 +998,7 @@
       "description": "set input chroma location (from -1 to 5) (default input)",
       "name": "chromalin",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -1009,7 +1009,7 @@
       "description": "set nominal peak luminance (from 0 to DBL_MAX) (default nan)",
       "name": "npl",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -1020,7 +1020,7 @@
       "description": "allow approximate gamma (default true)",
       "name": "agamma",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -1031,7 +1031,7 @@
       "description": "parameter A, which is parameter \"b\" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)",
       "name": "param_a",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -1042,13 +1042,13 @@
       "description": "parameter B, which is parameter \"c\" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)",
       "name": "param_b",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#zscale"

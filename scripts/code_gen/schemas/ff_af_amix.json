@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.audio] * int(inputs)",
   "formula_output_typings": null,
   "id": "ff_af_amix",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -20,7 +20,7 @@
       "description": "Number of inputs. (from 1 to 32767) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "How to determine the end-of-stream. (from 0 to 2) (default longest)",
       "name": "duration",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)",
       "name": "dropout_transition",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "Set weight for each input. (default \"1 1\")",
       "name": "weights",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,13 +80,13 @@
       "description": "Scale inputs (default true)",
       "name": "normalize",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#amix"

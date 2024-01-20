@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set pixel x coordinate (from 0 to 65535) (default 0)",
       "name": "x",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set pixel y coordinate (from 0 to 65535) (default 0)",
       "name": "y",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set source #0 component value (from -1 to 65535) (default 0)",
       "name": "s0",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set source #1 component value (from -1 to 65535) (default 0)",
       "name": "s1",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set source #2 component value (from -1 to 65535) (default 0)",
       "name": "s2",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set source #3 component value (from -1 to 65535) (default 0)",
       "name": "s3",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set destination #0 component value (from 0 to 65535) (default 0)",
       "name": "d0",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set destination #1 component value (from 0 to 65535) (default 0)",
       "name": "d1",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set destination #2 component value (from 0 to 65535) (default 0)",
       "name": "d2",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set destination #3 component value (from 0 to 65535) (default 0)",
       "name": "d3",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -139,7 +139,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#floodfill"

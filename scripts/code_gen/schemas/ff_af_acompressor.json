@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set input gain (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set mode (from 0 to 1) (default downward)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set threshold (from 0.000976563 to 1) (default 0.125)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set ratio (from 1 to 20) (default 2)",
       "name": "ratio",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set attack (from 0.01 to 2000) (default 20)",
       "name": "attack",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set release (from 0.01 to 9000) (default 250)",
       "name": "release",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set make up gain (from 1 to 64) (default 1)",
       "name": "makeup",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set knee (from 1 to 8) (default 2.82843)",
       "name": "knee",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set link type (from 0 to 1) (default average)",
       "name": "link",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "set detection (from 0 to 1) (default rms)",
       "name": "detection",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -168,7 +168,7 @@
       "description": "set sidechain gain (from 0.015625 to 64) (default 1)",
       "name": "level_sc",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -179,13 +179,13 @@
       "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#acompressor"

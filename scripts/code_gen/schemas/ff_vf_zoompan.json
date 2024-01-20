@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set the zoom expression (default \"1\")",
       "name": "zoom",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set the x expression (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set the y expression (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -59,7 +59,7 @@
       "description": "set the duration expression (default \"90\")",
       "name": "d",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -70,7 +70,7 @@
       "description": "set the output image size (default \"hd720\")",
       "name": "s",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -81,13 +81,13 @@
       "description": "set the output framerate (default \"25\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#zoompan"

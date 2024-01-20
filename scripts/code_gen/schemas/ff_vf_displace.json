@@ -7,15 +7,15 @@
   "input_stream_typings": [
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "xmap",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "ymap",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -54,7 +54,7 @@
       "description": "set edge mode (from 0 to 3) (default smear)",
       "name": "edge",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -69,7 +69,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#displace"

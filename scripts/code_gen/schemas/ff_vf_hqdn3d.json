@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "spatial luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_spatial",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "spatial chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_spatial",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "temporal luma strength (from 0 to DBL_MAX) (default 0)",
       "name": "luma_tmp",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "temporal chroma strength (from 0 to DBL_MAX) (default 0)",
       "name": "chroma_tmp",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#hqdn3d"

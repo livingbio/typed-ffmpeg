@@ -7,11 +7,11 @@
   "input_stream_typings": [
     {
       "name": "main",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "xfade",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -265,7 +265,7 @@
       "description": "set cross fade transition (from -1 to 45) (default fade)",
       "name": "transition",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -276,7 +276,7 @@
       "description": "set cross fade duration (default 1)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -287,7 +287,7 @@
       "description": "set cross fade start relative to first input stream (default 0)",
       "name": "offset",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -298,13 +298,13 @@
       "description": "set expression for custom transition",
       "name": "expr",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#xfade"

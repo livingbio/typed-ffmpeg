@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set the supported pixel formats",
       "name": "pix_fmts",
       "required": false,
-      "typing": "str"
+      "typing": "Binary"
     }
   ],
   "output_stream_typings": [],

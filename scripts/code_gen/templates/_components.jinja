@@ -14,7 +14,7 @@
 {% else %}
     {% for stream_typing in f.input_stream_typings %}
         {% if type == "method" and loop.index0 == 0 %}
-        {% elif stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
+        {% elif stream_typing.type.value == "video" %}
         {{ stream_typing.name | stream_name_safe }}: "VideoStream",
         {% else %}
         {{ stream_typing.name | stream_name_safe }}: "AudioStream",
@@ -32,14 +32,8 @@ Default({{option.default.__repr__()}})
 {% macro default_typing(option) %}
 {% if option.choices %}
 {{option._typing}} | Default = {{ default_value(option) }}
-{% elif option.typing == "int" %}
-int | str = {{ default_value(option) }}
-{% elif option.typing == "str" %}
-str | float | int  = {{ default_value(option) }}
-{% elif option.typing == "float" %}
-float | int | str = {{ default_value(option) }}
-{% elif option.typing == "bool" %}
-bool | int | str = {{ default_value(option) }}
+{% else %}
+{{option._typing}} = {{ default_value(option) }}
 {% endif %}
 {% endmacro %}
 

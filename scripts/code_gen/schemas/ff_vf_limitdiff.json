@@ -4,7 +4,7 @@
   "formula_input_typings": "[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])",
   "formula_output_typings": null,
   "id": "ff_vf_limitdiff",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": false,
   "is_support_framesync": false,
@@ -20,7 +20,7 @@
       "description": "set the threshold (from 0 to 1) (default 0.00392157)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set the elasticity (from 0 to 10) (default 2)",
       "name": "elasticity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "enable reference stream (default false)",
       "name": "reference",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "set the planes to filter (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -68,7 +68,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#limitdiff"

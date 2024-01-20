@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set time over which increase of volume is determined (default \"0\")",
       "name": "attacks",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set time over which decrease of volume is determined (default \"0.8\")",
       "name": "decays",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set points of transfer function (default \"-70/-70|-60/-20|1/0\")",
       "name": "points",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set soft-knee (from 0.01 to 900) (default 0.01)",
       "name": "soft-knee",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set output gain (from -900 to 900) (default 0)",
       "name": "gain",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set initial volume (from -900 to 0) (default 0)",
       "name": "volume",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -91,13 +91,13 @@
       "description": "set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)",
       "name": "delay",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#compand"

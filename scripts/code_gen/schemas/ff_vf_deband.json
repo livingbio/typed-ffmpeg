@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set 1st plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "1thr",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set 2nd plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "2thr",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set 3rd plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "3thr",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set 4th plane threshold (from 3e-05 to 0.5) (default 0.02)",
       "name": "4thr",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -70,7 +70,7 @@
       "description": "set range (from INT_MIN to INT_MAX) (default 16)",
       "name": "range",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -82,7 +82,7 @@
       "description": "set direction (from -6.28319 to 6.28319) (default 6.28319)",
       "name": "direction",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -94,7 +94,7 @@
       "description": "set blur (default true)",
       "name": "blur",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -106,7 +106,7 @@
       "description": "set plane coupling (default false)",
       "name": "coupling",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [],
@@ -121,7 +121,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#deband"

@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set central frequency (from 0 to 999999) (default 3000)",
       "name": "frequency",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "set filter-width type (from 1 to 5) (default q)",
       "name": "width_type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -76,7 +76,7 @@
       "description": "set width (from 0 to 99999) (default 0.5)",
       "name": "width",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -88,7 +88,7 @@
       "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -100,7 +100,7 @@
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -112,7 +112,7 @@
       "description": "normalize coefficients (default false)",
       "name": "normalize",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -160,7 +160,7 @@
       "description": "set transform type (from 0 to 6) (default di)",
       "name": "transform",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -198,7 +198,7 @@
       "description": "set filtering precision (from -1 to 3) (default auto)",
       "name": "precision",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -210,7 +210,7 @@
       "description": "set the block size (from 0 to 32768) (default 0)",
       "name": "blocksize",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -225,7 +225,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#bandreject"

@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set the number of frames to delay input (from 0 to INT_MAX) (default 0)",
       "name": "start",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the number of frames to add after input finished (from -1 to INT_MAX) (default 0)",
       "name": "stop",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the mode of added frames to start (from 0 to 1) (default add)",
       "name": "start_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set the mode of added frames to end (from 0 to 1) (default add)",
       "name": "stop_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set the duration to delay input (default 0)",
       "name": "start_duration",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set the duration to pad input (default 0)",
       "name": "stop_duration",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -113,13 +113,13 @@
       "description": "set the color of the added frames (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#tpad"

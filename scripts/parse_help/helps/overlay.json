@@ -1,14 +1,14 @@
 {
   "description": "Overlay a video source on top of the input.",
   "input_types": [
-    [
-      "main",
-      "video"
-    ],
-    [
-      "overlay",
-      "video"
-    ]
+    {
+      "name": "main",
+      "type": "video"
+    },
+    {
+      "name": "overlay",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -235,82 +235,6 @@
     },
     {
       "alias": [
-        "eof_action"
-      ],
-      "choices": [
-        {
-          "flags": "..FV.......",
-          "help": "Repeat the previous frame.",
-          "name": "repeat",
-          "value": "0"
-        },
-        {
-          "flags": "..FV.......",
-          "help": "End both streams.",
-          "name": "endall",
-          "value": "1"
-        },
-        {
-          "flags": "..FV.......",
-          "help": "Pass through the main input.",
-          "name": "pass",
-          "value": "2"
-        },
-        {
-          "flags": "..FV.......",
-          "help": "Repeat the previous frame.",
-          "name": "repeat",
-          "value": "0"
-        },
-        {
-          "flags": "..FV.......",
-          "help": "End both streams.",
-          "name": "endall",
-          "value": "1"
-        },
-        {
-          "flags": "..FV.......",
-          "help": "Pass through the main input.",
-          "name": "pass",
-          "value": "2"
-        }
-      ],
-      "default": "repeat",
-      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
-      "flags": "..FV.......",
-      "max": "2",
-      "min": "0",
-      "name": "eof_action",
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "shortest"
-      ],
-      "choices": [],
-      "default": "false",
-      "description": "force termination when the shortest input terminates (default false)",
-      "flags": "..FV.......",
-      "max": null,
-      "min": null,
-      "name": "shortest",
-      "typing": "boolean"
-    },
-    {
-      "alias": [
-        "repeatlast"
-      ],
-      "choices": [],
-      "default": "true",
-      "description": "extend last frame of secondary streams beyond EOF (default true)",
-      "flags": "..FV.......",
-      "max": null,
-      "min": null,
-      "name": "repeatlast",
-      "typing": "boolean"
-    },
-    {
-      "alias": [
         "ts_sync_mode"
       ],
       "choices": [
@@ -337,9 +261,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

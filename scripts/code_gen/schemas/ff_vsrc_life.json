@@ -21,7 +21,7 @@
       "description": "set source file",
       "name": "filename",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set video size",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -56,7 +56,7 @@
       "description": "set rule (default \"B3/S23\")",
       "name": "rule",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -68,7 +68,7 @@
       "description": "set fill ratio for filling initial grid randomly (from 0 to 1) (default 0.618034)",
       "name": "random_fill_ratio",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set the seed for filling the initial grid randomly (from -1 to UINT32_MAX) (default -1)",
       "name": "random_seed",
       "required": false,
-      "typing": "int"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "stitch boundaries (default true)",
       "name": "stitch",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set mold speed for dead cells (from 0 to 255) (default 0)",
       "name": "mold",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set life color (default \"white\")",
       "name": "life_color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set death color (default \"black\")",
       "name": "death_color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -135,13 +135,13 @@
       "description": "set mold color (default \"black\")",
       "name": "mold_color",
       "required": false,
-      "typing": "str"
+      "typing": "Color"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#life"

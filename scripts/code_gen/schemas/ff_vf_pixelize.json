@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set block width (from 1 to 1024) (default 16)",
       "name": "width",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set block height (from 1 to 1024) (default 16)",
       "name": "height",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -66,7 +66,7 @@
       "description": "set the pixelize mode (from 0 to 2) (default avg)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -78,7 +78,7 @@
       "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     },
     {
       "alias": [],
@@ -93,7 +93,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#pixelize"

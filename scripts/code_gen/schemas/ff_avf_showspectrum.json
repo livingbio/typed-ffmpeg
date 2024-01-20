@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set video size (default \"640x512\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "set sliding mode (from 0 to 4) (default replace)",
       "name": "slide",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -85,7 +85,7 @@
       "description": "set channel display mode (from 0 to 1) (default combined)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -172,7 +172,7 @@
       "description": "set channel coloring (from 0 to 14) (default channel)",
       "name": "color",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -214,7 +214,7 @@
       "description": "set display scale (from 0 to 5) (default sqrt)",
       "name": "scale",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -236,7 +236,7 @@
       "description": "set frequency scale (from 0 to 1) (default lin)",
       "name": "fscale",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -247,7 +247,7 @@
       "description": "color saturation multiplier (from -10 to 10) (default 1)",
       "name": "saturation",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -369,7 +369,7 @@
       "description": "set window function (from 0 to 20) (default hann)",
       "name": "win_func",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -391,7 +391,7 @@
       "description": "set orientation (from 0 to 1) (default vertical)",
       "name": "orientation",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -402,7 +402,7 @@
       "description": "set window overlap (from 0 to 1) (default 0)",
       "name": "overlap",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -413,7 +413,7 @@
       "description": "set scale gain (from 0 to 128) (default 1)",
       "name": "gain",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -440,7 +440,7 @@
       "description": "set data mode (from 0 to 2) (default magnitude)",
       "name": "data",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -451,7 +451,7 @@
       "description": "color rotation (from -1 to 1) (default 0)",
       "name": "rotation",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -462,7 +462,7 @@
       "description": "start frequency (from 0 to INT_MAX) (default 0)",
       "name": "start",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -473,7 +473,7 @@
       "description": "stop frequency (from 0 to INT_MAX) (default 0)",
       "name": "stop",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -484,7 +484,7 @@
       "description": "set video rate (default \"auto\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -495,7 +495,7 @@
       "description": "draw legend (default false)",
       "name": "legend",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -506,7 +506,7 @@
       "description": "set dynamic range in dBFS (from 10 to 200) (default 120)",
       "name": "drange",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -517,7 +517,7 @@
       "description": "set upper limit in dBFS (from -100 to 100) (default 0)",
       "name": "limit",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -528,13 +528,13 @@
       "description": "set opacity strength (from 0 to 10) (default 1)",
       "name": "opacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#showspectrum"

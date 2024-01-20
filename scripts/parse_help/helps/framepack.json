@@ -1,14 +1,14 @@
 {
   "description": "Generate a frame packed stereoscopic video.",
   "input_types": [
-    [
-      "left",
-      "video"
-    ],
-    [
-      "right",
-      "video"
-    ]
+    {
+      "name": "left",
+      "type": "video"
+    },
+    {
+      "name": "right",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -63,9 +63,9 @@
     }
   ],
   "output_types": [
-    [
-      "packed",
-      "video"
-    ]
+    {
+      "name": "packed",
+      "type": "video"
+    }
   ]
 }

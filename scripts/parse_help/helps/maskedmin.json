@@ -1,18 +1,18 @@
 {
   "description": "Apply filtering with minimum difference of two streams.",
   "input_types": [
-    [
-      "source",
-      "video"
-    ],
-    [
-      "filter1",
-      "video"
-    ],
-    [
-      "filter2",
-      "video"
-    ]
+    {
+      "name": "source",
+      "type": "video"
+    },
+    {
+      "name": "filter1",
+      "type": "video"
+    },
+    {
+      "name": "filter2",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -36,9 +36,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

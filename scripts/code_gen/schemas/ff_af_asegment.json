@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "timestamps of input at which to split input",
       "name": "timestamps",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,9 +36,9 @@
       "description": "samples at which to split input",
       "name": "samples",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment"
 }

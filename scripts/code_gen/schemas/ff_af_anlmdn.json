@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set denoising strength (from 1e-05 to 10000) (default 1e-05)",
       "name": "strength",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set patch duration (default 0.002)",
       "name": "patch",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set research duration (default 0.006)",
       "name": "research",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -78,7 +78,7 @@
       "description": "set output mode (from 0 to 2) (default o)",
       "name": "output",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -90,7 +90,7 @@
       "description": "set smooth factor (from 1 to 1000) (default 11)",
       "name": "smooth",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -105,7 +105,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#anlmdn"

@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set lens angle (default \"PI/5\")",
       "name": "angle",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set circle center position on x-axis (default \"w/2\")",
       "name": "x0",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set circle center position on y-axis (default \"h/2\")",
       "name": "y0",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -70,7 +70,7 @@
       "description": "set forward/backward mode (from 0 to 1) (default forward)",
       "name": "mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -92,7 +92,7 @@
       "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -103,7 +103,7 @@
       "description": "set dithering (default true)",
       "name": "dither",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -114,7 +114,7 @@
       "description": "set aspect ratio (from 0 to DBL_MAX) (default 1/1)",
       "name": "aspect",
       "required": false,
-      "typing": "str"
+      "typing": "Rational"
     },
     {
       "alias": [],
@@ -129,7 +129,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#vignette"

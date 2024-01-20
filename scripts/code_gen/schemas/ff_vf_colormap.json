@@ -7,15 +7,15 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "source",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     },
     {
       "name": "target",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -33,7 +33,7 @@
       "description": "set patch size (default \"64x64\")",
       "name": "patch_size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -44,7 +44,7 @@
       "description": "set number of patches (from 0 to 64) (default 0)",
       "name": "nb_patches",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -66,7 +66,7 @@
       "description": "set the target type used (from 0 to 1) (default absolute)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -88,7 +88,7 @@
       "description": "set the kernel used for measuring color difference (from 0 to 1) (default euclidean)",
       "name": "kernel",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -103,7 +103,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#colormap"

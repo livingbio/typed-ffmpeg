@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set level height (from 50 to 2048) (default 200)",
       "name": "level_height",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set scale height (from 0 to 40) (default 12)",
       "name": "scale_height",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "set display mode (from 0 to 2) (default stack)",
       "name": "display_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -87,7 +87,7 @@
       "description": "set levels mode (from 0 to 1) (default linear)",
       "name": "levels_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -99,7 +99,7 @@
       "description": "set color components to display (from 1 to 15) (default 7)",
       "name": "components",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -111,7 +111,7 @@
       "description": "set foreground opacity (from 0 to 1) (default 0.7)",
       "name": "fgopacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -123,7 +123,7 @@
       "description": "set background opacity (from 0 to 1) (default 0.5)",
       "name": "bgopacity",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -186,13 +186,13 @@
       "description": "set colors mode (from 0 to 9) (default whiteonblack)",
       "name": "colors_mode",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#histogram"

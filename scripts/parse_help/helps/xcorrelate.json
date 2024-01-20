@@ -1,14 +1,14 @@
 {
   "description": "Cross-correlate first video stream with second video stream.",
   "input_types": [
-    [
-      "primary",
-      "video"
-    ],
-    [
-      "secondary",
-      "video"
-    ]
+    {
+      "name": "primary",
+      "type": "video"
+    },
+    {
+      "name": "secondary",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -142,9 +142,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

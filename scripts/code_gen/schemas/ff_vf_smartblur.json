@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -26,7 +26,7 @@
       "description": "set luma radius (from 0.1 to 5) (default 1)",
       "name": "luma_radius",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set luma strength (from -1 to 1) (default 1)",
       "name": "luma_strength",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set luma threshold (from -30 to 30) (default 0)",
       "name": "luma_threshold",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set chroma radius (from -0.9 to 5) (default -0.9)",
       "name": "chroma_radius",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "set chroma strength (from -2 to 1) (default -2)",
       "name": "chroma_strength",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "set chroma threshold (from -31 to 30) (default -31)",
       "name": "chroma_threshold",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -101,7 +101,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#smartblur"

@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set x for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "name": "x",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set y for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "name": "y",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set width for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "name": "w",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set height for the rectangular search area (from -1 to INT_MAX) (default -1)",
       "name": "h",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set x for the rectangular search area (from 0 to 64) (default 16)",
       "name": "rx",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set y for the rectangular search area (from 0 to 64) (default 16)",
       "name": "ry",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -112,7 +112,7 @@
       "description": "set edge mode (from 0 to 3) (default mirror)",
       "name": "edge",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -123,7 +123,7 @@
       "description": "set motion search blocksize (from 4 to 128) (default 8)",
       "name": "blocksize",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -134,7 +134,7 @@
       "description": "set contrast threshold for blocks (from 1 to 255) (default 125)",
       "name": "contrast",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -156,7 +156,7 @@
       "description": "set search strategy (from 0 to 1) (default exhaustive)",
       "name": "search",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -167,7 +167,7 @@
       "description": "set motion search detailed log file name",
       "name": "filename",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -178,13 +178,13 @@
       "description": "ignored (default false)",
       "name": "opencl",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#deshake"

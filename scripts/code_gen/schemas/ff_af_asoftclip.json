@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -71,7 +71,7 @@
       "description": "set softclip type (from -1 to 7) (default tanh)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -82,7 +82,7 @@
       "description": "set softclip threshold (from 1e-06 to 1) (default 1)",
       "name": "threshold",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "set softclip output gain (from 1e-06 to 16) (default 1)",
       "name": "output",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -104,7 +104,7 @@
       "description": "set softclip parameter (from 0.01 to 3) (default 1)",
       "name": "param",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -115,7 +115,7 @@
       "description": "set oversample factor (from 1 to 64) (default 1)",
       "name": "oversample",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],
@@ -130,7 +130,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#asoftclip"

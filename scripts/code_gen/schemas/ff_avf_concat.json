@@ -4,7 +4,7 @@
   "formula_input_typings": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
   "formula_output_typings": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
   "id": "ff_avf_concat",
-  "input_stream_typings": [],
+  "input_stream_typings": null,
   "is_input_dynamic": true,
   "is_output_dynamic": true,
   "is_support_framesync": false,
@@ -20,7 +20,7 @@
       "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
       "name": "n",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
       "name": "v",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
       "name": "a",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -53,9 +53,9 @@
       "description": "enable unsafe mode (default false)",
       "name": "unsafe",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat"
 }

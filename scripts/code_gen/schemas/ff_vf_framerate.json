@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "required output frames per second rate (default \"50\")",
       "name": "fps",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "point to start linear interpolation (from 0 to 255) (default 15)",
       "name": "interp_start",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "point to end linear interpolation (from 0 to 255) (default 240)",
       "name": "interp_end",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "scene change level (from 0 to 100) (default 8.2)",
       "name": "scene",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -80,13 +80,13 @@
       "description": "set flags (default scene_change_detect+scd)",
       "name": "flags",
       "required": false,
-      "typing": "str"
+      "typing": "Flags"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#framerate"

@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set input gain (from 0 to 1) (default 0.4)",
       "name": "in_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set output gain (from 0 to 1e+09) (default 0.74)",
       "name": "out_gain",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set delay in milliseconds (from 0 to 5) (default 3)",
       "name": "delay",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set decay (from 0 to 0.99) (default 0.4)",
       "name": "decay",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set modulation speed (from 0.1 to 2) (default 0.5)",
       "name": "speed",
       "required": false,
-      "typing": "float"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -101,13 +101,13 @@
       "description": "set modulation type (from 0 to 1) (default triangular)",
       "name": "type",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#aphaser"

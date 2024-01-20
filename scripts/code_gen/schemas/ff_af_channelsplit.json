@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "Input channel layout. (default \"stereo\")",
       "name": "channel_layout",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,9 +36,9 @@
       "description": "Channels to extract. (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
-  "output_stream_typings": [],
+  "output_stream_typings": null,
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#channelsplit"
 }

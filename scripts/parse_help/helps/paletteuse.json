@@ -1,14 +1,14 @@
 {
   "description": "Use a palette to downsample an input video stream.",
   "input_types": [
-    [
-      "default",
-      "video"
-    ],
-    [
-      "palette",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    },
+    {
+      "name": "palette",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -153,9 +153,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

@@ -20,7 +20,7 @@
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "width",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "",
       "name": "video_size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "height",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "(default none)",
       "name": "pix_fmt",
       "required": false,
-      "typing": "str"
+      "typing": "Pix_fmt"
     },
     {
       "alias": [
@@ -65,7 +65,7 @@
       "description": "sample aspect ratio (from 0 to DBL_MAX) (default 0/1)",
       "name": "sar",
       "required": false,
-      "typing": "str"
+      "typing": "Rational"
     },
     {
       "alias": [
@@ -77,13 +77,13 @@
       "description": "(from 0 to DBL_MAX) (default 0/1)",
       "name": "time_base",
       "required": false,
-      "typing": "str"
+      "typing": "Rational"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#buffer"

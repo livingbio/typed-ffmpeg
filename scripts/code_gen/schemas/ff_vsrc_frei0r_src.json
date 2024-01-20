@@ -20,7 +20,7 @@
       "description": "Dimensions of the generated video. (default \"320x240\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "(default \"25\")",
       "name": "framerate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "",
       "name": "filter_name",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     },
     {
       "alias": [
@@ -53,13 +53,13 @@
       "description": "",
       "name": "filter_params",
       "required": false,
-      "typing": "str"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#frei0r_005fsrc"

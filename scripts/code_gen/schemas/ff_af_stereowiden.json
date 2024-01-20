@@ -7,7 +7,7 @@
   "input_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "is_input_dynamic": false,
@@ -25,7 +25,7 @@
       "description": "set delay time (from 1 to 100) (default 20)",
       "name": "delay",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set feedback gain (from 0 to 0.9) (default 0.3)",
       "name": "feedback",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set cross feed (from 0 to 0.8) (default 0.3)",
       "name": "crossfeed",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set dry-mix (from 0 to 1) (default 0.8)",
       "name": "drymix",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [],
@@ -73,7 +73,7 @@
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_AUDIO"
+      "type": "audio"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#stereowiden"

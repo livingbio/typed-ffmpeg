@@ -21,7 +21,7 @@
       "description": "set video size (default \"320x240\")",
       "name": "size",
       "required": false,
-      "typing": "str"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "str"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "str"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -56,7 +56,7 @@
       "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
       "name": "sar",
       "required": false,
-      "typing": "str"
+      "typing": "Rational"
     },
     {
       "alias": [
@@ -68,13 +68,13 @@
       "description": "set complement colors (default false)",
       "name": "complement",
       "required": false,
-      "typing": "bool"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [
     {
       "name": "default",
-      "type": "AVMEDIA_TYPE_VIDEO"
+      "type": "video"
     }
   ],
   "ref": "https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorchart_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc"

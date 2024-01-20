@@ -1,14 +1,14 @@
 {
   "description": "Adjust colors using a Hald CLUT.",
   "input_types": [
-    [
-      "main",
-      "video"
-    ],
-    [
-      "clut",
-      "video"
-    ]
+    {
+      "name": "main",
+      "type": "video"
+    },
+    {
+      "name": "clut",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -173,9 +173,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }

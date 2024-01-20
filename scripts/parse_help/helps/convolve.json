@@ -1,14 +1,14 @@
 {
   "description": "Convolve first video stream with second video stream.",
   "input_types": [
-    [
-      "main",
-      "video"
-    ],
-    [
-      "impulse",
-      "video"
-    ]
+    {
+      "name": "main",
+      "type": "video"
+    },
+    {
+      "name": "impulse",
+      "type": "video"
+    }
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
@@ -155,9 +155,9 @@
     }
   ],
   "output_types": [
-    [
-      "default",
-      "video"
-    ]
+    {
+      "name": "default",
+      "type": "video"
+    }
   ]
 }
