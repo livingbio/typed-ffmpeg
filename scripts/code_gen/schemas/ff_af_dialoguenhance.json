@@ -25,7 +25,7 @@
       "description": "set original center factor (from 0 to 1) (default 1)",
       "name": "original",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set dialogue enhance factor (from 0 to 3) (default 1)",
       "name": "enhance",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set voice detection factor (from 2 to 32) (default 2)",
       "name": "voice",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [],

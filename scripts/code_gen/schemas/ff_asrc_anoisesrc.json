@@ -21,7 +21,7 @@
       "description": "set sample rate (from 15 to INT_MAX) (default 48000)",
       "name": "sample_rate",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set amplitude (from 0 to 1) (default 1)",
       "name": "amplitude",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set duration (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -89,7 +89,7 @@
       "description": "set noise color (from 0 to 5) (default white)",
       "name": "color",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -101,7 +101,7 @@
       "description": "set random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "INT64"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

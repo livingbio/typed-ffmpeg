@@ -46,7 +46,7 @@
       "description": "Frame mapping mode (default read+write)",
       "name": "mode",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "Derive a new device of this type",
       "name": "derive_device",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -68,7 +68,7 @@
       "description": "Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)",
       "name": "reverse",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

@@ -25,7 +25,7 @@
       "description": "number of loops (from -1 to INT_MAX) (default 0)",
       "name": "loop",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "max number of frames to loop (from 0 to 32767) (default 0)",
       "name": "size",
       "required": false,
-      "typing": "INT64"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the loop start frame (from 0 to I64_MAX) (default 0)",
       "name": "start",
       "required": false,
-      "typing": "INT64"
+      "typing": "Int64"
     }
   ],
   "output_stream_typings": [

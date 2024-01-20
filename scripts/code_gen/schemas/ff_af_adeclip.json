@@ -26,7 +26,7 @@
       "description": "set window size (from 10 to 100) (default 55)",
       "name": "window",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set window overlap (from 50 to 95) (default 75)",
       "name": "overlap",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set autoregression order (from 0 to 25) (default 8)",
       "name": "arorder",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set threshold (from 1 to 100) (default 10)",
       "name": "threshold",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "set histogram size (from 100 to 9999) (default 1000)",
       "name": "hsize",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -107,7 +107,7 @@
       "description": "set overlap method (from 0 to 1) (default add)",
       "name": "method",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

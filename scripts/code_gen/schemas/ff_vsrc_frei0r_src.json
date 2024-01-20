@@ -20,7 +20,7 @@
       "description": "Dimensions of the generated video. (default \"320x240\")",
       "name": "size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "(default \"25\")",
       "name": "framerate",
       "required": false,
-      "typing": "VIDEO_RATE"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "",
       "name": "filter_name",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "",
       "name": "filter_params",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [

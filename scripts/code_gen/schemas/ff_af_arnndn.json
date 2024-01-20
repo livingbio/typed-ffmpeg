@@ -26,7 +26,7 @@
       "description": "set model name",
       "name": "model",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set output vs input mix (from -1 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [],

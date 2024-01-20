@@ -20,7 +20,7 @@
       "description": "set number of inputs (from 2 to 32767) (default 2)",
       "name": "inputs",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set weight for each input (default \"1 1\")",
       "name": "weights",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "set scale (from 0 to 32767) (default 0)",
       "name": "scale",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "set what planes to filter (default F)",
       "name": "planes",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "how to determine end of stream (from 0 to 2) (default longest)",
       "name": "duration",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

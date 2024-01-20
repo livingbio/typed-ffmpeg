@@ -25,7 +25,7 @@
       "description": "output color to which darkest input color is mapped (default \"black\")",
       "name": "blackpt",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "output color to which brightest input color is mapped (default \"white\")",
       "name": "whitept",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)",
       "name": "smoothing",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "proportion of independent to linked channel normalization (from 0 to 1) (default 1)",
       "name": "independence",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "strength of filter, from no effect to full normalization (from 0 to 1) (default 1)",
       "name": "strength",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [],

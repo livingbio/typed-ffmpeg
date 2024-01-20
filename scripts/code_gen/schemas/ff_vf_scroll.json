@@ -26,7 +26,7 @@
       "description": "set the horizontal scrolling speed (from -1 to 1) (default 0)",
       "name": "horizontal",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set the vertical scrolling speed (from -1 to 1) (default 0)",
       "name": "vertical",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set initial horizontal position (from 0 to 1) (default 0)",
       "name": "hpos",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "set initial vertical position (from 0 to 1) (default 0)",
       "name": "vpos",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [],

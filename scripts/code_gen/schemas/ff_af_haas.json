@@ -25,7 +25,7 @@
       "description": "set level in (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set level out (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set side gain (from 0.015625 to 64) (default 1)",
       "name": "side_gain",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -79,7 +79,7 @@
       "description": "set middle source (from 0 to 3) (default mid)",
       "name": "middle_source",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -90,7 +90,7 @@
       "description": "set middle phase (default false)",
       "name": "middle_phase",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -101,7 +101,7 @@
       "description": "set left delay (from 0 to 40) (default 2.05)",
       "name": "left_delay",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -112,7 +112,7 @@
       "description": "set left balance (from -1 to 1) (default -1)",
       "name": "left_balance",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -123,7 +123,7 @@
       "description": "set left gain (from 0.015625 to 64) (default 1)",
       "name": "left_gain",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -134,7 +134,7 @@
       "description": "set left phase (default false)",
       "name": "left_phase",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -145,7 +145,7 @@
       "description": "set right delay (from 0 to 40) (default 2.12)",
       "name": "right_delay",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -156,7 +156,7 @@
       "description": "set right balance (from -1 to 1) (default 1)",
       "name": "right_balance",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -167,7 +167,7 @@
       "description": "set right gain (from 0.015625 to 64) (default 1)",
       "name": "right_gain",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -178,7 +178,7 @@
       "description": "set right phase (default true)",
       "name": "right_phase",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

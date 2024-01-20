@@ -51,7 +51,7 @@
       "description": "select permissions mode (from 0 to 4) (default none)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set the seed for the random mode (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "INT64"
+      "typing": "Int64"
     },
     {
       "alias": [],

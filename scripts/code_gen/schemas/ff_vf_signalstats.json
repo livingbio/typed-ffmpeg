@@ -41,7 +41,7 @@
       "description": "set statistics filters (default 0)",
       "name": "stat",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -68,7 +68,7 @@
       "description": "set video filter (from -1 to 2) (default -1)",
       "name": "out",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set highlight color (default \"yellow\")",
       "name": "c",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     }
   ],
   "output_stream_typings": [

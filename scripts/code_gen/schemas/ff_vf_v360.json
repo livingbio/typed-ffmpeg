@@ -171,7 +171,7 @@
       "description": "set input projection (from 0 to 24) (default e)",
       "name": "input",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -333,7 +333,7 @@
       "description": "set output projection (from 0 to 24) (default c3x2)",
       "name": "output",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -415,7 +415,7 @@
       "description": "set interpolation method (from 0 to 7) (default line)",
       "name": "interp",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -426,7 +426,7 @@
       "description": "output width (from 0 to 32767) (default 0)",
       "name": "w",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -437,7 +437,7 @@
       "description": "output height (from 0 to 32767) (default 0)",
       "name": "h",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -464,7 +464,7 @@
       "description": "input stereo format (from 0 to 2) (default 2d)",
       "name": "in_stereo",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -491,7 +491,7 @@
       "description": "output stereo format (from 0 to 2) (default 2d)",
       "name": "out_stereo",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -502,7 +502,7 @@
       "description": "input cubemap face order (default \"rludfb\")",
       "name": "in_forder",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -513,7 +513,7 @@
       "description": "output cubemap face order (default \"rludfb\")",
       "name": "out_forder",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -524,7 +524,7 @@
       "description": "input cubemap face rotation (default \"000000\")",
       "name": "in_frot",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -535,7 +535,7 @@
       "description": "output cubemap face rotation (default \"000000\")",
       "name": "out_frot",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -546,7 +546,7 @@
       "description": "percent input cubemap pads (from 0 to 0.1) (default 0)",
       "name": "in_pad",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -557,7 +557,7 @@
       "description": "percent output cubemap pads (from 0 to 0.1) (default 0)",
       "name": "out_pad",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -568,7 +568,7 @@
       "description": "fixed input cubemap pads (from 0 to 100) (default 0)",
       "name": "fin_pad",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -579,7 +579,7 @@
       "description": "fixed output cubemap pads (from 0 to 100) (default 0)",
       "name": "fout_pad",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -590,7 +590,7 @@
       "description": "yaw rotation (from -180 to 180) (default 0)",
       "name": "yaw",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -601,7 +601,7 @@
       "description": "pitch rotation (from -180 to 180) (default 0)",
       "name": "pitch",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -612,7 +612,7 @@
       "description": "roll rotation (from -180 to 180) (default 0)",
       "name": "roll",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -623,7 +623,7 @@
       "description": "rotation order (default \"ypr\")",
       "name": "rorder",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -634,7 +634,7 @@
       "description": "output horizontal field of view (from 0 to 360) (default 0)",
       "name": "h_fov",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -645,7 +645,7 @@
       "description": "output vertical field of view (from 0 to 360) (default 0)",
       "name": "v_fov",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -656,7 +656,7 @@
       "description": "output diagonal field of view (from 0 to 360) (default 0)",
       "name": "d_fov",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -667,7 +667,7 @@
       "description": "flip out video horizontally (default false)",
       "name": "h_flip",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -678,7 +678,7 @@
       "description": "flip out video vertically (default false)",
       "name": "v_flip",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -689,7 +689,7 @@
       "description": "flip out video indepth (default false)",
       "name": "d_flip",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -700,7 +700,7 @@
       "description": "flip in video horizontally (default false)",
       "name": "ih_flip",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -711,7 +711,7 @@
       "description": "flip in video vertically (default false)",
       "name": "iv_flip",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -722,7 +722,7 @@
       "description": "transpose video input (default false)",
       "name": "in_trans",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -733,7 +733,7 @@
       "description": "transpose video output (default false)",
       "name": "out_trans",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -744,7 +744,7 @@
       "description": "input horizontal field of view (from 0 to 360) (default 0)",
       "name": "ih_fov",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -755,7 +755,7 @@
       "description": "input vertical field of view (from 0 to 360) (default 0)",
       "name": "iv_fov",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -766,7 +766,7 @@
       "description": "input diagonal field of view (from 0 to 360) (default 0)",
       "name": "id_fov",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -777,7 +777,7 @@
       "description": "output horizontal off-axis offset (from -1 to 1) (default 0)",
       "name": "h_offset",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -788,7 +788,7 @@
       "description": "output vertical off-axis offset (from -1 to 1) (default 0)",
       "name": "v_offset",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -799,7 +799,7 @@
       "description": "build mask in alpha plane (default false)",
       "name": "alpha_mask",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -810,7 +810,7 @@
       "description": "reset rotation (default false)",
       "name": "reset_rot",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

@@ -10,30 +10,33 @@ class Default(str):
     ...
 
 
-BOOLEAN = bool | str
-DURATION = str | int | float
+Boolean = bool | str
+Duration = str | int | float
 # https://ffmpeg.org/ffmpeg-utils.html#Time-duration
 
-COLOR = str
+Color = str
 # https://ffmpeg.org/ffmpeg-utils.html#color-syntax
+# is a Enum
 
-FLAGS = str
-DICTIONARY = str
-PIX_FMT = str
+Flags = str
+# format A+B
+Dictionary = str
+# format A=B:C=D:E=F
+Pix_fmt = str
 
-INT = int | str
-INT64 = int | str
-DOUBLE = float | str
-FLOAT = float | str
-STRING = str | int | float
+Int = int | str
+Int64 = int | str
+Double = int | float | str
+Float = int | float | str
+String = str | int | float
 
-VIDEO_RATE = str | int | float
+Video_rate = str | int | float
 # Specify the frame rate of a video, expressed as the number of frames generated per second. It has to be a string in the format frame_rate_num/frame_rate_den, an integer number, a float number or a valid video frame rate abbreviation.
 # https://ffmpeg.org/ffmpeg-utils.html#Video-rate
 
 # https://ffmpeg.org/ffmpeg-utils.html#Video-size
-IMAGE_SIZE = str
-RATIONAL = str
+Image_size = str
+Rational = str
 # https://ffmpeg.org/ffmpeg-utils.html#Ratio
-SAMPLE_FMT = str
-BINARY = str
+Sample_fmt = str
+Binary = str

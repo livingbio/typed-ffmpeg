@@ -26,7 +26,7 @@
       "description": "set central frequency (from 0 to 999999) (default 3000)",
       "name": "frequency",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "set filter-width type (from 1 to 5) (default q)",
       "name": "width_type",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -76,7 +76,7 @@
       "description": "set width (from 0 to 99999) (default 0.5)",
       "name": "width",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -88,7 +88,7 @@
       "description": "set gain (from -900 to 900) (default 0)",
       "name": "gain",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -100,7 +100,7 @@
       "description": "set number of poles (from 1 to 2) (default 2)",
       "name": "poles",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -112,7 +112,7 @@
       "description": "set mix (from 0 to 1) (default 1)",
       "name": "mix",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set channels to filter (default \"all\")",
       "name": "channels",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -136,7 +136,7 @@
       "description": "normalize coefficients (default false)",
       "name": "normalize",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -184,7 +184,7 @@
       "description": "set transform type (from 0 to 6) (default di)",
       "name": "transform",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -222,7 +222,7 @@
       "description": "set filtering precision (from -1 to 3) (default auto)",
       "name": "precision",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -234,7 +234,7 @@
       "description": "set the block size (from 0 to 32768) (default 0)",
       "name": "blocksize",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

@@ -21,7 +21,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "VIDEO_RATE"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -101,7 +101,7 @@
       "description": "set test to perform (from 0 to INT_MAX) (default all)",
       "name": "test",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "Set the maximum number of frames generated for each test (from 1 to I64_MAX) (default 30)",
       "name": "max_frames",
       "required": false,
-      "typing": "INT64"
+      "typing": "Int64"
     }
   ],
   "output_stream_typings": [

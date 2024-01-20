@@ -26,7 +26,7 @@
       "description": "set the noise reduction (from 0.01 to 97) (default 12)",
       "name": "noise_reduction",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set the noise floor (from -80 to -20) (default -50)",
       "name": "noise_floor",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set the noise type (from 0 to 3) (default white)",
       "name": "noise_type",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -103,7 +103,7 @@
       "description": "set the custom bands noise",
       "name": "band_noise",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -115,7 +115,7 @@
       "description": "set the residual floor (from -80 to -20) (default -38)",
       "name": "residual_floor",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -127,7 +127,7 @@
       "description": "track noise (default false)",
       "name": "track_noise",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -139,7 +139,7 @@
       "description": "track residual (default false)",
       "name": "track_residual",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -182,7 +182,7 @@
       "description": "set output mode (from 0 to 2) (default output)",
       "name": "output_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -194,7 +194,7 @@
       "description": "set adaptivity factor (from 0 to 1) (default 0.5)",
       "name": "adaptivity",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -206,7 +206,7 @@
       "description": "set noise floor offset factor (from -2 to 2) (default 1)",
       "name": "floor_offset",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -239,7 +239,7 @@
       "description": "set the noise floor link (from 0 to 3) (default min)",
       "name": "noise_link",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -251,7 +251,7 @@
       "description": "set band multiplier (from 0.2 to 5) (default 1.25)",
       "name": "band_multiplier",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -289,7 +289,7 @@
       "description": "set sample noise mode (from 0 to 2) (default none)",
       "name": "sample_noise",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -301,7 +301,7 @@
       "description": "set gain smooth radius (from 0 to 50) (default 0)",
       "name": "gain_smooth",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

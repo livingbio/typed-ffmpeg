@@ -25,7 +25,7 @@
       "description": "set periods of silence parts to skip from start (from 0 to 9000) (default 0)",
       "name": "start_periods",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set start duration of non-silence part (default 0)",
       "name": "start_duration",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set threshold for start silence detection (from 0 to DBL_MAX) (default 0)",
       "name": "start_threshold",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set start duration of silence part to keep (default 0)",
       "name": "start_silence",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set which channel will trigger trimming from start (from 0 to 1) (default any)",
       "name": "start_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set periods of silence parts to skip from end (from -9000 to 9000) (default 0)",
       "name": "stop_periods",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set stop duration of non-silence part (default 0)",
       "name": "stop_duration",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)",
       "name": "stop_threshold",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set stop duration of silence part to keep (default 0)",
       "name": "stop_silence",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "set which channel will trigger trimming from end (from 0 to 1) (default any)",
       "name": "stop_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -168,7 +168,7 @@
       "description": "set how silence is detected (from 0 to 1) (default rms)",
       "name": "detection",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -179,7 +179,7 @@
       "description": "set duration of window for silence detection (default 0.02)",
       "name": "window",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     }
   ],
   "output_stream_typings": [

@@ -20,7 +20,7 @@
       "description": "set channels convolution mappings",
       "name": "map",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set gain in dB (from -20 to 40) (default 0)",
       "name": "gain",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "set lfe gain in dB (from -20 to 40) (default 0)",
       "name": "lfe",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "set processing (from 0 to 1) (default freq)",
       "name": "type",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "set frame size (from 1024 to 96000) (default 1024)",
       "name": "size",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -97,7 +97,7 @@
       "description": "set hrir format (from 0 to 1) (default stereo)",
       "name": "hrir",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

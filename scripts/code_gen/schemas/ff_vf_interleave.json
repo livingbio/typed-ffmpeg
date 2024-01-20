@@ -21,7 +21,7 @@
       "description": "set number of inputs (from 1 to INT_MAX) (default 2)",
       "name": "nb_inputs",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "how to determine the end-of-stream (from 0 to 2) (default longest)",
       "name": "duration",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

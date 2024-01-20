@@ -21,7 +21,7 @@
       "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -44,7 +44,7 @@
       "description": "set high-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "name": "hp",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -55,7 +55,7 @@
       "description": "set low-pass filter frequency (from 0 to INT_MAX) (default 0)",
       "name": "lp",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -66,7 +66,7 @@
       "description": "set filter phase response (from 0 to 100) (default 50)",
       "name": "phase",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -77,7 +77,7 @@
       "description": "set kaiser window beta (from -1 to 256) (default -1)",
       "name": "beta",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -88,7 +88,7 @@
       "description": "set stop-band attenuation (from 40 to 180) (default 120)",
       "name": "att",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -99,7 +99,7 @@
       "description": "enable rounding (default false)",
       "name": "round",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -110,7 +110,7 @@
       "description": "set number of taps for high-pass filter (from 0 to 32768) (default 0)",
       "name": "hptaps",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -121,7 +121,7 @@
       "description": "set number of taps for low-pass filter (from 0 to 32768) (default 0)",
       "name": "lptaps",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

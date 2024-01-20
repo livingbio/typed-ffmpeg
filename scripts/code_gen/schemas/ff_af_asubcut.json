@@ -25,7 +25,7 @@
       "description": "set cutoff frequency (from 2 to 200) (default 20)",
       "name": "cutoff",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set filter order (from 3 to 20) (default 10)",
       "name": "order",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set input level (from 0 to 1) (default 1)",
       "name": "level",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [],

@@ -25,7 +25,7 @@
       "description": "set quality (from 0 to 6) (default 3)",
       "name": "quality",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "force a constant quantizer parameter (from 0 to 63) (default 0)",
       "name": "qp",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set thresholding mode (from 0 to 1) (default hard)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "use B-frames' QP (default false)",
       "name": "use_bframe_qp",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [],

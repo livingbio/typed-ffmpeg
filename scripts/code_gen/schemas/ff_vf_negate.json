@@ -61,7 +61,7 @@
       "description": "set components to negate (default y+u+v+r+g+b)",
       "name": "components",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "(default false)",
       "name": "negate_alpha",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [],

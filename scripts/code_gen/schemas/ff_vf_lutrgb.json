@@ -25,7 +25,7 @@
       "description": "set component #0 expression (default \"clipval\")",
       "name": "c0",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set component #1 expression (default \"clipval\")",
       "name": "c1",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set component #2 expression (default \"clipval\")",
       "name": "c2",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set component #3 expression (default \"clipval\")",
       "name": "c3",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set Y expression (default \"clipval\")",
       "name": "y",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set U expression (default \"clipval\")",
       "name": "u",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set V expression (default \"clipval\")",
       "name": "v",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set R expression (default \"clipval\")",
       "name": "r",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set G expression (default \"clipval\")",
       "name": "g",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set B expression (default \"clipval\")",
       "name": "b",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set A expression (default \"clipval\")",
       "name": "a",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [],

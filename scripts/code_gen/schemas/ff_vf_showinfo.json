@@ -25,7 +25,7 @@
       "description": "calculate checksums (default true)",
       "name": "checksum",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

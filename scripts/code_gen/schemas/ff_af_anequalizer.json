@@ -25,7 +25,7 @@
       "description": "(default \"\")",
       "name": "params",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "draw frequency response curves (default false)",
       "name": "curves",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set max gain (from -900 to 900) (default 60)",
       "name": "mgain",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set frequency scale (from 0 to 1) (default log)",
       "name": "fscale",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set channels curves colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [],

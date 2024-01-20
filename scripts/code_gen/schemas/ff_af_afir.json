@@ -20,7 +20,7 @@
       "description": "set dry gain (from 0 to 10) (default 1)",
       "name": "dry",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set wet gain (from 0 to 10) (default 1)",
       "name": "wet",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "set IR length (from 0 to 1) (default 1)",
       "name": "length",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -84,7 +84,7 @@
       "description": "set IR auto gain type (from -1 to 4) (default peak)",
       "name": "gtype",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "set IR gain (from 0 to 1) (default 1)",
       "name": "irgain",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -117,7 +117,7 @@
       "description": "set IR format (from 0 to 1) (default input)",
       "name": "irfmt",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -128,7 +128,7 @@
       "description": "set max IR length (from 0.1 to 60) (default 30)",
       "name": "maxir",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -139,7 +139,7 @@
       "description": "show IR frequency response (default false)",
       "name": "response",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -150,7 +150,7 @@
       "description": "set IR channel to display frequency response (from 0 to 1024) (default 0)",
       "name": "channel",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -161,7 +161,7 @@
       "description": "set video size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -172,7 +172,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "VIDEO_RATE"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -183,7 +183,7 @@
       "description": "set min partition size (from 1 to 65536) (default 8192)",
       "name": "minp",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -194,7 +194,7 @@
       "description": "set max partition size (from 8 to 65536) (default 8192)",
       "name": "maxp",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -205,7 +205,7 @@
       "description": "set number of input IRs (from 1 to 32) (default 1)",
       "name": "nbirs",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -216,7 +216,7 @@
       "description": "select IR (from 0 to 31) (default 0)",
       "name": "ir",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -243,7 +243,7 @@
       "description": "set processing precision (from 0 to 2) (default auto)",
       "name": "precision",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

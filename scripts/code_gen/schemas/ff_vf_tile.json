@@ -25,7 +25,7 @@
       "description": "set grid size (default \"6x5\")",
       "name": "layout",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set maximum number of frame to render (from 0 to INT_MAX) (default 0)",
       "name": "nb_frames",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set outer border margin in pixels (from 0 to 1024) (default 0)",
       "name": "margin",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set inner border thickness in pixels (from 0 to 1024) (default 0)",
       "name": "padding",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set the color of the unused area (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)",
       "name": "overlap",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set how many frames to initially pad (from 0 to INT_MAX) (default 0)",
       "name": "init_padding",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

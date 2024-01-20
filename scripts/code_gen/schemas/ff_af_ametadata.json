@@ -51,7 +51,7 @@
       "description": "set a mode of operation (from 0 to 4) (default select)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set metadata key",
       "name": "key",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "set metadata value",
       "name": "value",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -120,7 +120,7 @@
       "description": "function for comparing values (from 0 to 6) (default same_str)",
       "name": "function",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -131,7 +131,7 @@
       "description": "set expression for expr function",
       "name": "expr",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -142,7 +142,7 @@
       "description": "set file where to print metadata information",
       "name": "file",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -153,7 +153,7 @@
       "description": "reduce buffering when printing to user-set file or pipe (default false)",
       "name": "direct",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [],

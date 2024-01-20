@@ -26,7 +26,7 @@
       "description": "set angle (in radians) (default \"0\")",
       "name": "angle",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set output width expression (default \"iw\")",
       "name": "out_w",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set output height expression (default \"ih\")",
       "name": "out_h",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -62,7 +62,7 @@
       "description": "set background fill color (default \"black\")",
       "name": "fillcolor",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "use bilinear interpolation (default true)",
       "name": "bilinear",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [],

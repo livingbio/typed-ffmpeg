@@ -25,7 +25,7 @@
       "description": "set the intensity value (from -2 to 2) (default 0)",
       "name": "intensity",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the red balance value (from -10 to 10) (default 1)",
       "name": "rbal",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the green balance value (from -10 to 10) (default 1)",
       "name": "gbal",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the blue balance value (from -10 to 10) (default 1)",
       "name": "bbal",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set the red luma coefficient (from 0 to 1) (default 0.072186)",
       "name": "rlum",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set the green luma coefficient (from 0 to 1) (default 0.715158)",
       "name": "glum",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set the blue luma coefficient (from 0 to 1) (default 0.212656)",
       "name": "blum",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "use alternate colors (default false)",
       "name": "alternate",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [],

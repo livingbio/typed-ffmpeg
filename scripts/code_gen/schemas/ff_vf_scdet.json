@@ -26,7 +26,7 @@
       "description": "set scene change detect threshold (from 0 to 100) (default 10)",
       "name": "threshold",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "Set the flag to pass scene change frames (default false)",
       "name": "sc_pass",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

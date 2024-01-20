@@ -25,7 +25,7 @@
       "description": "set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)",
       "name": "max",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set high dropping threshold (from INT_MIN to INT_MAX) (default 768)",
       "name": "hi",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set low dropping threshold (from INT_MIN to INT_MAX) (default 320)",
       "name": "lo",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set fraction dropping threshold (from 0 to 1) (default 0.33)",
       "name": "frac",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     }
   ],
   "output_stream_typings": [

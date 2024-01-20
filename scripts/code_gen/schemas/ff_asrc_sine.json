@@ -21,7 +21,7 @@
       "description": "set the sine frequency (from 0 to DBL_MAX) (default 440)",
       "name": "frequency",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set the beep frequency factor (from 0 to DBL_MAX) (default 0)",
       "name": "beep_factor",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set the sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "set the audio duration (default 0)",
       "name": "duration",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -68,7 +68,7 @@
       "description": "set the number of samples per frame (default \"1024\")",
       "name": "samples_per_frame",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [

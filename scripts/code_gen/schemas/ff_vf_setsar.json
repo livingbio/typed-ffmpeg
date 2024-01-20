@@ -27,7 +27,7 @@
       "description": "set sample (pixel) aspect ratio (default \"0\")",
       "name": "sar",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)",
       "name": "max",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

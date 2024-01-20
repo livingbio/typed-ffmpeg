@@ -71,7 +71,7 @@
       "description": "select color range (from -1 to 2) (default auto)",
       "name": "range",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

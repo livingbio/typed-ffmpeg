@@ -26,7 +26,7 @@
       "description": "set video size (default \"600x240\")",
       "name": "size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "draw channels separately (default false)",
       "name": "split_channels",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set channels colors (default \"red|green|blue|yellow|orange|lime|pink|magenta|brown\")",
       "name": "colors",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set amplitude scale (from 0 to 3) (default lin)",
       "name": "scale",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set draw mode (from 0 to 1) (default scale)",
       "name": "draw",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set filter mode (from 0 to 1) (default average)",
       "name": "filter",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

@@ -26,7 +26,7 @@
       "description": "set width (from 0 to 8192) (default 0)",
       "name": "width",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -54,7 +54,7 @@
       "description": "set display mode (from 0 to 2) (default stack)",
       "name": "display_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -77,7 +77,7 @@
       "description": "set levels mode (from 0 to 1) (default linear)",
       "name": "levels_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -89,7 +89,7 @@
       "description": "set color components to display (from 1 to 15) (default 7)",
       "name": "components",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -101,7 +101,7 @@
       "description": "set background opacity (from 0 to 1) (default 0.9)",
       "name": "bgopacity",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "display envelope (default false)",
       "name": "envelope",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -125,7 +125,7 @@
       "description": "set envelope color (default \"gold\")",
       "name": "ecolor",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -162,7 +162,7 @@
       "description": "set slide mode (from 0 to 4) (default replace)",
       "name": "slide",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

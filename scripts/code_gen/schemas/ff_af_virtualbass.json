@@ -25,7 +25,7 @@
       "description": "set virtual bass cutoff (from 100 to 500) (default 250)",
       "name": "cutoff",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set virtual bass strength (from 0.5 to 3) (default 3)",
       "name": "strength",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [],

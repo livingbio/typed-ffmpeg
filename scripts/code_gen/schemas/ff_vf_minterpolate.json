@@ -25,7 +25,7 @@
       "description": "output's frame rate (default \"60\")",
       "name": "fps",
       "required": false,
-      "typing": "VIDEO_RATE"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -52,7 +52,7 @@
       "description": "motion interpolation mode (from 0 to 2) (default mci)",
       "name": "mi_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "motion compensation mode (from 0 to 1) (default obmc)",
       "name": "mc_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -96,7 +96,7 @@
       "description": "motion estimation mode (from 0 to 1) (default bilat)",
       "name": "me_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -153,7 +153,7 @@
       "description": "motion estimation method (from 1 to 9) (default epzs)",
       "name": "me",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -164,7 +164,7 @@
       "description": "macroblock size (from 4 to 16) (default 16)",
       "name": "mb_size",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -175,7 +175,7 @@
       "description": "search parameter (from 4 to INT_MAX) (default 32)",
       "name": "search_param",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -186,7 +186,7 @@
       "description": "variable-size block motion compensation (from 0 to 1) (default 0)",
       "name": "vsbmc",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -208,7 +208,7 @@
       "description": "scene change detection method (from 0 to 1) (default fdiff)",
       "name": "scd",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -219,7 +219,7 @@
       "description": "scene change threshold (from 0 to 100) (default 10)",
       "name": "scd_threshold",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [

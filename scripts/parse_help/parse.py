@@ -96,6 +96,19 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
     return output
 
 
+def _remove_repeat_options(options: list[AVOption]) -> list[AVOption]:
+    names = set()
+    output = []
+    for option in options:
+        if option.name in names:
+            continue
+
+        names.add(option.name)
+        output.append(option)
+
+    return output
+
+
 def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
     text = help_text(filter_name)
 
@@ -139,6 +152,8 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
     for item in tree[""]:
         if "AVOptions:" in item:
             options.extend(_parse_options(tree[item], tree))
+
+    options = _remove_repeat_options(options)
 
     return AVFilter(
         name=filter_name,

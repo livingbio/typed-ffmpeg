@@ -20,7 +20,7 @@
       "description": "set input to output plane mapping (from -1 to 8.58993e+08) (default -1)",
       "name": "mapping",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "set output pixel format (default yuva444p)",
       "name": "format",
       "required": false,
-      "typing": "PIX_FMT"
+      "typing": "Pix_fmt"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "set 1st input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map0s",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "set 1st input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map0p",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "set 2nd input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map1s",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "set 2nd input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map1p",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "set 3rd input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map2s",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -97,7 +97,7 @@
       "description": "set 3rd input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map2p",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -108,7 +108,7 @@
       "description": "set 4th input to output stream mapping (from 0 to 3) (default 0)",
       "name": "map3s",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -119,7 +119,7 @@
       "description": "set 4th input to output plane mapping (from 0 to 3) (default 0)",
       "name": "map3p",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

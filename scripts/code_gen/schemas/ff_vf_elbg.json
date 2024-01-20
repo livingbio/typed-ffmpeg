@@ -26,7 +26,7 @@
       "description": "set codebook length (from 1 to INT_MAX) (default 256)",
       "name": "codebook_length",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)",
       "name": "nb_steps",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -50,7 +50,7 @@
       "description": "set the random seed (from -1 to UINT32_MAX) (default -1)",
       "name": "seed",
       "required": false,
-      "typing": "INT64"
+      "typing": "Int64"
     },
     {
       "alias": [
@@ -61,7 +61,7 @@
       "description": "set the pal8 output (default false)",
       "name": "pal8",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "use alpha channel for mapping (default false)",
       "name": "use_alpha",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

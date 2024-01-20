@@ -26,7 +26,7 @@
       "description": "set monitor size (default \"hd720\")",
       "name": "size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set video opacity (from 0 to 1) (default 0.9)",
       "name": "opacity",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -61,7 +61,7 @@
       "description": "set mode (from 0 to 1) (default full)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -154,7 +154,7 @@
       "description": "set flags (default queue)",
       "name": "flags",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -166,7 +166,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "VIDEO_RATE"
+      "typing": "Video_rate"
     }
   ],
   "output_stream_typings": [

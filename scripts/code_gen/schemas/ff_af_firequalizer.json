@@ -25,7 +25,7 @@
       "description": "set gain curve (default \"gain_interpolate(f)\")",
       "name": "gain",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set gain entry",
       "name": "gain_entry",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set delay (from 0 to 1e+10) (default 0.01)",
       "name": "delay",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set accuracy (from 0 to 1e+10) (default 5)",
       "name": "accuracy",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -120,7 +120,7 @@
       "description": "set window function (from 0 to 9) (default hann)",
       "name": "wfunc",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -131,7 +131,7 @@
       "description": "set fixed frame samples (default false)",
       "name": "fixed",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -142,7 +142,7 @@
       "description": "set multi channels mode (default false)",
       "name": "multi",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -153,7 +153,7 @@
       "description": "set zero phase mode (default false)",
       "name": "zero_phase",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -185,7 +185,7 @@
       "description": "set gain scale (from 0 to 3) (default linlog)",
       "name": "scale",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -196,7 +196,7 @@
       "description": "set dump file",
       "name": "dumpfile",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -228,7 +228,7 @@
       "description": "set dump scale (from 0 to 3) (default linlog)",
       "name": "dumpscale",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -239,7 +239,7 @@
       "description": "set 2-channels fft (default false)",
       "name": "fft2",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -250,7 +250,7 @@
       "description": "set minimum phase mode (default false)",
       "name": "min_phase",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

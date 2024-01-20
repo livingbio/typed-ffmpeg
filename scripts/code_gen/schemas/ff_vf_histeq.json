@@ -25,7 +25,7 @@
       "description": "set the strength (from 0 to 1) (default 0.2)",
       "name": "strength",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the intensity (from 0 to 1) (default 0.21)",
       "name": "intensity",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "set the antibanding level (from 0 to 2) (default none)",
       "name": "antibanding",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

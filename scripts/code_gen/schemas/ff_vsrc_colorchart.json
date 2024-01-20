@@ -21,7 +21,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "VIDEO_RATE"
+      "typing": "Video_rate"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set video duration (default -0.000001)",
       "name": "duration",
       "required": false,
-      "typing": "DURATION"
+      "typing": "Duration"
     },
     {
       "alias": [
@@ -44,7 +44,7 @@
       "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
       "name": "sar",
       "required": false,
-      "typing": "RATIONAL"
+      "typing": "Rational"
     },
     {
       "alias": [
@@ -55,7 +55,7 @@
       "description": "set the single patch size (default \"64x64\")",
       "name": "patch_size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -77,7 +77,7 @@
       "description": "set the color checker chart preset (from 0 to 1) (default reference)",
       "name": "preset",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

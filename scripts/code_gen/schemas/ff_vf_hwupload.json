@@ -25,7 +25,7 @@
       "description": "Derive a new device of this type",
       "name": "derive_device",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [

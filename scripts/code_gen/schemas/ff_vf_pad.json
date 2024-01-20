@@ -26,7 +26,7 @@
       "description": "set the pad area width expression (default \"iw\")",
       "name": "width",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set the pad area height expression (default \"ih\")",
       "name": "height",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set the x offset expression for the input image position (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "set the y offset expression for the input image position (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -71,7 +71,7 @@
       "description": "set the color of the padded area border (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "specify when to evaluate expressions (from 0 to 1) (default init)",
       "name": "eval",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -104,7 +104,7 @@
       "description": "pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)",
       "name": "aspect",
       "required": false,
-      "typing": "RATIONAL"
+      "typing": "Rational"
     }
   ],
   "output_stream_typings": [

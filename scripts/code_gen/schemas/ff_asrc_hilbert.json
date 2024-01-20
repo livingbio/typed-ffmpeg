@@ -21,7 +21,7 @@
       "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
       "name": "sample_rate",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -33,7 +33,7 @@
       "description": "set number of taps (from 11 to 65535) (default 22051)",
       "name": "taps",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -45,7 +45,7 @@
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
       "name": "nb_samples",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -278,7 +278,7 @@
       "description": "set window function (from 0 to 20) (default blackman)",
       "name": "win_func",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

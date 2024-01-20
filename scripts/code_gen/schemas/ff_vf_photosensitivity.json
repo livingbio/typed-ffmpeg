@@ -26,7 +26,7 @@
       "description": "set how many frames to use (from 2 to 240) (default 30)",
       "name": "frames",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -38,7 +38,7 @@
       "description": "set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)",
       "name": "threshold",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -49,7 +49,7 @@
       "description": "set pixels to skip when sampling frames (from 1 to 1024) (default 1)",
       "name": "skip",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "leave frames unchanged (default false)",
       "name": "bypass",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

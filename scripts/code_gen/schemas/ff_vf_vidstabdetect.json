@@ -25,7 +25,7 @@
       "description": "path to the file used to write the transforms (default \"transforms.trf\")",
       "name": "result",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)",
       "name": "shakiness",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "(>=shakiness) 1: low 15: high (slow) (from 1 to 15) (default 15)",
       "name": "accuracy",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "region around minimum is scanned with 1 pixel resolution (from 1 to 32) (default 6)",
       "name": "stepsize",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)",
       "name": "mincontrast",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)",
       "name": "show",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)",
       "name": "tripod",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

@@ -31,7 +31,7 @@
       "description": "DNN backend (from INT_MIN to INT_MAX) (default native)",
       "name": "dnn_backend",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "path to model file",
       "name": "model",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "input name of the model",
       "name": "input",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "output name of the model",
       "name": "output",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "backend configs",
       "name": "backend_configs",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "backend configs (deprecated, use backend_configs)",
       "name": "options",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -97,7 +97,7 @@
       "description": "use DNN async inference (ignored, use backend_configs='async=1') (default true)",
       "name": "async",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

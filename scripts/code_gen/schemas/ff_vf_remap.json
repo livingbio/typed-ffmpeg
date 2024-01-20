@@ -44,7 +44,7 @@
       "description": "set output format (from 0 to 1) (default color)",
       "name": "format",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -55,7 +55,7 @@
       "description": "set the color of the unmapped pixels (default \"black\")",
       "name": "fill",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     }
   ],
   "output_stream_typings": [

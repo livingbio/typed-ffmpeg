@@ -25,7 +25,7 @@
       "description": "Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)",
       "name": "limit",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "Value by which the width/height should be divisible (from 0 to INT_MAX) (default 16)",
       "name": "round",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)",
       "name": "reset",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "Number of initial frames to skip (from 0 to INT_MAX) (default 2)",
       "name": "skip",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)",
       "name": "reset_count",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "Threshold count of outliers (from 0 to INT_MAX) (default 0)",
       "name": "max_outliers",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set mode (from 0 to 1) (default black)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "Set high threshold for edge detection (from 0 to 1) (default 0.0980392)",
       "name": "high",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "Set low threshold for edge detection (from 0 to 1) (default 0.0588235)",
       "name": "low",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "motion vector threshold when estimating video window size (from 0 to 100) (default 8)",
       "name": "mv_threshold",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

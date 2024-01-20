@@ -29,7 +29,7 @@
       "description": "use model='path=...'.",
       "name": "model_path",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -40,7 +40,7 @@
       "description": "Set the file path to be used to write log.",
       "name": "log_path",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -51,7 +51,7 @@
       "description": "Set the format of the log (csv, json, xml, or sub). (default \"xml\")",
       "name": "log_fmt",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "use model='enable_transform=true'. (default false)",
       "name": "enable_transform",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "use feature='name=psnr'. (default false)",
       "name": "psnr",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -85,7 +85,7 @@
       "description": "use feature='name=float_ssim'. (default false)",
       "name": "ssim",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -96,7 +96,7 @@
       "description": "use feature='name=float_ms_ssim'. (default false)",
       "name": "ms_ssim",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -107,7 +107,7 @@
       "description": "Set the pool method to be used for computing vmaf.",
       "name": "pool",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -118,7 +118,7 @@
       "description": "Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)",
       "name": "n_threads",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -129,7 +129,7 @@
       "description": "Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)",
       "name": "n_subsample",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -140,7 +140,7 @@
       "description": "model='enable_conf_interval=true'. (default false)",
       "name": "enable_conf_interval",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -151,7 +151,7 @@
       "description": "Set the model to be used for computing vmaf. (default \"version=vmaf_v0.6.1\")",
       "name": "model",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -162,7 +162,7 @@
       "description": "Set the feature to be used for computing vmaf.",
       "name": "feature",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -189,7 +189,7 @@
       "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
       "name": "eof_action",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -200,7 +200,7 @@
       "description": "force termination when the shortest input terminates (default false)",
       "name": "shortest",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -211,7 +211,7 @@
       "description": "extend last frame of secondary streams beyond EOF (default true)",
       "name": "repeatlast",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -233,7 +233,7 @@
       "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
       "name": "ts_sync_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

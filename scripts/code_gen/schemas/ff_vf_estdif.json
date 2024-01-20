@@ -36,7 +36,7 @@
       "description": "specify the mode (from 0 to 1) (default field)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "specify the assumed picture field parity (from -1 to 1) (default auto)",
       "name": "parity",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -85,7 +85,7 @@
       "description": "specify which frames to deinterlace (from 0 to 1) (default all)",
       "name": "deint",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -96,7 +96,7 @@
       "description": "specify the search radius for edge slope tracing (from 1 to 15) (default 1)",
       "name": "rslope",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -107,7 +107,7 @@
       "description": "specify the search radius for best edge matching (from 0 to 15) (default 2)",
       "name": "redge",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -118,7 +118,7 @@
       "description": "specify the edge cost for edge matching (from 0 to 9) (default 1)",
       "name": "ecost",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -129,7 +129,7 @@
       "description": "specify the middle cost for edge matching (from 0 to 1) (default 0.5)",
       "name": "mcost",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -140,7 +140,7 @@
       "description": "specify the distance cost for edge matching (from 0 to 1) (default 0.5)",
       "name": "dcost",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -167,7 +167,7 @@
       "description": "specify the type of interpolation (from 0 to 2) (default 4p)",
       "name": "interp",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

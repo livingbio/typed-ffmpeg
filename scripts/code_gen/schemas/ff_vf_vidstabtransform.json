@@ -25,7 +25,7 @@
       "description": "set path to the file storing the transforms (default \"transforms.trf\")",
       "name": "input",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set number of frames*2 + 1 used for lowpass filtering (from 0 to 1000) (default 15)",
       "name": "smoothing",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -63,7 +63,7 @@
       "description": "set camera path optimization algo (from 0 to 2) (default opt)",
       "name": "optalgo",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "set maximal number of pixels to translate image (from -1 to 500) (default -1)",
       "name": "maxshift",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -85,7 +85,7 @@
       "description": "set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)",
       "name": "maxangle",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -107,7 +107,7 @@
       "description": "set cropping mode (from 0 to 1) (default keep)",
       "name": "crop",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -118,7 +118,7 @@
       "description": "invert transforms (from 0 to 1) (default 0)",
       "name": "invert",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -129,7 +129,7 @@
       "description": "consider transforms as relative (from 0 to 1) (default 1)",
       "name": "relative",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -140,7 +140,7 @@
       "description": "set percentage to zoom (>0: zoom in, <0: zoom out (from -100 to 100) (default 0)",
       "name": "zoom",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -151,7 +151,7 @@
       "description": "set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom) (from 0 to 2) (default 1)",
       "name": "optzoom",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -162,7 +162,7 @@
       "description": "for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)",
       "name": "zoomspeed",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -194,7 +194,7 @@
       "description": "set type of interpolation (from 0 to 3) (default bilinear)",
       "name": "interpol",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -205,7 +205,7 @@
       "description": "enable virtual tripod mode (same as relative=0:smoothing=0) (default false)",
       "name": "tripod",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -216,7 +216,7 @@
       "description": "enable debug mode and writer global motions information to file (default false)",
       "name": "debug",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [

@@ -36,7 +36,7 @@
       "description": "set the detectmode (from 0 to 2) (default off)",
       "name": "detectmode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "number of inputs (from 1 to INT_MAX) (default 1)",
       "name": "nb_inputs",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "filename for output files (default \"\")",
       "name": "filename",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set output format (from 0 to 1) (default binary)",
       "name": "format",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "threshold to detect one word as similar (from 1 to INT_MAX) (default 9000)",
       "name": "th_d",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "threshold to detect all words as similar (from 1 to INT_MAX) (default 60000)",
       "name": "th_dc",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "threshold to detect frames as similar (from 1 to INT_MAX) (default 116)",
       "name": "th_xh",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)",
       "name": "th_di",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "threshold for relation of good to all frames (from 0 to 1) (default 0.5)",
       "name": "th_it",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [

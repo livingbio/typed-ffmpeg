@@ -25,7 +25,7 @@
       "description": "set y+u+v threshold (from 1 to 200) (default 30)",
       "name": "thres",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set horizontal patch size (from 1 to 100) (default 5)",
       "name": "sizew",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set vertical patch size (from 1 to 100) (default 5)",
       "name": "sizeh",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set horizontal step (from 1 to 50) (default 1)",
       "name": "stepw",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set vertical step (from 1 to 50) (default 1)",
       "name": "steph",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set y threshold (from 1 to 200) (default 200)",
       "name": "threy",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set u threshold (from 1 to 200) (default 200)",
       "name": "threu",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set v threshold (from 1 to 200) (default 200)",
       "name": "threv",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set distance type (from 0 to 1) (default manhattan)",
       "name": "distance",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

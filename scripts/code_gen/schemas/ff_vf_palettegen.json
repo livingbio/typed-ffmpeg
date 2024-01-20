@@ -25,7 +25,7 @@
       "description": "set the maximum number of colors to use in the palette (from 2 to 256) (default 256)",
       "name": "max_colors",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "reserve a palette entry for transparency (default true)",
       "name": "reserve_transparent",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set a background color for transparency (default \"lime\")",
       "name": "transparency_color",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -74,7 +74,7 @@
       "description": "set statistics mode (from 0 to 2) (default full)",
       "name": "stats_mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

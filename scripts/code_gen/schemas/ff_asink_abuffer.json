@@ -25,7 +25,7 @@
       "description": "set the supported sample formats",
       "name": "sample_fmts",
       "required": false,
-      "typing": "BINARY"
+      "typing": "Binary"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set the supported sample rates",
       "name": "sample_rates",
       "required": false,
-      "typing": "BINARY"
+      "typing": "Binary"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set the supported channel layouts (deprecated, use ch_layouts)",
       "name": "channel_layouts",
       "required": false,
-      "typing": "BINARY"
+      "typing": "Binary"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set the supported channel counts (deprecated, use ch_layouts)",
       "name": "channel_counts",
       "required": false,
-      "typing": "BINARY"
+      "typing": "Binary"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set a '|'-separated list of supported channel layouts",
       "name": "ch_layouts",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "accept all channel counts (default false)",
       "name": "all_channel_counts",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     }
   ],
   "output_stream_typings": [],

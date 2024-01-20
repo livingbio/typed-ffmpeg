@@ -25,7 +25,7 @@
       "description": "set red shadows (from -1 to 1) (default 0)",
       "name": "rs",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set green shadows (from -1 to 1) (default 0)",
       "name": "gs",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set blue shadows (from -1 to 1) (default 0)",
       "name": "bs",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set red midtones (from -1 to 1) (default 0)",
       "name": "rm",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set green midtones (from -1 to 1) (default 0)",
       "name": "gm",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set blue midtones (from -1 to 1) (default 0)",
       "name": "bm",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set red highlights (from -1 to 1) (default 0)",
       "name": "rh",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set green highlights (from -1 to 1) (default 0)",
       "name": "gh",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set blue highlights (from -1 to 1) (default 0)",
       "name": "bh",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "preserve lightness (default false)",
       "name": "pl",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [],

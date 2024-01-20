@@ -36,7 +36,7 @@
       "description": "set filtering mode (default dotcrawl+rainbows)",
       "name": "m",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set spatial luma threshold (from 0 to 1) (default 0.079)",
       "name": "lt",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set tolerance for temporal luma (from 0 to 1) (default 0.079)",
       "name": "tl",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)",
       "name": "tc",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set temporal chroma threshold (from 0 to 1) (default 0.019)",
       "name": "ct",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [],

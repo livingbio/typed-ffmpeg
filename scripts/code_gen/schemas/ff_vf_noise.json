@@ -25,7 +25,7 @@
       "description": "set component #0 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "all_seed",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set component #0 strength (from 0 to 100) (default 0)",
       "name": "all_strength",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -70,7 +70,7 @@
       "description": "set component #0 flags (default 0)",
       "name": "all_flags",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -81,7 +81,7 @@
       "description": "set component #0 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c0_seed",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -93,7 +93,7 @@
       "description": "set component #0 strength (from 0 to 100) (default 0)",
       "name": "c0_strength",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -126,7 +126,7 @@
       "description": "set component #0 flags (default 0)",
       "name": "c0_flags",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -137,7 +137,7 @@
       "description": "set component #1 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c1_seed",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -149,7 +149,7 @@
       "description": "set component #1 strength (from 0 to 100) (default 0)",
       "name": "c1_strength",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -182,7 +182,7 @@
       "description": "set component #1 flags (default 0)",
       "name": "c1_flags",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -193,7 +193,7 @@
       "description": "set component #2 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c2_seed",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -205,7 +205,7 @@
       "description": "set component #2 strength (from 0 to 100) (default 0)",
       "name": "c2_strength",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -238,7 +238,7 @@
       "description": "set component #2 flags (default 0)",
       "name": "c2_flags",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -249,7 +249,7 @@
       "description": "set component #3 noise seed (from -1 to INT_MAX) (default -1)",
       "name": "c3_seed",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -261,7 +261,7 @@
       "description": "set component #3 strength (from 0 to 100) (default 0)",
       "name": "c3_strength",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -294,7 +294,7 @@
       "description": "set component #3 flags (default 0)",
       "name": "c3_flags",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [],

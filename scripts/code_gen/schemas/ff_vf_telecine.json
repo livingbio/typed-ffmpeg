@@ -46,7 +46,7 @@
       "description": "select first field (from 0 to 1) (default top)",
       "name": "first_field",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -57,7 +57,7 @@
       "description": "pattern that describe for how many fields a frame is to be displayed (default \"23\")",
       "name": "pattern",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [

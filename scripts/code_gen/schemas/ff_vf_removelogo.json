@@ -26,7 +26,7 @@
       "description": "set bitmap filename",
       "name": "filename",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [],

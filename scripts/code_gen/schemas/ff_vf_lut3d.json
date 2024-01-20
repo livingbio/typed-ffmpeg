@@ -25,7 +25,7 @@
       "description": "set 3D LUT file name",
       "name": "file",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "when to process CLUT (from 0 to 1) (default all)",
       "name": "clut",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -84,7 +84,7 @@
       "description": "select interpolation mode (from 0 to 4) (default tetrahedral)",
       "name": "interp",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

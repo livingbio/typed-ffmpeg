@@ -4,20 +4,20 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..nodes.nodes import FilterableStream, FilterNode
 from ..schema import (
-    BOOLEAN,
-    COLOR,
-    DOUBLE,
-    DURATION,
-    FLAGS,
-    FLOAT,
-    IMAGE_SIZE,
-    INT,
-    INT64,
-    RATIONAL,
-    STRING,
-    VIDEO_RATE,
+    Boolean,
+    Color,
     Default,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Rational,
     StreamType,
+    String,
+    Video_rate,
 )
 
 if TYPE_CHECKING:
@@ -36,12 +36,12 @@ class VideoStream(FilterableStream):
     def addroi(
         self,
         *,
-        x: STRING = Default("0"),
-        y: STRING = Default("0"),
-        w: STRING = Default("0"),
-        h: STRING = Default("0"),
-        qoffset: RATIONAL = Default("-1/10"),
-        clear: BOOLEAN = Default("false"),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        w: String = Default("0"),
+        h: String = Default("0"),
+        qoffset: Rational = Default("-1/10"),
+        clear: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -51,12 +51,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING x: Region distance from left edge of frame. (default "0")
-        :param STRING y: Region distance from top edge of frame. (default "0")
-        :param STRING w: Region width. (default "0")
-        :param STRING h: Region height. (default "0")
-        :param RATIONAL qoffset: Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)
-        :param BOOLEAN clear: Remove any existing regions of interest before adding the new one. (default false)
+        :param String x: Region distance from left edge of frame. (default "0")
+        :param String y: Region distance from top edge of frame. (default "0")
+        :param String w: Region width. (default "0")
+        :param String h: Region height. (default "0")
+        :param Rational qoffset: Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)
+        :param Boolean clear: Remove any existing regions of interest before adding the new one. (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#addroi
 
@@ -107,10 +107,10 @@ class VideoStream(FilterableStream):
         self,
         _alpha: "VideoStream",
         *,
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -121,10 +121,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#alphamerge
@@ -156,13 +156,13 @@ class VideoStream(FilterableStream):
     def amplify(
         self,
         *,
-        radius: INT = Default("2"),
-        factor: FLOAT = Default("2"),
-        threshold: FLOAT = Default("10"),
-        tolerance: FLOAT = Default("0"),
-        low: FLOAT = Default("65535"),
-        high: FLOAT = Default("65535"),
-        planes: FLAGS = Default("7"),
+        radius: Int = Default("2"),
+        factor: Float = Default("2"),
+        threshold: Float = Default("10"),
+        tolerance: Float = Default("0"),
+        low: Float = Default("65535"),
+        high: Float = Default("65535"),
+        planes: Flags = Default("7"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -173,13 +173,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT radius: set radius (from 1 to 63) (default 2)
-        :param FLOAT factor: set factor (from 0 to 65535) (default 2)
-        :param FLOAT threshold: set threshold (from 0 to 65535) (default 10)
-        :param FLOAT tolerance: set tolerance (from 0 to 65535) (default 0)
-        :param FLOAT low: set low limit for amplification (from 0 to 65535) (default 65535)
-        :param FLOAT high: set high limit for amplification (from 0 to 65535) (default 65535)
-        :param FLAGS planes: set what planes to filter (default 7)
+        :param Int radius: set radius (from 1 to 63) (default 2)
+        :param Float factor: set factor (from 0 to 65535) (default 2)
+        :param Float threshold: set threshold (from 0 to 65535) (default 10)
+        :param Float tolerance: set tolerance (from 0 to 65535) (default 0)
+        :param Float low: set low limit for amplification (from 0 to 65535) (default 65535)
+        :param Float high: set high limit for amplification (from 0 to 65535) (default 65535)
+        :param Flags planes: set what planes to filter (default 7)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#amplify
@@ -211,11 +211,11 @@ class VideoStream(FilterableStream):
     def ass(
         self,
         *,
-        filename: STRING = Default(None),
-        original_size: IMAGE_SIZE = Default(None),
-        fontsdir: STRING = Default(None),
-        alpha: BOOLEAN = Default("false"),
-        shaping: INT | Literal["auto", "simple", "complex"] | Default = Default("auto"),
+        filename: String = Default(None),
+        original_size: Image_size = Default(None),
+        fontsdir: String = Default(None),
+        alpha: Boolean = Default("false"),
+        shaping: Int | Literal["auto", "simple", "complex"] | Default = Default("auto"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -225,11 +225,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING filename: set the filename of file to read
-        :param IMAGE_SIZE original_size: set the size of the original video (used to scale fonts)
-        :param STRING fontsdir: set the directory containing the fonts to read
-        :param BOOLEAN alpha: enable processing of alpha channel (default false)
-        :param INT shaping: set shaping engine (from -1 to 1) (default auto)
+        :param String filename: set the filename of file to read
+        :param Image_size original_size: set the size of the original video (used to scale fonts)
+        :param String fontsdir: set the directory containing the fonts to read
+        :param Boolean alpha: enable processing of alpha channel (default false)
+        :param Int shaping: set shaping engine (from -1 to 1) (default auto)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ass
 
@@ -257,18 +257,18 @@ class VideoStream(FilterableStream):
     def atadenoise(
         self,
         *,
-        _0a: FLOAT = Default("0.02"),
-        _0b: FLOAT = Default("0.04"),
-        _1a: FLOAT = Default("0.02"),
-        _1b: FLOAT = Default("0.04"),
-        _2a: FLOAT = Default("0.02"),
-        _2b: FLOAT = Default("0.04"),
-        s: INT = Default("9"),
-        p: FLAGS = Default("7"),
-        a: INT | Literal["p", "s"] | Default = Default("p"),
-        _0s: FLOAT = Default("32767"),
-        _1s: FLOAT = Default("32767"),
-        _2s: FLOAT = Default("32767"),
+        _0a: Float = Default("0.02"),
+        _0b: Float = Default("0.04"),
+        _1a: Float = Default("0.02"),
+        _1b: Float = Default("0.04"),
+        _2a: Float = Default("0.02"),
+        _2b: Float = Default("0.04"),
+        s: Int = Default("9"),
+        p: Flags = Default("7"),
+        a: Int | Literal["p", "s"] | Default = Default("p"),
+        _0s: Float = Default("32767"),
+        _1s: Float = Default("32767"),
+        _2s: Float = Default("32767"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -279,18 +279,18 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT _0a: set threshold A for 1st plane (from 0 to 0.3) (default 0.02)
-        :param FLOAT _0b: set threshold B for 1st plane (from 0 to 5) (default 0.04)
-        :param FLOAT _1a: set threshold A for 2nd plane (from 0 to 0.3) (default 0.02)
-        :param FLOAT _1b: set threshold B for 2nd plane (from 0 to 5) (default 0.04)
-        :param FLOAT _2a: set threshold A for 3rd plane (from 0 to 0.3) (default 0.02)
-        :param FLOAT _2b: set threshold B for 3rd plane (from 0 to 5) (default 0.04)
-        :param INT s: set how many frames to use (from 5 to 129) (default 9)
-        :param FLAGS p: set what planes to filter (default 7)
-        :param INT a: set variant of algorithm (from 0 to 1) (default p)
-        :param FLOAT _0s: set sigma for 1st plane (from 0 to 32767) (default 32767)
-        :param FLOAT _1s: set sigma for 2nd plane (from 0 to 32767) (default 32767)
-        :param FLOAT _2s: set sigma for 3rd plane (from 0 to 32767) (default 32767)
+        :param Float _0a: set threshold A for 1st plane (from 0 to 0.3) (default 0.02)
+        :param Float _0b: set threshold B for 1st plane (from 0 to 5) (default 0.04)
+        :param Float _1a: set threshold A for 2nd plane (from 0 to 0.3) (default 0.02)
+        :param Float _1b: set threshold B for 2nd plane (from 0 to 5) (default 0.04)
+        :param Float _2a: set threshold A for 3rd plane (from 0 to 0.3) (default 0.02)
+        :param Float _2b: set threshold B for 3rd plane (from 0 to 5) (default 0.04)
+        :param Int s: set how many frames to use (from 5 to 129) (default 9)
+        :param Flags p: set what planes to filter (default 7)
+        :param Int a: set variant of algorithm (from 0 to 1) (default p)
+        :param Float _0s: set sigma for 1st plane (from 0 to 32767) (default 32767)
+        :param Float _1s: set sigma for 2nd plane (from 0 to 32767) (default 32767)
+        :param Float _2s: set sigma for 3rd plane (from 0 to 32767) (default 32767)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#atadenoise
@@ -327,9 +327,9 @@ class VideoStream(FilterableStream):
     def avgblur(
         self,
         *,
-        sizeX: INT = Default("1"),
-        planes: INT = Default("15"),
-        sizeY: INT = Default("0"),
+        sizeX: Int = Default("1"),
+        planes: Int = Default("15"),
+        sizeY: Int = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -340,9 +340,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT sizeX: set horizontal size (from 1 to 1024) (default 1)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param INT sizeY: set vertical size (from 0 to 1024) (default 0)
+        :param Int sizeX: set horizontal size (from 1 to 1024) (default 1)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Int sizeY: set vertical size (from 0 to 1024) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#avgblur
@@ -370,9 +370,9 @@ class VideoStream(FilterableStream):
     def backgroundkey(
         self,
         *,
-        threshold: FLOAT = Default("0.08"),
-        similarity: FLOAT = Default("0.1"),
-        blend: FLOAT = Default("0"),
+        threshold: Float = Default("0.08"),
+        similarity: Float = Default("0.1"),
+        blend: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -383,9 +383,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT threshold: set the scene change threshold (from 0 to 1) (default 0.08)
-        :param FLOAT similarity: set the similarity (from 0 to 1) (default 0.1)
-        :param FLOAT blend: set the blend value (from 0 to 1) (default 0)
+        :param Float threshold: set the scene change threshold (from 0 to 1) (default 0.08)
+        :param Float similarity: set the similarity (from 0 to 1) (default 0.1)
+        :param Float blend: set the blend value (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#backgroundkey
@@ -410,7 +410,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def bbox(self, *, min_val: INT = Default("16"), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def bbox(self, *, min_val: Int = Default("16"), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Compute bounding box for each frame.
@@ -418,7 +418,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT min_val: set minimum luminance value for bounding box (from 0 to 65535) (default 16)
+        :param Int min_val: set minimum luminance value for bounding box (from 0 to 65535) (default 16)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bbox
@@ -442,7 +442,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def bench(
-        self, *, action: INT | Literal["start", "stop"] | Default = Default("start"), **kwargs: Any
+        self, *, action: Int | Literal["start", "stop"] | Default = Default("start"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -451,7 +451,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT action: set action (from 0 to 1) (default start)
+        :param Int action: set action (from 0 to 1) (default start)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench
 
@@ -475,9 +475,9 @@ class VideoStream(FilterableStream):
     def bilateral(
         self,
         *,
-        sigmaS: FLOAT = Default("0.1"),
-        sigmaR: FLOAT = Default("0.1"),
-        planes: INT = Default("1"),
+        sigmaS: Float = Default("0.1"),
+        sigmaR: Float = Default("0.1"),
+        planes: Int = Default("1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -488,9 +488,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT sigmaS: set spatial sigma (from 0 to 512) (default 0.1)
-        :param FLOAT sigmaR: set range sigma (from 0 to 1) (default 0.1)
-        :param INT planes: set planes to filter (from 0 to 15) (default 1)
+        :param Float sigmaS: set spatial sigma (from 0 to 512) (default 0.1)
+        :param Float sigmaR: set range sigma (from 0 to 1) (default 0.1)
+        :param Int planes: set planes to filter (from 0 to 15) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bilateral
@@ -518,8 +518,8 @@ class VideoStream(FilterableStream):
     def bitplanenoise(
         self,
         *,
-        bitplane: INT = Default("1"),
-        filter: BOOLEAN = Default("false"),
+        bitplane: Int = Default("1"),
+        filter: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -530,8 +530,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT bitplane: set bit plane to use for measuring noise (from 1 to 16) (default 1)
-        :param BOOLEAN filter: show noisy pixels (default false)
+        :param Int bitplane: set bit plane to use for measuring noise (from 1 to 16) (default 1)
+        :param Boolean filter: show noisy pixels (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise
@@ -558,9 +558,9 @@ class VideoStream(FilterableStream):
     def blackdetect(
         self,
         *,
-        d: DOUBLE = Default("2"),
-        picture_black_ratio_th: DOUBLE = Default("0.98"),
-        pixel_black_th: DOUBLE = Default("0.1"),
+        d: Double = Default("2"),
+        picture_black_ratio_th: Double = Default("0.98"),
+        pixel_black_th: Double = Default("0.1"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -570,9 +570,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE d: set minimum detected black duration in seconds (from 0 to DBL_MAX) (default 2)
-        :param DOUBLE picture_black_ratio_th: set the picture black ratio threshold (from 0 to 1) (default 0.98)
-        :param DOUBLE pixel_black_th: set the pixel black threshold (from 0 to 1) (default 0.1)
+        :param Double d: set minimum detected black duration in seconds (from 0 to DBL_MAX) (default 2)
+        :param Double picture_black_ratio_th: set the picture black ratio threshold (from 0 to 1) (default 0.98)
+        :param Double pixel_black_th: set the pixel black threshold (from 0 to 1) (default 0.1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#blackdetect
 
@@ -596,7 +596,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def blackframe(
-        self, *, amount: INT = Default("98"), threshold: INT = Default("32"), **kwargs: Any
+        self, *, amount: Int = Default("98"), threshold: Int = Default("32"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -605,8 +605,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT amount: percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)
-        :param INT threshold: threshold below which a pixel value is considered black (from 0 to 255) (default 32)
+        :param Int amount: percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)
+        :param Int threshold: threshold below which a pixel value is considered black (from 0 to 255) (default 32)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#blackframe
 
@@ -632,7 +632,7 @@ class VideoStream(FilterableStream):
         self,
         _bottom: "VideoStream",
         *,
-        c0_mode: INT
+        c0_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -678,7 +678,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        c1_mode: INT
+        c1_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -724,7 +724,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        c2_mode: INT
+        c2_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -770,7 +770,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        c3_mode: INT
+        c3_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -816,7 +816,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        all_mode: INT
+        all_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -862,20 +862,20 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("-1"),
-        c0_expr: STRING = Default(None),
-        c1_expr: STRING = Default(None),
-        c2_expr: STRING = Default(None),
-        c3_expr: STRING = Default(None),
-        all_expr: STRING = Default(None),
-        c0_opacity: DOUBLE = Default("1"),
-        c1_opacity: DOUBLE = Default("1"),
-        c2_opacity: DOUBLE = Default("1"),
-        c3_opacity: DOUBLE = Default("1"),
-        all_opacity: DOUBLE = Default("1"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        c0_expr: String = Default(None),
+        c1_expr: String = Default(None),
+        c2_expr: String = Default(None),
+        c3_expr: String = Default(None),
+        all_expr: String = Default(None),
+        c0_opacity: Double = Default("1"),
+        c1_opacity: Double = Default("1"),
+        c2_opacity: Double = Default("1"),
+        c3_opacity: Double = Default("1"),
+        all_opacity: Double = Default("1"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -886,25 +886,25 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
-        :param INT c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
-        :param INT c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
-        :param INT c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
-        :param INT all_mode: set blend mode for all components (from -1 to 39) (default -1)
-        :param STRING c0_expr: set color component #0 expression
-        :param STRING c1_expr: set color component #1 expression
-        :param STRING c2_expr: set color component #2 expression
-        :param STRING c3_expr: set color component #3 expression
-        :param STRING all_expr: set expression for all color components
-        :param DOUBLE c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
-        :param DOUBLE c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
-        :param DOUBLE c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
-        :param DOUBLE c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
-        :param DOUBLE all_opacity: set opacity for all color components (from 0 to 1) (default 1)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+        :param Int c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+        :param Int c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+        :param Int c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+        :param Int all_mode: set blend mode for all components (from -1 to 39) (default -1)
+        :param String c0_expr: set color component #0 expression
+        :param String c1_expr: set color component #1 expression
+        :param String c2_expr: set color component #2 expression
+        :param String c3_expr: set color component #3 expression
+        :param String all_expr: set expression for all color components
+        :param Double c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+        :param Double c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+        :param Double c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+        :param Double c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+        :param Double all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#blend
@@ -951,9 +951,9 @@ class VideoStream(FilterableStream):
     def blockdetect(
         self,
         *,
-        period_min: INT = Default("3"),
-        period_max: INT = Default("24"),
-        planes: INT = Default("1"),
+        period_min: Int = Default("3"),
+        period_max: Int = Default("24"),
+        planes: Int = Default("1"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -963,9 +963,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT period_min: Minimum period to search for (from 2 to 32) (default 3)
-        :param INT period_max: Maximum period to search for (from 2 to 64) (default 24)
-        :param INT planes: set planes to filter (from 0 to 15) (default 1)
+        :param Int period_min: Minimum period to search for (from 2 to 32) (default 3)
+        :param Int period_max: Maximum period to search for (from 2 to 64) (default 24)
+        :param Int planes: set planes to filter (from 0 to 15) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#blockdetect
 
@@ -991,12 +991,12 @@ class VideoStream(FilterableStream):
     def blurdetect(
         self,
         *,
-        high: FLOAT = Default("0.117647"),
-        low: FLOAT = Default("0.0588235"),
-        radius: INT = Default("50"),
-        block_pct: INT = Default("80"),
-        block_width: INT = Default("-1"),
-        planes: INT = Default("1"),
+        high: Float = Default("0.117647"),
+        low: Float = Default("0.0588235"),
+        radius: Int = Default("50"),
+        block_pct: Int = Default("80"),
+        block_width: Int = Default("-1"),
+        planes: Int = Default("1"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1006,12 +1006,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT high: set high threshold (from 0 to 1) (default 0.117647)
-        :param FLOAT low: set low threshold (from 0 to 1) (default 0.0588235)
-        :param INT radius: search radius for maxima detection (from 1 to 100) (default 50)
-        :param INT block_pct: block pooling threshold when calculating blurriness (from 1 to 100) (default 80)
-        :param INT block_width: block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)
-        :param INT planes: set planes to filter (from 0 to 15) (default 1)
+        :param Float high: set high threshold (from 0 to 1) (default 0.117647)
+        :param Float low: set low threshold (from 0 to 1) (default 0.0588235)
+        :param Int radius: search radius for maxima detection (from 1 to 100) (default 50)
+        :param Int block_pct: block pooling threshold when calculating blurriness (from 1 to 100) (default 80)
+        :param Int block_width: block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)
+        :param Int planes: set planes to filter (from 0 to 15) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#blurdetect
 
@@ -1040,12 +1040,12 @@ class VideoStream(FilterableStream):
     def boxblur(
         self,
         *,
-        luma_radius: STRING = Default("2"),
-        luma_power: INT = Default("2"),
-        chroma_radius: STRING = Default(None),
-        chroma_power: INT = Default("-1"),
-        alpha_radius: STRING = Default(None),
-        alpha_power: INT = Default("-1"),
+        luma_radius: String = Default("2"),
+        luma_power: Int = Default("2"),
+        chroma_radius: String = Default(None),
+        chroma_power: Int = Default("-1"),
+        alpha_radius: String = Default(None),
+        alpha_power: Int = Default("-1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1056,12 +1056,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING luma_radius: Radius of the luma blurring box (default "2")
-        :param INT luma_power: How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)
-        :param STRING chroma_radius: Radius of the chroma blurring box
-        :param INT chroma_power: How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
-        :param STRING alpha_radius: Radius of the alpha blurring box
-        :param INT alpha_power: How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
+        :param String luma_radius: Radius of the luma blurring box (default "2")
+        :param Int luma_power: How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)
+        :param String chroma_radius: Radius of the chroma blurring box
+        :param Int chroma_power: How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
+        :param String alpha_radius: Radius of the alpha blurring box
+        :param Int alpha_power: How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#boxblur
@@ -1092,9 +1092,9 @@ class VideoStream(FilterableStream):
     def bwdif(
         self,
         *,
-        mode: INT | Literal["send_frame", "send_field"] | Default = Default("send_field"),
-        parity: INT | Literal["tff", "bff", "auto"] | Default = Default("auto"),
-        deint: INT | Literal["all", "interlaced"] | Default = Default("all"),
+        mode: Int | Literal["send_frame", "send_field"] | Default = Default("send_field"),
+        parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
+        deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1105,9 +1105,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: specify the interlacing mode (from 0 to 1) (default send_field)
-        :param INT parity: specify the assumed picture field parity (from -1 to 1) (default auto)
-        :param INT deint: specify which frames to deinterlace (from 0 to 1) (default all)
+        :param Int mode: specify the interlacing mode (from 0 to 1) (default send_field)
+        :param Int parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+        :param Int deint: specify which frames to deinterlace (from 0 to 1) (default all)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#bwdif
@@ -1135,8 +1135,8 @@ class VideoStream(FilterableStream):
     def cas(
         self,
         *,
-        strength: FLOAT = Default("0"),
-        planes: FLAGS = Default("7"),
+        strength: Float = Default("0"),
+        planes: Flags = Default("7"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1147,8 +1147,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT strength: set the sharpening strength (from 0 to 1) (default 0)
-        :param FLAGS planes: set what planes to filter (default 7)
+        :param Float strength: set the sharpening strength (from 0 to 1) (default 0)
+        :param Flags planes: set what planes to filter (default 7)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#cas
@@ -1175,10 +1175,10 @@ class VideoStream(FilterableStream):
     def chromahold(
         self,
         *,
-        color: COLOR = Default("black"),
-        similarity: FLOAT = Default("0.01"),
-        blend: FLOAT = Default("0"),
-        yuv: BOOLEAN = Default("false"),
+        color: Color = Default("black"),
+        similarity: Float = Default("0.01"),
+        blend: Float = Default("0"),
+        yuv: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1189,10 +1189,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param COLOR color: set the chromahold key color (default "black")
-        :param FLOAT similarity: set the chromahold similarity value (from 1e-05 to 1) (default 0.01)
-        :param FLOAT blend: set the chromahold blend value (from 0 to 1) (default 0)
-        :param BOOLEAN yuv: color parameter is in yuv instead of rgb (default false)
+        :param Color color: set the chromahold key color (default "black")
+        :param Float similarity: set the chromahold similarity value (from 1e-05 to 1) (default 0.01)
+        :param Float blend: set the chromahold blend value (from 0 to 1) (default 0)
+        :param Boolean yuv: color parameter is in yuv instead of rgb (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#chromahold
@@ -1221,10 +1221,10 @@ class VideoStream(FilterableStream):
     def chromakey(
         self,
         *,
-        color: COLOR = Default("black"),
-        similarity: FLOAT = Default("0.01"),
-        blend: FLOAT = Default("0"),
-        yuv: BOOLEAN = Default("false"),
+        color: Color = Default("black"),
+        similarity: Float = Default("0.01"),
+        blend: Float = Default("0"),
+        yuv: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1235,10 +1235,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param COLOR color: set the chromakey key color (default "black")
-        :param FLOAT similarity: set the chromakey similarity value (from 1e-05 to 1) (default 0.01)
-        :param FLOAT blend: set the chromakey key blend value (from 0 to 1) (default 0)
-        :param BOOLEAN yuv: color parameter is in yuv instead of rgb (default false)
+        :param Color color: set the chromakey key color (default "black")
+        :param Float similarity: set the chromakey similarity value (from 1e-05 to 1) (default 0.01)
+        :param Float blend: set the chromakey key blend value (from 0 to 1) (default 0)
+        :param Boolean yuv: color parameter is in yuv instead of rgb (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#chromakey
@@ -1267,15 +1267,15 @@ class VideoStream(FilterableStream):
     def chromanr(
         self,
         *,
-        thres: FLOAT = Default("30"),
-        sizew: INT = Default("5"),
-        sizeh: INT = Default("5"),
-        stepw: INT = Default("1"),
-        steph: INT = Default("1"),
-        threy: FLOAT = Default("200"),
-        threu: FLOAT = Default("200"),
-        threv: FLOAT = Default("200"),
-        distance: INT | Literal["manhattan", "euclidean"] | Default = Default("manhattan"),
+        thres: Float = Default("30"),
+        sizew: Int = Default("5"),
+        sizeh: Int = Default("5"),
+        stepw: Int = Default("1"),
+        steph: Int = Default("1"),
+        threy: Float = Default("200"),
+        threu: Float = Default("200"),
+        threv: Float = Default("200"),
+        distance: Int | Literal["manhattan", "euclidean"] | Default = Default("manhattan"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1286,15 +1286,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT thres: set y+u+v threshold (from 1 to 200) (default 30)
-        :param INT sizew: set horizontal patch size (from 1 to 100) (default 5)
-        :param INT sizeh: set vertical patch size (from 1 to 100) (default 5)
-        :param INT stepw: set horizontal step (from 1 to 50) (default 1)
-        :param INT steph: set vertical step (from 1 to 50) (default 1)
-        :param FLOAT threy: set y threshold (from 1 to 200) (default 200)
-        :param FLOAT threu: set u threshold (from 1 to 200) (default 200)
-        :param FLOAT threv: set v threshold (from 1 to 200) (default 200)
-        :param INT distance: set distance type (from 0 to 1) (default manhattan)
+        :param Float thres: set y+u+v threshold (from 1 to 200) (default 30)
+        :param Int sizew: set horizontal patch size (from 1 to 100) (default 5)
+        :param Int sizeh: set vertical patch size (from 1 to 100) (default 5)
+        :param Int stepw: set horizontal step (from 1 to 50) (default 1)
+        :param Int steph: set vertical step (from 1 to 50) (default 1)
+        :param Float threy: set y threshold (from 1 to 200) (default 200)
+        :param Float threu: set u threshold (from 1 to 200) (default 200)
+        :param Float threv: set v threshold (from 1 to 200) (default 200)
+        :param Int distance: set distance type (from 0 to 1) (default manhattan)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#chromanr
@@ -1328,11 +1328,11 @@ class VideoStream(FilterableStream):
     def chromashift(
         self,
         *,
-        cbh: INT = Default("0"),
-        cbv: INT = Default("0"),
-        crh: INT = Default("0"),
-        crv: INT = Default("0"),
-        edge: INT | Literal["smear", "wrap"] | Default = Default("smear"),
+        cbh: Int = Default("0"),
+        cbv: Int = Default("0"),
+        crh: Int = Default("0"),
+        crv: Int = Default("0"),
+        edge: Int | Literal["smear", "wrap"] | Default = Default("smear"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1343,11 +1343,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT cbh: shift chroma-blue horizontally (from -255 to 255) (default 0)
-        :param INT cbv: shift chroma-blue vertically (from -255 to 255) (default 0)
-        :param INT crh: shift chroma-red horizontally (from -255 to 255) (default 0)
-        :param INT crv: shift chroma-red vertically (from -255 to 255) (default 0)
-        :param INT edge: set edge operation (from 0 to 1) (default smear)
+        :param Int cbh: shift chroma-blue horizontally (from -255 to 255) (default 0)
+        :param Int cbv: shift chroma-blue vertically (from -255 to 255) (default 0)
+        :param Int crh: shift chroma-red horizontally (from -255 to 255) (default 0)
+        :param Int crv: shift chroma-red vertically (from -255 to 255) (default 0)
+        :param Int edge: set edge operation (from 0 to 1) (default smear)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#chromashift
@@ -1377,7 +1377,7 @@ class VideoStream(FilterableStream):
     def ciescope(
         self,
         *,
-        system: INT
+        system: Int
         | Literal[
             "ntsc",
             "470m",
@@ -1395,8 +1395,8 @@ class VideoStream(FilterableStream):
             "dcip3",
         ]
         | Default = Default("hdtv"),
-        cie: INT | Literal["xyy", "ucs", "luv"] | Default = Default("xyy"),
-        gamuts: FLAGS
+        cie: Int | Literal["xyy", "ucs", "luv"] | Default = Default("xyy"),
+        gamuts: Flags
         | Literal[
             "ntsc",
             "470m",
@@ -1414,13 +1414,13 @@ class VideoStream(FilterableStream):
             "dcip3",
         ]
         | Default = Default("0"),
-        size: INT = Default("512"),
-        intensity: FLOAT = Default("0.001"),
-        contrast: FLOAT = Default("0.75"),
-        corrgamma: BOOLEAN = Default("true"),
-        showwhite: BOOLEAN = Default("false"),
-        gamma: DOUBLE = Default("2.6"),
-        fill: BOOLEAN = Default("true"),
+        size: Int = Default("512"),
+        intensity: Float = Default("0.001"),
+        contrast: Float = Default("0.75"),
+        corrgamma: Boolean = Default("true"),
+        showwhite: Boolean = Default("false"),
+        gamma: Double = Default("2.6"),
+        fill: Boolean = Default("true"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -1430,16 +1430,16 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT system: set color system (from 0 to 9) (default hdtv)
-        :param INT cie: set cie system (from 0 to 2) (default xyy)
-        :param FLAGS gamuts: set what gamuts to draw (default 0)
-        :param INT size: set ciescope size (from 256 to 8192) (default 512)
-        :param FLOAT intensity: set ciescope intensity (from 0 to 1) (default 0.001)
-        :param FLOAT contrast: (from 0 to 1) (default 0.75)
-        :param BOOLEAN corrgamma: (default true)
-        :param BOOLEAN showwhite: (default false)
-        :param DOUBLE gamma: (from 0.1 to 6) (default 2.6)
-        :param BOOLEAN fill: fill with CIE colors (default true)
+        :param Int system: set color system (from 0 to 9) (default hdtv)
+        :param Int cie: set cie system (from 0 to 2) (default xyy)
+        :param Flags gamuts: set what gamuts to draw (default 0)
+        :param Int size: set ciescope size (from 256 to 8192) (default 512)
+        :param Float intensity: set ciescope intensity (from 0 to 1) (default 0.001)
+        :param Float contrast: (from 0 to 1) (default 0.75)
+        :param Boolean corrgamma: (default true)
+        :param Boolean showwhite: (default false)
+        :param Double gamma: (from 0.1 to 6) (default 2.6)
+        :param Boolean fill: fill with CIE colors (default true)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ciescope
 
@@ -1472,11 +1472,11 @@ class VideoStream(FilterableStream):
     def codecview(
         self,
         *,
-        mv: FLAGS | Literal["pf", "bf", "bb"] | Default = Default("0"),
-        qp: BOOLEAN = Default("false"),
-        mv_type: FLAGS | Literal["fp", "bp"] | Default = Default("0"),
-        frame_type: FLAGS | Literal["if", "pf", "bf"] | Default = Default("0"),
-        block: BOOLEAN = Default("false"),
+        mv: Flags | Literal["pf", "bf", "bb"] | Default = Default("0"),
+        qp: Boolean = Default("false"),
+        mv_type: Flags | Literal["fp", "bp"] | Default = Default("0"),
+        frame_type: Flags | Literal["if", "pf", "bf"] | Default = Default("0"),
+        block: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1487,11 +1487,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLAGS mv: set motion vectors to visualize (default 0)
-        :param BOOLEAN qp: (default false)
-        :param FLAGS mv_type: set motion vectors type (default 0)
-        :param FLAGS frame_type: set frame types to visualize motion vectors of (default 0)
-        :param BOOLEAN block: set block partitioning structure to visualize (default false)
+        :param Flags mv: set motion vectors to visualize (default 0)
+        :param Boolean qp: (default false)
+        :param Flags mv_type: set motion vectors type (default 0)
+        :param Flags frame_type: set frame types to visualize motion vectors of (default 0)
+        :param Boolean block: set block partitioning structure to visualize (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#codecview
@@ -1521,16 +1521,16 @@ class VideoStream(FilterableStream):
     def colorbalance(
         self,
         *,
-        rs: FLOAT = Default("0"),
-        gs: FLOAT = Default("0"),
-        bs: FLOAT = Default("0"),
-        rm: FLOAT = Default("0"),
-        gm: FLOAT = Default("0"),
-        bm: FLOAT = Default("0"),
-        rh: FLOAT = Default("0"),
-        gh: FLOAT = Default("0"),
-        bh: FLOAT = Default("0"),
-        pl: BOOLEAN = Default("false"),
+        rs: Float = Default("0"),
+        gs: Float = Default("0"),
+        bs: Float = Default("0"),
+        rm: Float = Default("0"),
+        gm: Float = Default("0"),
+        bm: Float = Default("0"),
+        rh: Float = Default("0"),
+        gh: Float = Default("0"),
+        bh: Float = Default("0"),
+        pl: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1541,16 +1541,16 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT rs: set red shadows (from -1 to 1) (default 0)
-        :param FLOAT gs: set green shadows (from -1 to 1) (default 0)
-        :param FLOAT bs: set blue shadows (from -1 to 1) (default 0)
-        :param FLOAT rm: set red midtones (from -1 to 1) (default 0)
-        :param FLOAT gm: set green midtones (from -1 to 1) (default 0)
-        :param FLOAT bm: set blue midtones (from -1 to 1) (default 0)
-        :param FLOAT rh: set red highlights (from -1 to 1) (default 0)
-        :param FLOAT gh: set green highlights (from -1 to 1) (default 0)
-        :param FLOAT bh: set blue highlights (from -1 to 1) (default 0)
-        :param BOOLEAN pl: preserve lightness (default false)
+        :param Float rs: set red shadows (from -1 to 1) (default 0)
+        :param Float gs: set green shadows (from -1 to 1) (default 0)
+        :param Float bs: set blue shadows (from -1 to 1) (default 0)
+        :param Float rm: set red midtones (from -1 to 1) (default 0)
+        :param Float gm: set green midtones (from -1 to 1) (default 0)
+        :param Float bm: set blue midtones (from -1 to 1) (default 0)
+        :param Float rh: set red highlights (from -1 to 1) (default 0)
+        :param Float gh: set green highlights (from -1 to 1) (default 0)
+        :param Float bh: set blue highlights (from -1 to 1) (default 0)
+        :param Boolean pl: preserve lightness (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorbalance
@@ -1585,24 +1585,24 @@ class VideoStream(FilterableStream):
     def colorchannelmixer(
         self,
         *,
-        rr: DOUBLE = Default("1"),
-        rg: DOUBLE = Default("0"),
-        rb: DOUBLE = Default("0"),
-        ra: DOUBLE = Default("0"),
-        gr: DOUBLE = Default("0"),
-        gg: DOUBLE = Default("1"),
-        gb: DOUBLE = Default("0"),
-        ga: DOUBLE = Default("0"),
-        br: DOUBLE = Default("0"),
-        bg: DOUBLE = Default("0"),
-        bb: DOUBLE = Default("1"),
-        ba: DOUBLE = Default("0"),
-        ar: DOUBLE = Default("0"),
-        ag: DOUBLE = Default("0"),
-        ab: DOUBLE = Default("0"),
-        aa: DOUBLE = Default("1"),
-        pc: INT | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | Default = Default("none"),
-        pa: DOUBLE = Default("0"),
+        rr: Double = Default("1"),
+        rg: Double = Default("0"),
+        rb: Double = Default("0"),
+        ra: Double = Default("0"),
+        gr: Double = Default("0"),
+        gg: Double = Default("1"),
+        gb: Double = Default("0"),
+        ga: Double = Default("0"),
+        br: Double = Default("0"),
+        bg: Double = Default("0"),
+        bb: Double = Default("1"),
+        ba: Double = Default("0"),
+        ar: Double = Default("0"),
+        ag: Double = Default("0"),
+        ab: Double = Default("0"),
+        aa: Double = Default("1"),
+        pc: Int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | Default = Default("none"),
+        pa: Double = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1613,24 +1613,24 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE rr: set the red gain for the red channel (from -2 to 2) (default 1)
-        :param DOUBLE rg: set the green gain for the red channel (from -2 to 2) (default 0)
-        :param DOUBLE rb: set the blue gain for the red channel (from -2 to 2) (default 0)
-        :param DOUBLE ra: set the alpha gain for the red channel (from -2 to 2) (default 0)
-        :param DOUBLE gr: set the red gain for the green channel (from -2 to 2) (default 0)
-        :param DOUBLE gg: set the green gain for the green channel (from -2 to 2) (default 1)
-        :param DOUBLE gb: set the blue gain for the green channel (from -2 to 2) (default 0)
-        :param DOUBLE ga: set the alpha gain for the green channel (from -2 to 2) (default 0)
-        :param DOUBLE br: set the red gain for the blue channel (from -2 to 2) (default 0)
-        :param DOUBLE bg: set the green gain for the blue channel (from -2 to 2) (default 0)
-        :param DOUBLE bb: set the blue gain for the blue channel (from -2 to 2) (default 1)
-        :param DOUBLE ba: set the alpha gain for the blue channel (from -2 to 2) (default 0)
-        :param DOUBLE ar: set the red gain for the alpha channel (from -2 to 2) (default 0)
-        :param DOUBLE ag: set the green gain for the alpha channel (from -2 to 2) (default 0)
-        :param DOUBLE ab: set the blue gain for the alpha channel (from -2 to 2) (default 0)
-        :param DOUBLE aa: set the alpha gain for the alpha channel (from -2 to 2) (default 1)
-        :param INT pc: set the preserve color mode (from 0 to 6) (default none)
-        :param DOUBLE pa: set the preserve color amount (from 0 to 1) (default 0)
+        :param Double rr: set the red gain for the red channel (from -2 to 2) (default 1)
+        :param Double rg: set the green gain for the red channel (from -2 to 2) (default 0)
+        :param Double rb: set the blue gain for the red channel (from -2 to 2) (default 0)
+        :param Double ra: set the alpha gain for the red channel (from -2 to 2) (default 0)
+        :param Double gr: set the red gain for the green channel (from -2 to 2) (default 0)
+        :param Double gg: set the green gain for the green channel (from -2 to 2) (default 1)
+        :param Double gb: set the blue gain for the green channel (from -2 to 2) (default 0)
+        :param Double ga: set the alpha gain for the green channel (from -2 to 2) (default 0)
+        :param Double br: set the red gain for the blue channel (from -2 to 2) (default 0)
+        :param Double bg: set the green gain for the blue channel (from -2 to 2) (default 0)
+        :param Double bb: set the blue gain for the blue channel (from -2 to 2) (default 1)
+        :param Double ba: set the alpha gain for the blue channel (from -2 to 2) (default 0)
+        :param Double ar: set the red gain for the alpha channel (from -2 to 2) (default 0)
+        :param Double ag: set the green gain for the alpha channel (from -2 to 2) (default 0)
+        :param Double ab: set the blue gain for the alpha channel (from -2 to 2) (default 0)
+        :param Double aa: set the alpha gain for the alpha channel (from -2 to 2) (default 1)
+        :param Int pc: set the preserve color mode (from 0 to 6) (default none)
+        :param Double pa: set the preserve color amount (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorchannelmixer
@@ -1673,13 +1673,13 @@ class VideoStream(FilterableStream):
     def colorcontrast(
         self,
         *,
-        rc: FLOAT = Default("0"),
-        gm: FLOAT = Default("0"),
-        by: FLOAT = Default("0"),
-        rcw: FLOAT = Default("0"),
-        gmw: FLOAT = Default("0"),
-        byw: FLOAT = Default("0"),
-        pl: FLOAT = Default("0"),
+        rc: Float = Default("0"),
+        gm: Float = Default("0"),
+        by: Float = Default("0"),
+        rcw: Float = Default("0"),
+        gmw: Float = Default("0"),
+        byw: Float = Default("0"),
+        pl: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1690,13 +1690,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT rc: set the red-cyan contrast (from -1 to 1) (default 0)
-        :param FLOAT gm: set the green-magenta contrast (from -1 to 1) (default 0)
-        :param FLOAT by: set the blue-yellow contrast (from -1 to 1) (default 0)
-        :param FLOAT rcw: set the red-cyan weight (from 0 to 1) (default 0)
-        :param FLOAT gmw: set the green-magenta weight (from 0 to 1) (default 0)
-        :param FLOAT byw: set the blue-yellow weight (from 0 to 1) (default 0)
-        :param FLOAT pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+        :param Float rc: set the red-cyan contrast (from -1 to 1) (default 0)
+        :param Float gm: set the green-magenta contrast (from -1 to 1) (default 0)
+        :param Float by: set the blue-yellow contrast (from -1 to 1) (default 0)
+        :param Float rcw: set the red-cyan weight (from 0 to 1) (default 0)
+        :param Float gmw: set the green-magenta weight (from 0 to 1) (default 0)
+        :param Float byw: set the blue-yellow weight (from 0 to 1) (default 0)
+        :param Float pl: set the amount of preserving lightness (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorcontrast
@@ -1728,12 +1728,12 @@ class VideoStream(FilterableStream):
     def colorcorrect(
         self,
         *,
-        rl: FLOAT = Default("0"),
-        bl: FLOAT = Default("0"),
-        rh: FLOAT = Default("0"),
-        bh: FLOAT = Default("0"),
-        saturation: FLOAT = Default("1"),
-        analyze: INT | Literal["manual", "average", "minmax", "median"] | Default = Default("manual"),
+        rl: Float = Default("0"),
+        bl: Float = Default("0"),
+        rh: Float = Default("0"),
+        bh: Float = Default("0"),
+        saturation: Float = Default("1"),
+        analyze: Int | Literal["manual", "average", "minmax", "median"] | Default = Default("manual"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1744,12 +1744,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT rl: set the red shadow spot (from -1 to 1) (default 0)
-        :param FLOAT bl: set the blue shadow spot (from -1 to 1) (default 0)
-        :param FLOAT rh: set the red highlight spot (from -1 to 1) (default 0)
-        :param FLOAT bh: set the blue highlight spot (from -1 to 1) (default 0)
-        :param FLOAT saturation: set the amount of saturation (from -3 to 3) (default 1)
-        :param INT analyze: set the analyze mode (from 0 to 3) (default manual)
+        :param Float rl: set the red shadow spot (from -1 to 1) (default 0)
+        :param Float bl: set the blue shadow spot (from -1 to 1) (default 0)
+        :param Float rh: set the red highlight spot (from -1 to 1) (default 0)
+        :param Float bh: set the blue highlight spot (from -1 to 1) (default 0)
+        :param Float saturation: set the amount of saturation (from -3 to 3) (default 1)
+        :param Int analyze: set the analyze mode (from 0 to 3) (default manual)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorcorrect
@@ -1780,9 +1780,9 @@ class VideoStream(FilterableStream):
     def colorhold(
         self,
         *,
-        color: COLOR = Default("black"),
-        similarity: FLOAT = Default("0.01"),
-        blend: FLOAT = Default("0"),
+        color: Color = Default("black"),
+        similarity: Float = Default("0.01"),
+        blend: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1793,9 +1793,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param COLOR color: set the colorhold key color (default "black")
-        :param FLOAT similarity: set the colorhold similarity value (from 1e-05 to 1) (default 0.01)
-        :param FLOAT blend: set the colorhold blend value (from 0 to 1) (default 0)
+        :param Color color: set the colorhold key color (default "black")
+        :param Float similarity: set the colorhold similarity value (from 1e-05 to 1) (default 0.01)
+        :param Float blend: set the colorhold blend value (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorhold
@@ -1823,10 +1823,10 @@ class VideoStream(FilterableStream):
     def colorize(
         self,
         *,
-        hue: FLOAT = Default("0"),
-        saturation: FLOAT = Default("0.5"),
-        lightness: FLOAT = Default("0.5"),
-        mix: FLOAT = Default("1"),
+        hue: Float = Default("0"),
+        saturation: Float = Default("0.5"),
+        lightness: Float = Default("0.5"),
+        mix: Float = Default("1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1837,10 +1837,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT hue: set the hue (from 0 to 360) (default 0)
-        :param FLOAT saturation: set the saturation (from 0 to 1) (default 0.5)
-        :param FLOAT lightness: set the lightness (from 0 to 1) (default 0.5)
-        :param FLOAT mix: set the mix of source lightness (from 0 to 1) (default 1)
+        :param Float hue: set the hue (from 0 to 360) (default 0)
+        :param Float saturation: set the saturation (from 0 to 1) (default 0.5)
+        :param Float lightness: set the lightness (from 0 to 1) (default 0.5)
+        :param Float mix: set the mix of source lightness (from 0 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorize
@@ -1869,9 +1869,9 @@ class VideoStream(FilterableStream):
     def colorkey(
         self,
         *,
-        color: COLOR = Default("black"),
-        similarity: FLOAT = Default("0.01"),
-        blend: FLOAT = Default("0"),
+        color: Color = Default("black"),
+        similarity: Float = Default("0.01"),
+        blend: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1882,9 +1882,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param COLOR color: set the colorkey key color (default "black")
-        :param FLOAT similarity: set the colorkey similarity value (from 1e-05 to 1) (default 0.01)
-        :param FLOAT blend: set the colorkey key blend value (from 0 to 1) (default 0)
+        :param Color color: set the colorkey key color (default "black")
+        :param Float similarity: set the colorkey similarity value (from 1e-05 to 1) (default 0.01)
+        :param Float blend: set the colorkey key blend value (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorkey
@@ -1912,23 +1912,23 @@ class VideoStream(FilterableStream):
     def colorlevels(
         self,
         *,
-        rimin: DOUBLE = Default("0"),
-        gimin: DOUBLE = Default("0"),
-        bimin: DOUBLE = Default("0"),
-        aimin: DOUBLE = Default("0"),
-        rimax: DOUBLE = Default("1"),
-        gimax: DOUBLE = Default("1"),
-        bimax: DOUBLE = Default("1"),
-        aimax: DOUBLE = Default("1"),
-        romin: DOUBLE = Default("0"),
-        gomin: DOUBLE = Default("0"),
-        bomin: DOUBLE = Default("0"),
-        aomin: DOUBLE = Default("0"),
-        romax: DOUBLE = Default("1"),
-        gomax: DOUBLE = Default("1"),
-        bomax: DOUBLE = Default("1"),
-        aomax: DOUBLE = Default("1"),
-        preserve: INT | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | Default = Default("none"),
+        rimin: Double = Default("0"),
+        gimin: Double = Default("0"),
+        bimin: Double = Default("0"),
+        aimin: Double = Default("0"),
+        rimax: Double = Default("1"),
+        gimax: Double = Default("1"),
+        bimax: Double = Default("1"),
+        aimax: Double = Default("1"),
+        romin: Double = Default("0"),
+        gomin: Double = Default("0"),
+        bomin: Double = Default("0"),
+        aomin: Double = Default("0"),
+        romax: Double = Default("1"),
+        gomax: Double = Default("1"),
+        bomax: Double = Default("1"),
+        aomax: Double = Default("1"),
+        preserve: Int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | Default = Default("none"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1939,23 +1939,23 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE rimin: set input red black point (from -1 to 1) (default 0)
-        :param DOUBLE gimin: set input green black point (from -1 to 1) (default 0)
-        :param DOUBLE bimin: set input blue black point (from -1 to 1) (default 0)
-        :param DOUBLE aimin: set input alpha black point (from -1 to 1) (default 0)
-        :param DOUBLE rimax: set input red white point (from -1 to 1) (default 1)
-        :param DOUBLE gimax: set input green white point (from -1 to 1) (default 1)
-        :param DOUBLE bimax: set input blue white point (from -1 to 1) (default 1)
-        :param DOUBLE aimax: set input alpha white point (from -1 to 1) (default 1)
-        :param DOUBLE romin: set output red black point (from 0 to 1) (default 0)
-        :param DOUBLE gomin: set output green black point (from 0 to 1) (default 0)
-        :param DOUBLE bomin: set output blue black point (from 0 to 1) (default 0)
-        :param DOUBLE aomin: set output alpha black point (from 0 to 1) (default 0)
-        :param DOUBLE romax: set output red white point (from 0 to 1) (default 1)
-        :param DOUBLE gomax: set output green white point (from 0 to 1) (default 1)
-        :param DOUBLE bomax: set output blue white point (from 0 to 1) (default 1)
-        :param DOUBLE aomax: set output alpha white point (from 0 to 1) (default 1)
-        :param INT preserve: set preserve color mode (from 0 to 6) (default none)
+        :param Double rimin: set input red black point (from -1 to 1) (default 0)
+        :param Double gimin: set input green black point (from -1 to 1) (default 0)
+        :param Double bimin: set input blue black point (from -1 to 1) (default 0)
+        :param Double aimin: set input alpha black point (from -1 to 1) (default 0)
+        :param Double rimax: set input red white point (from -1 to 1) (default 1)
+        :param Double gimax: set input green white point (from -1 to 1) (default 1)
+        :param Double bimax: set input blue white point (from -1 to 1) (default 1)
+        :param Double aimax: set input alpha white point (from -1 to 1) (default 1)
+        :param Double romin: set output red black point (from 0 to 1) (default 0)
+        :param Double gomin: set output green black point (from 0 to 1) (default 0)
+        :param Double bomin: set output blue black point (from 0 to 1) (default 0)
+        :param Double aomin: set output alpha black point (from 0 to 1) (default 0)
+        :param Double romax: set output red white point (from 0 to 1) (default 1)
+        :param Double gomax: set output green white point (from 0 to 1) (default 1)
+        :param Double bomax: set output blue white point (from 0 to 1) (default 1)
+        :param Double aomax: set output alpha white point (from 0 to 1) (default 1)
+        :param Int preserve: set preserve color mode (from 0 to 6) (default none)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorlevels
@@ -1999,10 +1999,10 @@ class VideoStream(FilterableStream):
         _source: "VideoStream",
         _target: "VideoStream",
         *,
-        patch_size: IMAGE_SIZE = Default("64x64"),
-        nb_patches: INT = Default("0"),
-        type: INT | Literal["relative", "absolute"] | Default = Default("absolute"),
-        kernel: INT | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
+        patch_size: Image_size = Default("64x64"),
+        nb_patches: Int = Default("0"),
+        type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
+        kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2013,10 +2013,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param IMAGE_SIZE patch_size: set patch size (default "64x64")
-        :param INT nb_patches: set number of patches (from 0 to 64) (default 0)
-        :param INT type: set the target type used (from 0 to 1) (default absolute)
-        :param INT kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
+        :param Image_size patch_size: set patch size (default "64x64")
+        :param Int nb_patches: set number of patches (from 0 to 64) (default 0)
+        :param Int type: set the target type used (from 0 to 1) (default absolute)
+        :param Int kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colormap
@@ -2049,10 +2049,10 @@ class VideoStream(FilterableStream):
     def colormatrix(
         self,
         *,
-        src: INT
+        src: Int
         | Literal["bt709", "fcc", "bt601", "bt470", "bt470bg", "smpte170m", "smpte240m", "bt2020"]
         | Default = Default("-1"),
-        dst: INT
+        dst: Int
         | Literal["bt709", "fcc", "bt601", "bt470", "bt470bg", "smpte170m", "smpte240m", "bt2020"]
         | Default = Default("-1"),
         enable: str = Default(None),
@@ -2065,8 +2065,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT src: set source color matrix (from -1 to 4) (default -1)
-        :param INT dst: set destination color matrix (from -1 to 4) (default -1)
+        :param Int src: set source color matrix (from -1 to 4) (default -1)
+        :param Int dst: set destination color matrix (from -1 to 4) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colormatrix
@@ -2093,14 +2093,14 @@ class VideoStream(FilterableStream):
     def colorspace(
         self,
         *,
-        all: INT
+        all: Int
         | Literal["bt470m", "bt470bg", "525", "625", "bt709", "smpte170m", "smpte240m", "bt2020"]
         | Default = Default("0"),
-        space: INT
+        space: Int
         | Literal["bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "ycgco", "gbr", "bt2020nc", "bt2020ncl"]
         | Default = Default("2"),
-        range: INT | Literal["tv", "mpeg", "pc", "jpeg"] | Default = Default("0"),
-        primaries: INT
+        range: Int | Literal["tv", "mpeg", "pc", "jpeg"] | Default = Default("0"),
+        primaries: Int
         | Literal[
             "bt709",
             "bt470m",
@@ -2116,7 +2116,7 @@ class VideoStream(FilterableStream):
             "ebu3213",
         ]
         | Default = Default("2"),
-        trc: INT
+        trc: Int
         | Literal[
             "bt709",
             "bt470m",
@@ -2134,7 +2134,7 @@ class VideoStream(FilterableStream):
             "12",
         ]
         | Default = Default("2"),
-        format: INT
+        format: Int
         | Literal[
             "yuv420p",
             "yuv420p10",
@@ -2147,17 +2147,17 @@ class VideoStream(FilterableStream):
             "yuv444p12",
         ]
         | Default = Default("-1"),
-        fast: BOOLEAN = Default("false"),
-        dither: INT | Literal["none", "fsb"] | Default = Default("none"),
-        wpadapt: INT | Literal["bradford", "vonkries", "identity"] | Default = Default("bradford"),
-        iall: INT
+        fast: Boolean = Default("false"),
+        dither: Int | Literal["none", "fsb"] | Default = Default("none"),
+        wpadapt: Int | Literal["bradford", "vonkries", "identity"] | Default = Default("bradford"),
+        iall: Int
         | Literal["bt470m", "bt470bg", "525", "625", "bt709", "smpte170m", "smpte240m", "bt2020"]
         | Default = Default("0"),
-        ispace: INT
+        ispace: Int
         | Literal["bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "ycgco", "gbr", "bt2020nc", "bt2020ncl"]
         | Default = Default("2"),
-        irange: INT | Literal["tv", "mpeg", "pc", "jpeg"] | Default = Default("0"),
-        iprimaries: INT
+        irange: Int | Literal["tv", "mpeg", "pc", "jpeg"] | Default = Default("0"),
+        iprimaries: Int
         | Literal[
             "bt709",
             "bt470m",
@@ -2173,7 +2173,7 @@ class VideoStream(FilterableStream):
             "ebu3213",
         ]
         | Default = Default("2"),
-        itrc: INT
+        itrc: Int
         | Literal[
             "bt709",
             "bt470m",
@@ -2201,20 +2201,20 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT all: Set all color properties together (from 0 to 8) (default 0)
-        :param INT space: Output colorspace (from 0 to 14) (default 2)
-        :param INT range: Output color range (from 0 to 2) (default 0)
-        :param INT primaries: Output color primaries (from 0 to 22) (default 2)
-        :param INT trc: Output transfer characteristics (from 0 to 18) (default 2)
-        :param INT format: Output pixel format (from -1 to 162) (default -1)
-        :param BOOLEAN fast: Ignore primary chromaticity and gamma correction (default false)
-        :param INT dither: Dithering mode (from 0 to 1) (default none)
-        :param INT wpadapt: Whitepoint adaptation method (from 0 to 2) (default bradford)
-        :param INT iall: Set all input color properties together (from 0 to 8) (default 0)
-        :param INT ispace: Input colorspace (from 0 to 22) (default 2)
-        :param INT irange: Input color range (from 0 to 2) (default 0)
-        :param INT iprimaries: Input color primaries (from 0 to 22) (default 2)
-        :param INT itrc: Input transfer characteristics (from 0 to 18) (default 2)
+        :param Int all: Set all color properties together (from 0 to 8) (default 0)
+        :param Int space: Output colorspace (from 0 to 14) (default 2)
+        :param Int range: Output color range (from 0 to 2) (default 0)
+        :param Int primaries: Output color primaries (from 0 to 22) (default 2)
+        :param Int trc: Output transfer characteristics (from 0 to 18) (default 2)
+        :param Int format: Output pixel format (from -1 to 162) (default -1)
+        :param Boolean fast: Ignore primary chromaticity and gamma correction (default false)
+        :param Int dither: Dithering mode (from 0 to 1) (default none)
+        :param Int wpadapt: Whitepoint adaptation method (from 0 to 2) (default bradford)
+        :param Int iall: Set all input color properties together (from 0 to 8) (default 0)
+        :param Int ispace: Input colorspace (from 0 to 22) (default 2)
+        :param Int irange: Input color range (from 0 to 2) (default 0)
+        :param Int iprimaries: Input color primaries (from 0 to 22) (default 2)
+        :param Int itrc: Input transfer characteristics (from 0 to 18) (default 2)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colorspace
@@ -2253,9 +2253,9 @@ class VideoStream(FilterableStream):
     def colortemperature(
         self,
         *,
-        temperature: FLOAT = Default("6500"),
-        mix: FLOAT = Default("1"),
-        pl: FLOAT = Default("0"),
+        temperature: Float = Default("6500"),
+        mix: Float = Default("1"),
+        pl: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2266,9 +2266,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT temperature: set the temperature in Kelvin (from 1000 to 40000) (default 6500)
-        :param FLOAT mix: set the mix with filtered output (from 0 to 1) (default 1)
-        :param FLOAT pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+        :param Float temperature: set the temperature in Kelvin (from 1000 to 40000) (default 6500)
+        :param Float mix: set the mix with filtered output (from 0 to 1) (default 1)
+        :param Float pl: set the amount of preserving lightness (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#colortemperature
@@ -2296,22 +2296,22 @@ class VideoStream(FilterableStream):
     def convolution(
         self,
         *,
-        _0m: STRING = Default("0 0 0 0 1 0 0 0 0"),
-        _1m: STRING = Default("0 0 0 0 1 0 0 0 0"),
-        _2m: STRING = Default("0 0 0 0 1 0 0 0 0"),
-        _3m: STRING = Default("0 0 0 0 1 0 0 0 0"),
-        _0rdiv: FLOAT = Default("0"),
-        _1rdiv: FLOAT = Default("0"),
-        _2rdiv: FLOAT = Default("0"),
-        _3rdiv: FLOAT = Default("0"),
-        _0bias: FLOAT = Default("0"),
-        _1bias: FLOAT = Default("0"),
-        _2bias: FLOAT = Default("0"),
-        _3bias: FLOAT = Default("0"),
-        _0mode: INT | Literal["square", "row", "column"] | Default = Default("square"),
-        _1mode: INT | Literal["square", "row", "column"] | Default = Default("square"),
-        _2mode: INT | Literal["square", "row", "column"] | Default = Default("square"),
-        _3mode: INT | Literal["square", "row", "column"] | Default = Default("square"),
+        _0m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _1m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _2m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _3m: String = Default("0 0 0 0 1 0 0 0 0"),
+        _0rdiv: Float = Default("0"),
+        _1rdiv: Float = Default("0"),
+        _2rdiv: Float = Default("0"),
+        _3rdiv: Float = Default("0"),
+        _0bias: Float = Default("0"),
+        _1bias: Float = Default("0"),
+        _2bias: Float = Default("0"),
+        _3bias: Float = Default("0"),
+        _0mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
+        _1mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
+        _2mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
+        _3mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2322,22 +2322,22 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING _0m: set matrix for 1st plane (default "0 0 0 0 1 0 0 0 0")
-        :param STRING _1m: set matrix for 2nd plane (default "0 0 0 0 1 0 0 0 0")
-        :param STRING _2m: set matrix for 3rd plane (default "0 0 0 0 1 0 0 0 0")
-        :param STRING _3m: set matrix for 4th plane (default "0 0 0 0 1 0 0 0 0")
-        :param FLOAT _0rdiv: set rdiv for 1st plane (from 0 to INT_MAX) (default 0)
-        :param FLOAT _1rdiv: set rdiv for 2nd plane (from 0 to INT_MAX) (default 0)
-        :param FLOAT _2rdiv: set rdiv for 3rd plane (from 0 to INT_MAX) (default 0)
-        :param FLOAT _3rdiv: set rdiv for 4th plane (from 0 to INT_MAX) (default 0)
-        :param FLOAT _0bias: set bias for 1st plane (from 0 to INT_MAX) (default 0)
-        :param FLOAT _1bias: set bias for 2nd plane (from 0 to INT_MAX) (default 0)
-        :param FLOAT _2bias: set bias for 3rd plane (from 0 to INT_MAX) (default 0)
-        :param FLOAT _3bias: set bias for 4th plane (from 0 to INT_MAX) (default 0)
-        :param INT _0mode: set matrix mode for 1st plane (from 0 to 2) (default square)
-        :param INT _1mode: set matrix mode for 2nd plane (from 0 to 2) (default square)
-        :param INT _2mode: set matrix mode for 3rd plane (from 0 to 2) (default square)
-        :param INT _3mode: set matrix mode for 4th plane (from 0 to 2) (default square)
+        :param String _0m: set matrix for 1st plane (default "0 0 0 0 1 0 0 0 0")
+        :param String _1m: set matrix for 2nd plane (default "0 0 0 0 1 0 0 0 0")
+        :param String _2m: set matrix for 3rd plane (default "0 0 0 0 1 0 0 0 0")
+        :param String _3m: set matrix for 4th plane (default "0 0 0 0 1 0 0 0 0")
+        :param Float _0rdiv: set rdiv for 1st plane (from 0 to INT_MAX) (default 0)
+        :param Float _1rdiv: set rdiv for 2nd plane (from 0 to INT_MAX) (default 0)
+        :param Float _2rdiv: set rdiv for 3rd plane (from 0 to INT_MAX) (default 0)
+        :param Float _3rdiv: set rdiv for 4th plane (from 0 to INT_MAX) (default 0)
+        :param Float _0bias: set bias for 1st plane (from 0 to INT_MAX) (default 0)
+        :param Float _1bias: set bias for 2nd plane (from 0 to INT_MAX) (default 0)
+        :param Float _2bias: set bias for 3rd plane (from 0 to INT_MAX) (default 0)
+        :param Float _3bias: set bias for 4th plane (from 0 to INT_MAX) (default 0)
+        :param Int _0mode: set matrix mode for 1st plane (from 0 to 2) (default square)
+        :param Int _1mode: set matrix mode for 2nd plane (from 0 to 2) (default square)
+        :param Int _2mode: set matrix mode for 3rd plane (from 0 to 2) (default square)
+        :param Int _3mode: set matrix mode for 4th plane (from 0 to 2) (default square)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#convolution
@@ -2379,13 +2379,13 @@ class VideoStream(FilterableStream):
         self,
         _impulse: "VideoStream",
         *,
-        planes: INT = Default("7"),
-        impulse: INT | Literal["first", "all"] | Default = Default("all"),
-        noise: FLOAT = Default("1e-07"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        planes: Int = Default("7"),
+        impulse: Int | Literal["first", "all"] | Default = Default("all"),
+        noise: Float = Default("1e-07"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2396,13 +2396,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to convolve (from 0 to 15) (default 7)
-        :param INT impulse: when to process impulses (from 0 to 1) (default all)
-        :param FLOAT noise: set noise (from 0 to 1) (default 1e-07)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int planes: set planes to convolve (from 0 to 15) (default 7)
+        :param Int impulse: when to process impulses (from 0 to 1) (default all)
+        :param Float noise: set noise (from 0 to 1) (default 1e-07)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#convolve
@@ -2458,10 +2458,10 @@ class VideoStream(FilterableStream):
     def coreimage(
         self,
         *,
-        list_filters: BOOLEAN = Default("false"),
-        list_generators: BOOLEAN = Default("false"),
-        filter: STRING = Default(None),
-        output_rect: STRING = Default(None),
+        list_filters: Boolean = Default("false"),
+        list_generators: Boolean = Default("false"),
+        filter: String = Default(None),
+        output_rect: String = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2471,10 +2471,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param BOOLEAN list_filters: list available filters (default false)
-        :param BOOLEAN list_generators: list available generators (default false)
-        :param STRING filter: names and options of filters to apply
-        :param STRING output_rect: output rectangle within output image
+        :param Boolean list_filters: list available filters (default false)
+        :param Boolean list_generators: list available generators (default false)
+        :param String filter: names and options of filters to apply
+        :param String output_rect: output rectangle within output image
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#coreimage
 
@@ -2502,10 +2502,10 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2516,10 +2516,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#corr
@@ -2551,8 +2551,8 @@ class VideoStream(FilterableStream):
     def cover_rect(
         self,
         *,
-        cover: STRING = Default(None),
-        mode: INT | Literal["cover", "blur"] | Default = Default("blur"),
+        cover: String = Default(None),
+        mode: Int | Literal["cover", "blur"] | Default = Default("blur"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2562,8 +2562,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING cover: cover bitmap filename
-        :param INT mode: set removal mode (from 0 to 1) (default blur)
+        :param String cover: cover bitmap filename
+        :param Int mode: set removal mode (from 0 to 1) (default blur)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#cover_005frect
 
@@ -2588,12 +2588,12 @@ class VideoStream(FilterableStream):
     def crop(
         self,
         *,
-        out_w: STRING = Default("iw"),
-        out_h: STRING = Default("ih"),
-        x: STRING = Default("(in_w-out_w"),
-        y: STRING = Default("(in_h-out_h"),
-        keep_aspect: BOOLEAN = Default("false"),
-        exact: BOOLEAN = Default("false"),
+        out_w: String = Default("iw"),
+        out_h: String = Default("ih"),
+        x: String = Default("(in_w-out_w"),
+        y: String = Default("(in_h-out_h"),
+        keep_aspect: Boolean = Default("false"),
+        exact: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2603,12 +2603,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING out_w: set the width crop area expression (default "iw")
-        :param STRING out_h: set the height crop area expression (default "ih")
-        :param STRING x: set the x crop area expression (default "(in_w-out_w)/2")
-        :param STRING y: set the y crop area expression (default "(in_h-out_h)/2")
-        :param BOOLEAN keep_aspect: keep aspect ratio (default false)
-        :param BOOLEAN exact: do exact cropping (default false)
+        :param String out_w: set the width crop area expression (default "iw")
+        :param String out_h: set the height crop area expression (default "ih")
+        :param String x: set the x crop area expression (default "(in_w-out_w)/2")
+        :param String y: set the y crop area expression (default "(in_h-out_h)/2")
+        :param Boolean keep_aspect: keep aspect ratio (default false)
+        :param Boolean exact: do exact cropping (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#crop
 
@@ -2637,16 +2637,16 @@ class VideoStream(FilterableStream):
     def cropdetect(
         self,
         *,
-        limit: FLOAT = Default("0.0941176"),
-        round: INT = Default("16"),
-        reset: INT = Default("0"),
-        skip: INT = Default("2"),
-        reset_count: INT = Default("0"),
-        max_outliers: INT = Default("0"),
-        mode: INT | Literal["black", "mvedges"] | Default = Default("black"),
-        high: FLOAT = Default("0.0980392"),
-        low: FLOAT = Default("0.0588235"),
-        mv_threshold: INT = Default("8"),
+        limit: Float = Default("0.0941176"),
+        round: Int = Default("16"),
+        reset: Int = Default("0"),
+        skip: Int = Default("2"),
+        reset_count: Int = Default("0"),
+        max_outliers: Int = Default("0"),
+        mode: Int | Literal["black", "mvedges"] | Default = Default("black"),
+        high: Float = Default("0.0980392"),
+        low: Float = Default("0.0588235"),
+        mv_threshold: Int = Default("8"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2657,16 +2657,16 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT limit: Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)
-        :param INT round: Value by which the width/height should be divisible (from 0 to INT_MAX) (default 16)
-        :param INT reset: Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
-        :param INT skip: Number of initial frames to skip (from 0 to INT_MAX) (default 2)
-        :param INT reset_count: Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
-        :param INT max_outliers: Threshold count of outliers (from 0 to INT_MAX) (default 0)
-        :param INT mode: set mode (from 0 to 1) (default black)
-        :param FLOAT high: Set high threshold for edge detection (from 0 to 1) (default 0.0980392)
-        :param FLOAT low: Set low threshold for edge detection (from 0 to 1) (default 0.0588235)
-        :param INT mv_threshold: motion vector threshold when estimating video window size (from 0 to 100) (default 8)
+        :param Float limit: Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)
+        :param Int round: Value by which the width/height should be divisible (from 0 to INT_MAX) (default 16)
+        :param Int reset: Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
+        :param Int skip: Number of initial frames to skip (from 0 to INT_MAX) (default 2)
+        :param Int reset_count: Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
+        :param Int max_outliers: Threshold count of outliers (from 0 to INT_MAX) (default 0)
+        :param Int mode: set mode (from 0 to 1) (default black)
+        :param Float high: Set high threshold for edge detection (from 0 to 1) (default 0.0980392)
+        :param Float low: Set low threshold for edge detection (from 0 to 1) (default 0.0588235)
+        :param Int mv_threshold: motion vector threshold when estimating video window size (from 0 to 100) (default 8)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#cropdetect
@@ -2701,9 +2701,9 @@ class VideoStream(FilterableStream):
     def cue(
         self,
         *,
-        cue: INT64 = Default("0"),
-        preroll: DURATION = Default("0"),
-        buffer: DURATION = Default("0"),
+        cue: Int64 = Default("0"),
+        preroll: Duration = Default("0"),
+        buffer: Duration = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2713,9 +2713,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT64 cue: cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
-        :param DURATION preroll: preroll duration in seconds (default 0)
-        :param DURATION buffer: buffer duration in seconds (default 0)
+        :param Int64 cue: cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
+        :param Duration preroll: preroll duration in seconds (default 0)
+        :param Duration buffer: buffer duration in seconds (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#cue
 
@@ -2741,7 +2741,7 @@ class VideoStream(FilterableStream):
     def curves(
         self,
         *,
-        preset: INT
+        preset: Int
         | Literal[
             "none",
             "color_negative",
@@ -2756,14 +2756,14 @@ class VideoStream(FilterableStream):
             "vintage",
         ]
         | Default = Default("none"),
-        master: STRING = Default(None),
-        red: STRING = Default(None),
-        green: STRING = Default(None),
-        blue: STRING = Default(None),
-        all: STRING = Default(None),
-        psfile: STRING = Default(None),
-        plot: STRING = Default(None),
-        interp: INT | Literal["natural", "pchip"] | Default = Default("natural"),
+        master: String = Default(None),
+        red: String = Default(None),
+        green: String = Default(None),
+        blue: String = Default(None),
+        all: String = Default(None),
+        psfile: String = Default(None),
+        plot: String = Default(None),
+        interp: Int | Literal["natural", "pchip"] | Default = Default("natural"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2774,15 +2774,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT preset: select a color curves preset (from 0 to 10) (default none)
-        :param STRING master: set master points coordinates
-        :param STRING red: set red points coordinates
-        :param STRING green: set green points coordinates
-        :param STRING blue: set blue points coordinates
-        :param STRING all: set points coordinates for all components
-        :param STRING psfile: set Photoshop curves file name
-        :param STRING plot: save Gnuplot script of the curves in specified file
-        :param INT interp: specify the kind of interpolation (from 0 to 1) (default natural)
+        :param Int preset: select a color curves preset (from 0 to 10) (default none)
+        :param String master: set master points coordinates
+        :param String red: set red points coordinates
+        :param String green: set green points coordinates
+        :param String blue: set blue points coordinates
+        :param String all: set points coordinates for all components
+        :param String psfile: set Photoshop curves file name
+        :param String plot: save Gnuplot script of the curves in specified file
+        :param Int interp: specify the kind of interpolation (from 0 to 1) (default natural)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#curves
@@ -2816,14 +2816,14 @@ class VideoStream(FilterableStream):
     def datascope(
         self,
         *,
-        size: IMAGE_SIZE = Default("hd720"),
-        x: INT = Default("0"),
-        y: INT = Default("0"),
-        mode: INT | Literal["mono", "color", "color2"] | Default = Default("mono"),
-        axis: BOOLEAN = Default("false"),
-        opacity: FLOAT = Default("0.75"),
-        format: INT | Literal["hex", "dec"] | Default = Default("hex"),
-        components: INT = Default("15"),
+        size: Image_size = Default("hd720"),
+        x: Int = Default("0"),
+        y: Int = Default("0"),
+        mode: Int | Literal["mono", "color", "color2"] | Default = Default("mono"),
+        axis: Boolean = Default("false"),
+        opacity: Float = Default("0.75"),
+        format: Int | Literal["hex", "dec"] | Default = Default("hex"),
+        components: Int = Default("15"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -2833,14 +2833,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param IMAGE_SIZE size: set output size (default "hd720")
-        :param INT x: set x offset (from 0 to INT_MAX) (default 0)
-        :param INT y: set y offset (from 0 to INT_MAX) (default 0)
-        :param INT mode: set scope mode (from 0 to 2) (default mono)
-        :param BOOLEAN axis: draw column/row numbers (default false)
-        :param FLOAT opacity: set background opacity (from 0 to 1) (default 0.75)
-        :param INT format: set display number format (from 0 to 1) (default hex)
-        :param INT components: set components to display (from 1 to 15) (default 15)
+        :param Image_size size: set output size (default "hd720")
+        :param Int x: set x offset (from 0 to INT_MAX) (default 0)
+        :param Int y: set y offset (from 0 to INT_MAX) (default 0)
+        :param Int mode: set scope mode (from 0 to 2) (default mono)
+        :param Boolean axis: draw column/row numbers (default false)
+        :param Float opacity: set background opacity (from 0 to 1) (default 0.75)
+        :param Int format: set display number format (from 0 to 1) (default hex)
+        :param Int components: set components to display (from 1 to 15) (default 15)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#datascope
 
@@ -2871,9 +2871,9 @@ class VideoStream(FilterableStream):
     def dblur(
         self,
         *,
-        angle: FLOAT = Default("45"),
-        radius: FLOAT = Default("5"),
-        planes: INT = Default("15"),
+        angle: Float = Default("45"),
+        radius: Float = Default("5"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2884,9 +2884,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT angle: set angle (from 0 to 360) (default 45)
-        :param FLOAT radius: set radius (from 0 to 8192) (default 5)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float angle: set angle (from 0 to 360) (default 45)
+        :param Float radius: set radius (from 0 to 8192) (default 5)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dblur
@@ -2914,10 +2914,10 @@ class VideoStream(FilterableStream):
     def dctdnoiz(
         self,
         *,
-        sigma: FLOAT = Default("0"),
-        overlap: INT = Default("-1"),
-        expr: STRING = Default(None),
-        n: INT = Default("3"),
+        sigma: Float = Default("0"),
+        overlap: Int = Default("-1"),
+        expr: String = Default(None),
+        n: Int = Default("3"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2928,10 +2928,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT sigma: set noise sigma constant (from 0 to 999) (default 0)
-        :param INT overlap: set number of block overlapping pixels (from -1 to 15) (default -1)
-        :param STRING expr: set coefficient factor expression
-        :param INT n: set the block size, expressed in bits (from 3 to 4) (default 3)
+        :param Float sigma: set noise sigma constant (from 0 to 999) (default 0)
+        :param Int overlap: set number of block overlapping pixels (from -1 to 15) (default -1)
+        :param String expr: set coefficient factor expression
+        :param Int n: set the block size, expressed in bits (from 3 to 4) (default 3)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dctdnoiz
@@ -2960,14 +2960,14 @@ class VideoStream(FilterableStream):
     def deband(
         self,
         *,
-        _1thr: FLOAT = Default("0.02"),
-        _2thr: FLOAT = Default("0.02"),
-        _3thr: FLOAT = Default("0.02"),
-        _4thr: FLOAT = Default("0.02"),
-        range: INT = Default("16"),
-        direction: FLOAT = Default("6.28319"),
-        blur: BOOLEAN = Default("true"),
-        coupling: BOOLEAN = Default("false"),
+        _1thr: Float = Default("0.02"),
+        _2thr: Float = Default("0.02"),
+        _3thr: Float = Default("0.02"),
+        _4thr: Float = Default("0.02"),
+        range: Int = Default("16"),
+        direction: Float = Default("6.28319"),
+        blur: Boolean = Default("true"),
+        coupling: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -2978,14 +2978,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT _1thr: set 1st plane threshold (from 3e-05 to 0.5) (default 0.02)
-        :param FLOAT _2thr: set 2nd plane threshold (from 3e-05 to 0.5) (default 0.02)
-        :param FLOAT _3thr: set 3rd plane threshold (from 3e-05 to 0.5) (default 0.02)
-        :param FLOAT _4thr: set 4th plane threshold (from 3e-05 to 0.5) (default 0.02)
-        :param INT range: set range (from INT_MIN to INT_MAX) (default 16)
-        :param FLOAT direction: set direction (from -6.28319 to 6.28319) (default 6.28319)
-        :param BOOLEAN blur: set blur (default true)
-        :param BOOLEAN coupling: set plane coupling (default false)
+        :param Float _1thr: set 1st plane threshold (from 3e-05 to 0.5) (default 0.02)
+        :param Float _2thr: set 2nd plane threshold (from 3e-05 to 0.5) (default 0.02)
+        :param Float _3thr: set 3rd plane threshold (from 3e-05 to 0.5) (default 0.02)
+        :param Float _4thr: set 4th plane threshold (from 3e-05 to 0.5) (default 0.02)
+        :param Int range: set range (from INT_MIN to INT_MAX) (default 16)
+        :param Float direction: set direction (from -6.28319 to 6.28319) (default 6.28319)
+        :param Boolean blur: set blur (default true)
+        :param Boolean coupling: set plane coupling (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deband
@@ -3018,13 +3018,13 @@ class VideoStream(FilterableStream):
     def deblock(
         self,
         *,
-        filter: INT | Literal["weak", "strong"] | Default = Default("strong"),
-        block: INT = Default("8"),
-        alpha: FLOAT = Default("0.098"),
-        beta: FLOAT = Default("0.05"),
-        gamma: FLOAT = Default("0.05"),
-        delta: FLOAT = Default("0.05"),
-        planes: INT = Default("15"),
+        filter: Int | Literal["weak", "strong"] | Default = Default("strong"),
+        block: Int = Default("8"),
+        alpha: Float = Default("0.098"),
+        beta: Float = Default("0.05"),
+        gamma: Float = Default("0.05"),
+        delta: Float = Default("0.05"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3035,13 +3035,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT filter: set type of filter (from 0 to 1) (default strong)
-        :param INT block: set size of block (from 4 to 512) (default 8)
-        :param FLOAT alpha: set 1st detection threshold (from 0 to 1) (default 0.098)
-        :param FLOAT beta: set 2nd detection threshold (from 0 to 1) (default 0.05)
-        :param FLOAT gamma: set 3rd detection threshold (from 0 to 1) (default 0.05)
-        :param FLOAT delta: set 4th detection threshold (from 0 to 1) (default 0.05)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
+        :param Int filter: set type of filter (from 0 to 1) (default strong)
+        :param Int block: set size of block (from 4 to 512) (default 8)
+        :param Float alpha: set 1st detection threshold (from 0 to 1) (default 0.098)
+        :param Float beta: set 2nd detection threshold (from 0 to 1) (default 0.05)
+        :param Float gamma: set 3rd detection threshold (from 0 to 1) (default 0.05)
+        :param Float delta: set 4th detection threshold (from 0 to 1) (default 0.05)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deblock
@@ -3074,13 +3074,13 @@ class VideoStream(FilterableStream):
         self,
         _impulse: "VideoStream",
         *,
-        planes: INT = Default("7"),
-        impulse: INT | Literal["first", "all"] | Default = Default("all"),
-        noise: FLOAT = Default("1e-07"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        planes: Int = Default("7"),
+        impulse: Int | Literal["first", "all"] | Default = Default("all"),
+        noise: Float = Default("1e-07"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3091,13 +3091,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to deconvolve (from 0 to 15) (default 7)
-        :param INT impulse: when to process impulses (from 0 to 1) (default all)
-        :param FLOAT noise: set noise (from 0 to 1) (default 1e-07)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int planes: set planes to deconvolve (from 0 to 15) (default 7)
+        :param Int impulse: when to process impulses (from 0 to 1) (default all)
+        :param Float noise: set noise (from 0 to 1) (default 1e-07)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deconvolve
@@ -3132,11 +3132,11 @@ class VideoStream(FilterableStream):
     def dedot(
         self,
         *,
-        m: FLAGS | Literal["dotcrawl", "rainbows"] | Default = Default("dotcrawl+rainbows"),
-        lt: FLOAT = Default("0.079"),
-        tl: FLOAT = Default("0.079"),
-        tc: FLOAT = Default("0.058"),
-        ct: FLOAT = Default("0.019"),
+        m: Flags | Literal["dotcrawl", "rainbows"] | Default = Default("dotcrawl+rainbows"),
+        lt: Float = Default("0.079"),
+        tl: Float = Default("0.079"),
+        tc: Float = Default("0.058"),
+        ct: Float = Default("0.019"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3147,11 +3147,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLAGS m: set filtering mode (default dotcrawl+rainbows)
-        :param FLOAT lt: set spatial luma threshold (from 0 to 1) (default 0.079)
-        :param FLOAT tl: set tolerance for temporal luma (from 0 to 1) (default 0.079)
-        :param FLOAT tc: set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)
-        :param FLOAT ct: set temporal chroma threshold (from 0 to 1) (default 0.019)
+        :param Flags m: set filtering mode (default dotcrawl+rainbows)
+        :param Float lt: set spatial luma threshold (from 0 to 1) (default 0.079)
+        :param Float tl: set tolerance for temporal luma (from 0 to 1) (default 0.079)
+        :param Float tc: set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)
+        :param Float ct: set temporal chroma threshold (from 0 to 1) (default 0.019)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dedot
@@ -3181,10 +3181,10 @@ class VideoStream(FilterableStream):
     def deflate(
         self,
         *,
-        threshold0: INT = Default("65535"),
-        threshold1: INT = Default("65535"),
-        threshold2: INT = Default("65535"),
-        threshold3: INT = Default("65535"),
+        threshold0: Int = Default("65535"),
+        threshold1: Int = Default("65535"),
+        threshold2: Int = Default("65535"),
+        threshold3: Int = Default("65535"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3195,10 +3195,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
-        :param INT threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
-        :param INT threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
-        :param INT threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+        :param Int threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+        :param Int threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+        :param Int threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+        :param Int threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deflate
@@ -3227,9 +3227,9 @@ class VideoStream(FilterableStream):
     def deflicker(
         self,
         *,
-        size: INT = Default("5"),
-        mode: INT | Literal["am", "gm", "hm", "qm", "cm", "pm", "median"] | Default = Default("am"),
-        bypass: BOOLEAN = Default("false"),
+        size: Int = Default("5"),
+        mode: Int | Literal["am", "gm", "hm", "qm", "cm", "pm", "median"] | Default = Default("am"),
+        bypass: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3239,9 +3239,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT size: set how many frames to use (from 2 to 129) (default 5)
-        :param INT mode: set how to smooth luminance (from 0 to 6) (default am)
-        :param BOOLEAN bypass: leave frames unchanged (default false)
+        :param Int size: set how many frames to use (from 2 to 129) (default 5)
+        :param Int mode: set how to smooth luminance (from 0 to 6) (default am)
+        :param Boolean bypass: leave frames unchanged (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deflicker
 
@@ -3264,7 +3264,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def dejudder(self, *, cycle: INT = Default("4"), **kwargs: Any) -> "VideoStream":
+    def dejudder(self, *, cycle: Int = Default("4"), **kwargs: Any) -> "VideoStream":
         """
 
         Remove judder produced by pullup.
@@ -3272,7 +3272,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT cycle: set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)
+        :param Int cycle: set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dejudder
 
@@ -3296,11 +3296,11 @@ class VideoStream(FilterableStream):
     def delogo(
         self,
         *,
-        x: STRING = Default("-1"),
-        y: STRING = Default("-1"),
-        w: STRING = Default("-1"),
-        h: STRING = Default("-1"),
-        show: BOOLEAN = Default("false"),
+        x: String = Default("-1"),
+        y: String = Default("-1"),
+        w: String = Default("-1"),
+        h: String = Default("-1"),
+        show: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3311,11 +3311,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING x: set logo x position (default "-1")
-        :param STRING y: set logo y position (default "-1")
-        :param STRING w: set logo width (default "-1")
-        :param STRING h: set logo height (default "-1")
-        :param BOOLEAN show: show delogo area (default false)
+        :param String x: set logo x position (default "-1")
+        :param String y: set logo y position (default "-1")
+        :param String w: set logo width (default "-1")
+        :param String h: set logo height (default "-1")
+        :param Boolean show: show delogo area (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#delogo
@@ -3345,11 +3345,11 @@ class VideoStream(FilterableStream):
     def derain(
         self,
         *,
-        filter_type: INT | Literal["derain", "dehaze"] | Default = Default("derain"),
-        dnn_backend: INT | Literal["native"] | Default = Default("native"),
-        model: STRING = Default(None),
-        input: STRING = Default("x"),
-        output: STRING = Default("y"),
+        filter_type: Int | Literal["derain", "dehaze"] | Default = Default("derain"),
+        dnn_backend: Int | Literal["native"] | Default = Default("native"),
+        model: String = Default(None),
+        input: String = Default("x"),
+        output: String = Default("y"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3360,11 +3360,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT filter_type: filter type(derain/dehaze) (from 0 to 1) (default derain)
-        :param INT dnn_backend: DNN backend (from 0 to 1) (default native)
-        :param STRING model: path to model file
-        :param STRING input: input name of the model (default "x")
-        :param STRING output: output name of the model (default "y")
+        :param Int filter_type: filter type(derain/dehaze) (from 0 to 1) (default derain)
+        :param Int dnn_backend: DNN backend (from 0 to 1) (default native)
+        :param String model: path to model file
+        :param String input: input name of the model (default "x")
+        :param String output: output name of the model (default "y")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#derain
@@ -3394,18 +3394,18 @@ class VideoStream(FilterableStream):
     def deshake(
         self,
         *,
-        x: INT = Default("-1"),
-        y: INT = Default("-1"),
-        w: INT = Default("-1"),
-        h: INT = Default("-1"),
-        rx: INT = Default("16"),
-        ry: INT = Default("16"),
-        edge: INT | Literal["blank", "original", "clamp", "mirror"] | Default = Default("mirror"),
-        blocksize: INT = Default("8"),
-        contrast: INT = Default("125"),
-        search: INT | Literal["exhaustive", "less"] | Default = Default("exhaustive"),
-        filename: STRING = Default(None),
-        opencl: BOOLEAN = Default("false"),
+        x: Int = Default("-1"),
+        y: Int = Default("-1"),
+        w: Int = Default("-1"),
+        h: Int = Default("-1"),
+        rx: Int = Default("16"),
+        ry: Int = Default("16"),
+        edge: Int | Literal["blank", "original", "clamp", "mirror"] | Default = Default("mirror"),
+        blocksize: Int = Default("8"),
+        contrast: Int = Default("125"),
+        search: Int | Literal["exhaustive", "less"] | Default = Default("exhaustive"),
+        filename: String = Default(None),
+        opencl: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3415,18 +3415,18 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT x: set x for the rectangular search area (from -1 to INT_MAX) (default -1)
-        :param INT y: set y for the rectangular search area (from -1 to INT_MAX) (default -1)
-        :param INT w: set width for the rectangular search area (from -1 to INT_MAX) (default -1)
-        :param INT h: set height for the rectangular search area (from -1 to INT_MAX) (default -1)
-        :param INT rx: set x for the rectangular search area (from 0 to 64) (default 16)
-        :param INT ry: set y for the rectangular search area (from 0 to 64) (default 16)
-        :param INT edge: set edge mode (from 0 to 3) (default mirror)
-        :param INT blocksize: set motion search blocksize (from 4 to 128) (default 8)
-        :param INT contrast: set contrast threshold for blocks (from 1 to 255) (default 125)
-        :param INT search: set search strategy (from 0 to 1) (default exhaustive)
-        :param STRING filename: set motion search detailed log file name
-        :param BOOLEAN opencl: ignored (default false)
+        :param Int x: set x for the rectangular search area (from -1 to INT_MAX) (default -1)
+        :param Int y: set y for the rectangular search area (from -1 to INT_MAX) (default -1)
+        :param Int w: set width for the rectangular search area (from -1 to INT_MAX) (default -1)
+        :param Int h: set height for the rectangular search area (from -1 to INT_MAX) (default -1)
+        :param Int rx: set x for the rectangular search area (from 0 to 64) (default 16)
+        :param Int ry: set y for the rectangular search area (from 0 to 64) (default 16)
+        :param Int edge: set edge mode (from 0 to 3) (default mirror)
+        :param Int blocksize: set motion search blocksize (from 4 to 128) (default 8)
+        :param Int contrast: set contrast threshold for blocks (from 1 to 255) (default 125)
+        :param Int search: set search strategy (from 0 to 1) (default exhaustive)
+        :param String filename: set motion search detailed log file name
+        :param Boolean opencl: ignored (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#deshake
 
@@ -3461,14 +3461,14 @@ class VideoStream(FilterableStream):
     def despill(
         self,
         *,
-        type: INT | Literal["green", "blue"] | Default = Default("green"),
-        mix: FLOAT = Default("0.5"),
-        expand: FLOAT = Default("0"),
-        red: FLOAT = Default("0"),
-        green: FLOAT = Default("-1"),
-        blue: FLOAT = Default("0"),
-        brightness: FLOAT = Default("0"),
-        alpha: BOOLEAN = Default("false"),
+        type: Int | Literal["green", "blue"] | Default = Default("green"),
+        mix: Float = Default("0.5"),
+        expand: Float = Default("0"),
+        red: Float = Default("0"),
+        green: Float = Default("-1"),
+        blue: Float = Default("0"),
+        brightness: Float = Default("0"),
+        alpha: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3479,14 +3479,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT type: set the screen type (from 0 to 1) (default green)
-        :param FLOAT mix: set the spillmap mix (from 0 to 1) (default 0.5)
-        :param FLOAT expand: set the spillmap expand (from 0 to 1) (default 0)
-        :param FLOAT red: set red scale (from -100 to 100) (default 0)
-        :param FLOAT green: set green scale (from -100 to 100) (default -1)
-        :param FLOAT blue: set blue scale (from -100 to 100) (default 0)
-        :param FLOAT brightness: set brightness (from -10 to 10) (default 0)
-        :param BOOLEAN alpha: change alpha component (default false)
+        :param Int type: set the screen type (from 0 to 1) (default green)
+        :param Float mix: set the spillmap mix (from 0 to 1) (default 0.5)
+        :param Float expand: set the spillmap expand (from 0 to 1) (default 0)
+        :param Float red: set red scale (from -100 to 100) (default 0)
+        :param Float green: set green scale (from -100 to 100) (default -1)
+        :param Float blue: set blue scale (from -100 to 100) (default 0)
+        :param Float brightness: set brightness (from -10 to 10) (default 0)
+        :param Boolean alpha: change alpha component (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#despill
@@ -3519,9 +3519,9 @@ class VideoStream(FilterableStream):
     def detelecine(
         self,
         *,
-        first_field: INT | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
-        pattern: STRING = Default("23"),
-        start_frame: INT = Default("0"),
+        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
+        pattern: String = Default("23"),
+        start_frame: Int = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3531,9 +3531,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT first_field: select first field (from 0 to 1) (default top)
-        :param STRING pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
-        :param INT start_frame: position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)
+        :param Int first_field: select first field (from 0 to 1) (default top)
+        :param String pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
+        :param Int start_frame: position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#detelecine
 
@@ -3559,11 +3559,11 @@ class VideoStream(FilterableStream):
     def dilation(
         self,
         *,
-        coordinates: INT = Default("255"),
-        threshold0: INT = Default("65535"),
-        threshold1: INT = Default("65535"),
-        threshold2: INT = Default("65535"),
-        threshold3: INT = Default("65535"),
+        coordinates: Int = Default("255"),
+        threshold0: Int = Default("65535"),
+        threshold1: Int = Default("65535"),
+        threshold2: Int = Default("65535"),
+        threshold3: Int = Default("65535"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3574,11 +3574,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT coordinates: set coordinates (from 0 to 255) (default 255)
-        :param INT threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
-        :param INT threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
-        :param INT threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
-        :param INT threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+        :param Int coordinates: set coordinates (from 0 to 255) (default 255)
+        :param Int threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+        :param Int threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+        :param Int threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+        :param Int threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dilation
@@ -3610,7 +3610,7 @@ class VideoStream(FilterableStream):
         _xmap: "VideoStream",
         _ymap: "VideoStream",
         *,
-        edge: INT | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
+        edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3621,7 +3621,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT edge: set edge mode (from 0 to 3) (default smear)
+        :param Int edge: set edge mode (from 0 to 3) (default smear)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#displace
@@ -3651,16 +3651,16 @@ class VideoStream(FilterableStream):
     def dnn_classify(
         self,
         *,
-        dnn_backend: INT = Default("2"),
-        model: STRING = Default(None),
-        input: STRING = Default(None),
-        output: STRING = Default(None),
-        backend_configs: STRING = Default(None),
-        options: STRING = Default(None),
-        _async: BOOLEAN = Default("true"),
-        confidence: FLOAT = Default("0.5"),
-        labels: STRING = Default(None),
-        target: STRING = Default(None),
+        dnn_backend: Int = Default("2"),
+        model: String = Default(None),
+        input: String = Default(None),
+        output: String = Default(None),
+        backend_configs: String = Default(None),
+        options: String = Default(None),
+        _async: Boolean = Default("true"),
+        confidence: Float = Default("0.5"),
+        labels: String = Default(None),
+        target: String = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3670,16 +3670,16 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
-        :param STRING model: path to model file
-        :param STRING input: input name of the model
-        :param STRING output: output name of the model
-        :param STRING backend_configs: backend configs
-        :param STRING options: backend configs (deprecated, use backend_configs)
-        :param BOOLEAN _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
-        :param FLOAT confidence: threshold of confidence (from 0 to 1) (default 0.5)
-        :param STRING labels: path to labels file
-        :param STRING target: which one to be classified
+        :param Int dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
+        :param String model: path to model file
+        :param String input: input name of the model
+        :param String output: output name of the model
+        :param String backend_configs: backend configs
+        :param String options: backend configs (deprecated, use backend_configs)
+        :param Boolean _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
+        :param Float confidence: threshold of confidence (from 0 to 1) (default 0.5)
+        :param String labels: path to labels file
+        :param String target: which one to be classified
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dnn_005fclassify
 
@@ -3712,15 +3712,15 @@ class VideoStream(FilterableStream):
     def dnn_detect(
         self,
         *,
-        dnn_backend: INT = Default("2"),
-        model: STRING = Default(None),
-        input: STRING = Default(None),
-        output: STRING = Default(None),
-        backend_configs: STRING = Default(None),
-        options: STRING = Default(None),
-        _async: BOOLEAN = Default("true"),
-        confidence: FLOAT = Default("0.5"),
-        labels: STRING = Default(None),
+        dnn_backend: Int = Default("2"),
+        model: String = Default(None),
+        input: String = Default(None),
+        output: String = Default(None),
+        backend_configs: String = Default(None),
+        options: String = Default(None),
+        _async: Boolean = Default("true"),
+        confidence: Float = Default("0.5"),
+        labels: String = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3730,15 +3730,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
-        :param STRING model: path to model file
-        :param STRING input: input name of the model
-        :param STRING output: output name of the model
-        :param STRING backend_configs: backend configs
-        :param STRING options: backend configs (deprecated, use backend_configs)
-        :param BOOLEAN _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
-        :param FLOAT confidence: threshold of confidence (from 0 to 1) (default 0.5)
-        :param STRING labels: path to labels file
+        :param Int dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
+        :param String model: path to model file
+        :param String input: input name of the model
+        :param String output: output name of the model
+        :param String backend_configs: backend configs
+        :param String options: backend configs (deprecated, use backend_configs)
+        :param Boolean _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
+        :param Float confidence: threshold of confidence (from 0 to 1) (default 0.5)
+        :param String labels: path to labels file
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dnn_005fdetect
 
@@ -3770,13 +3770,13 @@ class VideoStream(FilterableStream):
     def dnn_processing(
         self,
         *,
-        dnn_backend: INT | Literal["native"] | Default = Default("native"),
-        model: STRING = Default(None),
-        input: STRING = Default(None),
-        output: STRING = Default(None),
-        backend_configs: STRING = Default(None),
-        options: STRING = Default(None),
-        _async: BOOLEAN = Default("true"),
+        dnn_backend: Int | Literal["native"] | Default = Default("native"),
+        model: String = Default(None),
+        input: String = Default(None),
+        output: String = Default(None),
+        backend_configs: String = Default(None),
+        options: String = Default(None),
+        _async: Boolean = Default("true"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3786,13 +3786,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default native)
-        :param STRING model: path to model file
-        :param STRING input: input name of the model
-        :param STRING output: output name of the model
-        :param STRING backend_configs: backend configs
-        :param STRING options: backend configs (deprecated, use backend_configs)
-        :param BOOLEAN _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
+        :param Int dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default native)
+        :param String model: path to model file
+        :param String input: input name of the model
+        :param String output: output name of the model
+        :param String backend_configs: backend configs
+        :param String options: backend configs (deprecated, use backend_configs)
+        :param Boolean _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing
 
@@ -3820,7 +3820,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def doubleweave(
-        self, *, first_field: INT | Literal["top", "t", "bottom", "b"] | Default = Default("top"), **kwargs: Any
+        self, *, first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -3829,7 +3829,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT first_field: set first field (from 0 to 1) (default top)
+        :param Int first_field: set first field (from 0 to 1) (default top)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave
 
@@ -3853,14 +3853,14 @@ class VideoStream(FilterableStream):
     def drawbox(
         self,
         *,
-        x: STRING = Default("0"),
-        y: STRING = Default("0"),
-        width: STRING = Default("0"),
-        height: STRING = Default("0"),
-        color: STRING = Default("black"),
-        thickness: STRING = Default("3"),
-        replace: BOOLEAN = Default("false"),
-        box_source: STRING = Default(None),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        width: String = Default("0"),
+        height: String = Default("0"),
+        color: String = Default("black"),
+        thickness: String = Default("3"),
+        replace: Boolean = Default("false"),
+        box_source: String = Default(None),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -3871,14 +3871,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING x: set horizontal position of the left box edge (default "0")
-        :param STRING y: set vertical position of the top box edge (default "0")
-        :param STRING width: set width of the box (default "0")
-        :param STRING height: set height of the box (default "0")
-        :param STRING color: set color of the box (default "black")
-        :param STRING thickness: set the box thickness (default "3")
-        :param BOOLEAN replace: replace color & alpha (default false)
-        :param STRING box_source: use datas from bounding box in side data
+        :param String x: set horizontal position of the left box edge (default "0")
+        :param String y: set vertical position of the top box edge (default "0")
+        :param String width: set width of the box (default "0")
+        :param String height: set height of the box (default "0")
+        :param String color: set color of the box (default "black")
+        :param String thickness: set the box thickness (default "3")
+        :param Boolean replace: replace color & alpha (default false)
+        :param String box_source: use datas from bounding box in side data
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#drawbox
@@ -3911,21 +3911,21 @@ class VideoStream(FilterableStream):
     def drawgraph(
         self,
         *,
-        m1: STRING = Default(""),
-        fg1: STRING = Default("0xffff0000"),
-        m2: STRING = Default(""),
-        fg2: STRING = Default("0xff00ff00"),
-        m3: STRING = Default(""),
-        fg3: STRING = Default("0xffff00ff"),
-        m4: STRING = Default(""),
-        fg4: STRING = Default("0xffffff00"),
-        bg: COLOR = Default("white"),
-        min: FLOAT = Default("-1"),
-        max: FLOAT = Default("1"),
-        mode: INT | Literal["bar", "dot", "line"] | Default = Default("line"),
-        slide: INT | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
-        size: IMAGE_SIZE = Default("900x256"),
-        rate: VIDEO_RATE = Default("25"),
+        m1: String = Default(""),
+        fg1: String = Default("0xffff0000"),
+        m2: String = Default(""),
+        fg2: String = Default("0xff00ff00"),
+        m3: String = Default(""),
+        fg3: String = Default("0xffff00ff"),
+        m4: String = Default(""),
+        fg4: String = Default("0xffffff00"),
+        bg: Color = Default("white"),
+        min: Float = Default("-1"),
+        max: Float = Default("1"),
+        mode: Int | Literal["bar", "dot", "line"] | Default = Default("line"),
+        slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
+        size: Image_size = Default("900x256"),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -3935,21 +3935,21 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING m1: set 1st metadata key (default "")
-        :param STRING fg1: set 1st foreground color expression (default "0xffff0000")
-        :param STRING m2: set 2nd metadata key (default "")
-        :param STRING fg2: set 2nd foreground color expression (default "0xff00ff00")
-        :param STRING m3: set 3rd metadata key (default "")
-        :param STRING fg3: set 3rd foreground color expression (default "0xffff00ff")
-        :param STRING m4: set 4th metadata key (default "")
-        :param STRING fg4: set 4th foreground color expression (default "0xffffff00")
-        :param COLOR bg: set background color (default "white")
-        :param FLOAT min: set minimal value (from INT_MIN to INT_MAX) (default -1)
-        :param FLOAT max: set maximal value (from INT_MIN to INT_MAX) (default 1)
-        :param INT mode: set graph mode (from 0 to 2) (default line)
-        :param INT slide: set slide mode (from 0 to 4) (default frame)
-        :param IMAGE_SIZE size: set graph size (default "900x256")
-        :param VIDEO_RATE rate: set video rate (default "25")
+        :param String m1: set 1st metadata key (default "")
+        :param String fg1: set 1st foreground color expression (default "0xffff0000")
+        :param String m2: set 2nd metadata key (default "")
+        :param String fg2: set 2nd foreground color expression (default "0xff00ff00")
+        :param String m3: set 3rd metadata key (default "")
+        :param String fg3: set 3rd foreground color expression (default "0xffff00ff")
+        :param String m4: set 4th metadata key (default "")
+        :param String fg4: set 4th foreground color expression (default "0xffffff00")
+        :param Color bg: set background color (default "white")
+        :param Float min: set minimal value (from INT_MIN to INT_MAX) (default -1)
+        :param Float max: set maximal value (from INT_MIN to INT_MAX) (default 1)
+        :param Int mode: set graph mode (from 0 to 2) (default line)
+        :param Int slide: set slide mode (from 0 to 4) (default frame)
+        :param Image_size size: set graph size (default "900x256")
+        :param Video_rate rate: set video rate (default "25")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#drawgraph
 
@@ -3987,13 +3987,13 @@ class VideoStream(FilterableStream):
     def drawgrid(
         self,
         *,
-        x: STRING = Default("0"),
-        y: STRING = Default("0"),
-        width: STRING = Default("0"),
-        height: STRING = Default("0"),
-        color: STRING = Default("black"),
-        thickness: STRING = Default("1"),
-        replace: BOOLEAN = Default("false"),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        width: String = Default("0"),
+        height: String = Default("0"),
+        color: String = Default("black"),
+        thickness: String = Default("1"),
+        replace: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4004,13 +4004,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING x: set horizontal offset (default "0")
-        :param STRING y: set vertical offset (default "0")
-        :param STRING width: set width of grid cell (default "0")
-        :param STRING height: set height of grid cell (default "0")
-        :param STRING color: set color of the grid (default "black")
-        :param STRING thickness: set grid line thickness (default "1")
-        :param BOOLEAN replace: replace color & alpha (default false)
+        :param String x: set horizontal offset (default "0")
+        :param String y: set vertical offset (default "0")
+        :param String width: set width of grid cell (default "0")
+        :param String height: set height of grid cell (default "0")
+        :param String color: set color of the grid (default "black")
+        :param String thickness: set grid line thickness (default "1")
+        :param Boolean replace: replace color & alpha (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#drawgrid
@@ -4042,36 +4042,36 @@ class VideoStream(FilterableStream):
     def drawtext(
         self,
         *,
-        fontfile: STRING = Default(None),
-        text: STRING = Default(None),
-        textfile: STRING = Default(None),
-        fontcolor: COLOR = Default("black"),
-        fontcolor_expr: STRING = Default(""),
-        boxcolor: COLOR = Default("white"),
-        bordercolor: COLOR = Default("black"),
-        shadowcolor: COLOR = Default("black"),
-        box: BOOLEAN = Default("false"),
-        boxborderw: INT = Default("0"),
-        line_spacing: INT = Default("0"),
-        fontsize: STRING = Default(None),
-        x: STRING = Default("0"),
-        y: STRING = Default("0"),
-        shadowx: INT = Default("0"),
-        shadowy: INT = Default("0"),
-        borderw: INT = Default("0"),
-        tabsize: INT = Default("4"),
-        basetime: INT64 = Default("I64_MIN"),
-        font: STRING = Default("Sans"),
-        expansion: INT | Literal["none", "normal", "strftime"] | Default = Default("normal"),
-        timecode: STRING = Default(None),
-        tc24hmax: BOOLEAN = Default("false"),
-        timecode_rate: RATIONAL = Default("0/1"),
-        reload: INT = Default("0"),
-        alpha: STRING = Default("1"),
-        fix_bounds: BOOLEAN = Default("false"),
-        start_number: INT = Default("0"),
-        text_source: STRING = Default(None),
-        ft_load_flags: FLAGS
+        fontfile: String = Default(None),
+        text: String = Default(None),
+        textfile: String = Default(None),
+        fontcolor: Color = Default("black"),
+        fontcolor_expr: String = Default(""),
+        boxcolor: Color = Default("white"),
+        bordercolor: Color = Default("black"),
+        shadowcolor: Color = Default("black"),
+        box: Boolean = Default("false"),
+        boxborderw: Int = Default("0"),
+        line_spacing: Int = Default("0"),
+        fontsize: String = Default(None),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        shadowx: Int = Default("0"),
+        shadowy: Int = Default("0"),
+        borderw: Int = Default("0"),
+        tabsize: Int = Default("4"),
+        basetime: Int64 = Default("I64_MIN"),
+        font: String = Default("Sans"),
+        expansion: Int | Literal["none", "normal", "strftime"] | Default = Default("normal"),
+        timecode: String = Default(None),
+        tc24hmax: Boolean = Default("false"),
+        timecode_rate: Rational = Default("0/1"),
+        reload: Int = Default("0"),
+        alpha: String = Default("1"),
+        fix_bounds: Boolean = Default("false"),
+        start_number: Int = Default("0"),
+        text_source: String = Default(None),
+        ft_load_flags: Flags
         | Literal[
             "default",
             "no_scale",
@@ -4100,36 +4100,36 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING fontfile: set font file
-        :param STRING text: set text
-        :param STRING textfile: set text file
-        :param COLOR fontcolor: set foreground color (default "black")
-        :param STRING fontcolor_expr: set foreground color expression (default "")
-        :param COLOR boxcolor: set box color (default "white")
-        :param COLOR bordercolor: set border color (default "black")
-        :param COLOR shadowcolor: set shadow color (default "black")
-        :param BOOLEAN box: set box (default false)
-        :param INT boxborderw: set box border width (from INT_MIN to INT_MAX) (default 0)
-        :param INT line_spacing: set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
-        :param STRING fontsize: set font size
-        :param STRING x: set x expression (default "0")
-        :param STRING y: set y expression (default "0")
-        :param INT shadowx: set shadow x offset (from INT_MIN to INT_MAX) (default 0)
-        :param INT shadowy: set shadow y offset (from INT_MIN to INT_MAX) (default 0)
-        :param INT borderw: set border width (from INT_MIN to INT_MAX) (default 0)
-        :param INT tabsize: set tab size (from 0 to INT_MAX) (default 4)
-        :param INT64 basetime: set base time (from I64_MIN to I64_MAX) (default I64_MIN)
-        :param STRING font: Font name (default "Sans")
-        :param INT expansion: set the expansion mode (from 0 to 2) (default normal)
-        :param STRING timecode: set initial timecode
-        :param BOOLEAN tc24hmax: set 24 hours max (timecode only) (default false)
-        :param RATIONAL timecode_rate: set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
-        :param INT reload: reload text file at specified frame interval (from 0 to INT_MAX) (default 0)
-        :param STRING alpha: apply alpha while rendering (default "1")
-        :param BOOLEAN fix_bounds: check and fix text coords to avoid clipping (default false)
-        :param INT start_number: start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
-        :param STRING text_source: the source of text
-        :param FLAGS ft_load_flags: set font loading flags for libfreetype (default 0)
+        :param String fontfile: set font file
+        :param String text: set text
+        :param String textfile: set text file
+        :param Color fontcolor: set foreground color (default "black")
+        :param String fontcolor_expr: set foreground color expression (default "")
+        :param Color boxcolor: set box color (default "white")
+        :param Color bordercolor: set border color (default "black")
+        :param Color shadowcolor: set shadow color (default "black")
+        :param Boolean box: set box (default false)
+        :param Int boxborderw: set box border width (from INT_MIN to INT_MAX) (default 0)
+        :param Int line_spacing: set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
+        :param String fontsize: set font size
+        :param String x: set x expression (default "0")
+        :param String y: set y expression (default "0")
+        :param Int shadowx: set shadow x offset (from INT_MIN to INT_MAX) (default 0)
+        :param Int shadowy: set shadow y offset (from INT_MIN to INT_MAX) (default 0)
+        :param Int borderw: set border width (from INT_MIN to INT_MAX) (default 0)
+        :param Int tabsize: set tab size (from 0 to INT_MAX) (default 4)
+        :param Int64 basetime: set base time (from I64_MIN to I64_MAX) (default I64_MIN)
+        :param String font: Font name (default "Sans")
+        :param Int expansion: set the expansion mode (from 0 to 2) (default normal)
+        :param String timecode: set initial timecode
+        :param Boolean tc24hmax: set 24 hours max (timecode only) (default false)
+        :param Rational timecode_rate: set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
+        :param Int reload: reload text file at specified frame interval (from 0 to INT_MAX) (default 0)
+        :param String alpha: apply alpha while rendering (default "1")
+        :param Boolean fix_bounds: check and fix text coords to avoid clipping (default false)
+        :param Int start_number: start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
+        :param String text_source: the source of text
+        :param Flags ft_load_flags: set font loading flags for libfreetype (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#drawtext
@@ -4184,10 +4184,10 @@ class VideoStream(FilterableStream):
     def edgedetect(
         self,
         *,
-        high: DOUBLE = Default("0.196078"),
-        low: DOUBLE = Default("0.0784314"),
-        mode: INT | Literal["wires", "colormix", "canny"] | Default = Default("wires"),
-        planes: FLAGS | Literal["y", "u", "v", "r", "g", "b"] | Default = Default("y+u+v+r+g+b"),
+        high: Double = Default("0.196078"),
+        low: Double = Default("0.0784314"),
+        mode: Int | Literal["wires", "colormix", "canny"] | Default = Default("wires"),
+        planes: Flags | Literal["y", "u", "v", "r", "g", "b"] | Default = Default("y+u+v+r+g+b"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4198,10 +4198,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE high: set high threshold (from 0 to 1) (default 0.196078)
-        :param DOUBLE low: set low threshold (from 0 to 1) (default 0.0784314)
-        :param INT mode: set mode (from 0 to 2) (default wires)
-        :param FLAGS planes: set planes to filter (default y+u+v+r+g+b)
+        :param Double high: set high threshold (from 0 to 1) (default 0.196078)
+        :param Double low: set low threshold (from 0 to 1) (default 0.0784314)
+        :param Int mode: set mode (from 0 to 2) (default wires)
+        :param Flags planes: set planes to filter (default y+u+v+r+g+b)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#edgedetect
@@ -4230,11 +4230,11 @@ class VideoStream(FilterableStream):
     def elbg(
         self,
         *,
-        codebook_length: INT = Default("256"),
-        nb_steps: INT = Default("1"),
-        seed: INT64 = Default("-1"),
-        pal8: BOOLEAN = Default("false"),
-        use_alpha: BOOLEAN = Default("false"),
+        codebook_length: Int = Default("256"),
+        nb_steps: Int = Default("1"),
+        seed: Int64 = Default("-1"),
+        pal8: Boolean = Default("false"),
+        use_alpha: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -4244,11 +4244,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT codebook_length: set codebook length (from 1 to INT_MAX) (default 256)
-        :param INT nb_steps: set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)
-        :param INT64 seed: set the random seed (from -1 to UINT32_MAX) (default -1)
-        :param BOOLEAN pal8: set the pal8 output (default false)
-        :param BOOLEAN use_alpha: use alpha channel for mapping (default false)
+        :param Int codebook_length: set codebook length (from 1 to INT_MAX) (default 256)
+        :param Int nb_steps: set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)
+        :param Int64 seed: set the random seed (from -1 to UINT32_MAX) (default -1)
+        :param Boolean pal8: set the pal8 output (default false)
+        :param Boolean use_alpha: use alpha channel for mapping (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#elbg
 
@@ -4276,7 +4276,7 @@ class VideoStream(FilterableStream):
     def entropy(
         self,
         *,
-        mode: INT | Literal["normal", "diff"] | Default = Default("normal"),
+        mode: Int | Literal["normal", "diff"] | Default = Default("normal"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4287,7 +4287,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: set kind of histogram entropy measurement (from 0 to 1) (default normal)
+        :param Int mode: set kind of histogram entropy measurement (from 0 to 1) (default normal)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#entropy
@@ -4310,7 +4310,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def epx(self, *, n: INT = Default("3"), **kwargs: Any) -> "VideoStream":
+    def epx(self, *, n: Int = Default("3"), **kwargs: Any) -> "VideoStream":
         """
 
         Scale the input using EPX algorithm.
@@ -4318,7 +4318,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT n: set scale factor (from 2 to 3) (default 3)
+        :param Int n: set scale factor (from 2 to 3) (default 3)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#epx
 
@@ -4342,15 +4342,15 @@ class VideoStream(FilterableStream):
     def eq(
         self,
         *,
-        contrast: STRING = Default("1.0"),
-        brightness: STRING = Default("0.0"),
-        saturation: STRING = Default("1.0"),
-        gamma: STRING = Default("1.0"),
-        gamma_r: STRING = Default("1.0"),
-        gamma_g: STRING = Default("1.0"),
-        gamma_b: STRING = Default("1.0"),
-        gamma_weight: STRING = Default("1.0"),
-        eval: INT | Literal["init", "frame"] | Default = Default("init"),
+        contrast: String = Default("1.0"),
+        brightness: String = Default("0.0"),
+        saturation: String = Default("1.0"),
+        gamma: String = Default("1.0"),
+        gamma_r: String = Default("1.0"),
+        gamma_g: String = Default("1.0"),
+        gamma_b: String = Default("1.0"),
+        gamma_weight: String = Default("1.0"),
+        eval: Int | Literal["init", "frame"] | Default = Default("init"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4361,15 +4361,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING contrast: set the contrast adjustment, negative values give a negative image (default "1.0")
-        :param STRING brightness: set the brightness adjustment (default "0.0")
-        :param STRING saturation: set the saturation adjustment (default "1.0")
-        :param STRING gamma: set the initial gamma value (default "1.0")
-        :param STRING gamma_r: gamma value for red (default "1.0")
-        :param STRING gamma_g: gamma value for green (default "1.0")
-        :param STRING gamma_b: gamma value for blue (default "1.0")
-        :param STRING gamma_weight: set the gamma weight which reduces the effect of gamma on bright areas (default "1.0")
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default init)
+        :param String contrast: set the contrast adjustment, negative values give a negative image (default "1.0")
+        :param String brightness: set the brightness adjustment (default "0.0")
+        :param String saturation: set the saturation adjustment (default "1.0")
+        :param String gamma: set the initial gamma value (default "1.0")
+        :param String gamma_r: gamma value for red (default "1.0")
+        :param String gamma_g: gamma value for green (default "1.0")
+        :param String gamma_b: gamma value for blue (default "1.0")
+        :param String gamma_weight: set the gamma weight which reduces the effect of gamma on bright areas (default "1.0")
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#eq
@@ -4403,11 +4403,11 @@ class VideoStream(FilterableStream):
     def erosion(
         self,
         *,
-        coordinates: INT = Default("255"),
-        threshold0: INT = Default("65535"),
-        threshold1: INT = Default("65535"),
-        threshold2: INT = Default("65535"),
-        threshold3: INT = Default("65535"),
+        coordinates: Int = Default("255"),
+        threshold0: Int = Default("65535"),
+        threshold1: Int = Default("65535"),
+        threshold2: Int = Default("65535"),
+        threshold3: Int = Default("65535"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4418,11 +4418,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT coordinates: set coordinates (from 0 to 255) (default 255)
-        :param INT threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
-        :param INT threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
-        :param INT threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
-        :param INT threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+        :param Int coordinates: set coordinates (from 0 to 255) (default 255)
+        :param Int threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+        :param Int threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+        :param Int threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+        :param Int threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#erosion
@@ -4452,15 +4452,15 @@ class VideoStream(FilterableStream):
     def estdif(
         self,
         *,
-        mode: INT | Literal["frame", "field"] | Default = Default("field"),
-        parity: INT | Literal["tff", "bff", "auto"] | Default = Default("auto"),
-        deint: INT | Literal["all", "interlaced"] | Default = Default("all"),
-        rslope: INT = Default("1"),
-        redge: INT = Default("2"),
-        ecost: FLOAT = Default("1"),
-        mcost: FLOAT = Default("0.5"),
-        dcost: FLOAT = Default("0.5"),
-        interp: INT | Literal["2p", "4p", "6p"] | Default = Default("4p"),
+        mode: Int | Literal["frame", "field"] | Default = Default("field"),
+        parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
+        deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
+        rslope: Int = Default("1"),
+        redge: Int = Default("2"),
+        ecost: Float = Default("1"),
+        mcost: Float = Default("0.5"),
+        dcost: Float = Default("0.5"),
+        interp: Int | Literal["2p", "4p", "6p"] | Default = Default("4p"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4471,15 +4471,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: specify the mode (from 0 to 1) (default field)
-        :param INT parity: specify the assumed picture field parity (from -1 to 1) (default auto)
-        :param INT deint: specify which frames to deinterlace (from 0 to 1) (default all)
-        :param INT rslope: specify the search radius for edge slope tracing (from 1 to 15) (default 1)
-        :param INT redge: specify the search radius for best edge matching (from 0 to 15) (default 2)
-        :param FLOAT ecost: specify the edge cost for edge matching (from 0 to 9) (default 1)
-        :param FLOAT mcost: specify the middle cost for edge matching (from 0 to 1) (default 0.5)
-        :param FLOAT dcost: specify the distance cost for edge matching (from 0 to 1) (default 0.5)
-        :param INT interp: specify the type of interpolation (from 0 to 2) (default 4p)
+        :param Int mode: specify the mode (from 0 to 1) (default field)
+        :param Int parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+        :param Int deint: specify which frames to deinterlace (from 0 to 1) (default all)
+        :param Int rslope: specify the search radius for edge slope tracing (from 1 to 15) (default 1)
+        :param Int redge: specify the search radius for best edge matching (from 0 to 15) (default 2)
+        :param Float ecost: specify the edge cost for edge matching (from 0 to 9) (default 1)
+        :param Float mcost: specify the middle cost for edge matching (from 0 to 1) (default 0.5)
+        :param Float dcost: specify the distance cost for edge matching (from 0 to 1) (default 0.5)
+        :param Int interp: specify the type of interpolation (from 0 to 2) (default 4p)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#estdif
@@ -4511,7 +4511,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def exposure(
-        self, *, exposure: FLOAT = Default("0"), black: FLOAT = Default("0"), enable: str = Default(None), **kwargs: Any
+        self, *, exposure: Float = Default("0"), black: Float = Default("0"), enable: str = Default(None), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -4520,8 +4520,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT exposure: set the exposure correction (from -3 to 3) (default 0)
-        :param FLOAT black: set the black level correction (from -1 to 1) (default 0)
+        :param Float exposure: set the exposure correction (from -3 to 3) (default 0)
+        :param Float black: set the black level correction (from -1 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#exposure
@@ -4546,7 +4546,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def extractplanes(
-        self, *, planes: FLAGS | Literal["y", "u", "v", "r", "g", "b", "a"] | Default = Default("r"), **kwargs: Any
+        self, *, planes: Flags | Literal["y", "u", "v", "r", "g", "b", "a"] | Default = Default("r"), **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -4555,7 +4555,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLAGS planes: set planes (default r)
+        :param Flags planes: set planes (default r)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#extractplanes
 
@@ -4580,13 +4580,13 @@ class VideoStream(FilterableStream):
     def fade(
         self,
         *,
-        type: INT | Literal["in", "out"] | Default = Default("in"),
-        start_frame: INT = Default("0"),
-        nb_frames: INT = Default("25"),
-        alpha: BOOLEAN = Default("false"),
-        start_time: DURATION = Default("0"),
-        duration: DURATION = Default("0"),
-        color: COLOR = Default("black"),
+        type: Int | Literal["in", "out"] | Default = Default("in"),
+        start_frame: Int = Default("0"),
+        nb_frames: Int = Default("25"),
+        alpha: Boolean = Default("false"),
+        start_time: Duration = Default("0"),
+        duration: Duration = Default("0"),
+        color: Color = Default("black"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4597,13 +4597,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT type: set the fade direction (from 0 to 1) (default in)
-        :param INT start_frame: Number of the first frame to which to apply the effect. (from 0 to INT_MAX) (default 0)
-        :param INT nb_frames: Number of frames to which the effect should be applied. (from 1 to INT_MAX) (default 25)
-        :param BOOLEAN alpha: fade alpha if it is available on the input (default false)
-        :param DURATION start_time: Number of seconds of the beginning of the effect. (default 0)
-        :param DURATION duration: Duration of the effect in seconds. (default 0)
-        :param COLOR color: set color (default "black")
+        :param Int type: set the fade direction (from 0 to 1) (default in)
+        :param Int start_frame: Number of the first frame to which to apply the effect. (from 0 to INT_MAX) (default 0)
+        :param Int nb_frames: Number of frames to which the effect should be applied. (from 1 to INT_MAX) (default 25)
+        :param Boolean alpha: fade alpha if it is available on the input (default false)
+        :param Duration start_time: Number of seconds of the beginning of the effect. (default 0)
+        :param Duration duration: Duration of the effect in seconds. (default 0)
+        :param Color color: set color (default "black")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fade
@@ -4633,7 +4633,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def feedback(
-        self, _feedin: "VideoStream", *, x: INT = Default("0"), w: INT = Default("0"), **kwargs: Any
+        self, _feedin: "VideoStream", *, x: Int = Default("0"), w: Int = Default("0"), **kwargs: Any
     ) -> tuple["VideoStream", "VideoStream",]:
         """
 
@@ -4642,8 +4642,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT x: set top left crop position (from 0 to INT_MAX) (default 0)
-        :param INT w: set crop size (from 0 to INT_MAX) (default 0)
+        :param Int x: set top left crop position (from 0 to INT_MAX) (default 0)
+        :param Int w: set crop size (from 0 to INT_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#feedback
 
@@ -4674,15 +4674,15 @@ class VideoStream(FilterableStream):
     def fftdnoiz(
         self,
         *,
-        sigma: FLOAT = Default("1"),
-        amount: FLOAT = Default("1"),
-        block: INT = Default("32"),
-        overlap: FLOAT = Default("0.5"),
-        method: INT | Literal["wiener", "hard"] | Default = Default("wiener"),
-        prev: INT = Default("0"),
-        next: INT = Default("0"),
-        planes: INT = Default("7"),
-        window: INT
+        sigma: Float = Default("1"),
+        amount: Float = Default("1"),
+        block: Int = Default("32"),
+        overlap: Float = Default("0.5"),
+        method: Int | Literal["wiener", "hard"] | Default = Default("wiener"),
+        prev: Int = Default("0"),
+        next: Int = Default("0"),
+        planes: Int = Default("7"),
+        window: Int
         | Literal[
             "rect",
             "bartlett",
@@ -4718,15 +4718,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT sigma: set denoise strength (from 0 to 100) (default 1)
-        :param FLOAT amount: set amount of denoising (from 0.01 to 1) (default 1)
-        :param INT block: set block size (from 8 to 256) (default 32)
-        :param FLOAT overlap: set block overlap (from 0.2 to 0.8) (default 0.5)
-        :param INT method: set method of denoising (from 0 to 1) (default wiener)
-        :param INT prev: set number of previous frames for temporal denoising (from 0 to 1) (default 0)
-        :param INT next: set number of next frames for temporal denoising (from 0 to 1) (default 0)
-        :param INT planes: set planes to filter (from 0 to 15) (default 7)
-        :param INT window: set window function (from 0 to 20) (default hann)
+        :param Float sigma: set denoise strength (from 0 to 100) (default 1)
+        :param Float amount: set amount of denoising (from 0.01 to 1) (default 1)
+        :param Int block: set block size (from 8 to 256) (default 32)
+        :param Float overlap: set block overlap (from 0.2 to 0.8) (default 0.5)
+        :param Int method: set method of denoising (from 0 to 1) (default wiener)
+        :param Int prev: set number of previous frames for temporal denoising (from 0 to 1) (default 0)
+        :param Int next: set number of next frames for temporal denoising (from 0 to 1) (default 0)
+        :param Int planes: set planes to filter (from 0 to 15) (default 7)
+        :param Int window: set window function (from 0 to 20) (default hann)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz
@@ -4760,13 +4760,13 @@ class VideoStream(FilterableStream):
     def fftfilt(
         self,
         *,
-        dc_Y: INT = Default("0"),
-        dc_U: INT = Default("0"),
-        dc_V: INT = Default("0"),
-        weight_Y: STRING = Default("1"),
-        weight_U: STRING = Default(None),
-        weight_V: STRING = Default(None),
-        eval: INT | Literal["init", "frame"] | Default = Default("init"),
+        dc_Y: Int = Default("0"),
+        dc_U: Int = Default("0"),
+        dc_V: Int = Default("0"),
+        weight_Y: String = Default("1"),
+        weight_U: String = Default(None),
+        weight_V: String = Default(None),
+        eval: Int | Literal["init", "frame"] | Default = Default("init"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4777,13 +4777,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT dc_Y: adjust gain in Y plane (from 0 to 1000) (default 0)
-        :param INT dc_U: adjust gain in U plane (from 0 to 1000) (default 0)
-        :param INT dc_V: adjust gain in V plane (from 0 to 1000) (default 0)
-        :param STRING weight_Y: set luminance expression in Y plane (default "1")
-        :param STRING weight_U: set chrominance expression in U plane
-        :param STRING weight_V: set chrominance expression in V plane
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default init)
+        :param Int dc_Y: adjust gain in Y plane (from 0 to 1000) (default 0)
+        :param Int dc_U: adjust gain in U plane (from 0 to 1000) (default 0)
+        :param Int dc_V: adjust gain in V plane (from 0 to 1000) (default 0)
+        :param String weight_Y: set luminance expression in Y plane (default "1")
+        :param String weight_U: set chrominance expression in U plane
+        :param String weight_V: set chrominance expression in V plane
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fftfilt
@@ -4812,7 +4812,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def field(self, *, type: INT | Literal["top", "bottom"] | Default = Default("top"), **kwargs: Any) -> "VideoStream":
+    def field(self, *, type: Int | Literal["top", "bottom"] | Default = Default("top"), **kwargs: Any) -> "VideoStream":
         """
 
         Extract a field from the input video.
@@ -4820,7 +4820,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT type: set field type (top or bottom) (from 0 to 1) (default top)
+        :param Int type: set field type (top or bottom) (from 0 to 1) (default top)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#field
 
@@ -4844,8 +4844,8 @@ class VideoStream(FilterableStream):
     def fieldhint(
         self,
         *,
-        hint: STRING = Default(None),
-        mode: INT | Literal["absolute", "relative", "pattern"] | Default = Default("absolute"),
+        hint: String = Default(None),
+        mode: Int | Literal["absolute", "relative", "pattern"] | Default = Default("absolute"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -4855,8 +4855,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING hint: set hint file
-        :param INT mode: set hint mode (from 0 to 2) (default absolute)
+        :param String hint: set hint file
+        :param Int mode: set hint mode (from 0 to 2) (default absolute)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fieldhint
 
@@ -4881,7 +4881,7 @@ class VideoStream(FilterableStream):
     def fieldorder(
         self,
         *,
-        order: INT | Literal["bff", "tff"] | Default = Default("tff"),
+        order: Int | Literal["bff", "tff"] | Default = Default("tff"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4892,7 +4892,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT order: output field order (from 0 to 1) (default tff)
+        :param Int order: output field order (from 0 to 1) (default tff)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fieldorder
@@ -4939,14 +4939,14 @@ class VideoStream(FilterableStream):
     def fillborders(
         self,
         *,
-        left: INT = Default("0"),
-        right: INT = Default("0"),
-        top: INT = Default("0"),
-        bottom: INT = Default("0"),
-        mode: INT
+        left: Int = Default("0"),
+        right: Int = Default("0"),
+        top: Int = Default("0"),
+        bottom: Int = Default("0"),
+        mode: Int
         | Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"]
         | Default = Default("smear"),
-        color: COLOR = Default("black"),
+        color: Color = Default("black"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -4957,12 +4957,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT left: set the left fill border (from 0 to INT_MAX) (default 0)
-        :param INT right: set the right fill border (from 0 to INT_MAX) (default 0)
-        :param INT top: set the top fill border (from 0 to INT_MAX) (default 0)
-        :param INT bottom: set the bottom fill border (from 0 to INT_MAX) (default 0)
-        :param INT mode: set the fill borders mode (from 0 to 6) (default smear)
-        :param COLOR color: set the color for the fixed/fade mode (default "black")
+        :param Int left: set the left fill border (from 0 to INT_MAX) (default 0)
+        :param Int right: set the right fill border (from 0 to INT_MAX) (default 0)
+        :param Int top: set the top fill border (from 0 to INT_MAX) (default 0)
+        :param Int bottom: set the bottom fill border (from 0 to INT_MAX) (default 0)
+        :param Int mode: set the fill borders mode (from 0 to 6) (default smear)
+        :param Color color: set the color for the fixed/fade mode (default "black")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fillborders
@@ -4993,11 +4993,11 @@ class VideoStream(FilterableStream):
     def find_rect(
         self,
         *,
-        object: STRING = Default(None),
-        threshold: FLOAT = Default("0.5"),
-        mipmaps: INT = Default("3"),
-        xmin: INT = Default("0"),
-        discard: BOOLEAN = Default("false"),
+        object: String = Default(None),
+        threshold: Float = Default("0.5"),
+        mipmaps: Int = Default("3"),
+        xmin: Int = Default("0"),
+        discard: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5007,11 +5007,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING object: object bitmap filename
-        :param FLOAT threshold: set threshold (from 0 to 1) (default 0.5)
-        :param INT mipmaps: set mipmaps (from 1 to 5) (default 3)
-        :param INT xmin: (from 0 to INT_MAX) (default 0)
-        :param BOOLEAN discard: (default false)
+        :param String object: object bitmap filename
+        :param Float threshold: set threshold (from 0 to 1) (default 0.5)
+        :param Int mipmaps: set mipmaps (from 1 to 5) (default 3)
+        :param Int xmin: (from 0 to INT_MAX) (default 0)
+        :param Boolean discard: (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#find_005frect
 
@@ -5039,16 +5039,16 @@ class VideoStream(FilterableStream):
     def floodfill(
         self,
         *,
-        x: INT = Default("0"),
-        y: INT = Default("0"),
-        s0: INT = Default("0"),
-        s1: INT = Default("0"),
-        s2: INT = Default("0"),
-        s3: INT = Default("0"),
-        d0: INT = Default("0"),
-        d1: INT = Default("0"),
-        d2: INT = Default("0"),
-        d3: INT = Default("0"),
+        x: Int = Default("0"),
+        y: Int = Default("0"),
+        s0: Int = Default("0"),
+        s1: Int = Default("0"),
+        s2: Int = Default("0"),
+        s3: Int = Default("0"),
+        d0: Int = Default("0"),
+        d1: Int = Default("0"),
+        d2: Int = Default("0"),
+        d3: Int = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5059,16 +5059,16 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT x: set pixel x coordinate (from 0 to 65535) (default 0)
-        :param INT y: set pixel y coordinate (from 0 to 65535) (default 0)
-        :param INT s0: set source #0 component value (from -1 to 65535) (default 0)
-        :param INT s1: set source #1 component value (from -1 to 65535) (default 0)
-        :param INT s2: set source #2 component value (from -1 to 65535) (default 0)
-        :param INT s3: set source #3 component value (from -1 to 65535) (default 0)
-        :param INT d0: set destination #0 component value (from 0 to 65535) (default 0)
-        :param INT d1: set destination #1 component value (from 0 to 65535) (default 0)
-        :param INT d2: set destination #2 component value (from 0 to 65535) (default 0)
-        :param INT d3: set destination #3 component value (from 0 to 65535) (default 0)
+        :param Int x: set pixel x coordinate (from 0 to 65535) (default 0)
+        :param Int y: set pixel y coordinate (from 0 to 65535) (default 0)
+        :param Int s0: set source #0 component value (from -1 to 65535) (default 0)
+        :param Int s1: set source #1 component value (from -1 to 65535) (default 0)
+        :param Int s2: set source #2 component value (from -1 to 65535) (default 0)
+        :param Int s3: set source #3 component value (from -1 to 65535) (default 0)
+        :param Int d0: set destination #0 component value (from 0 to 65535) (default 0)
+        :param Int d1: set destination #1 component value (from 0 to 65535) (default 0)
+        :param Int d2: set destination #2 component value (from 0 to 65535) (default 0)
+        :param Int d3: set destination #3 component value (from 0 to 65535) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#floodfill
@@ -5100,7 +5100,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def format(self, *, pix_fmts: STRING = Default(None), **kwargs: Any) -> "VideoStream":
+    def format(self, *, pix_fmts: String = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Convert the input video to one of the specified pixel formats.
@@ -5108,7 +5108,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING pix_fmts: A '|'-separated list of pixel formats
+        :param String pix_fmts: A '|'-separated list of pixel formats
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#format
 
@@ -5132,10 +5132,10 @@ class VideoStream(FilterableStream):
     def fps(
         self,
         *,
-        fps: STRING = Default("25"),
-        start_time: DOUBLE = Default("DBL_MAX"),
-        round: INT | Literal["zero", "inf", "down", "up", "near"] | Default = Default("near"),
-        eof_action: INT | Literal["round", "pass"] | Default = Default("round"),
+        fps: String = Default("25"),
+        start_time: Double = Default("DBL_MAX"),
+        round: Int | Literal["zero", "inf", "down", "up", "near"] | Default = Default("near"),
+        eof_action: Int | Literal["round", "pass"] | Default = Default("round"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5145,10 +5145,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING fps: A string describing desired output framerate (default "25")
-        :param DOUBLE start_time: Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-        :param INT round: set rounding method for timestamps (from 0 to 5) (default near)
-        :param INT eof_action: action performed for last frame (from 0 to 1) (default round)
+        :param String fps: A string describing desired output framerate (default "25")
+        :param Double start_time: Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+        :param Int round: set rounding method for timestamps (from 0 to 5) (default near)
+        :param Int eof_action: action performed for last frame (from 0 to 1) (default round)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fps
 
@@ -5176,7 +5176,7 @@ class VideoStream(FilterableStream):
         self,
         _right: "VideoStream",
         *,
-        format: INT | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
+        format: Int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5186,7 +5186,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT format: Frame pack output format (from 0 to INT_MAX) (default sbs)
+        :param Int format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#framepack
 
@@ -5213,11 +5213,11 @@ class VideoStream(FilterableStream):
     def framerate(
         self,
         *,
-        fps: VIDEO_RATE = Default("50"),
-        interp_start: INT = Default("15"),
-        interp_end: INT = Default("240"),
-        scene: DOUBLE = Default("8.2"),
-        flags: FLAGS | Literal["scene_change_detect", "scd"] | Default = Default("scene_change_detect+scd"),
+        fps: Video_rate = Default("50"),
+        interp_start: Int = Default("15"),
+        interp_end: Int = Default("240"),
+        scene: Double = Default("8.2"),
+        flags: Flags | Literal["scene_change_detect", "scd"] | Default = Default("scene_change_detect+scd"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5227,11 +5227,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param VIDEO_RATE fps: required output frames per second rate (default "50")
-        :param INT interp_start: point to start linear interpolation (from 0 to 255) (default 15)
-        :param INT interp_end: point to end linear interpolation (from 0 to 255) (default 240)
-        :param DOUBLE scene: scene change level (from 0 to 100) (default 8.2)
-        :param FLAGS flags: set flags (default scene_change_detect+scd)
+        :param Video_rate fps: required output frames per second rate (default "50")
+        :param Int interp_start: point to start linear interpolation (from 0 to 255) (default 15)
+        :param Int interp_end: point to end linear interpolation (from 0 to 255) (default 240)
+        :param Double scene: scene change level (from 0 to 100) (default 8.2)
+        :param Flags flags: set flags (default scene_change_detect+scd)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#framerate
 
@@ -5256,7 +5256,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def framestep(self, *, step: INT = Default("1"), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def framestep(self, *, step: Int = Default("1"), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Select one frame every N frames.
@@ -5264,7 +5264,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT step: set frame step (from 1 to INT_MAX) (default 1)
+        :param Int step: set frame step (from 1 to INT_MAX) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#framestep
@@ -5287,7 +5287,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def freezedetect(self, *, n: DOUBLE = Default("0.001"), d: DURATION = Default("2"), **kwargs: Any) -> "VideoStream":
+    def freezedetect(self, *, n: Double = Default("0.001"), d: Duration = Default("2"), **kwargs: Any) -> "VideoStream":
         """
 
         Detects frozen video input.
@@ -5295,8 +5295,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE n: set noise tolerance (from 0 to 1) (default 0.001)
-        :param DURATION d: set minimum duration in seconds (default 2)
+        :param Double n: set noise tolerance (from 0 to 1) (default 0.001)
+        :param Duration d: set minimum duration in seconds (default 2)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#freezedetect
 
@@ -5322,9 +5322,9 @@ class VideoStream(FilterableStream):
         self,
         _replace: "VideoStream",
         *,
-        first: INT64 = Default("0"),
-        last: INT64 = Default("0"),
-        replace: INT64 = Default("0"),
+        first: Int64 = Default("0"),
+        last: Int64 = Default("0"),
+        replace: Int64 = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5334,9 +5334,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT64 first: set first frame to freeze (from 0 to I64_MAX) (default 0)
-        :param INT64 last: set last frame to freeze (from 0 to I64_MAX) (default 0)
-        :param INT64 replace: set frame to replace (from 0 to I64_MAX) (default 0)
+        :param Int64 first: set first frame to freeze (from 0 to I64_MAX) (default 0)
+        :param Int64 last: set last frame to freeze (from 0 to I64_MAX) (default 0)
+        :param Int64 replace: set frame to replace (from 0 to I64_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#freezeframes
 
@@ -5365,8 +5365,8 @@ class VideoStream(FilterableStream):
     def frei0r(
         self,
         *,
-        filter_name: STRING = Default(None),
-        filter_params: STRING = Default(None),
+        filter_name: String = Default(None),
+        filter_params: String = Default(None),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5377,8 +5377,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING filter_name:
-        :param STRING filter_params:
+        :param String filter_name:
+        :param String filter_params:
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#frei0r
@@ -5405,10 +5405,10 @@ class VideoStream(FilterableStream):
     def fspp(
         self,
         *,
-        quality: INT = Default("4"),
-        qp: INT = Default("0"),
-        strength: INT = Default("0"),
-        use_bframe_qp: BOOLEAN = Default("false"),
+        quality: Int = Default("4"),
+        qp: Int = Default("0"),
+        strength: Int = Default("0"),
+        use_bframe_qp: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5419,10 +5419,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT quality: set quality (from 4 to 5) (default 4)
-        :param INT qp: force a constant quantizer parameter (from 0 to 64) (default 0)
-        :param INT strength: set filter strength (from -15 to 32) (default 0)
-        :param BOOLEAN use_bframe_qp: use B-frames' QP (default false)
+        :param Int quality: set quality (from 4 to 5) (default 4)
+        :param Int qp: force a constant quantizer parameter (from 0 to 64) (default 0)
+        :param Int strength: set filter strength (from -15 to 32) (default 0)
+        :param Boolean use_bframe_qp: use B-frames' QP (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#fspp
@@ -5451,10 +5451,10 @@ class VideoStream(FilterableStream):
     def gblur(
         self,
         *,
-        sigma: FLOAT = Default("0.5"),
-        steps: INT = Default("1"),
-        planes: INT = Default("15"),
-        sigmaV: FLOAT = Default("-1"),
+        sigma: Float = Default("0.5"),
+        steps: Int = Default("1"),
+        planes: Int = Default("15"),
+        sigmaV: Float = Default("-1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5465,10 +5465,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT sigma: set sigma (from 0 to 1024) (default 0.5)
-        :param INT steps: set number of steps (from 1 to 6) (default 1)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param FLOAT sigmaV: set vertical sigma (from -1 to 1024) (default -1)
+        :param Float sigma: set sigma (from 0 to 1024) (default 0.5)
+        :param Int steps: set number of steps (from 1 to 6) (default 1)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float sigmaV: set vertical sigma (from -1 to 1024) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#gblur
@@ -5497,14 +5497,14 @@ class VideoStream(FilterableStream):
     def geq(
         self,
         *,
-        lum_expr: STRING = Default(None),
-        cb_expr: STRING = Default(None),
-        cr_expr: STRING = Default(None),
-        alpha_expr: STRING = Default(None),
-        red_expr: STRING = Default(None),
-        green_expr: STRING = Default(None),
-        blue_expr: STRING = Default(None),
-        interpolation: INT | Literal["nearest", "n", "bilinear", "b"] | Default = Default("bilinear"),
+        lum_expr: String = Default(None),
+        cb_expr: String = Default(None),
+        cr_expr: String = Default(None),
+        alpha_expr: String = Default(None),
+        red_expr: String = Default(None),
+        green_expr: String = Default(None),
+        blue_expr: String = Default(None),
+        interpolation: Int | Literal["nearest", "n", "bilinear", "b"] | Default = Default("bilinear"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5515,14 +5515,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING lum_expr: set luminance expression
-        :param STRING cb_expr: set chroma blue expression
-        :param STRING cr_expr: set chroma red expression
-        :param STRING alpha_expr: set alpha expression
-        :param STRING red_expr: set red expression
-        :param STRING green_expr: set green expression
-        :param STRING blue_expr: set blue expression
-        :param INT interpolation: set interpolation method (from 0 to 1) (default bilinear)
+        :param String lum_expr: set luminance expression
+        :param String cb_expr: set chroma blue expression
+        :param String cr_expr: set chroma red expression
+        :param String alpha_expr: set alpha expression
+        :param String red_expr: set red expression
+        :param String green_expr: set green expression
+        :param String blue_expr: set blue expression
+        :param Int interpolation: set interpolation method (from 0 to 1) (default bilinear)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#geq
@@ -5555,8 +5555,8 @@ class VideoStream(FilterableStream):
     def gradfun(
         self,
         *,
-        strength: FLOAT = Default("1.2"),
-        radius: INT = Default("16"),
+        strength: Float = Default("1.2"),
+        radius: Int = Default("16"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5567,8 +5567,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT strength: The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)
-        :param INT radius: The neighborhood to fit the gradient to. (from 4 to 32) (default 16)
+        :param Float strength: The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)
+        :param Int radius: The neighborhood to fit the gradient to. (from 4 to 32) (default 16)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#gradfun
@@ -5595,10 +5595,10 @@ class VideoStream(FilterableStream):
     def graphmonitor(
         self,
         *,
-        size: IMAGE_SIZE = Default("hd720"),
-        opacity: FLOAT = Default("0.9"),
-        mode: INT | Literal["full", "compact"] | Default = Default("full"),
-        flags: FLAGS
+        size: Image_size = Default("hd720"),
+        opacity: Float = Default("0.9"),
+        mode: Int | Literal["full", "compact"] | Default = Default("full"),
+        flags: Flags
         | Literal[
             "queue",
             "frame_count_in",
@@ -5618,7 +5618,7 @@ class VideoStream(FilterableStream):
             "sample_count_delta",
         ]
         | Default = Default("queue"),
-        rate: VIDEO_RATE = Default("25"),
+        rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5628,11 +5628,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param IMAGE_SIZE size: set monitor size (default "hd720")
-        :param FLOAT opacity: set video opacity (from 0 to 1) (default 0.9)
-        :param INT mode: set mode (from 0 to 1) (default full)
-        :param FLAGS flags: set flags (default queue)
-        :param VIDEO_RATE rate: set video rate (default "25")
+        :param Image_size size: set monitor size (default "hd720")
+        :param Float opacity: set video opacity (from 0 to 1) (default 0.9)
+        :param Int mode: set mode (from 0 to 1) (default full)
+        :param Flags flags: set flags (default queue)
+        :param Video_rate rate: set video rate (default "25")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#graphmonitor
 
@@ -5689,9 +5689,9 @@ class VideoStream(FilterableStream):
     def greyedge(
         self,
         *,
-        difford: INT = Default("1"),
-        minknorm: INT = Default("1"),
-        sigma: DOUBLE = Default("1"),
+        difford: Int = Default("1"),
+        minknorm: Int = Default("1"),
+        sigma: Double = Default("1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5702,9 +5702,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT difford: set differentiation order (from 0 to 2) (default 1)
-        :param INT minknorm: set Minkowski norm (from 0 to 20) (default 1)
-        :param DOUBLE sigma: set sigma (from 0 to 1024) (default 1)
+        :param Int difford: set differentiation order (from 0 to 2) (default 1)
+        :param Int minknorm: set Minkowski norm (from 0 to 20) (default 1)
+        :param Double sigma: set sigma (from 0 to 1024) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#greyedge
@@ -5733,14 +5733,14 @@ class VideoStream(FilterableStream):
         self,
         _clut: "VideoStream",
         *,
-        clut: INT | Literal["first", "all"] | Default = Default("all"),
-        interp: INT
+        clut: Int | Literal["first", "all"] | Default = Default("all"),
+        interp: Int
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
         | Default = Default("tetrahedral"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5751,12 +5751,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT clut: when to process CLUT (from 0 to 1) (default all)
-        :param INT interp: select interpolation mode (from 0 to 4) (default tetrahedral)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int clut: when to process CLUT (from 0 to 1) (default all)
+        :param Int interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#haldclut
@@ -5819,9 +5819,9 @@ class VideoStream(FilterableStream):
     def histeq(
         self,
         *,
-        strength: FLOAT = Default("0.2"),
-        intensity: FLOAT = Default("0.21"),
-        antibanding: INT | Literal["none", "weak", "strong"] | Default = Default("none"),
+        strength: Float = Default("0.2"),
+        intensity: Float = Default("0.21"),
+        antibanding: Int | Literal["none", "weak", "strong"] | Default = Default("none"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5832,9 +5832,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT strength: set the strength (from 0 to 1) (default 0.2)
-        :param FLOAT intensity: set the intensity (from 0 to 1) (default 0.21)
-        :param INT antibanding: set the antibanding level (from 0 to 2) (default none)
+        :param Float strength: set the strength (from 0 to 1) (default 0.2)
+        :param Float intensity: set the intensity (from 0 to 1) (default 0.21)
+        :param Int antibanding: set the antibanding level (from 0 to 2) (default none)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#histeq
@@ -5862,14 +5862,14 @@ class VideoStream(FilterableStream):
     def histogram(
         self,
         *,
-        level_height: INT = Default("200"),
-        scale_height: INT = Default("12"),
-        display_mode: INT | Literal["overlay", "parade", "stack"] | Default = Default("stack"),
-        levels_mode: INT | Literal["linear", "logarithmic"] | Default = Default("linear"),
-        components: INT = Default("7"),
-        fgopacity: FLOAT = Default("0.7"),
-        bgopacity: FLOAT = Default("0.5"),
-        colors_mode: INT
+        level_height: Int = Default("200"),
+        scale_height: Int = Default("12"),
+        display_mode: Int | Literal["overlay", "parade", "stack"] | Default = Default("stack"),
+        levels_mode: Int | Literal["linear", "logarithmic"] | Default = Default("linear"),
+        components: Int = Default("7"),
+        fgopacity: Float = Default("0.7"),
+        bgopacity: Float = Default("0.5"),
+        colors_mode: Int
         | Literal[
             "whiteonblack",
             "blackonwhite",
@@ -5892,14 +5892,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT level_height: set level height (from 50 to 2048) (default 200)
-        :param INT scale_height: set scale height (from 0 to 40) (default 12)
-        :param INT display_mode: set display mode (from 0 to 2) (default stack)
-        :param INT levels_mode: set levels mode (from 0 to 1) (default linear)
-        :param INT components: set color components to display (from 1 to 15) (default 7)
-        :param FLOAT fgopacity: set foreground opacity (from 0 to 1) (default 0.7)
-        :param FLOAT bgopacity: set background opacity (from 0 to 1) (default 0.5)
-        :param INT colors_mode: set colors mode (from 0 to 9) (default whiteonblack)
+        :param Int level_height: set level height (from 50 to 2048) (default 200)
+        :param Int scale_height: set scale height (from 0 to 40) (default 12)
+        :param Int display_mode: set display mode (from 0 to 2) (default stack)
+        :param Int levels_mode: set levels mode (from 0 to 1) (default linear)
+        :param Int components: set color components to display (from 1 to 15) (default 7)
+        :param Float fgopacity: set foreground opacity (from 0 to 1) (default 0.7)
+        :param Float bgopacity: set background opacity (from 0 to 1) (default 0.5)
+        :param Int colors_mode: set colors mode (from 0 to 9) (default whiteonblack)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#histogram
 
@@ -5930,10 +5930,10 @@ class VideoStream(FilterableStream):
     def hqdn3d(
         self,
         *,
-        luma_spatial: DOUBLE = Default("0"),
-        chroma_spatial: DOUBLE = Default("0"),
-        luma_tmp: DOUBLE = Default("0"),
-        chroma_tmp: DOUBLE = Default("0"),
+        luma_spatial: Double = Default("0"),
+        chroma_spatial: Double = Default("0"),
+        luma_tmp: Double = Default("0"),
+        chroma_tmp: Double = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -5944,10 +5944,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE luma_spatial: spatial luma strength (from 0 to DBL_MAX) (default 0)
-        :param DOUBLE chroma_spatial: spatial chroma strength (from 0 to DBL_MAX) (default 0)
-        :param DOUBLE luma_tmp: temporal luma strength (from 0 to DBL_MAX) (default 0)
-        :param DOUBLE chroma_tmp: temporal chroma strength (from 0 to DBL_MAX) (default 0)
+        :param Double luma_spatial: spatial luma strength (from 0 to DBL_MAX) (default 0)
+        :param Double chroma_spatial: spatial chroma strength (from 0 to DBL_MAX) (default 0)
+        :param Double luma_tmp: temporal luma strength (from 0 to DBL_MAX) (default 0)
+        :param Double chroma_tmp: temporal chroma strength (from 0 to DBL_MAX) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hqdn3d
@@ -5973,7 +5973,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hqx(self, *, n: INT = Default("3"), **kwargs: Any) -> "VideoStream":
+    def hqx(self, *, n: Int = Default("3"), **kwargs: Any) -> "VideoStream":
         """
 
         Scale the input by 2, 3 or 4 using the hq*x magnification algorithm.
@@ -5981,7 +5981,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT n: set scale factor (from 2 to 4) (default 3)
+        :param Int n: set scale factor (from 2 to 4) (default 3)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hqx
 
@@ -6005,11 +6005,11 @@ class VideoStream(FilterableStream):
     def hsvhold(
         self,
         *,
-        hue: FLOAT = Default("0"),
-        sat: FLOAT = Default("0"),
-        val: FLOAT = Default("0"),
-        similarity: FLOAT = Default("0.01"),
-        blend: FLOAT = Default("0"),
+        hue: Float = Default("0"),
+        sat: Float = Default("0"),
+        val: Float = Default("0"),
+        similarity: Float = Default("0.01"),
+        blend: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6020,11 +6020,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT hue: set the hue value (from -360 to 360) (default 0)
-        :param FLOAT sat: set the saturation value (from -1 to 1) (default 0)
-        :param FLOAT val: set the value value (from -1 to 1) (default 0)
-        :param FLOAT similarity: set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)
-        :param FLOAT blend: set the hsvhold blend value (from 0 to 1) (default 0)
+        :param Float hue: set the hue value (from -360 to 360) (default 0)
+        :param Float sat: set the saturation value (from -1 to 1) (default 0)
+        :param Float val: set the value value (from -1 to 1) (default 0)
+        :param Float similarity: set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)
+        :param Float blend: set the hsvhold blend value (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hsvhold
@@ -6054,11 +6054,11 @@ class VideoStream(FilterableStream):
     def hsvkey(
         self,
         *,
-        hue: FLOAT = Default("0"),
-        sat: FLOAT = Default("0"),
-        val: FLOAT = Default("0"),
-        similarity: FLOAT = Default("0.01"),
-        blend: FLOAT = Default("0"),
+        hue: Float = Default("0"),
+        sat: Float = Default("0"),
+        val: Float = Default("0"),
+        similarity: Float = Default("0.01"),
+        blend: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6069,11 +6069,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT hue: set the hue value (from -360 to 360) (default 0)
-        :param FLOAT sat: set the saturation value (from -1 to 1) (default 0)
-        :param FLOAT val: set the value value (from -1 to 1) (default 0)
-        :param FLOAT similarity: set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)
-        :param FLOAT blend: set the hsvkey blend value (from 0 to 1) (default 0)
+        :param Float hue: set the hue value (from -360 to 360) (default 0)
+        :param Float sat: set the saturation value (from -1 to 1) (default 0)
+        :param Float val: set the value value (from -1 to 1) (default 0)
+        :param Float similarity: set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)
+        :param Float blend: set the hsvkey blend value (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hsvkey
@@ -6103,10 +6103,10 @@ class VideoStream(FilterableStream):
     def hue(
         self,
         *,
-        h: STRING = Default(None),
-        s: STRING = Default("1"),
-        H: STRING = Default(None),
-        b: STRING = Default("0"),
+        h: String = Default(None),
+        s: String = Default("1"),
+        H: String = Default(None),
+        b: String = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6117,10 +6117,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING h: set the hue angle degrees expression
-        :param STRING s: set the saturation expression (default "1")
-        :param STRING H: set the hue angle radians expression
-        :param STRING b: set the brightness expression (default "0")
+        :param String h: set the hue angle degrees expression
+        :param String s: set the saturation expression (default "1")
+        :param String H: set the hue angle radians expression
+        :param String b: set the brightness expression (default "0")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hue
@@ -6149,15 +6149,15 @@ class VideoStream(FilterableStream):
     def huesaturation(
         self,
         *,
-        hue: FLOAT = Default("0"),
-        saturation: FLOAT = Default("0"),
-        intensity: FLOAT = Default("0"),
-        colors: FLAGS | Literal["r", "y", "g", "c", "b", "m", "a"] | Default = Default("r+y+g+c+b+m+a"),
-        strength: FLOAT = Default("1"),
-        rw: FLOAT = Default("0.333"),
-        gw: FLOAT = Default("0.334"),
-        bw: FLOAT = Default("0.333"),
-        lightness: BOOLEAN = Default("false"),
+        hue: Float = Default("0"),
+        saturation: Float = Default("0"),
+        intensity: Float = Default("0"),
+        colors: Flags | Literal["r", "y", "g", "c", "b", "m", "a"] | Default = Default("r+y+g+c+b+m+a"),
+        strength: Float = Default("1"),
+        rw: Float = Default("0.333"),
+        gw: Float = Default("0.334"),
+        bw: Float = Default("0.333"),
+        lightness: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6168,15 +6168,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT hue: set the hue shift (from -180 to 180) (default 0)
-        :param FLOAT saturation: set the saturation shift (from -1 to 1) (default 0)
-        :param FLOAT intensity: set the intensity shift (from -1 to 1) (default 0)
-        :param FLAGS colors: set colors range (default r+y+g+c+b+m+a)
-        :param FLOAT strength: set the filtering strength (from 0 to 100) (default 1)
-        :param FLOAT rw: set the red weight (from 0 to 1) (default 0.333)
-        :param FLOAT gw: set the green weight (from 0 to 1) (default 0.334)
-        :param FLOAT bw: set the blue weight (from 0 to 1) (default 0.333)
-        :param BOOLEAN lightness: set the preserve lightness (default false)
+        :param Float hue: set the hue shift (from -180 to 180) (default 0)
+        :param Float saturation: set the saturation shift (from -1 to 1) (default 0)
+        :param Float intensity: set the intensity shift (from -1 to 1) (default 0)
+        :param Flags colors: set colors range (default r+y+g+c+b+m+a)
+        :param Float strength: set the filtering strength (from 0 to 100) (default 1)
+        :param Float rw: set the red weight (from 0 to 1) (default 0.333)
+        :param Float gw: set the green weight (from 0 to 1) (default 0.334)
+        :param Float bw: set the blue weight (from 0 to 1) (default 0.333)
+        :param Boolean lightness: set the preserve lightness (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#huesaturation
@@ -6231,9 +6231,9 @@ class VideoStream(FilterableStream):
     def hwmap(
         self,
         *,
-        mode: FLAGS | Literal["read", "write", "overwrite", "direct"] | Default = Default("read+write"),
-        derive_device: STRING = Default(None),
-        reverse: INT = Default("0"),
+        mode: Flags | Literal["read", "write", "overwrite", "direct"] | Default = Default("read+write"),
+        derive_device: String = Default(None),
+        reverse: Int = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6243,9 +6243,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLAGS mode: Frame mapping mode (default read+write)
-        :param STRING derive_device: Derive a new device of this type
-        :param INT reverse: Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)
+        :param Flags mode: Frame mapping mode (default read+write)
+        :param String derive_device: Derive a new device of this type
+        :param Int reverse: Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hwmap
 
@@ -6268,7 +6268,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hwupload(self, *, derive_device: STRING = Default(None), **kwargs: Any) -> "VideoStream":
+    def hwupload(self, *, derive_device: String = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Upload a normal frame to a hardware frame
@@ -6276,7 +6276,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING derive_device: Derive a new device of this type
+        :param String derive_device: Derive a new device of this type
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hwupload
 
@@ -6301,12 +6301,12 @@ class VideoStream(FilterableStream):
         self,
         _alt: "VideoStream",
         *,
-        planes: INT = Default("15"),
-        threshold: INT = Default("0"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        planes: Int = Default("15"),
+        threshold: Int = Default("0"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6317,12 +6317,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes (from 0 to 15) (default 15)
-        :param INT threshold: set threshold (from 0 to 65535) (default 0)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int planes: set planes (from 0 to 15) (default 15)
+        :param Int threshold: set threshold (from 0 to 65535) (default 0)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#hysteresis
@@ -6357,10 +6357,10 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6371,10 +6371,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#identity
@@ -6406,11 +6406,11 @@ class VideoStream(FilterableStream):
     def idet(
         self,
         *,
-        intl_thres: FLOAT = Default("1.04"),
-        prog_thres: FLOAT = Default("1.5"),
-        rep_thres: FLOAT = Default("3"),
-        half_life: FLOAT = Default("0"),
-        analyze_interlaced_flag: INT = Default("0"),
+        intl_thres: Float = Default("1.04"),
+        prog_thres: Float = Default("1.5"),
+        rep_thres: Float = Default("3"),
+        half_life: Float = Default("0"),
+        analyze_interlaced_flag: Int = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6420,11 +6420,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT intl_thres: set interlacing threshold (from -1 to FLT_MAX) (default 1.04)
-        :param FLOAT prog_thres: set progressive threshold (from -1 to FLT_MAX) (default 1.5)
-        :param FLOAT rep_thres: set repeat threshold (from -1 to FLT_MAX) (default 3)
-        :param FLOAT half_life: half life of cumulative statistics (from -1 to INT_MAX) (default 0)
-        :param INT analyze_interlaced_flag: set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)
+        :param Float intl_thres: set interlacing threshold (from -1 to FLT_MAX) (default 1.04)
+        :param Float prog_thres: set progressive threshold (from -1 to FLT_MAX) (default 1.5)
+        :param Float rep_thres: set repeat threshold (from -1 to FLT_MAX) (default 3)
+        :param Float half_life: half life of cumulative statistics (from -1 to INT_MAX) (default 0)
+        :param Int analyze_interlaced_flag: set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#idet
 
@@ -6452,12 +6452,12 @@ class VideoStream(FilterableStream):
     def il(
         self,
         *,
-        luma_mode: INT | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
-        chroma_mode: INT | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
-        alpha_mode: INT | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
-        luma_swap: BOOLEAN = Default("false"),
-        chroma_swap: BOOLEAN = Default("false"),
-        alpha_swap: BOOLEAN = Default("false"),
+        luma_mode: Int | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
+        chroma_mode: Int | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
+        alpha_mode: Int | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
+        luma_swap: Boolean = Default("false"),
+        chroma_swap: Boolean = Default("false"),
+        alpha_swap: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6468,12 +6468,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT luma_mode: select luma mode (from 0 to 2) (default none)
-        :param INT chroma_mode: select chroma mode (from 0 to 2) (default none)
-        :param INT alpha_mode: select alpha mode (from 0 to 2) (default none)
-        :param BOOLEAN luma_swap: swap luma fields (default false)
-        :param BOOLEAN chroma_swap: swap chroma fields (default false)
-        :param BOOLEAN alpha_swap: swap alpha fields (default false)
+        :param Int luma_mode: select luma mode (from 0 to 2) (default none)
+        :param Int chroma_mode: select chroma mode (from 0 to 2) (default none)
+        :param Int alpha_mode: select alpha mode (from 0 to 2) (default none)
+        :param Boolean luma_swap: swap luma fields (default false)
+        :param Boolean chroma_swap: swap chroma fields (default false)
+        :param Boolean alpha_swap: swap alpha fields (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#il
@@ -6504,10 +6504,10 @@ class VideoStream(FilterableStream):
     def inflate(
         self,
         *,
-        threshold0: INT = Default("65535"),
-        threshold1: INT = Default("65535"),
-        threshold2: INT = Default("65535"),
-        threshold3: INT = Default("65535"),
+        threshold0: Int = Default("65535"),
+        threshold1: Int = Default("65535"),
+        threshold2: Int = Default("65535"),
+        threshold3: Int = Default("65535"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6518,10 +6518,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
-        :param INT threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
-        :param INT threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
-        :param INT threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+        :param Int threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+        :param Int threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+        :param Int threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+        :param Int threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#inflate
@@ -6550,8 +6550,8 @@ class VideoStream(FilterableStream):
     def interlace(
         self,
         *,
-        scan: INT | Literal["tff", "bff"] | Default = Default("tff"),
-        lowpass: INT | Literal["off", "linear", "complex"] | Default = Default("linear"),
+        scan: Int | Literal["tff", "bff"] | Default = Default("tff"),
+        lowpass: Int | Literal["off", "linear", "complex"] | Default = Default("linear"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6561,8 +6561,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT scan: scanning mode (from 0 to 1) (default tff)
-        :param INT lowpass: set vertical low-pass filter (from 0 to 2) (default linear)
+        :param Int scan: scanning mode (from 0 to 1) (default tff)
+        :param Int lowpass: set vertical low-pass filter (from 0 to 2) (default linear)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#interlace
 
@@ -6587,11 +6587,11 @@ class VideoStream(FilterableStream):
     def kerndeint(
         self,
         *,
-        thresh: INT = Default("10"),
-        map: BOOLEAN = Default("false"),
-        order: BOOLEAN = Default("false"),
-        sharp: BOOLEAN = Default("false"),
-        twoway: BOOLEAN = Default("false"),
+        thresh: Int = Default("10"),
+        map: Boolean = Default("false"),
+        order: Boolean = Default("false"),
+        sharp: Boolean = Default("false"),
+        twoway: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6601,11 +6601,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT thresh: set the threshold (from 0 to 255) (default 10)
-        :param BOOLEAN map: set the map (default false)
-        :param BOOLEAN order: set the order (default false)
-        :param BOOLEAN sharp: set sharpening (default false)
-        :param BOOLEAN twoway: set twoway (default false)
+        :param Int thresh: set the threshold (from 0 to 255) (default 10)
+        :param Boolean map: set the map (default false)
+        :param Boolean order: set the order (default false)
+        :param Boolean sharp: set sharpening (default false)
+        :param Boolean twoway: set twoway (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#kerndeint
 
@@ -6633,9 +6633,9 @@ class VideoStream(FilterableStream):
     def kirsch(
         self,
         *,
-        planes: INT = Default("15"),
-        scale: FLOAT = Default("1"),
-        delta: FLOAT = Default("0"),
+        planes: Int = Default("15"),
+        scale: Float = Default("1"),
+        delta: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6646,9 +6646,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param FLOAT scale: set scale (from 0 to 65535) (default 1)
-        :param FLOAT delta: set delta (from -65535 to 65535) (default 0)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float scale: set scale (from 0 to 65535) (default 1)
+        :param Float delta: set delta (from -65535 to 65535) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#kirsch
@@ -6676,8 +6676,8 @@ class VideoStream(FilterableStream):
     def lagfun(
         self,
         *,
-        decay: FLOAT = Default("0.95"),
-        planes: FLAGS = Default("F"),
+        decay: Float = Default("0.95"),
+        planes: Flags = Default("F"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6688,8 +6688,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT decay: set decay (from 0 to 1) (default 0.95)
-        :param FLAGS planes: set what planes to filter (default F)
+        :param Float decay: set decay (from 0 to 1) (default 0.95)
+        :param Flags planes: set what planes to filter (default F)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lagfun
@@ -6745,12 +6745,12 @@ class VideoStream(FilterableStream):
     def lenscorrection(
         self,
         *,
-        cx: DOUBLE = Default("0.5"),
-        cy: DOUBLE = Default("0.5"),
-        k1: DOUBLE = Default("0"),
-        k2: DOUBLE = Default("0"),
-        i: INT | Literal["nearest", "bilinear"] | Default = Default("nearest"),
-        fc: COLOR = Default("black@0"),
+        cx: Double = Default("0.5"),
+        cy: Double = Default("0.5"),
+        k1: Double = Default("0"),
+        k2: Double = Default("0"),
+        i: Int | Literal["nearest", "bilinear"] | Default = Default("nearest"),
+        fc: Color = Default("black@0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6761,12 +6761,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE cx: set relative center x (from 0 to 1) (default 0.5)
-        :param DOUBLE cy: set relative center y (from 0 to 1) (default 0.5)
-        :param DOUBLE k1: set quadratic distortion factor (from -1 to 1) (default 0)
-        :param DOUBLE k2: set double quadratic distortion factor (from -1 to 1) (default 0)
-        :param INT i: set interpolation type (from 0 to 64) (default nearest)
-        :param COLOR fc: set the color of the unmapped pixels (default "black@0")
+        :param Double cx: set relative center x (from 0 to 1) (default 0.5)
+        :param Double cy: set relative center y (from 0 to 1) (default 0.5)
+        :param Double k1: set quadratic distortion factor (from -1 to 1) (default 0)
+        :param Double k2: set double quadratic distortion factor (from -1 to 1) (default 0)
+        :param Int i: set interpolation type (from 0 to 64) (default nearest)
+        :param Color fc: set the color of the unmapped pixels (default "black@0")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lenscorrection
@@ -6798,23 +6798,23 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        model_path: STRING = Default(None),
-        log_path: STRING = Default(None),
-        log_fmt: STRING = Default("xml"),
-        enable_transform: BOOLEAN = Default("false"),
-        psnr: BOOLEAN = Default("false"),
-        ssim: BOOLEAN = Default("false"),
-        ms_ssim: BOOLEAN = Default("false"),
-        pool: STRING = Default(None),
-        n_threads: INT = Default("0"),
-        n_subsample: INT = Default("1"),
-        enable_conf_interval: BOOLEAN = Default("false"),
-        model: STRING = Default("version=vmaf_v0.6.1"),
-        feature: STRING = Default(None),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        model_path: String = Default(None),
+        log_path: String = Default(None),
+        log_fmt: String = Default("xml"),
+        enable_transform: Boolean = Default("false"),
+        psnr: Boolean = Default("false"),
+        ssim: Boolean = Default("false"),
+        ms_ssim: Boolean = Default("false"),
+        pool: String = Default(None),
+        n_threads: Int = Default("0"),
+        n_subsample: Int = Default("1"),
+        enable_conf_interval: Boolean = Default("false"),
+        model: String = Default("version=vmaf_v0.6.1"),
+        feature: String = Default(None),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -6824,23 +6824,23 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING model_path: use model='path=...'.
-        :param STRING log_path: Set the file path to be used to write log.
-        :param STRING log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
-        :param BOOLEAN enable_transform: use model='enable_transform=true'. (default false)
-        :param BOOLEAN psnr: use feature='name=psnr'. (default false)
-        :param BOOLEAN ssim: use feature='name=float_ssim'. (default false)
-        :param BOOLEAN ms_ssim: use feature='name=float_ms_ssim'. (default false)
-        :param STRING pool: Set the pool method to be used for computing vmaf.
-        :param INT n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
-        :param INT n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
-        :param BOOLEAN enable_conf_interval: model='enable_conf_interval=true'. (default false)
-        :param STRING model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
-        :param STRING feature: Set the feature to be used for computing vmaf.
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param String model_path: use model='path=...'.
+        :param String log_path: Set the file path to be used to write log.
+        :param String log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
+        :param Boolean enable_transform: use model='enable_transform=true'. (default false)
+        :param Boolean psnr: use feature='name=psnr'. (default false)
+        :param Boolean ssim: use feature='name=float_ssim'. (default false)
+        :param Boolean ms_ssim: use feature='name=float_ms_ssim'. (default false)
+        :param String pool: Set the pool method to be used for computing vmaf.
+        :param Int n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
+        :param Int n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
+        :param Boolean enable_conf_interval: model='enable_conf_interval=true'. (default false)
+        :param String model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
+        :param String feature: Set the feature to be used for computing vmaf.
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#libvmaf
 
@@ -6883,9 +6883,9 @@ class VideoStream(FilterableStream):
     def limiter(
         self,
         *,
-        min: INT = Default("0"),
-        max: INT = Default("65535"),
-        planes: INT = Default("15"),
+        min: Int = Default("0"),
+        max: Int = Default("65535"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6896,9 +6896,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT min: set min value (from 0 to 65535) (default 0)
-        :param INT max: set max value (from 0 to 65535) (default 65535)
-        :param INT planes: set planes (from 0 to 15) (default 15)
+        :param Int min: set min value (from 0 to 65535) (default 0)
+        :param Int max: set max value (from 0 to 65535) (default 65535)
+        :param Int planes: set planes (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#limiter
@@ -6924,7 +6924,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def loop(
-        self, *, loop: INT = Default("0"), size: INT64 = Default("0"), start: INT64 = Default("0"), **kwargs: Any
+        self, *, loop: Int = Default("0"), size: Int64 = Default("0"), start: Int64 = Default("0"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -6933,9 +6933,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT loop: number of loops (from -1 to INT_MAX) (default 0)
-        :param INT64 size: max number of frames to loop (from 0 to 32767) (default 0)
-        :param INT64 start: set the loop start frame (from 0 to I64_MAX) (default 0)
+        :param Int loop: number of loops (from -1 to INT_MAX) (default 0)
+        :param Int64 size: max number of frames to loop (from 0 to 32767) (default 0)
+        :param Int64 start: set the loop start frame (from 0 to I64_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#loop
 
@@ -6961,9 +6961,9 @@ class VideoStream(FilterableStream):
     def lumakey(
         self,
         *,
-        threshold: DOUBLE = Default("0"),
-        tolerance: DOUBLE = Default("0.01"),
-        softness: DOUBLE = Default("0"),
+        threshold: Double = Default("0"),
+        tolerance: Double = Default("0.01"),
+        softness: Double = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -6974,9 +6974,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE threshold: set the threshold value (from 0 to 1) (default 0)
-        :param DOUBLE tolerance: set the tolerance value (from 0 to 1) (default 0.01)
-        :param DOUBLE softness: set the softness value (from 0 to 1) (default 0)
+        :param Double threshold: set the threshold value (from 0 to 1) (default 0)
+        :param Double tolerance: set the tolerance value (from 0 to 1) (default 0.01)
+        :param Double softness: set the softness value (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lumakey
@@ -7004,17 +7004,17 @@ class VideoStream(FilterableStream):
     def lut(
         self,
         *,
-        c0: STRING = Default("clipval"),
-        c1: STRING = Default("clipval"),
-        c2: STRING = Default("clipval"),
-        c3: STRING = Default("clipval"),
-        y: STRING = Default("clipval"),
-        u: STRING = Default("clipval"),
-        v: STRING = Default("clipval"),
-        r: STRING = Default("clipval"),
-        g: STRING = Default("clipval"),
-        b: STRING = Default("clipval"),
-        a: STRING = Default("clipval"),
+        c0: String = Default("clipval"),
+        c1: String = Default("clipval"),
+        c2: String = Default("clipval"),
+        c3: String = Default("clipval"),
+        y: String = Default("clipval"),
+        u: String = Default("clipval"),
+        v: String = Default("clipval"),
+        r: String = Default("clipval"),
+        g: String = Default("clipval"),
+        b: String = Default("clipval"),
+        a: String = Default("clipval"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7025,17 +7025,17 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING c0: set component #0 expression (default "clipval")
-        :param STRING c1: set component #1 expression (default "clipval")
-        :param STRING c2: set component #2 expression (default "clipval")
-        :param STRING c3: set component #3 expression (default "clipval")
-        :param STRING y: set Y expression (default "clipval")
-        :param STRING u: set U expression (default "clipval")
-        :param STRING v: set V expression (default "clipval")
-        :param STRING r: set R expression (default "clipval")
-        :param STRING g: set G expression (default "clipval")
-        :param STRING b: set B expression (default "clipval")
-        :param STRING a: set A expression (default "clipval")
+        :param String c0: set component #0 expression (default "clipval")
+        :param String c1: set component #1 expression (default "clipval")
+        :param String c2: set component #2 expression (default "clipval")
+        :param String c3: set component #3 expression (default "clipval")
+        :param String y: set Y expression (default "clipval")
+        :param String u: set U expression (default "clipval")
+        :param String v: set V expression (default "clipval")
+        :param String r: set R expression (default "clipval")
+        :param String g: set G expression (default "clipval")
+        :param String b: set B expression (default "clipval")
+        :param String a: set A expression (default "clipval")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv
@@ -7071,8 +7071,8 @@ class VideoStream(FilterableStream):
     def lut1d(
         self,
         *,
-        file: STRING = Default(None),
-        interp: INT | Literal["nearest", "linear", "cosine", "cubic", "spline"] | Default = Default("linear"),
+        file: String = Default(None),
+        interp: Int | Literal["nearest", "linear", "cosine", "cubic", "spline"] | Default = Default("linear"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7083,8 +7083,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING file: set 1D LUT file name
-        :param INT interp: select interpolation mode (from 0 to 4) (default linear)
+        :param String file: set 1D LUT file name
+        :param Int interp: select interpolation mode (from 0 to 4) (default linear)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut1d
@@ -7112,15 +7112,15 @@ class VideoStream(FilterableStream):
         self,
         _srcy: "VideoStream",
         *,
-        c0: STRING = Default("x"),
-        c1: STRING = Default("x"),
-        c2: STRING = Default("x"),
-        c3: STRING = Default("x"),
-        d: INT = Default("0"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        c0: String = Default("x"),
+        c1: String = Default("x"),
+        c2: String = Default("x"),
+        c3: String = Default("x"),
+        d: Int = Default("0"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7131,15 +7131,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING c0: set component #0 expression (default "x")
-        :param STRING c1: set component #1 expression (default "x")
-        :param STRING c2: set component #2 expression (default "x")
-        :param STRING c3: set component #3 expression (default "x")
-        :param INT d: set output depth (from 0 to 16) (default 0)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param String c0: set component #0 expression (default "x")
+        :param String c1: set component #1 expression (default "x")
+        :param String c2: set component #2 expression (default "x")
+        :param String c3: set component #3 expression (default "x")
+        :param Int d: set output depth (from 0 to 16) (default 0)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2
@@ -7176,9 +7176,9 @@ class VideoStream(FilterableStream):
     def lut3d(
         self,
         *,
-        file: STRING = Default(None),
-        clut: INT | Literal["first", "all"] | Default = Default("all"),
-        interp: INT
+        file: String = Default(None),
+        clut: Int | Literal["first", "all"] | Default = Default("all"),
+        interp: Int
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
         | Default = Default("tetrahedral"),
         enable: str = Default(None),
@@ -7191,9 +7191,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING file: set 3D LUT file name
-        :param INT clut: when to process CLUT (from 0 to 1) (default all)
-        :param INT interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+        :param String file: set 3D LUT file name
+        :param Int clut: when to process CLUT (from 0 to 1) (default all)
+        :param Int interp: select interpolation mode (from 0 to 4) (default tetrahedral)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut3d
@@ -7221,17 +7221,17 @@ class VideoStream(FilterableStream):
     def lutrgb(
         self,
         *,
-        c0: STRING = Default("clipval"),
-        c1: STRING = Default("clipval"),
-        c2: STRING = Default("clipval"),
-        c3: STRING = Default("clipval"),
-        y: STRING = Default("clipval"),
-        u: STRING = Default("clipval"),
-        v: STRING = Default("clipval"),
-        r: STRING = Default("clipval"),
-        g: STRING = Default("clipval"),
-        b: STRING = Default("clipval"),
-        a: STRING = Default("clipval"),
+        c0: String = Default("clipval"),
+        c1: String = Default("clipval"),
+        c2: String = Default("clipval"),
+        c3: String = Default("clipval"),
+        y: String = Default("clipval"),
+        u: String = Default("clipval"),
+        v: String = Default("clipval"),
+        r: String = Default("clipval"),
+        g: String = Default("clipval"),
+        b: String = Default("clipval"),
+        a: String = Default("clipval"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7242,17 +7242,17 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING c0: set component #0 expression (default "clipval")
-        :param STRING c1: set component #1 expression (default "clipval")
-        :param STRING c2: set component #2 expression (default "clipval")
-        :param STRING c3: set component #3 expression (default "clipval")
-        :param STRING y: set Y expression (default "clipval")
-        :param STRING u: set U expression (default "clipval")
-        :param STRING v: set V expression (default "clipval")
-        :param STRING r: set R expression (default "clipval")
-        :param STRING g: set G expression (default "clipval")
-        :param STRING b: set B expression (default "clipval")
-        :param STRING a: set A expression (default "clipval")
+        :param String c0: set component #0 expression (default "clipval")
+        :param String c1: set component #1 expression (default "clipval")
+        :param String c2: set component #2 expression (default "clipval")
+        :param String c3: set component #3 expression (default "clipval")
+        :param String y: set Y expression (default "clipval")
+        :param String u: set U expression (default "clipval")
+        :param String v: set V expression (default "clipval")
+        :param String r: set R expression (default "clipval")
+        :param String g: set G expression (default "clipval")
+        :param String b: set B expression (default "clipval")
+        :param String a: set A expression (default "clipval")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv
@@ -7288,17 +7288,17 @@ class VideoStream(FilterableStream):
     def lutyuv(
         self,
         *,
-        c0: STRING = Default("clipval"),
-        c1: STRING = Default("clipval"),
-        c2: STRING = Default("clipval"),
-        c3: STRING = Default("clipval"),
-        y: STRING = Default("clipval"),
-        u: STRING = Default("clipval"),
-        v: STRING = Default("clipval"),
-        r: STRING = Default("clipval"),
-        g: STRING = Default("clipval"),
-        b: STRING = Default("clipval"),
-        a: STRING = Default("clipval"),
+        c0: String = Default("clipval"),
+        c1: String = Default("clipval"),
+        c2: String = Default("clipval"),
+        c3: String = Default("clipval"),
+        y: String = Default("clipval"),
+        u: String = Default("clipval"),
+        v: String = Default("clipval"),
+        r: String = Default("clipval"),
+        g: String = Default("clipval"),
+        b: String = Default("clipval"),
+        a: String = Default("clipval"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7309,17 +7309,17 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING c0: set component #0 expression (default "clipval")
-        :param STRING c1: set component #1 expression (default "clipval")
-        :param STRING c2: set component #2 expression (default "clipval")
-        :param STRING c3: set component #3 expression (default "clipval")
-        :param STRING y: set Y expression (default "clipval")
-        :param STRING u: set U expression (default "clipval")
-        :param STRING v: set V expression (default "clipval")
-        :param STRING r: set R expression (default "clipval")
-        :param STRING g: set G expression (default "clipval")
-        :param STRING b: set B expression (default "clipval")
-        :param STRING a: set A expression (default "clipval")
+        :param String c0: set component #0 expression (default "clipval")
+        :param String c1: set component #1 expression (default "clipval")
+        :param String c2: set component #2 expression (default "clipval")
+        :param String c3: set component #3 expression (default "clipval")
+        :param String y: set Y expression (default "clipval")
+        :param String u: set U expression (default "clipval")
+        :param String v: set V expression (default "clipval")
+        :param String r: set R expression (default "clipval")
+        :param String g: set G expression (default "clipval")
+        :param String b: set B expression (default "clipval")
+        :param String a: set A expression (default "clipval")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv
@@ -7357,9 +7357,9 @@ class VideoStream(FilterableStream):
         _dark: "VideoStream",
         _bright: "VideoStream",
         *,
-        undershoot: INT = Default("0"),
-        overshoot: INT = Default("0"),
-        planes: INT = Default("15"),
+        undershoot: Int = Default("0"),
+        overshoot: Int = Default("0"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7370,9 +7370,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT undershoot: set undershoot (from 0 to 65535) (default 0)
-        :param INT overshoot: set overshoot (from 0 to 65535) (default 0)
-        :param INT planes: set planes (from 0 to 15) (default 15)
+        :param Int undershoot: set undershoot (from 0 to 65535) (default 0)
+        :param Int overshoot: set overshoot (from 0 to 65535) (default 0)
+        :param Int planes: set planes (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedclamp
@@ -7406,7 +7406,7 @@ class VideoStream(FilterableStream):
         _filter1: "VideoStream",
         _filter2: "VideoStream",
         *,
-        planes: INT = Default("15"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7417,7 +7417,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes (from 0 to 15) (default 15)
+        :param Int planes: set planes (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmax
@@ -7449,7 +7449,7 @@ class VideoStream(FilterableStream):
         _overlay: "VideoStream",
         _mask: "VideoStream",
         *,
-        planes: INT = Default("15"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7460,7 +7460,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes (from 0 to 15) (default 15)
+        :param Int planes: set planes (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmerge
@@ -7492,7 +7492,7 @@ class VideoStream(FilterableStream):
         _filter1: "VideoStream",
         _filter2: "VideoStream",
         *,
-        planes: INT = Default("15"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7503,7 +7503,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes (from 0 to 15) (default 15)
+        :param Int planes: set planes (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedmin
@@ -7534,9 +7534,9 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        threshold: INT = Default("1"),
-        planes: INT = Default("15"),
-        mode: INT | Literal["abs", "diff"] | Default = Default("abs"),
+        threshold: Int = Default("1"),
+        planes: Int = Default("15"),
+        mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7547,9 +7547,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT threshold: set threshold (from 0 to 65535) (default 1)
-        :param INT planes: set planes (from 0 to 15) (default 15)
-        :param INT mode: set mode (from 0 to 1) (default abs)
+        :param Int threshold: set threshold (from 0 to 65535) (default 1)
+        :param Int planes: set planes (from 0 to 15) (default 15)
+        :param Int mode: set mode (from 0 to 1) (default abs)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold
@@ -7580,11 +7580,11 @@ class VideoStream(FilterableStream):
     def maskfun(
         self,
         *,
-        low: INT = Default("10"),
-        high: INT = Default("10"),
-        planes: INT = Default("15"),
-        fill: INT = Default("0"),
-        sum: INT = Default("10"),
+        low: Int = Default("10"),
+        high: Int = Default("10"),
+        planes: Int = Default("15"),
+        fill: Int = Default("0"),
+        sum: Int = Default("10"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7595,11 +7595,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT low: set low threshold (from 0 to 65535) (default 10)
-        :param INT high: set high threshold (from 0 to 65535) (default 10)
-        :param INT planes: set planes (from 0 to 15) (default 15)
-        :param INT fill: set fill value (from 0 to 65535) (default 0)
-        :param INT sum: set sum value (from 0 to 65535) (default 10)
+        :param Int low: set low threshold (from 0 to 65535) (default 10)
+        :param Int high: set high threshold (from 0 to 65535) (default 10)
+        :param Int planes: set planes (from 0 to 15) (default 15)
+        :param Int fill: set fill value (from 0 to 65535) (default 0)
+        :param Int sum: set sum value (from 0 to 65535) (default 10)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#maskfun
@@ -7629,10 +7629,10 @@ class VideoStream(FilterableStream):
     def median(
         self,
         *,
-        radius: INT = Default("1"),
-        planes: INT = Default("15"),
-        radiusV: INT = Default("0"),
-        percentile: FLOAT = Default("0.5"),
+        radius: Int = Default("1"),
+        planes: Int = Default("15"),
+        radiusV: Int = Default("0"),
+        percentile: Float = Default("0.5"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7643,10 +7643,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT radius: set median radius (from 1 to 127) (default 1)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param INT radiusV: set median vertical radius (from 0 to 127) (default 0)
-        :param FLOAT percentile: set median percentile (from 0 to 1) (default 0.5)
+        :param Int radius: set median radius (from 1 to 127) (default 1)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Int radiusV: set median vertical radius (from 0 to 127) (default 0)
+        :param Float percentile: set median percentile (from 0 to 1) (default 0.5)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#median
@@ -7675,11 +7675,11 @@ class VideoStream(FilterableStream):
     def mestimate(
         self,
         *,
-        method: INT
+        method: Int
         | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"]
         | Default = Default("esa"),
-        mb_size: INT = Default("16"),
-        search_param: INT = Default("7"),
+        mb_size: Int = Default("16"),
+        search_param: Int = Default("7"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -7689,9 +7689,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT method: motion estimation method (from 1 to 9) (default esa)
-        :param INT mb_size: macroblock size (from 8 to INT_MAX) (default 16)
-        :param INT search_param: search parameter (from 4 to INT_MAX) (default 7)
+        :param Int method: motion estimation method (from 1 to 9) (default esa)
+        :param Int mb_size: macroblock size (from 8 to INT_MAX) (default 16)
+        :param Int search_param: search parameter (from 4 to INT_MAX) (default 7)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#mestimate
 
@@ -7717,15 +7717,15 @@ class VideoStream(FilterableStream):
     def metadata(
         self,
         *,
-        mode: INT | Literal["select", "add", "modify", "delete", "print"] | Default = Default("select"),
-        key: STRING = Default(None),
-        value: STRING = Default(None),
-        function: INT
+        mode: Int | Literal["select", "add", "modify", "delete", "print"] | Default = Default("select"),
+        key: String = Default(None),
+        value: String = Default(None),
+        function: Int
         | Literal["same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"]
         | Default = Default("same_str"),
-        expr: STRING = Default(None),
-        file: STRING = Default(None),
-        direct: BOOLEAN = Default("false"),
+        expr: String = Default(None),
+        file: String = Default(None),
+        direct: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7736,13 +7736,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: set a mode of operation (from 0 to 4) (default select)
-        :param STRING key: set metadata key
-        :param STRING value: set metadata value
-        :param INT function: function for comparing values (from 0 to 6) (default same_str)
-        :param STRING expr: set expression for expr function
-        :param STRING file: set file where to print metadata information
-        :param BOOLEAN direct: reduce buffering when printing to user-set file or pipe (default false)
+        :param Int mode: set a mode of operation (from 0 to 4) (default select)
+        :param String key: set metadata key
+        :param String value: set metadata value
+        :param Int function: function for comparing values (from 0 to 6) (default same_str)
+        :param String expr: set expression for expr function
+        :param String file: set file where to print metadata information
+        :param Boolean direct: reduce buffering when printing to user-set file or pipe (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata
@@ -7772,7 +7772,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def midequalizer(
-        self, _in1: "VideoStream", *, planes: INT = Default("15"), enable: str = Default(None), **kwargs: Any
+        self, _in1: "VideoStream", *, planes: Int = Default("15"), enable: str = Default(None), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -7781,7 +7781,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes (from 0 to 15) (default 15)
+        :param Int planes: set planes (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#midequalizer
@@ -7810,18 +7810,18 @@ class VideoStream(FilterableStream):
     def minterpolate(
         self,
         *,
-        fps: VIDEO_RATE = Default("60"),
-        mi_mode: INT | Literal["dup", "blend", "mci"] | Default = Default("mci"),
-        mc_mode: INT | Literal["obmc", "aobmc"] | Default = Default("obmc"),
-        me_mode: INT | Literal["bidir", "bilat"] | Default = Default("bilat"),
-        me: INT
+        fps: Video_rate = Default("60"),
+        mi_mode: Int | Literal["dup", "blend", "mci"] | Default = Default("mci"),
+        mc_mode: Int | Literal["obmc", "aobmc"] | Default = Default("obmc"),
+        me_mode: Int | Literal["bidir", "bilat"] | Default = Default("bilat"),
+        me: Int
         | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"]
         | Default = Default("epzs"),
-        mb_size: INT = Default("16"),
-        search_param: INT = Default("32"),
-        vsbmc: INT = Default("0"),
-        scd: INT | Literal["none", "fdiff"] | Default = Default("fdiff"),
-        scd_threshold: DOUBLE = Default("10"),
+        mb_size: Int = Default("16"),
+        search_param: Int = Default("32"),
+        vsbmc: Int = Default("0"),
+        scd: Int | Literal["none", "fdiff"] | Default = Default("fdiff"),
+        scd_threshold: Double = Default("10"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -7831,16 +7831,16 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param VIDEO_RATE fps: output's frame rate (default "60")
-        :param INT mi_mode: motion interpolation mode (from 0 to 2) (default mci)
-        :param INT mc_mode: motion compensation mode (from 0 to 1) (default obmc)
-        :param INT me_mode: motion estimation mode (from 0 to 1) (default bilat)
-        :param INT me: motion estimation method (from 1 to 9) (default epzs)
-        :param INT mb_size: macroblock size (from 4 to 16) (default 16)
-        :param INT search_param: search parameter (from 4 to INT_MAX) (default 32)
-        :param INT vsbmc: variable-size block motion compensation (from 0 to 1) (default 0)
-        :param INT scd: scene change detection method (from 0 to 1) (default fdiff)
-        :param DOUBLE scd_threshold: scene change threshold (from 0 to 100) (default 10)
+        :param Video_rate fps: output's frame rate (default "60")
+        :param Int mi_mode: motion interpolation mode (from 0 to 2) (default mci)
+        :param Int mc_mode: motion compensation mode (from 0 to 1) (default obmc)
+        :param Int me_mode: motion estimation mode (from 0 to 1) (default bilat)
+        :param Int me: motion estimation method (from 1 to 9) (default epzs)
+        :param Int mb_size: macroblock size (from 4 to 16) (default 16)
+        :param Int search_param: search parameter (from 4 to INT_MAX) (default 32)
+        :param Int vsbmc: variable-size block motion compensation (from 0 to 1) (default 0)
+        :param Int scd: scene change detection method (from 0 to 1) (default fdiff)
+        :param Double scd_threshold: scene change threshold (from 0 to 100) (default 10)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#minterpolate
 
@@ -7873,10 +7873,10 @@ class VideoStream(FilterableStream):
     def monochrome(
         self,
         *,
-        cb: FLOAT = Default("0"),
-        cr: FLOAT = Default("0"),
-        size: FLOAT = Default("1"),
-        high: FLOAT = Default("0"),
+        cb: Float = Default("0"),
+        cr: Float = Default("0"),
+        size: Float = Default("1"),
+        high: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7887,10 +7887,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT cb: set the chroma blue spot (from -1 to 1) (default 0)
-        :param FLOAT cr: set the chroma red spot (from -1 to 1) (default 0)
-        :param FLOAT size: set the color filter size (from 0.1 to 10) (default 1)
-        :param FLOAT high: set the highlights strength (from 0 to 1) (default 0)
+        :param Float cb: set the chroma blue spot (from -1 to 1) (default 0)
+        :param Float cr: set the chroma red spot (from -1 to 1) (default 0)
+        :param Float size: set the color filter size (from 0.1 to 10) (default 1)
+        :param Float high: set the highlights strength (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#monochrome
@@ -7920,15 +7920,15 @@ class VideoStream(FilterableStream):
         self,
         _structure: "VideoStream",
         *,
-        mode: INT
+        mode: Int
         | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
         | Default = Default("erode"),
-        planes: INT = Default("7"),
-        structure: INT | Literal["first", "all"] | Default = Default("all"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        planes: Int = Default("7"),
+        structure: Int | Literal["first", "all"] | Default = Default("all"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -7939,13 +7939,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: set morphological transform (from 0 to 6) (default erode)
-        :param INT planes: set planes to filter (from 0 to 15) (default 7)
-        :param INT structure: when to process structures (from 0 to 1) (default all)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int mode: set morphological transform (from 0 to 6) (default erode)
+        :param Int planes: set planes to filter (from 0 to 15) (default 7)
+        :param Int structure: when to process structures (from 0 to 1) (default all)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#morpho
@@ -7980,10 +7980,10 @@ class VideoStream(FilterableStream):
     def mpdecimate(
         self,
         *,
-        max: INT = Default("0"),
-        hi: INT = Default("768"),
-        lo: INT = Default("320"),
-        frac: FLOAT = Default("0.33"),
+        max: Int = Default("0"),
+        hi: Int = Default("768"),
+        lo: Int = Default("320"),
+        frac: Float = Default("0.33"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -7993,10 +7993,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT max: set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)
-        :param INT hi: set high dropping threshold (from INT_MIN to INT_MAX) (default 768)
-        :param INT lo: set low dropping threshold (from INT_MIN to INT_MAX) (default 320)
-        :param FLOAT frac: set fraction dropping threshold (from 0 to 1) (default 0.33)
+        :param Int max: set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)
+        :param Int hi: set high dropping threshold (from INT_MIN to INT_MAX) (default 768)
+        :param Int lo: set low dropping threshold (from INT_MIN to INT_MAX) (default 320)
+        :param Float frac: set fraction dropping threshold (from 0 to 1) (default 0.33)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#mpdecimate
 
@@ -8024,10 +8024,10 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8038,10 +8038,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#msad
@@ -8074,9 +8074,9 @@ class VideoStream(FilterableStream):
         self,
         _factor: "VideoStream",
         *,
-        scale: FLOAT = Default("1"),
-        offset: FLOAT = Default("0.5"),
-        planes: FLAGS = Default("F"),
+        scale: Float = Default("1"),
+        offset: Float = Default("0.5"),
+        planes: Flags = Default("F"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8087,9 +8087,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT scale: set scale (from 0 to 9) (default 1)
-        :param FLOAT offset: set offset (from -1 to 1) (default 0.5)
-        :param FLAGS planes: set planes (default F)
+        :param Float scale: set scale (from 0 to 9) (default 1)
+        :param Float offset: set offset (from -1 to 1) (default 0.5)
+        :param Flags planes: set planes (default F)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#multiply
@@ -8120,8 +8120,8 @@ class VideoStream(FilterableStream):
     def negate(
         self,
         *,
-        components: FLAGS | Literal["y", "u", "v", "r", "g", "b", "a"] | Default = Default("y+u+v+r+g+b"),
-        negate_alpha: BOOLEAN = Default("false"),
+        components: Flags | Literal["y", "u", "v", "r", "g", "b", "a"] | Default = Default("y+u+v+r+g+b"),
+        negate_alpha: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8132,8 +8132,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLAGS components: set components to negate (default y+u+v+r+g+b)
-        :param BOOLEAN negate_alpha: (default false)
+        :param Flags components: set components to negate (default y+u+v+r+g+b)
+        :param Boolean negate_alpha: (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#negate
@@ -8160,11 +8160,11 @@ class VideoStream(FilterableStream):
     def nlmeans(
         self,
         *,
-        s: DOUBLE = Default("1"),
-        p: INT = Default("7"),
-        pc: INT = Default("0"),
-        r: INT = Default("15"),
-        rc: INT = Default("0"),
+        s: Double = Default("1"),
+        p: Int = Default("7"),
+        pc: Int = Default("0"),
+        r: Int = Default("15"),
+        rc: Int = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8175,11 +8175,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE s: denoising strength (from 1 to 30) (default 1)
-        :param INT p: patch size (from 0 to 99) (default 7)
-        :param INT pc: patch size for chroma planes (from 0 to 99) (default 0)
-        :param INT r: research window (from 0 to 99) (default 15)
-        :param INT rc: research window for chroma planes (from 0 to 99) (default 0)
+        :param Double s: denoising strength (from 1 to 30) (default 1)
+        :param Int p: patch size (from 0 to 99) (default 7)
+        :param Int pc: patch size for chroma planes (from 0 to 99) (default 0)
+        :param Int r: research window (from 0 to 99) (default 15)
+        :param Int rc: research window for chroma planes (from 0 to 99) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#nlmeans
@@ -8209,15 +8209,15 @@ class VideoStream(FilterableStream):
     def nnedi(
         self,
         *,
-        weights: STRING = Default("nnedi3_weights.bin"),
-        deint: INT | Literal["all", "interlaced"] | Default = Default("all"),
-        field: INT | Literal["af", "a", "t", "b", "tf", "bf"] | Default = Default("a"),
-        planes: INT = Default("7"),
-        nsize: INT | Literal["s8x6", "s16x6", "s32x6", "s48x6", "s8x4", "s16x4", "s32x4"] | Default = Default("s32x4"),
-        nns: INT | Literal["n16", "n32", "n64", "n128", "n256"] | Default = Default("n32"),
-        qual: INT | Literal["fast", "slow"] | Default = Default("fast"),
-        etype: INT | Literal["a", "abs", "s", "mse"] | Default = Default("a"),
-        pscrn: INT | Literal["none", "original", "new", "new2", "new3"] | Default = Default("new"),
+        weights: String = Default("nnedi3_weights.bin"),
+        deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
+        field: Int | Literal["af", "a", "t", "b", "tf", "bf"] | Default = Default("a"),
+        planes: Int = Default("7"),
+        nsize: Int | Literal["s8x6", "s16x6", "s32x6", "s48x6", "s8x4", "s16x4", "s32x4"] | Default = Default("s32x4"),
+        nns: Int | Literal["n16", "n32", "n64", "n128", "n256"] | Default = Default("n32"),
+        qual: Int | Literal["fast", "slow"] | Default = Default("fast"),
+        etype: Int | Literal["a", "abs", "s", "mse"] | Default = Default("a"),
+        pscrn: Int | Literal["none", "original", "new", "new2", "new3"] | Default = Default("new"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8228,15 +8228,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING weights: set weights file (default "nnedi3_weights.bin")
-        :param INT deint: set which frames to deinterlace (from 0 to 1) (default all)
-        :param INT field: set mode of operation (from -2 to 3) (default a)
-        :param INT planes: set which planes to process (from 0 to 15) (default 7)
-        :param INT nsize: set size of local neighborhood around each pixel, used by the predictor neural network (from 0 to 6) (default s32x4)
-        :param INT nns: set number of neurons in predictor neural network (from 0 to 4) (default n32)
-        :param INT qual: set quality (from 1 to 2) (default fast)
-        :param INT etype: set which set of weights to use in the predictor (from 0 to 1) (default a)
-        :param INT pscrn: set prescreening (from 0 to 4) (default new)
+        :param String weights: set weights file (default "nnedi3_weights.bin")
+        :param Int deint: set which frames to deinterlace (from 0 to 1) (default all)
+        :param Int field: set mode of operation (from -2 to 3) (default a)
+        :param Int planes: set which planes to process (from 0 to 15) (default 7)
+        :param Int nsize: set size of local neighborhood around each pixel, used by the predictor neural network (from 0 to 6) (default s32x4)
+        :param Int nns: set number of neurons in predictor neural network (from 0 to 4) (default n32)
+        :param Int qual: set quality (from 1 to 2) (default fast)
+        :param Int etype: set which set of weights to use in the predictor (from 0 to 1) (default a)
+        :param Int pscrn: set prescreening (from 0 to 4) (default new)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#nnedi
@@ -8267,7 +8267,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def noformat(self, *, pix_fmts: STRING = Default(None), **kwargs: Any) -> "VideoStream":
+    def noformat(self, *, pix_fmts: String = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Force libavfilter not to use any of the specified pixel formats for the input to the next filter.
@@ -8275,7 +8275,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING pix_fmts: A '|'-separated list of pixel formats
+        :param String pix_fmts: A '|'-separated list of pixel formats
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#noformat
 
@@ -8299,21 +8299,21 @@ class VideoStream(FilterableStream):
     def noise(
         self,
         *,
-        all_seed: INT = Default("-1"),
-        all_strength: INT = Default("0"),
-        all_flags: FLAGS | Literal["a", "p", "t", "u"] | Default = Default("0"),
-        c0_seed: INT = Default("-1"),
-        c0_strength: INT = Default("0"),
-        c0_flags: FLAGS | Literal["a", "p", "t", "u"] | Default = Default("0"),
-        c1_seed: INT = Default("-1"),
-        c1_strength: INT = Default("0"),
-        c1_flags: FLAGS | Literal["a", "p", "t", "u"] | Default = Default("0"),
-        c2_seed: INT = Default("-1"),
-        c2_strength: INT = Default("0"),
-        c2_flags: FLAGS | Literal["a", "p", "t", "u"] | Default = Default("0"),
-        c3_seed: INT = Default("-1"),
-        c3_strength: INT = Default("0"),
-        c3_flags: FLAGS | Literal["a", "p", "t", "u"] | Default = Default("0"),
+        all_seed: Int = Default("-1"),
+        all_strength: Int = Default("0"),
+        all_flags: Flags | Literal["a", "p", "t", "u"] | Default = Default("0"),
+        c0_seed: Int = Default("-1"),
+        c0_strength: Int = Default("0"),
+        c0_flags: Flags | Literal["a", "p", "t", "u"] | Default = Default("0"),
+        c1_seed: Int = Default("-1"),
+        c1_strength: Int = Default("0"),
+        c1_flags: Flags | Literal["a", "p", "t", "u"] | Default = Default("0"),
+        c2_seed: Int = Default("-1"),
+        c2_strength: Int = Default("0"),
+        c2_flags: Flags | Literal["a", "p", "t", "u"] | Default = Default("0"),
+        c3_seed: Int = Default("-1"),
+        c3_strength: Int = Default("0"),
+        c3_flags: Flags | Literal["a", "p", "t", "u"] | Default = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8324,21 +8324,21 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT all_seed: set component #0 noise seed (from -1 to INT_MAX) (default -1)
-        :param INT all_strength: set component #0 strength (from 0 to 100) (default 0)
-        :param FLAGS all_flags: set component #0 flags (default 0)
-        :param INT c0_seed: set component #0 noise seed (from -1 to INT_MAX) (default -1)
-        :param INT c0_strength: set component #0 strength (from 0 to 100) (default 0)
-        :param FLAGS c0_flags: set component #0 flags (default 0)
-        :param INT c1_seed: set component #1 noise seed (from -1 to INT_MAX) (default -1)
-        :param INT c1_strength: set component #1 strength (from 0 to 100) (default 0)
-        :param FLAGS c1_flags: set component #1 flags (default 0)
-        :param INT c2_seed: set component #2 noise seed (from -1 to INT_MAX) (default -1)
-        :param INT c2_strength: set component #2 strength (from 0 to 100) (default 0)
-        :param FLAGS c2_flags: set component #2 flags (default 0)
-        :param INT c3_seed: set component #3 noise seed (from -1 to INT_MAX) (default -1)
-        :param INT c3_strength: set component #3 strength (from 0 to 100) (default 0)
-        :param FLAGS c3_flags: set component #3 flags (default 0)
+        :param Int all_seed: set component #0 noise seed (from -1 to INT_MAX) (default -1)
+        :param Int all_strength: set component #0 strength (from 0 to 100) (default 0)
+        :param Flags all_flags: set component #0 flags (default 0)
+        :param Int c0_seed: set component #0 noise seed (from -1 to INT_MAX) (default -1)
+        :param Int c0_strength: set component #0 strength (from 0 to 100) (default 0)
+        :param Flags c0_flags: set component #0 flags (default 0)
+        :param Int c1_seed: set component #1 noise seed (from -1 to INT_MAX) (default -1)
+        :param Int c1_strength: set component #1 strength (from 0 to 100) (default 0)
+        :param Flags c1_flags: set component #1 flags (default 0)
+        :param Int c2_seed: set component #2 noise seed (from -1 to INT_MAX) (default -1)
+        :param Int c2_strength: set component #2 strength (from 0 to 100) (default 0)
+        :param Flags c2_flags: set component #2 flags (default 0)
+        :param Int c3_seed: set component #3 noise seed (from -1 to INT_MAX) (default -1)
+        :param Int c3_strength: set component #3 strength (from 0 to 100) (default 0)
+        :param Flags c3_flags: set component #3 flags (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#noise
@@ -8378,11 +8378,11 @@ class VideoStream(FilterableStream):
     def normalize(
         self,
         *,
-        blackpt: COLOR = Default("black"),
-        whitept: COLOR = Default("white"),
-        smoothing: INT = Default("0"),
-        independence: FLOAT = Default("1"),
-        strength: FLOAT = Default("1"),
+        blackpt: Color = Default("black"),
+        whitept: Color = Default("white"),
+        smoothing: Int = Default("0"),
+        independence: Float = Default("1"),
+        strength: Float = Default("1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8393,11 +8393,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param COLOR blackpt: output color to which darkest input color is mapped (default "black")
-        :param COLOR whitept: output color to which brightest input color is mapped (default "white")
-        :param INT smoothing: amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)
-        :param FLOAT independence: proportion of independent to linked channel normalization (from 0 to 1) (default 1)
-        :param FLOAT strength: strength of filter, from no effect to full normalization (from 0 to 1) (default 1)
+        :param Color blackpt: output color to which darkest input color is mapped (default "black")
+        :param Color whitept: output color to which brightest input color is mapped (default "white")
+        :param Int smoothing: amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)
+        :param Float independence: proportion of independent to linked channel normalization (from 0 to 1) (default 1)
+        :param Float strength: strength of filter, from no effect to full normalization (from 0 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#normalize
@@ -8448,10 +8448,10 @@ class VideoStream(FilterableStream):
     def ocr(
         self,
         *,
-        datapath: STRING = Default(None),
-        language: STRING = Default("eng"),
-        whitelist: STRING = Default("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}("),
-        blacklist: STRING = Default(""),
+        datapath: String = Default(None),
+        language: String = Default("eng"),
+        whitelist: String = Default("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}("),
+        blacklist: String = Default(""),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8461,10 +8461,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING datapath: set datapath
-        :param STRING language: set language (default "eng")
-        :param STRING whitelist: set character whitelist (default "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?"'[]{}()|/\=*&%$#@!~ ")
-        :param STRING blacklist: set character blacklist (default "")
+        :param String datapath: set datapath
+        :param String language: set language (default "eng")
+        :param String whitelist: set character whitelist (default "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?"'[]{}()|/\=*&%$#@!~ ")
+        :param String blacklist: set character blacklist (default "")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ocr
 
@@ -8491,19 +8491,19 @@ class VideoStream(FilterableStream):
     def oscilloscope(
         self,
         *,
-        x: FLOAT = Default("0.5"),
-        y: FLOAT = Default("0.5"),
-        s: FLOAT = Default("0.8"),
-        t: FLOAT = Default("0.5"),
-        o: FLOAT = Default("0.8"),
-        tx: FLOAT = Default("0.5"),
-        ty: FLOAT = Default("0.9"),
-        tw: FLOAT = Default("0.8"),
-        th: FLOAT = Default("0.3"),
-        c: INT = Default("7"),
-        g: BOOLEAN = Default("true"),
-        st: BOOLEAN = Default("true"),
-        sc: BOOLEAN = Default("true"),
+        x: Float = Default("0.5"),
+        y: Float = Default("0.5"),
+        s: Float = Default("0.8"),
+        t: Float = Default("0.5"),
+        o: Float = Default("0.8"),
+        tx: Float = Default("0.5"),
+        ty: Float = Default("0.9"),
+        tw: Float = Default("0.8"),
+        th: Float = Default("0.3"),
+        c: Int = Default("7"),
+        g: Boolean = Default("true"),
+        st: Boolean = Default("true"),
+        sc: Boolean = Default("true"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8514,19 +8514,19 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT x: set scope x position (from 0 to 1) (default 0.5)
-        :param FLOAT y: set scope y position (from 0 to 1) (default 0.5)
-        :param FLOAT s: set scope size (from 0 to 1) (default 0.8)
-        :param FLOAT t: set scope tilt (from 0 to 1) (default 0.5)
-        :param FLOAT o: set trace opacity (from 0 to 1) (default 0.8)
-        :param FLOAT tx: set trace x position (from 0 to 1) (default 0.5)
-        :param FLOAT ty: set trace y position (from 0 to 1) (default 0.9)
-        :param FLOAT tw: set trace width (from 0.1 to 1) (default 0.8)
-        :param FLOAT th: set trace height (from 0.1 to 1) (default 0.3)
-        :param INT c: set components to trace (from 0 to 15) (default 7)
-        :param BOOLEAN g: draw trace grid (default true)
-        :param BOOLEAN st: draw statistics (default true)
-        :param BOOLEAN sc: draw scope (default true)
+        :param Float x: set scope x position (from 0 to 1) (default 0.5)
+        :param Float y: set scope y position (from 0 to 1) (default 0.5)
+        :param Float s: set scope size (from 0 to 1) (default 0.8)
+        :param Float t: set scope tilt (from 0 to 1) (default 0.5)
+        :param Float o: set trace opacity (from 0 to 1) (default 0.8)
+        :param Float tx: set trace x position (from 0 to 1) (default 0.5)
+        :param Float ty: set trace y position (from 0 to 1) (default 0.9)
+        :param Float tw: set trace width (from 0.1 to 1) (default 0.8)
+        :param Float th: set trace height (from 0.1 to 1) (default 0.3)
+        :param Int c: set components to trace (from 0 to 15) (default 7)
+        :param Boolean g: draw trace grid (default true)
+        :param Boolean st: draw statistics (default true)
+        :param Boolean sc: draw scope (default true)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#oscilloscope
@@ -8565,17 +8565,17 @@ class VideoStream(FilterableStream):
         self,
         _overlay: "VideoStream",
         *,
-        x: STRING = Default("0"),
-        y: STRING = Default("0"),
-        eof_action: INT | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
-        eval: INT | Literal["init", "frame"] | Default = Default("frame"),
-        shortest: BOOLEAN = Default("false"),
-        format: INT
+        x: String = Default("0"),
+        y: String = Default("0"),
+        eof_action: Int | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
+        eval: Int | Literal["init", "frame"] | Default = Default("frame"),
+        shortest: Boolean = Default("false"),
+        format: Int
         | Literal["yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "rgb", "gbrp", "auto"]
         | Default = Default("yuv420"),
-        repeatlast: BOOLEAN = Default("true"),
-        alpha: INT | Literal["straight", "premultiplied"] | Default = Default("straight"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        repeatlast: Boolean = Default("true"),
+        alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8586,15 +8586,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING x: set the x expression (default "0")
-        :param STRING y: set the y expression (default "0")
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default frame)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param INT format: set output format (from 0 to 7) (default yuv420)
-        :param BOOLEAN repeatlast: repeat overlay of the last overlay frame (default true)
-        :param INT alpha: alpha format (from 0 to 1) (default straight)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param String x: set the x expression (default "0")
+        :param String y: set the y expression (default "0")
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default frame)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Int format: set output format (from 0 to 7) (default yuv420)
+        :param Boolean repeatlast: repeat overlay of the last overlay frame (default true)
+        :param Int alpha: alpha format (from 0 to 1) (default straight)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#overlay
@@ -8631,9 +8631,9 @@ class VideoStream(FilterableStream):
     def owdenoise(
         self,
         *,
-        depth: INT = Default("8"),
-        luma_strength: DOUBLE = Default("1"),
-        chroma_strength: DOUBLE = Default("1"),
+        depth: Int = Default("8"),
+        luma_strength: Double = Default("1"),
+        chroma_strength: Double = Default("1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8644,9 +8644,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT depth: set depth (from 8 to 16) (default 8)
-        :param DOUBLE luma_strength: set luma strength (from 0 to 1000) (default 1)
-        :param DOUBLE chroma_strength: set chroma strength (from 0 to 1000) (default 1)
+        :param Int depth: set depth (from 8 to 16) (default 8)
+        :param Double luma_strength: set luma strength (from 0 to 1000) (default 1)
+        :param Double chroma_strength: set chroma strength (from 0 to 1000) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#owdenoise
@@ -8674,13 +8674,13 @@ class VideoStream(FilterableStream):
     def pad(
         self,
         *,
-        width: STRING = Default("iw"),
-        height: STRING = Default("ih"),
-        x: STRING = Default("0"),
-        y: STRING = Default("0"),
-        color: COLOR = Default("black"),
-        eval: INT | Literal["init", "frame"] | Default = Default("init"),
-        aspect: RATIONAL = Default("0/1"),
+        width: String = Default("iw"),
+        height: String = Default("ih"),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        color: Color = Default("black"),
+        eval: Int | Literal["init", "frame"] | Default = Default("init"),
+        aspect: Rational = Default("0/1"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8690,13 +8690,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING width: set the pad area width expression (default "iw")
-        :param STRING height: set the pad area height expression (default "ih")
-        :param STRING x: set the x offset expression for the input image position (default "0")
-        :param STRING y: set the y offset expression for the input image position (default "0")
-        :param COLOR color: set the color of the padded area border (default "black")
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default init)
-        :param RATIONAL aspect: pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)
+        :param String width: set the pad area width expression (default "iw")
+        :param String height: set the pad area height expression (default "ih")
+        :param String x: set the x offset expression for the input image position (default "0")
+        :param String y: set the y offset expression for the input image position (default "0")
+        :param Color color: set the color of the padded area border (default "black")
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
+        :param Rational aspect: pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pad
 
@@ -8726,10 +8726,10 @@ class VideoStream(FilterableStream):
     def palettegen(
         self,
         *,
-        max_colors: INT = Default("256"),
-        reserve_transparent: BOOLEAN = Default("true"),
-        transparency_color: COLOR = Default("lime"),
-        stats_mode: INT | Literal["full", "diff", "single"] | Default = Default("full"),
+        max_colors: Int = Default("256"),
+        reserve_transparent: Boolean = Default("true"),
+        transparency_color: Color = Default("lime"),
+        stats_mode: Int | Literal["full", "diff", "single"] | Default = Default("full"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8739,10 +8739,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT max_colors: set the maximum number of colors to use in the palette (from 2 to 256) (default 256)
-        :param BOOLEAN reserve_transparent: reserve a palette entry for transparency (default true)
-        :param COLOR transparency_color: set a background color for transparency (default "lime")
-        :param INT stats_mode: set statistics mode (from 0 to 2) (default full)
+        :param Int max_colors: set the maximum number of colors to use in the palette (from 2 to 256) (default 256)
+        :param Boolean reserve_transparent: reserve a palette entry for transparency (default true)
+        :param Color transparency_color: set a background color for transparency (default "lime")
+        :param Int stats_mode: set statistics mode (from 0 to 2) (default full)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#palettegen
 
@@ -8770,14 +8770,14 @@ class VideoStream(FilterableStream):
         self,
         _palette: "VideoStream",
         *,
-        dither: INT
+        dither: Int
         | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
         | Default = Default("sierra2_4a"),
-        bayer_scale: INT = Default("2"),
-        diff_mode: INT | Literal["rectangle"] | Default = Default("0"),
-        new: BOOLEAN = Default("false"),
-        alpha_threshold: INT = Default("128"),
-        debug_kdtree: STRING = Default(None),
+        bayer_scale: Int = Default("2"),
+        diff_mode: Int | Literal["rectangle"] | Default = Default("0"),
+        new: Boolean = Default("false"),
+        alpha_threshold: Int = Default("128"),
+        debug_kdtree: String = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8787,12 +8787,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT dither: select dithering mode (from 0 to 8) (default sierra2_4a)
-        :param INT bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
-        :param INT diff_mode: set frame difference mode (from 0 to 1) (default 0)
-        :param BOOLEAN new: take new palette for each output frame (default false)
-        :param INT alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
-        :param STRING debug_kdtree: save Graphviz graph of the kdtree in specified file
+        :param Int dither: select dithering mode (from 0 to 8) (default sierra2_4a)
+        :param Int bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
+        :param Int diff_mode: set frame difference mode (from 0 to 1) (default 0)
+        :param Boolean new: take new palette for each output frame (default false)
+        :param Int alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
+        :param String debug_kdtree: save Graphviz graph of the kdtree in specified file
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#paletteuse
 
@@ -8824,8 +8824,8 @@ class VideoStream(FilterableStream):
     def perms(
         self,
         *,
-        mode: INT | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
-        seed: INT64 = Default("-1"),
+        mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
+        seed: Int64 = Default("-1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8836,8 +8836,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: select permissions mode (from 0 to 4) (default none)
-        :param INT64 seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
+        :param Int mode: select permissions mode (from 0 to 4) (default none)
+        :param Int64 seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms
@@ -8864,17 +8864,17 @@ class VideoStream(FilterableStream):
     def perspective(
         self,
         *,
-        x0: STRING = Default("0"),
-        y0: STRING = Default("0"),
-        x1: STRING = Default("W"),
-        y1: STRING = Default("0"),
-        x2: STRING = Default("0"),
-        y2: STRING = Default("H"),
-        x3: STRING = Default("W"),
-        y3: STRING = Default("H"),
-        interpolation: INT | Literal["linear", "cubic"] | Default = Default("linear"),
-        sense: INT | Literal["source", "destination"] | Default = Default("source"),
-        eval: INT | Literal["init", "frame"] | Default = Default("init"),
+        x0: String = Default("0"),
+        y0: String = Default("0"),
+        x1: String = Default("W"),
+        y1: String = Default("0"),
+        x2: String = Default("0"),
+        y2: String = Default("H"),
+        x3: String = Default("W"),
+        y3: String = Default("H"),
+        interpolation: Int | Literal["linear", "cubic"] | Default = Default("linear"),
+        sense: Int | Literal["source", "destination"] | Default = Default("source"),
+        eval: Int | Literal["init", "frame"] | Default = Default("init"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8885,17 +8885,17 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING x0: set top left x coordinate (default "0")
-        :param STRING y0: set top left y coordinate (default "0")
-        :param STRING x1: set top right x coordinate (default "W")
-        :param STRING y1: set top right y coordinate (default "0")
-        :param STRING x2: set bottom left x coordinate (default "0")
-        :param STRING y2: set bottom left y coordinate (default "H")
-        :param STRING x3: set bottom right x coordinate (default "W")
-        :param STRING y3: set bottom right y coordinate (default "H")
-        :param INT interpolation: set interpolation (from 0 to 1) (default linear)
-        :param INT sense: specify the sense of the coordinates (from 0 to 1) (default source)
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default init)
+        :param String x0: set top left x coordinate (default "0")
+        :param String y0: set top left y coordinate (default "0")
+        :param String x1: set top right x coordinate (default "W")
+        :param String y1: set top right y coordinate (default "0")
+        :param String x2: set bottom left x coordinate (default "0")
+        :param String y2: set bottom left y coordinate (default "H")
+        :param String x3: set bottom right x coordinate (default "W")
+        :param String y3: set bottom right y coordinate (default "H")
+        :param Int interpolation: set interpolation (from 0 to 1) (default linear)
+        :param Int sense: specify the sense of the coordinates (from 0 to 1) (default source)
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#perspective
@@ -8931,7 +8931,7 @@ class VideoStream(FilterableStream):
     def phase(
         self,
         *,
-        mode: INT | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"] | Default = Default("A"),
+        mode: Int | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"] | Default = Default("A"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -8942,7 +8942,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: set phase mode (from 0 to 8) (default A)
+        :param Int mode: set phase mode (from 0 to 8) (default A)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#phase
@@ -8968,10 +8968,10 @@ class VideoStream(FilterableStream):
     def photosensitivity(
         self,
         *,
-        frames: INT = Default("30"),
-        threshold: FLOAT = Default("1"),
-        skip: INT = Default("1"),
-        bypass: BOOLEAN = Default("false"),
+        frames: Int = Default("30"),
+        threshold: Float = Default("1"),
+        skip: Int = Default("1"),
+        bypass: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -8981,10 +8981,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT frames: set how many frames to use (from 2 to 240) (default 30)
-        :param FLOAT threshold: set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)
-        :param INT skip: set pixels to skip when sampling frames (from 1 to 1024) (default 1)
-        :param BOOLEAN bypass: leave frames unchanged (default false)
+        :param Int frames: set how many frames to use (from 2 to 240) (default 30)
+        :param Float threshold: set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)
+        :param Int skip: set pixels to skip when sampling frames (from 1 to 1024) (default 1)
+        :param Boolean bypass: leave frames unchanged (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#photosensitivity
 
@@ -9032,10 +9032,10 @@ class VideoStream(FilterableStream):
     def pixelize(
         self,
         *,
-        width: INT = Default("16"),
-        height: INT = Default("16"),
-        mode: INT | Literal["avg", "min", "max"] | Default = Default("avg"),
-        planes: FLAGS = Default("F"),
+        width: Int = Default("16"),
+        height: Int = Default("16"),
+        mode: Int | Literal["avg", "min", "max"] | Default = Default("avg"),
+        planes: Flags = Default("F"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9046,10 +9046,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT width: set block width (from 1 to 1024) (default 16)
-        :param INT height: set block height (from 1 to 1024) (default 16)
-        :param INT mode: set the pixelize mode (from 0 to 2) (default avg)
-        :param FLAGS planes: set what planes to filter (default F)
+        :param Int width: set block width (from 1 to 1024) (default 16)
+        :param Int height: set block height (from 1 to 1024) (default 16)
+        :param Int mode: set the pixelize mode (from 0 to 2) (default avg)
+        :param Flags planes: set what planes to filter (default F)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pixelize
@@ -9078,13 +9078,13 @@ class VideoStream(FilterableStream):
     def pixscope(
         self,
         *,
-        x: FLOAT = Default("0.5"),
-        y: FLOAT = Default("0.5"),
-        w: INT = Default("7"),
-        h: INT = Default("7"),
-        o: FLOAT = Default("0.5"),
-        wx: FLOAT = Default("-1"),
-        wy: FLOAT = Default("-1"),
+        x: Float = Default("0.5"),
+        y: Float = Default("0.5"),
+        w: Int = Default("7"),
+        h: Int = Default("7"),
+        o: Float = Default("0.5"),
+        wx: Float = Default("-1"),
+        wy: Float = Default("-1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9095,13 +9095,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT x: set scope x offset (from 0 to 1) (default 0.5)
-        :param FLOAT y: set scope y offset (from 0 to 1) (default 0.5)
-        :param INT w: set scope width (from 1 to 80) (default 7)
-        :param INT h: set scope height (from 1 to 80) (default 7)
-        :param FLOAT o: set window opacity (from 0 to 1) (default 0.5)
-        :param FLOAT wx: set window x offset (from -1 to 1) (default -1)
-        :param FLOAT wy: set window y offset (from -1 to 1) (default -1)
+        :param Float x: set scope x offset (from 0 to 1) (default 0.5)
+        :param Float y: set scope y offset (from 0 to 1) (default 0.5)
+        :param Int w: set scope width (from 1 to 80) (default 7)
+        :param Int h: set scope height (from 1 to 80) (default 7)
+        :param Float o: set window opacity (from 0 to 1) (default 0.5)
+        :param Float wx: set window x offset (from -1 to 1) (default -1)
+        :param Float wy: set window y offset (from -1 to 1) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pixscope
@@ -9130,7 +9130,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def pp(self, *, subfilters: STRING = Default("de"), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def pp(self, *, subfilters: String = Default("de"), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Filter video using libpostproc.
@@ -9138,7 +9138,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING subfilters: set postprocess subfilters (default "de")
+        :param String subfilters: set postprocess subfilters (default "de")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pp
@@ -9164,8 +9164,8 @@ class VideoStream(FilterableStream):
     def pp7(
         self,
         *,
-        qp: INT = Default("0"),
-        mode: INT | Literal["hard", "soft", "medium"] | Default = Default("medium"),
+        qp: Int = Default("0"),
+        mode: Int | Literal["hard", "soft", "medium"] | Default = Default("medium"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9176,8 +9176,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT qp: force a constant quantizer parameter (from 0 to 64) (default 0)
-        :param INT mode: set thresholding mode (from 0 to 2) (default medium)
+        :param Int qp: force a constant quantizer parameter (from 0 to 64) (default 0)
+        :param Int mode: set thresholding mode (from 0 to 2) (default medium)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pp7
@@ -9204,9 +9204,9 @@ class VideoStream(FilterableStream):
     def prewitt(
         self,
         *,
-        planes: INT = Default("15"),
-        scale: FLOAT = Default("1"),
-        delta: FLOAT = Default("0"),
+        planes: Int = Default("15"),
+        scale: Float = Default("1"),
+        delta: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9217,9 +9217,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param FLOAT scale: set scale (from 0 to 65535) (default 1)
-        :param FLOAT delta: set delta (from -65535 to 65535) (default 0)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float scale: set scale (from 0 to 65535) (default 1)
+        :param Float delta: set delta (from -65535 to 65535) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#prewitt
@@ -9247,12 +9247,12 @@ class VideoStream(FilterableStream):
     def pseudocolor(
         self,
         *,
-        c0: STRING = Default("val"),
-        c1: STRING = Default("val"),
-        c2: STRING = Default("val"),
-        c3: STRING = Default("val"),
-        index: INT = Default("0"),
-        preset: INT
+        c0: String = Default("val"),
+        c1: String = Default("val"),
+        c2: String = Default("val"),
+        c3: String = Default("val"),
+        index: Int = Default("0"),
+        preset: Int
         | Literal[
             "none",
             "magma",
@@ -9272,7 +9272,7 @@ class VideoStream(FilterableStream):
             "spectral",
         ]
         | Default = Default("none"),
-        opacity: FLOAT = Default("1"),
+        opacity: Float = Default("1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9283,13 +9283,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING c0: set component #0 expression (default "val")
-        :param STRING c1: set component #1 expression (default "val")
-        :param STRING c2: set component #2 expression (default "val")
-        :param STRING c3: set component #3 expression (default "val")
-        :param INT index: set component as base (from 0 to 3) (default 0)
-        :param INT preset: set preset (from -1 to 14) (default none)
-        :param FLOAT opacity: set pseudocolor opacity (from 0 to 1) (default 1)
+        :param String c0: set component #0 expression (default "val")
+        :param String c1: set component #1 expression (default "val")
+        :param String c2: set component #2 expression (default "val")
+        :param String c3: set component #3 expression (default "val")
+        :param Int index: set component as base (from 0 to 3) (default 0)
+        :param Int preset: set preset (from -1 to 14) (default none)
+        :param Float opacity: set pseudocolor opacity (from 0 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pseudocolor
@@ -9322,13 +9322,13 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        stats_file: STRING = Default(None),
-        stats_version: INT = Default("1"),
-        output_max: BOOLEAN = Default("false"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        stats_file: String = Default(None),
+        stats_version: Int = Default("1"),
+        output_max: Boolean = Default("false"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9339,13 +9339,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING stats_file: Set file where to store per-frame difference information
-        :param INT stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
-        :param BOOLEAN output_max: Add raw stats (max values) to the output log. (default false)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param String stats_file: Set file where to store per-frame difference information
+        :param Int stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
+        :param Boolean output_max: Add raw stats (max values) to the output log. (default false)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#psnr
@@ -9380,12 +9380,12 @@ class VideoStream(FilterableStream):
     def pullup(
         self,
         *,
-        jl: INT = Default("1"),
-        jr: INT = Default("1"),
-        jt: INT = Default("4"),
-        jb: INT = Default("4"),
-        sb: BOOLEAN = Default("false"),
-        mp: INT | Literal["y", "u", "v"] | Default = Default("y"),
+        jl: Int = Default("1"),
+        jr: Int = Default("1"),
+        jt: Int = Default("4"),
+        jb: Int = Default("4"),
+        sb: Boolean = Default("false"),
+        mp: Int | Literal["y", "u", "v"] | Default = Default("y"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -9395,12 +9395,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT jl: set left junk size (from 0 to INT_MAX) (default 1)
-        :param INT jr: set right junk size (from 0 to INT_MAX) (default 1)
-        :param INT jt: set top junk size (from 1 to INT_MAX) (default 4)
-        :param INT jb: set bottom junk size (from 1 to INT_MAX) (default 4)
-        :param BOOLEAN sb: set strict breaks (default false)
-        :param INT mp: set metric plane (from 0 to 2) (default y)
+        :param Int jl: set left junk size (from 0 to INT_MAX) (default 1)
+        :param Int jr: set right junk size (from 0 to INT_MAX) (default 1)
+        :param Int jt: set top junk size (from 1 to INT_MAX) (default 4)
+        :param Int jb: set bottom junk size (from 1 to INT_MAX) (default 4)
+        :param Boolean sb: set strict breaks (default false)
+        :param Int mp: set metric plane (from 0 to 2) (default y)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#pullup
 
@@ -9426,7 +9426,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def qp(self, *, qp: STRING = Default(None), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def qp(self, *, qp: String = Default(None), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Change video quantization parameters.
@@ -9434,7 +9434,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING qp: set qp expression
+        :param String qp: set qp expression
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#qp
@@ -9457,7 +9457,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def random(self, *, frames: INT = Default("30"), seed: INT64 = Default("-1"), **kwargs: Any) -> "VideoStream":
+    def random(self, *, frames: Int = Default("30"), seed: Int64 = Default("-1"), **kwargs: Any) -> "VideoStream":
         """
 
         Return random frames.
@@ -9465,8 +9465,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT frames: set number of frames in cache (from 2 to 512) (default 30)
-        :param INT64 seed: set the seed (from -1 to UINT32_MAX) (default -1)
+        :param Int frames: set number of frames in cache (from 2 to 512) (default 30)
+        :param Int64 seed: set the seed (from -1 to UINT32_MAX) (default -1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#random
 
@@ -9491,11 +9491,11 @@ class VideoStream(FilterableStream):
     def readeia608(
         self,
         *,
-        scan_min: INT = Default("0"),
-        scan_max: INT = Default("29"),
-        spw: FLOAT = Default("0.27"),
-        chp: BOOLEAN = Default("false"),
-        lp: BOOLEAN = Default("true"),
+        scan_min: Int = Default("0"),
+        scan_max: Int = Default("29"),
+        spw: Float = Default("0.27"),
+        chp: Boolean = Default("false"),
+        lp: Boolean = Default("true"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9506,11 +9506,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT scan_min: set from which line to scan for codes (from 0 to INT_MAX) (default 0)
-        :param INT scan_max: set to which line to scan for codes (from 0 to INT_MAX) (default 29)
-        :param FLOAT spw: set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)
-        :param BOOLEAN chp: check and apply parity bit (default false)
-        :param BOOLEAN lp: lowpass line prior to processing (default true)
+        :param Int scan_min: set from which line to scan for codes (from 0 to INT_MAX) (default 0)
+        :param Int scan_max: set to which line to scan for codes (from 0 to INT_MAX) (default 29)
+        :param Float spw: set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)
+        :param Boolean chp: check and apply parity bit (default false)
+        :param Boolean lp: lowpass line prior to processing (default true)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#readeia608
@@ -9540,9 +9540,9 @@ class VideoStream(FilterableStream):
     def readvitc(
         self,
         *,
-        scan_max: INT = Default("45"),
-        thr_b: DOUBLE = Default("0.2"),
-        thr_w: DOUBLE = Default("0.6"),
+        scan_max: Int = Default("45"),
+        thr_b: Double = Default("0.2"),
+        thr_w: Double = Default("0.6"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -9552,9 +9552,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT scan_max: maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)
-        :param DOUBLE thr_b: black color threshold (from 0 to 1) (default 0.2)
-        :param DOUBLE thr_w: white color threshold (from 0 to 1) (default 0.6)
+        :param Int scan_max: maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)
+        :param Double thr_b: black color threshold (from 0 to 1) (default 0.2)
+        :param Double thr_w: white color threshold (from 0 to 1) (default 0.6)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#readvitc
 
@@ -9577,7 +9577,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def realtime(self, *, limit: DURATION = Default("2"), speed: DOUBLE = Default("1"), **kwargs: Any) -> "VideoStream":
+    def realtime(self, *, limit: Duration = Default("2"), speed: Double = Default("1"), **kwargs: Any) -> "VideoStream":
         """
 
         Slow down filtering to match realtime.
@@ -9585,8 +9585,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DURATION limit: sleep time limit (default 2)
-        :param DOUBLE speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
+        :param Duration limit: sleep time limit (default 2)
+        :param Double speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime
 
@@ -9613,8 +9613,8 @@ class VideoStream(FilterableStream):
         _xmap: "VideoStream",
         _ymap: "VideoStream",
         *,
-        format: INT | Literal["color", "gray"] | Default = Default("color"),
-        fill: COLOR = Default("black"),
+        format: Int | Literal["color", "gray"] | Default = Default("color"),
+        fill: Color = Default("black"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -9624,8 +9624,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT format: set output format (from 0 to 1) (default color)
-        :param COLOR fill: set the color of the unmapped pixels (default "black")
+        :param Int format: set output format (from 0 to 1) (default color)
+        :param Color fill: set the color of the unmapped pixels (default "black")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#remap
 
@@ -9654,10 +9654,10 @@ class VideoStream(FilterableStream):
     def removegrain(
         self,
         *,
-        m0: INT = Default("0"),
-        m1: INT = Default("0"),
-        m2: INT = Default("0"),
-        m3: INT = Default("0"),
+        m0: Int = Default("0"),
+        m1: Int = Default("0"),
+        m2: Int = Default("0"),
+        m3: Int = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9668,10 +9668,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT m0: set mode for 1st plane (from 0 to 24) (default 0)
-        :param INT m1: set mode for 2nd plane (from 0 to 24) (default 0)
-        :param INT m2: set mode for 3rd plane (from 0 to 24) (default 0)
-        :param INT m3: set mode for 4th plane (from 0 to 24) (default 0)
+        :param Int m0: set mode for 1st plane (from 0 to 24) (default 0)
+        :param Int m1: set mode for 2nd plane (from 0 to 24) (default 0)
+        :param Int m2: set mode for 3rd plane (from 0 to 24) (default 0)
+        :param Int m3: set mode for 4th plane (from 0 to 24) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#removegrain
@@ -9698,7 +9698,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def removelogo(
-        self, *, filename: STRING = Default(None), enable: str = Default(None), **kwargs: Any
+        self, *, filename: String = Default(None), enable: str = Default(None), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -9707,7 +9707,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING filename: set bitmap filename
+        :param String filename: set bitmap filename
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#removelogo
@@ -9775,15 +9775,15 @@ class VideoStream(FilterableStream):
     def rgbashift(
         self,
         *,
-        rh: INT = Default("0"),
-        rv: INT = Default("0"),
-        gh: INT = Default("0"),
-        gv: INT = Default("0"),
-        bh: INT = Default("0"),
-        bv: INT = Default("0"),
-        ah: INT = Default("0"),
-        av: INT = Default("0"),
-        edge: INT | Literal["smear", "wrap"] | Default = Default("smear"),
+        rh: Int = Default("0"),
+        rv: Int = Default("0"),
+        gh: Int = Default("0"),
+        gv: Int = Default("0"),
+        bh: Int = Default("0"),
+        bv: Int = Default("0"),
+        ah: Int = Default("0"),
+        av: Int = Default("0"),
+        edge: Int | Literal["smear", "wrap"] | Default = Default("smear"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9794,15 +9794,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT rh: shift red horizontally (from -255 to 255) (default 0)
-        :param INT rv: shift red vertically (from -255 to 255) (default 0)
-        :param INT gh: shift green horizontally (from -255 to 255) (default 0)
-        :param INT gv: shift green vertically (from -255 to 255) (default 0)
-        :param INT bh: shift blue horizontally (from -255 to 255) (default 0)
-        :param INT bv: shift blue vertically (from -255 to 255) (default 0)
-        :param INT ah: shift alpha horizontally (from -255 to 255) (default 0)
-        :param INT av: shift alpha vertically (from -255 to 255) (default 0)
-        :param INT edge: set edge operation (from 0 to 1) (default smear)
+        :param Int rh: shift red horizontally (from -255 to 255) (default 0)
+        :param Int rv: shift red vertically (from -255 to 255) (default 0)
+        :param Int gh: shift green horizontally (from -255 to 255) (default 0)
+        :param Int gv: shift green vertically (from -255 to 255) (default 0)
+        :param Int bh: shift blue horizontally (from -255 to 255) (default 0)
+        :param Int bv: shift blue vertically (from -255 to 255) (default 0)
+        :param Int ah: shift alpha horizontally (from -255 to 255) (default 0)
+        :param Int av: shift alpha vertically (from -255 to 255) (default 0)
+        :param Int edge: set edge operation (from 0 to 1) (default smear)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#rgbashift
@@ -9836,9 +9836,9 @@ class VideoStream(FilterableStream):
     def roberts(
         self,
         *,
-        planes: INT = Default("15"),
-        scale: FLOAT = Default("1"),
-        delta: FLOAT = Default("0"),
+        planes: Int = Default("15"),
+        scale: Float = Default("1"),
+        delta: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9849,9 +9849,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param FLOAT scale: set scale (from 0 to 65535) (default 1)
-        :param FLOAT delta: set delta (from -65535 to 65535) (default 0)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float scale: set scale (from 0 to 65535) (default 1)
+        :param Float delta: set delta (from -65535 to 65535) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#roberts
@@ -9879,11 +9879,11 @@ class VideoStream(FilterableStream):
     def rotate(
         self,
         *,
-        angle: STRING = Default("0"),
-        out_w: STRING = Default("iw"),
-        out_h: STRING = Default("ih"),
-        fillcolor: STRING = Default("black"),
-        bilinear: BOOLEAN = Default("true"),
+        angle: String = Default("0"),
+        out_w: String = Default("iw"),
+        out_h: String = Default("ih"),
+        fillcolor: String = Default("black"),
+        bilinear: Boolean = Default("true"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9894,11 +9894,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING angle: set angle (in radians) (default "0")
-        :param STRING out_w: set output width expression (default "iw")
-        :param STRING out_h: set output height expression (default "ih")
-        :param STRING fillcolor: set background fill color (default "black")
-        :param BOOLEAN bilinear: use bilinear interpolation (default true)
+        :param String angle: set angle (in radians) (default "0")
+        :param String out_w: set output width expression (default "iw")
+        :param String out_h: set output height expression (default "ih")
+        :param String fillcolor: set background fill color (default "black")
+        :param Boolean bilinear: use bilinear interpolation (default true)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#rotate
@@ -9928,12 +9928,12 @@ class VideoStream(FilterableStream):
     def sab(
         self,
         *,
-        luma_radius: FLOAT = Default("1"),
-        luma_pre_filter_radius: FLOAT = Default("1"),
-        luma_strength: FLOAT = Default("1"),
-        chroma_radius: FLOAT = Default("-0.9"),
-        chroma_pre_filter_radius: FLOAT = Default("-0.9"),
-        chroma_strength: FLOAT = Default("-0.9"),
+        luma_radius: Float = Default("1"),
+        luma_pre_filter_radius: Float = Default("1"),
+        luma_strength: Float = Default("1"),
+        chroma_radius: Float = Default("-0.9"),
+        chroma_pre_filter_radius: Float = Default("-0.9"),
+        chroma_strength: Float = Default("-0.9"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -9944,12 +9944,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT luma_radius: set luma radius (from 0.1 to 4) (default 1)
-        :param FLOAT luma_pre_filter_radius: set luma pre-filter radius (from 0.1 to 2) (default 1)
-        :param FLOAT luma_strength: set luma strength (from 0.1 to 100) (default 1)
-        :param FLOAT chroma_radius: set chroma radius (from -0.9 to 4) (default -0.9)
-        :param FLOAT chroma_pre_filter_radius: set chroma pre-filter radius (from -0.9 to 2) (default -0.9)
-        :param FLOAT chroma_strength: set chroma strength (from -0.9 to 100) (default -0.9)
+        :param Float luma_radius: set luma radius (from 0.1 to 4) (default 1)
+        :param Float luma_pre_filter_radius: set luma pre-filter radius (from 0.1 to 2) (default 1)
+        :param Float luma_strength: set luma strength (from 0.1 to 100) (default 1)
+        :param Float chroma_radius: set chroma radius (from -0.9 to 4) (default -0.9)
+        :param Float chroma_pre_filter_radius: set chroma pre-filter radius (from -0.9 to 2) (default -0.9)
+        :param Float chroma_strength: set chroma strength (from -0.9 to 100) (default -0.9)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sab
@@ -9980,31 +9980,31 @@ class VideoStream(FilterableStream):
     def scale(
         self,
         *,
-        w: STRING = Default(None),
-        h: STRING = Default(None),
-        flags: STRING = Default(""),
-        interl: BOOLEAN = Default("false"),
-        in_color_matrix: STRING
+        w: String = Default(None),
+        h: String = Default(None),
+        flags: String = Default(""),
+        interl: Boolean = Default("false"),
+        in_color_matrix: String
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | Default = Default("auto"),
-        out_color_matrix: STRING
+        out_color_matrix: String
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | Default = Default(None),
-        in_range: INT
+        in_range: Int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
         | Default = Default("auto"),
-        out_range: INT
+        out_range: Int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
         | Default = Default("auto"),
-        in_v_chr_pos: INT = Default("-513"),
-        in_h_chr_pos: INT = Default("-513"),
-        out_v_chr_pos: INT = Default("-513"),
-        out_h_chr_pos: INT = Default("-513"),
-        force_original_aspect_ratio: INT | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
-        force_divisible_by: INT = Default("1"),
-        param0: DOUBLE = Default("DBL_MAX"),
-        param1: DOUBLE = Default("DBL_MAX"),
-        eval: INT | Literal["init", "frame"] | Default = Default("init"),
+        in_v_chr_pos: Int = Default("-513"),
+        in_h_chr_pos: Int = Default("-513"),
+        out_v_chr_pos: Int = Default("-513"),
+        out_h_chr_pos: Int = Default("-513"),
+        force_original_aspect_ratio: Int | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
+        force_divisible_by: Int = Default("1"),
+        param0: Double = Default("DBL_MAX"),
+        param1: Double = Default("DBL_MAX"),
+        eval: Int | Literal["init", "frame"] | Default = Default("init"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -10014,23 +10014,23 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING w: Output video width
-        :param STRING h: Output video height
-        :param STRING flags: Flags to pass to libswscale (default "")
-        :param BOOLEAN interl: set interlacing (default false)
-        :param STRING in_color_matrix: set input YCbCr type (default "auto")
-        :param STRING out_color_matrix: set output YCbCr type
-        :param INT in_range: set input color range (from 0 to 2) (default auto)
-        :param INT out_range: set output color range (from 0 to 2) (default auto)
-        :param INT in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
-        :param INT force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
-        :param DOUBLE param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-        :param DOUBLE param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default init)
+        :param String w: Output video width
+        :param String h: Output video height
+        :param String flags: Flags to pass to libswscale (default "")
+        :param Boolean interl: set interlacing (default false)
+        :param String in_color_matrix: set input YCbCr type (default "auto")
+        :param String out_color_matrix: set output YCbCr type
+        :param Int in_range: set input color range (from 0 to 2) (default auto)
+        :param Int out_range: set output color range (from 0 to 2) (default auto)
+        :param Int in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+        :param Int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+        :param Double param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+        :param Double param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#scale
 
@@ -10071,31 +10071,31 @@ class VideoStream(FilterableStream):
         self,
         _ref: "VideoStream",
         *,
-        w: STRING = Default(None),
-        h: STRING = Default(None),
-        flags: STRING = Default(""),
-        interl: BOOLEAN = Default("false"),
-        in_color_matrix: STRING
+        w: String = Default(None),
+        h: String = Default(None),
+        flags: String = Default(""),
+        interl: Boolean = Default("false"),
+        in_color_matrix: String
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | Default = Default("auto"),
-        out_color_matrix: STRING
+        out_color_matrix: String
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | Default = Default(None),
-        in_range: INT
+        in_range: Int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
         | Default = Default("auto"),
-        out_range: INT
+        out_range: Int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
         | Default = Default("auto"),
-        in_v_chr_pos: INT = Default("-513"),
-        in_h_chr_pos: INT = Default("-513"),
-        out_v_chr_pos: INT = Default("-513"),
-        out_h_chr_pos: INT = Default("-513"),
-        force_original_aspect_ratio: INT | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
-        force_divisible_by: INT = Default("1"),
-        param0: DOUBLE = Default("DBL_MAX"),
-        param1: DOUBLE = Default("DBL_MAX"),
-        eval: INT | Literal["init", "frame"] | Default = Default("init"),
+        in_v_chr_pos: Int = Default("-513"),
+        in_h_chr_pos: Int = Default("-513"),
+        out_v_chr_pos: Int = Default("-513"),
+        out_h_chr_pos: Int = Default("-513"),
+        force_original_aspect_ratio: Int | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
+        force_divisible_by: Int = Default("1"),
+        param0: Double = Default("DBL_MAX"),
+        param1: Double = Default("DBL_MAX"),
+        eval: Int | Literal["init", "frame"] | Default = Default("init"),
         **kwargs: Any,
     ) -> tuple["VideoStream", "VideoStream",]:
         """
@@ -10105,23 +10105,23 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING w: Output video width
-        :param STRING h: Output video height
-        :param STRING flags: Flags to pass to libswscale (default "")
-        :param BOOLEAN interl: set interlacing (default false)
-        :param STRING in_color_matrix: set input YCbCr type (default "auto")
-        :param STRING out_color_matrix: set output YCbCr type
-        :param INT in_range: set input color range (from 0 to 2) (default auto)
-        :param INT out_range: set output color range (from 0 to 2) (default auto)
-        :param INT in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-        :param INT force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
-        :param INT force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
-        :param DOUBLE param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-        :param DOUBLE param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default init)
+        :param String w: Output video width
+        :param String h: Output video height
+        :param String flags: Flags to pass to libswscale (default "")
+        :param Boolean interl: set interlacing (default false)
+        :param String in_color_matrix: set input YCbCr type (default "auto")
+        :param String out_color_matrix: set output YCbCr type
+        :param Int in_range: set input color range (from 0 to 2) (default auto)
+        :param Int out_range: set output color range (from 0 to 2) (default auto)
+        :param Int in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+        :param Int force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+        :param Int force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+        :param Double param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+        :param Double param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#scale2ref
 
@@ -10165,7 +10165,7 @@ class VideoStream(FilterableStream):
         )
 
     def scdet(
-        self, *, threshold: DOUBLE = Default("10"), sc_pass: BOOLEAN = Default("false"), **kwargs: Any
+        self, *, threshold: Double = Default("10"), sc_pass: Boolean = Default("false"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10174,8 +10174,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DOUBLE threshold: set scene change detect threshold (from 0 to 100) (default 10)
-        :param BOOLEAN sc_pass: Set the flag to pass scene change frames (default false)
+        :param Double threshold: set scene change detect threshold (from 0 to 100) (default 10)
+        :param Boolean sc_pass: Set the flag to pass scene change frames (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#scdet
 
@@ -10200,9 +10200,9 @@ class VideoStream(FilterableStream):
     def scharr(
         self,
         *,
-        planes: INT = Default("15"),
-        scale: FLOAT = Default("1"),
-        delta: FLOAT = Default("0"),
+        planes: Int = Default("15"),
+        scale: Float = Default("1"),
+        delta: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10213,9 +10213,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param FLOAT scale: set scale (from 0 to 65535) (default 1)
-        :param FLOAT delta: set delta (from -65535 to 65535) (default 0)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float scale: set scale (from 0 to 65535) (default 1)
+        :param Float delta: set delta (from -65535 to 65535) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#scharr
@@ -10243,10 +10243,10 @@ class VideoStream(FilterableStream):
     def scroll(
         self,
         *,
-        horizontal: FLOAT = Default("0"),
-        vertical: FLOAT = Default("0"),
-        hpos: FLOAT = Default("0"),
-        vpos: FLOAT = Default("0"),
+        horizontal: Float = Default("0"),
+        vertical: Float = Default("0"),
+        hpos: Float = Default("0"),
+        vpos: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10257,10 +10257,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT horizontal: set the horizontal scrolling speed (from -1 to 1) (default 0)
-        :param FLOAT vertical: set the vertical scrolling speed (from -1 to 1) (default 0)
-        :param FLOAT hpos: set initial horizontal position (from 0 to 1) (default 0)
-        :param FLOAT vpos: set initial vertical position (from 0 to 1) (default 0)
+        :param Float horizontal: set the horizontal scrolling speed (from -1 to 1) (default 0)
+        :param Float vertical: set the vertical scrolling speed (from -1 to 1) (default 0)
+        :param Float hpos: set initial horizontal position (from 0 to 1) (default 0)
+        :param Float vpos: set initial vertical position (from 0 to 1) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#scroll
@@ -10287,7 +10287,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def segment(
-        self, *, timestamps: STRING = Default(None), frames: STRING = Default(None), **kwargs: Any
+        self, *, timestamps: String = Default(None), frames: String = Default(None), **kwargs: Any
     ) -> FilterNode:
         """
 
@@ -10296,8 +10296,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING timestamps: timestamps of input at which to split input
-        :param STRING frames: frames at which to split input
+        :param String timestamps: timestamps of input at which to split input
+        :param String frames: frames at which to split input
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment
 
@@ -10320,7 +10320,7 @@ class VideoStream(FilterableStream):
 
         return filter_node
 
-    def select(self, *, expr: STRING = Default("1"), outputs: INT = Default("1"), **kwargs: Any) -> FilterNode:
+    def select(self, *, expr: String = Default("1"), outputs: Int = Default("1"), **kwargs: Any) -> FilterNode:
         """
 
         Select video frames to pass in output.
@@ -10328,8 +10328,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING expr: set an expression to use for selecting frames (default "1")
-        :param INT outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
+        :param String expr: set an expression to use for selecting frames (default "1")
+        :param Int outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect
 
@@ -10355,17 +10355,17 @@ class VideoStream(FilterableStream):
     def selectivecolor(
         self,
         *,
-        correction_method: INT | Literal["absolute", "relative"] | Default = Default("absolute"),
-        reds: STRING = Default(None),
-        yellows: STRING = Default(None),
-        greens: STRING = Default(None),
-        cyans: STRING = Default(None),
-        blues: STRING = Default(None),
-        magentas: STRING = Default(None),
-        whites: STRING = Default(None),
-        neutrals: STRING = Default(None),
-        blacks: STRING = Default(None),
-        psfile: STRING = Default(None),
+        correction_method: Int | Literal["absolute", "relative"] | Default = Default("absolute"),
+        reds: String = Default(None),
+        yellows: String = Default(None),
+        greens: String = Default(None),
+        cyans: String = Default(None),
+        blues: String = Default(None),
+        magentas: String = Default(None),
+        whites: String = Default(None),
+        neutrals: String = Default(None),
+        blacks: String = Default(None),
+        psfile: String = Default(None),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10376,17 +10376,17 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT correction_method: select correction method (from 0 to 1) (default absolute)
-        :param STRING reds: adjust red regions
-        :param STRING yellows: adjust yellow regions
-        :param STRING greens: adjust green regions
-        :param STRING cyans: adjust cyan regions
-        :param STRING blues: adjust blue regions
-        :param STRING magentas: adjust magenta regions
-        :param STRING whites: adjust white regions
-        :param STRING neutrals: adjust neutral regions
-        :param STRING blacks: adjust black regions
-        :param STRING psfile: set Photoshop selectivecolor file name
+        :param Int correction_method: select correction method (from 0 to 1) (default absolute)
+        :param String reds: adjust red regions
+        :param String yellows: adjust yellow regions
+        :param String greens: adjust green regions
+        :param String cyans: adjust cyan regions
+        :param String blues: adjust blue regions
+        :param String magentas: adjust magenta regions
+        :param String whites: adjust white regions
+        :param String neutrals: adjust neutral regions
+        :param String blacks: adjust black regions
+        :param String psfile: set Photoshop selectivecolor file name
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#selectivecolor
@@ -10420,7 +10420,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def sendcmd(
-        self, *, commands: STRING = Default(None), filename: STRING = Default(None), **kwargs: Any
+        self, *, commands: String = Default(None), filename: String = Default(None), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10429,8 +10429,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING commands: set commands
-        :param STRING filename: set commands file
+        :param String commands: set commands
+        :param String filename: set commands file
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd
 
@@ -10473,7 +10473,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setdar(self, *, dar: STRING = Default("0"), max: INT = Default("100"), **kwargs: Any) -> "VideoStream":
+    def setdar(self, *, dar: String = Default("0"), max: Int = Default("100"), **kwargs: Any) -> "VideoStream":
         """
 
         Set the frame display aspect ratio.
@@ -10481,8 +10481,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING dar: set display aspect ratio (default "0")
-        :param INT max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
+        :param String dar: set display aspect ratio (default "0")
+        :param Int max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar
 
@@ -10505,7 +10505,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def setfield(
-        self, *, mode: INT | Literal["auto", "bff", "tff", "prog"] | Default = Default("auto"), **kwargs: Any
+        self, *, mode: Int | Literal["auto", "bff", "tff", "prog"] | Default = Default("auto"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10514,7 +10514,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: select interlace mode (from -1 to 2) (default auto)
+        :param Int mode: select interlace mode (from -1 to 2) (default auto)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#setfield
 
@@ -10538,11 +10538,11 @@ class VideoStream(FilterableStream):
     def setparams(
         self,
         *,
-        field_mode: INT | Literal["auto", "bff", "tff", "prog"] | Default = Default("auto"),
-        range: INT
+        field_mode: Int | Literal["auto", "bff", "tff", "prog"] | Default = Default("auto"),
+        range: Int
         | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
         | Default = Default("auto"),
-        color_primaries: INT
+        color_primaries: Int
         | Literal[
             "auto",
             "bt709",
@@ -10560,7 +10560,7 @@ class VideoStream(FilterableStream):
             "ebu3213",
         ]
         | Default = Default("auto"),
-        color_trc: INT
+        color_trc: Int
         | Literal[
             "auto",
             "bt709",
@@ -10582,7 +10582,7 @@ class VideoStream(FilterableStream):
             "b67",
         ]
         | Default = Default("auto"),
-        colorspace: INT
+        colorspace: Int
         | Literal[
             "auto",
             "gbr",
@@ -10610,11 +10610,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT field_mode: select interlace mode (from -1 to 2) (default auto)
-        :param INT range: select color range (from -1 to 2) (default auto)
-        :param INT color_primaries: select color primaries (from -1 to 22) (default auto)
-        :param INT color_trc: select color transfer (from -1 to 18) (default auto)
-        :param INT colorspace: select colorspace (from -1 to 14) (default auto)
+        :param Int field_mode: select interlace mode (from -1 to 2) (default auto)
+        :param Int range: select color range (from -1 to 2) (default auto)
+        :param Int color_primaries: select color primaries (from -1 to 22) (default auto)
+        :param Int color_trc: select color transfer (from -1 to 18) (default auto)
+        :param Int colorspace: select colorspace (from -1 to 14) (default auto)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#setparams
 
@@ -10639,7 +10639,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setpts(self, *, expr: STRING = Default("PTS"), **kwargs: Any) -> "VideoStream":
+    def setpts(self, *, expr: String = Default("PTS"), **kwargs: Any) -> "VideoStream":
         """
 
         Set PTS for the output video frame.
@@ -10647,7 +10647,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING expr: Expression determining the frame timestamp (default "PTS")
+        :param String expr: Expression determining the frame timestamp (default "PTS")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts
 
@@ -10671,7 +10671,7 @@ class VideoStream(FilterableStream):
     def setrange(
         self,
         *,
-        range: INT
+        range: Int
         | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
         | Default = Default("auto"),
         **kwargs: Any,
@@ -10683,7 +10683,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT range: select color range (from -1 to 2) (default auto)
+        :param Int range: select color range (from -1 to 2) (default auto)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#setrange
 
@@ -10704,7 +10704,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setsar(self, *, sar: STRING = Default("0"), max: INT = Default("100"), **kwargs: Any) -> "VideoStream":
+    def setsar(self, *, sar: String = Default("0"), max: Int = Default("100"), **kwargs: Any) -> "VideoStream":
         """
 
         Set the pixel sample aspect ratio.
@@ -10712,8 +10712,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING sar: set sample (pixel) aspect ratio (default "0")
-        :param INT max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
+        :param String sar: set sample (pixel) aspect ratio (default "0")
+        :param Int max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar
 
@@ -10735,7 +10735,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def settb(self, *, expr: STRING = Default("intb"), **kwargs: Any) -> "VideoStream":
+    def settb(self, *, expr: String = Default("intb"), **kwargs: Any) -> "VideoStream":
         """
 
         Set timebase for the video output link.
@@ -10743,7 +10743,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING expr: set expression determining the output timebase (default "intb")
+        :param String expr: set expression determining the output timebase (default "intb")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb
 
@@ -10767,10 +10767,10 @@ class VideoStream(FilterableStream):
     def shear(
         self,
         *,
-        shx: FLOAT = Default("0"),
-        shy: FLOAT = Default("0"),
-        fillcolor: STRING = Default("black"),
-        interp: INT | Literal["nearest", "bilinear"] | Default = Default("bilinear"),
+        shx: Float = Default("0"),
+        shy: Float = Default("0"),
+        fillcolor: String = Default("black"),
+        interp: Int | Literal["nearest", "bilinear"] | Default = Default("bilinear"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10781,10 +10781,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT shx: set x shear factor (from -2 to 2) (default 0)
-        :param FLOAT shy: set y shear factor (from -2 to 2) (default 0)
-        :param STRING fillcolor: set background fill color (default "black")
-        :param INT interp: set interpolation (from 0 to 1) (default bilinear)
+        :param Float shx: set x shear factor (from -2 to 2) (default 0)
+        :param Float shy: set y shear factor (from -2 to 2) (default 0)
+        :param String fillcolor: set background fill color (default "black")
+        :param Int interp: set interpolation (from 0 to 1) (default bilinear)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#shear
@@ -10810,7 +10810,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def showinfo(self, *, checksum: BOOLEAN = Default("true"), **kwargs: Any) -> "VideoStream":
+    def showinfo(self, *, checksum: Boolean = Default("true"), **kwargs: Any) -> "VideoStream":
         """
 
         Show textual information for each video frame.
@@ -10818,7 +10818,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param BOOLEAN checksum: calculate checksums (default true)
+        :param Boolean checksum: calculate checksums (default true)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showinfo
 
@@ -10839,7 +10839,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def showpalette(self, *, s: INT = Default("30"), **kwargs: Any) -> "VideoStream":
+    def showpalette(self, *, s: Int = Default("30"), **kwargs: Any) -> "VideoStream":
         """
 
         Display frame palette.
@@ -10847,7 +10847,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT s: set pixel box size (from 1 to 100) (default 30)
+        :param Int s: set pixel box size (from 1 to 100) (default 30)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#showpalette
 
@@ -10869,7 +10869,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def shuffleframes(
-        self, *, mapping: STRING = Default("0"), enable: str = Default(None), **kwargs: Any
+        self, *, mapping: String = Default("0"), enable: str = Default(None), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -10878,7 +10878,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING mapping: set destination indexes of input frames (default "0")
+        :param String mapping: set destination indexes of input frames (default "0")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#shuffleframes
@@ -10904,11 +10904,11 @@ class VideoStream(FilterableStream):
     def shufflepixels(
         self,
         *,
-        direction: INT | Literal["forward", "inverse"] | Default = Default("forward"),
-        mode: INT | Literal["horizontal", "vertical", "block"] | Default = Default("horizontal"),
-        width: INT = Default("10"),
-        height: INT = Default("10"),
-        seed: INT64 = Default("-1"),
+        direction: Int | Literal["forward", "inverse"] | Default = Default("forward"),
+        mode: Int | Literal["horizontal", "vertical", "block"] | Default = Default("horizontal"),
+        width: Int = Default("10"),
+        height: Int = Default("10"),
+        seed: Int64 = Default("-1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10919,11 +10919,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT direction: set shuffle direction (from 0 to 1) (default forward)
-        :param INT mode: set shuffle mode (from 0 to 2) (default horizontal)
-        :param INT width: set block width (from 1 to 8000) (default 10)
-        :param INT height: set block height (from 1 to 8000) (default 10)
-        :param INT64 seed: set random seed (from -1 to UINT32_MAX) (default -1)
+        :param Int direction: set shuffle direction (from 0 to 1) (default forward)
+        :param Int mode: set shuffle mode (from 0 to 2) (default horizontal)
+        :param Int width: set block width (from 1 to 8000) (default 10)
+        :param Int height: set block height (from 1 to 8000) (default 10)
+        :param Int64 seed: set random seed (from -1 to UINT32_MAX) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#shufflepixels
@@ -10953,10 +10953,10 @@ class VideoStream(FilterableStream):
     def shuffleplanes(
         self,
         *,
-        map0: INT = Default("0"),
-        map1: INT = Default("1"),
-        map2: INT = Default("2"),
-        map3: INT = Default("3"),
+        map0: Int = Default("0"),
+        map1: Int = Default("1"),
+        map2: Int = Default("2"),
+        map3: Int = Default("3"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -10967,10 +10967,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT map0: Index of the input plane to be used as the first output plane (from 0 to 3) (default 0)
-        :param INT map1: Index of the input plane to be used as the second output plane (from 0 to 3) (default 1)
-        :param INT map2: Index of the input plane to be used as the third output plane (from 0 to 3) (default 2)
-        :param INT map3: Index of the input plane to be used as the fourth output plane (from 0 to 3) (default 3)
+        :param Int map0: Index of the input plane to be used as the first output plane (from 0 to 3) (default 0)
+        :param Int map1: Index of the input plane to be used as the second output plane (from 0 to 3) (default 1)
+        :param Int map2: Index of the input plane to be used as the third output plane (from 0 to 3) (default 2)
+        :param Int map3: Index of the input plane to be used as the fourth output plane (from 0 to 3) (default 3)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes
@@ -10999,8 +10999,8 @@ class VideoStream(FilterableStream):
     def sidedata(
         self,
         *,
-        mode: INT | Literal["select", "delete"] | Default = Default("select"),
-        type: INT
+        mode: Int | Literal["select", "delete"] | Default = Default("select"),
+        type: Int
         | Literal[
             "PANSCAN",
             "A53_CC",
@@ -11035,8 +11035,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: set a mode of operation (from 0 to 1) (default select)
-        :param INT type: set side data type (from -1 to INT_MAX) (default -1)
+        :param Int mode: set a mode of operation (from 0 to 1) (default select)
+        :param Int type: set side data type (from -1 to INT_MAX) (default -1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata
@@ -11063,9 +11063,9 @@ class VideoStream(FilterableStream):
     def signalstats(
         self,
         *,
-        stat: FLAGS | Literal["tout", "vrep", "brng"] | Default = Default("0"),
-        out: INT | Literal["tout", "vrep", "brng"] | Default = Default("-1"),
-        c: COLOR = Default("yellow"),
+        stat: Flags | Literal["tout", "vrep", "brng"] | Default = Default("0"),
+        out: Int | Literal["tout", "vrep", "brng"] | Default = Default("-1"),
+        c: Color = Default("yellow"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -11075,9 +11075,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLAGS stat: set statistics filters (default 0)
-        :param INT out: set video filter (from -1 to 2) (default -1)
-        :param COLOR c: set highlight color (default "yellow")
+        :param Flags stat: set statistics filters (default 0)
+        :param Int out: set video filter (from -1 to 2) (default -1)
+        :param Color c: set highlight color (default "yellow")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#signalstats
 
@@ -11100,7 +11100,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def siti(self, *, print_summary: BOOLEAN = Default("false"), **kwargs: Any) -> "VideoStream":
+    def siti(self, *, print_summary: Boolean = Default("false"), **kwargs: Any) -> "VideoStream":
         """
 
         Calculate spatial information (SI) and temporal information (TI).
@@ -11108,7 +11108,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param BOOLEAN print_summary: Print summary showing average values (default false)
+        :param Boolean print_summary: Print summary showing average values (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#siti
 
@@ -11132,12 +11132,12 @@ class VideoStream(FilterableStream):
     def smartblur(
         self,
         *,
-        luma_radius: FLOAT = Default("1"),
-        luma_strength: FLOAT = Default("1"),
-        luma_threshold: INT = Default("0"),
-        chroma_radius: FLOAT = Default("-0.9"),
-        chroma_strength: FLOAT = Default("-2"),
-        chroma_threshold: INT = Default("-31"),
+        luma_radius: Float = Default("1"),
+        luma_strength: Float = Default("1"),
+        luma_threshold: Int = Default("0"),
+        chroma_radius: Float = Default("-0.9"),
+        chroma_strength: Float = Default("-2"),
+        chroma_threshold: Int = Default("-31"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11148,12 +11148,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT luma_radius: set luma radius (from 0.1 to 5) (default 1)
-        :param FLOAT luma_strength: set luma strength (from -1 to 1) (default 1)
-        :param INT luma_threshold: set luma threshold (from -30 to 30) (default 0)
-        :param FLOAT chroma_radius: set chroma radius (from -0.9 to 5) (default -0.9)
-        :param FLOAT chroma_strength: set chroma strength (from -2 to 1) (default -2)
-        :param INT chroma_threshold: set chroma threshold (from -31 to 30) (default -31)
+        :param Float luma_radius: set luma radius (from 0.1 to 5) (default 1)
+        :param Float luma_strength: set luma strength (from -1 to 1) (default 1)
+        :param Int luma_threshold: set luma threshold (from -30 to 30) (default 0)
+        :param Float chroma_radius: set chroma radius (from -0.9 to 5) (default -0.9)
+        :param Float chroma_strength: set chroma strength (from -2 to 1) (default -2)
+        :param Int chroma_threshold: set chroma threshold (from -31 to 30) (default -31)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#smartblur
@@ -11184,9 +11184,9 @@ class VideoStream(FilterableStream):
     def sobel(
         self,
         *,
-        planes: INT = Default("15"),
-        scale: FLOAT = Default("1"),
-        delta: FLOAT = Default("0"),
+        planes: Int = Default("15"),
+        scale: Float = Default("1"),
+        delta: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11197,9 +11197,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param FLOAT scale: set scale (from 0 to 65535) (default 1)
-        :param FLOAT delta: set delta (from -65535 to 65535) (default 0)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float scale: set scale (from 0 to 65535) (default 1)
+        :param Float delta: set delta (from -65535 to 65535) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sobel
@@ -11228,11 +11228,11 @@ class VideoStream(FilterableStream):
         self,
         _phase: "VideoStream",
         *,
-        sample_rate: INT = Default("44100"),
-        channels: INT = Default("1"),
-        scale: INT | Literal["lin", "log"] | Default = Default("log"),
-        slide: INT | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("fullframe"),
-        win_func: INT
+        sample_rate: Int = Default("44100"),
+        channels: Int = Default("1"),
+        scale: Int | Literal["lin", "log"] | Default = Default("log"),
+        slide: Int | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("fullframe"),
+        win_func: Int
         | Literal[
             "rect",
             "bartlett",
@@ -11258,8 +11258,8 @@ class VideoStream(FilterableStream):
             "kaiser",
         ]
         | Default = Default("rect"),
-        overlap: FLOAT = Default("1"),
-        orientation: INT | Literal["vertical", "horizontal"] | Default = Default("vertical"),
+        overlap: Float = Default("1"),
+        orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -11269,13 +11269,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
-        :param INT channels: set channels (from 1 to 8) (default 1)
-        :param INT scale: set input amplitude scale (from 0 to 1) (default log)
-        :param INT slide: set input sliding mode (from 0 to 3) (default fullframe)
-        :param INT win_func: set window function (from 0 to 20) (default rect)
-        :param FLOAT overlap: set window overlap (from 0 to 1) (default 1)
-        :param INT orientation: set orientation (from 0 to 1) (default vertical)
+        :param Int sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
+        :param Int channels: set channels (from 1 to 8) (default 1)
+        :param Int scale: set input amplitude scale (from 0 to 1) (default log)
+        :param Int slide: set input sliding mode (from 0 to 3) (default fullframe)
+        :param Int win_func: set window function (from 0 to 20) (default rect)
+        :param Float overlap: set window overlap (from 0 to 1) (default 1)
+        :param Int orientation: set orientation (from 0 to 1) (default vertical)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth
 
@@ -11305,7 +11305,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def split(self, *, outputs: INT = Default("2"), **kwargs: Any) -> FilterNode:
+    def split(self, *, outputs: Int = Default("2"), **kwargs: Any) -> FilterNode:
         """
 
         Pass on the input to N video outputs.
@@ -11313,7 +11313,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT outputs: set number of outputs (from 1 to INT_MAX) (default 2)
+        :param Int outputs: set number of outputs (from 1 to INT_MAX) (default 2)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit
 
@@ -11338,10 +11338,10 @@ class VideoStream(FilterableStream):
     def spp(
         self,
         *,
-        quality: INT = Default("3"),
-        qp: INT = Default("0"),
-        mode: INT | Literal["hard", "soft"] | Default = Default("hard"),
-        use_bframe_qp: BOOLEAN = Default("false"),
+        quality: Int = Default("3"),
+        qp: Int = Default("0"),
+        mode: Int | Literal["hard", "soft"] | Default = Default("hard"),
+        use_bframe_qp: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11352,10 +11352,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT quality: set quality (from 0 to 6) (default 3)
-        :param INT qp: force a constant quantizer parameter (from 0 to 63) (default 0)
-        :param INT mode: set thresholding mode (from 0 to 1) (default hard)
-        :param BOOLEAN use_bframe_qp: use B-frames' QP (default false)
+        :param Int quality: set quality (from 0 to 6) (default 3)
+        :param Int qp: force a constant quantizer parameter (from 0 to 63) (default 0)
+        :param Int mode: set thresholding mode (from 0 to 1) (default hard)
+        :param Boolean use_bframe_qp: use B-frames' QP (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#spp
@@ -11384,11 +11384,11 @@ class VideoStream(FilterableStream):
     def sr(
         self,
         *,
-        dnn_backend: INT | Literal["native"] | Default = Default("native"),
-        scale_factor: INT = Default("2"),
-        model: STRING = Default(None),
-        input: STRING = Default("x"),
-        output: STRING = Default("y"),
+        dnn_backend: Int | Literal["native"] | Default = Default("native"),
+        scale_factor: Int = Default("2"),
+        model: String = Default(None),
+        input: String = Default("x"),
+        output: String = Default("y"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -11398,11 +11398,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT dnn_backend: DNN backend used for model execution (from 0 to 1) (default native)
-        :param INT scale_factor: scale factor for SRCNN model (from 2 to 4) (default 2)
-        :param STRING model: path to model file specifying network architecture and its parameters
-        :param STRING input: input name of the model (default "x")
-        :param STRING output: output name of the model (default "y")
+        :param Int dnn_backend: DNN backend used for model execution (from 0 to 1) (default native)
+        :param Int scale_factor: scale factor for SRCNN model (from 2 to 4) (default 2)
+        :param String model: path to model file specifying network architecture and its parameters
+        :param String input: input name of the model (default "x")
+        :param String output: output name of the model (default "y")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#sr
 
@@ -11431,11 +11431,11 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        stats_file: STRING = Default(None),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        stats_file: String = Default(None),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11446,11 +11446,11 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING stats_file: Set file where to store per-frame difference information
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param String stats_file: Set file where to store per-frame difference information
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#ssim
@@ -11483,7 +11483,7 @@ class VideoStream(FilterableStream):
     def stereo3d(
         self,
         *,
-        _in: INT
+        _in: Int
         | Literal[
             "ab2l",
             "tb2l",
@@ -11505,7 +11505,7 @@ class VideoStream(FilterableStream):
             "icr",
         ]
         | Default = Default("sbsl"),
-        out: INT
+        out: Int
         | Literal[
             "ab2l",
             "tb2l",
@@ -11555,8 +11555,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT _in: set input format (from 16 to 32) (default sbsl)
-        :param INT out: set output format (from 0 to 32) (default arcd)
+        :param Int _in: set input format (from 16 to 32) (default sbsl)
+        :param Int out: set output format (from 0 to 32) (default arcd)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#stereo3d
 
@@ -11581,13 +11581,13 @@ class VideoStream(FilterableStream):
     def subtitles(
         self,
         *,
-        filename: STRING = Default(None),
-        original_size: IMAGE_SIZE = Default(None),
-        fontsdir: STRING = Default(None),
-        alpha: BOOLEAN = Default("false"),
-        charenc: STRING = Default(None),
-        stream_index: INT = Default("-1"),
-        force_style: STRING = Default(None),
+        filename: String = Default(None),
+        original_size: Image_size = Default(None),
+        fontsdir: String = Default(None),
+        alpha: Boolean = Default("false"),
+        charenc: String = Default(None),
+        stream_index: Int = Default("-1"),
+        force_style: String = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -11597,13 +11597,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING filename: set the filename of file to read
-        :param IMAGE_SIZE original_size: set the size of the original video (used to scale fonts)
-        :param STRING fontsdir: set the directory containing the fonts to read
-        :param BOOLEAN alpha: enable processing of alpha channel (default false)
-        :param STRING charenc: set input character encoding
-        :param INT stream_index: set stream index (from -1 to INT_MAX) (default -1)
-        :param STRING force_style: force subtitle style
+        :param String filename: set the filename of file to read
+        :param Image_size original_size: set the size of the original video (used to scale fonts)
+        :param String fontsdir: set the directory containing the fonts to read
+        :param Boolean alpha: enable processing of alpha channel (default false)
+        :param String charenc: set input character encoding
+        :param Int stream_index: set stream index (from -1 to INT_MAX) (default -1)
+        :param String force_style: force subtitle style
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#subtitles
 
@@ -11654,12 +11654,12 @@ class VideoStream(FilterableStream):
     def swaprect(
         self,
         *,
-        w: STRING = Default("w/2"),
-        h: STRING = Default("h/2"),
-        x1: STRING = Default("w/2"),
-        y1: STRING = Default("h/2"),
-        x2: STRING = Default("0"),
-        y2: STRING = Default("0"),
+        w: String = Default("w/2"),
+        h: String = Default("h/2"),
+        x1: String = Default("w/2"),
+        y1: String = Default("h/2"),
+        x2: String = Default("0"),
+        y2: String = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11670,12 +11670,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING w: set rect width (default "w/2")
-        :param STRING h: set rect height (default "h/2")
-        :param STRING x1: set 1st rect x top left coordinate (default "w/2")
-        :param STRING y1: set 1st rect y top left coordinate (default "h/2")
-        :param STRING x2: set 2nd rect x top left coordinate (default "0")
-        :param STRING y2: set 2nd rect y top left coordinate (default "0")
+        :param String w: set rect width (default "w/2")
+        :param String h: set rect height (default "h/2")
+        :param String x1: set 1st rect x top left coordinate (default "w/2")
+        :param String y1: set 1st rect y top left coordinate (default "h/2")
+        :param String x2: set 2nd rect x top left coordinate (default "0")
+        :param String y2: set 2nd rect y top left coordinate (default "0")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#swaprect
@@ -11735,7 +11735,7 @@ class VideoStream(FilterableStream):
     def tblend(
         self,
         *,
-        c0_mode: INT
+        c0_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -11781,7 +11781,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        c1_mode: INT
+        c1_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -11827,7 +11827,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        c2_mode: INT
+        c2_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -11873,7 +11873,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        c3_mode: INT
+        c3_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -11919,7 +11919,7 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("normal"),
-        all_mode: INT
+        all_mode: Int
         | Literal[
             "addition",
             "addition128",
@@ -11965,16 +11965,16 @@ class VideoStream(FilterableStream):
             "hardoverlay",
         ]
         | Default = Default("-1"),
-        c0_expr: STRING = Default(None),
-        c1_expr: STRING = Default(None),
-        c2_expr: STRING = Default(None),
-        c3_expr: STRING = Default(None),
-        all_expr: STRING = Default(None),
-        c0_opacity: DOUBLE = Default("1"),
-        c1_opacity: DOUBLE = Default("1"),
-        c2_opacity: DOUBLE = Default("1"),
-        c3_opacity: DOUBLE = Default("1"),
-        all_opacity: DOUBLE = Default("1"),
+        c0_expr: String = Default(None),
+        c1_expr: String = Default(None),
+        c2_expr: String = Default(None),
+        c3_expr: String = Default(None),
+        all_expr: String = Default(None),
+        c0_opacity: Double = Default("1"),
+        c1_opacity: Double = Default("1"),
+        c2_opacity: Double = Default("1"),
+        c3_opacity: Double = Default("1"),
+        all_opacity: Double = Default("1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -11985,21 +11985,21 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
-        :param INT c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
-        :param INT c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
-        :param INT c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
-        :param INT all_mode: set blend mode for all components (from -1 to 39) (default -1)
-        :param STRING c0_expr: set color component #0 expression
-        :param STRING c1_expr: set color component #1 expression
-        :param STRING c2_expr: set color component #2 expression
-        :param STRING c3_expr: set color component #3 expression
-        :param STRING all_expr: set expression for all color components
-        :param DOUBLE c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
-        :param DOUBLE c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
-        :param DOUBLE c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
-        :param DOUBLE c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
-        :param DOUBLE all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+        :param Int c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+        :param Int c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+        :param Int c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+        :param Int c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+        :param Int all_mode: set blend mode for all components (from -1 to 39) (default -1)
+        :param String c0_expr: set color component #0 expression
+        :param String c1_expr: set color component #1 expression
+        :param String c2_expr: set color component #2 expression
+        :param String c3_expr: set color component #3 expression
+        :param String all_expr: set expression for all color components
+        :param Double c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+        :param Double c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+        :param Double c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+        :param Double c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+        :param Double all_opacity: set opacity for all color components (from 0 to 1) (default 1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tblend
@@ -12039,8 +12039,8 @@ class VideoStream(FilterableStream):
     def telecine(
         self,
         *,
-        first_field: INT | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
-        pattern: STRING = Default("23"),
+        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
+        pattern: String = Default("23"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12050,8 +12050,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT first_field: select first field (from 0 to 1) (default top)
-        :param STRING pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
+        :param Int first_field: select first field (from 0 to 1) (default top)
+        :param String pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#telecine
 
@@ -12076,14 +12076,14 @@ class VideoStream(FilterableStream):
     def thistogram(
         self,
         *,
-        width: INT = Default("0"),
-        display_mode: INT | Literal["overlay", "parade", "stack"] | Default = Default("stack"),
-        levels_mode: INT | Literal["linear", "logarithmic"] | Default = Default("linear"),
-        components: INT = Default("7"),
-        bgopacity: FLOAT = Default("0.9"),
-        envelope: BOOLEAN = Default("false"),
-        ecolor: COLOR = Default("gold"),
-        slide: INT | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("replace"),
+        width: Int = Default("0"),
+        display_mode: Int | Literal["overlay", "parade", "stack"] | Default = Default("stack"),
+        levels_mode: Int | Literal["linear", "logarithmic"] | Default = Default("linear"),
+        components: Int = Default("7"),
+        bgopacity: Float = Default("0.9"),
+        envelope: Boolean = Default("false"),
+        ecolor: Color = Default("gold"),
+        slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("replace"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12093,14 +12093,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT width: set width (from 0 to 8192) (default 0)
-        :param INT display_mode: set display mode (from 0 to 2) (default stack)
-        :param INT levels_mode: set levels mode (from 0 to 1) (default linear)
-        :param INT components: set color components to display (from 1 to 15) (default 7)
-        :param FLOAT bgopacity: set background opacity (from 0 to 1) (default 0.9)
-        :param BOOLEAN envelope: display envelope (default false)
-        :param COLOR ecolor: set envelope color (default "gold")
-        :param INT slide: set slide mode (from 0 to 4) (default replace)
+        :param Int width: set width (from 0 to 8192) (default 0)
+        :param Int display_mode: set display mode (from 0 to 2) (default stack)
+        :param Int levels_mode: set levels mode (from 0 to 1) (default linear)
+        :param Int components: set color components to display (from 1 to 15) (default 7)
+        :param Float bgopacity: set background opacity (from 0 to 1) (default 0.9)
+        :param Boolean envelope: display envelope (default false)
+        :param Color ecolor: set envelope color (default "gold")
+        :param Int slide: set slide mode (from 0 to 4) (default replace)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#thistogram
 
@@ -12134,7 +12134,7 @@ class VideoStream(FilterableStream):
         _min: "VideoStream",
         _max: "VideoStream",
         *,
-        planes: INT = Default("15"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12145,7 +12145,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#threshold
@@ -12176,8 +12176,8 @@ class VideoStream(FilterableStream):
     def thumbnail(
         self,
         *,
-        n: INT = Default("100"),
-        log: INT | Literal["quiet", "info", "verbose"] | Default = Default("info"),
+        n: Int = Default("100"),
+        log: Int | Literal["quiet", "info", "verbose"] | Default = Default("info"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12188,8 +12188,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT n: set the frames batch size (from 2 to INT_MAX) (default 100)
-        :param INT log: force stats logging level (from INT_MIN to INT_MAX) (default info)
+        :param Int n: set the frames batch size (from 2 to INT_MAX) (default 100)
+        :param Int log: force stats logging level (from INT_MIN to INT_MAX) (default info)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#thumbnail
@@ -12216,13 +12216,13 @@ class VideoStream(FilterableStream):
     def tile(
         self,
         *,
-        layout: IMAGE_SIZE = Default("6x5"),
-        nb_frames: INT = Default("0"),
-        margin: INT = Default("0"),
-        padding: INT = Default("0"),
-        color: COLOR = Default("black"),
-        overlap: INT = Default("0"),
-        init_padding: INT = Default("0"),
+        layout: Image_size = Default("6x5"),
+        nb_frames: Int = Default("0"),
+        margin: Int = Default("0"),
+        padding: Int = Default("0"),
+        color: Color = Default("black"),
+        overlap: Int = Default("0"),
+        init_padding: Int = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12232,13 +12232,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param IMAGE_SIZE layout: set grid size (default "6x5")
-        :param INT nb_frames: set maximum number of frame to render (from 0 to INT_MAX) (default 0)
-        :param INT margin: set outer border margin in pixels (from 0 to 1024) (default 0)
-        :param INT padding: set inner border thickness in pixels (from 0 to 1024) (default 0)
-        :param COLOR color: set the color of the unused area (default "black")
-        :param INT overlap: set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)
-        :param INT init_padding: set how many frames to initially pad (from 0 to INT_MAX) (default 0)
+        :param Image_size layout: set grid size (default "6x5")
+        :param Int nb_frames: set maximum number of frame to render (from 0 to INT_MAX) (default 0)
+        :param Int margin: set outer border margin in pixels (from 0 to 1024) (default 0)
+        :param Int padding: set inner border thickness in pixels (from 0 to 1024) (default 0)
+        :param Color color: set the color of the unused area (default "black")
+        :param Int overlap: set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)
+        :param Int init_padding: set how many frames to initially pad (from 0 to INT_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tile
 
@@ -12268,7 +12268,7 @@ class VideoStream(FilterableStream):
     def tinterlace(
         self,
         *,
-        mode: INT
+        mode: Int
         | Literal[
             "merge", "drop_even", "drop_odd", "pad", "interleave_top", "interleave_bottom", "interlacex2", "mergex2"
         ]
@@ -12282,7 +12282,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: select interlace mode (from 0 to 7) (default merge)
+        :param Int mode: select interlace mode (from 0 to 7) (default merge)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tinterlace
 
@@ -12306,10 +12306,10 @@ class VideoStream(FilterableStream):
     def tlut2(
         self,
         *,
-        c0: STRING = Default("x"),
-        c1: STRING = Default("x"),
-        c2: STRING = Default("x"),
-        c3: STRING = Default("x"),
+        c0: String = Default("x"),
+        c1: String = Default("x"),
+        c2: String = Default("x"),
+        c3: String = Default("x"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12320,10 +12320,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING c0: set component #0 expression (default "x")
-        :param STRING c1: set component #1 expression (default "x")
-        :param STRING c2: set component #2 expression (default "x")
-        :param STRING c3: set component #3 expression (default "x")
+        :param String c0: set component #0 expression (default "x")
+        :param String c1: set component #1 expression (default "x")
+        :param String c2: set component #2 expression (default "x")
+        :param String c3: set component #3 expression (default "x")
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2
@@ -12352,9 +12352,9 @@ class VideoStream(FilterableStream):
     def tmedian(
         self,
         *,
-        radius: INT = Default("1"),
-        planes: INT = Default("15"),
-        percentile: FLOAT = Default("0.5"),
+        radius: Int = Default("1"),
+        planes: Int = Default("15"),
+        percentile: Float = Default("0.5"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12365,9 +12365,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT radius: set median filter radius (from 1 to 127) (default 1)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param FLOAT percentile: set percentile (from 0 to 1) (default 0.5)
+        :param Int radius: set median filter radius (from 1 to 127) (default 1)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Float percentile: set percentile (from 0 to 1) (default 0.5)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tmedian
@@ -12395,9 +12395,9 @@ class VideoStream(FilterableStream):
     def tmidequalizer(
         self,
         *,
-        radius: INT = Default("5"),
-        sigma: FLOAT = Default("0.5"),
-        planes: INT = Default("15"),
+        radius: Int = Default("5"),
+        sigma: Float = Default("0.5"),
+        planes: Int = Default("15"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12408,9 +12408,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT radius: set radius (from 1 to 127) (default 5)
-        :param FLOAT sigma: set sigma (from 0 to 1) (default 0.5)
-        :param INT planes: set planes (from 0 to 15) (default 15)
+        :param Int radius: set radius (from 1 to 127) (default 5)
+        :param Float sigma: set sigma (from 0 to 1) (default 0.5)
+        :param Int planes: set planes (from 0 to 15) (default 15)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tmidequalizer
@@ -12438,10 +12438,10 @@ class VideoStream(FilterableStream):
     def tmix(
         self,
         *,
-        frames: INT = Default("3"),
-        weights: STRING = Default("1 1 1"),
-        scale: FLOAT = Default("0"),
-        planes: FLAGS = Default("F"),
+        frames: Int = Default("3"),
+        weights: String = Default("1 1 1"),
+        scale: Float = Default("0"),
+        planes: Flags = Default("F"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12452,10 +12452,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT frames: set number of successive frames to mix (from 1 to 1024) (default 3)
-        :param STRING weights: set weight for each frame (default "1 1 1")
-        :param FLOAT scale: set scale (from 0 to 32767) (default 0)
-        :param FLAGS planes: set what planes to filter (default F)
+        :param Int frames: set number of successive frames to mix (from 1 to 1024) (default 3)
+        :param String weights: set weight for each frame (default "1 1 1")
+        :param Float scale: set scale (from 0 to 32767) (default 0)
+        :param Flags planes: set what planes to filter (default F)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tmix
@@ -12484,12 +12484,12 @@ class VideoStream(FilterableStream):
     def tonemap(
         self,
         *,
-        tonemap: INT
+        tonemap: Int
         | Literal["none", "linear", "gamma", "clip", "reinhard", "hable", "mobius"]
         | Default = Default("none"),
-        param: DOUBLE = Default("nan"),
-        desat: DOUBLE = Default("2"),
-        peak: DOUBLE = Default("0"),
+        param: Double = Default("nan"),
+        desat: Double = Default("2"),
+        peak: Double = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12499,10 +12499,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT tonemap: tonemap algorithm selection (from 0 to 6) (default none)
-        :param DOUBLE param: tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)
-        :param DOUBLE desat: desaturation strength (from 0 to DBL_MAX) (default 2)
-        :param DOUBLE peak: signal peak override (from 0 to DBL_MAX) (default 0)
+        :param Int tonemap: tonemap algorithm selection (from 0 to 6) (default none)
+        :param Double param: tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)
+        :param Double desat: desaturation strength (from 0 to DBL_MAX) (default 2)
+        :param Double peak: signal peak override (from 0 to DBL_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tonemap
 
@@ -12529,13 +12529,13 @@ class VideoStream(FilterableStream):
     def tpad(
         self,
         *,
-        start: INT = Default("0"),
-        stop: INT = Default("0"),
-        start_mode: INT | Literal["add", "clone"] | Default = Default("add"),
-        stop_mode: INT | Literal["add", "clone"] | Default = Default("add"),
-        start_duration: DURATION = Default("0"),
-        stop_duration: DURATION = Default("0"),
-        color: COLOR = Default("black"),
+        start: Int = Default("0"),
+        stop: Int = Default("0"),
+        start_mode: Int | Literal["add", "clone"] | Default = Default("add"),
+        stop_mode: Int | Literal["add", "clone"] | Default = Default("add"),
+        start_duration: Duration = Default("0"),
+        stop_duration: Duration = Default("0"),
+        color: Color = Default("black"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12545,13 +12545,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT start: set the number of frames to delay input (from 0 to INT_MAX) (default 0)
-        :param INT stop: set the number of frames to add after input finished (from -1 to INT_MAX) (default 0)
-        :param INT start_mode: set the mode of added frames to start (from 0 to 1) (default add)
-        :param INT stop_mode: set the mode of added frames to end (from 0 to 1) (default add)
-        :param DURATION start_duration: set the duration to delay input (default 0)
-        :param DURATION stop_duration: set the duration to pad input (default 0)
-        :param COLOR color: set the color of the added frames (default "black")
+        :param Int start: set the number of frames to delay input (from 0 to INT_MAX) (default 0)
+        :param Int stop: set the number of frames to add after input finished (from -1 to INT_MAX) (default 0)
+        :param Int start_mode: set the mode of added frames to start (from 0 to 1) (default add)
+        :param Int stop_mode: set the mode of added frames to end (from 0 to 1) (default add)
+        :param Duration start_duration: set the duration to delay input (default 0)
+        :param Duration stop_duration: set the duration to pad input (default 0)
+        :param Color color: set the color of the added frames (default "black")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#tpad
 
@@ -12581,8 +12581,8 @@ class VideoStream(FilterableStream):
     def transpose(
         self,
         *,
-        dir: INT | Literal["cclock_flip", "clock", "cclock", "clock_flip"] | Default = Default("cclock_flip"),
-        passthrough: INT | Literal["none", "portrait", "landscape"] | Default = Default("none"),
+        dir: Int | Literal["cclock_flip", "clock", "cclock", "clock_flip"] | Default = Default("cclock_flip"),
+        passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12592,8 +12592,8 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT dir: set transpose direction (from 0 to 7) (default cclock_flip)
-        :param INT passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
+        :param Int dir: set transpose direction (from 0 to 7) (default cclock_flip)
+        :param Int passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#transpose
 
@@ -12618,13 +12618,13 @@ class VideoStream(FilterableStream):
     def trim(
         self,
         *,
-        start: DURATION = Default("INT64_MAX"),
-        end: DURATION = Default("INT64_MAX"),
-        start_pts: INT64 = Default("I64_MIN"),
-        end_pts: INT64 = Default("I64_MIN"),
-        duration: DURATION = Default("0"),
-        start_frame: INT64 = Default("-1"),
-        end_frame: INT64 = Default("I64_MAX"),
+        start: Duration = Default("INT64_MAX"),
+        end: Duration = Default("INT64_MAX"),
+        start_pts: Int64 = Default("I64_MIN"),
+        end_pts: Int64 = Default("I64_MIN"),
+        duration: Duration = Default("0"),
+        start_frame: Int64 = Default("-1"),
+        end_frame: Int64 = Default("I64_MAX"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12634,13 +12634,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param DURATION start: Timestamp of the first frame that should be passed (default INT64_MAX)
-        :param DURATION end: Timestamp of the first frame that should be dropped again (default INT64_MAX)
-        :param INT64 start_pts: Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
-        :param INT64 end_pts: Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
-        :param DURATION duration: Maximum duration of the output (default 0)
-        :param INT64 start_frame: Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)
-        :param INT64 end_frame: Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
+        :param Duration start: Timestamp of the first frame that should be passed (default INT64_MAX)
+        :param Duration end: Timestamp of the first frame that should be dropped again (default INT64_MAX)
+        :param Int64 start_pts: Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
+        :param Int64 end_pts: Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
+        :param Duration duration: Maximum duration of the output (default 0)
+        :param Int64 start_frame: Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)
+        :param Int64 end_frame: Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#trim
 
@@ -12670,15 +12670,15 @@ class VideoStream(FilterableStream):
     def unsharp(
         self,
         *,
-        luma_msize_x: INT = Default("5"),
-        luma_msize_y: INT = Default("5"),
-        luma_amount: FLOAT = Default("1"),
-        chroma_msize_x: INT = Default("5"),
-        chroma_msize_y: INT = Default("5"),
-        chroma_amount: FLOAT = Default("0"),
-        alpha_msize_x: INT = Default("5"),
-        alpha_msize_y: INT = Default("5"),
-        alpha_amount: FLOAT = Default("0"),
+        luma_msize_x: Int = Default("5"),
+        luma_msize_y: Int = Default("5"),
+        luma_amount: Float = Default("1"),
+        chroma_msize_x: Int = Default("5"),
+        chroma_msize_y: Int = Default("5"),
+        chroma_amount: Float = Default("0"),
+        alpha_msize_x: Int = Default("5"),
+        alpha_msize_y: Int = Default("5"),
+        alpha_amount: Float = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12689,15 +12689,15 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT luma_msize_x: set luma matrix horizontal size (from 3 to 23) (default 5)
-        :param INT luma_msize_y: set luma matrix vertical size (from 3 to 23) (default 5)
-        :param FLOAT luma_amount: set luma effect strength (from -2 to 5) (default 1)
-        :param INT chroma_msize_x: set chroma matrix horizontal size (from 3 to 23) (default 5)
-        :param INT chroma_msize_y: set chroma matrix vertical size (from 3 to 23) (default 5)
-        :param FLOAT chroma_amount: set chroma effect strength (from -2 to 5) (default 0)
-        :param INT alpha_msize_x: set alpha matrix horizontal size (from 3 to 23) (default 5)
-        :param INT alpha_msize_y: set alpha matrix vertical size (from 3 to 23) (default 5)
-        :param FLOAT alpha_amount: set alpha effect strength (from -2 to 5) (default 0)
+        :param Int luma_msize_x: set luma matrix horizontal size (from 3 to 23) (default 5)
+        :param Int luma_msize_y: set luma matrix vertical size (from 3 to 23) (default 5)
+        :param Float luma_amount: set luma effect strength (from -2 to 5) (default 1)
+        :param Int chroma_msize_x: set chroma matrix horizontal size (from 3 to 23) (default 5)
+        :param Int chroma_msize_y: set chroma matrix vertical size (from 3 to 23) (default 5)
+        :param Float chroma_amount: set chroma effect strength (from -2 to 5) (default 0)
+        :param Int alpha_msize_x: set alpha matrix horizontal size (from 3 to 23) (default 5)
+        :param Int alpha_msize_y: set alpha matrix vertical size (from 3 to 23) (default 5)
+        :param Float alpha_amount: set alpha effect strength (from -2 to 5) (default 0)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#unsharp
@@ -12728,7 +12728,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def untile(self, *, layout: IMAGE_SIZE = Default("6x5"), **kwargs: Any) -> "VideoStream":
+    def untile(self, *, layout: Image_size = Default("6x5"), **kwargs: Any) -> "VideoStream":
         """
 
         Untile a frame into a sequence of frames.
@@ -12736,7 +12736,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param IMAGE_SIZE layout: set grid size (default "6x5")
+        :param Image_size layout: set grid size (default "6x5")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#untile
 
@@ -12760,7 +12760,7 @@ class VideoStream(FilterableStream):
     def v360(
         self,
         *,
-        input: INT
+        input: Int
         | Literal[
             "e",
             "equirect",
@@ -12793,7 +12793,7 @@ class VideoStream(FilterableStream):
             "cylindricalea",
         ]
         | Default = Default("e"),
-        output: INT
+        output: Int
         | Literal[
             "e",
             "equirect",
@@ -12827,7 +12827,7 @@ class VideoStream(FilterableStream):
             "cylindricalea",
         ]
         | Default = Default("c3x2"),
-        interp: INT
+        interp: Int
         | Literal[
             "near",
             "nearest",
@@ -12845,39 +12845,39 @@ class VideoStream(FilterableStream):
             "mitchell",
         ]
         | Default = Default("line"),
-        w: INT = Default("0"),
-        h: INT = Default("0"),
-        in_stereo: INT | Literal["2d", "sbs", "tb"] | Default = Default("2d"),
-        out_stereo: INT | Literal["2d", "sbs", "tb"] | Default = Default("2d"),
-        in_forder: STRING = Default("rludfb"),
-        out_forder: STRING = Default("rludfb"),
-        in_frot: STRING = Default("000000"),
-        out_frot: STRING = Default("000000"),
-        in_pad: FLOAT = Default("0"),
-        out_pad: FLOAT = Default("0"),
-        fin_pad: INT = Default("0"),
-        fout_pad: INT = Default("0"),
-        yaw: FLOAT = Default("0"),
-        pitch: FLOAT = Default("0"),
-        roll: FLOAT = Default("0"),
-        rorder: STRING = Default("ypr"),
-        h_fov: FLOAT = Default("0"),
-        v_fov: FLOAT = Default("0"),
-        d_fov: FLOAT = Default("0"),
-        h_flip: BOOLEAN = Default("false"),
-        v_flip: BOOLEAN = Default("false"),
-        d_flip: BOOLEAN = Default("false"),
-        ih_flip: BOOLEAN = Default("false"),
-        iv_flip: BOOLEAN = Default("false"),
-        in_trans: BOOLEAN = Default("false"),
-        out_trans: BOOLEAN = Default("false"),
-        ih_fov: FLOAT = Default("0"),
-        iv_fov: FLOAT = Default("0"),
-        id_fov: FLOAT = Default("0"),
-        h_offset: FLOAT = Default("0"),
-        v_offset: FLOAT = Default("0"),
-        alpha_mask: BOOLEAN = Default("false"),
-        reset_rot: BOOLEAN = Default("false"),
+        w: Int = Default("0"),
+        h: Int = Default("0"),
+        in_stereo: Int | Literal["2d", "sbs", "tb"] | Default = Default("2d"),
+        out_stereo: Int | Literal["2d", "sbs", "tb"] | Default = Default("2d"),
+        in_forder: String = Default("rludfb"),
+        out_forder: String = Default("rludfb"),
+        in_frot: String = Default("000000"),
+        out_frot: String = Default("000000"),
+        in_pad: Float = Default("0"),
+        out_pad: Float = Default("0"),
+        fin_pad: Int = Default("0"),
+        fout_pad: Int = Default("0"),
+        yaw: Float = Default("0"),
+        pitch: Float = Default("0"),
+        roll: Float = Default("0"),
+        rorder: String = Default("ypr"),
+        h_fov: Float = Default("0"),
+        v_fov: Float = Default("0"),
+        d_fov: Float = Default("0"),
+        h_flip: Boolean = Default("false"),
+        v_flip: Boolean = Default("false"),
+        d_flip: Boolean = Default("false"),
+        ih_flip: Boolean = Default("false"),
+        iv_flip: Boolean = Default("false"),
+        in_trans: Boolean = Default("false"),
+        out_trans: Boolean = Default("false"),
+        ih_fov: Float = Default("0"),
+        iv_fov: Float = Default("0"),
+        id_fov: Float = Default("0"),
+        h_offset: Float = Default("0"),
+        v_offset: Float = Default("0"),
+        alpha_mask: Boolean = Default("false"),
+        reset_rot: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -12887,42 +12887,42 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT input: set input projection (from 0 to 24) (default e)
-        :param INT output: set output projection (from 0 to 24) (default c3x2)
-        :param INT interp: set interpolation method (from 0 to 7) (default line)
-        :param INT w: output width (from 0 to 32767) (default 0)
-        :param INT h: output height (from 0 to 32767) (default 0)
-        :param INT in_stereo: input stereo format (from 0 to 2) (default 2d)
-        :param INT out_stereo: output stereo format (from 0 to 2) (default 2d)
-        :param STRING in_forder: input cubemap face order (default "rludfb")
-        :param STRING out_forder: output cubemap face order (default "rludfb")
-        :param STRING in_frot: input cubemap face rotation (default "000000")
-        :param STRING out_frot: output cubemap face rotation (default "000000")
-        :param FLOAT in_pad: percent input cubemap pads (from 0 to 0.1) (default 0)
-        :param FLOAT out_pad: percent output cubemap pads (from 0 to 0.1) (default 0)
-        :param INT fin_pad: fixed input cubemap pads (from 0 to 100) (default 0)
-        :param INT fout_pad: fixed output cubemap pads (from 0 to 100) (default 0)
-        :param FLOAT yaw: yaw rotation (from -180 to 180) (default 0)
-        :param FLOAT pitch: pitch rotation (from -180 to 180) (default 0)
-        :param FLOAT roll: roll rotation (from -180 to 180) (default 0)
-        :param STRING rorder: rotation order (default "ypr")
-        :param FLOAT h_fov: output horizontal field of view (from 0 to 360) (default 0)
-        :param FLOAT v_fov: output vertical field of view (from 0 to 360) (default 0)
-        :param FLOAT d_fov: output diagonal field of view (from 0 to 360) (default 0)
-        :param BOOLEAN h_flip: flip out video horizontally (default false)
-        :param BOOLEAN v_flip: flip out video vertically (default false)
-        :param BOOLEAN d_flip: flip out video indepth (default false)
-        :param BOOLEAN ih_flip: flip in video horizontally (default false)
-        :param BOOLEAN iv_flip: flip in video vertically (default false)
-        :param BOOLEAN in_trans: transpose video input (default false)
-        :param BOOLEAN out_trans: transpose video output (default false)
-        :param FLOAT ih_fov: input horizontal field of view (from 0 to 360) (default 0)
-        :param FLOAT iv_fov: input vertical field of view (from 0 to 360) (default 0)
-        :param FLOAT id_fov: input diagonal field of view (from 0 to 360) (default 0)
-        :param FLOAT h_offset: output horizontal off-axis offset (from -1 to 1) (default 0)
-        :param FLOAT v_offset: output vertical off-axis offset (from -1 to 1) (default 0)
-        :param BOOLEAN alpha_mask: build mask in alpha plane (default false)
-        :param BOOLEAN reset_rot: reset rotation (default false)
+        :param Int input: set input projection (from 0 to 24) (default e)
+        :param Int output: set output projection (from 0 to 24) (default c3x2)
+        :param Int interp: set interpolation method (from 0 to 7) (default line)
+        :param Int w: output width (from 0 to 32767) (default 0)
+        :param Int h: output height (from 0 to 32767) (default 0)
+        :param Int in_stereo: input stereo format (from 0 to 2) (default 2d)
+        :param Int out_stereo: output stereo format (from 0 to 2) (default 2d)
+        :param String in_forder: input cubemap face order (default "rludfb")
+        :param String out_forder: output cubemap face order (default "rludfb")
+        :param String in_frot: input cubemap face rotation (default "000000")
+        :param String out_frot: output cubemap face rotation (default "000000")
+        :param Float in_pad: percent input cubemap pads (from 0 to 0.1) (default 0)
+        :param Float out_pad: percent output cubemap pads (from 0 to 0.1) (default 0)
+        :param Int fin_pad: fixed input cubemap pads (from 0 to 100) (default 0)
+        :param Int fout_pad: fixed output cubemap pads (from 0 to 100) (default 0)
+        :param Float yaw: yaw rotation (from -180 to 180) (default 0)
+        :param Float pitch: pitch rotation (from -180 to 180) (default 0)
+        :param Float roll: roll rotation (from -180 to 180) (default 0)
+        :param String rorder: rotation order (default "ypr")
+        :param Float h_fov: output horizontal field of view (from 0 to 360) (default 0)
+        :param Float v_fov: output vertical field of view (from 0 to 360) (default 0)
+        :param Float d_fov: output diagonal field of view (from 0 to 360) (default 0)
+        :param Boolean h_flip: flip out video horizontally (default false)
+        :param Boolean v_flip: flip out video vertically (default false)
+        :param Boolean d_flip: flip out video indepth (default false)
+        :param Boolean ih_flip: flip in video horizontally (default false)
+        :param Boolean iv_flip: flip in video vertically (default false)
+        :param Boolean in_trans: transpose video input (default false)
+        :param Boolean out_trans: transpose video output (default false)
+        :param Float ih_fov: input horizontal field of view (from 0 to 360) (default 0)
+        :param Float iv_fov: input vertical field of view (from 0 to 360) (default 0)
+        :param Float id_fov: input diagonal field of view (from 0 to 360) (default 0)
+        :param Float h_offset: output horizontal off-axis offset (from -1 to 1) (default 0)
+        :param Float v_offset: output vertical off-axis offset (from -1 to 1) (default 0)
+        :param Boolean alpha_mask: build mask in alpha plane (default false)
+        :param Boolean reset_rot: reset rotation (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#v360
 
@@ -12981,12 +12981,12 @@ class VideoStream(FilterableStream):
     def vaguedenoiser(
         self,
         *,
-        threshold: FLOAT = Default("2"),
-        method: INT | Literal["hard", "soft", "garrote"] | Default = Default("garrote"),
-        nsteps: INT = Default("6"),
-        percent: FLOAT = Default("85"),
-        planes: INT = Default("15"),
-        type: INT | Literal["universal", "bayes"] | Default = Default("universal"),
+        threshold: Float = Default("2"),
+        method: Int | Literal["hard", "soft", "garrote"] | Default = Default("garrote"),
+        nsteps: Int = Default("6"),
+        percent: Float = Default("85"),
+        planes: Int = Default("15"),
+        type: Int | Literal["universal", "bayes"] | Default = Default("universal"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -12997,12 +12997,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT threshold: set filtering strength (from 0 to DBL_MAX) (default 2)
-        :param INT method: set filtering method (from 0 to 2) (default garrote)
-        :param INT nsteps: set number of steps (from 1 to 32) (default 6)
-        :param FLOAT percent: set percent of full denoising (from 0 to 100) (default 85)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param INT type: set threshold type (from 0 to 1) (default universal)
+        :param Float threshold: set filtering strength (from 0 to DBL_MAX) (default 2)
+        :param Int method: set filtering method (from 0 to 2) (default garrote)
+        :param Int nsteps: set number of steps (from 1 to 32) (default 6)
+        :param Float percent: set percent of full denoising (from 0 to 100) (default 85)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Int type: set threshold type (from 0 to 1) (default universal)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser
@@ -13034,13 +13034,13 @@ class VideoStream(FilterableStream):
         self,
         _radius: "VideoStream",
         *,
-        min_r: INT = Default("0"),
-        max_r: INT = Default("8"),
-        planes: INT = Default("15"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        min_r: Int = Default("0"),
+        max_r: Int = Default("8"),
+        planes: Int = Default("15"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13051,13 +13051,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT min_r: set min blur radius (from 0 to 254) (default 0)
-        :param INT max_r: set max blur radius (from 1 to 255) (default 8)
-        :param INT planes: set planes to filter (from 0 to 15) (default 15)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int min_r: set min blur radius (from 0 to 254) (default 0)
+        :param Int max_r: set max blur radius (from 1 to 255) (default 8)
+        :param Int planes: set planes to filter (from 0 to 15) (default 15)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#varblur
@@ -13092,22 +13092,22 @@ class VideoStream(FilterableStream):
     def vectorscope(
         self,
         *,
-        mode: INT
+        mode: Int
         | Literal["gray", "tint", "color", "color2", "color3", "color4", "color5"]
         | Default = Default("gray"),
-        x: INT = Default("1"),
-        y: INT = Default("2"),
-        intensity: FLOAT = Default("0.004"),
-        envelope: INT | Literal["none", "instant", "peak", "instant"] | Default = Default("none"),
-        graticule: INT | Literal["none", "green", "color", "invert"] | Default = Default("none"),
-        opacity: FLOAT = Default("0.75"),
-        flags: FLAGS | Literal["white", "black", "name"] | Default = Default("name"),
-        bgopacity: FLOAT = Default("0.3"),
-        lthreshold: FLOAT = Default("0"),
-        hthreshold: FLOAT = Default("1"),
-        colorspace: INT | Literal["auto", "601", "709"] | Default = Default("auto"),
-        tint0: FLOAT = Default("0"),
-        tint1: FLOAT = Default("0"),
+        x: Int = Default("1"),
+        y: Int = Default("2"),
+        intensity: Float = Default("0.004"),
+        envelope: Int | Literal["none", "instant", "peak", "instant"] | Default = Default("none"),
+        graticule: Int | Literal["none", "green", "color", "invert"] | Default = Default("none"),
+        opacity: Float = Default("0.75"),
+        flags: Flags | Literal["white", "black", "name"] | Default = Default("name"),
+        bgopacity: Float = Default("0.3"),
+        lthreshold: Float = Default("0"),
+        hthreshold: Float = Default("1"),
+        colorspace: Int | Literal["auto", "601", "709"] | Default = Default("auto"),
+        tint0: Float = Default("0"),
+        tint1: Float = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13117,20 +13117,20 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: set vectorscope mode (from 0 to 5) (default gray)
-        :param INT x: set color component on X axis (from 0 to 2) (default 1)
-        :param INT y: set color component on Y axis (from 0 to 2) (default 2)
-        :param FLOAT intensity: set intensity (from 0 to 1) (default 0.004)
-        :param INT envelope: set envelope (from 0 to 3) (default none)
-        :param INT graticule: set graticule (from 0 to 3) (default none)
-        :param FLOAT opacity: set graticule opacity (from 0 to 1) (default 0.75)
-        :param FLAGS flags: set graticule flags (default name)
-        :param FLOAT bgopacity: set background opacity (from 0 to 1) (default 0.3)
-        :param FLOAT lthreshold: set low threshold (from 0 to 1) (default 0)
-        :param FLOAT hthreshold: set high threshold (from 0 to 1) (default 1)
-        :param INT colorspace: set colorspace (from 0 to 2) (default auto)
-        :param FLOAT tint0: set 1st tint (from -1 to 1) (default 0)
-        :param FLOAT tint1: set 2nd tint (from -1 to 1) (default 0)
+        :param Int mode: set vectorscope mode (from 0 to 5) (default gray)
+        :param Int x: set color component on X axis (from 0 to 2) (default 1)
+        :param Int y: set color component on Y axis (from 0 to 2) (default 2)
+        :param Float intensity: set intensity (from 0 to 1) (default 0.004)
+        :param Int envelope: set envelope (from 0 to 3) (default none)
+        :param Int graticule: set graticule (from 0 to 3) (default none)
+        :param Float opacity: set graticule opacity (from 0 to 1) (default 0.75)
+        :param Flags flags: set graticule flags (default name)
+        :param Float bgopacity: set background opacity (from 0 to 1) (default 0.3)
+        :param Float lthreshold: set low threshold (from 0 to 1) (default 0)
+        :param Float hthreshold: set high threshold (from 0 to 1) (default 1)
+        :param Int colorspace: set colorspace (from 0 to 2) (default auto)
+        :param Float tint0: set 1st tint (from -1 to 1) (default 0)
+        :param Float tint1: set 2nd tint (from -1 to 1) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vectorscope
 
@@ -13217,14 +13217,14 @@ class VideoStream(FilterableStream):
     def vibrance(
         self,
         *,
-        intensity: FLOAT = Default("0"),
-        rbal: FLOAT = Default("1"),
-        gbal: FLOAT = Default("1"),
-        bbal: FLOAT = Default("1"),
-        rlum: FLOAT = Default("0.072186"),
-        glum: FLOAT = Default("0.715158"),
-        blum: FLOAT = Default("0.212656"),
-        alternate: BOOLEAN = Default("false"),
+        intensity: Float = Default("0"),
+        rbal: Float = Default("1"),
+        gbal: Float = Default("1"),
+        bbal: Float = Default("1"),
+        rlum: Float = Default("0.072186"),
+        glum: Float = Default("0.715158"),
+        blum: Float = Default("0.212656"),
+        alternate: Boolean = Default("false"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13235,14 +13235,14 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param FLOAT intensity: set the intensity value (from -2 to 2) (default 0)
-        :param FLOAT rbal: set the red balance value (from -10 to 10) (default 1)
-        :param FLOAT gbal: set the green balance value (from -10 to 10) (default 1)
-        :param FLOAT bbal: set the blue balance value (from -10 to 10) (default 1)
-        :param FLOAT rlum: set the red luma coefficient (from 0 to 1) (default 0.072186)
-        :param FLOAT glum: set the green luma coefficient (from 0 to 1) (default 0.715158)
-        :param FLOAT blum: set the blue luma coefficient (from 0 to 1) (default 0.212656)
-        :param BOOLEAN alternate: use alternate colors (default false)
+        :param Float intensity: set the intensity value (from -2 to 2) (default 0)
+        :param Float rbal: set the red balance value (from -10 to 10) (default 1)
+        :param Float gbal: set the green balance value (from -10 to 10) (default 1)
+        :param Float bbal: set the blue balance value (from -10 to 10) (default 1)
+        :param Float rlum: set the red luma coefficient (from 0 to 1) (default 0.072186)
+        :param Float glum: set the green luma coefficient (from 0 to 1) (default 0.715158)
+        :param Float blum: set the blue luma coefficient (from 0 to 1) (default 0.212656)
+        :param Boolean alternate: use alternate colors (default false)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vibrance
@@ -13275,13 +13275,13 @@ class VideoStream(FilterableStream):
     def vidstabdetect(
         self,
         *,
-        result: STRING = Default("transforms.trf"),
-        shakiness: INT = Default("5"),
-        accuracy: INT = Default("15"),
-        stepsize: INT = Default("6"),
-        mincontrast: DOUBLE = Default("0.25"),
-        show: INT = Default("0"),
-        tripod: INT = Default("0"),
+        result: String = Default("transforms.trf"),
+        shakiness: Int = Default("5"),
+        accuracy: Int = Default("15"),
+        stepsize: Int = Default("6"),
+        mincontrast: Double = Default("0.25"),
+        show: Int = Default("0"),
+        tripod: Int = Default("0"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13291,13 +13291,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING result: path to the file used to write the transforms (default "transforms.trf")
-        :param INT shakiness: how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)
-        :param INT accuracy: (>=shakiness) 1: low 15: high (slow) (from 1 to 15) (default 15)
-        :param INT stepsize: region around minimum is scanned with 1 pixel resolution (from 1 to 32) (default 6)
-        :param DOUBLE mincontrast: below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)
-        :param INT show: 0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)
-        :param INT tripod: virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)
+        :param String result: path to the file used to write the transforms (default "transforms.trf")
+        :param Int shakiness: how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)
+        :param Int accuracy: (>=shakiness) 1: low 15: high (slow) (from 1 to 15) (default 15)
+        :param Int stepsize: region around minimum is scanned with 1 pixel resolution (from 1 to 32) (default 6)
+        :param Double mincontrast: below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)
+        :param Int show: 0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)
+        :param Int tripod: virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vidstabdetect
 
@@ -13327,20 +13327,20 @@ class VideoStream(FilterableStream):
     def vidstabtransform(
         self,
         *,
-        input: STRING = Default("transforms.trf"),
-        smoothing: INT = Default("15"),
-        optalgo: INT | Literal["opt", "gauss", "avg"] | Default = Default("opt"),
-        maxshift: INT = Default("-1"),
-        maxangle: DOUBLE = Default("-1"),
-        crop: INT | Literal["keep", "black"] | Default = Default("keep"),
-        invert: INT = Default("0"),
-        relative: INT = Default("1"),
-        zoom: DOUBLE = Default("0"),
-        optzoom: INT = Default("1"),
-        zoomspeed: DOUBLE = Default("0.25"),
-        interpol: INT | Literal["no", "linear", "bilinear", "bicubic"] | Default = Default("bilinear"),
-        tripod: BOOLEAN = Default("false"),
-        debug: BOOLEAN = Default("false"),
+        input: String = Default("transforms.trf"),
+        smoothing: Int = Default("15"),
+        optalgo: Int | Literal["opt", "gauss", "avg"] | Default = Default("opt"),
+        maxshift: Int = Default("-1"),
+        maxangle: Double = Default("-1"),
+        crop: Int | Literal["keep", "black"] | Default = Default("keep"),
+        invert: Int = Default("0"),
+        relative: Int = Default("1"),
+        zoom: Double = Default("0"),
+        optzoom: Int = Default("1"),
+        zoomspeed: Double = Default("0.25"),
+        interpol: Int | Literal["no", "linear", "bilinear", "bicubic"] | Default = Default("bilinear"),
+        tripod: Boolean = Default("false"),
+        debug: Boolean = Default("false"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13350,20 +13350,20 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING input: set path to the file storing the transforms (default "transforms.trf")
-        :param INT smoothing: set number of frames*2 + 1 used for lowpass filtering (from 0 to 1000) (default 15)
-        :param INT optalgo: set camera path optimization algo (from 0 to 2) (default opt)
-        :param INT maxshift: set maximal number of pixels to translate image (from -1 to 500) (default -1)
-        :param DOUBLE maxangle: set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)
-        :param INT crop: set cropping mode (from 0 to 1) (default keep)
-        :param INT invert: invert transforms (from 0 to 1) (default 0)
-        :param INT relative: consider transforms as relative (from 0 to 1) (default 1)
-        :param DOUBLE zoom: set percentage to zoom (>0: zoom in, <0: zoom out (from -100 to 100) (default 0)
-        :param INT optzoom: set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom) (from 0 to 2) (default 1)
-        :param DOUBLE zoomspeed: for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)
-        :param INT interpol: set type of interpolation (from 0 to 3) (default bilinear)
-        :param BOOLEAN tripod: enable virtual tripod mode (same as relative=0:smoothing=0) (default false)
-        :param BOOLEAN debug: enable debug mode and writer global motions information to file (default false)
+        :param String input: set path to the file storing the transforms (default "transforms.trf")
+        :param Int smoothing: set number of frames*2 + 1 used for lowpass filtering (from 0 to 1000) (default 15)
+        :param Int optalgo: set camera path optimization algo (from 0 to 2) (default opt)
+        :param Int maxshift: set maximal number of pixels to translate image (from -1 to 500) (default -1)
+        :param Double maxangle: set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)
+        :param Int crop: set cropping mode (from 0 to 1) (default keep)
+        :param Int invert: invert transforms (from 0 to 1) (default 0)
+        :param Int relative: consider transforms as relative (from 0 to 1) (default 1)
+        :param Double zoom: set percentage to zoom (>0: zoom in, <0: zoom out (from -100 to 100) (default 0)
+        :param Int optzoom: set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom) (from 0 to 2) (default 1)
+        :param Double zoomspeed: for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)
+        :param Int interpol: set type of interpolation (from 0 to 3) (default bilinear)
+        :param Boolean tripod: enable virtual tripod mode (same as relative=0:smoothing=0) (default false)
+        :param Boolean debug: enable debug mode and writer global motions information to file (default false)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform
 
@@ -13401,10 +13401,10 @@ class VideoStream(FilterableStream):
         self,
         _reference: "VideoStream",
         *,
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13415,10 +13415,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vif
@@ -13450,13 +13450,13 @@ class VideoStream(FilterableStream):
     def vignette(
         self,
         *,
-        angle: STRING = Default("PI/5"),
-        x0: STRING = Default("w/2"),
-        y0: STRING = Default("h/2"),
-        mode: INT | Literal["forward", "backward"] | Default = Default("forward"),
-        eval: INT | Literal["init", "frame"] | Default = Default("init"),
-        dither: BOOLEAN = Default("true"),
-        aspect: RATIONAL = Default("1/1"),
+        angle: String = Default("PI/5"),
+        x0: String = Default("w/2"),
+        y0: String = Default("h/2"),
+        mode: Int | Literal["forward", "backward"] | Default = Default("forward"),
+        eval: Int | Literal["init", "frame"] | Default = Default("init"),
+        dither: Boolean = Default("true"),
+        aspect: Rational = Default("1/1"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13467,13 +13467,13 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING angle: set lens angle (default "PI/5")
-        :param STRING x0: set circle center position on x-axis (default "w/2")
-        :param STRING y0: set circle center position on y-axis (default "h/2")
-        :param INT mode: set forward/backward mode (from 0 to 1) (default forward)
-        :param INT eval: specify when to evaluate expressions (from 0 to 1) (default init)
-        :param BOOLEAN dither: set dithering (default true)
-        :param RATIONAL aspect: set aspect ratio (from 0 to DBL_MAX) (default 1/1)
+        :param String angle: set lens angle (default "PI/5")
+        :param String x0: set circle center position on x-axis (default "w/2")
+        :param String y0: set circle center position on y-axis (default "h/2")
+        :param Int mode: set forward/backward mode (from 0 to 1) (default forward)
+        :param Int eval: specify when to evaluate expressions (from 0 to 1) (default init)
+        :param Boolean dither: set dithering (default true)
+        :param Rational aspect: set aspect ratio (from 0 to DBL_MAX) (default 1/1)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vignette
@@ -13502,7 +13502,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def vmafmotion(self, *, stats_file: STRING = Default(None), **kwargs: Any) -> "VideoStream":
+    def vmafmotion(self, *, stats_file: String = Default(None), **kwargs: Any) -> "VideoStream":
         """
 
         Calculate the VMAF Motion score.
@@ -13510,7 +13510,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING stats_file: Set file where to store per-frame difference information
+        :param String stats_file: Set file where to store per-frame difference information
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#vmafmotion
 
@@ -13534,10 +13534,10 @@ class VideoStream(FilterableStream):
     def w3fdif(
         self,
         *,
-        filter: INT | Literal["simple", "complex"] | Default = Default("complex"),
-        mode: INT | Literal["frame", "field"] | Default = Default("field"),
-        parity: INT | Literal["tff", "bff", "auto"] | Default = Default("auto"),
-        deint: INT | Literal["all", "interlaced"] | Default = Default("all"),
+        filter: Int | Literal["simple", "complex"] | Default = Default("complex"),
+        mode: Int | Literal["frame", "field"] | Default = Default("field"),
+        parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
+        deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13548,10 +13548,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT filter: specify the filter (from 0 to 1) (default complex)
-        :param INT mode: specify the interlacing mode (from 0 to 1) (default field)
-        :param INT parity: specify the assumed picture field parity (from -1 to 1) (default auto)
-        :param INT deint: specify which frames to deinterlace (from 0 to 1) (default all)
+        :param Int filter: specify the filter (from 0 to 1) (default complex)
+        :param Int mode: specify the interlacing mode (from 0 to 1) (default field)
+        :param Int parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+        :param Int deint: specify which frames to deinterlace (from 0 to 1) (default all)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#w3fdif
@@ -13580,23 +13580,23 @@ class VideoStream(FilterableStream):
     def waveform(
         self,
         *,
-        mode: INT | Literal["row", "column"] | Default = Default("column"),
-        intensity: FLOAT = Default("0.04"),
-        mirror: BOOLEAN = Default("true"),
-        display: INT | Literal["overlay", "stack", "parade"] | Default = Default("stack"),
-        components: INT = Default("1"),
-        envelope: INT | Literal["none", "instant", "peak", "instant"] | Default = Default("none"),
-        filter: INT
+        mode: Int | Literal["row", "column"] | Default = Default("column"),
+        intensity: Float = Default("0.04"),
+        mirror: Boolean = Default("true"),
+        display: Int | Literal["overlay", "stack", "parade"] | Default = Default("stack"),
+        components: Int = Default("1"),
+        envelope: Int | Literal["none", "instant", "peak", "instant"] | Default = Default("none"),
+        filter: Int
         | Literal["lowpass", "flat", "aflat", "chroma", "color", "acolor", "xflat", "yflat"]
         | Default = Default("lowpass"),
-        graticule: INT | Literal["none", "green", "orange", "invert"] | Default = Default("none"),
-        opacity: FLOAT = Default("0.75"),
-        flags: FLAGS | Literal["numbers", "dots"] | Default = Default("numbers"),
-        scale: INT | Literal["digital", "millivolts", "ire"] | Default = Default("digital"),
-        bgopacity: FLOAT = Default("0.75"),
-        tint0: FLOAT = Default("0"),
-        tint1: FLOAT = Default("0"),
-        fitmode: INT | Literal["none", "size"] | Default = Default("none"),
+        graticule: Int | Literal["none", "green", "orange", "invert"] | Default = Default("none"),
+        opacity: Float = Default("0.75"),
+        flags: Flags | Literal["numbers", "dots"] | Default = Default("numbers"),
+        scale: Int | Literal["digital", "millivolts", "ire"] | Default = Default("digital"),
+        bgopacity: Float = Default("0.75"),
+        tint0: Float = Default("0"),
+        tint1: Float = Default("0"),
+        fitmode: Int | Literal["none", "size"] | Default = Default("none"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13606,21 +13606,21 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: set mode (from 0 to 1) (default column)
-        :param FLOAT intensity: set intensity (from 0 to 1) (default 0.04)
-        :param BOOLEAN mirror: set mirroring (default true)
-        :param INT display: set display mode (from 0 to 2) (default stack)
-        :param INT components: set components to display (from 1 to 15) (default 1)
-        :param INT envelope: set envelope to display (from 0 to 3) (default none)
-        :param INT filter: set filter (from 0 to 7) (default lowpass)
-        :param INT graticule: set graticule (from 0 to 3) (default none)
-        :param FLOAT opacity: set graticule opacity (from 0 to 1) (default 0.75)
-        :param FLAGS flags: set graticule flags (default numbers)
-        :param INT scale: set scale (from 0 to 2) (default digital)
-        :param FLOAT bgopacity: set background opacity (from 0 to 1) (default 0.75)
-        :param FLOAT tint0: set 1st tint (from -1 to 1) (default 0)
-        :param FLOAT tint1: set 2nd tint (from -1 to 1) (default 0)
-        :param INT fitmode: set fit mode (from 0 to 1) (default none)
+        :param Int mode: set mode (from 0 to 1) (default column)
+        :param Float intensity: set intensity (from 0 to 1) (default 0.04)
+        :param Boolean mirror: set mirroring (default true)
+        :param Int display: set display mode (from 0 to 2) (default stack)
+        :param Int components: set components to display (from 1 to 15) (default 1)
+        :param Int envelope: set envelope to display (from 0 to 3) (default none)
+        :param Int filter: set filter (from 0 to 7) (default lowpass)
+        :param Int graticule: set graticule (from 0 to 3) (default none)
+        :param Float opacity: set graticule opacity (from 0 to 1) (default 0.75)
+        :param Flags flags: set graticule flags (default numbers)
+        :param Int scale: set scale (from 0 to 2) (default digital)
+        :param Float bgopacity: set background opacity (from 0 to 1) (default 0.75)
+        :param Float tint0: set 1st tint (from -1 to 1) (default 0)
+        :param Float tint1: set 2nd tint (from -1 to 1) (default 0)
+        :param Int fitmode: set fit mode (from 0 to 1) (default none)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#waveform
 
@@ -13656,7 +13656,7 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def weave(
-        self, *, first_field: INT | Literal["top", "t", "bottom", "b"] | Default = Default("top"), **kwargs: Any
+        self, *, first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"), **kwargs: Any
     ) -> "VideoStream":
         """
 
@@ -13665,7 +13665,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT first_field: set first field (from 0 to 1) (default top)
+        :param Int first_field: set first field (from 0 to 1) (default top)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave
 
@@ -13686,7 +13686,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def xbr(self, *, n: INT = Default("3"), **kwargs: Any) -> "VideoStream":
+    def xbr(self, *, n: Int = Default("3"), **kwargs: Any) -> "VideoStream":
         """
 
         Scale the input using xBR algorithm.
@@ -13694,7 +13694,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT n: set scale factor (from 2 to 4) (default 3)
+        :param Int n: set scale factor (from 2 to 4) (default 3)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#xbr
 
@@ -13719,12 +13719,12 @@ class VideoStream(FilterableStream):
         self,
         _secondary: "VideoStream",
         *,
-        planes: INT = Default("7"),
-        secondary: INT | Literal["first", "all"] | Default = Default("all"),
-        eof_action: INT | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-        shortest: BOOLEAN = Default("false"),
-        repeatlast: BOOLEAN = Default("true"),
-        ts_sync_mode: INT | Literal["default", "nearest"] | Default = Default("default"),
+        planes: Int = Default("7"),
+        secondary: Int | Literal["first", "all"] | Default = Default("all"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        shortest: Boolean = Default("false"),
+        repeatlast: Boolean = Default("true"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13735,12 +13735,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT planes: set planes to cross-correlate (from 0 to 15) (default 7)
-        :param INT secondary: when to process secondary frame (from 0 to 1) (default all)
-        :param INT eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        :param BOOLEAN shortest: force termination when the shortest input terminates (default false)
-        :param BOOLEAN repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        :param INT ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+        :param Int planes: set planes to cross-correlate (from 0 to 15) (default 7)
+        :param Int secondary: when to process secondary frame (from 0 to 1) (default all)
+        :param Int eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+        :param Boolean shortest: force termination when the shortest input terminates (default false)
+        :param Boolean repeatlast: extend last frame of secondary streams beyond EOF (default true)
+        :param Int ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#xcorrelate
@@ -13775,7 +13775,7 @@ class VideoStream(FilterableStream):
         self,
         _xfade: "VideoStream",
         *,
-        transition: INT
+        transition: Int
         | Literal[
             "custom",
             "fade",
@@ -13826,9 +13826,9 @@ class VideoStream(FilterableStream):
             "fadeslow",
         ]
         | Default = Default("fade"),
-        duration: DURATION = Default("1"),
-        offset: DURATION = Default("0"),
-        expr: STRING = Default(None),
+        duration: Duration = Default("1"),
+        offset: Duration = Default("0"),
+        expr: String = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -13838,10 +13838,10 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT transition: set cross fade transition (from -1 to 45) (default fade)
-        :param DURATION duration: set cross fade duration (default 1)
-        :param DURATION offset: set cross fade start relative to first input stream (default 0)
-        :param STRING expr: set expression for custom transition
+        :param Int transition: set cross fade transition (from -1 to 45) (default fade)
+        :param Duration duration: set cross fade duration (default 1)
+        :param Duration offset: set cross fade start relative to first input stream (default 0)
+        :param String expr: set expression for custom transition
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#xfade
 
@@ -13871,11 +13871,11 @@ class VideoStream(FilterableStream):
     def yadif(
         self,
         *,
-        mode: INT
+        mode: Int
         | Literal["send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"]
         | Default = Default("send_frame"),
-        parity: INT | Literal["tff", "bff", "auto"] | Default = Default("auto"),
-        deint: INT | Literal["all", "interlaced"] | Default = Default("all"),
+        parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
+        deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13886,9 +13886,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT mode: specify the interlacing mode (from 0 to 3) (default send_frame)
-        :param INT parity: specify the assumed picture field parity (from -1 to 1) (default auto)
-        :param INT deint: specify which frames to deinterlace (from 0 to 1) (default all)
+        :param Int mode: specify the interlacing mode (from 0 to 3) (default send_frame)
+        :param Int parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+        :param Int deint: specify which frames to deinterlace (from 0 to 1) (default all)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#yadif
@@ -13916,9 +13916,9 @@ class VideoStream(FilterableStream):
     def yaepblur(
         self,
         *,
-        radius: INT = Default("3"),
-        planes: INT = Default("1"),
-        sigma: INT = Default("128"),
+        radius: Int = Default("3"),
+        planes: Int = Default("1"),
+        sigma: Int = Default("128"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -13929,9 +13929,9 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param INT radius: set window radius (from 0 to INT_MAX) (default 3)
-        :param INT planes: set planes to filter (from 0 to 15) (default 1)
-        :param INT sigma: set blur strength (from 1 to INT_MAX) (default 128)
+        :param Int radius: set window radius (from 0 to INT_MAX) (default 3)
+        :param Int planes: set planes to filter (from 0 to 15) (default 1)
+        :param Int sigma: set blur strength (from 1 to INT_MAX) (default 128)
         :param str enable: timeline editing
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#yaepblur
@@ -13956,7 +13956,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def zmq(self, *, bind_address: STRING = Default("tcp://*:5555"), **kwargs: Any) -> "VideoStream":
+    def zmq(self, *, bind_address: String = Default("tcp://*:5555"), **kwargs: Any) -> "VideoStream":
         """
 
         Receive commands through ZMQ and broker them to filters.
@@ -13964,7 +13964,7 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING bind_address: set bind address (default "tcp://*:5555")
+        :param String bind_address: set bind address (default "tcp://*:5555")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq
 
@@ -13988,12 +13988,12 @@ class VideoStream(FilterableStream):
     def zoompan(
         self,
         *,
-        zoom: STRING = Default("1"),
-        x: STRING = Default("0"),
-        y: STRING = Default("0"),
-        d: STRING = Default("90"),
-        s: IMAGE_SIZE = Default("hd720"),
-        fps: VIDEO_RATE = Default("25"),
+        zoom: String = Default("1"),
+        x: String = Default("0"),
+        y: String = Default("0"),
+        d: String = Default("90"),
+        s: Image_size = Default("hd720"),
+        fps: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -14003,12 +14003,12 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING zoom: set the zoom expression (default "1")
-        :param STRING x: set the x expression (default "0")
-        :param STRING y: set the y expression (default "0")
-        :param STRING d: set the duration expression (default "90")
-        :param IMAGE_SIZE s: set the output image size (default "hd720")
-        :param VIDEO_RATE fps: set the output framerate (default "25")
+        :param String zoom: set the zoom expression (default "1")
+        :param String x: set the x expression (default "0")
+        :param String y: set the y expression (default "0")
+        :param String d: set the duration expression (default "90")
+        :param Image_size s: set the output image size (default "hd720")
+        :param Video_rate fps: set the output framerate (default "25")
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#zoompan
 
@@ -14037,15 +14037,15 @@ class VideoStream(FilterableStream):
     def zscale(
         self,
         *,
-        w: STRING = Default(None),
-        h: STRING = Default(None),
-        size: STRING = Default(None),
-        dither: INT | Literal["none", "ordered", "random", "error_diffusion"] | Default = Default("none"),
-        filter: INT
+        w: String = Default(None),
+        h: String = Default(None),
+        size: String = Default(None),
+        dither: Int | Literal["none", "ordered", "random", "error_diffusion"] | Default = Default("none"),
+        filter: Int
         | Literal["point", "bilinear", "bicubic", "spline16", "spline36", "lanczos"]
         | Default = Default("bilinear"),
-        out_range: INT | Literal["input", "limited", "full", "unknown", "tv", "pc"] | Default = Default("input"),
-        primaries: INT
+        out_range: Int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | Default = Default("input"),
+        primaries: Int
         | Literal[
             "input",
             "709",
@@ -14068,7 +14068,7 @@ class VideoStream(FilterableStream):
             "ebu3213",
         ]
         | Default = Default("input"),
-        transfer: INT
+        transfer: Int
         | Literal[
             "input",
             "709",
@@ -14094,7 +14094,7 @@ class VideoStream(FilterableStream):
             "b67",
         ]
         | Default = Default("input"),
-        matrix: INT
+        matrix: Int
         | Literal[
             "input",
             "709",
@@ -14118,8 +14118,8 @@ class VideoStream(FilterableStream):
             "ictcp",
         ]
         | Default = Default("input"),
-        in_range: INT | Literal["input", "limited", "full", "unknown", "tv", "pc"] | Default = Default("input"),
-        primariesin: INT
+        in_range: Int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | Default = Default("input"),
+        primariesin: Int
         | Literal[
             "input",
             "709",
@@ -14142,7 +14142,7 @@ class VideoStream(FilterableStream):
             "ebu3213",
         ]
         | Default = Default("input"),
-        transferin: INT
+        transferin: Int
         | Literal[
             "input",
             "709",
@@ -14168,7 +14168,7 @@ class VideoStream(FilterableStream):
             "b67",
         ]
         | Default = Default("input"),
-        matrixin: INT
+        matrixin: Int
         | Literal[
             "input",
             "709",
@@ -14192,16 +14192,16 @@ class VideoStream(FilterableStream):
             "ictcp",
         ]
         | Default = Default("input"),
-        chromal: INT
+        chromal: Int
         | Literal["input", "left", "center", "topleft", "top", "bottomleft", "bottom"]
         | Default = Default("input"),
-        chromalin: INT
+        chromalin: Int
         | Literal["input", "left", "center", "topleft", "top", "bottomleft", "bottom"]
         | Default = Default("input"),
-        npl: DOUBLE = Default("nan"),
-        agamma: BOOLEAN = Default("true"),
-        param_a: DOUBLE = Default("nan"),
-        param_b: DOUBLE = Default("nan"),
+        npl: Double = Default("nan"),
+        agamma: Boolean = Default("true"),
+        param_a: Double = Default("nan"),
+        param_b: Double = Default("nan"),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -14211,25 +14211,25 @@ class VideoStream(FilterableStream):
         Parameters:
         ----------
 
-        :param STRING w: Output video width
-        :param STRING h: Output video height
-        :param STRING size: set video size
-        :param INT dither: set dither type (from 0 to 3) (default none)
-        :param INT filter: set filter type (from 0 to 5) (default bilinear)
-        :param INT out_range: set color range (from -1 to 1) (default input)
-        :param INT primaries: set color primaries (from -1 to INT_MAX) (default input)
-        :param INT transfer: set transfer characteristic (from -1 to INT_MAX) (default input)
-        :param INT matrix: set colorspace matrix (from -1 to INT_MAX) (default input)
-        :param INT in_range: set input color range (from -1 to 1) (default input)
-        :param INT primariesin: set input color primaries (from -1 to INT_MAX) (default input)
-        :param INT transferin: set input transfer characteristic (from -1 to INT_MAX) (default input)
-        :param INT matrixin: set input colorspace matrix (from -1 to INT_MAX) (default input)
-        :param INT chromal: set output chroma location (from -1 to 5) (default input)
-        :param INT chromalin: set input chroma location (from -1 to 5) (default input)
-        :param DOUBLE npl: set nominal peak luminance (from 0 to DBL_MAX) (default nan)
-        :param BOOLEAN agamma: allow approximate gamma (default true)
-        :param DOUBLE param_a: parameter A, which is parameter "b" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)
-        :param DOUBLE param_b: parameter B, which is parameter "c" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)
+        :param String w: Output video width
+        :param String h: Output video height
+        :param String size: set video size
+        :param Int dither: set dither type (from 0 to 3) (default none)
+        :param Int filter: set filter type (from 0 to 5) (default bilinear)
+        :param Int out_range: set color range (from -1 to 1) (default input)
+        :param Int primaries: set color primaries (from -1 to INT_MAX) (default input)
+        :param Int transfer: set transfer characteristic (from -1 to INT_MAX) (default input)
+        :param Int matrix: set colorspace matrix (from -1 to INT_MAX) (default input)
+        :param Int in_range: set input color range (from -1 to 1) (default input)
+        :param Int primariesin: set input color primaries (from -1 to INT_MAX) (default input)
+        :param Int transferin: set input transfer characteristic (from -1 to INT_MAX) (default input)
+        :param Int matrixin: set input colorspace matrix (from -1 to INT_MAX) (default input)
+        :param Int chromal: set output chroma location (from -1 to 5) (default input)
+        :param Int chromalin: set input chroma location (from -1 to 5) (default input)
+        :param Double npl: set nominal peak luminance (from 0 to DBL_MAX) (default nan)
+        :param Boolean agamma: allow approximate gamma (default true)
+        :param Double param_a: parameter A, which is parameter "b" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)
+        :param Double param_b: parameter B, which is parameter "c" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)
 
         Ref: https://ffmpeg.org/ffmpeg-filters.html#zscale
 

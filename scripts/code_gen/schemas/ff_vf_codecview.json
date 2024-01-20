@@ -41,7 +41,7 @@
       "description": "set motion vectors to visualize (default 0)",
       "name": "mv",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -52,7 +52,7 @@
       "description": "(default false)",
       "name": "qp",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -75,7 +75,7 @@
       "description": "set motion vectors type (default 0)",
       "name": "mv_type",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -103,7 +103,7 @@
       "description": "set frame types to visualize motion vectors of (default 0)",
       "name": "frame_type",
       "required": false,
-      "typing": "FLAGS"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -114,7 +114,7 @@
       "description": "set block partitioning structure to visualize (default false)",
       "name": "block",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [],

@@ -20,7 +20,7 @@
       "description": "(from 0 to INT_MAX) (default 0/1)",
       "name": "time_base",
       "required": false,
-      "typing": "RATIONAL"
+      "typing": "Rational"
     },
     {
       "alias": [
@@ -31,7 +31,7 @@
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "sample_rate",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "(default none)",
       "name": "sample_fmt",
       "required": false,
-      "typing": "SAMPLE_FMT"
+      "typing": "Sample_fmt"
     },
     {
       "alias": [
@@ -53,7 +53,7 @@
       "description": "",
       "name": "channel_layout",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -64,7 +64,7 @@
       "description": "(from 0 to INT_MAX) (default 0)",
       "name": "channels",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

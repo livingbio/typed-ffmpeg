@@ -25,7 +25,7 @@
       "description": "set horizontal position of the left box edge (default \"0\")",
       "name": "x",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set vertical position of the top box edge (default \"0\")",
       "name": "y",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set width of the box (default \"0\")",
       "name": "width",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -60,7 +60,7 @@
       "description": "set height of the box (default \"0\")",
       "name": "height",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -72,7 +72,7 @@
       "description": "set color of the box (default \"black\")",
       "name": "color",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -84,7 +84,7 @@
       "description": "set the box thickness (default \"3\")",
       "name": "thickness",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "replace color & alpha (default false)",
       "name": "replace",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -106,7 +106,7 @@
       "description": "use datas from bounding box in side data",
       "name": "box_source",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [],

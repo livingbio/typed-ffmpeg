@@ -26,7 +26,7 @@
       "description": "set the filename of file to read",
       "name": "filename",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -37,7 +37,7 @@
       "description": "set the size of the original video (used to scale fonts)",
       "name": "original_size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -48,7 +48,7 @@
       "description": "set the directory containing the fonts to read",
       "name": "fontsdir",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -59,7 +59,7 @@
       "description": "enable processing of alpha channel (default false)",
       "name": "alpha",
       "required": false,
-      "typing": "BOOLEAN"
+      "typing": "Boolean"
     },
     {
       "alias": [
@@ -86,7 +86,7 @@
       "description": "set shaping engine (from -1 to 1) (default auto)",
       "name": "shaping",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

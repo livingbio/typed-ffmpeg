@@ -25,7 +25,7 @@
       "description": "set 1st metadata key (default \"\")",
       "name": "m1",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set 1st foreground color expression (default \"0xffff0000\")",
       "name": "fg1",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set 2nd metadata key (default \"\")",
       "name": "m2",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
       "name": "fg2",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set 3rd metadata key (default \"\")",
       "name": "m3",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
       "name": "fg3",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set 4th metadata key (default \"\")",
       "name": "m4",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set 4th foreground color expression (default \"0xffffff00\")",
       "name": "fg4",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set background color (default \"white\")",
       "name": "bg",
       "required": false,
-      "typing": "COLOR"
+      "typing": "Color"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
       "name": "min",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
       "name": "max",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -162,7 +162,7 @@
       "description": "set graph mode (from 0 to 2) (default line)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -199,7 +199,7 @@
       "description": "set slide mode (from 0 to 4) (default frame)",
       "name": "slide",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -211,7 +211,7 @@
       "description": "set graph size (default \"900x256\")",
       "name": "size",
       "required": false,
-      "typing": "IMAGE_SIZE"
+      "typing": "Image_size"
     },
     {
       "alias": [
@@ -223,7 +223,7 @@
       "description": "set video rate (default \"25\")",
       "name": "rate",
       "required": false,
-      "typing": "VIDEO_RATE"
+      "typing": "Video_rate"
     }
   ],
   "output_stream_typings": [

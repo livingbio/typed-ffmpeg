@@ -25,7 +25,7 @@
       "description": "set low threshold (from 0 to 65535) (default 10)",
       "name": "low",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set high threshold (from 0 to 65535) (default 10)",
       "name": "high",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set planes (from 0 to 15) (default 15)",
       "name": "planes",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set fill value (from 0 to 65535) (default 0)",
       "name": "fill",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set sum value (from 0 to 65535) (default 10)",
       "name": "sum",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [],

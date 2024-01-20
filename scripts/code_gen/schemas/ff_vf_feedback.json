@@ -30,7 +30,7 @@
       "description": "set top left crop position (from 0 to INT_MAX) (default 0)",
       "name": "x",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -42,7 +42,7 @@
       "description": "set crop size (from 0 to INT_MAX) (default 0)",
       "name": "w",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

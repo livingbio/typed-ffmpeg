@@ -26,7 +26,7 @@
       "description": "set bind address (default \"tcp://*:5555\")",
       "name": "bind_address",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [

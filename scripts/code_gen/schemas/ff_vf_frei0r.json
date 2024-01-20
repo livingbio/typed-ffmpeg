@@ -25,7 +25,7 @@
       "description": "",
       "name": "filter_name",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "",
       "name": "filter_params",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     },
     {
       "alias": [],

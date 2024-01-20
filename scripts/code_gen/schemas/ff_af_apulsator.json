@@ -25,7 +25,7 @@
       "description": "set input gain (from 0.015625 to 64) (default 1)",
       "name": "level_in",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set output gain (from 0.015625 to 64) (default 1)",
       "name": "level_out",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -73,7 +73,7 @@
       "description": "set mode (from 0 to 4) (default sine)",
       "name": "mode",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -84,7 +84,7 @@
       "description": "set modulation (from 0 to 1) (default 1)",
       "name": "amount",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -95,7 +95,7 @@
       "description": "set offset L (from 0 to 1) (default 0)",
       "name": "offset_l",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -106,7 +106,7 @@
       "description": "set offset R (from 0 to 1) (default 0.5)",
       "name": "offset_r",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -117,7 +117,7 @@
       "description": "set pulse width (from 0 to 2) (default 1)",
       "name": "width",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -144,7 +144,7 @@
       "description": "set timing (from 0 to 2) (default hz)",
       "name": "timing",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -155,7 +155,7 @@
       "description": "set BPM (from 30 to 300) (default 120)",
       "name": "bpm",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     },
     {
       "alias": [
@@ -166,7 +166,7 @@
       "description": "set ms (from 10 to 2000) (default 500)",
       "name": "ms",
       "required": false,
-      "typing": "INT"
+      "typing": "Int"
     },
     {
       "alias": [
@@ -177,7 +177,7 @@
       "description": "set frequency (from 0.01 to 100) (default 2)",
       "name": "hz",
       "required": false,
-      "typing": "DOUBLE"
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [

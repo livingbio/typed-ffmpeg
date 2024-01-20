@@ -25,7 +25,7 @@
       "description": "set 65Hz band gain (from 0 to 20) (default 1)",
       "name": "1b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -36,7 +36,7 @@
       "description": "set 92Hz band gain (from 0 to 20) (default 1)",
       "name": "2b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -47,7 +47,7 @@
       "description": "set 131Hz band gain (from 0 to 20) (default 1)",
       "name": "3b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -58,7 +58,7 @@
       "description": "set 185Hz band gain (from 0 to 20) (default 1)",
       "name": "4b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -69,7 +69,7 @@
       "description": "set 262Hz band gain (from 0 to 20) (default 1)",
       "name": "5b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -80,7 +80,7 @@
       "description": "set 370Hz band gain (from 0 to 20) (default 1)",
       "name": "6b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -91,7 +91,7 @@
       "description": "set 523Hz band gain (from 0 to 20) (default 1)",
       "name": "7b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -102,7 +102,7 @@
       "description": "set 740Hz band gain (from 0 to 20) (default 1)",
       "name": "8b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -113,7 +113,7 @@
       "description": "set 1047Hz band gain (from 0 to 20) (default 1)",
       "name": "9b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -124,7 +124,7 @@
       "description": "set 1480Hz band gain (from 0 to 20) (default 1)",
       "name": "10b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -135,7 +135,7 @@
       "description": "set 2093Hz band gain (from 0 to 20) (default 1)",
       "name": "11b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -146,7 +146,7 @@
       "description": "set 2960Hz band gain (from 0 to 20) (default 1)",
       "name": "12b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -157,7 +157,7 @@
       "description": "set 4186Hz band gain (from 0 to 20) (default 1)",
       "name": "13b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -168,7 +168,7 @@
       "description": "set 5920Hz band gain (from 0 to 20) (default 1)",
       "name": "14b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -179,7 +179,7 @@
       "description": "set 8372Hz band gain (from 0 to 20) (default 1)",
       "name": "15b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -190,7 +190,7 @@
       "description": "set 11840Hz band gain (from 0 to 20) (default 1)",
       "name": "16b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -201,7 +201,7 @@
       "description": "set 16744Hz band gain (from 0 to 20) (default 1)",
       "name": "17b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -212,7 +212,7 @@
       "description": "set 20000Hz band gain (from 0 to 20) (default 1)",
       "name": "18b",
       "required": false,
-      "typing": "FLOAT"
+      "typing": "Float"
     }
   ],
   "output_stream_typings": [

@@ -26,7 +26,7 @@
       "description": "set expression determining the output timebase (default \"intb\")",
       "name": "expr",
       "required": false,
-      "typing": "STRING"
+      "typing": "String"
     }
   ],
   "output_stream_typings": [
