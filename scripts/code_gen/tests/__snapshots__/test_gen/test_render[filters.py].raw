@@ -62,11 +62,10 @@ Default(None)
     
 description
 
-Parameters:
-----------
+Args:
 
-:param int order: set the filter order
-:param int projection: set the filter projection
+    order (int): set the filter order
+    projection (int): set the filter projection
 
 Ref: None
 

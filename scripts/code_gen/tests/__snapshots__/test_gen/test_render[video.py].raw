@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..nodes.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType, Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
+from ..utils.typing import override
 
 
 if TYPE_CHECKING:
@@ -15,10 +16,12 @@ if TYPE_CHECKING:
 
 class VideoStream(FilterableStream):
     @property
+    @override
     def video(self) -> "VideoStream":
         return VideoStream(node=self.node, index=self.index, selector=StreamType.video)
 
     @property
+    @override
     def audio(self) -> "AudioStream":
         raise NotImplementedError("Cannot convert video to audio")
 

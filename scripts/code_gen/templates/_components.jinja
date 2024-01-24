@@ -79,10 +79,9 @@ Default("nan")
 {% macro docstring(f) %}
 {{ f.description }}
 
-Parameters:
-----------
+Args:
 {% for option in f.options %}
-:param {{option.typing}} {{option.name | option_name_safe}}: {{option.description | striptags }}
+    {{option.name | option_name_safe}} ({{option.typing}}): {{option.description | striptags }}
 {%- endfor %}
 
 Ref: {{ f.ref }}
