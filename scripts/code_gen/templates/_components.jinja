@@ -80,11 +80,12 @@ Default("nan")
 {{ f.description }}
 
 Args:
-{% for option in f.options %}
+{%- for option in f.options %}
     {{option.name | option_name_safe}} ({{option.typing}}): {{option.description | striptags }}
 {%- endfor %}
 
-Ref: {{ f.ref }}
+References:
+    [FFmpeg Documentation]({{ f.ref }})
 {% endmacro %}
 
 

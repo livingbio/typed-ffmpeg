@@ -484,7 +484,8 @@ class OutputStream(Stream):
             cwd (str | None): the working directory
 
         Returns:
-            tuple[bytes, bytes]: the stdout and stderr
+            bytes: the stdout
+            bytes: the stderr
         """
 
         process = self.run_async(
