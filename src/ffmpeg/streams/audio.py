@@ -19,6 +19,7 @@ from ..schema import (
     String,
     Video_rate,
 )
+from ..utils.typing import override
 from .channel_layout import CHANNEL_LAYOUT
 
 if TYPE_CHECKING:
@@ -27,13 +28,13 @@ if TYPE_CHECKING:
 
 class AudioStream(FilterableStream):
     @property
+    @override
     def video(self) -> "VideoStream":
-        """Return the video component of this stream."""
         raise NotImplementedError("This stream does not have a video component")
 
     @property
+    @override
     def audio(self) -> "AudioStream":
-        """Return the audio component of this stream."""
         return AudioStream(node=self.node, selector=StreamType.audio, index=self.index)
 
     def a3dscope(
