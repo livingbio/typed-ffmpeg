@@ -64,4 +64,18 @@ def filter(*streams: FilterableStream, name: str, **kwargs: Any) -> AVStream:
 
 
 def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) -> FilterNode:
+    """
+    Apply a custom filter which has multiple outputs to this stream
+
+    Parameters:
+    -----------
+    :param FilterableStream *streams: the streams to apply the filter to
+    :param str name: the name of the filter
+    :param Any kwargs: the arguments for the filter
+
+    Returns:
+    ---------
+    :returns: the FilterNode
+    """
+
     return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=streams)
