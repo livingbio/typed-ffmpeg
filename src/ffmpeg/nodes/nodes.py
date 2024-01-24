@@ -155,7 +155,7 @@ class FilterableStream(Stream, ABC):
 
     node: "FilterNode | InputNode"
 
-    def filter(self, *streams: "FilterableStream", name: str, **kwargs: str) -> "AVStream":
+    def filter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "AVStream":
         """
         Apply a custom filter which has only one output to this stream
 
@@ -163,7 +163,7 @@ class FilterableStream(Stream, ABC):
         -----------
         :param FilterableStream *streams: the streams to apply the filter to
         :param str name: the name of the filter
-        :param dict[str, str] kwargs: the arguments for the filter
+        :param Any kwargs: the arguments for the filter
 
         Returns:
         ---------
@@ -179,7 +179,7 @@ class FilterableStream(Stream, ABC):
         -----------
         :param FilterableStream *streams: the streams to apply the filter to
         :param str name: the name of the filter
-        :param dict[str, str] kwargs: the arguments for the filter
+        :param Any kwargs: the arguments for the filter
 
         Returns:
         ---------
@@ -217,7 +217,7 @@ class FilterableStream(Stream, ABC):
         -----------
         :param FilterableStream *streams: the streams to output
         :param str filename: the filename to output to
-        :param dict[str, str] kwargs: the arguments for the output
+        :param Any kwargs: the arguments for the output
 
         Returns:
         ---------
@@ -398,14 +398,14 @@ class OutputNode(Node):
 class OutputStream(Stream):
     node: OutputNode | GlobalNode | MergeOutputsNode
 
-    def global_args(self, *args: str, **kwargs: str | bool | int | float) -> "OutputStream":
+    def global_args(self, *args: str, **kwargs: Any) -> "OutputStream":
         """
         Add extra global command-line argument
 
         Parameters:
         -----------
         :param str *args: the extra arguments
-        :param dict[str, str | bool | int | float] kwargs: the extra arguments
+        :param Any kwargs: the extra arguments
 
         Returns:
         ---------
