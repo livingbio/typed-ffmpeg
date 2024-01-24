@@ -7,6 +7,7 @@ from typing import Iterable, Sequence
 
 from ..schema import StreamType
 from ..utils.dag import is_dag
+from ..utils.typing import override
 
 
 class _DAGContext(ABC):
@@ -24,9 +25,11 @@ class _DAGContext(ABC):
 class DummyDAGContext(_DAGContext):
     """A dummy DAG context that does not do anything"""
 
+    @override
     def get_node_label(self, node: Node) -> str:
         return str(node)
 
+    @override
     def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
         return []
 
@@ -58,9 +61,11 @@ class Node(HashableBaseModel, ABC):
 
     @abstractproperty
     def incoming_streams(self) -> Sequence["Stream"]:
+        """Return the incoming streams of this node"""
         raise NotImplementedError()
 
     def __post_init__(self) -> None:
+        """Validate the DAG"""
         passed = set()
         nodes = [self]
         output = {}
@@ -81,4 +86,5 @@ class Node(HashableBaseModel, ABC):
 
     @abstractmethod
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+        """Get the arguments of the node"""
         raise NotImplementedError()
