@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, Sequence
 from ..exeptions import Error
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
+from ..utils.typing import override
 from .base import Node, Stream, _DAGContext, empty_dag_context
 
 if TYPE_CHECKING:
@@ -18,6 +19,10 @@ if TYPE_CHECKING:
 
 @dataclass(frozen=True, kw_only=True)
 class FilterNode(Node):
+    """
+    A filter node that can be used to apply filters to streams
+    """
+
     name: str
     inputs: tuple[FilterableStream, ...]
     input_typings: tuple[StreamType, ...] | None = None
@@ -27,10 +32,22 @@ class FilterNode(Node):
         return f"{self.__class__.__name__}:{self.name}({self.hex})"
 
     @property
+    @override
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs
 
     def stream(self, index: int) -> "AVStream":
+        """
+        Return the stream at the specified index
+
+        Parameters:
+        -----------
+        :param int index: the index of the stream
+
+        Returns:
+        ---------
+        :returns: the stream at the specified index
+        """
         from ..streams.av import AVStream
 
         if self.output_typings is not None:
@@ -41,6 +58,17 @@ class FilterNode(Node):
         return AVStream(node=self, index=index)
 
     def video(self, index: int) -> "VideoStream":
+        """
+        Return the video stream at the specified index
+
+        Parameters:
+        -----------
+        :param int index: the index of the video stream
+
+        Returns:
+        ---------
+        :returns: the video stream at the specified index
+        """
         from ..streams.video import VideoStream
 
         assert self.output_typings is not None, "Output typings must be specified to use `video`"
@@ -51,6 +79,17 @@ class FilterNode(Node):
         return VideoStream(node=self, index=video_outputs[index])
 
     def audio(self, index: int) -> "AudioStream":
+        """
+        Return the audio stream at the specified index
+
+        Parameters:
+        -----------
+        :param int index: the index of the audio stream
+
+        Returns:
+        ---------
+        :returns: the audio stream at the specified index
+        """
         from ..streams.audio import AudioStream
 
         assert self.output_typings is not None, "Output typings must be specified to use `audio`"
@@ -83,6 +122,7 @@ class FilterNode(Node):
                 if not isinstance(stream, AudioStream):
                     raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
 
+    @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         incoming_labels = "".join(k.label(context) for k in self.inputs)
         outputs = context.get_outgoing_streams(self)
@@ -109,26 +149,94 @@ class FilterNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class FilterableStream(Stream, ABC):
+    """
+    A stream that can be used as input to a filter
+    """
+
     node: "FilterNode | InputNode"
 
-    def filter(self, *streams: "FilterableStream", name: str, **kwargs: str) -> "AVStream":
+    def filter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "AVStream":
+        """
+        Apply a custom filter which has only one output to this stream
+
+        Parameters:
+        -----------
+        :param FilterableStream *streams: the streams to apply the filter to
+        :param str name: the name of the filter
+        :param Any kwargs: the arguments for the filter
+
+        Returns:
+        ---------
+        :returns: the output stream
+        """
         return self.filter_multi_output(*streams, name=name, **kwargs).stream(0)
 
     def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
+        """
+        Apply a custom filter which has multiple outputs to this stream
+
+        Parameters:
+        -----------
+        :param FilterableStream *streams: the streams to apply the filter to
+        :param str name: the name of the filter
+        :param Any kwargs: the arguments for the filter
+
+        Returns:
+        ---------
+        :returns: the FilterNode
+        """
         return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=(self, *streams))
 
     @abstractproperty
     def video(self) -> "VideoStream":
+        """
+        Return the video component of this stream
+
+        Returns:
+        ---------
+        :returns: the video component of this stream
+        """
         raise NotImplementedError("This stream does not have a video component")
 
     @abstractproperty
     def audio(self) -> "AudioStream":
+        """
+        Return the audio component of this stream
+
+        Returns:
+        ---------
+        :returns: the audio component of this stream
+        """
         raise NotImplementedError("This stream does not have an audio component")
 
     def output(self, *streams: "FilterableStream", filename: str, **kwargs: Any) -> "OutputStream":
+        """
+        Output the streams to a file URL
+
+        Parameters:
+        -----------
+        :param FilterableStream *streams: the streams to output
+        :param str filename: the filename to output to
+        :param Any kwargs: the arguments for the output
+
+        Returns:
+        ---------
+        :returns: the output stream
+        """
         return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
 
     def label(self, context: _DAGContext) -> str:
+        """
+        Return the label for this stream
+
+        Parameters:
+        -----------
+        :param _DAGContext context: the DAG context
+
+        Returns:
+        ---------
+        :returns: the label for this stream
+        """
         if self.selector == StreamType.video:
             selector = "v"
         elif self.selector == StreamType.audio:
@@ -157,15 +265,28 @@ class FilterableStream(Stream, ABC):
 
 @dataclass(frozen=True, kw_only=True)
 class GlobalNode(Node):
+    """
+    A node that can be used to set global options
+    """
+
     input: "OutputStream"
 
     def stream(self) -> "OutputStream":
+        """
+        Return the output stream of this node
+
+        Returns:
+        ---------
+        :returns: the output stream
+        """
         return OutputStream(node=self)
 
     @property
+    @override
     def incoming_streams(self) -> Sequence[OutputStream]:
         return [self.input]
 
+    @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = [*self.args]
         for key, value in self.kwargs:
@@ -188,24 +309,47 @@ class InputNode(Node):
     filename: str
 
     @property
+    @override
     def incoming_streams(self) -> Sequence[Stream]:
         return []
 
     def video(self) -> "VideoStream":
+        """
+        Return the video stream of this node
+
+        Returns:
+        ---------
+        :returns: the video stream
+        """
         from ..streams.video import VideoStream
 
         return VideoStream(node=self, selector=StreamType.video)
 
     def audio(self) -> "AudioStream":
+        """
+        Return the audio stream of this node
+
+        Returns:
+        ---------
+        :returns: the audio stream
+        """
         from ..streams.audio import AudioStream
 
         return AudioStream(node=self, selector=StreamType.audio)
 
     def stream(self) -> "AVStream":
+        """
+        Return the output stream of this node
+
+        Returns:
+        ---------
+        :returns: the output stream
+        """
         from ..streams.av import AVStream
 
         return AVStream(node=self)
 
+    @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         commands = []
         for key, value in self.kwargs:
@@ -220,12 +364,21 @@ class OutputNode(Node):
     inputs: tuple[FilterableStream, ...]
 
     def stream(self) -> "OutputStream":
+        """
+        Return the output stream of this node
+
+        Returns:
+        ---------
+        :returns: the output stream
+        """
         return OutputStream(node=self)
 
     @property
+    @override
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs
 
+    @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         # !handle mapping
         commands = []
@@ -245,13 +398,45 @@ class OutputNode(Node):
 class OutputStream(Stream):
     node: OutputNode | GlobalNode | MergeOutputsNode
 
-    def global_args(self, *args: str, **kwargs: str | bool | int | float) -> "OutputStream":
+    def global_args(self, *args: str, **kwargs: Any) -> "OutputStream":
+        """
+        Add extra global command-line argument
+
+        Parameters:
+        -----------
+        :param str *args: the extra arguments
+        :param Any kwargs: the extra arguments
+
+        Returns:
+        ---------
+        :returns: the output stream
+        """
         return GlobalNode(input=self, args=args, kwargs=tuple(kwargs.items())).stream()
 
     def overwrite_output(self) -> "OutputStream":
+        """
+        Overwrite output files without asking (ffmpeg `-y` option)
+
+        Returns:
+        ---------
+        :returns: the output stream
+
+        """
         return GlobalNode(input=self, kwargs=(("y", True),)).stream()
 
     def compile(self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False) -> list[str]:
+        """
+        Build command-line for invoking ffmpeg.
+
+        Parameters:
+        -----------
+        :param str | list[str] cmd: the command to invoke ffmpeg
+        :param bool overwrite_output: whether to overwrite output files without asking
+
+        Returns:
+        ---------
+        :returns: the command-line
+        """
         from ..utils.compile import compile
 
         if isinstance(cmd, str):
@@ -272,6 +457,24 @@ class OutputStream(Stream):
         overwrite_output: bool = False,
         cwd: str | None = None,
     ) -> subprocess.Popen[bytes]:
+        """
+        Run ffmpeg asynchronously.
+
+        Parameters:
+        -----------
+        :param str | list[str] cmd: the command to invoke ffmpeg
+        :param bool pipe_stdin: whether to pipe stdin
+        :param bool pipe_stdout: whether to pipe stdout
+        :param bool pipe_stderr: whether to pipe stderr
+        :param bool quiet: whether to pipe stderr to stdout
+        :param bool overwrite_output: whether to overwrite output files without asking
+        :param str | None cwd: the working directory
+
+        Returns:
+        ---------
+        :returns: the process
+        """
+
         args = self.compile(cmd, overwrite_output=overwrite_output)
         stdin_stream = subprocess.PIPE if pipe_stdin else None
         stdout_stream = subprocess.PIPE if pipe_stdout else None
@@ -297,6 +500,24 @@ class OutputStream(Stream):
         overwrite_output: bool = False,
         cwd: str | None = None,
     ) -> tuple[bytes, bytes]:
+        """
+        Run ffmpeg synchronously.
+
+        Parameters:
+        -----------
+        :param str | list[str] cmd: the command to invoke ffmpeg
+        :param bool pipe_stdin: whether to pipe stdin
+        :param bool pipe_stdout: whether to pipe stdout
+        :param bool pipe_stderr: whether to pipe stderr
+        :param bool quiet: whether to pipe stderr to stdout
+        :param bool overwrite_output: whether to overwrite output files without asking
+        :param str | None cwd: the working directory
+
+        Returns:
+        ---------
+        :returns: the stdout and stderr
+        """
+
         process = self.run_async(
             cmd,
             pipe_stdin=pipe_stdin,
@@ -318,15 +539,28 @@ class OutputStream(Stream):
 
 @dataclass(frozen=True, kw_only=True)
 class MergeOutputsNode(Node):
+    """
+    A node that can be used to merge multiple outputs
+    """
+
     inputs: tuple[OutputStream, ...]
 
     def stream(self) -> "OutputStream":
+        """
+        Return the output stream of this node
+
+        Returns:
+        ---------
+        :returns: the output stream
+        """
         return OutputStream(node=self)
 
     @property
+    @override
     def incoming_streams(self) -> Sequence[Stream]:
         return self.inputs
 
+    @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         # NOTE: the node just used to group outputs, no need to add any commands
         return []

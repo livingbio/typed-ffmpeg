@@ -7,6 +7,10 @@ class StreamType(enum.Enum):
 
 
 class Default(str):
+    """
+    Default value for an option
+    """
+
     ...
 
 
