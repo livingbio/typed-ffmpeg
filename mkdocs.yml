@@ -5,3 +5,12 @@ site_url: https://docs.pydantic.dev/
 
 theme:
   name: "material"
+
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            docstring_section_style: table
+            show_root_heading: true
