@@ -29,13 +29,11 @@ class VideoStream(FilterableStream):
     @property
     @override
     def video(self) -> "VideoStream":
-        """Return the video component of this stream."""
         return VideoStream(node=self.node, index=self.index, selector=StreamType.video)
 
     @property
     @override
     def audio(self) -> "AudioStream":
-        """Return the audio component of this stream."""
         raise NotImplementedError("Cannot convert video to audio")
 
     def addroi(
