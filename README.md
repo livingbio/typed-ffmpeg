@@ -1,5 +1,7 @@
 # typed-ffmpeg
 
+https://livingbio.github.io/typed-ffmpeg/
+
 This repository serves as an experimental project in which I employ GPT to create a functional SDK for ffmpeg.
 
 I selected this research endeavor due to the recognition that it remains a challenging task for artificial intelligence, though it is indeed achievable.
