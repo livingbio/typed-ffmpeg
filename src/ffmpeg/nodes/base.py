@@ -14,30 +14,26 @@ class _DAGContext(ABC):
     @abstractmethod
     def get_node_label(self, node: Node) -> str:
         """
-        Get the label of the node
+        Get the label of the node.
 
-        Parameters:
-        -----------
-        :param node: the node to get the label of the node
+        Args:
+            node (Node): The node to get the label of.
 
         Returns:
-        --------
-        :return: the label of the node
+            str: The label of the node.
         """
         raise NotImplementedError()
 
     @abstractmethod
     def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
         """
-        Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams
+        Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
 
-        Parameters:
-        -----------
-        :param node: the node to get the outgoing streams of the node
+        Args:
+            node (Node): The node to get the outgoing streams of.
 
         Returns:
-        --------
-        :return: the outgoing streams of the node
+            Iterable[Stream]: The outgoing streams of the node.
         """
         raise NotImplementedError()
 
@@ -82,11 +78,10 @@ class Node(HashableBaseModel, ABC):
     @abstractproperty
     def incoming_streams(self) -> Sequence["Stream"]:
         """
-        Return the incoming streams of this node
+        Return the incoming streams of this node.
 
         Returns:
-        --------
-        :return: the incoming streams of this node
+            Sequence[Stream]: The incoming streams of this node.
         """
         raise NotImplementedError()
 
@@ -113,14 +108,12 @@ class Node(HashableBaseModel, ABC):
     @abstractmethod
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         """
-        Get the arguments of the node
+        Get the arguments of the node.
 
-        Parameters:
-        -----------
-        :param context: the DAG context
+        Args:
+            context (_DAGContext, optional): The DAG context. Defaults to empty_dag_context.
 
         Returns:
-        --------
-        :return: the arguments of the node
+            list[str]: The arguments of the node.
         """
         raise NotImplementedError()

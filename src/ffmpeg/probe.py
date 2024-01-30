@@ -10,16 +10,14 @@ def probe(filename: str, cmd: str = "ffprobe", timeout: int | None = None, **kwa
     """
     Run ffprobe on the given file and return a JSON representation of the output
 
-    Parameters:
-    -----------
-    :param str filename: the path to the file to probe
-    :param str cmd: the ffprobe command to run
-    :param int|None timeout: the timeout for the command
-    :param Any kwargs: the arguments for the ffprobe command
+    Args:
+        filename (str): The path to the file to probe.
+        cmd (str, optional): The ffprobe command to run. Defaults to "ffprobe".
+        timeout (int | None, optional): The timeout for the command. Defaults to None.
+        **kwargs: The arguments for the ffprobe command.
 
     Returns:
-    --------
-    :return: the JSON representation of the ffprobe output
+        dict[str, Any]: The JSON representation of the ffprobe output.
     """
     args = [cmd, "-show_format", "-show_streams", "-of", "json"]
     args += convert_kwargs_to_cmd_line_args(kwargs)

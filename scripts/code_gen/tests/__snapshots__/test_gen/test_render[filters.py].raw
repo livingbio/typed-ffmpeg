@@ -62,13 +62,12 @@ Default(None)
     
 description
 
-Parameters:
-----------
+Args:
+    order (int): set the filter order
+    projection (int): set the filter projection
 
-:param int order: set the filter order
-:param int projection: set the filter projection
-
-Ref: None
+References:
+    [FFmpeg Documentation](None)
 
     """
     filter_node = FilterNode(
