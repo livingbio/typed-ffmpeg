@@ -1,3 +1,8 @@
+"""
+This module defines the types of FFmpeg options. The types can be one of the following:
+The source of these types is defined in the AVOptionType enum in FFmpeg's opt.h header file.
+"""
+
 Boolean = bool | str
 """
 This represents FFmpeg's boolean type. It can accept either a Python boolean value (`True` or `False`)
@@ -38,7 +43,7 @@ Dictionary = str
 # format A=B:C=D:E=F
 Pix_fmt = str
 """
-please see `ffmpeg -pix_fmts`
+please see `ffmpeg -pix_fmts` for a list of supported pixel formats.
 """
 
 Int = int | str
