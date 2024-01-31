@@ -5,7 +5,7 @@ from abc import ABC, abstractproperty
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Sequence
 
-from ..exeptions import Error
+from ..exceptions import Error
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override

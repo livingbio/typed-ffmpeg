@@ -65,6 +65,10 @@ class HashableBaseModel:
 
 @dataclass(frozen=True, kw_only=True)
 class Stream(HashableBaseModel):
+    """
+    A stream in the DAG.
+    """
+
     node: Node
     selector: StreamType | None = None
     index: int | None = None  # the nth child of the node
