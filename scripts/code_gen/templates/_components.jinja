@@ -78,12 +78,12 @@ Default("nan")
 
 {% macro docstring(f) %}
 {{ f.description }}
-
+{% if f.options | length > 0 %}
 Args:
 {%- for option in f.options %}
     {{option.name | option_name_safe}}: {{option.description | striptags }}
 {%- endfor %}
-
+{% endif %}
 References:
     [FFmpeg Documentation]({{ f.ref }})
 {% endmacro %}

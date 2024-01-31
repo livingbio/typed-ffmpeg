@@ -20,9 +20,15 @@
       "alias": [
         "dnn_backend"
       ],
-      "choices": [],
-      "default": 2,
-      "description": "DNN backend (from INT_MIN to INT_MAX) (default 2)",
+      "choices": [
+        {
+          "help": "openvino backend flag",
+          "name": "openvino",
+          "value": "2"
+        }
+      ],
+      "default": "openvino",
+      "description": "DNN backend (from INT_MIN to INT_MAX) (default openvino)",
       "name": "dnn_backend",
       "required": false,
       "typing": "Int"

@@ -19,19 +19,6 @@
   "options": [
     {
       "alias": [
-        "model_path"
-      ],
-      "choices": [],
-      "default": null,
-      "description": "use model='path=...'.",
-      "flags": "..FV......P",
-      "max": null,
-      "min": null,
-      "name": "model_path",
-      "typing": "string"
-    },
-    {
-      "alias": [
         "log_path"
       ],
       "choices": [],
@@ -55,59 +42,6 @@
       "min": null,
       "name": "log_fmt",
       "typing": "string"
-    },
-    {
-      "alias": [
-        "enable_transform",
-        "phone_model"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use model='enable_transform=true'. (default false)",
-      "flags": "..FV......P",
-      "max": null,
-      "min": null,
-      "name": "enable_transform",
-      "typing": "boolean"
-    },
-    {
-      "alias": [
-        "psnr"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use feature='name=psnr'. (default false)",
-      "flags": "..FV......P",
-      "max": null,
-      "min": null,
-      "name": "psnr",
-      "typing": "boolean"
-    },
-    {
-      "alias": [
-        "ssim"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use feature='name=float_ssim'. (default false)",
-      "flags": "..FV......P",
-      "max": null,
-      "min": null,
-      "name": "ssim",
-      "typing": "boolean"
-    },
-    {
-      "alias": [
-        "ms_ssim"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use feature='name=float_ms_ssim'. (default false)",
-      "flags": "..FV......P",
-      "max": null,
-      "min": null,
-      "name": "ms_ssim",
-      "typing": "boolean"
     },
     {
       "alias": [
@@ -147,19 +81,6 @@
       "min": "1",
       "name": "n_subsample",
       "typing": "int"
-    },
-    {
-      "alias": [
-        "enable_conf_interval"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "model='enable_conf_interval=true'. (default false)",
-      "flags": "..FV......P",
-      "max": null,
-      "min": null,
-      "name": "enable_conf_interval",
-      "typing": "boolean"
     },
     {
       "alias": [

@@ -244,6 +244,28 @@
       "name": "precision",
       "required": false,
       "typing": "Int"
+    },
+    {
+      "alias": [
+        "irload"
+      ],
+      "choices": [
+        {
+          "help": "load all IRs on init",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "help": "load IR on access",
+          "name": "access",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "set IR loading type (from 0 to 1) (default init)",
+      "name": "irload",
+      "required": false,
+      "typing": "Int"
     }
   ],
   "output_stream_typings": null,

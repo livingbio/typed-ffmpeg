@@ -49,19 +49,34 @@
         {
           "help": "",
           "name": "full",
-          "value": "0"
+          "value": "full"
         },
         {
           "help": "",
           "name": "compact",
-          "value": "1"
+          "value": "compact"
+        },
+        {
+          "help": "",
+          "name": "nozero",
+          "value": "nozero"
+        },
+        {
+          "help": "",
+          "name": "noeof",
+          "value": "noeof"
+        },
+        {
+          "help": "",
+          "name": "nodisabled",
+          "value": "nodisabled"
         }
       ],
-      "default": "full",
-      "description": "set mode (from 0 to 1) (default full)",
+      "default": "0",
+      "description": "set mode (default 0)",
       "name": "mode",
       "required": false,
-      "typing": "Int"
+      "typing": "Flags"
     },
     {
       "alias": [
@@ -69,6 +84,16 @@
         "f"
       ],
       "choices": [
+        {
+          "help": "",
+          "name": "none",
+          "value": "none"
+        },
+        {
+          "help": "",
+          "name": "all",
+          "value": "all"
+        },
         {
           "help": "",
           "name": "queue",
@@ -148,10 +173,15 @@
           "help": "",
           "name": "sample_count_delta",
           "value": "sample_count_delta"
+        },
+        {
+          "help": "",
+          "name": "disabled",
+          "value": "disabled"
         }
       ],
-      "default": "queue",
-      "description": "set flags (default queue)",
+      "default": "all+queue",
+      "description": "set flags (default all+queue)",
       "name": "flags",
       "required": false,
       "typing": "Flags"

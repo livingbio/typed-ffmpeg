@@ -17,16 +17,9 @@
       "alias": [
         "dnn_backend"
       ],
-      "choices": [
-        {
-          "flags": "..FV.......",
-          "help": "native backend flag",
-          "name": "native",
-          "value": "0"
-        }
-      ],
-      "default": "native",
-      "description": "DNN backend used for model execution (from 0 to 1) (default native)",
+      "choices": [],
+      "default": 1,
+      "description": "DNN backend used for model execution (from 0 to 1) (default 1)",
       "flags": "..FV.......",
       "max": "1",
       "min": "0",

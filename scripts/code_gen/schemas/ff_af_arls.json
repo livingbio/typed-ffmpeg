@@ -1,5 +1,5 @@
 {
-  "description": "### 8.49 arls\n\nApply Recursive Least Squares algorithm to the first audio stream using the\nsecond audio stream.\n\nThis adaptive filter is used to mimic a desired filter by recursively finding\nthe filter coefficients that relate to producing the minimal weighted linear\nleast squares cost function of the error signal (difference between the\ndesired, 2nd input audio stream and the actual signal, the 1st input audio\nstream).\n\nA description of the accepted options follows.\n\n**order**\n\n    Set the filter order. \n\n**lambda**\n\n    Set the forgetting factor. \n\n**delta**\n\n    Set the coefficient to initialize internal covariance matrix. \n\n**out_mode**\n\n    Set the filter output samples. It accepts the following values: i Pass the 1st input. d Pass the 2nd input. o Pass difference between desired, 2nd input and error signal estimate. n Pass difference between input, 1st input and error signal estimate. e Pass error signal estimated samples. Default value is o. \n\n**precision**\n\n    Set which precision to use when processing samples. auto Auto pick internal sample format depending on other filters. float Always use single-floating point precision sample format. double Always use double-floating point precision sample format. \n\n",
+  "description": "Apply Recursive Least Squares algorithm to first audio stream.",
   "filter_type": "af",
   "formula_input_typings": null,
   "formula_output_typings": null,
@@ -26,32 +26,32 @@
       ],
       "choices": [],
       "default": 16,
-      "description": "<dd><p>Set the filter order.\n</p>\n</dd>",
+      "description": "set the filter order (from 1 to 32767) (default 16)",
       "name": "order",
       "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [
         "lambda"
       ],
       "choices": [],
-      "default": "1.f",
-      "description": "<dd><p>Set the forgetting factor.\n</p>\n</dd>",
+      "default": 1.0,
+      "description": "set the filter lambda (from 0 to 1) (default 1)",
       "name": "lambda",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
         "delta"
       ],
       "choices": [],
-      "default": "2.f",
-      "description": "<dd><p>Set the coefficient to initialize internal covariance matrix.\n</p>\n</dd>",
+      "default": 2.0,
+      "description": "set the filter delta (from 0 to 32767) (default 2)",
       "name": "delta",
       "required": false,
-      "typing": "float"
+      "typing": "Float"
     },
     {
       "alias": [
@@ -61,61 +61,34 @@
         {
           "help": "input",
           "name": "i",
-          "value": "IN_MODE"
+          "value": "0"
         },
         {
           "help": "desired",
           "name": "d",
-          "value": "DESIRED_MODE"
+          "value": "1"
         },
         {
           "help": "output",
           "name": "o",
-          "value": "OUT_MODE"
+          "value": "2"
         },
         {
           "help": "noise",
           "name": "n",
-          "value": "NOISE_MODE"
+          "value": "3"
         },
         {
           "help": "error",
           "name": "e",
-          "value": "ERROR_MODE"
+          "value": "4"
         }
       ],
-      "default": "OUT_MODE",
-      "description": "<dd><p>Set the filter output samples. It accepts the following values:\n</p><dl compact=\"compact\">\n<dt><samp>i</samp></dt>\n<dd><p>Pass the 1st input.\n</p>\n</dd>\n<dt><samp>d</samp></dt>\n<dd><p>Pass the 2nd input.\n</p>\n</dd>\n<dt><samp>o</samp></dt>\n<dd><p>Pass difference between desired, 2nd input and error signal estimate.\n</p>\n</dd>\n<dt><samp>n</samp></dt>\n<dd><p>Pass difference between input, 1st input and error signal estimate.\n</p>\n</dd>\n<dt><samp>e</samp></dt>\n<dd><p>Pass error signal estimated samples.\n</p>\n<p>Default value is <var>o</var>.\n</p></dd>\n</dl>\n</dd>",
+      "default": "o",
+      "description": "set output mode (from 0 to 4) (default o)",
       "name": "out_mode",
       "required": false,
-      "typing": "int"
-    },
-    {
-      "alias": [
-        "precision"
-      ],
-      "choices": [
-        {
-          "help": "set auto processing precision",
-          "name": "auto",
-          "value": 0
-        },
-        {
-          "help": "set single-floating point processing precision",
-          "name": "float",
-          "value": 1
-        },
-        {
-          "help": "set double-floating point processing precision",
-          "name": "double",
-          "value": 2
-        }
-      ],
-      "default": 0,
-      "description": "<dd><p>Set which precision to use when processing samples.\n</p>\n<dl compact=\"compact\">\n<dt><samp>auto</samp></dt>\n<dd><p>Auto pick internal sample format depending on other filters.\n</p>\n</dd>\n<dt><samp>float</samp></dt>\n<dd><p>Always use single-floating point precision sample format.\n</p>\n</dd>\n<dt><samp>double</samp></dt>\n<dd><p>Always use double-floating point precision sample format.\n</p></dd>\n</dl>\n</dd>",
-      "name": "precision",
-      "required": false,
-      "typing": "int"
+      "typing": "Int"
     },
     {
       "alias": [],

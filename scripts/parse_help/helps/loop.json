@@ -45,12 +45,25 @@
       ],
       "choices": [],
       "default": 0,
-      "description": "set the loop start frame (from 0 to I64_MAX) (default 0)",
+      "description": "set the loop start frame (from -1 to I64_MAX) (default 0)",
       "flags": "..FV.......",
       "max": "I64_MAX",
-      "min": "0",
+      "min": "-1",
       "name": "start",
       "typing": "int64"
+    },
+    {
+      "alias": [
+        "time"
+      ],
+      "choices": [],
+      "default": "INT64_MAX",
+      "description": "set the loop start time (default INT64_MAX)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "time",
+      "typing": "duration"
     }
   ],
   "output_types": [

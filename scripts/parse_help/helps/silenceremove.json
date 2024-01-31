@@ -10,7 +10,7 @@
   "is_dynamic_outputs": false,
   "is_slice_threading_supported": false,
   "is_support_framesync": false,
-  "is_support_timeline": false,
+  "is_support_timeline": true,
   "name": "silenceremove",
   "options": [
     {
@@ -46,7 +46,7 @@
       "choices": [],
       "default": 0.0,
       "description": "set threshold for start silence detection (from 0 to DBL_MAX) (default 0)",
-      "flags": "..F.A......",
+      "flags": "..F.A....T.",
       "max": "DBL_MAX",
       "min": "0",
       "name": "start_threshold",
@@ -71,13 +71,13 @@
       ],
       "choices": [
         {
-          "flags": "..F.A......",
+          "flags": "..F.A....T.",
           "help": "",
           "name": "any",
           "value": "0"
         },
         {
-          "flags": "..F.A......",
+          "flags": "..F.A....T.",
           "help": "",
           "name": "all",
           "value": "1"
@@ -85,7 +85,7 @@
       ],
       "default": "any",
       "description": "set which channel will trigger trimming from start (from 0 to 1) (default any)",
-      "flags": "..F.A......",
+      "flags": "..F.A....T.",
       "max": "1",
       "min": "0",
       "name": "start_mode",
@@ -110,7 +110,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": "set stop duration of non-silence part (default 0)",
+      "description": "set stop duration of silence part (default 0)",
       "flags": "..F.A......",
       "max": null,
       "min": null,
@@ -124,7 +124,7 @@
       "choices": [],
       "default": 0.0,
       "description": "set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)",
-      "flags": "..F.A......",
+      "flags": "..F.A....T.",
       "max": "DBL_MAX",
       "min": "0",
       "name": "stop_threshold",
@@ -149,21 +149,21 @@
       ],
       "choices": [
         {
-          "flags": "..F.A......",
+          "flags": "..F.A....T.",
           "help": "",
           "name": "any",
           "value": "0"
         },
         {
-          "flags": "..F.A......",
+          "flags": "..F.A....T.",
           "help": "",
           "name": "all",
           "value": "1"
         }
       ],
-      "default": "any",
-      "description": "set which channel will trigger trimming from end (from 0 to 1) (default any)",
-      "flags": "..F.A......",
+      "default": "all",
+      "description": "set which channel will trigger trimming from end (from 0 to 1) (default all)",
+      "flags": "..F.A....T.",
       "max": "1",
       "min": "0",
       "name": "stop_mode",
@@ -176,21 +176,45 @@
       "choices": [
         {
           "flags": "..F.A......",
-          "help": "use absolute values of samples",
-          "name": "peak",
+          "help": "use mean absolute values of samples",
+          "name": "avg",
           "value": "0"
         },
         {
           "flags": "..F.A......",
-          "help": "use squared values of samples",
+          "help": "use root mean squared values of samples",
           "name": "rms",
           "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "use max absolute values of samples",
+          "name": "peak",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "use median of absolute values of samples",
+          "name": "median",
+          "value": "3"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "use absolute of max peak to min peak difference",
+          "name": "ptp",
+          "value": "4"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "use standard deviation from values of samples",
+          "name": "dev",
+          "value": "5"
         }
       ],
       "default": "rms",
-      "description": "set how silence is detected (from 0 to 1) (default rms)",
+      "description": "set how silence is detected (from 0 to 5) (default rms)",
       "flags": "..F.A......",
-      "max": "1",
+      "max": "5",
       "min": "0",
       "name": "detection",
       "typing": "int"
@@ -207,6 +231,32 @@
       "min": null,
       "name": "window",
       "typing": "duration"
+    },
+    {
+      "alias": [
+        "timestamp"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "full timestamps rewrite, keep only the start time",
+          "name": "write",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "non-dropped frames are left with same timestamp",
+          "name": "copy",
+          "value": "1"
+        }
+      ],
+      "default": "write",
+      "description": "set how every output frame timestamp is processed (from 0 to 1) (default write)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "timestamp",
+      "typing": "int"
     }
   ],
   "output_types": [

@@ -51,6 +51,10 @@ def acrossfade(
         "losi",
         "sinc",
         "isinc",
+        "quat",
+        "quatr",
+        "qsin2",
+        "hsin2",
     ]
     | Default = Default("tri"),
     curve2: Int
@@ -75,6 +79,10 @@ def acrossfade(
         "losi",
         "sinc",
         "isinc",
+        "quat",
+        "quatr",
+        "qsin2",
+        "hsin2",
     ]
     | Default = Default("tri"),
     **kwargs: Any
@@ -87,8 +95,8 @@ def acrossfade(
         nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
         duration: set cross fade duration (default 0)
         overlap: overlap 1st stream end with 2nd stream start (default true)
-        curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
-        curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
+        curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
+        curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
@@ -136,6 +144,7 @@ def afir(
     nbirs: Int = Default(1),
     ir: Int = Default(0),
     precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
+    irload: Int | Literal["init", "access"] | Default = Default("init"),
     **kwargs: Any
 ) -> FilterNode:
     """
@@ -159,6 +168,7 @@ def afir(
         nbirs: set number of input IRs (from 1 to 32) (default 1)
         ir: select IR (from 0 to 31) (default 0)
         precision: set processing precision (from 0 to 2) (default auto)
+        irload: set IR loading type (from 0 to 1) (default init)
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afir)
@@ -188,6 +198,7 @@ def afir(
                     "nbirs": nbirs,
                     "ir": ir,
                     "precision": precision,
+                    "irload": irload,
                 }
                 | kwargs
             ).items()
@@ -362,8 +373,6 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
 
     Multiply two audio streams.
 
-    Args:
-
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
@@ -389,7 +398,7 @@ def anlmf(
     mu: Float = Default(0.75),
     eps: Float = Default(1.0),
     leakage: Float = Default(0.0),
-    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+    out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
@@ -402,7 +411,7 @@ def anlmf(
         mu: set the filter mu (from 0 to 2) (default 0.75)
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 3) (default o)
+        out_mode: set output mode (from 0 to 4) (default o)
         enable: timeline editing
 
     References:
@@ -442,7 +451,7 @@ def anlms(
     mu: Float = Default(0.75),
     eps: Float = Default(1.0),
     leakage: Float = Default(0.0),
-    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+    out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: str = Default(None),
     **kwargs: Any
 ) -> "AudioStream":
@@ -455,7 +464,7 @@ def anlms(
         mu: set the filter mu (from 0 to 2) (default 0.75)
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 3) (default o)
+        out_mode: set output mode (from 0 to 4) (default o)
         enable: timeline editing
 
     References:
@@ -487,12 +496,99 @@ def anlms(
     return filter_node.audio(0)
 
 
-def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
+def apsnr(
+    _input0: "AudioStream", _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any
+) -> "AudioStream":
+    """
+
+    Measure Audio Peak Signal-to-Noise Ratio.
+
+    Args:
+        enable: timeline editing
+
+    References:
+        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
+
+    """
+    filter_node = FilterNode(
+        name="apsnr",
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
+            _input0,
+            _input1,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
+    )
+    return filter_node.audio(0)
+
+
+def arls(
+    _input: "AudioStream",
+    _desired: "AudioStream",
+    *,
+    order: Int = Default(16),
+    _lambda: Float = Default(1.0),
+    delta: Float = Default(2.0),
+    out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+    enable: str = Default(None),
+    **kwargs: Any
+) -> "AudioStream":
+    """
+
+    Apply Recursive Least Squares algorithm to first audio stream.
+
+    Args:
+        order: set the filter order (from 1 to 32767) (default 16)
+        _lambda: set the filter lambda (from 0 to 1) (default 1)
+        delta: set the filter delta (from 0 to 32767) (default 2)
+        out_mode: set output mode (from 0 to 4) (default o)
+        enable: timeline editing
+
+    References:
+        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
+
+    """
+    filter_node = FilterNode(
+        name="arls",
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
+            _input,
+            _desired,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "order": order,
+                    "lambda": _lambda,
+                    "delta": delta,
+                    "out_mode": out_mode,
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
+    )
+    return filter_node.audio(0)
+
+
+def asdr(
+    _input0: "AudioStream", _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any
+) -> "AudioStream":
     """
 
     Measure Audio Signal-to-Distortion Ratio.
 
     Args:
+        enable: timeline editing
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
@@ -506,7 +602,48 @@ def asdr(_input0: "AudioStream", _input1: "AudioStream", **kwargs: Any) -> "Audi
             _input0,
             _input1,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
+    )
+    return filter_node.audio(0)
+
+
+def asisdr(
+    _input0: "AudioStream", _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any
+) -> "AudioStream":
+    """
+
+    Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
+
+    Args:
+        enable: timeline editing
+
+    References:
+        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
+
+    """
+    filter_node = FilterNode(
+        name="asisdr",
+        input_typings=tuple([StreamType.audio, StreamType.audio]),
+        output_typings=tuple([StreamType.audio]),
+        inputs=(
+            _input0,
+            _input1,
+        ),
+        kwargs=tuple(
+            (
+                {
+                    "enable": enable,
+                }
+                | kwargs
+            ).items()
+        ),
     )
     return filter_node.audio(0)
 
@@ -550,7 +687,7 @@ def axcorrelate(
     _axcorrelate1: "AudioStream",
     *,
     size: Int = Default(256),
-    algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
+    algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
     **kwargs: Any
 ) -> "AudioStream":
     """
@@ -558,8 +695,8 @@ def axcorrelate(
     Cross-correlate two audio streams.
 
     Args:
-        size: set segment size (from 2 to 131072) (default 256)
-        algo: set algorithm (from 0 to 1) (default slow)
+        size: set the segment size (from 2 to 131072) (default 256)
+        algo: set the algorithm (from 0 to 2) (default best)
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
@@ -1900,17 +2037,11 @@ def libvmaf(
     _main: "VideoStream",
     _reference: "VideoStream",
     *,
-    model_path: String = Default(None),
     log_path: String = Default(None),
     log_fmt: String = Default("xml"),
-    enable_transform: Boolean = Default(False),
-    psnr: Boolean = Default(False),
-    ssim: Boolean = Default(False),
-    ms_ssim: Boolean = Default(False),
     pool: String = Default(None),
     n_threads: Int = Default(0),
     n_subsample: Int = Default(1),
-    enable_conf_interval: Boolean = Default(False),
     model: String = Default("version=vmaf_v0.6.1"),
     feature: String = Default(None),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
@@ -1924,17 +2055,11 @@ def libvmaf(
     Calculate the VMAF between two video streams.
 
     Args:
-        model_path: use model='path=...'.
         log_path: Set the file path to be used to write log.
         log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
-        enable_transform: use model='enable_transform=true'. (default false)
-        psnr: use feature='name=psnr'. (default false)
-        ssim: use feature='name=float_ssim'. (default false)
-        ms_ssim: use feature='name=float_ms_ssim'. (default false)
         pool: Set the pool method to be used for computing vmaf.
         n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
         n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
-        enable_conf_interval: model='enable_conf_interval=true'. (default false)
         model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
         feature: Set the feature to be used for computing vmaf.
         eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
@@ -1957,17 +2082,11 @@ def libvmaf(
         kwargs=tuple(
             (
                 {
-                    "model_path": model_path,
                     "log_path": log_path,
                     "log_fmt": log_fmt,
-                    "enable_transform": enable_transform,
-                    "psnr": psnr,
-                    "ssim": ssim,
-                    "ms_ssim": ms_ssim,
                     "pool": pool,
                     "n_threads": n_threads,
                     "n_subsample": n_subsample,
-                    "enable_conf_interval": enable_conf_interval,
                     "model": model,
                     "feature": feature,
                     "eof_action": eof_action,
@@ -2629,7 +2748,7 @@ def overlay(
     eval: Int | Literal["init", "frame"] | Default = Default("frame"),
     shortest: Boolean = Default(False),
     format: Int
-    | Literal["yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "rgb", "gbrp", "auto"]
+    | Literal["yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "yuv444p10", "rgb", "gbrp", "auto"]
     | Default = Default("yuv420"),
     repeatlast: Boolean = Default(True),
     alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
@@ -2647,7 +2766,7 @@ def overlay(
         eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
         eval: specify when to evaluate expressions (from 0 to 1) (default frame)
         shortest: force termination when the shortest input terminates (default false)
-        format: set output format (from 0 to 7) (default yuv420)
+        format: set output format (from 0 to 8) (default yuv420)
         repeatlast: repeat overlay of the last overlay frame (default true)
         alpha: alpha format (from 0 to 1) (default straight)
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
@@ -3684,6 +3803,18 @@ def xfade(
         "zoomin",
         "fadefast",
         "fadeslow",
+        "hlwind",
+        "hrwind",
+        "vuwind",
+        "vdwind",
+        "coverleft",
+        "coverright",
+        "coverup",
+        "coverdown",
+        "revealleft",
+        "revealright",
+        "revealup",
+        "revealdown",
     ]
     | Default = Default("fade"),
     duration: Duration = Default(1.0),
@@ -3696,7 +3827,7 @@ def xfade(
     Cross fade one video with another video.
 
     Args:
-        transition: set cross fade transition (from -1 to 45) (default fade)
+        transition: set cross fade transition (from -1 to 57) (default fade)
         duration: set cross fade duration (default 1)
         offset: set cross fade start relative to first input stream (default 0)
         expr: set expression for custom transition

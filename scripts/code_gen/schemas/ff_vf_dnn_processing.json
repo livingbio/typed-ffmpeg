@@ -22,13 +22,13 @@
       ],
       "choices": [
         {
-          "help": "native backend flag",
-          "name": "native",
-          "value": "0"
+          "help": "openvino backend flag",
+          "name": "openvino",
+          "value": "2"
         }
       ],
-      "default": "native",
-      "description": "DNN backend (from INT_MIN to INT_MAX) (default native)",
+      "default": 1,
+      "description": "DNN backend (from INT_MIN to INT_MAX) (default 1)",
       "name": "dnn_backend",
       "required": false,
       "typing": "Int"

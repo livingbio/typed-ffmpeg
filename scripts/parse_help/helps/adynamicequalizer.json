@@ -177,6 +177,44 @@
     },
     {
       "alias": [
+        "dftype"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "bandpass",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "lowpass",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "highpass",
+          "value": "2"
+        },
+        {
+          "flags": "..F.A....T.",
+          "help": "",
+          "name": "peak",
+          "value": "3"
+        }
+      ],
+      "default": "bandpass",
+      "description": "set detection filter type (from 0 to 3) (default bandpass)",
+      "flags": "..F.A....T.",
+      "max": "3",
+      "min": "0",
+      "name": "dftype",
+      "typing": "int"
+    },
+    {
+      "alias": [
         "tftype"
       ],
       "choices": [
@@ -263,6 +301,38 @@
       "max": "1",
       "min": "-1",
       "name": "auto",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "precision"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "set auto processing precision",
+          "name": "auto",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "set single-floating point processing precision",
+          "name": "float",
+          "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "set double-floating point processing precision",
+          "name": "double",
+          "value": "2"
+        }
+      ],
+      "default": "auto",
+      "description": "set processing precision (from 0 to 2) (default auto)",
+      "flags": "..F.A......",
+      "max": "2",
+      "min": "0",
+      "name": "precision",
       "typing": "int"
     }
   ],

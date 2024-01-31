@@ -303,12 +303,84 @@
           "help": "slow fade transition",
           "name": "fadeslow",
           "value": "45"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hl wind transition",
+          "name": "hlwind",
+          "value": "46"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "hr wind transition",
+          "name": "hrwind",
+          "value": "47"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "vu wind transition",
+          "name": "vuwind",
+          "value": "48"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "vd wind transition",
+          "name": "vdwind",
+          "value": "49"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cover left transition",
+          "name": "coverleft",
+          "value": "50"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cover right transition",
+          "name": "coverright",
+          "value": "51"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cover up transition",
+          "name": "coverup",
+          "value": "52"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "cover down transition",
+          "name": "coverdown",
+          "value": "53"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "reveal left transition",
+          "name": "revealleft",
+          "value": "54"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "reveal right transition",
+          "name": "revealright",
+          "value": "55"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "reveal up transition",
+          "name": "revealup",
+          "value": "56"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "reveal down transition",
+          "name": "revealdown",
+          "value": "57"
         }
       ],
       "default": "fade",
-      "description": "set cross fade transition (from -1 to 45) (default fade)",
+      "description": "set cross fade transition (from -1 to 57) (default fade)",
       "flags": "..FV.......",
-      "max": "45",
+      "max": "57",
       "min": "-1",
       "name": "transition",
       "typing": "int"

@@ -1,17 +1,14 @@
 {
   "description": "Apply Ultra Simple / Slow Post-processing filter.",
-  "filter_type": "vf",
-  "formula_input_typings": null,
-  "formula_output_typings": null,
-  "id": "ff_vf_uspp",
-  "input_stream_typings": [
+  "input_types": [
     {
       "name": "default",
       "type": "video"
     }
   ],
-  "is_input_dynamic": false,
-  "is_output_dynamic": false,
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
   "is_support_framesync": false,
   "is_support_timeline": true,
   "name": "uspp",
@@ -23,9 +20,11 @@
       "choices": [],
       "default": 3,
       "description": "set quality (from 0 to 8) (default 3)",
+      "flags": "..FV.......",
+      "max": "8",
+      "min": "0",
       "name": "quality",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -34,9 +33,11 @@
       "choices": [],
       "default": 0,
       "description": "force a constant quantizer parameter (from 0 to 63) (default 0)",
+      "flags": "..FV.......",
+      "max": "63",
+      "min": "0",
       "name": "qp",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -45,9 +46,11 @@
       "choices": [],
       "default": false,
       "description": "use B-frames' QP (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
       "name": "use_bframe_qp",
-      "required": false,
-      "typing": "Boolean"
+      "typing": "boolean"
     },
     {
       "alias": [
@@ -56,25 +59,17 @@
       "choices": [],
       "default": "snow",
       "description": "Codec name (default \"snow\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
       "name": "codec",
-      "required": false,
-      "typing": "String"
-    },
-    {
-      "alias": [],
-      "choices": [],
-      "default": null,
-      "description": "timeline editing",
-      "name": "enable",
-      "required": false,
-      "typing": "str"
+      "typing": "string"
     }
   ],
-  "output_stream_typings": [
+  "output_types": [
     {
       "name": "default",
       "type": "video"
     }
-  ],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#uspp"
+  ]
 }

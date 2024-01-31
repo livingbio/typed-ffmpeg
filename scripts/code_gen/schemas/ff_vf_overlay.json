@@ -149,22 +149,27 @@
         },
         {
           "help": "",
-          "name": "rgb",
+          "name": "yuv444p10",
           "value": "5"
         },
         {
           "help": "",
-          "name": "gbrp",
+          "name": "rgb",
           "value": "6"
         },
         {
           "help": "",
-          "name": "auto",
+          "name": "gbrp",
           "value": "7"
+        },
+        {
+          "help": "",
+          "name": "auto",
+          "value": "8"
         }
       ],
       "default": "yuv420",
-      "description": "set output format (from 0 to 7) (default yuv420)",
+      "description": "set output format (from 0 to 8) (default yuv420)",
       "name": "format",
       "required": false,
       "typing": "Int"

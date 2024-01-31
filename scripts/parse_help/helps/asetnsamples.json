@@ -10,7 +10,7 @@
   "is_dynamic_outputs": false,
   "is_slice_threading_supported": false,
   "is_support_framesync": false,
-  "is_support_timeline": false,
+  "is_support_timeline": true,
   "name": "asetnsamples",
   "options": [
     {
@@ -21,7 +21,7 @@
       "choices": [],
       "default": 1024,
       "description": "set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)",
-      "flags": "..F.A......",
+      "flags": "..F.A....T.",
       "max": "INT_MAX",
       "min": "1",
       "name": "nb_out_samples",
@@ -35,7 +35,7 @@
       "choices": [],
       "default": true,
       "description": "pad last frame with zeros (default true)",
-      "flags": "..F.A......",
+      "flags": "..F.A....T.",
       "max": null,
       "min": null,
       "name": "pad",

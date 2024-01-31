@@ -1,12 +1,9 @@
 {
   "description": "Generate zone-plate.",
-  "filter_type": "vsrc",
-  "formula_input_typings": null,
-  "formula_output_typings": null,
-  "id": "ff_vsrc_zoneplate",
-  "input_stream_typings": [],
-  "is_input_dynamic": false,
-  "is_output_dynamic": false,
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": true,
   "is_support_framesync": false,
   "is_support_timeline": false,
   "name": "zoneplate",
@@ -19,9 +16,11 @@
       "choices": [],
       "default": "320x240",
       "description": "set video size (default \"320x240\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
       "name": "size",
-      "required": false,
-      "typing": "Image_size"
+      "typing": "image_size"
     },
     {
       "alias": [
@@ -31,9 +30,11 @@
       "choices": [],
       "default": "25",
       "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
       "name": "rate",
-      "required": false,
-      "typing": "Video_rate"
+      "typing": "video_rate"
     },
     {
       "alias": [
@@ -43,9 +44,11 @@
       "choices": [],
       "default": -1e-06,
       "description": "set video duration (default -0.000001)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
       "name": "duration",
-      "required": false,
-      "typing": "Duration"
+      "typing": "duration"
     },
     {
       "alias": [
@@ -54,9 +57,11 @@
       "choices": [],
       "default": "1/1",
       "description": "set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
       "name": "sar",
-      "required": false,
-      "typing": "Rational"
+      "typing": "rational"
     },
     {
       "alias": [
@@ -65,9 +70,11 @@
       "choices": [],
       "default": 10,
       "description": "set LUT precision (from 4 to 16) (default 10)",
+      "flags": "..FV.......",
+      "max": "16",
+      "min": "4",
       "name": "precision",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -76,9 +83,11 @@
       "choices": [],
       "default": 0,
       "description": "set X-axis offset (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "xo",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -87,9 +96,11 @@
       "choices": [],
       "default": 0,
       "description": "set Y-axis offset (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "yo",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -98,9 +109,11 @@
       "choices": [],
       "default": 0,
       "description": "set T-axis offset (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "to",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -109,9 +122,11 @@
       "choices": [],
       "default": 0,
       "description": "set 0-order phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "k0",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -120,9 +135,11 @@
       "choices": [],
       "default": 0,
       "description": "set 1-order X-axis phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kx",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -131,9 +148,11 @@
       "choices": [],
       "default": 0,
       "description": "set 1-order Y-axis phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "ky",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -142,9 +161,11 @@
       "choices": [],
       "default": 0,
       "description": "set 1-order T-axis phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kt",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -153,9 +174,11 @@
       "choices": [],
       "default": 0,
       "description": "set X-axis*T-axis product phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kxt",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -164,9 +187,11 @@
       "choices": [],
       "default": 0,
       "description": "set Y-axis*T-axis product phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kyt",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -175,9 +200,11 @@
       "choices": [],
       "default": 0,
       "description": "set X-axis*Y-axis product phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kxy",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -186,9 +213,11 @@
       "choices": [],
       "default": 0,
       "description": "set 2-order X-axis phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kx2",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -197,9 +226,11 @@
       "choices": [],
       "default": 0,
       "description": "set 2-order Y-axis phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "ky2",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -208,9 +239,11 @@
       "choices": [],
       "default": 0,
       "description": "set 2-order T-axis phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kt2",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -219,9 +252,11 @@
       "choices": [],
       "default": 0,
       "description": "set 0-order U-color phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "ku",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -230,16 +265,17 @@
       "choices": [],
       "default": 0,
       "description": "set 0-order V-color phase (from INT_MIN to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "kv",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     }
   ],
-  "output_stream_typings": [
+  "output_types": [
     {
       "name": "default",
       "type": "video"
     }
-  ],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#zoneplate"
+  ]
 }
