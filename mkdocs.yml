@@ -6,6 +6,10 @@ site_url: https://docs.pydantic.dev/
 theme:
   name: "material"
 
+watch:
+  - "src"
+  - "docs"
+
 plugins:
   - mkdocstrings:
       handlers:

@@ -2,28 +2,60 @@ import enum
 
 
 class StreamType(enum.Enum):
+    """
+    Stream type (audio or video)
+    """
+
     audio = "audio"
+    """it is an audio stream"""
     video = "video"
+    """it is a video stream"""
 
 
 class Default(str):
     """
-    Default value for an option
+    This is the default value for an option. It is used for annotation purposes only
+    and will not be passed to the ffmpeg command line.
     """
 
     ...
 
 
 Boolean = bool | str
+"""
+This represents FFmpeg's boolean type. It can accept either a Python boolean value (`True` or `False`)
+or a string that represents a boolean value ("true", "false", "1", or "0").
+
+"""
+# TODO: confirm
+
 Duration = str | int | float
-# https://ffmpeg.org/ffmpeg-utils.html#Time-duration
+"""
+This represents FFmpeg's duration type. It can accept either a Python integer or float value
+or a string that represents a duration value.
+
+Note:
+    [Document](https://ffmpeg.org/ffmpeg-utils.html#Time-duration)
+"""
 
 Color = str
-# https://ffmpeg.org/ffmpeg-utils.html#color-syntax
-# is a Enum
+"""
+This represents FFmpeg's color type. It can accept either a Python string value
+or a string that represents a color value.
+
+Note:
+    [Document](https://ffmpeg.org/ffmpeg-utils.html#Color)
+"""
+# TODO: is a Enum
 
 Flags = str
-# format A+B
+"""
+This represents FFmpeg's flags type. It can accept either a Python string value
+or a string that represents a flags value.
+
+Format: A+B
+"""
+
 Dictionary = str
 # format A=B:C=D:E=F
 Pix_fmt = str
