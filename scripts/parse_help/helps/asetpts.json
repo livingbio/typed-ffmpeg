@@ -20,7 +20,7 @@
       "choices": [],
       "default": "PTS",
       "description": "Expression determining the frame timestamp (default \"PTS\")",
-      "flags": "..F.A......",
+      "flags": "..F.A....T.",
       "max": null,
       "min": null,
       "name": "expr",

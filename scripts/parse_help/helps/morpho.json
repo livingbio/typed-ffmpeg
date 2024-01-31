@@ -12,7 +12,7 @@
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
-  "is_slice_threading_supported": false,
+  "is_slice_threading_supported": true,
   "is_support_framesync": true,
   "is_support_timeline": true,
   "name": "morpho",

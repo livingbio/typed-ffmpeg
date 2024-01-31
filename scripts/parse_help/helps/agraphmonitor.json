@@ -35,7 +35,7 @@
       "choices": [],
       "default": 0.9,
       "description": "set video opacity (from 0 to 1) (default 0.9)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": "1",
       "min": "0",
       "name": "opacity",
@@ -48,25 +48,43 @@
       ],
       "choices": [
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "full",
-          "value": "0"
+          "value": "full"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "compact",
-          "value": "1"
+          "value": "compact"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "nozero",
+          "value": "nozero"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "noeof",
+          "value": "noeof"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "nodisabled",
+          "value": "nodisabled"
         }
       ],
-      "default": "full",
-      "description": "set mode (from 0 to 1) (default full)",
-      "flags": "..FV.......",
-      "max": "1",
-      "min": "0",
+      "default": "0",
+      "description": "set mode (default 0)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
       "name": "mode",
-      "typing": "int"
+      "typing": "flags"
     },
     {
       "alias": [
@@ -75,105 +93,123 @@
       ],
       "choices": [
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "none",
+          "value": "none"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "all",
+          "value": "all"
+        },
+        {
+          "flags": "..FV.....T.",
           "help": "",
           "name": "queue",
           "value": "queue"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "frame_count_in",
           "value": "frame_count_in"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "frame_count_out",
           "value": "frame_count_out"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "frame_count_delta",
           "value": "frame_count_delta"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "pts",
           "value": "pts"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "pts_delta",
           "value": "pts_delta"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "time",
           "value": "time"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "time_delta",
           "value": "time_delta"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "timebase",
           "value": "timebase"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "format",
           "value": "format"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "size",
           "value": "size"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "rate",
           "value": "rate"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "eof",
           "value": "eof"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "sample_count_in",
           "value": "sample_count_in"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "sample_count_out",
           "value": "sample_count_out"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "sample_count_delta",
           "value": "sample_count_delta"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "disabled",
+          "value": "disabled"
         }
       ],
-      "default": "queue",
-      "description": "set flags (default queue)",
-      "flags": "..FV.......",
+      "default": "all+queue",
+      "description": "set flags (default all+queue)",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "flags",

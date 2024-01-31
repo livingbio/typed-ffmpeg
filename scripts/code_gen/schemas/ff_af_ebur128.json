@@ -210,6 +210,72 @@
       "name": "scale",
       "required": false,
       "typing": "Int"
+    },
+    {
+      "alias": [
+        "integrated"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "integrated loudness (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "name": "integrated",
+      "required": false,
+      "typing": "Double"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "loudness range (LU) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "name": "range",
+      "required": false,
+      "typing": "Double"
+    },
+    {
+      "alias": [
+        "lra_low"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "LRA low (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "name": "lra_low",
+      "required": false,
+      "typing": "Double"
+    },
+    {
+      "alias": [
+        "lra_high"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "name": "lra_high",
+      "required": false,
+      "typing": "Double"
+    },
+    {
+      "alias": [
+        "sample_peak"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "name": "sample_peak",
+      "required": false,
+      "typing": "Double"
+    },
+    {
+      "alias": [
+        "true_peak"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "name": "true_peak",
+      "required": false,
+      "typing": "Double"
     }
   ],
   "output_stream_typings": null,

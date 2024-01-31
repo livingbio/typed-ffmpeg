@@ -16,7 +16,7 @@
   ],
   "is_dynamic_inputs": false,
   "is_dynamic_outputs": false,
-  "is_slice_threading_supported": false,
+  "is_slice_threading_supported": true,
   "is_support_framesync": false,
   "is_support_timeline": true,
   "name": "displace",
@@ -27,25 +27,25 @@
       ],
       "choices": [
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "blank",
           "value": "0"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "smear",
           "value": "1"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "wrap",
           "value": "2"
         },
         {
-          "flags": "..FV.......",
+          "flags": "..FV.....T.",
           "help": "",
           "name": "mirror",
           "value": "3"
@@ -53,7 +53,7 @@
       ],
       "default": "smear",
       "description": "set edge mode (from 0 to 3) (default smear)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": "3",
       "min": "0",
       "name": "edge",

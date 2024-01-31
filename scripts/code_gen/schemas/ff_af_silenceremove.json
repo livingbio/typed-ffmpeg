@@ -13,7 +13,7 @@
   "is_input_dynamic": false,
   "is_output_dynamic": false,
   "is_support_framesync": false,
-  "is_support_timeline": false,
+  "is_support_timeline": true,
   "name": "silenceremove",
   "options": [
     {
@@ -99,7 +99,7 @@
       ],
       "choices": [],
       "default": 0.0,
-      "description": "set stop duration of non-silence part (default 0)",
+      "description": "set stop duration of silence part (default 0)",
       "name": "stop_duration",
       "required": false,
       "typing": "Duration"
@@ -142,8 +142,8 @@
           "value": "1"
         }
       ],
-      "default": "any",
-      "description": "set which channel will trigger trimming from end (from 0 to 1) (default any)",
+      "default": "all",
+      "description": "set which channel will trigger trimming from end (from 0 to 1) (default all)",
       "name": "stop_mode",
       "required": false,
       "typing": "Int"
@@ -154,18 +154,38 @@
       ],
       "choices": [
         {
-          "help": "use absolute values of samples",
-          "name": "peak",
+          "help": "use mean absolute values of samples",
+          "name": "avg",
           "value": "0"
         },
         {
-          "help": "use squared values of samples",
+          "help": "use root mean squared values of samples",
           "name": "rms",
           "value": "1"
+        },
+        {
+          "help": "use max absolute values of samples",
+          "name": "peak",
+          "value": "2"
+        },
+        {
+          "help": "use median of absolute values of samples",
+          "name": "median",
+          "value": "3"
+        },
+        {
+          "help": "use absolute of max peak to min peak difference",
+          "name": "ptp",
+          "value": "4"
+        },
+        {
+          "help": "use standard deviation from values of samples",
+          "name": "dev",
+          "value": "5"
         }
       ],
       "default": "rms",
-      "description": "set how silence is detected (from 0 to 1) (default rms)",
+      "description": "set how silence is detected (from 0 to 5) (default rms)",
       "name": "detection",
       "required": false,
       "typing": "Int"
@@ -180,6 +200,37 @@
       "name": "window",
       "required": false,
       "typing": "Duration"
+    },
+    {
+      "alias": [
+        "timestamp"
+      ],
+      "choices": [
+        {
+          "help": "full timestamps rewrite, keep only the start time",
+          "name": "write",
+          "value": "0"
+        },
+        {
+          "help": "non-dropped frames are left with same timestamp",
+          "name": "copy",
+          "value": "1"
+        }
+      ],
+      "default": "write",
+      "description": "set how every output frame timestamp is processed (from 0 to 1) (default write)",
+      "name": "timestamp",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "name": "enable",
+      "required": false,
+      "typing": "str"
     }
   ],
   "output_stream_typings": [

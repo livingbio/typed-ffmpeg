@@ -23,7 +23,7 @@
       ],
       "choices": [],
       "default": 256,
-      "description": "set segment size (from 2 to 131072) (default 256)",
+      "description": "set the segment size (from 2 to 131072) (default 256)",
       "flags": "..F.A......",
       "max": "131072",
       "min": "2",
@@ -46,12 +46,18 @@
           "help": "fast algorithm",
           "name": "fast",
           "value": "1"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "best algorithm",
+          "name": "best",
+          "value": "2"
         }
       ],
-      "default": "slow",
-      "description": "set algorithm (from 0 to 1) (default slow)",
+      "default": "best",
+      "description": "set the algorithm (from 0 to 2) (default best)",
       "flags": "..F.A......",
-      "max": "1",
+      "max": "2",
       "min": "0",
       "name": "algo",
       "typing": "int"

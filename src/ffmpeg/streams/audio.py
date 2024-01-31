@@ -15,6 +15,7 @@ from ..schema import (
     Image_size,
     Int,
     Int64,
+    Rational,
     StreamType,
     String,
     Video_rate,
@@ -265,8 +266,6 @@ class AudioStream(FilterableStream):
 
         Copy the input audio unchanged to the output.
 
-        Args:
-
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acopy)
 
@@ -309,6 +308,10 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
+            "quat",
+            "quatr",
+            "qsin2",
+            "hsin2",
         ]
         | Default = Default("tri"),
         curve2: Int
@@ -333,6 +336,10 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
+            "quat",
+            "quatr",
+            "qsin2",
+            "hsin2",
         ]
         | Default = Default("tri"),
         **kwargs: Any,
@@ -345,8 +352,8 @@ class AudioStream(FilterableStream):
             nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
             duration: set cross fade duration (default 0)
             overlap: overlap 1st stream end with 2nd stream start (default true)
-            curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
-            curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
+            curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
+            curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
@@ -904,9 +911,11 @@ class AudioStream(FilterableStream):
         makeup: Double = Default(0.0),
         range: Double = Default(50.0),
         mode: Int | Literal["listen", "cut", "boost"] | Default = Default("cut"),
+        dftype: Int | Literal["bandpass", "lowpass", "highpass", "peak"] | Default = Default("bandpass"),
         tftype: Int | Literal["bell", "lowshelf", "highshelf"] | Default = Default("bell"),
         direction: Int | Literal["downward", "upward"] | Default = Default("downward"),
         auto: Int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
+        precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -926,9 +935,11 @@ class AudioStream(FilterableStream):
             makeup: set makeup gain (from 0 to 100) (default 0)
             range: set max gain (from 1 to 200) (default 50)
             mode: set mode (from -1 to 1) (default cut)
+            dftype: set detection filter type (from 0 to 3) (default bandpass)
             tftype: set target filter type (from 0 to 2) (default bell)
             direction: set direction (from 0 to 1) (default downward)
             auto: set auto threshold (from -1 to 1) (default disabled)
+            precision: set processing precision (from 0 to 2) (default auto)
             enable: timeline editing
 
         References:
@@ -954,9 +965,11 @@ class AudioStream(FilterableStream):
                         "makeup": makeup,
                         "range": range,
                         "mode": mode,
+                        "dftype": dftype,
                         "tftype": tftype,
                         "direction": direction,
                         "auto": auto,
+                        "precision": precision,
                         "enable": enable,
                     }
                     | kwargs
@@ -1219,6 +1232,10 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
+            "quat",
+            "quatr",
+            "qsin2",
+            "hsin2",
         ]
         | Default = Default("tri"),
         silence: Double = Default(0.0),
@@ -1236,7 +1253,7 @@ class AudioStream(FilterableStream):
             nb_samples: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
             start_time: set time to start fading (default 0)
             duration: set fade duration (default 0)
-            curve: set fade curve type (from -1 to 18) (default tri)
+            curve: set fade curve type (from -1 to 22) (default tri)
             silence: set the silence gain (from 0 to 1) (default 0)
             unity: set the unity gain (from 0 to 1) (default 1)
             enable: timeline editing
@@ -1423,8 +1440,6 @@ class AudioStream(FilterableStream):
         """
 
         Buffer input frames and send them when they are requested.
-
-        Args:
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fifo_002c-afifo)
@@ -1651,9 +1666,11 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
-        mode: Int | Literal["full", "compact"] | Default = Default("full"),
+        mode: Flags | Literal["full", "compact", "nozero", "noeof", "nodisabled"] | Default = Default("0"),
         flags: Flags
         | Literal[
+            "none",
+            "all",
             "queue",
             "frame_count_in",
             "frame_count_out",
@@ -1670,8 +1687,9 @@ class AudioStream(FilterableStream):
             "sample_count_in",
             "sample_count_out",
             "sample_count_delta",
+            "disabled",
         ]
-        | Default = Default("queue"),
+        | Default = Default("all+queue"),
         rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> "VideoStream":
@@ -1682,8 +1700,8 @@ class AudioStream(FilterableStream):
         Args:
             size: set monitor size (default "hd720")
             opacity: set video opacity (from 0 to 1) (default 0.9)
-            mode: set mode (from 0 to 1) (default full)
-            flags: set flags (default queue)
+            mode: set mode (default 0)
+            flags: set flags (default all+queue)
             rate: set video rate (default "25")
 
         References:
@@ -2020,7 +2038,13 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def aloop(
-        self, *, loop: Int = Default(0), size: Int64 = Default(0), start: Int64 = Default(0), **kwargs: Any
+        self,
+        *,
+        loop: Int = Default(0),
+        size: Int64 = Default(0),
+        start: Int64 = Default(0),
+        time: Duration = Default("INT64_MAX"),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 
@@ -2029,7 +2053,8 @@ class AudioStream(FilterableStream):
         Args:
             loop: number of loops (from -1 to INT_MAX) (default 0)
             size: max number of samples to loop (from 0 to INT_MAX) (default 0)
-            start: set the loop start sample (from 0 to I64_MAX) (default 0)
+            start: set the loop start sample (from -1 to I64_MAX) (default 0)
+            time: set the loop start time (default INT64_MAX)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aloop)
@@ -2046,6 +2071,7 @@ class AudioStream(FilterableStream):
                         "loop": loop,
                         "size": size,
                         "start": start,
+                        "time": time,
                     }
                     | kwargs
                 ).items()
@@ -2113,8 +2139,6 @@ class AudioStream(FilterableStream):
         """
 
         Multiply two audio streams.
-
-        Args:
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
@@ -2240,7 +2264,7 @@ class AudioStream(FilterableStream):
         mu: Float = Default(0.75),
         eps: Float = Default(1.0),
         leakage: Float = Default(0.0),
-        out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2253,7 +2277,7 @@ class AudioStream(FilterableStream):
             mu: set the filter mu (from 0 to 2) (default 0.75)
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
-            out_mode: set output mode (from 0 to 3) (default o)
+            out_mode: set output mode (from 0 to 4) (default o)
             enable: timeline editing
 
         References:
@@ -2292,7 +2316,7 @@ class AudioStream(FilterableStream):
         mu: Float = Default(0.75),
         eps: Float = Default(1.0),
         leakage: Float = Default(0.0),
-        out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: str = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -2305,7 +2329,7 @@ class AudioStream(FilterableStream):
             mu: set the filter mu (from 0 to 2) (default 0.75)
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
-            out_mode: set output mode (from 0 to 3) (default o)
+            out_mode: set output mode (from 0 to 4) (default o)
             enable: timeline editing
 
         References:
@@ -2340,8 +2364,6 @@ class AudioStream(FilterableStream):
         """
 
         Pass the source unchanged to the output.
-
-        Args:
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anull)
@@ -2597,6 +2619,37 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
+    def apsnr(self, _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any) -> "AudioStream":
+        """
+
+        Measure Audio Peak Signal-to-Noise Ratio.
+
+        Args:
+            enable: timeline editing
+
+        References:
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
+
+        """
+        filter_node = FilterNode(
+            name="apsnr",
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
+                self,
+                _input1,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "enable": enable,
+                    }
+                    | kwargs
+                ).items()
+            ),
+        )
+        return filter_node.audio(0)
+
     def apsyclip(
         self,
         *,
@@ -2779,8 +2832,6 @@ class AudioStream(FilterableStream):
 
         Reverse an audio clip.
 
-        Args:
-
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#areverse)
 
@@ -2791,6 +2842,55 @@ class AudioStream(FilterableStream):
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
             kwargs=tuple(({} | kwargs).items()),
+        )
+        return filter_node.audio(0)
+
+    def arls(
+        self,
+        _desired: "AudioStream",
+        *,
+        order: Int = Default(16),
+        _lambda: Float = Default(1.0),
+        delta: Float = Default(2.0),
+        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+        enable: str = Default(None),
+        **kwargs: Any,
+    ) -> "AudioStream":
+        """
+
+        Apply Recursive Least Squares algorithm to first audio stream.
+
+        Args:
+            order: set the filter order (from 1 to 32767) (default 16)
+            _lambda: set the filter lambda (from 0 to 1) (default 1)
+            delta: set the filter delta (from 0 to 32767) (default 2)
+            out_mode: set output mode (from 0 to 4) (default o)
+            enable: timeline editing
+
+        References:
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
+
+        """
+        filter_node = FilterNode(
+            name="arls",
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
+                self,
+                _desired,
+            ),
+            kwargs=tuple(
+                (
+                    {
+                        "order": order,
+                        "lambda": _lambda,
+                        "delta": delta,
+                        "out_mode": out_mode,
+                        "enable": enable,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2828,12 +2928,13 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asdr(self, _input1: "AudioStream", **kwargs: Any) -> "AudioStream":
+    def asdr(self, _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any) -> "AudioStream":
         """
 
         Measure Audio Signal-to-Distortion Ratio.
 
         Args:
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
@@ -2847,7 +2948,14 @@ class AudioStream(FilterableStream):
                 self,
                 _input1,
             ),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=tuple(
+                (
+                    {
+                        "enable": enable,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -2948,7 +3056,12 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asetnsamples(
-        self, *, nb_out_samples: Int = Default(1024), pad: Boolean = Default(True), **kwargs: Any
+        self,
+        *,
+        nb_out_samples: Int = Default(1024),
+        pad: Boolean = Default(True),
+        enable: str = Default(None),
+        **kwargs: Any,
     ) -> "AudioStream":
         """
 
@@ -2957,6 +3070,7 @@ class AudioStream(FilterableStream):
         Args:
             nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
             pad: pad last frame with zeros (default true)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetnsamples)
@@ -2972,6 +3086,7 @@ class AudioStream(FilterableStream):
                     {
                         "nb_out_samples": nb_out_samples,
                         "pad": pad,
+                        "enable": enable,
                     }
                     | kwargs
                 ).items()
@@ -3068,8 +3183,6 @@ class AudioStream(FilterableStream):
 
         Show textual information for each audio frame.
 
-        Args:
-
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ashowinfo)
 
@@ -3138,6 +3251,37 @@ class AudioStream(FilterableStream):
                     {
                         "mode": mode,
                         "type": type,
+                        "enable": enable,
+                    }
+                    | kwargs
+                ).items()
+            ),
+        )
+        return filter_node.audio(0)
+
+    def asisdr(self, _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any) -> "AudioStream":
+        """
+
+        Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
+
+        Args:
+            enable: timeline editing
+
+        References:
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
+
+        """
+        filter_node = FilterNode(
+            name="asisdr",
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
+            inputs=(
+                self,
+                _input1,
+            ),
+            kwargs=tuple(
+                (
+                    {
                         "enable": enable,
                     }
                     | kwargs
@@ -3347,9 +3491,10 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
+            "Abs_Peak_count",
         ]
         | Default = Default(
-            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
         ),
         measure_overall: Flags
         | Literal[
@@ -3380,9 +3525,10 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
+            "Abs_Peak_count",
         ]
         | Default = Default(
-            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
         ),
         **kwargs: Any,
     ) -> "AudioStream":
@@ -3394,8 +3540,8 @@ class AudioStream(FilterableStream):
             length: set the window length (from 0 to 10) (default 0.05)
             metadata: inject metadata in the filtergraph (default false)
             reset: Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)
-            measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
-            measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
+            measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
+            measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#astats)
@@ -3865,7 +4011,7 @@ class AudioStream(FilterableStream):
         _axcorrelate1: "AudioStream",
         *,
         size: Int = Default(256),
-        algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
+        algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -3873,8 +4019,8 @@ class AudioStream(FilterableStream):
         Cross-correlate two audio streams.
 
         Args:
-            size: set segment size (from 2 to 131072) (default 256)
-            algo: set algorithm (from 0 to 1) (default slow)
+            size: set the segment size (from 2 to 131072) (default 256)
+            algo: set the algorithm (from 0 to 2) (default best)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
@@ -4705,8 +4851,6 @@ class AudioStream(FilterableStream):
 
         Widen the stereo image.
 
-        Args:
-
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#earwax)
 
@@ -4734,6 +4878,12 @@ class AudioStream(FilterableStream):
         target: Int = Default(-23),
         gauge: Int | Literal["momentary", "m", "shortterm", "s"] | Default = Default("momentary"),
         scale: Int | Literal["absolute", "LUFS", "relative", "LU"] | Default = Default("absolute"),
+        integrated: Double = Default(0.0),
+        range: Double = Default(0.0),
+        lra_low: Double = Default(0.0),
+        lra_high: Double = Default(0.0),
+        sample_peak: Double = Default(0.0),
+        true_peak: Double = Default(0.0),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -4752,6 +4902,12 @@ class AudioStream(FilterableStream):
             target: set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)
             gauge: set gauge display type (from 0 to 1) (default momentary)
             scale: sets display method for the stats (from 0 to 1) (default absolute)
+            integrated: integrated loudness (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            range: loudness range (LU) (from -DBL_MAX to DBL_MAX) (default 0)
+            lra_low: LRA low (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            lra_high: LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            sample_peak: sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
+            true_peak: true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ebur128)
@@ -4776,6 +4932,12 @@ class AudioStream(FilterableStream):
                         "target": target,
                         "gauge": gauge,
                         "scale": scale,
+                        "integrated": integrated,
+                        "range": range,
+                        "lra_low": lra_low,
+                        "lra_high": lra_high,
+                        "sample_peak": sample_peak,
+                        "true_peak": true_peak,
                     }
                     | kwargs
                 ).items()
@@ -5518,12 +5680,16 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def replaygain(self, **kwargs: Any) -> "AudioStream":
+    def replaygain(
+        self, *, track_gain: Float = Default(0.0), track_peak: Float = Default(0.0), **kwargs: Any
+    ) -> "AudioStream":
         """
 
         ReplayGain scanner.
 
         Args:
+            track_gain: track gain (dB) (from -FLT_MAX to FLT_MAX) (default 0)
+            track_peak: track peak (from -FLT_MAX to FLT_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#replaygain)
@@ -5534,7 +5700,15 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=tuple(
+                (
+                    {
+                        "track_gain": track_gain,
+                        "track_peak": track_peak,
+                    }
+                    | kwargs
+                ).items()
+            ),
         )
         return filter_node.audio(0)
 
@@ -5713,15 +5887,22 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("640x512"),
         rate: String = Default("25"),
-        scale: Int | Literal["linear", "log2", "bark", "mel", "erbs"] | Default = Default("linear"),
+        scale: Int
+        | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt"]
+        | Default = Default("linear"),
+        iscale: Int | Literal["linear", "log", "sqrt", "cbrt", "qdrt"] | Default = Default("log"),
         min: Float = Default(20.0),
         max: Float = Default(20000.0),
+        imin: Float = Default(0.0),
+        imax: Float = Default(1.0),
         logb: Float = Default(0.0001),
         deviation: Float = Default(1.0),
         pps: Int = Default(64),
         mode: Int | Literal["magnitude", "phase", "magphase", "channel", "stereo"] | Default = Default("magnitude"),
         slide: Int | Literal["replace", "scroll", "frame"] | Default = Default("replace"),
         direction: Int | Literal["lr", "rl", "ud", "du"] | Default = Default("lr"),
+        bar: Float = Default(0.0),
+        rotation: Float = Default(0.0),
         **kwargs: Any,
     ) -> "VideoStream":
         """
@@ -5731,15 +5912,20 @@ class AudioStream(FilterableStream):
         Args:
             size: set video size (default "640x512")
             rate: set video rate (default "25")
-            scale: set frequency scale (from 0 to 4) (default linear)
-            min: set minimum frequency (from 1 to 2000) (default 20)
-            max: set maximum frequency (from 0 to 192000) (default 20000)
+            scale: set frequency scale (from 0 to 7) (default linear)
+            iscale: set intensity scale (from 0 to 4) (default log)
+            min: set minimum frequency (from 1 to 192000) (default 20)
+            max: set maximum frequency (from 1 to 192000) (default 20000)
+            imin: set minimum intensity (from 0 to 1) (default 0)
+            imax: set maximum intensity (from 0 to 1) (default 1)
             logb: set logarithmic basis (from 0 to 1) (default 0.0001)
-            deviation: set frequency deviation (from 0 to 10) (default 1)
+            deviation: set frequency deviation (from 0 to 100) (default 1)
             pps: set pixels per second (from 1 to 1024) (default 64)
             mode: set output mode (from 0 to 4) (default magnitude)
             slide: set slide mode (from 0 to 2) (default replace)
             direction: set direction mode (from 0 to 3) (default lr)
+            bar: set bar ratio (from 0 to 1) (default 0)
+            rotation: set color rotation (from -1 to 1) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcwt)
@@ -5756,14 +5942,19 @@ class AudioStream(FilterableStream):
                         "size": size,
                         "rate": rate,
                         "scale": scale,
+                        "iscale": iscale,
                         "min": min,
                         "max": max,
+                        "imin": imin,
+                        "imax": imax,
                         "logb": logb,
                         "deviation": deviation,
                         "pps": pps,
                         "mode": mode,
                         "slide": slide,
                         "direction": direction,
+                        "bar": bar,
+                        "rotation": rotation,
                     }
                     | kwargs
                 ).items()
@@ -6269,7 +6460,7 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("600x240"),
         mode: Int | Literal["point", "line", "p2p", "cline"] | Default = Default("point"),
-        n: Int = Default(0),
+        n: Rational = Default("0/1"),
         rate: Video_rate = Default("25"),
         split_channels: Boolean = Default(False),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
@@ -6284,7 +6475,7 @@ class AudioStream(FilterableStream):
         Args:
             size: set video size (default "600x240")
             mode: select display mode (from 0 to 3) (default point)
-            n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0)
+            n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0/1)
             rate: set video rate (default "25")
             split_channels: draw channels separately (default false)
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
@@ -6555,9 +6746,11 @@ class AudioStream(FilterableStream):
         stop_duration: Duration = Default(0.0),
         stop_threshold: Double = Default(0.0),
         stop_silence: Duration = Default(0.0),
-        stop_mode: Int | Literal["any", "all"] | Default = Default("any"),
-        detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
+        stop_mode: Int | Literal["any", "all"] | Default = Default("all"),
+        detection: Int | Literal["avg", "rms", "peak", "median", "ptp", "dev"] | Default = Default("rms"),
         window: Duration = Default(0.02),
+        timestamp: Int | Literal["write", "copy"] | Default = Default("write"),
+        enable: str = Default(None),
         **kwargs: Any,
     ) -> "AudioStream":
         """
@@ -6571,12 +6764,14 @@ class AudioStream(FilterableStream):
             start_silence: set start duration of silence part to keep (default 0)
             start_mode: set which channel will trigger trimming from start (from 0 to 1) (default any)
             stop_periods: set periods of silence parts to skip from end (from -9000 to 9000) (default 0)
-            stop_duration: set stop duration of non-silence part (default 0)
+            stop_duration: set stop duration of silence part (default 0)
             stop_threshold: set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)
             stop_silence: set stop duration of silence part to keep (default 0)
-            stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default any)
-            detection: set how silence is detected (from 0 to 1) (default rms)
+            stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default all)
+            detection: set how silence is detected (from 0 to 5) (default rms)
             window: set duration of window for silence detection (default 0.02)
+            timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silenceremove)
@@ -6602,6 +6797,8 @@ class AudioStream(FilterableStream):
                         "stop_mode": stop_mode,
                         "detection": detection,
                         "window": window,
+                        "timestamp": timestamp,
+                        "enable": enable,
                     }
                     | kwargs
                 ).items()
@@ -7395,8 +7592,6 @@ class AudioStream(FilterableStream):
         """
 
         Detect audio volume.
-
-        Args:
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)

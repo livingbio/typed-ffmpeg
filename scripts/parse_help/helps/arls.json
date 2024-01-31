@@ -1,5 +1,5 @@
 {
-  "description": "Apply Normalized Least-Mean-Squares algorithm to first audio stream.",
+  "description": "Apply Recursive Least Squares algorithm to first audio stream.",
   "input_types": [
     {
       "name": "input",
@@ -15,15 +15,15 @@
   "is_slice_threading_supported": true,
   "is_support_framesync": false,
   "is_support_timeline": true,
-  "name": "anlms",
+  "name": "arls",
   "options": [
     {
       "alias": [
         "order"
       ],
       "choices": [],
-      "default": 256,
-      "description": "set the filter order (from 1 to 32767) (default 256)",
+      "default": 16,
+      "description": "set the filter order (from 1 to 32767) (default 16)",
       "flags": "..F.A......",
       "max": "32767",
       "min": "1",
@@ -32,41 +32,28 @@
     },
     {
       "alias": [
-        "mu"
-      ],
-      "choices": [],
-      "default": 0.75,
-      "description": "set the filter mu (from 0 to 2) (default 0.75)",
-      "flags": "..F.A....T.",
-      "max": "2",
-      "min": "0",
-      "name": "mu",
-      "typing": "float"
-    },
-    {
-      "alias": [
-        "eps"
+        "lambda"
       ],
       "choices": [],
       "default": 1.0,
-      "description": "set the filter eps (from 0 to 1) (default 1)",
+      "description": "set the filter lambda (from 0 to 1) (default 1)",
       "flags": "..F.A....T.",
       "max": "1",
       "min": "0",
-      "name": "eps",
+      "name": "lambda",
       "typing": "float"
     },
     {
       "alias": [
-        "leakage"
+        "delta"
       ],
       "choices": [],
-      "default": 0.0,
-      "description": "set the filter leakage (from 0 to 1) (default 0)",
-      "flags": "..F.A....T.",
-      "max": "1",
+      "default": 2.0,
+      "description": "set the filter delta (from 0 to 32767) (default 2)",
+      "flags": "..F.A......",
+      "max": "32767",
       "min": "0",
-      "name": "leakage",
+      "name": "delta",
       "typing": "float"
     },
     {

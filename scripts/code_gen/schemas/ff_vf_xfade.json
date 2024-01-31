@@ -259,10 +259,70 @@
           "help": "slow fade transition",
           "name": "fadeslow",
           "value": "45"
+        },
+        {
+          "help": "hl wind transition",
+          "name": "hlwind",
+          "value": "46"
+        },
+        {
+          "help": "hr wind transition",
+          "name": "hrwind",
+          "value": "47"
+        },
+        {
+          "help": "vu wind transition",
+          "name": "vuwind",
+          "value": "48"
+        },
+        {
+          "help": "vd wind transition",
+          "name": "vdwind",
+          "value": "49"
+        },
+        {
+          "help": "cover left transition",
+          "name": "coverleft",
+          "value": "50"
+        },
+        {
+          "help": "cover right transition",
+          "name": "coverright",
+          "value": "51"
+        },
+        {
+          "help": "cover up transition",
+          "name": "coverup",
+          "value": "52"
+        },
+        {
+          "help": "cover down transition",
+          "name": "coverdown",
+          "value": "53"
+        },
+        {
+          "help": "reveal left transition",
+          "name": "revealleft",
+          "value": "54"
+        },
+        {
+          "help": "reveal right transition",
+          "name": "revealright",
+          "value": "55"
+        },
+        {
+          "help": "reveal up transition",
+          "name": "revealup",
+          "value": "56"
+        },
+        {
+          "help": "reveal down transition",
+          "name": "revealdown",
+          "value": "57"
         }
       ],
       "default": "fade",
-      "description": "set cross fade transition (from -1 to 45) (default fade)",
+      "description": "set cross fade transition (from -1 to 57) (default fade)",
       "name": "transition",
       "required": false,
       "typing": "Int"

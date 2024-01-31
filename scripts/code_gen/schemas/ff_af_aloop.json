@@ -44,10 +44,21 @@
       ],
       "choices": [],
       "default": 0,
-      "description": "set the loop start sample (from 0 to I64_MAX) (default 0)",
+      "description": "set the loop start sample (from -1 to I64_MAX) (default 0)",
       "name": "start",
       "required": false,
       "typing": "Int64"
+    },
+    {
+      "alias": [
+        "time"
+      ],
+      "choices": [],
+      "default": "INT64_MAX",
+      "description": "set the loop start time (default INT64_MAX)",
+      "name": "time",
+      "required": false,
+      "typing": "Duration"
     }
   ],
   "output_stream_typings": [

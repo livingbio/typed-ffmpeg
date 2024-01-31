@@ -114,33 +114,33 @@
         "ecost"
       ],
       "choices": [],
-      "default": 1.0,
-      "description": "specify the edge cost for edge matching (from 0 to 9) (default 1)",
+      "default": 2,
+      "description": "specify the edge cost for edge matching (from 0 to 50) (default 2)",
       "name": "ecost",
       "required": false,
-      "typing": "Float"
+      "typing": "Int"
     },
     {
       "alias": [
         "mcost"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "specify the middle cost for edge matching (from 0 to 1) (default 0.5)",
+      "default": 1,
+      "description": "specify the middle cost for edge matching (from 0 to 50) (default 1)",
       "name": "mcost",
       "required": false,
-      "typing": "Float"
+      "typing": "Int"
     },
     {
       "alias": [
         "dcost"
       ],
       "choices": [],
-      "default": 0.5,
-      "description": "specify the distance cost for edge matching (from 0 to 1) (default 0.5)",
+      "default": 1,
+      "description": "specify the distance cost for edge matching (from 0 to 50) (default 1)",
       "name": "dcost",
       "required": false,
-      "typing": "Float"
+      "typing": "Int"
     },
     {
       "alias": [

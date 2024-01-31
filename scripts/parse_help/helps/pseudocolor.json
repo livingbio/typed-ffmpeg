@@ -180,12 +180,48 @@
           "help": "",
           "name": "spectral",
           "value": "14"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "cool",
+          "value": "15"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "16"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "fiery",
+          "value": "17"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "blues",
+          "value": "18"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "green",
+          "value": "19"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "helix",
+          "value": "20"
         }
       ],
       "default": "none",
-      "description": "set preset (from -1 to 14) (default none)",
+      "description": "set preset (from -1 to 20) (default none)",
       "flags": "..FV.....T.",
-      "max": "14",
+      "max": "20",
       "min": "-1",
       "name": "preset",
       "typing": "int"

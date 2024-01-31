@@ -157,10 +157,40 @@
           "help": "",
           "name": "spectral",
           "value": "14"
+        },
+        {
+          "help": "",
+          "name": "cool",
+          "value": "15"
+        },
+        {
+          "help": "",
+          "name": "heat",
+          "value": "16"
+        },
+        {
+          "help": "",
+          "name": "fiery",
+          "value": "17"
+        },
+        {
+          "help": "",
+          "name": "blues",
+          "value": "18"
+        },
+        {
+          "help": "",
+          "name": "green",
+          "value": "19"
+        },
+        {
+          "help": "",
+          "name": "helix",
+          "value": "20"
         }
       ],
       "default": "none",
-      "description": "set preset (from -1 to 14) (default none)",
+      "description": "set preset (from -1 to 20) (default none)",
       "name": "preset",
       "required": false,
       "typing": "Int"

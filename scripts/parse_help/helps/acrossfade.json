@@ -184,12 +184,36 @@
           "help": "inverted sine cardinal function",
           "name": "isinc",
           "value": "18"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "quartic",
+          "name": "quat",
+          "value": "19"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "quartic root",
+          "name": "quatr",
+          "value": "20"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "squared quarter of sine wave",
+          "name": "qsin2",
+          "value": "21"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "squared half of sine wave",
+          "name": "hsin2",
+          "value": "22"
         }
       ],
       "default": "tri",
-      "description": "set fade curve type for 1st stream (from -1 to 18) (default tri)",
+      "description": "set fade curve type for 1st stream (from -1 to 22) (default tri)",
       "flags": "..F.A......",
-      "max": "18",
+      "max": "22",
       "min": "-1",
       "name": "curve1",
       "typing": "int"
@@ -319,12 +343,36 @@
           "help": "inverted sine cardinal function",
           "name": "isinc",
           "value": "18"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "quartic",
+          "name": "quat",
+          "value": "19"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "quartic root",
+          "name": "quatr",
+          "value": "20"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "squared quarter of sine wave",
+          "name": "qsin2",
+          "value": "21"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "squared half of sine wave",
+          "name": "hsin2",
+          "value": "22"
         }
       ],
       "default": "tri",
-      "description": "set fade curve type for 2nd stream (from -1 to 18) (default tri)",
+      "description": "set fade curve type for 2nd stream (from -1 to 22) (default tri)",
       "flags": "..F.A......",
-      "max": "18",
+      "max": "22",
       "min": "-1",
       "name": "curve2",
       "typing": "int"

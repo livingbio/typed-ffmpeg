@@ -343,6 +343,28 @@
       "name": "fitmode",
       "required": false,
       "typing": "Int"
+    },
+    {
+      "alias": [
+        "input"
+      ],
+      "choices": [
+        {
+          "help": "try to select from all available formats",
+          "name": "all",
+          "value": "0"
+        },
+        {
+          "help": "pick first available format",
+          "name": "first",
+          "value": "1"
+        }
+      ],
+      "default": "first",
+      "description": "set input formats selection (from 0 to 1) (default first)",
+      "name": "input",
+      "required": false,
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [

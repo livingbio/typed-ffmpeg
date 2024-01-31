@@ -20,15 +20,9 @@
       "alias": [
         "dnn_backend"
       ],
-      "choices": [
-        {
-          "help": "native backend flag",
-          "name": "native",
-          "value": "0"
-        }
-      ],
-      "default": "native",
-      "description": "DNN backend used for model execution (from 0 to 1) (default native)",
+      "choices": [],
+      "default": 1,
+      "description": "DNN backend used for model execution (from 0 to 1) (default 1)",
       "name": "dnn_backend",
       "required": false,
       "typing": "Int"

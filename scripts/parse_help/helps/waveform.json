@@ -398,6 +398,32 @@
       "min": "0",
       "name": "fitmode",
       "typing": "int"
+    },
+    {
+      "alias": [
+        "input"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "try to select from all available formats",
+          "name": "all",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "pick first available format",
+          "name": "first",
+          "value": "1"
+        }
+      ],
+      "default": "first",
+      "description": "set input formats selection (from 0 to 1) (default first)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "input",
+      "typing": "int"
     }
   ],
   "output_types": [

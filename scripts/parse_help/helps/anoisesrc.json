@@ -129,6 +129,19 @@
       "min": "1",
       "name": "nb_samples",
       "typing": "int"
+    },
+    {
+      "alias": [
+        "density"
+      ],
+      "choices": [],
+      "default": 0.05,
+      "description": "set density (from 0 to 1) (default 0.05)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "density",
+      "typing": "double"
     }
   ],
   "output_types": [

@@ -243,6 +243,84 @@
       "min": "0",
       "name": "scale",
       "typing": "int"
+    },
+    {
+      "alias": [
+        "integrated"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "integrated loudness (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "flags": "..F.A.XR...",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "integrated",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "range"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "loudness range (LU) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "flags": "..F.A.XR...",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "range",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "lra_low"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "LRA low (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "flags": "..F.A.XR...",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "lra_low",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "lra_high"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "flags": "..F.A.XR...",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "lra_high",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "sample_peak"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "flags": "..F.A.XR...",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "sample_peak",
+      "typing": "double"
+    },
+    {
+      "alias": [
+        "true_peak"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)",
+      "flags": "..F.A.XR...",
+      "max": "DBL_MAX",
+      "min": "-DBL_MAX",
+      "name": "true_peak",
+      "typing": "double"
     }
   ],
   "output_types": null
