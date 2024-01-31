@@ -15,7 +15,7 @@
   "__path__",
   "__spec__",
   "base",
-  "exeptions",
+  "exceptions",
   "filter",
   "filter_multi_output",
   "filters",
