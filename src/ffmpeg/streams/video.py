@@ -52,12 +52,12 @@ class VideoStream(FilterableStream):
         Add region of interest to frame.
 
         Args:
-            x (String): Region distance from left edge of frame. (default "0")
-            y (String): Region distance from top edge of frame. (default "0")
-            w (String): Region width. (default "0")
-            h (String): Region height. (default "0")
-            qoffset (Rational): Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)
-            clear (Boolean): Remove any existing regions of interest before adding the new one. (default false)
+            x: Region distance from left edge of frame. (default "0")
+            y: Region distance from top edge of frame. (default "0")
+            w: Region width. (default "0")
+            h: Region height. (default "0")
+            qoffset: Quantisation offset to apply in the region. (from -1 to 1) (default -1/10)
+            clear: Remove any existing regions of interest before adding the new one. (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#addroi)
@@ -120,11 +120,11 @@ class VideoStream(FilterableStream):
         Copy the luma value of the second input into the alpha channel of the first input.
 
         Args:
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
@@ -171,14 +171,14 @@ class VideoStream(FilterableStream):
         Amplify changes between successive video frames.
 
         Args:
-            radius (Int): set radius (from 1 to 63) (default 2)
-            factor (Float): set factor (from 0 to 65535) (default 2)
-            threshold (Float): set threshold (from 0 to 65535) (default 10)
-            tolerance (Float): set tolerance (from 0 to 65535) (default 0)
-            low (Float): set low limit for amplification (from 0 to 65535) (default 65535)
-            high (Float): set high limit for amplification (from 0 to 65535) (default 65535)
-            planes (Flags): set what planes to filter (default 7)
-            enable (str): timeline editing
+            radius: set radius (from 1 to 63) (default 2)
+            factor: set factor (from 0 to 65535) (default 2)
+            threshold: set threshold (from 0 to 65535) (default 10)
+            tolerance: set tolerance (from 0 to 65535) (default 0)
+            low: set low limit for amplification (from 0 to 65535) (default 65535)
+            high: set high limit for amplification (from 0 to 65535) (default 65535)
+            planes: set what planes to filter (default 7)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amplify)
@@ -222,11 +222,11 @@ class VideoStream(FilterableStream):
         Render ASS subtitles onto input video using the libass library.
 
         Args:
-            filename (String): set the filename of file to read
-            original_size (Image_size): set the size of the original video (used to scale fonts)
-            fontsdir (String): set the directory containing the fonts to read
-            alpha (Boolean): enable processing of alpha channel (default false)
-            shaping (Int): set shaping engine (from -1 to 1) (default auto)
+            filename: set the filename of file to read
+            original_size: set the size of the original video (used to scale fonts)
+            fontsdir: set the directory containing the fonts to read
+            alpha: enable processing of alpha channel (default false)
+            shaping: set shaping engine (from -1 to 1) (default auto)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ass)
@@ -275,19 +275,19 @@ class VideoStream(FilterableStream):
         Apply an Adaptive Temporal Averaging Denoiser.
 
         Args:
-            _0a (Float): set threshold A for 1st plane (from 0 to 0.3) (default 0.02)
-            _0b (Float): set threshold B for 1st plane (from 0 to 5) (default 0.04)
-            _1a (Float): set threshold A for 2nd plane (from 0 to 0.3) (default 0.02)
-            _1b (Float): set threshold B for 2nd plane (from 0 to 5) (default 0.04)
-            _2a (Float): set threshold A for 3rd plane (from 0 to 0.3) (default 0.02)
-            _2b (Float): set threshold B for 3rd plane (from 0 to 5) (default 0.04)
-            s (Int): set how many frames to use (from 5 to 129) (default 9)
-            p (Flags): set what planes to filter (default 7)
-            a (Int): set variant of algorithm (from 0 to 1) (default p)
-            _0s (Float): set sigma for 1st plane (from 0 to 32767) (default 32767)
-            _1s (Float): set sigma for 2nd plane (from 0 to 32767) (default 32767)
-            _2s (Float): set sigma for 3rd plane (from 0 to 32767) (default 32767)
-            enable (str): timeline editing
+            _0a: set threshold A for 1st plane (from 0 to 0.3) (default 0.02)
+            _0b: set threshold B for 1st plane (from 0 to 5) (default 0.04)
+            _1a: set threshold A for 2nd plane (from 0 to 0.3) (default 0.02)
+            _1b: set threshold B for 2nd plane (from 0 to 5) (default 0.04)
+            _2a: set threshold A for 3rd plane (from 0 to 0.3) (default 0.02)
+            _2b: set threshold B for 3rd plane (from 0 to 5) (default 0.04)
+            s: set how many frames to use (from 5 to 129) (default 9)
+            p: set what planes to filter (default 7)
+            a: set variant of algorithm (from 0 to 1) (default p)
+            _0s: set sigma for 1st plane (from 0 to 32767) (default 32767)
+            _1s: set sigma for 2nd plane (from 0 to 32767) (default 32767)
+            _2s: set sigma for 3rd plane (from 0 to 32767) (default 32767)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atadenoise)
@@ -335,10 +335,10 @@ class VideoStream(FilterableStream):
         Apply Average Blur filter.
 
         Args:
-            sizeX (Int): set horizontal size (from 1 to 1024) (default 1)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            sizeY (Int): set vertical size (from 0 to 1024) (default 0)
-            enable (str): timeline editing
+            sizeX: set horizontal size (from 1 to 1024) (default 1)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            sizeY: set vertical size (from 0 to 1024) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avgblur)
@@ -377,10 +377,10 @@ class VideoStream(FilterableStream):
         Turns a static background into transparency.
 
         Args:
-            threshold (Float): set the scene change threshold (from 0 to 1) (default 0.08)
-            similarity (Float): set the similarity (from 0 to 1) (default 0.1)
-            blend (Float): set the blend value (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            threshold: set the scene change threshold (from 0 to 1) (default 0.08)
+            similarity: set the similarity (from 0 to 1) (default 0.1)
+            blend: set the blend value (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#backgroundkey)
@@ -411,8 +411,8 @@ class VideoStream(FilterableStream):
         Compute bounding box for each frame.
 
         Args:
-            min_val (Int): set minimum luminance value for bounding box (from 0 to 65535) (default 16)
-            enable (str): timeline editing
+            min_val: set minimum luminance value for bounding box (from 0 to 65535) (default 16)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bbox)
@@ -443,7 +443,7 @@ class VideoStream(FilterableStream):
         Benchmark part of a filtergraph.
 
         Args:
-            action (Int): set action (from 0 to 1) (default start)
+            action: set action (from 0 to 1) (default start)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
@@ -479,10 +479,10 @@ class VideoStream(FilterableStream):
         Apply Bilateral filter.
 
         Args:
-            sigmaS (Float): set spatial sigma (from 0 to 512) (default 0.1)
-            sigmaR (Float): set range sigma (from 0 to 1) (default 0.1)
-            planes (Int): set planes to filter (from 0 to 15) (default 1)
-            enable (str): timeline editing
+            sigmaS: set spatial sigma (from 0 to 512) (default 0.1)
+            sigmaR: set range sigma (from 0 to 1) (default 0.1)
+            planes: set planes to filter (from 0 to 15) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bilateral)
@@ -520,9 +520,9 @@ class VideoStream(FilterableStream):
         Measure bit plane noise.
 
         Args:
-            bitplane (Int): set bit plane to use for measuring noise (from 1 to 16) (default 1)
-            filter (Boolean): show noisy pixels (default false)
-            enable (str): timeline editing
+            bitplane: set bit plane to use for measuring noise (from 1 to 16) (default 1)
+            filter: show noisy pixels (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise)
@@ -559,9 +559,9 @@ class VideoStream(FilterableStream):
         Detect video intervals that are (almost) black.
 
         Args:
-            d (Double): set minimum detected black duration in seconds (from 0 to DBL_MAX) (default 2)
-            picture_black_ratio_th (Double): set the picture black ratio threshold (from 0 to 1) (default 0.98)
-            pixel_black_th (Double): set the pixel black threshold (from 0 to 1) (default 0.1)
+            d: set minimum detected black duration in seconds (from 0 to DBL_MAX) (default 2)
+            picture_black_ratio_th: set the picture black ratio threshold (from 0 to 1) (default 0.98)
+            pixel_black_th: set the pixel black threshold (from 0 to 1) (default 0.1)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackdetect)
@@ -591,8 +591,8 @@ class VideoStream(FilterableStream):
         Detect frames that are (almost) black.
 
         Args:
-            amount (Int): percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)
-            threshold (Int): threshold below which a pixel value is considered black (from 0 to 255) (default 32)
+            amount: percentage of the pixels that have to be below the threshold for the frame to be considered black (from 0 to 100) (default 98)
+            threshold: threshold below which a pixel value is considered black (from 0 to 255) (default 32)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackframe)
@@ -871,26 +871,26 @@ class VideoStream(FilterableStream):
         Blend two video frames into each other.
 
         Args:
-            c0_mode (Int): set component #0 blend mode (from 0 to 39) (default normal)
-            c1_mode (Int): set component #1 blend mode (from 0 to 39) (default normal)
-            c2_mode (Int): set component #2 blend mode (from 0 to 39) (default normal)
-            c3_mode (Int): set component #3 blend mode (from 0 to 39) (default normal)
-            all_mode (Int): set blend mode for all components (from -1 to 39) (default -1)
-            c0_expr (String): set color component #0 expression
-            c1_expr (String): set color component #1 expression
-            c2_expr (String): set color component #2 expression
-            c3_expr (String): set color component #3 expression
-            all_expr (String): set expression for all color components
-            c0_opacity (Double): set color component #0 opacity (from 0 to 1) (default 1)
-            c1_opacity (Double): set color component #1 opacity (from 0 to 1) (default 1)
-            c2_opacity (Double): set color component #2 opacity (from 0 to 1) (default 1)
-            c3_opacity (Double): set color component #3 opacity (from 0 to 1) (default 1)
-            all_opacity (Double): set opacity for all color components (from 0 to 1) (default 1)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+            c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+            c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+            c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+            all_mode: set blend mode for all components (from -1 to 39) (default -1)
+            c0_expr: set color component #0 expression
+            c1_expr: set color component #1 expression
+            c2_expr: set color component #2 expression
+            c3_expr: set color component #3 expression
+            all_expr: set expression for all color components
+            c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+            c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+            c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+            c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+            all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
@@ -942,9 +942,9 @@ class VideoStream(FilterableStream):
         Blockdetect filter.
 
         Args:
-            period_min (Int): Minimum period to search for (from 2 to 32) (default 3)
-            period_max (Int): Maximum period to search for (from 2 to 64) (default 24)
-            planes (Int): set planes to filter (from 0 to 15) (default 1)
+            period_min: Minimum period to search for (from 2 to 32) (default 3)
+            period_max: Maximum period to search for (from 2 to 64) (default 24)
+            planes: set planes to filter (from 0 to 15) (default 1)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blockdetect)
@@ -984,12 +984,12 @@ class VideoStream(FilterableStream):
         Blurdetect filter.
 
         Args:
-            high (Float): set high threshold (from 0 to 1) (default 0.117647)
-            low (Float): set low threshold (from 0 to 1) (default 0.0588235)
-            radius (Int): search radius for maxima detection (from 1 to 100) (default 50)
-            block_pct (Int): block pooling threshold when calculating blurriness (from 1 to 100) (default 80)
-            block_width (Int): block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)
-            planes (Int): set planes to filter (from 0 to 15) (default 1)
+            high: set high threshold (from 0 to 1) (default 0.117647)
+            low: set low threshold (from 0 to 1) (default 0.0588235)
+            radius: search radius for maxima detection (from 1 to 100) (default 50)
+            block_pct: block pooling threshold when calculating blurriness (from 1 to 100) (default 80)
+            block_width: block size for block-based abbreviation of blurriness (from -1 to INT_MAX) (default -1)
+            planes: set planes to filter (from 0 to 15) (default 1)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blurdetect)
@@ -1033,13 +1033,13 @@ class VideoStream(FilterableStream):
         Blur the input.
 
         Args:
-            luma_radius (String): Radius of the luma blurring box (default "2")
-            luma_power (Int): How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)
-            chroma_radius (String): Radius of the chroma blurring box
-            chroma_power (Int): How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
-            alpha_radius (String): Radius of the alpha blurring box
-            alpha_power (Int): How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
-            enable (str): timeline editing
+            luma_radius: Radius of the luma blurring box (default "2")
+            luma_power: How many times should the boxblur be applied to luma (from 0 to INT_MAX) (default 2)
+            chroma_radius: Radius of the chroma blurring box
+            chroma_power: How many times should the boxblur be applied to chroma (from -1 to INT_MAX) (default -1)
+            alpha_radius: Radius of the alpha blurring box
+            alpha_power: How many times should the boxblur be applied to alpha (from -1 to INT_MAX) (default -1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#boxblur)
@@ -1081,10 +1081,10 @@ class VideoStream(FilterableStream):
         Deinterlace the input image.
 
         Args:
-            mode (Int): specify the interlacing mode (from 0 to 1) (default send_field)
-            parity (Int): specify the assumed picture field parity (from -1 to 1) (default auto)
-            deint (Int): specify which frames to deinterlace (from 0 to 1) (default all)
-            enable (str): timeline editing
+            mode: specify the interlacing mode (from 0 to 1) (default send_field)
+            parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+            deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bwdif)
@@ -1122,9 +1122,9 @@ class VideoStream(FilterableStream):
         Contrast Adaptive Sharpen.
 
         Args:
-            strength (Float): set the sharpening strength (from 0 to 1) (default 0)
-            planes (Flags): set what planes to filter (default 7)
-            enable (str): timeline editing
+            strength: set the sharpening strength (from 0 to 1) (default 0)
+            planes: set what planes to filter (default 7)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cas)
@@ -1163,11 +1163,11 @@ class VideoStream(FilterableStream):
         Turns a certain color range into gray.
 
         Args:
-            color (Color): set the chromahold key color (default "black")
-            similarity (Float): set the chromahold similarity value (from 1e-05 to 1) (default 0.01)
-            blend (Float): set the chromahold blend value (from 0 to 1) (default 0)
-            yuv (Boolean): color parameter is in yuv instead of rgb (default false)
-            enable (str): timeline editing
+            color: set the chromahold key color (default "black")
+            similarity: set the chromahold similarity value (from 1e-05 to 1) (default 0.01)
+            blend: set the chromahold blend value (from 0 to 1) (default 0)
+            yuv: color parameter is in yuv instead of rgb (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromahold)
@@ -1208,11 +1208,11 @@ class VideoStream(FilterableStream):
         Turns a certain color into transparency. Operates on YUV colors.
 
         Args:
-            color (Color): set the chromakey key color (default "black")
-            similarity (Float): set the chromakey similarity value (from 1e-05 to 1) (default 0.01)
-            blend (Float): set the chromakey key blend value (from 0 to 1) (default 0)
-            yuv (Boolean): color parameter is in yuv instead of rgb (default false)
-            enable (str): timeline editing
+            color: set the chromakey key color (default "black")
+            similarity: set the chromakey similarity value (from 1e-05 to 1) (default 0.01)
+            blend: set the chromakey key blend value (from 0 to 1) (default 0)
+            yuv: color parameter is in yuv instead of rgb (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromakey)
@@ -1258,16 +1258,16 @@ class VideoStream(FilterableStream):
         Reduce chrominance noise.
 
         Args:
-            thres (Float): set y+u+v threshold (from 1 to 200) (default 30)
-            sizew (Int): set horizontal patch size (from 1 to 100) (default 5)
-            sizeh (Int): set vertical patch size (from 1 to 100) (default 5)
-            stepw (Int): set horizontal step (from 1 to 50) (default 1)
-            steph (Int): set vertical step (from 1 to 50) (default 1)
-            threy (Float): set y threshold (from 1 to 200) (default 200)
-            threu (Float): set u threshold (from 1 to 200) (default 200)
-            threv (Float): set v threshold (from 1 to 200) (default 200)
-            distance (Int): set distance type (from 0 to 1) (default manhattan)
-            enable (str): timeline editing
+            thres: set y+u+v threshold (from 1 to 200) (default 30)
+            sizew: set horizontal patch size (from 1 to 100) (default 5)
+            sizeh: set vertical patch size (from 1 to 100) (default 5)
+            stepw: set horizontal step (from 1 to 50) (default 1)
+            steph: set vertical step (from 1 to 50) (default 1)
+            threy: set y threshold (from 1 to 200) (default 200)
+            threu: set u threshold (from 1 to 200) (default 200)
+            threv: set v threshold (from 1 to 200) (default 200)
+            distance: set distance type (from 0 to 1) (default manhattan)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromanr)
@@ -1314,12 +1314,12 @@ class VideoStream(FilterableStream):
         Shift chroma.
 
         Args:
-            cbh (Int): shift chroma-blue horizontally (from -255 to 255) (default 0)
-            cbv (Int): shift chroma-blue vertically (from -255 to 255) (default 0)
-            crh (Int): shift chroma-red horizontally (from -255 to 255) (default 0)
-            crv (Int): shift chroma-red vertically (from -255 to 255) (default 0)
-            edge (Int): set edge operation (from 0 to 1) (default smear)
-            enable (str): timeline editing
+            cbh: shift chroma-blue horizontally (from -255 to 255) (default 0)
+            cbv: shift chroma-blue vertically (from -255 to 255) (default 0)
+            crh: shift chroma-red horizontally (from -255 to 255) (default 0)
+            crv: shift chroma-red vertically (from -255 to 255) (default 0)
+            edge: set edge operation (from 0 to 1) (default smear)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromashift)
@@ -1400,16 +1400,16 @@ class VideoStream(FilterableStream):
         Video CIE scope.
 
         Args:
-            system (Int): set color system (from 0 to 9) (default hdtv)
-            cie (Int): set cie system (from 0 to 2) (default xyy)
-            gamuts (Flags): set what gamuts to draw (default 0)
-            size (Int): set ciescope size (from 256 to 8192) (default 512)
-            intensity (Float): set ciescope intensity (from 0 to 1) (default 0.001)
-            contrast (Float): (from 0 to 1) (default 0.75)
-            corrgamma (Boolean): (default true)
-            showwhite (Boolean): (default false)
-            gamma (Double): (from 0.1 to 6) (default 2.6)
-            fill (Boolean): fill with CIE colors (default true)
+            system: set color system (from 0 to 9) (default hdtv)
+            cie: set cie system (from 0 to 2) (default xyy)
+            gamuts: set what gamuts to draw (default 0)
+            size: set ciescope size (from 256 to 8192) (default 512)
+            intensity: set ciescope intensity (from 0 to 1) (default 0.001)
+            contrast: (from 0 to 1) (default 0.75)
+            corrgamma: (default true)
+            showwhite: (default false)
+            gamma: (from 0.1 to 6) (default 2.6)
+            fill: fill with CIE colors (default true)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ciescope)
@@ -1456,12 +1456,12 @@ class VideoStream(FilterableStream):
         Visualize information about some codecs.
 
         Args:
-            mv (Flags): set motion vectors to visualize (default 0)
-            qp (Boolean): (default false)
-            mv_type (Flags): set motion vectors type (default 0)
-            frame_type (Flags): set frame types to visualize motion vectors of (default 0)
-            block (Boolean): set block partitioning structure to visualize (default false)
-            enable (str): timeline editing
+            mv: set motion vectors to visualize (default 0)
+            qp: (default false)
+            mv_type: set motion vectors type (default 0)
+            frame_type: set frame types to visualize motion vectors of (default 0)
+            block: set block partitioning structure to visualize (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#codecview)
@@ -1509,17 +1509,17 @@ class VideoStream(FilterableStream):
         Adjust the color balance.
 
         Args:
-            rs (Float): set red shadows (from -1 to 1) (default 0)
-            gs (Float): set green shadows (from -1 to 1) (default 0)
-            bs (Float): set blue shadows (from -1 to 1) (default 0)
-            rm (Float): set red midtones (from -1 to 1) (default 0)
-            gm (Float): set green midtones (from -1 to 1) (default 0)
-            bm (Float): set blue midtones (from -1 to 1) (default 0)
-            rh (Float): set red highlights (from -1 to 1) (default 0)
-            gh (Float): set green highlights (from -1 to 1) (default 0)
-            bh (Float): set blue highlights (from -1 to 1) (default 0)
-            pl (Boolean): preserve lightness (default false)
-            enable (str): timeline editing
+            rs: set red shadows (from -1 to 1) (default 0)
+            gs: set green shadows (from -1 to 1) (default 0)
+            bs: set blue shadows (from -1 to 1) (default 0)
+            rm: set red midtones (from -1 to 1) (default 0)
+            gm: set green midtones (from -1 to 1) (default 0)
+            bm: set blue midtones (from -1 to 1) (default 0)
+            rh: set red highlights (from -1 to 1) (default 0)
+            gh: set green highlights (from -1 to 1) (default 0)
+            bh: set blue highlights (from -1 to 1) (default 0)
+            pl: preserve lightness (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorbalance)
@@ -1580,25 +1580,25 @@ class VideoStream(FilterableStream):
         Adjust colors by mixing color channels.
 
         Args:
-            rr (Double): set the red gain for the red channel (from -2 to 2) (default 1)
-            rg (Double): set the green gain for the red channel (from -2 to 2) (default 0)
-            rb (Double): set the blue gain for the red channel (from -2 to 2) (default 0)
-            ra (Double): set the alpha gain for the red channel (from -2 to 2) (default 0)
-            gr (Double): set the red gain for the green channel (from -2 to 2) (default 0)
-            gg (Double): set the green gain for the green channel (from -2 to 2) (default 1)
-            gb (Double): set the blue gain for the green channel (from -2 to 2) (default 0)
-            ga (Double): set the alpha gain for the green channel (from -2 to 2) (default 0)
-            br (Double): set the red gain for the blue channel (from -2 to 2) (default 0)
-            bg (Double): set the green gain for the blue channel (from -2 to 2) (default 0)
-            bb (Double): set the blue gain for the blue channel (from -2 to 2) (default 1)
-            ba (Double): set the alpha gain for the blue channel (from -2 to 2) (default 0)
-            ar (Double): set the red gain for the alpha channel (from -2 to 2) (default 0)
-            ag (Double): set the green gain for the alpha channel (from -2 to 2) (default 0)
-            ab (Double): set the blue gain for the alpha channel (from -2 to 2) (default 0)
-            aa (Double): set the alpha gain for the alpha channel (from -2 to 2) (default 1)
-            pc (Int): set the preserve color mode (from 0 to 6) (default none)
-            pa (Double): set the preserve color amount (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            rr: set the red gain for the red channel (from -2 to 2) (default 1)
+            rg: set the green gain for the red channel (from -2 to 2) (default 0)
+            rb: set the blue gain for the red channel (from -2 to 2) (default 0)
+            ra: set the alpha gain for the red channel (from -2 to 2) (default 0)
+            gr: set the red gain for the green channel (from -2 to 2) (default 0)
+            gg: set the green gain for the green channel (from -2 to 2) (default 1)
+            gb: set the blue gain for the green channel (from -2 to 2) (default 0)
+            ga: set the alpha gain for the green channel (from -2 to 2) (default 0)
+            br: set the red gain for the blue channel (from -2 to 2) (default 0)
+            bg: set the green gain for the blue channel (from -2 to 2) (default 0)
+            bb: set the blue gain for the blue channel (from -2 to 2) (default 1)
+            ba: set the alpha gain for the blue channel (from -2 to 2) (default 0)
+            ar: set the red gain for the alpha channel (from -2 to 2) (default 0)
+            ag: set the green gain for the alpha channel (from -2 to 2) (default 0)
+            ab: set the blue gain for the alpha channel (from -2 to 2) (default 0)
+            aa: set the alpha gain for the alpha channel (from -2 to 2) (default 1)
+            pc: set the preserve color mode (from 0 to 6) (default none)
+            pa: set the preserve color amount (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorchannelmixer)
@@ -1656,14 +1656,14 @@ class VideoStream(FilterableStream):
         Adjust color contrast between RGB components.
 
         Args:
-            rc (Float): set the red-cyan contrast (from -1 to 1) (default 0)
-            gm (Float): set the green-magenta contrast (from -1 to 1) (default 0)
-            by (Float): set the blue-yellow contrast (from -1 to 1) (default 0)
-            rcw (Float): set the red-cyan weight (from 0 to 1) (default 0)
-            gmw (Float): set the green-magenta weight (from 0 to 1) (default 0)
-            byw (Float): set the blue-yellow weight (from 0 to 1) (default 0)
-            pl (Float): set the amount of preserving lightness (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            rc: set the red-cyan contrast (from -1 to 1) (default 0)
+            gm: set the green-magenta contrast (from -1 to 1) (default 0)
+            by: set the blue-yellow contrast (from -1 to 1) (default 0)
+            rcw: set the red-cyan weight (from 0 to 1) (default 0)
+            gmw: set the green-magenta weight (from 0 to 1) (default 0)
+            byw: set the blue-yellow weight (from 0 to 1) (default 0)
+            pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcontrast)
@@ -1709,13 +1709,13 @@ class VideoStream(FilterableStream):
         Adjust color white balance selectively for blacks and whites.
 
         Args:
-            rl (Float): set the red shadow spot (from -1 to 1) (default 0)
-            bl (Float): set the blue shadow spot (from -1 to 1) (default 0)
-            rh (Float): set the red highlight spot (from -1 to 1) (default 0)
-            bh (Float): set the blue highlight spot (from -1 to 1) (default 0)
-            saturation (Float): set the amount of saturation (from -3 to 3) (default 1)
-            analyze (Int): set the analyze mode (from 0 to 3) (default manual)
-            enable (str): timeline editing
+            rl: set the red shadow spot (from -1 to 1) (default 0)
+            bl: set the blue shadow spot (from -1 to 1) (default 0)
+            rh: set the red highlight spot (from -1 to 1) (default 0)
+            bh: set the blue highlight spot (from -1 to 1) (default 0)
+            saturation: set the amount of saturation (from -3 to 3) (default 1)
+            analyze: set the analyze mode (from 0 to 3) (default manual)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcorrect)
@@ -1757,10 +1757,10 @@ class VideoStream(FilterableStream):
         Turns a certain color range into gray. Operates on RGB colors.
 
         Args:
-            color (Color): set the colorhold key color (default "black")
-            similarity (Float): set the colorhold similarity value (from 1e-05 to 1) (default 0.01)
-            blend (Float): set the colorhold blend value (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            color: set the colorhold key color (default "black")
+            similarity: set the colorhold similarity value (from 1e-05 to 1) (default 0.01)
+            blend: set the colorhold blend value (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorhold)
@@ -1800,11 +1800,11 @@ class VideoStream(FilterableStream):
         Overlay a solid color on the video stream.
 
         Args:
-            hue (Float): set the hue (from 0 to 360) (default 0)
-            saturation (Float): set the saturation (from 0 to 1) (default 0.5)
-            lightness (Float): set the lightness (from 0 to 1) (default 0.5)
-            mix (Float): set the mix of source lightness (from 0 to 1) (default 1)
-            enable (str): timeline editing
+            hue: set the hue (from 0 to 360) (default 0)
+            saturation: set the saturation (from 0 to 1) (default 0.5)
+            lightness: set the lightness (from 0 to 1) (default 0.5)
+            mix: set the mix of source lightness (from 0 to 1) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorize)
@@ -1844,10 +1844,10 @@ class VideoStream(FilterableStream):
         Turns a certain color into transparency. Operates on RGB colors.
 
         Args:
-            color (Color): set the colorkey key color (default "black")
-            similarity (Float): set the colorkey similarity value (from 1e-05 to 1) (default 0.01)
-            blend (Float): set the colorkey key blend value (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            color: set the colorkey key color (default "black")
+            similarity: set the colorkey similarity value (from 1e-05 to 1) (default 0.01)
+            blend: set the colorkey key blend value (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorkey)
@@ -1900,24 +1900,24 @@ class VideoStream(FilterableStream):
         Adjust the color levels.
 
         Args:
-            rimin (Double): set input red black point (from -1 to 1) (default 0)
-            gimin (Double): set input green black point (from -1 to 1) (default 0)
-            bimin (Double): set input blue black point (from -1 to 1) (default 0)
-            aimin (Double): set input alpha black point (from -1 to 1) (default 0)
-            rimax (Double): set input red white point (from -1 to 1) (default 1)
-            gimax (Double): set input green white point (from -1 to 1) (default 1)
-            bimax (Double): set input blue white point (from -1 to 1) (default 1)
-            aimax (Double): set input alpha white point (from -1 to 1) (default 1)
-            romin (Double): set output red black point (from 0 to 1) (default 0)
-            gomin (Double): set output green black point (from 0 to 1) (default 0)
-            bomin (Double): set output blue black point (from 0 to 1) (default 0)
-            aomin (Double): set output alpha black point (from 0 to 1) (default 0)
-            romax (Double): set output red white point (from 0 to 1) (default 1)
-            gomax (Double): set output green white point (from 0 to 1) (default 1)
-            bomax (Double): set output blue white point (from 0 to 1) (default 1)
-            aomax (Double): set output alpha white point (from 0 to 1) (default 1)
-            preserve (Int): set preserve color mode (from 0 to 6) (default none)
-            enable (str): timeline editing
+            rimin: set input red black point (from -1 to 1) (default 0)
+            gimin: set input green black point (from -1 to 1) (default 0)
+            bimin: set input blue black point (from -1 to 1) (default 0)
+            aimin: set input alpha black point (from -1 to 1) (default 0)
+            rimax: set input red white point (from -1 to 1) (default 1)
+            gimax: set input green white point (from -1 to 1) (default 1)
+            bimax: set input blue white point (from -1 to 1) (default 1)
+            aimax: set input alpha white point (from -1 to 1) (default 1)
+            romin: set output red black point (from 0 to 1) (default 0)
+            gomin: set output green black point (from 0 to 1) (default 0)
+            bomin: set output blue black point (from 0 to 1) (default 0)
+            aomin: set output alpha black point (from 0 to 1) (default 0)
+            romax: set output red white point (from 0 to 1) (default 1)
+            gomax: set output green white point (from 0 to 1) (default 1)
+            bomax: set output blue white point (from 0 to 1) (default 1)
+            aomax: set output alpha white point (from 0 to 1) (default 1)
+            preserve: set preserve color mode (from 0 to 6) (default none)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorlevels)
@@ -1973,11 +1973,11 @@ class VideoStream(FilterableStream):
         Apply custom Color Maps to video stream.
 
         Args:
-            patch_size (Image_size): set patch size (default "64x64")
-            nb_patches (Int): set number of patches (from 0 to 64) (default 0)
-            type (Int): set the target type used (from 0 to 1) (default absolute)
-            kernel (Int): set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
-            enable (str): timeline editing
+            patch_size: set patch size (default "64x64")
+            nb_patches: set number of patches (from 0 to 64) (default 0)
+            type: set the target type used (from 0 to 1) (default absolute)
+            kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
@@ -2024,9 +2024,9 @@ class VideoStream(FilterableStream):
         Convert color matrix.
 
         Args:
-            src (Int): set source color matrix (from -1 to 4) (default -1)
-            dst (Int): set destination color matrix (from -1 to 4) (default -1)
-            enable (str): timeline editing
+            src: set source color matrix (from -1 to 4) (default -1)
+            dst: set destination color matrix (from -1 to 4) (default -1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormatrix)
@@ -2159,21 +2159,21 @@ class VideoStream(FilterableStream):
         Convert between colorspaces.
 
         Args:
-            all (Int): Set all color properties together (from 0 to 8) (default 0)
-            space (Int): Output colorspace (from 0 to 14) (default 2)
-            range (Int): Output color range (from 0 to 2) (default 0)
-            primaries (Int): Output color primaries (from 0 to 22) (default 2)
-            trc (Int): Output transfer characteristics (from 0 to 18) (default 2)
-            format (Int): Output pixel format (from -1 to 162) (default -1)
-            fast (Boolean): Ignore primary chromaticity and gamma correction (default false)
-            dither (Int): Dithering mode (from 0 to 1) (default none)
-            wpadapt (Int): Whitepoint adaptation method (from 0 to 2) (default bradford)
-            iall (Int): Set all input color properties together (from 0 to 8) (default 0)
-            ispace (Int): Input colorspace (from 0 to 22) (default 2)
-            irange (Int): Input color range (from 0 to 2) (default 0)
-            iprimaries (Int): Input color primaries (from 0 to 22) (default 2)
-            itrc (Int): Input transfer characteristics (from 0 to 18) (default 2)
-            enable (str): timeline editing
+            all: Set all color properties together (from 0 to 8) (default 0)
+            space: Output colorspace (from 0 to 14) (default 2)
+            range: Output color range (from 0 to 2) (default 0)
+            primaries: Output color primaries (from 0 to 22) (default 2)
+            trc: Output transfer characteristics (from 0 to 18) (default 2)
+            format: Output pixel format (from -1 to 162) (default -1)
+            fast: Ignore primary chromaticity and gamma correction (default false)
+            dither: Dithering mode (from 0 to 1) (default none)
+            wpadapt: Whitepoint adaptation method (from 0 to 2) (default bradford)
+            iall: Set all input color properties together (from 0 to 8) (default 0)
+            ispace: Input colorspace (from 0 to 22) (default 2)
+            irange: Input color range (from 0 to 2) (default 0)
+            iprimaries: Input color primaries (from 0 to 22) (default 2)
+            itrc: Input transfer characteristics (from 0 to 18) (default 2)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorspace)
@@ -2223,10 +2223,10 @@ class VideoStream(FilterableStream):
         Adjust color temperature of video.
 
         Args:
-            temperature (Float): set the temperature in Kelvin (from 1000 to 40000) (default 6500)
-            mix (Float): set the mix with filtered output (from 0 to 1) (default 1)
-            pl (Float): set the amount of preserving lightness (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            temperature: set the temperature in Kelvin (from 1000 to 40000) (default 6500)
+            mix: set the mix with filtered output (from 0 to 1) (default 1)
+            pl: set the amount of preserving lightness (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colortemperature)
@@ -2278,23 +2278,23 @@ class VideoStream(FilterableStream):
         Apply convolution filter.
 
         Args:
-            _0m (String): set matrix for 1st plane (default "0 0 0 0 1 0 0 0 0")
-            _1m (String): set matrix for 2nd plane (default "0 0 0 0 1 0 0 0 0")
-            _2m (String): set matrix for 3rd plane (default "0 0 0 0 1 0 0 0 0")
-            _3m (String): set matrix for 4th plane (default "0 0 0 0 1 0 0 0 0")
-            _0rdiv (Float): set rdiv for 1st plane (from 0 to INT_MAX) (default 0)
-            _1rdiv (Float): set rdiv for 2nd plane (from 0 to INT_MAX) (default 0)
-            _2rdiv (Float): set rdiv for 3rd plane (from 0 to INT_MAX) (default 0)
-            _3rdiv (Float): set rdiv for 4th plane (from 0 to INT_MAX) (default 0)
-            _0bias (Float): set bias for 1st plane (from 0 to INT_MAX) (default 0)
-            _1bias (Float): set bias for 2nd plane (from 0 to INT_MAX) (default 0)
-            _2bias (Float): set bias for 3rd plane (from 0 to INT_MAX) (default 0)
-            _3bias (Float): set bias for 4th plane (from 0 to INT_MAX) (default 0)
-            _0mode (Int): set matrix mode for 1st plane (from 0 to 2) (default square)
-            _1mode (Int): set matrix mode for 2nd plane (from 0 to 2) (default square)
-            _2mode (Int): set matrix mode for 3rd plane (from 0 to 2) (default square)
-            _3mode (Int): set matrix mode for 4th plane (from 0 to 2) (default square)
-            enable (str): timeline editing
+            _0m: set matrix for 1st plane (default "0 0 0 0 1 0 0 0 0")
+            _1m: set matrix for 2nd plane (default "0 0 0 0 1 0 0 0 0")
+            _2m: set matrix for 3rd plane (default "0 0 0 0 1 0 0 0 0")
+            _3m: set matrix for 4th plane (default "0 0 0 0 1 0 0 0 0")
+            _0rdiv: set rdiv for 1st plane (from 0 to INT_MAX) (default 0)
+            _1rdiv: set rdiv for 2nd plane (from 0 to INT_MAX) (default 0)
+            _2rdiv: set rdiv for 3rd plane (from 0 to INT_MAX) (default 0)
+            _3rdiv: set rdiv for 4th plane (from 0 to INT_MAX) (default 0)
+            _0bias: set bias for 1st plane (from 0 to INT_MAX) (default 0)
+            _1bias: set bias for 2nd plane (from 0 to INT_MAX) (default 0)
+            _2bias: set bias for 3rd plane (from 0 to INT_MAX) (default 0)
+            _3bias: set bias for 4th plane (from 0 to INT_MAX) (default 0)
+            _0mode: set matrix mode for 1st plane (from 0 to 2) (default square)
+            _1mode: set matrix mode for 2nd plane (from 0 to 2) (default square)
+            _2mode: set matrix mode for 3rd plane (from 0 to 2) (default square)
+            _3mode: set matrix mode for 4th plane (from 0 to 2) (default square)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolution)
@@ -2351,14 +2351,14 @@ class VideoStream(FilterableStream):
         Convolve first video stream with second video stream.
 
         Args:
-            planes (Int): set planes to convolve (from 0 to 15) (default 7)
-            impulse (Int): when to process impulses (from 0 to 1) (default all)
-            noise (Float): set noise (from 0 to 1) (default 1e-07)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            planes: set planes to convolve (from 0 to 15) (default 7)
+            impulse: when to process impulses (from 0 to 1) (default all)
+            noise: set noise (from 0 to 1) (default 1e-07)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
@@ -2424,10 +2424,10 @@ class VideoStream(FilterableStream):
         Video filtering using CoreImage API.
 
         Args:
-            list_filters (Boolean): list available filters (default false)
-            list_generators (Boolean): list available generators (default false)
-            filter (String): names and options of filters to apply
-            output_rect (String): output rectangle within output image
+            list_filters: list available filters (default false)
+            list_generators: list available generators (default false)
+            filter: names and options of filters to apply
+            output_rect: output rectangle within output image
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#coreimage)
@@ -2468,11 +2468,11 @@ class VideoStream(FilterableStream):
         Calculate the correlation between two video streams.
 
         Args:
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
@@ -2513,8 +2513,8 @@ class VideoStream(FilterableStream):
         Find and cover a user specified object.
 
         Args:
-            cover (String): cover bitmap filename
-            mode (Int): set removal mode (from 0 to 1) (default blur)
+            cover: cover bitmap filename
+            mode: set removal mode (from 0 to 1) (default blur)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cover_005frect)
@@ -2553,12 +2553,12 @@ class VideoStream(FilterableStream):
         Crop the input video.
 
         Args:
-            out_w (String): set the width crop area expression (default "iw")
-            out_h (String): set the height crop area expression (default "ih")
-            x (String): set the x crop area expression (default "(in_w-out_w)/2")
-            y (String): set the y crop area expression (default "(in_h-out_h)/2")
-            keep_aspect (Boolean): keep aspect ratio (default false)
-            exact (Boolean): do exact cropping (default false)
+            out_w: set the width crop area expression (default "iw")
+            out_h: set the height crop area expression (default "ih")
+            x: set the x crop area expression (default "(in_w-out_w)/2")
+            y: set the y crop area expression (default "(in_h-out_h)/2")
+            keep_aspect: keep aspect ratio (default false)
+            exact: do exact cropping (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crop)
@@ -2606,17 +2606,17 @@ class VideoStream(FilterableStream):
         Auto-detect crop size.
 
         Args:
-            limit (Float): Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)
-            round (Int): Value by which the width/height should be divisible (from 0 to INT_MAX) (default 16)
-            reset (Int): Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
-            skip (Int): Number of initial frames to skip (from 0 to INT_MAX) (default 2)
-            reset_count (Int): Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
-            max_outliers (Int): Threshold count of outliers (from 0 to INT_MAX) (default 0)
-            mode (Int): set mode (from 0 to 1) (default black)
-            high (Float): Set high threshold for edge detection (from 0 to 1) (default 0.0980392)
-            low (Float): Set low threshold for edge detection (from 0 to 1) (default 0.0588235)
-            mv_threshold (Int): motion vector threshold when estimating video window size (from 0 to 100) (default 8)
-            enable (str): timeline editing
+            limit: Threshold below which the pixel is considered black (from 0 to 65535) (default 0.0941176)
+            round: Value by which the width/height should be divisible (from 0 to INT_MAX) (default 16)
+            reset: Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
+            skip: Number of initial frames to skip (from 0 to INT_MAX) (default 2)
+            reset_count: Recalculate the crop area after this many frames (from 0 to INT_MAX) (default 0)
+            max_outliers: Threshold count of outliers (from 0 to INT_MAX) (default 0)
+            mode: set mode (from 0 to 1) (default black)
+            high: Set high threshold for edge detection (from 0 to 1) (default 0.0980392)
+            low: Set low threshold for edge detection (from 0 to 1) (default 0.0588235)
+            mv_threshold: motion vector threshold when estimating video window size (from 0 to 100) (default 8)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cropdetect)
@@ -2661,9 +2661,9 @@ class VideoStream(FilterableStream):
         Delay filtering to match a cue.
 
         Args:
-            cue (Int64): cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
-            preroll (Duration): preroll duration in seconds (default 0)
-            buffer (Duration): buffer duration in seconds (default 0)
+            cue: cue unix timestamp in microseconds (from 0 to I64_MAX) (default 0)
+            preroll: preroll duration in seconds (default 0)
+            buffer: buffer duration in seconds (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cue)
@@ -2721,16 +2721,16 @@ class VideoStream(FilterableStream):
         Adjust components curves.
 
         Args:
-            preset (Int): select a color curves preset (from 0 to 10) (default none)
-            master (String): set master points coordinates
-            red (String): set red points coordinates
-            green (String): set green points coordinates
-            blue (String): set blue points coordinates
-            all (String): set points coordinates for all components
-            psfile (String): set Photoshop curves file name
-            plot (String): save Gnuplot script of the curves in specified file
-            interp (Int): specify the kind of interpolation (from 0 to 1) (default natural)
-            enable (str): timeline editing
+            preset: select a color curves preset (from 0 to 10) (default none)
+            master: set master points coordinates
+            red: set red points coordinates
+            green: set green points coordinates
+            blue: set blue points coordinates
+            all: set points coordinates for all components
+            psfile: set Photoshop curves file name
+            plot: save Gnuplot script of the curves in specified file
+            interp: specify the kind of interpolation (from 0 to 1) (default natural)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#curves)
@@ -2779,14 +2779,14 @@ class VideoStream(FilterableStream):
         Video data analysis.
 
         Args:
-            size (Image_size): set output size (default "hd720")
-            x (Int): set x offset (from 0 to INT_MAX) (default 0)
-            y (Int): set y offset (from 0 to INT_MAX) (default 0)
-            mode (Int): set scope mode (from 0 to 2) (default mono)
-            axis (Boolean): draw column/row numbers (default false)
-            opacity (Float): set background opacity (from 0 to 1) (default 0.75)
-            format (Int): set display number format (from 0 to 1) (default hex)
-            components (Int): set components to display (from 1 to 15) (default 15)
+            size: set output size (default "hd720")
+            x: set x offset (from 0 to INT_MAX) (default 0)
+            y: set y offset (from 0 to INT_MAX) (default 0)
+            mode: set scope mode (from 0 to 2) (default mono)
+            axis: draw column/row numbers (default false)
+            opacity: set background opacity (from 0 to 1) (default 0.75)
+            format: set display number format (from 0 to 1) (default hex)
+            components: set components to display (from 1 to 15) (default 15)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#datascope)
@@ -2829,10 +2829,10 @@ class VideoStream(FilterableStream):
         Apply Directional Blur filter.
 
         Args:
-            angle (Float): set angle (from 0 to 360) (default 45)
-            radius (Float): set radius (from 0 to 8192) (default 5)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            angle: set angle (from 0 to 360) (default 45)
+            radius: set radius (from 0 to 8192) (default 5)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dblur)
@@ -2872,11 +2872,11 @@ class VideoStream(FilterableStream):
         Denoise frames using 2D DCT.
 
         Args:
-            sigma (Float): set noise sigma constant (from 0 to 999) (default 0)
-            overlap (Int): set number of block overlapping pixels (from -1 to 15) (default -1)
-            expr (String): set coefficient factor expression
-            n (Int): set the block size, expressed in bits (from 3 to 4) (default 3)
-            enable (str): timeline editing
+            sigma: set noise sigma constant (from 0 to 999) (default 0)
+            overlap: set number of block overlapping pixels (from -1 to 15) (default -1)
+            expr: set coefficient factor expression
+            n: set the block size, expressed in bits (from 3 to 4) (default 3)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dctdnoiz)
@@ -2921,15 +2921,15 @@ class VideoStream(FilterableStream):
         Debands video.
 
         Args:
-            _1thr (Float): set 1st plane threshold (from 3e-05 to 0.5) (default 0.02)
-            _2thr (Float): set 2nd plane threshold (from 3e-05 to 0.5) (default 0.02)
-            _3thr (Float): set 3rd plane threshold (from 3e-05 to 0.5) (default 0.02)
-            _4thr (Float): set 4th plane threshold (from 3e-05 to 0.5) (default 0.02)
-            range (Int): set range (from INT_MIN to INT_MAX) (default 16)
-            direction (Float): set direction (from -6.28319 to 6.28319) (default 6.28319)
-            blur (Boolean): set blur (default true)
-            coupling (Boolean): set plane coupling (default false)
-            enable (str): timeline editing
+            _1thr: set 1st plane threshold (from 3e-05 to 0.5) (default 0.02)
+            _2thr: set 2nd plane threshold (from 3e-05 to 0.5) (default 0.02)
+            _3thr: set 3rd plane threshold (from 3e-05 to 0.5) (default 0.02)
+            _4thr: set 4th plane threshold (from 3e-05 to 0.5) (default 0.02)
+            range: set range (from INT_MIN to INT_MAX) (default 16)
+            direction: set direction (from -6.28319 to 6.28319) (default 6.28319)
+            blur: set blur (default true)
+            coupling: set plane coupling (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deband)
@@ -2977,14 +2977,14 @@ class VideoStream(FilterableStream):
         Deblock video.
 
         Args:
-            filter (Int): set type of filter (from 0 to 1) (default strong)
-            block (Int): set size of block (from 4 to 512) (default 8)
-            alpha (Float): set 1st detection threshold (from 0 to 1) (default 0.098)
-            beta (Float): set 2nd detection threshold (from 0 to 1) (default 0.05)
-            gamma (Float): set 3rd detection threshold (from 0 to 1) (default 0.05)
-            delta (Float): set 4th detection threshold (from 0 to 1) (default 0.05)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            filter: set type of filter (from 0 to 1) (default strong)
+            block: set size of block (from 4 to 512) (default 8)
+            alpha: set 1st detection threshold (from 0 to 1) (default 0.098)
+            beta: set 2nd detection threshold (from 0 to 1) (default 0.05)
+            gamma: set 3rd detection threshold (from 0 to 1) (default 0.05)
+            delta: set 4th detection threshold (from 0 to 1) (default 0.05)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deblock)
@@ -3032,14 +3032,14 @@ class VideoStream(FilterableStream):
         Deconvolve first video stream with second video stream.
 
         Args:
-            planes (Int): set planes to deconvolve (from 0 to 15) (default 7)
-            impulse (Int): when to process impulses (from 0 to 1) (default all)
-            noise (Float): set noise (from 0 to 1) (default 1e-07)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            planes: set planes to deconvolve (from 0 to 15) (default 7)
+            impulse: when to process impulses (from 0 to 1) (default all)
+            noise: set noise (from 0 to 1) (default 1e-07)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
@@ -3087,12 +3087,12 @@ class VideoStream(FilterableStream):
         Reduce cross-luminance and cross-color.
 
         Args:
-            m (Flags): set filtering mode (default dotcrawl+rainbows)
-            lt (Float): set spatial luma threshold (from 0 to 1) (default 0.079)
-            tl (Float): set tolerance for temporal luma (from 0 to 1) (default 0.079)
-            tc (Float): set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)
-            ct (Float): set temporal chroma threshold (from 0 to 1) (default 0.019)
-            enable (str): timeline editing
+            m: set filtering mode (default dotcrawl+rainbows)
+            lt: set spatial luma threshold (from 0 to 1) (default 0.079)
+            tl: set tolerance for temporal luma (from 0 to 1) (default 0.079)
+            tc: set tolerance for chroma temporal variation (from 0 to 1) (default 0.058)
+            ct: set temporal chroma threshold (from 0 to 1) (default 0.019)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dedot)
@@ -3134,11 +3134,11 @@ class VideoStream(FilterableStream):
         Apply deflate effect.
 
         Args:
-            threshold0 (Int): set threshold for 1st plane (from 0 to 65535) (default 65535)
-            threshold1 (Int): set threshold for 2nd plane (from 0 to 65535) (default 65535)
-            threshold2 (Int): set threshold for 3rd plane (from 0 to 65535) (default 65535)
-            threshold3 (Int): set threshold for 4th plane (from 0 to 65535) (default 65535)
-            enable (str): timeline editing
+            threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+            threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+            threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+            threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflate)
@@ -3177,9 +3177,9 @@ class VideoStream(FilterableStream):
         Remove temporal frame luminance variations.
 
         Args:
-            size (Int): set how many frames to use (from 2 to 129) (default 5)
-            mode (Int): set how to smooth luminance (from 0 to 6) (default am)
-            bypass (Boolean): leave frames unchanged (default false)
+            size: set how many frames to use (from 2 to 129) (default 5)
+            mode: set how to smooth luminance (from 0 to 6) (default am)
+            bypass: leave frames unchanged (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflicker)
@@ -3209,7 +3209,7 @@ class VideoStream(FilterableStream):
         Remove judder produced by pullup.
 
         Args:
-            cycle (Int): set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)
+            cycle: set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dejudder)
@@ -3247,12 +3247,12 @@ class VideoStream(FilterableStream):
         Remove logo from input video.
 
         Args:
-            x (String): set logo x position (default "-1")
-            y (String): set logo y position (default "-1")
-            w (String): set logo width (default "-1")
-            h (String): set logo height (default "-1")
-            show (Boolean): show delogo area (default false)
-            enable (str): timeline editing
+            x: set logo x position (default "-1")
+            y: set logo y position (default "-1")
+            w: set logo width (default "-1")
+            h: set logo height (default "-1")
+            show: show delogo area (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#delogo)
@@ -3295,12 +3295,12 @@ class VideoStream(FilterableStream):
         Apply derain filter to the input.
 
         Args:
-            filter_type (Int): filter type(derain/dehaze) (from 0 to 1) (default derain)
-            dnn_backend (Int): DNN backend (from 0 to 1) (default native)
-            model (String): path to model file
-            input (String): input name of the model (default "x")
-            output (String): output name of the model (default "y")
-            enable (str): timeline editing
+            filter_type: filter type(derain/dehaze) (from 0 to 1) (default derain)
+            dnn_backend: DNN backend (from 0 to 1) (default native)
+            model: path to model file
+            input: input name of the model (default "x")
+            output: output name of the model (default "y")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#derain)
@@ -3349,18 +3349,18 @@ class VideoStream(FilterableStream):
         Stabilize shaky video.
 
         Args:
-            x (Int): set x for the rectangular search area (from -1 to INT_MAX) (default -1)
-            y (Int): set y for the rectangular search area (from -1 to INT_MAX) (default -1)
-            w (Int): set width for the rectangular search area (from -1 to INT_MAX) (default -1)
-            h (Int): set height for the rectangular search area (from -1 to INT_MAX) (default -1)
-            rx (Int): set x for the rectangular search area (from 0 to 64) (default 16)
-            ry (Int): set y for the rectangular search area (from 0 to 64) (default 16)
-            edge (Int): set edge mode (from 0 to 3) (default mirror)
-            blocksize (Int): set motion search blocksize (from 4 to 128) (default 8)
-            contrast (Int): set contrast threshold for blocks (from 1 to 255) (default 125)
-            search (Int): set search strategy (from 0 to 1) (default exhaustive)
-            filename (String): set motion search detailed log file name
-            opencl (Boolean): ignored (default false)
+            x: set x for the rectangular search area (from -1 to INT_MAX) (default -1)
+            y: set y for the rectangular search area (from -1 to INT_MAX) (default -1)
+            w: set width for the rectangular search area (from -1 to INT_MAX) (default -1)
+            h: set height for the rectangular search area (from -1 to INT_MAX) (default -1)
+            rx: set x for the rectangular search area (from 0 to 64) (default 16)
+            ry: set y for the rectangular search area (from 0 to 64) (default 16)
+            edge: set edge mode (from 0 to 3) (default mirror)
+            blocksize: set motion search blocksize (from 4 to 128) (default 8)
+            contrast: set contrast threshold for blocks (from 1 to 255) (default 125)
+            search: set search strategy (from 0 to 1) (default exhaustive)
+            filename: set motion search detailed log file name
+            opencl: ignored (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deshake)
@@ -3412,15 +3412,15 @@ class VideoStream(FilterableStream):
         Despill video.
 
         Args:
-            type (Int): set the screen type (from 0 to 1) (default green)
-            mix (Float): set the spillmap mix (from 0 to 1) (default 0.5)
-            expand (Float): set the spillmap expand (from 0 to 1) (default 0)
-            red (Float): set red scale (from -100 to 100) (default 0)
-            green (Float): set green scale (from -100 to 100) (default -1)
-            blue (Float): set blue scale (from -100 to 100) (default 0)
-            brightness (Float): set brightness (from -10 to 10) (default 0)
-            alpha (Boolean): change alpha component (default false)
-            enable (str): timeline editing
+            type: set the screen type (from 0 to 1) (default green)
+            mix: set the spillmap mix (from 0 to 1) (default 0.5)
+            expand: set the spillmap expand (from 0 to 1) (default 0)
+            red: set red scale (from -100 to 100) (default 0)
+            green: set green scale (from -100 to 100) (default -1)
+            blue: set blue scale (from -100 to 100) (default 0)
+            brightness: set brightness (from -10 to 10) (default 0)
+            alpha: change alpha component (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#despill)
@@ -3463,9 +3463,9 @@ class VideoStream(FilterableStream):
         Apply an inverse telecine pattern.
 
         Args:
-            first_field (Int): select first field (from 0 to 1) (default top)
-            pattern (String): pattern that describe for how many fields a frame is to be displayed (default "23")
-            start_frame (Int): position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)
+            first_field: select first field (from 0 to 1) (default top)
+            pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
+            start_frame: position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#detelecine)
@@ -3505,12 +3505,12 @@ class VideoStream(FilterableStream):
         Apply dilation effect.
 
         Args:
-            coordinates (Int): set coordinates (from 0 to 255) (default 255)
-            threshold0 (Int): set threshold for 1st plane (from 0 to 65535) (default 65535)
-            threshold1 (Int): set threshold for 2nd plane (from 0 to 65535) (default 65535)
-            threshold2 (Int): set threshold for 3rd plane (from 0 to 65535) (default 65535)
-            threshold3 (Int): set threshold for 4th plane (from 0 to 65535) (default 65535)
-            enable (str): timeline editing
+            coordinates: set coordinates (from 0 to 255) (default 255)
+            threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+            threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+            threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+            threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dilation)
@@ -3551,8 +3551,8 @@ class VideoStream(FilterableStream):
         Displace pixels.
 
         Args:
-            edge (Int): set edge mode (from 0 to 3) (default smear)
-            enable (str): timeline editing
+            edge: set edge mode (from 0 to 3) (default smear)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
@@ -3599,16 +3599,16 @@ class VideoStream(FilterableStream):
         Apply DNN classify filter to the input.
 
         Args:
-            dnn_backend (Int): DNN backend (from INT_MIN to INT_MAX) (default 2)
-            model (String): path to model file
-            input (String): input name of the model
-            output (String): output name of the model
-            backend_configs (String): backend configs
-            options (String): backend configs (deprecated, use backend_configs)
-            _async (Boolean): use DNN async inference (ignored, use backend_configs='async=1') (default true)
-            confidence (Float): threshold of confidence (from 0 to 1) (default 0.5)
-            labels (String): path to labels file
-            target (String): which one to be classified
+            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
+            model: path to model file
+            input: input name of the model
+            output: output name of the model
+            backend_configs: backend configs
+            options: backend configs (deprecated, use backend_configs)
+            _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
+            confidence: threshold of confidence (from 0 to 1) (default 0.5)
+            labels: path to labels file
+            target: which one to be classified
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fclassify)
@@ -3658,15 +3658,15 @@ class VideoStream(FilterableStream):
         Apply DNN detect filter to the input.
 
         Args:
-            dnn_backend (Int): DNN backend (from INT_MIN to INT_MAX) (default 2)
-            model (String): path to model file
-            input (String): input name of the model
-            output (String): output name of the model
-            backend_configs (String): backend configs
-            options (String): backend configs (deprecated, use backend_configs)
-            _async (Boolean): use DNN async inference (ignored, use backend_configs='async=1') (default true)
-            confidence (Float): threshold of confidence (from 0 to 1) (default 0.5)
-            labels (String): path to labels file
+            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
+            model: path to model file
+            input: input name of the model
+            output: output name of the model
+            backend_configs: backend configs
+            options: backend configs (deprecated, use backend_configs)
+            _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
+            confidence: threshold of confidence (from 0 to 1) (default 0.5)
+            labels: path to labels file
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fdetect)
@@ -3713,13 +3713,13 @@ class VideoStream(FilterableStream):
         Apply DNN processing filter to the input.
 
         Args:
-            dnn_backend (Int): DNN backend (from INT_MIN to INT_MAX) (default native)
-            model (String): path to model file
-            input (String): input name of the model
-            output (String): output name of the model
-            backend_configs (String): backend configs
-            options (String): backend configs (deprecated, use backend_configs)
-            _async (Boolean): use DNN async inference (ignored, use backend_configs='async=1') (default true)
+            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default native)
+            model: path to model file
+            input: input name of the model
+            output: output name of the model
+            backend_configs: backend configs
+            options: backend configs (deprecated, use backend_configs)
+            _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing)
@@ -3755,7 +3755,7 @@ class VideoStream(FilterableStream):
         Weave input video fields into double number of frames.
 
         Args:
-            first_field (Int): set first field (from 0 to 1) (default top)
+            first_field: set first field (from 0 to 1) (default top)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
@@ -3796,15 +3796,15 @@ class VideoStream(FilterableStream):
         Draw a colored box on the input video.
 
         Args:
-            x (String): set horizontal position of the left box edge (default "0")
-            y (String): set vertical position of the top box edge (default "0")
-            width (String): set width of the box (default "0")
-            height (String): set height of the box (default "0")
-            color (String): set color of the box (default "black")
-            thickness (String): set the box thickness (default "3")
-            replace (Boolean): replace color & alpha (default false)
-            box_source (String): use datas from bounding box in side data
-            enable (str): timeline editing
+            x: set horizontal position of the left box edge (default "0")
+            y: set vertical position of the top box edge (default "0")
+            width: set width of the box (default "0")
+            height: set height of the box (default "0")
+            color: set color of the box (default "black")
+            thickness: set the box thickness (default "3")
+            replace: replace color & alpha (default false)
+            box_source: use datas from bounding box in side data
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawbox)
@@ -3859,21 +3859,21 @@ class VideoStream(FilterableStream):
         Draw a graph using input video metadata.
 
         Args:
-            m1 (String): set 1st metadata key (default "")
-            fg1 (String): set 1st foreground color expression (default "0xffff0000")
-            m2 (String): set 2nd metadata key (default "")
-            fg2 (String): set 2nd foreground color expression (default "0xff00ff00")
-            m3 (String): set 3rd metadata key (default "")
-            fg3 (String): set 3rd foreground color expression (default "0xffff00ff")
-            m4 (String): set 4th metadata key (default "")
-            fg4 (String): set 4th foreground color expression (default "0xffffff00")
-            bg (Color): set background color (default "white")
-            min (Float): set minimal value (from INT_MIN to INT_MAX) (default -1)
-            max (Float): set maximal value (from INT_MIN to INT_MAX) (default 1)
-            mode (Int): set graph mode (from 0 to 2) (default line)
-            slide (Int): set slide mode (from 0 to 4) (default frame)
-            size (Image_size): set graph size (default "900x256")
-            rate (Video_rate): set video rate (default "25")
+            m1: set 1st metadata key (default "")
+            fg1: set 1st foreground color expression (default "0xffff0000")
+            m2: set 2nd metadata key (default "")
+            fg2: set 2nd foreground color expression (default "0xff00ff00")
+            m3: set 3rd metadata key (default "")
+            fg3: set 3rd foreground color expression (default "0xffff00ff")
+            m4: set 4th metadata key (default "")
+            fg4: set 4th foreground color expression (default "0xffffff00")
+            bg: set background color (default "white")
+            min: set minimal value (from INT_MIN to INT_MAX) (default -1)
+            max: set maximal value (from INT_MIN to INT_MAX) (default 1)
+            mode: set graph mode (from 0 to 2) (default line)
+            slide: set slide mode (from 0 to 4) (default frame)
+            size: set graph size (default "900x256")
+            rate: set video rate (default "25")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgraph)
@@ -3927,14 +3927,14 @@ class VideoStream(FilterableStream):
         Draw a colored grid on the input video.
 
         Args:
-            x (String): set horizontal offset (default "0")
-            y (String): set vertical offset (default "0")
-            width (String): set width of grid cell (default "0")
-            height (String): set height of grid cell (default "0")
-            color (String): set color of the grid (default "black")
-            thickness (String): set grid line thickness (default "1")
-            replace (Boolean): replace color & alpha (default false)
-            enable (str): timeline editing
+            x: set horizontal offset (default "0")
+            y: set vertical offset (default "0")
+            width: set width of grid cell (default "0")
+            height: set height of grid cell (default "0")
+            color: set color of the grid (default "black")
+            thickness: set grid line thickness (default "1")
+            replace: replace color & alpha (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgrid)
@@ -4022,37 +4022,37 @@ class VideoStream(FilterableStream):
         Draw text on top of video frames using libfreetype library.
 
         Args:
-            fontfile (String): set font file
-            text (String): set text
-            textfile (String): set text file
-            fontcolor (Color): set foreground color (default "black")
-            fontcolor_expr (String): set foreground color expression (default "")
-            boxcolor (Color): set box color (default "white")
-            bordercolor (Color): set border color (default "black")
-            shadowcolor (Color): set shadow color (default "black")
-            box (Boolean): set box (default false)
-            boxborderw (Int): set box border width (from INT_MIN to INT_MAX) (default 0)
-            line_spacing (Int): set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
-            fontsize (String): set font size
-            x (String): set x expression (default "0")
-            y (String): set y expression (default "0")
-            shadowx (Int): set shadow x offset (from INT_MIN to INT_MAX) (default 0)
-            shadowy (Int): set shadow y offset (from INT_MIN to INT_MAX) (default 0)
-            borderw (Int): set border width (from INT_MIN to INT_MAX) (default 0)
-            tabsize (Int): set tab size (from 0 to INT_MAX) (default 4)
-            basetime (Int64): set base time (from I64_MIN to I64_MAX) (default I64_MIN)
-            font (String): Font name (default "Sans")
-            expansion (Int): set the expansion mode (from 0 to 2) (default normal)
-            timecode (String): set initial timecode
-            tc24hmax (Boolean): set 24 hours max (timecode only) (default false)
-            timecode_rate (Rational): set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
-            reload (Int): reload text file at specified frame interval (from 0 to INT_MAX) (default 0)
-            alpha (String): apply alpha while rendering (default "1")
-            fix_bounds (Boolean): check and fix text coords to avoid clipping (default false)
-            start_number (Int): start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
-            text_source (String): the source of text
-            ft_load_flags (Flags): set font loading flags for libfreetype (default 0)
-            enable (str): timeline editing
+            fontfile: set font file
+            text: set text
+            textfile: set text file
+            fontcolor: set foreground color (default "black")
+            fontcolor_expr: set foreground color expression (default "")
+            boxcolor: set box color (default "white")
+            bordercolor: set border color (default "black")
+            shadowcolor: set shadow color (default "black")
+            box: set box (default false)
+            boxborderw: set box border width (from INT_MIN to INT_MAX) (default 0)
+            line_spacing: set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
+            fontsize: set font size
+            x: set x expression (default "0")
+            y: set y expression (default "0")
+            shadowx: set shadow x offset (from INT_MIN to INT_MAX) (default 0)
+            shadowy: set shadow y offset (from INT_MIN to INT_MAX) (default 0)
+            borderw: set border width (from INT_MIN to INT_MAX) (default 0)
+            tabsize: set tab size (from 0 to INT_MAX) (default 4)
+            basetime: set base time (from I64_MIN to I64_MAX) (default I64_MIN)
+            font: Font name (default "Sans")
+            expansion: set the expansion mode (from 0 to 2) (default normal)
+            timecode: set initial timecode
+            tc24hmax: set 24 hours max (timecode only) (default false)
+            timecode_rate: set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
+            reload: reload text file at specified frame interval (from 0 to INT_MAX) (default 0)
+            alpha: apply alpha while rendering (default "1")
+            fix_bounds: check and fix text coords to avoid clipping (default false)
+            start_number: start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
+            text_source: the source of text
+            ft_load_flags: set font loading flags for libfreetype (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawtext)
@@ -4119,11 +4119,11 @@ class VideoStream(FilterableStream):
         Detect and draw edge.
 
         Args:
-            high (Double): set high threshold (from 0 to 1) (default 0.196078)
-            low (Double): set low threshold (from 0 to 1) (default 0.0784314)
-            mode (Int): set mode (from 0 to 2) (default wires)
-            planes (Flags): set planes to filter (default y+u+v+r+g+b)
-            enable (str): timeline editing
+            high: set high threshold (from 0 to 1) (default 0.196078)
+            low: set low threshold (from 0 to 1) (default 0.0784314)
+            mode: set mode (from 0 to 2) (default wires)
+            planes: set planes to filter (default y+u+v+r+g+b)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#edgedetect)
@@ -4164,11 +4164,11 @@ class VideoStream(FilterableStream):
         Apply posterize effect, using the ELBG algorithm.
 
         Args:
-            codebook_length (Int): set codebook length (from 1 to INT_MAX) (default 256)
-            nb_steps (Int): set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)
-            seed (Int64): set the random seed (from -1 to UINT32_MAX) (default -1)
-            pal8 (Boolean): set the pal8 output (default false)
-            use_alpha (Boolean): use alpha channel for mapping (default false)
+            codebook_length: set codebook length (from 1 to INT_MAX) (default 256)
+            nb_steps: set max number of steps used to compute the mapping (from 1 to INT_MAX) (default 1)
+            seed: set the random seed (from -1 to UINT32_MAX) (default -1)
+            pal8: set the pal8 output (default false)
+            use_alpha: use alpha channel for mapping (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#elbg)
@@ -4206,8 +4206,8 @@ class VideoStream(FilterableStream):
         Measure video frames entropy.
 
         Args:
-            mode (Int): set kind of histogram entropy measurement (from 0 to 1) (default normal)
-            enable (str): timeline editing
+            mode: set kind of histogram entropy measurement (from 0 to 1) (default normal)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#entropy)
@@ -4236,7 +4236,7 @@ class VideoStream(FilterableStream):
         Scale the input using EPX algorithm.
 
         Args:
-            n (Int): set scale factor (from 2 to 3) (default 3)
+            n: set scale factor (from 2 to 3) (default 3)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#epx)
@@ -4278,16 +4278,16 @@ class VideoStream(FilterableStream):
         Adjust brightness, contrast, gamma, and saturation.
 
         Args:
-            contrast (String): set the contrast adjustment, negative values give a negative image (default "1.0")
-            brightness (String): set the brightness adjustment (default "0.0")
-            saturation (String): set the saturation adjustment (default "1.0")
-            gamma (String): set the initial gamma value (default "1.0")
-            gamma_r (String): gamma value for red (default "1.0")
-            gamma_g (String): gamma value for green (default "1.0")
-            gamma_b (String): gamma value for blue (default "1.0")
-            gamma_weight (String): set the gamma weight which reduces the effect of gamma on bright areas (default "1.0")
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default init)
-            enable (str): timeline editing
+            contrast: set the contrast adjustment, negative values give a negative image (default "1.0")
+            brightness: set the brightness adjustment (default "0.0")
+            saturation: set the saturation adjustment (default "1.0")
+            gamma: set the initial gamma value (default "1.0")
+            gamma_r: gamma value for red (default "1.0")
+            gamma_g: gamma value for green (default "1.0")
+            gamma_b: gamma value for blue (default "1.0")
+            gamma_weight: set the gamma weight which reduces the effect of gamma on bright areas (default "1.0")
+            eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#eq)
@@ -4334,12 +4334,12 @@ class VideoStream(FilterableStream):
         Apply erosion effect.
 
         Args:
-            coordinates (Int): set coordinates (from 0 to 255) (default 255)
-            threshold0 (Int): set threshold for 1st plane (from 0 to 65535) (default 65535)
-            threshold1 (Int): set threshold for 2nd plane (from 0 to 65535) (default 65535)
-            threshold2 (Int): set threshold for 3rd plane (from 0 to 65535) (default 65535)
-            threshold3 (Int): set threshold for 4th plane (from 0 to 65535) (default 65535)
-            enable (str): timeline editing
+            coordinates: set coordinates (from 0 to 255) (default 255)
+            threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+            threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+            threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+            threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#erosion)
@@ -4386,16 +4386,16 @@ class VideoStream(FilterableStream):
         Apply Edge Slope Tracing deinterlace.
 
         Args:
-            mode (Int): specify the mode (from 0 to 1) (default field)
-            parity (Int): specify the assumed picture field parity (from -1 to 1) (default auto)
-            deint (Int): specify which frames to deinterlace (from 0 to 1) (default all)
-            rslope (Int): specify the search radius for edge slope tracing (from 1 to 15) (default 1)
-            redge (Int): specify the search radius for best edge matching (from 0 to 15) (default 2)
-            ecost (Float): specify the edge cost for edge matching (from 0 to 9) (default 1)
-            mcost (Float): specify the middle cost for edge matching (from 0 to 1) (default 0.5)
-            dcost (Float): specify the distance cost for edge matching (from 0 to 1) (default 0.5)
-            interp (Int): specify the type of interpolation (from 0 to 2) (default 4p)
-            enable (str): timeline editing
+            mode: specify the mode (from 0 to 1) (default field)
+            parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+            deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            rslope: specify the search radius for edge slope tracing (from 1 to 15) (default 1)
+            redge: specify the search radius for best edge matching (from 0 to 15) (default 2)
+            ecost: specify the edge cost for edge matching (from 0 to 9) (default 1)
+            mcost: specify the middle cost for edge matching (from 0 to 1) (default 0.5)
+            dcost: specify the distance cost for edge matching (from 0 to 1) (default 0.5)
+            interp: specify the type of interpolation (from 0 to 2) (default 4p)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#estdif)
@@ -4434,9 +4434,9 @@ class VideoStream(FilterableStream):
         Adjust exposure of the video stream.
 
         Args:
-            exposure (Float): set the exposure correction (from -3 to 3) (default 0)
-            black (Float): set the black level correction (from -1 to 1) (default 0)
-            enable (str): timeline editing
+            exposure: set the exposure correction (from -3 to 3) (default 0)
+            black: set the black level correction (from -1 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#exposure)
@@ -4468,7 +4468,7 @@ class VideoStream(FilterableStream):
         Extract planes as grayscale frames.
 
         Args:
-            planes (Flags): set planes (default r)
+            planes: set planes (default r)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extractplanes)
@@ -4509,14 +4509,14 @@ class VideoStream(FilterableStream):
         Fade in/out input video.
 
         Args:
-            type (Int): set the fade direction (from 0 to 1) (default in)
-            start_frame (Int): Number of the first frame to which to apply the effect. (from 0 to INT_MAX) (default 0)
-            nb_frames (Int): Number of frames to which the effect should be applied. (from 1 to INT_MAX) (default 25)
-            alpha (Boolean): fade alpha if it is available on the input (default false)
-            start_time (Duration): Number of seconds of the beginning of the effect. (default 0)
-            duration (Duration): Duration of the effect in seconds. (default 0)
-            color (Color): set color (default "black")
-            enable (str): timeline editing
+            type: set the fade direction (from 0 to 1) (default in)
+            start_frame: Number of the first frame to which to apply the effect. (from 0 to INT_MAX) (default 0)
+            nb_frames: Number of frames to which the effect should be applied. (from 1 to INT_MAX) (default 25)
+            alpha: fade alpha if it is available on the input (default false)
+            start_time: Number of seconds of the beginning of the effect. (default 0)
+            duration: Duration of the effect in seconds. (default 0)
+            color: set color (default "black")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fade)
@@ -4553,8 +4553,8 @@ class VideoStream(FilterableStream):
         Apply feedback video filter.
 
         Args:
-            x (Int): set top left crop position (from 0 to INT_MAX) (default 0)
-            w (Int): set crop size (from 0 to INT_MAX) (default 0)
+            x: set top left crop position (from 0 to INT_MAX) (default 0)
+            w: set crop size (from 0 to INT_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
@@ -4628,16 +4628,16 @@ class VideoStream(FilterableStream):
         Denoise frames using 3D FFT.
 
         Args:
-            sigma (Float): set denoise strength (from 0 to 100) (default 1)
-            amount (Float): set amount of denoising (from 0.01 to 1) (default 1)
-            block (Int): set block size (from 8 to 256) (default 32)
-            overlap (Float): set block overlap (from 0.2 to 0.8) (default 0.5)
-            method (Int): set method of denoising (from 0 to 1) (default wiener)
-            prev (Int): set number of previous frames for temporal denoising (from 0 to 1) (default 0)
-            next (Int): set number of next frames for temporal denoising (from 0 to 1) (default 0)
-            planes (Int): set planes to filter (from 0 to 15) (default 7)
-            window (Int): set window function (from 0 to 20) (default hann)
-            enable (str): timeline editing
+            sigma: set denoise strength (from 0 to 100) (default 1)
+            amount: set amount of denoising (from 0.01 to 1) (default 1)
+            block: set block size (from 8 to 256) (default 32)
+            overlap: set block overlap (from 0.2 to 0.8) (default 0.5)
+            method: set method of denoising (from 0 to 1) (default wiener)
+            prev: set number of previous frames for temporal denoising (from 0 to 1) (default 0)
+            next: set number of next frames for temporal denoising (from 0 to 1) (default 0)
+            planes: set planes to filter (from 0 to 15) (default 7)
+            window: set window function (from 0 to 20) (default hann)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz)
@@ -4686,14 +4686,14 @@ class VideoStream(FilterableStream):
         Apply arbitrary expressions to pixels in frequency domain.
 
         Args:
-            dc_Y (Int): adjust gain in Y plane (from 0 to 1000) (default 0)
-            dc_U (Int): adjust gain in U plane (from 0 to 1000) (default 0)
-            dc_V (Int): adjust gain in V plane (from 0 to 1000) (default 0)
-            weight_Y (String): set luminance expression in Y plane (default "1")
-            weight_U (String): set chrominance expression in U plane
-            weight_V (String): set chrominance expression in V plane
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default init)
-            enable (str): timeline editing
+            dc_Y: adjust gain in Y plane (from 0 to 1000) (default 0)
+            dc_U: adjust gain in U plane (from 0 to 1000) (default 0)
+            dc_V: adjust gain in V plane (from 0 to 1000) (default 0)
+            weight_Y: set luminance expression in Y plane (default "1")
+            weight_U: set chrominance expression in U plane
+            weight_V: set chrominance expression in V plane
+            eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftfilt)
@@ -4728,7 +4728,7 @@ class VideoStream(FilterableStream):
         Extract a field from the input video.
 
         Args:
-            type (Int): set field type (top or bottom) (from 0 to 1) (default top)
+            type: set field type (top or bottom) (from 0 to 1) (default top)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#field)
@@ -4762,8 +4762,8 @@ class VideoStream(FilterableStream):
         Field matching using hints.
 
         Args:
-            hint (String): set hint file
-            mode (Int): set hint mode (from 0 to 2) (default absolute)
+            hint: set hint file
+            mode: set hint mode (from 0 to 2) (default absolute)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldhint)
@@ -4798,8 +4798,8 @@ class VideoStream(FilterableStream):
         Set the field order.
 
         Args:
-            order (Int): output field order (from 0 to 1) (default tff)
-            enable (str): timeline editing
+            order: output field order (from 0 to 1) (default tff)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldorder)
@@ -4861,13 +4861,13 @@ class VideoStream(FilterableStream):
         Fill borders of the input video.
 
         Args:
-            left (Int): set the left fill border (from 0 to INT_MAX) (default 0)
-            right (Int): set the right fill border (from 0 to INT_MAX) (default 0)
-            top (Int): set the top fill border (from 0 to INT_MAX) (default 0)
-            bottom (Int): set the bottom fill border (from 0 to INT_MAX) (default 0)
-            mode (Int): set the fill borders mode (from 0 to 6) (default smear)
-            color (Color): set the color for the fixed/fade mode (default "black")
-            enable (str): timeline editing
+            left: set the left fill border (from 0 to INT_MAX) (default 0)
+            right: set the right fill border (from 0 to INT_MAX) (default 0)
+            top: set the top fill border (from 0 to INT_MAX) (default 0)
+            bottom: set the bottom fill border (from 0 to INT_MAX) (default 0)
+            mode: set the fill borders mode (from 0 to 6) (default smear)
+            color: set the color for the fixed/fade mode (default "black")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fillborders)
@@ -4910,11 +4910,11 @@ class VideoStream(FilterableStream):
         Find a user specified object.
 
         Args:
-            object (String): object bitmap filename
-            threshold (Float): set threshold (from 0 to 1) (default 0.5)
-            mipmaps (Int): set mipmaps (from 1 to 5) (default 3)
-            xmin (Int): (from 0 to INT_MAX) (default 0)
-            discard (Boolean): (default false)
+            object: object bitmap filename
+            threshold: set threshold (from 0 to 1) (default 0.5)
+            mipmaps: set mipmaps (from 1 to 5) (default 3)
+            xmin: (from 0 to INT_MAX) (default 0)
+            discard: (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#find_005frect)
@@ -4961,17 +4961,17 @@ class VideoStream(FilterableStream):
         Fill area with same color with another color.
 
         Args:
-            x (Int): set pixel x coordinate (from 0 to 65535) (default 0)
-            y (Int): set pixel y coordinate (from 0 to 65535) (default 0)
-            s0 (Int): set source #0 component value (from -1 to 65535) (default 0)
-            s1 (Int): set source #1 component value (from -1 to 65535) (default 0)
-            s2 (Int): set source #2 component value (from -1 to 65535) (default 0)
-            s3 (Int): set source #3 component value (from -1 to 65535) (default 0)
-            d0 (Int): set destination #0 component value (from 0 to 65535) (default 0)
-            d1 (Int): set destination #1 component value (from 0 to 65535) (default 0)
-            d2 (Int): set destination #2 component value (from 0 to 65535) (default 0)
-            d3 (Int): set destination #3 component value (from 0 to 65535) (default 0)
-            enable (str): timeline editing
+            x: set pixel x coordinate (from 0 to 65535) (default 0)
+            y: set pixel y coordinate (from 0 to 65535) (default 0)
+            s0: set source #0 component value (from -1 to 65535) (default 0)
+            s1: set source #1 component value (from -1 to 65535) (default 0)
+            s2: set source #2 component value (from -1 to 65535) (default 0)
+            s3: set source #3 component value (from -1 to 65535) (default 0)
+            d0: set destination #0 component value (from 0 to 65535) (default 0)
+            d1: set destination #1 component value (from 0 to 65535) (default 0)
+            d2: set destination #2 component value (from 0 to 65535) (default 0)
+            d3: set destination #3 component value (from 0 to 65535) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#floodfill)
@@ -5009,7 +5009,7 @@ class VideoStream(FilterableStream):
         Convert the input video to one of the specified pixel formats.
 
         Args:
-            pix_fmts (String): A '|'-separated list of pixel formats
+            pix_fmts: A '|'-separated list of pixel formats
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#format)
@@ -5045,10 +5045,10 @@ class VideoStream(FilterableStream):
         Force constant framerate.
 
         Args:
-            fps (String): A string describing desired output framerate (default "25")
-            start_time (Double): Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-            round (Int): set rounding method for timestamps (from 0 to 5) (default near)
-            eof_action (Int): action performed for last frame (from 0 to 1) (default round)
+            fps: A string describing desired output framerate (default "25")
+            start_time: Assume the first PTS should be this value. (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+            round: set rounding method for timestamps (from 0 to 5) (default near)
+            eof_action: action performed for last frame (from 0 to 1) (default round)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fps)
@@ -5085,7 +5085,7 @@ class VideoStream(FilterableStream):
         Generate a frame packed stereoscopic video.
 
         Args:
-            format (Int): Frame pack output format (from 0 to INT_MAX) (default sbs)
+            format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
@@ -5125,11 +5125,11 @@ class VideoStream(FilterableStream):
         Upsamples or downsamples progressive source between specified frame rates.
 
         Args:
-            fps (Video_rate): required output frames per second rate (default "50")
-            interp_start (Int): point to start linear interpolation (from 0 to 255) (default 15)
-            interp_end (Int): point to end linear interpolation (from 0 to 255) (default 240)
-            scene (Double): scene change level (from 0 to 100) (default 8.2)
-            flags (Flags): set flags (default scene_change_detect+scd)
+            fps: required output frames per second rate (default "50")
+            interp_start: point to start linear interpolation (from 0 to 255) (default 15)
+            interp_end: point to end linear interpolation (from 0 to 255) (default 240)
+            scene: scene change level (from 0 to 100) (default 8.2)
+            flags: set flags (default scene_change_detect+scd)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framerate)
@@ -5161,8 +5161,8 @@ class VideoStream(FilterableStream):
         Select one frame every N frames.
 
         Args:
-            step (Int): set frame step (from 1 to INT_MAX) (default 1)
-            enable (str): timeline editing
+            step: set frame step (from 1 to INT_MAX) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framestep)
@@ -5191,8 +5191,8 @@ class VideoStream(FilterableStream):
         Detects frozen video input.
 
         Args:
-            n (Double): set noise tolerance (from 0 to 1) (default 0.001)
-            d (Duration): set minimum duration in seconds (default 2)
+            n: set noise tolerance (from 0 to 1) (default 0.001)
+            d: set minimum duration in seconds (default 2)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezedetect)
@@ -5229,9 +5229,9 @@ class VideoStream(FilterableStream):
         Freeze video frames.
 
         Args:
-            first (Int64): set first frame to freeze (from 0 to I64_MAX) (default 0)
-            last (Int64): set last frame to freeze (from 0 to I64_MAX) (default 0)
-            replace (Int64): set frame to replace (from 0 to I64_MAX) (default 0)
+            first: set first frame to freeze (from 0 to I64_MAX) (default 0)
+            last: set last frame to freeze (from 0 to I64_MAX) (default 0)
+            replace: set frame to replace (from 0 to I64_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
@@ -5271,9 +5271,9 @@ class VideoStream(FilterableStream):
         Apply a frei0r effect.
 
         Args:
-            filter_name (String):
-            filter_params (String):
-            enable (str): timeline editing
+            filter_name:
+            filter_params:
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#frei0r)
@@ -5312,11 +5312,11 @@ class VideoStream(FilterableStream):
         Apply Fast Simple Post-processing filter.
 
         Args:
-            quality (Int): set quality (from 4 to 5) (default 4)
-            qp (Int): force a constant quantizer parameter (from 0 to 64) (default 0)
-            strength (Int): set filter strength (from -15 to 32) (default 0)
-            use_bframe_qp (Boolean): use B-frames' QP (default false)
-            enable (str): timeline editing
+            quality: set quality (from 4 to 5) (default 4)
+            qp: force a constant quantizer parameter (from 0 to 64) (default 0)
+            strength: set filter strength (from -15 to 32) (default 0)
+            use_bframe_qp: use B-frames' QP (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fspp)
@@ -5357,11 +5357,11 @@ class VideoStream(FilterableStream):
         Apply Gaussian Blur filter.
 
         Args:
-            sigma (Float): set sigma (from 0 to 1024) (default 0.5)
-            steps (Int): set number of steps (from 1 to 6) (default 1)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            sigmaV (Float): set vertical sigma (from -1 to 1024) (default -1)
-            enable (str): timeline editing
+            sigma: set sigma (from 0 to 1024) (default 0.5)
+            steps: set number of steps (from 1 to 6) (default 1)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            sigmaV: set vertical sigma (from -1 to 1024) (default -1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gblur)
@@ -5406,15 +5406,15 @@ class VideoStream(FilterableStream):
         Apply generic equation to each pixel.
 
         Args:
-            lum_expr (String): set luminance expression
-            cb_expr (String): set chroma blue expression
-            cr_expr (String): set chroma red expression
-            alpha_expr (String): set alpha expression
-            red_expr (String): set red expression
-            green_expr (String): set green expression
-            blue_expr (String): set blue expression
-            interpolation (Int): set interpolation method (from 0 to 1) (default bilinear)
-            enable (str): timeline editing
+            lum_expr: set luminance expression
+            cb_expr: set chroma blue expression
+            cr_expr: set chroma red expression
+            alpha_expr: set alpha expression
+            red_expr: set red expression
+            green_expr: set green expression
+            blue_expr: set blue expression
+            interpolation: set interpolation method (from 0 to 1) (default bilinear)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#geq)
@@ -5452,9 +5452,9 @@ class VideoStream(FilterableStream):
         Debands video quickly using gradients.
 
         Args:
-            strength (Float): The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)
-            radius (Int): The neighborhood to fit the gradient to. (from 4 to 32) (default 16)
-            enable (str): timeline editing
+            strength: The maximum amount by which the filter will change any one pixel. (from 0.51 to 64) (default 1.2)
+            radius: The neighborhood to fit the gradient to. (from 4 to 32) (default 16)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gradfun)
@@ -5512,11 +5512,11 @@ class VideoStream(FilterableStream):
         Show various filtergraph stats.
 
         Args:
-            size (Image_size): set monitor size (default "hd720")
-            opacity (Float): set video opacity (from 0 to 1) (default 0.9)
-            mode (Int): set mode (from 0 to 1) (default full)
-            flags (Flags): set flags (default queue)
-            rate (Video_rate): set video rate (default "25")
+            size: set monitor size (default "hd720")
+            opacity: set video opacity (from 0 to 1) (default 0.9)
+            mode: set mode (from 0 to 1) (default full)
+            flags: set flags (default queue)
+            rate: set video rate (default "25")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#graphmonitor)
@@ -5548,7 +5548,7 @@ class VideoStream(FilterableStream):
         Adjust white balance using LAB gray world algorithm
 
         Args:
-            enable (str): timeline editing
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#grayworld)
@@ -5584,10 +5584,10 @@ class VideoStream(FilterableStream):
         Estimates scene illumination by grey edge assumption.
 
         Args:
-            difford (Int): set differentiation order (from 0 to 2) (default 1)
-            minknorm (Int): set Minkowski norm (from 0 to 20) (default 1)
-            sigma (Double): set sigma (from 0 to 1024) (default 1)
-            enable (str): timeline editing
+            difford: set differentiation order (from 0 to 2) (default 1)
+            minknorm: set Minkowski norm (from 0 to 20) (default 1)
+            sigma: set sigma (from 0 to 1024) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#greyedge)
@@ -5632,13 +5632,13 @@ class VideoStream(FilterableStream):
         Adjust colors using a Hald CLUT.
 
         Args:
-            clut (Int): when to process CLUT (from 0 to 1) (default all)
-            interp (Int): select interpolation mode (from 0 to 4) (default tetrahedral)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            clut: when to process CLUT (from 0 to 1) (default all)
+            interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
@@ -5675,7 +5675,7 @@ class VideoStream(FilterableStream):
         Horizontally flip the input video.
 
         Args:
-            enable (str): timeline editing
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hflip)
@@ -5711,10 +5711,10 @@ class VideoStream(FilterableStream):
         Apply global color histogram equalization.
 
         Args:
-            strength (Float): set the strength (from 0 to 1) (default 0.2)
-            intensity (Float): set the intensity (from 0 to 1) (default 0.21)
-            antibanding (Int): set the antibanding level (from 0 to 2) (default none)
-            enable (str): timeline editing
+            strength: set the strength (from 0 to 1) (default 0.2)
+            intensity: set the intensity (from 0 to 1) (default 0.21)
+            antibanding: set the antibanding level (from 0 to 2) (default none)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histeq)
@@ -5770,14 +5770,14 @@ class VideoStream(FilterableStream):
         Compute and draw a histogram.
 
         Args:
-            level_height (Int): set level height (from 50 to 2048) (default 200)
-            scale_height (Int): set scale height (from 0 to 40) (default 12)
-            display_mode (Int): set display mode (from 0 to 2) (default stack)
-            levels_mode (Int): set levels mode (from 0 to 1) (default linear)
-            components (Int): set color components to display (from 1 to 15) (default 7)
-            fgopacity (Float): set foreground opacity (from 0 to 1) (default 0.7)
-            bgopacity (Float): set background opacity (from 0 to 1) (default 0.5)
-            colors_mode (Int): set colors mode (from 0 to 9) (default whiteonblack)
+            level_height: set level height (from 50 to 2048) (default 200)
+            scale_height: set scale height (from 0 to 40) (default 12)
+            display_mode: set display mode (from 0 to 2) (default stack)
+            levels_mode: set levels mode (from 0 to 1) (default linear)
+            components: set color components to display (from 1 to 15) (default 7)
+            fgopacity: set foreground opacity (from 0 to 1) (default 0.7)
+            bgopacity: set background opacity (from 0 to 1) (default 0.5)
+            colors_mode: set colors mode (from 0 to 9) (default whiteonblack)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histogram)
@@ -5821,11 +5821,11 @@ class VideoStream(FilterableStream):
         Apply a High Quality 3D Denoiser.
 
         Args:
-            luma_spatial (Double): spatial luma strength (from 0 to DBL_MAX) (default 0)
-            chroma_spatial (Double): spatial chroma strength (from 0 to DBL_MAX) (default 0)
-            luma_tmp (Double): temporal luma strength (from 0 to DBL_MAX) (default 0)
-            chroma_tmp (Double): temporal chroma strength (from 0 to DBL_MAX) (default 0)
-            enable (str): timeline editing
+            luma_spatial: spatial luma strength (from 0 to DBL_MAX) (default 0)
+            chroma_spatial: spatial chroma strength (from 0 to DBL_MAX) (default 0)
+            luma_tmp: temporal luma strength (from 0 to DBL_MAX) (default 0)
+            chroma_tmp: temporal chroma strength (from 0 to DBL_MAX) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqdn3d)
@@ -5857,7 +5857,7 @@ class VideoStream(FilterableStream):
         Scale the input by 2, 3 or 4 using the hq*x magnification algorithm.
 
         Args:
-            n (Int): set scale factor (from 2 to 4) (default 3)
+            n: set scale factor (from 2 to 4) (default 3)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqx)
@@ -5895,12 +5895,12 @@ class VideoStream(FilterableStream):
         Turns a certain HSV range into gray.
 
         Args:
-            hue (Float): set the hue value (from -360 to 360) (default 0)
-            sat (Float): set the saturation value (from -1 to 1) (default 0)
-            val (Float): set the value value (from -1 to 1) (default 0)
-            similarity (Float): set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)
-            blend (Float): set the hsvhold blend value (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            hue: set the hue value (from -360 to 360) (default 0)
+            sat: set the saturation value (from -1 to 1) (default 0)
+            val: set the value value (from -1 to 1) (default 0)
+            similarity: set the hsvhold similarity value (from 1e-05 to 1) (default 0.01)
+            blend: set the hsvhold blend value (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvhold)
@@ -5943,12 +5943,12 @@ class VideoStream(FilterableStream):
         Turns a certain HSV range into transparency. Operates on YUV colors.
 
         Args:
-            hue (Float): set the hue value (from -360 to 360) (default 0)
-            sat (Float): set the saturation value (from -1 to 1) (default 0)
-            val (Float): set the value value (from -1 to 1) (default 0)
-            similarity (Float): set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)
-            blend (Float): set the hsvkey blend value (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            hue: set the hue value (from -360 to 360) (default 0)
+            sat: set the saturation value (from -1 to 1) (default 0)
+            val: set the value value (from -1 to 1) (default 0)
+            similarity: set the hsvkey similarity value (from 1e-05 to 1) (default 0.01)
+            blend: set the hsvkey blend value (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvkey)
@@ -5990,11 +5990,11 @@ class VideoStream(FilterableStream):
         Adjust the hue and saturation of the input video.
 
         Args:
-            h (String): set the hue angle degrees expression
-            s (String): set the saturation expression (default "1")
-            H (String): set the hue angle radians expression
-            b (String): set the brightness expression (default "0")
-            enable (str): timeline editing
+            h: set the hue angle degrees expression
+            s: set the saturation expression (default "1")
+            H: set the hue angle radians expression
+            b: set the brightness expression (default "0")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hue)
@@ -6040,16 +6040,16 @@ class VideoStream(FilterableStream):
         Apply hue-saturation-intensity adjustments.
 
         Args:
-            hue (Float): set the hue shift (from -180 to 180) (default 0)
-            saturation (Float): set the saturation shift (from -1 to 1) (default 0)
-            intensity (Float): set the intensity shift (from -1 to 1) (default 0)
-            colors (Flags): set colors range (default r+y+g+c+b+m+a)
-            strength (Float): set the filtering strength (from 0 to 100) (default 1)
-            rw (Float): set the red weight (from 0 to 1) (default 0.333)
-            gw (Float): set the green weight (from 0 to 1) (default 0.334)
-            bw (Float): set the blue weight (from 0 to 1) (default 0.333)
-            lightness (Boolean): set the preserve lightness (default false)
-            enable (str): timeline editing
+            hue: set the hue shift (from -180 to 180) (default 0)
+            saturation: set the saturation shift (from -1 to 1) (default 0)
+            intensity: set the intensity shift (from -1 to 1) (default 0)
+            colors: set colors range (default r+y+g+c+b+m+a)
+            strength: set the filtering strength (from 0 to 100) (default 1)
+            rw: set the red weight (from 0 to 1) (default 0.333)
+            gw: set the green weight (from 0 to 1) (default 0.334)
+            bw: set the blue weight (from 0 to 1) (default 0.333)
+            lightness: set the preserve lightness (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#huesaturation)
@@ -6113,9 +6113,9 @@ class VideoStream(FilterableStream):
         Map hardware frames
 
         Args:
-            mode (Flags): Frame mapping mode (default read+write)
-            derive_device (String): Derive a new device of this type
-            reverse (Int): Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)
+            mode: Frame mapping mode (default read+write)
+            derive_device: Derive a new device of this type
+            reverse: Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwmap)
@@ -6145,7 +6145,7 @@ class VideoStream(FilterableStream):
         Upload a normal frame to a hardware frame
 
         Args:
-            derive_device (String): Derive a new device of this type
+            derive_device: Derive a new device of this type
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwupload)
@@ -6185,13 +6185,13 @@ class VideoStream(FilterableStream):
         Grow first stream into second stream by connecting components.
 
         Args:
-            planes (Int): set planes (from 0 to 15) (default 15)
-            threshold (Int): set threshold (from 0 to 65535) (default 0)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            planes: set planes (from 0 to 15) (default 15)
+            threshold: set threshold (from 0 to 65535) (default 0)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
@@ -6238,11 +6238,11 @@ class VideoStream(FilterableStream):
         Calculate the Identity between two video streams.
 
         Args:
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
@@ -6286,11 +6286,11 @@ class VideoStream(FilterableStream):
         Interlace detect Filter.
 
         Args:
-            intl_thres (Float): set interlacing threshold (from -1 to FLT_MAX) (default 1.04)
-            prog_thres (Float): set progressive threshold (from -1 to FLT_MAX) (default 1.5)
-            rep_thres (Float): set repeat threshold (from -1 to FLT_MAX) (default 3)
-            half_life (Float): half life of cumulative statistics (from -1 to INT_MAX) (default 0)
-            analyze_interlaced_flag (Int): set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)
+            intl_thres: set interlacing threshold (from -1 to FLT_MAX) (default 1.04)
+            prog_thres: set progressive threshold (from -1 to FLT_MAX) (default 1.5)
+            rep_thres: set repeat threshold (from -1 to FLT_MAX) (default 3)
+            half_life: half life of cumulative statistics (from -1 to INT_MAX) (default 0)
+            analyze_interlaced_flag: set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#idet)
@@ -6333,13 +6333,13 @@ class VideoStream(FilterableStream):
         Deinterleave or interleave fields.
 
         Args:
-            luma_mode (Int): select luma mode (from 0 to 2) (default none)
-            chroma_mode (Int): select chroma mode (from 0 to 2) (default none)
-            alpha_mode (Int): select alpha mode (from 0 to 2) (default none)
-            luma_swap (Boolean): swap luma fields (default false)
-            chroma_swap (Boolean): swap chroma fields (default false)
-            alpha_swap (Boolean): swap alpha fields (default false)
-            enable (str): timeline editing
+            luma_mode: select luma mode (from 0 to 2) (default none)
+            chroma_mode: select chroma mode (from 0 to 2) (default none)
+            alpha_mode: select alpha mode (from 0 to 2) (default none)
+            luma_swap: swap luma fields (default false)
+            chroma_swap: swap chroma fields (default false)
+            alpha_swap: swap alpha fields (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#il)
@@ -6382,11 +6382,11 @@ class VideoStream(FilterableStream):
         Apply inflate effect.
 
         Args:
-            threshold0 (Int): set threshold for 1st plane (from 0 to 65535) (default 65535)
-            threshold1 (Int): set threshold for 2nd plane (from 0 to 65535) (default 65535)
-            threshold2 (Int): set threshold for 3rd plane (from 0 to 65535) (default 65535)
-            threshold3 (Int): set threshold for 4th plane (from 0 to 65535) (default 65535)
-            enable (str): timeline editing
+            threshold0: set threshold for 1st plane (from 0 to 65535) (default 65535)
+            threshold1: set threshold for 2nd plane (from 0 to 65535) (default 65535)
+            threshold2: set threshold for 3rd plane (from 0 to 65535) (default 65535)
+            threshold3: set threshold for 4th plane (from 0 to 65535) (default 65535)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#inflate)
@@ -6424,8 +6424,8 @@ class VideoStream(FilterableStream):
         Convert progressive video into interlaced.
 
         Args:
-            scan (Int): scanning mode (from 0 to 1) (default tff)
-            lowpass (Int): set vertical low-pass filter (from 0 to 2) (default linear)
+            scan: scanning mode (from 0 to 1) (default tff)
+            lowpass: set vertical low-pass filter (from 0 to 2) (default linear)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interlace)
@@ -6463,11 +6463,11 @@ class VideoStream(FilterableStream):
         Apply kernel deinterlacing to the input.
 
         Args:
-            thresh (Int): set the threshold (from 0 to 255) (default 10)
-            map (Boolean): set the map (default false)
-            order (Boolean): set the order (default false)
-            sharp (Boolean): set sharpening (default false)
-            twoway (Boolean): set twoway (default false)
+            thresh: set the threshold (from 0 to 255) (default 10)
+            map: set the map (default false)
+            order: set the order (default false)
+            sharp: set sharpening (default false)
+            twoway: set twoway (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kerndeint)
@@ -6507,10 +6507,10 @@ class VideoStream(FilterableStream):
         Apply kirsch operator.
 
         Args:
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            scale (Float): set scale (from 0 to 65535) (default 1)
-            delta (Float): set delta (from -65535 to 65535) (default 0)
-            enable (str): timeline editing
+            planes: set planes to filter (from 0 to 15) (default 15)
+            scale: set scale (from 0 to 65535) (default 1)
+            delta: set delta (from -65535 to 65535) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kirsch)
@@ -6543,9 +6543,9 @@ class VideoStream(FilterableStream):
         Slowly update darker pixels.
 
         Args:
-            decay (Float): set decay (from 0 to 1) (default 0.95)
-            planes (Flags): set what planes to filter (default F)
-            enable (str): timeline editing
+            decay: set decay (from 0 to 1) (default 0.95)
+            planes: set what planes to filter (default F)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lagfun)
@@ -6575,7 +6575,7 @@ class VideoStream(FilterableStream):
         Report video filtering latency.
 
         Args:
-            enable (str): timeline editing
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
@@ -6614,13 +6614,13 @@ class VideoStream(FilterableStream):
         Rectify the image by correcting for lens distortion.
 
         Args:
-            cx (Double): set relative center x (from 0 to 1) (default 0.5)
-            cy (Double): set relative center y (from 0 to 1) (default 0.5)
-            k1 (Double): set quadratic distortion factor (from -1 to 1) (default 0)
-            k2 (Double): set double quadratic distortion factor (from -1 to 1) (default 0)
-            i (Int): set interpolation type (from 0 to 64) (default nearest)
-            fc (Color): set the color of the unmapped pixels (default "black@0")
-            enable (str): timeline editing
+            cx: set relative center x (from 0 to 1) (default 0.5)
+            cy: set relative center y (from 0 to 1) (default 0.5)
+            k1: set quadratic distortion factor (from -1 to 1) (default 0)
+            k2: set double quadratic distortion factor (from -1 to 1) (default 0)
+            i: set interpolation type (from 0 to 64) (default nearest)
+            fc: set the color of the unmapped pixels (default "black@0")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lenscorrection)
@@ -6676,23 +6676,23 @@ class VideoStream(FilterableStream):
         Calculate the VMAF between two video streams.
 
         Args:
-            model_path (String): use model='path=...'.
-            log_path (String): Set the file path to be used to write log.
-            log_fmt (String): Set the format of the log (csv, json, xml, or sub). (default "xml")
-            enable_transform (Boolean): use model='enable_transform=true'. (default false)
-            psnr (Boolean): use feature='name=psnr'. (default false)
-            ssim (Boolean): use feature='name=float_ssim'. (default false)
-            ms_ssim (Boolean): use feature='name=float_ms_ssim'. (default false)
-            pool (String): Set the pool method to be used for computing vmaf.
-            n_threads (Int): Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
-            n_subsample (Int): Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
-            enable_conf_interval (Boolean): model='enable_conf_interval=true'. (default false)
-            model (String): Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
-            feature (String): Set the feature to be used for computing vmaf.
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            model_path: use model='path=...'.
+            log_path: Set the file path to be used to write log.
+            log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
+            enable_transform: use model='enable_transform=true'. (default false)
+            psnr: use feature='name=psnr'. (default false)
+            ssim: use feature='name=float_ssim'. (default false)
+            ms_ssim: use feature='name=float_ms_ssim'. (default false)
+            pool: Set the pool method to be used for computing vmaf.
+            n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
+            n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
+            enable_conf_interval: model='enable_conf_interval=true'. (default false)
+            model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
+            feature: Set the feature to be used for computing vmaf.
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
@@ -6747,10 +6747,10 @@ class VideoStream(FilterableStream):
         Limit pixels components to the specified range.
 
         Args:
-            min (Int): set min value (from 0 to 65535) (default 0)
-            max (Int): set max value (from 0 to 65535) (default 65535)
-            planes (Int): set planes (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            min: set min value (from 0 to 65535) (default 0)
+            max: set max value (from 0 to 65535) (default 65535)
+            planes: set planes (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limiter)
@@ -6783,9 +6783,9 @@ class VideoStream(FilterableStream):
         Loop video frames.
 
         Args:
-            loop (Int): number of loops (from -1 to INT_MAX) (default 0)
-            size (Int64): max number of frames to loop (from 0 to 32767) (default 0)
-            start (Int64): set the loop start frame (from 0 to I64_MAX) (default 0)
+            loop: number of loops (from -1 to INT_MAX) (default 0)
+            size: max number of frames to loop (from 0 to 32767) (default 0)
+            start: set the loop start frame (from 0 to I64_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loop)
@@ -6823,10 +6823,10 @@ class VideoStream(FilterableStream):
         Turns a certain luma into transparency.
 
         Args:
-            threshold (Double): set the threshold value (from 0 to 1) (default 0)
-            tolerance (Double): set the tolerance value (from 0 to 1) (default 0.01)
-            softness (Double): set the softness value (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            threshold: set the threshold value (from 0 to 1) (default 0)
+            tolerance: set the tolerance value (from 0 to 1) (default 0.01)
+            softness: set the softness value (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lumakey)
@@ -6873,18 +6873,18 @@ class VideoStream(FilterableStream):
         Compute and apply a lookup table to the RGB/YUV input video.
 
         Args:
-            c0 (String): set component #0 expression (default "clipval")
-            c1 (String): set component #1 expression (default "clipval")
-            c2 (String): set component #2 expression (default "clipval")
-            c3 (String): set component #3 expression (default "clipval")
-            y (String): set Y expression (default "clipval")
-            u (String): set U expression (default "clipval")
-            v (String): set V expression (default "clipval")
-            r (String): set R expression (default "clipval")
-            g (String): set G expression (default "clipval")
-            b (String): set B expression (default "clipval")
-            a (String): set A expression (default "clipval")
-            enable (str): timeline editing
+            c0: set component #0 expression (default "clipval")
+            c1: set component #1 expression (default "clipval")
+            c2: set component #2 expression (default "clipval")
+            c3: set component #3 expression (default "clipval")
+            y: set Y expression (default "clipval")
+            u: set U expression (default "clipval")
+            v: set V expression (default "clipval")
+            r: set R expression (default "clipval")
+            g: set G expression (default "clipval")
+            b: set B expression (default "clipval")
+            a: set A expression (default "clipval")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
@@ -6930,9 +6930,9 @@ class VideoStream(FilterableStream):
         Adjust colors using a 1D LUT.
 
         Args:
-            file (String): set 1D LUT file name
-            interp (Int): select interpolation mode (from 0 to 4) (default linear)
-            enable (str): timeline editing
+            file: set 1D LUT file name
+            interp: select interpolation mode (from 0 to 4) (default linear)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut1d)
@@ -6977,16 +6977,16 @@ class VideoStream(FilterableStream):
         Compute and apply a lookup table from two video inputs.
 
         Args:
-            c0 (String): set component #0 expression (default "x")
-            c1 (String): set component #1 expression (default "x")
-            c2 (String): set component #2 expression (default "x")
-            c3 (String): set component #3 expression (default "x")
-            d (Int): set output depth (from 0 to 16) (default 0)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            c0: set component #0 expression (default "x")
+            c1: set component #1 expression (default "x")
+            c2: set component #2 expression (default "x")
+            c3: set component #3 expression (default "x")
+            d: set output depth (from 0 to 16) (default 0)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
@@ -7036,10 +7036,10 @@ class VideoStream(FilterableStream):
         Adjust colors using a 3D LUT.
 
         Args:
-            file (String): set 3D LUT file name
-            clut (Int): when to process CLUT (from 0 to 1) (default all)
-            interp (Int): select interpolation mode (from 0 to 4) (default tetrahedral)
-            enable (str): timeline editing
+            file: set 3D LUT file name
+            clut: when to process CLUT (from 0 to 1) (default all)
+            interp: select interpolation mode (from 0 to 4) (default tetrahedral)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut3d)
@@ -7086,18 +7086,18 @@ class VideoStream(FilterableStream):
         Compute and apply a lookup table to the RGB input video.
 
         Args:
-            c0 (String): set component #0 expression (default "clipval")
-            c1 (String): set component #1 expression (default "clipval")
-            c2 (String): set component #2 expression (default "clipval")
-            c3 (String): set component #3 expression (default "clipval")
-            y (String): set Y expression (default "clipval")
-            u (String): set U expression (default "clipval")
-            v (String): set V expression (default "clipval")
-            r (String): set R expression (default "clipval")
-            g (String): set G expression (default "clipval")
-            b (String): set B expression (default "clipval")
-            a (String): set A expression (default "clipval")
-            enable (str): timeline editing
+            c0: set component #0 expression (default "clipval")
+            c1: set component #1 expression (default "clipval")
+            c2: set component #2 expression (default "clipval")
+            c3: set component #3 expression (default "clipval")
+            y: set Y expression (default "clipval")
+            u: set U expression (default "clipval")
+            v: set V expression (default "clipval")
+            r: set R expression (default "clipval")
+            g: set G expression (default "clipval")
+            b: set B expression (default "clipval")
+            a: set A expression (default "clipval")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
@@ -7152,18 +7152,18 @@ class VideoStream(FilterableStream):
         Compute and apply a lookup table to the YUV input video.
 
         Args:
-            c0 (String): set component #0 expression (default "clipval")
-            c1 (String): set component #1 expression (default "clipval")
-            c2 (String): set component #2 expression (default "clipval")
-            c3 (String): set component #3 expression (default "clipval")
-            y (String): set Y expression (default "clipval")
-            u (String): set U expression (default "clipval")
-            v (String): set V expression (default "clipval")
-            r (String): set R expression (default "clipval")
-            g (String): set G expression (default "clipval")
-            b (String): set B expression (default "clipval")
-            a (String): set A expression (default "clipval")
-            enable (str): timeline editing
+            c0: set component #0 expression (default "clipval")
+            c1: set component #1 expression (default "clipval")
+            c2: set component #2 expression (default "clipval")
+            c3: set component #3 expression (default "clipval")
+            y: set Y expression (default "clipval")
+            u: set U expression (default "clipval")
+            v: set V expression (default "clipval")
+            r: set R expression (default "clipval")
+            g: set G expression (default "clipval")
+            b: set B expression (default "clipval")
+            a: set A expression (default "clipval")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
@@ -7212,10 +7212,10 @@ class VideoStream(FilterableStream):
         Clamp first stream with second stream and third stream.
 
         Args:
-            undershoot (Int): set undershoot (from 0 to 65535) (default 0)
-            overshoot (Int): set overshoot (from 0 to 65535) (default 0)
-            planes (Int): set planes (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            undershoot: set undershoot (from 0 to 65535) (default 0)
+            overshoot: set overshoot (from 0 to 65535) (default 0)
+            planes: set planes (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
@@ -7258,8 +7258,8 @@ class VideoStream(FilterableStream):
         Apply filtering with maximum difference of two streams.
 
         Args:
-            planes (Int): set planes (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            planes: set planes (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
@@ -7300,8 +7300,8 @@ class VideoStream(FilterableStream):
         Merge first stream with second stream using third stream as mask.
 
         Args:
-            planes (Int): set planes (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            planes: set planes (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
@@ -7342,8 +7342,8 @@ class VideoStream(FilterableStream):
         Apply filtering with minimum difference of two streams.
 
         Args:
-            planes (Int): set planes (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            planes: set planes (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
@@ -7385,10 +7385,10 @@ class VideoStream(FilterableStream):
         Pick pixels comparing absolute difference of two streams with threshold.
 
         Args:
-            threshold (Int): set threshold (from 0 to 65535) (default 1)
-            planes (Int): set planes (from 0 to 15) (default 15)
-            mode (Int): set mode (from 0 to 1) (default abs)
-            enable (str): timeline editing
+            threshold: set threshold (from 0 to 65535) (default 1)
+            planes: set planes (from 0 to 15) (default 15)
+            mode: set mode (from 0 to 1) (default abs)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
@@ -7432,12 +7432,12 @@ class VideoStream(FilterableStream):
         Create Mask.
 
         Args:
-            low (Int): set low threshold (from 0 to 65535) (default 10)
-            high (Int): set high threshold (from 0 to 65535) (default 10)
-            planes (Int): set planes (from 0 to 15) (default 15)
-            fill (Int): set fill value (from 0 to 65535) (default 0)
-            sum (Int): set sum value (from 0 to 65535) (default 10)
-            enable (str): timeline editing
+            low: set low threshold (from 0 to 65535) (default 10)
+            high: set high threshold (from 0 to 65535) (default 10)
+            planes: set planes (from 0 to 15) (default 15)
+            fill: set fill value (from 0 to 65535) (default 0)
+            sum: set sum value (from 0 to 65535) (default 10)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskfun)
@@ -7479,11 +7479,11 @@ class VideoStream(FilterableStream):
         Apply Median filter.
 
         Args:
-            radius (Int): set median radius (from 1 to 127) (default 1)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            radiusV (Int): set median vertical radius (from 0 to 127) (default 0)
-            percentile (Float): set median percentile (from 0 to 1) (default 0.5)
-            enable (str): timeline editing
+            radius: set median radius (from 1 to 127) (default 1)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            radiusV: set median vertical radius (from 0 to 127) (default 0)
+            percentile: set median percentile (from 0 to 1) (default 0.5)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#median)
@@ -7524,9 +7524,9 @@ class VideoStream(FilterableStream):
         Generate motion vectors.
 
         Args:
-            method (Int): motion estimation method (from 1 to 9) (default esa)
-            mb_size (Int): macroblock size (from 8 to INT_MAX) (default 16)
-            search_param (Int): search parameter (from 4 to INT_MAX) (default 7)
+            method: motion estimation method (from 1 to 9) (default esa)
+            mb_size: macroblock size (from 8 to INT_MAX) (default 16)
+            search_param: search parameter (from 4 to INT_MAX) (default 7)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mestimate)
@@ -7570,14 +7570,14 @@ class VideoStream(FilterableStream):
         Manipulate video frame metadata.
 
         Args:
-            mode (Int): set a mode of operation (from 0 to 4) (default select)
-            key (String): set metadata key
-            value (String): set metadata value
-            function (Int): function for comparing values (from 0 to 6) (default same_str)
-            expr (String): set expression for expr function
-            file (String): set file where to print metadata information
-            direct (Boolean): reduce buffering when printing to user-set file or pipe (default false)
-            enable (str): timeline editing
+            mode: set a mode of operation (from 0 to 4) (default select)
+            key: set metadata key
+            value: set metadata value
+            function: function for comparing values (from 0 to 6) (default same_str)
+            expr: set expression for expr function
+            file: set file where to print metadata information
+            direct: reduce buffering when printing to user-set file or pipe (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
@@ -7614,8 +7614,8 @@ class VideoStream(FilterableStream):
         Apply Midway Equalization.
 
         Args:
-            planes (Int): set planes (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            planes: set planes (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
@@ -7663,16 +7663,16 @@ class VideoStream(FilterableStream):
         Frame rate conversion using Motion Interpolation.
 
         Args:
-            fps (Video_rate): output's frame rate (default "60")
-            mi_mode (Int): motion interpolation mode (from 0 to 2) (default mci)
-            mc_mode (Int): motion compensation mode (from 0 to 1) (default obmc)
-            me_mode (Int): motion estimation mode (from 0 to 1) (default bilat)
-            me (Int): motion estimation method (from 1 to 9) (default epzs)
-            mb_size (Int): macroblock size (from 4 to 16) (default 16)
-            search_param (Int): search parameter (from 4 to INT_MAX) (default 32)
-            vsbmc (Int): variable-size block motion compensation (from 0 to 1) (default 0)
-            scd (Int): scene change detection method (from 0 to 1) (default fdiff)
-            scd_threshold (Double): scene change threshold (from 0 to 100) (default 10)
+            fps: output's frame rate (default "60")
+            mi_mode: motion interpolation mode (from 0 to 2) (default mci)
+            mc_mode: motion compensation mode (from 0 to 1) (default obmc)
+            me_mode: motion estimation mode (from 0 to 1) (default bilat)
+            me: motion estimation method (from 1 to 9) (default epzs)
+            mb_size: macroblock size (from 4 to 16) (default 16)
+            search_param: search parameter (from 4 to INT_MAX) (default 32)
+            vsbmc: variable-size block motion compensation (from 0 to 1) (default 0)
+            scd: scene change detection method (from 0 to 1) (default fdiff)
+            scd_threshold: scene change threshold (from 0 to 100) (default 10)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#minterpolate)
@@ -7718,11 +7718,11 @@ class VideoStream(FilterableStream):
         Convert video to gray using custom color filter.
 
         Args:
-            cb (Float): set the chroma blue spot (from -1 to 1) (default 0)
-            cr (Float): set the chroma red spot (from -1 to 1) (default 0)
-            size (Float): set the color filter size (from 0.1 to 10) (default 1)
-            high (Float): set the highlights strength (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            cb: set the chroma blue spot (from -1 to 1) (default 0)
+            cr: set the chroma red spot (from -1 to 1) (default 0)
+            size: set the color filter size (from 0.1 to 10) (default 1)
+            high: set the highlights strength (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#monochrome)
@@ -7769,14 +7769,14 @@ class VideoStream(FilterableStream):
         Apply Morphological filter.
 
         Args:
-            mode (Int): set morphological transform (from 0 to 6) (default erode)
-            planes (Int): set planes to filter (from 0 to 15) (default 7)
-            structure (Int): when to process structures (from 0 to 1) (default all)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            mode: set morphological transform (from 0 to 6) (default erode)
+            planes: set planes to filter (from 0 to 15) (default 7)
+            structure: when to process structures (from 0 to 1) (default all)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
@@ -7822,10 +7822,10 @@ class VideoStream(FilterableStream):
         Remove near-duplicate frames.
 
         Args:
-            max (Int): set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)
-            hi (Int): set high dropping threshold (from INT_MIN to INT_MAX) (default 768)
-            lo (Int): set low dropping threshold (from INT_MIN to INT_MAX) (default 320)
-            frac (Float): set fraction dropping threshold (from 0 to 1) (default 0.33)
+            max: set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)
+            hi: set high dropping threshold (from INT_MIN to INT_MAX) (default 768)
+            lo: set low dropping threshold (from INT_MIN to INT_MAX) (default 320)
+            frac: set fraction dropping threshold (from 0 to 1) (default 0.33)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mpdecimate)
@@ -7866,11 +7866,11 @@ class VideoStream(FilterableStream):
         Calculate the MSAD between two video streams.
 
         Args:
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
@@ -7914,10 +7914,10 @@ class VideoStream(FilterableStream):
         Multiply first video stream with second video stream.
 
         Args:
-            scale (Float): set scale (from 0 to 9) (default 1)
-            offset (Float): set offset (from -1 to 1) (default 0.5)
-            planes (Flags): set planes (default F)
-            enable (str): timeline editing
+            scale: set scale (from 0 to 9) (default 1)
+            offset: set offset (from -1 to 1) (default 0.5)
+            planes: set planes (default F)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
@@ -7958,9 +7958,9 @@ class VideoStream(FilterableStream):
         Negate input video.
 
         Args:
-            components (Flags): set components to negate (default y+u+v+r+g+b)
-            negate_alpha (Boolean): (default false)
-            enable (str): timeline editing
+            components: set components to negate (default y+u+v+r+g+b)
+            negate_alpha: (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#negate)
@@ -8000,12 +8000,12 @@ class VideoStream(FilterableStream):
         Non-local means denoiser.
 
         Args:
-            s (Double): denoising strength (from 1 to 30) (default 1)
-            p (Int): patch size (from 0 to 99) (default 7)
-            pc (Int): patch size for chroma planes (from 0 to 99) (default 0)
-            r (Int): research window (from 0 to 99) (default 15)
-            rc (Int): research window for chroma planes (from 0 to 99) (default 0)
-            enable (str): timeline editing
+            s: denoising strength (from 1 to 30) (default 1)
+            p: patch size (from 0 to 99) (default 7)
+            pc: patch size for chroma planes (from 0 to 99) (default 0)
+            r: research window (from 0 to 99) (default 15)
+            rc: research window for chroma planes (from 0 to 99) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nlmeans)
@@ -8052,16 +8052,16 @@ class VideoStream(FilterableStream):
         Apply neural network edge directed interpolation intra-only deinterlacer.
 
         Args:
-            weights (String): set weights file (default "nnedi3_weights.bin")
-            deint (Int): set which frames to deinterlace (from 0 to 1) (default all)
-            field (Int): set mode of operation (from -2 to 3) (default a)
-            planes (Int): set which planes to process (from 0 to 15) (default 7)
-            nsize (Int): set size of local neighborhood around each pixel, used by the predictor neural network (from 0 to 6) (default s32x4)
-            nns (Int): set number of neurons in predictor neural network (from 0 to 4) (default n32)
-            qual (Int): set quality (from 1 to 2) (default fast)
-            etype (Int): set which set of weights to use in the predictor (from 0 to 1) (default a)
-            pscrn (Int): set prescreening (from 0 to 4) (default new)
-            enable (str): timeline editing
+            weights: set weights file (default "nnedi3_weights.bin")
+            deint: set which frames to deinterlace (from 0 to 1) (default all)
+            field: set mode of operation (from -2 to 3) (default a)
+            planes: set which planes to process (from 0 to 15) (default 7)
+            nsize: set size of local neighborhood around each pixel, used by the predictor neural network (from 0 to 6) (default s32x4)
+            nns: set number of neurons in predictor neural network (from 0 to 4) (default n32)
+            qual: set quality (from 1 to 2) (default fast)
+            etype: set which set of weights to use in the predictor (from 0 to 1) (default a)
+            pscrn: set prescreening (from 0 to 4) (default new)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nnedi)
@@ -8098,7 +8098,7 @@ class VideoStream(FilterableStream):
         Force libavfilter not to use any of the specified pixel formats for the input to the next filter.
 
         Args:
-            pix_fmts (String): A '|'-separated list of pixel formats
+            pix_fmts: A '|'-separated list of pixel formats
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noformat)
@@ -8146,22 +8146,22 @@ class VideoStream(FilterableStream):
         Add noise.
 
         Args:
-            all_seed (Int): set component #0 noise seed (from -1 to INT_MAX) (default -1)
-            all_strength (Int): set component #0 strength (from 0 to 100) (default 0)
-            all_flags (Flags): set component #0 flags (default 0)
-            c0_seed (Int): set component #0 noise seed (from -1 to INT_MAX) (default -1)
-            c0_strength (Int): set component #0 strength (from 0 to 100) (default 0)
-            c0_flags (Flags): set component #0 flags (default 0)
-            c1_seed (Int): set component #1 noise seed (from -1 to INT_MAX) (default -1)
-            c1_strength (Int): set component #1 strength (from 0 to 100) (default 0)
-            c1_flags (Flags): set component #1 flags (default 0)
-            c2_seed (Int): set component #2 noise seed (from -1 to INT_MAX) (default -1)
-            c2_strength (Int): set component #2 strength (from 0 to 100) (default 0)
-            c2_flags (Flags): set component #2 flags (default 0)
-            c3_seed (Int): set component #3 noise seed (from -1 to INT_MAX) (default -1)
-            c3_strength (Int): set component #3 strength (from 0 to 100) (default 0)
-            c3_flags (Flags): set component #3 flags (default 0)
-            enable (str): timeline editing
+            all_seed: set component #0 noise seed (from -1 to INT_MAX) (default -1)
+            all_strength: set component #0 strength (from 0 to 100) (default 0)
+            all_flags: set component #0 flags (default 0)
+            c0_seed: set component #0 noise seed (from -1 to INT_MAX) (default -1)
+            c0_strength: set component #0 strength (from 0 to 100) (default 0)
+            c0_flags: set component #0 flags (default 0)
+            c1_seed: set component #1 noise seed (from -1 to INT_MAX) (default -1)
+            c1_strength: set component #1 strength (from 0 to 100) (default 0)
+            c1_flags: set component #1 flags (default 0)
+            c2_seed: set component #2 noise seed (from -1 to INT_MAX) (default -1)
+            c2_strength: set component #2 strength (from 0 to 100) (default 0)
+            c2_flags: set component #2 flags (default 0)
+            c3_seed: set component #3 noise seed (from -1 to INT_MAX) (default -1)
+            c3_strength: set component #3 strength (from 0 to 100) (default 0)
+            c3_flags: set component #3 flags (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noise)
@@ -8214,12 +8214,12 @@ class VideoStream(FilterableStream):
         Normalize RGB video.
 
         Args:
-            blackpt (Color): output color to which darkest input color is mapped (default "black")
-            whitept (Color): output color to which brightest input color is mapped (default "white")
-            smoothing (Int): amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)
-            independence (Float): proportion of independent to linked channel normalization (from 0 to 1) (default 1)
-            strength (Float): strength of filter, from no effect to full normalization (from 0 to 1) (default 1)
-            enable (str): timeline editing
+            blackpt: output color to which darkest input color is mapped (default "black")
+            whitept: output color to which brightest input color is mapped (default "white")
+            smoothing: amount of temporal smoothing of the input range, to reduce flicker (from 0 to 2.68435e+08) (default 0)
+            independence: proportion of independent to linked channel normalization (from 0 to 1) (default 1)
+            strength: strength of filter, from no effect to full normalization (from 0 to 1) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#normalize)
@@ -8280,10 +8280,10 @@ class VideoStream(FilterableStream):
         Optical Character Recognition.
 
         Args:
-            datapath (String): set datapath
-            language (String): set language (default "eng")
-            whitelist (String): set character whitelist (default "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?"'[]{}()|/\=*&%$#@!~ ")
-            blacklist (String): set character blacklist (default "")
+            datapath: set datapath
+            language: set language (default "eng")
+            whitelist: set character whitelist (default "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?"'[]{}()|/\=*&%$#@!~ ")
+            blacklist: set character blacklist (default "")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ocr)
@@ -8332,20 +8332,20 @@ class VideoStream(FilterableStream):
         2D Video Oscilloscope.
 
         Args:
-            x (Float): set scope x position (from 0 to 1) (default 0.5)
-            y (Float): set scope y position (from 0 to 1) (default 0.5)
-            s (Float): set scope size (from 0 to 1) (default 0.8)
-            t (Float): set scope tilt (from 0 to 1) (default 0.5)
-            o (Float): set trace opacity (from 0 to 1) (default 0.8)
-            tx (Float): set trace x position (from 0 to 1) (default 0.5)
-            ty (Float): set trace y position (from 0 to 1) (default 0.9)
-            tw (Float): set trace width (from 0.1 to 1) (default 0.8)
-            th (Float): set trace height (from 0.1 to 1) (default 0.3)
-            c (Int): set components to trace (from 0 to 15) (default 7)
-            g (Boolean): draw trace grid (default true)
-            st (Boolean): draw statistics (default true)
-            sc (Boolean): draw scope (default true)
-            enable (str): timeline editing
+            x: set scope x position (from 0 to 1) (default 0.5)
+            y: set scope y position (from 0 to 1) (default 0.5)
+            s: set scope size (from 0 to 1) (default 0.8)
+            t: set scope tilt (from 0 to 1) (default 0.5)
+            o: set trace opacity (from 0 to 1) (default 0.8)
+            tx: set trace x position (from 0 to 1) (default 0.5)
+            ty: set trace y position (from 0 to 1) (default 0.9)
+            tw: set trace width (from 0.1 to 1) (default 0.8)
+            th: set trace height (from 0.1 to 1) (default 0.3)
+            c: set components to trace (from 0 to 15) (default 7)
+            g: draw trace grid (default true)
+            st: draw statistics (default true)
+            sc: draw scope (default true)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#oscilloscope)
@@ -8403,16 +8403,16 @@ class VideoStream(FilterableStream):
         Overlay a video source on top of the input.
 
         Args:
-            x (String): set the x expression (default "0")
-            y (String): set the y expression (default "0")
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default frame)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            format (Int): set output format (from 0 to 7) (default yuv420)
-            repeatlast (Boolean): repeat overlay of the last overlay frame (default true)
-            alpha (Int): alpha format (from 0 to 1) (default straight)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            x: set the x expression (default "0")
+            y: set the y expression (default "0")
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            eval: specify when to evaluate expressions (from 0 to 1) (default frame)
+            shortest: force termination when the shortest input terminates (default false)
+            format: set output format (from 0 to 7) (default yuv420)
+            repeatlast: repeat overlay of the last overlay frame (default true)
+            alpha: alpha format (from 0 to 1) (default straight)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
@@ -8460,10 +8460,10 @@ class VideoStream(FilterableStream):
         Denoise using wavelets.
 
         Args:
-            depth (Int): set depth (from 8 to 16) (default 8)
-            luma_strength (Double): set luma strength (from 0 to 1000) (default 1)
-            chroma_strength (Double): set chroma strength (from 0 to 1000) (default 1)
-            enable (str): timeline editing
+            depth: set depth (from 8 to 16) (default 8)
+            luma_strength: set luma strength (from 0 to 1000) (default 1)
+            chroma_strength: set chroma strength (from 0 to 1000) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#owdenoise)
@@ -8505,13 +8505,13 @@ class VideoStream(FilterableStream):
         Pad the input video.
 
         Args:
-            width (String): set the pad area width expression (default "iw")
-            height (String): set the pad area height expression (default "ih")
-            x (String): set the x offset expression for the input image position (default "0")
-            y (String): set the y offset expression for the input image position (default "0")
-            color (Color): set the color of the padded area border (default "black")
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default init)
-            aspect (Rational): pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)
+            width: set the pad area width expression (default "iw")
+            height: set the pad area height expression (default "ih")
+            x: set the x offset expression for the input image position (default "0")
+            y: set the y offset expression for the input image position (default "0")
+            color: set the color of the padded area border (default "black")
+            eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            aspect: pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pad)
@@ -8553,10 +8553,10 @@ class VideoStream(FilterableStream):
         Find the optimal palette for a given stream.
 
         Args:
-            max_colors (Int): set the maximum number of colors to use in the palette (from 2 to 256) (default 256)
-            reserve_transparent (Boolean): reserve a palette entry for transparency (default true)
-            transparency_color (Color): set a background color for transparency (default "lime")
-            stats_mode (Int): set statistics mode (from 0 to 2) (default full)
+            max_colors: set the maximum number of colors to use in the palette (from 2 to 256) (default 256)
+            reserve_transparent: reserve a palette entry for transparency (default true)
+            transparency_color: set a background color for transparency (default "lime")
+            stats_mode: set statistics mode (from 0 to 2) (default full)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#palettegen)
@@ -8600,12 +8600,12 @@ class VideoStream(FilterableStream):
         Use a palette to downsample an input video stream.
 
         Args:
-            dither (Int): select dithering mode (from 0 to 8) (default sierra2_4a)
-            bayer_scale (Int): set scale for bayer dithering (from 0 to 5) (default 2)
-            diff_mode (Int): set frame difference mode (from 0 to 1) (default 0)
-            new (Boolean): take new palette for each output frame (default false)
-            alpha_threshold (Int): set the alpha threshold for transparency (from 0 to 255) (default 128)
-            debug_kdtree (String): save Graphviz graph of the kdtree in specified file
+            dither: select dithering mode (from 0 to 8) (default sierra2_4a)
+            bayer_scale: set scale for bayer dithering (from 0 to 5) (default 2)
+            diff_mode: set frame difference mode (from 0 to 1) (default 0)
+            new: take new palette for each output frame (default false)
+            alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
+            debug_kdtree: save Graphviz graph of the kdtree in specified file
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
@@ -8648,9 +8648,9 @@ class VideoStream(FilterableStream):
         Set permissions for the output video frame.
 
         Args:
-            mode (Int): select permissions mode (from 0 to 4) (default none)
-            seed (Int64): set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
-            enable (str): timeline editing
+            mode: select permissions mode (from 0 to 4) (default none)
+            seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
@@ -8696,18 +8696,18 @@ class VideoStream(FilterableStream):
         Correct the perspective of video.
 
         Args:
-            x0 (String): set top left x coordinate (default "0")
-            y0 (String): set top left y coordinate (default "0")
-            x1 (String): set top right x coordinate (default "W")
-            y1 (String): set top right y coordinate (default "0")
-            x2 (String): set bottom left x coordinate (default "0")
-            y2 (String): set bottom left y coordinate (default "H")
-            x3 (String): set bottom right x coordinate (default "W")
-            y3 (String): set bottom right y coordinate (default "H")
-            interpolation (Int): set interpolation (from 0 to 1) (default linear)
-            sense (Int): specify the sense of the coordinates (from 0 to 1) (default source)
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default init)
-            enable (str): timeline editing
+            x0: set top left x coordinate (default "0")
+            y0: set top left y coordinate (default "0")
+            x1: set top right x coordinate (default "W")
+            y1: set top right y coordinate (default "0")
+            x2: set bottom left x coordinate (default "0")
+            y2: set bottom left y coordinate (default "H")
+            x3: set bottom right x coordinate (default "W")
+            y3: set bottom right y coordinate (default "H")
+            interpolation: set interpolation (from 0 to 1) (default linear)
+            sense: specify the sense of the coordinates (from 0 to 1) (default source)
+            eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perspective)
@@ -8752,8 +8752,8 @@ class VideoStream(FilterableStream):
         Phase shift fields.
 
         Args:
-            mode (Int): set phase mode (from 0 to 8) (default A)
-            enable (str): timeline editing
+            mode: set phase mode (from 0 to 8) (default A)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#phase)
@@ -8790,10 +8790,10 @@ class VideoStream(FilterableStream):
         Filter out photosensitive epilepsy seizure-inducing flashes.
 
         Args:
-            frames (Int): set how many frames to use (from 2 to 240) (default 30)
-            threshold (Float): set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)
-            skip (Int): set pixels to skip when sampling frames (from 1 to 1024) (default 1)
-            bypass (Boolean): leave frames unchanged (default false)
+            frames: set how many frames to use (from 2 to 240) (default 30)
+            threshold: set detection threshold factor (lower is stricter) (from 0.1 to FLT_MAX) (default 1)
+            skip: set pixels to skip when sampling frames (from 1 to 1024) (default 1)
+            bypass: leave frames unchanged (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#photosensitivity)
@@ -8853,11 +8853,11 @@ class VideoStream(FilterableStream):
         Pixelize video.
 
         Args:
-            width (Int): set block width (from 1 to 1024) (default 16)
-            height (Int): set block height (from 1 to 1024) (default 16)
-            mode (Int): set the pixelize mode (from 0 to 2) (default avg)
-            planes (Flags): set what planes to filter (default F)
-            enable (str): timeline editing
+            width: set block width (from 1 to 1024) (default 16)
+            height: set block height (from 1 to 1024) (default 16)
+            mode: set the pixelize mode (from 0 to 2) (default avg)
+            planes: set what planes to filter (default F)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixelize)
@@ -8901,14 +8901,14 @@ class VideoStream(FilterableStream):
         Pixel data analysis.
 
         Args:
-            x (Float): set scope x offset (from 0 to 1) (default 0.5)
-            y (Float): set scope y offset (from 0 to 1) (default 0.5)
-            w (Int): set scope width (from 1 to 80) (default 7)
-            h (Int): set scope height (from 1 to 80) (default 7)
-            o (Float): set window opacity (from 0 to 1) (default 0.5)
-            wx (Float): set window x offset (from -1 to 1) (default -1)
-            wy (Float): set window y offset (from -1 to 1) (default -1)
-            enable (str): timeline editing
+            x: set scope x offset (from 0 to 1) (default 0.5)
+            y: set scope y offset (from 0 to 1) (default 0.5)
+            w: set scope width (from 1 to 80) (default 7)
+            h: set scope height (from 1 to 80) (default 7)
+            o: set window opacity (from 0 to 1) (default 0.5)
+            wx: set window x offset (from -1 to 1) (default -1)
+            wy: set window y offset (from -1 to 1) (default -1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixscope)
@@ -8943,8 +8943,8 @@ class VideoStream(FilterableStream):
         Filter video using libpostproc.
 
         Args:
-            subfilters (String): set postprocess subfilters (default "de")
-            enable (str): timeline editing
+            subfilters: set postprocess subfilters (default "de")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp)
@@ -8980,9 +8980,9 @@ class VideoStream(FilterableStream):
         Apply Postprocessing 7 filter.
 
         Args:
-            qp (Int): force a constant quantizer parameter (from 0 to 64) (default 0)
-            mode (Int): set thresholding mode (from 0 to 2) (default medium)
-            enable (str): timeline editing
+            qp: force a constant quantizer parameter (from 0 to 64) (default 0)
+            mode: set thresholding mode (from 0 to 2) (default medium)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp7)
@@ -9020,10 +9020,10 @@ class VideoStream(FilterableStream):
         Apply prewitt operator.
 
         Args:
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            scale (Float): set scale (from 0 to 65535) (default 1)
-            delta (Float): set delta (from -65535 to 65535) (default 0)
-            enable (str): timeline editing
+            planes: set planes to filter (from 0 to 15) (default 15)
+            scale: set scale (from 0 to 65535) (default 1)
+            delta: set delta (from -65535 to 65535) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#prewitt)
@@ -9085,14 +9085,14 @@ class VideoStream(FilterableStream):
         Make pseudocolored video frames.
 
         Args:
-            c0 (String): set component #0 expression (default "val")
-            c1 (String): set component #1 expression (default "val")
-            c2 (String): set component #2 expression (default "val")
-            c3 (String): set component #3 expression (default "val")
-            index (Int): set component as base (from 0 to 3) (default 0)
-            preset (Int): set preset (from -1 to 14) (default none)
-            opacity (Float): set pseudocolor opacity (from 0 to 1) (default 1)
-            enable (str): timeline editing
+            c0: set component #0 expression (default "val")
+            c1: set component #1 expression (default "val")
+            c2: set component #2 expression (default "val")
+            c3: set component #3 expression (default "val")
+            index: set component as base (from 0 to 3) (default 0)
+            preset: set preset (from -1 to 14) (default none)
+            opacity: set pseudocolor opacity (from 0 to 1) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pseudocolor)
@@ -9140,14 +9140,14 @@ class VideoStream(FilterableStream):
         Calculate the PSNR between two video streams.
 
         Args:
-            stats_file (String): Set file where to store per-frame difference information
-            stats_version (Int): Set the format version for the stats file. (from 1 to 2) (default 1)
-            output_max (Boolean): Add raw stats (max values) to the output log. (default false)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            stats_file: Set file where to store per-frame difference information
+            stats_version: Set the format version for the stats file. (from 1 to 2) (default 1)
+            output_max: Add raw stats (max values) to the output log. (default false)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
@@ -9195,12 +9195,12 @@ class VideoStream(FilterableStream):
         Pullup from field sequence to frames.
 
         Args:
-            jl (Int): set left junk size (from 0 to INT_MAX) (default 1)
-            jr (Int): set right junk size (from 0 to INT_MAX) (default 1)
-            jt (Int): set top junk size (from 1 to INT_MAX) (default 4)
-            jb (Int): set bottom junk size (from 1 to INT_MAX) (default 4)
-            sb (Boolean): set strict breaks (default false)
-            mp (Int): set metric plane (from 0 to 2) (default y)
+            jl: set left junk size (from 0 to INT_MAX) (default 1)
+            jr: set right junk size (from 0 to INT_MAX) (default 1)
+            jt: set top junk size (from 1 to INT_MAX) (default 4)
+            jb: set bottom junk size (from 1 to INT_MAX) (default 4)
+            sb: set strict breaks (default false)
+            mp: set metric plane (from 0 to 2) (default y)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pullup)
@@ -9233,8 +9233,8 @@ class VideoStream(FilterableStream):
         Change video quantization parameters.
 
         Args:
-            qp (String): set qp expression
-            enable (str): timeline editing
+            qp: set qp expression
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#qp)
@@ -9263,8 +9263,8 @@ class VideoStream(FilterableStream):
         Return random frames.
 
         Args:
-            frames (Int): set number of frames in cache (from 2 to 512) (default 30)
-            seed (Int64): set the seed (from -1 to UINT32_MAX) (default -1)
+            frames: set number of frames in cache (from 2 to 512) (default 30)
+            seed: set the seed (from -1 to UINT32_MAX) (default -1)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#random)
@@ -9303,12 +9303,12 @@ class VideoStream(FilterableStream):
         Read EIA-608 Closed Caption codes from input video and write them to frame metadata.
 
         Args:
-            scan_min (Int): set from which line to scan for codes (from 0 to INT_MAX) (default 0)
-            scan_max (Int): set to which line to scan for codes (from 0 to INT_MAX) (default 29)
-            spw (Float): set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)
-            chp (Boolean): check and apply parity bit (default false)
-            lp (Boolean): lowpass line prior to processing (default true)
-            enable (str): timeline editing
+            scan_min: set from which line to scan for codes (from 0 to INT_MAX) (default 0)
+            scan_max: set to which line to scan for codes (from 0 to INT_MAX) (default 29)
+            spw: set ratio of width reserved for sync code detection (from 0.1 to 0.7) (default 0.27)
+            chp: check and apply parity bit (default false)
+            lp: lowpass line prior to processing (default true)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readeia608)
@@ -9343,9 +9343,9 @@ class VideoStream(FilterableStream):
         Read vertical interval timecode and write it to frame metadata.
 
         Args:
-            scan_max (Int): maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)
-            thr_b (Double): black color threshold (from 0 to 1) (default 0.2)
-            thr_w (Double): white color threshold (from 0 to 1) (default 0.6)
+            scan_max: maximum line numbers to scan for VITC data (from -1 to INT_MAX) (default 45)
+            thr_b: black color threshold (from 0 to 1) (default 0.2)
+            thr_w: white color threshold (from 0 to 1) (default 0.6)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readvitc)
@@ -9375,8 +9375,8 @@ class VideoStream(FilterableStream):
         Slow down filtering to match realtime.
 
         Args:
-            limit (Duration): sleep time limit (default 2)
-            speed (Double): speed factor (from DBL_MIN to DBL_MAX) (default 1)
+            limit: sleep time limit (default 2)
+            speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
@@ -9413,8 +9413,8 @@ class VideoStream(FilterableStream):
         Remap pixels.
 
         Args:
-            format (Int): set output format (from 0 to 1) (default color)
-            fill (Color): set the color of the unmapped pixels (default "black")
+            format: set output format (from 0 to 1) (default color)
+            fill: set the color of the unmapped pixels (default "black")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
@@ -9456,11 +9456,11 @@ class VideoStream(FilterableStream):
         Remove grain.
 
         Args:
-            m0 (Int): set mode for 1st plane (from 0 to 24) (default 0)
-            m1 (Int): set mode for 2nd plane (from 0 to 24) (default 0)
-            m2 (Int): set mode for 3rd plane (from 0 to 24) (default 0)
-            m3 (Int): set mode for 4th plane (from 0 to 24) (default 0)
-            enable (str): timeline editing
+            m0: set mode for 1st plane (from 0 to 24) (default 0)
+            m1: set mode for 2nd plane (from 0 to 24) (default 0)
+            m2: set mode for 3rd plane (from 0 to 24) (default 0)
+            m3: set mode for 4th plane (from 0 to 24) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removegrain)
@@ -9494,8 +9494,8 @@ class VideoStream(FilterableStream):
         Remove a TV logo based on a mask image.
 
         Args:
-            filename (String): set bitmap filename
-            enable (str): timeline editing
+            filename: set bitmap filename
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removelogo)
@@ -9578,16 +9578,16 @@ class VideoStream(FilterableStream):
         Shift RGBA.
 
         Args:
-            rh (Int): shift red horizontally (from -255 to 255) (default 0)
-            rv (Int): shift red vertically (from -255 to 255) (default 0)
-            gh (Int): shift green horizontally (from -255 to 255) (default 0)
-            gv (Int): shift green vertically (from -255 to 255) (default 0)
-            bh (Int): shift blue horizontally (from -255 to 255) (default 0)
-            bv (Int): shift blue vertically (from -255 to 255) (default 0)
-            ah (Int): shift alpha horizontally (from -255 to 255) (default 0)
-            av (Int): shift alpha vertically (from -255 to 255) (default 0)
-            edge (Int): set edge operation (from 0 to 1) (default smear)
-            enable (str): timeline editing
+            rh: shift red horizontally (from -255 to 255) (default 0)
+            rv: shift red vertically (from -255 to 255) (default 0)
+            gh: shift green horizontally (from -255 to 255) (default 0)
+            gv: shift green vertically (from -255 to 255) (default 0)
+            bh: shift blue horizontally (from -255 to 255) (default 0)
+            bv: shift blue vertically (from -255 to 255) (default 0)
+            ah: shift alpha horizontally (from -255 to 255) (default 0)
+            av: shift alpha vertically (from -255 to 255) (default 0)
+            edge: set edge operation (from 0 to 1) (default smear)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rgbashift)
@@ -9632,10 +9632,10 @@ class VideoStream(FilterableStream):
         Apply roberts cross operator.
 
         Args:
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            scale (Float): set scale (from 0 to 65535) (default 1)
-            delta (Float): set delta (from -65535 to 65535) (default 0)
-            enable (str): timeline editing
+            planes: set planes to filter (from 0 to 15) (default 15)
+            scale: set scale (from 0 to 65535) (default 1)
+            delta: set delta (from -65535 to 65535) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#roberts)
@@ -9676,12 +9676,12 @@ class VideoStream(FilterableStream):
         Rotate the input image.
 
         Args:
-            angle (String): set angle (in radians) (default "0")
-            out_w (String): set output width expression (default "iw")
-            out_h (String): set output height expression (default "ih")
-            fillcolor (String): set background fill color (default "black")
-            bilinear (Boolean): use bilinear interpolation (default true)
-            enable (str): timeline editing
+            angle: set angle (in radians) (default "0")
+            out_w: set output width expression (default "iw")
+            out_h: set output height expression (default "ih")
+            fillcolor: set background fill color (default "black")
+            bilinear: use bilinear interpolation (default true)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rotate)
@@ -9725,13 +9725,13 @@ class VideoStream(FilterableStream):
         Apply shape adaptive blur.
 
         Args:
-            luma_radius (Float): set luma radius (from 0.1 to 4) (default 1)
-            luma_pre_filter_radius (Float): set luma pre-filter radius (from 0.1 to 2) (default 1)
-            luma_strength (Float): set luma strength (from 0.1 to 100) (default 1)
-            chroma_radius (Float): set chroma radius (from -0.9 to 4) (default -0.9)
-            chroma_pre_filter_radius (Float): set chroma pre-filter radius (from -0.9 to 2) (default -0.9)
-            chroma_strength (Float): set chroma strength (from -0.9 to 100) (default -0.9)
-            enable (str): timeline editing
+            luma_radius: set luma radius (from 0.1 to 4) (default 1)
+            luma_pre_filter_radius: set luma pre-filter radius (from 0.1 to 2) (default 1)
+            luma_strength: set luma strength (from 0.1 to 100) (default 1)
+            chroma_radius: set chroma radius (from -0.9 to 4) (default -0.9)
+            chroma_pre_filter_radius: set chroma pre-filter radius (from -0.9 to 2) (default -0.9)
+            chroma_strength: set chroma strength (from -0.9 to 100) (default -0.9)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sab)
@@ -9794,23 +9794,23 @@ class VideoStream(FilterableStream):
         Scale the input video size and/or convert the image format.
 
         Args:
-            w (String): Output video width
-            h (String): Output video height
-            flags (String): Flags to pass to libswscale (default "")
-            interl (Boolean): set interlacing (default false)
-            in_color_matrix (String): set input YCbCr type (default "auto")
-            out_color_matrix (String): set output YCbCr type
-            in_range (Int): set input color range (from 0 to 2) (default auto)
-            out_range (Int): set output color range (from 0 to 2) (default auto)
-            in_v_chr_pos (Int): input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-            in_h_chr_pos (Int): input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-            out_v_chr_pos (Int): output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-            out_h_chr_pos (Int): output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-            force_original_aspect_ratio (Int): decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
-            force_divisible_by (Int): enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
-            param0 (Double): Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-            param1 (Double): Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default init)
+            w: Output video width
+            h: Output video height
+            flags: Flags to pass to libswscale (default "")
+            interl: set interlacing (default false)
+            in_color_matrix: set input YCbCr type (default "auto")
+            out_color_matrix: set output YCbCr type
+            in_range: set input color range (from 0 to 2) (default auto)
+            out_range: set output color range (from 0 to 2) (default auto)
+            in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+            in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+            out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+            out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+            force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+            force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+            param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+            param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+            eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale)
@@ -9884,23 +9884,23 @@ class VideoStream(FilterableStream):
         Scale the input video size and/or convert the image format to the given reference.
 
         Args:
-            w (String): Output video width
-            h (String): Output video height
-            flags (String): Flags to pass to libswscale (default "")
-            interl (Boolean): set interlacing (default false)
-            in_color_matrix (String): set input YCbCr type (default "auto")
-            out_color_matrix (String): set output YCbCr type
-            in_range (Int): set input color range (from 0 to 2) (default auto)
-            out_range (Int): set output color range (from 0 to 2) (default auto)
-            in_v_chr_pos (Int): input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-            in_h_chr_pos (Int): input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-            out_v_chr_pos (Int): output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
-            out_h_chr_pos (Int): output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
-            force_original_aspect_ratio (Int): decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
-            force_divisible_by (Int): enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
-            param0 (Double): Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-            param1 (Double): Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default init)
+            w: Output video width
+            h: Output video height
+            flags: Flags to pass to libswscale (default "")
+            interl: set interlacing (default false)
+            in_color_matrix: set input YCbCr type (default "auto")
+            out_color_matrix: set output YCbCr type
+            in_range: set input color range (from 0 to 2) (default auto)
+            out_range: set output color range (from 0 to 2) (default auto)
+            in_v_chr_pos: input vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+            in_h_chr_pos: input horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+            out_v_chr_pos: output vertical chroma position in luma grid/256 (from -513 to 512) (default -513)
+            out_h_chr_pos: output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)
+            force_original_aspect_ratio: decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)
+            force_divisible_by: enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)
+            param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+            param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
+            eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale2ref)
@@ -9952,8 +9952,8 @@ class VideoStream(FilterableStream):
         Detect video scene change
 
         Args:
-            threshold (Double): set scene change detect threshold (from 0 to 100) (default 10)
-            sc_pass (Boolean): Set the flag to pass scene change frames (default false)
+            threshold: set scene change detect threshold (from 0 to 100) (default 10)
+            sc_pass: Set the flag to pass scene change frames (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scdet)
@@ -9990,10 +9990,10 @@ class VideoStream(FilterableStream):
         Apply scharr operator.
 
         Args:
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            scale (Float): set scale (from 0 to 65535) (default 1)
-            delta (Float): set delta (from -65535 to 65535) (default 0)
-            enable (str): timeline editing
+            planes: set planes to filter (from 0 to 15) (default 15)
+            scale: set scale (from 0 to 65535) (default 1)
+            delta: set delta (from -65535 to 65535) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scharr)
@@ -10033,11 +10033,11 @@ class VideoStream(FilterableStream):
         Scroll input video.
 
         Args:
-            horizontal (Float): set the horizontal scrolling speed (from -1 to 1) (default 0)
-            vertical (Float): set the vertical scrolling speed (from -1 to 1) (default 0)
-            hpos (Float): set initial horizontal position (from 0 to 1) (default 0)
-            vpos (Float): set initial vertical position (from 0 to 1) (default 0)
-            enable (str): timeline editing
+            horizontal: set the horizontal scrolling speed (from -1 to 1) (default 0)
+            vertical: set the vertical scrolling speed (from -1 to 1) (default 0)
+            hpos: set initial horizontal position (from 0 to 1) (default 0)
+            vpos: set initial vertical position (from 0 to 1) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scroll)
@@ -10071,8 +10071,8 @@ class VideoStream(FilterableStream):
         Segment video stream.
 
         Args:
-            timestamps (String): timestamps of input at which to split input
-            frames (String): frames at which to split input
+            timestamps: timestamps of input at which to split input
+            frames: frames at which to split input
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
@@ -10102,8 +10102,8 @@ class VideoStream(FilterableStream):
         Select video frames to pass in output.
 
         Args:
-            expr (String): set an expression to use for selecting frames (default "1")
-            outputs (Int): set the number of outputs (from 1 to INT_MAX) (default 1)
+            expr: set an expression to use for selecting frames (default "1")
+            outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
@@ -10149,18 +10149,18 @@ class VideoStream(FilterableStream):
         Apply CMYK adjustments to specific color ranges.
 
         Args:
-            correction_method (Int): select correction method (from 0 to 1) (default absolute)
-            reds (String): adjust red regions
-            yellows (String): adjust yellow regions
-            greens (String): adjust green regions
-            cyans (String): adjust cyan regions
-            blues (String): adjust blue regions
-            magentas (String): adjust magenta regions
-            whites (String): adjust white regions
-            neutrals (String): adjust neutral regions
-            blacks (String): adjust black regions
-            psfile (String): set Photoshop selectivecolor file name
-            enable (str): timeline editing
+            correction_method: select correction method (from 0 to 1) (default absolute)
+            reds: adjust red regions
+            yellows: adjust yellow regions
+            greens: adjust green regions
+            cyans: adjust cyan regions
+            blues: adjust blue regions
+            magentas: adjust magenta regions
+            whites: adjust white regions
+            neutrals: adjust neutral regions
+            blacks: adjust black regions
+            psfile: set Photoshop selectivecolor file name
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#selectivecolor)
@@ -10201,8 +10201,8 @@ class VideoStream(FilterableStream):
         Send commands to filters.
 
         Args:
-            commands (String): set commands
-            filename (String): set commands file
+            commands: set commands
+            filename: set commands file
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
@@ -10251,8 +10251,8 @@ class VideoStream(FilterableStream):
         Set the frame display aspect ratio.
 
         Args:
-            dar (String): set display aspect ratio (default "0")
-            max (Int): set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
+            dar: set display aspect ratio (default "0")
+            max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
@@ -10283,7 +10283,7 @@ class VideoStream(FilterableStream):
         Force field for the output video frame.
 
         Args:
-            mode (Int): select interlace mode (from -1 to 2) (default auto)
+            mode: select interlace mode (from -1 to 2) (default auto)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setfield)
@@ -10378,11 +10378,11 @@ class VideoStream(FilterableStream):
         Force field, or color property for the output video frame.
 
         Args:
-            field_mode (Int): select interlace mode (from -1 to 2) (default auto)
-            range (Int): select color range (from -1 to 2) (default auto)
-            color_primaries (Int): select color primaries (from -1 to 22) (default auto)
-            color_trc (Int): select color transfer (from -1 to 18) (default auto)
-            colorspace (Int): select colorspace (from -1 to 14) (default auto)
+            field_mode: select interlace mode (from -1 to 2) (default auto)
+            range: select color range (from -1 to 2) (default auto)
+            color_primaries: select color primaries (from -1 to 22) (default auto)
+            color_trc: select color transfer (from -1 to 18) (default auto)
+            colorspace: select colorspace (from -1 to 14) (default auto)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setparams)
@@ -10414,7 +10414,7 @@ class VideoStream(FilterableStream):
         Set PTS for the output video frame.
 
         Args:
-            expr (String): Expression determining the frame timestamp (default "PTS")
+            expr: Expression determining the frame timestamp (default "PTS")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
@@ -10449,7 +10449,7 @@ class VideoStream(FilterableStream):
         Force color range for the output video frame.
 
         Args:
-            range (Int): select color range (from -1 to 2) (default auto)
+            range: select color range (from -1 to 2) (default auto)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setrange)
@@ -10477,8 +10477,8 @@ class VideoStream(FilterableStream):
         Set the pixel sample aspect ratio.
 
         Args:
-            sar (String): set sample (pixel) aspect ratio (default "0")
-            max (Int): set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
+            sar: set sample (pixel) aspect ratio (default "0")
+            max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
@@ -10507,7 +10507,7 @@ class VideoStream(FilterableStream):
         Set timebase for the video output link.
 
         Args:
-            expr (String): set expression determining the output timebase (default "intb")
+            expr: set expression determining the output timebase (default "intb")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
@@ -10544,11 +10544,11 @@ class VideoStream(FilterableStream):
         Shear transform the input image.
 
         Args:
-            shx (Float): set x shear factor (from -2 to 2) (default 0)
-            shy (Float): set y shear factor (from -2 to 2) (default 0)
-            fillcolor (String): set background fill color (default "black")
-            interp (Int): set interpolation (from 0 to 1) (default bilinear)
-            enable (str): timeline editing
+            shx: set x shear factor (from -2 to 2) (default 0)
+            shy: set y shear factor (from -2 to 2) (default 0)
+            fillcolor: set background fill color (default "black")
+            interp: set interpolation (from 0 to 1) (default bilinear)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shear)
@@ -10580,7 +10580,7 @@ class VideoStream(FilterableStream):
         Show textual information for each video frame.
 
         Args:
-            checksum (Boolean): calculate checksums (default true)
+            checksum: calculate checksums (default true)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showinfo)
@@ -10608,7 +10608,7 @@ class VideoStream(FilterableStream):
         Display frame palette.
 
         Args:
-            s (Int): set pixel box size (from 1 to 100) (default 30)
+            s: set pixel box size (from 1 to 100) (default 30)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showpalette)
@@ -10638,8 +10638,8 @@ class VideoStream(FilterableStream):
         Shuffle video frames.
 
         Args:
-            mapping (String): set destination indexes of input frames (default "0")
-            enable (str): timeline editing
+            mapping: set destination indexes of input frames (default "0")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleframes)
@@ -10678,12 +10678,12 @@ class VideoStream(FilterableStream):
         Shuffle video pixels.
 
         Args:
-            direction (Int): set shuffle direction (from 0 to 1) (default forward)
-            mode (Int): set shuffle mode (from 0 to 2) (default horizontal)
-            width (Int): set block width (from 1 to 8000) (default 10)
-            height (Int): set block height (from 1 to 8000) (default 10)
-            seed (Int64): set random seed (from -1 to UINT32_MAX) (default -1)
-            enable (str): timeline editing
+            direction: set shuffle direction (from 0 to 1) (default forward)
+            mode: set shuffle mode (from 0 to 2) (default horizontal)
+            width: set block width (from 1 to 8000) (default 10)
+            height: set block height (from 1 to 8000) (default 10)
+            seed: set random seed (from -1 to UINT32_MAX) (default -1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shufflepixels)
@@ -10725,11 +10725,11 @@ class VideoStream(FilterableStream):
         Shuffle video planes.
 
         Args:
-            map0 (Int): Index of the input plane to be used as the first output plane (from 0 to 3) (default 0)
-            map1 (Int): Index of the input plane to be used as the second output plane (from 0 to 3) (default 1)
-            map2 (Int): Index of the input plane to be used as the third output plane (from 0 to 3) (default 2)
-            map3 (Int): Index of the input plane to be used as the fourth output plane (from 0 to 3) (default 3)
-            enable (str): timeline editing
+            map0: Index of the input plane to be used as the first output plane (from 0 to 3) (default 0)
+            map1: Index of the input plane to be used as the second output plane (from 0 to 3) (default 1)
+            map2: Index of the input plane to be used as the third output plane (from 0 to 3) (default 2)
+            map3: Index of the input plane to be used as the fourth output plane (from 0 to 3) (default 3)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes)
@@ -10792,9 +10792,9 @@ class VideoStream(FilterableStream):
         Manipulate video frame side data.
 
         Args:
-            mode (Int): set a mode of operation (from 0 to 1) (default select)
-            type (Int): set side data type (from -1 to INT_MAX) (default -1)
-            enable (str): timeline editing
+            mode: set a mode of operation (from 0 to 1) (default select)
+            type: set side data type (from -1 to INT_MAX) (default -1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
@@ -10831,9 +10831,9 @@ class VideoStream(FilterableStream):
         Generate statistics from video analysis.
 
         Args:
-            stat (Flags): set statistics filters (default 0)
-            out (Int): set video filter (from -1 to 2) (default -1)
-            c (Color): set highlight color (default "yellow")
+            stat: set statistics filters (default 0)
+            out: set video filter (from -1 to 2) (default -1)
+            c: set highlight color (default "yellow")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signalstats)
@@ -10863,7 +10863,7 @@ class VideoStream(FilterableStream):
         Calculate spatial information (SI) and temporal information (TI).
 
         Args:
-            print_summary (Boolean): Print summary showing average values (default false)
+            print_summary: Print summary showing average values (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#siti)
@@ -10902,13 +10902,13 @@ class VideoStream(FilterableStream):
         Blur the input video without impacting the outlines.
 
         Args:
-            luma_radius (Float): set luma radius (from 0.1 to 5) (default 1)
-            luma_strength (Float): set luma strength (from -1 to 1) (default 1)
-            luma_threshold (Int): set luma threshold (from -30 to 30) (default 0)
-            chroma_radius (Float): set chroma radius (from -0.9 to 5) (default -0.9)
-            chroma_strength (Float): set chroma strength (from -2 to 1) (default -2)
-            chroma_threshold (Int): set chroma threshold (from -31 to 30) (default -31)
-            enable (str): timeline editing
+            luma_radius: set luma radius (from 0.1 to 5) (default 1)
+            luma_strength: set luma strength (from -1 to 1) (default 1)
+            luma_threshold: set luma threshold (from -30 to 30) (default 0)
+            chroma_radius: set chroma radius (from -0.9 to 5) (default -0.9)
+            chroma_strength: set chroma strength (from -2 to 1) (default -2)
+            chroma_threshold: set chroma threshold (from -31 to 30) (default -31)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#smartblur)
@@ -10950,10 +10950,10 @@ class VideoStream(FilterableStream):
         Apply sobel operator.
 
         Args:
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            scale (Float): set scale (from 0 to 65535) (default 1)
-            delta (Float): set delta (from -65535 to 65535) (default 0)
-            enable (str): timeline editing
+            planes: set planes to filter (from 0 to 15) (default 15)
+            scale: set scale (from 0 to 65535) (default 1)
+            delta: set delta (from -65535 to 65535) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sobel)
@@ -11021,13 +11021,13 @@ class VideoStream(FilterableStream):
         Convert input spectrum videos to audio output.
 
         Args:
-            sample_rate (Int): set sample rate (from 15 to INT_MAX) (default 44100)
-            channels (Int): set channels (from 1 to 8) (default 1)
-            scale (Int): set input amplitude scale (from 0 to 1) (default log)
-            slide (Int): set input sliding mode (from 0 to 3) (default fullframe)
-            win_func (Int): set window function (from 0 to 20) (default rect)
-            overlap (Float): set window overlap (from 0 to 1) (default 1)
-            orientation (Int): set orientation (from 0 to 1) (default vertical)
+            sample_rate: set sample rate (from 15 to INT_MAX) (default 44100)
+            channels: set channels (from 1 to 8) (default 1)
+            scale: set input amplitude scale (from 0 to 1) (default log)
+            slide: set input sliding mode (from 0 to 3) (default fullframe)
+            win_func: set window function (from 0 to 20) (default rect)
+            overlap: set window overlap (from 0 to 1) (default 1)
+            orientation: set orientation (from 0 to 1) (default vertical)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
@@ -11064,7 +11064,7 @@ class VideoStream(FilterableStream):
         Pass on the input to N video outputs.
 
         Args:
-            outputs (Int): set number of outputs (from 1 to INT_MAX) (default 2)
+            outputs: set number of outputs (from 1 to INT_MAX) (default 2)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
@@ -11102,11 +11102,11 @@ class VideoStream(FilterableStream):
         Apply a simple post processing filter.
 
         Args:
-            quality (Int): set quality (from 0 to 6) (default 3)
-            qp (Int): force a constant quantizer parameter (from 0 to 63) (default 0)
-            mode (Int): set thresholding mode (from 0 to 1) (default hard)
-            use_bframe_qp (Boolean): use B-frames' QP (default false)
-            enable (str): timeline editing
+            quality: set quality (from 0 to 6) (default 3)
+            qp: force a constant quantizer parameter (from 0 to 63) (default 0)
+            mode: set thresholding mode (from 0 to 1) (default hard)
+            use_bframe_qp: use B-frames' QP (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spp)
@@ -11147,11 +11147,11 @@ class VideoStream(FilterableStream):
         Apply DNN-based image super resolution to the input.
 
         Args:
-            dnn_backend (Int): DNN backend used for model execution (from 0 to 1) (default native)
-            scale_factor (Int): scale factor for SRCNN model (from 2 to 4) (default 2)
-            model (String): path to model file specifying network architecture and its parameters
-            input (String): input name of the model (default "x")
-            output (String): output name of the model (default "y")
+            dnn_backend: DNN backend used for model execution (from 0 to 1) (default native)
+            scale_factor: scale factor for SRCNN model (from 2 to 4) (default 2)
+            model: path to model file specifying network architecture and its parameters
+            input: input name of the model (default "x")
+            output: output name of the model (default "y")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sr)
@@ -11194,12 +11194,12 @@ class VideoStream(FilterableStream):
         Calculate the SSIM between two video streams.
 
         Args:
-            stats_file (String): Set file where to store per-frame difference information
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            stats_file: Set file where to store per-frame difference information
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
@@ -11302,8 +11302,8 @@ class VideoStream(FilterableStream):
         Convert video stereoscopic 3D view.
 
         Args:
-            _in (Int): set input format (from 16 to 32) (default sbsl)
-            out (Int): set output format (from 0 to 32) (default arcd)
+            _in: set input format (from 16 to 32) (default sbsl)
+            out: set output format (from 0 to 32) (default arcd)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereo3d)
@@ -11343,13 +11343,13 @@ class VideoStream(FilterableStream):
         Render text subtitles onto input video using the libass library.
 
         Args:
-            filename (String): set the filename of file to read
-            original_size (Image_size): set the size of the original video (used to scale fonts)
-            fontsdir (String): set the directory containing the fonts to read
-            alpha (Boolean): enable processing of alpha channel (default false)
-            charenc (String): set input character encoding
-            stream_index (Int): set stream index (from -1 to INT_MAX) (default -1)
-            force_style (String): force subtitle style
+            filename: set the filename of file to read
+            original_size: set the size of the original video (used to scale fonts)
+            fontsdir: set the directory containing the fonts to read
+            alpha: enable processing of alpha channel (default false)
+            charenc: set input character encoding
+            stream_index: set stream index (from -1 to INT_MAX) (default -1)
+            force_style: force subtitle style
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#subtitles)
@@ -11414,13 +11414,13 @@ class VideoStream(FilterableStream):
         Swap 2 rectangular objects in video.
 
         Args:
-            w (String): set rect width (default "w/2")
-            h (String): set rect height (default "h/2")
-            x1 (String): set 1st rect x top left coordinate (default "w/2")
-            y1 (String): set 1st rect y top left coordinate (default "h/2")
-            x2 (String): set 2nd rect x top left coordinate (default "0")
-            y2 (String): set 2nd rect y top left coordinate (default "0")
-            enable (str): timeline editing
+            w: set rect width (default "w/2")
+            h: set rect height (default "h/2")
+            x1: set 1st rect x top left coordinate (default "w/2")
+            y1: set 1st rect y top left coordinate (default "h/2")
+            x2: set 2nd rect x top left coordinate (default "0")
+            y2: set 2nd rect y top left coordinate (default "0")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swaprect)
@@ -11454,7 +11454,7 @@ class VideoStream(FilterableStream):
         Swap U and V components.
 
         Args:
-            enable (str): timeline editing
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swapuv)
@@ -11727,22 +11727,22 @@ class VideoStream(FilterableStream):
         Blend successive frames.
 
         Args:
-            c0_mode (Int): set component #0 blend mode (from 0 to 39) (default normal)
-            c1_mode (Int): set component #1 blend mode (from 0 to 39) (default normal)
-            c2_mode (Int): set component #2 blend mode (from 0 to 39) (default normal)
-            c3_mode (Int): set component #3 blend mode (from 0 to 39) (default normal)
-            all_mode (Int): set blend mode for all components (from -1 to 39) (default -1)
-            c0_expr (String): set color component #0 expression
-            c1_expr (String): set color component #1 expression
-            c2_expr (String): set color component #2 expression
-            c3_expr (String): set color component #3 expression
-            all_expr (String): set expression for all color components
-            c0_opacity (Double): set color component #0 opacity (from 0 to 1) (default 1)
-            c1_opacity (Double): set color component #1 opacity (from 0 to 1) (default 1)
-            c2_opacity (Double): set color component #2 opacity (from 0 to 1) (default 1)
-            c3_opacity (Double): set color component #3 opacity (from 0 to 1) (default 1)
-            all_opacity (Double): set opacity for all color components (from 0 to 1) (default 1)
-            enable (str): timeline editing
+            c0_mode: set component #0 blend mode (from 0 to 39) (default normal)
+            c1_mode: set component #1 blend mode (from 0 to 39) (default normal)
+            c2_mode: set component #2 blend mode (from 0 to 39) (default normal)
+            c3_mode: set component #3 blend mode (from 0 to 39) (default normal)
+            all_mode: set blend mode for all components (from -1 to 39) (default -1)
+            c0_expr: set color component #0 expression
+            c1_expr: set color component #1 expression
+            c2_expr: set color component #2 expression
+            c3_expr: set color component #3 expression
+            all_expr: set expression for all color components
+            c0_opacity: set color component #0 opacity (from 0 to 1) (default 1)
+            c1_opacity: set color component #1 opacity (from 0 to 1) (default 1)
+            c2_opacity: set color component #2 opacity (from 0 to 1) (default 1)
+            c3_opacity: set color component #3 opacity (from 0 to 1) (default 1)
+            all_opacity: set opacity for all color components (from 0 to 1) (default 1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tblend)
@@ -11791,8 +11791,8 @@ class VideoStream(FilterableStream):
         Apply a telecine pattern.
 
         Args:
-            first_field (Int): select first field (from 0 to 1) (default top)
-            pattern (String): pattern that describe for how many fields a frame is to be displayed (default "23")
+            first_field: select first field (from 0 to 1) (default top)
+            pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#telecine)
@@ -11833,14 +11833,14 @@ class VideoStream(FilterableStream):
         Compute and draw a temporal histogram.
 
         Args:
-            width (Int): set width (from 0 to 8192) (default 0)
-            display_mode (Int): set display mode (from 0 to 2) (default stack)
-            levels_mode (Int): set levels mode (from 0 to 1) (default linear)
-            components (Int): set color components to display (from 1 to 15) (default 7)
-            bgopacity (Float): set background opacity (from 0 to 1) (default 0.9)
-            envelope (Boolean): display envelope (default false)
-            ecolor (Color): set envelope color (default "gold")
-            slide (Int): set slide mode (from 0 to 4) (default replace)
+            width: set width (from 0 to 8192) (default 0)
+            display_mode: set display mode (from 0 to 2) (default stack)
+            levels_mode: set levels mode (from 0 to 1) (default linear)
+            components: set color components to display (from 1 to 15) (default 7)
+            bgopacity: set background opacity (from 0 to 1) (default 0.9)
+            envelope: display envelope (default false)
+            ecolor: set envelope color (default "gold")
+            slide: set slide mode (from 0 to 4) (default replace)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thistogram)
@@ -11884,8 +11884,8 @@ class VideoStream(FilterableStream):
         Threshold first video stream using other video streams.
 
         Args:
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            planes: set planes to filter (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
@@ -11926,9 +11926,9 @@ class VideoStream(FilterableStream):
         Select the most representative frame in a given sequence of consecutive frames.
 
         Args:
-            n (Int): set the frames batch size (from 2 to INT_MAX) (default 100)
-            log (Int): force stats logging level (from INT_MIN to INT_MAX) (default info)
-            enable (str): timeline editing
+            n: set the frames batch size (from 2 to INT_MAX) (default 100)
+            log: force stats logging level (from INT_MIN to INT_MAX) (default info)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thumbnail)
@@ -11969,13 +11969,13 @@ class VideoStream(FilterableStream):
         Tile several successive frames together.
 
         Args:
-            layout (Image_size): set grid size (default "6x5")
-            nb_frames (Int): set maximum number of frame to render (from 0 to INT_MAX) (default 0)
-            margin (Int): set outer border margin in pixels (from 0 to 1024) (default 0)
-            padding (Int): set inner border thickness in pixels (from 0 to 1024) (default 0)
-            color (Color): set the color of the unused area (default "black")
-            overlap (Int): set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)
-            init_padding (Int): set how many frames to initially pad (from 0 to INT_MAX) (default 0)
+            layout: set grid size (default "6x5")
+            nb_frames: set maximum number of frame to render (from 0 to INT_MAX) (default 0)
+            margin: set outer border margin in pixels (from 0 to 1024) (default 0)
+            padding: set inner border thickness in pixels (from 0 to 1024) (default 0)
+            color: set the color of the unused area (default "black")
+            overlap: set how many frames to overlap for each render (from 0 to INT_MAX) (default 0)
+            init_padding: set how many frames to initially pad (from 0 to INT_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tile)
@@ -12018,7 +12018,7 @@ class VideoStream(FilterableStream):
         Perform temporal field interlacing.
 
         Args:
-            mode (Int): select interlace mode (from 0 to 7) (default merge)
+            mode: select interlace mode (from 0 to 7) (default merge)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tinterlace)
@@ -12055,11 +12055,11 @@ class VideoStream(FilterableStream):
         Compute and apply a lookup table from two successive frames.
 
         Args:
-            c0 (String): set component #0 expression (default "x")
-            c1 (String): set component #1 expression (default "x")
-            c2 (String): set component #2 expression (default "x")
-            c3 (String): set component #3 expression (default "x")
-            enable (str): timeline editing
+            c0: set component #0 expression (default "x")
+            c1: set component #1 expression (default "x")
+            c2: set component #2 expression (default "x")
+            c3: set component #3 expression (default "x")
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
@@ -12099,10 +12099,10 @@ class VideoStream(FilterableStream):
         Pick median pixels from successive frames.
 
         Args:
-            radius (Int): set median filter radius (from 1 to 127) (default 1)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            percentile (Float): set percentile (from 0 to 1) (default 0.5)
-            enable (str): timeline editing
+            radius: set median filter radius (from 1 to 127) (default 1)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            percentile: set percentile (from 0 to 1) (default 0.5)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmedian)
@@ -12141,10 +12141,10 @@ class VideoStream(FilterableStream):
         Apply Temporal Midway Equalization.
 
         Args:
-            radius (Int): set radius (from 1 to 127) (default 5)
-            sigma (Float): set sigma (from 0 to 1) (default 0.5)
-            planes (Int): set planes (from 0 to 15) (default 15)
-            enable (str): timeline editing
+            radius: set radius (from 1 to 127) (default 5)
+            sigma: set sigma (from 0 to 1) (default 0.5)
+            planes: set planes (from 0 to 15) (default 15)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmidequalizer)
@@ -12184,11 +12184,11 @@ class VideoStream(FilterableStream):
         Mix successive video frames.
 
         Args:
-            frames (Int): set number of successive frames to mix (from 1 to 1024) (default 3)
-            weights (String): set weight for each frame (default "1 1 1")
-            scale (Float): set scale (from 0 to 32767) (default 0)
-            planes (Flags): set what planes to filter (default F)
-            enable (str): timeline editing
+            frames: set number of successive frames to mix (from 1 to 1024) (default 3)
+            weights: set weight for each frame (default "1 1 1")
+            scale: set scale (from 0 to 32767) (default 0)
+            planes: set what planes to filter (default F)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmix)
@@ -12230,10 +12230,10 @@ class VideoStream(FilterableStream):
         Conversion to/from different dynamic ranges.
 
         Args:
-            tonemap (Int): tonemap algorithm selection (from 0 to 6) (default none)
-            param (Double): tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)
-            desat (Double): desaturation strength (from 0 to DBL_MAX) (default 2)
-            peak (Double): signal peak override (from 0 to DBL_MAX) (default 0)
+            tonemap: tonemap algorithm selection (from 0 to 6) (default none)
+            param: tonemap parameter (from DBL_MIN to DBL_MAX) (default nan)
+            desat: desaturation strength (from 0 to DBL_MAX) (default 2)
+            peak: signal peak override (from 0 to DBL_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tonemap)
@@ -12275,13 +12275,13 @@ class VideoStream(FilterableStream):
         Temporarily pad video frames.
 
         Args:
-            start (Int): set the number of frames to delay input (from 0 to INT_MAX) (default 0)
-            stop (Int): set the number of frames to add after input finished (from -1 to INT_MAX) (default 0)
-            start_mode (Int): set the mode of added frames to start (from 0 to 1) (default add)
-            stop_mode (Int): set the mode of added frames to end (from 0 to 1) (default add)
-            start_duration (Duration): set the duration to delay input (default 0)
-            stop_duration (Duration): set the duration to pad input (default 0)
-            color (Color): set the color of the added frames (default "black")
+            start: set the number of frames to delay input (from 0 to INT_MAX) (default 0)
+            stop: set the number of frames to add after input finished (from -1 to INT_MAX) (default 0)
+            start_mode: set the mode of added frames to start (from 0 to 1) (default add)
+            stop_mode: set the mode of added frames to end (from 0 to 1) (default add)
+            start_duration: set the duration to delay input (default 0)
+            stop_duration: set the duration to pad input (default 0)
+            color: set the color of the added frames (default "black")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tpad)
@@ -12321,8 +12321,8 @@ class VideoStream(FilterableStream):
         Transpose input video.
 
         Args:
-            dir (Int): set transpose direction (from 0 to 7) (default cclock_flip)
-            passthrough (Int): do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
+            dir: set transpose direction (from 0 to 7) (default cclock_flip)
+            passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose)
@@ -12362,13 +12362,13 @@ class VideoStream(FilterableStream):
         Pick one continuous section from the input, drop the rest.
 
         Args:
-            start (Duration): Timestamp of the first frame that should be passed (default INT64_MAX)
-            end (Duration): Timestamp of the first frame that should be dropped again (default INT64_MAX)
-            start_pts (Int64): Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
-            end_pts (Int64): Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
-            duration (Duration): Maximum duration of the output (default 0)
-            start_frame (Int64): Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)
-            end_frame (Int64): Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
+            start: Timestamp of the first frame that should be passed (default INT64_MAX)
+            end: Timestamp of the first frame that should be dropped again (default INT64_MAX)
+            start_pts: Timestamp of the first frame that should be passed (from I64_MIN to I64_MAX) (default I64_MIN)
+            end_pts: Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)
+            duration: Maximum duration of the output (default 0)
+            start_frame: Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)
+            end_frame: Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#trim)
@@ -12416,16 +12416,16 @@ class VideoStream(FilterableStream):
         Sharpen or blur the input video.
 
         Args:
-            luma_msize_x (Int): set luma matrix horizontal size (from 3 to 23) (default 5)
-            luma_msize_y (Int): set luma matrix vertical size (from 3 to 23) (default 5)
-            luma_amount (Float): set luma effect strength (from -2 to 5) (default 1)
-            chroma_msize_x (Int): set chroma matrix horizontal size (from 3 to 23) (default 5)
-            chroma_msize_y (Int): set chroma matrix vertical size (from 3 to 23) (default 5)
-            chroma_amount (Float): set chroma effect strength (from -2 to 5) (default 0)
-            alpha_msize_x (Int): set alpha matrix horizontal size (from 3 to 23) (default 5)
-            alpha_msize_y (Int): set alpha matrix vertical size (from 3 to 23) (default 5)
-            alpha_amount (Float): set alpha effect strength (from -2 to 5) (default 0)
-            enable (str): timeline editing
+            luma_msize_x: set luma matrix horizontal size (from 3 to 23) (default 5)
+            luma_msize_y: set luma matrix vertical size (from 3 to 23) (default 5)
+            luma_amount: set luma effect strength (from -2 to 5) (default 1)
+            chroma_msize_x: set chroma matrix horizontal size (from 3 to 23) (default 5)
+            chroma_msize_y: set chroma matrix vertical size (from 3 to 23) (default 5)
+            chroma_amount: set chroma effect strength (from -2 to 5) (default 0)
+            alpha_msize_x: set alpha matrix horizontal size (from 3 to 23) (default 5)
+            alpha_msize_y: set alpha matrix vertical size (from 3 to 23) (default 5)
+            alpha_amount: set alpha effect strength (from -2 to 5) (default 0)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unsharp)
@@ -12462,7 +12462,7 @@ class VideoStream(FilterableStream):
         Untile a frame into a sequence of frames.
 
         Args:
-            layout (Image_size): set grid size (default "6x5")
+            layout: set grid size (default "6x5")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#untile)
@@ -12612,42 +12612,42 @@ class VideoStream(FilterableStream):
         Convert 360 projection of video.
 
         Args:
-            input (Int): set input projection (from 0 to 24) (default e)
-            output (Int): set output projection (from 0 to 24) (default c3x2)
-            interp (Int): set interpolation method (from 0 to 7) (default line)
-            w (Int): output width (from 0 to 32767) (default 0)
-            h (Int): output height (from 0 to 32767) (default 0)
-            in_stereo (Int): input stereo format (from 0 to 2) (default 2d)
-            out_stereo (Int): output stereo format (from 0 to 2) (default 2d)
-            in_forder (String): input cubemap face order (default "rludfb")
-            out_forder (String): output cubemap face order (default "rludfb")
-            in_frot (String): input cubemap face rotation (default "000000")
-            out_frot (String): output cubemap face rotation (default "000000")
-            in_pad (Float): percent input cubemap pads (from 0 to 0.1) (default 0)
-            out_pad (Float): percent output cubemap pads (from 0 to 0.1) (default 0)
-            fin_pad (Int): fixed input cubemap pads (from 0 to 100) (default 0)
-            fout_pad (Int): fixed output cubemap pads (from 0 to 100) (default 0)
-            yaw (Float): yaw rotation (from -180 to 180) (default 0)
-            pitch (Float): pitch rotation (from -180 to 180) (default 0)
-            roll (Float): roll rotation (from -180 to 180) (default 0)
-            rorder (String): rotation order (default "ypr")
-            h_fov (Float): output horizontal field of view (from 0 to 360) (default 0)
-            v_fov (Float): output vertical field of view (from 0 to 360) (default 0)
-            d_fov (Float): output diagonal field of view (from 0 to 360) (default 0)
-            h_flip (Boolean): flip out video horizontally (default false)
-            v_flip (Boolean): flip out video vertically (default false)
-            d_flip (Boolean): flip out video indepth (default false)
-            ih_flip (Boolean): flip in video horizontally (default false)
-            iv_flip (Boolean): flip in video vertically (default false)
-            in_trans (Boolean): transpose video input (default false)
-            out_trans (Boolean): transpose video output (default false)
-            ih_fov (Float): input horizontal field of view (from 0 to 360) (default 0)
-            iv_fov (Float): input vertical field of view (from 0 to 360) (default 0)
-            id_fov (Float): input diagonal field of view (from 0 to 360) (default 0)
-            h_offset (Float): output horizontal off-axis offset (from -1 to 1) (default 0)
-            v_offset (Float): output vertical off-axis offset (from -1 to 1) (default 0)
-            alpha_mask (Boolean): build mask in alpha plane (default false)
-            reset_rot (Boolean): reset rotation (default false)
+            input: set input projection (from 0 to 24) (default e)
+            output: set output projection (from 0 to 24) (default c3x2)
+            interp: set interpolation method (from 0 to 7) (default line)
+            w: output width (from 0 to 32767) (default 0)
+            h: output height (from 0 to 32767) (default 0)
+            in_stereo: input stereo format (from 0 to 2) (default 2d)
+            out_stereo: output stereo format (from 0 to 2) (default 2d)
+            in_forder: input cubemap face order (default "rludfb")
+            out_forder: output cubemap face order (default "rludfb")
+            in_frot: input cubemap face rotation (default "000000")
+            out_frot: output cubemap face rotation (default "000000")
+            in_pad: percent input cubemap pads (from 0 to 0.1) (default 0)
+            out_pad: percent output cubemap pads (from 0 to 0.1) (default 0)
+            fin_pad: fixed input cubemap pads (from 0 to 100) (default 0)
+            fout_pad: fixed output cubemap pads (from 0 to 100) (default 0)
+            yaw: yaw rotation (from -180 to 180) (default 0)
+            pitch: pitch rotation (from -180 to 180) (default 0)
+            roll: roll rotation (from -180 to 180) (default 0)
+            rorder: rotation order (default "ypr")
+            h_fov: output horizontal field of view (from 0 to 360) (default 0)
+            v_fov: output vertical field of view (from 0 to 360) (default 0)
+            d_fov: output diagonal field of view (from 0 to 360) (default 0)
+            h_flip: flip out video horizontally (default false)
+            v_flip: flip out video vertically (default false)
+            d_flip: flip out video indepth (default false)
+            ih_flip: flip in video horizontally (default false)
+            iv_flip: flip in video vertically (default false)
+            in_trans: transpose video input (default false)
+            out_trans: transpose video output (default false)
+            ih_fov: input horizontal field of view (from 0 to 360) (default 0)
+            iv_fov: input vertical field of view (from 0 to 360) (default 0)
+            id_fov: input diagonal field of view (from 0 to 360) (default 0)
+            h_offset: output horizontal off-axis offset (from -1 to 1) (default 0)
+            v_offset: output vertical off-axis offset (from -1 to 1) (default 0)
+            alpha_mask: build mask in alpha plane (default false)
+            reset_rot: reset rotation (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#v360)
@@ -12721,13 +12721,13 @@ class VideoStream(FilterableStream):
         Apply a Wavelet based Denoiser.
 
         Args:
-            threshold (Float): set filtering strength (from 0 to DBL_MAX) (default 2)
-            method (Int): set filtering method (from 0 to 2) (default garrote)
-            nsteps (Int): set number of steps (from 1 to 32) (default 6)
-            percent (Float): set percent of full denoising (from 0 to 100) (default 85)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            type (Int): set threshold type (from 0 to 1) (default universal)
-            enable (str): timeline editing
+            threshold: set filtering strength (from 0 to DBL_MAX) (default 2)
+            method: set filtering method (from 0 to 2) (default garrote)
+            nsteps: set number of steps (from 1 to 32) (default 6)
+            percent: set percent of full denoising (from 0 to 100) (default 85)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            type: set threshold type (from 0 to 1) (default universal)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser)
@@ -12774,14 +12774,14 @@ class VideoStream(FilterableStream):
         Apply Variable Blur filter.
 
         Args:
-            min_r (Int): set min blur radius (from 0 to 254) (default 0)
-            max_r (Int): set max blur radius (from 1 to 255) (default 8)
-            planes (Int): set planes to filter (from 0 to 15) (default 15)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            min_r: set min blur radius (from 0 to 254) (default 0)
+            max_r: set max blur radius (from 1 to 255) (default 8)
+            planes: set planes to filter (from 0 to 15) (default 15)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
@@ -12839,20 +12839,20 @@ class VideoStream(FilterableStream):
         Video vectorscope.
 
         Args:
-            mode (Int): set vectorscope mode (from 0 to 5) (default gray)
-            x (Int): set color component on X axis (from 0 to 2) (default 1)
-            y (Int): set color component on Y axis (from 0 to 2) (default 2)
-            intensity (Float): set intensity (from 0 to 1) (default 0.004)
-            envelope (Int): set envelope (from 0 to 3) (default none)
-            graticule (Int): set graticule (from 0 to 3) (default none)
-            opacity (Float): set graticule opacity (from 0 to 1) (default 0.75)
-            flags (Flags): set graticule flags (default name)
-            bgopacity (Float): set background opacity (from 0 to 1) (default 0.3)
-            lthreshold (Float): set low threshold (from 0 to 1) (default 0)
-            hthreshold (Float): set high threshold (from 0 to 1) (default 1)
-            colorspace (Int): set colorspace (from 0 to 2) (default auto)
-            tint0 (Float): set 1st tint (from -1 to 1) (default 0)
-            tint1 (Float): set 2nd tint (from -1 to 1) (default 0)
+            mode: set vectorscope mode (from 0 to 5) (default gray)
+            x: set color component on X axis (from 0 to 2) (default 1)
+            y: set color component on Y axis (from 0 to 2) (default 2)
+            intensity: set intensity (from 0 to 1) (default 0.004)
+            envelope: set envelope (from 0 to 3) (default none)
+            graticule: set graticule (from 0 to 3) (default none)
+            opacity: set graticule opacity (from 0 to 1) (default 0.75)
+            flags: set graticule flags (default name)
+            bgopacity: set background opacity (from 0 to 1) (default 0.3)
+            lthreshold: set low threshold (from 0 to 1) (default 0)
+            hthreshold: set high threshold (from 0 to 1) (default 1)
+            colorspace: set colorspace (from 0 to 2) (default auto)
+            tint0: set 1st tint (from -1 to 1) (default 0)
+            tint1: set 2nd tint (from -1 to 1) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vectorscope)
@@ -12893,7 +12893,7 @@ class VideoStream(FilterableStream):
         Flip the input video vertically.
 
         Args:
-            enable (str): timeline editing
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vflip)
@@ -12954,15 +12954,15 @@ class VideoStream(FilterableStream):
         Boost or alter saturation.
 
         Args:
-            intensity (Float): set the intensity value (from -2 to 2) (default 0)
-            rbal (Float): set the red balance value (from -10 to 10) (default 1)
-            gbal (Float): set the green balance value (from -10 to 10) (default 1)
-            bbal (Float): set the blue balance value (from -10 to 10) (default 1)
-            rlum (Float): set the red luma coefficient (from 0 to 1) (default 0.072186)
-            glum (Float): set the green luma coefficient (from 0 to 1) (default 0.715158)
-            blum (Float): set the blue luma coefficient (from 0 to 1) (default 0.212656)
-            alternate (Boolean): use alternate colors (default false)
-            enable (str): timeline editing
+            intensity: set the intensity value (from -2 to 2) (default 0)
+            rbal: set the red balance value (from -10 to 10) (default 1)
+            gbal: set the green balance value (from -10 to 10) (default 1)
+            bbal: set the blue balance value (from -10 to 10) (default 1)
+            rlum: set the red luma coefficient (from 0 to 1) (default 0.072186)
+            glum: set the green luma coefficient (from 0 to 1) (default 0.715158)
+            blum: set the blue luma coefficient (from 0 to 1) (default 0.212656)
+            alternate: use alternate colors (default false)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrance)
@@ -13009,13 +13009,13 @@ class VideoStream(FilterableStream):
         Extract relative transformations, pass 1 of 2 for stabilization (see vidstabtransform for pass 2).
 
         Args:
-            result (String): path to the file used to write the transforms (default "transforms.trf")
-            shakiness (Int): how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)
-            accuracy (Int): (>=shakiness) 1: low 15: high (slow) (from 1 to 15) (default 15)
-            stepsize (Int): region around minimum is scanned with 1 pixel resolution (from 1 to 32) (default 6)
-            mincontrast (Double): below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)
-            show (Int): 0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)
-            tripod (Int): virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)
+            result: path to the file used to write the transforms (default "transforms.trf")
+            shakiness: how shaky is the video and how quick is the camera? 1: little (fast) 10: very strong/quick (slow) (from 1 to 10) (default 5)
+            accuracy: (>=shakiness) 1: low 15: high (slow) (from 1 to 15) (default 15)
+            stepsize: region around minimum is scanned with 1 pixel resolution (from 1 to 32) (default 6)
+            mincontrast: below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)
+            show: 0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)
+            tripod: virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabdetect)
@@ -13067,20 +13067,20 @@ class VideoStream(FilterableStream):
         Transform the frames, pass 2 of 2 for stabilization (see vidstabdetect for pass 1).
 
         Args:
-            input (String): set path to the file storing the transforms (default "transforms.trf")
-            smoothing (Int): set number of frames*2 + 1 used for lowpass filtering (from 0 to 1000) (default 15)
-            optalgo (Int): set camera path optimization algo (from 0 to 2) (default opt)
-            maxshift (Int): set maximal number of pixels to translate image (from -1 to 500) (default -1)
-            maxangle (Double): set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)
-            crop (Int): set cropping mode (from 0 to 1) (default keep)
-            invert (Int): invert transforms (from 0 to 1) (default 0)
-            relative (Int): consider transforms as relative (from 0 to 1) (default 1)
-            zoom (Double): set percentage to zoom (>0: zoom in, <0: zoom out (from -100 to 100) (default 0)
-            optzoom (Int): set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom) (from 0 to 2) (default 1)
-            zoomspeed (Double): for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)
-            interpol (Int): set type of interpolation (from 0 to 3) (default bilinear)
-            tripod (Boolean): enable virtual tripod mode (same as relative=0:smoothing=0) (default false)
-            debug (Boolean): enable debug mode and writer global motions information to file (default false)
+            input: set path to the file storing the transforms (default "transforms.trf")
+            smoothing: set number of frames*2 + 1 used for lowpass filtering (from 0 to 1000) (default 15)
+            optalgo: set camera path optimization algo (from 0 to 2) (default opt)
+            maxshift: set maximal number of pixels to translate image (from -1 to 500) (default -1)
+            maxangle: set maximal angle in rad to rotate image (from -1 to 3.14) (default -1)
+            crop: set cropping mode (from 0 to 1) (default keep)
+            invert: invert transforms (from 0 to 1) (default 0)
+            relative: consider transforms as relative (from 0 to 1) (default 1)
+            zoom: set percentage to zoom (>0: zoom in, <0: zoom out (from -100 to 100) (default 0)
+            optzoom: set optimal zoom (0: nothing, 1: optimal static zoom, 2: optimal dynamic zoom) (from 0 to 2) (default 1)
+            zoomspeed: for adative zoom: percent to zoom maximally each frame (from 0 to 5) (default 0.25)
+            interpol: set type of interpolation (from 0 to 3) (default bilinear)
+            tripod: enable virtual tripod mode (same as relative=0:smoothing=0) (default false)
+            debug: enable debug mode and writer global motions information to file (default false)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform)
@@ -13131,11 +13131,11 @@ class VideoStream(FilterableStream):
         Calculate the VIF between two video streams.
 
         Args:
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
@@ -13182,14 +13182,14 @@ class VideoStream(FilterableStream):
         Make or reverse a vignette effect.
 
         Args:
-            angle (String): set lens angle (default "PI/5")
-            x0 (String): set circle center position on x-axis (default "w/2")
-            y0 (String): set circle center position on y-axis (default "h/2")
-            mode (Int): set forward/backward mode (from 0 to 1) (default forward)
-            eval (Int): specify when to evaluate expressions (from 0 to 1) (default init)
-            dither (Boolean): set dithering (default true)
-            aspect (Rational): set aspect ratio (from 0 to DBL_MAX) (default 1/1)
-            enable (str): timeline editing
+            angle: set lens angle (default "PI/5")
+            x0: set circle center position on x-axis (default "w/2")
+            y0: set circle center position on y-axis (default "h/2")
+            mode: set forward/backward mode (from 0 to 1) (default forward)
+            eval: specify when to evaluate expressions (from 0 to 1) (default init)
+            dither: set dithering (default true)
+            aspect: set aspect ratio (from 0 to DBL_MAX) (default 1/1)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vignette)
@@ -13224,7 +13224,7 @@ class VideoStream(FilterableStream):
         Calculate the VMAF Motion score.
 
         Args:
-            stats_file (String): Set file where to store per-frame difference information
+            stats_file: Set file where to store per-frame difference information
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vmafmotion)
@@ -13261,11 +13261,11 @@ class VideoStream(FilterableStream):
         Apply Martin Weston three field deinterlace.
 
         Args:
-            filter (Int): specify the filter (from 0 to 1) (default complex)
-            mode (Int): specify the interlacing mode (from 0 to 1) (default field)
-            parity (Int): specify the assumed picture field parity (from -1 to 1) (default auto)
-            deint (Int): specify which frames to deinterlace (from 0 to 1) (default all)
-            enable (str): timeline editing
+            filter: specify the filter (from 0 to 1) (default complex)
+            mode: specify the interlacing mode (from 0 to 1) (default field)
+            parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+            deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#w3fdif)
@@ -13318,21 +13318,21 @@ class VideoStream(FilterableStream):
         Video waveform monitor.
 
         Args:
-            mode (Int): set mode (from 0 to 1) (default column)
-            intensity (Float): set intensity (from 0 to 1) (default 0.04)
-            mirror (Boolean): set mirroring (default true)
-            display (Int): set display mode (from 0 to 2) (default stack)
-            components (Int): set components to display (from 1 to 15) (default 1)
-            envelope (Int): set envelope to display (from 0 to 3) (default none)
-            filter (Int): set filter (from 0 to 7) (default lowpass)
-            graticule (Int): set graticule (from 0 to 3) (default none)
-            opacity (Float): set graticule opacity (from 0 to 1) (default 0.75)
-            flags (Flags): set graticule flags (default numbers)
-            scale (Int): set scale (from 0 to 2) (default digital)
-            bgopacity (Float): set background opacity (from 0 to 1) (default 0.75)
-            tint0 (Float): set 1st tint (from -1 to 1) (default 0)
-            tint1 (Float): set 2nd tint (from -1 to 1) (default 0)
-            fitmode (Int): set fit mode (from 0 to 1) (default none)
+            mode: set mode (from 0 to 1) (default column)
+            intensity: set intensity (from 0 to 1) (default 0.04)
+            mirror: set mirroring (default true)
+            display: set display mode (from 0 to 2) (default stack)
+            components: set components to display (from 1 to 15) (default 1)
+            envelope: set envelope to display (from 0 to 3) (default none)
+            filter: set filter (from 0 to 7) (default lowpass)
+            graticule: set graticule (from 0 to 3) (default none)
+            opacity: set graticule opacity (from 0 to 1) (default 0.75)
+            flags: set graticule flags (default numbers)
+            scale: set scale (from 0 to 2) (default digital)
+            bgopacity: set background opacity (from 0 to 1) (default 0.75)
+            tint0: set 1st tint (from -1 to 1) (default 0)
+            tint1: set 2nd tint (from -1 to 1) (default 0)
+            fitmode: set fit mode (from 0 to 1) (default none)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#waveform)
@@ -13376,7 +13376,7 @@ class VideoStream(FilterableStream):
         Weave input video fields into frames.
 
         Args:
-            first_field (Int): set first field (from 0 to 1) (default top)
+            first_field: set first field (from 0 to 1) (default top)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
@@ -13404,7 +13404,7 @@ class VideoStream(FilterableStream):
         Scale the input using xBR algorithm.
 
         Args:
-            n (Int): set scale factor (from 2 to 4) (default 3)
+            n: set scale factor (from 2 to 4) (default 3)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xbr)
@@ -13444,13 +13444,13 @@ class VideoStream(FilterableStream):
         Cross-correlate first video stream with second video stream.
 
         Args:
-            planes (Int): set planes to cross-correlate (from 0 to 15) (default 7)
-            secondary (Int): when to process secondary frame (from 0 to 1) (default all)
-            eof_action (Int): Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest (Boolean): force termination when the shortest input terminates (default false)
-            repeatlast (Boolean): extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode (Int): How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-            enable (str): timeline editing
+            planes: set planes to cross-correlate (from 0 to 15) (default 7)
+            secondary: when to process secondary frame (from 0 to 1) (default all)
+            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
+            shortest: force termination when the shortest input terminates (default false)
+            repeatlast: extend last frame of secondary streams beyond EOF (default true)
+            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
@@ -13546,10 +13546,10 @@ class VideoStream(FilterableStream):
         Cross fade one video with another video.
 
         Args:
-            transition (Int): set cross fade transition (from -1 to 45) (default fade)
-            duration (Duration): set cross fade duration (default 1)
-            offset (Duration): set cross fade start relative to first input stream (default 0)
-            expr (String): set expression for custom transition
+            transition: set cross fade transition (from -1 to 45) (default fade)
+            duration: set cross fade duration (default 1)
+            offset: set cross fade start relative to first input stream (default 0)
+            expr: set expression for custom transition
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
@@ -13593,10 +13593,10 @@ class VideoStream(FilterableStream):
         Deinterlace the input image.
 
         Args:
-            mode (Int): specify the interlacing mode (from 0 to 3) (default send_frame)
-            parity (Int): specify the assumed picture field parity (from -1 to 1) (default auto)
-            deint (Int): specify which frames to deinterlace (from 0 to 1) (default all)
-            enable (str): timeline editing
+            mode: specify the interlacing mode (from 0 to 3) (default send_frame)
+            parity: specify the assumed picture field parity (from -1 to 1) (default auto)
+            deint: specify which frames to deinterlace (from 0 to 1) (default all)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yadif)
@@ -13635,10 +13635,10 @@ class VideoStream(FilterableStream):
         Yet another edge preserving blur filter.
 
         Args:
-            radius (Int): set window radius (from 0 to INT_MAX) (default 3)
-            planes (Int): set planes to filter (from 0 to 15) (default 1)
-            sigma (Int): set blur strength (from 1 to INT_MAX) (default 128)
-            enable (str): timeline editing
+            radius: set window radius (from 0 to INT_MAX) (default 3)
+            planes: set planes to filter (from 0 to 15) (default 1)
+            sigma: set blur strength (from 1 to INT_MAX) (default 128)
+            enable: timeline editing
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yaepblur)
@@ -13669,7 +13669,7 @@ class VideoStream(FilterableStream):
         Receive commands through ZMQ and broker them to filters.
 
         Args:
-            bind_address (String): set bind address (default "tcp://*:5555")
+            bind_address: set bind address (default "tcp://*:5555")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
@@ -13707,12 +13707,12 @@ class VideoStream(FilterableStream):
         Apply Zoom & Pan effect.
 
         Args:
-            zoom (String): set the zoom expression (default "1")
-            x (String): set the x expression (default "0")
-            y (String): set the y expression (default "0")
-            d (String): set the duration expression (default "90")
-            s (Image_size): set the output image size (default "hd720")
-            fps (Video_rate): set the output framerate (default "25")
+            zoom: set the zoom expression (default "1")
+            x: set the x expression (default "0")
+            y: set the y expression (default "0")
+            d: set the duration expression (default "90")
+            s: set the output image size (default "hd720")
+            fps: set the output framerate (default "25")
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zoompan)
@@ -13914,25 +13914,25 @@ class VideoStream(FilterableStream):
         Apply resizing, colorspace and bit depth conversion.
 
         Args:
-            w (String): Output video width
-            h (String): Output video height
-            size (String): set video size
-            dither (Int): set dither type (from 0 to 3) (default none)
-            filter (Int): set filter type (from 0 to 5) (default bilinear)
-            out_range (Int): set color range (from -1 to 1) (default input)
-            primaries (Int): set color primaries (from -1 to INT_MAX) (default input)
-            transfer (Int): set transfer characteristic (from -1 to INT_MAX) (default input)
-            matrix (Int): set colorspace matrix (from -1 to INT_MAX) (default input)
-            in_range (Int): set input color range (from -1 to 1) (default input)
-            primariesin (Int): set input color primaries (from -1 to INT_MAX) (default input)
-            transferin (Int): set input transfer characteristic (from -1 to INT_MAX) (default input)
-            matrixin (Int): set input colorspace matrix (from -1 to INT_MAX) (default input)
-            chromal (Int): set output chroma location (from -1 to 5) (default input)
-            chromalin (Int): set input chroma location (from -1 to 5) (default input)
-            npl (Double): set nominal peak luminance (from 0 to DBL_MAX) (default nan)
-            agamma (Boolean): allow approximate gamma (default true)
-            param_a (Double): parameter A, which is parameter "b" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)
-            param_b (Double): parameter B, which is parameter "c" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)
+            w: Output video width
+            h: Output video height
+            size: set video size
+            dither: set dither type (from 0 to 3) (default none)
+            filter: set filter type (from 0 to 5) (default bilinear)
+            out_range: set color range (from -1 to 1) (default input)
+            primaries: set color primaries (from -1 to INT_MAX) (default input)
+            transfer: set transfer characteristic (from -1 to INT_MAX) (default input)
+            matrix: set colorspace matrix (from -1 to INT_MAX) (default input)
+            in_range: set input color range (from -1 to 1) (default input)
+            primariesin: set input color primaries (from -1 to INT_MAX) (default input)
+            transferin: set input transfer characteristic (from -1 to INT_MAX) (default input)
+            matrixin: set input colorspace matrix (from -1 to INT_MAX) (default input)
+            chromal: set output chroma location (from -1 to 5) (default input)
+            chromalin: set input chroma location (from -1 to 5) (default input)
+            npl: set nominal peak luminance (from 0 to DBL_MAX) (default nan)
+            agamma: allow approximate gamma (default true)
+            param_a: parameter A, which is parameter "b" for bicubic, and the number of filter taps for lanczos (from -DBL_MAX to DBL_MAX) (default nan)
+            param_b: parameter B, which is parameter "c" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zscale)

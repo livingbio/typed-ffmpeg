@@ -1,4 +1,8 @@
 class Error(Exception):
+    """
+    FFmpeg error
+    """
+
     def __init__(self, retcode: int | None, cmd: list[str], stdout: bytes, stderr: bytes):
         super(Error, self).__init__(f"{cmd} error (see stderr output for detail)")
 

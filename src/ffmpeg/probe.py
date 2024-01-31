@@ -2,7 +2,7 @@ import json
 import subprocess
 from typing import Any
 
-from .exeptions import Error
+from .exceptions import Error
 from .utils.escaping import convert_kwargs_to_cmd_line_args
 
 
@@ -11,13 +11,13 @@ def probe(filename: str, cmd: str = "ffprobe", timeout: int | None = None, **kwa
     Run ffprobe on the given file and return a JSON representation of the output
 
     Args:
-        filename (str): The path to the file to probe.
-        cmd (str, optional): The ffprobe command to run. Defaults to "ffprobe".
-        timeout (int | None, optional): The timeout for the command. Defaults to None.
+        filename: The path to the file to probe.
+        cmd: The ffprobe command to run. Defaults to "ffprobe".
+        timeout: The timeout for the command. Defaults to None.
         **kwargs: The arguments for the ffprobe command.
 
     Returns:
-        dict[str, Any]: The JSON representation of the ffprobe output.
+        The JSON representation of the ffprobe output.
     """
     args = [cmd, "-show_format", "-show_streams", "-of", "json"]
     args += convert_kwargs_to_cmd_line_args(kwargs)

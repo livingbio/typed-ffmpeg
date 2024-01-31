@@ -5,7 +5,7 @@ from abc import ABC, abstractproperty
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Sequence
 
-from ..exeptions import Error
+from ..exceptions import Error
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
@@ -41,10 +41,10 @@ class FilterNode(Node):
         Return the stream at the specified index
 
         Args:
-            index (int): the index of the stream
+            index: the index of the stream
 
         Returns:
-            AVStream: the stream at the specified index
+            the stream at the specified index
         """
         from ..streams.av import AVStream
 
@@ -60,10 +60,10 @@ class FilterNode(Node):
         Return the video stream at the specified index
 
         Args:
-            index (int): the index of the video stream
+            index: the index of the video stream
 
         Returns:
-            VideoStream: the video stream at the specified index
+            the video stream at the specified index
         """
         from ..streams.video import VideoStream
 
@@ -79,10 +79,10 @@ class FilterNode(Node):
         Return the audio stream at the specified index
 
         Args:
-            index (int): the index of the audio stream
+            index: the index of the audio stream
 
         Returns:
-            AudioStream: the audio stream at the specified index
+            the audio stream at the specified index
         """
         from ..streams.audio import AudioStream
 
@@ -155,7 +155,7 @@ class FilterableStream(Stream, ABC):
 
         Args:
             *streams (FilterableStream): the streams to apply the filter to
-            name (str): the name of the filter
+            name: the name of the filter
             **kwargs: the arguments for the filter
 
         Returns:
@@ -169,11 +169,11 @@ class FilterableStream(Stream, ABC):
 
         Args:
             *streams (FilterableStream): the streams to apply the filter to
-            name (str): the name of the filter
+            name: the name of the filter
             **kwargs: the arguments for the filter
 
         Returns:
-            FilterNode: the FilterNode
+            the FilterNode
         """
         return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=(self, *streams))
 
@@ -183,7 +183,7 @@ class FilterableStream(Stream, ABC):
         Return the video component of this stream
 
         Returns:
-            VideoStream: the video component of this stream
+            the video component of this stream
         """
         raise NotImplementedError("This stream does not have a video component")
 
@@ -193,7 +193,7 @@ class FilterableStream(Stream, ABC):
         Return the audio component of this stream
 
         Returns:
-            AudioStream: the audio component of this stream
+            the audio component of this stream
         """
         raise NotImplementedError("This stream does not have an audio component")
 
@@ -202,12 +202,12 @@ class FilterableStream(Stream, ABC):
         Output the streams to a file URL
 
         Args:
-            *streams (FilterableStream): the streams to output
-            filename (str): the filename to output to
+            *streams: the streams to output
+            filename: the filename to output to
             **kwargs: the arguments for the output
 
         Returns:
-            OutputStream: the output stream
+            the output stream
         """
         return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
 
@@ -216,10 +216,10 @@ class FilterableStream(Stream, ABC):
         Return the label for this stream
 
         Args:
-            context (_DAGContext): the DAG context
+            context: the DAG context
 
         Returns:
-            str: the label for this stream
+            the label for this stream
         """
         if self.selector == StreamType.video:
             selector = "v"
@@ -260,7 +260,7 @@ class GlobalNode(Node):
         Return the output stream of this node
 
         Returns:
-            OutputStream: the output stream
+            the output stream
         """
         return OutputStream(node=self)
 
@@ -301,7 +301,7 @@ class InputNode(Node):
         Return the video stream of this node
 
         Returns:
-            VideoStream: the video stream
+            the video stream
         """
         from ..streams.video import VideoStream
 
@@ -312,7 +312,7 @@ class InputNode(Node):
         Return the audio stream of this node
 
         Returns:
-            AudioStream: the audio stream
+            the audio stream
         """
         from ..streams.audio import AudioStream
 
@@ -323,7 +323,7 @@ class InputNode(Node):
         Return the output stream of this node
 
         Returns:
-            AVStream: the output stream
+            the output stream
         """
         from ..streams.av import AVStream
 
@@ -348,7 +348,7 @@ class OutputNode(Node):
         Return the output stream of this node
 
         Returns:
-            OutputStream: the output stream
+            the output stream
         """
         return OutputStream(node=self)
 
@@ -382,11 +382,11 @@ class OutputStream(Stream):
         Add extra global command-line argument
 
         Args:
-            *args (str): the extra arguments
+            *args: the extra arguments
             **kwargs: the extra arguments
 
         Returns:
-            OutputStream: the output stream
+            the output stream
         """
         return GlobalNode(input=self, args=args, kwargs=tuple(kwargs.items())).stream()
 
@@ -395,7 +395,7 @@ class OutputStream(Stream):
         Overwrite output files without asking (ffmpeg `-y` option)
 
         Returns:
-            OutputStream: the output stream
+            the output stream
         """
         return GlobalNode(input=self, kwargs=(("y", True),)).stream()
 
@@ -404,11 +404,11 @@ class OutputStream(Stream):
         Build command-line for invoking ffmpeg.
 
         Args:
-            cmd (str | list[str]): the command to invoke ffmpeg
-            overwrite_output (bool): whether to overwrite output files without asking
+            cmd: the command to invoke ffmpeg
+            overwrite_output: whether to overwrite output files without asking
 
         Returns:
-            list[str]: the command-line
+            the command-line
         """
         from ..utils.compile import compile
 
@@ -434,16 +434,16 @@ class OutputStream(Stream):
         Run ffmpeg asynchronously.
 
         Args:
-            cmd (str | list[str]): the command to invoke ffmpeg
-            pipe_stdin (bool): whether to pipe stdin
-            pipe_stdout (bool): whether to pipe stdout
-            pipe_stderr (bool): whether to pipe stderr
-            quiet (bool): whether to pipe stderr to stdout
-            overwrite_output (bool): whether to overwrite output files without asking
-            cwd (str | None): the working directory
+            cmd: the command to invoke ffmpeg
+            pipe_stdin: whether to pipe stdin
+            pipe_stdout: whether to pipe stdout
+            pipe_stderr: whether to pipe stderr
+            quiet: whether to pipe stderr to stdout
+            overwrite_output: whether to overwrite output files without asking
+            cwd: the working directory
 
         Returns:
-            subprocess.Popen[bytes]: the process
+            the process
         """
 
         args = self.compile(cmd, overwrite_output=overwrite_output)
@@ -475,17 +475,17 @@ class OutputStream(Stream):
         Run ffmpeg synchronously.
 
         Args:
-            cmd (str | list[str]): the command to invoke ffmpeg
-            pipe_stdin (bool): whether to pipe stdin
-            pipe_stdout (bool): whether to pipe stdout
-            pipe_stderr (bool): whether to pipe stderr
-            quiet (bool): whether to pipe stderr to stdout
-            overwrite_output (bool): whether to overwrite output files without asking
-            cwd (str | None): the working directory
+            cmd: the command to invoke ffmpeg
+            pipe_stdin: whether to pipe stdin
+            pipe_stdout: whether to pipe stdout
+            pipe_stderr: whether to pipe stderr
+            quiet: whether to pipe stderr to stdout
+            overwrite_output: whether to overwrite output files without asking
+            cwd: the working directory
 
         Returns:
-            bytes: the stdout
-            bytes: the stderr
+            the stdout
+            the stderr
         """
 
         process = self.run_async(
@@ -520,7 +520,7 @@ class MergeOutputsNode(Node):
         Return the output stream of this node
 
         Returns:
-            OutputStream: the output stream
+            the output stream
         """
         return OutputStream(node=self)
 

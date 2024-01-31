@@ -17,10 +17,10 @@ class _DAGContext(ABC):
         Get the label of the node.
 
         Args:
-            node (Node): The node to get the label of.
+            node: The node to get the label of.
 
         Returns:
-            str: The label of the node.
+            The label of the node.
         """
         raise NotImplementedError()
 
@@ -30,10 +30,10 @@ class _DAGContext(ABC):
         Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
 
         Args:
-            node (Node): The node to get the outgoing streams of.
+            node: The node to get the outgoing streams of.
 
         Returns:
-            Iterable[Stream]: The outgoing streams of the node.
+            The outgoing streams of the node.
         """
         raise NotImplementedError()
 
@@ -65,6 +65,10 @@ class HashableBaseModel:
 
 @dataclass(frozen=True, kw_only=True)
 class Stream(HashableBaseModel):
+    """
+    A stream in the DAG.
+    """
+
     node: Node
     selector: StreamType | None = None
     index: int | None = None  # the nth child of the node
@@ -81,7 +85,7 @@ class Node(HashableBaseModel, ABC):
         Return the incoming streams of this node.
 
         Returns:
-            Sequence[Stream]: The incoming streams of this node.
+            The incoming streams of this node.
         """
         raise NotImplementedError()
 
@@ -111,9 +115,9 @@ class Node(HashableBaseModel, ABC):
         Get the arguments of the node.
 
         Args:
-            context (_DAGContext, optional): The DAG context. Defaults to empty_dag_context.
+            context: The DAG context. Defaults to empty_dag_context.
 
         Returns:
-            list[str]: The arguments of the node.
+            The arguments of the node.
         """
         raise NotImplementedError()

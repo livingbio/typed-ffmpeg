@@ -63,8 +63,8 @@ Default(None)
 description
 
 Args:
-    order (int): set the filter order
-    projection (int): set the filter projection
+    order: set the filter order
+    projection: set the filter projection
 
 References:
     [FFmpeg Documentation](None)

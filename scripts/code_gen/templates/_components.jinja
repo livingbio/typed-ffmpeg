@@ -81,7 +81,7 @@ Default("nan")
 
 Args:
 {%- for option in f.options %}
-    {{option.name | option_name_safe}} ({{option.typing}}): {{option.description | striptags }}
+    {{option.name | option_name_safe}}: {{option.description | striptags }}
 {%- endfor %}
 
 References:
