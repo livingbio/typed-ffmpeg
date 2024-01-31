@@ -52,15 +52,17 @@ Note:
 
 Flags = str
 """
-This represents FFmpeg's flags type. It can accept either a Python string value
-or a string that represents a flags value.
-
-Format: A+B
+This represents FFmpeg's flags type. It accepts a string in the format "A+B",
+where "A" and "B" are individual flags. For example, "fast+bilinear" would
+represent two flags, "fast" and "bilinear", to be used in FFmpeg's command line.
 """
 
 Dictionary = str
 # format A=B:C=D:E=F
 Pix_fmt = str
+"""
+please see `ffmpeg -pix_fmts`
+"""
 
 Int = int | str
 """
