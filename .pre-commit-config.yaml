@@ -18,6 +18,15 @@ repos:
       - id: pretty-format-json
         args: [--autofix]
         exclude: "__snapshots__/"
+
+  # - repo: local
+  #   hooks:
+  #     - id: remove-typing-from-docstrings
+  #       name: Remove typing from docstrings
+  #       entry: python scripts/main.py code-gen format
+  #       language: system
+  #       files: \.py$
+
   # this is not technically always safe but usually is
   # use comments `# isort: off` and `# isort: on` to disable/re-enable isort
   - repo: https://github.com/pycqa/isort

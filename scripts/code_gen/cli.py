@@ -10,6 +10,7 @@ from parse_help.parse import extract
 from parse_help.schema import AVFilter as HelpAVFilter
 
 from .gen import render
+from .remove_typing_from_docstrings import remove_typing_from_docstrings
 from .schema import FFmpegFilter, FFmpegFilterOption
 
 app = typer.Typer()
@@ -78,6 +79,24 @@ def update_or_create(
     ffmpeg_filter.output_stream_typings = output_stream_typings
     ffmpeg_filter.options = options
     return ffmpeg_filter
+
+
+@app.command()
+def format(filepaths: list[pathlib.Path]) -> None:
+    in_place = True
+
+    print(filepaths)
+    for filepath in filepaths:
+        print(f"Processing {filepath}, {type(filepath)=} {filepaths=}")
+        with open(filepath, "r") as f:
+            text = f.read()
+        text = remove_typing_from_docstrings(text)
+
+        if in_place:
+            with open(filepath, "w") as f:
+                f.write(text)
+        else:
+            typer.echo(text)
 
 
 @app.command()
