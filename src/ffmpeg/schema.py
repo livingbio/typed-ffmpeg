@@ -2,6 +2,10 @@ import enum
 
 
 class StreamType(enum.Enum):
+    """
+    The type of a stream. (audio or video)
+    """
+
     audio = "audio"
     video = "video"
 
@@ -16,11 +20,15 @@ class Default(str):
 
 Boolean = bool | str
 Duration = str | int | float
-# https://ffmpeg.org/ffmpeg-utils.html#Time-duration
+"""https://ffmpeg.org/ffmpeg-utils.html#Time-duration"""
 
 Color = str
-# https://ffmpeg.org/ffmpeg-utils.html#color-syntax
-# is a Enum
+"""
+https://ffmpeg.org/ffmpeg-utils.html#color-syntax
+
+Notes:
+    It is an Enum
+"""
 
 Flags = str
 # format A+B
