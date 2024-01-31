@@ -2,24 +2,10 @@ import re
 from typing import Any, Literal
 
 from .nodes.nodes import FilterableStream, FilterNode
-from .schema import (
-    Boolean,
-    Color,
-    Default,
-    Double,
-    Duration,
-    Flags,
-    Float,
-    Image_size,
-    Int,
-    Int64,
-    Pix_fmt,
-    StreamType,
-    String,
-    Video_rate,
-)
+from .schema import Default, StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
+from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String, Video_rate
 
 
 def acrossfade(
