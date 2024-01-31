@@ -2,7 +2,7 @@ import json
 import subprocess
 from typing import Any
 
-from .exeptions import Error
+from .exceptions import Error
 from .utils.escaping import convert_kwargs_to_cmd_line_args
 
 

@@ -23,6 +23,7 @@ pytest-cov = "^4.1.0"
 pre-commit = "*"
 mypy = "*"
 mkdocs-material = "^9.5.5"
+griffe-inherited-docstrings = "^1.0.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
