@@ -53,6 +53,9 @@ class AudioStream(FilterableStream):
             xpos: set camera position (from -60 to 60) (default 0)
             length: set length (from 1 to 60) (default 15)
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#a3dscope)
 
@@ -90,6 +93,9 @@ class AudioStream(FilterableStream):
 
         Args:
             action: set action (from 0 to 1) (default start)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
@@ -129,6 +135,9 @@ class AudioStream(FilterableStream):
             size: set video size (default "1024x256")
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
             mode: set output mode (from 0 to 1) (default bars)
+
+        Returns:
+            the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abitscope)
@@ -188,6 +197,9 @@ class AudioStream(FilterableStream):
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
             mix: set mix (from 0 to 1) (default 1)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acompressor)
 
@@ -227,6 +239,9 @@ class AudioStream(FilterableStream):
         Args:
             contrast: set contrast (from 0 to 100) (default 33)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acontrast)
 
@@ -251,6 +266,9 @@ class AudioStream(FilterableStream):
         """
 
         Copy the input audio unchanged to the output.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acopy)
@@ -341,6 +359,9 @@ class AudioStream(FilterableStream):
             curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
             curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
@@ -390,6 +411,10 @@ class AudioStream(FilterableStream):
             level: set input gain (from 0 to 1) (default 1)
             gain: set output bands gain (default "1.f")
             precision: set processing precision (from 0 to 2) (default auto)
+
+        Returns:
+            the filter node
+
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossover)
@@ -451,6 +476,9 @@ class AudioStream(FilterableStream):
             lforate: set LFO rate (from 0.01 to 200) (default 0.3)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrusher)
 
@@ -499,6 +527,9 @@ class AudioStream(FilterableStream):
             preroll: preroll duration in seconds (default 0)
             buffer: buffer duration in seconds (default 0)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acue)
 
@@ -545,6 +576,9 @@ class AudioStream(FilterableStream):
             burst: set burst fusion (from 0 to 10) (default 2)
             method: set overlap method (from 0 to 1) (default add)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclick)
@@ -597,6 +631,9 @@ class AudioStream(FilterableStream):
             method: set overlap method (from 0 to 1) (default add)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclip)
 
@@ -634,6 +671,9 @@ class AudioStream(FilterableStream):
             stages: set filtering stages (from 1 to 16) (default 6)
             seed: set random seed (from -1 to UINT32_MAX) (default -1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adecorrelate)
@@ -674,6 +714,9 @@ class AudioStream(FilterableStream):
             all: use last available delay for remained channels (default false)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adelay)
 
@@ -713,6 +756,9 @@ class AudioStream(FilterableStream):
             type: set type (from 0 to 3) (default dc)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adenorm)
 
@@ -742,6 +788,9 @@ class AudioStream(FilterableStream):
 
         Args:
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
@@ -804,6 +853,9 @@ class AudioStream(FilterableStream):
             size: set graph size (default "900x256")
             rate: set video rate (default "25")
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrawgraph)
 
@@ -858,6 +910,9 @@ class AudioStream(FilterableStream):
             release: set the release (from 5 to 2000) (default 100)
             channels: set channels to filter (default "all")
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrc)
@@ -928,6 +983,9 @@ class AudioStream(FilterableStream):
             precision: set processing precision (from 0 to 2) (default auto)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer)
 
@@ -981,6 +1039,9 @@ class AudioStream(FilterableStream):
             basefreq: set base frequency (from 2 to 1e+06) (default 22050)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth)
 
@@ -1021,6 +1082,9 @@ class AudioStream(FilterableStream):
             out_gain: set signal output gain (from 0 to 1) (default 0.3)
             delays: set list of signal delays (default "1000")
             decays: set list of signal decays (default "0.5")
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aecho)
@@ -1068,6 +1132,9 @@ class AudioStream(FilterableStream):
             type: set filter type (from 0 to 8) (default cd)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aemphasis)
 
@@ -1108,6 +1175,9 @@ class AudioStream(FilterableStream):
             exprs: set the '|'-separated list of channels expressions
             channel_layout: set channel layout
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aeval)
@@ -1159,6 +1229,9 @@ class AudioStream(FilterableStream):
             ceil: set ceiling (from 9999 to 20000) (default 9999)
             listen: enable listen mode (default false)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aexciter)
@@ -1244,6 +1317,9 @@ class AudioStream(FilterableStream):
             unity: set the unity gain (from 0 to 1) (default 1)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afade)
 
@@ -1314,6 +1390,9 @@ class AudioStream(FilterableStream):
             sample_noise: set sample noise mode (from 0 to 2) (default none)
             gain_smooth: set gain smooth radius (from 0 to 50) (default 0)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftdn)
@@ -1397,6 +1476,9 @@ class AudioStream(FilterableStream):
             overlap: set window overlap (from 0 to 1) (default 0.75)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftfilt)
 
@@ -1427,6 +1509,9 @@ class AudioStream(FilterableStream):
 
         Buffer input frames and send them when they are requested.
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fifo_002c-afifo)
 
@@ -1456,6 +1541,9 @@ class AudioStream(FilterableStream):
             sample_fmts: A '|'-separated list of sample formats.
             sample_rates: A '|'-separated list of sample rates.
             channel_layouts: A '|'-separated list of channel layouts.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aformat)
@@ -1497,6 +1585,9 @@ class AudioStream(FilterableStream):
             level: set output level (from 0 to 1) (default 1)
             order: set filter order (from 1 to 16) (default 8)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afreqshift)
@@ -1549,6 +1640,9 @@ class AudioStream(FilterableStream):
             samples: set frame size in number of samples (from 512 to 65536) (default 8192)
             softness: set thresholding softness (from 0 to 10) (default 1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afwtdn)
@@ -1614,6 +1708,9 @@ class AudioStream(FilterableStream):
             link: set link (from 0 to 1) (default average)
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agate)
@@ -1690,6 +1787,9 @@ class AudioStream(FilterableStream):
             flags: set flags (default all+queue)
             rate: set video rate (default "25")
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor)
 
@@ -1742,6 +1842,9 @@ class AudioStream(FilterableStream):
             rheight: set histogram ratio of window height (from 0 to 1) (default 0.1)
             slide: set sonogram sliding (from 0 to 1) (default replace)
             hmode: set histograms mode (from 0 to 1) (default abs)
+
+        Returns:
+            the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ahistogram)
@@ -1812,6 +1915,10 @@ class AudioStream(FilterableStream):
             size: set video size (default "hd720")
             rate: set video rate (default "25")
 
+        Returns:
+            the filter node
+
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aiir)
 
@@ -1855,6 +1962,9 @@ class AudioStream(FilterableStream):
         Args:
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
 
@@ -1882,6 +1992,9 @@ class AudioStream(FilterableStream):
 
         Args:
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
@@ -1933,6 +2046,9 @@ class AudioStream(FilterableStream):
             level: auto level (default true)
             latency: compensate delay (default false)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alimiter)
@@ -1994,6 +2110,9 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allpass)
 
@@ -2041,6 +2160,9 @@ class AudioStream(FilterableStream):
             size: max number of samples to loop (from 0 to INT_MAX) (default 0)
             start: set the loop start sample (from -1 to I64_MAX) (default 0)
             time: set the loop start time (default INT64_MAX)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aloop)
@@ -2094,6 +2216,9 @@ class AudioStream(FilterableStream):
             direct: reduce buffering when printing to user-set file or pipe (default false)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
 
@@ -2125,6 +2250,9 @@ class AudioStream(FilterableStream):
         """
 
         Multiply two audio streams.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
@@ -2166,6 +2294,10 @@ class AudioStream(FilterableStream):
             fscale: set frequency scale (from 0 to 1) (default log)
             colors: set channels curves colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
             enable: timeline editing
+
+        Returns:
+            the filter node
+
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anequalizer)
@@ -2217,6 +2349,9 @@ class AudioStream(FilterableStream):
             smooth: set smooth factor (from 1 to 1000) (default 11)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmdn)
 
@@ -2265,6 +2400,9 @@ class AudioStream(FilterableStream):
             leakage: set the filter leakage (from 0 to 1) (default 0)
             out_mode: set output mode (from 0 to 4) (default o)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
@@ -2318,6 +2456,9 @@ class AudioStream(FilterableStream):
             out_mode: set output mode (from 0 to 4) (default o)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
@@ -2350,6 +2491,9 @@ class AudioStream(FilterableStream):
         """
 
         Pass the source unchanged to the output.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anull)
@@ -2386,6 +2530,9 @@ class AudioStream(FilterableStream):
             pad_dur: set duration of silence to add (default -0.000001)
             whole_dur: set minimum target duration in the audio stream (default -0.000001)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apad)
@@ -2428,6 +2575,9 @@ class AudioStream(FilterableStream):
             mode: select permissions mode (from 0 to 4) (default none)
             seed: set the seed for the random mode (from -1 to UINT32_MAX) (default -1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
@@ -2484,6 +2634,10 @@ class AudioStream(FilterableStream):
             angle: set angle threshold for out-of-phase detection (from 90 to 180) (default 170)
             duration: set minimum mono or out-of-phase duration in seconds (default 2)
 
+        Returns:
+            the filter node
+
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphasemeter)
 
@@ -2538,6 +2692,9 @@ class AudioStream(FilterableStream):
             speed: set modulation speed (from 0.1 to 2) (default 0.5)
             type: set modulation type (from 0 to 1) (default triangular)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaser)
 
@@ -2582,6 +2739,9 @@ class AudioStream(FilterableStream):
             order: set filter order (from 1 to 16) (default 8)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaseshift)
 
@@ -2612,6 +2772,9 @@ class AudioStream(FilterableStream):
 
         Args:
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
@@ -2662,6 +2825,9 @@ class AudioStream(FilterableStream):
             iterations: set iterations (from 1 to 20) (default 10)
             level: set auto level (default false)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsyclip)
@@ -2723,6 +2889,9 @@ class AudioStream(FilterableStream):
             ms: set ms (from 10 to 2000) (default 500)
             hz: set frequency (from 0.01 to 100) (default 2)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apulsator)
 
@@ -2764,6 +2933,9 @@ class AudioStream(FilterableStream):
             limit: sleep time limit (default 2)
             speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
 
@@ -2793,6 +2965,9 @@ class AudioStream(FilterableStream):
         Args:
             sample_rate: (from 0 to INT_MAX) (default 0)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aresample)
 
@@ -2817,6 +2992,9 @@ class AudioStream(FilterableStream):
         """
 
         Reverse an audio clip.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#areverse)
@@ -2852,6 +3030,9 @@ class AudioStream(FilterableStream):
             delta: set the filter delta (from 0 to 32767) (default 2)
             out_mode: set output mode (from 0 to 4) (default o)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
@@ -2892,6 +3073,9 @@ class AudioStream(FilterableStream):
             mix: set output vs input mix (from -1 to 1) (default 1)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arnndn)
 
@@ -2921,6 +3105,9 @@ class AudioStream(FilterableStream):
 
         Args:
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
@@ -2956,6 +3143,10 @@ class AudioStream(FilterableStream):
             timestamps: timestamps of input at which to split input
             samples: samples at which to split input
 
+        Returns:
+            the filter node
+
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
 
@@ -2986,6 +3177,10 @@ class AudioStream(FilterableStream):
         Args:
             expr: set an expression to use for selecting frames (default "1")
             outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
+
+        Returns:
+            the filter node
+
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
@@ -3019,6 +3214,9 @@ class AudioStream(FilterableStream):
         Args:
             commands: set commands
             filename: set commands file
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
@@ -3058,6 +3256,9 @@ class AudioStream(FilterableStream):
             pad: pad last frame with zeros (default true)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetnsamples)
 
@@ -3088,6 +3289,9 @@ class AudioStream(FilterableStream):
         Args:
             expr: Expression determining the frame timestamp (default "PTS")
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
 
@@ -3115,6 +3319,9 @@ class AudioStream(FilterableStream):
 
         Args:
             sample_rate: set the sample rate (from 1 to INT_MAX) (default 44100)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetrate)
@@ -3144,6 +3351,9 @@ class AudioStream(FilterableStream):
         Args:
             expr: set expression determining the output timebase (default "intb")
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
 
@@ -3168,6 +3378,9 @@ class AudioStream(FilterableStream):
         """
 
         Show textual information for each audio frame.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ashowinfo)
@@ -3223,6 +3436,9 @@ class AudioStream(FilterableStream):
             type: set side data type (from -1 to INT_MAX) (default -1)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
 
@@ -3252,6 +3468,9 @@ class AudioStream(FilterableStream):
 
         Args:
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
@@ -3300,6 +3519,9 @@ class AudioStream(FilterableStream):
             param: set softclip parameter (from 0.01 to 3) (default 1)
             oversample: set oversample factor (from 1 to 64) (default 1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asoftclip)
@@ -3390,6 +3612,9 @@ class AudioStream(FilterableStream):
             overlap: set window overlap (from 0 to 1) (default 0.5)
             measure: select the parameters which are measured (default all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aspectralstats)
 
@@ -3420,6 +3645,10 @@ class AudioStream(FilterableStream):
 
         Args:
             outputs: set number of outputs (from 1 to INT_MAX) (default 2)
+
+        Returns:
+            the filter node
+
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
@@ -3529,6 +3758,9 @@ class AudioStream(FilterableStream):
             measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
             measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#astats)
 
@@ -3584,6 +3816,9 @@ class AudioStream(FilterableStream):
             channels: set channels to filter (default "all")
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubboost)
 
@@ -3632,6 +3867,9 @@ class AudioStream(FilterableStream):
             level: set input level (from 0 to 1) (default 1)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubcut)
 
@@ -3673,6 +3911,9 @@ class AudioStream(FilterableStream):
             order: set filter order (from 3 to 20) (default 10)
             level: set input level (from 0 to 1) (default 1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asupercut)
@@ -3717,6 +3958,9 @@ class AudioStream(FilterableStream):
             qfactor: set Q-factor (from 0.01 to 100) (default 1)
             level: set input level (from 0 to 2) (default 1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperpass)
@@ -3763,6 +4007,9 @@ class AudioStream(FilterableStream):
             level: set input level (from 0 to 2) (default 1)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperstop)
 
@@ -3794,6 +4041,9 @@ class AudioStream(FilterableStream):
 
         Args:
             tempo: set tempo scale factor (from 0.5 to 100) (default 1)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atempo)
@@ -3837,6 +4087,9 @@ class AudioStream(FilterableStream):
             order: set filter order (from 2 to 30) (default 5)
             level: set input level (from 0 to 4) (default 1)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atilt)
@@ -3887,6 +4140,9 @@ class AudioStream(FilterableStream):
             duration: Maximum duration of the output (default 0)
             start_sample: Number of the first audio sample that should be passed to the output (from -1 to I64_MAX) (default -1)
             end_sample: Number of the first audio sample that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atrim)
@@ -3957,6 +4213,9 @@ class AudioStream(FilterableStream):
             swap: swap x axis with y axis (default true)
             mirror: mirror axis (from 0 to 3) (default none)
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avectorscope)
 
@@ -4008,6 +4267,9 @@ class AudioStream(FilterableStream):
             size: set the segment size (from 2 to 131072) (default 256)
             algo: set the algorithm (from 0 to 2) (default best)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
@@ -4039,6 +4301,9 @@ class AudioStream(FilterableStream):
 
         Args:
             bind_address: set bind address (default "tcp://*:5555")
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
@@ -4092,6 +4357,9 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandpass)
@@ -4153,6 +4421,9 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandreject)
@@ -4218,6 +4489,9 @@ class AudioStream(FilterableStream):
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
@@ -4278,6 +4552,9 @@ class AudioStream(FilterableStream):
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#biquad)
 
@@ -4317,6 +4594,9 @@ class AudioStream(FilterableStream):
             map: A comma-separated list of input channel numbers in output order.
             channel_layout: Output channel layout.
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelmap)
 
@@ -4348,6 +4628,10 @@ class AudioStream(FilterableStream):
         Args:
             channel_layout: Input channel layout. (default "stereo")
             channels: Channels to extract. (default "all")
+
+        Returns:
+            the filter node
+
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelsplit)
@@ -4393,6 +4677,9 @@ class AudioStream(FilterableStream):
             decays: set decays
             speeds: set speeds
             depths: set depths
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chorus)
@@ -4443,6 +4730,9 @@ class AudioStream(FilterableStream):
             gain: set output gain (from -900 to 900) (default 0)
             volume: set initial volume (from -900 to 0) (default 0)
             delay: set delay for samples before sending them to volume adjuster (from 0 to 20) (default 0)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compand)
@@ -4495,6 +4785,9 @@ class AudioStream(FilterableStream):
             temp: set temperature °C (from -50 to 50) (default 20)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compensationdelay)
 
@@ -4546,6 +4839,9 @@ class AudioStream(FilterableStream):
             block_size: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crossfeed)
 
@@ -4583,6 +4879,9 @@ class AudioStream(FilterableStream):
             i: set intensity (from -10 to 10) (default 2)
             c: enable clipping (default true)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crystalizer)
@@ -4622,6 +4921,9 @@ class AudioStream(FilterableStream):
             shift: set DC shift (from -1 to 1) (default 0)
             limitergain: set limiter gain (from 0 to 1) (default 0)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dcshift)
@@ -4666,6 +4968,9 @@ class AudioStream(FilterableStream):
             s: set output mode (from 0 to 2) (default o)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deesser)
 
@@ -4709,6 +5014,9 @@ class AudioStream(FilterableStream):
             voice: set voice detection factor (from 2 to 32) (default 2)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dialoguenhance)
 
@@ -4739,6 +5047,9 @@ class AudioStream(FilterableStream):
 
         Args:
             length: set the window length (from 0.01 to 10) (default 3)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drmeter)
@@ -4799,6 +5110,9 @@ class AudioStream(FilterableStream):
             curve: set the custom peak mapping curve
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm)
 
@@ -4836,6 +5150,9 @@ class AudioStream(FilterableStream):
         """
 
         Widen the stereo image.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#earwax)
@@ -4894,6 +5211,10 @@ class AudioStream(FilterableStream):
             lra_high: LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
             sample_peak: sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
             true_peak: true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
+
+        Returns:
+            the filter node
+
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ebur128)
@@ -4965,6 +5286,9 @@ class AudioStream(FilterableStream):
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#equalizer)
 
@@ -5006,6 +5330,9 @@ class AudioStream(FilterableStream):
             m: set the difference coefficient (from -10 to 10) (default 2.5)
             c: enable clipping (default true)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extrastereo)
@@ -5079,6 +5406,9 @@ class AudioStream(FilterableStream):
             fft2: set 2-channels fft (default false)
             min_phase: set minimum phase mode (default false)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
 
@@ -5137,6 +5467,9 @@ class AudioStream(FilterableStream):
             shape: swept wave shape (from 0 to 1) (default sinusoidal)
             phase: swept wave percentage phase-shift for multi-channel (from 0 to 100) (default 25)
             interp: delay-line interpolation (from 0 to 1) (default linear)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flanger)
@@ -5202,6 +5535,9 @@ class AudioStream(FilterableStream):
             right_gain: set right gain (from 0.015625 to 64) (default 1)
             right_phase: set right phase (default true)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haas)
 
@@ -5256,6 +5592,9 @@ class AudioStream(FilterableStream):
             force_pe: Always extend peaks above -3dBFS even when PE is not signaled. (default false)
             analyze_mode: Replace audio with solid tone and signal some processing aspect in the amplitude. (from 0 to 4) (default off)
             bits_per_sample: Valid bits per sample (location of the true LSB). (from 16 to 24) (default 16)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hdcd)
@@ -5314,6 +5653,9 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#highpass)
@@ -5380,6 +5722,9 @@ class AudioStream(FilterableStream):
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
@@ -5444,6 +5789,9 @@ class AudioStream(FilterableStream):
             dual_mono: treat mono input as dual-mono (default false)
             print_format: set print format for stats (from 0 to 2) (default none)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loudnorm)
 
@@ -5506,6 +5854,9 @@ class AudioStream(FilterableStream):
             precision: set filtering precision (from -1 to 3) (default auto)
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lowpass)
@@ -5572,6 +5923,9 @@ class AudioStream(FilterableStream):
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
@@ -5618,6 +5972,9 @@ class AudioStream(FilterableStream):
         Args:
             args: set parameters for each band (default "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000")
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcompand)
 
@@ -5645,6 +6002,9 @@ class AudioStream(FilterableStream):
 
         Args:
             args:
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pan)
@@ -5676,6 +6036,9 @@ class AudioStream(FilterableStream):
         Args:
             track_gain: track gain (dB) (from -FLT_MAX to FLT_MAX) (default 0)
             track_peak: track peak (from -FLT_MAX to FLT_MAX) (default 0)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#replaygain)
@@ -5728,6 +6091,9 @@ class AudioStream(FilterableStream):
             formant: set formant (from 0 to INT_MAX) (default shifted)
             pitchq: set pitch quality (from 0 to INT_MAX) (default speed)
             channels: set channels (from 0 to INT_MAX) (default apart)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rubberband)
@@ -5823,6 +6189,9 @@ class AudioStream(FilterableStream):
             csp: set color space (from 0 to INT_MAX) (default unspecified)
             cscheme: set color scheme (default "1|0.5|0|0|0.5|1")
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcqt)
 
@@ -5912,6 +6281,9 @@ class AudioStream(FilterableStream):
             direction: set direction mode (from 0 to 3) (default lr)
             bar: set bar ratio (from 0 to 1) (default 0)
             rotation: set color rotation (from -1 to 1) (default 0)
+
+        Returns:
+            the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcwt)
@@ -6012,6 +6384,9 @@ class AudioStream(FilterableStream):
             data: set data mode (from 0 to 2) (default magnitude)
             channels: set channels to draw (default "all")
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showfreqs)
 
@@ -6088,6 +6463,9 @@ class AudioStream(FilterableStream):
             win_size: set window size (from 1024 to 65536) (default 4096)
             win_func: set window function (from 0 to 20) (default hann)
             rate: set video rate (default "25")
+
+        Returns:
+            the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspatial)
@@ -6205,6 +6583,9 @@ class AudioStream(FilterableStream):
             drange: set dynamic range in dBFS (from 10 to 200) (default 120)
             limit: set upper limit in dBFS (from -100 to 100) (default 0)
             opacity: set opacity strength (from 0 to 10) (default 1)
+
+        Returns:
+            the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
@@ -6331,6 +6712,9 @@ class AudioStream(FilterableStream):
             limit: set upper limit in dBFS (from -100 to 100) (default 0)
             opacity: set opacity strength (from 0 to 10) (default 1)
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic)
 
@@ -6407,6 +6791,9 @@ class AudioStream(FilterableStream):
             m: set mode (from 0 to 1) (default p)
             ds: set display scale (from 0 to 1) (default lin)
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showvolume)
 
@@ -6468,6 +6855,9 @@ class AudioStream(FilterableStream):
             scale: set amplitude scale (from 0 to 3) (default lin)
             draw: set draw mode (from 0 to 1) (default scale)
 
+        Returns:
+            the video stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwaves)
 
@@ -6517,6 +6907,9 @@ class AudioStream(FilterableStream):
             scale: set amplitude scale (from 0 to 3) (default lin)
             draw: set draw mode (from 0 to 1) (default scale)
             filter: set filter mode (from 0 to 1) (default average)
+
+        Returns:
+            the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwavespic)
@@ -6578,6 +6971,9 @@ class AudioStream(FilterableStream):
             detection: set detection (from 0 to 1) (default rms)
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
             mix: set mix (from 0 to 1) (default 1)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
@@ -6651,6 +7047,9 @@ class AudioStream(FilterableStream):
             level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
@@ -6697,6 +7096,9 @@ class AudioStream(FilterableStream):
             n: set noise tolerance (from 0 to DBL_MAX) (default 0.001)
             d: set minimum duration in seconds (default 2)
             mono: check each channel separately (default false)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silencedetect)
@@ -6758,6 +7160,9 @@ class AudioStream(FilterableStream):
             window: set duration of window for silence detection (default 0.02)
             timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silenceremove)
@@ -6824,6 +7229,9 @@ class AudioStream(FilterableStream):
             link: set linked channels filtering (default false)
             rms: set the RMS value (from 0 to 1) (default 0)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#speechnorm)
@@ -6910,6 +7318,9 @@ class AudioStream(FilterableStream):
             bmode_out: set balance out mode (from 0 to 2) (default balance)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereotools)
 
@@ -6970,6 +7381,9 @@ class AudioStream(FilterableStream):
             crossfeed: set cross feed (from 0 to 0.8) (default 0.3)
             drymix: set dry-mix (from 0 to 1) (default 0.8)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereowiden)
@@ -7041,6 +7455,9 @@ class AudioStream(FilterableStream):
             _16b: set 11840Hz band gain (from 0 to 20) (default 1)
             _17b: set 16744Hz band gain (from 0 to 20) (default 1)
             _18b: set 20000Hz band gain (from 0 to 20) (default 1)
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#superequalizer)
@@ -7215,6 +7632,9 @@ class AudioStream(FilterableStream):
             win_func: set window function (from 0 to 20) (default hann)
             overlap: set window overlap (from 0 to 1) (default 0.5)
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#surround)
 
@@ -7319,6 +7739,9 @@ class AudioStream(FilterableStream):
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tiltshelf)
 
@@ -7385,6 +7808,9 @@ class AudioStream(FilterableStream):
             blocksize: set the block size (from 0 to 32768) (default 0)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
@@ -7428,6 +7854,9 @@ class AudioStream(FilterableStream):
             d: set depth as percentage (from 0 to 1) (default 0.5)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tremolo)
 
@@ -7461,6 +7890,9 @@ class AudioStream(FilterableStream):
             f: set frequency in hertz (from 0.1 to 20000) (default 5)
             d: set depth as percentage (from 0 to 1) (default 0.5)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrato)
@@ -7500,6 +7932,9 @@ class AudioStream(FilterableStream):
             cutoff: set virtual bass cutoff (from 100 to 500) (default 250)
             strength: set virtual bass strength (from 0.5 to 3) (default 3)
             enable: timeline editing
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#virtualbass)
@@ -7548,6 +7983,9 @@ class AudioStream(FilterableStream):
             replaygain_noclip: Apply replaygain clipping prevention (default true)
             enable: timeline editing
 
+        Returns:
+            the audio stream
+
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volume)
 
@@ -7578,6 +8016,9 @@ class AudioStream(FilterableStream):
         """
 
         Detect audio volume.
+
+        Returns:
+            the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)

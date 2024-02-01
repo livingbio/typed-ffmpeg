@@ -84,6 +84,9 @@ def acrossfade(
         curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
         curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
@@ -156,6 +159,10 @@ def afir(
         precision: set processing precision (from 0 to 2) (default auto)
         irload: set IR loading type (from 0 to 1) (default init)
 
+    Returns:
+        the filter node
+
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afir)
 
@@ -208,6 +215,9 @@ def ainterleave(
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
@@ -252,6 +262,9 @@ def alphamerge(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
@@ -287,6 +300,9 @@ def amerge(*streams: "AudioStream", inputs: Int = Default(2), **kwargs: Any) -> 
 
     Args:
         inputs: specify the number of inputs (from 1 to 64) (default 2)
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
@@ -329,6 +345,9 @@ def amix(
         weights: Set weight for each input. (default "1 1")
         normalize: Scale inputs (default true)
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
 
@@ -358,6 +377,9 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
     """
 
     Multiply two audio streams.
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
@@ -399,6 +421,9 @@ def anlmf(
         leakage: set the filter leakage (from 0 to 1) (default 0)
         out_mode: set output mode (from 0 to 4) (default o)
         enable: timeline editing
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
@@ -453,6 +478,9 @@ def anlms(
         out_mode: set output mode (from 0 to 4) (default o)
         enable: timeline editing
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
@@ -491,6 +519,9 @@ def apsnr(
 
     Args:
         enable: timeline editing
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
@@ -538,6 +569,9 @@ def arls(
         out_mode: set output mode (from 0 to 4) (default o)
         enable: timeline editing
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
 
@@ -576,6 +610,9 @@ def asdr(
     Args:
         enable: timeline editing
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
@@ -609,6 +646,9 @@ def asisdr(
 
     Args:
         enable: timeline editing
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
@@ -644,6 +684,10 @@ def astreamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
+
+    Returns:
+        the filter node
+
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
@@ -683,6 +727,9 @@ def axcorrelate(
     Args:
         size: set the segment size (from 2 to 131072) (default 256)
         algo: set the algorithm (from 0 to 2) (default best)
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
@@ -986,6 +1033,9 @@ def blend(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
@@ -1063,6 +1113,9 @@ def bm3d(
         planes: set planes to filter (from 0 to 15) (default 7)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
 
@@ -1118,6 +1171,9 @@ def colormap(
         kernel: set the kernel used for measuring color difference (from 0 to 1) (default euclidean)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
@@ -1164,6 +1220,10 @@ def concat(
         v: specify the number of video streams (from 0 to INT_MAX) (default 1)
         a: specify the number of audio streams (from 0 to INT_MAX) (default 0)
         unsafe: enable unsafe mode (default false)
+
+    Returns:
+        the filter node
+
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
@@ -1218,6 +1278,9 @@ def convolve(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
@@ -1270,6 +1333,9 @@ def corr(
         repeatlast: extend last frame of secondary streams beyond EOF (default true)
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
@@ -1324,6 +1390,9 @@ def decimate(
         ppsrc: mark main input as a pre-processed input and activate clean source input stream (default false)
         chroma: set whether or not chroma is considered in the metric calculations (default true)
         mixed: set whether or not the input only partially contains content to be decimated (default false)
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
@@ -1381,6 +1450,9 @@ def deconvolve(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
@@ -1429,6 +1501,9 @@ def displace(
         edge: set edge mode (from 0 to 3) (default smear)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
@@ -1457,7 +1532,7 @@ def displace(
 
 def feedback(
     _default: "VideoStream", _feedin: "VideoStream", *, x: Int = Default(0), w: Int = Default(0), **kwargs: Any
-) -> tuple["AudioStream", "AudioStream",]:
+) -> tuple["VideoStream", "VideoStream",]:
     """
 
     Apply feedback video filter.
@@ -1465,6 +1540,10 @@ def feedback(
     Args:
         x: set top left crop position (from 0 to INT_MAX) (default 0)
         w: set crop size (from 0 to INT_MAX) (default 0)
+
+    Returns:
+        the video stream
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
@@ -1489,8 +1568,8 @@ def feedback(
         ),
     )
     return (
-        filter_node.audio(0),
-        filter_node.audio(1),
+        filter_node.video(0),
+        filter_node.video(1),
     )
 
 
@@ -1531,6 +1610,9 @@ def fieldmatch(
         blockx: set the x-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
         blocky: set the y-axis size of the window used during combed frame detection (from 4 to 512) (default 16)
         combpel: set the number of combed pixels inside any of the blocky by blockx size blocks on the frame for the frame to be detected as combed (from 0 to INT_MAX) (default 80)
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
@@ -1580,6 +1662,9 @@ def framepack(
     Args:
         format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
@@ -1621,6 +1706,9 @@ def freezeframes(
         first: set first frame to freeze (from 0 to I64_MAX) (default 0)
         last: set last frame to freeze (from 0 to I64_MAX) (default 0)
         replace: set frame to replace (from 0 to I64_MAX) (default 0)
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
@@ -1671,6 +1759,9 @@ def guided(
         guidance: set guidance mode (0: off mode; 1: on mode) (from 0 to 1) (default off)
         planes: set planes to filter (from 0 to 15) (default 1)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
@@ -1725,6 +1816,9 @@ def haldclut(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
@@ -1777,6 +1871,9 @@ def headphone(
         size: set frame size (from 1024 to 96000) (default 1024)
         hrir: set hrir format (from 0 to 1) (default stereo)
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
 
@@ -1815,6 +1912,9 @@ def hstack(
     Args:
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
@@ -1863,6 +1963,9 @@ def hysteresis(
         repeatlast: extend last frame of secondary streams beyond EOF (default true)
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
@@ -1916,6 +2019,9 @@ def identity(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
@@ -1958,6 +2064,9 @@ def interleave(
         nb_inputs: set number of inputs (from 1 to INT_MAX) (default 2)
         duration: how to determine the end-of-stream (from 0 to 2) (default longest)
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
@@ -1995,6 +2104,9 @@ def join(
         inputs: Number of input streams. (from 1 to INT_MAX) (default 2)
         channel_layout: Channel layout of the output stream. (default "stereo")
         map: A comma-separated list of channels maps in the format 'input_stream.input_channel-output_channel.
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
@@ -2053,6 +2165,9 @@ def libvmaf(
         repeatlast: extend last frame of secondary streams beyond EOF (default true)
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
 
@@ -2106,6 +2221,9 @@ def limitdiff(
         reference: enable reference stream (default false)
         planes: set the planes to filter (from 0 to 15) (default 15)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
@@ -2164,6 +2282,9 @@ def lut2(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
@@ -2218,6 +2339,9 @@ def maskedclamp(
         planes: set planes (from 0 to 15) (default 15)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
@@ -2263,6 +2387,9 @@ def maskedmax(
         planes: set planes (from 0 to 15) (default 15)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
@@ -2306,6 +2433,9 @@ def maskedmerge(
         planes: set planes (from 0 to 15) (default 15)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
@@ -2348,6 +2478,9 @@ def maskedmin(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
@@ -2394,6 +2527,9 @@ def maskedthreshold(
         planes: set planes (from 0 to 15) (default 15)
         mode: set mode (from 0 to 1) (default abs)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
@@ -2452,6 +2588,9 @@ def mergeplanes(
         map3s: set 4th input to output stream mapping (from 0 to 3) (default 0)
         map3p: set 4th input to output plane mapping (from 0 to 3) (default 0)
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
 
@@ -2492,6 +2631,9 @@ def midequalizer(
     Args:
         planes: set planes (from 0 to 15) (default 15)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
@@ -2539,6 +2681,9 @@ def mix(
         planes: set what planes to filter (default F)
         duration: how to determine end of stream (from 0 to 2) (default longest)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
@@ -2596,6 +2741,9 @@ def morpho(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
@@ -2649,6 +2797,9 @@ def msad(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
@@ -2696,6 +2847,9 @@ def multiply(
         offset: set offset (from -1 to 1) (default 0.5)
         planes: set planes (default F)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
@@ -2758,6 +2912,9 @@ def overlay(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
@@ -2817,6 +2974,9 @@ def paletteuse(
         alpha_threshold: set the alpha threshold for transparency (from 0 to 255) (default 128)
         debug_kdtree: save Graphviz graph of the kdtree in specified file
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
@@ -2861,6 +3021,9 @@ def premultiply(
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
@@ -2913,6 +3076,9 @@ def psnr(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
@@ -2960,6 +3126,9 @@ def remap(
     Args:
         format: set output format (from 0 to 1) (default color)
         fill: set the color of the unmapped pixels (default "black")
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
@@ -3017,7 +3186,7 @@ def scale2ref(
     param1: Double = Default("DBL_MAX"),
     eval: Int | Literal["init", "frame"] | Default = Default("init"),
     **kwargs: Any
-) -> tuple["AudioStream", "AudioStream",]:
+) -> tuple["VideoStream", "VideoStream",]:
     """
 
     Scale the input video size and/or convert the image format to the given reference.
@@ -3040,6 +3209,10 @@ def scale2ref(
         param0: Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
         param1: Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)
         eval: specify when to evaluate expressions (from 0 to 1) (default init)
+
+    Returns:
+        the video stream
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale2ref)
@@ -3079,8 +3252,8 @@ def scale2ref(
         ),
     )
     return (
-        filter_node.audio(0),
-        filter_node.audio(1),
+        filter_node.video(0),
+        filter_node.video(1),
     )
 
 
@@ -3119,6 +3292,9 @@ def sidechaincompress(
         detection: set detection (from 0 to 1) (default rms)
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
         mix: set mix (from 0 to 1) (default 1)
+
+    Returns:
+        the audio stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
@@ -3193,6 +3369,9 @@ def sidechaingate(
         level_sc: set sidechain gain (from 0.015625 to 64) (default 1)
         enable: timeline editing
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
@@ -3256,6 +3435,9 @@ def signature(
         th_xh: threshold to detect frames as similar (from 1 to INT_MAX) (default 116)
         th_di: minimum length of matching sequence in frames (from 0 to INT_MAX) (default 0)
         th_it: threshold for relation of good to all frames (from 0 to 1) (default 0.5)
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
@@ -3337,6 +3519,9 @@ def spectrumsynth(
         overlap: set window overlap (from 0 to 1) (default 1)
         orientation: set orientation (from 0 to 1) (default vertical)
 
+    Returns:
+        the audio stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
@@ -3391,6 +3576,9 @@ def ssim(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
@@ -3430,6 +3618,10 @@ def streamselect(
     Args:
         inputs: number of input streams (from 2 to INT_MAX) (default 2)
         map: input indexes to remap to outputs
+
+    Returns:
+        the filter node
+
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
@@ -3471,6 +3663,9 @@ def threshold(
     Args:
         planes: set planes to filter (from 0 to 15) (default 15)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
@@ -3514,6 +3709,9 @@ def unpremultiply(
         planes: set planes (from 0 to 15) (default 15)
         inplace: enable inplace mode (default false)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
@@ -3565,6 +3763,9 @@ def varblur(
         repeatlast: extend last frame of secondary streams beyond EOF (default true)
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
@@ -3619,6 +3820,9 @@ def vif(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
@@ -3657,6 +3861,9 @@ def vstack(
     Args:
         inputs: set number of inputs (from 2 to INT_MAX) (default 2)
         shortest: force termination when the shortest input terminates (default false)
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
@@ -3705,6 +3912,9 @@ def xcorrelate(
         repeatlast: extend last frame of secondary streams beyond EOF (default true)
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
@@ -3818,6 +4028,9 @@ def xfade(
         offset: set cross fade start relative to first input stream (default 0)
         expr: set expression for custom transition
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
@@ -3871,6 +4084,9 @@ def xmedian(
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
         enable: timeline editing
 
+    Returns:
+        the video stream
+
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
 
@@ -3918,6 +4134,9 @@ def xstack(
         grid: set fixed size grid layout
         shortest: force termination when the shortest input terminates (default false)
         fill: set the color for unused pixels (default "none")
+
+    Returns:
+        the video stream
 
     References:
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
