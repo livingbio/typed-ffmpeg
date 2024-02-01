@@ -1,17 +1,14 @@
 {
   "description": "Apply motion compensating deinterlacing.",
-  "filter_type": "vf",
-  "formula_input_typings": null,
-  "formula_output_typings": null,
-  "id": "ff_vf_mcdeint",
-  "input_stream_typings": [
+  "input_types": [
     {
       "name": "default",
       "type": "video"
     }
   ],
-  "is_input_dynamic": false,
-  "is_output_dynamic": false,
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
   "is_support_framesync": false,
   "is_support_timeline": false,
   "name": "mcdeint",
@@ -22,21 +19,25 @@
       ],
       "choices": [
         {
+          "flags": "..FV.......",
           "help": "",
           "name": "fast",
           "value": "0"
         },
         {
+          "flags": "..FV.......",
           "help": "",
           "name": "medium",
           "value": "1"
         },
         {
+          "flags": "..FV.......",
           "help": "",
           "name": "slow",
           "value": "2"
         },
         {
+          "flags": "..FV.......",
           "help": "",
           "name": "extra_slow",
           "value": "3"
@@ -44,9 +45,11 @@
       ],
       "default": "fast",
       "description": "set mode (from 0 to 3) (default fast)",
+      "flags": "..FV.......",
+      "max": "3",
+      "min": "0",
       "name": "mode",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -54,11 +57,13 @@
       ],
       "choices": [
         {
+          "flags": "..FV.......",
           "help": "assume top field first",
           "name": "tff",
           "value": "0"
         },
         {
+          "flags": "..FV.......",
           "help": "assume bottom field first",
           "name": "bff",
           "value": "1"
@@ -66,9 +71,11 @@
       ],
       "default": "bff",
       "description": "set the assumed picture field parity (from -1 to 1) (default bff)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "-1",
       "name": "parity",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -77,16 +84,17 @@
       "choices": [],
       "default": 1,
       "description": "set qp (from INT_MIN to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "qp",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     }
   ],
-  "output_stream_typings": [
+  "output_types": [
     {
       "name": "default",
       "type": "video"
     }
-  ],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#mcdeint"
+  ]
 }

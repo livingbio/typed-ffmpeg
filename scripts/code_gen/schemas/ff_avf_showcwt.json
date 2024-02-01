@@ -52,7 +52,7 @@
         },
         {
           "help": "logarithmic",
-          "name": "log2",
+          "name": "log",
           "value": "1"
         },
         {
@@ -69,11 +69,63 @@
           "help": "erbs",
           "name": "erbs",
           "value": "4"
+        },
+        {
+          "help": "sqrt",
+          "name": "sqrt",
+          "value": "5"
+        },
+        {
+          "help": "cbrt",
+          "name": "cbrt",
+          "value": "6"
+        },
+        {
+          "help": "qdrt",
+          "name": "qdrt",
+          "value": "7"
         }
       ],
       "default": "linear",
-      "description": "set frequency scale (from 0 to 4) (default linear)",
+      "description": "set frequency scale (from 0 to 7) (default linear)",
       "name": "scale",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [
+        "iscale"
+      ],
+      "choices": [
+        {
+          "help": "linear",
+          "name": "linear",
+          "value": "1"
+        },
+        {
+          "help": "logarithmic",
+          "name": "log",
+          "value": "0"
+        },
+        {
+          "help": "sqrt",
+          "name": "sqrt",
+          "value": "2"
+        },
+        {
+          "help": "cbrt",
+          "name": "cbrt",
+          "value": "3"
+        },
+        {
+          "help": "qdrt",
+          "name": "qdrt",
+          "value": "4"
+        }
+      ],
+      "default": "log",
+      "description": "set intensity scale (from 0 to 4) (default log)",
+      "name": "iscale",
       "required": false,
       "typing": "Int"
     },
@@ -83,7 +135,7 @@
       ],
       "choices": [],
       "default": 20.0,
-      "description": "set minimum frequency (from 1 to 2000) (default 20)",
+      "description": "set minimum frequency (from 1 to 192000) (default 20)",
       "name": "min",
       "required": false,
       "typing": "Float"
@@ -94,8 +146,30 @@
       ],
       "choices": [],
       "default": 20000.0,
-      "description": "set maximum frequency (from 0 to 192000) (default 20000)",
+      "description": "set maximum frequency (from 1 to 192000) (default 20000)",
       "name": "max",
+      "required": false,
+      "typing": "Float"
+    },
+    {
+      "alias": [
+        "imin"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "set minimum intensity (from 0 to 1) (default 0)",
+      "name": "imin",
+      "required": false,
+      "typing": "Float"
+    },
+    {
+      "alias": [
+        "imax"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set maximum intensity (from 0 to 1) (default 1)",
+      "name": "imax",
       "required": false,
       "typing": "Float"
     },
@@ -116,7 +190,7 @@
       ],
       "choices": [],
       "default": 1.0,
-      "description": "set frequency deviation (from 0 to 10) (default 1)",
+      "description": "set frequency deviation (from 0 to 100) (default 1)",
       "name": "deviation",
       "required": false,
       "typing": "Float"
@@ -227,6 +301,28 @@
       "name": "direction",
       "required": false,
       "typing": "Int"
+    },
+    {
+      "alias": [
+        "bar"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "set bar ratio (from 0 to 1) (default 0)",
+      "name": "bar",
+      "required": false,
+      "typing": "Float"
+    },
+    {
+      "alias": [
+        "rotation"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "set color rotation (from -1 to 1) (default 0)",
+      "name": "rotation",
+      "required": false,
+      "typing": "Float"
     }
   ],
   "output_stream_typings": [

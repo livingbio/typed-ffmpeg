@@ -20,13 +20,13 @@
       "choices": [
         {
           "flags": "..FV.......",
-          "help": "native backend flag",
-          "name": "native",
-          "value": "0"
+          "help": "openvino backend flag",
+          "name": "openvino",
+          "value": "2"
         }
       ],
-      "default": "native",
-      "description": "DNN backend (from INT_MIN to INT_MAX) (default native)",
+      "default": 1,
+      "description": "DNN backend (from INT_MIN to INT_MAX) (default 1)",
       "flags": "..FV.......",
       "max": "INT_MAX",
       "min": "INT_MIN",

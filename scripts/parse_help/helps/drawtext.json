@@ -33,7 +33,7 @@
       "choices": [],
       "default": null,
       "description": "set text",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "text",
@@ -59,7 +59,7 @@
       "choices": [],
       "default": "black",
       "description": "set foreground color (default \"black\")",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "fontcolor",
@@ -85,7 +85,7 @@
       "choices": [],
       "default": "white",
       "description": "set box color (default \"white\")",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "boxcolor",
@@ -98,7 +98,7 @@
       "choices": [],
       "default": "black",
       "description": "set border color (default \"black\")",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "bordercolor",
@@ -111,7 +111,7 @@
       "choices": [],
       "default": "black",
       "description": "set shadow color (default \"black\")",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "shadowcolor",
@@ -124,7 +124,7 @@
       "choices": [],
       "default": false,
       "description": "set box (default false)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "box",
@@ -135,13 +135,13 @@
         "boxborderw"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
-      "flags": "..FV.......",
-      "max": "INT_MAX",
-      "min": "INT_MIN",
+      "default": "0",
+      "description": "set box borders width (default \"0\")",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
       "name": "boxborderw",
-      "typing": "int"
+      "typing": "string"
     },
     {
       "alias": [
@@ -150,7 +150,7 @@
       "choices": [],
       "default": 0,
       "description": "set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": "INT_MAX",
       "min": "INT_MIN",
       "name": "line_spacing",
@@ -163,11 +163,97 @@
       "choices": [],
       "default": null,
       "description": "set font size",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "fontsize",
       "typing": "string"
+    },
+    {
+      "alias": [
+        "text_align"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "left",
+          "value": "left"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "L",
+          "value": "L"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "right",
+          "value": "right"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "R",
+          "value": "R"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "center",
+          "value": "center"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "C",
+          "value": "C"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "top",
+          "value": "top"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "T",
+          "value": "T"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bottom",
+          "value": "bottom"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "B",
+          "value": "B"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "middle",
+          "value": "middle"
+        },
+        {
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "M",
+          "value": "M"
+        }
+      ],
+      "default": "0",
+      "description": "set text alignment (default 0)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "text_align",
+      "typing": "flags"
     },
     {
       "alias": [
@@ -176,7 +262,7 @@
       "choices": [],
       "default": "0",
       "description": "set x expression (default \"0\")",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "x",
@@ -189,11 +275,37 @@
       "choices": [],
       "default": "0",
       "description": "set y expression (default \"0\")",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "y",
       "typing": "string"
+    },
+    {
+      "alias": [
+        "boxw"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "set box width (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "boxw",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "boxh"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "set box height (from 0 to INT_MAX) (default 0)",
+      "flags": "..FV.....T.",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "boxh",
+      "typing": "int"
     },
     {
       "alias": [
@@ -202,7 +314,7 @@
       "choices": [],
       "default": 0,
       "description": "set shadow x offset (from INT_MIN to INT_MAX) (default 0)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": "INT_MAX",
       "min": "INT_MIN",
       "name": "shadowx",
@@ -215,7 +327,7 @@
       "choices": [],
       "default": 0,
       "description": "set shadow y offset (from INT_MIN to INT_MAX) (default 0)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": "INT_MAX",
       "min": "INT_MIN",
       "name": "shadowy",
@@ -228,7 +340,7 @@
       "choices": [],
       "default": 0,
       "description": "set border width (from INT_MIN to INT_MAX) (default 0)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": "INT_MAX",
       "min": "INT_MIN",
       "name": "borderw",
@@ -241,7 +353,7 @@
       "choices": [],
       "default": 4,
       "description": "set tab size (from 0 to INT_MAX) (default 4)",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": "INT_MAX",
       "min": "0",
       "name": "tabsize",
@@ -307,6 +419,38 @@
     },
     {
       "alias": [
+        "y_align"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "y is referred to the top of the first text line",
+          "name": "text",
+          "value": "0"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "y is referred to the baseline of the first line",
+          "name": "baseline",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "y is referred to the font defined line metrics",
+          "name": "font",
+          "value": "2"
+        }
+      ],
+      "default": "text",
+      "description": "set the y alignment (from 0 to 2) (default text)",
+      "flags": "..FV.....T.",
+      "max": "2",
+      "min": "0",
+      "name": "y_align",
+      "typing": "int"
+    },
+    {
+      "alias": [
         "timecode"
       ],
       "choices": [],
@@ -366,7 +510,7 @@
       "choices": [],
       "default": "1",
       "description": "apply alpha while rendering (default \"1\")",
-      "flags": "..FV.......",
+      "flags": "..FV.....T.",
       "max": null,
       "min": null,
       "name": "alpha",

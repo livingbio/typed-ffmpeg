@@ -103,6 +103,32 @@
       "min": "0",
       "name": "tripod",
       "typing": "int"
+    },
+    {
+      "alias": [
+        "fileformat"
+      ],
+      "choices": [
+        {
+          "flags": "..FV.......",
+          "help": "ASCII text",
+          "name": "ascii",
+          "value": "1"
+        },
+        {
+          "flags": "..FV.......",
+          "help": "binary",
+          "name": "binary",
+          "value": "2"
+        }
+      ],
+      "default": "binary",
+      "description": "transforms data file format (from 1 to 2) (default binary)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "1",
+      "name": "fileformat",
+      "typing": "int"
     }
   ],
   "output_types": [

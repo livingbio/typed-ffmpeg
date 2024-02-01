@@ -1,12 +1,9 @@
 {
   "description": "Generate a FIR equalizer coefficients audio stream.",
-  "filter_type": "asrc",
-  "formula_input_typings": null,
-  "formula_output_typings": null,
-  "id": "ff_asrc_afireqsrc",
-  "input_stream_typings": [],
-  "is_input_dynamic": false,
-  "is_output_dynamic": false,
+  "input_types": [],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
   "is_support_framesync": false,
   "is_support_timeline": false,
   "name": "afireqsrc",
@@ -18,96 +15,115 @@
       ],
       "choices": [
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "custom",
           "value": "-1"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "flat",
           "value": "0"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "acoustic",
           "value": "1"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "bass",
           "value": "2"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "beats",
           "value": "3"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "classic",
           "value": "4"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "clear",
           "value": "5"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "deep",
           "value": "bass       6"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "dubstep",
           "value": "7"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "electronic",
           "value": "8"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "hardstyle",
           "value": "9"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "hop",
           "value": "10"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "jazz",
           "value": "11"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "metal",
           "value": "12"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "movie",
           "value": "13"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "pop",
           "value": "14"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "b",
           "value": "15"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "rock",
           "value": "16"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "vocal",
           "value": "booster   17"
@@ -115,9 +131,11 @@
       ],
       "default": "flat",
       "description": "set equalizer preset (from -1 to 17) (default flat)",
+      "flags": "..F.A......",
+      "max": "17",
+      "min": "-1",
       "name": "preset",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -127,9 +145,11 @@
       "choices": [],
       "default": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0",
       "description": "set gain values per band (default \"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
       "name": "gains",
-      "required": false,
-      "typing": "String"
+      "typing": "string"
     },
     {
       "alias": [
@@ -139,9 +159,11 @@
       "choices": [],
       "default": "25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000",
       "description": "set central frequency values per band (default \"25 40 63 100 160 250 400 630 1000 1600 2500 4000 6300 10000 16000 24000\")",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
       "name": "bands",
-      "required": false,
-      "typing": "String"
+      "typing": "string"
     },
     {
       "alias": [
@@ -151,9 +173,11 @@
       "choices": [],
       "default": 4096,
       "description": "set number of taps (from 16 to 65535) (default 4096)",
+      "flags": "..F.A......",
+      "max": "65535",
+      "min": "16",
       "name": "taps",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -163,9 +187,11 @@
       "choices": [],
       "default": 44100,
       "description": "set sample rate (from 1 to INT_MAX) (default 44100)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
       "name": "sample_rate",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -175,9 +201,11 @@
       "choices": [],
       "default": 1024,
       "description": "set the number of samples per requested frame (from 1 to INT_MAX) (default 1024)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "1",
       "name": "nb_samples",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -186,11 +214,13 @@
       ],
       "choices": [
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "linear",
           "value": "0"
         },
         {
+          "flags": "..F.A......",
           "help": "",
           "name": "cubic",
           "value": "1"
@@ -198,9 +228,11 @@
       ],
       "default": "linear",
       "description": "set the interpolation (from 0 to 1) (default linear)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
       "name": "interp",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     },
     {
       "alias": [
@@ -209,11 +241,13 @@
       ],
       "choices": [
         {
+          "flags": "..F.A......",
           "help": "linear phase",
           "name": "linear",
           "value": "0"
         },
         {
+          "flags": "..F.A......",
           "help": "minimum phase",
           "name": "min",
           "value": "1"
@@ -221,16 +255,17 @@
       ],
       "default": "min",
       "description": "set the phase (from 0 to 1) (default min)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
       "name": "phase",
-      "required": false,
-      "typing": "Int"
+      "typing": "int"
     }
   ],
-  "output_stream_typings": [
+  "output_types": [
     {
       "name": "default",
       "type": "audio"
     }
-  ],
-  "ref": "https://ffmpeg.org/ffmpeg-filters.html#afireqsrc"
+  ]
 }

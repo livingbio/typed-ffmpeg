@@ -1,5 +1,5 @@
 {
-  "description": "### 11.22 ccrepack\n\nRepack CEA-708 closed captioning side data\n\nThis filter fixes various issues seen with commerical encoders related to\nupstream malformed CEA-708 payloads, specifically incorrect number of tuples\n(wrong cc_count for the target FPS), and incorrect ordering of tuples (i.e.\nthe CEA-608 tuples are not at the first entries in the payload).\n\n",
+  "description": "Repack CEA-708 closed caption metadata",
   "filter_type": "vf",
   "formula_input_typings": null,
   "formula_output_typings": null,

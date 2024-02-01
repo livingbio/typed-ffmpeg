@@ -29,6 +29,17 @@
     },
     {
       "alias": [
+        "keep"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "set the number of similar consecutive frames to be kept before starting to drop similar frames (from 0 to INT_MAX) (default 0)",
+      "name": "keep",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [
         "hi"
       ],
       "choices": [],

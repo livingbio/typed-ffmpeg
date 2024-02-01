@@ -284,6 +284,32 @@
       "min": "0",
       "name": "precision",
       "typing": "int"
+    },
+    {
+      "alias": [
+        "irload"
+      ],
+      "choices": [
+        {
+          "flags": "..F.A......",
+          "help": "load all IRs on init",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "flags": "..F.A......",
+          "help": "load IR on access",
+          "name": "access",
+          "value": "1"
+        }
+      ],
+      "default": "init",
+      "description": "set IR loading type (from 0 to 1) (default init)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "irload",
+      "typing": "int"
     }
   ],
   "output_types": null

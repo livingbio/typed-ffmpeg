@@ -114,6 +114,17 @@
       "name": "nb_samples",
       "required": false,
       "typing": "Int"
+    },
+    {
+      "alias": [
+        "density"
+      ],
+      "choices": [],
+      "default": 0.05,
+      "description": "set density (from 0 to 1) (default 0.05)",
+      "name": "density",
+      "required": false,
+      "typing": "Double"
     }
   ],
   "output_stream_typings": [

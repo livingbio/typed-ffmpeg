@@ -22,17 +22,6 @@
   "options": [
     {
       "alias": [
-        "model_path"
-      ],
-      "choices": [],
-      "default": null,
-      "description": "use model='path=...'.",
-      "name": "model_path",
-      "required": false,
-      "typing": "String"
-    },
-    {
-      "alias": [
         "log_path"
       ],
       "choices": [],
@@ -52,51 +41,6 @@
       "name": "log_fmt",
       "required": false,
       "typing": "String"
-    },
-    {
-      "alias": [
-        "enable_transform",
-        "phone_model"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use model='enable_transform=true'. (default false)",
-      "name": "enable_transform",
-      "required": false,
-      "typing": "Boolean"
-    },
-    {
-      "alias": [
-        "psnr"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use feature='name=psnr'. (default false)",
-      "name": "psnr",
-      "required": false,
-      "typing": "Boolean"
-    },
-    {
-      "alias": [
-        "ssim"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use feature='name=float_ssim'. (default false)",
-      "name": "ssim",
-      "required": false,
-      "typing": "Boolean"
-    },
-    {
-      "alias": [
-        "ms_ssim"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "use feature='name=float_ms_ssim'. (default false)",
-      "name": "ms_ssim",
-      "required": false,
-      "typing": "Boolean"
     },
     {
       "alias": [
@@ -130,17 +74,6 @@
       "name": "n_subsample",
       "required": false,
       "typing": "Int"
-    },
-    {
-      "alias": [
-        "enable_conf_interval"
-      ],
-      "choices": [],
-      "default": false,
-      "description": "model='enable_conf_interval=true'. (default false)",
-      "name": "enable_conf_interval",
-      "required": false,
-      "typing": "Boolean"
     },
     {
       "alias": [

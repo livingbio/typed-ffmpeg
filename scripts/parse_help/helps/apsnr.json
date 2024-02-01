@@ -1,5 +1,5 @@
 {
-  "description": "Measure Audio Signal-to-Distortion Ratio.",
+  "description": "Measure Audio Peak Signal-to-Noise Ratio.",
   "input_types": [
     {
       "name": "input0",
@@ -15,7 +15,7 @@
   "is_slice_threading_supported": true,
   "is_support_framesync": false,
   "is_support_timeline": true,
-  "name": "asdr",
+  "name": "apsnr",
   "options": [],
   "output_types": [
     {

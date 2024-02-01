@@ -120,11 +120,11 @@
         "boxborderw"
       ],
       "choices": [],
-      "default": 0,
-      "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
+      "default": "0",
+      "description": "set box borders width (default \"0\")",
       "name": "boxborderw",
       "required": false,
-      "typing": "Int"
+      "typing": "String"
     },
     {
       "alias": [
@@ -150,6 +150,78 @@
     },
     {
       "alias": [
+        "text_align"
+      ],
+      "choices": [
+        {
+          "help": "",
+          "name": "left",
+          "value": "left"
+        },
+        {
+          "help": "",
+          "name": "L",
+          "value": "L"
+        },
+        {
+          "help": "",
+          "name": "right",
+          "value": "right"
+        },
+        {
+          "help": "",
+          "name": "R",
+          "value": "R"
+        },
+        {
+          "help": "",
+          "name": "center",
+          "value": "center"
+        },
+        {
+          "help": "",
+          "name": "C",
+          "value": "C"
+        },
+        {
+          "help": "",
+          "name": "top",
+          "value": "top"
+        },
+        {
+          "help": "",
+          "name": "T",
+          "value": "T"
+        },
+        {
+          "help": "",
+          "name": "bottom",
+          "value": "bottom"
+        },
+        {
+          "help": "",
+          "name": "B",
+          "value": "B"
+        },
+        {
+          "help": "",
+          "name": "middle",
+          "value": "middle"
+        },
+        {
+          "help": "",
+          "name": "M",
+          "value": "M"
+        }
+      ],
+      "default": "0",
+      "description": "set text alignment (default 0)",
+      "name": "text_align",
+      "required": false,
+      "typing": "Flags"
+    },
+    {
+      "alias": [
         "x"
       ],
       "choices": [],
@@ -169,6 +241,28 @@
       "name": "y",
       "required": false,
       "typing": "String"
+    },
+    {
+      "alias": [
+        "boxw"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "set box width (from 0 to INT_MAX) (default 0)",
+      "name": "boxw",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [
+        "boxh"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "set box height (from 0 to INT_MAX) (default 0)",
+      "name": "boxh",
+      "required": false,
+      "typing": "Int"
     },
     {
       "alias": [
@@ -260,6 +354,33 @@
       "default": "normal",
       "description": "set the expansion mode (from 0 to 2) (default normal)",
       "name": "expansion",
+      "required": false,
+      "typing": "Int"
+    },
+    {
+      "alias": [
+        "y_align"
+      ],
+      "choices": [
+        {
+          "help": "y is referred to the top of the first text line",
+          "name": "text",
+          "value": "0"
+        },
+        {
+          "help": "y is referred to the baseline of the first line",
+          "name": "baseline",
+          "value": "1"
+        },
+        {
+          "help": "y is referred to the font defined line metrics",
+          "name": "font",
+          "value": "2"
+        }
+      ],
+      "default": "text",
+      "description": "set the y alignment (from 0 to 2) (default text)",
+      "name": "y_align",
       "required": false,
       "typing": "Int"
     },

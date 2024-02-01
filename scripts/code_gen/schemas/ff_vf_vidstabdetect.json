@@ -92,6 +92,28 @@
       "name": "tripod",
       "required": false,
       "typing": "Int"
+    },
+    {
+      "alias": [
+        "fileformat"
+      ],
+      "choices": [
+        {
+          "help": "ASCII text",
+          "name": "ascii",
+          "value": "1"
+        },
+        {
+          "help": "binary",
+          "name": "binary",
+          "value": "2"
+        }
+      ],
+      "default": "binary",
+      "description": "transforms data file format (from 1 to 2) (default binary)",
+      "name": "fileformat",
+      "required": false,
+      "typing": "Int"
     }
   ],
   "output_stream_typings": [
