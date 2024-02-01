@@ -1,7 +1,7 @@
-from . import filters, nodes
+from . import dag, filters
 from .base import filter, filter_multi_output, input, merge_outputs, output
+from .dag import Stream
 from .exceptions import Error
-from .nodes import Stream
 from .probe import probe
 from .streams import AudioStream, AVStream, VideoStream
 
@@ -18,5 +18,5 @@ __all__ = [
     "AVStream",
     "filter",
     "filter_multi_output",
-    "nodes",
+    "dag",
 ]

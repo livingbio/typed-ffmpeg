@@ -3,8 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, TypeVar
 
-from ..nodes.base import Node, Stream, _DAGContext
-from ..nodes.nodes import FilterNode, GlobalNode, InputNode, OutputNode
+from ..dag.base import Node, Stream, _DAGContext
+from ..dag.nodes import FilterNode, GlobalNode, InputNode, OutputNode
 
 T = TypeVar("T")
 
