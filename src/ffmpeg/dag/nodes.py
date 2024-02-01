@@ -289,6 +289,10 @@ class GlobalNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class InputNode(Node):
+    """
+    A node that can be used to read from files
+    """
+
     filename: str
 
     @property
