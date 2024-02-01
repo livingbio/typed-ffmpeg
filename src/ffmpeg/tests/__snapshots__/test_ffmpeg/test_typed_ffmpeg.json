@@ -27,5 +27,6 @@
   "schema",
   "streams",
   "tests",
+  "types",
   "utils"
 ]
