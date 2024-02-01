@@ -3,7 +3,7 @@ import enum
 
 class StreamType(enum.Enum):
     """
-    Stream type (audio or video)
+    The type of a stream. (audio or video)
     """
 
     audio = "audio"

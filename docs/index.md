@@ -1,17 +1,29 @@
-# Welcome to MkDocs
+# Welcome to Typed-FFmpeg's documentation!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands
+Pydantic is the most widely used data validation library for Python.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+Fast and extensible, Pydantic plays nicely with your linters/IDE/brain. Define how data should be in pure, canonical Python 3.8+; validate it with Pydantic.
 
-## Project layout
+!!! success "Migrating to Pydantic V2"
+    Using Pydantic V1? See the Migration Guide for notes on upgrading to Pydantic V2 in your applications!
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+
+```py
+from datetime import datetime
+from typing import Tuple
+
+from pydantic import BaseModel
+
+
+class Delivery(BaseModel):
+    timestamp: datetime
+    dimensions: Tuple[int, int]
+
+
+m = Delivery(timestamp='2020-01-02T03:04:05Z', dimensions=['10', '20'])
+print(repr(m.timestamp))
+#> datetime.datetime(2020, 1, 2, 3, 4, 5, tzinfo=TzInfo(UTC))
+print(m.dimensions)
+#> (10, 20)
+```
