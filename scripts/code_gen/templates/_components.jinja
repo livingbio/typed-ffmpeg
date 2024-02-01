@@ -66,7 +66,7 @@ Default("nan")
 {%- else -%}
 -> tuple[
     {% for stream_typing in f.output_stream_typings %}
-        {% if stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
+        {% if stream_typing.type.value == "video" %}
             "VideoStream",
         {% else %}
             "AudioStream",
@@ -84,6 +84,19 @@ Args:
     {{option.name | option_name_safe}}: {{option.description | striptags }}
 {%- endfor %}
 {% endif %}
+Returns:
+{%- if f.is_output_dynamic %}
+    the filter node
+{% else -%}
+    {% for stream_tpying in f.output_stream_typings %}
+    {%- if stream_tpying.type.value == "video" %}
+    the video stream
+    {%- else %}
+    the audio stream
+    {%- endif -%}
+    {%- endfor %}
+{%- endif %}
+
 References:
     [FFmpeg Documentation]({{ f.ref }})
 {% endmacro %}
@@ -103,7 +116,7 @@ References:
 {% else %}
     {% for stream_typing in f.input_stream_typings %}
         {% if type == "method" and loop.index0 == 0 %}
-        {% elif stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
+        {% elif stream_typing.type.value == "video" %}
         {{ stream_typing.name | stream_name_safe }},
         {% else %}
         {{ stream_typing.name | stream_name_safe }},
@@ -139,7 +152,7 @@ return filter_node.{{return_type}}(0)
 {%- else -%}
 return (
     {% for stream_typing in f.output_stream_typings %}
-        {% if stream_typing.type.value == "AVMEDIA_TYPE_VIDEO" %}
+        {% if stream_typing.type.value == "video" %}
             filter_node.video({{loop.index0}}),
         {% else %}
             filter_node.audio({{loop.index0}}),
