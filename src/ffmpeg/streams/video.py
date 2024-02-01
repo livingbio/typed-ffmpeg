@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Literal
 
-from ..nodes.nodes import FilterableStream, FilterNode
+from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType
 from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
 from ..utils.typing import override

@@ -1,6 +1,6 @@
 from typing import Any
 
-from .nodes.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
+from .dag.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
 from .streams.av import AVStream
 
 
@@ -10,16 +10,17 @@ def input(filename: str, **kwargs: Any) -> AVStream:
 
     Args:
         filename: Input file URL
-        **kwargs: ffmpeg options
+        **kwargs: ffmpeg's input file options
 
     Returns:
         Input stream
+
+    Examples:
+    ```py
+    >>> input('input.mp4')
+    <AVStream:input.mp4:0>
+    ```
     """
-    fmt = kwargs.pop("f", None)
-    if fmt:
-        if "format" in kwargs:
-            raise ValueError("Can't specify both `format` and `f` kwargs")
-        kwargs["format"] = fmt
     return InputNode(filename=filename, kwargs=tuple(kwargs.items())).stream()
 
 
@@ -62,6 +63,9 @@ def filter(*streams: FilterableStream, name: str, **kwargs: Any) -> AVStream:
 
     Returns:
         the output stream
+
+    Note:
+        This function is for custom filter which is not implemented in typed-ffmpeg
     """
     return FilterNode(name=name, inputs=streams, kwargs=tuple(kwargs.items())).stream(0)
 
@@ -77,5 +81,8 @@ def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) ->
 
     Returns:
         the FilterNode
+
+    Note:
+        This function is for custom filter which is not implemented in typed-ffmpeg
     """
     return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=streams)

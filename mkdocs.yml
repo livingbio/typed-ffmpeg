@@ -43,22 +43,25 @@ nav:
   - Get Started:
       - Welcome to Pydantic: index.md
   - API Documentation:
+      - ffmpeg: base.md
+      - types: types.md
+      - schema: schema.md
       - Streams:
           - video stream: streams/video_stream.md
           - audio stream: streams/audio_stream.md
           - av stream: streams/av_stream.md
-      - Nodes:
-          - base: nodes/base.md
-          - nodes: nodes/nodes.md
+      - DAG:
+          - base: dag/base.md
+          - nodes: dag/nodes.md
 watch:
   - "src"
   - "docs"
 
 # https://www.mkdocs.org/user-guide/configuration/#validation
-validation:
-  omitted_files: warn
-  absolute_links: warn
-  unrecognized_links: warn
+# validation:
+#   omitted_files: warn
+#   absolute_links: warn
+#   unrecognized_links: warn
 
 markdown_extensions:
 - tables
