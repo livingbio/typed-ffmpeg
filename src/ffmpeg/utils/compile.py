@@ -10,6 +10,16 @@ T = TypeVar("T")
 
 
 def _remove_duplicates(seq: list[T]) -> list[T]:
+    """
+    Remove duplicates from the given sequence while preserving the order
+
+    Args:
+        seq: The sequence to remove duplicates from
+
+    Returns:
+        The sequence without duplicates
+    """
+
     seen = set()
     output = []
 
@@ -22,7 +32,15 @@ def _remove_duplicates(seq: list[T]) -> list[T]:
 
 
 def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
-    """Collect all nodes and streams that are upstreamed to the given node"""
+    """
+    Collect all nodes and streams that are upstreamed to the given node
+
+    Args:
+        node: The node to collect from
+
+    Returns:
+        A tuple of the collected nodes and streams
+    """
     nodes, streams = [node], [*node.incoming_streams]
 
     for stream in node.incoming_streams:
@@ -34,6 +52,17 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
 
 
 def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stream]]) -> int:
+    """
+    Calculate the maximum depth of the given node
+
+    Args:
+        node: The node to calculate the maximum depth of
+        outgoing_streams: The outgoing streams of all nodes
+
+    Returns:
+        The maximum depth of the given node
+    """
+
     if not node.incoming_streams:
         return 0
 
@@ -41,10 +70,32 @@ def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stre
 
 
 def _node_max_depth(all_nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, int]:
+    """
+    Calculate the maximum depth of all nodes
+
+    Args:
+        all_nodes: All nodes in the DAG
+        outgoing_streams: The outgoing streams of all nodes
+
+    Returns:
+        A dictionary mapping each node to its maximum depth
+    """
+
     return {node: _calculate_node_max_depth(node, outgoing_streams) for node in all_nodes}
 
 
 def _build_outgoing_streams(nodes: list[Node], streams: list[Stream]) -> dict[Node, list[Stream]]:
+    """
+    Build a dictionary mapping each node to its outgoing streams
+
+    Args:
+        nodes: All nodes in the DAG
+        streams: All streams in the DAG
+
+    Returns:
+        A dictionary mapping each node to its outgoing streams
+    """
+
     outgoing_streams: dict[Node, list[Stream]] = {}
 
     for node in nodes:
@@ -57,6 +108,17 @@ def _build_outgoing_streams(nodes: list[Node], streams: list[Stream]) -> dict[No
 
 
 def _build_node_labels(nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, str]:
+    """
+    Build a dictionary mapping each node to its label
+
+    Args:
+        nodes: All nodes in the DAG
+        outgoing_streams: The outgoing streams of all nodes
+
+    Returns:
+        A dictionary mapping each node to its label
+    """
+
     node_max_depth = _node_max_depth(nodes, outgoing_streams)
     input_node_index = 0
     filter_node_index = 0
