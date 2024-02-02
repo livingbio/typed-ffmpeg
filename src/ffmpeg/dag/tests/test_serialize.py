@@ -4,7 +4,6 @@ from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
 from ...filters import concat
-from ...streams.av import AVStream
 from ..serialize import dumps, loads
 
 
@@ -28,7 +27,7 @@ def test_load_and_dump(snapshot: SnapshotAssertion) -> None:
     serialized = dumps(person)
     assert snapshot(name="serialized") == serialized
 
-    deserialized = loads(Person, serialized)
+    deserialized = loads(serialized)
 
     assert isinstance(deserialized, Person)
     assert snapshot(name="deserialized") == deserialized
@@ -51,7 +50,7 @@ def test_load_and_dump_on_complex_filter(snapshot: SnapshotAssertion) -> None:
     serialized = dumps(stream)
     assert snapshot(name="serialized") == serialized
 
-    deserialized = loads(type(stream), serialized)
+    deserialized = loads(serialized)
 
     assert isinstance(deserialized, type(stream))
     assert stream == deserialized
@@ -63,6 +62,6 @@ def test_load_and_dump_mixed_type(snapshot: SnapshotAssertion) -> None:
     serialized = dumps((in_file, True))
     assert snapshot(name="serialized") == serialized
 
-    deserialized = loads(tuple[AVStream, bool], serialized)
+    deserialized = loads(serialized)
 
     assert [in_file, True] == deserialized

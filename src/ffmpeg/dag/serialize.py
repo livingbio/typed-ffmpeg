@@ -4,9 +4,7 @@ import datetime
 import json  # noqa
 from dataclasses import fields, is_dataclass
 from enum import Enum
-from typing import Any, TypeVar, cast
-
-T = TypeVar("T")
+from typing import Any
 
 
 def load_class(path: str) -> Any:
@@ -69,9 +67,8 @@ class Decoder(json.JSONDecoder):
         return obj
 
 
-def loads(cls: type[T], raw: str) -> T:
-    data = json.loads(raw, cls=Decoder)
-    return cast(T, data)
+def loads(raw: str) -> Any:
+    return json.loads(raw, cls=Decoder)
 
 
 # Serialization
