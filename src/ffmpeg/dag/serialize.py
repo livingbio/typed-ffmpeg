@@ -76,10 +76,6 @@ class Decoder(json.JSONDecoder):
         return obj
 
 
-def decode(value: str) -> Any:
-    return json.loads(value, cls=Decoder)
-
-
 def loads(cls: type[T], raw: str) -> T:
     data = json.loads(raw, cls=Decoder)
     assert isinstance(data, cls)
