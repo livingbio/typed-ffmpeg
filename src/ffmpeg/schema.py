@@ -25,4 +25,4 @@ def to_tuple(kwargs: dict[str, str | int | float | bool | Default]) -> tuple[tup
     """
     Convert the values of the dictionary to strings.
     """
-    return tuple((k, v) for k, v in kwargs.items() if v is not Default)
+    return tuple((k, v) for k, v in kwargs.items() if not isinstance(v, Default))
