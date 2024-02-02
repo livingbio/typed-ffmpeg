@@ -2,7 +2,7 @@ import re
 from typing import Any, Literal
 
 from .dag.nodes import FilterableStream, FilterNode
-from .schema import Default, StreamType
+from .schema import Default, StreamType, to_tuple
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
 from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String, Video_rate
@@ -99,7 +99,7 @@ def acrossfade(
             _crossfade0,
             _crossfade1,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "nb_samples": nb_samples,
@@ -109,7 +109,7 @@ def acrossfade(
                     "curve2": curve2,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -172,7 +172,7 @@ def afir(
         input_typings=tuple([StreamType.audio] * int(nbirs)),
         output_typings=None,
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "dry": dry,
@@ -194,7 +194,7 @@ def afir(
                     "irload": irload,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
 
@@ -227,14 +227,14 @@ def ainterleave(
         input_typings=tuple([StreamType.video] * int(nb_inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "nb_inputs": nb_inputs,
                     "duration": duration,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -277,7 +277,7 @@ def alphamerge(
             _main,
             _alpha,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -287,7 +287,7 @@ def alphamerge(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -313,13 +313,13 @@ def amerge(*streams: "AudioStream", inputs: Int = Default(2), **kwargs: Any) -> 
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -357,7 +357,7 @@ def amix(
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -367,7 +367,7 @@ def amix(
                     "normalize": normalize,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -393,7 +393,7 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
             _multiply0,
             _multiply1,
         ),
-        kwargs=tuple(({} | kwargs).items()),
+        kwargs=to_tuple(({} | kwargs)),
     )
     return filter_node.audio(0)
 
@@ -437,7 +437,7 @@ def anlmf(
             _input,
             _desired,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "order": order,
@@ -448,7 +448,7 @@ def anlmf(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -493,7 +493,7 @@ def anlms(
             _input,
             _desired,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "order": order,
@@ -504,7 +504,7 @@ def anlms(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -535,13 +535,13 @@ def apsnr(
             _input0,
             _input1,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -584,7 +584,7 @@ def arls(
             _input,
             _desired,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "order": order,
@@ -594,7 +594,7 @@ def arls(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -625,13 +625,13 @@ def asdr(
             _input0,
             _input1,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -662,13 +662,13 @@ def asisdr(
             _input0,
             _input1,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -698,14 +698,14 @@ def astreamselect(
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio] * len(re.findall(r"\d+", str(map)))),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
                     "map": map,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
 
@@ -743,14 +743,14 @@ def axcorrelate(
             _axcorrelate0,
             _axcorrelate1,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "size": size,
                     "algo": algo,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -1048,7 +1048,7 @@ def blend(
             _top,
             _bottom,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "c0_mode": c0_mode,
@@ -1073,7 +1073,7 @@ def blend(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1125,7 +1125,7 @@ def bm3d(
         input_typings=tuple([StreamType.video] + [StreamType.video] if ref else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "sigma": sigma,
@@ -1142,7 +1142,7 @@ def bm3d(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1187,7 +1187,7 @@ def colormap(
             _source,
             _target,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "patch_size": patch_size,
@@ -1197,7 +1197,7 @@ def colormap(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1234,7 +1234,7 @@ def concat(
         input_typings=tuple(([StreamType.video] * int(v) + [StreamType.audio] * int(a)) * int(n)),
         output_typings=tuple([StreamType.video] * int(v) + [StreamType.audio] * int(a)),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "n": n,
@@ -1243,7 +1243,7 @@ def concat(
                     "unsafe": unsafe,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
 
@@ -1293,7 +1293,7 @@ def convolve(
             _main,
             _impulse,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
@@ -1306,7 +1306,7 @@ def convolve(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1349,7 +1349,7 @@ def corr(
             _main,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -1359,7 +1359,7 @@ def corr(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1403,7 +1403,7 @@ def decimate(
         input_typings=tuple([StreamType.video] + ([StreamType.video] if ppsrc else [])),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "cycle": cycle,
@@ -1416,7 +1416,7 @@ def decimate(
                     "mixed": mixed,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1465,7 +1465,7 @@ def deconvolve(
             _main,
             _impulse,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
@@ -1478,7 +1478,7 @@ def deconvolve(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1517,14 +1517,14 @@ def displace(
             _xmap,
             _ymap,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "edge": edge,
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1557,14 +1557,14 @@ def feedback(
             _default,
             _feedin,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "x": x,
                     "w": w,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return (
@@ -1623,7 +1623,7 @@ def fieldmatch(
         input_typings=tuple([StreamType.video] + [StreamType.video] if ppsrc else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "order": order,
@@ -1642,7 +1642,7 @@ def fieldmatch(
                     "combpel": combpel,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1677,13 +1677,13 @@ def framepack(
             _left,
             _right,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "format": format,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1722,7 +1722,7 @@ def freezeframes(
             _source,
             _replace,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "first": first,
@@ -1730,7 +1730,7 @@ def freezeframes(
                     "replace": replace,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1772,7 +1772,7 @@ def guided(
         input_typings=tuple([StreamType.video] + [StreamType.video] if guidance else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "radius": radius,
@@ -1784,7 +1784,7 @@ def guided(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1831,7 +1831,7 @@ def haldclut(
             _main,
             _clut,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "clut": clut,
@@ -1843,7 +1843,7 @@ def haldclut(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1885,7 +1885,7 @@ def headphone(
         ),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "map": map,
@@ -1896,7 +1896,7 @@ def headphone(
                     "hrir": hrir,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -1925,14 +1925,14 @@ def hstack(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
                     "shortest": shortest,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -1979,7 +1979,7 @@ def hysteresis(
             _base,
             _alt,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
@@ -1991,7 +1991,7 @@ def hysteresis(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2034,7 +2034,7 @@ def identity(
             _main,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -2044,7 +2044,7 @@ def identity(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2076,14 +2076,14 @@ def interleave(
         input_typings=tuple([StreamType.video] * int(nb_inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "nb_inputs": nb_inputs,
                     "duration": duration,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2117,7 +2117,7 @@ def join(
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -2125,7 +2125,7 @@ def join(
                     "map": map,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -2180,7 +2180,7 @@ def libvmaf(
             _main,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "log_path": log_path,
@@ -2196,7 +2196,7 @@ def libvmaf(
                     "ts_sync_mode": ts_sync_mode,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2234,7 +2234,7 @@ def limitdiff(
         input_typings=tuple([StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "threshold": threshold,
@@ -2244,7 +2244,7 @@ def limitdiff(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2297,7 +2297,7 @@ def lut2(
             _srcx,
             _srcy,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "c0": c0,
@@ -2312,7 +2312,7 @@ def lut2(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2355,7 +2355,7 @@ def maskedclamp(
             _dark,
             _bright,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "undershoot": undershoot,
@@ -2364,7 +2364,7 @@ def maskedclamp(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2403,14 +2403,14 @@ def maskedmax(
             _filter1,
             _filter2,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2449,14 +2449,14 @@ def maskedmerge(
             _overlay,
             _mask,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2495,14 +2495,14 @@ def maskedmin(
             _filter1,
             _filter2,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2543,7 +2543,7 @@ def maskedthreshold(
             _source,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "threshold": threshold,
@@ -2552,7 +2552,7 @@ def maskedthreshold(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2600,7 +2600,7 @@ def mergeplanes(
         input_typings=tuple([StreamType.video] * int(max(hex(int(mapping))[2::2]))),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "mapping": mapping,
@@ -2615,7 +2615,7 @@ def mergeplanes(
                     "map3p": map3p,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2647,14 +2647,14 @@ def midequalizer(
             _in0,
             _in1,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2694,7 +2694,7 @@ def mix(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -2705,7 +2705,7 @@ def mix(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2756,7 +2756,7 @@ def morpho(
             _default,
             _structure,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "mode": mode,
@@ -2769,7 +2769,7 @@ def morpho(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2812,7 +2812,7 @@ def msad(
             _main,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -2822,7 +2822,7 @@ def msad(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2863,7 +2863,7 @@ def multiply(
             _source,
             _factor,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "scale": scale,
@@ -2872,7 +2872,7 @@ def multiply(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2927,7 +2927,7 @@ def overlay(
             _main,
             _overlay,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "x": x,
@@ -2942,7 +2942,7 @@ def overlay(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -2989,7 +2989,7 @@ def paletteuse(
             _default,
             _palette,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "dither": dither,
@@ -3000,7 +3000,7 @@ def paletteuse(
                     "debug_kdtree": debug_kdtree,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3034,7 +3034,7 @@ def premultiply(
         input_typings=tuple([StreamType.video] + [StreamType.video] if inplace else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
@@ -3042,7 +3042,7 @@ def premultiply(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3091,7 +3091,7 @@ def psnr(
             _main,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "stats_file": stats_file,
@@ -3104,7 +3104,7 @@ def psnr(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3143,14 +3143,14 @@ def remap(
             _xmap,
             _ymap,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "format": format,
                     "fill": fill,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3226,7 +3226,7 @@ def scale2ref(
             _default,
             _ref,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "w": w,
@@ -3248,7 +3248,7 @@ def scale2ref(
                     "eval": eval,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return (
@@ -3308,7 +3308,7 @@ def sidechaincompress(
             _main,
             _sidechain,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "level_in": level_in,
@@ -3325,7 +3325,7 @@ def sidechaincompress(
                     "mix": mix,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -3384,7 +3384,7 @@ def sidechaingate(
             _main,
             _sidechain,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "level_in": level_in,
@@ -3402,7 +3402,7 @@ def sidechaingate(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -3448,7 +3448,7 @@ def signature(
         input_typings=tuple([StreamType.video] * int(nb_inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "detectmode": detectmode,
@@ -3462,7 +3462,7 @@ def signature(
                     "th_it": th_it,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3534,7 +3534,7 @@ def spectrumsynth(
             _magnitude,
             _phase,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "sample_rate": sample_rate,
@@ -3546,7 +3546,7 @@ def spectrumsynth(
                     "orientation": orientation,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.audio(0)
@@ -3591,7 +3591,7 @@ def ssim(
             _main,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "stats_file": stats_file,
@@ -3602,7 +3602,7 @@ def ssim(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3632,14 +3632,14 @@ def streamselect(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video] * len(re.findall(r"\d+", str(map)))),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
                     "map": map,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
 
@@ -3681,14 +3681,14 @@ def threshold(
             _min,
             _max,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3722,7 +3722,7 @@ def unpremultiply(
         input_typings=tuple([StreamType.video] + ([StreamType.video] if inplace else [])),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
@@ -3730,7 +3730,7 @@ def unpremultiply(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3779,7 +3779,7 @@ def varblur(
             _default,
             _radius,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "min_r": min_r,
@@ -3792,7 +3792,7 @@ def varblur(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3835,7 +3835,7 @@ def vif(
             _main,
             _reference,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -3845,7 +3845,7 @@ def vif(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3874,14 +3874,14 @@ def vstack(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
                     "shortest": shortest,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -3928,7 +3928,7 @@ def xcorrelate(
             _primary,
             _secondary,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "planes": planes,
@@ -3940,7 +3940,7 @@ def xcorrelate(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -4043,7 +4043,7 @@ def xfade(
             _main,
             _xfade,
         ),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "transition": transition,
@@ -4052,7 +4052,7 @@ def xfade(
                     "expr": expr,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -4096,7 +4096,7 @@ def xmedian(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -4109,7 +4109,7 @@ def xmedian(
                     "enable": enable,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)
@@ -4147,7 +4147,7 @@ def xstack(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=tuple(
+        kwargs=to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -4157,7 +4157,7 @@ def xstack(
                     "fill": fill,
                 }
                 | kwargs
-            ).items()
+            )
         ),
     )
     return filter_node.video(0)

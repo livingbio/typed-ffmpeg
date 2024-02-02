@@ -139,11 +139,11 @@ filter_node = FilterNode(
     inputs=(
         {{ stream_params(f, type) }}
     ),
-    kwargs=tuple(({
+    kwargs=to_tuple(({
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
-    } | kwargs).items()),
+    } | kwargs)),
 )
 {% if f.is_output_dynamic %}
 return filter_node
