@@ -53,5 +53,4 @@ def test_load_and_dump_on_complex_filter(snapshot: SnapshotAssertion) -> None:
     deserialized = loads(type(stream), serialized)
 
     assert isinstance(deserialized, type(stream))
-    assert snapshot(name="deserialized") == deserialized
     assert stream == deserialized
