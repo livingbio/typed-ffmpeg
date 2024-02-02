@@ -1,6 +1,10 @@
-import json
-from dataclasses import asdict, is_dataclass
-from typing import Any, ClassVar, Dict, Protocol, TypeVar, cast
+from __future__ import absolute_import, annotations
+
+import datetime
+import json  # noqa
+from dataclasses import fields, is_dataclass
+from enum import Enum
+from typing import Any, ClassVar, Dict, Protocol, TypeVar
 
 
 class IsDataclass(Protocol):
@@ -12,35 +16,76 @@ class IsDataclass(Protocol):
 T = TypeVar("T", bound=IsDataclass)
 
 
-def load(cls: type[T], raw: str) -> T:
-    data = json.loads(raw)
-    return _load(cls, data)
+def load_class(path: str) -> Any:
+    module_path, class_name = path.rsplit(".", 1)
+    module = __import__(module_path, fromlist=[class_name])
+    return getattr(module, class_name)
 
 
-def _load(cls: type[T], data: dict[str, Any]) -> T:
-    """
-    Deserialize a dictionary into a dataclass of type cls.
+class Encoder(json.JSONEncoder):
+    # Extend JSON encoder to support more type, especial for Schematic Model
+    # NOTE: it won't validate schematic model during encode / decode
 
-    :param cls: The type of the dataclass to deserialize into.
-    :param data: A dictionary representing the serialized dataclass.
-    :return: An instance of the specified dataclass.
-    """
+    def default(self, obj: Any) -> Any:
+        if isinstance(obj, Enum):
+            return {
+                "__class__": f"{obj.__class__.__module__}.{obj.__class__.__name__}",
+                "value": obj.value,
+            }
+        elif isinstance(obj, datetime.datetime):
+            return obj.strftime("%Y-%m-%d %H:%M:%S.%f%z")
+        elif is_dataclass(obj):
+            output = {}
+            for field in fields(obj):
+                v = getattr(obj, field.name)
+                output[field.name] = self.default(v)
 
-    if is_dataclass(cls):
-        field_types = cls.__annotations__
-        field_data = {}
-        for field_name, field_type in field_types.items():
-            field_value = data.get(field_name)
-            if is_dataclass(field_type) and isinstance(field_value, dict):
-                # Recursive call for nested dataclasses
-                field_data[field_name] = _load(field_type, field_value)
-            else:
-                field_data[field_name] = field_value
-        return cast(T, cls(**field_data))
+            return {
+                "__class__": f"{obj.__class__.__module__}.{obj.__class__.__name__}",
+                **output,
+            }
+        return obj
 
-    raise TypeError(f"The provided class {cls.__name__} is not a dataclass")
+
+class Decoder(json.JSONDecoder):
+    # Extend JSON decoder to support more type
+
+    def __init__(self, *args: Any, **kwargs: Any):
+        json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
+
+    def frozen(self, v: Any) -> Any:
+        if isinstance(v, list):
+            return tuple(self.frozen(i) for i in v)
+
+        if isinstance(v, dict):
+            return tuple((key, self.frozen(value)) for key, value in v.items())
+
+        return v
+
+    def object_hook(self, obj: Any) -> Any:  # pylint: disable=method-hidden
+        if isinstance(obj, dict):
+            if obj.get("__class__"):
+                cls = load_class(obj.pop("__class__"))
+
+                if is_dataclass(cls):
+                    # NOTE: in our application, the dataclass is always frozen
+                    return cls(**{k: self.frozen(v) for k, v in obj.items()})
+
+                return cls(**{k: v for k, v in obj.items()})
+
+        return obj
+
+
+def decode(value: str) -> Any:
+    return json.loads(value, cls=Decoder)
+
+
+def loads(cls: type[T], raw: str) -> T:
+    data = json.loads(raw, cls=Decoder)
+    assert isinstance(data, cls)
+    return data
 
 
 # Serialization
-def dump(instance: IsDataclass) -> str:
-    return json.dumps(asdict(instance))
+def dumps(instance: IsDataclass) -> str:
+    return json.dumps(instance, cls=Encoder)
