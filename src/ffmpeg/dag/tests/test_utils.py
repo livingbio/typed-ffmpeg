@@ -1,6 +1,6 @@
 import pytest
 
-from ..dag import is_dag
+from ..utils import is_dag
 
 
 @pytest.mark.parametrize(

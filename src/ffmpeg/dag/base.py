@@ -6,8 +6,8 @@ from functools import cached_property
 from typing import Iterable, Sequence
 
 from ..schema import StreamType
-from ..utils.dag import is_dag
 from ..utils.typing import override
+from .utils import is_dag
 
 
 class _DAGContext(ABC):
