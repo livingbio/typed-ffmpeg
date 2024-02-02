@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from syrupy.assertion import SnapshotAssertion
 
-from ..dataclasses_helper import dump, load
+from ..serialize import dump, load
 
 
 # Define your dataclasses
