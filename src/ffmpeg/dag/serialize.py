@@ -1,9 +1,10 @@
 from __future__ import absolute_import, annotations
 
 import datetime
-import json  # noqa
+import json
 from dataclasses import fields, is_dataclass
 from enum import Enum
+from pathlib import Path
 from typing import Any
 
 
@@ -35,7 +36,7 @@ class Encoder(json.JSONEncoder):
                 "__class__": f"{obj.__class__.__module__}.{obj.__class__.__name__}",
                 **output,
             }
-        return obj
+        return super().default(obj)
 
 
 class Decoder(json.JSONDecoder):
@@ -71,6 +72,29 @@ def loads(raw: str) -> Any:
     return json.loads(raw, cls=Decoder)
 
 
+def to_dict_with_class_info(instance: Any) -> Any:
+    if isinstance(instance, dict):
+        return {k: to_dict_with_class_info(v) for k, v in instance.items()}
+    elif isinstance(instance, list):
+        return [to_dict_with_class_info(v) for v in instance]
+    elif isinstance(instance, tuple):
+        return tuple(to_dict_with_class_info(v) for v in instance)
+    elif isinstance(instance, Path):
+        return str(instance)
+    elif is_dataclass(instance):
+        return {
+            "__class__": f"{instance.__class__.__module__}.{instance.__class__.__name__}",
+            **{k.name: to_dict_with_class_info(getattr(instance, k.name)) for k in fields(instance)},
+        }
+    elif isinstance(instance, Enum):
+        return {
+            "__class__": f"{instance.__class__.__module__}.{instance.__class__.__name__}",
+            "value": instance.value,
+        }
+    return instance
+
+
 # Serialization
 def dumps(instance: Any) -> str:
-    return json.dumps(instance, cls=Encoder)
+    obj = to_dict_with_class_info(instance)
+    return json.dumps(obj)

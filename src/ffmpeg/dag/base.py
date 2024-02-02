@@ -137,7 +137,7 @@ class Node(HashableBaseModel, ABC):
 
             nodes.extend(k.node for k in node.incoming_streams)
 
-            output[str(node)] = set(str(k.node) for k in node.incoming_streams)
+            output[node.hex] = set(k.node.hex for k in node.incoming_streams)
 
         if not is_dag(output):
             raise ValueError(f"Graph is not a DAG: {output}")
@@ -154,3 +154,12 @@ class Node(HashableBaseModel, ABC):
             The arguments of the node.
         """
         raise NotImplementedError()
+
+    def repr(self) -> str:
+        """
+        Get the representation of the node.
+
+        Returns:
+            The representation of the node.
+        """
+        return repr(self)

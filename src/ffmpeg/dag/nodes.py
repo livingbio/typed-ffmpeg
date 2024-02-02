@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os.path
 import subprocess
 from abc import ABC, abstractproperty
 from dataclasses import dataclass
@@ -17,7 +18,7 @@ if TYPE_CHECKING:
     from ..streams.video import VideoStream
 
 
-@dataclass(frozen=True, kw_only=True, repr=False)
+@dataclass(frozen=True, kw_only=True)
 class FilterNode(Node):
     """
     A filter node that can be used to apply filters to streams
@@ -28,7 +29,8 @@ class FilterNode(Node):
     input_typings: tuple[StreamType, ...] | None = None
     output_typings: tuple[StreamType, ...] | None = None
 
-    def __repr__(self) -> str:
+    @override
+    def repr(self) -> str:
         return self.name
 
     @property
@@ -240,6 +242,11 @@ class FilterableStream(Stream, ABC):
             else:
                 return f"[{context.get_node_label(self.node)}#{self.index}]"
 
+    def view(self) -> str:
+        from ..utils.view import view
+
+        return view(self.node)
+
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):
             assert self.index is None, "Input streams cannot have an index"
@@ -247,7 +254,7 @@ class FilterableStream(Stream, ABC):
             assert self.index is not None, "Filter streams must have an index"
 
 
-@dataclass(frozen=True, kw_only=True, repr=False)
+@dataclass(frozen=True, kw_only=True)
 class GlobalNode(Node):
     """
     A node that can be used to set global options
@@ -255,7 +262,8 @@ class GlobalNode(Node):
 
     input: "OutputStream"
 
-    def __repr__(self) -> str:
+    @override
+    def repr(self) -> str:
         return " ".join(self.get_args())
 
     def stream(self) -> "OutputStream":
@@ -290,7 +298,7 @@ class GlobalNode(Node):
         return commands
 
 
-@dataclass(frozen=True, kw_only=True, repr=False)
+@dataclass(frozen=True, kw_only=True)
 class InputNode(Node):
     """
     A node that can be used to read from files
@@ -298,8 +306,9 @@ class InputNode(Node):
 
     filename: str
 
-    def __repr__(self) -> str:
-        return self.filename
+    @override
+    def repr(self) -> str:
+        return os.path.basename(self.filename)
 
     @property
     @override
@@ -348,13 +357,14 @@ class InputNode(Node):
         return commands
 
 
-@dataclass(frozen=True, kw_only=True, repr=False)
+@dataclass(frozen=True, kw_only=True)
 class OutputNode(Node):
     filename: str
     inputs: tuple[FilterableStream, ...]
 
-    def __repr__(self) -> str:
-        return self.filename
+    @override
+    def repr(self) -> str:
+        return os.path.basename(self.filename)
 
     def stream(self) -> "OutputStream":
         """
@@ -432,11 +442,6 @@ class OutputStream(Stream):
             return cmd + compile(self.node) + ["-y"]
 
         return cmd + compile(self.node)
-
-    def view(self) -> str:
-        from ..utils.view import view
-
-        return view(self.node)
 
     def run_async(
         self,
@@ -525,7 +530,7 @@ class OutputStream(Stream):
         return stdout, stderr
 
 
-@dataclass(frozen=True, kw_only=True, repr=False)
+@dataclass(frozen=True, kw_only=True)
 class MergeOutputsNode(Node):
     """
     A node that can be used to merge multiple outputs
@@ -533,7 +538,8 @@ class MergeOutputsNode(Node):
 
     inputs: tuple[OutputStream, ...]
 
-    def __repr__(self) -> str:
+    @override
+    def repr(self) -> str:
         return "Merge"
 
     def stream(self) -> "OutputStream":
