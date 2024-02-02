@@ -19,3 +19,10 @@ class Default(str):
     """
 
     ...
+
+
+def to_tuple(kwargs: dict[str, str | int | float | bool | Default]) -> tuple[tuple[str, str | int | float | bool], ...]:
+    """
+    Convert the values of the dictionary to strings.
+    """
+    return tuple((k, v) for k, v in kwargs.items() if v is not Default)
