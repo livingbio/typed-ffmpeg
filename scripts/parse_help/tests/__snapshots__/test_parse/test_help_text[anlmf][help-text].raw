@@ -11,10 +11,11 @@ anlm(f|s) AVOptions:
    mu                <float>      ..F.A....T. set the filter mu (from 0 to 2) (default 0.75)
    eps               <float>      ..F.A....T. set the filter eps (from 0 to 1) (default 1)
    leakage           <float>      ..F.A....T. set the filter leakage (from 0 to 1) (default 0)
-   out_mode          <int>        ..F.A....T. set output mode (from 0 to 3) (default o)
+   out_mode          <int>        ..F.A....T. set output mode (from 0 to 4) (default o)
      i               0            ..F.A....T. input
      d               1            ..F.A....T. desired
      o               2            ..F.A....T. output
      n               3            ..F.A....T. noise
+     e               4            ..F.A....T. error
 
 This filter has support for timeline through the 'enable' option.

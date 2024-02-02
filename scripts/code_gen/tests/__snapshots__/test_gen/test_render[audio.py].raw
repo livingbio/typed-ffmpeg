@@ -5,8 +5,9 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING, Any, Literal
 
-from ..nodes.nodes import FilterableStream, FilterNode
-from ..schema import Default, StreamType, Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
+from ..dag.nodes import FilterableStream, FilterNode
+from ..schema import Default, StreamType, to_tuple
+from ..types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
 from ..utils.typing import override
 from .channel_layout import CHANNEL_LAYOUT
 
@@ -81,6 +82,9 @@ Args:
     order: set the filter order
     projection: set the filter projection
 
+Returns:
+    the audio stream
+
 References:
     [FFmpeg Documentation](None)
 
@@ -105,13 +109,13 @@ References:
 
 
             ),
-            kwargs=tuple(({
+            kwargs=to_tuple(({
                 
                 "order": order,
                 
                 "projection": projection,
                 
-            } | kwargs).items()),
+            } | kwargs)),
         )
         return filter_node.audio(0)
 

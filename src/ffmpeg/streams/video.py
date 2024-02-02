@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any, Literal
 
 from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default, StreamType
+from ..schema import Default, StreamType, to_tuple
 from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
 from ..utils.typing import override
 
@@ -57,7 +57,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -68,7 +68,7 @@ class VideoStream(FilterableStream):
                         "clear": clear,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -90,7 +90,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -131,7 +131,7 @@ class VideoStream(FilterableStream):
                 self,
                 _alpha,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "eof_action": eof_action,
@@ -141,7 +141,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -185,7 +185,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "radius": radius,
@@ -198,7 +198,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -236,7 +236,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "filename": filename,
@@ -246,7 +246,7 @@ class VideoStream(FilterableStream):
                         "shaping": shaping,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -300,7 +300,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "0a": _0a,
@@ -318,7 +318,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -354,7 +354,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "sizeX": sizeX,
@@ -363,7 +363,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -399,7 +399,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "threshold": threshold,
@@ -408,7 +408,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -434,14 +434,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "min_val": min_val,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -468,13 +468,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "action": action,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -510,7 +510,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "sigmaS": sigmaS,
@@ -519,7 +519,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -553,7 +553,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "bitplane": bitplane,
@@ -561,7 +561,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -595,7 +595,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "d": d,
@@ -603,7 +603,7 @@ class VideoStream(FilterableStream):
                         "pixel_black_th": pixel_black_th,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -629,14 +629,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "amount": amount,
                         "threshold": threshold,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -933,7 +933,7 @@ class VideoStream(FilterableStream):
                 self,
                 _bottom,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0_mode": c0_mode,
@@ -958,7 +958,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -987,7 +987,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "period_min": period_min,
@@ -995,7 +995,7 @@ class VideoStream(FilterableStream):
                         "planes": planes,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1035,7 +1035,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "high": high,
@@ -1046,7 +1046,7 @@ class VideoStream(FilterableStream):
                         "planes": planes,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1088,7 +1088,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "luma_radius": luma_radius,
@@ -1100,7 +1100,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1136,7 +1136,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -1145,7 +1145,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1179,7 +1179,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "strength": strength,
@@ -1187,7 +1187,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1209,7 +1209,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -1246,7 +1246,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "color": color,
@@ -1256,7 +1256,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1294,7 +1294,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "color": color,
@@ -1304,7 +1304,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1352,7 +1352,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "thres": thres,
@@ -1367,7 +1367,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1407,7 +1407,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "cbh": cbh,
@@ -1418,7 +1418,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1500,7 +1500,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "system": system,
@@ -1515,7 +1515,7 @@ class VideoStream(FilterableStream):
                         "fill": fill,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1555,7 +1555,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mv": mv,
@@ -1566,7 +1566,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1616,7 +1616,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "rs": rs,
@@ -1632,7 +1632,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1698,7 +1698,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "rr": rr,
@@ -1722,7 +1722,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1766,7 +1766,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "rc": rc,
@@ -1779,7 +1779,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1821,7 +1821,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "rl": rl,
@@ -1833,7 +1833,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1869,7 +1869,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "color": color,
@@ -1878,7 +1878,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1916,7 +1916,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "hue": hue,
@@ -1926,7 +1926,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -1962,7 +1962,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "color": color,
@@ -1971,7 +1971,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2035,7 +2035,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "rimin": rimin,
@@ -2058,7 +2058,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2102,7 +2102,7 @@ class VideoStream(FilterableStream):
                 _source,
                 _target,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "patch_size": patch_size,
@@ -2112,7 +2112,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2150,7 +2150,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "src": src,
@@ -2158,7 +2158,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2300,7 +2300,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "all": all,
@@ -2320,7 +2320,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2356,7 +2356,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "temperature": temperature,
@@ -2365,7 +2365,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2427,7 +2427,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "0m": _0m,
@@ -2449,7 +2449,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2497,7 +2497,7 @@ class VideoStream(FilterableStream):
                 self,
                 _impulse,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -2510,7 +2510,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2532,7 +2532,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -2567,7 +2567,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "list_filters": list_filters,
@@ -2576,7 +2576,7 @@ class VideoStream(FilterableStream):
                         "output_rect": output_rect,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2618,7 +2618,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "eof_action": eof_action,
@@ -2628,7 +2628,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2660,14 +2660,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "cover": cover,
                         "mode": mode,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2707,7 +2707,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "out_w": out_w,
@@ -2718,7 +2718,7 @@ class VideoStream(FilterableStream):
                         "exact": exact,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2768,7 +2768,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "limit": limit,
@@ -2784,7 +2784,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2818,7 +2818,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "cue": cue,
@@ -2826,7 +2826,7 @@ class VideoStream(FilterableStream):
                         "buffer": buffer,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2888,7 +2888,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "preset": preset,
@@ -2903,7 +2903,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2947,7 +2947,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "size": size,
@@ -2960,7 +2960,7 @@ class VideoStream(FilterableStream):
                         "components": components,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -2996,7 +2996,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "angle": angle,
@@ -3005,7 +3005,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3043,7 +3043,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "sigma": sigma,
@@ -3053,7 +3053,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3099,7 +3099,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "1thr": _1thr,
@@ -3113,7 +3113,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3157,7 +3157,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "filter": filter,
@@ -3170,7 +3170,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3218,7 +3218,7 @@ class VideoStream(FilterableStream):
                 self,
                 _impulse,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -3231,7 +3231,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3271,7 +3271,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "m": m,
@@ -3282,7 +3282,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3320,7 +3320,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "threshold0": threshold0,
@@ -3330,7 +3330,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3364,7 +3364,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "size": size,
@@ -3372,7 +3372,7 @@ class VideoStream(FilterableStream):
                         "bypass": bypass,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3397,13 +3397,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "cycle": cycle,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3443,7 +3443,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -3454,7 +3454,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3494,7 +3494,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "filter_type": filter_type,
@@ -3505,7 +3505,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3557,7 +3557,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -3574,7 +3574,7 @@ class VideoStream(FilterableStream):
                         "opencl": opencl,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3620,7 +3620,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "type": type,
@@ -3634,7 +3634,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3668,7 +3668,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "first_field": first_field,
@@ -3676,7 +3676,7 @@ class VideoStream(FilterableStream):
                         "start_frame": start_frame,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3716,7 +3716,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "coordinates": coordinates,
@@ -3727,7 +3727,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3765,14 +3765,14 @@ class VideoStream(FilterableStream):
                 _xmap,
                 _ymap,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "edge": edge,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3820,7 +3820,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dnn_backend": dnn_backend,
@@ -3835,7 +3835,7 @@ class VideoStream(FilterableStream):
                         "target": target,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3881,7 +3881,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dnn_backend": dnn_backend,
@@ -3895,7 +3895,7 @@ class VideoStream(FilterableStream):
                         "labels": labels,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3937,7 +3937,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dnn_backend": dnn_backend,
@@ -3949,7 +3949,7 @@ class VideoStream(FilterableStream):
                         "async": _async,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -3976,13 +3976,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "first_field": first_field,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4028,7 +4028,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -4042,7 +4042,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4100,7 +4100,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "m1": m1,
@@ -4120,7 +4120,7 @@ class VideoStream(FilterableStream):
                         "rate": rate,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4164,7 +4164,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -4177,7 +4177,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4295,7 +4295,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "fontfile": fontfile,
@@ -4335,7 +4335,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4373,7 +4373,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "high": high,
@@ -4383,7 +4383,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4421,7 +4421,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "codebook_length": codebook_length,
@@ -4431,7 +4431,7 @@ class VideoStream(FilterableStream):
                         "use_alpha": use_alpha,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4463,14 +4463,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4495,13 +4495,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "n": n,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4549,7 +4549,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "contrast": contrast,
@@ -4564,7 +4564,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4604,7 +4604,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "coordinates": coordinates,
@@ -4615,7 +4615,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4663,7 +4663,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -4678,7 +4678,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4707,7 +4707,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "exposure": exposure,
@@ -4715,7 +4715,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4743,13 +4743,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video] * len(planes.split("+"))),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
 
@@ -4794,7 +4794,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "type": type,
@@ -4807,7 +4807,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4839,14 +4839,14 @@ class VideoStream(FilterableStream):
                 self,
                 _feedin,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
                         "w": w,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return (
@@ -4922,7 +4922,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "sigma": sigma,
@@ -4937,7 +4937,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -4981,7 +4981,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dc_Y": dc_Y,
@@ -4994,7 +4994,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5019,13 +5019,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "type": type,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5057,14 +5057,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "hint": hint,
                         "mode": mode,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5096,14 +5096,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "order": order,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5125,7 +5125,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -5168,7 +5168,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "left": left,
@@ -5180,7 +5180,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5218,7 +5218,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "object": object,
@@ -5228,7 +5228,7 @@ class VideoStream(FilterableStream):
                         "discard": discard,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5278,7 +5278,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -5294,7 +5294,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5319,13 +5319,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "pix_fmts": pix_fmts,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5361,7 +5361,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "fps": fps,
@@ -5370,7 +5370,7 @@ class VideoStream(FilterableStream):
                         "eof_action": eof_action,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5404,13 +5404,13 @@ class VideoStream(FilterableStream):
                 self,
                 _right,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "format": format,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5448,7 +5448,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "fps": fps,
@@ -5458,7 +5458,7 @@ class VideoStream(FilterableStream):
                         "flags": flags,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5484,14 +5484,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "step": step,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5517,14 +5517,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "n": n,
                         "d": d,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5562,7 +5562,7 @@ class VideoStream(FilterableStream):
                 self,
                 _replace,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "first": first,
@@ -5570,7 +5570,7 @@ class VideoStream(FilterableStream):
                         "replace": replace,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5604,7 +5604,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "filter_name": filter_name,
@@ -5612,7 +5612,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5650,7 +5650,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "quality": quality,
@@ -5660,7 +5660,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5698,7 +5698,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "sigma": sigma,
@@ -5708,7 +5708,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5754,7 +5754,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "lum_expr": lum_expr,
@@ -5768,7 +5768,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5797,7 +5797,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "strength": strength,
@@ -5805,7 +5805,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5865,7 +5865,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "size": size,
@@ -5875,7 +5875,7 @@ class VideoStream(FilterableStream):
                         "rate": rate,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5900,13 +5900,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5942,7 +5942,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "difford": difford,
@@ -5951,7 +5951,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -5999,7 +5999,7 @@ class VideoStream(FilterableStream):
                 self,
                 _clut,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "clut": clut,
@@ -6011,7 +6011,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6036,13 +6036,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6078,7 +6078,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "strength": strength,
@@ -6087,7 +6087,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6144,7 +6144,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "level_height": level_height,
@@ -6157,7 +6157,7 @@ class VideoStream(FilterableStream):
                         "colors_mode": colors_mode,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6195,7 +6195,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "luma_spatial": luma_spatial,
@@ -6205,7 +6205,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6230,13 +6230,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "n": n,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6276,7 +6276,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "hue": hue,
@@ -6287,7 +6287,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6327,7 +6327,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "hue": hue,
@@ -6338,7 +6338,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6376,7 +6376,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "h": h,
@@ -6386,7 +6386,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6434,7 +6434,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "hue": hue,
@@ -6449,7 +6449,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6471,7 +6471,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -6504,7 +6504,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -6512,7 +6512,7 @@ class VideoStream(FilterableStream):
                         "reverse": reverse,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6537,13 +6537,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "derive_device": derive_device,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6589,7 +6589,7 @@ class VideoStream(FilterableStream):
                 self,
                 _alt,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -6601,7 +6601,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6643,7 +6643,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "eof_action": eof_action,
@@ -6653,7 +6653,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6691,7 +6691,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "intl_thres": intl_thres,
@@ -6701,7 +6701,7 @@ class VideoStream(FilterableStream):
                         "analyze_interlaced_flag": analyze_interlaced_flag,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6743,7 +6743,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "luma_mode": luma_mode,
@@ -6755,7 +6755,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6793,7 +6793,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "threshold0": threshold0,
@@ -6803,7 +6803,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6835,14 +6835,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "scan": scan,
                         "lowpass": lowpass,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6880,7 +6880,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "thresh": thresh,
@@ -6890,7 +6890,7 @@ class VideoStream(FilterableStream):
                         "twoway": twoway,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6926,7 +6926,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -6935,7 +6935,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6964,7 +6964,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "decay": decay,
@@ -6972,7 +6972,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -6997,13 +6997,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7045,7 +7045,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "cx": cx,
@@ -7057,7 +7057,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7111,7 +7111,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "log_path": log_path,
@@ -7127,7 +7127,7 @@ class VideoStream(FilterableStream):
                         "ts_sync_mode": ts_sync_mode,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7163,7 +7163,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "min": min,
@@ -7172,7 +7172,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7208,7 +7208,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "loop": loop,
@@ -7217,7 +7217,7 @@ class VideoStream(FilterableStream):
                         "time": time,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7253,7 +7253,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "threshold": threshold,
@@ -7262,7 +7262,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7314,7 +7314,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0": c0,
@@ -7331,7 +7331,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7365,7 +7365,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "file": file,
@@ -7373,7 +7373,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7425,7 +7425,7 @@ class VideoStream(FilterableStream):
                 self,
                 _srcy,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0": c0,
@@ -7440,7 +7440,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7478,7 +7478,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "file": file,
@@ -7487,7 +7487,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7539,7 +7539,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0": c0,
@@ -7556,7 +7556,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7608,7 +7608,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0": c0,
@@ -7625,7 +7625,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7667,7 +7667,7 @@ class VideoStream(FilterableStream):
                 _dark,
                 _bright,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "undershoot": undershoot,
@@ -7676,7 +7676,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7714,14 +7714,14 @@ class VideoStream(FilterableStream):
                 _filter1,
                 _filter2,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7759,14 +7759,14 @@ class VideoStream(FilterableStream):
                 _overlay,
                 _mask,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7804,14 +7804,14 @@ class VideoStream(FilterableStream):
                 _filter1,
                 _filter2,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7851,7 +7851,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "threshold": threshold,
@@ -7860,7 +7860,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7900,7 +7900,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "low": low,
@@ -7911,7 +7911,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7945,7 +7945,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -7953,7 +7953,7 @@ class VideoStream(FilterableStream):
                         "qp": qp,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -7991,7 +7991,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "radius": radius,
@@ -8001,7 +8001,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8037,7 +8037,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "method": method,
@@ -8045,7 +8045,7 @@ class VideoStream(FilterableStream):
                         "search_param": search_param,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8091,7 +8091,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -8104,7 +8104,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8135,14 +8135,14 @@ class VideoStream(FilterableStream):
                 self,
                 _in1,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8192,7 +8192,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "fps": fps,
@@ -8207,7 +8207,7 @@ class VideoStream(FilterableStream):
                         "scd_threshold": scd_threshold,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8245,7 +8245,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "cb": cb,
@@ -8255,7 +8255,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8305,7 +8305,7 @@ class VideoStream(FilterableStream):
                 self,
                 _structure,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -8318,7 +8318,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8356,7 +8356,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "max": max,
@@ -8366,7 +8366,7 @@ class VideoStream(FilterableStream):
                         "frac": frac,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8408,7 +8408,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "eof_action": eof_action,
@@ -8418,7 +8418,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8458,7 +8458,7 @@ class VideoStream(FilterableStream):
                 self,
                 _factor,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "scale": scale,
@@ -8467,7 +8467,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8501,7 +8501,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "components": components,
@@ -8509,7 +8509,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8549,7 +8549,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "s": s,
@@ -8560,7 +8560,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8608,7 +8608,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "weights": weights,
@@ -8623,7 +8623,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8648,13 +8648,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "pix_fmts": pix_fmts,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8714,7 +8714,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "all_seed": all_seed,
@@ -8735,7 +8735,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8775,7 +8775,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "blackpt": blackpt,
@@ -8786,7 +8786,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8808,7 +8808,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -8843,7 +8843,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "datapath": datapath,
@@ -8852,7 +8852,7 @@ class VideoStream(FilterableStream):
                         "blacklist": blacklist,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8908,7 +8908,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -8927,7 +8927,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -8981,7 +8981,7 @@ class VideoStream(FilterableStream):
                 self,
                 _overlay,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -8996,7 +8996,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9032,7 +9032,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "depth": depth,
@@ -9041,7 +9041,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9083,7 +9083,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "width": width,
@@ -9095,7 +9095,7 @@ class VideoStream(FilterableStream):
                         "aspect": aspect,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9131,7 +9131,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "max_colors": max_colors,
@@ -9140,7 +9140,7 @@ class VideoStream(FilterableStream):
                         "stats_mode": stats_mode,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9186,7 +9186,7 @@ class VideoStream(FilterableStream):
                 self,
                 _palette,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dither": dither,
@@ -9197,7 +9197,7 @@ class VideoStream(FilterableStream):
                         "debug_kdtree": debug_kdtree,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9231,7 +9231,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -9239,7 +9239,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9291,7 +9291,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x0": x0,
@@ -9308,7 +9308,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9340,14 +9340,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9383,7 +9383,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "frames": frames,
@@ -9392,7 +9392,7 @@ class VideoStream(FilterableStream):
                         "bypass": bypass,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9414,7 +9414,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -9451,7 +9451,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "width": width,
@@ -9461,7 +9461,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9505,7 +9505,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "x": x,
@@ -9518,7 +9518,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9544,14 +9544,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "subfilters": subfilters,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9585,7 +9585,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "qp": qp,
@@ -9593,7 +9593,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9629,7 +9629,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -9638,7 +9638,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9707,7 +9707,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0": c0,
@@ -9720,7 +9720,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9768,7 +9768,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "stats_file": stats_file,
@@ -9781,7 +9781,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9821,7 +9821,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "jl": jl,
@@ -9832,7 +9832,7 @@ class VideoStream(FilterableStream):
                         "mp": mp,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9858,14 +9858,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "qp": qp,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9891,14 +9891,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "frames": frames,
                         "seed": seed,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9938,7 +9938,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "scan_min": scan_min,
@@ -9949,7 +9949,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -9978,7 +9978,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "scan_max": scan_max,
@@ -9986,7 +9986,7 @@ class VideoStream(FilterableStream):
                         "thr_w": thr_w,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10012,14 +10012,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "limit": limit,
                         "speed": speed,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10057,14 +10057,14 @@ class VideoStream(FilterableStream):
                 _xmap,
                 _ymap,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "format": format,
                         "fill": fill,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10102,7 +10102,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "m0": m0,
@@ -10112,7 +10112,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10140,14 +10140,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "filename": filename,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10169,7 +10169,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -10190,7 +10190,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -10237,7 +10237,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "rh": rh,
@@ -10252,7 +10252,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10288,7 +10288,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -10297,7 +10297,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10337,7 +10337,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "angle": angle,
@@ -10348,7 +10348,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10390,7 +10390,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "luma_radius": luma_radius,
@@ -10402,7 +10402,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10472,7 +10472,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "w": w,
@@ -10494,7 +10494,7 @@ class VideoStream(FilterableStream):
                         "eval": eval,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10569,7 +10569,7 @@ class VideoStream(FilterableStream):
                 self,
                 _ref,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "w": w,
@@ -10591,7 +10591,7 @@ class VideoStream(FilterableStream):
                         "eval": eval,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return (
@@ -10632,7 +10632,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "w": w,
@@ -10642,7 +10642,7 @@ class VideoStream(FilterableStream):
                         "color_transfer": color_transfer,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10670,14 +10670,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "threshold": threshold,
                         "sc_pass": sc_pass,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10713,7 +10713,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -10722,7 +10722,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10760,7 +10760,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "horizontal": horizontal,
@@ -10770,7 +10770,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10799,14 +10799,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video] * len((str(timestamps or frames)).split("|"))),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "timestamps": timestamps,
                         "frames": frames,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
 
@@ -10834,14 +10834,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video] * int(outputs)),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "expr": expr,
                         "outputs": outputs,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
 
@@ -10894,7 +10894,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "correction_method": correction_method,
@@ -10911,7 +10911,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10939,14 +10939,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "commands": commands,
                         "filename": filename,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -10968,7 +10968,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -10993,14 +10993,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dar": dar,
                         "max": max,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11027,13 +11027,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11129,7 +11129,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "field_mode": field_mode,
@@ -11139,7 +11139,7 @@ class VideoStream(FilterableStream):
                         "colorspace": colorspace,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11164,13 +11164,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "expr": expr,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11202,13 +11202,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "range": range,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11234,14 +11234,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "sar": sar,
                         "max": max,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11266,13 +11266,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "expr": expr,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11310,7 +11310,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "shx": shx,
@@ -11320,7 +11320,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11345,13 +11345,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "checksum": checksum,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11376,13 +11376,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "s": s,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11410,14 +11410,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mapping": mapping,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11457,7 +11457,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "direction": direction,
@@ -11468,7 +11468,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11506,7 +11506,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "map0": map0,
@@ -11516,7 +11516,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11574,7 +11574,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -11582,7 +11582,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11616,7 +11616,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "stat": stat,
@@ -11624,7 +11624,7 @@ class VideoStream(FilterableStream):
                         "c": c,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11649,13 +11649,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "print_summary": print_summary,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11697,7 +11697,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "luma_radius": luma_radius,
@@ -11709,7 +11709,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11745,7 +11745,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -11754,7 +11754,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11825,7 +11825,7 @@ class VideoStream(FilterableStream):
                 self,
                 _phase,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "sample_rate": sample_rate,
@@ -11837,7 +11837,7 @@ class VideoStream(FilterableStream):
                         "orientation": orientation,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.audio(0)
@@ -11863,13 +11863,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video] * int(outputs)),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "outputs": outputs,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
 
@@ -11908,7 +11908,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "quality": quality,
@@ -11918,7 +11918,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -11956,7 +11956,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dnn_backend": dnn_backend,
@@ -11966,7 +11966,7 @@ class VideoStream(FilterableStream):
                         "output": output,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12010,7 +12010,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "stats_file": stats_file,
@@ -12021,7 +12021,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12114,14 +12114,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "in": _in,
                         "out": out,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12143,7 +12143,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -12184,7 +12184,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "w": w,
@@ -12196,7 +12196,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12221,13 +12221,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12512,7 +12512,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0_mode": c0_mode,
@@ -12533,7 +12533,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12565,14 +12565,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "first_field": first_field,
                         "pattern": pattern,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12616,7 +12616,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "width": width,
@@ -12629,7 +12629,7 @@ class VideoStream(FilterableStream):
                         "slide": slide,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12669,14 +12669,14 @@ class VideoStream(FilterableStream):
                 _min,
                 _max,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12710,7 +12710,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "n": n,
@@ -12718,7 +12718,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12760,7 +12760,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "layout": layout,
@@ -12772,7 +12772,7 @@ class VideoStream(FilterableStream):
                         "init_padding": init_padding,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12806,13 +12806,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12850,7 +12850,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "c0": c0,
@@ -12860,7 +12860,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12896,7 +12896,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "radius": radius,
@@ -12905,7 +12905,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12941,7 +12941,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "radius": radius,
@@ -12950,7 +12950,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -12988,7 +12988,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "frames": frames,
@@ -12998,7 +12998,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13036,7 +13036,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "tonemap": tonemap,
@@ -13045,7 +13045,7 @@ class VideoStream(FilterableStream):
                         "peak": peak,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13087,7 +13087,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "start": start,
@@ -13099,7 +13099,7 @@ class VideoStream(FilterableStream):
                         "color": color,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13131,14 +13131,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dir": dir,
                         "passthrough": passthrough,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13172,14 +13172,14 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "dir": dir,
                         "passthrough": passthrough,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13221,7 +13221,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "start": start,
@@ -13233,7 +13233,7 @@ class VideoStream(FilterableStream):
                         "end_frame": end_frame,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13281,7 +13281,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "luma_msize_x": luma_msize_x,
@@ -13296,7 +13296,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13321,13 +13321,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "layout": layout,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13365,7 +13365,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "quality": quality,
@@ -13375,7 +13375,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13557,7 +13557,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "input": input,
@@ -13598,7 +13598,7 @@ class VideoStream(FilterableStream):
                         "reset_rot": reset_rot,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13640,7 +13640,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "threshold": threshold,
@@ -13652,7 +13652,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13700,7 +13700,7 @@ class VideoStream(FilterableStream):
                 self,
                 _radius,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "min_r": min_r,
@@ -13713,7 +13713,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13771,7 +13771,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -13790,7 +13790,7 @@ class VideoStream(FilterableStream):
                         "tint1": tint1,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13815,13 +13815,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13843,7 +13843,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(({} | kwargs).items()),
+            kwargs=to_tuple(({} | kwargs)),
         )
         return filter_node.video(0)
 
@@ -13888,7 +13888,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "intensity": intensity,
@@ -13902,7 +13902,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -13946,7 +13946,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "result": result,
@@ -13959,7 +13959,7 @@ class VideoStream(FilterableStream):
                         "fileformat": fileformat,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14015,7 +14015,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "input": input,
@@ -14034,7 +14034,7 @@ class VideoStream(FilterableStream):
                         "debug": debug,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14076,7 +14076,7 @@ class VideoStream(FilterableStream):
                 self,
                 _reference,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "eof_action": eof_action,
@@ -14086,7 +14086,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14130,7 +14130,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "angle": angle,
@@ -14143,7 +14143,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14168,13 +14168,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "stats_file": stats_file,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14212,7 +14212,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "filter": filter,
@@ -14222,7 +14222,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14284,7 +14284,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -14305,7 +14305,7 @@ class VideoStream(FilterableStream):
                         "input": input,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14332,13 +14332,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "first_field": first_field,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14363,13 +14363,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "n": n,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14415,7 +14415,7 @@ class VideoStream(FilterableStream):
                 self,
                 _secondary,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "planes": planes,
@@ -14427,7 +14427,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14529,7 +14529,7 @@ class VideoStream(FilterableStream):
                 self,
                 _xfade,
             ),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "transition": transition,
@@ -14538,7 +14538,7 @@ class VideoStream(FilterableStream):
                         "expr": expr,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14576,7 +14576,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "mode": mode,
@@ -14585,7 +14585,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14621,7 +14621,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "radius": radius,
@@ -14630,7 +14630,7 @@ class VideoStream(FilterableStream):
                         "enable": enable,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14655,13 +14655,13 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "bind_address": bind_address,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14701,7 +14701,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "zoom": zoom,
@@ -14712,7 +14712,7 @@ class VideoStream(FilterableStream):
                         "fps": fps,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)
@@ -14924,7 +14924,7 @@ class VideoStream(FilterableStream):
             input_typings=tuple([StreamType.video]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=tuple(
+            kwargs=to_tuple(
                 (
                     {
                         "w": w,
@@ -14948,7 +14948,7 @@ class VideoStream(FilterableStream):
                         "param_b": param_b,
                     }
                     | kwargs
-                ).items()
+                )
             ),
         )
         return filter_node.video(0)

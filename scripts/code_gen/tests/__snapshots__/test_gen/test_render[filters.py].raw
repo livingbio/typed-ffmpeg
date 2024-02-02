@@ -1,7 +1,8 @@
 from typing import Any, Literal
 
-from .nodes.nodes import FilterNode, FilterableStream
-from .schema import Default, StreamType, Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
+from .dag.nodes import FilterNode, FilterableStream
+from .schema import Default, StreamType, to_tuple
+from .types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
 from .streams.video import VideoStream
 from .streams.audio import AudioStream
 from .streams.av import AVStream
@@ -66,6 +67,9 @@ Args:
     order: set the filter order
     projection: set the filter projection
 
+Returns:
+    the audio stream
+
 References:
     [FFmpeg Documentation](None)
 
@@ -89,13 +93,13 @@ References:
 
 
         ),
-        kwargs=tuple(({
+        kwargs=to_tuple(({
             
             "order": order,
             
             "projection": projection,
             
-        } | kwargs).items()),
+        } | kwargs)),
     )
     return filter_node.audio(0)
 
