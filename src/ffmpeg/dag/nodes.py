@@ -240,6 +240,11 @@ class FilterableStream(Stream, ABC):
             else:
                 return f"[{context.get_node_label(self.node)}#{self.index}]"
 
+    def view(self) -> str:
+        from ..utils.view import view
+
+        return view(self.node)
+
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):
             assert self.index is None, "Input streams cannot have an index"
@@ -432,11 +437,6 @@ class OutputStream(Stream):
             return cmd + compile(self.node) + ["-y"]
 
         return cmd + compile(self.node)
-
-    def view(self) -> str:
-        from ..utils.view import view
-
-        return view(self.node)
 
     def run_async(
         self,
