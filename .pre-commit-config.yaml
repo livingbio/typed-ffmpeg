@@ -66,4 +66,4 @@ repos:
             --check-untyped-defs,
             --no-implicit-reexport,
             --disallow-untyped-defs
-                      ]
+          ]

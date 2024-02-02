@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from ..streams.video import VideoStream
 
 
-@dataclass(frozen=True, kw_only=True)
+@dataclass(frozen=True, kw_only=True, repr=False)
 class FilterNode(Node):
     """
     A filter node that can be used to apply filters to streams
@@ -29,7 +29,7 @@ class FilterNode(Node):
     output_typings: tuple[StreamType, ...] | None = None
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}:{self.name}({self.hex})"
+        return self.name
 
     @property
     @override
@@ -247,13 +247,16 @@ class FilterableStream(Stream, ABC):
             assert self.index is not None, "Filter streams must have an index"
 
 
-@dataclass(frozen=True, kw_only=True)
+@dataclass(frozen=True, kw_only=True, repr=False)
 class GlobalNode(Node):
     """
     A node that can be used to set global options
     """
 
     input: "OutputStream"
+
+    def __repr__(self) -> str:
+        return " ".join(self.get_args())
 
     def stream(self) -> "OutputStream":
         """
@@ -287,13 +290,16 @@ class GlobalNode(Node):
         return commands
 
 
-@dataclass(frozen=True, kw_only=True)
+@dataclass(frozen=True, kw_only=True, repr=False)
 class InputNode(Node):
     """
     A node that can be used to read from files
     """
 
     filename: str
+
+    def __repr__(self) -> str:
+        return self.filename
 
     @property
     @override
@@ -342,10 +348,13 @@ class InputNode(Node):
         return commands
 
 
-@dataclass(frozen=True, kw_only=True)
+@dataclass(frozen=True, kw_only=True, repr=False)
 class OutputNode(Node):
     filename: str
     inputs: tuple[FilterableStream, ...]
+
+    def __repr__(self) -> str:
+        return self.filename
 
     def stream(self) -> "OutputStream":
         """
@@ -423,6 +432,11 @@ class OutputStream(Stream):
             return cmd + compile(self.node) + ["-y"]
 
         return cmd + compile(self.node)
+
+    def view(self) -> str:
+        from ..utils.view import view
+
+        return view(self.node)
 
     def run_async(
         self,
@@ -511,13 +525,16 @@ class OutputStream(Stream):
         return stdout, stderr
 
 
-@dataclass(frozen=True, kw_only=True)
+@dataclass(frozen=True, kw_only=True, repr=False)
 class MergeOutputsNode(Node):
     """
     A node that can be used to merge multiple outputs
     """
 
     inputs: tuple[OutputStream, ...]
+
+    def __repr__(self) -> str:
+        return "Merge"
 
     def stream(self) -> "OutputStream":
         """
