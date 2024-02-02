@@ -32,7 +32,7 @@ def view(node: Node) -> str:
 
     for node in context.all_nodes:
         color = _get_node_color(node)
-        graph.node(name=node.hex, label=repr(node), shape="box", style="filled", fillcolor=color)
+        graph.node(name=node.hex, label=node.repr(), shape="box", style="filled", fillcolor=color)
 
     for node in context.all_nodes:
         for stream in node.incoming_streams:

@@ -154,3 +154,13 @@ class Node(HashableBaseModel, ABC):
             The arguments of the node.
         """
         raise NotImplementedError()
+
+    @abstractmethod
+    def repr(self) -> str:
+        """
+        Get the representation of the node.
+
+        Returns:
+            The representation of the node.
+        """
+        raise NotImplementedError()
