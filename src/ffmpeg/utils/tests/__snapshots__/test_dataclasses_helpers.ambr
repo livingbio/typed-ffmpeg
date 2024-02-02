@@ -1,7 +1,0 @@
-# serializer version: 1
-# name: test_load_and_dump[deserialized]
-  Person(name='John Doe', age=30, address=Address(street='123 Main St', city='Anytown'))
-# ---
-# name: test_load_and_dump[serialized]
-  '{"name": "John Doe", "age": 30, "address": {"street": "123 Main St", "city": "Anytown"}}'
-# ---
