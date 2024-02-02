@@ -138,4 +138,3 @@ def test_compile_merge_outputs_with_filter_complex(snapshot: SnapshotAssertion) 
     output2 = output(splitted.video(1), filename="output2.mp4")
 
     assert snapshot(extension_class=JSONSnapshotExtension) == (merge_outputs(output1, output2).compile())
-    merge_outputs(output1, output2).view()
