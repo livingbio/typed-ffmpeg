@@ -4,16 +4,9 @@ import datetime
 import json  # noqa
 from dataclasses import fields, is_dataclass
 from enum import Enum
-from typing import Any, ClassVar, Dict, Protocol, TypeVar
+from typing import Any, TypeVar, cast
 
-
-class IsDataclass(Protocol):
-    # as already noted in comments, checking for this attribute is currently
-    # the most reliable way to ascertain that something is a dataclass
-    __dataclass_fields__: ClassVar[Dict[str, Any]]
-
-
-T = TypeVar("T", bound=IsDataclass)
+T = TypeVar("T")
 
 
 def load_class(path: str) -> Any:
@@ -78,10 +71,9 @@ class Decoder(json.JSONDecoder):
 
 def loads(cls: type[T], raw: str) -> T:
     data = json.loads(raw, cls=Decoder)
-    assert isinstance(data, cls)
-    return data
+    return cast(T, data)
 
 
 # Serialization
-def dumps(instance: IsDataclass) -> str:
+def dumps(instance: Any) -> str:
     return json.dumps(instance, cls=Encoder)
