@@ -1,12 +1,17 @@
 import json
+import logging
 import subprocess
+from pathlib import Path
 from typing import Any
 
 from .exceptions import Error
 from .utils.escaping import convert_kwargs_to_cmd_line_args
+from .utils.run import command_line
+
+logger = logging.getLogger(__name__)
 
 
-def probe(filename: str, cmd: str = "ffprobe", timeout: int | None = None, **kwargs: Any) -> dict[str, Any]:
+def probe(filename: str | Path, cmd: str = "ffprobe", timeout: int | None = None, **kwargs: Any) -> dict[str, Any]:
     """
     Run ffprobe on the given file and return a JSON representation of the output
 
@@ -21,8 +26,9 @@ def probe(filename: str, cmd: str = "ffprobe", timeout: int | None = None, **kwa
     """
     args = [cmd, "-show_format", "-show_streams", "-of", "json"]
     args += convert_kwargs_to_cmd_line_args(kwargs)
-    args += [filename]
+    args += [str(filename)]
 
+    logger.error("Running ffprobe command: %s", command_line(args))
     p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     if timeout is not None:
@@ -32,6 +38,6 @@ def probe(filename: str, cmd: str = "ffprobe", timeout: int | None = None, **kwa
 
     retcode = p.poll()
     if p.returncode != 0:
-        raise Error(retcode=retcode, cmd=args, stdout=out, stderr=err)
+        raise Error(retcode=retcode, cmd=command_line(args), stdout=out, stderr=err)
 
     return json.loads(out.decode("utf-8"))

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import logging
 import os.path
+import shlex
 import subprocess
 from abc import ABC, abstractproperty
 from dataclasses import dataclass
@@ -16,6 +18,9 @@ if TYPE_CHECKING:
     from ..streams.audio import AudioStream
     from ..streams.av import AVStream
     from ..streams.video import VideoStream
+
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -443,6 +448,19 @@ class OutputStream(Stream):
 
         return cmd + compile(self.node)
 
+    def compile_line(self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False) -> str:
+        """
+        Build command-line for invoking ffmpeg.
+
+        Args:
+            cmd: the command to invoke ffmpeg
+            overwrite_output: whether to overwrite output files without asking
+
+        Returns:
+            the command-line
+        """
+        return " ".join(shlex.quote(arg) for arg in self.compile(cmd, overwrite_output=overwrite_output))
+
     def run_async(
         self,
         cmd: str | list[str] = "ffmpeg",
@@ -451,7 +469,6 @@ class OutputStream(Stream):
         pipe_stderr: bool = False,
         quiet: bool = False,
         overwrite_output: bool = False,
-        cwd: str | None = None,
     ) -> subprocess.Popen[bytes]:
         """
         Run ffmpeg asynchronously.
@@ -463,7 +480,6 @@ class OutputStream(Stream):
             pipe_stderr: whether to pipe stderr
             quiet: whether to pipe stderr to stdout
             overwrite_output: whether to overwrite output files without asking
-            cwd: the working directory
 
         Returns:
             the process
@@ -471,28 +487,26 @@ class OutputStream(Stream):
 
         args = self.compile(cmd, overwrite_output=overwrite_output)
         stdin_stream = subprocess.PIPE if pipe_stdin else None
-        stdout_stream = subprocess.PIPE if pipe_stdout else None
-        stderr_stream = subprocess.PIPE if pipe_stderr else None
-        if quiet:
-            stderr_stream = subprocess.STDOUT
-            stdout_stream = subprocess.DEVNULL
+        stdout_stream = subprocess.PIPE if pipe_stdout or quiet else None
+        stderr_stream = subprocess.PIPE if pipe_stderr or quiet else None
+
+        logger.error(f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output)}")
+
         return subprocess.Popen(
             args,
             stdin=stdin_stream,
             stdout=stdout_stream,
             stderr=stderr_stream,
-            cwd=cwd,
         )
 
     def run(
         self,
         cmd: str | list[str] = "ffmpeg",
-        pipe_stdin: bool = False,
-        pipe_stdout: bool = False,
-        pipe_stderr: bool = False,
+        capture_stdout: bool = False,
+        capture_stderr: bool = False,
+        input: bytes | None = None,
         quiet: bool = False,
         overwrite_output: bool = False,
-        cwd: str | None = None,
     ) -> tuple[bytes, bytes]:
         """
         Run ffmpeg synchronously.
@@ -504,7 +518,6 @@ class OutputStream(Stream):
             pipe_stderr: whether to pipe stderr
             quiet: whether to pipe stderr to stdout
             overwrite_output: whether to overwrite output files without asking
-            cwd: the working directory
 
         Returns:
             the stdout
@@ -513,19 +526,22 @@ class OutputStream(Stream):
 
         process = self.run_async(
             cmd,
-            pipe_stdin=pipe_stdin,
-            pipe_stdout=pipe_stdout,
-            pipe_stderr=pipe_stderr,
+            pipe_stdin=input is not None,
+            pipe_stdout=capture_stdout,
+            pipe_stderr=capture_stderr,
             quiet=quiet,
             overwrite_output=overwrite_output,
-            cwd=cwd,
         )
-        stdout, stderr = process.communicate()
+        stdout, stderr = process.communicate(input)
         retcode = process.poll()
 
         if retcode:
-            args = self.compile(cmd, overwrite_output=overwrite_output)
-            raise Error(retcode=retcode, cmd=args, stdout=stdout, stderr=stderr)
+            raise Error(
+                retcode=retcode,
+                cmd=self.compile_line(cmd, overwrite_output=overwrite_output),
+                stdout=stdout,
+                stderr=stderr,
+            )
 
         return stdout, stderr
 
