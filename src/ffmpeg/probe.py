@@ -28,7 +28,7 @@ def probe(filename: str | Path, cmd: str = "ffprobe", timeout: int | None = None
     args += convert_kwargs_to_cmd_line_args(kwargs)
     args += [str(filename)]
 
-    logger.error("Running ffprobe command: %s", command_line(args))
+    logger.info("Running ffprobe command: %s", command_line(args))
     p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     if timeout is not None:
