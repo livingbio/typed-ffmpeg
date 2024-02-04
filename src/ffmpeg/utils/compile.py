@@ -114,13 +114,40 @@ class DAGContext(_DAGContext):
         return self.outgoing_streams[node]
 
 
-# TODO:
-# for FFMpeg
-# each filter's output stream can only be used by one other filter
-# implement auto split or validate
+# # TODO:
+# # for FFMpeg
+# # each filter's output stream can only be used by one other filter
+# # implement auto split or validate
+
+# def validate(node: Node, auto_fix: bool = False) -> Node:
+#     # NOTE: we don't want to modify the original node
+#     node = deepcopy(node)
+
+#     context = DAGContext.build(node)
+
+#     # remove not neccessary split
+#     for node in context.all_nodes:
+#         if isinstance(node, FilterNode):
+#             if
+#             outgoing_streams = list(context.get_outgoing_streams(node))
+#             if len(outgoing_streams) > 1:
+#                 continue
+
+#             if len(outgoing_streams) == 1:
+#                 outgoing_stream = outgoing_streams[0]
+#                 if isinstance(outgoing_stream.node, FilterNode):
+#                     continue
+
+#             # if there is only one outgoing stream and it's not a filter node
+#             # then remove the split
+#             for stream in context.get_outgoing_streams(node):
+#                 stream.node.incoming_streams.remove(stream)
+
+#             node.incoming_streams = []
 
 
-def compile(node: Node) -> list[str]:
+def compile(node: Node, auto_fix: bool = True) -> list[str]:
+    # node = validate(node, auto_fix=auto_fix)
     context = DAGContext.build(node)
 
     # compile the global nodes
