@@ -490,7 +490,7 @@ class OutputStream(Stream):
         stdout_stream = subprocess.PIPE if pipe_stdout or quiet else None
         stderr_stream = subprocess.PIPE if pipe_stderr or quiet else None
 
-        logger.error(f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output)}")
+        logger.info(f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output)}")
 
         return subprocess.Popen(
             args,
