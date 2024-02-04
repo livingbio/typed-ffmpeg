@@ -469,7 +469,6 @@ class OutputStream(Stream):
         pipe_stderr: bool = False,
         quiet: bool = False,
         overwrite_output: bool = False,
-        cwd: str | None = None,
     ) -> subprocess.Popen[bytes]:
         """
         Run ffmpeg asynchronously.
@@ -481,7 +480,6 @@ class OutputStream(Stream):
             pipe_stderr: whether to pipe stderr
             quiet: whether to pipe stderr to stdout
             overwrite_output: whether to overwrite output files without asking
-            cwd: the working directory
 
         Returns:
             the process
@@ -489,12 +487,8 @@ class OutputStream(Stream):
 
         args = self.compile(cmd, overwrite_output=overwrite_output)
         stdin_stream = subprocess.PIPE if pipe_stdin else None
-        stdout_stream = subprocess.PIPE if pipe_stdout else None
-        stderr_stream = subprocess.PIPE if pipe_stderr else None
-
-        if quiet:
-            stderr_stream = subprocess.STDOUT
-            stdout_stream = subprocess.DEVNULL
+        stdout_stream = subprocess.PIPE if pipe_stdout or quiet else None
+        stderr_stream = subprocess.PIPE if pipe_stderr or quiet else None
 
         logger.error(f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output)}")
 
@@ -503,7 +497,6 @@ class OutputStream(Stream):
             stdin=stdin_stream,
             stdout=stdout_stream,
             stderr=stderr_stream,
-            cwd=cwd,
         )
 
     def run(
@@ -514,7 +507,6 @@ class OutputStream(Stream):
         input: bytes | None = None,
         quiet: bool = False,
         overwrite_output: bool = False,
-        cwd: str | None = None,
     ) -> tuple[bytes, bytes]:
         """
         Run ffmpeg synchronously.
@@ -526,7 +518,6 @@ class OutputStream(Stream):
             pipe_stderr: whether to pipe stderr
             quiet: whether to pipe stderr to stdout
             overwrite_output: whether to overwrite output files without asking
-            cwd: the working directory
 
         Returns:
             the stdout
@@ -540,7 +531,6 @@ class OutputStream(Stream):
             pipe_stderr=capture_stderr,
             quiet=quiet,
             overwrite_output=overwrite_output,
-            cwd=cwd,
         )
         stdout, stderr = process.communicate(input)
         retcode = process.poll()
