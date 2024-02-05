@@ -1,23 +1,30 @@
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+
+from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..base import Node, Stream, _DAGContext, empty_dag_context
 
 
-@dataclass(frozen=True, kw_only=True)
+@dataclass(frozen=True, kw_only=True, repr=False)
 class SimpleNode(Node):
     name: str
-    streams: tuple[Stream, ...] = ()
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         return []
 
+    def __repr__(self) -> str:
+        return self.name
 
-def test_dag() -> None:
+
+def test_dag(snapshot: SnapshotAssertion) -> None:
     # Linear Chain
     a = SimpleNode(name="A")
-    b = SimpleNode(name="B", streams=(Stream(node=a),))
-    c = SimpleNode(name="C", streams=(Stream(node=b),))
-    d = SimpleNode(name="D", streams=(Stream(node=c),))
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=b),))
+    d = SimpleNode(name="D", inputs=(Stream(node=c),))
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == asdict(d)
 
     # # Self-loop
     # a = SimpleNode(name="A")
@@ -27,3 +34,34 @@ def test_dag() -> None:
 
     # with pytest.raises(ValueError):
     #     b.streams = [Stream(node=b), Stream(node=a)]
+
+
+def test_replace_linear(snapshot: SnapshotAssertion) -> None:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=b),))
+    d = SimpleNode(name="D", inputs=(Stream(node=c),))
+
+    e = SimpleNode(name="E", inputs=(Stream(node=a),))
+
+    assert snapshot(name="replace a", extension_class=JSONSnapshotExtension) == asdict(d.replace(a, e))
+    assert snapshot(name="replace b", extension_class=JSONSnapshotExtension) == asdict(d.replace(b, e))
+    assert snapshot(name="replace c", extension_class=JSONSnapshotExtension) == asdict(d.replace(c, e))
+    assert snapshot(name="replace d", extension_class=JSONSnapshotExtension) == asdict(d.replace(d, e))
+
+
+def test_replace_loop(snapshot: SnapshotAssertion) -> None:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=a),))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
+
+    e = SimpleNode(name="E", inputs=(Stream(node=a),))
+
+    assert snapshot(name="replace a", extension_class=JSONSnapshotExtension) == asdict(d.replace(a, e))
+
+    assert snapshot(name="replace b", extension_class=JSONSnapshotExtension) == asdict(d.replace(b, e))
+
+    assert snapshot(name="replace c", extension_class=JSONSnapshotExtension) == asdict(d.replace(c, e))
+
+    assert snapshot(name="replace d", extension_class=JSONSnapshotExtension) == asdict(d.replace(d, e))
