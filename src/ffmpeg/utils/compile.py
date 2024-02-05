@@ -11,6 +11,15 @@ T = TypeVar("T")
 
 
 def _remove_duplicates(seq: list[T]) -> list[T]:
+    """
+    Remove duplicates from a list while preserving order.
+
+    Args:
+        seq: The list to remove duplicates from.
+
+    Returns:
+        The list with duplicates removed.
+    """
     seen = set()
     output = []
 
@@ -23,7 +32,15 @@ def _remove_duplicates(seq: list[T]) -> list[T]:
 
 
 def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
-    """Collect all nodes and streams that are upstreamed to the given node"""
+    """
+    Collect all nodes and streams that are upstreamed to the given node
+
+    Args:
+        node: The node to collect from.
+
+    Returns:
+        A tuple of all nodes and streams that are upstreamed to the given node.
+    """
     nodes, streams = [node], [*node.incoming_streams]
 
     for stream in node.incoming_streams:
@@ -35,6 +52,16 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
 
 
 def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stream]]) -> int:
+    """
+    Calculate the maximum depth of a node in the graph.
+
+    Args:
+        node: The node to calculate the maximum depth of.
+        outgoing_streams: The outgoing streams of the node.
+
+    Returns:
+        The maximum depth of the node in the graph.
+    """
     if not node.incoming_streams:
         return 0
 
@@ -42,10 +69,32 @@ def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stre
 
 
 def _node_max_depth(all_nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, int]:
+    """
+    Calculate the maximum depth of each node in the graph.
+
+    Args:
+        all_nodes: All nodes in the graph.
+        outgoing_streams: The outgoing streams of each node.
+
+    Returns:
+        A dictionary of the maximum depth of each node in the graph.
+    """
+
     return {node: _calculate_node_max_depth(node, outgoing_streams) for node in all_nodes}
 
 
 def _build_outgoing_streams(nodes: list[Node], streams: list[Stream]) -> dict[Node, list[Stream]]:
+    """
+    Build a dictionary of outgoing streams for each node.
+
+    Args:
+        nodes: All nodes in the graph.
+        streams: All streams in the graph.
+
+    Returns:
+        A dictionary of outgoing streams for each node.
+    """
+
     outgoing_streams: dict[Node, list[Stream]] = {}
 
     for node in nodes:
@@ -58,6 +107,17 @@ def _build_outgoing_streams(nodes: list[Node], streams: list[Stream]) -> dict[No
 
 
 def _build_node_labels(nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, str]:
+    """
+    Build a dictionary of labels for each node.
+
+    Args:
+        nodes: All nodes in the graph.
+        outgoing_streams: The outgoing streams of each node.
+
+    Returns:
+        A dictionary of labels for each node.
+    """
+
     node_max_depth = _node_max_depth(nodes, outgoing_streams)
     input_node_index = 0
     filter_node_index = 0
@@ -78,17 +138,45 @@ def _build_node_labels(nodes: list[Node], outgoing_streams: dict[Node, list[Stre
 
 @dataclass(frozen=True, kw_only=True)
 class DAGContext(_DAGContext):
+    """
+    A context for a directed acyclic graph (DAG).
+    """
+
     node: Node
+    """
+    The root node (the destination) of the DAG.
+    """
 
     node_labels: dict[Node, str]
+    """
+    A dictionary of labels for each node.
+    """
+
     outgoing_streams: dict[Node, list[Stream]]
+    """
+    A dictionary of outgoing streams for each node.
+    """
 
     all_nodes: list[Node]
+    """
+    All nodes in the graph.
+    """
     all_streams: list[Stream]
+    """
+    All streams in the graph.
+    """
 
     @classmethod
     def build(cls, node: Node) -> DAGContext:
-        """create a DAG context based on the given node"""
+        """
+        create a DAG context based on the given node
+
+        Args:
+            node: The root node of the DAG.
+
+        Returns:
+            A DAG context based on the given node.
+        """
         nodes, streams = _collect(node)
         nodes = _remove_duplicates(nodes)
         streams = _remove_duplicates(streams)
@@ -108,10 +196,29 @@ class DAGContext(_DAGContext):
         )
 
     def get_node_label(self, node: Node) -> str:
+        """
+        Get the label of the node.
+
+        Args:
+            node: The node to get the label of.
+
+        Returns:
+            The label of the node.
+        """
+
         assert isinstance(node, (InputNode, FilterNode)), "Only input and filter nodes have labels"
         return self.node_labels[node]
 
     def get_outgoing_streams(self, node: Node) -> list[Stream]:
+        """
+        Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
+
+        Args:
+            node: The node to get the outgoing streams of.
+
+        Returns:
+            The outgoing streams of the node.
+        """
         return self.outgoing_streams[node]
 
 
@@ -120,6 +227,16 @@ class DAGContext(_DAGContext):
 
 
 def _validate_reuse_stream(context: DAGContext) -> DAGContext:
+    """
+    Validate that no stream is reused by multiple nodes.
+
+    Args:
+        context: The DAG context to validate.
+
+    Returns:
+        The validated DAG context.
+    """
+
     # NOTE: validate there is no reuse stream (each stream can only be used by one node's input)
     stream_nodes: dict[Stream, list[Node]] = defaultdict(list)
 
@@ -140,6 +257,16 @@ def _validate_reuse_stream(context: DAGContext) -> DAGContext:
 
 
 def _validate_not_utilize_split(context: DAGContext) -> DAGContext:
+    """
+    Validate that split nodes are utilized.
+
+    Args:
+        context: The DAG context to validate.
+
+    Returns:
+        The validated DAG context.
+    """
+
     all_split_node = [
         node for node in context.all_nodes if isinstance(node, FilterNode) and node.name in ("split", "asplit")
     ]
@@ -168,6 +295,16 @@ def _validate_not_utilize_split(context: DAGContext) -> DAGContext:
 
 
 def validate(context: DAGContext) -> DAGContext:
+    """
+    Validate the given DAG context.
+
+    Args:
+        context: The DAG context to validate.
+
+    Returns:
+        The validated DAG context.
+    """
+
     # NOTE: we don't want to modify the original node
     validators = [_validate_reuse_stream, _validate_not_utilize_split]
 
@@ -178,6 +315,17 @@ def validate(context: DAGContext) -> DAGContext:
 
 
 def compile(node: Node, auto_fix: bool = True) -> list[str]:
+    """
+    Compile the given node into a list of command line arguments.
+
+    Args:
+        node: The node to compile.
+        auto_fix: Whether to automatically fix the graph. Defaults to True.
+
+    Returns:
+        A list of command line arguments.
+    """
+
     context = DAGContext.build(node)
     context = validate(context)
 
