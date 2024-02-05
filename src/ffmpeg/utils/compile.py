@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Iterable, TypeVar
+from typing import TypeVar
 
 from ..dag.base import Node, Stream, _DAGContext
 from ..dag.nodes import FilterNode, GlobalNode, InputNode, OutputNode
@@ -111,7 +111,7 @@ class DAGContext(_DAGContext):
         assert isinstance(node, (InputNode, FilterNode)), "Only input and filter nodes have labels"
         return self.node_labels[node]
 
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+    def get_outgoing_streams(self, node: Node) -> list[Stream]:
         return self.outgoing_streams[node]
 
 
@@ -119,9 +119,7 @@ class DAGContext(_DAGContext):
 # implement auto split or validate
 
 
-def validate(context: DAGContext) -> DAGContext:
-    # NOTE: we don't want to modify the original node
-
+def _validate_reuse_stream(context: DAGContext) -> DAGContext:
     # NOTE: validate there is no reuse stream (each stream can only be used by one node's input)
     stream_nodes: dict[Stream, list[Node]] = defaultdict(list)
 
@@ -133,12 +131,40 @@ def validate(context: DAGContext) -> DAGContext:
     # This means that a stream can only be consumed by a single filter node.
     # If a stream is used by multiple filter nodes, it will result in an error during compilation.
     # TODO: Add reference from FFmpeg's documentation.
-    reuse_streams = {
+    reuse_streams = [
         stream for stream, nodes in stream_nodes.items() if len(nodes) > 1 and not isinstance(stream.node, InputNode)
-    }
+    ]
     assert (
         not reuse_streams
     ), f"Each stream can only be used by one filter node, but found reuse streams: {reuse_streams}"
+
+    return context
+
+
+def _validate_not_utilize_split(context: DAGContext) -> DAGContext:
+    all_split_node = [
+        node for node in context.all_nodes if isinstance(node, FilterNode) and node.name in ("split", "asplit")
+    ]
+
+    not_utilize_splits = [
+        node
+        for node in all_split_node
+        if len(context.get_outgoing_streams(node)) < int(dict(node.kwargs).get("outputs", 2))
+    ]
+
+    assert (
+        not not_utilize_splits
+    ), f"Each split node should utilize all of its outputs, but found not utilized split nodes: {not_utilize_splits}"
+
+    return context
+
+
+def validate(context: DAGContext) -> DAGContext:
+    # NOTE: we don't want to modify the original node
+    validators = [_validate_reuse_stream, _validate_not_utilize_split]
+
+    for validator in validators:
+        context = validator(context)
 
     return context
 

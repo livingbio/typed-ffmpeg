@@ -148,3 +148,12 @@ def test_validate_reuse_stream(snapshot: SnapshotAssertion) -> None:
         concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4").compile()
 
     assert snapshot == e
+
+
+def test_validate_not_utilize_split(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1.mp4")
+
+    with pytest.raises(AssertionError) as e:
+        input1.split(outputs=2).video(0).output(filename="tmp.mp4").compile()
+
+    assert snapshot == e

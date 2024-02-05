@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod, abstractproperty
 from dataclasses import dataclass
 from functools import cached_property
-from typing import Iterable, Sequence
+from typing import Sequence
 
 from ..schema import StreamType
 from ..utils.typing import override
@@ -29,7 +29,7 @@ class _DAGContext(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+    def get_outgoing_streams(self, node: Node) -> list[Stream]:
         """
         Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
 
@@ -50,7 +50,7 @@ class DummyDAGContext(_DAGContext):
         return str(node)
 
     @override
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+    def get_outgoing_streams(self, node: Node) -> list[Stream]:
         return []
 
 
