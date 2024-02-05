@@ -12,7 +12,7 @@ from ..exceptions import Error
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
-from .base import Node, Stream, _DAGContext, empty_dag_context
+from .schema import Node, Stream, _DAGContext, empty_dag_context
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
