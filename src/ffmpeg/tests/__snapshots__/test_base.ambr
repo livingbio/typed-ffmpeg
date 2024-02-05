@@ -5,3 +5,6 @@
 # name: test_filter_node.1
   <ExceptionInfo ValueError('Expected input 1 to have video component, got AudioStream') tblen=4>
 # ---
+# name: test_validate_reuse_stream
+  <ExceptionInfo AssertionError("Each stream can only be used by one node's input, but found {VideoStream(node=FilterNode(args=(), kwar...nput_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), selector=None, index=0)}") tblen=4>
+# ---

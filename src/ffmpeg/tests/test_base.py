@@ -138,3 +138,13 @@ def test_compile_merge_outputs_with_filter_complex(snapshot: SnapshotAssertion) 
     output2 = output(splitted.video(1), filename="output2.mp4")
 
     assert snapshot(extension_class=JSONSnapshotExtension) == (merge_outputs(output1, output2).compile())
+
+
+def test_validate_reuse_stream(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1.mp4")
+
+    with pytest.raises(AssertionError) as e:
+        rev = input1.reverse()
+        concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4").compile()
+
+    assert snapshot == e

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass
 from typing import Iterable, TypeVar
 
@@ -114,41 +115,37 @@ class DAGContext(_DAGContext):
         return self.outgoing_streams[node]
 
 
-# # TODO:
-# # for FFMpeg
-# # each filter's output stream can only be used by one other filter
-# # implement auto split or validate
+# TODO:
+# implement auto split or validate
 
-# def validate(node: Node, auto_fix: bool = False) -> Node:
-#     # NOTE: we don't want to modify the original node
-#     node = deepcopy(node)
 
-#     context = DAGContext.build(node)
+def validate(context: DAGContext) -> DAGContext:
+    # NOTE: we don't want to modify the original node
 
-#     # remove not neccessary split
-#     for node in context.all_nodes:
-#         if isinstance(node, FilterNode):
-#             if
-#             outgoing_streams = list(context.get_outgoing_streams(node))
-#             if len(outgoing_streams) > 1:
-#                 continue
+    # NOTE: validate there is no reuse stream (each stream can only be used by one node's input)
+    stream_nodes: dict[Stream, list[Node]] = defaultdict(list)
 
-#             if len(outgoing_streams) == 1:
-#                 outgoing_stream = outgoing_streams[0]
-#                 if isinstance(outgoing_stream.node, FilterNode):
-#                     continue
+    for node in context.all_nodes:
+        for stream in node.incoming_streams:
+            stream_nodes[stream].append(node)
 
-#             # if there is only one outgoing stream and it's not a filter node
-#             # then remove the split
-#             for stream in context.get_outgoing_streams(node):
-#                 stream.node.incoming_streams.remove(stream)
+    # FFmpeg only allows each filter's output stream to be used by one other filter, except for input nodes.
+    # This means that a stream can only be consumed by a single filter node.
+    # If a stream is used by multiple filter nodes, it will result in an error during compilation.
+    # TODO: Add reference from FFmpeg's documentation.
+    reuse_streams = {
+        stream for stream, nodes in stream_nodes.items() if len(nodes) > 1 and not isinstance(stream.node, InputNode)
+    }
+    assert (
+        not reuse_streams
+    ), f"Each stream can only be used by one filter node, but found reuse streams: {reuse_streams}"
 
-#             node.incoming_streams = []
+    return context
 
 
 def compile(node: Node, auto_fix: bool = True) -> list[str]:
-    # node = validate(node, auto_fix=auto_fix)
     context = DAGContext.build(node)
+    context = validate(context)
 
     # compile the global nodes
     commands = []
