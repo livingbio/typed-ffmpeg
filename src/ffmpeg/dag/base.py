@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from functools import cached_property
-from typing import Iterable, Sequence
+from typing import Iterable
 
 from ..schema import StreamType
 from ..utils.typing import override
@@ -111,16 +111,7 @@ class Node(HashableBaseModel, ABC):
 
     args: tuple[str, ...] = ()
     kwargs: tuple[tuple[str, str | int | float | bool], ...] = ()
-
-    @abstractproperty
-    def incoming_streams(self) -> Sequence["Stream"]:
-        """
-        Return the incoming streams of this node.
-
-        Returns:
-            The incoming streams of this node.
-        """
-        raise NotImplementedError()
+    inputs: tuple[Stream, ...] = ()
 
     def __post_init__(self) -> None:
         # Validate the DAG
@@ -135,9 +126,9 @@ class Node(HashableBaseModel, ABC):
                 continue
             passed.add(node)
 
-            nodes.extend(k.node for k in node.incoming_streams)
+            nodes.extend(k.node for k in node.inputs)
 
-            output[node.hex] = set(k.node.hex for k in node.incoming_streams)
+            output[node.hex] = set(k.node.hex for k in node.inputs)
 
         if not is_dag(output):
             raise ValueError(f"Graph is not a DAG: {output}")

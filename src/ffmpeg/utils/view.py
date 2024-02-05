@@ -35,7 +35,7 @@ def view(node: Node) -> str:
         graph.node(name=node.hex, label=node.repr(), shape="box", style="filled", fillcolor=color)
 
     for node in context.all_nodes:
-        for stream in node.incoming_streams:
+        for stream in node.inputs:
             graph.edge(stream.node.hex, node.hex)
 
     return graph.render(format="png")
