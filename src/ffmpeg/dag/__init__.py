@@ -1,5 +1,5 @@
-from .base import Node, Stream
 from .nodes import FilterableStream, FilterNode, GlobalNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
+from .schema import Node, Stream
 
 __all__ = [
     "Node",

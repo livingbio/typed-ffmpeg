@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Sequence
 
-from ..base import Node, Stream, _DAGContext, empty_dag_context
+from ..schema import Node, Stream, _DAGContext, empty_dag_context
 
 
 @dataclass(frozen=True, kw_only=True)
