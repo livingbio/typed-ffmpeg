@@ -134,9 +134,7 @@ def _validate_reuse_stream(context: DAGContext) -> DAGContext:
     reuse_streams = [
         stream for stream, nodes in stream_nodes.items() if len(nodes) > 1 and not isinstance(stream.node, InputNode)
     ]
-    assert (
-        not reuse_streams
-    ), f"Each stream can only be used by one filter node, but found reuse streams: {reuse_streams}"
+    assert not reuse_streams, f"Found reuse streams: {reuse_streams}"
 
     return context
 
@@ -152,9 +150,19 @@ def _validate_not_utilize_split(context: DAGContext) -> DAGContext:
         if len(context.get_outgoing_streams(node)) < int(dict(node.kwargs).get("outputs", 2))
     ]
 
-    assert (
-        not not_utilize_splits
-    ), f"Each split node should utilize all of its outputs, but found not utilized split nodes: {not_utilize_splits}"
+    assert not not_utilize_splits, f"Found not utilized split nodes: {not_utilize_splits}"
+
+    # if a split node has only one output, it is reduntant
+    reduntant_splits = {node for node in all_split_node if int(dict(node.kwargs).get("outputs", 2) == 1)}
+
+    # if a split node's parent is also a split node, it is reduntant
+    reduntant_splits |= {
+        node
+        for node in all_split_node
+        if isinstance(node.inputs[0].node, FilterNode) and node.inputs[0].node.name in ("split", "asplit")
+    }
+
+    assert not reduntant_splits, f"Found reduntant split nodes: {reduntant_splits}"
 
     return context
 

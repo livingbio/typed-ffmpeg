@@ -5,9 +5,15 @@
 # name: test_filter_node.1
   <ExceptionInfo ValueError('Expected input 1 to have video component, got AudioStream') tblen=4>
 # ---
+# name: test_reduntant_split_duplicate
+  <ExceptionInfo AssertionError("Found reduntant split nodes: {FilterNode(args=(), kwargs=(('outputs', 2),), name='split', inputs=(Vide...t_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>))}") tblen=5>
+# ---
+# name: test_reduntant_split_outputs_1
+  <ExceptionInfo AssertionError("Found reduntant split nodes: {FilterNode(args=(), kwargs=(('outputs', 1),), name='split', inputs=(AVSt...or=None, index=None),), input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))}") tblen=5>
+# ---
 # name: test_validate_not_utilize_split
-  <ExceptionInfo AssertionError("Each split node should utilize all of its outputs, but found not utilized split nodes: [FilterNode(arg...t_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>))]") tblen=5>
+  <ExceptionInfo AssertionError("Found not utilized split nodes: [FilterNode(args=(), kwargs=(('outputs', 2),), name='split', inputs=(A...t_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>))]") tblen=5>
 # ---
 # name: test_validate_reuse_stream
-  <ExceptionInfo AssertionError("Each stream can only be used by one filter node, but found reuse streams: [VideoStream(node=FilterNode...nput_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), selector=None, index=0)]") tblen=5>
+  <ExceptionInfo AssertionError("Found reuse streams: [VideoStream(node=FilterNode(args=(), kwargs=(), name='trim', inputs=(VideoStream...nput_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), selector=None, index=0)]") tblen=5>
 # ---
