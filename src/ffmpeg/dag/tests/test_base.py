@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Sequence
 
 from ..base import Node, Stream, _DAGContext, empty_dag_context
 
@@ -8,10 +7,6 @@ from ..base import Node, Stream, _DAGContext, empty_dag_context
 class SimpleNode(Node):
     name: str
     streams: tuple[Stream, ...] = ()
-
-    @property
-    def incoming_streams(self) -> Sequence[Stream]:
-        return self.streams
 
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         return []

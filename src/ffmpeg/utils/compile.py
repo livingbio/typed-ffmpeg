@@ -23,9 +23,9 @@ def _remove_duplicates(seq: list[T]) -> list[T]:
 
 def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
     """Collect all nodes and streams that are upstreamed to the given node"""
-    nodes, streams = [node], [*node.incoming_streams]
+    nodes, streams = [node], [*node.inputs]
 
-    for stream in node.incoming_streams:
+    for stream in node.inputs:
         _nodes, _streams = _collect(stream.node)
         nodes += _nodes
         streams += _streams
@@ -34,10 +34,10 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
 
 
 def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stream]]) -> int:
-    if not node.incoming_streams:
+    if not node.inputs:
         return 0
 
-    return max(_calculate_node_max_depth(stream.node, outgoing_streams) for stream in node.incoming_streams) + 1
+    return max(_calculate_node_max_depth(stream.node, outgoing_streams) for stream in node.inputs) + 1
 
 
 def _node_max_depth(all_nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, int]:

@@ -6,7 +6,7 @@ import shlex
 import subprocess
 from abc import ABC, abstractproperty
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any, Sequence
+from typing import TYPE_CHECKING, Any
 
 from ..exceptions import Error
 from ..schema import Default, StreamType
@@ -37,11 +37,6 @@ class FilterNode(Node):
     @override
     def repr(self) -> str:
         return self.name
-
-    @property
-    @override
-    def incoming_streams(self) -> Sequence[Stream]:
-        return self.inputs
 
     def stream(self, index: int) -> "AVStream":
         """
@@ -265,7 +260,7 @@ class GlobalNode(Node):
     A node that can be used to set global options
     """
 
-    input: "OutputStream"
+    inputs: tuple["OutputStream"]
 
     @override
     def repr(self) -> str:
@@ -279,11 +274,6 @@ class GlobalNode(Node):
             the output stream
         """
         return OutputStream(node=self)
-
-    @property
-    @override
-    def incoming_streams(self) -> Sequence[OutputStream]:
-        return [self.input]
 
     @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
@@ -310,15 +300,11 @@ class InputNode(Node):
     """
 
     filename: str
+    inputs: tuple[()] = ()
 
     @override
     def repr(self) -> str:
         return os.path.basename(self.filename)
-
-    @property
-    @override
-    def incoming_streams(self) -> Sequence[Stream]:
-        return []
 
     def video(self) -> "VideoStream":
         """
@@ -380,11 +366,6 @@ class OutputNode(Node):
         """
         return OutputStream(node=self)
 
-    @property
-    @override
-    def incoming_streams(self) -> Sequence[Stream]:
-        return self.inputs
-
     @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
         # !handle mapping
@@ -416,7 +397,7 @@ class OutputStream(Stream):
         Returns:
             the output stream
         """
-        return GlobalNode(input=self, args=args, kwargs=tuple(kwargs.items())).stream()
+        return GlobalNode(inputs=(self,), args=args, kwargs=tuple(kwargs.items())).stream()
 
     def overwrite_output(self) -> "OutputStream":
         """
@@ -425,7 +406,7 @@ class OutputStream(Stream):
         Returns:
             the output stream
         """
-        return GlobalNode(input=self, kwargs=(("y", True),)).stream()
+        return GlobalNode(inputs=(self,), kwargs=(("y", True),)).stream()
 
     def compile(self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False) -> list[str]:
         """
@@ -566,11 +547,6 @@ class MergeOutputsNode(Node):
             the output stream
         """
         return OutputStream(node=self)
-
-    @property
-    @override
-    def incoming_streams(self) -> Sequence[Stream]:
-        return self.inputs
 
     @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
