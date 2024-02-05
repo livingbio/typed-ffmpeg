@@ -1,0 +1,28 @@
+{
+  "args": [],
+  "inputs": [
+    {
+      "index": null,
+      "node": {
+        "args": [],
+        "inputs": [
+          {
+            "index": null,
+            "node": {
+              "args": [],
+              "inputs": [],
+              "kwargs": [],
+              "name": "A"
+            },
+            "selector": null
+          }
+        ],
+        "kwargs": [],
+        "name": "E"
+      },
+      "selector": null
+    }
+  ],
+  "kwargs": [],
+  "name": "D"
+}

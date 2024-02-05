@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import Iterable
 
@@ -154,3 +154,31 @@ class Node(HashableBaseModel, ABC):
             The representation of the node.
         """
         return repr(self)
+
+    def replace(self, old_node: Node, new_node: Node) -> Node:
+        """
+        Replace the old node with the new node.
+
+        Args:
+            old_node: The old node to replace.
+            new_node: The new node to replace with.
+
+        Returns:
+            The new node.
+        """
+        if self == old_node:
+            return new_node
+
+        inputs = []
+
+        for stream in self.inputs:
+            new_stream_node = stream.node.replace(old_node, new_node)
+
+            if new_stream_node != stream.node:
+                # need to create a new stream
+                new_stream = replace(stream, node=new_stream_node)
+                inputs.append(new_stream)
+            else:
+                inputs.append(stream)
+
+        return replace(self, inputs=tuple(inputs))
