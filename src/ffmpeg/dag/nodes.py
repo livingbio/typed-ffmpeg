@@ -419,7 +419,7 @@ class OutputStream(Stream):
         Returns:
             the command-line
         """
-        from ..utils.compile import compile
+        from .compile import compile
 
         if isinstance(cmd, str):
             cmd = [cmd]
