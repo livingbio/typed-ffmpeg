@@ -138,3 +138,14 @@ def test_compile_merge_outputs_with_filter_complex(snapshot: SnapshotAssertion) 
     output2 = output(splitted.video(1), filename="output2.mp4")
 
     assert snapshot(extension_class=JSONSnapshotExtension) == (merge_outputs(output1, output2).compile())
+
+
+def test_concat_dumuxer(snapshot: SnapshotAssertion) -> None:
+    stream = input(
+        "input1.mp4",
+        f="concat",
+        safe="0",
+        protocol_whitelist="file,http,https,tcp,tls",
+    )
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == (stream.output(filename="output.mp4").compile())
