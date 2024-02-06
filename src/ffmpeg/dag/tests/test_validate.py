@@ -2,9 +2,9 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
-from ...dag.nodes import OutputStream
 from ...filters import concat
 from ..context import DAGContext
+from ..nodes import OutputStream
 from ..validate import validate
 
 
