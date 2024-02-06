@@ -26,3 +26,4 @@ jobs:
       - name: lint
         run: poetry run pre-commit run --all-files
         working-directory: src
+      - run: poetry run mkdocs build # ensure mkdocs build is successful
