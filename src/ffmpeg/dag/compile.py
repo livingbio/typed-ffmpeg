@@ -3,6 +3,7 @@ from __future__ import annotations
 from .context import DAGContext
 from .nodes import FilterNode, GlobalNode, InputNode, OutputNode
 from .schema import Node
+from .validate import validate
 
 # TODO:
 # for FFMpeg
@@ -12,6 +13,7 @@ from .schema import Node
 
 def compile(node: Node) -> list[str]:
     context = DAGContext.build(node)
+    context = validate(context)
 
     # compile the global nodes
     commands = []

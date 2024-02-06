@@ -70,6 +70,9 @@ def _validate_not_utilize_split(context: DAGContext) -> DAGContext:
         if isinstance(node.inputs[0].node, FilterNode) and node.inputs[0].node.name in ("split", "asplit")
     }
 
+    # NOTE:
+    # if not all split outstream used, it is reduntant but is valid.
+
     assert not reduntant_splits, f"Found reduntant split nodes: {reduntant_splits}"
 
     return context
