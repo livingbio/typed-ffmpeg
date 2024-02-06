@@ -90,7 +90,10 @@ def validate(context: DAGContext) -> DAGContext:
     """
 
     # NOTE: we don't want to modify the original node
-    validators = [_validate_reuse_stream, _validate_not_utilize_split]
+    validators = [
+        _validate_reuse_stream,
+        #   _validate_not_utilize_split
+    ]
 
     for validator in validators:
         context = validator(context)
