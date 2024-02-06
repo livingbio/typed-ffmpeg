@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+from ..dag.context import DAGContext
 from ..dag.nodes import FilterNode, InputNode, OutputNode
 from ..dag.schema import Node
-from .compile import DAGContext
 
 
 def _get_node_color(node: Node) -> str | None:
