@@ -3,7 +3,7 @@ from dataclasses import asdict, dataclass
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..base import Node, Stream, _DAGContext, empty_dag_context
+from ..schema import Node, Stream, _DAGContext, empty_dag_context
 
 
 @dataclass(frozen=True, kw_only=True, repr=False)

@@ -54,7 +54,7 @@ nav:
           - audio stream: streams/audio_stream.md
           - av stream: streams/av_stream.md
       - DAG:
-          - base: dag/base.md
+          - schema: dag/schema.md
           - nodes: dag/nodes.md
 watch:
   - "src"
