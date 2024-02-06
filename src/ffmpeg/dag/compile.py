@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from ..dag.context import DAGContext
-from ..dag.nodes import FilterNode, GlobalNode, InputNode, OutputNode
-from ..dag.schema import Node
+from .context import DAGContext
+from .nodes import FilterNode, GlobalNode, InputNode, OutputNode
+from .schema import Node
 
 # TODO:
 # for FFMpeg
