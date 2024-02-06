@@ -497,9 +497,9 @@ class OutputStream(Stream):
 
         Args:
             cmd: the command to invoke ffmpeg
-            pipe_stdin: whether to pipe stdin
-            pipe_stdout: whether to pipe stdout
-            pipe_stderr: whether to pipe stderr
+            capture_stdout: whether to capture stdout
+            capture_stderr: whether to capture stderr
+            input: the input
             quiet: whether to pipe stderr to stdout
             overwrite_output: whether to overwrite output files without asking
 
