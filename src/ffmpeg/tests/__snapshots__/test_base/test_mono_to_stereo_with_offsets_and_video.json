@@ -12,7 +12,7 @@
   "-map",
   "[s4]",
   "-map",
-  "[2:v]",
+  "2:v",
   "-shortest",
   "-vcodec",
   "copy",

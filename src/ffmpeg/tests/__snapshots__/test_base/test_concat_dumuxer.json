@@ -1,0 +1,14 @@
+[
+  "ffmpeg",
+  "-f",
+  "concat",
+  "-safe",
+  "0",
+  "-protocol_whitelist",
+  "file,http,https,tcp,tls",
+  "-i",
+  "input1.mp4",
+  "-map",
+  "0",
+  "output.mp4"
+]

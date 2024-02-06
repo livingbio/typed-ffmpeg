@@ -7,6 +7,6 @@
   "-i",
   "/path/to/jpegs/*.jpg",
   "-map",
-  "[0]",
+  "0",
   "movie.mp4"
 ]

@@ -120,14 +120,14 @@ class FilterNode(Node):
 
     @override
     def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
-        incoming_labels = "".join(k.label(context) for k in self.inputs)
+        incoming_labels = "".join(f"[{k.label(context)}]" for k in self.inputs)
         outputs = context.get_outgoing_streams(self)
 
         outgoing_labels = ""
         for output in sorted(outputs, key=lambda stream: stream.index or 0):
             # NOTE: all outgoing streams must be filterable
             assert isinstance(output, FilterableStream)
-            outgoing_labels += output.label(context)
+            outgoing_labels += f"[{output.label(context)}]"
 
         commands = []
         for key, value in self.kwargs:
@@ -233,14 +233,14 @@ class FilterableStream(Stream, ABC):
         ):
             # NOTE: if the node has only one output, we don't need to specify the index
             if self.selector:
-                return f"[{context.get_node_label(self.node)}:{selector}]"
+                return f"{context.get_node_label(self.node)}:{selector}"
             else:
-                return f"[{context.get_node_label(self.node)}]"
+                return f"{context.get_node_label(self.node)}"
         else:
             if self.selector:
-                return f"[{context.get_node_label(self.node)}#{self.index}:{selector}]"
+                return f"{context.get_node_label(self.node)}#{self.index}:{selector}"
             else:
-                return f"[{context.get_node_label(self.node)}#{self.index}]"
+                return f"{context.get_node_label(self.node)}#{self.index}"
 
     def view(self) -> str:
         from ..utils.view import view
@@ -371,7 +371,10 @@ class OutputNode(Node):
         # !handle mapping
         commands = []
         for input in self.inputs:
-            commands += ["-map", input.label(context)]
+            if isinstance(input.node, InputNode):
+                commands += ["-map", input.label(context)]
+            else:
+                commands += ["-map", f"[{input.label(context)}]"]
 
         for key, value in self.kwargs:
             if isinstance(value, bool) and value is True:
