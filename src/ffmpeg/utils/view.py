@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from ..dag.base import Node
 from ..dag.nodes import FilterNode, InputNode, OutputNode
+from ..dag.schema import Node
 from .compile import DAGContext
 
 
