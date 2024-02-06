@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from ..dag.context import DAGContext
-from ..dag.nodes import FilterNode, InputNode
-from ..dag.schema import Node, Stream
+from .context import DAGContext
+from .nodes import FilterNode, InputNode
+from .schema import Node, Stream
 
 
 def _validate_reuse_stream(context: DAGContext) -> DAGContext:
