@@ -1,0 +1,136 @@
+{
+  "args": [],
+  "filename": "tmp.mp4",
+  "inputs": [
+    {
+      "index": 0,
+      "node": {
+        "args": [],
+        "input_typings": [
+          "<StreamType.video: 'video'>",
+          "<StreamType.video: 'video'>"
+        ],
+        "inputs": [
+          {
+            "index": 0,
+            "node": {
+              "args": [],
+              "input_typings": [
+                "<StreamType.video: 'video'>"
+              ],
+              "inputs": [
+                {
+                  "index": 0,
+                  "node": {
+                    "args": [],
+                    "input_typings": [
+                      "<StreamType.video: 'video'>"
+                    ],
+                    "inputs": [
+                      {
+                        "index": 0,
+                        "node": {
+                          "args": [],
+                          "input_typings": [
+                            "<StreamType.video: 'video'>"
+                          ],
+                          "inputs": [
+                            {
+                              "index": null,
+                              "node": {
+                                "args": [],
+                                "filename": "input1.mp4",
+                                "inputs": [],
+                                "kwargs": []
+                              },
+                              "selector": null
+                            }
+                          ],
+                          "kwargs": [],
+                          "name": "reverse",
+                          "output_typings": [
+                            "<StreamType.video: 'video'>"
+                          ]
+                        },
+                        "selector": null
+                      }
+                    ],
+                    "kwargs": [],
+                    "name": "trim",
+                    "output_typings": [
+                      "<StreamType.video: 'video'>"
+                    ]
+                  },
+                  "selector": null
+                }
+              ],
+              "kwargs": [
+                [
+                  "outputs",
+                  2
+                ]
+              ],
+              "name": "split",
+              "output_typings": [
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>"
+              ]
+            },
+            "selector": null
+          },
+          {
+            "index": 0,
+            "node": {
+              "args": [],
+              "input_typings": [
+                "<StreamType.video: 'video'>"
+              ],
+              "inputs": [
+                {
+                  "index": 0,
+                  "node": {
+                    "args": [],
+                    "input_typings": [
+                      "<StreamType.video: 'video'>"
+                    ],
+                    "inputs": [
+                      {
+                        "index": null,
+                        "node": {
+                          "args": [],
+                          "filename": "input1.mp4",
+                          "inputs": [],
+                          "kwargs": []
+                        },
+                        "selector": null
+                      }
+                    ],
+                    "kwargs": [],
+                    "name": "reverse",
+                    "output_typings": [
+                      "<StreamType.video: 'video'>"
+                    ]
+                  },
+                  "selector": null
+                }
+              ],
+              "kwargs": [],
+              "name": "trim",
+              "output_typings": [
+                "<StreamType.video: 'video'>"
+              ]
+            },
+            "selector": null
+          }
+        ],
+        "kwargs": [],
+        "name": "concat",
+        "output_typings": [
+          "<StreamType.video: 'video'>"
+        ]
+      },
+      "selector": null
+    }
+  ],
+  "kwargs": []
+}

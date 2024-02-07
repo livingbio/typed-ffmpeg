@@ -2,12 +2,13 @@ from typing import Callable
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
-
+from syrupy.extensions.json import JSONSnapshotExtension
+from dataclasses import asdict
 from ...base import input
 from ...filters import concat
 from ..context import DAGContext
 from ..nodes import OutputStream
-from ..validate import _validate_not_utilize_split, _validate_reuse_stream
+from ..validate import _validate_not_utilize_split, _validate_reused_stream
 
 
 def do_validate(output: OutputStream, func: Callable[[DAGContext], DAGContext]) -> DAGContext:
@@ -18,11 +19,18 @@ def do_validate(output: OutputStream, func: Callable[[DAGContext], DAGContext]) 
 def test_validate_reuse_stream(snapshot: SnapshotAssertion) -> None:
     input1 = input("input1.mp4")
 
+    rev = input1.reverse()
+    cmd = concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4")
+    context = DAGContext.build(cmd.node)
+
     with pytest.raises(AssertionError) as e:
-        rev = input1.reverse()
-        do_validate(concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4"), _validate_reuse_stream)
+        _validate_reused_stream(context)
 
     assert snapshot == e
+
+    new_context = _validate_reused_stream(context, auto_fix=True)
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == asdict(new_context.node)
 
 
 def test_validate_not_utilize_split(snapshot: SnapshotAssertion) -> None:

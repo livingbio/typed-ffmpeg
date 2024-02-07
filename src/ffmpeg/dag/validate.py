@@ -5,14 +5,19 @@ from collections import defaultdict
 from .context import DAGContext
 from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
+from ..streams.video import VideoStream
+from ..streams.audio import AudioStream
+from ..streams.av import AVStream
 
 
-def _validate_reuse_stream(context: DAGContext) -> DAGContext:
+
+def _validate_reused_stream(context: DAGContext, auto_fix: bool = False) -> DAGContext:
     """
     Validate that no stream is reused by multiple nodes.
 
     Args:
         context: The DAG context to validate.
+        auto_fix: Whether to automatically fix the reuse streams. Defaults to False.
 
     Returns:
         The validated DAG context.
@@ -26,15 +31,38 @@ def _validate_reuse_stream(context: DAGContext) -> DAGContext:
             stream_nodes[stream].append(node)
 
     # FFmpeg only allows each filter's output stream to be used by one other filter, except for input nodes.
-    # This means that a stream can only be consumed by a single filter node.
+    # This means that a stream can only be consumed by a single filter node's input.
     # If a stream is used by multiple filter nodes, it will result in an error during compilation.
     # TODO: Add reference from FFmpeg's documentation.
-    reuse_streams = [
+    reused_streams = [
         stream for stream, nodes in stream_nodes.items() if len(nodes) > 1 and not isinstance(stream.node, InputNode)
     ]
-    assert not reuse_streams, f"Found reuse streams: {reuse_streams}"
 
-    return context
+    if not auto_fix:
+        assert not reused_streams, f"Found reuse streams: {reused_streams}"
+        return context
+
+    current_node = context.node
+
+    # NOTE: auto fix the reuse streams
+    for reused_stream in reused_streams:
+        if isinstance(reused_stream, AVStream):
+            raise ValueError(f"Cannot auto fix reused AVStream: {reused_stream}")
+        elif isinstance(reused_stream, VideoStream):
+            split_node = reused_stream.split(outputs=len(stream_nodes[reused_stream]))
+
+            for idx, node in enumerate(stream_nodes[reused_stream]):
+                updated_node = node.replace_one_input(reused_stream, split_node.video(idx))
+                current_node = current_node.replace(node, updated_node)
+
+        elif isinstance(reused_stream, AudioStream):
+            split_node = reused_stream.asplit(outputs=len(stream_nodes[reused_stream]))
+
+            for idx, node in enumerate(stream_nodes[reused_stream]):
+                updated_node = node.replace_one_input(reused_stream, split_node.audio(idx))
+                current_node = current_node.replace(node, updated_node)
+        
+    return DAGContext.build(current_node)
 
 
 def _validate_not_utilize_split(context: DAGContext) -> DAGContext:
@@ -91,7 +119,7 @@ def validate(context: DAGContext) -> DAGContext:
 
     # NOTE: we don't want to modify the original node
     validators = [
-        _validate_reuse_stream,
+        _validate_reused_stream,
         #   _validate_not_utilize_split
     ]
 
