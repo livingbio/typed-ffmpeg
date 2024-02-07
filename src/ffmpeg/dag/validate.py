@@ -2,13 +2,12 @@ from __future__ import annotations
 
 from collections import defaultdict
 
+from ..streams.audio import AudioStream
+from ..streams.av import AVStream
+from ..streams.video import VideoStream
 from .context import DAGContext
 from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
-from ..streams.video import VideoStream
-from ..streams.audio import AudioStream
-from ..streams.av import AVStream
-
 
 
 def _validate_reused_stream(context: DAGContext, auto_fix: bool = False) -> DAGContext:
@@ -61,7 +60,7 @@ def _validate_reused_stream(context: DAGContext, auto_fix: bool = False) -> DAGC
             for idx, node in enumerate(stream_nodes[reused_stream]):
                 updated_node = node.replace_one_input(reused_stream, split_node.audio(idx))
                 current_node = current_node.replace(node, updated_node)
-        
+
     return DAGContext.build(current_node)
 
 

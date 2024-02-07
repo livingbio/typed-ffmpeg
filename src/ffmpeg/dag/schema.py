@@ -154,7 +154,7 @@ class Node(HashableBaseModel, ABC):
             The representation of the node.
         """
         return repr(self)
-    
+
     def replace_one_input(self, old_input: Stream, new_input: Stream) -> Node:
         """
         Replace the first old input with the new input.
