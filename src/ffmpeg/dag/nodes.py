@@ -4,6 +4,7 @@ import logging
 import os.path
 import shlex
 import subprocess
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
@@ -124,12 +125,10 @@ class FilterNode(Node):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FilterableStream(Stream):
+class FilterableStream(Stream, ABC):
     """
     A stream that can be used as input to a filter
     """
-
-    node: "FilterNode | InputNode"
 
     def vfilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "VideoStream":
         """
@@ -187,6 +186,7 @@ class FilterableStream(Stream):
         """
         return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
 
+    @abstractmethod
     def label(self, context: _DAGContext) -> str:
         """
         Return the label for this stream
@@ -197,24 +197,7 @@ class FilterableStream(Stream):
         Returns:
             the label for this stream
         """
-        from ..streams.audio import AudioStream
-        from ..streams.av import AVStream
-        from ..streams.video import VideoStream
-
-        if isinstance(self.node, InputNode):
-            if isinstance(self, AVStream):
-                return f"{context.get_node_label(self.node)}"
-            elif isinstance(self, VideoStream):
-                return f"{context.get_node_label(self.node)}:v"
-            elif isinstance(self, AudioStream):
-                return f"{context.get_node_label(self.node)}:a"
-            raise ValueError(f"Unknown stream type: {self.__class__.__name__}")
-
-        if isinstance(self.node, FilterNode):
-            if self.node.output_typings and len(self.node.output_typings) > 1:
-                return f"{context.get_node_label(self.node)}#{self.index}"
-            return f"{context.get_node_label(self.node)}"
-        raise ValueError(f"Unknown node type: {self.node.__class__.__name__}")
+        raise NotImplementedError()
 
     def view(self) -> str:
         from ..utils.view import view
@@ -226,6 +209,34 @@ class FilterableStream(Stream):
             assert self.index is None, "Input streams cannot have an index"
         else:
             assert self.index is not None, "Filter streams must have an index"
+
+
+class FilterStream(FilterableStream):
+    node: FilterNode
+    index: int
+
+    @override
+    def label(self, context: _DAGContext) -> str:
+        if self.node.output_typings and len(self.node.output_typings) > 1:
+            return f"{context.get_node_label(self.node)}#{self.index}"
+        return f"{context.get_node_label(self.node)}"
+
+
+class InputStream(FilterableStream):
+    node: InputNode
+    index: int | None = None
+    selector: StreamType | None = None
+
+    @override
+    def label(self, context: _DAGContext) -> str:
+        pass
+
+        l = f"{context.get_node_label(self.node)}"
+        if self.selector == StreamType.video:
+            return f"{l}:v"
+        if self.selector == StreamType.audio:
+            return f"{l}:a"
+        return l
 
 
 @dataclass(frozen=True, kw_only=True)
