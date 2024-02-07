@@ -3,8 +3,7 @@ from typing import Any, Literal
 
 from .dag.nodes import FilterableStream, FilterNode
 from .schema import Default, StreamType, to_tuple
-from .streams.audio import AudioStream
-from .streams.video import VideoStream
+from .streams import AudioStream, VideoStream
 from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String, Video_rate
 
 
