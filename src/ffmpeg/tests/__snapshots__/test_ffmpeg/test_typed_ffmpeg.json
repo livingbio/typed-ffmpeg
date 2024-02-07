@@ -14,10 +14,10 @@
   "__package__",
   "__path__",
   "__spec__",
+  "afilter",
   "base",
   "dag",
   "exceptions",
-  "filter",
   "filter_multi_output",
   "filters",
   "input",
@@ -28,5 +28,6 @@
   "streams",
   "tests",
   "types",
-  "utils"
+  "utils",
+  "vfilter"
 ]

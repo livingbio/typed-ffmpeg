@@ -9,5 +9,5 @@
   <ExceptionInfo AssertionError("Found not utilized split nodes: [FilterNode(args=(), kwargs=(('outputs', 2),), inputs=(AVStream(node=I...t_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>))]") tblen=2>
 # ---
 # name: test_validate_reuse_stream
-  <ExceptionInfo AssertionError("Found reuse streams: [VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterN...nput_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), selector=None, index=0)]") tblen=2>
+  <ExceptionInfo AssertionError("Found reuse streams: [VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterN... name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)]") tblen=2>
 # ---

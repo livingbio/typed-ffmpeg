@@ -17,7 +17,7 @@ def test_filter_node(snapshot: SnapshotAssertion) -> None:
     assert snapshot == e
 
     concat(*(input1, input2, input3), n=3)
-    assert isinstance(concat(*(input1, input2, input3), n=3).stream(0), VideoStream)
+    assert isinstance(concat(*(input1, input2, input3), n=3).video(0), VideoStream)
 
     concat(*(input1, input2.video, input3.video), n=3)
 

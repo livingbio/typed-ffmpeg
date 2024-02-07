@@ -5,7 +5,6 @@ from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import Iterable
 
-from ..schema import StreamType
 from ..utils.typing import override
 from .utils import is_dag
 
@@ -82,13 +81,6 @@ class Stream(HashableBaseModel):
 
     Note:
         In the context of a data stream, the 'upstream' refers to the source of the data, or where the data is coming from. Therefore, the 'upstream node' is the node that is providing the data to the current stream.
-    """
-    selector: StreamType | None = None
-    """
-    Represents the type of the stream.
-
-    Notes:
-        See Also: [Stream specifiers](https://ffmpeg.org/ffmpeg.html#Stream-specifiers-1) `stream_type`
     """
 
     index: int | None = None  # the nth child of the node
