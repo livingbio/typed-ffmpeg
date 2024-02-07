@@ -11,9 +11,10 @@ from .validate import validate
 # implement auto split or validate
 
 
-def compile(node: Node) -> list[str]:
+def compile(node: Node, do_validate: bool=False) -> list[str]:
     context = DAGContext.build(node)
-    context = validate(context)
+    if do_validate:
+        context = validate(context)
 
     # compile the global nodes
     commands = []

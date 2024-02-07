@@ -202,11 +202,6 @@ class FilterableStream(Stream, ABC):
 
         return view(self.node)
 
-    def __post_init__(self) -> None:
-        if isinstance(self.node, InputNode):
-            assert self.index is None, "Input streams cannot have an index"
-        else:
-            assert self.index is not None, "Filter streams must have an index"
 
 
 @dataclass(frozen=True, kw_only=True)

@@ -165,7 +165,7 @@ class Node(HashableBaseModel, ABC):
 
         return replace(self, inputs=tuple(inputs))
 
-    def replace(self, old_node: Node, new_node: Node) -> Node:
+    def replace(self, map: dict[Node, Node]) -> Node:
         """
         Replace the old node with the new node.
 
@@ -176,13 +176,17 @@ class Node(HashableBaseModel, ABC):
         Returns:
             The new node.
         """
-        if self == old_node:
-            return new_node
+        from .compile import compile
+        print(f"replace {self=} {map=} {compile(self)=}")
+
+        import pdb; pdb.set_trace()
+        if self in map:
+            return map[self]
 
         inputs = []
 
         for stream in self.inputs:
-            new_stream_node = stream.node.replace(old_node, new_node)
+            new_stream_node = stream.node.replace(map)
 
             if new_stream_node != stream.node:
                 # need to create a new stream
