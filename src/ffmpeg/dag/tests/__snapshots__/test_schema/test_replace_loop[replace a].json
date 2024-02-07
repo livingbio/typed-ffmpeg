@@ -18,20 +18,17 @@
                     "inputs": [],
                     "kwargs": [],
                     "name": "A"
-                  },
-                  "selector": null
+                  }
                 }
               ],
               "kwargs": [],
               "name": "E"
-            },
-            "selector": null
+            }
           }
         ],
         "kwargs": [],
         "name": "C"
-      },
-      "selector": null
+      }
     },
     {
       "index": null,
@@ -50,20 +47,17 @@
                     "inputs": [],
                     "kwargs": [],
                     "name": "A"
-                  },
-                  "selector": null
+                  }
                 }
               ],
               "kwargs": [],
               "name": "E"
-            },
-            "selector": null
+            }
           }
         ],
         "kwargs": [],
         "name": "B"
-      },
-      "selector": null
+      }
     }
   ],
   "kwargs": [],

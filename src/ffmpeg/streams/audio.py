@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING, Any, Literal
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType, to_tuple
 from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
-from ..utils.typing import override
 from .channel_layout import CHANNEL_LAYOUT
 
 if TYPE_CHECKING:
@@ -14,16 +13,6 @@ if TYPE_CHECKING:
 
 
 class AudioStream(FilterableStream):
-    @property
-    @override
-    def video(self) -> "VideoStream":
-        raise NotImplementedError("This stream does not have a video component")
-
-    @property
-    @override
-    def audio(self) -> "AudioStream":
-        return AudioStream(node=self.node, selector=StreamType.audio, index=self.index)
-
     def a3dscope(
         self,
         *,

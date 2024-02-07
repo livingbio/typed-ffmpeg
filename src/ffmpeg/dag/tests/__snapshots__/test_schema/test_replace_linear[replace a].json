@@ -23,26 +23,22 @@
                           "inputs": [],
                           "kwargs": [],
                           "name": "A"
-                        },
-                        "selector": null
+                        }
                       }
                     ],
                     "kwargs": [],
                     "name": "E"
-                  },
-                  "selector": null
+                  }
                 }
               ],
               "kwargs": [],
               "name": "B"
-            },
-            "selector": null
+            }
           }
         ],
         "kwargs": [],
         "name": "C"
-      },
-      "selector": null
+      }
     }
   ],
   "kwargs": [],
