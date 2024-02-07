@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass
 from typing import TypeVar
 
@@ -95,6 +96,24 @@ def _build_outgoing_streams(nodes: list[Node], streams: list[Stream]) -> dict[No
     return outgoing_streams
 
 
+def _build_outgoing_nodes(nodes: list[Node]) -> dict[Stream, list[Node]]:
+    """
+    Build a dictionary of outgoing nodes for each stream.
+    Args:
+        nodes: All nodes in the graph.
+    Returns:
+        A dictionary of outgoing nodes for each stream.
+    """
+
+    outgoing_nodes: dict[Stream, list[Node]] = defaultdict(list)
+
+    for node in nodes:
+        for stream in node.inputs:
+            outgoing_nodes[stream].append(node)
+
+    return outgoing_nodes
+
+
 def _build_node_labels(nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, str]:
     """
     Build a dictionary of labels for each node.
@@ -144,6 +163,8 @@ class DAGContext(_DAGContext):
     A dictionary of outgoing streams for each node.
     """
 
+    outgoing_nodes: dict[Stream, list[Node]]
+
     all_nodes: list[Node]
     """
     All nodes in the graph.
@@ -172,6 +193,7 @@ class DAGContext(_DAGContext):
         streams = _remove_duplicates(streams)
 
         outgoing_streams = _build_outgoing_streams(nodes, streams)
+        outgoing_nodes = _build_outgoing_nodes(nodes)
         node_labels = _build_node_labels(nodes, outgoing_streams)
 
         all_nodes = sorted(nodes, key=lambda node: node_labels[node])
@@ -181,6 +203,7 @@ class DAGContext(_DAGContext):
             node=node,
             node_labels=node_labels,
             outgoing_streams=outgoing_streams,
+            outgoing_nodes=outgoing_nodes,
             all_nodes=all_nodes,
             all_streams=all_streams,
         )
