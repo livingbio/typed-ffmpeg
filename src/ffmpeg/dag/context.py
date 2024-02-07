@@ -154,7 +154,7 @@ class DAGContext(_DAGContext):
     """
 
     @classmethod
-    def build(cls, node: Node) -> DAGContext:
+    def build(cls, node_or_stream: Node | Stream) -> DAGContext:
         """
         create a DAG context based on the given node
         Args:
@@ -162,6 +162,11 @@ class DAGContext(_DAGContext):
         Returns:
             A DAG context based on the given node.
         """
+        if isinstance(node_or_stream, Stream):
+            node = node_or_stream.node
+        else:
+            node = node_or_stream
+
         nodes, streams = _collect(node)
         nodes = _remove_duplicates(nodes)
         streams = _remove_duplicates(streams)
