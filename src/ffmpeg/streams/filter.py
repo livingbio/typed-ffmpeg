@@ -5,7 +5,7 @@ from .audio import AudioFilter
 from .video import VideoFilter
 
 
-class _FilterStream(FilterableStream):
+class FilterStream(FilterableStream):
     node: FilterNode
     index: int
 
@@ -16,9 +16,9 @@ class _FilterStream(FilterableStream):
         return f"{context.get_node_label(self.node)}"
 
 
-class AudioStream(AudioFilter, _FilterStream):
+class AudioStream(AudioFilter, FilterStream):
     pass
 
 
-class VideoStream(VideoFilter, _FilterStream):
+class VideoStream(VideoFilter, FilterStream):
     pass
