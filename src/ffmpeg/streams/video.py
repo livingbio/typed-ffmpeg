@@ -7,10 +7,10 @@ from ..schema import Default, StreamType, to_tuple
 from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
 
 if TYPE_CHECKING:
-    from .audio import AudioStream
+    from .filter import AudioStream, VideoStream
 
 
-class VideoStream(FilterableStream):
+class VideoFilter(FilterableStream):
     def addroi(
         self,
         *,

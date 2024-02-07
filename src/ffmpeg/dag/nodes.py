@@ -15,9 +15,7 @@ from ..utils.typing import override
 from .schema import Node, Stream, _DAGContext, empty_dag_context
 
 if TYPE_CHECKING:
-    from ..streams.audio import AudioStream
-    from ..streams.av import AVStream
-    from ..streams.video import VideoStream
+    from ..streams import AudioStream, AVStream, VideoStream
 
 
 logger = logging.getLogger(__name__)
@@ -48,7 +46,7 @@ class FilterNode(Node):
         Returns:
             the video stream at the specified index
         """
-        from ..streams.video import VideoStream
+        from ..streams import VideoStream
 
         assert self.output_typings is not None, "Output typings must be specified to use `video`"
         video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
@@ -67,7 +65,7 @@ class FilterNode(Node):
         Returns:
             the audio stream at the specified index
         """
-        from ..streams.audio import AudioStream
+        from ..streams import AudioStream
 
         assert self.output_typings is not None, "Output typings must be specified to use `audio`"
         audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
@@ -77,8 +75,7 @@ class FilterNode(Node):
         return AudioStream(node=self, index=audio_outputs[index])
 
     def __post_init__(self) -> None:
-        from ..streams.audio import AudioStream
-        from ..streams.video import VideoStream
+        from ..streams import AudioFilter, VideoFilter
 
         super().__post_init__()
 
@@ -93,10 +90,10 @@ class FilterNode(Node):
 
         for i, (stream, expected_type) in enumerate(zip(self.inputs, self.input_typings)):
             if expected_type == StreamType.video:
-                if not isinstance(stream, VideoStream):
+                if not isinstance(stream, VideoFilter):
                     raise ValueError(f"Expected input {i} to have video component, got {stream.__class__.__name__}")
             if expected_type == StreamType.audio:
-                if not isinstance(stream, AudioStream):
+                if not isinstance(stream, AudioFilter):
                     raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
 
     @override
@@ -211,34 +208,6 @@ class FilterableStream(Stream, ABC):
             assert self.index is not None, "Filter streams must have an index"
 
 
-class FilterStream(FilterableStream):
-    node: FilterNode
-    index: int
-
-    @override
-    def label(self, context: _DAGContext) -> str:
-        if self.node.output_typings and len(self.node.output_typings) > 1:
-            return f"{context.get_node_label(self.node)}#{self.index}"
-        return f"{context.get_node_label(self.node)}"
-
-
-class InputStream(FilterableStream):
-    node: InputNode
-    index: int | None = None
-    selector: StreamType | None = None
-
-    @override
-    def label(self, context: _DAGContext) -> str:
-        pass
-
-        l = f"{context.get_node_label(self.node)}"
-        if self.selector == StreamType.video:
-            return f"{l}:v"
-        if self.selector == StreamType.audio:
-            return f"{l}:a"
-        return l
-
-
 @dataclass(frozen=True, kw_only=True)
 class GlobalNode(Node):
     """
@@ -298,7 +267,7 @@ class InputNode(Node):
         Returns:
             the video stream
         """
-        from ..streams.video import VideoStream
+        from ..streams import VideoStream
 
         return VideoStream(node=self)
 
@@ -309,7 +278,7 @@ class InputNode(Node):
         Returns:
             the audio stream
         """
-        from ..streams.audio import AudioStream
+        from ..streams import AudioStream
 
         return AudioStream(node=self)
 
@@ -320,7 +289,7 @@ class InputNode(Node):
         Returns:
             the output stream
         """
-        from ..streams.av import AVStream
+        from ..streams import AVStream
 
         return AVStream(node=self)
 

@@ -4,7 +4,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..base import input, merge_outputs, output
 from ..filters import concat, join
-from ..streams.video import VideoStream
+from ..streams import VideoStream
 
 
 def test_filter_node(snapshot: SnapshotAssertion) -> None:
