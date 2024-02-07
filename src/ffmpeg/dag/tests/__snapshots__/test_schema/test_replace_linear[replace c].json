@@ -13,14 +13,12 @@
               "inputs": [],
               "kwargs": [],
               "name": "A"
-            },
-            "selector": null
+            }
           }
         ],
         "kwargs": [],
         "name": "E"
-      },
-      "selector": null
+      }
     }
   ],
   "kwargs": [],

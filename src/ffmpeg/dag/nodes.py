@@ -216,8 +216,24 @@ class FilterableStream(Stream):
         Returns:
             the label for this stream
         """
+        from ..streams.audio import AudioStream
+        from ..streams.av import AVStream
+        from ..streams.video import VideoStream
 
-        return f"{context.get_node_label(self.node)}#{self.index}"
+        if isinstance(self.node, InputNode):
+            if isinstance(self, AVStream):
+                return f"{context.get_node_label(self.node)}"
+            elif isinstance(self, VideoStream):
+                return f"{context.get_node_label(self.node)}:v"
+            elif isinstance(self, AudioStream):
+                return f"{context.get_node_label(self.node)}:a"
+            raise ValueError(f"Unknown stream type: {self.__class__.__name__}")
+
+        if isinstance(self.node, FilterNode):
+            if self.node.output_typings and len(self.node.output_typings) > 1:
+                return f"{context.get_node_label(self.node)}#{self.index}"
+            return f"{context.get_node_label(self.node)}"
+        raise ValueError(f"Unknown node type: {self.node.__class__.__name__}")
 
     def view(self) -> str:
         from ..utils.view import view
