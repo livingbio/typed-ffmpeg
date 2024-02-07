@@ -2,6 +2,7 @@ from typing import Any
 
 from .dag.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
 from .streams.av import AVStream
+from .streams.video import VideoStream
 
 
 def input(filename: str, **kwargs: Any) -> AVStream:
@@ -52,9 +53,9 @@ def merge_outputs(*streams: OutputStream) -> OutputStream:
     return MergeOutputsNode(inputs=streams).stream()
 
 
-def filter(*streams: FilterableStream, name: str, **kwargs: Any) -> AVStream:
+def vfilter(*streams: FilterableStream, name: str, **kwargs: Any) -> VideoStream:
     """
-    Apply a custom filter which has only one output to this stream
+    Apply a custom video filter which has only one output to this stream
 
     Args:
         *streams: the streams to apply the filter to
@@ -67,7 +68,7 @@ def filter(*streams: FilterableStream, name: str, **kwargs: Any) -> AVStream:
     Note:
         This function is for custom filter which is not implemented in typed-ffmpeg
     """
-    return FilterNode(name=name, inputs=streams, kwargs=tuple(kwargs.items())).stream(0)
+    return FilterNode(name=name, inputs=streams, kwargs=tuple(kwargs.items())).video(0)
 
 
 def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) -> FilterNode:

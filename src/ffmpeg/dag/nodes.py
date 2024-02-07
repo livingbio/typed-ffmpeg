@@ -37,25 +37,6 @@ class FilterNode(Node):
     def repr(self) -> str:
         return self.name
 
-    def stream(self, index: int) -> "AVStream":
-        """
-        Return the stream at the specified index
-
-        Args:
-            index: the index of the stream
-
-        Returns:
-            the stream at the specified index
-        """
-        from ..streams.av import AVStream
-
-        if self.output_typings is not None:
-            assert (
-                len(self.output_typings) > index
-            ), f"Specified index {index} is out of range for outputs {len(self.output_typings)}"
-
-        return AVStream(node=self, index=index)
-
     def video(self, index: int) -> "VideoStream":
         """
         Return the video stream at the specified index
