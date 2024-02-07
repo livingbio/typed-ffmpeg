@@ -4,7 +4,6 @@ import logging
 import os.path
 import shlex
 import subprocess
-from abc import ABC, abstractproperty
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
@@ -144,16 +143,16 @@ class FilterNode(Node):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FilterableStream(Stream, ABC):
+class FilterableStream(Stream):
     """
     A stream that can be used as input to a filter
     """
 
     node: "FilterNode | InputNode"
 
-    def filter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "AVStream":
+    def vfilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "VideoStream":
         """
-        Apply a custom filter which has only one output to this stream
+        Apply a custom video filter which has only one output to this stream
 
         Args:
             *streams (FilterableStream): the streams to apply the filter to
@@ -163,7 +162,21 @@ class FilterableStream(Stream, ABC):
         Returns:
             AVStream: the output stream
         """
-        return self.filter_multi_output(*streams, name=name, **kwargs).stream(0)
+        return self.filter_multi_output(*streams, name=name, **kwargs).video(0)
+
+    def afilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "AudioStream":
+        """
+        Apply a custom audio filter which has only one output to this stream
+
+        Args:
+            *streams (FilterableStream): the streams to apply the filter to
+            name: the name of the filter
+            **kwargs: the arguments for the filter
+
+        Returns:
+            AVStream: the output stream
+        """
+        return self.filter_multi_output(*streams, name=name, **kwargs).audio(0)
 
     def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
         """
@@ -178,26 +191,6 @@ class FilterableStream(Stream, ABC):
             the FilterNode
         """
         return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=(self, *streams))
-
-    @abstractproperty
-    def video(self) -> "VideoStream":
-        """
-        Return the video component of this stream
-
-        Returns:
-            the video component of this stream
-        """
-        raise NotImplementedError("This stream does not have a video component")
-
-    @abstractproperty
-    def audio(self) -> "AudioStream":
-        """
-        Return the audio component of this stream
-
-        Returns:
-            the audio component of this stream
-        """
-        raise NotImplementedError("This stream does not have an audio component")
 
     def output(self, *streams: "FilterableStream", filename: str, **kwargs: Any) -> "OutputStream":
         """
@@ -223,24 +216,8 @@ class FilterableStream(Stream, ABC):
         Returns:
             the label for this stream
         """
-        if self.selector == StreamType.video:
-            selector = "v"
-        elif self.selector == StreamType.audio:
-            selector = "a"
 
-        if isinstance(self.node, InputNode) or (
-            self.node.output_typings is not None and len(self.node.output_typings) == 1
-        ):
-            # NOTE: if the node has only one output, we don't need to specify the index
-            if self.selector:
-                return f"{context.get_node_label(self.node)}:{selector}"
-            else:
-                return f"{context.get_node_label(self.node)}"
-        else:
-            if self.selector:
-                return f"{context.get_node_label(self.node)}#{self.index}:{selector}"
-            else:
-                return f"{context.get_node_label(self.node)}#{self.index}"
+        return f"{context.get_node_label(self.node)}#{self.index}"
 
     def view(self) -> str:
         from ..utils.view import view
@@ -315,7 +292,7 @@ class InputNode(Node):
         """
         from ..streams.video import VideoStream
 
-        return VideoStream(node=self, selector=StreamType.video)
+        return VideoStream(node=self)
 
     def audio(self) -> "AudioStream":
         """
@@ -326,7 +303,7 @@ class InputNode(Node):
         """
         from ..streams.audio import AudioStream
 
-        return AudioStream(node=self, selector=StreamType.audio)
+        return AudioStream(node=self)
 
     def stream(self) -> "AVStream":
         """

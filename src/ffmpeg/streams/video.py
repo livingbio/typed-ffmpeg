@@ -5,23 +5,12 @@ from typing import TYPE_CHECKING, Any, Literal
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType, to_tuple
 from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
-from ..utils.typing import override
 
 if TYPE_CHECKING:
     from .audio import AudioStream
 
 
 class VideoStream(FilterableStream):
-    @property
-    @override
-    def video(self) -> "VideoStream":
-        return VideoStream(node=self.node, index=self.index, selector=StreamType.video)
-
-    @property
-    @override
-    def audio(self) -> "AudioStream":
-        raise NotImplementedError("Cannot convert video to audio")
-
     def addroi(
         self,
         *,
