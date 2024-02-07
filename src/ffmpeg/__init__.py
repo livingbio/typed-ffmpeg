@@ -1,5 +1,5 @@
 from . import dag, filters
-from .base import filter, filter_multi_output, input, merge_outputs, output
+from .base import afilter, filter_multi_output, input, merge_outputs, output, vfilter
 from .dag import Stream
 from .exceptions import Error
 from .probe import probe
@@ -16,7 +16,8 @@ __all__ = [
     "AudioStream",
     "VideoStream",
     "AVStream",
-    "filter",
+    "vfilter",
+    "afilter",
     "filter_multi_output",
     "dag",
 ]

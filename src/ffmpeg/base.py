@@ -1,6 +1,7 @@
 from typing import Any
 
 from .dag.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
+from .streams.audio import AudioStream
 from .streams.av import AVStream
 from .streams.video import VideoStream
 
@@ -69,6 +70,24 @@ def vfilter(*streams: FilterableStream, name: str, **kwargs: Any) -> VideoStream
         This function is for custom filter which is not implemented in typed-ffmpeg
     """
     return FilterNode(name=name, inputs=streams, kwargs=tuple(kwargs.items())).video(0)
+
+
+def afilter(*streams: FilterableStream, name: str, **kwargs: Any) -> AudioStream:
+    """
+    Apply a custom audio filter which has only one output to this stream
+
+    Args:
+        *streams: the streams to apply the filter to
+        name: the name of the filter
+        **kwargs: the arguments for the filter
+
+    Returns:
+        the output stream
+
+    Note:
+        This function is for custom filter which is not implemented in typed-ffmpeg
+    """
+    return FilterNode(name=name, inputs=streams, kwargs=tuple(kwargs.items())).audio(0)
 
 
 def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) -> FilterNode:
