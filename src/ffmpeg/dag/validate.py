@@ -7,7 +7,7 @@ from ..streams.av import AVStream
 from ..streams.video import VideoStream
 from .context import DAGContext
 from .nodes import FilterNode, InputNode
-from .schema import Node, Stream
+from .schema import Node
 
 
 def _validate_reused_stream(context: DAGContext, auto_fix: bool = False) -> DAGContext:
@@ -23,11 +23,11 @@ def _validate_reused_stream(context: DAGContext, auto_fix: bool = False) -> DAGC
     """
 
     # NOTE: validate there is no reuse stream (each stream can only be used by one node's input)
-    stream_nodes: dict[Stream, list[Node]] = defaultdict(list)
+    stream_nodes: dict[(Node, int | None), list[Node]] = defaultdict(list)
 
     for node in context.all_nodes:
         for stream in node.inputs:
-            stream_nodes[stream].append(node)
+            stream_nodes[(stream.node, stream.index)].append(node)
 
     # FFmpeg only allows each filter's output stream to be used by one other filter, except for input nodes.
     # This means that a stream can only be consumed by a single filter node's input.
