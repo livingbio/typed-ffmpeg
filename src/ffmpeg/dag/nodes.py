@@ -75,7 +75,8 @@ class FilterNode(Node):
         return AudioStream(node=self, index=audio_outputs[index])
 
     def __post_init__(self) -> None:
-        from ..streams import AudioFilter, VideoFilter
+        from ..streams.audio import AudioFilter
+        from ..streams.video import VideoFilter
 
         super().__post_init__()
 
