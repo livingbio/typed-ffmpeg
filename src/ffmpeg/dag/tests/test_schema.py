@@ -101,7 +101,20 @@ def multi_loop() -> Any:
     return pytest.param(d, [(a, e), (b, e), (c, e), (d, e)], id="multi_loop")
 
 
-@pytest.mark.parametrize("graph, replace_pattern", [linear(), simple_loop(), multi_loop()])
+def update_node() -> Any:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=b), Stream(node=a)))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
+
+    b_new = SimpleNode(name="B'", inputs=(Stream(node=a),))
+    c_new = SimpleNode(name="C'", inputs=(Stream(node=b), Stream(node=a)))
+    c_new_new = SimpleNode(name="C''", inputs=(Stream(node=b_new), Stream(node=a)))
+
+    return pytest.param(d, [(b, b_new), (c, c_new), (c, c_new_new)], id="update_node")
+
+
+@pytest.mark.parametrize("graph, replace_pattern", [linear(), simple_loop(), multi_loop(), update_node()])
 def test_replace(
     graph: Node,
     replace_pattern: list[tuple[Node, Node]],

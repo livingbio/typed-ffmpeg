@@ -1,0 +1,64 @@
+{
+  "args": [],
+  "inputs": [
+    {
+      "index": null,
+      "node": {
+        "args": [],
+        "inputs": [
+          {
+            "index": null,
+            "node": {
+              "args": [],
+              "inputs": [
+                {
+                  "index": null,
+                  "node": {
+                    "args": [],
+                    "inputs": [],
+                    "kwargs": [],
+                    "name": "A"
+                  }
+                }
+              ],
+              "kwargs": [],
+              "name": "B'"
+            }
+          },
+          {
+            "index": null,
+            "node": {
+              "args": [],
+              "inputs": [],
+              "kwargs": [],
+              "name": "A"
+            }
+          }
+        ],
+        "kwargs": [],
+        "name": "C"
+      }
+    },
+    {
+      "index": null,
+      "node": {
+        "args": [],
+        "inputs": [
+          {
+            "index": null,
+            "node": {
+              "args": [],
+              "inputs": [],
+              "kwargs": [],
+              "name": "A"
+            }
+          }
+        ],
+        "kwargs": [],
+        "name": "B'"
+      }
+    }
+  ],
+  "kwargs": [],
+  "name": "D"
+}
