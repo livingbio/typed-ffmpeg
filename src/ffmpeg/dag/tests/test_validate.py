@@ -51,7 +51,7 @@ class Validator(Protocol):
         ...
 
 
-def reuse_stream() -> Any:
+def reuse_stream_same_node() -> Any:
     input1 = input("input1.mp4")
     rev = input1.reverse()
     graph = concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4")
@@ -59,7 +59,16 @@ def reuse_stream() -> Any:
     return pytest.param(graph, _validate_reused_stream, id="reuse-stream")
 
 
-@pytest.mark.parametrize("graph, validator", [reuse_stream()])
+def reuse_stream_two_node() -> Any:
+    input1 = input("input1.mp4")
+    rev = input1.reverse()
+    rev2 = rev.reverse()
+
+    graph = concat(rev2, rev).video(0)
+    return pytest.param(graph, _validate_reused_stream, id="reuse-stream-two-node")
+
+
+@pytest.mark.parametrize("graph, validator", [reuse_stream_same_node(), reuse_stream_two_node()])
 def test_validate(
     graph: Node,
     validator: Validator,
