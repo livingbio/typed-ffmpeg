@@ -11,6 +11,8 @@ exclude = ["**/tests"]
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 
+graphviz = {"version" = "*", optional=true}
+
 [tool.poetry.extras]
 graph = [
     "graphviz",
