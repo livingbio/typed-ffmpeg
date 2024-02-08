@@ -1,8 +1,15 @@
+import os
 from dataclasses import asdict, dataclass
+from pathlib import Path
+from typing import Any, Callable
 
+import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ffmpeg.dag.context import DAGContext
+
+from ...utils.view import view
 from ..schema import Node, Stream, _DAGContext, empty_dag_context
 
 
@@ -17,7 +24,33 @@ class SimpleNode(Node):
         return self.name
 
 
-def test_dag(snapshot: SnapshotAssertion) -> None:
+@pytest.fixture(scope="function")
+def drawer(request: pytest.FixtureRequest) -> Callable[[str, Node], Path]:
+    # Get the test file path and function name
+    file_path = request.module.__file__
+    function_name = request.node.name
+
+    # Get the parameter id (if it exists)
+    param_id = getattr(request, "param", None)
+    if hasattr(param_id, "id"):
+        param_id = param_id.id  # type: ignore
+
+    # Construct the folder name based on test file location, function name, and parameter value or id
+    if param_id:
+        function_name = f"{function_name}[{param_id}]"
+
+    folder = Path(file_path).parent / f"graph/{function_name}/"
+    folder.mkdir(parents=True, exist_ok=True)
+
+    def draw(name: str, node: Node) -> Path:
+        graph_path = view(node)
+        os.rename(graph_path, folder / f"{name}.png")
+        return folder / f"{name}.png"
+
+    return draw
+
+
+def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], Path]) -> None:
     # Linear Chain
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
@@ -25,6 +58,7 @@ def test_dag(snapshot: SnapshotAssertion) -> None:
     d = SimpleNode(name="D", inputs=(Stream(node=c),))
 
     assert snapshot(extension_class=JSONSnapshotExtension) == asdict(d)
+    drawer("org", d)
 
     # # Self-loop
     # a = SimpleNode(name="A")
@@ -36,7 +70,7 @@ def test_dag(snapshot: SnapshotAssertion) -> None:
     #     b.streams = [Stream(node=b), Stream(node=a)]
 
 
-def test_replace_linear(snapshot: SnapshotAssertion) -> None:
+def linear() -> Any:
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
     c = SimpleNode(name="C", inputs=(Stream(node=b),))
@@ -44,13 +78,10 @@ def test_replace_linear(snapshot: SnapshotAssertion) -> None:
 
     e = SimpleNode(name="E", inputs=(Stream(node=a),))
 
-    assert snapshot(name="replace a", extension_class=JSONSnapshotExtension) == asdict(d.replace(a, e))
-    assert snapshot(name="replace b", extension_class=JSONSnapshotExtension) == asdict(d.replace(b, e))
-    assert snapshot(name="replace c", extension_class=JSONSnapshotExtension) == asdict(d.replace(c, e))
-    assert snapshot(name="replace d", extension_class=JSONSnapshotExtension) == asdict(d.replace(d, e))
+    return pytest.param(d, e, id="linear")
 
 
-def test_replace_loop(snapshot: SnapshotAssertion) -> None:
+def simple_loop() -> Any:
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
     c = SimpleNode(name="C", inputs=(Stream(node=a),))
@@ -58,10 +89,29 @@ def test_replace_loop(snapshot: SnapshotAssertion) -> None:
 
     e = SimpleNode(name="E", inputs=(Stream(node=a),))
 
-    assert snapshot(name="replace a", extension_class=JSONSnapshotExtension) == asdict(d.replace(a, e))
+    return pytest.param(d, e, id="simple_loop")
 
-    assert snapshot(name="replace b", extension_class=JSONSnapshotExtension) == asdict(d.replace(b, e))
 
-    assert snapshot(name="replace c", extension_class=JSONSnapshotExtension) == asdict(d.replace(c, e))
+def multi_loop() -> Any:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=a), Stream(node=b)))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
 
-    assert snapshot(name="replace d", extension_class=JSONSnapshotExtension) == asdict(d.replace(d, e))
+    e = SimpleNode(name="E", inputs=(Stream(node=a),))
+
+    return pytest.param(d, e, id="multi_loop")
+
+
+@pytest.mark.parametrize("graph, replaced_node", [linear(), simple_loop(), multi_loop()])
+def test_replace(
+    graph: Node, replaced_node: Node, snapshot: SnapshotAssertion, drawer: Callable[[str, Node], Path]
+) -> None:
+    drawer("org", graph)
+
+    context = DAGContext.build(graph)
+
+    for node in context.all_nodes:
+        new_g = graph.replace(node, replaced_node)
+        drawer(f"replace_{node}", new_g)
+        assert snapshot(name=f"replace {node}", extension_class=JSONSnapshotExtension) == asdict(new_g)
