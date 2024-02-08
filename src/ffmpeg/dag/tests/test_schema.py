@@ -107,9 +107,9 @@ def update_node() -> Any:
     c = SimpleNode(name="C", inputs=(Stream(node=b), Stream(node=a)))
     d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
 
-    b_new = SimpleNode(name="B'", inputs=(Stream(node=a),))
-    c_new = SimpleNode(name="C'", inputs=(Stream(node=b), Stream(node=a)))
-    c_new_new = SimpleNode(name="C''", inputs=(Stream(node=b_new), Stream(node=a)))
+    b_new = SimpleNode(name="B#", inputs=(Stream(node=a),))
+    c_new = SimpleNode(name="C#", inputs=(Stream(node=b), Stream(node=a)))
+    c_new_new = SimpleNode(name="C##", inputs=(Stream(node=b_new), Stream(node=a)))
 
     return pytest.param(d, [(b, b_new), (c, c_new), (c, c_new_new)], id="update_node")
 
@@ -126,4 +126,6 @@ def test_replace(
     for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
         drawer(f"replace {node} -> {replaced_node}", new_g)
-        assert snapshot(name=f"replace {node}", extension_class=JSONSnapshotExtension) == asdict(new_g)
+        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=JSONSnapshotExtension) == asdict(
+            new_g
+        )
