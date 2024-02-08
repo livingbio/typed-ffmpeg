@@ -7,8 +7,6 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ffmpeg.dag.context import DAGContext
-
 from ...utils.view import view
 from ..schema import Node, Stream, _DAGContext, empty_dag_context
 
@@ -78,7 +76,7 @@ def linear() -> Any:
 
     e = SimpleNode(name="E", inputs=(Stream(node=a),))
 
-    return pytest.param(d, e, id="linear")
+    return pytest.param(d, [(a, e), (b, e), (c, e), (d, e)], id="linear")
 
 
 def simple_loop() -> Any:
@@ -89,7 +87,7 @@ def simple_loop() -> Any:
 
     e = SimpleNode(name="E", inputs=(Stream(node=a),))
 
-    return pytest.param(d, e, id="simple_loop")
+    return pytest.param(d, [(a, e), (b, e), (c, e), (d, e)], id="simple_loop")
 
 
 def multi_loop() -> Any:
@@ -100,18 +98,19 @@ def multi_loop() -> Any:
 
     e = SimpleNode(name="E", inputs=(Stream(node=a),))
 
-    return pytest.param(d, e, id="multi_loop")
+    return pytest.param(d, [(a, e), (b, e), (c, e), (d, e)], id="multi_loop")
 
 
-@pytest.mark.parametrize("graph, replaced_node", [linear(), simple_loop(), multi_loop()])
+@pytest.mark.parametrize("graph, replace_pattern", [linear(), simple_loop(), multi_loop()])
 def test_replace(
-    graph: Node, replaced_node: Node, snapshot: SnapshotAssertion, drawer: Callable[[str, Node], Path]
+    graph: Node,
+    replace_pattern: list[tuple[Node, Node]],
+    snapshot: SnapshotAssertion,
+    drawer: Callable[[str, Node], Path],
 ) -> None:
     drawer("org", graph)
 
-    context = DAGContext.build(graph)
-
-    for node in context.all_nodes:
+    for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
-        drawer(f"replace_{node}", new_g)
+        drawer(f"replace {node} -> {replaced_node}", new_g)
         assert snapshot(name=f"replace {node}", extension_class=JSONSnapshotExtension) == asdict(new_g)
