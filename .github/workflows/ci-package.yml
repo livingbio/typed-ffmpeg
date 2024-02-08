@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: pip install poetry && poetry install --with dev
       - name: Install ffmpeg
-        run: sudo apt-get install ffmpeg
+        run: sudo apt-get install ffmpeg graphviz
       - name: Run unittest
         run: poetry run py.test src/ --cov=./src
       - name: lint
