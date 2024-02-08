@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+from dataclasses import replace
+
+from ffmpeg.dag.schema import Stream
+from ffmpeg.streams.filter import FilterStream
+
 from ..streams import AudioStream, VideoStream
 from .context import DAGContext
 from .nodes import FilterNode
@@ -19,7 +24,7 @@ def _validate_reused_stream(context: DAGContext, auto_fix: bool = False) -> DAGC
 
     # NOTE: validate there is no reuse stream (each filter stream can only be used by one node's input)
     reused_streams = {
-        stream
+        stream: nodes
         for stream, nodes in context.outgoing_nodes.items()
         if len(nodes) > 1 and isinstance(stream, (AudioStream, VideoStream))
     }
@@ -28,20 +33,29 @@ def _validate_reused_stream(context: DAGContext, auto_fix: bool = False) -> DAGC
         assert not reused_streams, f"Found reuse streams: {reused_streams}"
         return context
 
-    current_node = context.node
-
     # NOTE: auto fix the reuse streams
-    for reused_stream in reused_streams:
-        nodes = context.outgoing_nodes[reused_stream]
-
+    current_node = context.node
+    for reused_stream, nodes in reused_streams.items():
+        new_streams: list[FilterStream]
         if isinstance(reused_stream, VideoStream):
             split_node = reused_stream.split(outputs=len(nodes))
+            new_streams = [split_node.video(idx) for idx in range(len(nodes))]
         else:
             split_node = reused_stream.asplit(outputs=len(nodes))
+            new_streams = [split_node.audio(idx) for idx in range(len(nodes))]
 
-        for idx, node in enumerate(nodes):
-            updated_node = node.replace_one_input(reused_stream, split_node.video(idx))
-            current_node = current_node.replace(node, updated_node)
+        index = 0
+        for node in sorted(set(nodes), key=lambda node: -len(node.upstream_nodes)):
+            inputs: list[Stream] = []
+            for _input in node.inputs:
+                if _input == reused_stream:
+                    inputs.append(new_streams[index])
+                    index += 1
+                else:
+                    inputs.append(_input)
+
+            new_node = replace(node, inputs=tuple(inputs))
+            current_node = current_node.replace(node, new_node)
 
     return DAGContext.build(current_node)
 

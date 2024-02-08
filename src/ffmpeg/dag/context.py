@@ -111,6 +111,7 @@ def _build_outgoing_nodes(nodes: list[Node]) -> dict[Stream, list[Node]]:
         for stream in node.inputs:
             outgoing_nodes[stream].append(node)
 
+    # NOTE: don't remove duplicates here, because a stream can be used by a node multiple times
     return outgoing_nodes
 
 

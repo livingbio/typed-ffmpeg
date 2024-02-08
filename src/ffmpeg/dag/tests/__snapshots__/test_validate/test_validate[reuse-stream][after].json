@@ -75,7 +75,7 @@
             }
           },
           {
-            "index": 0,
+            "index": 1,
             "node": {
               "args": [],
               "input_typings": [
@@ -91,26 +91,48 @@
                     ],
                     "inputs": [
                       {
-                        "index": null,
+                        "index": 0,
                         "node": {
                           "args": [],
-                          "filename": "input1.mp4",
-                          "inputs": [],
-                          "kwargs": []
+                          "input_typings": [
+                            "<StreamType.video: 'video'>"
+                          ],
+                          "inputs": [
+                            {
+                              "index": null,
+                              "node": {
+                                "args": [],
+                                "filename": "input1.mp4",
+                                "inputs": [],
+                                "kwargs": []
+                              }
+                            }
+                          ],
+                          "kwargs": [],
+                          "name": "reverse",
+                          "output_typings": [
+                            "<StreamType.video: 'video'>"
+                          ]
                         }
                       }
                     ],
                     "kwargs": [],
-                    "name": "reverse",
+                    "name": "trim",
                     "output_typings": [
                       "<StreamType.video: 'video'>"
                     ]
                   }
                 }
               ],
-              "kwargs": [],
-              "name": "trim",
+              "kwargs": [
+                [
+                  "outputs",
+                  2
+                ]
+              ],
+              "name": "split",
               "output_typings": [
+                "<StreamType.video: 'video'>",
                 "<StreamType.video: 'video'>"
               ]
             }

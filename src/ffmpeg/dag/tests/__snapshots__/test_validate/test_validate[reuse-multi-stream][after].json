@@ -15,6 +15,124 @@
         ],
         "inputs": [
           {
+            "index": 3,
+            "node": {
+              "args": [],
+              "input_typings": [
+                "<StreamType.video: 'video'>"
+              ],
+              "inputs": [
+                {
+                  "index": 0,
+                  "node": {
+                    "args": [],
+                    "input_typings": [
+                      "<StreamType.video: 'video'>"
+                    ],
+                    "inputs": [
+                      {
+                        "index": null,
+                        "node": {
+                          "args": [],
+                          "filename": "input1.mp4",
+                          "inputs": [],
+                          "kwargs": []
+                        }
+                      }
+                    ],
+                    "kwargs": [],
+                    "name": "reverse",
+                    "output_typings": [
+                      "<StreamType.video: 'video'>"
+                    ]
+                  }
+                }
+              ],
+              "kwargs": [
+                [
+                  "outputs",
+                  5
+                ]
+              ],
+              "name": "split",
+              "output_typings": [
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>"
+              ]
+            }
+          },
+          {
+            "index": 4,
+            "node": {
+              "args": [],
+              "input_typings": [
+                "<StreamType.video: 'video'>"
+              ],
+              "inputs": [
+                {
+                  "index": 0,
+                  "node": {
+                    "args": [],
+                    "input_typings": [
+                      "<StreamType.video: 'video'>"
+                    ],
+                    "inputs": [
+                      {
+                        "index": null,
+                        "node": {
+                          "args": [],
+                          "filename": "input1.mp4",
+                          "inputs": [],
+                          "kwargs": []
+                        }
+                      }
+                    ],
+                    "kwargs": [],
+                    "name": "reverse",
+                    "output_typings": [
+                      "<StreamType.video: 'video'>"
+                    ]
+                  }
+                }
+              ],
+              "kwargs": [
+                [
+                  "outputs",
+                  5
+                ]
+              ],
+              "name": "split",
+              "output_typings": [
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>"
+              ]
+            }
+          }
+        ],
+        "kwargs": [],
+        "name": "concat",
+        "output_typings": [
+          "<StreamType.video: 'video'>"
+        ]
+      }
+    },
+    {
+      "index": 0,
+      "node": {
+        "args": [],
+        "input_typings": [
+          "<StreamType.video: 'video'>",
+          "<StreamType.video: 'video'>",
+          "<StreamType.video: 'video'>"
+        ],
+        "inputs": [
+          {
             "index": 0,
             "node": {
               "args": [],
@@ -65,7 +183,7 @@
             }
           },
           {
-            "index": 0,
+            "index": 1,
             "node": {
               "args": [],
               "input_typings": [
@@ -73,40 +191,47 @@
               ],
               "inputs": [
                 {
-                  "index": null,
+                  "index": 0,
                   "node": {
                     "args": [],
-                    "filename": "input1.mp4",
-                    "inputs": [],
-                    "kwargs": []
+                    "input_typings": [
+                      "<StreamType.video: 'video'>"
+                    ],
+                    "inputs": [
+                      {
+                        "index": null,
+                        "node": {
+                          "args": [],
+                          "filename": "input1.mp4",
+                          "inputs": [],
+                          "kwargs": []
+                        }
+                      }
+                    ],
+                    "kwargs": [],
+                    "name": "reverse",
+                    "output_typings": [
+                      "<StreamType.video: 'video'>"
+                    ]
                   }
                 }
               ],
-              "kwargs": [],
-              "name": "reverse",
+              "kwargs": [
+                [
+                  "outputs",
+                  5
+                ]
+              ],
+              "name": "split",
               "output_typings": [
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
+                "<StreamType.video: 'video'>",
                 "<StreamType.video: 'video'>"
               ]
             }
-          }
-        ],
-        "kwargs": [],
-        "name": "concat",
-        "output_typings": [
-          "<StreamType.video: 'video'>"
-        ]
-      }
-    },
-    {
-      "index": 0,
-      "node": {
-        "args": [],
-        "input_typings": [
-          "<StreamType.video: 'video'>",
-          "<StreamType.video: 'video'>",
-          "<StreamType.video: 'video'>"
-        ],
-        "inputs": [
+          },
           {
             "index": 2,
             "node": {
@@ -153,56 +278,6 @@
                 "<StreamType.video: 'video'>",
                 "<StreamType.video: 'video'>",
                 "<StreamType.video: 'video'>",
-                "<StreamType.video: 'video'>"
-              ]
-            }
-          },
-          {
-            "index": 0,
-            "node": {
-              "args": [],
-              "input_typings": [
-                "<StreamType.video: 'video'>"
-              ],
-              "inputs": [
-                {
-                  "index": null,
-                  "node": {
-                    "args": [],
-                    "filename": "input1.mp4",
-                    "inputs": [],
-                    "kwargs": []
-                  }
-                }
-              ],
-              "kwargs": [],
-              "name": "reverse",
-              "output_typings": [
-                "<StreamType.video: 'video'>"
-              ]
-            }
-          },
-          {
-            "index": 0,
-            "node": {
-              "args": [],
-              "input_typings": [
-                "<StreamType.video: 'video'>"
-              ],
-              "inputs": [
-                {
-                  "index": null,
-                  "node": {
-                    "args": [],
-                    "filename": "input1.mp4",
-                    "inputs": [],
-                    "kwargs": []
-                  }
-                }
-              ],
-              "kwargs": [],
-              "name": "reverse",
-              "output_typings": [
                 "<StreamType.video: 'video'>"
               ]
             }

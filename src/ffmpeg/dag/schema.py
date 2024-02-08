@@ -147,23 +147,19 @@ class Node(HashableBaseModel, ABC):
         """
         return repr(self)
 
-    def replace_one_input(self, old_input: Stream, new_input: Stream) -> Node:
+    @property
+    def upstream_nodes(self) -> set[Node]:
         """
-        Replace the first old input with the new input.
-
-        Args:
-            old_input: The old input to replace.
-            new_input: The new input to replace with.
+        Get all upstream nodes of the node.
 
         Returns:
-            The new node.
+            The upstream nodes of the node.
         """
+        output = {self}
+        for input in self.inputs:
+            output |= input.node.upstream_nodes
 
-        inputs = list(self.inputs)
-        index = inputs.index(old_input)
-        inputs[index] = new_input
-
-        return replace(self, inputs=tuple(inputs))
+        return output
 
     def replace(self, old_node: Node, new_node: Node) -> Node:
         """
