@@ -1,4 +1,6 @@
 from dataclasses import asdict
+from pathlib import Path
+from typing import Any, Callable
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
@@ -7,59 +9,71 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ...base import input
 from ...filters import concat
 from ..context import DAGContext
-from ..validate import _validate_not_utilize_split, _validate_reused_stream
+from ..schema import Node
+from ..validate import _validate_reused_stream
+
+# def test_validate_not_utilize_split(snapshot: SnapshotAssertion) -> None:
+#     input1 = input("input1.mp4")
+
+#     context = DAGContext.build(input1.split(outputs=2).video(0).output(filename="tmp.mp4"))
+#     with pytest.raises(AssertionError) as e:
+#         _validate_not_utilize_split(context)
+
+#     assert snapshot == e
 
 
-def test_validate_reuse_stream(snapshot: SnapshotAssertion) -> None:
+# def test_reduntant_split_outputs_1(snapshot: SnapshotAssertion) -> None:
+#     input1 = input("input1.mp4")
+
+#     context = DAGContext.build(input1.split(outputs=1).video(0).output(filename="tmp.mp4"))
+#     with pytest.raises(AssertionError) as e:
+#         _validate_not_utilize_split(context)
+
+#     assert snapshot == e
+
+
+# def test_reduntant_split_duplicate(snapshot: SnapshotAssertion) -> None:
+#     input1 = input("input1.mp4")
+#     s = input1.split(outputs=2)
+#     s0 = s.video(0)
+#     s1 = s.video(1)
+
+#     s00 = s0.split(outputs=2).video(0)
+#     s01 = s0.split(outputs=2).video(1)
+
+#     context = DAGContext.build(concat(s00, s01, s1, n=3).video(0).output(filename="tmp.mp4"))
+#     with pytest.raises(AssertionError) as e:
+#         _validate_not_utilize_split(context)
+
+#     assert snapshot == e
+
+
+def reuse_stream() -> Any:
     input1 = input("input1.mp4")
     rev = input1.reverse()
-    context = DAGContext.build(concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4"))
+    graph = concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4")
 
-    rev = input1.reverse()
-    cmd = concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4")
-    context = DAGContext.build(cmd.node)
+    return pytest.param(graph, _validate_reused_stream, id="reuse-stream")
+
+
+@pytest.mark.parametrize("graph, validator", [reuse_stream()])
+def test_validate(
+    graph: Node,
+    validator: Callable[[DAGContext], DAGContext],
+    snapshot: SnapshotAssertion,
+    drawer: Callable[[str, Node], Path],
+) -> None:
+
+    drawer("before", graph)
+    assert snapshot(name="before", extension_class=JSONSnapshotExtension) == asdict(graph)
+
+    context = DAGContext.build(graph)
 
     with pytest.raises(AssertionError) as e:
-        _validate_reused_stream(context)
+        validator(context)
 
     assert snapshot == e
-
     new_context = _validate_reused_stream(context, auto_fix=True)
 
-    assert snapshot(extension_class=JSONSnapshotExtension) == asdict(new_context.node)
-
-
-def test_validate_not_utilize_split(snapshot: SnapshotAssertion) -> None:
-    input1 = input("input1.mp4")
-
-    context = DAGContext.build(input1.split(outputs=2).video(0).output(filename="tmp.mp4"))
-    with pytest.raises(AssertionError) as e:
-        _validate_not_utilize_split(context)
-
-    assert snapshot == e
-
-
-def test_reduntant_split_outputs_1(snapshot: SnapshotAssertion) -> None:
-    input1 = input("input1.mp4")
-
-    context = DAGContext.build(input1.split(outputs=1).video(0).output(filename="tmp.mp4"))
-    with pytest.raises(AssertionError) as e:
-        _validate_not_utilize_split(context)
-
-    assert snapshot == e
-
-
-def test_reduntant_split_duplicate(snapshot: SnapshotAssertion) -> None:
-    input1 = input("input1.mp4")
-    s = input1.split(outputs=2)
-    s0 = s.video(0)
-    s1 = s.video(1)
-
-    s00 = s0.split(outputs=2).video(0)
-    s01 = s0.split(outputs=2).video(1)
-
-    context = DAGContext.build(concat(s00, s01, s1, n=3).video(0).output(filename="tmp.mp4"))
-    with pytest.raises(AssertionError) as e:
-        _validate_not_utilize_split(context)
-
-    assert snapshot == e
+    drawer("after", new_context.node)
+    assert snapshot(name="after", extension_class=JSONSnapshotExtension) == asdict(new_context.node)
