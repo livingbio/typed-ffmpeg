@@ -1,6 +1,6 @@
 from dataclasses import asdict
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, Protocol
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
@@ -46,6 +46,9 @@ from ..validate import _validate_reused_stream
 #         _validate_not_utilize_split(context)
 
 #     assert snapshot == e
+class Validator(Protocol):
+    def __call__(self, context: DAGContext = ..., auto_fix: bool = False) -> DAGContext:
+        ...
 
 
 def reuse_stream() -> Any:
@@ -59,7 +62,7 @@ def reuse_stream() -> Any:
 @pytest.mark.parametrize("graph, validator", [reuse_stream()])
 def test_validate(
     graph: Node,
-    validator: Callable[[DAGContext], DAGContext],
+    validator: Validator,
     snapshot: SnapshotAssertion,
     drawer: Callable[[str, Node], Path],
 ) -> None:
@@ -73,7 +76,7 @@ def test_validate(
         validator(context)
 
     assert snapshot == e
-    new_context = _validate_reused_stream(context, auto_fix=True)
+    new_context = validator(context, auto_fix=True)
 
     drawer("after", new_context.node)
     assert snapshot(name="after", extension_class=JSONSnapshotExtension) == asdict(new_context.node)
