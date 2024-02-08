@@ -68,7 +68,15 @@ def reuse_stream_two_node() -> Any:
     return pytest.param(graph, _validate_reused_stream, id="reuse-stream-two-node")
 
 
-@pytest.mark.parametrize("graph, validator", [reuse_stream_same_node(), reuse_stream_two_node()])
+def reuse_multi_stream() -> Any:
+    input1 = input("input1.mp4")
+    rev = input1.reverse()
+
+    graph = concat(concat(rev, rev).video(0), concat(rev, rev, rev, n=3).video(0))
+    return pytest.param(graph, _validate_reused_stream, id="reuse-multi-stream")
+
+
+@pytest.mark.parametrize("graph, validator", [reuse_stream_same_node(), reuse_stream_two_node(), reuse_multi_stream()])
 def test_validate(
     graph: Node,
     validator: Validator,
