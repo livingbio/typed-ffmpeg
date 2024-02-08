@@ -9,10 +9,10 @@ from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, 
 from .channel_layout import CHANNEL_LAYOUT
 
 if TYPE_CHECKING:
-    from .video import VideoStream
+    from .filter import AudioStream, VideoStream
 
 
-class AudioStream(FilterableStream):
+class AudioFilter(FilterableStream):
     def a3dscope(
         self,
         *,

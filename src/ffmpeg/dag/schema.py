@@ -147,6 +147,20 @@ class Node(HashableBaseModel, ABC):
         """
         return repr(self)
 
+    @property
+    def upstream_nodes(self) -> set[Node]:
+        """
+        Get all upstream nodes of the node.
+
+        Returns:
+            The upstream nodes of the node.
+        """
+        output = {self}
+        for input in self.inputs:
+            output |= input.node.upstream_nodes
+
+        return output
+
     def replace(self, old_node: Node, new_node: Node) -> Node:
         """
         Replace the old node with the new node.

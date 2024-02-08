@@ -1,9 +1,7 @@
 from typing import Any
 
 from .dag.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
-from .streams.audio import AudioStream
-from .streams.av import AVStream
-from .streams.video import VideoStream
+from .streams import AudioStream, AVStream, VideoStream
 
 
 def input(filename: str, **kwargs: Any) -> AVStream:
