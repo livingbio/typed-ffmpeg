@@ -101,6 +101,7 @@ class Node(HashableBaseModel, ABC):
         Each node in the DAG represents a single operation that transforms the data from its input form to its output form. The node is an essential component of the DAG, as it defines the nature of the operations that are performed on the data.
     """
 
+    id: str = ""
     args: tuple[str, ...] = ()
     kwargs: tuple[tuple[str, str | int | float | bool], ...] = ()
     inputs: tuple[Stream, ...] = ()
@@ -174,3 +175,13 @@ class Node(HashableBaseModel, ABC):
                 inputs.append(stream)
 
         return replace(self, inputs=tuple(inputs))
+
+    @property
+    def max_depth(self) -> int:
+        """
+        Get the maximum depth of the node.
+
+        Returns:
+            The maximum depth of the node.
+        """
+        return max((i.node.max_depth for i in self.inputs), default=0) + 1

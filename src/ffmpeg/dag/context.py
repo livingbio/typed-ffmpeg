@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass
-from typing import TypeVar
+from functools import cached_property
+from typing import Any, TypeVar
 
+from ..utils.typing import override
 from .nodes import FilterNode, InputNode
 from .schema import Node, Stream, _DAGContext
 
@@ -31,8 +34,10 @@ def _remove_duplicates(seq: list[T]) -> list[T]:
 def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
     """
     Collect all nodes and streams that are upstreamed to the given node
+
     Args:
         node: The node to collect from.
+
     Returns:
         A tuple of all nodes and streams that are upstreamed to the given node.
     """
@@ -46,83 +51,6 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
     return nodes, streams
 
 
-def _calculate_node_max_depth(node: Node, outgoing_streams: dict[Node, list[Stream]]) -> int:
-    """
-    Calculate the maximum depth of a node in the graph.
-    Args:
-        node: The node to calculate the maximum depth of.
-        outgoing_streams: The outgoing streams of the node.
-    Returns:
-        The maximum depth of the node in the graph.
-    """
-    if not node.inputs:
-        return 0
-
-    return max(_calculate_node_max_depth(stream.node, outgoing_streams) for stream in node.inputs) + 1
-
-
-def _node_max_depth(all_nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, int]:
-    """
-    Calculate the maximum depth of each node in the graph.
-    Args:
-        all_nodes: All nodes in the graph.
-        outgoing_streams: The outgoing streams of each node.
-    Returns:
-        A dictionary of the maximum depth of each node in the graph.
-    """
-
-    return {node: _calculate_node_max_depth(node, outgoing_streams) for node in all_nodes}
-
-
-def _build_outgoing_streams(nodes: list[Node], streams: list[Stream]) -> dict[Node, list[Stream]]:
-    """
-    Build a dictionary of outgoing streams for each node.
-    Args:
-        nodes: All nodes in the graph.
-        streams: All streams in the graph.
-    Returns:
-        A dictionary of outgoing streams for each node.
-    """
-
-    outgoing_streams: dict[Node, list[Stream]] = {}
-
-    for node in nodes:
-        outgoing_streams[node] = []
-
-    for stream in streams:
-        outgoing_streams[stream.node].append(stream)
-
-    return outgoing_streams
-
-
-def _build_node_labels(nodes: list[Node], outgoing_streams: dict[Node, list[Stream]]) -> dict[Node, str]:
-    """
-    Build a dictionary of labels for each node.
-    Args:
-        nodes: All nodes in the graph.
-        outgoing_streams: The outgoing streams of each node.
-    Returns:
-        A dictionary of labels for each node.
-    """
-
-    node_max_depth = _node_max_depth(nodes, outgoing_streams)
-    input_node_index = 0
-    filter_node_index = 0
-    node_labels: dict[Node, str] = {}
-
-    for node in sorted(nodes, key=lambda node: node_max_depth[node]):
-        if isinstance(node, InputNode):
-            node_labels[node] = str(input_node_index)
-            input_node_index += 1
-        elif isinstance(node, FilterNode):
-            node_labels[node] = f"s{filter_node_index}"
-            filter_node_index += 1
-        else:
-            node_labels[node] = "out"
-
-    return node_labels
-
-
 @dataclass(frozen=True, kw_only=True)
 class DAGContext(_DAGContext):
     """
@@ -134,21 +62,11 @@ class DAGContext(_DAGContext):
     The root node (the destination) of the DAG.
     """
 
-    node_labels: dict[Node, str]
-    """
-    A dictionary of labels for each node.
-    """
-
-    outgoing_streams: dict[Node, list[Stream]]
-    """
-    A dictionary of outgoing streams for each node.
-    """
-
-    all_nodes: list[Node]
+    nodes: tuple[Node, ...]
     """
     All nodes in the graph.
     """
-    all_streams: list[Stream]
+    streams: tuple[Stream, ...]
     """
     All streams in the graph.
     """
@@ -157,8 +75,10 @@ class DAGContext(_DAGContext):
     def build(cls, node_or_stream: Node | Stream) -> DAGContext:
         """
         create a DAG context based on the given node
+
         Args:
             node: The root node of the DAG.
+
         Returns:
             A DAG context based on the given node.
         """
@@ -168,28 +88,90 @@ class DAGContext(_DAGContext):
             node = node_or_stream
 
         nodes, streams = _collect(node)
-        nodes = _remove_duplicates(nodes)
-        streams = _remove_duplicates(streams)
-
-        outgoing_streams = _build_outgoing_streams(nodes, streams)
-        node_labels = _build_node_labels(nodes, outgoing_streams)
-
-        all_nodes = sorted(nodes, key=lambda node: node_labels[node])
-        all_streams = sorted(streams, key=lambda stream: (node_labels[stream.node], stream.index))
 
         return cls(
             node=node,
-            node_labels=node_labels,
-            outgoing_streams=outgoing_streams,
-            all_nodes=all_nodes,
-            all_streams=all_streams,
+            nodes=tuple(_remove_duplicates(nodes)),
+            streams=tuple(_remove_duplicates(streams)),
         )
 
+    @cached_property
+    def all_nodes(self) -> list[Node]:
+        return sorted(self.nodes, key=lambda node: self.node_labels[node])
+
+    @cached_property
+    def all_streams(self) -> list[Stream]:
+        return sorted(self.streams, key=lambda stream: (self.node_labels[stream.node], stream.index))
+
+    @cached_property
+    def outgoing_nodes(self) -> dict[Stream, list[tuple[Node, int]]]:
+        """
+        A dictionary of outgoing nodes and its index for each stream.
+        """
+        outgoing_nodes: dict[Stream, list[tuple[Node, int]]] = defaultdict(list)
+
+        for node in self.nodes:
+            for idx, stream in enumerate(node.inputs):
+                outgoing_nodes[stream].append((node, idx))
+
+        return outgoing_nodes
+
+    @cached_property
+    def outgoing_streams(self) -> dict[Node, list[Stream]]:
+        """
+        A dictionary of outgoing streams for each node.
+        """
+
+        outgoing_streams: dict[Node, list[Stream]] = defaultdict(list)
+
+        for stream in self.streams:
+            outgoing_streams[stream.node].append(stream)
+
+        return outgoing_streams
+
+    @cached_property
+    def node_labels(self) -> dict[Node, str]:
+        """
+        A dictionary of outgoing streams for each node.
+        """
+
+        input_node_index = 0
+        filter_node_index = 0
+        node_labels: dict[Node, str] = {}
+
+        for node in sorted(self.nodes, key=lambda node: node.max_depth):
+            if isinstance(node, InputNode):
+                node_labels[node] = str(input_node_index)
+                input_node_index += 1
+            elif isinstance(node, FilterNode):
+                node_labels[node] = f"s{filter_node_index}"
+                filter_node_index += 1
+            else:
+                node_labels[node] = "out"
+
+        return node_labels
+
+    @override
+    def get_outgoing_nodes(self, stream: Stream) -> list[tuple[Node, int]]:
+        """
+        Get all outgoing nodes of the stream.
+
+        Args:
+            stream: The stream to get the outgoing nodes of.
+
+        Returns:
+            The outgoing nodes of the stream.
+        """
+        return self.outgoing_nodes[stream]
+
+    @override
     def get_node_label(self, node: Node) -> str:
         """
         Get the label of the node.
+
         Args:
             node: The node to get the label of.
+
         Returns:
             The label of the node.
         """
@@ -197,12 +179,29 @@ class DAGContext(_DAGContext):
         assert isinstance(node, (InputNode, FilterNode)), "Only input and filter nodes have labels"
         return self.node_labels[node]
 
+    @override
     def get_outgoing_streams(self, node: Node) -> list[Stream]:
         """
         Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
+
         Args:
             node: The node to get the outgoing streams of.
+
         Returns:
             The outgoing streams of the node.
         """
         return self.outgoing_streams[node]
+
+    def render(self, obj: Any) -> Any:
+        if isinstance(obj, (list, tuple)):
+            return [self.render(o) for o in obj]
+        elif isinstance(obj, dict):
+            return {self.render(k): self.render(v) for k, v in obj.items()}
+
+        if isinstance(obj, Node):
+            return obj.hex
+
+        if isinstance(obj, Stream):
+            return f"{obj.node.hex}:{obj.index}"
+
+        return obj

@@ -1,0 +1,75 @@
+# serializer version: 1
+# name: test_context[all_nodes]
+  list([
+    '9ec549961755933',
+    '6ac93c797d08880a',
+    '63bd27d161d4268a',
+    '317a6fdab6e6eb2a',
+    '2af6bcae3e686e84',
+  ])
+# ---
+# name: test_context[all_streams]
+  list([
+    '9ec549961755933:None',
+    '63bd27d161d4268a:0',
+    '317a6fdab6e6eb2a:0',
+    '2af6bcae3e686e84:0',
+  ])
+# ---
+# name: test_context[node_labels]
+  dict({
+    '2af6bcae3e686e84': 's2',
+    '317a6fdab6e6eb2a': 's1',
+    '63bd27d161d4268a': 's0',
+    '6ac93c797d08880a': 'out',
+    '9ec549961755933': '0',
+  })
+# ---
+# name: test_context[outgoing_nodes]
+  dict({
+    '2af6bcae3e686e84:0': list([
+      list([
+        '6ac93c797d08880a',
+        0,
+      ]),
+    ]),
+    '317a6fdab6e6eb2a:0': list([
+      list([
+        '2af6bcae3e686e84',
+        0,
+      ]),
+      list([
+        '2af6bcae3e686e84',
+        1,
+      ]),
+    ]),
+    '63bd27d161d4268a:0': list([
+      list([
+        '317a6fdab6e6eb2a',
+        0,
+      ]),
+    ]),
+    '9ec549961755933:None': list([
+      list([
+        '63bd27d161d4268a',
+        0,
+      ]),
+    ]),
+  })
+# ---
+# name: test_context[outgoing_streams]
+  dict({
+    '2af6bcae3e686e84': list([
+      '2af6bcae3e686e84:0',
+    ]),
+    '317a6fdab6e6eb2a': list([
+      '317a6fdab6e6eb2a:0',
+    ]),
+    '63bd27d161d4268a': list([
+      '63bd27d161d4268a:0',
+    ]),
+    '9ec549961755933': list([
+      '9ec549961755933:None',
+    ]),
+  })
+# ---
