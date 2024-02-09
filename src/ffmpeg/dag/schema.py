@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
@@ -60,7 +61,7 @@ empty_dag_context = DummyDAGContext()
 class HashableBaseModel:
     @cached_property
     def hex(self) -> str:
-        return hex(abs(hash(self)))[2:]
+        return hashlib.md5(repr(self).encode()).hexdigest()[:6]
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.hex})"
