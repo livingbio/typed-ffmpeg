@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from dataclasses import replace
+from dataclasses import dataclass, replace
 
-from ffmpeg.dag.schema import Stream
+from ffmpeg.dag.schema import Node, Stream
 from ffmpeg.streams.filter import FilterStream
 
 from ..streams import AudioStream, VideoStream
@@ -10,8 +10,60 @@ from .context import DAGContext
 from .nodes import FilterNode
 
 
+@dataclass(frozen=True, kw_only=True)
+class FullStream:
+    stream: Stream
+    down_node: Node
+    down_index: int
+
+
+def insert_split(
+    current_stream: FullStream, context: DAGContext, mapping: dict[FullStream, Stream] = None
+) -> tuple[Stream, dict[FullStream, Stream]]:
+    if mapping is None:
+        mapping = {}
+
+    if current_stream in mapping:
+        return mapping[current_stream], mapping
+
+    if isinstance(current_stream.stream, (VideoStream, AudioStream)) and context.get_split_num(current_stream) > 1:
+        # NOTE: this stream need convert to split
+        if isinstance(current_stream.stream, VideoStream):
+            split_node = current_stream.stream.split(outputs=context.get_split_num(current_stream))
+            new_streams = [split_node.video(idx) for idx in range(context.get_split_num(current_stream))]
+        elif isinstance(current_stream.stream, AudioStream):
+            split_node = current_stream.stream.asplit(outputs=context.get_split_num(current_stream))
+            new_streams = [split_node.audio(idx) for idx in range(context.get_split_num(current_stream))]
+        else:
+            raise ValueError(f"Invalid split node: {current_stream}")
+
+        for (down_node, down_idx), new_stream in zip(context.get_outgoing_nodes(current_stream), new_streams):
+            mapping[FullStream(stream=current_stream, down_node=down_node, down_index=down_idx)] = new_stream
+
+        return mapping[current_stream], mapping
+
+    inputs = []
+    for idx, input_stream in sorted(
+        enumerate(current_stream.stream.node.inputs), key=lambda k: -len(k[1].node.upstream_nodes)
+    ):
+        new_stream, _mapping = insert_split(
+            current_stream=FullStream(stream=input_stream, down_node=current_stream.stream.node, down_index=idx),
+            context=context,
+            mapping=mapping,
+        )
+        inputs.append(new_stream)
+        mapping |= _mapping
+
+    new_node = replace(current_stream.stream.node, inputs=tuple(inputs))
+    new_stream = replace(current_stream.stream, node=new_node)
+
+    mapping[current_stream] = new_stream
+    return new_stream, mapping
+
+
 # NOTE:
 # ensure all output stream is consumed by a node
+
 
 def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -> tuple[Stream, dict[Stream, Stream]]:
     """

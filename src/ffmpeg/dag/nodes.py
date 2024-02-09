@@ -97,43 +97,17 @@ class FilterNode(Node):
                 if not isinstance(stream, AudioFilter):
                     raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
 
-    def _get_outgoing_labels(self, context: _DAGContext) -> list[str]:
-        output = []
-        for stream in context.get_outgoing_streams(self):
-            assert isinstance(stream, FilterableStream)
-            output.append(stream.label(context))
-        
-        return ["".join(f"[{k}]" for k in output)]
+    @override
+    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+        incoming_labels = "".join(f"[{k.label(context)}]" for k in self.inputs)
+        outputs = context.get_outgoing_streams(self)
 
-    def _get_incoming_labels(self, context: _DAGContext) -> list[str]:
-        """
-        Get all incoming labels of the node.
+        outgoing_labels = ""
+        for output in sorted(outputs, key=lambda stream: stream.index or 0):
+            # NOTE: all outgoing streams must be filterable
+            assert isinstance(output, FilterableStream)
+            outgoing_labels += f"[{output.label(context)}]"
 
-        Args:
-            node: The node to get the incoming labels of.
-
-        Returns:
-            The incoming labels of the node.
-        """
-        from ..streams.input import InputStream
-
-        output = []
-        for idx, stream in enumerate(self.inputs):
-            label = stream.label(context)
-            if isinstance(stream, InputStream):
-                output.append(label)
-            else:
-                if context.get_split_num(stream) > 1:
-                    split_idx = f"@{context.get_outgoing_nodes(stream).index((self, idx))}"
-                else:
-                    split_idx = ""
-
-                label = f"{label}{split_idx}"
-                output.append(label)
-
-        return ["".join(f"[{k}]" for k in output)]
-    
-    def _get_commands(self) -> list[str]:
         commands = []
         for key, value in self.kwargs:
             # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
@@ -142,27 +116,10 @@ class FilterNode(Node):
 
             if not isinstance(value, Default):
                 commands += [f"{key}={escape(value)}"]
-        
+
         if commands:
-            return [escape(":".join(commands), "\\'[],;")]
-        return []
-
-    def _get_auto_split(self, context: _DAGContext) -> list[str]:
-        splits = []
-        for stream in context.get_outgoing_streams(self):
-            if context.get_split_num(stream) > 1:
-                assert isinstance(stream, (VideoStream, AudioStream))
-                if isinstance(stream, VideoStream):
-                    split_output = 
-                    splits.append(f"[{stream.label(context)}]split={context.get_split_num(stream)}[]")
-
-        return splits
-
-    @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
-        commands = self._get_commands()
-
-        return self._get_incoming_labels(context) + [f"{self.name}="] + commands + self._get_outgoing_labels(context) + self._get_auto_split(context)
+            return [incoming_labels] + [f"{self.name}="] + [escape(":".join(commands), "\\'[],;")] + [outgoing_labels]
+        return [incoming_labels] + [f"{self.name}"] + [outgoing_labels]
 
 
 @dataclass(frozen=True, kw_only=True)

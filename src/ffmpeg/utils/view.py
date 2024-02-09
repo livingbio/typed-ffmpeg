@@ -17,6 +17,10 @@ def _get_node_color(node: Node) -> str | None:
     return color
 
 
+def node_label(node: Node, context: DAGContext) -> str:
+    return context.get_node_label(node)
+
+
 def view(node: Node) -> str:
     try:
         import graphviz  # type: ignore
