@@ -13,6 +13,7 @@ from .validate import validate
 
 def compile(node: Node) -> list[str]:
     context = DAGContext.build(node)
+    # FIXME: validate that there is no use outstream
     context = validate(context)
 
     # compile the global nodes

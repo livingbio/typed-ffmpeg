@@ -14,6 +14,31 @@ class _DAGContext(ABC):
     An abstract class context for DAG.
     """
 
+    def get_split_num(self, stream: Stream) -> int:
+        """
+        Check if the stream needs to be split.
+
+        Args:
+            stream: The stream to check.
+
+        Returns:
+            The number of splits needed.
+        """
+        return len(self.get_outgoing_nodes(stream))
+
+    @abstractmethod
+    def get_outgoing_nodes(self, stream: Stream) -> list[tuple[Node, int]]:
+        """
+        Get all outgoing nodes of the stream.
+
+        Args:
+            stream: The stream to get the outgoing nodes of.
+
+        Returns:
+            The outgoing nodes of the stream.
+        """
+        raise NotImplementedError()
+
     @abstractmethod
     def get_node_label(self, node: Node) -> str:
         """
@@ -28,7 +53,7 @@ class _DAGContext(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+    def get_outgoing_streams(self, node: Node) -> list[Stream]:
         """
         Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
 
@@ -49,7 +74,11 @@ class DummyDAGContext(_DAGContext):
         return str(node)
 
     @override
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
+    def get_outgoing_streams(self, node: Node) -> list[Stream]:
+        return []
+    
+    @override
+    def get_outgoing_nodes(self, stream: Stream) -> list[tuple[Node, int]]:
         return []
 
 

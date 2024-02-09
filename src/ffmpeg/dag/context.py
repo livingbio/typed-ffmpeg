@@ -7,6 +7,7 @@ from typing import TypeVar
 
 from .nodes import FilterNode, InputNode
 from .schema import Node, Stream, _DAGContext
+from ..utils.typing import override
 
 T = TypeVar("T")
 
@@ -150,6 +151,20 @@ class DAGContext(_DAGContext):
 
         return node_labels
 
+    @override
+    def get_outgoing_nodes(self, stream: Stream) -> list[tuple[Node, int]]:
+        """
+        Get all outgoing nodes of the stream.
+
+        Args:
+            stream: The stream to get the outgoing nodes of.
+
+        Returns:
+            The outgoing nodes of the stream.
+        """
+        return self.outgoing_nodes[stream]
+
+    @override
     def get_node_label(self, node: Node) -> str:
         """
         Get the label of the node.
@@ -164,6 +179,7 @@ class DAGContext(_DAGContext):
         assert isinstance(node, (InputNode, FilterNode)), "Only input and filter nodes have labels"
         return self.node_labels[node]
 
+    @override
     def get_outgoing_streams(self, node: Node) -> list[Stream]:
         """
         Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.

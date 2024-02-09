@@ -10,6 +10,9 @@ from .context import DAGContext
 from .nodes import FilterNode
 
 
+# NOTE:
+# ensure all output stream is consumed by a node
+
 def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -> tuple[Stream, dict[Stream, Stream]]:
     """
     Rebuild the graph with the given mapping.
