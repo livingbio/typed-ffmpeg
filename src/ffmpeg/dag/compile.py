@@ -17,27 +17,27 @@ def compile(node: Node) -> list[str]:
 
     # compile the global nodes
     commands = []
-    global_nodes = [node for node in context.all_nodes if isinstance(node, GlobalNode)]
+    global_nodes = [node for node in context.nodes if isinstance(node, GlobalNode)]
     for node in global_nodes:
         commands += node.get_args(context)
 
     # compile the input nodes
-    input_nodes = [node for node in context.all_nodes if isinstance(node, InputNode)]
+    input_nodes = [node for node in context.nodes if isinstance(node, InputNode)]
     for node in input_nodes:
         commands += node.get_args(context)
 
     # compile the filter nodes
     vf_commands = []
-    filter_nodes = [node for node in context.all_nodes if isinstance(node, FilterNode)]
+    filter_nodes = [node for node in context.nodes if isinstance(node, FilterNode)]
 
-    for node in sorted(filter_nodes, key=lambda node: context.node_labels[node]):
+    for node in sorted(filter_nodes, key=lambda node: context.get_node_label(node)):
         vf_commands += ["".join(node.get_args(context))]
 
     if vf_commands:
         commands += ["-filter_complex", ";".join(vf_commands)]
 
     # compile the output nodes
-    output_nodes = [node for node in context.all_nodes if isinstance(node, OutputNode)]
+    output_nodes = [node for node in context.nodes if isinstance(node, OutputNode)]
     for node in output_nodes:
         commands += node.get_args(context)
 

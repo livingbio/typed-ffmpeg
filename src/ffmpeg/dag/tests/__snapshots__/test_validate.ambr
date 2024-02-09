@@ -1,10 +1,10 @@
 # serializer version: 1
-# name: test_validate[reuse-multi-stream].1
+# name: test_validate[reuse-multi-stream].2
   <ExceptionInfo AssertionError("Found reuse streams: {VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(...'video'>, <StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,))]}") tblen=2>
 # ---
-# name: test_validate[reuse-stream-two-node].1
+# name: test_validate[reuse-stream-two-node].2
   <ExceptionInfo AssertionError("Found reuse streams: {VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(...=0),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))]}") tblen=2>
 # ---
-# name: test_validate[reuse-stream].1
+# name: test_validate[reuse-stream].2
   <ExceptionInfo AssertionError("Found reuse streams: {VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterN..._typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,))]}") tblen=2>
 # ---

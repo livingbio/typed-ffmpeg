@@ -161,6 +161,10 @@ class Node(HashableBaseModel, ABC):
 
         return output
 
+    @property
+    def max_depth(self) -> int:
+        return max((input.node.max_depth for input in self.inputs), default=0) + 1
+
     def replace(self, old_node: Node, new_node: Node) -> Node:
         """
         Replace the old node with the new node.

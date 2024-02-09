@@ -87,6 +87,7 @@ def test_validate(
     assert snapshot(name="before", extension_class=JSONSnapshotExtension) == asdict(graph)
 
     context = DAGContext.build(graph)
+    assert snapshot(name="context", extension_class=JSONSnapshotExtension) == asdict(context)
 
     with pytest.raises(AssertionError) as e:
         validator(context)

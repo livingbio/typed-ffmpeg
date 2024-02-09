@@ -30,11 +30,11 @@ def view(node: Node) -> str:
 
     context = DAGContext.build(node)
 
-    for node in context.all_nodes:
+    for node in context.nodes:
         color = _get_node_color(node)
         graph.node(name=node.hex, label=node.repr(), shape="box", style="filled", fillcolor=color)
 
-    for node in context.all_nodes:
+    for node in context.nodes:
         for idx, stream in enumerate(node.inputs):
             graph.edge(stream.node.hex, node.hex, label=f"{stream.index} > {idx}")
 
