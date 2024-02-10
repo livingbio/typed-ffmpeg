@@ -1,0 +1,7 @@
+# serializer version: 1
+# name: test_filter_node_with_inputs.1
+  <ExceptionInfo ValueError('Expected input 0 to have audio component, got VideoStream') tblen=3>
+# ---
+# name: test_filter_node_with_inputs.2
+  <ExceptionInfo ValueError('Expected input 0 to have video component, got AudioStream') tblen=3>
+# ---

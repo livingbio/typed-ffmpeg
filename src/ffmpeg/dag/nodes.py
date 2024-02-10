@@ -30,9 +30,9 @@ class FilterNode(Node):
     """
 
     name: str
-    inputs: tuple[FilterableStream, ...]
-    input_typings: tuple[StreamType, ...]
-    output_typings: tuple[StreamType, ...]
+    inputs: tuple[FilterableStream, ...] = ()
+    input_typings: tuple[StreamType, ...] = ()
+    output_typings: tuple[StreamType, ...] = ()
 
     @override
     def repr(self) -> str:
@@ -51,9 +51,8 @@ class FilterNode(Node):
         from ..streams.video import VideoStream
 
         video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
-        assert (
-            len(video_outputs) > index
-        ), f"Specified index {index} is out of range for video outputs {len(video_outputs)}"
+        if not len(video_outputs) > index:
+            raise ValueError(f"Specified index {index} is out of range for video outputs {len(video_outputs)}")
         return VideoStream(node=self, index=video_outputs[index])
 
     def audio(self, index: int) -> "AudioStream":
@@ -69,9 +68,9 @@ class FilterNode(Node):
         from ..streams.audio import AudioStream
 
         audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
-        assert (
-            len(audio_outputs) > index
-        ), f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}"
+        if not len(audio_outputs) > index:
+            raise ValueError(f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}")
+
         return AudioStream(node=self, index=audio_outputs[index])
 
     def __post_init__(self) -> None:
@@ -96,6 +95,8 @@ class FilterNode(Node):
 
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
+        from .context import DAGContext
+
         if not context:
             context = DAGContext.build(self)
 
@@ -163,7 +164,7 @@ class FilterableStream(Stream):
         *streams: "FilterableStream",
         name: str,
         input_typings: tuple[StreamType, ...] = (),
-        output_typings: tuple[StreamType, ...],
+        output_typings: tuple[StreamType, ...] = (),
         **kwargs: Any,
     ) -> "FilterNode":
         """
