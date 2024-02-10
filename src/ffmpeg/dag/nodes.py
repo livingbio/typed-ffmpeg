@@ -31,8 +31,8 @@ class FilterNode(Node):
 
     name: str
     inputs: tuple[FilterableStream, ...]
-    input_typings: tuple[StreamType, ...] | None = None
-    output_typings: tuple[StreamType, ...] | None = None
+    input_typings: tuple[StreamType, ...]
+    output_typings: tuple[StreamType, ...]
 
     @override
     def repr(self) -> str:
@@ -50,7 +50,6 @@ class FilterNode(Node):
         """
         from ..streams.video import VideoStream
 
-        assert self.output_typings is not None, "Output typings must be specified to use `video`"
         video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
         assert (
             len(video_outputs) > index
@@ -69,7 +68,6 @@ class FilterNode(Node):
         """
         from ..streams.audio import AudioStream
 
-        assert self.output_typings is not None, "Output typings must be specified to use `audio`"
         audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
         assert (
             len(audio_outputs) > index
@@ -81,9 +79,6 @@ class FilterNode(Node):
         from ..streams.video import VideoStream
 
         super().__post_init__()
-
-        if self.input_typings is None:
-            return
 
         if len(self.inputs) != len(self.input_typings):
             raise ValueError(f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}")
@@ -163,7 +158,14 @@ class FilterableStream(Stream):
         """
         return self.filter_multi_output(*streams, name=name, **kwargs).audio(0)
 
-    def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
+    def filter_multi_output(
+        self,
+        *streams: "FilterableStream",
+        name: str,
+        input_typings: tuple[StreamType, ...] = (),
+        output_typings: tuple[StreamType, ...],
+        **kwargs: Any,
+    ) -> "FilterNode":
         """
         Apply a custom filter which has multiple outputs to this stream
 
@@ -175,7 +177,13 @@ class FilterableStream(Stream):
         Returns:
             the FilterNode
         """
-        return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=(self, *streams))
+        return FilterNode(
+            name=name,
+            kwargs=tuple(kwargs.items()),
+            inputs=(self, *streams),
+            input_typings=input_typings,
+            output_typings=output_typings,
+        )
 
     def output(self, *streams: "FilterableStream", filename: str, **kwargs: Any) -> "OutputStream":
         """
@@ -218,7 +226,7 @@ class FilterableStream(Stream):
             raise ValueError(f"Unknown stream type: {self.__class__.__name__}")
 
         if isinstance(self.node, FilterNode):
-            if self.node.output_typings and len(self.node.output_typings) > 1:
+            if len(self.node.output_typings) > 1:
                 return f"{context.get_node_label(self.node)}#{self.index}"
             return f"{context.get_node_label(self.node)}"
         raise ValueError(f"Unknown node type: {self.node.__class__.__name__}")
