@@ -1,75 +1,75 @@
 # serializer version: 1
 # name: test_context[all_nodes]
   list([
-    "InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4')",
-    "OutputNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='tmp.mp4')",
-    "FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))",
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))",
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,))",
+    'input1.mp4',
+    'tmp.mp4',
+    'reverse',
+    'trim',
+    'concat',
   ])
 # ---
 # name: test_context[all_streams]
   list([
-    "InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'):None",
-    "FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)):0",
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)):0",
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)):0",
+    'input1.mp4:None',
+    'reverse:0',
+    'trim:0',
+    'concat:0',
   ])
 # ---
 # name: test_context[node_labels]
   dict({
-    "FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))": 's0',
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))": 's1',
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,))": 's2',
-    "InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4')": '0',
-    "OutputNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='tmp.mp4')": 'out',
+    'concat': 's2',
+    'input1.mp4': '0',
+    'reverse': 's0',
+    'tmp.mp4': 'out',
+    'trim': 's1',
   })
 # ---
 # name: test_context[outgoing_nodes]
   dict({
-    "FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)):0": list([
+    'concat:0': list([
       list([
-        "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))",
+        'tmp.mp4',
         0,
       ]),
     ]),
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)):0": list([
+    'input1.mp4:None': list([
       list([
-        "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,))",
+        'reverse',
+        0,
+      ]),
+    ]),
+    'reverse:0': list([
+      list([
+        'trim',
+        0,
+      ]),
+    ]),
+    'trim:0': list([
+      list([
+        'concat',
         0,
       ]),
       list([
-        "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,))",
+        'concat',
         1,
-      ]),
-    ]),
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)):0": list([
-      list([
-        "OutputNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='tmp.mp4')",
-        0,
-      ]),
-    ]),
-    "InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'):None": list([
-      list([
-        "FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))",
-        0,
       ]),
     ]),
   })
 # ---
 # name: test_context[outgoing_streams]
   dict({
-    "FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))": list([
-      "FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)):0",
+    'concat': list([
+      'concat:0',
     ]),
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,))": list([
-      "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)):0",
+    'input1.mp4': list([
+      'input1.mp4:None',
     ]),
-    "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,))": list([
-      "FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0), VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(VideoStream(node=FilterNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='trim', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)):0",
+    'reverse': list([
+      'reverse:0',
     ]),
-    "InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4')": list([
-      "InputNode(args=(), kwargs=(), inputs=(), filename='input1.mp4'):None",
+    'trim': list([
+      'trim:0',
     ]),
   })
 # ---

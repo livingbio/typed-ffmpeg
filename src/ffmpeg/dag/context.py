@@ -15,8 +15,10 @@ T = TypeVar("T")
 def _remove_duplicates(seq: list[T]) -> list[T]:
     """
     Remove duplicates from a list while preserving order.
+
     Args:
         seq: The list to remove duplicates from.
+
     Returns:
         The list with duplicates removed.
     """
@@ -72,7 +74,7 @@ class DAGContext:
     """
 
     @classmethod
-    def build(cls, node_or_stream: Node | Stream) -> DAGContext:
+    def build(cls, node: Node) -> DAGContext:
         """
         create a DAG context based on the given node
 
@@ -82,11 +84,6 @@ class DAGContext:
         Returns:
             A DAG context based on the given node.
         """
-        if isinstance(node_or_stream, Stream):
-            node = node_or_stream.node
-        else:
-            node = node_or_stream
-
         nodes, streams = _collect(node)
 
         return cls(
@@ -199,9 +196,9 @@ class DAGContext:
             return {self.render(k): self.render(v) for k, v in obj.items()}
 
         if isinstance(obj, Node):
-            return repr(obj)
+            return obj.repr()
 
         if isinstance(obj, Stream):
-            return f"{obj.node}:{obj.index}"
+            return f"{obj.node.repr()}:{obj.index}"
 
         return obj
