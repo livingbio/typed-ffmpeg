@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
@@ -16,7 +15,7 @@ if TYPE_CHECKING:
 class HashableBaseModel:
     @cached_property
     def hex(self) -> str:
-        return hashlib.md5(repr(self).encode()).hexdigest()[:6]
+        return hex(abs(hash(self)))[2:]
 
 
 @dataclass(frozen=True, kw_only=True)
