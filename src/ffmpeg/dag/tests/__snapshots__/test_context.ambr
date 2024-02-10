@@ -1,57 +1,57 @@
 # serializer version: 1
 # name: test_context[all_nodes]
   list([
-    'input1.mp4',
-    'tmp.mp4',
-    'reverse',
-    'trim',
-    'concat',
+    'Node(input1.mp4#0)',
+    'Node(tmp.mp4#out)',
+    'Node(reverse#s0)',
+    'Node(trim#s1)',
+    'Node(concat#s2)',
   ])
 # ---
 # name: test_context[all_streams]
   list([
-    'input1.mp4:None',
-    'reverse:0',
-    'trim:0',
-    'concat:0',
+    'Stream(Node(input1.mp4#0)#None)',
+    'Stream(Node(reverse#s0)#0)',
+    'Stream(Node(trim#s1)#0)',
+    'Stream(Node(concat#s2)#0)',
   ])
 # ---
 # name: test_context[node_labels]
   dict({
-    'concat': 's2',
-    'input1.mp4': '0',
-    'reverse': 's0',
-    'tmp.mp4': 'out',
-    'trim': 's1',
+    'Node(concat#s2)': 's2',
+    'Node(input1.mp4#0)': '0',
+    'Node(reverse#s0)': 's0',
+    'Node(tmp.mp4#out)': 'out',
+    'Node(trim#s1)': 's1',
   })
 # ---
 # name: test_context[outgoing_nodes]
   dict({
-    'concat:0': list([
+    'Stream(Node(concat#s2)#0)': list([
       list([
-        'tmp.mp4',
+        'Node(tmp.mp4#out)',
         0,
       ]),
     ]),
-    'input1.mp4:None': list([
+    'Stream(Node(input1.mp4#0)#None)': list([
       list([
-        'reverse',
+        'Node(reverse#s0)',
         0,
       ]),
     ]),
-    'reverse:0': list([
+    'Stream(Node(reverse#s0)#0)': list([
       list([
-        'trim',
+        'Node(trim#s1)',
         0,
       ]),
     ]),
-    'trim:0': list([
+    'Stream(Node(trim#s1)#0)': list([
       list([
-        'concat',
+        'Node(concat#s2)',
         0,
       ]),
       list([
-        'concat',
+        'Node(concat#s2)',
         1,
       ]),
     ]),
@@ -59,17 +59,17 @@
 # ---
 # name: test_context[outgoing_streams]
   dict({
-    'concat': list([
-      'concat:0',
+    'Node(concat#s2)': list([
+      'Stream(Node(concat#s2)#0)',
     ]),
-    'input1.mp4': list([
-      'input1.mp4:None',
+    'Node(input1.mp4#0)': list([
+      'Stream(Node(input1.mp4#0)#None)',
     ]),
-    'reverse': list([
-      'reverse:0',
+    'Node(reverse#s0)': list([
+      'Stream(Node(reverse#s0)#0)',
     ]),
-    'trim': list([
-      'trim:0',
+    'Node(trim#s1)': list([
+      'Stream(Node(trim#s1)#0)',
     ]),
   })
 # ---

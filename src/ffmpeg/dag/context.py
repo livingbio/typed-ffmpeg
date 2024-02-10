@@ -196,9 +196,9 @@ class DAGContext:
             return {self.render(k): self.render(v) for k, v in obj.items()}
 
         if isinstance(obj, Node):
-            return obj.repr()
+            return f"Node({obj.repr()}#{self.node_labels[obj]})"
 
         if isinstance(obj, Stream):
-            return f"{obj.node.repr()}:{obj.index}"
+            return f"Stream({self.render(obj.node)}#{obj.index})"
 
         return obj
