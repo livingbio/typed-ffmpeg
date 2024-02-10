@@ -4,57 +4,12 @@ import hashlib
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
-from typing import Iterable
+from typing import TYPE_CHECKING
 
-from ..utils.typing import override
 from .utils import is_dag
 
-
-class _DAGContext(ABC):
-    """
-    An abstract class context for DAG.
-    """
-
-    @abstractmethod
-    def get_node_label(self, node: Node) -> str:
-        """
-        Get the label of the node.
-
-        Args:
-            node: The node to get the label of.
-
-        Returns:
-            The label of the node.
-        """
-        raise NotImplementedError()
-
-    @abstractmethod
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
-        """
-        Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
-
-        Args:
-            node: The node to get the outgoing streams of.
-
-        Returns:
-            The outgoing streams of the node.
-        """
-        raise NotImplementedError()
-
-
-class DummyDAGContext(_DAGContext):
-    """A dummy DAG context that does not do anything"""
-
-    @override
-    def get_node_label(self, node: Node) -> str:
-        return str(node)
-
-    @override
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
-        return []
-
-
-empty_dag_context = DummyDAGContext()
+if TYPE_CHECKING:
+    from .context import DAGContext
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -127,7 +82,7 @@ class Node(HashableBaseModel, ABC):
             raise ValueError(f"Graph is not a DAG: {output}")
 
     @abstractmethod
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         """
         Get the arguments of the node.
 

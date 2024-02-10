@@ -7,7 +7,7 @@ from typing import Any, TypeVar
 
 from ..utils.typing import override
 from .nodes import FilterNode, InputNode
-from .schema import Node, Stream, _DAGContext
+from .schema import Node, Stream
 
 T = TypeVar("T")
 
@@ -52,7 +52,7 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
 
 
 @dataclass(frozen=True, kw_only=True)
-class DAGContext(_DAGContext):
+class DAGContext:
     """
     A context for a directed acyclic graph (DAG).
     """
@@ -199,9 +199,9 @@ class DAGContext(_DAGContext):
             return {self.render(k): self.render(v) for k, v in obj.items()}
 
         if isinstance(obj, Node):
-            return obj.hex
+            return repr(obj)
 
         if isinstance(obj, Stream):
-            return f"{obj.node.hex}:{obj.index}"
+            return f"{obj.node}:{obj.index}"
 
         return obj

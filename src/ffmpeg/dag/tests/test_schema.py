@@ -8,14 +8,15 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...utils.view import view
-from ..schema import Node, Stream, _DAGContext, empty_dag_context
+from ..context import DAGContext
+from ..schema import Node, Stream
 
 
 @dataclass(frozen=True, kw_only=True, repr=False)
 class SimpleNode(Node):
     name: str
 
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         return []
 
     def __repr__(self) -> str:

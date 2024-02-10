@@ -11,12 +11,13 @@ from ..exceptions import Error
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
-from .schema import Node, Stream, _DAGContext, empty_dag_context
+from .schema import Node, Stream
 
 if TYPE_CHECKING:
     from ..streams.audio import AudioStream
     from ..streams.av import AVStream
     from ..streams.video import VideoStream
+    from .context import DAGContext
 
 
 logger = logging.getLogger(__name__)
@@ -99,7 +100,10 @@ class FilterNode(Node):
                     raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
+        if not context:
+            context = DAGContext.build(self)
+
         incoming_labels = "".join(f"[{k.label(context)}]" for k in self.inputs)
         outputs = context.get_outgoing_streams(self)
 
@@ -187,7 +191,7 @@ class FilterableStream(Stream):
         """
         return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
 
-    def label(self, context: _DAGContext) -> str:
+    def label(self, context: DAGContext = None) -> str:
         """
         Return the label for this stream
 
@@ -200,6 +204,9 @@ class FilterableStream(Stream):
         from ..streams.audio import AudioStream
         from ..streams.av import AVStream
         from ..streams.video import VideoStream
+
+        if not context:
+            context = DAGContext.build(self.node)
 
         if isinstance(self.node, InputNode):
             if isinstance(self, AVStream):
@@ -250,7 +257,7 @@ class GlobalNode(Node):
         return OutputStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         commands = [*self.args]
         for key, value in self.kwargs:
             # Options which do not take arguments are boolean options,
@@ -314,7 +321,7 @@ class InputNode(Node):
         return AVStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
         for key, value in self.kwargs:
             commands += [f"-{key}", str(value)]
@@ -341,7 +348,7 @@ class OutputNode(Node):
         return OutputStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         # !handle mapping
         commands = []
         for input in self.inputs:
@@ -526,6 +533,6 @@ class MergeOutputsNode(Node):
         return OutputStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         # NOTE: the node just used to group outputs, no need to add any commands
         return []
