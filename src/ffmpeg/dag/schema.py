@@ -75,7 +75,7 @@ class Node(HashableBaseModel, ABC):
             output[node.hex] = set(k.node.hex for k in node.inputs)
 
         if not is_dag(output):
-            raise ValueError(f"Graph is not a DAG: {output}")
+            raise ValueError(f"Graph is not a DAG: {output}")  # pragma: no cover
 
     @abstractmethod
     def get_args(self, context: DAGContext = None) -> list[str]:
@@ -88,7 +88,6 @@ class Node(HashableBaseModel, ABC):
         Returns:
             The arguments of the node.
         """
-        raise NotImplementedError()
 
     def repr(self) -> str:
         """
