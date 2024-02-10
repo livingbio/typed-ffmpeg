@@ -18,9 +18,6 @@ class HashableBaseModel:
     def hex(self) -> str:
         return hashlib.md5(repr(self).encode()).hexdigest()[:6]
 
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.hex})"
-
 
 @dataclass(frozen=True, kw_only=True)
 class Stream(HashableBaseModel):
