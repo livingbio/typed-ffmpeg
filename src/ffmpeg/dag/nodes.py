@@ -143,7 +143,7 @@ class FilterableStream(Stream):
         Returns:
             AVStream: the output stream
         """
-        return self.filter_multi_output(*streams, name=name, **kwargs).video(0)
+        return self.filter_multi_output(*streams, name=name, output_typings=(StreamType.video,), **kwargs).video(0)
 
     def afilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "AudioStream":
         """
@@ -157,7 +157,7 @@ class FilterableStream(Stream):
         Returns:
             AVStream: the output stream
         """
-        return self.filter_multi_output(*streams, name=name, **kwargs).audio(0)
+        return self.filter_multi_output(*streams, name=name, output_typings=(StreamType.audio,), **kwargs).audio(0)
 
     def filter_multi_output(
         self,
