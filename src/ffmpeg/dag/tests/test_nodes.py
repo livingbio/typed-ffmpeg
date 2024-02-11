@@ -4,7 +4,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...base import input
 from ...schema import StreamType
-from ..nodes import FilterNode, GlobalNode, InputNode, OutputNode
+from ..nodes import FilterNode, InputNode, OutputNode
 
 
 def test_filter_node(snapshot: SnapshotAssertion) -> None:
@@ -82,4 +82,4 @@ def test_output_node(snapshot: SnapshotAssertion) -> None:
 
 
 def test_global_node(snapshot: SnapshotAssertion) -> None:
-    assert snapshot(extension_class=JSONSnapshotExtension) == GlobalNode(kwargs=(("y", False),)).get_args()
+    assert snapshot == input("tmp.mp4").output(filename="temp").global_args(y=True).node.get_args()
