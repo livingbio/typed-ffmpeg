@@ -131,7 +131,13 @@ class FilterableStream(Stream):
 
     node: "FilterNode | InputNode"
 
-    def vfilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "VideoStream":
+    def vfilter(
+        self,
+        *streams: "FilterableStream",
+        name: str,
+        input_typings: tuple[StreamType, ...] = (StreamType.video,),
+        **kwargs: Any,
+    ) -> "VideoStream":
         """
         Apply a custom video filter which has only one output to this stream
 
@@ -143,9 +149,17 @@ class FilterableStream(Stream):
         Returns:
             AVStream: the output stream
         """
-        return self.filter_multi_output(*streams, name=name, output_typings=(StreamType.video,), **kwargs).video(0)
+        return self.filter_multi_output(
+            *streams, name=name, input_typings=input_typings, output_typings=(StreamType.video,), **kwargs
+        ).video(0)
 
-    def afilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "AudioStream":
+    def afilter(
+        self,
+        *streams: "FilterableStream",
+        name: str,
+        input_typings: tuple[StreamType, ...] = (StreamType.audio,),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
         Apply a custom audio filter which has only one output to this stream
 
@@ -157,7 +171,9 @@ class FilterableStream(Stream):
         Returns:
             AVStream: the output stream
         """
-        return self.filter_multi_output(*streams, name=name, output_typings=(StreamType.audio,), **kwargs).audio(0)
+        return self.filter_multi_output(
+            *streams, name=name, input_typings=input_typings, output_typings=(StreamType.audio,), **kwargs
+        ).audio(0)
 
     def filter_multi_output(
         self,
@@ -296,6 +312,7 @@ class InputNode(Node):
     def repr(self) -> str:
         return os.path.basename(self.filename)
 
+    @property
     def video(self) -> "VideoStream":
         """
         Return the video stream of this node
@@ -307,6 +324,7 @@ class InputNode(Node):
 
         return VideoStream(node=self)
 
+    @property
     def audio(self) -> "AudioStream":
         """
         Return the audio stream of this node

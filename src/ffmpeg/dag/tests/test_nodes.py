@@ -67,11 +67,19 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
     assert snapshot == e
 
 
+def test_custom_filter(snapshot: SnapshotAssertion) -> None:
+    in_file = input("test.mp4")
+
+    assert snapshot == in_file.audio.afilter(name="volume", v=0.5, a=0.3).node.get_args()
+    assert snapshot == in_file.video.vfilter(name="rotate", angle=90, xx=30).node.get_args()
+
+
 def test_input_node(snapshot: SnapshotAssertion) -> None:
-    assert (
-        snapshot(extension_class=JSONSnapshotExtension)
-        == InputNode(filename="test.mp4", kwargs=(("f", "mp4"),)).get_args()
-    )
+    node = InputNode(filename="test.mp4", kwargs=(("f", "mp4"),))
+    assert snapshot(extension_class=JSONSnapshotExtension) == node.get_args()
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == node.audio.areverse().node.get_args()
+    assert snapshot(extension_class=JSONSnapshotExtension) == node.video.reverse().node.get_args()
 
 
 def test_output_node(snapshot: SnapshotAssertion) -> None:
