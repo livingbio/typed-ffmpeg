@@ -1,0 +1,28 @@
+# serializer version: 1
+# name: test_custom_filter
+  list([
+    '[0:a]',
+    'volume=',
+    'v=0.5:a=0.3',
+    '',
+  ])
+# ---
+# name: test_custom_filter.1
+  list([
+    '[0:v]',
+    'rotate=',
+    'angle=90:xx=30',
+    '',
+  ])
+# ---
+# name: test_filter_node_with_inputs.1
+  <ExceptionInfo ValueError('Expected input 0 to have audio component, got VideoStream') tblen=3>
+# ---
+# name: test_filter_node_with_inputs.2
+  <ExceptionInfo ValueError('Expected input 0 to have video component, got AudioStream') tblen=3>
+# ---
+# name: test_global_node
+  list([
+    '-y',
+  ])
+# ---

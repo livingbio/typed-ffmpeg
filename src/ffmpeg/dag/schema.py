@@ -3,57 +3,12 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
-from typing import Iterable
+from typing import TYPE_CHECKING
 
-from ..utils.typing import override
 from .utils import is_dag
 
-
-class _DAGContext(ABC):
-    """
-    An abstract class context for DAG.
-    """
-
-    @abstractmethod
-    def get_node_label(self, node: Node) -> str:
-        """
-        Get the label of the node.
-
-        Args:
-            node: The node to get the label of.
-
-        Returns:
-            The label of the node.
-        """
-        raise NotImplementedError()
-
-    @abstractmethod
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
-        """
-        Extract all node's outgoing streams from the given set of streams, Because a node only know its incoming streams.
-
-        Args:
-            node: The node to get the outgoing streams of.
-
-        Returns:
-            The outgoing streams of the node.
-        """
-        raise NotImplementedError()
-
-
-class DummyDAGContext(_DAGContext):
-    """A dummy DAG context that does not do anything"""
-
-    @override
-    def get_node_label(self, node: Node) -> str:
-        return str(node)
-
-    @override
-    def get_outgoing_streams(self, node: Node) -> Iterable[Stream]:
-        return []
-
-
-empty_dag_context = DummyDAGContext()
+if TYPE_CHECKING:
+    from .context import DAGContext
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -61,9 +16,6 @@ class HashableBaseModel:
     @cached_property
     def hex(self) -> str:
         return hex(abs(hash(self)))[2:]
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.hex})"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -123,10 +75,10 @@ class Node(HashableBaseModel, ABC):
             output[node.hex] = set(k.node.hex for k in node.inputs)
 
         if not is_dag(output):
-            raise ValueError(f"Graph is not a DAG: {output}")
+            raise ValueError(f"Graph is not a DAG: {output}")  # pragma: no cover
 
     @abstractmethod
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         """
         Get the arguments of the node.
 
@@ -136,7 +88,6 @@ class Node(HashableBaseModel, ABC):
         Returns:
             The arguments of the node.
         """
-        raise NotImplementedError()
 
     def repr(self) -> str:
         """
@@ -174,3 +125,13 @@ class Node(HashableBaseModel, ABC):
                 inputs.append(stream)
 
         return replace(self, inputs=tuple(inputs))
+
+    @property
+    def max_depth(self) -> int:
+        """
+        Get the maximum depth of the node.
+
+        Returns:
+            The maximum depth of the node.
+        """
+        return max((i.node.max_depth for i in self.inputs), default=0) + 1

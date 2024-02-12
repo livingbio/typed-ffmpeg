@@ -170,7 +170,7 @@ def afir(
     filter_node = FilterNode(
         name="afir",
         input_typings=tuple([StreamType.audio] * int(nbirs)),
-        output_typings=None,
+        output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
         kwargs=to_tuple(
             (
