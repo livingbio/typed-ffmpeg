@@ -18,7 +18,11 @@ from ..schema import Node
         pytest.param(
             OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=()), OutputNode, id="output-node"
         ),
-        pytest.param(FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080"))), FilterNode, id="filter-node"),
+        pytest.param(
+            FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080"), ("true", True), ("false", False))),
+            FilterNode,
+            id="filter-node",
+        ),
         pytest.param(
             input(filename="tmp.mp4").output(filename="temp").global_args(y=True, no=False, speed=1).node,
             GlobalNode,
@@ -43,9 +47,22 @@ def test_node_prop(node: Node, expected_type: type[Node], snapshot: SnapshotAsse
 
 
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
+    input1 = input("tmp1.mp4")
+    input2 = input("tmp2.mp4")
+
+    f = concat(input1.video, input2.video)
+    stream = f.video(0).output(filename="output.mp4")
+    context = DAGContext.build(stream.node)
+    assert snapshot(extension_class=JSONSnapshotExtension) == f.get_args(context)
+
+
+def test_filter_node_output_typings() -> None:
     f = FilterNode(
         name="scale",
-        kwargs=(("w", "1920"), ("h", "1080")),
+        kwargs=(
+            ("w", "1920"),
+            ("h", "1080"),
+        ),
         output_typings=(StreamType.video, StreamType.audio),
     )
     assert f.video(0).index == 0
