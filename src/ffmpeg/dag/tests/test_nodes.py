@@ -7,14 +7,24 @@ from ...filters import concat
 from ...schema import StreamType
 from ..context import DAGContext
 from ..nodes import FilterNode, InputNode, OutputNode
+from ..schema import Node
 
 
-def test_filter_node(snapshot: SnapshotAssertion) -> None:
-    f = FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080")))
-    assert snapshot == f.repr()
-    assert snapshot == repr(f)
-
-    assert snapshot(extension_class=JSONSnapshotExtension) == f.get_args()
+@pytest.mark.parametrize(
+    "node",
+    [
+        pytest.param(FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080"))), id="filter-node"),
+        pytest.param(InputNode(filename="test.mp4", kwargs=(("f", "mp4"),)), id="input-node"),
+        pytest.param(OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=()), id="output-node"),
+        pytest.param(
+            input("tmp.mp4").output(filename="temp").global_args(y=True, no=False, speed=1).node, id="global-node"
+        ),
+    ],
+)
+def test_node_prop(node: Node, snapshot: SnapshotAssertion) -> None:
+    assert snapshot(name="f.repr") == node.repr()
+    assert snapshot(name="__repr__") == repr(node)
+    assert snapshot(name="get_args") == node.get_args()
 
 
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
@@ -77,31 +87,11 @@ def test_custom_filter(snapshot: SnapshotAssertion) -> None:
     assert snapshot == in_file.video.vfilter(name="rotate", angle=90, xx=30).node.get_args()
 
 
-def test_input_node(snapshot: SnapshotAssertion) -> None:
+def test_input_selector(snapshot: SnapshotAssertion) -> None:
     node = InputNode(filename="test.mp4", kwargs=(("f", "mp4"),))
-    assert snapshot == node.repr()
-    assert snapshot == repr(node)
-
-    assert snapshot(extension_class=JSONSnapshotExtension) == node.get_args()
 
     assert snapshot(extension_class=JSONSnapshotExtension) == node.audio.areverse().node.get_args()
     assert snapshot(extension_class=JSONSnapshotExtension) == node.video.reverse().node.get_args()
-
-
-def test_output_node(snapshot: SnapshotAssertion) -> None:
-    node = OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=())
-    assert snapshot == node.repr()
-    assert snapshot == repr(node)
-
-    assert snapshot(extension_class=JSONSnapshotExtension) == node.get_args()
-
-
-def test_global_node(snapshot: SnapshotAssertion) -> None:
-    node = input("tmp.mp4").output(filename="temp").global_args(y=True, no=False, speed=1).node
-    assert snapshot == node.repr()
-    assert snapshot == repr(node)
-
-    assert snapshot == node.get_args()
 
 
 def test_filterable_stream(snapshot: SnapshotAssertion) -> None:

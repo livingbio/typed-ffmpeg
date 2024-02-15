@@ -15,12 +15,6 @@
     '',
   ])
 # ---
-# name: test_filter_node
-  'scale'
-# ---
-# name: test_filter_node.1
-  "FilterNode(args=(), kwargs=(('w', '1920'), ('h', '1080')), inputs=(), name='scale', input_typings=(), output_typings=())"
-# ---
 # name: test_filter_node_with_inputs.1
   <ExceptionInfo ValueError('Expected input 0 to have audio component, got VideoStream') tblen=3>
 # ---
@@ -33,13 +27,27 @@
 # name: test_filterable_stream.1
   '0'
 # ---
-# name: test_global_node
-  '-y -nono -speed 1'
+# name: test_node_prop[filter-node][__repr__]
+  "FilterNode(args=(), kwargs=(('w', '1920'), ('h', '1080')), inputs=(), name='scale', input_typings=(), output_typings=())"
 # ---
-# name: test_global_node.1
+# name: test_node_prop[filter-node][f.repr]
+  'scale'
+# ---
+# name: test_node_prop[filter-node][get_args]
+  list([
+    '',
+    'scale=',
+    'w=1920:h=1080',
+    '',
+  ])
+# ---
+# name: test_node_prop[global-node][__repr__]
   "GlobalNode(args=(), kwargs=(('y', True), ('no', False), ('speed', 1)), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
 # ---
-# name: test_global_node.2
+# name: test_node_prop[global-node][f.repr]
+  '-y -nono -speed 1'
+# ---
+# name: test_node_prop[global-node][get_args]
   list([
     '-y',
     '-nono',
@@ -47,15 +55,30 @@
     '1',
   ])
 # ---
-# name: test_input_node
-  'test.mp4'
-# ---
-# name: test_input_node.1
+# name: test_node_prop[input-node][__repr__]
   "InputNode(args=(), kwargs=(('f', 'mp4'),), inputs=(), filename='test.mp4')"
 # ---
-# name: test_output_node
+# name: test_node_prop[input-node][f.repr]
   'test.mp4'
 # ---
-# name: test_output_node.1
+# name: test_node_prop[input-node][get_args]
+  list([
+    '-f',
+    'mp4',
+    '-i',
+    'test.mp4',
+  ])
+# ---
+# name: test_node_prop[output-node][__repr__]
   "OutputNode(args=(), kwargs=(('bufsize', '64k'),), inputs=(), filename='test.mp4')"
+# ---
+# name: test_node_prop[output-node][f.repr]
+  'test.mp4'
+# ---
+# name: test_node_prop[output-node][get_args]
+  list([
+    '-bufsize',
+    '64k',
+    'test.mp4',
+  ])
 # ---
