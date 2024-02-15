@@ -6,25 +6,38 @@ from ...base import input
 from ...filters import concat
 from ...schema import StreamType
 from ..context import DAGContext
-from ..nodes import FilterNode, InputNode, OutputNode
+from ..nodes import FilterNode, GlobalNode, InputNode, MergeOutputsNode, OutputNode
 from ..schema import Node
 
 
 @pytest.mark.parametrize(
-    "node",
+    "node, expected_type",
     [
-        pytest.param(FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080"))), id="filter-node"),
-        pytest.param(InputNode(filename="test.mp4", kwargs=(("f", "mp4"),)), id="input-node"),
-        pytest.param(OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=()), id="output-node"),
+        pytest.param(InputNode(filename="test.mp4", kwargs=(("f", "mp4"),)), InputNode, id="input-node"),
         pytest.param(
-            input("tmp.mp4").output(filename="temp").global_args(y=True, no=False, speed=1).node, id="global-node"
+            OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=()), OutputNode, id="output-node"
+        ),
+        pytest.param(FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080"))), FilterNode, id="filter-node"),
+        pytest.param(
+            input(filename="tmp.mp4").output(filename="temp").global_args(y=True, no=False, speed=1).node,
+            GlobalNode,
+            id="global-node",
+        ),
+        pytest.param(
+            input(filename="tmp1.mp4")
+            .output(filename="out1.mp4")
+            .merge_outputs(input(filename="tmp2.mp4").output(filename="out2.mp4"))
+            .node,
+            MergeOutputsNode,
+            id="merge-output-node",
         ),
     ],
 )
-def test_node_prop(node: Node, snapshot: SnapshotAssertion) -> None:
+def test_node_prop(node: Node, expected_type: type[Node], snapshot: SnapshotAssertion) -> None:
     assert snapshot(name="f.repr") == node.repr()
     assert snapshot(name="__repr__") == repr(node)
     assert snapshot(name="get_args") == node.get_args()
+    assert type(node) == expected_type
 
 
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
@@ -58,6 +71,9 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
         inputs=(in_file.video, in_file.audio),
         input_typings=(StreamType.video, StreamType.audio),
     )
+
+    with pytest.raises(ValueError) as e:
+        FilterNode(name="scale", inputs=(in_file.video,), input_typings=(StreamType.audio, StreamType.video))
 
     with pytest.raises(ValueError) as e:
         FilterNode(

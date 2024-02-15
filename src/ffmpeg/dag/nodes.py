@@ -406,6 +406,9 @@ class OutputStream(Stream):
         """
         return GlobalNode(inputs=(self,), args=args, kwargs=tuple(kwargs.items())).stream()
 
+    def merge_outputs(self, *streams: OutputStream) -> OutputStream:
+        return MergeOutputsNode(inputs=streams).stream()
+
     def overwrite_output(self) -> "OutputStream":
         """
         Overwrite output files without asking (ffmpeg `-y` option)
