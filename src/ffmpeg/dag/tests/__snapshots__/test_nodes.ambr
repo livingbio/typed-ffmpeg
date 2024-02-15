@@ -15,14 +15,47 @@
     '',
   ])
 # ---
+# name: test_filter_node
+  'scale'
+# ---
+# name: test_filter_node.1
+  "FilterNode(args=(), kwargs=(('w', '1920'), ('h', '1080')), inputs=(), name='scale', input_typings=(), output_typings=())"
+# ---
 # name: test_filter_node_with_inputs.1
   <ExceptionInfo ValueError('Expected input 0 to have audio component, got VideoStream') tblen=3>
 # ---
 # name: test_filter_node_with_inputs.2
   <ExceptionInfo ValueError('Expected input 0 to have video component, got AudioStream') tblen=3>
 # ---
+# name: test_filterable_stream
+  '1'
+# ---
+# name: test_filterable_stream.1
+  '0'
+# ---
 # name: test_global_node
+  '-y -nono -speed 1'
+# ---
+# name: test_global_node.1
+  "GlobalNode(args=(), kwargs=(('y', True), ('no', False), ('speed', 1)), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
+# ---
+# name: test_global_node.2
   list([
     '-y',
+    '-nono',
+    '-speed',
+    '1',
   ])
+# ---
+# name: test_input_node
+  'test.mp4'
+# ---
+# name: test_input_node.1
+  "InputNode(args=(), kwargs=(('f', 'mp4'),), inputs=(), filename='test.mp4')"
+# ---
+# name: test_output_node
+  'test.mp4'
+# ---
+# name: test_output_node.1
+  "OutputNode(args=(), kwargs=(('bufsize', '64k'),), inputs=(), filename='test.mp4')"
 # ---

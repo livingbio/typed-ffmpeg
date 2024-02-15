@@ -43,6 +43,11 @@ class Stream(HashableBaseModel):
         See Also: [Stream specifiers](https://ffmpeg.org/ffmpeg.html#Stream-specifiers-1) `stream_index`
     """
 
+    def view(self) -> str:
+        from ..utils.view import view
+
+        return view(self.node)
+
 
 @dataclass(frozen=True, kw_only=True)
 class Node(HashableBaseModel, ABC):

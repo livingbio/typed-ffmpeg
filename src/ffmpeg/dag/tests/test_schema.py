@@ -5,9 +5,9 @@ from typing import Any, Callable
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.image import PNGImageSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ...utils.view import view
 from ..context import DAGContext
 from ..schema import Node, Stream
 
@@ -42,7 +42,9 @@ def drawer(request: pytest.FixtureRequest) -> Callable[[str, Node], Path]:
     folder.mkdir(parents=True, exist_ok=True)
 
     def draw(name: str, node: Node) -> Path:
-        graph_path = view(node)
+        stream = Stream(node=node)
+        graph_path = stream.view()
+
         os.rename(graph_path, folder / f"{name}.png")
         return folder / f"{name}.png"
 
@@ -130,3 +132,15 @@ def test_replace(
         assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=JSONSnapshotExtension) == asdict(
             new_g
         )
+
+
+def test_stream_view(snapshot: SnapshotAssertion) -> None:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=b), Stream(node=a)))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
+    stream = Stream(node=d)
+    png = stream.view()
+
+    with open(png, "rb") as ifile:
+        snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()

@@ -3,15 +3,18 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...base import input
+from ...filters import concat
 from ...schema import StreamType
+from ..context import DAGContext
 from ..nodes import FilterNode, InputNode, OutputNode
 
 
 def test_filter_node(snapshot: SnapshotAssertion) -> None:
-    assert (
-        snapshot(extension_class=JSONSnapshotExtension)
-        == FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080"))).get_args()
-    )
+    f = FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080")))
+    assert snapshot == f.repr()
+    assert snapshot == repr(f)
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == f.get_args()
 
 
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
@@ -76,6 +79,9 @@ def test_custom_filter(snapshot: SnapshotAssertion) -> None:
 
 def test_input_node(snapshot: SnapshotAssertion) -> None:
     node = InputNode(filename="test.mp4", kwargs=(("f", "mp4"),))
+    assert snapshot == node.repr()
+    assert snapshot == repr(node)
+
     assert snapshot(extension_class=JSONSnapshotExtension) == node.get_args()
 
     assert snapshot(extension_class=JSONSnapshotExtension) == node.audio.areverse().node.get_args()
@@ -83,11 +89,26 @@ def test_input_node(snapshot: SnapshotAssertion) -> None:
 
 
 def test_output_node(snapshot: SnapshotAssertion) -> None:
-    assert (
-        snapshot(extension_class=JSONSnapshotExtension)
-        == OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=()).get_args()
-    )
+    node = OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=())
+    assert snapshot == node.repr()
+    assert snapshot == repr(node)
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == node.get_args()
 
 
 def test_global_node(snapshot: SnapshotAssertion) -> None:
-    assert snapshot == input("tmp.mp4").output(filename="temp").global_args(y=True).node.get_args()
+    node = input("tmp.mp4").output(filename="temp").global_args(y=True, no=False, speed=1).node
+    assert snapshot == node.repr()
+    assert snapshot == repr(node)
+
+    assert snapshot == node.get_args()
+
+
+def test_filterable_stream(snapshot: SnapshotAssertion) -> None:
+    input1 = input("tmp1.mp4")
+    input2 = input("tmp2.mp4")
+
+    out = concat(input1, input2).video(0).output(filename="output.mp4")
+
+    assert snapshot == input2.label(DAGContext.build(out.node))
+    assert snapshot == input2.label()
