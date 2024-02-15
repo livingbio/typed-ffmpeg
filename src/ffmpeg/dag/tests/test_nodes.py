@@ -137,3 +137,5 @@ def test_filterable_stream(snapshot: SnapshotAssertion) -> None:
 
     assert snapshot == input2.label(DAGContext.build(out.node))
     assert snapshot == input2.label()
+
+    assert snapshot == input1.split().video(0).label()
