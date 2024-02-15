@@ -69,6 +69,16 @@
     'test.mp4',
   ])
 # ---
+# name: test_node_prop[merge-output-node][__repr__]
+  "MergeOutputsNode(args=(), kwargs=(), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None),))"
+# ---
+# name: test_node_prop[merge-output-node][f.repr]
+  'Merge'
+# ---
+# name: test_node_prop[merge-output-node][get_args]
+  list([
+  ])
+# ---
 # name: test_node_prop[output-node][__repr__]
   "OutputNode(args=(), kwargs=(('bufsize', '64k'),), inputs=(), filename='test.mp4')"
 # ---

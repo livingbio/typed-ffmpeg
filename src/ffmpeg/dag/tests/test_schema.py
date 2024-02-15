@@ -10,6 +10,22 @@ from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..context import DAGContext
 from ..schema import Node, Stream
+from typing import Optional
+
+class DAGSnapshotExtenstion(PNGImageSnapshotExtension):
+    def serialize(
+        self,
+        data: "SerializableData",
+        *,
+        exclude: Optional["PropertyFilter"] = None,
+        include: Optional["PropertyFilter"] = None,
+        matcher: Optional["PropertyMatcher"] = None,
+    ) -> "SerializedData":
+        stream = Stream(node=data)
+        graph_path = stream.view()
+
+        with open(graph_path, "rb") as ifile:
+            return super().serialize(ifile.read())
 
 
 @dataclass(frozen=True, kw_only=True, repr=False)
@@ -23,35 +39,8 @@ class SimpleNode(Node):
         return self.name
 
 
-@pytest.fixture(scope="function")
-def drawer(request: pytest.FixtureRequest) -> Callable[[str, Node], Path]:
-    # Get the test file path and function name
-    file_path = request.module.__file__
-    function_name = request.node.name
 
-    # Get the parameter id (if it exists)
-    param_id = getattr(request, "param", None)
-    if hasattr(param_id, "id"):
-        param_id = param_id.id  # type: ignore
-
-    # Construct the folder name based on test file location, function name, and parameter value or id
-    if param_id:
-        function_name = f"{function_name}[{param_id}]"
-
-    folder = Path(file_path).parent / f"graph/{function_name}/"
-    folder.mkdir(parents=True, exist_ok=True)
-
-    def draw(name: str, node: Node) -> Path:
-        stream = Stream(node=node)
-        graph_path = stream.view()
-
-        os.rename(graph_path, folder / f"{name}.png")
-        return folder / f"{name}.png"
-
-    return draw
-
-
-def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], Path]) -> None:
+def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], None]) -> None:
     # Linear Chain
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
@@ -59,7 +48,7 @@ def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], Path]) -
     d = SimpleNode(name="D", inputs=(Stream(node=c),))
 
     assert snapshot(extension_class=JSONSnapshotExtension) == asdict(d)
-    drawer("org", d)
+    assert snapshot(extension_class=DAGSnapshotExtenstion, name="org") == d
 
     # # Self-loop
     # a = SimpleNode(name="A")
