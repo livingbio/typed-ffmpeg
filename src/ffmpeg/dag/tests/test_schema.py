@@ -1,4 +1,3 @@
-import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Callable
@@ -8,24 +7,9 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.image import PNGImageSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
 from ..schema import Node, Stream
-from typing import Optional
-
-class DAGSnapshotExtenstion(PNGImageSnapshotExtension):
-    def serialize(
-        self,
-        data: "SerializableData",
-        *,
-        exclude: Optional["PropertyFilter"] = None,
-        include: Optional["PropertyFilter"] = None,
-        matcher: Optional["PropertyMatcher"] = None,
-    ) -> "SerializedData":
-        stream = Stream(node=data)
-        graph_path = stream.view()
-
-        with open(graph_path, "rb") as ifile:
-            return super().serialize(ifile.read())
 
 
 @dataclass(frozen=True, kw_only=True, repr=False)
@@ -37,7 +21,6 @@ class SimpleNode(Node):
 
     def __repr__(self) -> str:
         return self.name
-
 
 
 def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], None]) -> None:

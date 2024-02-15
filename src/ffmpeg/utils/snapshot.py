@@ -1,8 +1,9 @@
 from typing import Optional
 
 from syrupy.extensions.image import PNGImageSnapshotExtension
+from syrupy.types import PropertyFilter, PropertyMatcher, SerializableData, SerializedData
 
-from ..schema import Stream
+from ..dag.schema import Stream
 
 
 class DAGSnapshotExtenstion(PNGImageSnapshotExtension):
