@@ -5,6 +5,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ...base import input
 from ...filters import concat
 from ...schema import StreamType
+from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
 from ..nodes import FilterNode, GlobalNode, InputNode, MergeOutputsNode, OutputNode
 from ..schema import Node
@@ -38,6 +39,7 @@ def test_node_prop(node: Node, expected_type: type[Node], snapshot: SnapshotAsse
     assert snapshot(name="__repr__") == repr(node)
     assert snapshot(name="get_args") == node.get_args()
     assert type(node) == expected_type
+    assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == node
 
 
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:

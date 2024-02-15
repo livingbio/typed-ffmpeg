@@ -1,6 +1,5 @@
 from dataclasses import asdict, dataclass
-from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
@@ -23,7 +22,7 @@ class SimpleNode(Node):
         return self.name
 
 
-def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], None]) -> None:
+def test_dag(snapshot: SnapshotAssertion) -> None:
     # Linear Chain
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
@@ -94,13 +93,12 @@ def test_replace(
     graph: Node,
     replace_pattern: list[tuple[Node, Node]],
     snapshot: SnapshotAssertion,
-    drawer: Callable[[str, Node], Path],
 ) -> None:
-    drawer("org", graph)
+    assert snapshot(name="org", extension_class=DAGSnapshotExtenstion) == graph
 
     for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
-        drawer(f"replace {node} -> {replaced_node}", new_g)
+        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=DAGSnapshotExtenstion) == new_g
         assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=JSONSnapshotExtension) == asdict(
             new_g
         )
