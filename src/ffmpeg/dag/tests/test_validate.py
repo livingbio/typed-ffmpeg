@@ -8,7 +8,7 @@ from ...filters import concat
 from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
 from ..schema import Stream
-from ..validate import remove_split
+from ..validate import add_split, remove_split
 
 
 def not_utilize_split() -> Any:
@@ -36,7 +36,28 @@ def reduntant_split_duplicate() -> Any:
     return pytest.param(graph, id="reduntant-split-duplicate")
 
 
-@pytest.mark.parametrize("graph", [reduntant_split_duplicate(), redundant_split_outputs_1(), not_utilize_split()])
+def reuse_input() -> Any:
+    input_stream = input("input.mp4")
+    graph = concat(input_stream.video, input_stream.video).video(0).output(filename="tmp.mp4")
+    return pytest.param(graph, id="reuse-input")
+
+
+def complex_stream() -> Any:
+    input1 = input("input1.mp4")
+    input2 = input("input2.mp4")
+
+    v = input1.video.reverse()
+    a = input2.audio.areverse()
+
+    f = concat(v, a, v, a, v=1, a=1)
+    graph = f.video(0).output(f.audio(0), filename="tmp.mp4")
+    return pytest.param(graph, id="complex-stream")
+
+
+@pytest.mark.parametrize(
+    "graph",
+    [reduntant_split_duplicate(), redundant_split_outputs_1(), not_utilize_split(), reuse_input(), complex_stream()],
+)
 def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
     context = DAGContext.build(graph.node)
     assert snapshot(name="all_nodes") == context.all_nodes
@@ -47,7 +68,10 @@ def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
 
     assert snapshot(name="before", extension_class=DAGSnapshotExtenstion) == graph.node
     removed_split = remove_split(graph)
-    assert snapshot(name="after", extension_class=DAGSnapshotExtenstion) == removed_split[0].node
+    assert snapshot(name="remove-split", extension_class=DAGSnapshotExtenstion) == removed_split[0].node
+
+    added_split = add_split(removed_split[0])
+    assert snapshot(name="add-split", extension_class=DAGSnapshotExtenstion) == added_split[0].node
 
 
 class Validator(Protocol):
