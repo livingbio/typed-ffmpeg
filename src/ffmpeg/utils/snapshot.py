@@ -40,4 +40,5 @@ class DAGSnapshotExtenstion(PNGImageSnapshotExtension):
         snapshot_hash = imagehash.average_hash(snapshot_image)
         serialized_hash = imagehash.average_hash(serialized_image)
 
+        print(f"snapshot_hash: {snapshot_hash} serialized_hash: {serialized_hash}")
         return snapshot_hash == serialized_hash
