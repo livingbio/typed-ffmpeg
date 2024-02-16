@@ -2,7 +2,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..base import input, merge_outputs, output
+from ..base import input, merge_outputs, output, vfilter
 from ..filters import concat, join
 from ..streams.video import VideoStream
 
@@ -149,3 +149,11 @@ def test_concat_dumuxer(snapshot: SnapshotAssertion) -> None:
     )
 
     assert snapshot(extension_class=JSONSnapshotExtension) == (stream.output(filename="output.mp4").compile())
+
+
+def test_customize_vfilter(snapshot: SnapshotAssertion) -> None:
+    in_file = input("input.mp4")
+
+    gltransition = vfilter(in_file, name="gltransition", duration=1, offset=0.5, direction="left")
+
+    assert snapshot(extension_class=JSONSnapshotExtension) == gltransition.output(filename="output.mp4").compile()
