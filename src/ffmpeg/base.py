@@ -73,7 +73,13 @@ def vfilter(
     Note:
         This function is for custom filter which is not implemented in typed-ffmpeg
     """
-    return FilterNode(name=name, inputs=streams, input_typings=input_typings, kwargs=tuple(kwargs.items())).video(0)
+    return FilterNode(
+        name=name,
+        inputs=streams,
+        output_typings=(StreamType.video,),
+        input_typings=input_typings,
+        kwargs=tuple(kwargs.items()),
+    ).video(0)
 
 
 def afilter(
@@ -93,10 +99,22 @@ def afilter(
     Note:
         This function is for custom filter which is not implemented in typed-ffmpeg
     """
-    return FilterNode(name=name, inputs=streams, input_typings=input_typings, kwargs=tuple(kwargs.items())).audio(0)
+    return FilterNode(
+        name=name,
+        inputs=streams,
+        output_typings=(StreamType.audio,),
+        input_typings=input_typings,
+        kwargs=tuple(kwargs.items()),
+    ).audio(0)
 
 
-def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) -> FilterNode:
+def filter_multi_output(
+    *streams: FilterableStream,
+    name: str,
+    input_typings: tuple[StreamType, ...] = (),
+    output_tyings: tuple[StreamType, ...] = (),
+    **kwargs: Any
+) -> FilterNode:
     """
     Apply a custom filter which has multiple outputs to this stream
 
@@ -111,4 +129,10 @@ def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) ->
     Note:
         This function is for custom filter which is not implemented in typed-ffmpeg
     """
-    return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=streams)
+    return FilterNode(
+        name=name,
+        kwargs=tuple(kwargs.items()),
+        inputs=streams,
+        input_typings=input_typings,
+        output_typings=output_tyings,
+    )
