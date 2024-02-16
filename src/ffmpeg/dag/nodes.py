@@ -12,10 +12,11 @@ from ..exceptions import Error
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
-from .schema import Node, Stream, _DAGContext, empty_dag_context
+from .schema import Node, Stream
 
 if TYPE_CHECKING:
     from ..streams import AudioStream, AVStream, VideoStream
+    from .context import DAGContext
 
 
 logger = logging.getLogger(__name__)
@@ -28,9 +29,9 @@ class FilterNode(Node):
     """
 
     name: str
-    inputs: tuple[FilterableStream, ...]
-    input_typings: tuple[StreamType, ...] | None = None
-    output_typings: tuple[StreamType, ...] | None = None
+    inputs: tuple[FilterableStream, ...] = ()
+    input_typings: tuple[StreamType, ...] = ()
+    output_typings: tuple[StreamType, ...] = ()
 
     @override
     def repr(self) -> str:
@@ -48,11 +49,9 @@ class FilterNode(Node):
         """
         from ..streams import VideoStream
 
-        assert self.output_typings is not None, "Output typings must be specified to use `video`"
         video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
-        assert (
-            len(video_outputs) > index
-        ), f"Specified index {index} is out of range for video outputs {len(video_outputs)}"
+        if not len(video_outputs) > index:
+            raise ValueError(f"Specified index {index} is out of range for video outputs {len(video_outputs)}")
         return VideoStream(node=self, index=video_outputs[index])
 
     def audio(self, index: int) -> "AudioStream":
@@ -67,11 +66,10 @@ class FilterNode(Node):
         """
         from ..streams import AudioStream
 
-        assert self.output_typings is not None, "Output typings must be specified to use `audio`"
         audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
-        assert (
-            len(audio_outputs) > index
-        ), f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}"
+        if not len(audio_outputs) > index:
+            raise ValueError(f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}")
+
         return AudioStream(node=self, index=audio_outputs[index])
 
     def __post_init__(self) -> None:
@@ -79,9 +77,6 @@ class FilterNode(Node):
         from ..streams.video import VideoFilter
 
         super().__post_init__()
-
-        if self.input_typings is None:
-            return
 
         if len(self.inputs) != len(self.input_typings):
             raise ValueError(f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}")
@@ -98,7 +93,12 @@ class FilterNode(Node):
                     raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
+        from .context import DAGContext
+
+        if not context:
+            context = DAGContext.build(self)
+
         incoming_labels = "".join(f"[{k.label(context)}]" for k in self.inputs)
         outputs = context.get_outgoing_streams(self)
 
@@ -128,7 +128,13 @@ class FilterableStream(Stream, ABC):
     A stream that can be used as input to a filter
     """
 
-    def vfilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "VideoStream":
+    def vfilter(
+        self,
+        *streams: "FilterableStream",
+        name: str,
+        input_typings: tuple[StreamType, ...] = (StreamType.video,),
+        **kwargs: Any,
+    ) -> "VideoStream":
         """
         Apply a custom video filter which has only one output to this stream
 
@@ -140,9 +146,17 @@ class FilterableStream(Stream, ABC):
         Returns:
             AVStream: the output stream
         """
-        return self.filter_multi_output(*streams, name=name, **kwargs).video(0)
+        return self.filter_multi_output(
+            *streams, name=name, input_typings=input_typings, output_typings=(StreamType.video,), **kwargs
+        ).video(0)
 
-    def afilter(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "AudioStream":
+    def afilter(
+        self,
+        *streams: "FilterableStream",
+        name: str,
+        input_typings: tuple[StreamType, ...] = (StreamType.audio,),
+        **kwargs: Any,
+    ) -> "AudioStream":
         """
         Apply a custom audio filter which has only one output to this stream
 
@@ -154,9 +168,18 @@ class FilterableStream(Stream, ABC):
         Returns:
             AVStream: the output stream
         """
-        return self.filter_multi_output(*streams, name=name, **kwargs).audio(0)
+        return self.filter_multi_output(
+            *streams, name=name, input_typings=input_typings, output_typings=(StreamType.audio,), **kwargs
+        ).audio(0)
 
-    def filter_multi_output(self, *streams: "FilterableStream", name: str, **kwargs: Any) -> "FilterNode":
+    def filter_multi_output(
+        self,
+        *streams: "FilterableStream",
+        name: str,
+        input_typings: tuple[StreamType, ...] = (),
+        output_typings: tuple[StreamType, ...] = (),
+        **kwargs: Any,
+    ) -> "FilterNode":
         """
         Apply a custom filter which has multiple outputs to this stream
 
@@ -168,7 +191,13 @@ class FilterableStream(Stream, ABC):
         Returns:
             the FilterNode
         """
-        return FilterNode(name=name, kwargs=tuple(kwargs.items()), inputs=(self, *streams))
+        return FilterNode(
+            name=name,
+            kwargs=tuple(kwargs.items()),
+            inputs=(self, *streams),
+            input_typings=input_typings,
+            output_typings=output_typings,
+        )
 
     def output(self, *streams: "FilterableStream", filename: str, **kwargs: Any) -> "OutputStream":
         """
@@ -185,7 +214,7 @@ class FilterableStream(Stream, ABC):
         return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
 
     @abstractmethod
-    def label(self, context: _DAGContext) -> str:
+    def label(self, context: DAGContext = None) -> str:
         """
         Return the label for this stream
 
@@ -196,11 +225,6 @@ class FilterableStream(Stream, ABC):
             the label for this stream
         """
         raise NotImplementedError()
-
-    def view(self) -> str:
-        from ..utils.view import view
-
-        return view(self.node)
 
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):
@@ -231,7 +255,7 @@ class GlobalNode(Node):
         return OutputStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         commands = [*self.args]
         for key, value in self.kwargs:
             # Options which do not take arguments are boolean options,
@@ -261,6 +285,7 @@ class InputNode(Node):
     def repr(self) -> str:
         return os.path.basename(self.filename)
 
+    @property
     def video(self) -> "VideoStream":
         """
         Return the video stream of this node
@@ -272,6 +297,7 @@ class InputNode(Node):
 
         return VideoStream(node=self)
 
+    @property
     def audio(self) -> "AudioStream":
         """
         Return the audio stream of this node
@@ -295,7 +321,7 @@ class InputNode(Node):
         return AVStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
         for key, value in self.kwargs:
             commands += [f"-{key}", str(value)]
@@ -322,7 +348,7 @@ class OutputNode(Node):
         return OutputStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         # !handle mapping
         commands = []
         for input in self.inputs:
@@ -356,6 +382,9 @@ class OutputStream(Stream):
             the output stream
         """
         return GlobalNode(inputs=(self,), args=args, kwargs=tuple(kwargs.items())).stream()
+
+    def merge_outputs(self, *streams: OutputStream) -> OutputStream:
+        return MergeOutputsNode(inputs=streams).stream()
 
     def overwrite_output(self) -> "OutputStream":
         """
@@ -507,6 +536,6 @@ class MergeOutputsNode(Node):
         return OutputStream(node=self)
 
     @override
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         # NOTE: the node just used to group outputs, no need to add any commands
         return []

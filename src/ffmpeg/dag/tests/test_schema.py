@@ -1,16 +1,21 @@
 from dataclasses import asdict, dataclass
+from typing import Any
 
+import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.image import PNGImageSnapshotExtension, SVGImageSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..schema import Node, Stream, _DAGContext, empty_dag_context
+from ...utils.snapshot import DAGSnapshotExtenstion
+from ..context import DAGContext
+from ..schema import Node, Stream
 
 
 @dataclass(frozen=True, kw_only=True, repr=False)
 class SimpleNode(Node):
     name: str
 
-    def get_args(self, context: _DAGContext = empty_dag_context) -> list[str]:
+    def get_args(self, context: DAGContext = None) -> list[str]:
         return []
 
     def __repr__(self) -> str:
@@ -25,6 +30,7 @@ def test_dag(snapshot: SnapshotAssertion) -> None:
     d = SimpleNode(name="D", inputs=(Stream(node=c),))
 
     assert snapshot(extension_class=JSONSnapshotExtension) == asdict(d)
+    assert snapshot(extension_class=DAGSnapshotExtenstion, name="org") == d
 
     # # Self-loop
     # a = SimpleNode(name="A")
@@ -36,7 +42,7 @@ def test_dag(snapshot: SnapshotAssertion) -> None:
     #     b.streams = [Stream(node=b), Stream(node=a)]
 
 
-def test_replace_linear(snapshot: SnapshotAssertion) -> None:
+def linear() -> Any:
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
     c = SimpleNode(name="C", inputs=(Stream(node=b),))
@@ -44,13 +50,10 @@ def test_replace_linear(snapshot: SnapshotAssertion) -> None:
 
     e = SimpleNode(name="E", inputs=(Stream(node=a),))
 
-    assert snapshot(name="replace a", extension_class=JSONSnapshotExtension) == asdict(d.replace(a, e))
-    assert snapshot(name="replace b", extension_class=JSONSnapshotExtension) == asdict(d.replace(b, e))
-    assert snapshot(name="replace c", extension_class=JSONSnapshotExtension) == asdict(d.replace(c, e))
-    assert snapshot(name="replace d", extension_class=JSONSnapshotExtension) == asdict(d.replace(d, e))
+    return pytest.param(d, [(a, e), (b, e), (c, e), (d, e)], id="linear")
 
 
-def test_replace_loop(snapshot: SnapshotAssertion) -> None:
+def simple_loop() -> Any:
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
     c = SimpleNode(name="C", inputs=(Stream(node=a),))
@@ -58,10 +61,67 @@ def test_replace_loop(snapshot: SnapshotAssertion) -> None:
 
     e = SimpleNode(name="E", inputs=(Stream(node=a),))
 
-    assert snapshot(name="replace a", extension_class=JSONSnapshotExtension) == asdict(d.replace(a, e))
+    return pytest.param(d, [(a, e), (b, e), (c, e), (d, e)], id="simple_loop")
 
-    assert snapshot(name="replace b", extension_class=JSONSnapshotExtension) == asdict(d.replace(b, e))
 
-    assert snapshot(name="replace c", extension_class=JSONSnapshotExtension) == asdict(d.replace(c, e))
+def multi_loop() -> Any:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=a), Stream(node=b)))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
 
-    assert snapshot(name="replace d", extension_class=JSONSnapshotExtension) == asdict(d.replace(d, e))
+    e = SimpleNode(name="E", inputs=(Stream(node=a),))
+
+    return pytest.param(d, [(a, e), (b, e), (c, e), (d, e)], id="multi_loop")
+
+
+def update_node() -> Any:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=b), Stream(node=a)))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
+
+    b_new = SimpleNode(name="B#", inputs=(Stream(node=a),))
+    c_new = SimpleNode(name="C#", inputs=(Stream(node=b), Stream(node=a)))
+    c_new_new = SimpleNode(name="C##", inputs=(Stream(node=b_new), Stream(node=a)))
+
+    return pytest.param(d, [(b, b_new), (c, c_new), (c, c_new_new)], id="update_node")
+
+
+@pytest.mark.parametrize("graph, replace_pattern", [linear(), simple_loop(), multi_loop(), update_node()])
+def test_replace(
+    graph: Node,
+    replace_pattern: list[tuple[Node, Node]],
+    snapshot: SnapshotAssertion,
+) -> None:
+    assert snapshot(name="org", extension_class=DAGSnapshotExtenstion) == graph
+
+    for node, replaced_node in replace_pattern:
+        new_g = graph.replace(node, replaced_node)
+        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=DAGSnapshotExtenstion) == new_g
+        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=JSONSnapshotExtension) == asdict(
+            new_g
+        )
+
+
+@pytest.mark.skip("graphviz's result is not deterministic")
+def test_stream_view(snapshot: SnapshotAssertion) -> None:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=b), Stream(node=a)))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
+    stream = Stream(node=d)
+    png = stream.view()
+
+    with open(png, "rb") as ifile:
+        assert snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
+
+    svg = stream.view(format="svg")
+
+    with open(svg, "r") as ifile:
+        assert snapshot(extension_class=SVGImageSnapshotExtension) == ifile.read()
+
+    dot = stream.view(format="dot")
+
+    with open(dot, "r") as ifile:
+        assert snapshot() == ifile.read()

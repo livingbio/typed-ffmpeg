@@ -1,0 +1,97 @@
+# serializer version: 1
+# name: test_custom_filter
+  list([
+    '[0:a]',
+    'volume=',
+    'v=0.5:a=0.3',
+    '',
+  ])
+# ---
+# name: test_custom_filter.1
+  list([
+    '[0:v]',
+    'rotate=',
+    'angle=90:xx=30',
+    '',
+  ])
+# ---
+# name: test_filter_node_with_inputs.1
+  <ExceptionInfo ValueError('Expected input 0 to have audio component, got VideoStream') tblen=3>
+# ---
+# name: test_filter_node_with_inputs.2
+  <ExceptionInfo ValueError('Expected input 0 to have video component, got AudioStream') tblen=3>
+# ---
+# name: test_filterable_stream
+  '1'
+# ---
+# name: test_filterable_stream.1
+  '0'
+# ---
+# name: test_filterable_stream.2
+  's0#0'
+# ---
+# name: test_node_prop[filter-node][__repr__]
+  "FilterNode(args=(), kwargs=(('w', '1920'), ('h', '1080'), ('true', True), ('false', False)), inputs=(), name='scale', input_typings=(), output_typings=())"
+# ---
+# name: test_node_prop[filter-node][f.repr]
+  'scale'
+# ---
+# name: test_node_prop[filter-node][get_args]
+  list([
+    '',
+    'scale=',
+    'w=1920:h=1080:true=1:false=0',
+    '',
+  ])
+# ---
+# name: test_node_prop[global-node][__repr__]
+  "GlobalNode(args=(), kwargs=(('y', True), ('no', False), ('speed', 1)), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
+# ---
+# name: test_node_prop[global-node][f.repr]
+  '-y -nono -speed 1'
+# ---
+# name: test_node_prop[global-node][get_args]
+  list([
+    '-y',
+    '-nono',
+    '-speed',
+    '1',
+  ])
+# ---
+# name: test_node_prop[input-node][__repr__]
+  "InputNode(args=(), kwargs=(('f', 'mp4'),), inputs=(), filename='test.mp4')"
+# ---
+# name: test_node_prop[input-node][f.repr]
+  'test.mp4'
+# ---
+# name: test_node_prop[input-node][get_args]
+  list([
+    '-f',
+    'mp4',
+    '-i',
+    'test.mp4',
+  ])
+# ---
+# name: test_node_prop[merge-output-node][__repr__]
+  "MergeOutputsNode(args=(), kwargs=(), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None),))"
+# ---
+# name: test_node_prop[merge-output-node][f.repr]
+  'Merge'
+# ---
+# name: test_node_prop[merge-output-node][get_args]
+  list([
+  ])
+# ---
+# name: test_node_prop[output-node][__repr__]
+  "OutputNode(args=(), kwargs=(('bufsize', '64k'),), inputs=(), filename='test.mp4')"
+# ---
+# name: test_node_prop[output-node][f.repr]
+  'test.mp4'
+# ---
+# name: test_node_prop[output-node][get_args]
+  list([
+    '-bufsize',
+    '64k',
+    'test.mp4',
+  ])
+# ---

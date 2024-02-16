@@ -1,54 +1,79 @@
+from typing import Any, Protocol
+
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
 from ...filters import concat
+from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
-from ..validate import _validate_not_utilize_split, _validate_reuse_stream
+from ..schema import Stream
+from ..validate import add_split, remove_split
 
 
-def test_validate_reuse_stream(snapshot: SnapshotAssertion) -> None:
-    input1 = input("input1.mp4")
-    rev = input1.reverse()
-    context = DAGContext.build(concat(rev.trim(), rev.trim()).video(0).output(filename="tmp.mp4"))
-
-    with pytest.raises(AssertionError) as e:
-        _validate_reuse_stream(context)
-
-    assert snapshot == e
-
-
-def test_validate_not_utilize_split(snapshot: SnapshotAssertion) -> None:
+def not_utilize_split() -> Any:
     input1 = input("input1.mp4")
 
-    context = DAGContext.build(input1.split(outputs=2).video(0).output(filename="tmp.mp4"))
-    with pytest.raises(AssertionError) as e:
-        _validate_not_utilize_split(context)
-
-    assert snapshot == e
+    return pytest.param(input1.reverse().split(outputs=2).video(0).output(filename="tmp.mp4"), id="not-utilize-split")
 
 
-def test_reduntant_split_outputs_1(snapshot: SnapshotAssertion) -> None:
+def redundant_split_outputs_1() -> Any:
     input1 = input("input1.mp4")
-
-    context = DAGContext.build(input1.split(outputs=1).video(0).output(filename="tmp.mp4"))
-    with pytest.raises(AssertionError) as e:
-        _validate_not_utilize_split(context)
-
-    assert snapshot == e
+    graph = input1.reverse().split(outputs=1).video(0).output(filename="tmp.mp4")
+    return pytest.param(graph, id="reduntant-split-outputs-1")
 
 
-def test_reduntant_split_duplicate(snapshot: SnapshotAssertion) -> None:
+def reduntant_split_duplicate() -> Any:
     input1 = input("input1.mp4")
-    s = input1.split(outputs=2)
+    s = input1.reverse().split(outputs=2)
     s0 = s.video(0)
     s1 = s.video(1)
 
     s00 = s0.split(outputs=2).video(0)
     s01 = s0.split(outputs=2).video(1)
 
-    context = DAGContext.build(concat(s00, s01, s1, n=3).video(0).output(filename="tmp.mp4"))
-    with pytest.raises(AssertionError) as e:
-        _validate_not_utilize_split(context)
+    graph = concat(s00, s01, s1, n=3).video(0).output(filename="tmp.mp4")
+    return pytest.param(graph, id="reduntant-split-duplicate")
 
-    assert snapshot == e
+
+def reuse_input() -> Any:
+    input_stream = input("input.mp4")
+    graph = concat(input_stream.video, input_stream.video).video(0).output(filename="tmp.mp4")
+    return pytest.param(graph, id="reuse-input")
+
+
+def complex_stream() -> Any:
+    input1 = input("input1.mp4")
+    input2 = input("input2.mp4")
+
+    v = input1.video.reverse()
+    a = input2.audio.areverse()
+
+    f = concat(v, a, v, a, v=1, a=1)
+    graph = f.video(0).output(f.audio(0), filename="tmp.mp4")
+    return pytest.param(graph, id="complex-stream")
+
+
+@pytest.mark.parametrize(
+    "graph",
+    [reduntant_split_duplicate(), redundant_split_outputs_1(), not_utilize_split(), reuse_input(), complex_stream()],
+)
+def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
+    context = DAGContext.build(graph.node)
+    assert snapshot(name="all_nodes") == context.all_nodes
+    assert snapshot(name="all_streams") == context.all_streams
+    assert snapshot(name="node_labels") == context.node_labels
+    assert snapshot(name="outgoing_streams") == context.outgoing_streams
+    assert snapshot(name="outgoing_nodes") == context.outgoing_nodes
+
+    assert snapshot(name="before", extension_class=DAGSnapshotExtenstion) == graph.node
+    removed_split = remove_split(graph)
+    assert snapshot(name="remove-split", extension_class=DAGSnapshotExtenstion) == removed_split[0].node
+
+    added_split = add_split(removed_split[0])
+    assert snapshot(name="add-split", extension_class=DAGSnapshotExtenstion) == added_split[0].node
+
+
+class Validator(Protocol):
+    def __call__(self, context: DAGContext = ..., auto_fix: bool = False) -> DAGContext:
+        ...

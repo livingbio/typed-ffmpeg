@@ -1,0 +1,94 @@
+{
+  "args": [],
+  "inputs": [
+    {
+      "index": null,
+      "node": {
+        "args": [],
+        "inputs": [
+          {
+            "index": null,
+            "node": {
+              "args": [],
+              "inputs": [
+                {
+                  "index": null,
+                  "node": {
+                    "args": [],
+                    "inputs": [],
+                    "kwargs": [],
+                    "name": "A"
+                  }
+                }
+              ],
+              "kwargs": [],
+              "name": "E"
+            }
+          },
+          {
+            "index": null,
+            "node": {
+              "args": [],
+              "inputs": [
+                {
+                  "index": null,
+                  "node": {
+                    "args": [],
+                    "inputs": [
+                      {
+                        "index": null,
+                        "node": {
+                          "args": [],
+                          "inputs": [],
+                          "kwargs": [],
+                          "name": "A"
+                        }
+                      }
+                    ],
+                    "kwargs": [],
+                    "name": "E"
+                  }
+                }
+              ],
+              "kwargs": [],
+              "name": "B"
+            }
+          }
+        ],
+        "kwargs": [],
+        "name": "C"
+      }
+    },
+    {
+      "index": null,
+      "node": {
+        "args": [],
+        "inputs": [
+          {
+            "index": null,
+            "node": {
+              "args": [],
+              "inputs": [
+                {
+                  "index": null,
+                  "node": {
+                    "args": [],
+                    "inputs": [],
+                    "kwargs": [],
+                    "name": "A"
+                  }
+                }
+              ],
+              "kwargs": [],
+              "name": "E"
+            }
+          }
+        ],
+        "kwargs": [],
+        "name": "B"
+      }
+    }
+  ],
+  "kwargs": [],
+  "name": "D"
+}
