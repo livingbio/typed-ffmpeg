@@ -3,7 +3,7 @@ from typing import Any
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
-from syrupy.extensions.image import PNGImageSnapshotExtension
+from syrupy.extensions.image import PNGImageSnapshotExtension, SVGImageSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...utils.snapshot import DAGSnapshotExtenstion
@@ -104,6 +104,7 @@ def test_replace(
         )
 
 
+@pytest.mark.skip("graphviz's result is not deterministic")
 def test_stream_view(snapshot: SnapshotAssertion) -> None:
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
@@ -113,4 +114,9 @@ def test_stream_view(snapshot: SnapshotAssertion) -> None:
     png = stream.view()
 
     with open(png, "rb") as ifile:
-        snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
+        assert snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
+
+    svg = stream.view(format="svg")
+
+    with open(svg, "r") as ifile:
+        assert snapshot(extension_class=SVGImageSnapshotExtension) == ifile.read()

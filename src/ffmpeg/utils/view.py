@@ -17,7 +17,7 @@ def _get_node_color(node: Node) -> str | None:
     return color
 
 
-def view(node: Node) -> str:
+def view(node: Node, format: str) -> str:
     try:
         import graphviz  # type: ignore
     except ImportError:
@@ -25,7 +25,7 @@ def view(node: Node) -> str:
             "failed to import graphviz; please make sure graphviz is installed (e.g. " "`pip install graphviz`)"
         )
 
-    graph = graphviz.Digraph(format="png")
+    graph = graphviz.Digraph(format=format)
     graph.attr(rankdir="LR")
 
     context = DAGContext.build(node)
@@ -38,4 +38,4 @@ def view(node: Node) -> str:
         for stream in node.inputs:
             graph.edge(stream.node.hex, node.hex)
 
-    return graph.render(format="png")
+    return graph.render()
