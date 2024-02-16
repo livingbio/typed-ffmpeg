@@ -1,81 +1,55 @@
 from __future__ import annotations
 
-from collections import defaultdict
+from dataclasses import replace
+
+from ffmpeg.dag.schema import Stream
 
 from .context import DAGContext
-from .nodes import FilterNode, InputNode
-from .schema import Node, Stream
+from .nodes import FilterNode
 
 
-def _validate_reuse_stream(context: DAGContext) -> DAGContext:
+def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -> tuple[Stream, dict[Stream, Stream]]:
     """
-    Validate that no stream is reused by multiple nodes.
+    Rebuild the graph with the given mapping.
 
     Args:
-        context: The DAG context to validate.
+        node: The node to rebuild the graph from.
+        mapping: The mapping to rebuild the graph with.
 
     Returns:
-        The validated DAG context.
+        A tuple of the new node and the new mapping.
     """
 
-    # NOTE: validate there is no reuse stream (each stream can only be used by one node's input)
-    stream_nodes: dict[Stream, list[Node]] = defaultdict(list)
+    # remove all split nodes
+    # add split nodes to the graph
+    if mapping is None:
+        mapping = {}
 
-    for node in context.all_nodes:
-        for stream in node.inputs:
-            stream_nodes[stream].append(node)
+    if current_stream in mapping:
+        return mapping[current_stream], mapping
 
-    # FFmpeg only allows each filter's output stream to be used by one other filter, except for input nodes.
-    # This means that a stream can only be consumed by a single filter node.
-    # If a stream is used by multiple filter nodes, it will result in an error during compilation.
-    # TODO: Add reference from FFmpeg's documentation.
-    reuse_streams = [
-        stream for stream, nodes in stream_nodes.items() if len(nodes) > 1 and not isinstance(stream.node, InputNode)
-    ]
-    assert not reuse_streams, f"Found reuse streams: {reuse_streams}"
+    if not current_stream.node.inputs:
+        mapping[current_stream] = current_stream
+        return current_stream, mapping
 
-    return context
+    if isinstance(current_stream.node, FilterNode):
+        # if the current node is a split node, we need to remove it
+        if current_stream.node.name in ("split", "asplit"):
+            new_stream, _mapping = remove_split(current_stream=current_stream.node.inputs[0], mapping=mapping)
+            mapping[current_stream] = mapping[current_stream.node.inputs[0]]
+            return mapping[current_stream.node.inputs[0]], mapping
 
+    inputs = []
+    for input_stream in sorted(current_stream.node.inputs, key=lambda stream: -len(stream.node.upstream_nodes)):
+        new_stream, _mapping = remove_split(current_stream=input_stream, mapping=mapping)
+        inputs.append(new_stream)
+        mapping |= _mapping
 
-def _validate_not_utilize_split(context: DAGContext) -> DAGContext:
-    """
-    Validate that split nodes are utilized.
+    new_node = replace(current_stream.node, inputs=tuple(inputs))
+    new_stream = replace(current_stream, node=new_node)
 
-    Args:
-        context: The DAG context to validate.
-
-    Returns:
-        The validated DAG context.
-    """
-
-    all_split_node = [
-        node for node in context.all_nodes if isinstance(node, FilterNode) and node.name in ("split", "asplit")
-    ]
-
-    not_utilize_splits = [
-        node
-        for node in all_split_node
-        if len(context.get_outgoing_streams(node)) < int(dict(node.kwargs).get("outputs", 2))
-    ]
-
-    assert not not_utilize_splits, f"Found not utilized split nodes: {not_utilize_splits}"
-
-    # if a split node has only one output, it is reduntant
-    reduntant_splits = {node for node in all_split_node if int(dict(node.kwargs).get("outputs", 2) == 1)}
-
-    # if a split node's parent is also a split node, it is reduntant
-    reduntant_splits |= {
-        node
-        for node in all_split_node
-        if isinstance(node.inputs[0].node, FilterNode) and node.inputs[0].node.name in ("split", "asplit")
-    }
-
-    # NOTE:
-    # if not all split outstream used, it is reduntant but is valid.
-
-    assert not reduntant_splits, f"Found reduntant split nodes: {reduntant_splits}"
-
-    return context
+    mapping[current_stream] = new_stream
+    return new_stream, mapping
 
 
 def validate(context: DAGContext) -> DAGContext:
@@ -90,12 +64,9 @@ def validate(context: DAGContext) -> DAGContext:
     """
 
     # NOTE: we don't want to modify the original node
-    validators = [
-        _validate_reuse_stream,
-        #   _validate_not_utilize_split
-    ]
+    # validators: list[] = []
 
-    for validator in validators:
-        context = validator(context)
+    # for validator in validators:
+    #     context = validator(context)
 
     return context
