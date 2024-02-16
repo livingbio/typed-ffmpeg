@@ -1,13 +1,12 @@
-import os
 from dataclasses import asdict, dataclass
-from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.image import PNGImageSnapshotExtension, SVGImageSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ...utils.view import view
+from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
 from ..schema import Node, Stream
 
@@ -23,33 +22,7 @@ class SimpleNode(Node):
         return self.name
 
 
-@pytest.fixture(scope="function")
-def drawer(request: pytest.FixtureRequest) -> Callable[[str, Node], Path]:
-    # Get the test file path and function name
-    file_path = request.module.__file__
-    function_name = request.node.name
-
-    # Get the parameter id (if it exists)
-    param_id = getattr(request, "param", None)
-    if hasattr(param_id, "id"):
-        param_id = param_id.id  # type: ignore
-
-    # Construct the folder name based on test file location, function name, and parameter value or id
-    if param_id:
-        function_name = f"{function_name}[{param_id}]"
-
-    folder = Path(file_path).parent / f"graph/{function_name}/"
-    folder.mkdir(parents=True, exist_ok=True)
-
-    def draw(name: str, node: Node) -> Path:
-        graph_path = view(node)
-        os.rename(graph_path, folder / f"{name}.png")
-        return folder / f"{name}.png"
-
-    return draw
-
-
-def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], Path]) -> None:
+def test_dag(snapshot: SnapshotAssertion) -> None:
     # Linear Chain
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
@@ -57,7 +30,7 @@ def test_dag(snapshot: SnapshotAssertion, drawer: Callable[[str, Node], Path]) -
     d = SimpleNode(name="D", inputs=(Stream(node=c),))
 
     assert snapshot(extension_class=JSONSnapshotExtension) == asdict(d)
-    drawer("org", d)
+    assert snapshot(extension_class=DAGSnapshotExtenstion, name="org") == d
 
     # # Self-loop
     # a = SimpleNode(name="A")
@@ -120,13 +93,35 @@ def test_replace(
     graph: Node,
     replace_pattern: list[tuple[Node, Node]],
     snapshot: SnapshotAssertion,
-    drawer: Callable[[str, Node], Path],
 ) -> None:
-    drawer("org", graph)
+    assert snapshot(name="org", extension_class=DAGSnapshotExtenstion) == graph
 
     for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
-        drawer(f"replace {node} -> {replaced_node}", new_g)
+        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=DAGSnapshotExtenstion) == new_g
         assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=JSONSnapshotExtension) == asdict(
             new_g
         )
+
+
+@pytest.mark.skip("graphviz's result is not deterministic")
+def test_stream_view(snapshot: SnapshotAssertion) -> None:
+    a = SimpleNode(name="A")
+    b = SimpleNode(name="B", inputs=(Stream(node=a),))
+    c = SimpleNode(name="C", inputs=(Stream(node=b), Stream(node=a)))
+    d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
+    stream = Stream(node=d)
+    png = stream.view()
+
+    with open(png, "rb") as ifile:
+        assert snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
+
+    svg = stream.view(format="svg")
+
+    with open(svg, "r") as ifile:
+        assert snapshot(extension_class=SVGImageSnapshotExtension) == ifile.read()
+
+    dot = stream.view(format="dot")
+
+    with open(dot, "r") as ifile:
+        assert snapshot() == ifile.read()

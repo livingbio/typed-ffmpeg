@@ -229,6 +229,7 @@ class FilterableStream(Stream):
         from ..streams.audio import AudioStream
         from ..streams.av import AVStream
         from ..streams.video import VideoStream
+        from .context import DAGContext
 
         if not context:
             context = DAGContext.build(self.node)
@@ -240,18 +241,13 @@ class FilterableStream(Stream):
                 return f"{context.get_node_label(self.node)}:v"
             elif isinstance(self, AudioStream):
                 return f"{context.get_node_label(self.node)}:a"
-            raise ValueError(f"Unknown stream type: {self.__class__.__name__}")
+            raise ValueError(f"Unknown stream type: {self.__class__.__name__}")  # pragma: no cover
 
         if isinstance(self.node, FilterNode):
             if len(self.node.output_typings) > 1:
                 return f"{context.get_node_label(self.node)}#{self.index}"
             return f"{context.get_node_label(self.node)}"
-        raise ValueError(f"Unknown node type: {self.node.__class__.__name__}")
-
-    def view(self) -> str:
-        from ..utils.view import view
-
-        return view(self.node)
+        raise ValueError(f"Unknown node type: {self.node.__class__.__name__}")  # pragma: no cover
 
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):
@@ -409,6 +405,9 @@ class OutputStream(Stream):
             the output stream
         """
         return GlobalNode(inputs=(self,), args=args, kwargs=tuple(kwargs.items())).stream()
+
+    def merge_outputs(self, *streams: OutputStream) -> OutputStream:
+        return MergeOutputsNode(inputs=streams).stream()
 
     def overwrite_output(self) -> "OutputStream":
         """
