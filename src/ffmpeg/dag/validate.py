@@ -2,9 +2,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 
-from ..streams.audio import AudioStream
-from ..streams.av import AVStream
-from ..streams.video import VideoStream
+from ..streams import VideoStream, AudioStream, AVStream
 from .context import DAGContext
 from .nodes import FilterNode
 from .schema import Node, Stream

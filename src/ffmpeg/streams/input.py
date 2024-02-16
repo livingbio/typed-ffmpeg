@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from ..dag.nodes import FilterableStream, InputNode
-from ..dag.schema import _DAGContext
+from ..dag.context import DAGContext
 from ..utils.typing import override
 from .audio import AudioFilter
 from .video import VideoFilter
@@ -16,14 +16,14 @@ class InputStream(FilterableStream):
 @dataclass(frozen=True, kw_only=True)
 class VideoIStream(VideoFilter, InputStream):
     @override
-    def label(self, context: _DAGContext) -> str:
+    def label(self, context: DAGContext) -> str:
         return f"{context.get_node_label(self.node)}:v"
 
 
 @dataclass(frozen=True, kw_only=True)
 class AudioIStream(AudioFilter, InputStream):
     @override
-    def label(self, context: _DAGContext) -> str:
+    def label(self, context: DAGContext) -> str:
         return f"{context.get_node_label(self.node)}:a"
 
 
@@ -38,5 +38,5 @@ class AVStream(VideoFilter, AudioFilter, InputStream):
         return AudioIStream(node=self.node, index=self.index)
 
     @override
-    def label(self, context: _DAGContext) -> str:
+    def label(self, context: DAGContext) -> str:
         return context.get_node_label(self.node)
