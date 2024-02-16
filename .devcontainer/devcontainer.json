@@ -1,9 +1,5 @@
 {
   "dockerFile": "Dockerfile",
-  "runArgs": [
-    "-v", "${localEnv:SSH_AUTH_SOCK}:/tmp/ssh-agent.sock",
-    "-e", "SSH_AUTH_SOCK=/tmp/ssh-agent.sock"
-  ],
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance"
