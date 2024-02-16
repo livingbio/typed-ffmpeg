@@ -1,5 +1,4 @@
-from .audio import AudioStream
-from .av import AVStream
-from .video import VideoStream
+from .filter import AudioStream, VideoStream
+from .input import AVStream
 
 __all__ = ["AudioStream", "VideoStream", "AVStream"]

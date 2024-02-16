@@ -16,19 +16,10 @@
   ])
 # ---
 # name: test_filter_node_with_inputs.1
-  <ExceptionInfo ValueError('Expected input 0 to have audio component, got VideoStream') tblen=3>
+  <ExceptionInfo ValueError('Expected input 0 to have audio component, got VideoIStream') tblen=3>
 # ---
 # name: test_filter_node_with_inputs.2
-  <ExceptionInfo ValueError('Expected input 0 to have video component, got AudioStream') tblen=3>
-# ---
-# name: test_filterable_stream
-  '1'
-# ---
-# name: test_filterable_stream.1
-  '0'
-# ---
-# name: test_filterable_stream.2
-  's0#0'
+  <ExceptionInfo ValueError('Expected input 0 to have video component, got AudioIStream') tblen=3>
 # ---
 # name: test_node_prop[filter-node][__repr__]
   "FilterNode(args=(), kwargs=(('w', '1920'), ('h', '1080'), ('true', True), ('false', False)), inputs=(), name='scale', input_typings=(), output_typings=())"

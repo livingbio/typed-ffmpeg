@@ -4,6 +4,7 @@ import logging
 import os.path
 import shlex
 import subprocess
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
@@ -14,9 +15,7 @@ from ..utils.typing import override
 from .schema import Node, Stream
 
 if TYPE_CHECKING:
-    from ..streams.audio import AudioStream
-    from ..streams.av import AVStream
-    from ..streams.video import VideoStream
+    from ..streams import AudioStream, AVStream, VideoStream
     from .context import DAGContext
 
 
@@ -48,7 +47,7 @@ class FilterNode(Node):
         Returns:
             the video stream at the specified index
         """
-        from ..streams.video import VideoStream
+        from ..streams import VideoStream
 
         video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
         if not len(video_outputs) > index:
@@ -65,7 +64,7 @@ class FilterNode(Node):
         Returns:
             the audio stream at the specified index
         """
-        from ..streams.audio import AudioStream
+        from ..streams import AudioStream
 
         audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
         if not len(audio_outputs) > index:
@@ -74,8 +73,8 @@ class FilterNode(Node):
         return AudioStream(node=self, index=audio_outputs[index])
 
     def __post_init__(self) -> None:
-        from ..streams.audio import AudioStream
-        from ..streams.video import VideoStream
+        from ..streams.audio import AudioFilter
+        from ..streams.video import VideoFilter
 
         super().__post_init__()
 
@@ -87,10 +86,10 @@ class FilterNode(Node):
 
         for i, (stream, expected_type) in enumerate(zip(self.inputs, self.input_typings)):
             if expected_type == StreamType.video:
-                if not isinstance(stream, VideoStream):
+                if not isinstance(stream, VideoFilter):
                     raise ValueError(f"Expected input {i} to have video component, got {stream.__class__.__name__}")
             if expected_type == StreamType.audio:
-                if not isinstance(stream, AudioStream):
+                if not isinstance(stream, AudioFilter):
                     raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
 
     @override
@@ -124,12 +123,10 @@ class FilterNode(Node):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FilterableStream(Stream):
+class FilterableStream(Stream, ABC):
     """
     A stream that can be used as input to a filter
     """
-
-    node: "FilterNode | InputNode"
 
     def vfilter(
         self,
@@ -216,6 +213,7 @@ class FilterableStream(Stream):
         """
         return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
 
+    @abstractmethod
     def label(self, context: DAGContext = None) -> str:
         """
         Return the label for this stream
@@ -226,28 +224,7 @@ class FilterableStream(Stream):
         Returns:
             the label for this stream
         """
-        from ..streams.audio import AudioStream
-        from ..streams.av import AVStream
-        from ..streams.video import VideoStream
-        from .context import DAGContext
-
-        if not context:
-            context = DAGContext.build(self.node)
-
-        if isinstance(self.node, InputNode):
-            if isinstance(self, AVStream):
-                return f"{context.get_node_label(self.node)}"
-            elif isinstance(self, VideoStream):
-                return f"{context.get_node_label(self.node)}:v"
-            elif isinstance(self, AudioStream):
-                return f"{context.get_node_label(self.node)}:a"
-            raise ValueError(f"Unknown stream type: {self.__class__.__name__}")  # pragma: no cover
-
-        if isinstance(self.node, FilterNode):
-            if len(self.node.output_typings) > 1:
-                return f"{context.get_node_label(self.node)}#{self.index}"
-            return f"{context.get_node_label(self.node)}"
-        raise ValueError(f"Unknown node type: {self.node.__class__.__name__}")  # pragma: no cover
+        raise NotImplementedError()
 
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):
@@ -316,7 +293,7 @@ class InputNode(Node):
         Returns:
             the video stream
         """
-        from ..streams.video import VideoStream
+        from ..streams import VideoStream
 
         return VideoStream(node=self)
 
@@ -328,7 +305,7 @@ class InputNode(Node):
         Returns:
             the audio stream
         """
-        from ..streams.audio import AudioStream
+        from ..streams import AudioStream
 
         return AudioStream(node=self)
 
@@ -339,7 +316,7 @@ class InputNode(Node):
         Returns:
             the output stream
         """
-        from ..streams.av import AVStream
+        from ..streams import AVStream
 
         return AVStream(node=self)
 
