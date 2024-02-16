@@ -24,7 +24,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install ffmpeg -y
       # Install Graphviz
       - run: wget https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/9.0.0/ubuntu_20.04_graphviz-9.0.0-debs.tar.xz
-      - run: tar -xf ubuntu_20.04_graphviz-9.0.0-debs.tar.xz && sudo dpkg -i *.deb
+      - run: tar -xf ubuntu_20.04_graphviz-9.0.0-debs.tar.xz && sudo apt install ./graphviz*.deb
       - name: Run unittest
         run: poetry run py.test src/ --cov=./src
       - name: lint
