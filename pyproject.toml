@@ -33,7 +33,6 @@ mkdocs-material = "^9.5.5"
 griffe-inherited-docstrings = "^1.0.0"
 imagehash = "^4.3.1"
 graphviz = "^0.20.1"
-types-pillow = "^10.2.0.20240213"
 
 [tool.poetry-dynamic-versioning]
 enable = true

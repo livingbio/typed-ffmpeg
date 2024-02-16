@@ -46,14 +46,15 @@ repos:
       - id: black
         args: [--line-length=120, --exclude=""]
 
-  - repo: local
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
     hooks:
       - id: mypy
         name: mypy
         entry: mypy
-        language: system
         types: [python]
         exclude: migrations/|commands/|scripts/|sandbox/|samples|sdk
+        additional_dependencies: [pytest, syrupy, imagehash, types-Pillow]
         args:
           [
             --pretty,
