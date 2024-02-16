@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from dataclasses import replace
 
-from ffmpeg.dag.schema import Stream
-
+from ..streams.audio import AudioStream
+from ..streams.av import AVStream
+from ..streams.video import VideoStream
 from .context import DAGContext
 from .nodes import FilterNode
+from .schema import Node, Stream
 
 
 def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -> tuple[Stream, dict[Stream, Stream]]:
@@ -50,6 +52,61 @@ def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -
 
     mapping[current_stream] = new_stream
     return new_stream, mapping
+
+
+def add_split(
+    current_stream: Stream,
+    down_node: Node = None,
+    down_index: int = None,
+    context: DAGContext = None,
+    mapping: dict[tuple[Stream, Node | None, int | None], Stream] = None,
+) -> tuple[Stream, dict[tuple[Stream, Node | None, int | None], Stream]]:
+    if not context:
+        context = DAGContext.build(current_stream.node)
+
+    if mapping is None:
+        mapping = {}
+
+    if (current_stream, down_node, down_index) in mapping:
+        return mapping[(current_stream, down_node, down_index)], mapping
+
+    inputs = []
+
+    for idx, input_stream in sorted(
+        enumerate(current_stream.node.inputs), key=lambda idx_stream: -len(idx_stream[1].node.upstream_nodes)
+    ):
+        new_stream, _mapping = add_split(
+            current_stream=input_stream, down_node=current_stream.node, down_index=idx, mapping=mapping, context=context
+        )
+        inputs.append(new_stream)
+        mapping |= _mapping
+
+    new_node = replace(current_stream.node, inputs=tuple(inputs))
+    new_stream = replace(current_stream, node=new_node)
+
+    num = len(context.get_outgoing_nodes(current_stream))
+    if num < 2:
+        mapping[(current_stream, down_node, down_index)] = new_stream
+        return new_stream, mapping
+
+    if isinstance(current_stream, AVStream):
+        for idx, (node, index) in enumerate(context.get_outgoing_nodes(current_stream)):
+            # if the current node is InputNode, we don't need to split it
+            mapping[(current_stream, node, index)] = new_stream
+        return new_stream, mapping
+
+    if isinstance(new_stream, VideoStream):
+        split_node = new_stream.split(outputs=num)
+        for idx, (node, index) in enumerate(context.get_outgoing_nodes(current_stream)):
+            mapping[(current_stream, node, index)] = split_node.video(idx)
+        return mapping[(current_stream, down_node, down_index)], mapping
+    elif isinstance(new_stream, AudioStream):
+        split_node = new_stream.asplit(outputs=num)
+        for idx, (node, index) in enumerate(context.get_outgoing_nodes(current_stream)):
+            mapping[(current_stream, node, index)] = split_node.audio(idx)
+        return mapping[(current_stream, down_node, down_index)], mapping
+    else:
+        raise ValueError(f"unsupported stream type: {current_stream}")
 
 
 def validate(context: DAGContext) -> DAGContext:
