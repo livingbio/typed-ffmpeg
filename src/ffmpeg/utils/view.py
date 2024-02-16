@@ -27,15 +27,16 @@ def view(node: Node, format: str) -> str:
 
     graph = graphviz.Digraph(format=format)
     graph.attr(rankdir="LR")
+    graph.attr(fontname="Helvetica")
 
     context = DAGContext.build(node)
 
     for node in context.all_nodes:
         color = _get_node_color(node)
-        graph.node(name=node.hex, label=node.repr(), shape="box", style="filled", fillcolor=color)
+        graph.node(name=node.hex, label=node.repr(), shape="box", style="filled", fillcolor=color, fontname="Helvetica")
 
     for node in context.all_nodes:
         for stream in node.inputs:
             graph.edge(stream.node.hex, node.hex)
 
-    return graph.render()
+    return graph.render(engine="dot")
