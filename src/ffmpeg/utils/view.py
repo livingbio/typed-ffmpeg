@@ -45,7 +45,7 @@ def view(node: Node, format: str) -> str:
         )
 
     for node in context.all_nodes:
-        for stream in node.inputs:
-            graph.edge(stream.node.hex, node.hex)
+        for idx, stream in enumerate(node.inputs):
+            graph.edge(stream.node.hex, node.hex, label=f"{stream.index} => {idx}")
 
     return graph.render(engine="dot")

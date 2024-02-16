@@ -140,3 +140,16 @@ class Node(HashableBaseModel, ABC):
             The maximum depth of the node.
         """
         return max((i.node.max_depth for i in self.inputs), default=0) + 1
+
+    @property
+    def upstream_nodes(self) -> set[Node]:
+        """
+        Get all upstream nodes of the node.
+        Returns:
+            The upstream nodes of the node.
+        """
+        output = {self}
+        for input in self.inputs:
+            output |= input.node.upstream_nodes
+
+        return output
