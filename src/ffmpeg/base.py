@@ -1,5 +1,7 @@
 from typing import Any
 
+from ffmpeg.schema import StreamType
+
 from .dag.nodes import FilterableStream, FilterNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
 from .streams.audio import AudioStream
 from .streams.av import AVStream
@@ -54,7 +56,9 @@ def merge_outputs(*streams: OutputStream) -> OutputStream:
     return MergeOutputsNode(inputs=streams).stream()
 
 
-def vfilter(*streams: FilterableStream, name: str, **kwargs: Any) -> VideoStream:
+def vfilter(
+    *streams: FilterableStream, name: str, input_typings: tuple[StreamType, ...] = (StreamType.video,), **kwargs: Any
+) -> VideoStream:
     """
     Apply a custom video filter which has only one output to this stream
 
@@ -69,10 +73,12 @@ def vfilter(*streams: FilterableStream, name: str, **kwargs: Any) -> VideoStream
     Note:
         This function is for custom filter which is not implemented in typed-ffmpeg
     """
-    return FilterNode(name=name, inputs=streams, kwargs=tuple(kwargs.items())).video(0)
+    return FilterNode(name=name, inputs=streams, input_typings=input_typings, kwargs=tuple(kwargs.items())).video(0)
 
 
-def afilter(*streams: FilterableStream, name: str, **kwargs: Any) -> AudioStream:
+def afilter(
+    *streams: FilterableStream, name: str, input_typings: tuple[StreamType, ...] = (StreamType.audio,), **kwargs: Any
+) -> AudioStream:
     """
     Apply a custom audio filter which has only one output to this stream
 
@@ -87,7 +93,7 @@ def afilter(*streams: FilterableStream, name: str, **kwargs: Any) -> AudioStream
     Note:
         This function is for custom filter which is not implemented in typed-ffmpeg
     """
-    return FilterNode(name=name, inputs=streams, kwargs=tuple(kwargs.items())).audio(0)
+    return FilterNode(name=name, inputs=streams, input_typings=input_typings, kwargs=tuple(kwargs.items())).audio(0)
 
 
 def filter_multi_output(*streams: FilterableStream, name: str, **kwargs: Any) -> FilterNode:
