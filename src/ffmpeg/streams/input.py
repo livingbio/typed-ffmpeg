@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from ..dag.nodes import FilterableStream, InputNode
 from ..dag.context import DAGContext
+from ..dag.nodes import FilterableStream, InputNode
 from ..utils.typing import override
 from .audio import AudioFilter
 from .video import VideoFilter

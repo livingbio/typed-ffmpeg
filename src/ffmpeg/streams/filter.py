@@ -1,5 +1,5 @@
-from ..dag.nodes import FilterableStream, FilterNode
 from ..dag.context import DAGContext
+from ..dag.nodes import FilterableStream, FilterNode
 from ..utils.typing import override
 from .audio import AudioFilter
 from .video import VideoFilter
