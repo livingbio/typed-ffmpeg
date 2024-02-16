@@ -120,3 +120,8 @@ def test_stream_view(snapshot: SnapshotAssertion) -> None:
 
     with open(svg, "r") as ifile:
         assert snapshot(extension_class=SVGImageSnapshotExtension) == ifile.read()
+
+    dot = stream.view(format="dot")
+
+    with open(dot, "r") as ifile:
+        assert snapshot() == ifile.read()

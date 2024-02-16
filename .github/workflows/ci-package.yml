@@ -21,7 +21,10 @@ jobs:
         run: pip install poetry
       - run: poetry install --with dev
       - name: Install ffmpeg
-        run: sudo apt-get install ffmpeg graphviz
+        run: sudo apt-get install ffmpeg
+      # Install Graphviz
+      - run: wget https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/9.0.0/ubuntu_20.04_graphviz-9.0.0-debs.tar.xz
+      - run: tar -xf ubuntu_20.04_graphviz-9.0.0-debs.tar.xz && cd ubuntu_20.04_graphviz-9.0.0-debs && sudo dpkg -i *.deb
       - name: Run unittest
         run: poetry run py.test src/ --cov=./src
       - name: lint
