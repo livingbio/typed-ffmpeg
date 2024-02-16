@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from .context import DAGContext
 from .nodes import FilterNode, GlobalNode, InputNode, OutputNode
-from .schema import Node
+from .schema import Stream
 from .validate import validate
 
 # TODO:
@@ -11,9 +11,10 @@ from .validate import validate
 # implement auto split or validate
 
 
-def compile(node: Node) -> list[str]:
+def compile(stream: Stream) -> list[str]:
+    stream = validate(stream)
+    node = stream.node
     context = DAGContext.build(node)
-    context = validate(context)
 
     # compile the global nodes
     commands = []

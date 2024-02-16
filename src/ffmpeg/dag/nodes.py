@@ -435,9 +435,9 @@ class OutputStream(Stream):
             cmd = [cmd]
 
         if overwrite_output:
-            return cmd + compile(self.node) + ["-y"]
+            return cmd + compile(self) + ["-y"]
 
-        return cmd + compile(self.node)
+        return cmd + compile(self)
 
     def compile_line(self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False) -> str:
         """

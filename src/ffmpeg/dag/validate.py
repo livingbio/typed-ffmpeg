@@ -3,10 +3,9 @@ from __future__ import annotations
 from dataclasses import replace
 
 from ..streams.audio import AudioStream
-from ..streams.av import AVStream
 from ..streams.video import VideoStream
 from .context import DAGContext
-from .nodes import FilterNode
+from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
 
 
@@ -89,7 +88,7 @@ def add_split(
         mapping[(current_stream, down_node, down_index)] = new_stream
         return new_stream, mapping
 
-    if isinstance(current_stream, AVStream):
+    if isinstance(current_stream.node, InputNode):
         for idx, (node, index) in enumerate(context.get_outgoing_nodes(current_stream)):
             # if the current node is InputNode, we don't need to split it
             mapping[(current_stream, node, index)] = new_stream
@@ -109,7 +108,13 @@ def add_split(
         raise ValueError(f"unsupported stream type: {current_stream}")
 
 
-def validate(context: DAGContext) -> DAGContext:
+def fix_graph(stream: Stream) -> Stream:
+    stream, _ = remove_split(stream)
+    stream, _ = add_split(stream)
+    return stream
+
+
+def validate(stream: Stream, auto_fix: bool = True) -> Stream:
     """
     Validate the given DAG context.
 
@@ -119,6 +124,8 @@ def validate(context: DAGContext) -> DAGContext:
     Returns:
         The validated DAG context.
     """
+    if auto_fix:
+        stream = fix_graph(stream)
 
     # NOTE: we don't want to modify the original node
     # validators: list[] = []
@@ -126,4 +133,4 @@ def validate(context: DAGContext) -> DAGContext:
     # for validator in validators:
     #     context = validator(context)
 
-    return context
+    return stream
