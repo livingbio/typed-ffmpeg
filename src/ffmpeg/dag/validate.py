@@ -109,7 +109,13 @@ def add_split(
         raise ValueError(f"unsupported stream type: {current_stream}")
 
 
-def validate(context: DAGContext) -> DAGContext:
+def fix_graph(stream: Stream) -> Stream:
+    stream, _ = remove_split(stream)
+    stream, _ = add_split(stream)
+    return stream
+
+
+def validate(stream: Stream, auto_fix: bool = True) -> Stream:
     """
     Validate the given DAG context.
 
@@ -119,6 +125,8 @@ def validate(context: DAGContext) -> DAGContext:
     Returns:
         The validated DAG context.
     """
+    if auto_fix:
+        stream = fix_graph(stream)
 
     # NOTE: we don't want to modify the original node
     # validators: list[] = []
@@ -126,4 +134,4 @@ def validate(context: DAGContext) -> DAGContext:
     # for validator in validators:
     #     context = validator(context)
 
-    return context
+    return stream
