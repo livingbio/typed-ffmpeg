@@ -1,0 +1,15 @@
+{
+  "dockerFile": "Dockerfile",
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance"
+  ],
+  "forwardPorts": [
+    5000
+  ],
+  "name": "Python Development",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "workspaceFolder": "/workspace"
+}
