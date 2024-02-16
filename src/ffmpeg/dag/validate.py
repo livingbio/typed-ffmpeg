@@ -3,10 +3,9 @@ from __future__ import annotations
 from dataclasses import replace
 
 from ..streams.audio import AudioStream
-from ..streams.av import AVStream
 from ..streams.video import VideoStream
 from .context import DAGContext
-from .nodes import FilterNode
+from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
 
 
@@ -89,7 +88,7 @@ def add_split(
         mapping[(current_stream, down_node, down_index)] = new_stream
         return new_stream, mapping
 
-    if isinstance(current_stream, AVStream):
+    if isinstance(current_stream.node, InputNode):
         for idx, (node, index) in enumerate(context.get_outgoing_nodes(current_stream)):
             # if the current node is InputNode, we don't need to split it
             mapping[(current_stream, node, index)] = new_stream
