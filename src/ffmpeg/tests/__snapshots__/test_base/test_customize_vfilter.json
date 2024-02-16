@@ -3,7 +3,7 @@
   "-i",
   "input.mp4",
   "-filter_complex",
-  "[0]gltransition=duration=1:offset=0.5:direction=left[s0]",
+  "[0][0]gltransition=duration=1:offset=0.5:direction=left[s0]",
   "-map",
   "[s0]",
   "output.mp4"
