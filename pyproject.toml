@@ -22,17 +22,24 @@ graph = [
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-mkdocstrings = {extras = ["python"], version = "^0.24.0"}
-pytest-datadir = "^1.5.0"
-syrupy = "^4.6.0"
-pytest-recording = "^0.13.1"
+# test
 pytest-cov = "^4.1.0"
+pytest-datadir = "^1.5.0"
+pytest-recording = "^0.13.1"
+syrupy = "^4.6.0"
 pre-commit = "*"
 mypy = "*"
-mkdocs-material = "^9.5.5"
-griffe-inherited-docstrings = "^1.0.0"
 imagehash = "*"
 graphviz = "*"
+
+# Doc
+mkdocs = "*"
+markdown-callouts = "^0.4.0"
+mkdocs-material = "^9.5.9"
+mkdocstrings = "^0.24.0"
+mkdocstrings-python = "^1.8.0"
+pymdown-extensions = "^10.7"
+griffe_inherited_docstrings = "*"
 
 [tool.poetry-dynamic-versioning]
 enable = true

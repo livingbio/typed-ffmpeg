@@ -9,14 +9,30 @@ from typing import Any
 
 
 def load_class(path: str) -> Any:
+    """
+    Load a class from a string path
+
+    Args:
+        path: The path to the class.
+
+    Returns:
+        The class.
+    """
     module_path, class_name = path.rsplit(".", 1)
     module = __import__(module_path, fromlist=[class_name])
     return getattr(module, class_name)
 
 
 class Encoder(json.JSONEncoder):
-    # Extend JSON encoder to support more type, especial for Schematic Model
-    # NOTE: it won't validate schematic model during encode / decode
+    """
+    Extend JSON encoder to support more type
+
+    Note:
+        This encoder supports:
+            - Enum
+            - datetime.datetime
+            - dataclass
+    """
 
     def default(self, obj: Any) -> Any:
         if isinstance(obj, Enum):
@@ -40,7 +56,15 @@ class Encoder(json.JSONEncoder):
 
 
 class Decoder(json.JSONDecoder):
-    # Extend JSON decoder to support more type
+    """
+    Extend JSON decoder to support more type
+
+    Note:
+        This decoder supports:
+            - Enum
+            - datetime.datetime
+            - dataclass
+    """
 
     def __init__(self, *args: Any, **kwargs: Any):
         json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
@@ -69,10 +93,30 @@ class Decoder(json.JSONDecoder):
 
 
 def loads(raw: str) -> Any:
+    """
+    Deserialize the JSON string to an instance
+
+    Args:
+        raw: The JSON string to deserialize.
+
+    Returns:
+        The deserialized instance.
+    """
+
     return json.loads(raw, cls=Decoder)
 
 
 def to_dict_with_class_info(instance: Any) -> Any:
+    """
+    Convert the instance to a dictionary with class information
+
+    Args:
+        instance: The instance to convert.
+
+    Returns:
+        The dictionary with class information
+    """
+
     if isinstance(instance, dict):
         return {k: to_dict_with_class_info(v) for k, v in instance.items()}
     elif isinstance(instance, list):
@@ -96,5 +140,14 @@ def to_dict_with_class_info(instance: Any) -> Any:
 
 # Serialization
 def dumps(instance: Any) -> str:
+    """
+    Serialize the instance to a JSON string
+
+    Args:
+        instance: The instance to serialize.
+
+    Returns:
+        The serialized instance.
+    """
     obj = to_dict_with_class_info(instance)
     return json.dumps(obj)

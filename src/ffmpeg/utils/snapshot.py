@@ -7,6 +7,10 @@ from ..dag.schema import Stream
 
 
 class DAGSnapshotExtenstion(PNGImageSnapshotExtension):
+    """
+    A snapshot extension for the DAG. This extension is used to serialize and match the DAG.
+    """
+
     def serialize(
         self,
         data: "SerializableData",

@@ -65,6 +65,7 @@ def vfilter(
     Args:
         *streams: the streams to apply the filter to
         name: the name of the filter
+        input_typings: the input typings of the filter
         **kwargs: the arguments for the filter
 
     Returns:
@@ -91,6 +92,7 @@ def afilter(
     Args:
         *streams: the streams to apply the filter to
         name: the name of the filter
+        input_typings: the input typings of the filter
         **kwargs: the arguments for the filter
 
     Returns:
@@ -121,6 +123,8 @@ def filter_multi_output(
     Args:
         *streams: the streams to apply the filter to
         name: the name of the filter
+        input_typings: the input typings of the filter
+        output_tyings: the output typings of the filter
         **kwargs: the arguments for the filter
 
     Returns:

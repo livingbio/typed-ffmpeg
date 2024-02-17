@@ -5,13 +5,18 @@ from .nodes import FilterNode, GlobalNode, InputNode, OutputNode
 from .schema import Stream
 from .validate import validate
 
-# TODO:
-# for FFMpeg
-# each filter's output stream can only be used by one other filter
-# implement auto split or validate
-
 
 def compile(stream: Stream) -> list[str]:
+    """
+    Compile the stream into a list of arguments.
+
+    Args:
+        stream: The stream to compile.
+
+    Returns:
+        The list of arguments.
+    """
+
     stream = validate(stream)
     node = stream.node
     context = DAGContext.build(node)

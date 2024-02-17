@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Literal
+
 from ..dag.context import DAGContext
 from ..dag.nodes import FilterNode, InputNode, OutputNode
 from ..dag.schema import Node
@@ -17,7 +19,18 @@ def _get_node_color(node: Node) -> str | None:
     return color
 
 
-def view(node: Node, format: str) -> str:
+def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
+    """
+    Visualize the graph via graphviz.
+
+    Args:
+        node: The node to visualize.
+        format: The format to render the graph in.
+
+    Returns:
+        The path to the rendered graph.
+    """
+
     try:
         import graphviz  # type: ignore
     except ImportError:

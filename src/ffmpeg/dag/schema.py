@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Literal
 
 from .utils import is_dag
 
@@ -13,8 +13,15 @@ if TYPE_CHECKING:
 
 @dataclass(frozen=True, kw_only=True)
 class HashableBaseModel:
+    """
+    A base class for hashable dataclasses.
+    """
+
     @cached_property
     def hex(self) -> str:
+        """
+        Get the hexadecimal hash of the object.
+        """
         return hex(abs(hash(self)))[2:]
 
 
@@ -43,7 +50,16 @@ class Stream(HashableBaseModel):
         See Also: [Stream specifiers](https://ffmpeg.org/ffmpeg.html#Stream-specifiers-1) `stream_index`
     """
 
-    def view(self, format: str = "png") -> str:
+    def view(self, format: Literal["png", "svg", "dot"] = "png") -> str:
+        """
+        Visualize the stream.
+
+        Args:
+            format: The format of the view.
+
+        Returns:
+            The file path of the visualization.
+        """
         from ..utils.view import view
 
         return view(self.node, format=format)
@@ -59,8 +75,19 @@ class Node(HashableBaseModel, ABC):
     """
 
     args: tuple[str, ...] = ()
+    """
+    Represents the arguments of the node.
+    """
+
     kwargs: tuple[tuple[str, str | int | float | bool], ...] = ()
+    """
+    Represents the keyword arguments of the node.
+    """
+
     inputs: tuple[Stream, ...] = ()
+    """
+    Represents the input streams of the node.
+    """
 
     def __post_init__(self) -> None:
         # Validate the DAG
@@ -88,7 +115,7 @@ class Node(HashableBaseModel, ABC):
         Get the arguments of the node.
 
         Args:
-            context: The DAG context. Defaults to empty_dag_context.
+            context: The DAG context.
 
         Returns:
             The arguments of the node.
@@ -105,14 +132,14 @@ class Node(HashableBaseModel, ABC):
 
     def replace(self, old_node: Node, new_node: Node) -> Node:
         """
-        Replace the old node with the new node.
+        Replace the old node in the graph with the new node.
 
         Args:
             old_node: The old node to replace.
             new_node: The new node to replace with.
 
         Returns:
-            The new node.
+            The new graph with the replaced node.
         """
         if self == old_node:
             return new_node
@@ -145,6 +172,7 @@ class Node(HashableBaseModel, ABC):
     def upstream_nodes(self) -> set[Node]:
         """
         Get all upstream nodes of the node.
+
         Returns:
             The upstream nodes of the node.
         """

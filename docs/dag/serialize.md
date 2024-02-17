@@ -1,4 +1,4 @@
-::: ffmpeg.dag.schema
+::: ffmpeg.dag.serialize
     rendering:
       sort_members: source
     options:

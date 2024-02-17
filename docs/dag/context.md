@@ -1,4 +1,4 @@
-::: ffmpeg.dag.schema
+::: ffmpeg.dag.context
     rendering:
       sort_members: source
     options:

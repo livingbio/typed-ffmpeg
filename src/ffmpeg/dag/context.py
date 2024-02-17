@@ -68,6 +68,7 @@ class DAGContext:
     """
     All nodes in the graph.
     """
+
     streams: tuple[Stream, ...]
     """
     All streams in the graph.
@@ -94,16 +95,22 @@ class DAGContext:
 
     @cached_property
     def all_nodes(self) -> list[Node]:
-        return sorted(self.nodes, key=lambda node: self.node_labels[node])
+        """
+        All nodes in the graph sorted by the number of upstream nodes.
+        """
+        return sorted(self.nodes, key=lambda node: len(node.upstream_nodes))
 
     @cached_property
     def all_streams(self) -> list[Stream]:
-        return sorted(self.streams, key=lambda stream: (self.node_labels[stream.node], stream.index))
+        """
+        All streams in the graph sorted by the number of upstream nodes and the index of the stream.
+        """
+        return sorted(self.streams, key=lambda stream: (len(stream.node.upstream_nodes), stream.index))
 
     @cached_property
     def outgoing_nodes(self) -> dict[Stream, list[tuple[Node, int]]]:
         """
-        A dictionary of outgoing nodes and its index for each stream.
+        A dictionary of outgoing nodes for each stream.
         """
         outgoing_nodes: dict[Stream, list[tuple[Node, int]]] = defaultdict(list)
 
@@ -190,6 +197,16 @@ class DAGContext:
         return self.outgoing_streams[node]
 
     def render(self, obj: Any) -> Any:
+        """
+        Render the object to a string.
+
+        Args:
+            obj: The object to render.
+
+        Returns:
+            The rendered object.
+        """
+
         if isinstance(obj, (list, tuple)):
             return [self.render(o) for o in obj]
         elif isinstance(obj, dict):

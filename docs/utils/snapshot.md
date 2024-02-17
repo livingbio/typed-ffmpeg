@@ -1,4 +1,4 @@
-::: ffmpeg.dag.schema
+::: ffmpeg.utils.snapshot
     rendering:
       sort_members: source
     options:
