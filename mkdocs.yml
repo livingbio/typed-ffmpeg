@@ -42,6 +42,12 @@ edit_uri: edit/main/docs/
 nav:
   - Get Started:
       - Overview: index.md
+  - Usage:
+      - Typed: usage/typed.md
+      - Validate: usage/validate.md
+      - Custom Filters: usage/custom_filters.md
+      - Serialize: usage/serialize.md
+      - Example: usage/example.md
   - API Documentation:
       - ffmpeg: base.md
       - types: types.md

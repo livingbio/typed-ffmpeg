@@ -33,7 +33,7 @@ This API design is based on the helpful `ffmpeg-python` package, which serves as
 - [**Serialization:**](https://mkdocstrings.github.io/usage/#cross-references-to-other-projects-inventories)
   typed-ffmpeg provides a way to serialize and deserialize filter graphs. This allows you to save the filter graph to a file and load it later.
 
-- [**Auto Fix:**](https://mkdocstrings.github.io/usage/#cross-references)
+- [**Validate and Auto Fix:**](https://mkdocstrings.github.io/usage/#cross-references)
   typed-ffmpeg offers a feature to automatically fix the filter graph. This can help fix the filter graph when it is not valid.
 
     **Note**: This feature can be turned off by setting `auto_fix` to `False` during `compile` or `run`.
