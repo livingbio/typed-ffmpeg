@@ -40,13 +40,17 @@ def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -
             mapping[current_stream] = mapping[current_stream.node.inputs[0]]
             return mapping[current_stream.node.inputs[0]], mapping
 
-    inputs = []
-    for input_stream in sorted(current_stream.node.inputs, key=lambda stream: -len(stream.node.upstream_nodes)):
+    inputs = {}
+    for idx, input_stream in sorted(
+        enumerate(current_stream.node.inputs), key=lambda idx_stream: -len(idx_stream[1].node.upstream_nodes)
+    ):
         new_stream, _mapping = remove_split(current_stream=input_stream, mapping=mapping)
-        inputs.append(new_stream)
+        inputs[idx] = new_stream
         mapping |= _mapping
 
-    new_node = replace(current_stream.node, inputs=tuple(inputs))
+    new_node = replace(
+        current_stream.node, inputs=tuple(stream for idx, stream in sorted(inputs.items(), key=lambda x: x[0]))
+    )
     new_stream = replace(current_stream, node=new_node)
 
     mapping[current_stream] = new_stream
@@ -69,7 +73,7 @@ def add_split(
     if (current_stream, down_node, down_index) in mapping:
         return mapping[(current_stream, down_node, down_index)], mapping
 
-    inputs = []
+    inputs = {}
 
     for idx, input_stream in sorted(
         enumerate(current_stream.node.inputs), key=lambda idx_stream: -len(idx_stream[1].node.upstream_nodes)
@@ -77,10 +81,12 @@ def add_split(
         new_stream, _mapping = add_split(
             current_stream=input_stream, down_node=current_stream.node, down_index=idx, mapping=mapping, context=context
         )
-        inputs.append(new_stream)
+        inputs[idx] = new_stream
         mapping |= _mapping
 
-    new_node = replace(current_stream.node, inputs=tuple(inputs))
+    new_node = replace(
+        current_stream.node, inputs=tuple(stream for idx, stream in sorted(inputs.items(), key=lambda x: x[0]))
+    )
     new_stream = replace(current_stream, node=new_node)
 
     num = len(context.get_outgoing_nodes(current_stream))
