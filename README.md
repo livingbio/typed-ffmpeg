@@ -72,7 +72,7 @@ f = (
 
 f.run()
 ```
-![quickstart](quickstart.png)
+![quickstart](media/quickstart.png)
 
 NOTE: you can get the graph easily by using `f.view()`
 
