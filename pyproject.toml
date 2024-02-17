@@ -1,12 +1,39 @@
 [tool.poetry]
 name = "typed-ffmpeg"
 version = "0.0.0"
-description = ""
+description = "Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
 authors = ["lucemia <lucemia@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "ffmpeg", from = "src" }]
 include = ["ffmpeg/py.typed"]
 exclude = ["**/tests"]
+license = "MIT"
+homepage = "https://livingbio.github.io/typed-ffmpeg/"
+repository = "https://github.com/livingbio/typed-ffmpeg"
+keywords = [
+    "ffmpeg",
+    "video",
+    "audio",
+    "multimedia",
+    "filter",
+]
+classifiers = [
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Topic :: Multimedia :: Video',
+        'Topic :: Multimedia :: Sound/Audio',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Software Development :: Libraries :: Application Frameworks',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
