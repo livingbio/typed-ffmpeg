@@ -21,7 +21,7 @@ class VideoStream(FilterableStream):
         qoffset: Rational = Default("-1/10"),
         clear: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Add region of interest to frame.
@@ -62,7 +62,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def alphaextract(self, **kwargs: Any) -> "VideoStream":
+    def alphaextract(self, **kwargs: Any) -> VideoStream:
         """
 
         Extract an alpha channel as a grayscale image component.
@@ -85,7 +85,7 @@ class VideoStream(FilterableStream):
 
     def alphamerge(
         self,
-        _alpha: "VideoStream",
+        _alpha: VideoStream,
         *,
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
         shortest: Boolean = Default(False),
@@ -93,7 +93,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Copy the luma value of the second input into the alpha channel of the first input.
@@ -147,7 +147,7 @@ class VideoStream(FilterableStream):
         planes: Flags = Default("7"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Amplify changes between successive video frames.
@@ -201,7 +201,7 @@ class VideoStream(FilterableStream):
         alpha: Boolean = Default(False),
         shaping: Int | Literal["auto", "simple", "complex"] | Default = Default("auto"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Render ASS subtitles onto input video using the libass library.
@@ -257,7 +257,7 @@ class VideoStream(FilterableStream):
         _2s: Float = Default(32767.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply an Adaptive Temporal Averaging Denoiser.
@@ -320,7 +320,7 @@ class VideoStream(FilterableStream):
         sizeY: Int = Default(0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Average Blur filter.
@@ -365,7 +365,7 @@ class VideoStream(FilterableStream):
         blend: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a static background into transparency.
@@ -402,7 +402,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def bbox(self, *, min_val: Int = Default(16), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def bbox(self, *, min_val: Int = Default(16), enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Compute bounding box for each frame.
@@ -437,7 +437,7 @@ class VideoStream(FilterableStream):
 
     def bench(
         self, *, action: Int | Literal["start", "stop"] | Default = Default("start"), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Benchmark part of a filtergraph.
@@ -476,7 +476,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default(1),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Bilateral filter.
@@ -520,7 +520,7 @@ class VideoStream(FilterableStream):
         filter: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Measure bit plane noise.
@@ -562,7 +562,7 @@ class VideoStream(FilterableStream):
         picture_black_ratio_th: Double = Default(0.98),
         pixel_black_th: Double = Default(0.1),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Detect video intervals that are (almost) black.
@@ -597,7 +597,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def blackframe(self, *, amount: Int = Default(98), threshold: Int = Default(32), **kwargs: Any) -> "VideoStream":
+    def blackframe(self, *, amount: Int = Default(98), threshold: Int = Default(32), **kwargs: Any) -> VideoStream:
         """
 
         Detect frames that are (almost) black.
@@ -632,7 +632,7 @@ class VideoStream(FilterableStream):
 
     def blend(
         self,
-        _bottom: "VideoStream",
+        _bottom: VideoStream,
         *,
         c0_mode: Int
         | Literal[
@@ -880,7 +880,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Blend two video frames into each other.
@@ -954,7 +954,7 @@ class VideoStream(FilterableStream):
 
     def blockdetect(
         self, *, period_min: Int = Default(3), period_max: Int = Default(24), planes: Int = Default(1), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Blockdetect filter.
@@ -999,7 +999,7 @@ class VideoStream(FilterableStream):
         block_width: Int = Default(-1),
         planes: Int = Default(1),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Blurdetect filter.
@@ -1051,7 +1051,7 @@ class VideoStream(FilterableStream):
         alpha_power: Int = Default(-1),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Blur the input.
@@ -1102,7 +1102,7 @@ class VideoStream(FilterableStream):
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Deinterlace the input image.
@@ -1146,7 +1146,7 @@ class VideoStream(FilterableStream):
         planes: Flags = Default("7"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Contrast Adaptive Sharpen.
@@ -1181,7 +1181,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def ccrepack(self, **kwargs: Any) -> "VideoStream":
+    def ccrepack(self, **kwargs: Any) -> VideoStream:
         """
 
         Repack CEA-708 closed caption metadata
@@ -1211,7 +1211,7 @@ class VideoStream(FilterableStream):
         yuv: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a certain color range into gray.
@@ -1259,7 +1259,7 @@ class VideoStream(FilterableStream):
         yuv: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a certain color into transparency. Operates on YUV colors.
@@ -1312,7 +1312,7 @@ class VideoStream(FilterableStream):
         distance: Int | Literal["manhattan", "euclidean"] | Default = Default("manhattan"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Reduce chrominance noise.
@@ -1371,7 +1371,7 @@ class VideoStream(FilterableStream):
         edge: Int | Literal["smear", "wrap"] | Default = Default("smear"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Shift chroma.
@@ -1460,7 +1460,7 @@ class VideoStream(FilterableStream):
         gamma: Double = Default(2.6),
         fill: Boolean = Default(True),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Video CIE scope.
@@ -1519,7 +1519,7 @@ class VideoStream(FilterableStream):
         block: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Visualize information about some codecs.
@@ -1575,7 +1575,7 @@ class VideoStream(FilterableStream):
         pl: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust the color balance.
@@ -1649,7 +1649,7 @@ class VideoStream(FilterableStream):
         pa: Double = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust colors by mixing color channels.
@@ -1728,7 +1728,7 @@ class VideoStream(FilterableStream):
         pl: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust color contrast between RGB components.
@@ -1784,7 +1784,7 @@ class VideoStream(FilterableStream):
         analyze: Int | Literal["manual", "average", "minmax", "median"] | Default = Default("manual"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust color white balance selectively for blacks and whites.
@@ -1835,7 +1835,7 @@ class VideoStream(FilterableStream):
         blend: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a certain color range into gray. Operates on RGB colors.
@@ -1881,7 +1881,7 @@ class VideoStream(FilterableStream):
         mix: Float = Default(1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Overlay a solid color on the video stream.
@@ -1928,7 +1928,7 @@ class VideoStream(FilterableStream):
         blend: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a certain color into transparency. Operates on RGB colors.
@@ -1987,7 +1987,7 @@ class VideoStream(FilterableStream):
         preserve: Int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | Default = Default("none"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust the color levels.
@@ -2054,8 +2054,8 @@ class VideoStream(FilterableStream):
 
     def colormap(
         self,
-        _source: "VideoStream",
-        _target: "VideoStream",
+        _source: VideoStream,
+        _target: VideoStream,
         *,
         patch_size: Image_size = Default("64x64"),
         nb_patches: Int = Default(0),
@@ -2063,7 +2063,7 @@ class VideoStream(FilterableStream):
         kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply custom Color Maps to video stream.
@@ -2117,7 +2117,7 @@ class VideoStream(FilterableStream):
         | Default = Default(-1),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Convert color matrix.
@@ -2255,7 +2255,7 @@ class VideoStream(FilterableStream):
         | Default = Default(2),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Convert between colorspaces.
@@ -2322,7 +2322,7 @@ class VideoStream(FilterableStream):
         pl: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust color temperature of video.
@@ -2380,7 +2380,7 @@ class VideoStream(FilterableStream):
         _3mode: Int | Literal["square", "row", "column"] | Default = Default("square"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply convolution filter.
@@ -2445,7 +2445,7 @@ class VideoStream(FilterableStream):
 
     def convolve(
         self,
-        _impulse: "VideoStream",
+        _impulse: VideoStream,
         *,
         planes: Int = Default(7),
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
@@ -2456,7 +2456,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Convolve first video stream with second video stream.
@@ -2504,7 +2504,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def copy(self, **kwargs: Any) -> "VideoStream":
+    def copy(self, **kwargs: Any) -> VideoStream:
         """
 
         Copy the input video unchanged to the output.
@@ -2533,7 +2533,7 @@ class VideoStream(FilterableStream):
         filter: String = Default(None),
         output_rect: String = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Video filtering using CoreImage API.
@@ -2572,7 +2572,7 @@ class VideoStream(FilterableStream):
 
     def corr(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
         shortest: Boolean = Default(False),
@@ -2580,7 +2580,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Calculate the correlation between two video streams.
@@ -2628,7 +2628,7 @@ class VideoStream(FilterableStream):
         cover: String = Default(None),
         mode: Int | Literal["cover", "blur"] | Default = Default("blur"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Find and cover a user specified object.
@@ -2671,7 +2671,7 @@ class VideoStream(FilterableStream):
         keep_aspect: Boolean = Default(False),
         exact: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Crop the input video.
@@ -2727,7 +2727,7 @@ class VideoStream(FilterableStream):
         mv_threshold: Int = Default(8),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Auto-detect crop size.
@@ -2785,7 +2785,7 @@ class VideoStream(FilterableStream):
         preroll: Duration = Default(0.0),
         buffer: Duration = Default(0.0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Delay filtering to match a cue.
@@ -2848,7 +2848,7 @@ class VideoStream(FilterableStream):
         interp: Int | Literal["natural", "pchip"] | Default = Default("natural"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust components curves.
@@ -2909,7 +2909,7 @@ class VideoStream(FilterableStream):
         format: Int | Literal["hex", "dec"] | Default = Default("hex"),
         components: Int = Default(15),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Video data analysis.
@@ -2962,7 +2962,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Directional Blur filter.
@@ -3008,7 +3008,7 @@ class VideoStream(FilterableStream):
         n: Int = Default(3),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Denoise frames using 2D DCT.
@@ -3060,7 +3060,7 @@ class VideoStream(FilterableStream):
         coupling: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Debands video.
@@ -3119,7 +3119,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Deblock video.
@@ -3166,7 +3166,7 @@ class VideoStream(FilterableStream):
 
     def deconvolve(
         self,
-        _impulse: "VideoStream",
+        _impulse: VideoStream,
         *,
         planes: Int = Default(7),
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
@@ -3177,7 +3177,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Deconvolve first video stream with second video stream.
@@ -3235,7 +3235,7 @@ class VideoStream(FilterableStream):
         ct: Float = Default(0.019),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Reduce cross-luminance and cross-color.
@@ -3285,7 +3285,7 @@ class VideoStream(FilterableStream):
         threshold3: Int = Default(65535),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply deflate effect.
@@ -3331,7 +3331,7 @@ class VideoStream(FilterableStream):
         mode: Int | Literal["am", "gm", "hm", "qm", "cm", "pm", "median"] | Default = Default("am"),
         bypass: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Remove temporal frame luminance variations.
@@ -3366,7 +3366,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def dejudder(self, *, cycle: Int = Default(4), **kwargs: Any) -> "VideoStream":
+    def dejudder(self, *, cycle: Int = Default(4), **kwargs: Any) -> VideoStream:
         """
 
         Remove judder produced by pullup.
@@ -3407,7 +3407,7 @@ class VideoStream(FilterableStream):
         show: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Remove logo from input video.
@@ -3458,7 +3458,7 @@ class VideoStream(FilterableStream):
         output: String = Default("y"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply derain filter to the input.
@@ -3515,7 +3515,7 @@ class VideoStream(FilterableStream):
         filename: String = Default(None),
         opencl: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Stabilize shaky video.
@@ -3581,7 +3581,7 @@ class VideoStream(FilterableStream):
         alpha: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Despill video.
@@ -3635,7 +3635,7 @@ class VideoStream(FilterableStream):
         pattern: String = Default("23"),
         start_frame: Int = Default(0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply an inverse telecine pattern.
@@ -3680,7 +3680,7 @@ class VideoStream(FilterableStream):
         threshold3: Int = Default(65535),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply dilation effect.
@@ -3723,13 +3723,13 @@ class VideoStream(FilterableStream):
 
     def displace(
         self,
-        _xmap: "VideoStream",
-        _ymap: "VideoStream",
+        _xmap: VideoStream,
+        _ymap: VideoStream,
         *,
         edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Displace pixels.
@@ -3780,7 +3780,7 @@ class VideoStream(FilterableStream):
         labels: String = Default(None),
         target: String = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply DNN classify filter to the input.
@@ -3842,7 +3842,7 @@ class VideoStream(FilterableStream):
         confidence: Float = Default(0.5),
         labels: String = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply DNN detect filter to the input.
@@ -3900,7 +3900,7 @@ class VideoStream(FilterableStream):
         options: String = Default(None),
         _async: Boolean = Default(True),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply DNN processing filter to the input.
@@ -3945,7 +3945,7 @@ class VideoStream(FilterableStream):
 
     def doubleweave(
         self, *, first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Weave input video fields into double number of frames.
@@ -3989,7 +3989,7 @@ class VideoStream(FilterableStream):
         box_source: String = Default(None),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Draw a colored box on the input video.
@@ -4055,7 +4055,7 @@ class VideoStream(FilterableStream):
         size: Image_size = Default("900x256"),
         rate: Video_rate = Default("25"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Draw a graph using input video metadata.
@@ -4126,7 +4126,7 @@ class VideoStream(FilterableStream):
         replace: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Draw a colored grid on the input video.
@@ -4230,7 +4230,7 @@ class VideoStream(FilterableStream):
         | Default = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Draw text on top of video frames using libfreetype library.
@@ -4338,7 +4338,7 @@ class VideoStream(FilterableStream):
         planes: Flags | Literal["y", "u", "v", "r", "g", "b"] | Default = Default("y+u+v+r+g+b"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Detect and draw edge.
@@ -4386,7 +4386,7 @@ class VideoStream(FilterableStream):
         pal8: Boolean = Default(False),
         use_alpha: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply posterize effect, using the ELBG algorithm.
@@ -4431,7 +4431,7 @@ class VideoStream(FilterableStream):
         mode: Int | Literal["normal", "diff"] | Default = Default("normal"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Measure video frames entropy.
@@ -4464,7 +4464,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def epx(self, *, n: Int = Default(3), **kwargs: Any) -> "VideoStream":
+    def epx(self, *, n: Int = Default(3), **kwargs: Any) -> VideoStream:
         """
 
         Scale the input using EPX algorithm.
@@ -4509,7 +4509,7 @@ class VideoStream(FilterableStream):
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust brightness, contrast, gamma, and saturation.
@@ -4568,7 +4568,7 @@ class VideoStream(FilterableStream):
         threshold3: Int = Default(65535),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply erosion effect.
@@ -4623,7 +4623,7 @@ class VideoStream(FilterableStream):
         interp: Int | Literal["2p", "4p", "6p"] | Default = Default("4p"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Edge Slope Tracing deinterlace.
@@ -4674,7 +4674,7 @@ class VideoStream(FilterableStream):
 
     def exposure(
         self, *, exposure: Float = Default(0.0), black: Float = Default(0.0), enable: str = Default(None), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust exposure of the video stream.
@@ -4756,7 +4756,7 @@ class VideoStream(FilterableStream):
         color: Color = Default("black"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Fade in/out input video.
@@ -4802,8 +4802,8 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def feedback(
-        self, _feedin: "VideoStream", *, x: Int = Default(0), w: Int = Default(0), **kwargs: Any
-    ) -> tuple["VideoStream", "VideoStream",]:
+        self, _feedin: VideoStream, *, x: Int = Default(0), w: Int = Default(0), **kwargs: Any
+    ) -> tuple[VideoStream, VideoStream,]:
         """
 
         Apply feedback video filter.
@@ -4882,7 +4882,7 @@ class VideoStream(FilterableStream):
         | Default = Default("hann"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Denoise frames using 3D FFT.
@@ -4943,7 +4943,7 @@ class VideoStream(FilterableStream):
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply arbitrary expressions to pixels in frequency domain.
@@ -4988,7 +4988,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def field(self, *, type: Int | Literal["top", "bottom"] | Default = Default("top"), **kwargs: Any) -> "VideoStream":
+    def field(self, *, type: Int | Literal["top", "bottom"] | Default = Default("top"), **kwargs: Any) -> VideoStream:
         """
 
         Extract a field from the input video.
@@ -5025,7 +5025,7 @@ class VideoStream(FilterableStream):
         hint: String = Default(None),
         mode: Int | Literal["absolute", "relative", "pattern"] | Default = Default("absolute"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Field matching using hints.
@@ -5064,7 +5064,7 @@ class VideoStream(FilterableStream):
         order: Int | Literal["bff", "tff"] | Default = Default("tff"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Set the field order.
@@ -5097,7 +5097,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def fifo(self, **kwargs: Any) -> "VideoStream":
+    def fifo(self, **kwargs: Any) -> VideoStream:
         """
 
         Buffer input images and send them when they are requested.
@@ -5131,7 +5131,7 @@ class VideoStream(FilterableStream):
         color: Color = Default("black"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Fill borders of the input video.
@@ -5183,7 +5183,7 @@ class VideoStream(FilterableStream):
         xmin: Int = Default(0),
         discard: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Find a user specified object.
@@ -5237,7 +5237,7 @@ class VideoStream(FilterableStream):
         d3: Int = Default(0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Fill area with same color with another color.
@@ -5288,7 +5288,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def format(self, *, pix_fmts: String = Default(None), **kwargs: Any) -> "VideoStream":
+    def format(self, *, pix_fmts: String = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Convert the input video to one of the specified pixel formats.
@@ -5327,7 +5327,7 @@ class VideoStream(FilterableStream):
         round: Int | Literal["zero", "inf", "down", "up", "near"] | Default = Default("near"),
         eof_action: Int | Literal["round", "pass"] | Default = Default("round"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Force constant framerate.
@@ -5366,11 +5366,11 @@ class VideoStream(FilterableStream):
 
     def framepack(
         self,
-        _right: "VideoStream",
+        _right: VideoStream,
         *,
         format: Int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Generate a frame packed stereoscopic video.
@@ -5413,7 +5413,7 @@ class VideoStream(FilterableStream):
         scene: Double = Default(8.2),
         flags: Flags | Literal["scene_change_detect", "scd"] | Default = Default("scene_change_detect+scd"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Upsamples or downsamples progressive source between specified frame rates.
@@ -5452,7 +5452,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def framestep(self, *, step: Int = Default(1), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def framestep(self, *, step: Int = Default(1), enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Select one frame every N frames.
@@ -5485,7 +5485,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def freezedetect(self, *, n: Double = Default(0.001), d: Duration = Default(2.0), **kwargs: Any) -> "VideoStream":
+    def freezedetect(self, *, n: Double = Default(0.001), d: Duration = Default(2.0), **kwargs: Any) -> VideoStream:
         """
 
         Detects frozen video input.
@@ -5520,13 +5520,13 @@ class VideoStream(FilterableStream):
 
     def freezeframes(
         self,
-        _replace: "VideoStream",
+        _replace: VideoStream,
         *,
         first: Int64 = Default(0),
         last: Int64 = Default(0),
         replace: Int64 = Default(0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Freeze video frames.
@@ -5571,7 +5571,7 @@ class VideoStream(FilterableStream):
         filter_params: String = Default(None),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply a frei0r effect.
@@ -5615,7 +5615,7 @@ class VideoStream(FilterableStream):
         use_bframe_qp: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Fast Simple Post-processing filter.
@@ -5663,7 +5663,7 @@ class VideoStream(FilterableStream):
         sigmaV: Float = Default(-1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Gaussian Blur filter.
@@ -5715,7 +5715,7 @@ class VideoStream(FilterableStream):
         interpolation: Int | Literal["nearest", "n", "bilinear", "b"] | Default = Default("bilinear"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply generic equation to each pixel.
@@ -5764,7 +5764,7 @@ class VideoStream(FilterableStream):
 
     def gradfun(
         self, *, strength: Float = Default(1.2), radius: Int = Default(16), enable: str = Default(None), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Debands video quickly using gradients.
@@ -5830,7 +5830,7 @@ class VideoStream(FilterableStream):
         | Default = Default("all+queue"),
         rate: Video_rate = Default("25"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Show various filtergraph stats.
@@ -5869,7 +5869,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def grayworld(self, *, enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def grayworld(self, *, enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Adjust white balance using LAB gray world algorithm
@@ -5908,7 +5908,7 @@ class VideoStream(FilterableStream):
         sigma: Double = Default(1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Estimates scene illumination by grey edge assumption.
@@ -5947,7 +5947,7 @@ class VideoStream(FilterableStream):
 
     def haldclut(
         self,
-        _clut: "VideoStream",
+        _clut: VideoStream,
         *,
         clut: Int | Literal["first", "all"] | Default = Default("all"),
         interp: Int
@@ -5959,7 +5959,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust colors using a Hald CLUT.
@@ -6005,7 +6005,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hflip(self, *, enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def hflip(self, *, enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Horizontally flip the input video.
@@ -6044,7 +6044,7 @@ class VideoStream(FilterableStream):
         antibanding: Int | Literal["none", "weak", "strong"] | Default = Default("none"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply global color histogram equalization.
@@ -6106,7 +6106,7 @@ class VideoStream(FilterableStream):
         ]
         | Default = Default("whiteonblack"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Compute and draw a histogram.
@@ -6160,7 +6160,7 @@ class VideoStream(FilterableStream):
         chroma_tmp: Double = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply a High Quality 3D Denoiser.
@@ -6199,7 +6199,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hqx(self, *, n: Int = Default(3), **kwargs: Any) -> "VideoStream":
+    def hqx(self, *, n: Int = Default(3), **kwargs: Any) -> VideoStream:
         """
 
         Scale the input by 2, 3 or 4 using the hq*x magnification algorithm.
@@ -6240,7 +6240,7 @@ class VideoStream(FilterableStream):
         blend: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a certain HSV range into gray.
@@ -6291,7 +6291,7 @@ class VideoStream(FilterableStream):
         blend: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a certain HSV range into transparency. Operates on YUV colors.
@@ -6341,7 +6341,7 @@ class VideoStream(FilterableStream):
         b: String = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust the hue and saturation of the input video.
@@ -6394,7 +6394,7 @@ class VideoStream(FilterableStream):
         lightness: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply hue-saturation-intensity adjustments.
@@ -6443,7 +6443,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hwdownload(self, **kwargs: Any) -> "VideoStream":
+    def hwdownload(self, **kwargs: Any) -> VideoStream:
         """
 
         Download a hardware frame to a normal frame
@@ -6471,7 +6471,7 @@ class VideoStream(FilterableStream):
         derive_device: String = Default(None),
         reverse: Int = Default(0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Map hardware frames
@@ -6506,7 +6506,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def hwupload(self, *, derive_device: String = Default(None), **kwargs: Any) -> "VideoStream":
+    def hwupload(self, *, derive_device: String = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Upload a normal frame to a hardware frame
@@ -6539,7 +6539,7 @@ class VideoStream(FilterableStream):
 
     def hysteresis(
         self,
-        _alt: "VideoStream",
+        _alt: VideoStream,
         *,
         planes: Int = Default(15),
         threshold: Int = Default(0),
@@ -6549,7 +6549,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Grow first stream into second stream by connecting components.
@@ -6597,7 +6597,7 @@ class VideoStream(FilterableStream):
 
     def identity(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
         shortest: Boolean = Default(False),
@@ -6605,7 +6605,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Calculate the Identity between two video streams.
@@ -6656,7 +6656,7 @@ class VideoStream(FilterableStream):
         half_life: Float = Default(0.0),
         analyze_interlaced_flag: Int = Default(0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Interlace detect Filter.
@@ -6706,7 +6706,7 @@ class VideoStream(FilterableStream):
         alpha_swap: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Deinterleave or interleave fields.
@@ -6758,7 +6758,7 @@ class VideoStream(FilterableStream):
         threshold3: Int = Default(65535),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply inflate effect.
@@ -6803,7 +6803,7 @@ class VideoStream(FilterableStream):
         scan: Int | Literal["tff", "bff"] | Default = Default("tff"),
         lowpass: Int | Literal["off", "linear", "complex"] | Default = Default("linear"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Convert progressive video into interlaced.
@@ -6845,7 +6845,7 @@ class VideoStream(FilterableStream):
         sharp: Boolean = Default(False),
         twoway: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply kernel deinterlacing to the input.
@@ -6892,7 +6892,7 @@ class VideoStream(FilterableStream):
         delta: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply kirsch operator.
@@ -6931,7 +6931,7 @@ class VideoStream(FilterableStream):
 
     def lagfun(
         self, *, decay: Float = Default(0.95), planes: Flags = Default("F"), enable: str = Default(None), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Slowly update darker pixels.
@@ -6966,7 +6966,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def latency(self, *, enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def latency(self, *, enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Report video filtering latency.
@@ -7008,7 +7008,7 @@ class VideoStream(FilterableStream):
         fc: Color = Default("black@0"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Rectify the image by correcting for lens distortion.
@@ -7053,7 +7053,7 @@ class VideoStream(FilterableStream):
 
     def libvmaf(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         log_path: String = Default(None),
         log_fmt: String = Default("xml"),
@@ -7067,7 +7067,7 @@ class VideoStream(FilterableStream):
         repeatlast: Boolean = Default(True),
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Calculate the VMAF between two video streams.
@@ -7129,7 +7129,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Limit pixels components to the specified range.
@@ -7174,7 +7174,7 @@ class VideoStream(FilterableStream):
         start: Int64 = Default(0),
         time: Duration = Default("INT64_MAX"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Loop video frames.
@@ -7219,7 +7219,7 @@ class VideoStream(FilterableStream):
         softness: Double = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Turns a certain luma into transparency.
@@ -7272,7 +7272,7 @@ class VideoStream(FilterableStream):
         a: String = Default("clipval"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Compute and apply a lookup table to the RGB/YUV input video.
@@ -7332,7 +7332,7 @@ class VideoStream(FilterableStream):
         interp: Int | Literal["nearest", "linear", "cosine", "cubic", "spline"] | Default = Default("linear"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust colors using a 1D LUT.
@@ -7369,7 +7369,7 @@ class VideoStream(FilterableStream):
 
     def lut2(
         self,
-        _srcy: "VideoStream",
+        _srcy: VideoStream,
         *,
         c0: String = Default("x"),
         c1: String = Default("x"),
@@ -7382,7 +7382,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Compute and apply a lookup table from two video inputs.
@@ -7444,7 +7444,7 @@ class VideoStream(FilterableStream):
         | Default = Default("tetrahedral"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Adjust colors using a 3D LUT.
@@ -7497,7 +7497,7 @@ class VideoStream(FilterableStream):
         a: String = Default("clipval"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Compute and apply a lookup table to the RGB input video.
@@ -7566,7 +7566,7 @@ class VideoStream(FilterableStream):
         a: String = Default("clipval"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Compute and apply a lookup table to the YUV input video.
@@ -7621,15 +7621,15 @@ class VideoStream(FilterableStream):
 
     def maskedclamp(
         self,
-        _dark: "VideoStream",
-        _bright: "VideoStream",
+        _dark: VideoStream,
+        _bright: VideoStream,
         *,
         undershoot: Int = Default(0),
         overshoot: Int = Default(0),
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Clamp first stream with second stream and third stream.
@@ -7672,13 +7672,13 @@ class VideoStream(FilterableStream):
 
     def maskedmax(
         self,
-        _filter1: "VideoStream",
-        _filter2: "VideoStream",
+        _filter1: VideoStream,
+        _filter2: VideoStream,
         *,
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply filtering with maximum difference of two streams.
@@ -7717,13 +7717,13 @@ class VideoStream(FilterableStream):
 
     def maskedmerge(
         self,
-        _overlay: "VideoStream",
-        _mask: "VideoStream",
+        _overlay: VideoStream,
+        _mask: VideoStream,
         *,
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Merge first stream with second stream using third stream as mask.
@@ -7762,13 +7762,13 @@ class VideoStream(FilterableStream):
 
     def maskedmin(
         self,
-        _filter1: "VideoStream",
-        _filter2: "VideoStream",
+        _filter1: VideoStream,
+        _filter2: VideoStream,
         *,
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply filtering with minimum difference of two streams.
@@ -7807,14 +7807,14 @@ class VideoStream(FilterableStream):
 
     def maskedthreshold(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         threshold: Int = Default(1),
         planes: Int = Default(15),
         mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Pick pixels comparing absolute difference of two streams with threshold.
@@ -7864,7 +7864,7 @@ class VideoStream(FilterableStream):
         sum: Int = Default(10),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Create Mask.
@@ -7912,7 +7912,7 @@ class VideoStream(FilterableStream):
         parity: Int | Literal["tff", "bff"] | Default = Default("bff"),
         qp: Int = Default(1),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply motion compensating deinterlacing.
@@ -7956,7 +7956,7 @@ class VideoStream(FilterableStream):
         percentile: Float = Default(0.5),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Median filter.
@@ -8004,7 +8004,7 @@ class VideoStream(FilterableStream):
         mb_size: Int = Default(16),
         search_param: Int = Default(7),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Generate motion vectors.
@@ -8053,7 +8053,7 @@ class VideoStream(FilterableStream):
         direct: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Manipulate video frame metadata.
@@ -8099,8 +8099,8 @@ class VideoStream(FilterableStream):
         return filter_node.video(0)
 
     def midequalizer(
-        self, _in1: "VideoStream", *, planes: Int = Default(15), enable: str = Default(None), **kwargs: Any
-    ) -> "VideoStream":
+        self, _in1: VideoStream, *, planes: Int = Default(15), enable: str = Default(None), **kwargs: Any
+    ) -> VideoStream:
         """
 
         Apply Midway Equalization.
@@ -8152,7 +8152,7 @@ class VideoStream(FilterableStream):
         scd: Int | Literal["none", "fdiff"] | Default = Default("fdiff"),
         scd_threshold: Double = Default(10.0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Frame rate conversion using Motion Interpolation.
@@ -8210,7 +8210,7 @@ class VideoStream(FilterableStream):
         high: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Convert video to gray using custom color filter.
@@ -8251,7 +8251,7 @@ class VideoStream(FilterableStream):
 
     def morpho(
         self,
-        _structure: "VideoStream",
+        _structure: VideoStream,
         *,
         mode: Int
         | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
@@ -8264,7 +8264,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Morphological filter.
@@ -8321,7 +8321,7 @@ class VideoStream(FilterableStream):
         lo: Int = Default(320),
         frac: Float = Default(0.33),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Remove near-duplicate frames.
@@ -8362,7 +8362,7 @@ class VideoStream(FilterableStream):
 
     def msad(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
         shortest: Boolean = Default(False),
@@ -8370,7 +8370,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Calculate the MSAD between two video streams.
@@ -8414,14 +8414,14 @@ class VideoStream(FilterableStream):
 
     def multiply(
         self,
-        _factor: "VideoStream",
+        _factor: VideoStream,
         *,
         scale: Float = Default(1.0),
         offset: Float = Default(0.5),
         planes: Flags = Default("F"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Multiply first video stream with second video stream.
@@ -8468,7 +8468,7 @@ class VideoStream(FilterableStream):
         negate_alpha: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Negate input video.
@@ -8513,7 +8513,7 @@ class VideoStream(FilterableStream):
         rc: Int = Default(0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Non-local means denoiser.
@@ -8568,7 +8568,7 @@ class VideoStream(FilterableStream):
         pscrn: Int | Literal["none", "original", "new", "new2", "new3"] | Default = Default("new"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply neural network edge directed interpolation intra-only deinterlacer.
@@ -8617,7 +8617,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def noformat(self, *, pix_fmts: String = Default(None), **kwargs: Any) -> "VideoStream":
+    def noformat(self, *, pix_fmts: String = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Force libavfilter not to use any of the specified pixel formats for the input to the next filter.
@@ -8668,7 +8668,7 @@ class VideoStream(FilterableStream):
         c3_flags: Flags | Literal["a", "p", "t", "u"] | Default = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Add noise.
@@ -8739,7 +8739,7 @@ class VideoStream(FilterableStream):
         strength: Float = Default(1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Normalize RGB video.
@@ -8780,7 +8780,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def null(self, **kwargs: Any) -> "VideoStream":
+    def null(self, **kwargs: Any) -> VideoStream:
         """
 
         Pass the source unchanged to the output.
@@ -8809,7 +8809,7 @@ class VideoStream(FilterableStream):
         whitelist: String = Default("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}("),
         blacklist: String = Default(""),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Optical Character Recognition.
@@ -8864,7 +8864,7 @@ class VideoStream(FilterableStream):
         sc: Boolean = Default(True),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         2D Video Oscilloscope.
@@ -8923,7 +8923,7 @@ class VideoStream(FilterableStream):
 
     def overlay(
         self,
-        _overlay: "VideoStream",
+        _overlay: VideoStream,
         *,
         x: String = Default("0"),
         y: String = Default("0"),
@@ -8938,7 +8938,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Overlay a video source on top of the input.
@@ -8998,7 +8998,7 @@ class VideoStream(FilterableStream):
         chroma_strength: Double = Default(1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Denoise using wavelets.
@@ -9046,7 +9046,7 @@ class VideoStream(FilterableStream):
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         aspect: Rational = Default("0/1"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Pad the input video.
@@ -9097,7 +9097,7 @@ class VideoStream(FilterableStream):
         transparency_color: Color = Default("lime"),
         stats_mode: Int | Literal["full", "diff", "single"] | Default = Default("full"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Find the optimal palette for a given stream.
@@ -9136,7 +9136,7 @@ class VideoStream(FilterableStream):
 
     def paletteuse(
         self,
-        _palette: "VideoStream",
+        _palette: VideoStream,
         *,
         dither: Int
         | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
@@ -9147,7 +9147,7 @@ class VideoStream(FilterableStream):
         alpha_threshold: Int = Default(128),
         debug_kdtree: String = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Use a palette to downsample an input video stream.
@@ -9198,7 +9198,7 @@ class VideoStream(FilterableStream):
         seed: Int64 = Default(-1),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Set permissions for the output video frame.
@@ -9249,7 +9249,7 @@ class VideoStream(FilterableStream):
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Correct the perspective of video.
@@ -9308,7 +9308,7 @@ class VideoStream(FilterableStream):
         mode: Int | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"] | Default = Default("A"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Phase shift fields.
@@ -9349,7 +9349,7 @@ class VideoStream(FilterableStream):
         skip: Int = Default(1),
         bypass: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Filter out photosensitive epilepsy seizure-inducing flashes.
@@ -9386,7 +9386,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def pixdesctest(self, **kwargs: Any) -> "VideoStream":
+    def pixdesctest(self, **kwargs: Any) -> VideoStream:
         """
 
         Test pixel format definitions.
@@ -9416,7 +9416,7 @@ class VideoStream(FilterableStream):
         planes: Flags = Default("F"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Pixelize video.
@@ -9467,7 +9467,7 @@ class VideoStream(FilterableStream):
         wy: Float = Default(-1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Pixel data analysis.
@@ -9512,7 +9512,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def pp(self, *, subfilters: String = Default("de"), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def pp(self, *, subfilters: String = Default("de"), enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Filter video using libpostproc.
@@ -9552,7 +9552,7 @@ class VideoStream(FilterableStream):
         mode: Int | Literal["hard", "soft", "medium"] | Default = Default("medium"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Postprocessing 7 filter.
@@ -9595,7 +9595,7 @@ class VideoStream(FilterableStream):
         delta: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply prewitt operator.
@@ -9669,7 +9669,7 @@ class VideoStream(FilterableStream):
         opacity: Float = Default(1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Make pseudocolored video frames.
@@ -9716,7 +9716,7 @@ class VideoStream(FilterableStream):
 
     def psnr(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         stats_file: String = Default(None),
         stats_version: Int = Default(1),
@@ -9727,7 +9727,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Calculate the PSNR between two video streams.
@@ -9785,7 +9785,7 @@ class VideoStream(FilterableStream):
         sb: Boolean = Default(False),
         mp: Int | Literal["y", "u", "v"] | Default = Default("y"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Pullup from field sequence to frames.
@@ -9826,7 +9826,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def qp(self, *, qp: String = Default(None), enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def qp(self, *, qp: String = Default(None), enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Change video quantization parameters.
@@ -9859,7 +9859,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def random(self, *, frames: Int = Default(30), seed: Int64 = Default(-1), **kwargs: Any) -> "VideoStream":
+    def random(self, *, frames: Int = Default(30), seed: Int64 = Default(-1), **kwargs: Any) -> VideoStream:
         """
 
         Return random frames.
@@ -9902,7 +9902,7 @@ class VideoStream(FilterableStream):
         lp: Boolean = Default(True),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Read EIA-608 Closed Caption codes from input video and write them to frame metadata.
@@ -9945,7 +9945,7 @@ class VideoStream(FilterableStream):
 
     def readvitc(
         self, *, scan_max: Int = Default(45), thr_b: Double = Default(0.2), thr_w: Double = Default(0.6), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Read vertical interval timecode and write it to frame metadata.
@@ -9980,7 +9980,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def realtime(self, *, limit: Duration = Default(2.0), speed: Double = Default(1.0), **kwargs: Any) -> "VideoStream":
+    def realtime(self, *, limit: Duration = Default(2.0), speed: Double = Default(1.0), **kwargs: Any) -> VideoStream:
         """
 
         Slow down filtering to match realtime.
@@ -10015,13 +10015,13 @@ class VideoStream(FilterableStream):
 
     def remap(
         self,
-        _xmap: "VideoStream",
-        _ymap: "VideoStream",
+        _xmap: VideoStream,
+        _ymap: VideoStream,
         *,
         format: Int | Literal["color", "gray"] | Default = Default("color"),
         fill: Color = Default("black"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Remap pixels.
@@ -10067,7 +10067,7 @@ class VideoStream(FilterableStream):
         m3: Int = Default(0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Remove grain.
@@ -10108,7 +10108,7 @@ class VideoStream(FilterableStream):
 
     def removelogo(
         self, *, filename: String = Default(None), enable: str = Default(None), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Remove a TV logo based on a mask image.
@@ -10141,7 +10141,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def repeatfields(self, **kwargs: Any) -> "VideoStream":
+    def repeatfields(self, **kwargs: Any) -> VideoStream:
         """
 
         Hard repeat fields based on MPEG repeat field flag.
@@ -10162,7 +10162,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def reverse(self, **kwargs: Any) -> "VideoStream":
+    def reverse(self, **kwargs: Any) -> VideoStream:
         """
 
         Reverse a clip.
@@ -10197,7 +10197,7 @@ class VideoStream(FilterableStream):
         edge: Int | Literal["smear", "wrap"] | Default = Default("smear"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Shift RGBA.
@@ -10254,7 +10254,7 @@ class VideoStream(FilterableStream):
         delta: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply roberts cross operator.
@@ -10301,7 +10301,7 @@ class VideoStream(FilterableStream):
         bilinear: Boolean = Default(True),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Rotate the input image.
@@ -10353,7 +10353,7 @@ class VideoStream(FilterableStream):
         chroma_strength: Float = Default(-0.9),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply shape adaptive blur.
@@ -10425,7 +10425,7 @@ class VideoStream(FilterableStream):
         param1: Double = Default("DBL_MAX"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Scale the input video size and/or convert the image format.
@@ -10490,7 +10490,7 @@ class VideoStream(FilterableStream):
 
     def scale2ref(
         self,
-        _ref: "VideoStream",
+        _ref: VideoStream,
         *,
         w: String = Default(None),
         h: String = Default(None),
@@ -10518,7 +10518,7 @@ class VideoStream(FilterableStream):
         param1: Double = Default("DBL_MAX"),
         eval: Int | Literal["init", "frame"] | Default = Default("init"),
         **kwargs: Any,
-    ) -> tuple["VideoStream", "VideoStream",]:
+    ) -> tuple[VideoStream, VideoStream,]:
         """
 
         Scale the input video size and/or convert the image format to the given reference.
@@ -10597,7 +10597,7 @@ class VideoStream(FilterableStream):
         color_primaries: String = Default(None),
         color_transfer: String = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Scale Videotoolbox frames
@@ -10638,7 +10638,7 @@ class VideoStream(FilterableStream):
 
     def scdet(
         self, *, threshold: Double = Default(10.0), sc_pass: Boolean = Default(False), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Detect video scene change
@@ -10679,7 +10679,7 @@ class VideoStream(FilterableStream):
         delta: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply scharr operator.
@@ -10725,7 +10725,7 @@ class VideoStream(FilterableStream):
         vpos: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Scroll input video.
@@ -10852,7 +10852,7 @@ class VideoStream(FilterableStream):
         psfile: String = Default(None),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply CMYK adjustments to specific color ranges.
@@ -10907,7 +10907,7 @@ class VideoStream(FilterableStream):
 
     def sendcmd(
         self, *, commands: String = Default(None), filename: String = Default(None), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Send commands to filters.
@@ -10940,7 +10940,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def separatefields(self, **kwargs: Any) -> "VideoStream":
+    def separatefields(self, **kwargs: Any) -> VideoStream:
         """
 
         Split input video frames into fields.
@@ -10961,7 +10961,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setdar(self, *, dar: String = Default("0"), max: Int = Default(100), **kwargs: Any) -> "VideoStream":
+    def setdar(self, *, dar: String = Default("0"), max: Int = Default(100), **kwargs: Any) -> VideoStream:
         """
 
         Set the frame display aspect ratio.
@@ -10996,7 +10996,7 @@ class VideoStream(FilterableStream):
 
     def setfield(
         self, *, mode: Int | Literal["auto", "bff", "tff", "prog"] | Default = Default("auto"), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Force field for the output video frame.
@@ -11094,7 +11094,7 @@ class VideoStream(FilterableStream):
         ]
         | Default = Default("auto"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Force field, or color property for the output video frame.
@@ -11133,7 +11133,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setpts(self, *, expr: String = Default("PTS"), **kwargs: Any) -> "VideoStream":
+    def setpts(self, *, expr: String = Default("PTS"), **kwargs: Any) -> VideoStream:
         """
 
         Set PTS for the output video frame.
@@ -11171,7 +11171,7 @@ class VideoStream(FilterableStream):
         | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
         | Default = Default("auto"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Force color range for the output video frame.
@@ -11202,7 +11202,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def setsar(self, *, sar: String = Default("0"), max: Int = Default(100), **kwargs: Any) -> "VideoStream":
+    def setsar(self, *, sar: String = Default("0"), max: Int = Default(100), **kwargs: Any) -> VideoStream:
         """
 
         Set the pixel sample aspect ratio.
@@ -11235,7 +11235,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def settb(self, *, expr: String = Default("intb"), **kwargs: Any) -> "VideoStream":
+    def settb(self, *, expr: String = Default("intb"), **kwargs: Any) -> VideoStream:
         """
 
         Set timebase for the video output link.
@@ -11275,7 +11275,7 @@ class VideoStream(FilterableStream):
         interp: Int | Literal["nearest", "bilinear"] | Default = Default("bilinear"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Shear transform the input image.
@@ -11314,7 +11314,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def showinfo(self, *, checksum: Boolean = Default(True), **kwargs: Any) -> "VideoStream":
+    def showinfo(self, *, checksum: Boolean = Default(True), **kwargs: Any) -> VideoStream:
         """
 
         Show textual information for each video frame.
@@ -11345,7 +11345,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def showpalette(self, *, s: Int = Default(30), **kwargs: Any) -> "VideoStream":
+    def showpalette(self, *, s: Int = Default(30), **kwargs: Any) -> VideoStream:
         """
 
         Display frame palette.
@@ -11378,7 +11378,7 @@ class VideoStream(FilterableStream):
 
     def shuffleframes(
         self, *, mapping: String = Default("0"), enable: str = Default(None), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Shuffle video frames.
@@ -11421,7 +11421,7 @@ class VideoStream(FilterableStream):
         seed: Int64 = Default(-1),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Shuffle video pixels.
@@ -11471,7 +11471,7 @@ class VideoStream(FilterableStream):
         map3: Int = Default(3),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Shuffle video planes.
@@ -11541,7 +11541,7 @@ class VideoStream(FilterableStream):
         | Default = Default(-1),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Manipulate video frame side data.
@@ -11583,7 +11583,7 @@ class VideoStream(FilterableStream):
         out: Int | Literal["tout", "vrep", "brng"] | Default = Default(-1),
         c: Color = Default("yellow"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Generate statistics from video analysis.
@@ -11618,7 +11618,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def siti(self, *, print_summary: Boolean = Default(False), **kwargs: Any) -> "VideoStream":
+    def siti(self, *, print_summary: Boolean = Default(False), **kwargs: Any) -> VideoStream:
         """
 
         Calculate spatial information (SI) and temporal information (TI).
@@ -11660,7 +11660,7 @@ class VideoStream(FilterableStream):
         chroma_threshold: Int = Default(-31),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Blur the input video without impacting the outlines.
@@ -11711,7 +11711,7 @@ class VideoStream(FilterableStream):
         delta: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply sobel operator.
@@ -11750,7 +11750,7 @@ class VideoStream(FilterableStream):
 
     def spectrumsynth(
         self,
-        _phase: "VideoStream",
+        _phase: VideoStream,
         *,
         sample_rate: Int = Default(44100),
         channels: Int = Default(1),
@@ -11785,7 +11785,7 @@ class VideoStream(FilterableStream):
         overlap: Float = Default(1.0),
         orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
         **kwargs: Any,
-    ) -> "AudioStream":
+    ) -> AudioStream:
         """
 
         Convert input spectrum videos to audio output.
@@ -11873,7 +11873,7 @@ class VideoStream(FilterableStream):
         use_bframe_qp: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply a simple post processing filter.
@@ -11921,7 +11921,7 @@ class VideoStream(FilterableStream):
         input: String = Default("x"),
         output: String = Default("y"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply DNN-based image super resolution to the input.
@@ -11962,7 +11962,7 @@ class VideoStream(FilterableStream):
 
     def ssim(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         stats_file: String = Default(None),
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
@@ -11971,7 +11971,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Calculate the SSIM between two video streams.
@@ -12082,7 +12082,7 @@ class VideoStream(FilterableStream):
         ]
         | Default = Default("arcd"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Convert video stereoscopic 3D view.
@@ -12115,7 +12115,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def super2xsai(self, **kwargs: Any) -> "VideoStream":
+    def super2xsai(self, **kwargs: Any) -> VideoStream:
         """
 
         Scale the input by 2x using the Super2xSaI pixel art algorithm.
@@ -12147,7 +12147,7 @@ class VideoStream(FilterableStream):
         y2: String = Default("0"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Swap 2 rectangular objects in video.
@@ -12190,7 +12190,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def swapuv(self, *, enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def swapuv(self, *, enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Swap U and V components.
@@ -12466,7 +12466,7 @@ class VideoStream(FilterableStream):
         all_opacity: Double = Default(1.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Blend successive frames.
@@ -12533,7 +12533,7 @@ class VideoStream(FilterableStream):
         first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
         pattern: String = Default("23"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply a telecine pattern.
@@ -12578,7 +12578,7 @@ class VideoStream(FilterableStream):
         ecolor: Color = Default("gold"),
         slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("replace"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Compute and draw a temporal histogram.
@@ -12625,14 +12625,14 @@ class VideoStream(FilterableStream):
 
     def threshold(
         self,
-        _threshold: "VideoStream",
-        _min: "VideoStream",
-        _max: "VideoStream",
+        _threshold: VideoStream,
+        _min: VideoStream,
+        _max: VideoStream,
         *,
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Threshold first video stream using other video streams.
@@ -12677,7 +12677,7 @@ class VideoStream(FilterableStream):
         log: Int | Literal["quiet", "info", "verbose"] | Default = Default("info"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Select the most representative frame in a given sequence of consecutive frames.
@@ -12723,7 +12723,7 @@ class VideoStream(FilterableStream):
         overlap: Int = Default(0),
         init_padding: Int = Default(0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Tile several successive frames together.
@@ -12775,7 +12775,7 @@ class VideoStream(FilterableStream):
         ]
         | Default = Default("merge"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Perform temporal field interlacing.
@@ -12815,7 +12815,7 @@ class VideoStream(FilterableStream):
         c3: String = Default("x"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Compute and apply a lookup table from two successive frames.
@@ -12862,7 +12862,7 @@ class VideoStream(FilterableStream):
         percentile: Float = Default(0.5),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Pick median pixels from successive frames.
@@ -12907,7 +12907,7 @@ class VideoStream(FilterableStream):
         planes: Int = Default(15),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Temporal Midway Equalization.
@@ -12953,7 +12953,7 @@ class VideoStream(FilterableStream):
         planes: Flags = Default("F"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Mix successive video frames.
@@ -13002,7 +13002,7 @@ class VideoStream(FilterableStream):
         desat: Double = Default(2.0),
         peak: Double = Default(0.0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Conversion to/from different dynamic ranges.
@@ -13050,7 +13050,7 @@ class VideoStream(FilterableStream):
         stop_duration: Duration = Default(0.0),
         color: Color = Default("black"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Temporarily pad video frames.
@@ -13099,7 +13099,7 @@ class VideoStream(FilterableStream):
         dir: Int | Literal["cclock_flip", "clock", "cclock", "clock_flip"] | Default = Default("cclock_flip"),
         passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default("none"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Transpose input video.
@@ -13140,7 +13140,7 @@ class VideoStream(FilterableStream):
         | Default = Default("cclock_flip"),
         passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default("none"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Transpose Videotoolbox frames
@@ -13184,7 +13184,7 @@ class VideoStream(FilterableStream):
         start_frame: Int64 = Default(-1),
         end_frame: Int64 = Default("I64_MAX"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Pick one continuous section from the input, drop the rest.
@@ -13241,7 +13241,7 @@ class VideoStream(FilterableStream):
         alpha_amount: Float = Default(0.0),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Sharpen or blur the input video.
@@ -13290,7 +13290,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def untile(self, *, layout: Image_size = Default("6x5"), **kwargs: Any) -> "VideoStream":
+    def untile(self, *, layout: Image_size = Default("6x5"), **kwargs: Any) -> VideoStream:
         """
 
         Untile a frame into a sequence of frames.
@@ -13330,7 +13330,7 @@ class VideoStream(FilterableStream):
         codec: String = Default("snow"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Ultra Simple / Slow Post-processing filter.
@@ -13491,7 +13491,7 @@ class VideoStream(FilterableStream):
         alpha_mask: Boolean = Default(False),
         reset_rot: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Convert 360 projection of video.
@@ -13603,7 +13603,7 @@ class VideoStream(FilterableStream):
         type: Int | Literal["universal", "bayes"] | Default = Default("universal"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply a Wavelet based Denoiser.
@@ -13648,7 +13648,7 @@ class VideoStream(FilterableStream):
 
     def varblur(
         self,
-        _radius: "VideoStream",
+        _radius: VideoStream,
         *,
         min_r: Int = Default(0),
         max_r: Int = Default(8),
@@ -13659,7 +13659,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Variable Blur filter.
@@ -13727,7 +13727,7 @@ class VideoStream(FilterableStream):
         tint0: Float = Default(0.0),
         tint1: Float = Default(0.0),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Video vectorscope.
@@ -13784,7 +13784,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def vflip(self, *, enable: str = Default(None), **kwargs: Any) -> "VideoStream":
+    def vflip(self, *, enable: str = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Flip the input video vertically.
@@ -13815,7 +13815,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def vfrdet(self, **kwargs: Any) -> "VideoStream":
+    def vfrdet(self, **kwargs: Any) -> VideoStream:
         """
 
         Variable frame rate detect filter.
@@ -13849,7 +13849,7 @@ class VideoStream(FilterableStream):
         alternate: Boolean = Default(False),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Boost or alter saturation.
@@ -13908,7 +13908,7 @@ class VideoStream(FilterableStream):
         tripod: Int = Default(0),
         fileformat: Int | Literal["ascii", "binary"] | Default = Default("binary"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Extract relative transformations, pass 1 of 2 for stabilization (see vidstabtransform for pass 2).
@@ -13971,7 +13971,7 @@ class VideoStream(FilterableStream):
         tripod: Boolean = Default(False),
         debug: Boolean = Default(False),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Transform the frames, pass 2 of 2 for stabilization (see vidstabdetect for pass 1).
@@ -14030,7 +14030,7 @@ class VideoStream(FilterableStream):
 
     def vif(
         self,
-        _reference: "VideoStream",
+        _reference: VideoStream,
         *,
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
         shortest: Boolean = Default(False),
@@ -14038,7 +14038,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Calculate the VIF between two video streams.
@@ -14092,7 +14092,7 @@ class VideoStream(FilterableStream):
         aspect: Rational = Default("1/1"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Make or reverse a vignette effect.
@@ -14137,7 +14137,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def vmafmotion(self, *, stats_file: String = Default(None), **kwargs: Any) -> "VideoStream":
+    def vmafmotion(self, *, stats_file: String = Default(None), **kwargs: Any) -> VideoStream:
         """
 
         Calculate the VMAF Motion score.
@@ -14177,7 +14177,7 @@ class VideoStream(FilterableStream):
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Martin Weston three field deinterlace.
@@ -14238,7 +14238,7 @@ class VideoStream(FilterableStream):
         fitmode: Int | Literal["none", "size"] | Default = Default("none"),
         input: Int | Literal["all", "first"] | Default = Default("first"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Video waveform monitor.
@@ -14301,7 +14301,7 @@ class VideoStream(FilterableStream):
 
     def weave(
         self, *, first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"), **kwargs: Any
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Weave input video fields into frames.
@@ -14332,7 +14332,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def xbr(self, *, n: Int = Default(3), **kwargs: Any) -> "VideoStream":
+    def xbr(self, *, n: Int = Default(3), **kwargs: Any) -> VideoStream:
         """
 
         Scale the input using xBR algorithm.
@@ -14365,7 +14365,7 @@ class VideoStream(FilterableStream):
 
     def xcorrelate(
         self,
-        _secondary: "VideoStream",
+        _secondary: VideoStream,
         *,
         planes: Int = Default(7),
         secondary: Int | Literal["first", "all"] | Default = Default("all"),
@@ -14375,7 +14375,7 @@ class VideoStream(FilterableStream):
         ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Cross-correlate first video stream with second video stream.
@@ -14423,7 +14423,7 @@ class VideoStream(FilterableStream):
 
     def xfade(
         self,
-        _xfade: "VideoStream",
+        _xfade: VideoStream,
         *,
         transition: Int
         | Literal[
@@ -14492,7 +14492,7 @@ class VideoStream(FilterableStream):
         offset: Duration = Default(0.0),
         expr: String = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Cross fade one video with another video.
@@ -14542,7 +14542,7 @@ class VideoStream(FilterableStream):
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Deinterlace the input image.
@@ -14587,7 +14587,7 @@ class VideoStream(FilterableStream):
         sigma: Int = Default(128),
         enable: str = Default(None),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Yet another edge preserving blur filter.
@@ -14624,7 +14624,7 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def zmq(self, *, bind_address: String = Default("tcp://*:5555"), **kwargs: Any) -> "VideoStream":
+    def zmq(self, *, bind_address: String = Default("tcp://*:5555"), **kwargs: Any) -> VideoStream:
         """
 
         Receive commands through ZMQ and broker them to filters.
@@ -14665,7 +14665,7 @@ class VideoStream(FilterableStream):
         s: Image_size = Default("hd720"),
         fps: Video_rate = Default("25"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply Zoom & Pan effect.
@@ -14875,7 +14875,7 @@ class VideoStream(FilterableStream):
         param_a: Double = Default("nan"),
         param_b: Double = Default("nan"),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
 
         Apply resizing, colorspace and bit depth conversion.

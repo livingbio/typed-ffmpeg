@@ -1,4 +1,4 @@
-::: ffmpeg.dag.schema
+::: ffmpeg.utils.typing
     rendering:
       sort_members: source
     options:

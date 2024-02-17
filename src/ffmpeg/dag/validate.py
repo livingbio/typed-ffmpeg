@@ -14,7 +14,7 @@ def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -
     Rebuild the graph with the given mapping.
 
     Args:
-        node: The node to rebuild the graph from.
+        current_stream: The stream to rebuild the graph with.
         mapping: The mapping to rebuild the graph with.
 
     Returns:
@@ -68,7 +68,7 @@ def add_split(
     Add split nodes to the graph.
 
     Args:
-        node: The node to add split nodes to.
+        current_stream: The stream to add split nodes to.
         down_node: The node use current_stream as input.
         down_index: The index of the input stream in down_node.
         context: The DAG context.
@@ -153,7 +153,8 @@ def validate(stream: Stream, auto_fix: bool = True) -> Stream:
     Validate the given DAG context.
 
     Args:
-        context: The DAG context to validate.
+        stream: The DAG context to validate.
+        auto_fix: Whether to automatically fix the graph.
 
     Returns:
         The validated DAG context.

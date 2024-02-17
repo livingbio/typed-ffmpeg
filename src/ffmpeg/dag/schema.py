@@ -50,7 +50,7 @@ class Stream(HashableBaseModel):
         See Also: [Stream specifiers](https://ffmpeg.org/ffmpeg.html#Stream-specifiers-1) `stream_index`
     """
 
-    def view(self, format: Literal["png", "svg"] = "png") -> str:
+    def view(self, format: Literal["png", "svg", "dot"] = "png") -> str:
         """
         Visualize the stream.
 

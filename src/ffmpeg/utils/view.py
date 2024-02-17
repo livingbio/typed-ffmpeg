@@ -19,7 +19,7 @@ def _get_node_color(node: Node) -> str | None:
     return color
 
 
-def view(node: Node, format: Literal["png", "svg"]) -> str:
+def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
     """
     Visualize the graph via graphviz.
 

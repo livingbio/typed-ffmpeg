@@ -54,10 +54,19 @@ nav:
           - audio stream: streams/audio_stream.md
           - av stream: streams/av_stream.md
       - DAG:
-          - context: dag/context.md
           - compile: dag/compile.md
-          - schema: dag/schema.md
+          - context: dag/context.md
           - nodes: dag/nodes.md
+          - schema: dag/schema.md
+          - serialize: dag/serialize.md
+          - utils: dag/utils.md
+          - validate: dag/validate.md
+      - utils:
+          - escaping: utils/escaping.md
+          - run: utils/run.md
+          - snapshot: utils/snapshot.md
+          - typing: utils/typing.md
+          - view: utils/view.md
 watch:
   - "src"
   - "docs"
@@ -88,9 +97,22 @@ plugins:
       handlers:
         python:
           options:
+            docstring_options:
+              ignore_init_summary: true
+            filters: ["!^_"]
+            heading_level: 1
+            inherited_members: true
+            merge_init_into_class: true
+            separate_signature: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_signature_annotations: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            signature_crossrefs: true
+            summary: true
+            docstring_section_style: table
             order: source
             docstring_style: google
-            docstring_section_style: table
-            show_root_heading: true
             extensions:
               - griffe_inherited_docstrings
