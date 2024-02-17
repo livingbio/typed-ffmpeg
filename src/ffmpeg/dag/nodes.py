@@ -30,9 +30,24 @@ class FilterNode(Node):
     """
 
     name: str
+    """
+    The name of the filter
+    """
+
     inputs: tuple[FilterableStream, ...] = ()
+    """
+    The input streams
+    """
+
     input_typings: tuple[StreamType, ...] = ()
+    """
+    The input typings
+    """
+
     output_typings: tuple[StreamType, ...] = ()
+    """
+    The output typings
+    """
 
     @override
     def repr(self) -> str:
@@ -144,10 +159,11 @@ class FilterableStream(Stream):
         Args:
             *streams (FilterableStream): the streams to apply the filter to
             name: the name of the filter
+            input_typings: the input typings
             **kwargs: the arguments for the filter
 
         Returns:
-            AVStream: the output stream
+            the output stream
         """
         return self.filter_multi_output(
             *streams, name=name, input_typings=input_typings, output_typings=(StreamType.video,), **kwargs
@@ -166,10 +182,11 @@ class FilterableStream(Stream):
         Args:
             *streams (FilterableStream): the streams to apply the filter to
             name: the name of the filter
+            input_typings: the input typings
             **kwargs: the arguments for the filter
 
         Returns:
-            AVStream: the output stream
+            the output stream
         """
         return self.filter_multi_output(
             *streams, name=name, input_typings=input_typings, output_typings=(StreamType.audio,), **kwargs
@@ -189,6 +206,8 @@ class FilterableStream(Stream):
         Args:
             *streams (FilterableStream): the streams to apply the filter to
             name: the name of the filter
+            input_typings: the input typings
+            output_typings: the output typings
             **kwargs: the arguments for the filter
 
         Returns:
@@ -302,6 +321,10 @@ class InputNode(Node):
     """
 
     filename: str
+    """
+    The filename to read from
+    """
+
     inputs: tuple[()] = ()
 
     @override
@@ -355,6 +378,9 @@ class InputNode(Node):
 @dataclass(frozen=True, kw_only=True)
 class OutputNode(Node):
     filename: str
+    """
+    The filename to output to
+    """
     inputs: tuple[FilterableStream, ...]
 
     @override
@@ -407,6 +433,15 @@ class OutputStream(Stream):
         return GlobalNode(inputs=(self,), args=args, kwargs=tuple(kwargs.items())).stream()
 
     def merge_outputs(self, *streams: OutputStream) -> OutputStream:
+        """
+        Merge multiple output streams into one.
+
+        Args:
+            *streams: The output streams to merge.
+
+        Returns:
+            The merged output stream.
+        """
         return MergeOutputsNode(inputs=streams).stream()
 
     def overwrite_output(self) -> "OutputStream":

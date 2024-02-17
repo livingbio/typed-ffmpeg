@@ -4,6 +4,15 @@ class Error(Exception):
     """
 
     def __init__(self, retcode: int | None, cmd: str, stdout: bytes, stderr: bytes):
+        """
+        Initialize the exception.
+
+        Args:
+            retcode: The return code of the command.
+            cmd: The command that was run.
+            stdout: The stdout of the command.
+            stderr: The stderr of the command.
+        """
 
         self.stdout = stdout
         self.stderr = stderr

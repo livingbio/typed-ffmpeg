@@ -64,6 +64,20 @@ def add_split(
     context: DAGContext = None,
     mapping: dict[tuple[Stream, Node | None, int | None], Stream] = None,
 ) -> tuple[Stream, dict[tuple[Stream, Node | None, int | None], Stream]]:
+    """
+    Add split nodes to the graph.
+
+    Args:
+        node: The node to add split nodes to.
+        down_node: The node use current_stream as input.
+        down_index: The index of the input stream in down_node.
+        context: The DAG context.
+        mapping: The mapping to add split nodes to.
+
+    Returns:
+        A tuple of the new node and the new mapping.
+    """
+
     if not context:
         context = DAGContext.build(current_stream.node)
 
@@ -115,6 +129,20 @@ def add_split(
 
 
 def fix_graph(stream: Stream) -> Stream:
+    """
+    Fix the graph by removing and adding split nodes.
+
+    Args:
+        stream: The stream to fix.
+
+    Returns:
+        The fixed stream.
+
+    Note:
+        Fix the graph by resetting split nodes.
+        This function is for internal use only.
+    """
+
     stream, _ = remove_split(stream)
     stream, _ = add_split(stream)
     return stream

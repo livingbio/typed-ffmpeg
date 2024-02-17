@@ -2,7 +2,16 @@ from typing import Any, Iterable
 
 
 def escape(text: str | int | float, chars: str = "\\'=:") -> str:
-    """Helper function to escape uncomfortable characters."""
+    """
+    Helper function to escape uncomfortable characters.
+
+    Args:
+        text: The text to escape.
+        chars: The characters to escape.
+
+    Returns:
+        The escaped text.
+    """
     text = str(text)
     _chars = list(set(chars))
     if "\\" in _chars:
@@ -16,7 +25,15 @@ def escape(text: str | int | float, chars: str = "\\'=:") -> str:
 
 
 def convert_kwargs_to_cmd_line_args(kwargs: dict[str, Any]) -> list[str]:
-    """Helper function to build command line arguments out of dict."""
+    """
+    Helper function to build command line arguments out of dict.
+
+    Args:
+        kwargs: The dict to convert.
+
+    Returns:
+        The command line arguments.
+    """
     args = []
     for k in sorted(kwargs.keys()):
         v = kwargs[k]

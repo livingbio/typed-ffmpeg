@@ -5,6 +5,10 @@ from .video import VideoStream
 
 
 class AVStream(AudioStream, VideoStream):
+    """
+    A stream that contains both audio and video. This is for input nodes only.
+    """
+
     node: InputNode
 
     @property

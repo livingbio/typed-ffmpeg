@@ -9,6 +9,16 @@ from collections import deque
 
 
 def is_dag(graph: dict[str, set[str]]) -> bool:
+    """
+    Determine if a graph is a directed acyclic graph (DAG).
+
+    Args:
+        graph: The graph to check.
+
+    Returns:
+        Whether the graph is a DAG.
+    """
+
     in_degree = {u: 0 for u in graph}  # Initialize in-degree of each node to 0
 
     # Calculate in-degree of each node
