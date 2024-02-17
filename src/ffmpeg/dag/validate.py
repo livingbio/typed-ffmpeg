@@ -150,10 +150,10 @@ def fix_graph(stream: Stream) -> Stream:
 
 def validate(stream: Stream, auto_fix: bool = True) -> Stream:
     """
-    Validate the given DAG context.
+    Validate the given DAG. If auto_fix is True, the graph will be automatically fixed to follow ffmpeg's rule.
 
     Args:
-        stream: The DAG context to validate.
+        stream: The DAG to validate.
         auto_fix: Whether to automatically fix the graph.
 
     Returns:
