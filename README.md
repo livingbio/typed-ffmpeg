@@ -1,45 +1,48 @@
 ## typed-ffmpeg
 
-Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation.
+Modern Python FFmpeg wrappers provide extensive support for complex filters, accompanied by detailed typing and documentation.
 
-This API design is based on the helpful `ffmpeg-python` package, which serves as a Python binding for FFmpeg. Acting as a wrapper around the FFmpeg command line utility, it provides a Pythonic interface for accessing FFmpeg functionality. However, the `ffmpeg-python` package lacks some crucial features, including:
+This API design draws inspiration from the user-friendly `ffmpeg-python` package, which offers an easy-to-use Pythonic interface for accessing FFmpeg functionality. However, the `ffmpeg-python` package lacks certain features that I require, including:
 
-- Documentation for filters
+- IDE friendly
+- Built-in documentation for FFmpeg filters
 - Comprehensive typing and type checking
-- Support for serialization and deserialization of filter graphs
+- Support for JSON serialization and deserialization of filter graphs
+- FFmpeg validation and automatic correction
 - Support for partial evaluation of filter graphs
 
-
-[![ci](https://github.com/livingbio/typed-ffmpeg/workflows/ci/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions?query=workflow%3Aci)
+[![ci-pacakge](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions?query=workflow%3Aci)
 [![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
 [![pypi version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
 
 ---
 
-**[Features](#features)** - **[Requirements](#requirements)** - **[Installation](#installation)** - **[Quick usage](#quick-usage)**
+**[Features](#features)** - **[Installation](#installation)** - **[Quick Usage](#quick-usage)**
 
-![mkdocstrings_gif1](https://user-images.githubusercontent.com/3999221/77157604-fb807480-6aa1-11ea-99e0-d092371d4de0.gif)
+![typed-ffmpeg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/autocomplete.png)
 
 ## Features
-- [**Built-in Documentation:**](https://mkdocstrings.github.io/theming/)
+- [**Built-in Documentation:**](https://livingbio.github.io/typed-ffmpeg/usage/doc/)
   Checking the FFmpeg documentation every time you want to use a filter can be cumbersome. typed-ffmpeg utilizes docstrings to provide comprehensive documentation for all filters. IDEs and text editors can display this documentation as a tooltip when you hover over a filter.
 
-- [**Typed:**](https://mkdocstrings.github.io/handlers/overview/)
+- [**Typed:**](https://livingbio.github.io/typed-ffmpeg/usage/typed/)
   This package offers comprehensive typing for all filters, including both input and output types. For non-dynamic inputs/outputs, typing is checked by static type checkers such as mypy; for dynamic inputs/outputs, typing is checked at runtime. This can help catch errors early and make your code more robust.
 
-- [**No Dependency:**](https://mkdocstrings.github.io/usage/#cross-references-to-other-projects-inventories)
-  typed-ffmpeg is a pure Python package and has no dependency on the FFmpeg command line utility. This allows you to use typed-ffmpeg in a platform-independent manner.
+![typed-ffmpeg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/typed.png)
 
-- [**Serialization:**](https://mkdocstrings.github.io/usage/#cross-references-to-other-projects-inventories)
-  typed-ffmpeg provides a way to serialize and deserialize filter graphs. This allows you to save the filter graph to a file and load it later.
+- **No Dependency:**
+  typed-ffmpeg is a pure Python package only build on python std library. Relying solely on the Python standard library for a package ensures portability, as it doesn't require additional dependencies for installation. It also minimizes maintenance overhead and security risks while providing stable functionality.
 
-- [**Validate and Auto Fix:**](https://mkdocstrings.github.io/usage/#cross-references)
-  typed-ffmpeg offers a feature to automatically fix the filter graph. This can help fix the filter graph when it is not valid.
+- [**Serialization:**](https://livingbio.github.io/typed-ffmpeg/usage/serialize/)
+  typed-ffmpeg offers the capability to serialize and deserialize filter graphs to JSON format, enabling you to save the filter graph to a file and reload it for future use.
 
-    **Note**: This feature can be turned off by setting `auto_fix` to `False` during `compile` or `run`.
-    [Opt-in](https://mkdocstrings.github.io/usage/#cross-references-to-any-markdown-heading).
+- [**Validate and Auto Fix:**](https://livingbio.github.io/typed-ffmpeg/usage/validate/)
+  The FFMpeg filter graph can be intricate and challenging to construct accurately. typed-ffmpeg provides a functionality to validate and even automatically correct these filter graphs, aiding in rectifying any inconsistencies or errors present within the graph.
 
-- [**Partial Evaluation (Coming Soon):**](https://mkdocstrings.github.io/usage/)
+[!Note]
+This feature can be turned off by setting relate flags during `compile` or `run`.
+
+- **Partial Evaluation (Coming Soon):**
   typed-ffmpeg provides a way to partially evaluate the filter graph. This can help evaluate the filter graph step by step.
 
 ## Installation
@@ -72,9 +75,10 @@ f = (
 
 f.run()
 ```
-![quickstart](media/quickstart.png)
+![quickstart](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quickstart.png)
 
-NOTE: you can get the graph easily by using `f.view()`
+[!NOTE]
+you can get the graph easily by using `f.view()`
 
 See the [Usage](https://mkdocstrings.github.io/usage) section of the docs for more examples!
 
