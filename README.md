@@ -60,26 +60,21 @@ pip install 'typed-ffmpeg[graph]'
 
 ## Quick Usage
 
-In `mkdocs.yml`:
+```python
+import ffmpeg
 
-```yaml
-site_name: "My Library"
+f = (
+    ffmpeg
+    .input(filename='input.mp4')
+    .hflip()
+    .output(filename='output.mp4')
+)
 
-theme:
-  name: "material"
-
-plugins:
-- search
-- mkdocstrings
+f.run()
 ```
+![quickstart](quickstart.png)
 
-In one of your markdown files:
-
-```markdown
-# Reference
-
-::: my_library.my_module.my_class
-```
+NOTE: you can get the graph easily by using `f.view()`
 
 See the [Usage](https://mkdocstrings.github.io/usage) section of the docs for more examples!
 
