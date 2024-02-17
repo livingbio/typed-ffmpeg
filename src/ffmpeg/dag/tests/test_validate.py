@@ -4,7 +4,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
-from ...filters import concat
+from ...filters import amix, concat
 from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
 from ..schema import Stream
@@ -54,9 +54,35 @@ def complex_stream() -> Any:
     return pytest.param(graph, id="complex-stream")
 
 
+def amix_stream() -> Any:
+    input1 = input("input1.mp4")
+
+    graph = amix(input1.audio.areverse().areverse(), input1.audio.areverse(), duration="firat").output(
+        filename="tmp.mp4"
+    )
+    return pytest.param(graph, id="amix-stream")
+
+
+def amix_stream_2() -> Any:
+    input1 = input("input1.mp4")
+
+    graph = amix(input1.audio.areverse(), input1.audio.areverse().areverse(), duration="firat").output(
+        filename="tmp.mp4"
+    )
+    return pytest.param(graph, id="amix-stream-2")
+
+
 @pytest.mark.parametrize(
     "graph",
-    [reduntant_split_duplicate(), redundant_split_outputs_1(), not_utilize_split(), reuse_input(), complex_stream()],
+    [
+        reduntant_split_duplicate(),
+        redundant_split_outputs_1(),
+        not_utilize_split(),
+        reuse_input(),
+        complex_stream(),
+        amix_stream(),
+        amix_stream_2(),
+    ],
 )
 def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
     context = DAGContext.build(graph.node)
