@@ -6,18 +6,19 @@ from .schema import Stream
 from .validate import validate
 
 
-def compile(stream: Stream) -> list[str]:
+def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
     """
     Compile the stream into a list of arguments.
 
     Args:
         stream: The stream to compile.
+        auto_fix: Whether to automatically fix the stream.
 
     Returns:
         The list of arguments.
     """
 
-    stream = validate(stream)
+    stream = validate(stream, auto_fix=auto_fix)
     node = stream.node
     context = DAGContext.build(node)
 
