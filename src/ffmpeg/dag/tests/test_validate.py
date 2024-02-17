@@ -63,6 +63,15 @@ def amix_stream() -> Any:
     return pytest.param(graph, id="amix-stream")
 
 
+def amix_stream_2() -> Any:
+    input1 = input("input1.mp4")
+
+    graph = amix(input1.audio.areverse(), input1.audio.areverse().areverse(), duration="firat").output(
+        filename="tmp.mp4"
+    )
+    return pytest.param(graph, id="amix-stream-2")
+
+
 @pytest.mark.parametrize(
     "graph",
     [
@@ -72,6 +81,7 @@ def amix_stream() -> Any:
         reuse_input(),
         complex_stream(),
         amix_stream(),
+        amix_stream_2(),
     ],
 )
 def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
