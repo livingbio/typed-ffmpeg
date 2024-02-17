@@ -39,13 +39,16 @@ This API design draws inspiration from the user-friendly `ffmpeg-python` package
 - [**Validate and Auto Fix:**](https://livingbio.github.io/typed-ffmpeg/usage/validate/)
   The FFMpeg filter graph can be intricate and challenging to construct accurately. typed-ffmpeg provides a functionality to validate and even automatically correct these filter graphs, aiding in rectifying any inconsistencies or errors present within the graph.
 
-[!Note]
+> [!Note]
 This feature can be turned off by setting relate flags during `compile` or `run`.
 
 - **Partial Evaluation (Coming Soon):**
   typed-ffmpeg provides a way to partially evaluate the filter graph. This can help evaluate the filter graph step by step.
 
 ## Installation
+
+> [!Note]
+FFmpeg installation is required on your system.
 
 With `pip`:
 
@@ -55,11 +58,13 @@ pip install typed-ffmpeg
 
 You can also install support for visualizing filter graphs with `graphviz`:
 
+> [!Note]
+Graphviz must be installed on your system.
+
 ```bash
 pip install 'typed-ffmpeg[graph]'
 ```
 
-**Note**: You need to install FFmpeg / Graphviz to your system.
 
 ## Quick Usage
 
@@ -77,8 +82,8 @@ f.run()
 ```
 ![quickstart](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quickstart.png)
 
-[!NOTE]
-you can get the graph easily by using `f.view()`
+> [!NOTE]
+Obtaining the graph is simple; just utilize `f.view()`.
 
 See the [Usage](https://mkdocstrings.github.io/usage) section of the docs for more examples!
 
