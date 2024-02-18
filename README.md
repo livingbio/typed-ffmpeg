@@ -51,8 +51,8 @@ This API design draws inspiration from the user-friendly `ffmpeg-python` package
   typed-ffmpeg supports visualizing filter graphs using `graphviz`. This can help you understand the filter graph better and debug any issues.
 
 
-> [!Note]
-This feature can be turned off by setting relate flags during `compile` or `run`.
+!!! tip "Note"
+    This feature can be turned off by setting relate flags during `compile` or `run`.
 
 ### Coming Soon
 - **Partial Evaluation:**
@@ -62,11 +62,14 @@ This feature can be turned off by setting relate flags during `compile` or `run`
 - **Support for More Filters:**
   typed-ffmpeg currently supports a subset of FFmpeg filters. We are working to support more filters in the future.
 
+## Help
+
+See [documentation](https://livingbio.github.io/typed-ffmpeg/) for more details.
 
 ## Installation
 
-> [!Note]
-FFmpeg installation is required on your system.
+!!! tip "Note"
+    FFmpeg installation is required on your system.
 
 With `pip`:
 
@@ -76,8 +79,8 @@ pip install typed-ffmpeg
 
 You can also install support for visualizing filter graphs with `graphviz`:
 
-> [!Note]
-Graphviz must be installed on your system.
+!!! tip "Note"
+    Graphviz must be installed on your system.
 
 ```bash
 pip install 'typed-ffmpeg[graph]'
@@ -100,8 +103,8 @@ f.run()
 ```
 ![quickstart](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quickstart.png)
 
-> [!NOTE]
-Obtaining the graph is simple; just utilize `f.view()`.
+!!! tip "Note"
+    Obtaining the graph is simple; just utilize `f.view()`.
 
 See the [Usage](https://mkdocstrings.github.io/usage) section of the docs for more examples!
 

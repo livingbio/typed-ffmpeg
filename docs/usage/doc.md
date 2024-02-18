@@ -80,6 +80,8 @@ detail compare with ffmpeg-python
 
 Current Support FFMpeg Filters
 
+filters
+
 ## Generated Table
 | Filter | Support |
 | --- | --- |
