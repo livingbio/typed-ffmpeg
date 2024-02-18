@@ -1,3 +1,7 @@
+"""
+This module defined the basic functions for creating the ffmpeg filter graph.
+"""
+
 from typing import Any
 
 from ffmpeg.schema import StreamType

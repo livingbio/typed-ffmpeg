@@ -2,7 +2,7 @@ import re
 from typing import Any, Literal
 
 from .dag.nodes import FilterableStream, FilterNode
-from .schema import Default, StreamType, to_tuple
+from .schema import Default, StreamType, _to_tuple
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
 from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String, Video_rate
@@ -99,7 +99,7 @@ def acrossfade(
             _crossfade0,
             _crossfade1,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "nb_samples": nb_samples,
@@ -172,7 +172,7 @@ def afir(
         input_typings=tuple([StreamType.audio] * int(nbirs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "dry": dry,
@@ -227,7 +227,7 @@ def ainterleave(
         input_typings=tuple([StreamType.video] * int(nb_inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "nb_inputs": nb_inputs,
@@ -277,7 +277,7 @@ def alphamerge(
             _main,
             _alpha,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -313,7 +313,7 @@ def amerge(*streams: "AudioStream", inputs: Int = Default(2), **kwargs: Any) -> 
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -357,7 +357,7 @@ def amix(
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -393,7 +393,7 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
             _multiply0,
             _multiply1,
         ),
-        kwargs=to_tuple(({} | kwargs)),
+        kwargs=_to_tuple(({} | kwargs)),
     )
     return filter_node.audio(0)
 
@@ -437,7 +437,7 @@ def anlmf(
             _input,
             _desired,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "order": order,
@@ -493,7 +493,7 @@ def anlms(
             _input,
             _desired,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "order": order,
@@ -535,7 +535,7 @@ def apsnr(
             _input0,
             _input1,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "enable": enable,
@@ -584,7 +584,7 @@ def arls(
             _input,
             _desired,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "order": order,
@@ -625,7 +625,7 @@ def asdr(
             _input0,
             _input1,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "enable": enable,
@@ -662,7 +662,7 @@ def asisdr(
             _input0,
             _input1,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "enable": enable,
@@ -698,7 +698,7 @@ def astreamselect(
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio] * len(re.findall(r"\d+", str(map)))),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -743,7 +743,7 @@ def axcorrelate(
             _axcorrelate0,
             _axcorrelate1,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "size": size,
@@ -1048,7 +1048,7 @@ def blend(
             _top,
             _bottom,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "c0_mode": c0_mode,
@@ -1125,7 +1125,7 @@ def bm3d(
         input_typings=tuple([StreamType.video] + [StreamType.video] if ref else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "sigma": sigma,
@@ -1187,7 +1187,7 @@ def colormap(
             _source,
             _target,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "patch_size": patch_size,
@@ -1234,7 +1234,7 @@ def concat(
         input_typings=tuple(([StreamType.video] * int(v) + [StreamType.audio] * int(a)) * int(n)),
         output_typings=tuple([StreamType.video] * int(v) + [StreamType.audio] * int(a)),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "n": n,
@@ -1293,7 +1293,7 @@ def convolve(
             _main,
             _impulse,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -1349,7 +1349,7 @@ def corr(
             _main,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -1403,7 +1403,7 @@ def decimate(
         input_typings=tuple([StreamType.video] + ([StreamType.video] if ppsrc else [])),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "cycle": cycle,
@@ -1465,7 +1465,7 @@ def deconvolve(
             _main,
             _impulse,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -1517,7 +1517,7 @@ def displace(
             _xmap,
             _ymap,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "edge": edge,
@@ -1557,7 +1557,7 @@ def feedback(
             _default,
             _feedin,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "x": x,
@@ -1623,7 +1623,7 @@ def fieldmatch(
         input_typings=tuple([StreamType.video] + [StreamType.video] if ppsrc else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "order": order,
@@ -1677,7 +1677,7 @@ def framepack(
             _left,
             _right,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "format": format,
@@ -1722,7 +1722,7 @@ def freezeframes(
             _source,
             _replace,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "first": first,
@@ -1772,7 +1772,7 @@ def guided(
         input_typings=tuple([StreamType.video] + [StreamType.video] if guidance else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "radius": radius,
@@ -1831,7 +1831,7 @@ def haldclut(
             _main,
             _clut,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "clut": clut,
@@ -1885,7 +1885,7 @@ def headphone(
         ),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "map": map,
@@ -1925,7 +1925,7 @@ def hstack(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -1979,7 +1979,7 @@ def hysteresis(
             _base,
             _alt,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -2034,7 +2034,7 @@ def identity(
             _main,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -2076,7 +2076,7 @@ def interleave(
         input_typings=tuple([StreamType.video] * int(nb_inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "nb_inputs": nb_inputs,
@@ -2117,7 +2117,7 @@ def join(
         input_typings=tuple([StreamType.audio] * int(inputs)),
         output_typings=tuple([StreamType.audio]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -2180,7 +2180,7 @@ def libvmaf(
             _main,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "log_path": log_path,
@@ -2234,7 +2234,7 @@ def limitdiff(
         input_typings=tuple([StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "threshold": threshold,
@@ -2297,7 +2297,7 @@ def lut2(
             _srcx,
             _srcy,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "c0": c0,
@@ -2355,7 +2355,7 @@ def maskedclamp(
             _dark,
             _bright,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "undershoot": undershoot,
@@ -2403,7 +2403,7 @@ def maskedmax(
             _filter1,
             _filter2,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -2449,7 +2449,7 @@ def maskedmerge(
             _overlay,
             _mask,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -2495,7 +2495,7 @@ def maskedmin(
             _filter1,
             _filter2,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -2543,7 +2543,7 @@ def maskedthreshold(
             _source,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "threshold": threshold,
@@ -2600,7 +2600,7 @@ def mergeplanes(
         input_typings=tuple([StreamType.video] * int(max(hex(int(mapping))[2::2]))),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "mapping": mapping,
@@ -2647,7 +2647,7 @@ def midequalizer(
             _in0,
             _in1,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -2694,7 +2694,7 @@ def mix(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -2756,7 +2756,7 @@ def morpho(
             _default,
             _structure,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "mode": mode,
@@ -2812,7 +2812,7 @@ def msad(
             _main,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -2863,7 +2863,7 @@ def multiply(
             _source,
             _factor,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "scale": scale,
@@ -2927,7 +2927,7 @@ def overlay(
             _main,
             _overlay,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "x": x,
@@ -2989,7 +2989,7 @@ def paletteuse(
             _default,
             _palette,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "dither": dither,
@@ -3034,7 +3034,7 @@ def premultiply(
         input_typings=tuple([StreamType.video] + [StreamType.video] if inplace else []),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -3091,7 +3091,7 @@ def psnr(
             _main,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "stats_file": stats_file,
@@ -3143,7 +3143,7 @@ def remap(
             _xmap,
             _ymap,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "format": format,
@@ -3226,7 +3226,7 @@ def scale2ref(
             _default,
             _ref,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "w": w,
@@ -3308,7 +3308,7 @@ def sidechaincompress(
             _main,
             _sidechain,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "level_in": level_in,
@@ -3384,7 +3384,7 @@ def sidechaingate(
             _main,
             _sidechain,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "level_in": level_in,
@@ -3448,7 +3448,7 @@ def signature(
         input_typings=tuple([StreamType.video] * int(nb_inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "detectmode": detectmode,
@@ -3534,7 +3534,7 @@ def spectrumsynth(
             _magnitude,
             _phase,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "sample_rate": sample_rate,
@@ -3591,7 +3591,7 @@ def ssim(
             _main,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "stats_file": stats_file,
@@ -3632,7 +3632,7 @@ def streamselect(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video] * len(re.findall(r"\d+", str(map)))),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -3681,7 +3681,7 @@ def threshold(
             _min,
             _max,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -3722,7 +3722,7 @@ def unpremultiply(
         input_typings=tuple([StreamType.video] + ([StreamType.video] if inplace else [])),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -3779,7 +3779,7 @@ def varblur(
             _default,
             _radius,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "min_r": min_r,
@@ -3835,7 +3835,7 @@ def vif(
             _main,
             _reference,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "eof_action": eof_action,
@@ -3874,7 +3874,7 @@ def vstack(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -3928,7 +3928,7 @@ def xcorrelate(
             _primary,
             _secondary,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "planes": planes,
@@ -4043,7 +4043,7 @@ def xfade(
             _main,
             _xfade,
         ),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "transition": transition,
@@ -4096,7 +4096,7 @@ def xmedian(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
@@ -4147,7 +4147,7 @@ def xstack(
         input_typings=tuple([StreamType.video] * int(inputs)),
         output_typings=tuple([StreamType.video]),
         inputs=(*streams,),
-        kwargs=to_tuple(
+        kwargs=_to_tuple(
             (
                 {
                     "inputs": inputs,
