@@ -25,12 +25,11 @@ This API design draws inspiration from the user-friendly `ffmpeg-python` package
 - **No Dependency:**
   typed-ffmpeg is a pure Python package only build on python std library. Relying solely on the Python standard library for a package ensures portability, as it doesn't require additional dependencies for installation. It also minimizes maintenance overhead and security risks while providing stable functionality.
 
-- **Easy to Use:**
+- [**Easy to Use:**](https://livingbio.github.io/typed-ffmpeg/usage/example/)
   typed-ffmpeg is designed to be user-friendly and easy to use. It provides a Pythonic interface for constructing filter graphs, making it simple to use and understand.
-  see Example
 
-- **Support FFMpeg Complex Filter**
-  typed-ffmpeg supports all FFmpeg filters, including video, audio, and dynamic filters. This allows you to construct complex filter graphs with ease.
+- [**Support FFMpeg Complex Filter**](https://livingbio.github.io/typed-ffmpeg/usage/doc/)
+  typed-ffmpeg supports most FFmpeg filters out of box. IDE can Auto Complete the filter options, This allows you to construct complex filter graphs with ease.
 
 - [**Built-in Documentation:**](https://livingbio.github.io/typed-ffmpeg/usage/doc/)
   Checking the FFmpeg documentation every time you want to use a filter can be cumbersome. typed-ffmpeg utilizes docstrings to provide comprehensive documentation for all filters. IDEs and text editors can display this documentation as a tooltip when you hover over a filter.
@@ -44,19 +43,19 @@ This API design draws inspiration from the user-friendly `ffmpeg-python` package
 - [**Serialization:**](https://livingbio.github.io/typed-ffmpeg/usage/serialize/)
   typed-ffmpeg offers the capability to serialize and deserialize filter graphs to JSON format, enabling you to save the filter graph to a file and reload it for future use.
 
-- [**Validate and Auto Fix:**](https://livingbio.github.io/typed-ffmpeg/usage/validate/)
-  The FFMpeg filter graph can be intricate and challenging to construct accurately. typed-ffmpeg provides a functionality to validate and even automatically correct these filter graphs, aiding in rectifying any inconsistencies or errors present within the graph.
-
 - **Graph Visualization:**
   typed-ffmpeg supports visualizing filter graphs using `graphviz`. This can help you understand the filter graph better and debug any issues.
 
+- [**Validate and Auto Fix:**](https://livingbio.github.io/typed-ffmpeg/usage/validate/)
+  The FFMpeg filter graph can be intricate and challenging to construct accurately. typed-ffmpeg provides a functionality to validate and even automatically correct these filter graphs, aiding in rectifying any inconsistencies or errors present within the graph.
+
 
 !!! tip "Note"
-    This feature can be turned off by setting relate flags during `compile` or `run`.
+    Auto fix feature can be turned off by setting relate flags during `compile` or `run`.
 
-### Coming Soon
+### Planning Features
 - **Partial Evaluation:**
-  typed-ffmpeg provides a way to partially evaluate the filter graph. This can help evaluate the filter graph step by step.
+  typed-ffmpeg provides a way to partially evaluate the filter graph. This can help you reuse the filter graph.
 - **FFmpeg Version Support:**
   typed-ffmpeg is built based on FFmpeg version 6.0. If you encounter any issues with typed-ffmpeg in different FFmpeg versions, please open an issue in the GitHub repository.
 - **Support for More Filters:**
@@ -67,24 +66,27 @@ This API design draws inspiration from the user-friendly `ffmpeg-python` package
 See [documentation](https://livingbio.github.io/typed-ffmpeg/) for more details.
 
 ## Installation
-
-!!! tip "Note"
-    FFmpeg installation is required on your system.
-
 With `pip`:
 
 ```bash
 pip install typed-ffmpeg
 ```
 
-You can also install support for visualizing filter graphs with `graphviz`:
+!!! tip "Note"
+    FFmpeg installation is required on your system.
+
+
+### Visualization Support
+
+Visualize can help you understand the filter graph better and debug any issues.
+Visualize is not included in the main package, but you can install it separately.
+```bash
+pip install 'typed-ffmpeg[graph]'
+```
 
 !!! tip "Note"
     Graphviz must be installed on your system.
 
-```bash
-pip install 'typed-ffmpeg[graph]'
-```
 
 
 ## Quick Usage
@@ -103,8 +105,29 @@ f.run()
 ```
 ![quickstart](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quickstart.png)
 
+### More complex example
+
+```python
+import ffmpeg
+
+in_file = ffmpeg.input("input.mp4")
+overlay_file = ffmpeg.input("overlay.png")
+
+f = (
+    ffmpeg.filters.concat(
+        in_file.trim(start_frame=10, end_frame=20),
+        in_file.trim(start_frame=30, end_frame=40),
+    )
+    .video(0)
+    .overlay(overlay_file.hflip())
+    .drawbox(x="50", y="50", width="120", height="120", color="red", thickness="5")
+    .output(filename="out.mp4")
+)
+```
+![quickstart-complex](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quickstart-complex.png)
+
 !!! tip "Note"
-    Obtaining the graph is simple; just utilize `f.view()`.
+    Obtaining the graph is easy; just utilize `f.view()`.
 
 See the [Usage](https://mkdocstrings.github.io/usage) section of the docs for more examples!
 
