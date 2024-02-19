@@ -1,3 +1,7 @@
+"""
+Defines the basic schema for the ffmpeg command line options.
+"""
+
 import enum
 
 
@@ -21,7 +25,9 @@ class Default(str):
     ...
 
 
-def to_tuple(kwargs: dict[str, str | int | float | bool | Default]) -> tuple[tuple[str, str | int | float | bool], ...]:
+def _to_tuple(
+    kwargs: dict[str, str | int | float | bool | Default]
+) -> tuple[tuple[str, str | int | float | bool], ...]:
     """
     Convert the values of the dictionary to strings.
     """

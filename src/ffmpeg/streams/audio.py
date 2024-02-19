@@ -4,7 +4,7 @@ import re
 from typing import TYPE_CHECKING, Any, Literal
 
 from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default, StreamType, to_tuple
+from ..schema import Default, StreamType, _to_tuple
 from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
 from .channel_layout import CHANNEL_LAYOUT
 
@@ -54,7 +54,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "rate": rate,
@@ -95,7 +95,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "action": action,
@@ -137,7 +137,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "rate": rate,
@@ -198,7 +198,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -240,7 +240,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "contrast": contrast,
@@ -268,7 +268,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -363,7 +363,7 @@ class AudioStream(FilterableStream):
                 self,
                 _crossfade1,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "nb_samples": nb_samples,
@@ -414,7 +414,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] * len(re.split(r"[ |]+", str(split)))),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "split": split,
@@ -477,7 +477,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -528,7 +528,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "cue": cue,
@@ -578,7 +578,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "window": window,
@@ -632,7 +632,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "window": window,
@@ -673,7 +673,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "stages": stages,
@@ -715,7 +715,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "delays": delays,
@@ -757,7 +757,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level": level,
@@ -790,7 +790,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "enable": enable,
@@ -854,7 +854,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "m1": m1,
@@ -912,7 +912,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "transfer": transfer,
@@ -984,7 +984,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "threshold": threshold,
@@ -1040,7 +1040,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "sensitivity": sensitivity,
@@ -1084,7 +1084,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "in_gain": in_gain,
@@ -1133,7 +1133,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -1177,7 +1177,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "exprs": exprs,
@@ -1231,7 +1231,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -1318,7 +1318,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "type": type,
@@ -1392,7 +1392,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "noise_reduction": noise_reduction,
@@ -1477,7 +1477,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "real": real,
@@ -1510,7 +1510,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -1543,7 +1543,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "sample_fmts": sample_fmts,
@@ -1587,7 +1587,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "shift": shift,
@@ -1642,7 +1642,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "sigma": sigma,
@@ -1710,7 +1710,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -1788,7 +1788,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -1844,7 +1844,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "dmode": dmode,
@@ -1917,7 +1917,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] + [StreamType.video] if response else []),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "zeros": zeros,
@@ -1963,7 +1963,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "enable": enable,
@@ -1994,7 +1994,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "enable": enable,
@@ -2048,7 +2048,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -2111,7 +2111,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -2162,7 +2162,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "loop": loop,
@@ -2217,7 +2217,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "mode": mode,
@@ -2255,7 +2255,7 @@ class AudioStream(FilterableStream):
                 self,
                 _multiply1,
             ),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -2297,7 +2297,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] + [StreamType.video] if curves else []),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "params": params,
@@ -2350,7 +2350,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "strength": strength,
@@ -2405,7 +2405,7 @@ class AudioStream(FilterableStream):
                 self,
                 _desired,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "order": order,
@@ -2460,7 +2460,7 @@ class AudioStream(FilterableStream):
                 self,
                 _desired,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "order": order,
@@ -2493,7 +2493,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -2532,7 +2532,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "packet_size": packet_size,
@@ -2577,7 +2577,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "mode": mode,
@@ -2636,7 +2636,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] + ([StreamType.video] if video else [])),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "rate": rate,
@@ -2693,7 +2693,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "in_gain": in_gain,
@@ -2740,7 +2740,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "shift": shift,
@@ -2777,7 +2777,7 @@ class AudioStream(FilterableStream):
                 self,
                 _input1,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "enable": enable,
@@ -2827,7 +2827,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -2890,7 +2890,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -2932,7 +2932,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "limit": limit,
@@ -2964,7 +2964,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "sample_rate": sample_rate,
@@ -2992,7 +2992,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -3033,7 +3033,7 @@ class AudioStream(FilterableStream):
                 self,
                 _desired,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "order": order,
@@ -3072,7 +3072,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "model": model,
@@ -3108,7 +3108,7 @@ class AudioStream(FilterableStream):
                 self,
                 _input1,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "enable": enable,
@@ -3143,7 +3143,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] * len(str(timestamps or samples).split("|"))),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "timestamps": timestamps,
@@ -3178,7 +3178,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] * int(outputs)),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "expr": expr,
@@ -3214,7 +3214,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "commands": commands,
@@ -3255,7 +3255,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "nb_out_samples": nb_out_samples,
@@ -3288,7 +3288,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "expr": expr,
@@ -3319,7 +3319,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "sample_rate": sample_rate,
@@ -3350,7 +3350,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "expr": expr,
@@ -3378,7 +3378,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -3435,7 +3435,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "mode": mode,
@@ -3471,7 +3471,7 @@ class AudioStream(FilterableStream):
                 self,
                 _input1,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "enable": enable,
@@ -3519,7 +3519,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "type": type,
@@ -3611,7 +3611,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "win_size": win_size,
@@ -3646,7 +3646,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] * int(outputs)),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "outputs": outputs,
@@ -3757,7 +3757,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "length": length,
@@ -3815,7 +3815,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "dry": dry,
@@ -3866,7 +3866,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "cutoff": cutoff,
@@ -3911,7 +3911,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "cutoff": cutoff,
@@ -3958,7 +3958,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "centerf": centerf,
@@ -4006,7 +4006,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "centerf": centerf,
@@ -4041,7 +4041,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "tempo": tempo,
@@ -4087,7 +4087,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "freq": freq,
@@ -4140,7 +4140,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "start": start,
@@ -4212,7 +4212,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "mode": mode,
@@ -4269,7 +4269,7 @@ class AudioStream(FilterableStream):
                 self,
                 _axcorrelate1,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -4301,7 +4301,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "bind_address": bind_address,
@@ -4357,7 +4357,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -4421,7 +4421,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -4488,7 +4488,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -4551,7 +4551,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "a0": a0,
@@ -4593,7 +4593,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "map": map,
@@ -4629,7 +4629,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "channel_layout": channel_layout,
@@ -4677,7 +4677,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "in_gain": in_gain,
@@ -4730,7 +4730,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "attacks": attacks,
@@ -4784,7 +4784,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "mm": mm,
@@ -4838,7 +4838,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "strength": strength,
@@ -4879,7 +4879,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "i": i,
@@ -4921,7 +4921,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "shift": shift,
@@ -4967,7 +4967,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "i": i,
@@ -5013,7 +5013,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "original": original,
@@ -5047,7 +5047,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "length": length,
@@ -5109,7 +5109,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "framelen": framelen,
@@ -5150,7 +5150,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -5212,7 +5212,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video] if video else [] + [StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "video": video,
@@ -5285,7 +5285,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -5330,7 +5330,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "m": m,
@@ -5405,7 +5405,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "gain": gain,
@@ -5467,7 +5467,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "delay": delay,
@@ -5534,7 +5534,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -5592,7 +5592,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "disable_autoconvert": disable_autoconvert,
@@ -5653,7 +5653,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -5721,7 +5721,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -5788,7 +5788,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "I": I,
@@ -5854,7 +5854,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -5922,7 +5922,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -5971,7 +5971,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "args": args,
@@ -6002,7 +6002,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "args": args,
@@ -6036,7 +6036,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "track_gain": track_gain,
@@ -6091,7 +6091,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "tempo": tempo,
@@ -6188,7 +6188,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6281,7 +6281,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6383,7 +6383,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6463,7 +6463,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6583,7 +6583,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6711,7 +6711,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6790,7 +6790,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "rate": rate,
@@ -6854,7 +6854,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6907,7 +6907,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.video]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "size": size,
@@ -6974,7 +6974,7 @@ class AudioStream(FilterableStream):
                 self,
                 _sidechain,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -7049,7 +7049,7 @@ class AudioStream(FilterableStream):
                 self,
                 _sidechain,
             ),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -7096,7 +7096,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "n": n,
@@ -7160,7 +7160,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "start_periods": start_periods,
@@ -7229,7 +7229,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "peak": peak,
@@ -7317,7 +7317,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "level_in": level_in,
@@ -7381,7 +7381,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "delay": delay,
@@ -7455,7 +7455,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "1b": _1b,
@@ -7631,7 +7631,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "chl_out": chl_out,
@@ -7738,7 +7738,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -7807,7 +7807,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "frequency": frequency,
@@ -7853,7 +7853,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "f": f,
@@ -7890,7 +7890,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "f": f,
@@ -7932,7 +7932,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "cutoff": cutoff,
@@ -7982,7 +7982,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(
+            kwargs=_to_tuple(
                 (
                     {
                         "volume": volume,
@@ -8016,6 +8016,6 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=to_tuple(({} | kwargs)),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)

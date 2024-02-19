@@ -43,6 +43,7 @@ nav:
   - Get Started:
       - Overview: index.md
   - Usage:
+      - Doc: usage/doc.md
       - Typed: usage/typed.md
       - Validate: usage/validate.md
       - Custom Filters: usage/custom_filters.md
