@@ -1,5 +1,9 @@
 ## typed-ffmpeg
 
+[![ci-pacakge](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions?query=workflow%3Aci)
+[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
+[![pypi version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
+
 Modern Python FFmpeg wrappers provide extensive support for complex filters, accompanied by detailed typing and documentation.
 
 This API design draws inspiration from the user-friendly `ffmpeg-python` package, which offers an easy-to-use Pythonic interface for accessing FFmpeg functionality. However, the `ffmpeg-python` package lacks certain features that I require, including:
@@ -10,10 +14,6 @@ This API design draws inspiration from the user-friendly `ffmpeg-python` package
 - Support for JSON serialization and deserialization of filter graphs
 - FFmpeg validation and automatic correction
 - Support for partial evaluation of filter graphs
-
-[![ci-pacakge](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions?query=workflow%3Aci)
-[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
-[![pypi version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
 
 ---
 
