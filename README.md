@@ -81,6 +81,8 @@ f = (
 f.run()
 ```
 
+![](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quick-usage.png)
+
 For a more complex example:
 
 ```python
