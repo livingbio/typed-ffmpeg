@@ -1,138 +1,120 @@
 ## typed-ffmpeg
 
-[![ci-pacakge](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions?query=workflow%3Aci)
-[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
-[![pypi version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
+[![CI Package](https://github.com/livingbio/typed-ffmpeg/actions/workflows/ci-package.yml/badge.svg)](https://github.com/livingbio/typed-ffmpeg/actions?query=workflow%3Aci-package)
+[![Documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://livingbio.github.io/typed-ffmpeg/)
+[![PyPI Version](https://img.shields.io/pypi/v/typed-ffmpeg.svg)](https://pypi.org/project/typed-ffmpeg/)
 
-Modern Python FFmpeg wrappers provide extensive support for complex filters, accompanied by detailed typing and documentation.
-
-This API design draws inspiration from the user-friendly `ffmpeg-python` package, which offers an easy-to-use Pythonic interface for accessing FFmpeg functionality. However, the `ffmpeg-python` package lacks certain features that I require, including:
-
-- IDE friendly
-- Built-in documentation for FFmpeg filters
-- Comprehensive typing and type checking
-- Support for JSON serialization and deserialization of filter graphs
-- FFmpeg validation and automatic correction
-- Support for partial evaluation of filter graphs
+**typed-ffmpeg** offers a modern, Pythonic interface to FFmpeg, providing extensive support for complex filters with detailed typing and documentation. Inspired by `ffmpeg-python`, this package enhances functionality by addressing common limitations, such as lack of IDE integration and comprehensive typing, while also introducing new features like JSON serialization of filter graphs and automatic FFmpeg validation.
 
 ---
 
-**[Features](#features)** - **[Installation](#installation)** - **[Quick Usage](#quick-usage)**
+### Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Usage](#quick-usage)
+- [Documentation](https://livingbio.github.io/typed-ffmpeg/)
+- [Acknowledgements](#acknowledgements)
+
+---
+
+## Features
 
 ![typed-ffmpeg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/autocomplete.png)
 
-## Features
-- **No Dependency:**
-  typed-ffmpeg is a pure Python package only build on python std library. Relying solely on the Python standard library for a package ensures portability, as it doesn't require additional dependencies for installation. It also minimizes maintenance overhead and security risks while providing stable functionality.
 
-- [**Easy to Use:**](https://livingbio.github.io/typed-ffmpeg/usage/example/)
-  typed-ffmpeg is designed to be user-friendly and easy to use. It provides a Pythonic interface for constructing filter graphs, making it simple to use and understand.
+- **Zero Dependencies:** Built purely with the Python standard library, ensuring maximum compatibility and security.
+- **User-Friendly:** Simplifies the construction of filter graphs with an intuitive Pythonic interface.
+- **Comprehensive FFmpeg Filter Support:** Out-of-the-box support for most FFmpeg filters, with IDE auto-completion.
+- **Integrated Documentation:** In-line docstrings provide immediate reference for filter usage, reducing the need to consult external documentation.
+- **Robust Typing:** Offers static and dynamic type checking, enhancing code reliability and development experience.
+- **Filter Graph Serialization:** Enables saving and reloading of filter graphs in JSON format for ease of use and repeatability.
+- **Graph Visualization:** Leverages `graphviz` for visual representation, aiding in understanding and debugging.
+- **Validation and Auto-correction:** Assists in identifying and fixing errors within filter graphs.
 
-- [**Support FFMpeg Complex Filter**](https://livingbio.github.io/typed-ffmpeg/usage/doc/)
-  typed-ffmpeg supports most FFmpeg filters out of box. IDE can Auto Complete the filter options, This allows you to construct complex filter graphs with ease.
+### Planned Features
 
-- [**Built-in Documentation:**](https://livingbio.github.io/typed-ffmpeg/usage/doc/)
-  Checking the FFmpeg documentation every time you want to use a filter can be cumbersome. typed-ffmpeg utilizes docstrings to provide comprehensive documentation for all filters. IDEs and text editors can display this documentation as a tooltip when you hover over a filter.
+Please note that the following features are under consideration or development for future releases:
 
-- [**Typed:**](https://livingbio.github.io/typed-ffmpeg/usage/typed/)
-  This package offers comprehensive typing for all filters, including both input and output types. For non-dynamic inputs/outputs, typing is checked by static type checkers such as mypy; for dynamic inputs/outputs, typing is checked at runtime. This can help catch errors early and make your code more robust.
+- **Partial Evaluation:** Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.
+- **Extended FFmpeg Version Support:** While `typed-ffmpeg` is currently built with FFmpeg version 6.0 in mind, we are working to ensure compatibility across different FFmpeg versions. Feedback and issue reports are welcome to improve version support.
+- **Additional Filter Support:** We aim to expand the range of FFmpeg filters supported by `typed-ffmpeg`. Continuous updates will be made to include more complex and varied filters.
 
-![typed-ffmpeg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/typed.png)
-
-
-- [**Serialization:**](https://livingbio.github.io/typed-ffmpeg/usage/serialize/)
-  typed-ffmpeg offers the capability to serialize and deserialize filter graphs to JSON format, enabling you to save the filter graph to a file and reload it for future use.
-
-- **Graph Visualization:**
-  typed-ffmpeg supports visualizing filter graphs using `graphviz`. This can help you understand the filter graph better and debug any issues.
-
-- [**Validate and Auto Fix:**](https://livingbio.github.io/typed-ffmpeg/usage/validate/)
-  The FFMpeg filter graph can be intricate and challenging to construct accurately. typed-ffmpeg provides a functionality to validate and even automatically correct these filter graphs, aiding in rectifying any inconsistencies or errors present within the graph.
-
-
-!!! tip "Note"
-    Auto fix feature can be turned off by setting relate flags during `compile` or `run`.
-
-### Planning Features
-- **Partial Evaluation:**
-  typed-ffmpeg provides a way to partially evaluate the filter graph. This can help you reuse the filter graph.
-- **FFmpeg Version Support:**
-  typed-ffmpeg is built based on FFmpeg version 6.0. If you encounter any issues with typed-ffmpeg in different FFmpeg versions, please open an issue in the GitHub repository.
-- **Support for More Filters:**
-  typed-ffmpeg currently supports a subset of FFmpeg filters. We are working to support more filters in the future.
-
-## Help
-
-See [documentation](https://livingbio.github.io/typed-ffmpeg/) for more details.
+---
 
 ## Installation
-With `pip`:
+
+To install `typed-ffmpeg`, simply use pip:
 
 ```bash
 pip install typed-ffmpeg
 ```
 
-!!! tip "Note"
-    FFmpeg installation is required on your system.
-
+Note: FFmpeg must be installed on your system.
 
 ### Visualization Support
 
-Visualize can help you understand the filter graph better and debug any issues.
-Visualize is not included in the main package, but you can install it separately.
+To enable graph visualization features:
+
 ```bash
 pip install 'typed-ffmpeg[graph]'
 ```
 
-!!! tip "Note"
-    Graphviz must be installed on your system.
+Note: This requires Graphviz to be installed on your system.
 
-
+---
 
 ## Quick Usage
+
+Here's how to quickly start using `typed-ffmpeg`:
 
 ```python
 import ffmpeg
 
+# Flip video horizontally and output
 f = (
     ffmpeg
     .input(filename='input.mp4')
     .hflip()
     .output(filename='output.mp4')
 )
-
 f.run()
 ```
-![quickstart](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quickstart.png)
 
-### More complex example
+For a more complex example:
 
 ```python
 import ffmpeg
 
+# Complex filter graph example
 in_file = ffmpeg.input("input.mp4")
 overlay_file = ffmpeg.input("overlay.png")
 
 f = (
-    ffmpeg.filters.concat(
+    ffmpeg
+    .concat(
         in_file.trim(start_frame=10, end_frame=20),
         in_file.trim(start_frame=30, end_frame=40),
     )
-    .video(0)
     .overlay(overlay_file.hflip())
     .drawbox(x="50", y="50", width="120", height="120", color="red", thickness="5")
     .output(filename="out.mp4")
 )
+f.run()
 ```
-![quickstart-complex](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quickstart-complex.png)
 
-!!! tip "Note"
-    Obtaining the graph is easy; just utilize `f.view()`.
+See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/) section in our documentation for more examples and detailed guides.
 
-See the [Usage](https://mkdocstrings.github.io/usage) section of the docs for more examples!
+---
 
 ## Acknowledgements
 
-This project was initially conceived upon the release of GPT-3. I embarked on this endeavor to test GPT-3's capability to generate a functional SDK for FFmpeg by providing it with FFmpeg documentation. However, I soon realized that it remained a challenging task for GPT to create a truly usable SDK for FFmpeg. Therefore, I opted to develop an SDK for FFmpeg using traditional code generation methods. Nevertheless, without the assistance of Copilot and GPT, I would not have had the time to complete this project.
+This project was initially inspired by the capabilities of GPT-3, with the original concept focusing on using GPT-3 to generate an FFmpeg filter SDK directly from the FFmpeg documentation. However, during the development process, I encountered limitations with GPT-3's ability to fully automate this task.
 
-I have decided to release this open-source project on February 24, 2024, to commemorate the seventh birthday of my son, Austin. His curiosity and enthusiasm for exploring the world have been a constant source of inspiration throughout this journey.
+As a result, I shifted to traditional code generation methods to complete the SDK, ensuring a more robust and reliable tool. Despite this change in approach, both GitHub Copilot and GPT-3 were instrumental in accelerating the development process, providing valuable insights and saving significant time.
+
+This project is dedicated to my son, Austin, on his seventh birthday (February 24, 2024), whose curiosity and zest for life continually inspire me.
+
+---
+
+Feel free to check the [Documentation](https://livingbio.github.io/typed-ffmpeg/) for detailed information and more advanced features.
