@@ -23,9 +23,9 @@ def test_filter_node(snapshot: SnapshotAssertion) -> None:
 
     concat(*(input1, input2.video, input3.video), n=3)
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(TypeError) as te:
         concat(*(input1, input2.audio, input3.audio), n=3)
-    assert snapshot == e
+    assert snapshot == te
 
 
 def test_compile(snapshot: SnapshotAssertion) -> None:

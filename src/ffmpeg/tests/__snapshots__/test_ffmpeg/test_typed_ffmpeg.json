@@ -1,7 +1,9 @@
 [
   "AVStream",
   "AudioStream",
-  "Error",
+  "FFMpegExecuteError",
+  "FFMpegTypeError",
+  "FFMpegValueError",
   "Stream",
   "VideoStream",
   "__all__",

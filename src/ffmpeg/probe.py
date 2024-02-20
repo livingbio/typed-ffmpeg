@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
-from .exceptions import Error
+from .exceptions import FFMpegExecuteError
 from .utils.escaping import convert_kwargs_to_cmd_line_args
 from .utils.run import command_line
 
@@ -38,6 +38,6 @@ def probe(filename: str | Path, cmd: str = "ffprobe", timeout: int | None = None
 
     retcode = p.poll()
     if p.returncode != 0:
-        raise Error(retcode=retcode, cmd=command_line(args), stdout=out, stderr=err)
+        raise FFMpegExecuteError(retcode=retcode, cmd=command_line(args), stdout=out, stderr=err)
 
     return json.loads(out.decode("utf-8"))

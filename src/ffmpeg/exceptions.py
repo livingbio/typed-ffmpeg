@@ -1,4 +1,24 @@
-class Error(Exception):
+class FFMpegError(Exception):
+    """
+    Base exception for all ffmpeg errors.
+    """
+
+    ...
+
+
+class FFMpegTypeError(FFMpegError, TypeError):
+    """
+    Base exception for all ffmpeg type errors.
+    """
+
+
+class FFMpegValueError(FFMpegError, ValueError):
+    """
+    Base exception for all ffmpeg value errors.
+    """
+
+
+class FFMpegExecuteError(FFMpegError):
     """
     FFmpeg error
     """
@@ -19,4 +39,4 @@ class Error(Exception):
         self.cmd = cmd
         self.retcode = retcode
 
-        super(Error, self).__init__(f"{cmd} error (see stderr output for detail) {stderr!r}")
+        super(FFMpegExecuteError, self).__init__(f"{cmd} error (see stderr output for detail) {stderr!r}")
