@@ -258,14 +258,6 @@ video1 = split.video(1)
 video2 = split.video(2)  # This will raise a ValueError
 ```
 
-FFmpeg supports over 500 filters, enabling the creation of highly complex and varied processing workflows.
-
-
-ffmpeg has more than 500 filters, you can use them to do more complex things.
-
-
-![](../media/usage-complex-filter-compose-audio.png)
-
 
 ## Execute
 
