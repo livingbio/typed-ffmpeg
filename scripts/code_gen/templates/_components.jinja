@@ -4,20 +4,20 @@
 {% endif %}
 {% if f.is_input_dynamic %}
     {% if f.is_input_type_mixed %}
-    *streams: "FilterableStream",
+    *streams: FilterableStream,
     {% elif f.filter_type.value in ["vf", "vaf"] %}
-    *streams: "VideoStream",
+    *streams: VideoStream,
     {% elif f.filter_type.value in ["af", "avf"] %}
-    *streams: "AudioStream",
+    *streams: AudioStream,
     {% endif %}
 {% elif f.input_stream_typings | length == 1 %}
 {% else %}
     {% for stream_typing in f.input_stream_typings %}
         {% if type == "method" and loop.index0 == 0 %}
         {% elif stream_typing.type.value == "video" %}
-        {{ stream_typing.name | stream_name_safe }}: "VideoStream",
+        {{ stream_typing.name | stream_name_safe }}: VideoStream,
         {% else %}
-        {{ stream_typing.name | stream_name_safe }}: "AudioStream",
+        {{ stream_typing.name | stream_name_safe }}: AudioStream,
         {% endif %}
     {% endfor %}
 {% endif %}
@@ -62,14 +62,14 @@ Default("nan")
 {%- if f.is_output_dynamic -%}
 -> FilterNode:
 {%- elif f.output_stream_typings | length == 1 -%}
--> "{{ return_type }}":
+-> {{ return_type }}:
 {%- else -%}
 -> tuple[
     {% for stream_typing in f.output_stream_typings %}
         {% if stream_typing.type.value == "video" %}
-            "VideoStream",
+            VideoStream,
         {% else %}
-            "AudioStream",
+            AudioStream,
         {% endif %}
     {% endfor %}
 ]:
@@ -139,7 +139,7 @@ filter_node = FilterNode(
     inputs=(
         {{ stream_params(f, type) }}
     ),
-    kwargs=to_tuple(({
+    kwargs=_to_tuple(({
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}

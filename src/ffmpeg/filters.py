@@ -9,8 +9,8 @@ from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, I
 
 
 def acrossfade(
-    _crossfade0: "AudioStream",
-    _crossfade1: "AudioStream",
+    _crossfade0: AudioStream,
+    _crossfade1: AudioStream,
     *,
     nb_samples: Int = Default(44100),
     duration: Duration = Default(0.0),
@@ -72,7 +72,7 @@ def acrossfade(
     ]
     | Default = Default("tri"),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Cross fade two input audio streams.
@@ -116,7 +116,7 @@ def acrossfade(
 
 
 def afir(
-    *streams: "AudioStream",
+    *streams: AudioStream,
     dry: Float = Default(1.0),
     wet: Float = Default(1.0),
     length: Float = Default(1.0),
@@ -170,7 +170,9 @@ def afir(
     filter_node = FilterNode(
         name="afir",
         input_typings=tuple([StreamType.audio] * int(nbirs)),
-        output_typings=tuple([StreamType.audio]),
+        output_typings=tuple(
+            [StreamType.audio],
+        ),
         inputs=(*streams,),
         kwargs=_to_tuple(
             (
@@ -202,11 +204,11 @@ def afir(
 
 
 def ainterleave(
-    *streams: "AudioStream",
+    *streams: AudioStream,
     nb_inputs: Int = Default(2),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Temporally interleave audio inputs.
@@ -241,8 +243,8 @@ def ainterleave(
 
 
 def alphamerge(
-    _main: "VideoStream",
-    _alpha: "VideoStream",
+    _main: VideoStream,
+    _alpha: VideoStream,
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: Boolean = Default(False),
@@ -250,7 +252,7 @@ def alphamerge(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Copy the luma value of the second input into the alpha channel of the first input.
@@ -293,7 +295,7 @@ def alphamerge(
     return filter_node.video(0)
 
 
-def amerge(*streams: "AudioStream", inputs: Int = Default(2), **kwargs: Any) -> "AudioStream":
+def amerge(*streams: AudioStream, inputs: Int = Default(2), **kwargs: Any) -> AudioStream:
     """
 
     Merge two or more audio streams into a single multi-channel stream.
@@ -326,14 +328,14 @@ def amerge(*streams: "AudioStream", inputs: Int = Default(2), **kwargs: Any) -> 
 
 
 def amix(
-    *streams: "AudioStream",
+    *streams: AudioStream,
     inputs: Int = Default(2),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     dropout_transition: Float = Default(2.0),
     weights: String = Default("1 1"),
     normalize: Boolean = Default(True),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Audio mixing.
@@ -373,7 +375,7 @@ def amix(
     return filter_node.audio(0)
 
 
-def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: Any) -> "AudioStream":
+def amultiply(_multiply0: AudioStream, _multiply1: AudioStream, **kwargs: Any) -> AudioStream:
     """
 
     Multiply two audio streams.
@@ -399,8 +401,8 @@ def amultiply(_multiply0: "AudioStream", _multiply1: "AudioStream", **kwargs: An
 
 
 def anlmf(
-    _input: "AudioStream",
-    _desired: "AudioStream",
+    _input: AudioStream,
+    _desired: AudioStream,
     *,
     order: Int = Default(256),
     mu: Float = Default(0.75),
@@ -409,7 +411,7 @@ def anlmf(
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Apply Normalized Least-Mean-Fourth algorithm to first audio stream.
@@ -455,8 +457,8 @@ def anlmf(
 
 
 def anlms(
-    _input: "AudioStream",
-    _desired: "AudioStream",
+    _input: AudioStream,
+    _desired: AudioStream,
     *,
     order: Int = Default(256),
     mu: Float = Default(0.75),
@@ -465,7 +467,7 @@ def anlms(
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Apply Normalized Least-Mean-Squares algorithm to first audio stream.
@@ -510,9 +512,7 @@ def anlms(
     return filter_node.audio(0)
 
 
-def apsnr(
-    _input0: "AudioStream", _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any
-) -> "AudioStream":
+def apsnr(_input0: AudioStream, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
     """
 
     Measure Audio Peak Signal-to-Noise Ratio.
@@ -548,8 +548,8 @@ def apsnr(
 
 
 def arls(
-    _input: "AudioStream",
-    _desired: "AudioStream",
+    _input: AudioStream,
+    _desired: AudioStream,
     *,
     order: Int = Default(16),
     _lambda: Float = Default(1.0),
@@ -557,7 +557,7 @@ def arls(
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Apply Recursive Least Squares algorithm to first audio stream.
@@ -600,9 +600,7 @@ def arls(
     return filter_node.audio(0)
 
 
-def asdr(
-    _input0: "AudioStream", _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any
-) -> "AudioStream":
+def asdr(_input0: AudioStream, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
     """
 
     Measure Audio Signal-to-Distortion Ratio.
@@ -637,9 +635,7 @@ def asdr(
     return filter_node.audio(0)
 
 
-def asisdr(
-    _input0: "AudioStream", _input1: "AudioStream", *, enable: str = Default(None), **kwargs: Any
-) -> "AudioStream":
+def asisdr(_input0: AudioStream, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
     """
 
     Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
@@ -675,7 +671,7 @@ def asisdr(
 
 
 def astreamselect(
-    *streams: "AudioStream", inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
+    *streams: AudioStream, inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -713,13 +709,13 @@ def astreamselect(
 
 
 def axcorrelate(
-    _axcorrelate0: "AudioStream",
-    _axcorrelate1: "AudioStream",
+    _axcorrelate0: AudioStream,
+    _axcorrelate1: AudioStream,
     *,
     size: Int = Default(256),
     algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Cross-correlate two audio streams.
@@ -757,8 +753,8 @@ def axcorrelate(
 
 
 def blend(
-    _top: "VideoStream",
-    _bottom: "VideoStream",
+    _top: VideoStream,
+    _bottom: VideoStream,
     *,
     c0_mode: Int
     | Literal[
@@ -1006,7 +1002,7 @@ def blend(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Blend two video frames into each other.
@@ -1080,7 +1076,7 @@ def blend(
 
 
 def bm3d(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     sigma: Float = Default(1.0),
     block: Int = Default(16),
     bstep: Int = Default(4),
@@ -1094,7 +1090,7 @@ def bm3d(
     planes: Int = Default(7),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Block-Matching 3D denoiser.
@@ -1149,9 +1145,9 @@ def bm3d(
 
 
 def colormap(
-    _default: "VideoStream",
-    _source: "VideoStream",
-    _target: "VideoStream",
+    _default: VideoStream,
+    _source: VideoStream,
+    _target: VideoStream,
     *,
     patch_size: Image_size = Default("64x64"),
     nb_patches: Int = Default(0),
@@ -1159,7 +1155,7 @@ def colormap(
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Apply custom Color Maps to video stream.
@@ -1204,7 +1200,7 @@ def colormap(
 
 
 def concat(
-    *streams: "FilterableStream",
+    *streams: FilterableStream,
     n: Int = Default(2),
     v: Int = Default(1),
     a: Int = Default(0),
@@ -1251,8 +1247,8 @@ def concat(
 
 
 def convolve(
-    _main: "VideoStream",
-    _impulse: "VideoStream",
+    _main: VideoStream,
+    _impulse: VideoStream,
     *,
     planes: Int = Default(7),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
@@ -1263,7 +1259,7 @@ def convolve(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Convolve first video stream with second video stream.
@@ -1313,8 +1309,8 @@ def convolve(
 
 
 def corr(
-    _main: "VideoStream",
-    _reference: "VideoStream",
+    _main: VideoStream,
+    _reference: VideoStream,
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: Boolean = Default(False),
@@ -1322,7 +1318,7 @@ def corr(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the correlation between two video streams.
@@ -1366,7 +1362,7 @@ def corr(
 
 
 def decimate(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     cycle: Int = Default(5),
     dupthresh: Double = Default(1.1),
     scthresh: Double = Default(15.0),
@@ -1376,7 +1372,7 @@ def decimate(
     chroma: Boolean = Default(True),
     mixed: Boolean = Default(False),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Decimate frames (post field matching filter).
@@ -1423,8 +1419,8 @@ def decimate(
 
 
 def deconvolve(
-    _main: "VideoStream",
-    _impulse: "VideoStream",
+    _main: VideoStream,
+    _impulse: VideoStream,
     *,
     planes: Int = Default(7),
     impulse: Int | Literal["first", "all"] | Default = Default("all"),
@@ -1435,7 +1431,7 @@ def deconvolve(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Deconvolve first video stream with second video stream.
@@ -1485,14 +1481,14 @@ def deconvolve(
 
 
 def displace(
-    _source: "VideoStream",
-    _xmap: "VideoStream",
-    _ymap: "VideoStream",
+    _source: VideoStream,
+    _xmap: VideoStream,
+    _ymap: VideoStream,
     *,
     edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Displace pixels.
@@ -1531,8 +1527,8 @@ def displace(
 
 
 def feedback(
-    _default: "VideoStream", _feedin: "VideoStream", *, x: Int = Default(0), w: Int = Default(0), **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+    _default: VideoStream, _feedin: VideoStream, *, x: Int = Default(0), w: Int = Default(0), **kwargs: Any
+) -> tuple[VideoStream, VideoStream,]:
     """
 
     Apply feedback video filter.
@@ -1574,7 +1570,7 @@ def feedback(
 
 
 def fieldmatch(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     order: Int | Literal["auto", "bff", "tff"] | Default = Default("auto"),
     mode: Int | Literal["pc", "pc_n", "pc_u", "pc_n_ub", "pcn", "pcn_ub"] | Default = Default("pc_n"),
     ppsrc: Boolean = Default(False),
@@ -1590,7 +1586,7 @@ def fieldmatch(
     blocky: Int = Default(16),
     combpel: Int = Default(80),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Field matching for inverse telecine.
@@ -1649,12 +1645,12 @@ def fieldmatch(
 
 
 def framepack(
-    _left: "VideoStream",
-    _right: "VideoStream",
+    _left: VideoStream,
+    _right: VideoStream,
     *,
     format: Int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Generate a frame packed stereoscopic video.
@@ -1690,14 +1686,14 @@ def framepack(
 
 
 def freezeframes(
-    _source: "VideoStream",
-    _replace: "VideoStream",
+    _source: VideoStream,
+    _replace: VideoStream,
     *,
     first: Int64 = Default(0),
     last: Int64 = Default(0),
     replace: Int64 = Default(0),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Freeze video frames.
@@ -1737,7 +1733,7 @@ def freezeframes(
 
 
 def guided(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     radius: Int = Default(3),
     eps: Float = Default(0.01),
     mode: Int | Literal["basic", "fast"] | Default = Default("basic"),
@@ -1746,7 +1742,7 @@ def guided(
     planes: Int = Default(1),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Apply Guided filter.
@@ -1791,8 +1787,8 @@ def guided(
 
 
 def haldclut(
-    _main: "VideoStream",
-    _clut: "VideoStream",
+    _main: VideoStream,
+    _clut: VideoStream,
     *,
     clut: Int | Literal["first", "all"] | Default = Default("all"),
     interp: Int | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"] | Default = Default("tetrahedral"),
@@ -1802,7 +1798,7 @@ def haldclut(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Adjust colors using a Hald CLUT.
@@ -1850,7 +1846,7 @@ def haldclut(
 
 
 def headphone(
-    *streams: "AudioStream",
+    *streams: AudioStream,
     map: String = Default(None),
     gain: Float = Default(0.0),
     lfe: Float = Default(0.0),
@@ -1858,7 +1854,7 @@ def headphone(
     size: Int = Default(1024),
     hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Apply headphone binaural spatialization with HRTFs in additional streams.
@@ -1903,8 +1899,8 @@ def headphone(
 
 
 def hstack(
-    *streams: "VideoStream", inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
-) -> "VideoStream":
+    *streams: VideoStream, inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
+) -> VideoStream:
     """
 
     Stack video inputs horizontally.
@@ -1939,8 +1935,8 @@ def hstack(
 
 
 def hysteresis(
-    _base: "VideoStream",
-    _alt: "VideoStream",
+    _base: VideoStream,
+    _alt: VideoStream,
     *,
     planes: Int = Default(15),
     threshold: Int = Default(0),
@@ -1950,7 +1946,7 @@ def hysteresis(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Grow first stream into second stream by connecting components.
@@ -1998,8 +1994,8 @@ def hysteresis(
 
 
 def identity(
-    _main: "VideoStream",
-    _reference: "VideoStream",
+    _main: VideoStream,
+    _reference: VideoStream,
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: Boolean = Default(False),
@@ -2007,7 +2003,7 @@ def identity(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the Identity between two video streams.
@@ -2051,11 +2047,11 @@ def identity(
 
 
 def interleave(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     nb_inputs: Int = Default(2),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Temporally interleave video inputs.
@@ -2090,12 +2086,12 @@ def interleave(
 
 
 def join(
-    *streams: "AudioStream",
+    *streams: AudioStream,
     inputs: Int = Default(2),
     channel_layout: String = Default("stereo"),
     map: String = Default(None),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Join multiple audio streams into multi-channel output.
@@ -2132,8 +2128,8 @@ def join(
 
 
 def libvmaf(
-    _main: "VideoStream",
-    _reference: "VideoStream",
+    _main: VideoStream,
+    _reference: VideoStream,
     *,
     log_path: String = Default(None),
     log_fmt: String = Default("xml"),
@@ -2147,7 +2143,7 @@ def libvmaf(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the VMAF between two video streams.
@@ -2203,14 +2199,14 @@ def libvmaf(
 
 
 def limitdiff(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     threshold: Float = Default(0.00392157),
     elasticity: Float = Default(2.0),
     reference: Boolean = Default(False),
     planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Apply filtering with limiting difference.
@@ -2251,8 +2247,8 @@ def limitdiff(
 
 
 def lut2(
-    _srcx: "VideoStream",
-    _srcy: "VideoStream",
+    _srcx: VideoStream,
+    _srcy: VideoStream,
     *,
     c0: String = Default("x"),
     c1: String = Default("x"),
@@ -2265,7 +2261,7 @@ def lut2(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Compute and apply a lookup table from two video inputs.
@@ -2319,16 +2315,16 @@ def lut2(
 
 
 def maskedclamp(
-    _base: "VideoStream",
-    _dark: "VideoStream",
-    _bright: "VideoStream",
+    _base: VideoStream,
+    _dark: VideoStream,
+    _bright: VideoStream,
     *,
     undershoot: Int = Default(0),
     overshoot: Int = Default(0),
     planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Clamp first stream with second stream and third stream.
@@ -2371,14 +2367,14 @@ def maskedclamp(
 
 
 def maskedmax(
-    _source: "VideoStream",
-    _filter1: "VideoStream",
-    _filter2: "VideoStream",
+    _source: VideoStream,
+    _filter1: VideoStream,
+    _filter2: VideoStream,
     *,
     planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Apply filtering with maximum difference of two streams.
@@ -2417,14 +2413,14 @@ def maskedmax(
 
 
 def maskedmerge(
-    _base: "VideoStream",
-    _overlay: "VideoStream",
-    _mask: "VideoStream",
+    _base: VideoStream,
+    _overlay: VideoStream,
+    _mask: VideoStream,
     *,
     planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Merge first stream with second stream using third stream as mask.
@@ -2463,14 +2459,14 @@ def maskedmerge(
 
 
 def maskedmin(
-    _source: "VideoStream",
-    _filter1: "VideoStream",
-    _filter2: "VideoStream",
+    _source: VideoStream,
+    _filter1: VideoStream,
+    _filter2: VideoStream,
     *,
     planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Apply filtering with minimum difference of two streams.
@@ -2509,15 +2505,15 @@ def maskedmin(
 
 
 def maskedthreshold(
-    _source: "VideoStream",
-    _reference: "VideoStream",
+    _source: VideoStream,
+    _reference: VideoStream,
     *,
     threshold: Int = Default(1),
     planes: Int = Default(15),
     mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Pick pixels comparing absolute difference of two streams with threshold.
@@ -2559,7 +2555,7 @@ def maskedthreshold(
 
 
 def mergeplanes(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     mapping: Int = Default(-1),
     format: Pix_fmt = Default("yuva444p"),
     map0s: Int = Default(0),
@@ -2571,7 +2567,7 @@ def mergeplanes(
     map3s: Int = Default(0),
     map3p: Int = Default(0),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Merge planes.
@@ -2622,8 +2618,8 @@ def mergeplanes(
 
 
 def midequalizer(
-    _in0: "VideoStream", _in1: "VideoStream", *, planes: Int = Default(15), enable: str = Default(None), **kwargs: Any
-) -> "VideoStream":
+    _in0: VideoStream, _in1: VideoStream, *, planes: Int = Default(15), enable: str = Default(None), **kwargs: Any
+) -> VideoStream:
     """
 
     Apply Midway Equalization.
@@ -2661,7 +2657,7 @@ def midequalizer(
 
 
 def mix(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     inputs: Int = Default(2),
     weights: String = Default("1 1"),
     scale: Float = Default(0.0),
@@ -2669,7 +2665,7 @@ def mix(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Mix video inputs.
@@ -2712,8 +2708,8 @@ def mix(
 
 
 def morpho(
-    _default: "VideoStream",
-    _structure: "VideoStream",
+    _default: VideoStream,
+    _structure: VideoStream,
     *,
     mode: Int
     | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
@@ -2726,7 +2722,7 @@ def morpho(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Apply Morphological filter.
@@ -2776,8 +2772,8 @@ def morpho(
 
 
 def msad(
-    _main: "VideoStream",
-    _reference: "VideoStream",
+    _main: VideoStream,
+    _reference: VideoStream,
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: Boolean = Default(False),
@@ -2785,7 +2781,7 @@ def msad(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the MSAD between two video streams.
@@ -2829,15 +2825,15 @@ def msad(
 
 
 def multiply(
-    _source: "VideoStream",
-    _factor: "VideoStream",
+    _source: VideoStream,
+    _factor: VideoStream,
     *,
     scale: Float = Default(1.0),
     offset: Float = Default(0.5),
     planes: Flags = Default("F"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Multiply first video stream with second video stream.
@@ -2879,8 +2875,8 @@ def multiply(
 
 
 def overlay(
-    _main: "VideoStream",
-    _overlay: "VideoStream",
+    _main: VideoStream,
+    _overlay: VideoStream,
     *,
     x: String = Default("0"),
     y: String = Default("0"),
@@ -2895,7 +2891,7 @@ def overlay(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Overlay a video source on top of the input.
@@ -2949,8 +2945,8 @@ def overlay(
 
 
 def paletteuse(
-    _default: "VideoStream",
-    _palette: "VideoStream",
+    _default: VideoStream,
+    _palette: VideoStream,
     *,
     dither: Int
     | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
@@ -2961,7 +2957,7 @@ def paletteuse(
     alpha_threshold: Int = Default(128),
     debug_kdtree: String = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Use a palette to downsample an input video stream.
@@ -3007,12 +3003,12 @@ def paletteuse(
 
 
 def premultiply(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     PreMultiply first stream with first plane of second stream.
@@ -3049,8 +3045,8 @@ def premultiply(
 
 
 def psnr(
-    _main: "VideoStream",
-    _reference: "VideoStream",
+    _main: VideoStream,
+    _reference: VideoStream,
     *,
     stats_file: String = Default(None),
     stats_version: Int = Default(1),
@@ -3061,7 +3057,7 @@ def psnr(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the PSNR between two video streams.
@@ -3111,14 +3107,14 @@ def psnr(
 
 
 def remap(
-    _source: "VideoStream",
-    _xmap: "VideoStream",
-    _ymap: "VideoStream",
+    _source: VideoStream,
+    _xmap: VideoStream,
+    _ymap: VideoStream,
     *,
     format: Int | Literal["color", "gray"] | Default = Default("color"),
     fill: Color = Default("black"),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Remap pixels.
@@ -3157,8 +3153,8 @@ def remap(
 
 
 def scale2ref(
-    _default: "VideoStream",
-    _ref: "VideoStream",
+    _default: VideoStream,
+    _ref: VideoStream,
     *,
     w: String = Default(None),
     h: String = Default(None),
@@ -3186,7 +3182,7 @@ def scale2ref(
     param1: Double = Default("DBL_MAX"),
     eval: Int | Literal["init", "frame"] | Default = Default("init"),
     **kwargs: Any
-) -> tuple["VideoStream", "VideoStream",]:
+) -> tuple[VideoStream, VideoStream,]:
     """
 
     Scale the input video size and/or convert the image format to the given reference.
@@ -3258,8 +3254,8 @@ def scale2ref(
 
 
 def sidechaincompress(
-    _main: "AudioStream",
-    _sidechain: "AudioStream",
+    _main: AudioStream,
+    _sidechain: AudioStream,
     *,
     level_in: Double = Default(1.0),
     mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
@@ -3274,7 +3270,7 @@ def sidechaincompress(
     level_sc: Double = Default(1.0),
     mix: Double = Default(1.0),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Sidechain compressor.
@@ -3332,8 +3328,8 @@ def sidechaincompress(
 
 
 def sidechaingate(
-    _main: "AudioStream",
-    _sidechain: "AudioStream",
+    _main: AudioStream,
+    _sidechain: AudioStream,
     *,
     level_in: Double = Default(1.0),
     mode: Int | Literal["downward", "upward"] | Default = Default("downward"),
@@ -3349,7 +3345,7 @@ def sidechaingate(
     level_sc: Double = Default(1.0),
     enable: str = Default(None),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Audio sidechain gate.
@@ -3409,7 +3405,7 @@ def sidechaingate(
 
 
 def signature(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
     nb_inputs: Int = Default(1),
     filename: String = Default(""),
@@ -3420,7 +3416,7 @@ def signature(
     th_di: Int = Default(0),
     th_it: Double = Default(0.5),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the MPEG-7 video signature
@@ -3469,8 +3465,8 @@ def signature(
 
 
 def spectrumsynth(
-    _magnitude: "VideoStream",
-    _phase: "VideoStream",
+    _magnitude: VideoStream,
+    _phase: VideoStream,
     *,
     sample_rate: Int = Default(44100),
     channels: Int = Default(1),
@@ -3505,7 +3501,7 @@ def spectrumsynth(
     overlap: Float = Default(1.0),
     orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
     **kwargs: Any
-) -> "AudioStream":
+) -> AudioStream:
     """
 
     Convert input spectrum videos to audio output.
@@ -3553,8 +3549,8 @@ def spectrumsynth(
 
 
 def ssim(
-    _main: "VideoStream",
-    _reference: "VideoStream",
+    _main: VideoStream,
+    _reference: VideoStream,
     *,
     stats_file: String = Default(None),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
@@ -3563,7 +3559,7 @@ def ssim(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the SSIM between two video streams.
@@ -3609,7 +3605,7 @@ def ssim(
 
 
 def streamselect(
-    *streams: "VideoStream", inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
+    *streams: VideoStream, inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -3647,15 +3643,15 @@ def streamselect(
 
 
 def threshold(
-    _default: "VideoStream",
-    _threshold: "VideoStream",
-    _min: "VideoStream",
-    _max: "VideoStream",
+    _default: VideoStream,
+    _threshold: VideoStream,
+    _min: VideoStream,
+    _max: VideoStream,
     *,
     planes: Int = Default(15),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Threshold first video stream using other video streams.
@@ -3695,12 +3691,12 @@ def threshold(
 
 
 def unpremultiply(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     UnPreMultiply first stream with first plane of second stream.
@@ -3737,8 +3733,8 @@ def unpremultiply(
 
 
 def varblur(
-    _default: "VideoStream",
-    _radius: "VideoStream",
+    _default: VideoStream,
+    _radius: VideoStream,
     *,
     min_r: Int = Default(0),
     max_r: Int = Default(8),
@@ -3749,7 +3745,7 @@ def varblur(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Apply Variable Blur filter.
@@ -3799,8 +3795,8 @@ def varblur(
 
 
 def vif(
-    _main: "VideoStream",
-    _reference: "VideoStream",
+    _main: VideoStream,
+    _reference: VideoStream,
     *,
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
     shortest: Boolean = Default(False),
@@ -3808,7 +3804,7 @@ def vif(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Calculate the VIF between two video streams.
@@ -3852,8 +3848,8 @@ def vif(
 
 
 def vstack(
-    *streams: "VideoStream", inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
-) -> "VideoStream":
+    *streams: VideoStream, inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
+) -> VideoStream:
     """
 
     Stack video inputs vertically.
@@ -3888,8 +3884,8 @@ def vstack(
 
 
 def xcorrelate(
-    _primary: "VideoStream",
-    _secondary: "VideoStream",
+    _primary: VideoStream,
+    _secondary: VideoStream,
     *,
     planes: Int = Default(7),
     secondary: Int | Literal["first", "all"] | Default = Default("all"),
@@ -3899,7 +3895,7 @@ def xcorrelate(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Cross-correlate first video stream with second video stream.
@@ -3947,8 +3943,8 @@ def xcorrelate(
 
 
 def xfade(
-    _main: "VideoStream",
-    _xfade: "VideoStream",
+    _main: VideoStream,
+    _xfade: VideoStream,
     *,
     transition: Int
     | Literal[
@@ -4017,7 +4013,7 @@ def xfade(
     offset: Duration = Default(0.0),
     expr: String = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Cross fade one video with another video.
@@ -4059,7 +4055,7 @@ def xfade(
 
 
 def xmedian(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     inputs: Int = Default(3),
     planes: Int = Default(15),
     percentile: Float = Default(0.5),
@@ -4069,7 +4065,7 @@ def xmedian(
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: str = Default(None),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Pick median pixels from several video inputs.
@@ -4116,14 +4112,14 @@ def xmedian(
 
 
 def xstack(
-    *streams: "VideoStream",
+    *streams: VideoStream,
     inputs: Int = Default(2),
     layout: String = Default(None),
     grid: Image_size = Default(None),
     shortest: Boolean = Default(False),
     fill: String = Default("none"),
     **kwargs: Any
-) -> "VideoStream":
+) -> VideoStream:
     """
 
     Stack video inputs into custom layout.
