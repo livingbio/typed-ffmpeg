@@ -39,6 +39,7 @@ Please note that the following features are under consideration or development f
 - **Partial Evaluation:** Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.
 - **Extended FFmpeg Version Support:** While `typed-ffmpeg` is currently built with FFmpeg version 6.0 in mind, we are working to ensure compatibility across different FFmpeg versions. Feedback and issue reports are welcome to improve version support.
 - **Additional Filter Support:** We aim to expand the range of FFmpeg filters supported by `typed-ffmpeg`. Continuous updates will be made to include more complex and varied filters.
+- **Input and Output Options Support:** Provide a more comprehensive interface for input and output options, including support for additional codecs and formats.
 
 ---
 
