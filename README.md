@@ -108,7 +108,7 @@ f.run()
 
 ![](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quick-usage-complex.png)
 
-See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/) section in our documentation for more examples and detailed guides.
+See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/typed/) section in our documentation for more examples and detailed guides.
 
 ---
 

@@ -73,7 +73,7 @@
   ])
 # ---
 # name: test_node_prop[merge-output-node][__repr__]
-  "MergeOutputsNode(args=(), kwargs=(), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None),))"
+  "MergeOutputsNode(args=(), kwargs=(), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
 # ---
 # name: test_node_prop[merge-output-node][f.repr]
   'Merge'

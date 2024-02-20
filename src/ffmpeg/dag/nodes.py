@@ -226,7 +226,7 @@ class FilterableStream(Stream):
         Output the streams to a file URL
 
         Args:
-            *streams: the streams to output
+            *streams: the other streams to output
             filename: the filename to output to
             **kwargs: the arguments for the output
 
@@ -442,7 +442,7 @@ class OutputStream(Stream):
         Returns:
             The merged output stream.
         """
-        return MergeOutputsNode(inputs=streams).stream()
+        return MergeOutputsNode(inputs=(self, *streams)).stream()
 
     def overwrite_output(self) -> "OutputStream":
         """
