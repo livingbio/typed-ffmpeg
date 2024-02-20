@@ -35,7 +35,7 @@ class VideoStream(FilterableStream):
             clear: Remove any existing regions of interest before adding the new one. (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#addroi)
@@ -68,7 +68,7 @@ class VideoStream(FilterableStream):
         Extract an alpha channel as a grayscale image component.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphaextract)
@@ -106,7 +106,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
@@ -163,7 +163,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amplify)
@@ -214,7 +214,7 @@ class VideoStream(FilterableStream):
             shaping: set shaping engine (from -1 to 1) (default auto)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ass)
@@ -278,7 +278,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atadenoise)
@@ -332,7 +332,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avgblur)
@@ -377,7 +377,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#backgroundkey)
@@ -412,7 +412,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bbox)
@@ -446,7 +446,7 @@ class VideoStream(FilterableStream):
             action: set action (from 0 to 1) (default start)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
@@ -488,7 +488,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bilateral)
@@ -531,7 +531,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise)
@@ -573,7 +573,7 @@ class VideoStream(FilterableStream):
             pixel_black_th: set the pixel black threshold (from 0 to 1) (default 0.1)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackdetect)
@@ -607,7 +607,7 @@ class VideoStream(FilterableStream):
             threshold: threshold below which a pixel value is considered black (from 0 to 255) (default 32)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackframe)
@@ -908,7 +908,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
@@ -965,7 +965,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 1)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blockdetect)
@@ -1013,7 +1013,7 @@ class VideoStream(FilterableStream):
             planes: set planes to filter (from 0 to 15) (default 1)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blurdetect)
@@ -1066,7 +1066,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#boxblur)
@@ -1114,7 +1114,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bwdif)
@@ -1157,7 +1157,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cas)
@@ -1187,7 +1187,7 @@ class VideoStream(FilterableStream):
         Repack CEA-708 closed caption metadata
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ccrepack)
@@ -1224,7 +1224,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromahold)
@@ -1272,7 +1272,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromakey)
@@ -1330,7 +1330,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromanr)
@@ -1385,7 +1385,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromashift)
@@ -1478,7 +1478,7 @@ class VideoStream(FilterableStream):
             fill: fill with CIE colors (default true)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ciescope)
@@ -1533,7 +1533,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#codecview)
@@ -1594,7 +1594,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorbalance)
@@ -1676,7 +1676,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorchannelmixer)
@@ -1744,7 +1744,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcontrast)
@@ -1799,7 +1799,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcorrect)
@@ -1847,7 +1847,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorhold)
@@ -1894,7 +1894,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorize)
@@ -1940,7 +1940,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorkey)
@@ -2013,7 +2013,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorlevels)
@@ -2076,7 +2076,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
@@ -2128,7 +2128,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormatrix)
@@ -2278,7 +2278,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorspace)
@@ -2334,7 +2334,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colortemperature)
@@ -2405,7 +2405,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolution)
@@ -2472,7 +2472,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
@@ -2510,7 +2510,7 @@ class VideoStream(FilterableStream):
         Copy the input video unchanged to the output.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#copy)
@@ -2545,7 +2545,7 @@ class VideoStream(FilterableStream):
             output_rect: output rectangle within output image
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#coreimage)
@@ -2593,7 +2593,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
@@ -2638,7 +2638,7 @@ class VideoStream(FilterableStream):
             mode: set removal mode (from 0 to 1) (default blur)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cover_005frect)
@@ -2685,7 +2685,7 @@ class VideoStream(FilterableStream):
             exact: do exact cropping (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crop)
@@ -2746,7 +2746,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cropdetect)
@@ -2796,7 +2796,7 @@ class VideoStream(FilterableStream):
             buffer: buffer duration in seconds (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cue)
@@ -2866,7 +2866,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#curves)
@@ -2925,7 +2925,7 @@ class VideoStream(FilterableStream):
             components: set components to display (from 1 to 15) (default 15)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#datascope)
@@ -2974,7 +2974,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dblur)
@@ -3021,7 +3021,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dctdnoiz)
@@ -3077,7 +3077,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deband)
@@ -3135,7 +3135,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deblock)
@@ -3193,7 +3193,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
@@ -3249,7 +3249,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dedot)
@@ -3298,7 +3298,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflate)
@@ -3342,7 +3342,7 @@ class VideoStream(FilterableStream):
             bypass: leave frames unchanged (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflicker)
@@ -3375,7 +3375,7 @@ class VideoStream(FilterableStream):
             cycle: set the length of the cycle to use for dejuddering (from 2 to 240) (default 4)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dejudder)
@@ -3421,7 +3421,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#delogo)
@@ -3472,7 +3472,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#derain)
@@ -3535,7 +3535,7 @@ class VideoStream(FilterableStream):
             opencl: ignored (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deshake)
@@ -3598,7 +3598,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#despill)
@@ -3646,7 +3646,7 @@ class VideoStream(FilterableStream):
             start_frame: position of first frame with respect to the pattern if stream is cut (from 0 to 13) (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#detelecine)
@@ -3694,7 +3694,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dilation)
@@ -3739,7 +3739,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
@@ -3798,7 +3798,7 @@ class VideoStream(FilterableStream):
             target: which one to be classified
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fclassify)
@@ -3859,7 +3859,7 @@ class VideoStream(FilterableStream):
             labels: path to labels file
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fdetect)
@@ -3915,7 +3915,7 @@ class VideoStream(FilterableStream):
             _async: use DNN async inference (ignored, use backend_configs='async=1') (default true)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing)
@@ -3954,7 +3954,7 @@ class VideoStream(FilterableStream):
             first_field: set first field (from 0 to 1) (default top)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
@@ -4006,7 +4006,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawbox)
@@ -4078,7 +4078,7 @@ class VideoStream(FilterableStream):
             rate: set video rate (default "25")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgraph)
@@ -4142,7 +4142,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgrid)
@@ -4273,7 +4273,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawtext)
@@ -4351,7 +4351,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#edgedetect)
@@ -4399,7 +4399,7 @@ class VideoStream(FilterableStream):
             use_alpha: use alpha channel for mapping (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#elbg)
@@ -4441,7 +4441,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#entropy)
@@ -4473,7 +4473,7 @@ class VideoStream(FilterableStream):
             n: set scale factor (from 2 to 3) (default 3)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#epx)
@@ -4527,7 +4527,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#eq)
@@ -4582,7 +4582,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#erosion)
@@ -4641,7 +4641,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#estdif)
@@ -4685,7 +4685,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#exposure)
@@ -4720,7 +4720,7 @@ class VideoStream(FilterableStream):
             planes: set planes (default r)
 
         Returns:
-            the filter node
+            filter_node: the filter node
 
 
         References:
@@ -4772,7 +4772,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fade)
@@ -4900,7 +4900,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz)
@@ -4959,7 +4959,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftfilt)
@@ -4997,7 +4997,7 @@ class VideoStream(FilterableStream):
             type: set field type (top or bottom) (from 0 to 1) (default top)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#field)
@@ -5035,7 +5035,7 @@ class VideoStream(FilterableStream):
             mode: set hint mode (from 0 to 2) (default absolute)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldhint)
@@ -5074,7 +5074,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldorder)
@@ -5103,7 +5103,7 @@ class VideoStream(FilterableStream):
         Buffer input images and send them when they are requested.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fifo_002c-afifo)
@@ -5146,7 +5146,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fillborders)
@@ -5196,7 +5196,7 @@ class VideoStream(FilterableStream):
             discard: (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#find_005frect)
@@ -5256,7 +5256,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#floodfill)
@@ -5297,7 +5297,7 @@ class VideoStream(FilterableStream):
             pix_fmts: A '|'-separated list of pixel formats
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#format)
@@ -5339,7 +5339,7 @@ class VideoStream(FilterableStream):
             eof_action: action performed for last frame (from 0 to 1) (default round)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fps)
@@ -5379,7 +5379,7 @@ class VideoStream(FilterableStream):
             format: Frame pack output format (from 0 to INT_MAX) (default sbs)
 
         Returns:
-            the video stream
+            packed: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
@@ -5426,7 +5426,7 @@ class VideoStream(FilterableStream):
             flags: set flags (default scene_change_detect+scd)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framerate)
@@ -5462,7 +5462,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framestep)
@@ -5495,7 +5495,7 @@ class VideoStream(FilterableStream):
             d: set minimum duration in seconds (default 2)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezedetect)
@@ -5537,7 +5537,7 @@ class VideoStream(FilterableStream):
             replace: set frame to replace (from 0 to I64_MAX) (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
@@ -5582,7 +5582,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#frei0r)
@@ -5628,7 +5628,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fspp)
@@ -5676,7 +5676,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gblur)
@@ -5732,7 +5732,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#geq)
@@ -5775,7 +5775,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gradfun)
@@ -5843,7 +5843,7 @@ class VideoStream(FilterableStream):
             rate: set video rate (default "25")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#graphmonitor)
@@ -5878,7 +5878,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#grayworld)
@@ -5920,7 +5920,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#greyedge)
@@ -5974,7 +5974,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
@@ -6014,7 +6014,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hflip)
@@ -6056,7 +6056,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histeq)
@@ -6122,7 +6122,7 @@ class VideoStream(FilterableStream):
             colors_mode: set colors mode (from 0 to 9) (default whiteonblack)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histogram)
@@ -6173,7 +6173,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqdn3d)
@@ -6208,7 +6208,7 @@ class VideoStream(FilterableStream):
             n: set scale factor (from 2 to 4) (default 3)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqx)
@@ -6254,7 +6254,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvhold)
@@ -6305,7 +6305,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvkey)
@@ -6354,7 +6354,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hue)
@@ -6412,7 +6412,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#huesaturation)
@@ -6449,7 +6449,7 @@ class VideoStream(FilterableStream):
         Download a hardware frame to a normal frame
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwdownload)
@@ -6482,7 +6482,7 @@ class VideoStream(FilterableStream):
             reverse: Map in reverse (create and allocate in the sink) (from 0 to 1) (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwmap)
@@ -6515,7 +6515,7 @@ class VideoStream(FilterableStream):
             derive_device: Derive a new device of this type
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwupload)
@@ -6564,7 +6564,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
@@ -6618,7 +6618,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
@@ -6669,7 +6669,7 @@ class VideoStream(FilterableStream):
             analyze_interlaced_flag: set number of frames to use to determine if the interlace flag is accurate (from 0 to INT_MAX) (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#idet)
@@ -6721,7 +6721,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#il)
@@ -6771,7 +6771,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#inflate)
@@ -6813,7 +6813,7 @@ class VideoStream(FilterableStream):
             lowpass: set vertical low-pass filter (from 0 to 2) (default linear)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interlace)
@@ -6858,7 +6858,7 @@ class VideoStream(FilterableStream):
             twoway: set twoway (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kerndeint)
@@ -6904,7 +6904,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kirsch)
@@ -6942,7 +6942,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lagfun)
@@ -6975,7 +6975,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
@@ -7023,7 +7023,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lenscorrection)
@@ -7086,7 +7086,7 @@ class VideoStream(FilterableStream):
             ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
@@ -7141,7 +7141,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limiter)
@@ -7186,7 +7186,7 @@ class VideoStream(FilterableStream):
             time: set the loop start time (default INT64_MAX)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loop)
@@ -7231,7 +7231,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lumakey)
@@ -7292,7 +7292,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
@@ -7343,7 +7343,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut1d)
@@ -7400,7 +7400,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
@@ -7456,7 +7456,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut3d)
@@ -7517,7 +7517,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
@@ -7586,7 +7586,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
@@ -7641,7 +7641,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
@@ -7688,7 +7688,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
@@ -7733,7 +7733,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
@@ -7778,7 +7778,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
@@ -7826,7 +7826,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
@@ -7878,7 +7878,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskfun)
@@ -7923,7 +7923,7 @@ class VideoStream(FilterableStream):
             qp: set qp (from INT_MIN to INT_MAX) (default 1)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcdeint)
@@ -7969,7 +7969,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#median)
@@ -8015,7 +8015,7 @@ class VideoStream(FilterableStream):
             search_param: search parameter (from 4 to INT_MAX) (default 7)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mestimate)
@@ -8069,7 +8069,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
@@ -8110,7 +8110,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
@@ -8170,7 +8170,7 @@ class VideoStream(FilterableStream):
             scd_threshold: scene change threshold (from 0 to 100) (default 10)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#minterpolate)
@@ -8223,7 +8223,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#monochrome)
@@ -8280,7 +8280,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
@@ -8334,7 +8334,7 @@ class VideoStream(FilterableStream):
             frac: set fraction dropping threshold (from 0 to 1) (default 0.33)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mpdecimate)
@@ -8383,7 +8383,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
@@ -8433,7 +8433,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
@@ -8479,7 +8479,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#negate)
@@ -8527,7 +8527,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nlmeans)
@@ -8586,7 +8586,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nnedi)
@@ -8626,7 +8626,7 @@ class VideoStream(FilterableStream):
             pix_fmts: A '|'-separated list of pixel formats
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noformat)
@@ -8692,7 +8692,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noise)
@@ -8753,7 +8753,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#normalize)
@@ -8786,7 +8786,7 @@ class VideoStream(FilterableStream):
         Pass the source unchanged to the output.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#null)
@@ -8821,7 +8821,7 @@ class VideoStream(FilterableStream):
             blacklist: set character blacklist (default "")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ocr)
@@ -8886,7 +8886,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#oscilloscope)
@@ -8956,7 +8956,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
@@ -9010,7 +9010,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#owdenoise)
@@ -9061,7 +9061,7 @@ class VideoStream(FilterableStream):
             aspect: pad to fit an aspect instead of a resolution (from 0 to DBL_MAX) (default 0/1)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pad)
@@ -9109,7 +9109,7 @@ class VideoStream(FilterableStream):
             stats_mode: set statistics mode (from 0 to 2) (default full)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#palettegen)
@@ -9161,7 +9161,7 @@ class VideoStream(FilterableStream):
             debug_kdtree: save Graphviz graph of the kdtree in specified file
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
@@ -9209,7 +9209,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
@@ -9269,7 +9269,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perspective)
@@ -9318,7 +9318,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#phase)
@@ -9361,7 +9361,7 @@ class VideoStream(FilterableStream):
             bypass: leave frames unchanged (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#photosensitivity)
@@ -9392,7 +9392,7 @@ class VideoStream(FilterableStream):
         Test pixel format definitions.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixdesctest)
@@ -9429,7 +9429,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixelize)
@@ -9483,7 +9483,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixscope)
@@ -9522,7 +9522,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp)
@@ -9563,7 +9563,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp7)
@@ -9607,7 +9607,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#prewitt)
@@ -9685,7 +9685,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pseudocolor)
@@ -9743,7 +9743,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
@@ -9799,7 +9799,7 @@ class VideoStream(FilterableStream):
             mp: set metric plane (from 0 to 2) (default y)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pullup)
@@ -9836,7 +9836,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#qp)
@@ -9869,7 +9869,7 @@ class VideoStream(FilterableStream):
             seed: set the seed (from -1 to UINT32_MAX) (default -1)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#random)
@@ -9916,7 +9916,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readeia608)
@@ -9956,7 +9956,7 @@ class VideoStream(FilterableStream):
             thr_w: white color threshold (from 0 to 1) (default 0.6)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readvitc)
@@ -9990,7 +9990,7 @@ class VideoStream(FilterableStream):
             speed: speed factor (from DBL_MIN to DBL_MAX) (default 1)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
@@ -10031,7 +10031,7 @@ class VideoStream(FilterableStream):
             fill: set the color of the unmapped pixels (default "black")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
@@ -10080,7 +10080,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removegrain)
@@ -10118,7 +10118,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removelogo)
@@ -10147,7 +10147,7 @@ class VideoStream(FilterableStream):
         Hard repeat fields based on MPEG repeat field flag.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#repeatfields)
@@ -10168,7 +10168,7 @@ class VideoStream(FilterableStream):
         Reverse a clip.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#reverse)
@@ -10215,7 +10215,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rgbashift)
@@ -10266,7 +10266,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#roberts)
@@ -10315,7 +10315,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rotate)
@@ -10368,7 +10368,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sab)
@@ -10450,7 +10450,7 @@ class VideoStream(FilterableStream):
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale)
@@ -10543,8 +10543,8 @@ class VideoStream(FilterableStream):
             eval: specify when to evaluate expressions (from 0 to 1) (default init)
 
         Returns:
-            the video stream
-            the video stream
+            default: the video stream
+            ref: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale2ref)
@@ -10610,7 +10610,7 @@ class VideoStream(FilterableStream):
             color_transfer: Output colour transfer characteristics
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale_005fvt)
@@ -10648,7 +10648,7 @@ class VideoStream(FilterableStream):
             sc_pass: Set the flag to pass scene change frames (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scdet)
@@ -10691,7 +10691,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scharr)
@@ -10738,7 +10738,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scroll)
@@ -10776,7 +10776,7 @@ class VideoStream(FilterableStream):
             frames: frames at which to split input
 
         Returns:
-            the filter node
+            filter_node: the filter node
 
 
         References:
@@ -10811,7 +10811,7 @@ class VideoStream(FilterableStream):
             outputs: set the number of outputs (from 1 to INT_MAX) (default 1)
 
         Returns:
-            the filter node
+            filter_node: the filter node
 
 
         References:
@@ -10872,7 +10872,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#selectivecolor)
@@ -10917,7 +10917,7 @@ class VideoStream(FilterableStream):
             filename: set commands file
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
@@ -10946,7 +10946,7 @@ class VideoStream(FilterableStream):
         Split input video frames into fields.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#separatefields)
@@ -10971,7 +10971,7 @@ class VideoStream(FilterableStream):
             max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
@@ -11005,7 +11005,7 @@ class VideoStream(FilterableStream):
             mode: select interlace mode (from -1 to 2) (default auto)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setfield)
@@ -11107,7 +11107,7 @@ class VideoStream(FilterableStream):
             colorspace: select colorspace (from -1 to 14) (default auto)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setparams)
@@ -11142,7 +11142,7 @@ class VideoStream(FilterableStream):
             expr: Expression determining the frame timestamp (default "PTS")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
@@ -11180,7 +11180,7 @@ class VideoStream(FilterableStream):
             range: select color range (from -1 to 2) (default auto)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setrange)
@@ -11212,7 +11212,7 @@ class VideoStream(FilterableStream):
             max: set max value for nominator or denominator in the ratio (from 1 to INT_MAX) (default 100)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
@@ -11244,7 +11244,7 @@ class VideoStream(FilterableStream):
             expr: set expression determining the output timebase (default "intb")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
@@ -11288,7 +11288,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shear)
@@ -11323,7 +11323,7 @@ class VideoStream(FilterableStream):
             checksum: calculate checksums (default true)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showinfo)
@@ -11354,7 +11354,7 @@ class VideoStream(FilterableStream):
             s: set pixel box size (from 1 to 100) (default 30)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showpalette)
@@ -11388,7 +11388,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleframes)
@@ -11435,7 +11435,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shufflepixels)
@@ -11484,7 +11484,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes)
@@ -11552,7 +11552,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
@@ -11594,7 +11594,7 @@ class VideoStream(FilterableStream):
             c: set highlight color (default "yellow")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signalstats)
@@ -11627,7 +11627,7 @@ class VideoStream(FilterableStream):
             print_summary: Print summary showing average values (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#siti)
@@ -11675,7 +11675,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#smartblur)
@@ -11723,7 +11723,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sobel)
@@ -11800,7 +11800,7 @@ class VideoStream(FilterableStream):
             orientation: set orientation (from 0 to 1) (default vertical)
 
         Returns:
-            the audio stream
+            default: the audio stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
@@ -11840,7 +11840,7 @@ class VideoStream(FilterableStream):
             outputs: set number of outputs (from 1 to INT_MAX) (default 2)
 
         Returns:
-            the filter node
+            filter_node: the filter node
 
 
         References:
@@ -11886,7 +11886,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spp)
@@ -11934,7 +11934,7 @@ class VideoStream(FilterableStream):
             output: output name of the model (default "y")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sr)
@@ -11985,7 +11985,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
@@ -12092,7 +12092,7 @@ class VideoStream(FilterableStream):
             out: set output format (from 0 to 32) (default arcd)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereo3d)
@@ -12121,7 +12121,7 @@ class VideoStream(FilterableStream):
         Scale the input by 2x using the Super2xSaI pixel art algorithm.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#super2xsai)
@@ -12162,7 +12162,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swaprect)
@@ -12199,7 +12199,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swapuv)
@@ -12490,7 +12490,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tblend)
@@ -12543,7 +12543,7 @@ class VideoStream(FilterableStream):
             pattern: pattern that describe for how many fields a frame is to be displayed (default "23")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#telecine)
@@ -12594,7 +12594,7 @@ class VideoStream(FilterableStream):
             slide: set slide mode (from 0 to 4) (default replace)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thistogram)
@@ -12642,7 +12642,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
@@ -12688,7 +12688,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thumbnail)
@@ -12738,7 +12738,7 @@ class VideoStream(FilterableStream):
             init_padding: set how many frames to initially pad (from 0 to INT_MAX) (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tile)
@@ -12784,7 +12784,7 @@ class VideoStream(FilterableStream):
             mode: select interlace mode (from 0 to 7) (default merge)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tinterlace)
@@ -12828,7 +12828,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
@@ -12874,7 +12874,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmedian)
@@ -12919,7 +12919,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmidequalizer)
@@ -12966,7 +12966,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmix)
@@ -13014,7 +13014,7 @@ class VideoStream(FilterableStream):
             peak: signal peak override (from 0 to DBL_MAX) (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tonemap)
@@ -13065,7 +13065,7 @@ class VideoStream(FilterableStream):
             color: set the color of the added frames (default "black")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tpad)
@@ -13109,7 +13109,7 @@ class VideoStream(FilterableStream):
             passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose)
@@ -13150,7 +13150,7 @@ class VideoStream(FilterableStream):
             passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose_005fvt)
@@ -13199,7 +13199,7 @@ class VideoStream(FilterableStream):
             end_frame: Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#trim)
@@ -13259,7 +13259,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unsharp)
@@ -13299,7 +13299,7 @@ class VideoStream(FilterableStream):
             layout: set grid size (default "6x5")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#untile)
@@ -13343,7 +13343,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#uspp)
@@ -13535,7 +13535,7 @@ class VideoStream(FilterableStream):
             reset_rot: reset rotation (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#v360)
@@ -13618,7 +13618,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser)
@@ -13675,7 +13675,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
@@ -13749,7 +13749,7 @@ class VideoStream(FilterableStream):
             tint1: set 2nd tint (from -1 to 1) (default 0)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vectorscope)
@@ -13793,7 +13793,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vflip)
@@ -13821,7 +13821,7 @@ class VideoStream(FilterableStream):
         Variable frame rate detect filter.
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vfrdet)
@@ -13866,7 +13866,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrance)
@@ -13924,7 +13924,7 @@ class VideoStream(FilterableStream):
             fileformat: transforms data file format (from 1 to 2) (default binary)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabdetect)
@@ -13993,7 +13993,7 @@ class VideoStream(FilterableStream):
             debug: enable debug mode and writer global motions information to file (default false)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform)
@@ -14051,7 +14051,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
@@ -14108,7 +14108,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vignette)
@@ -14146,7 +14146,7 @@ class VideoStream(FilterableStream):
             stats_file: Set file where to store per-frame difference information
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vmafmotion)
@@ -14190,7 +14190,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#w3fdif)
@@ -14262,7 +14262,7 @@ class VideoStream(FilterableStream):
             input: set input formats selection (from 0 to 1) (default first)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#waveform)
@@ -14310,7 +14310,7 @@ class VideoStream(FilterableStream):
             first_field: set first field (from 0 to 1) (default top)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
@@ -14341,7 +14341,7 @@ class VideoStream(FilterableStream):
             n: set scale factor (from 2 to 4) (default 3)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xbr)
@@ -14390,7 +14390,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
@@ -14504,7 +14504,7 @@ class VideoStream(FilterableStream):
             expr: set expression for custom transition
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
@@ -14554,7 +14554,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yadif)
@@ -14599,7 +14599,7 @@ class VideoStream(FilterableStream):
             enable: timeline editing
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yaepblur)
@@ -14633,7 +14633,7 @@ class VideoStream(FilterableStream):
             bind_address: set bind address (default "tcp://*:5555")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
@@ -14679,7 +14679,7 @@ class VideoStream(FilterableStream):
             fps: set the output framerate (default "25")
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zoompan)
@@ -14902,7 +14902,7 @@ class VideoStream(FilterableStream):
             param_b: parameter B, which is parameter "c" for bicubic (from -DBL_MAX to DBL_MAX) (default nan)
 
         Returns:
-            the video stream
+            default: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zscale)

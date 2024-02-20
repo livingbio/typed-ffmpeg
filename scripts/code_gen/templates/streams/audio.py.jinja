@@ -6,7 +6,7 @@ import re
 from typing import TYPE_CHECKING, Any, Literal
 
 from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default, StreamType, to_tuple
+from ..schema import Default, StreamType, _to_tuple
 from ..types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
 from ..utils.typing import override
 from .channel_layout import CHANNEL_LAYOUT
@@ -16,16 +16,6 @@ if TYPE_CHECKING:
 
 
 class AudioStream(FilterableStream):
-    @property
-    @override
-    def video(self) -> "VideoStream":
-        raise NotImplementedError("This stream does not have a video component")
-
-    @property
-    @override
-    def audio(self) -> "AudioStream":
-        return AudioStream(node=self.node, selector=StreamType.audio, index=self.index)
-
     {% for f in filters %}
         {% if f.filter_type.value in ["af", "avf"] and not f.is_input_dynamic %}
     {{ _components.filter_method(f) }}
