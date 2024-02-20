@@ -42,6 +42,13 @@ def reuse_input() -> Any:
     return pytest.param(graph, id="reuse-input")
 
 
+def reuse_stream() -> Any:
+    input_stream = input("input.mp4")
+    stream = input_stream.reverse()
+    graph = concat(stream, stream).video(0).output(filename="tmp.mp4")
+    return pytest.param(graph, id="reuse-stream")
+
+
 def complex_stream() -> Any:
     input1 = input("input1.mp4")
     input2 = input("input2.mp4")
@@ -79,6 +86,7 @@ def amix_stream_2() -> Any:
         redundant_split_outputs_1(),
         not_utilize_split(),
         reuse_input(),
+        reuse_stream(),
         complex_stream(),
         amix_stream(),
         amix_stream_2(),
