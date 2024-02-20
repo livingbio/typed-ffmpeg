@@ -190,7 +190,7 @@ input2 = ffmpeg.input('input2.mp4')
 
 The process of overlaying two video streams is illustrated in the following diagram:
 
-![](../media/usage-complex-filter-mulit-input.png)
+![](../media/usage-complex-filter-multi-input.png)
 
 ### Handling Multiple Outputs
 Some filters, when applied, generate multiple output streams. Typed FFmpeg facilitates handling these scenarios with clear and concise code:
