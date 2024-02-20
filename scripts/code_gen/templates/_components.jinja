@@ -86,13 +86,13 @@ Args:
 {% endif %}
 Returns:
 {%- if f.is_output_dynamic %}
-    the filter node
+    filter_node: the filter node
 {% else -%}
-    {% for stream_tpying in f.output_stream_typings %}
-    {%- if stream_tpying.type.value == "video" %}
-    the video stream
+    {% for stream_typing in f.output_stream_typings %}
+    {%- if stream_typing.type.value == "video" %}
+    {{ stream_typing.name}}: the video stream
     {%- else %}
-    the audio stream
+    {{ stream_typing.name}}: the audio stream
     {%- endif -%}
     {%- endfor %}
 {%- endif %}
