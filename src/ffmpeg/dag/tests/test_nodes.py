@@ -94,7 +94,7 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(ValueError) as e:
         FilterNode(name="scale", inputs=(in_file.video,), input_typings=(StreamType.audio, StreamType.video))
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(TypeError) as te:
         FilterNode(
             name="scale",
             kwargs=(("w", "1920"), ("h", "1080")),
@@ -102,9 +102,9 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
             input_typings=(StreamType.audio,),
         )
 
-    assert snapshot == e
+    assert snapshot == te
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(TypeError) as te:
         FilterNode(
             name="scale",
             kwargs=(("w", "1920"), ("h", "1080")),
@@ -112,7 +112,7 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
             input_typings=(StreamType.video,),
         )
 
-    assert snapshot == e
+    assert snapshot == te
 
 
 def test_custom_filter(snapshot: SnapshotAssertion) -> None:

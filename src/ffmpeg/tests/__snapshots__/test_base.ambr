@@ -1,7 +1,7 @@
 # serializer version: 1
 # name: test_filter_node
-  <ExceptionInfo ValueError('Expected 2 inputs, got 3') tblen=4>
+  <ExceptionInfo FFMpegValueError('Expected 2 inputs, got 3') tblen=4>
 # ---
 # name: test_filter_node.1
-  <ExceptionInfo ValueError('Expected input 1 to have video component, got AudioStream') tblen=4>
+  <ExceptionInfo FFMpegTypeError('Expected input 1 to have video component, got AudioStream') tblen=4>
 # ---

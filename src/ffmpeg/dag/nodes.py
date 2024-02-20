@@ -7,7 +7,7 @@ import subprocess
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
-from ..exceptions import Error
+from ..exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
@@ -67,7 +67,7 @@ class FilterNode(Node):
 
         video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
         if not len(video_outputs) > index:
-            raise ValueError(f"Specified index {index} is out of range for video outputs {len(video_outputs)}")
+            raise FFMpegValueError(f"Specified index {index} is out of range for video outputs {len(video_outputs)}")
         return VideoStream(node=self, index=video_outputs[index])
 
     def audio(self, index: int) -> "AudioStream":
@@ -84,7 +84,7 @@ class FilterNode(Node):
 
         audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
         if not len(audio_outputs) > index:
-            raise ValueError(f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}")
+            raise FFMpegValueError(f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}")
 
         return AudioStream(node=self, index=audio_outputs[index])
 
@@ -95,7 +95,7 @@ class FilterNode(Node):
         super().__post_init__()
 
         if len(self.inputs) != len(self.input_typings):
-            raise ValueError(f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}")
+            raise FFMpegValueError(f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}")
 
         stream: FilterableStream
         expected_type: StreamType
@@ -103,10 +103,14 @@ class FilterNode(Node):
         for i, (stream, expected_type) in enumerate(zip(self.inputs, self.input_typings)):
             if expected_type == StreamType.video:
                 if not isinstance(stream, VideoStream):
-                    raise ValueError(f"Expected input {i} to have video component, got {stream.__class__.__name__}")
+                    raise FFMpegTypeError(
+                        f"Expected input {i} to have video component, got {stream.__class__.__name__}"
+                    )
             if expected_type == StreamType.audio:
                 if not isinstance(stream, AudioStream):
-                    raise ValueError(f"Expected input {i} to have audio component, got {stream.__class__.__name__}")
+                    raise FFMpegTypeError(
+                        f"Expected input {i} to have audio component, got {stream.__class__.__name__}"
+                    )
 
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
@@ -226,7 +230,7 @@ class FilterableStream(Stream):
         Output the streams to a file URL
 
         Args:
-            *streams: the streams to output
+            *streams: the other streams to output
             filename: the filename to output to
             **kwargs: the arguments for the output
 
@@ -260,13 +264,13 @@ class FilterableStream(Stream):
                 return f"{context.get_node_label(self.node)}:v"
             elif isinstance(self, AudioStream):
                 return f"{context.get_node_label(self.node)}:a"
-            raise ValueError(f"Unknown stream type: {self.__class__.__name__}")  # pragma: no cover
+            raise FFMpegValueError(f"Unknown stream type: {self.__class__.__name__}")  # pragma: no cover
 
         if isinstance(self.node, FilterNode):
             if len(self.node.output_typings) > 1:
                 return f"{context.get_node_label(self.node)}#{self.index}"
             return f"{context.get_node_label(self.node)}"
-        raise ValueError(f"Unknown node type: {self.node.__class__.__name__}")  # pragma: no cover
+        raise FFMpegValueError(f"Unknown node type: {self.node.__class__.__name__}")  # pragma: no cover
 
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):
@@ -442,7 +446,7 @@ class OutputStream(Stream):
         Returns:
             The merged output stream.
         """
-        return MergeOutputsNode(inputs=streams).stream()
+        return MergeOutputsNode(inputs=(self, *streams)).stream()
 
     def overwrite_output(self) -> "OutputStream":
         """
@@ -575,7 +579,7 @@ class OutputStream(Stream):
         retcode = process.poll()
 
         if retcode:
-            raise Error(
+            raise FFMpegExecuteError(
                 retcode=retcode,
                 cmd=self.compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix),
                 stdout=stdout,

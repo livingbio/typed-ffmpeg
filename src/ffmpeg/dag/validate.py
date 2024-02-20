@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from dataclasses import replace
 
+from ffmpeg.exceptions import FFMpegValueError
+
 from ..streams.audio import AudioStream
 from ..streams.video import VideoStream
 from .context import DAGContext
@@ -125,7 +127,7 @@ def add_split(
             mapping[(current_stream, node, index)] = split_node.audio(idx)
         return mapping[(current_stream, down_node, down_index)], mapping
     else:
-        raise ValueError(f"unsupported stream type: {current_stream}")
+        raise FFMpegValueError(f"unsupported stream type: {current_stream}")
 
 
 def fix_graph(stream: Stream) -> Stream:

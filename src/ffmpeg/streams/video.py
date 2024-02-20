@@ -4813,8 +4813,8 @@ class VideoStream(FilterableStream):
             w: set crop size (from 0 to INT_MAX) (default 0)
 
         Returns:
-            the video stream
-            the video stream
+            default: the video stream
+            feedout: the video stream
 
         References:
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
