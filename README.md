@@ -118,6 +118,8 @@ This project was initially inspired by the capabilities of GPT-3, with the origi
 
 As a result, I shifted to traditional code generation methods to complete the SDK, ensuring a more robust and reliable tool. Despite this change in approach, both GitHub Copilot and GPT-3 were instrumental in accelerating the development process, providing valuable insights and saving significant time.
 
+I would also like to extend my gratitude to the `ffmpeg-python` project, which inspired this project significantly. The API style and design ideas from `ffmpeg-python` have been influential, and I have utilized these aspects to shape the development of our SDK.
+
 This project is dedicated to my son, Austin, on his seventh birthday (February 24, 2024), whose curiosity and zest for life continually inspire me.
 
 ---
