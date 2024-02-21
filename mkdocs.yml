@@ -26,8 +26,6 @@ theme:
     - content.code.copy
     - announce.dismiss
     - navigation.tabs
-  logo: "logo-white.svg"
-  favicon: "favicon.png"
 
 repo_name: livingbio/typed-ffmpeg
 repo_url: https://github.com/livingbio/typed-ffmpeg
