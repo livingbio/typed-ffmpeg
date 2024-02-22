@@ -4,7 +4,7 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
-from ..parse import extract_avfilter_info_from_help, help_full_text, help_text, parse_section_tree
+from ..parse_filter import extract_avfilter_info_from_help, help_full_text, help_text, parse_section_tree
 
 
 def test_help_full_text(snapshot: SnapshotAssertion) -> None:
