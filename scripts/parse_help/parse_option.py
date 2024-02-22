@@ -10,4 +10,17 @@ def help_full_text() -> str:
 def process() -> Any:
     text = help_full_text()
 
-    return [k.strip() for k in text.split("\n\n")]
+    # split the text into sections
+    sections = [k.strip() for k in text.split("\n\n")]
+
+    output = {}
+    for section in sections:
+        lines = section.split("\n")
+
+        if not lines[0].endswith(":"):
+            continue
+
+        section_name = lines[0][:-1]
+        output[section_name] = lines[1:]
+
+    return output
