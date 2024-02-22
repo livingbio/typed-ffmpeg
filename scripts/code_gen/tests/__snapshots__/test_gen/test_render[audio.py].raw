@@ -16,16 +16,6 @@ if TYPE_CHECKING:
 
 
 class AudioStream(FilterableStream):
-    @property
-    @override
-    def video(self) -> "VideoStream":
-        raise NotImplementedError("This stream does not have a video component")
-
-    @property
-    @override
-    def audio(self) -> "AudioStream":
-        return AudioStream(node=self.node, selector=StreamType.audio, index=self.index)
-
     
         
     
@@ -39,7 +29,7 @@ class AudioStream(FilterableStream):
         
     
         
-        _desired: "AudioStream",
+        _desired: AudioStream,
         
     
 
@@ -73,7 +63,7 @@ Default(None)
 
 
     **kwargs: Any
-    )-> "AudioStream":
+    )-> AudioStream:
         """
         
 description
@@ -83,7 +73,7 @@ Args:
     projection: set the filter projection
 
 Returns:
-    the audio stream
+    default: the audio stream
 
 References:
     [FFmpeg Documentation](None)

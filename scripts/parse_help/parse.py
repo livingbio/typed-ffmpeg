@@ -14,6 +14,11 @@ def help_text(filter_name: str) -> str:
     return result.stdout
 
 
+def help_full_text() -> str:
+    result = subprocess.run(["ffmpeg", "-h", "full", "-hide_banner"], stdout=subprocess.PIPE, text=True)
+    return result.stdout
+
+
 def _left_space(line: str) -> int:
     for i in range(len(line)):
         if line[i] != " ":
