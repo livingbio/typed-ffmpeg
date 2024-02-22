@@ -1,9 +1,10 @@
 from .streams.av import AVStream
-from .base import InputNode
+from .dag.nodes import InputNode
 from typing import Any
+from .schema import Default, StreamType, _to_tuple
 
 def input(
-    INPUT: str,
+    filename: str,
     *,
     {%- for option in options -%}
     {%- if option.is_input_option -%}
@@ -13,13 +14,34 @@ def input(
     **kwargs: Any
 ) -> AVStream:
     """
-Parameters:
-----------
-{% for option in options %}
-{%- if option.is_input_option -%}
-:param {{option.typing}} {{option.name | option_name_safe}}: {{option.help }}
-{% endif %}
-{%- endfor %}
+    Input file URL (ffmpeg `-i` option)
+
+    Args:
+        filename: Input file URL
+        {% for option in options %}
+        {%- if option.is_input_option -%}
+        {{option.name | option_name_safe}}: {{option.help }}
+        {% endif %}
+        {%- endfor -%}
+        **kwargs: Additional options
+
+    Returns:
+        Input stream
+
+    Examples:
+    ```py
+    >>> input("input.mp4")
+    <AVStream: input.mp4>
+    ```
     """
 
-    return InputNode(name=input.__name__, kwargs=kwargs).stream()
+    return InputNode(
+        filename=filename,
+        kwargs=_to_tuple(({
+            {% for option in options %}
+            {%- if option.is_input_option -%}
+            "{{ option.name}}": {{ option.name | option_name_safe }},
+            {% endif %}
+            {% endfor %}
+        } | kwargs)),
+    ).stream()

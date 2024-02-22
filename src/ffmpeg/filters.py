@@ -5,7 +5,20 @@ from .dag.nodes import FilterableStream, FilterNode
 from .schema import Default, StreamType, _to_tuple
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
-from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String, Video_rate
+from .types import (
+    Boolean,
+    Color,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Pix_fmt,
+    String,
+    Video_rate,
+)
 
 
 def acrossfade(
@@ -170,7 +183,7 @@ def afir(
     filter_node = FilterNode(
         name="afir",
         input_typings=tuple([StreamType.audio] * int(nbirs)),
-        output_typings=(StreamType.audio,),
+        output_typings=None,
         inputs=(*streams,),
         kwargs=_to_tuple(
             (

@@ -25,9 +25,11 @@ class Default(str):
     ...
 
 
+COMMON_TYPE = str | int | float | bool
+
 def _to_tuple(
-    kwargs: dict[str, str | int | float | bool | Default]
-) -> tuple[tuple[str, str | int | float | bool], ...]:
+    kwargs: dict[str, COMMON_TYPE | dict[str, COMMON_TYPE] | Default]
+) -> tuple[tuple[str, COMMON_TYPE], ...]:
     """
     Convert the values of the dictionary to strings.
     """

@@ -5,7 +5,20 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType, _to_tuple
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
+from ..types import (
+    Boolean,
+    Color,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Rational,
+    String,
+    Video_rate,
+)
 from .channel_layout import CHANNEL_LAYOUT
 
 if TYPE_CHECKING:
