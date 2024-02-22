@@ -1,0 +1,13 @@
+Filter abuffer
+  Buffer audio frames, and make them accessible to the filterchain.
+    Inputs:
+        none (source filter)
+    Outputs:
+       #0: default (audio)
+abuffer AVOptions:
+   time_base         <rational>   ..F.A...... (from 0 to INT_MAX) (default 0/1)
+   sample_rate       <int>        ..F.A...... (from 0 to INT_MAX) (default 0)
+   sample_fmt        <sample_fmt> ..F.A...... (default none)
+   channel_layout    <string>     ..F.A......
+   channels          <int>        ..F.A...... (from 0 to INT_MAX) (default 0)
+

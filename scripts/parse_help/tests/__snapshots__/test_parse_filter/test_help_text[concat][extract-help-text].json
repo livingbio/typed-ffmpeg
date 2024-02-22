@@ -1,0 +1,65 @@
+{
+  "description": "Concatenate audio and video streams.",
+  "input_types": null,
+  "is_dynamic_inputs": true,
+  "is_dynamic_outputs": true,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "concat",
+  "options": [
+    {
+      "alias": [
+        "n"
+      ],
+      "choices": [],
+      "default": 2,
+      "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
+      "flags": "..FVA......",
+      "max": "INT_MAX",
+      "min": "1",
+      "name": "n",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "v"
+      ],
+      "choices": [],
+      "default": 1,
+      "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "v",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "a"
+      ],
+      "choices": [],
+      "default": 0,
+      "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
+      "flags": "..F.A......",
+      "max": "INT_MAX",
+      "min": "0",
+      "name": "a",
+      "typing": "int"
+    },
+    {
+      "alias": [
+        "unsafe"
+      ],
+      "choices": [],
+      "default": false,
+      "description": "enable unsafe mode (default false)",
+      "flags": "..FVA......",
+      "max": null,
+      "min": null,
+      "name": "unsafe",
+      "typing": "boolean"
+    }
+  ],
+  "output_types": null
+}

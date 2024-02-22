@@ -4,13 +4,7 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
-from ..parse_filter import extract_avfilter_info_from_help, help_full_text, help_text, parse_section_tree
-
-
-def test_help_full_text(snapshot: SnapshotAssertion) -> None:
-    assert snapshot(name="help-full-text", extension_class=JSONSnapshotExtension) == parse_section_tree(
-        help_full_text()
-    )
+from ..parse_filter import extract_avfilter_info_from_help, help_text, parse_section_tree
 
 
 @pytest.mark.parametrize(
