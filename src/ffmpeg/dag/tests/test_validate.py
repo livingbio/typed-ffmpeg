@@ -64,7 +64,7 @@ def complex_stream() -> Any:
 def amix_stream() -> Any:
     input1 = input("input1.mp4")
 
-    graph = amix(input1.audio.areverse().areverse(), input1.audio.areverse(), duration="firat").output(
+    graph = amix(input1.audio.areverse().areverse(), input1.audio.areverse(), duration="first").output(
         filename="tmp.mp4"
     )
     return pytest.param(graph, id="amix-stream")
@@ -73,7 +73,7 @@ def amix_stream() -> Any:
 def amix_stream_2() -> Any:
     input1 = input("input1.mp4")
 
-    graph = amix(input1.audio.areverse(), input1.audio.areverse().areverse(), duration="firat").output(
+    graph = amix(input1.audio.areverse(), input1.audio.areverse().areverse(), duration="first").output(
         filename="tmp.mp4"
     )
     return pytest.param(graph, id="amix-stream-2")

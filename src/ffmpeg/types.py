@@ -48,25 +48,25 @@ Pix_fmt = str
 please see `ffmpeg -pix_fmts` for a list of supported pixel formats.
 """
 
-Int = int | str
+Int = int | Default
 """
 This represents FFmpeg's integer type. It can accept either a Python integer value
 or a string that represents a integer value.
 """
 
-Int64 = int | str
+Int64 = int | Default
 """
 This represents FFmpeg's integer type. It can accept either a Python integer value
 or a string that represents a integer value.
 """
 
-Double = int | float | str
+Double = int | float | Default
 """
 This represents FFmpeg's double type. It can accept either a Python integer or float value
 or a string that represents a double value.
 """
 # TODO: more info
-Float = int | float | str
+Float = int | float | Default
 """
 This represents FFmpeg's float type. It can accept either a Python integer or float value
 or a string that represents a float value.
