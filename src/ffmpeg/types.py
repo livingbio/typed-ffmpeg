@@ -6,7 +6,9 @@ The source of these types is defined within the AVOptionType enumeration found i
 
 from typing import Literal
 
-Boolean = bool | Literal["true", "false", "1", "0"]
+from .schema import Default
+
+Boolean = bool | Literal["true", "false", "1", "0"] | Default
 """
 This represents FFmpeg's boolean type. It can accept either a Python boolean value (`True` or `False`)
 or a string that represents a boolean value ("true", "false", "1", or "0").
