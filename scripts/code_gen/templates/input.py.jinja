@@ -1,0 +1,25 @@
+from .streams.av import AVStream
+from .base import InputNode
+from typing import Any
+
+def input(
+    INPUT: str,
+    *,
+    {%- for option in options -%}
+    {%- if option.is_input_option -%}
+    {{ option.name }}: {{ option.typing }},
+    {%- endif -%}
+    {%- endfor -%}
+    **kwargs: Any
+) -> AVStream:
+    """
+Parameters:
+----------
+{% for option in options %}
+{%- if option.is_input_option -%}
+:param {{option.typing}} {{option.name | option_name_safe}}: {{option.help }}
+{% endif %}
+{%- endfor %}
+    """
+
+    return InputNode(name=input.__name__, kwargs=kwargs).stream()

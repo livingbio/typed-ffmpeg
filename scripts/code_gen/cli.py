@@ -3,7 +3,7 @@ import pathlib
 
 import pydantic
 import typer
-from parse_c.cli import parse_filters
+from parse_c.cli import parse_ffmpeg_options, parse_filters
 from parse_docs.cli import split_documents
 from parse_docs.schema import FilterDocument
 from parse_help.parse_filter import extract
@@ -83,6 +83,7 @@ def update_or_create(
 @app.command()
 def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
     filters = parse_filters()
+    ffmpeg_options = parse_ffmpeg_options()
 
     filter_doc_mapping: dict[str, FilterDocument] = {}
     for doc in split_documents():
@@ -128,7 +129,7 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         ffmpeg_filter.save()
         output.append(ffmpeg_filter)
 
-    render(output, outpath)
+    render(output, ffmpeg_options, outpath)
     os.system("pre-commit run -a")
 
 

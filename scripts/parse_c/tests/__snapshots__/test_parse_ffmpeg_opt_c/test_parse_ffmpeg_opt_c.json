@@ -1,0 +1,1154 @@
+[
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show license",
+    "name": "L"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "name": "h"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "name": "?"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "name": "help"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "name": "-help"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show version",
+    "name": "version"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show build configuration",
+    "name": "buildconf"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available formats",
+    "name": "formats"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available muxers",
+    "name": "muxers"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available demuxers",
+    "name": "demuxers"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available devices",
+    "name": "devices"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available codecs",
+    "name": "codecs"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available decoders",
+    "name": "decoders"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available encoders",
+    "name": "encoders"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available bit stream filters",
+    "name": "bsfs"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available protocols",
+    "name": "protocols"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available filters",
+    "name": "filters"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available pixel formats",
+    "name": "pix_fmts"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show standard channel layouts",
+    "name": "layouts"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available audio sample formats",
+    "name": "sample_fmts"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available stream dispositions",
+    "name": "dispositions"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available color names",
+    "name": "colors"
+  },
+  {
+    "argname": "loglevel",
+    "flags": 1,
+    "help": "set logging level",
+    "name": "loglevel"
+  },
+  {
+    "argname": "loglevel",
+    "flags": 1,
+    "help": "set logging level",
+    "name": "v"
+  },
+  {
+    "argname": null,
+    "flags": 0,
+    "help": "generate a report",
+    "name": "report"
+  },
+  {
+    "argname": "bytes",
+    "flags": 1,
+    "help": "set maximum size of a single allocated block",
+    "name": "max_alloc"
+  },
+  {
+    "argname": "flags",
+    "flags": 5,
+    "help": "force specific cpu flags",
+    "name": "cpuflags"
+  },
+  {
+    "argname": "count",
+    "flags": 5,
+    "help": "force specific cpu count",
+    "name": "cpucount"
+  },
+  {
+    "argname": "hide_banner",
+    "flags": 6,
+    "help": "do not show program banner",
+    "name": "hide_banner"
+  },
+  {
+    "argname": "device",
+    "flags": 1025,
+    "help": "list sources of the input device",
+    "name": "sources"
+  },
+  {
+    "argname": "device",
+    "flags": 1025,
+    "help": "list sinks of the output device",
+    "name": "sinks"
+  },
+  {
+    "argname": "fmt",
+    "flags": 401417,
+    "help": "force format",
+    "name": "f"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "overwrite output files",
+    "name": "y"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "never overwrite output files",
+    "name": "n"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "Ignore unknown stream types",
+    "name": "ignore_unknown"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "Copy unknown stream types",
+    "name": "copy_unknown"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "allow recasting stream type in order to force a decoder of different media type",
+    "name": "recast_media"
+  },
+  {
+    "argname": "codec",
+    "flags": 409609,
+    "help": "codec name",
+    "name": "c"
+  },
+  {
+    "argname": "codec",
+    "flags": 409609,
+    "help": "codec name",
+    "name": "codec"
+  },
+  {
+    "argname": "preset",
+    "flags": 278537,
+    "help": "preset name",
+    "name": "pre"
+  },
+  {
+    "argname": "[-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]]",
+    "flags": 266245,
+    "help": "set input stream mapping",
+    "name": "map"
+  },
+  {
+    "argname": "file.stream.channel[:syncfile.syncstream]",
+    "flags": 266245,
+    "help": "map an audio channel from one stream to another (deprecated)",
+    "name": "map_channel"
+  },
+  {
+    "argname": "outfile[,metadata]:infile[,metadata]",
+    "flags": 278537,
+    "help": "set metadata information of outfile from infile",
+    "name": "map_metadata"
+  },
+  {
+    "argname": "input_file_index",
+    "flags": 270405,
+    "help": "set chapters mapping",
+    "name": "map_chapters"
+  },
+  {
+    "argname": "duration",
+    "flags": 434177,
+    "help": "record or transcode \\\"duration\\\" seconds of audio/video",
+    "name": "t"
+  },
+  {
+    "argname": "time_stop",
+    "flags": 434177,
+    "help": "record or transcode stop time",
+    "name": "to"
+  },
+  {
+    "argname": "limit_size",
+    "flags": 270849,
+    "help": "set the limit file size in bytes",
+    "name": "fs"
+  },
+  {
+    "argname": "time_off",
+    "flags": 434177,
+    "help": "set the start time offset",
+    "name": "ss"
+  },
+  {
+    "argname": "time_off",
+    "flags": 172033,
+    "help": "set the start time offset relative to EOF",
+    "name": "sseof"
+  },
+  {
+    "argname": null,
+    "flags": 139329,
+    "help": "enable/disable seeking by timestamp with -ss",
+    "name": "seek_timestamp"
+  },
+  {
+    "argname": null,
+    "flags": 139270,
+    "help": "enable/disable accurate seeking with -ss",
+    "name": "accurate_seek"
+  },
+  {
+    "argname": "sync ref",
+    "flags": 139333,
+    "help": "Indicate the input index for sync reference",
+    "name": "isync"
+  },
+  {
+    "argname": "time_off",
+    "flags": 172037,
+    "help": "set the input ts offset",
+    "name": "itsoffset"
+  },
+  {
+    "argname": "scale",
+    "flags": 212997,
+    "help": "set the input ts scale",
+    "name": "itsscale"
+  },
+  {
+    "argname": "time",
+    "flags": 266241,
+    "help": "set the recording timestamp ('now' to set the current time)",
+    "name": "timestamp"
+  },
+  {
+    "argname": "string=string",
+    "flags": 278537,
+    "help": "add metadata",
+    "name": "metadata"
+  },
+  {
+    "argname": "title=string:st=number...",
+    "flags": 278537,
+    "help": "add program with specified streams",
+    "name": "program"
+  },
+  {
+    "argname": "id=number:st=number...",
+    "flags": 278537,
+    "help": "add stream group with specified streams and group type-specific arguments",
+    "name": "stream_group"
+  },
+  {
+    "argname": "number",
+    "flags": 266245,
+    "help": "set the number of data frames to output",
+    "name": "dframes"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "add timings for benchmarking",
+    "name": "benchmark"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "add timings for each task",
+    "name": "benchmark_all"
+  },
+  {
+    "argname": "url",
+    "flags": 5,
+    "help": "write program-readable progress information",
+    "name": "progress"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "enable or disable interaction on standard input",
+    "name": "stdin"
+  },
+  {
+    "argname": "limit",
+    "flags": 5,
+    "help": "set max runtime in seconds in CPU user time",
+    "name": "timelimit"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "dump each input packet",
+    "name": "dump"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "when dumping packets, also dump the payload",
+    "name": "hex"
+  },
+  {
+    "argname": "",
+    "flags": 139270,
+    "help": "read input at native frame rate; equivalent to -readrate 1",
+    "name": "re"
+  },
+  {
+    "argname": "speed",
+    "flags": 139397,
+    "help": "read input at specified rate",
+    "name": "readrate"
+  },
+  {
+    "argname": "seconds",
+    "flags": 204805,
+    "help": "The initial amount of input to burst read before imposing any readrate",
+    "name": "readrate_initial_burst"
+  },
+  {
+    "argname": "type",
+    "flags": 266241,
+    "help": "specify target file type (\\\"vcd\\\", \\\"svcd\\\", \\\"dvd\\\", \\\"dv\\\" or \\\"dv50\\\n        \"with optional prefixes \\\"pal-\\\", \\\"ntsc-\\\" or \\\"film-\\\")",
+    "name": "target"
+  },
+  {
+    "argname": "",
+    "flags": 5,
+    "help": "set video sync method globally; deprecated, use -fps_mode",
+    "name": "vsync"
+  },
+  {
+    "argname": "",
+    "flags": 133,
+    "help": "frame drop threshold",
+    "name": "frame_drop_threshold"
+  },
+  {
+    "argname": "threshold",
+    "flags": 5,
+    "help": "deprecated, does nothing",
+    "name": "adrift_threshold"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "copy timestamps",
+    "name": "copyts"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "shift input timestamps to start at 0 when using copyts",
+    "name": "start_at_zero"
+  },
+  {
+    "argname": "mode",
+    "flags": 69,
+    "help": "copy input stream time base when stream copying",
+    "name": "copytb"
+  },
+  {
+    "argname": null,
+    "flags": 270342,
+    "help": "finish encoding within shortest input",
+    "name": "shortest"
+  },
+  {
+    "argname": null,
+    "flags": 270469,
+    "help": "maximum buffering duration (in seconds) for the -shortest option",
+    "name": "shortest_buf_duration"
+  },
+  {
+    "argname": null,
+    "flags": 401414,
+    "help": "bitexact mode",
+    "name": "bitexact"
+  },
+  {
+    "argname": "",
+    "flags": 278537,
+    "help": "audio pad",
+    "name": "apad"
+  },
+  {
+    "argname": "threshold",
+    "flags": 133,
+    "help": "timestamp discontinuity delta threshold",
+    "name": "dts_delta_threshold"
+  },
+  {
+    "argname": "threshold",
+    "flags": 133,
+    "help": "timestamp error delta threshold",
+    "name": "dts_error_threshold"
+  },
+  {
+    "argname": "error",
+    "flags": 6,
+    "help": "exit on error",
+    "name": "xerror"
+  },
+  {
+    "argname": "flags",
+    "flags": 5,
+    "help": "abort on the specified condition flags",
+    "name": "abort_on"
+  },
+  {
+    "argname": null,
+    "flags": 278534,
+    "help": "copy initial non-keyframes",
+    "name": "copyinkf"
+  },
+  {
+    "argname": null,
+    "flags": 278597,
+    "help": "copy or discard frames before start time",
+    "name": "copypriorss"
+  },
+  {
+    "argname": "number",
+    "flags": 279041,
+    "help": "set the number of frames to output",
+    "name": "frames"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 409613,
+    "help": "force codec tag/fourcc",
+    "name": "tag"
+  },
+  {
+    "argname": "q",
+    "flags": 344069,
+    "help": "use fixed quality scale (VBR)",
+    "name": "q"
+  },
+  {
+    "argname": "q",
+    "flags": 266245,
+    "help": "use fixed quality scale (VBR)",
+    "name": "qscale"
+  },
+  {
+    "argname": "profile",
+    "flags": 266245,
+    "help": "set profile",
+    "name": "profile"
+  },
+  {
+    "argname": "filter_graph",
+    "flags": 278537,
+    "help": "set stream filtergraph",
+    "name": "filter"
+  },
+  {
+    "argname": null,
+    "flags": 1,
+    "help": "number of non-complex filter threads",
+    "name": "filter_threads"
+  },
+  {
+    "argname": "filename",
+    "flags": 278537,
+    "help": "read stream filtergraph description from a file",
+    "name": "filter_script"
+  },
+  {
+    "argname": "",
+    "flags": 147521,
+    "help": "reinit filtergraph on input parameter changes",
+    "name": "reinit_filter"
+  },
+  {
+    "argname": "graph_description",
+    "flags": 5,
+    "help": "create a complex filtergraph",
+    "name": "filter_complex"
+  },
+  {
+    "argname": null,
+    "flags": 65,
+    "help": "number of threads for -filter_complex",
+    "name": "filter_complex_threads"
+  },
+  {
+    "argname": "graph_description",
+    "flags": 5,
+    "help": "create a complex filtergraph",
+    "name": "lavfi"
+  },
+  {
+    "argname": "filename",
+    "flags": 5,
+    "help": "read complex filtergraph description from a file",
+    "name": "filter_complex_script"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "enable automatic conversion filters globally",
+    "name": "auto_conversion_filters"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "print progress report during encoding",
+    "name": "stats"
+  },
+  {
+    "argname": "time",
+    "flags": 5,
+    "help": "set the period at which ffmpeg updates stats and -progress output",
+    "name": "stats_period"
+  },
+  {
+    "argname": "filename",
+    "flags": 266245,
+    "help": "add an attachment to the output file",
+    "name": "attach"
+  },
+  {
+    "argname": "filename",
+    "flags": 147469,
+    "help": "extract an attachment into a file",
+    "name": "dump_attachment"
+  },
+  {
+    "argname": "loop count",
+    "flags": 139333,
+    "help": "set number of times input stream shall be looped",
+    "name": "stream_loop"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "print timestamp debugging info",
+    "name": "debug_ts"
+  },
+  {
+    "argname": "maximum error rate",
+    "flags": 129,
+    "help": "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.",
+    "name": "max_error_rate"
+  },
+  {
+    "argname": "",
+    "flags": 147465,
+    "help": "discard",
+    "name": "discard"
+  },
+  {
+    "argname": "",
+    "flags": 278537,
+    "help": "disposition",
+    "name": "disposition"
+  },
+  {
+    "argname": null,
+    "flags": 401477,
+    "help": "set the maximum number of queued packets from the demuxer",
+    "name": "thread_queue_size"
+  },
+  {
+    "argname": null,
+    "flags": 139270,
+    "help": "read and decode the streams to fill missing information with heuristics",
+    "name": "find_stream_info"
+  },
+  {
+    "argname": "number",
+    "flags": 278597,
+    "help": "set the number of bits per raw sample",
+    "name": "bits_per_raw_sample"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "write encoding stats before encoding",
+    "name": "stats_enc_pre"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "write encoding stats after encoding",
+    "name": "stats_enc_post"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "write packets stats before muxing",
+    "name": "stats_mux_pre"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "format of the stats written with -stats_enc_pre",
+    "name": "stats_enc_pre_fmt"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "format of the stats written with -stats_enc_post",
+    "name": "stats_enc_post_fmt"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "format of the stats written with -stats_mux_pre",
+    "name": "stats_mux_pre_fmt"
+  },
+  {
+    "argname": "number",
+    "flags": 266257,
+    "help": "set the number of video frames to output",
+    "name": "vframes"
+  },
+  {
+    "argname": "rate",
+    "flags": 409625,
+    "help": "set frame rate (Hz value, fraction or abbreviation)",
+    "name": "r"
+  },
+  {
+    "argname": "rate",
+    "flags": 278553,
+    "help": "set max frame rate (Hz value, fraction or abbreviation)",
+    "name": "fpsmax"
+  },
+  {
+    "argname": "size",
+    "flags": 409881,
+    "help": "set frame size (WxH or abbreviation)",
+    "name": "s"
+  },
+  {
+    "argname": "aspect",
+    "flags": 278553,
+    "help": "set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)",
+    "name": "aspect"
+  },
+  {
+    "argname": "format",
+    "flags": 409629,
+    "help": "set pixel format",
+    "name": "pix_fmt"
+  },
+  {
+    "argname": "angle",
+    "flags": 213009,
+    "help": "set pure counter-clockwise rotation in degrees for stream(s)",
+    "name": "display_rotation"
+  },
+  {
+    "argname": null,
+    "flags": 147474,
+    "help": "set display horizontal flip for stream(s) (overrides any display rotation if it is not set)",
+    "name": "display_hflip"
+  },
+  {
+    "argname": null,
+    "flags": 147474,
+    "help": "set display vertical flip for stream(s) (overrides any display rotation if it is not set)",
+    "name": "display_vflip"
+  },
+  {
+    "argname": null,
+    "flags": 401426,
+    "help": "disable video",
+    "name": "vn"
+  },
+  {
+    "argname": "override",
+    "flags": 278557,
+    "help": "rate control override for specific intervals",
+    "name": "rc_override"
+  },
+  {
+    "argname": "codec",
+    "flags": 397329,
+    "help": "force video codec ('copy' to copy stream)",
+    "name": "vcodec"
+  },
+  {
+    "argname": "hh:mm:ss[:;.]ff",
+    "flags": 266257,
+    "help": "set initial TimeCode value.",
+    "name": "timecode"
+  },
+  {
+    "argname": "n",
+    "flags": 278609,
+    "help": "select the pass number (1 to 3)",
+    "name": "pass"
+  },
+  {
+    "argname": "prefix",
+    "flags": 278557,
+    "help": "select two pass log file name prefix",
+    "name": "passlogfile"
+  },
+  {
+    "argname": null,
+    "flags": 22,
+    "help": "calculate PSNR of compressed frames (deprecated, use -flags +psnr)",
+    "name": "psnr"
+  },
+  {
+    "argname": null,
+    "flags": 20,
+    "help": "dump video coding statistics to file",
+    "name": "vstats"
+  },
+  {
+    "argname": "file",
+    "flags": 21,
+    "help": "dump video coding statistics to file",
+    "name": "vstats_file"
+  },
+  {
+    "argname": null,
+    "flags": 85,
+    "help": "Version of the vstats format to use.",
+    "name": "vstats_version"
+  },
+  {
+    "argname": "filter_graph",
+    "flags": 266257,
+    "help": "set video filters",
+    "name": "vf"
+  },
+  {
+    "argname": "matrix",
+    "flags": 278557,
+    "help": "specify intra matrix coeffs",
+    "name": "intra_matrix"
+  },
+  {
+    "argname": "matrix",
+    "flags": 278557,
+    "help": "specify inter matrix coeffs",
+    "name": "inter_matrix"
+  },
+  {
+    "argname": "matrix",
+    "flags": 278557,
+    "help": "specify intra matrix coeffs",
+    "name": "chroma_intra_matrix"
+  },
+  {
+    "argname": "",
+    "flags": 409685,
+    "help": "deprecated, use the setfield video filter",
+    "name": "top"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 397333,
+    "help": "force video tag/fourcc",
+    "name": "vtag"
+  },
+  {
+    "argname": null,
+    "flags": 20,
+    "help": "deprecated, does nothing",
+    "name": "qphist"
+  },
+  {
+    "argname": null,
+    "flags": 278557,
+    "help": "set framerate mode for matching video streams; overrides vsync",
+    "name": "fps_mode"
+  },
+  {
+    "argname": null,
+    "flags": 278550,
+    "help": "force the selected framerate, disable the best supported framerate selection",
+    "name": "force_fps"
+  },
+  {
+    "argname": "streamIndex:value",
+    "flags": 266261,
+    "help": "set the value of an outfile streamid",
+    "name": "streamid"
+  },
+  {
+    "argname": "timestamps",
+    "flags": 278557,
+    "help": "force key frames at specified timestamps",
+    "name": "force_key_frames"
+  },
+  {
+    "argname": "bitrate",
+    "flags": 266257,
+    "help": "video bitrate (please use -b:v)",
+    "name": "b"
+  },
+  {
+    "argname": "hwaccel name",
+    "flags": 147485,
+    "help": "use HW accelerated decoding",
+    "name": "hwaccel"
+  },
+  {
+    "argname": "devicename",
+    "flags": 147485,
+    "help": "select a device for HW acceleration",
+    "name": "hwaccel_device"
+  },
+  {
+    "argname": "format",
+    "flags": 147485,
+    "help": "select output format used with HW accelerated decoding",
+    "name": "hwaccel_output_format"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available HW acceleration methods",
+    "name": "hwaccels"
+  },
+  {
+    "argname": null,
+    "flags": 147463,
+    "help": "automatically insert correct rotate filters",
+    "name": "autorotate"
+  },
+  {
+    "argname": null,
+    "flags": 278535,
+    "help": "automatically insert a scale filter at the end of the filter graph",
+    "name": "autoscale"
+  },
+  {
+    "argname": null,
+    "flags": 278550,
+    "help": "set this video output stream to be a heartbeat stream for fix_sub_duration, according to which subtitles should be split at random access points",
+    "name": "fix_sub_duration_heartbeat"
+  },
+  {
+    "argname": "number",
+    "flags": 266273,
+    "help": "set the number of audio frames to output",
+    "name": "aframes"
+  },
+  {
+    "argname": "quality",
+    "flags": 266273,
+    "help": "set audio quality (codec-specific)",
+    "name": "aq"
+  },
+  {
+    "argname": "rate",
+    "flags": 409697,
+    "help": "set audio sampling rate (in Hz)",
+    "name": "ar"
+  },
+  {
+    "argname": "channels",
+    "flags": 409697,
+    "help": "set number of audio channels",
+    "name": "ac"
+  },
+  {
+    "argname": null,
+    "flags": 401442,
+    "help": "disable audio",
+    "name": "an"
+  },
+  {
+    "argname": "codec",
+    "flags": 397345,
+    "help": "force audio codec ('copy' to copy stream)",
+    "name": "acodec"
+  },
+  {
+    "argname": "bitrate",
+    "flags": 266273,
+    "help": "audio bitrate (please use -b:a)",
+    "name": "ab"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 266277,
+    "help": "force audio tag/fourcc",
+    "name": "atag"
+  },
+  {
+    "argname": "format",
+    "flags": 409645,
+    "help": "set sample format",
+    "name": "sample_fmt"
+  },
+  {
+    "argname": "layout",
+    "flags": 409645,
+    "help": "set channel layout",
+    "name": "channel_layout"
+  },
+  {
+    "argname": "layout",
+    "flags": 409645,
+    "help": "set channel layout",
+    "name": "ch_layout"
+  },
+  {
+    "argname": "filter_graph",
+    "flags": 266273,
+    "help": "set audio filters",
+    "name": "af"
+  },
+  {
+    "argname": null,
+    "flags": 147557,
+    "help": "set the maximum number of channels to try to guess the channel layout",
+    "name": "guess_layout_max"
+  },
+  {
+    "argname": null,
+    "flags": 401666,
+    "help": "disable subtitle",
+    "name": "sn"
+  },
+  {
+    "argname": "codec",
+    "flags": 397569,
+    "help": "force subtitle codec ('copy' to copy stream)",
+    "name": "scodec"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 266501,
+    "help": "force subtitle tag/fourcc",
+    "name": "stag"
+  },
+  {
+    "argname": null,
+    "flags": 147718,
+    "help": "fix subtitles duration",
+    "name": "fix_sub_duration"
+  },
+  {
+    "argname": "size",
+    "flags": 147721,
+    "help": "set canvas size (WxH or abbreviation)",
+    "name": "canvas_size"
+  },
+  {
+    "argname": "seconds",
+    "flags": 270469,
+    "help": "set the maximum demux-decode delay",
+    "name": "muxdelay"
+  },
+  {
+    "argname": "seconds",
+    "flags": 270469,
+    "help": "set the initial demux-decode delay",
+    "name": "muxpreload"
+  },
+  {
+    "argname": "file",
+    "flags": 262149,
+    "help": "specify a file in which to print sdp information",
+    "name": "sdp_file"
+  },
+  {
+    "argname": "ratio",
+    "flags": 278541,
+    "help": "set the desired time base hint for output stream (1:24, 1:48000 or 0.04166, 2.0833e-5)",
+    "name": "time_base"
+  },
+  {
+    "argname": "ratio",
+    "flags": 278541,
+    "help": "set the desired time base for the encoder (1:24, 1:48000 or 0.04166, 2.0833e-5). two special values are defined - 0 = use frame rate (video) or sample rate (audio),-1 = match source time base",
+    "name": "enc_time_base"
+  },
+  {
+    "argname": "bitstream_filters",
+    "flags": 278541,
+    "help": "A comma-separated list of bitstream filters",
+    "name": "bsf"
+  },
+  {
+    "argname": "audio bitstream_filters",
+    "flags": 266277,
+    "help": "deprecated",
+    "name": "absf"
+  },
+  {
+    "argname": "video bitstream_filters",
+    "flags": 266261,
+    "help": "deprecated",
+    "name": "vbsf"
+  },
+  {
+    "argname": "preset",
+    "flags": 266277,
+    "help": "set the audio options to the indicated preset",
+    "name": "apre"
+  },
+  {
+    "argname": "preset",
+    "flags": 266261,
+    "help": "set the video options to the indicated preset",
+    "name": "vpre"
+  },
+  {
+    "argname": "preset",
+    "flags": 266501,
+    "help": "set the subtitle options to the indicated preset",
+    "name": "spre"
+  },
+  {
+    "argname": "filename",
+    "flags": 266245,
+    "help": "set options from indicated preset file",
+    "name": "fpre"
+  },
+  {
+    "argname": "packets",
+    "flags": 278597,
+    "help": "maximum number of packets that can be buffered while waiting for all streams to initialize",
+    "name": "max_muxing_queue_size"
+  },
+  {
+    "argname": "bytes",
+    "flags": 278597,
+    "help": "set the threshold after which max_muxing_queue_size is taken into account",
+    "name": "muxing_queue_data_threshold"
+  },
+  {
+    "argname": "codec",
+    "flags": 399365,
+    "help": "force data codec ('copy' to copy stream)",
+    "name": "dcodec"
+  },
+  {
+    "argname": null,
+    "flags": 401426,
+    "help": "disable data",
+    "name": "dn"
+  },
+  {
+    "argname": "args",
+    "flags": 5,
+    "help": "initialise hardware device",
+    "name": "init_hw_device"
+  },
+  {
+    "argname": "device",
+    "flags": 5,
+    "help": "set hardware device used when filtering",
+    "name": "filter_hw_device"
+  }
+]
