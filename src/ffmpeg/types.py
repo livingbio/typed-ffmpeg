@@ -4,7 +4,9 @@ These option types can be one of several different categories.
 The source of these types is defined within the AVOptionType enumeration found in FFmpeg's opt.h header file.
 """
 
-Boolean = bool | str
+from typing import Literal
+
+Boolean = bool | Literal["true", "false", "1", "0"]
 """
 This represents FFmpeg's boolean type. It can accept either a Python boolean value (`True` or `False`)
 or a string that represents a boolean value ("true", "false", "1", or "0").
