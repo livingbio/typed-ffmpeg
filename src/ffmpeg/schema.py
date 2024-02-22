@@ -33,4 +33,13 @@ def _to_tuple(
     """
     Convert the values of the dictionary to strings.
     """
+    output = []
+
+    for k, v in kwargs.items():
+        if isinstance(v, dict):
+            output.append((k, v))
+        elif isinstance(v, Default):
+            continue
+        else:
+            output.append((k, v))
     return tuple((k, v) for k, v in kwargs.items() if not isinstance(v, Default))

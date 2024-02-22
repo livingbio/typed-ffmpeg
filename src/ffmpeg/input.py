@@ -1,6 +1,6 @@
 from typing import Any
 
-from .base import InputNode
+from .dag.nodes import InputNode
 from .schema import _to_tuple
 from .streams.av import AVStream
 

@@ -84,6 +84,14 @@ class OptionDef(pydantic.BaseModel):
         return bool(self.flags & OptionDefFlag.OPT_OUTPUT)
 
     @property
+    def is_global_option(self):
+        return not self.is_input_option and not self.is_output_option
+    
+    @property
+    def is_support_stream_specifier(self):
+        return bool(self.flags & OptionDefFlag.OPT_SPEC)
+
+    @property
     def typing(self) -> str:
         def base_typing(self) -> str:
             if not self.flags & OptionDefFlag.HAS_ARG:
