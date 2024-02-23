@@ -395,7 +395,7 @@ class OutputNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class OutputStream(Stream):
-    node: OutputNode | GlobalNode
+    node: OutputNode
 
     def global_args(self, **kwargs: Any) -> GlobalStream:
         """
