@@ -293,7 +293,7 @@ class GlobalNode(Node):
     A node that can be used to set global options
     """
 
-    inputs: tuple["OutputStream"]
+    inputs: tuple[OutputStream, ...]
 
     @override
     def repr(self) -> str:
@@ -434,7 +434,7 @@ class OutputNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class OutputStream(Stream):
-    node: OutputNode | GlobalNode | MergeOutputsNode
+    node: OutputNode | GlobalNode
 
     def global_args(self, **kwargs: Any) -> "OutputStream":
         """
@@ -458,7 +458,7 @@ class OutputStream(Stream):
         Returns:
             The merged output stream.
         """
-        return MergeOutputsNode(inputs=(self, *streams)).stream()
+        return GlobalNode(inputs=(self, *streams)).stream()
 
     def overwrite_output(self) -> "OutputStream":
         """
@@ -605,30 +605,3 @@ class OutputStream(Stream):
             )
 
         return stdout, stderr
-
-
-@dataclass(frozen=True, kw_only=True)
-class MergeOutputsNode(Node):
-    """
-    A node that can be used to merge multiple outputs
-    """
-
-    inputs: tuple[OutputStream, ...]
-
-    @override
-    def repr(self) -> str:
-        return "Merge"
-
-    def stream(self) -> "OutputStream":
-        """
-        Return the output stream of this node
-
-        Returns:
-            the output stream
-        """
-        return OutputStream(node=self)
-
-    @override
-    def get_args(self, context: DAGContext = None) -> list[str]:
-        # NOTE: the node just used to group outputs, no need to add any commands
-        return []

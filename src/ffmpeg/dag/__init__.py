@@ -1,4 +1,4 @@
-from .nodes import FilterableStream, FilterNode, GlobalNode, InputNode, MergeOutputsNode, OutputNode, OutputStream
+from .nodes import FilterableStream, FilterNode, GlobalNode, InputNode, OutputNode, OutputStream
 from .schema import Node, Stream
 
 __all__ = [
@@ -10,5 +10,4 @@ __all__ = [
     "InputNode",
     "OutputNode",
     "OutputStream",
-    "MergeOutputsNode",
 ]

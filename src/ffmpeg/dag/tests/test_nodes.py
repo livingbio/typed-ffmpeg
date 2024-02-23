@@ -7,7 +7,7 @@ from ...filters import concat
 from ...schema import StreamType
 from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
-from ..nodes import FilterNode, GlobalNode, InputNode, MergeOutputsNode, OutputNode
+from ..nodes import FilterNode, GlobalNode, InputNode, OutputNode
 from ..schema import Node
 
 
@@ -33,7 +33,7 @@ from ..schema import Node
             .output(filename="out1.mp4")
             .merge_outputs(input(filename="tmp2.mp4").output(filename="out2.mp4"))
             .node,
-            MergeOutputsNode,
+            GlobalNode,
             id="merge-output-node",
         ),
     ],
