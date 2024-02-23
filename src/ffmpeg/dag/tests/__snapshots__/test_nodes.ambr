@@ -73,10 +73,10 @@
   ])
 # ---
 # name: test_node_prop[merge-output-node][__repr__]
-  "MergeOutputsNode(kwargs=(), inputs=(OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
+  "GlobalNode(kwargs=(), inputs=(OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
 # ---
 # name: test_node_prop[merge-output-node][f.repr]
-  'Merge'
+  ''
 # ---
 # name: test_node_prop[merge-output-node][get_args]
   list([

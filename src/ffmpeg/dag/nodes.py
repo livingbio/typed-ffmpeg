@@ -4,7 +4,7 @@ import logging
 import os.path
 import shlex
 import subprocess
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import TYPE_CHECKING, Any
 
 from ..exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
@@ -288,45 +288,6 @@ class FilterableStream(Stream):
 
 
 @dataclass(frozen=True, kw_only=True)
-class GlobalNode(Node):
-    """
-    A node that can be used to set global options
-    """
-
-    inputs: tuple["OutputStream"]
-
-    @override
-    def repr(self) -> str:
-        return " ".join(self.get_args())
-
-    def stream(self) -> "OutputStream":
-        """
-        Return the output stream of this node
-
-        Returns:
-            the output stream
-        """
-        return OutputStream(node=self)
-
-    @override
-    def get_args(self, context: DAGContext = None) -> list[str]:
-        commands = []
-        for key, value in self.kwargs:
-            # Options which do not take arguments are boolean options,
-            # and set the corresponding value to true. They can be set to
-            # false by prefixing the option name with "no". For example
-            # using "-nofoo" will set the boolean option with name "foo" to false.
-            if isinstance(value, bool):
-                if value is True:
-                    commands += [f"-{key}"]
-                else:
-                    commands += [f"-no{key}"]
-            else:
-                commands += [f"-{key}", str(value)]
-        return commands
-
-
-@dataclass(frozen=True, kw_only=True)
 class InputNode(Node):
     """
     A node that can be used to read from files
@@ -434,9 +395,9 @@ class OutputNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class OutputStream(Stream):
-    node: OutputNode | GlobalNode | MergeOutputsNode
+    node: OutputNode
 
-    def global_args(self, **kwargs: Any) -> "OutputStream":
+    def global_args(self, **kwargs: Any) -> GlobalStream:
         """
         Add extra global command-line argument
 
@@ -448,7 +409,7 @@ class OutputStream(Stream):
         """
         return GlobalNode(inputs=(self,), kwargs=tuple(kwargs.items())).stream()
 
-    def merge_outputs(self, *streams: OutputStream) -> OutputStream:
+    def merge_outputs(self, *streams: OutputStream) -> GlobalStream:
         """
         Merge multiple output streams into one.
 
@@ -458,9 +419,9 @@ class OutputStream(Stream):
         Returns:
             The merged output stream.
         """
-        return MergeOutputsNode(inputs=(self, *streams)).stream()
+        return GlobalNode(inputs=(self, *streams)).stream()
 
-    def overwrite_output(self) -> "OutputStream":
+    def overwrite_output(self) -> GlobalStream:
         """
         Overwrite output files without asking (ffmpeg `-y` option)
 
@@ -486,13 +447,180 @@ class OutputStream(Stream):
         Returns:
             the command-line
         """
+        return self.global_args().compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
+
+    def compile_line(
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        overwrite_output: bool = False,
+        auto_fix: bool = True,
+    ) -> str:
+        """
+        Build command-line for invoking ffmpeg.
+
+        Args:
+            cmd: the command to invoke ffmpeg
+            overwrite_output: whether to overwrite output files without asking
+            auto_fix: whether to automatically fix the stream
+
+        Returns:
+            the command-line
+        """
+        return self.global_args().compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
+
+    def run_async(
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        pipe_stdin: bool = False,
+        pipe_stdout: bool = False,
+        pipe_stderr: bool = False,
+        quiet: bool = False,
+        overwrite_output: bool = False,
+        auto_fix: bool = True,
+    ) -> subprocess.Popen[bytes]:
+        """
+        Run ffmpeg asynchronously.
+
+        Args:
+            cmd: the command to invoke ffmpeg
+            pipe_stdin: whether to pipe stdin
+            pipe_stdout: whether to pipe stdout
+            pipe_stderr: whether to pipe stderr
+            quiet: whether to pipe stderr to stdout
+            overwrite_output: whether to overwrite output files without asking
+            auto_fix: whether to automatically fix the stream
+
+        Returns:
+            the process
+        """
+
+        return self.global_args().run_async(
+            cmd,
+            pipe_stdin=pipe_stdin,
+            pipe_stdout=pipe_stdout,
+            pipe_stderr=pipe_stderr,
+            quiet=quiet,
+            overwrite_output=overwrite_output,
+            auto_fix=auto_fix,
+        )
+
+    def run(
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        capture_stdout: bool = False,
+        capture_stderr: bool = False,
+        input: bytes | None = None,
+        quiet: bool = False,
+        overwrite_output: bool = False,
+        auto_fix: bool = True,
+    ) -> tuple[bytes, bytes]:
+        """
+        Run ffmpeg synchronously.
+
+        Args:
+            cmd: the command to invoke ffmpeg
+            capture_stdout: whether to capture stdout
+            capture_stderr: whether to capture stderr
+            input: the input
+            quiet: whether to pipe stderr to stdout
+            overwrite_output: whether to overwrite output files without asking
+            auto_fix: whether to automatically fix the stream
+
+        Returns:
+            the stdout
+            the stderr
+        """
+
+        return self.global_args().run(
+            cmd,
+            capture_stdout=capture_stdout,
+            capture_stderr=capture_stderr,
+            input=input,
+            quiet=quiet,
+            overwrite_output=overwrite_output,
+            auto_fix=auto_fix,
+        )
+
+
+@dataclass(frozen=True, kw_only=True)
+class GlobalNode(Node):
+    """
+    A node that can be used to set global options
+    """
+
+    inputs: tuple[OutputStream, ...]
+
+    @override
+    def repr(self) -> str:
+        return " ".join(self.get_args())
+
+    def stream(self) -> "GlobalStream":
+        """
+        Return the output stream of this node
+
+        Returns:
+            the output stream
+        """
+        return GlobalStream(node=self)
+
+    @override
+    def get_args(self, context: DAGContext = None) -> list[str]:
+        commands = []
+        for key, value in self.kwargs:
+            # Options which do not take arguments are boolean options,
+            # and set the corresponding value to true. They can be set to
+            # false by prefixing the option name with "no". For example
+            # using "-nofoo" will set the boolean option with name "foo" to false.
+            if isinstance(value, bool):
+                if value is True:
+                    commands += [f"-{key}"]
+                else:
+                    commands += [f"-no{key}"]
+            else:
+                commands += [f"-{key}", str(value)]
+        return commands
+
+
+@dataclass(frozen=True, kw_only=True)
+class GlobalStream(Stream):
+    node: GlobalNode
+
+    def global_args(self, **kwargs: Any) -> GlobalStream:
+        """
+        Add extra global command-line argument
+
+        Args:
+            **kwargs: the extra arguments
+
+        Returns:
+            the output stream
+        """
+        kwargs = dict(self.node.kwargs) | kwargs
+
+        new_node = replace(self.node, kwargs=tuple(kwargs.items()))
+        return new_node.stream()
+
+    def compile(
+        self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False, auto_fix: bool = True
+    ) -> list[str]:
+        """
+        Build command-line for invoking ffmpeg.
+
+        Args:
+            cmd: the command to invoke ffmpeg
+            overwrite_output: whether to overwrite output files without asking
+            auto_fix: whether to automatically fix the stream
+
+        Returns:
+            the command-line
+        """
         from .compile import compile
 
         if isinstance(cmd, str):
             cmd = [cmd]
 
         if overwrite_output:
-            return cmd + compile(self, auto_fix=auto_fix) + ["-y"]
+            return self.global_args(y=True).compile(cmd, auto_fix=auto_fix)
 
         return cmd + compile(self, auto_fix=auto_fix)
 
@@ -605,30 +733,3 @@ class OutputStream(Stream):
             )
 
         return stdout, stderr
-
-
-@dataclass(frozen=True, kw_only=True)
-class MergeOutputsNode(Node):
-    """
-    A node that can be used to merge multiple outputs
-    """
-
-    inputs: tuple[OutputStream, ...]
-
-    @override
-    def repr(self) -> str:
-        return "Merge"
-
-    def stream(self) -> "OutputStream":
-        """
-        Return the output stream of this node
-
-        Returns:
-            the output stream
-        """
-        return OutputStream(node=self)
-
-    @override
-    def get_args(self, context: DAGContext = None) -> list[str]:
-        # NOTE: the node just used to group outputs, no need to add any commands
-        return []
