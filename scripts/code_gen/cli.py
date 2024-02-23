@@ -3,7 +3,7 @@ import pathlib
 
 import pydantic
 import typer
-from parse_c.cli import parse_filters
+from parse_c.cli import parse_ffmpeg_options, parse_filters
 from parse_docs.cli import split_documents
 from parse_docs.schema import FilterDocument
 from parse_help.parse import extract
@@ -128,7 +128,9 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
         ffmpeg_filter.save()
         output.append(ffmpeg_filter)
 
-    render(output, outpath)
+    ffmpeg_options = parse_ffmpeg_options()
+
+    render(output, ffmpeg_options, outpath)
     os.system("pre-commit run -a")
 
 

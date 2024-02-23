@@ -85,7 +85,7 @@ class OptionDef(pydantic.BaseModel):
 
     @property
     def is_global_option(self):
-        return not self.is_input_option and not self.is_output_option
+        return not self.is_input_option and not self.is_output_option and not (self.flags & OptionDefFlag.OPT_EXIT)
 
     @property
     def is_support_stream_specifier(self):
