@@ -170,7 +170,11 @@ class FilterableStream(Stream):
             the output stream
         """
         return self.filter_multi_output(
-            *streams, name=name, input_typings=input_typings, output_typings=(StreamType.video,), **kwargs
+            *streams,
+            name=name,
+            input_typings=input_typings,
+            output_typings=(StreamType.video,),
+            **kwargs,
         ).video(0)
 
     def afilter(
@@ -193,7 +197,11 @@ class FilterableStream(Stream):
             the output stream
         """
         return self.filter_multi_output(
-            *streams, name=name, input_typings=input_typings, output_typings=(StreamType.audio,), **kwargs
+            *streams,
+            name=name,
+            input_typings=input_typings,
+            output_typings=(StreamType.audio,),
+            **kwargs,
         ).audio(0)
 
     def filter_multi_output(
@@ -404,11 +412,16 @@ class OutputNode(Node):
     def get_args(self, context: DAGContext = None) -> list[str]:
         # !handle mapping
         commands = []
-        for input in self.inputs:
-            if isinstance(input.node, InputNode):
-                commands += ["-map", input.label(context)]
-            else:
-                commands += ["-map", f"[{input.label(context)}]"]
+
+        if context and (
+            any(isinstance(k.node, FilterNode) for k in self.inputs)
+            or len([k for k in context.all_nodes if isinstance(k, OutputNode)]) > 1
+        ):
+            for input in self.inputs:
+                if isinstance(input.node, InputNode):
+                    commands += ["-map", input.label(context)]
+                else:
+                    commands += ["-map", f"[{input.label(context)}]"]
 
         for key, value in self.kwargs:
             if isinstance(value, bool) and value is True:
@@ -458,7 +471,10 @@ class OutputStream(Stream):
         return GlobalNode(inputs=(self,), kwargs=(("y", True),)).stream()
 
     def compile(
-        self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False, auto_fix: bool = True
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        overwrite_output: bool = False,
+        auto_fix: bool = True,
     ) -> list[str]:
         """
         Build command-line for invoking ffmpeg.
@@ -482,7 +498,10 @@ class OutputStream(Stream):
         return cmd + compile(self, auto_fix=auto_fix)
 
     def compile_line(
-        self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False, auto_fix: bool = True
+        self,
+        cmd: str | list[str] = "ffmpeg",
+        overwrite_output: bool = False,
+        auto_fix: bool = True,
     ) -> str:
         """
         Build command-line for invoking ffmpeg.

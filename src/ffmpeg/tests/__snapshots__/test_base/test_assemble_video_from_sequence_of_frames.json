@@ -6,7 +6,5 @@
   "glob",
   "-i",
   "/path/to/jpegs/*.jpg",
-  "-map",
-  "0",
   "movie.mp4"
 ]
