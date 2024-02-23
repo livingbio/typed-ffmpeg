@@ -74,11 +74,6 @@ class Node(HashableBaseModel, ABC):
         Each node in the DAG represents a single operation that transforms the data from its input form to its output form. The node is an essential component of the DAG, as it defines the nature of the operations that are performed on the data.
     """
 
-    args: tuple[str, ...] = ()
-    """
-    Represents the arguments of the node.
-    """
-
     kwargs: tuple[tuple[str, str | int | float | bool], ...] = ()
     """
     Represents the keyword arguments of the node.
