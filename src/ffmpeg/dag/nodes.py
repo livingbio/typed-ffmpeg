@@ -310,7 +310,7 @@ class GlobalNode(Node):
 
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
-        commands = [*self.args]
+        commands = []
         for key, value in self.kwargs:
             # Options which do not take arguments are boolean options,
             # and set the corresponding value to true. They can be set to
@@ -436,18 +436,17 @@ class OutputNode(Node):
 class OutputStream(Stream):
     node: OutputNode | GlobalNode | MergeOutputsNode
 
-    def global_args(self, *args: str, **kwargs: Any) -> "OutputStream":
+    def global_args(self, **kwargs: Any) -> "OutputStream":
         """
         Add extra global command-line argument
 
         Args:
-            *args: the extra arguments
             **kwargs: the extra arguments
 
         Returns:
             the output stream
         """
-        return GlobalNode(inputs=(self,), args=args, kwargs=tuple(kwargs.items())).stream()
+        return GlobalNode(inputs=(self,), kwargs=tuple(kwargs.items())).stream()
 
     def merge_outputs(self, *streams: OutputStream) -> OutputStream:
         """

@@ -31,7 +31,7 @@
   's0#0'
 # ---
 # name: test_node_prop[filter-node][__repr__]
-  "FilterNode(args=(), kwargs=(('w', '1920'), ('h', '1080'), ('true', True), ('false', False)), inputs=(), name='scale', input_typings=(), output_typings=())"
+  "FilterNode(kwargs=(('w', '1920'), ('h', '1080'), ('true', True), ('false', False)), inputs=(), name='scale', input_typings=(), output_typings=())"
 # ---
 # name: test_node_prop[filter-node][f.repr]
   'scale'
@@ -45,7 +45,7 @@
   ])
 # ---
 # name: test_node_prop[global-node][__repr__]
-  "GlobalNode(args=(), kwargs=(('y', True), ('no', False), ('speed', 1)), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
+  "GlobalNode(kwargs=(('y', True), ('no', False), ('speed', 1)), inputs=(OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
 # ---
 # name: test_node_prop[global-node][f.repr]
   '-y -nono -speed 1'
@@ -59,7 +59,7 @@
   ])
 # ---
 # name: test_node_prop[input-node][__repr__]
-  "InputNode(args=(), kwargs=(('f', 'mp4'),), inputs=(), filename='test.mp4')"
+  "InputNode(kwargs=(('f', 'mp4'),), inputs=(), filename='test.mp4')"
 # ---
 # name: test_node_prop[input-node][f.repr]
   'test.mp4'
@@ -73,7 +73,7 @@
   ])
 # ---
 # name: test_node_prop[merge-output-node][__repr__]
-  "MergeOutputsNode(args=(), kwargs=(), inputs=(OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(args=(), kwargs=(), inputs=(AVStream(node=InputNode(args=(), kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
+  "MergeOutputsNode(kwargs=(), inputs=(OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
 # ---
 # name: test_node_prop[merge-output-node][f.repr]
   'Merge'
@@ -83,7 +83,7 @@
   ])
 # ---
 # name: test_node_prop[output-node][__repr__]
-  "OutputNode(args=(), kwargs=(('bufsize', '64k'),), inputs=(), filename='test.mp4')"
+  "OutputNode(kwargs=(('bufsize', '64k'),), inputs=(), filename='test.mp4')"
 # ---
 # name: test_node_prop[output-node][f.repr]
   'test.mp4'
