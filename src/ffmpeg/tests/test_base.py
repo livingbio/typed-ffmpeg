@@ -144,7 +144,7 @@ def test_compile_merge_outputs_with_filter_complex(snapshot: SnapshotAssertion) 
 
 def test_concat_dumuxer(snapshot: SnapshotAssertion) -> None:
     stream = input(
-        "input1.mp4",
+        "files.txt",
         f="concat",
         safe="0",
         protocol_whitelist="file,http,https,tcp,tls",
