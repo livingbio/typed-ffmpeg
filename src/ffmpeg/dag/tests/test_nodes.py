@@ -53,7 +53,8 @@ def test_global_node_with_args_overwrite(snapshot: SnapshotAssertion) -> None:
     f = concat(input1.video, input2.video)
     stream = f.video(0).output(filename="output.mp4").global_args(y=True).global_args(y=False)
     context = DAGContext.build(stream.node)
-    assert snapshot(extension_class=JSONSnapshotExtension) == f.get_args(context)
+    assert snapshot(extension_class=JSONSnapshotExtension) == stream.node.get_args(context)
+    assert snapshot(extension_class=JSONSnapshotExtension) == stream.compile()
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == stream.node
 
 
