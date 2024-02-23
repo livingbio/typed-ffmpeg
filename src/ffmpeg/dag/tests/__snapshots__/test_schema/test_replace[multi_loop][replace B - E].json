@@ -1,15 +1,12 @@
 {
-  "args": [],
   "inputs": [
     {
       "index": null,
       "node": {
-        "args": [],
         "inputs": [
           {
             "index": null,
             "node": {
-              "args": [],
               "inputs": [],
               "kwargs": [],
               "name": "A"
@@ -18,12 +15,10 @@
           {
             "index": null,
             "node": {
-              "args": [],
               "inputs": [
                 {
                   "index": null,
                   "node": {
-                    "args": [],
                     "inputs": [],
                     "kwargs": [],
                     "name": "A"
@@ -42,12 +37,10 @@
     {
       "index": null,
       "node": {
-        "args": [],
         "inputs": [
           {
             "index": null,
             "node": {
-              "args": [],
               "inputs": [],
               "kwargs": [],
               "name": "A"
