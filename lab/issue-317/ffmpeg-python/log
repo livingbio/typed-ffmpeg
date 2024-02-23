@@ -1,0 +1,3 @@
+['ffmpeg', '-i', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', '-t', '3', 'output_t.mp4', '-y']
+['ffmpeg', '-i', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', '-filter_complex', '[0]trim=duration=3[s0];[0]atrim=duration=3[s1]', '-map', '[s0]', '-map', '[s1]', 'trim_filter_atrim_duration.mp4', '-y']
+['ffmpeg', '-f', 'concat', '-safe', '0', '-i', 'files.txt', '-c', 'copy', 'concat_demuxer.mp4', '-y']

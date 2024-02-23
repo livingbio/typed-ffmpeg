@@ -1,0 +1,6 @@
+['ffmpeg', '-y', '-i', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', '-map', '0', '-t', '3', 'output_t.mp4']
+Running command: ffmpeg -y -i http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4 -map 0 -t 3 output_t.mp4
+['ffmpeg', '-y', '-i', 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', '-filter_complex', '[0]trim=duration=3[s0];[0]atrim=duration=3[s1]', '-map', '[s0]', '-map', '[s1]', 'trim_atrim_duration.mp4']
+Running command: ffmpeg -y -i http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4 -filter_complex '[0]trim=duration=3[s0];[0]atrim=duration=3[s1]' -map '[s0]' -map '[s1]' trim_atrim_duration.mp4
+['ffmpeg', '-y', '-f', 'concat', '-safe', '0', '-i', 'files.txt', '-map', '0', '-c', 'copy', 'concat_demuxer.mp4']
+Running command: ffmpeg -y -f concat -safe 0 -i files.txt -map 0 -c copy concat_demuxer.mp4
