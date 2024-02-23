@@ -20,11 +20,11 @@ def aap(
 
     
         
-        _input: "AudioStream",
+        _input: AudioStream,
         
     
         
-        _desired: "AudioStream",
+        _desired: AudioStream,
         
     
 
@@ -58,7 +58,7 @@ Default(None)
 
 
     **kwargs: Any
-)-> "AudioStream":
+)-> AudioStream:
     """
     
 description
@@ -68,7 +68,7 @@ Args:
     projection: set the filter projection
 
 Returns:
-    the audio stream
+    default: the audio stream
 
 References:
     [FFmpeg Documentation](None)
