@@ -6,7 +6,7 @@ from typing import Any
 
 from ffmpeg.schema import StreamType
 
-from .dag.nodes import FilterableStream, FilterNode, GlobalNode, InputNode, OutputNode, OutputStream
+from .dag.nodes import FilterableStream, FilterNode, GlobalNode, GlobalStream, InputNode, OutputNode, OutputStream
 from .streams.audio import AudioStream
 from .streams.av import AVStream
 from .streams.video import VideoStream
@@ -47,7 +47,7 @@ def output(*streams: FilterableStream, filename: str, **kwargs: Any) -> OutputSt
     return OutputNode(filename=filename, inputs=streams, kwargs=tuple(kwargs.items())).stream()
 
 
-def merge_outputs(*streams: OutputStream) -> OutputStream:
+def merge_outputs(*streams: OutputStream) -> GlobalStream:
     """
     Merge multiple output streams into one.
 
