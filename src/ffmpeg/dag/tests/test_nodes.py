@@ -7,7 +7,7 @@ from ...filters import concat
 from ...schema import StreamType
 from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
-from ..nodes import FilterNode, GlobalNode, InputNode, MergeOutputsNode, OutputNode
+from ..nodes import FilterNode, GlobalNode, InputNode, OutputNode
 from ..schema import Node
 
 
@@ -33,7 +33,7 @@ from ..schema import Node
             .output(filename="out1.mp4")
             .merge_outputs(input(filename="tmp2.mp4").output(filename="out2.mp4"))
             .node,
-            MergeOutputsNode,
+            GlobalNode,
             id="merge-output-node",
         ),
     ],
@@ -44,6 +44,18 @@ def test_node_prop(node: Node, expected_type: type[Node], snapshot: SnapshotAsse
     assert snapshot(name="get_args") == node.get_args()
     assert type(node) == expected_type
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == node
+
+
+def test_global_node_with_args_overwrite(snapshot: SnapshotAssertion) -> None:
+    input1 = input("tmp1.mp4")
+    input2 = input("tmp2.mp4")
+
+    f = concat(input1.video, input2.video)
+    stream = f.video(0).output(filename="output.mp4").global_args(y=True).global_args(y=False)
+    context = DAGContext.build(stream.node)
+    assert snapshot(extension_class=JSONSnapshotExtension) == stream.node.get_args(context)
+    assert snapshot(extension_class=JSONSnapshotExtension) == stream.compile()
+    assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == stream.node
 
 
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
