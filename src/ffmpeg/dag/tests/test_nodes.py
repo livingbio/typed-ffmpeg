@@ -46,6 +46,17 @@ def test_node_prop(node: Node, expected_type: type[Node], snapshot: SnapshotAsse
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == node
 
 
+def test_global_node_with_args_overwrite(snapshot: SnapshotAssertion) -> None:
+    input1 = input("tmp1.mp4")
+    input2 = input("tmp2.mp4")
+
+    f = concat(input1.video, input2.video)
+    stream = f.video(0).output(filename="output.mp4").global_args(y=True).global_args(y=False)
+    context = DAGContext.build(stream.node)
+    assert snapshot(extension_class=JSONSnapshotExtension) == f.get_args(context)
+    assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == stream.node
+
+
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
     input1 = input("tmp1.mp4")
     input2 = input("tmp2.mp4")
