@@ -447,7 +447,7 @@ class OutputStream(Stream):
         Returns:
             the command-line
         """
-        return self.global_args(y=overwrite_output).compile(cmd, auto_fix=auto_fix)
+        return self.global_args().compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
 
     def compile_line(
         self,
@@ -466,7 +466,7 @@ class OutputStream(Stream):
         Returns:
             the command-line
         """
-        return self.global_args(y=overwrite_output).compile_line(cmd, auto_fix=auto_fix)
+        return self.global_args().compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
 
     def run_async(
         self,
@@ -494,7 +494,7 @@ class OutputStream(Stream):
             the process
         """
 
-        return self.global_args(y=overwrite_output).run_async(
+        return self.global_args().run_async(
             cmd,
             pipe_stdin=pipe_stdin,
             pipe_stdout=pipe_stdout,
@@ -531,7 +531,7 @@ class OutputStream(Stream):
             the stderr
         """
 
-        return self.global_args(y=overwrite_output).run(
+        return self.global_args().run(
             cmd,
             capture_stdout=capture_stdout,
             capture_stderr=capture_stderr,
