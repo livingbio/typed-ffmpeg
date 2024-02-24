@@ -23,8 +23,8 @@ jobs:
       # Install Graphviz & FFmpeg
       - name: Install ffmpeg
         run: sudo apt-get update && sudo apt-get install ffmpeg graphviz -y
-      # - name: Run unittest
-      #   run: poetry run py.test src/ --cov=./src
+      - name: Run unittest
+        run: poetry run py.test src/ --cov=./src
       - name: lint
         run: poetry run pre-commit run --all-files
         working-directory: src
