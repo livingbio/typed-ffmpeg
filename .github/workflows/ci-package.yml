@@ -22,7 +22,7 @@ jobs:
       - run: poetry install --with dev
       # Install Graphviz & FFmpeg
       - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install ffmpeg graphviz -y && ffmpeg && dot -V
+        run: sudo apt-get update && sudo apt-get install ffmpeg graphviz -y && ffmpeg -version && dot -V
       - name: Run unittest
         run: poetry run py.test src/ --cov=./src
       - name: lint
