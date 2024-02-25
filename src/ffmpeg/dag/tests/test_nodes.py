@@ -14,12 +14,21 @@ from ..schema import Node
 @pytest.mark.parametrize(
     "node, expected_type",
     [
-        pytest.param(InputNode(filename="test.mp4", kwargs=(("f", "mp4"),)), InputNode, id="input-node"),
         pytest.param(
-            OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=()), OutputNode, id="output-node"
+            InputNode(filename="test.mp4", kwargs=(("f", "mp4"),)),
+            InputNode,
+            id="input-node",
         ),
         pytest.param(
-            FilterNode(name="scale", kwargs=(("w", "1920"), ("h", "1080"), ("true", True), ("false", False))),
+            OutputNode(filename="test.mp4", kwargs=(("bufsize", "64k"),), inputs=()),
+            OutputNode,
+            id="output-node",
+        ),
+        pytest.param(
+            FilterNode(
+                name="scale",
+                kwargs=(("w", "1920"), ("h", "1080"), ("true", True), ("false", False)),
+            ),
             FilterNode,
             id="filter-node",
         ),
@@ -104,7 +113,11 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
     )
 
     with pytest.raises(ValueError) as e:
-        FilterNode(name="scale", inputs=(in_file.video,), input_typings=(StreamType.audio, StreamType.video))
+        FilterNode(
+            name="scale",
+            inputs=(in_file.video,),
+            input_typings=(StreamType.audio, StreamType.video),
+        )
 
     with pytest.raises(TypeError) as te:
         FilterNode(

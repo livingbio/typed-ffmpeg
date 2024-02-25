@@ -64,10 +64,9 @@ class GlobalArgs(ABC):
         **kwargs: int | str | bool | float,
     ) -> GlobalStream:
         """
-        Input file URL (ffmpeg `-i` option)
+        Set global options.
 
         Args:
-            filename: Input file URL
             loglevel: set logging level
             v: set logging level
             report: generate a report
@@ -117,13 +116,7 @@ class GlobalArgs(ABC):
             **kwargs: Additional options
 
         Returns:
-            Input stream
-
-        Examples:
-        ```py
-        >>> input("input.mp4")
-        <AVStream: input.mp4>
-        ```
+            GlobalStream: GlobalStream instance
         """
         vv: dict[str, int | float | str | bool] = {
             k: v
