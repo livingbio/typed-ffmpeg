@@ -1,3 +1,4 @@
+# NOTE: this file is auto-generated, do not modify
 import re
 from typing import Any, Literal
 
