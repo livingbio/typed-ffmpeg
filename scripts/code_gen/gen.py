@@ -50,6 +50,7 @@ def render(filters: list[FFmpegFilter], options: list[OptionDef], outpath: pathl
         opath.parent.mkdir(parents=True, exist_ok=True)
 
         with opath.open("w") as ofile:
+            ofile.write("# NOTE: this file is auto-generated, do not modify\n")
             ofile.write(code)
 
         output.append(opath)

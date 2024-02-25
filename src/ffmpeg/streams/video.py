@@ -1,3 +1,6 @@
+# NOTE: this file is auto-generated, do not modify
+
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Literal
