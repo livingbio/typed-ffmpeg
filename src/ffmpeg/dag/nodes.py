@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..streams.av import AVStream
     from ..streams.video import VideoStream
     from .context import DAGContext
+    from .global_args import GlobalArgs
 
 
 logger = logging.getLogger(__name__)
@@ -394,10 +395,11 @@ class OutputNode(Node):
 
 
 @dataclass(frozen=True, kw_only=True)
-class OutputStream(Stream):
+class OutputStream(Stream, GlobalArgs):
     node: OutputNode
 
-    def global_args(self, **kwargs: Any) -> GlobalStream:
+    @override
+    def _global_node(self, **kwargs: Any) -> GlobalNode:
         """
         Add extra global command-line argument
 
@@ -407,7 +409,7 @@ class OutputStream(Stream):
         Returns:
             the output stream
         """
-        return GlobalNode(inputs=(self,), kwargs=tuple(kwargs.items())).stream()
+        return GlobalNode(inputs=(self,), kwargs=tuple(kwargs.items()))
 
     def merge_outputs(self, *streams: OutputStream) -> GlobalStream:
         """
@@ -582,10 +584,11 @@ class GlobalNode(Node):
 
 
 @dataclass(frozen=True, kw_only=True)
-class GlobalStream(Stream):
+class GlobalStream(Stream, GlobalArgs):
     node: GlobalNode
 
-    def global_args(self, **kwargs: Any) -> GlobalStream:
+    @override
+    def _global_node(self, **kwargs: Any) -> GlobalNode:
         """
         Add extra global command-line argument
 
@@ -598,7 +601,7 @@ class GlobalStream(Stream):
         kwargs = dict(self.node.kwargs) | kwargs
 
         new_node = replace(self.node, kwargs=tuple(kwargs.items()))
-        return new_node.stream()
+        return new_node
 
     def compile(
         self, cmd: str | list[str] = "ffmpeg", overwrite_output: bool = False, auto_fix: bool = True
