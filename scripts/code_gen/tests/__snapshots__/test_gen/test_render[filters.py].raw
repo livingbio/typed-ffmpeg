@@ -1,3 +1,4 @@
+# NOTE: this file is auto-generated, do not modify
 from typing import Any, Literal
 
 from .dag.nodes import FilterNode, FilterableStream
