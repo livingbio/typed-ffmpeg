@@ -11,6 +11,7 @@ from ..exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
+from .global_args import GlobalArgs
 from .schema import Node, Stream
 
 if TYPE_CHECKING:
@@ -18,7 +19,6 @@ if TYPE_CHECKING:
     from ..streams.av import AVStream
     from ..streams.video import VideoStream
     from .context import DAGContext
-    from .global_args import GlobalArgs
 
 
 logger = logging.getLogger(__name__)
