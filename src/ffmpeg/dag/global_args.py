@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
@@ -59,7 +61,7 @@ class GlobalArgs(ABC):
         qphist: bool = None,
         init_hw_device: str = None,
         filter_hw_device: str = None,
-        **kwargs: int | str | bool | float
+        **kwargs: int | str | bool | float,
     ) -> GlobalStream:
         """
         Input file URL (ffmpeg `-i` option)
