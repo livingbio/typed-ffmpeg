@@ -435,15 +435,10 @@ class GlobalNode(Node):
     def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
         for key, value in self.kwargs:
-            # Options which do not take arguments are boolean options,
-            # and set the corresponding value to true. They can be set to
-            # false by prefixing the option name with "no". For example
-            # using "-nofoo" will set the boolean option with name "foo" to false.
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
-                else:
-                    commands += [f"-no{key}"]
+                # NOTE: the -no{key} format since not really for global options
             else:
                 commands += [f"-{key}", str(value)]
         return commands

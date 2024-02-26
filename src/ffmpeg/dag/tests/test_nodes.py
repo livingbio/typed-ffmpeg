@@ -7,7 +7,7 @@ from ...filters import concat
 from ...schema import StreamType
 from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
-from ..nodes import FilterNode, GlobalNode, InputNode, OutputNode
+from ..nodes import FilterNode, GlobalNode, GlobalStream, InputNode, OutputNode, OutputStream
 from ..schema import Node
 
 
@@ -55,15 +55,42 @@ def test_node_prop(node: Node, expected_type: type[Node], snapshot: SnapshotAsse
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == node
 
 
-def test_global_node_with_args_overwrite(snapshot: SnapshotAssertion) -> None:
+def base_stream() -> OutputStream:
     input1 = input("tmp1.mp4")
     input2 = input("tmp2.mp4")
 
     f = concat(input1.video, input2.video)
-    stream = f.video(0).output(filename="output.mp4").global_args(y=True).global_args(y=False)
+    return f.video(0).output(filename="output.mp4")
+
+
+@pytest.mark.parametrize(
+    "stream,expected_overwrite",
+    [
+        pytest.param(base_stream(), None, id="not config"),
+        pytest.param(base_stream().global_args(y=True), True, id="set y is True with global args"),
+        pytest.param(base_stream().global_args(y=False), None, id="set y is True with global args"),
+        pytest.param(base_stream().global_args(n=True), False, id="set n is True with global args"),
+        pytest.param(base_stream().global_args(n=False), None, id="set n is False with global args"),
+        pytest.param(base_stream().overwrite_output(), True, id="set y with overwrite_output"),
+        pytest.param(base_stream().global_args(), None, id="not set with global args"),
+    ],
+)
+def test_global_node_with_args_overwrite(
+    snapshot: SnapshotAssertion, stream: OutputStream | GlobalStream, expected_overwrite: bool | None
+) -> None:
     context = DAGContext.build(stream.node)
-    assert snapshot(extension_class=JSONSnapshotExtension) == stream.node.get_args(context)
-    assert snapshot(extension_class=JSONSnapshotExtension) == stream.compile()
+
+    if expected_overwrite is True:
+        assert "-y" in stream.compile()
+    elif expected_overwrite is False:
+        assert "-n" in stream.compile()
+    else:
+        assert "-y" not in stream.compile()
+        assert "-n" not in stream.compile()
+
+    assert snapshot(name="get-args", extension_class=JSONSnapshotExtension) == stream.node.get_args(context)
+    assert snapshot(name="compile", extension_class=JSONSnapshotExtension) == stream.compile()
+    assert snapshot(name="compile-line", extension_class=JSONSnapshotExtension) == stream.compile_line()
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == stream.node
 
 
