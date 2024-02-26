@@ -1,0 +1,23 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "GitHub.copilot",
+        "ms-python.mypy-type-checker"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  },
+  "dockerFile": "Dockerfile",
+  "forwardPorts": [
+    5000
+  ],
+  "name": "Python Development",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "waitFor": "postCreateCommand",
+  "workspaceFolder": "/workspaces/typed-ffmpeg/"
+}
