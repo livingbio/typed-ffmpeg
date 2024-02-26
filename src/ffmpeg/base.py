@@ -2,6 +2,7 @@
 This module defined the basic functions for creating the ffmpeg filter graph.
 """
 
+from pathlib import Path
 from typing import Any
 
 from ffmpeg.schema import StreamType
@@ -12,7 +13,7 @@ from .streams.av import AVStream
 from .streams.video import VideoStream
 
 
-def input(filename: str, **kwargs: Any) -> AVStream:
+def input(filename: str | Path, **kwargs: Any) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
 
@@ -29,10 +30,10 @@ def input(filename: str, **kwargs: Any) -> AVStream:
     <AVStream:input.mp4:0>
     ```
     """
-    return InputNode(filename=filename, kwargs=tuple(kwargs.items())).stream()
+    return InputNode(filename=str(filename), kwargs=tuple(kwargs.items())).stream()
 
 
-def output(*streams: FilterableStream, filename: str, **kwargs: Any) -> OutputStream:
+def output(*streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputStream:
     """
     Output the streams to a file URL
 
@@ -44,7 +45,7 @@ def output(*streams: FilterableStream, filename: str, **kwargs: Any) -> OutputSt
     Returns:
         the output stream
     """
-    return OutputNode(filename=filename, inputs=streams, kwargs=tuple(kwargs.items())).stream()
+    return OutputNode(filename=str(filename), inputs=streams, kwargs=tuple(kwargs.items())).stream()
 
 
 def merge_outputs(*streams: OutputStream) -> GlobalStream:
