@@ -3,3 +3,11 @@
 exclude_lines =
     pragma: no cover
     if TYPE_CHECKING:
+
+
+[run]
+omit =
+    src/ffmpeg/dag/global_runnable/global_args.py
+    src/ffmpeg/filters.py
+    src/ffmpeg/streams/video.py
+    src/ffmpeg/streams/audio.py
