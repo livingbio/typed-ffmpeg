@@ -107,7 +107,7 @@ def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
 
 
 def test_output_run(datadir: Path) -> None:
-    input1 = input("input.mp4")
+    input1 = input(datadir / "input.mp4")
     output = input1.output(filename="output.mp4")
     output.run()
 
