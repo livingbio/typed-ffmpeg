@@ -6,6 +6,7 @@ import subprocess
 from typing import TYPE_CHECKING
 
 from ...exceptions import FFMpegExecuteError
+from ...utils.run import command_line
 from .global_args import GlobalArgs
 
 if TYPE_CHECKING:
@@ -80,9 +81,7 @@ class GlobalRunable(GlobalArgs):
         Returns:
             the command-line
         """
-        return " ".join(
-            shlex.quote(arg) for arg in self.compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
-        )
+        return command_line(self.compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix))
 
     def run_async(
         self,
