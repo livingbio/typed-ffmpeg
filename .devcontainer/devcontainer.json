@@ -1,0 +1,28 @@
+{
+  "containerEnv": {
+    "POETRY_VIRTUALENVS_CREATE": "true",
+    "POETRY_VIRTUALENVS_IN_PROJECT": "true"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "GitHub.copilot",
+        "ms-python.mypy-type-checker"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  },
+  "dockerFile": "Dockerfile",
+  "forwardPorts": [
+    5000
+  ],
+  "name": "Python Development",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "waitFor": "postCreateCommand",
+  "workspaceFolder": "/workspaces/typed-ffmpeg"
+}
