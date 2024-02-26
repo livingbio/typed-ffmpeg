@@ -69,15 +69,15 @@ pymdown-extensions = "^10.7"
 griffe_inherited_docstrings = "*"
 
 [tool.mypy]
-show_error_codes = true       # Show error codes in messages for easier identification and resolution of issues.
-implicit_optional = true      # Treat arguments with a default value of None as having type Optional. Defaults to False.
-follow_imports = "silent"     # For imported modules, don't show any import errors. Alternatives include 'skip', 'error', 'normal'.
-warn_redundant_casts = true   # Warn about unnecessary casts, helping to keep the code clean and concise.
-warn_unused_ignores = true    # Warn about unnecessary '# type: ignore' comments, reducing the risk of overlooking real type issues.
-disallow_any_generics = true  # Prohibit the use of generic types without explicit type parameters, like List instead of List[int].
-# check_untyped_defs = true     # Type-check the body of functions without type annotations to ensure type safety.
-no_implicit_reexport = true   # Prohibit implicit re-export, ensuring all re-exported names are explicitly imported in the current module.
-disallow_untyped_defs = true  # Prohibit definitions of functions without type annotations, requiring all functions to have type annotations.
+show_error_codes = true       # Enables showing error codes in messages for easier issue identification.
+implicit_optional = true      # Assumes arguments with a default `None` value are `Optional`.
+follow_imports = "silent"     # Ignores import errors for a cleaner output on external libraries.
+warn_redundant_casts = true   # Issues warnings for unnecessary type casts.
+warn_unused_ignores = true    # Alerts on unnecessary '# type: ignore' comments.
+disallow_any_generics = true  # Forces specifying types for generics, like `List[int]` instead of just `List`.
+check_untyped_defs = true     # Would type-check functions without type annotations, but it's commented out.
+no_implicit_reexport = true   # Requires explicit re-export of imported names.
+disallow_untyped_defs = true  # Forces all functions to have type annotations.
 
 [tool.poetry-dynamic-versioning]
 enable = true
