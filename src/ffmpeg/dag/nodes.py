@@ -9,7 +9,7 @@ from ..exceptions import FFMpegTypeError, FFMpegValueError
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
-from .global_runable.runnable import GlobalRunable
+from .global_runnable.runnable import GlobalRunable
 from .schema import Node, Stream
 
 if TYPE_CHECKING:

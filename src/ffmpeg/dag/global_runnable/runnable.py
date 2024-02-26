@@ -147,8 +147,8 @@ class GlobalRunable(GlobalArgs):
             auto_fix: whether to automatically fix the stream
 
         Returns:
-            the stdout
-            the stderr
+            stdout: he stdout
+            stderr: the stderr
         """
 
         process = self.run_async(

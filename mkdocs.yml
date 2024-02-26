@@ -61,6 +61,9 @@ nav:
           - serialize: src/dag/serialize.md
           - utils: src/dag/utils.md
           - validate: src/dag/validate.md
+          - global_runnable:
+            - runnable: src/dag/global_runnable/runnable.md
+            - global_args: src/dag/global_runnable/global_args.md
       - utils:
           - escaping: src/utils/escaping.md
           - run: src/utils/run.md
