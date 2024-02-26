@@ -1,4 +1,8 @@
 {
+  "containerEnv": {
+    "POETRY_VIRTUALENVS_CREATE": "true",
+    "POETRY_VIRTUALENVS_IN_PROJECT": "true"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -8,14 +12,10 @@
         "ms-python.mypy-type-checker"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh",
-        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "terminal.integrated.defaultProfile.linux": "zsh"
       }
     }
-  },
-  "containerEnv": {
-    "POETRY_VIRTUALENVS_CREATE": "true",
-    "POETRY_VIRTUALENVS_IN_PROJECT": "true"
   },
   "dockerFile": "Dockerfile",
   "forwardPorts": [
