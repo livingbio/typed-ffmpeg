@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
@@ -102,6 +104,12 @@ def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
     stream = f.video(0).output(filename="output.mp4")
     context = DAGContext.build(stream.node)
     assert snapshot(extension_class=JSONSnapshotExtension) == f.get_args(context)
+
+
+def test_output_run(datadir: Path) -> None:
+    input1 = input("input.mp4")
+    output = input1.output(filename="output.mp4")
+    output.run()
 
 
 def test_filter_node_output_typings() -> None:
