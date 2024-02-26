@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    from .nodes import GlobalNode, GlobalStream, OutputStream
+    from ..nodes import GlobalNode, GlobalStream, OutputStream
 
 
 class GlobalArgs(ABC):

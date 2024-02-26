@@ -3,10 +3,11 @@ import re
 from typing import Any, Literal
 
 from .dag.nodes import FilterableStream, FilterNode
-from .schema import Default, StreamType, _to_tuple
+from .schema import Default, StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
 from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String, Video_rate
+from .utils.run import _to_tuple
 
 
 def acrossfade(
