@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 import os.path
 from dataclasses import dataclass, replace
+from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from ..exceptions import FFMpegTypeError, FFMpegValueError
@@ -232,7 +233,7 @@ class FilterableStream(Stream):
             output_typings=output_typings,
         )
 
-    def output(self, *streams: "FilterableStream", filename: str, **kwargs: Any) -> "OutputStream":
+    def output(self, *streams: "FilterableStream", filename: str | Path, **kwargs: Any) -> "OutputStream":
         """
         Output the streams to a file URL
 
@@ -244,7 +245,7 @@ class FilterableStream(Stream):
         Returns:
             the output stream
         """
-        return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=filename).stream()
+        return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=str(filename)).stream()
 
     def label(self, context: DAGContext = None) -> str:
         """
