@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import shlex
 import subprocess
 from typing import TYPE_CHECKING
 
