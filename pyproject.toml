@@ -68,6 +68,17 @@ mkdocstrings-python = "^1.8.0"
 pymdown-extensions = "^10.7"
 griffe_inherited_docstrings = "*"
 
+[tool.mypy]
+show_error_codes = true       # Show error codes in messages for easier identification and resolution of issues.
+implicit_optional = true      # Treat arguments with a default value of None as having type Optional. Defaults to False.
+follow_imports = "silent"     # For imported modules, don't show any import errors. Alternatives include 'skip', 'error', 'normal'.
+warn_redundant_casts = true   # Warn about unnecessary casts, helping to keep the code clean and concise.
+warn_unused_ignores = true    # Warn about unnecessary '# type: ignore' comments, reducing the risk of overlooking real type issues.
+disallow_any_generics = true  # Prohibit the use of generic types without explicit type parameters, like List instead of List[int].
+# check_untyped_defs = true     # Type-check the body of functions without type annotations to ensure type safety.
+no_implicit_reexport = true   # Prohibit implicit re-export, ensuring all re-exported names are explicitly imported in the current module.
+disallow_untyped_defs = true  # Prohibit definitions of functions without type annotations, requiring all functions to have type annotations.
+
 [tool.poetry-dynamic-versioning]
 enable = true
 pattern = "default-unprefixed"
