@@ -5,6 +5,7 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...base import input
+from ...exceptions import FFMpegExecuteError
 from ...filters import concat
 from ...schema import StreamType
 from ...utils.snapshot import DAGSnapshotExtenstion
@@ -92,6 +93,12 @@ def test_global_node_with_args_overwrite(
 
     assert snapshot(name="get-args", extension_class=JSONSnapshotExtension) == stream.node.get_args(context)
     assert snapshot(name="compile", extension_class=JSONSnapshotExtension) == stream.compile()
+    assert snapshot(name="compile with overwrite", extension_class=JSONSnapshotExtension) == stream.compile(
+        overwrite_output=True
+    )
+    assert snapshot(name="compile without overwrite", extension_class=JSONSnapshotExtension) == stream.compile(
+        overwrite_output=False
+    )
     assert snapshot(name="compile-line", extension_class=JSONSnapshotExtension) == stream.compile_line()
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == stream.node
 
@@ -109,7 +116,12 @@ def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
 def test_output_run(datadir: Path) -> None:
     input1 = input(datadir / "input.mp4")
     output = input1.output(filename="output.mp4")
-    output.run()
+    output.run(overwrite_output=True)
+
+    with pytest.raises(FFMpegExecuteError):
+        input_not_exists = input(datadir / "not-exists.mp4")
+        output = input_not_exists.output(filename="output.mp4")
+        output.run()
 
 
 def test_filter_node_output_typings() -> None:
