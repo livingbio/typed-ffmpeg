@@ -11,3 +11,5 @@ omit =
     src/ffmpeg/filters.py
     src/ffmpeg/streams/video.py
     src/ffmpeg/streams/audio.py
+    test_*.py
+    */test_*.py
