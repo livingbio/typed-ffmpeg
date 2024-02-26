@@ -92,6 +92,10 @@ def generate(outpath: pathlib.Path = pathlib.Path("./src/ffmpeg")) -> None:
     filters.sort(key=lambda i: i.name)
     output = []
     for f in filters:
+        if f.name == "afir":
+            # FIXME: #211
+            continue
+
         if f.name not in filter_doc_mapping:
             print(f"WARNING: {f.name} not found in docs")
             continue
