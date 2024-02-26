@@ -8,9 +8,14 @@
         "ms-python.mypy-type-checker"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
       }
     }
+  },
+  "containerEnv": {
+    "POETRY_VIRTUALENVS_CREATE": "true",
+    "POETRY_VIRTUALENVS_IN_PROJECT": "true"
   },
   "dockerFile": "Dockerfile",
   "forwardPorts": [
@@ -19,5 +24,5 @@
   "name": "Python Development",
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "waitFor": "postCreateCommand",
-  "workspaceFolder": "/workspaces/typed-ffmpeg/"
+  "workspaceFolder": "/workspaces/typed-ffmpeg"
 }
