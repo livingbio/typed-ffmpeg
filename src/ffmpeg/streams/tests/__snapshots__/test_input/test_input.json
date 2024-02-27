@@ -2,7 +2,11 @@
   "ffmpeg",
   "-c",
   "copy",
+  "-ss",
+  "5",
   "-accurate_seek",
+  "-display_rotation",
+  "1.0",
   "-i",
   "input.mp4",
   "output.mp4"
