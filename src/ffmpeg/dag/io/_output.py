@@ -110,7 +110,7 @@ def output(
     **kwargs: Any
 ) -> OutputStream:
     """
-    Input file URL (ffmpeg ``-i`` option)
+    Output file URL
 
     Args:
         *streams: the streams to output
@@ -217,7 +217,6 @@ def output(
 
     Returns:
         the output stream
-    ```
     """
 
     options = {
