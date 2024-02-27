@@ -122,8 +122,8 @@ class OptionDef(pydantic.BaseModel):
             return "str"
 
         base = base_typing(self)
-        if self.flags & OptionDefFlag.OPT_SPEC:
-            return base + f" | dict[str, {base}]"
+        # if self.flags & OptionDefFlag.OPT_SPEC:
+        #     return base + f" | dict[str, {base}]"
         return base
 
 
