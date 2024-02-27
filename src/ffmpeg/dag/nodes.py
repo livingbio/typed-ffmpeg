@@ -390,8 +390,10 @@ class OutputNode(Node):
                     commands += ["-map", f"[{input.label(context)}]"]
 
         for key, value in self.kwargs:
-            if isinstance(value, bool) and value is True:
-                commands += [f"-{key}"]
+            if isinstance(value, bool):
+                if value is True:
+                    commands += [f"-{key}"]
+                # NOTE: the -nooption is not supported
             else:
                 commands += [f"-{key}", str(value)]
         commands += [self.filename]
