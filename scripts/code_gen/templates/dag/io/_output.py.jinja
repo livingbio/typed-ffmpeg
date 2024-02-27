@@ -1,0 +1,50 @@
+
+
+from pathlib import Path
+
+from ..nodes import OutputNode, OutputStream, FilterableStream
+from typing import Any
+
+def output(
+    *streams: FilterableStream,
+    filename: str | Path,
+    {%- for option in options -%}
+    {%- if option.is_output_option -%}
+    {{ option.name | option_name_safe }}: {{ option.typing }} = None,
+    {%- endif -%}
+    {%- endfor -%}
+    **kwargs: Any
+) -> OutputStream:
+    """
+    Input file URL (ffmpeg ``-i`` option)
+
+    Args:
+        *streams: the streams to output
+        filename: the filename to output to
+        {% for option in options %}
+        {%- if option.is_output_option -%}
+        {{option.name | option_name_safe}}: {{option.help }}
+        {% endif %}
+        {%- endfor -%}
+        **kwargs: the arguments for the output
+
+    Returns:
+        the output stream
+    ```
+    """
+
+    options = {
+        k: v for k, v in {
+            {% for option in options %}
+                {%- if option.is_output_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+                {% endfor %}
+        }.items() if v is not None
+    }
+
+    return OutputNode(
+        inputs=streams,
+        filename=str(filename),
+        kwargs=tuple((options | kwargs).items())
+    ).stream()
