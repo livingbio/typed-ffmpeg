@@ -11,6 +11,7 @@ from ..schema import Default, StreamType
 from ..utils.escaping import escape
 from ..utils.typing import override
 from .global_runnable.runnable import GlobalRunable
+from .io.output_args import OutputArgs
 from .schema import Node, Stream
 
 if TYPE_CHECKING:
@@ -143,12 +144,27 @@ class FilterNode(Node):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FilterableStream(Stream):
+class FilterableStream(Stream, OutputArgs):
     """
     A stream that can be used as input to a filter
     """
 
     node: "FilterNode | InputNode"
+
+    @override
+    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
+        """
+        Output the streams to a file URL
+
+        Args:
+            *streams: the other streams to output
+            filename: the filename to output to
+            **kwargs: the arguments for the output
+
+        Returns:
+            the output stream
+        """
+        return OutputNode(inputs=(self, *streams), filename=str(filename), kwargs=tuple(kwargs.items()))
 
     def vfilter(
         self,
@@ -232,20 +248,6 @@ class FilterableStream(Stream):
             input_typings=input_typings,
             output_typings=output_typings,
         )
-
-    def output(self, *streams: "FilterableStream", filename: str | Path, **kwargs: Any) -> "OutputStream":
-        """
-        Output the streams to a file URL
-
-        Args:
-            *streams: the other streams to output
-            filename: the filename to output to
-            **kwargs: the arguments for the output
-
-        Returns:
-            the output stream
-        """
-        return OutputNode(kwargs=tuple(kwargs.items()), inputs=(self, *streams), filename=str(filename)).stream()
 
     def label(self, context: DAGContext = None) -> str:
         """
