@@ -117,7 +117,7 @@ class OptionDef(pydantic.BaseModel):
                 return "str"
 
             if self.flags & OptionDefFlag.OPT_TIME:
-                return "str"
+                return "str | float | None"
 
             return "str"
 

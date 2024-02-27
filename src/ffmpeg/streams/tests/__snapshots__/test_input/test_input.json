@@ -1,0 +1,9 @@
+[
+  "ffmpeg",
+  "-c",
+  "copy",
+  "-accurate_seek",
+  "-i",
+  "input.mp4",
+  "output.mp4"
+]
