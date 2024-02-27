@@ -343,7 +343,12 @@ class InputNode(Node):
     def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
         for key, value in self.kwargs:
-            commands += [f"-{key}", str(value)]
+            if isinstance(value, bool):
+                if value is True:
+                    commands += [f"-{key}"]
+                # NOTE: the -nooption is not supported
+            else:
+                commands += [f"-{key}", str(value)]
         commands += ["-i", self.filename]
         return commands
 
