@@ -45,7 +45,7 @@ def input(
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        } if v is not None
+        }.items() if v is not None
     }
 
     return InputNode(
