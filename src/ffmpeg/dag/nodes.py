@@ -343,9 +343,6 @@ class InputNode(Node):
     def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
         for key, value in self.kwargs:
-            if value is None:
-                continue
-
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
