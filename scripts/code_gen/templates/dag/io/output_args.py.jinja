@@ -1,10 +1,18 @@
 from __future__ import annotations
-from typing import Any
+
+from abc import ABC, abstractmethod
 from pathlib import Path
-from ..nodes import OutputStream, OutputNode, FilterableStream
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
-class OutputArgs:
+class OutputArgs(ABC):
+    @abstractmethod
+    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
+        ...
+
     def output(
         self,
         *streams: "FilterableStream",
@@ -43,8 +51,4 @@ class OutputArgs:
             }.items() if v is not None
         }
 
-        return OutputNode(
-            inputs=(self, *streams),
-            filename=str(filename),
-            kwargs=tuple((options | kwargs).items())
-        ).stream()
+        return self._output_node(*streams, filename=filename, **options, **kwargs).stream()
