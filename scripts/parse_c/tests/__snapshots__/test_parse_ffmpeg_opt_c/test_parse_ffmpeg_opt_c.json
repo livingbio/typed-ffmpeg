@@ -693,7 +693,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "dframes",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_INT64"
   },
   {
     "argname": null,
@@ -1029,7 +1029,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "q",
-    "type": "OPT_TYPE_DOUBLE"
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "q",
@@ -1389,7 +1389,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vframes",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_INT64"
   },
   {
     "argname": "rate",
@@ -1521,7 +1521,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vcodec",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "hh:mm:ss[:;.]ff",
@@ -1605,7 +1605,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vf",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "matrix",
@@ -1653,7 +1653,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vtag",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1809,7 +1809,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "aframes",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_INT64"
   },
   {
     "argname": "quality",
@@ -1869,7 +1869,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "acodec",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "bitrate",
@@ -1893,7 +1893,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "atag",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "format",
@@ -1941,7 +1941,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "af",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1977,7 +1977,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "scodec",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "fourcc/tag",
@@ -1989,7 +1989,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stag",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -2097,7 +2097,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "apre",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
@@ -2109,7 +2109,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vpre",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
@@ -2121,7 +2121,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "spre",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "filename",
@@ -2133,7 +2133,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "fpre",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "packets",
@@ -2169,7 +2169,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "dcodec",
-    "type": "OPT_TYPE_FUNC"
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,

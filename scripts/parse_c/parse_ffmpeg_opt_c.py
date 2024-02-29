@@ -8,7 +8,7 @@ def parse_ffmpeg_opt_c(text: str) -> list[OptionDef]:
     match = re.findall(r"const OptionDef options\[\] = (\{.*?\n\})", text, re.MULTILINE | re.DOTALL)
     data = parse_c_structure(match[0])
 
-    output = []
+    output: dict[str, OptionDef] = {}
 
     for line in data:
         name = None
@@ -34,6 +34,12 @@ def parse_ffmpeg_opt_c(text: str) -> list[OptionDef]:
         arg_name = arg_name.strip('"') if arg_name else None
         flags = flags.replace("\n", "")
         flags = eval(flags)
-        output.append(OptionDef(name=name, type=type, flags=flags, help=help, argname=arg_name, canon=canon))
+        output[name] = OptionDef(name=name, type=type, flags=flags, help=help, argname=arg_name, canon=canon)
 
-    return output
+    # process canon
+    for opt in output.values():
+        if opt.canon and "name_canon" in opt.canon:
+            ref = opt.canon.split("=")[1].strip().strip('"')
+            opt.type = output[ref].type
+
+    return output.values()
