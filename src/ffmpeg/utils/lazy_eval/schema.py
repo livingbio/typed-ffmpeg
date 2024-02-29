@@ -91,16 +91,6 @@ class LazyEvalInterface:
 
         return FloorDiv(left=v, right=self)
 
-    def __divmod__(self, v: Any) -> LazyOperator:
-        from .operator import DivMod
-
-        return DivMod(left=self, right=v)
-
-    def __rdivmod__(self, v: Any) -> LazyOperator:
-        from .operator import DivMod
-
-        return DivMod(left=v, right=self)
-
 
 @dataclass(frozen=True, kw_only=True)
 class PlaceHolder(LazyEvalInterface):
@@ -108,7 +98,7 @@ class PlaceHolder(LazyEvalInterface):
     key: str
 
     def __str__(self) -> str:
-        return self.key
+        return str(self.key)
 
 
 @dataclass(frozen=True, kw_only=True)
