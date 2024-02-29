@@ -7,11 +7,11 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ....dag.serialize import dumps
-from ..schema import LazyOperator, PlaceHolder
+from ..schema import LazyOperator, Symbol
 
-VarX = PlaceHolder(key="X")
+VarX = Symbol(key="X")
 
-VarY = PlaceHolder(key="Y")
+VarY = Symbol(key="Y")
 
 
 @pytest.mark.parametrize(

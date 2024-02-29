@@ -111,8 +111,8 @@ class LazyValue(ABC):
         ...
 
 
-@dataclass(frozen=True, kw_only=True)
-class PlaceHolder(LazyValue):
+@dataclass(frozen=True)
+class Symbol(LazyValue):
     key: str
 
     def __str__(self) -> str:
