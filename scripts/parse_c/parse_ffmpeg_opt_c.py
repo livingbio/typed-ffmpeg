@@ -42,4 +42,4 @@ def parse_ffmpeg_opt_c(text: str) -> list[OptionDef]:
             ref = opt.canon.split("=")[1].strip().strip('"')
             opt.type = output[ref].type
 
-    return output.values()
+    return list(output.values())

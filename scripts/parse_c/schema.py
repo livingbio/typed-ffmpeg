@@ -181,7 +181,7 @@ class OptionDef(pydantic.BaseModel):
                 return "float"
 
             if self.type == OptionTypeDef.OPT_TYPE_TIME:
-                return "str | float"
+                return "str | float | None"
 
             return "str"
 

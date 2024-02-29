@@ -1497,27 +1497,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def afifo(self, **kwargs: Any) -> AudioStream:
-        """
-
-        Buffer input frames and send them when they are requested.
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fifo_002c-afifo)
-
-        """
-        filter_node = FilterNode(
-            name="afifo",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
-        )
-        return filter_node.audio(0)
-
     def aformat(
         self,
         *,
