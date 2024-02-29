@@ -1,7 +1,7 @@
 import re
 
 from .parse_c_structure import parse_c_structure
-from .schema import OptionDef
+from .schema import OptionDef, OptionDefFlag
 
 
 def parse_ffmpeg_opt_c(text: str) -> list[OptionDef]:
@@ -38,7 +38,7 @@ def parse_ffmpeg_opt_c(text: str) -> list[OptionDef]:
 
     # process canon
     for opt in output.values():
-        if opt.canon and "name_canon" in opt.canon:
+        if opt.flags & OptionDefFlag.OPT_HAS_CANON:
             ref = opt.canon.split("=")[1].strip().strip('"')
             opt.type = output[ref].type
 
