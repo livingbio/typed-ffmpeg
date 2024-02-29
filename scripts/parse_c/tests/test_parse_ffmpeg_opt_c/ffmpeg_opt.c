@@ -1,13 +1,13 @@
-# 1 "fftools/ffmpeg_opt.c"
+# 1 "../ffmpeg/fftools/ffmpeg_opt.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 418 "<built-in>" 3
 # 1 "<command line>" 1
 # 1 "<built-in>" 2
-# 1 "fftools/ffmpeg_opt.c" 2
-# 21 "fftools/ffmpeg_opt.c"
+# 1 "../ffmpeg/fftools/ffmpeg_opt.c" 2
+# 21 "../ffmpeg/fftools/ffmpeg_opt.c"
 # 1 "./config.h" 1
-# 22 "fftools/ffmpeg_opt.c" 2
+# 22 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 1 3
 # 52 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 3
@@ -311,7 +311,7 @@ typedef long int intmax_t;
 typedef long unsigned int uintmax_t;
 # 60 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdint.h" 2 3 4
 # 53 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdint.h" 2 3
-# 24 "fftools/ffmpeg_opt.c" 2
+# 24 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/time.h" 1 3 4
@@ -629,7 +629,7 @@ __asm("_" "select" )
 int setitimer(int, const struct itimerval * restrict,
     struct itimerval * restrict);
 int utimes(const char *, const struct timeval *);
-# 27 "fftools/ffmpeg_opt.c" 2
+# 27 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/resource.h" 1 3 4
 # 67 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/resource.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/appleapiopts.h" 1 3 4
@@ -907,11 +907,11 @@ int setpriority(int, id_t, int);
 int setiopolicy_np(int, int, int) __attribute__((availability(macosx,introduced=10.5)));
 
 int setrlimit(int, const struct rlimit *) __asm("_" "setrlimit" );
-# 28 "fftools/ffmpeg_opt.c" 2
+# 28 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 
-# 1 "fftools/ffmpeg.h" 1
-# 24 "fftools/ffmpeg.h"
+# 1 "../ffmpeg/fftools/ffmpeg.h" 1
+# 24 "../ffmpeg/fftools/ffmpeg.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdatomic.h" 1 3
 # 27 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stdatomic.h" 3
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
@@ -991,7 +991,7 @@ _Bool atomic_flag_test_and_set_explicit(volatile atomic_flag *, memory_order);
 
 void atomic_flag_clear(volatile atomic_flag *);
 void atomic_flag_clear_explicit(volatile atomic_flag *, memory_order);
-# 25 "fftools/ffmpeg.h" 2
+# 25 "../ffmpeg/fftools/ffmpeg.h" 2
 
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 1 3 4
 # 64 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 3 4
@@ -1269,7 +1269,7 @@ extern int __vsprintf_chk (char * restrict, int, size_t,
 extern int __vsnprintf_chk (char * restrict, size_t, int, size_t,
        const char * restrict, va_list);
 # 410 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h" 2 3 4
-# 27 "fftools/ffmpeg.h" 2
+# 27 "../ffmpeg/fftools/ffmpeg.h" 2
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/signal.h" 1 3 4
 # 63 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/signal.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/signal.h" 1 3 4
@@ -1579,10 +1579,10 @@ __sigbits(int __signo)
 {
     return __signo > 32 ? 0 : (1 << (__signo - 1));
 }
-# 28 "fftools/ffmpeg.h" 2
+# 28 "../ffmpeg/fftools/ffmpeg.h" 2
 
-# 1 "fftools/cmdutils.h" 1
-# 28 "fftools/cmdutils.h"
+# 1 "../ffmpeg/fftools/cmdutils.h" 1
+# 28 "../ffmpeg/fftools/cmdutils.h"
 # 1 "./libavcodec/avcodec.h" 1
 # 30 "./libavcodec/avcodec.h"
 # 1 "./libavutil/samplefmt.h" 1
@@ -2856,13 +2856,68 @@ static inline char *av_make_error_string(char *errbuf, size_t errbuf_size, int e
     return errbuf;
 }
 # 44 "./libavutil/common.h" 2
-# 160 "./libavutil/common.h"
+
+# 1 "./libavutil/mem.h" 1
+# 30 "./libavutil/mem.h"
+# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
+# 31 "./libavutil/mem.h" 2
+# 119 "./libavutil/mem.h"
+void *av_malloc(size_t size) __attribute__((__malloc__)) ;
+# 130 "./libavutil/mem.h"
+void *av_mallocz(size_t size) __attribute__((__malloc__)) ;
+# 143 "./libavutil/mem.h"
+                    void *av_malloc_array(size_t nmemb, size_t size);
+# 158 "./libavutil/mem.h"
+void *av_calloc(size_t nmemb, size_t size) __attribute__((__malloc__)) ;
+# 180 "./libavutil/mem.h"
+void *av_realloc(void *ptr, size_t size) ;
+# 201 "./libavutil/mem.h"
+__attribute__((warn_unused_result))
+int av_reallocp(void *ptr, size_t size);
+# 219 "./libavutil/mem.h"
+void *av_realloc_f(void *ptr, size_t nelem, size_t elsize);
+# 239 "./libavutil/mem.h"
+                    void *av_realloc_array(void *ptr, size_t nmemb, size_t size);
+# 257 "./libavutil/mem.h"
+int av_reallocp_array(void *ptr, size_t nmemb, size_t size);
+# 291 "./libavutil/mem.h"
+void *av_fast_realloc(void *ptr, unsigned int *size, size_t min_size);
+# 322 "./libavutil/mem.h"
+void av_fast_malloc(void *ptr, unsigned int *size, size_t min_size);
+# 342 "./libavutil/mem.h"
+void av_fast_mallocz(void *ptr, unsigned int *size, size_t min_size);
+# 355 "./libavutil/mem.h"
+void av_free(void *ptr);
+# 378 "./libavutil/mem.h"
+void av_freep(void *ptr);
+# 388 "./libavutil/mem.h"
+char *av_strdup(const char *s) __attribute__((__malloc__));
+# 399 "./libavutil/mem.h"
+char *av_strndup(const char *s, size_t len) __attribute__((__malloc__));
+# 409 "./libavutil/mem.h"
+void *av_memdup(const void *p, size_t size);
+# 422 "./libavutil/mem.h"
+void av_memcpy_backptr(uint8_t *dst, int back, int cnt);
+# 524 "./libavutil/mem.h"
+void av_dynarray_add(void *tab_ptr, int *nb_ptr, void *elem);
+# 536 "./libavutil/mem.h"
+__attribute__((warn_unused_result))
+int av_dynarray_add_nofree(void *tab_ptr, int *nb_ptr, void *elem);
+# 562 "./libavutil/mem.h"
+void *av_dynarray2_add(void **tab_ptr, int *nb_ptr, size_t elem_size,
+                       const uint8_t *elem_data);
+# 585 "./libavutil/mem.h"
+int av_size_mult(size_t a, size_t b, size_t *r);
+# 600 "./libavutil/mem.h"
+void av_max_alloc(size_t max);
+# 46 "./libavutil/common.h" 2
+# 162 "./libavutil/common.h"
 __attribute__((const)) int av_log2(unsigned v);
 
 
 
 __attribute__((const)) int av_log2_16bit(unsigned v);
-# 174 "./libavutil/common.h"
+# 176 "./libavutil/common.h"
 static __attribute__((always_inline)) inline __attribute__((const)) int av_clip_c(int a, int amin, int amax)
 {
 
@@ -2872,7 +2927,7 @@ static __attribute__((always_inline)) inline __attribute__((const)) int av_clip_
     else if (a > amax) return amax;
     else return a;
 }
-# 191 "./libavutil/common.h"
+# 193 "./libavutil/common.h"
 static __attribute__((always_inline)) inline __attribute__((const)) int64_t av_clip64_c(int64_t a, int64_t amin, int64_t amax)
 {
 
@@ -2974,27 +3029,27 @@ static __attribute__((always_inline)) inline __attribute__((const)) unsigned av_
 {
     return a & ((1U << p) - 1);
 }
-# 300 "./libavutil/common.h"
+# 302 "./libavutil/common.h"
 static __attribute__((always_inline)) inline int av_sat_add32_c(int a, int b)
 {
     return av_clipl_int32_c((int64_t)a + b);
 }
-# 312 "./libavutil/common.h"
+# 314 "./libavutil/common.h"
 static __attribute__((always_inline)) inline int av_sat_dadd32_c(int a, int b)
 {
     return av_sat_add32_c(a, av_sat_add32_c(b, b));
 }
-# 324 "./libavutil/common.h"
+# 326 "./libavutil/common.h"
 static __attribute__((always_inline)) inline int av_sat_sub32_c(int a, int b)
 {
     return av_clipl_int32_c((int64_t)a - b);
 }
-# 336 "./libavutil/common.h"
+# 338 "./libavutil/common.h"
 static __attribute__((always_inline)) inline int av_sat_dsub32_c(int a, int b)
 {
     return av_sat_sub32_c(a, av_sat_add32_c(b, b));
 }
-# 348 "./libavutil/common.h"
+# 350 "./libavutil/common.h"
 static __attribute__((always_inline)) inline int64_t av_sat_add64_c(int64_t a, int64_t b) {
 
     int64_t tmp;
@@ -3006,7 +3061,7 @@ static __attribute__((always_inline)) inline int64_t av_sat_add64_c(int64_t a, i
 
 
 }
-# 367 "./libavutil/common.h"
+# 369 "./libavutil/common.h"
 static __attribute__((always_inline)) inline int64_t av_sat_sub64_c(int64_t a, int64_t b) {
 
     int64_t tmp;
@@ -3019,7 +3074,7 @@ static __attribute__((always_inline)) inline int64_t av_sat_sub64_c(int64_t a, i
 
 
 }
-# 389 "./libavutil/common.h"
+# 391 "./libavutil/common.h"
 static __attribute__((always_inline)) inline __attribute__((const)) float av_clipf_c(float a, float amin, float amax)
 {
 
@@ -3027,7 +3082,7 @@ static __attribute__((always_inline)) inline __attribute__((const)) float av_cli
 
     return ((((a) > (amin) ? (a) : (amin))) > (amax) ? (amax) : (((a) > (amin) ? (a) : (amin))));
 }
-# 406 "./libavutil/common.h"
+# 408 "./libavutil/common.h"
 static __attribute__((always_inline)) inline __attribute__((const)) double av_clipd_c(double a, double amin, double amax)
 {
 
@@ -3073,61 +3128,6 @@ static __attribute__((always_inline)) inline __attribute__((const)) int av_parit
 {
     return av_popcount_c(v) & 1;
 }
-# 573 "./libavutil/common.h"
-# 1 "./libavutil/mem.h" 1
-# 30 "./libavutil/mem.h"
-# 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 31 "./libavutil/mem.h" 2
-# 119 "./libavutil/mem.h"
-void *av_malloc(size_t size) __attribute__((__malloc__)) ;
-# 130 "./libavutil/mem.h"
-void *av_mallocz(size_t size) __attribute__((__malloc__)) ;
-# 143 "./libavutil/mem.h"
-                    void *av_malloc_array(size_t nmemb, size_t size);
-# 158 "./libavutil/mem.h"
-void *av_calloc(size_t nmemb, size_t size) __attribute__((__malloc__)) ;
-# 180 "./libavutil/mem.h"
-void *av_realloc(void *ptr, size_t size) ;
-# 201 "./libavutil/mem.h"
-__attribute__((warn_unused_result))
-int av_reallocp(void *ptr, size_t size);
-# 219 "./libavutil/mem.h"
-void *av_realloc_f(void *ptr, size_t nelem, size_t elsize);
-# 239 "./libavutil/mem.h"
-                    void *av_realloc_array(void *ptr, size_t nmemb, size_t size);
-# 257 "./libavutil/mem.h"
-int av_reallocp_array(void *ptr, size_t nmemb, size_t size);
-# 291 "./libavutil/mem.h"
-void *av_fast_realloc(void *ptr, unsigned int *size, size_t min_size);
-# 322 "./libavutil/mem.h"
-void av_fast_malloc(void *ptr, unsigned int *size, size_t min_size);
-# 342 "./libavutil/mem.h"
-void av_fast_mallocz(void *ptr, unsigned int *size, size_t min_size);
-# 355 "./libavutil/mem.h"
-void av_free(void *ptr);
-# 378 "./libavutil/mem.h"
-void av_freep(void *ptr);
-# 388 "./libavutil/mem.h"
-char *av_strdup(const char *s) __attribute__((__malloc__));
-# 399 "./libavutil/mem.h"
-char *av_strndup(const char *s, size_t len) __attribute__((__malloc__));
-# 409 "./libavutil/mem.h"
-void *av_memdup(const void *p, size_t size);
-# 422 "./libavutil/mem.h"
-void av_memcpy_backptr(uint8_t *dst, int back, int cnt);
-# 524 "./libavutil/mem.h"
-void av_dynarray_add(void *tab_ptr, int *nb_ptr, void *elem);
-# 536 "./libavutil/mem.h"
-__attribute__((warn_unused_result))
-int av_dynarray_add_nofree(void *tab_ptr, int *nb_ptr, void *elem);
-# 562 "./libavutil/mem.h"
-void *av_dynarray2_add(void **tab_ptr, int *nb_ptr, size_t elem_size,
-                       const uint8_t *elem_data);
-# 585 "./libavutil/mem.h"
-int av_size_mult(size_t a, size_t b, size_t *r);
-# 600 "./libavutil/mem.h"
-void av_max_alloc(size_t max);
-# 574 "./libavutil/common.h" 2
 # 302 "./libavutil/avutil.h" 2
 # 1 "./libavutil/rational.h" 1
 # 58 "./libavutil/rational.h"
@@ -3205,13 +3205,13 @@ static __attribute__((always_inline)) inline AVRational av_inv_q(AVRational q)
     AVRational r = { q.den, q.num };
     return r;
 }
-# 176 "./libavutil/rational.h"
+# 180 "./libavutil/rational.h"
 AVRational av_d2q(double d, int max) __attribute__((const));
-# 189 "./libavutil/rational.h"
+# 193 "./libavutil/rational.h"
 int av_nearer_q(AVRational q, AVRational q1, AVRational q2);
-# 198 "./libavutil/rational.h"
+# 202 "./libavutil/rational.h"
 int av_find_nearest_q_idx(AVRational q, const AVRational* q_list);
-# 209 "./libavutil/rational.h"
+# 213 "./libavutil/rational.h"
 uint32_t av_q2intfloat(AVRational q);
 
 
@@ -3442,7 +3442,7 @@ void av_log_set_flags(int arg);
 int av_log_get_flags(void);
 # 307 "./libavutil/avutil.h" 2
 # 1 "./libavutil/pixfmt.h" 1
-# 64 "./libavutil/pixfmt.h"
+# 71 "./libavutil/pixfmt.h"
 enum AVPixelFormat {
     AV_PIX_FMT_NONE = -1,
     AV_PIX_FMT_YUV420P,
@@ -3587,7 +3587,7 @@ enum AVPixelFormat {
     AV_PIX_FMT_GBRAP,
     AV_PIX_FMT_GBRAP16BE,
     AV_PIX_FMT_GBRAP16LE,
-# 240 "./libavutil/pixfmt.h"
+# 247 "./libavutil/pixfmt.h"
     AV_PIX_FMT_QSV,
 
 
@@ -3670,7 +3670,7 @@ enum AVPixelFormat {
 
     AV_PIX_FMT_P016LE,
     AV_PIX_FMT_P016BE,
-# 333 "./libavutil/pixfmt.h"
+# 340 "./libavutil/pixfmt.h"
     AV_PIX_FMT_D3D11,
 
     AV_PIX_FMT_GRAY9BE,
@@ -3779,7 +3779,7 @@ enum AVPixelFormat {
 
     AV_PIX_FMT_NB
 };
-# 552 "./libavutil/pixfmt.h"
+# 559 "./libavutil/pixfmt.h"
 enum AVColorPrimaries {
     AVCOL_PRI_RESERVED0 = 0,
     AVCOL_PRI_BT709 = 1,
@@ -3853,16 +3853,16 @@ enum AVColorSpace {
     AVCOL_SPC_ICTCP = 14,
     AVCOL_SPC_NB
 };
-# 645 "./libavutil/pixfmt.h"
+# 652 "./libavutil/pixfmt.h"
 enum AVColorRange {
     AVCOL_RANGE_UNSPECIFIED = 0,
-# 663 "./libavutil/pixfmt.h"
+# 670 "./libavutil/pixfmt.h"
     AVCOL_RANGE_MPEG = 1,
-# 680 "./libavutil/pixfmt.h"
+# 687 "./libavutil/pixfmt.h"
     AVCOL_RANGE_JPEG = 2,
     AVCOL_RANGE_NB
 };
-# 699 "./libavutil/pixfmt.h"
+# 706 "./libavutil/pixfmt.h"
 enum AVChromaLocation {
     AVCHROMA_LOC_UNSPECIFIED = 0,
     AVCHROMA_LOC_LEFT = 1,
@@ -4077,8 +4077,12 @@ enum AVChannelOrder {
     AV_CHANNEL_ORDER_CUSTOM,
 # 148 "./libavutil/channel_layout.h"
     AV_CHANNEL_ORDER_AMBISONIC,
+
+
+
+    FF_CHANNEL_ORDER_NB
 };
-# 250 "./libavutil/channel_layout.h"
+# 254 "./libavutil/channel_layout.h"
 enum AVMatrixEncoding {
     AV_MATRIX_ENCODING_NONE,
     AV_MATRIX_ENCODING_DOLBY,
@@ -4089,13 +4093,13 @@ enum AVMatrixEncoding {
     AV_MATRIX_ENCODING_DOLBYHEADPHONE,
     AV_MATRIX_ENCODING_NB
 };
-# 273 "./libavutil/channel_layout.h"
+# 277 "./libavutil/channel_layout.h"
 typedef struct AVChannelCustom {
     enum AVChannel id;
     char name[16];
     void *opaque;
 } AVChannelCustom;
-# 309 "./libavutil/channel_layout.h"
+# 313 "./libavutil/channel_layout.h"
 typedef struct AVChannelLayout {
 
 
@@ -4114,9 +4118,9 @@ typedef struct AVChannelLayout {
 
 
     union {
-# 341 "./libavutil/channel_layout.h"
+# 345 "./libavutil/channel_layout.h"
         uint64_t mask;
-# 360 "./libavutil/channel_layout.h"
+# 364 "./libavutil/channel_layout.h"
         AVChannelCustom *map;
     } u;
 
@@ -4125,15 +4129,15 @@ typedef struct AVChannelLayout {
 
     void *opaque;
 } AVChannelLayout;
-# 431 "./libavutil/channel_layout.h"
+# 435 "./libavutil/channel_layout.h"
 struct AVBPrint;
-# 458 "./libavutil/channel_layout.h"
+# 462 "./libavutil/channel_layout.h"
 __attribute__((deprecated))
 uint64_t av_get_channel_layout(const char *name);
-# 474 "./libavutil/channel_layout.h"
+# 478 "./libavutil/channel_layout.h"
 __attribute__((deprecated))
 int av_get_extended_channel_layout(const char *name, uint64_t* channel_layout, int* nb_channels);
-# 487 "./libavutil/channel_layout.h"
+# 491 "./libavutil/channel_layout.h"
 __attribute__((deprecated))
 void av_get_channel_layout_string(char *buf, int buf_size, int nb_channels, uint64_t channel_layout);
 
@@ -4158,7 +4162,7 @@ int av_get_channel_layout_nb_channels(uint64_t channel_layout);
 
 __attribute__((deprecated))
 int64_t av_get_default_channel_layout(int nb_channels);
-# 524 "./libavutil/channel_layout.h"
+# 528 "./libavutil/channel_layout.h"
 __attribute__((deprecated))
 int av_get_channel_layout_channel_index(uint64_t channel_layout,
                                         uint64_t channel);
@@ -4169,17 +4173,17 @@ int av_get_channel_layout_channel_index(uint64_t channel_layout,
 
 __attribute__((deprecated))
 uint64_t av_channel_layout_extract_channel(uint64_t channel_layout, int index);
-# 542 "./libavutil/channel_layout.h"
+# 546 "./libavutil/channel_layout.h"
 __attribute__((deprecated))
 const char *av_get_channel_name(uint64_t channel);
-# 552 "./libavutil/channel_layout.h"
+# 556 "./libavutil/channel_layout.h"
 __attribute__((deprecated))
 const char *av_get_channel_description(uint64_t channel);
-# 565 "./libavutil/channel_layout.h"
+# 569 "./libavutil/channel_layout.h"
 __attribute__((deprecated))
 int av_get_standard_channel_layout(unsigned index, uint64_t *layout,
                                    const char **name);
-# 584 "./libavutil/channel_layout.h"
+# 588 "./libavutil/channel_layout.h"
 int av_channel_name(char *buf, size_t buf_size, enum AVChannel channel);
 
 
@@ -4188,7 +4192,7 @@ int av_channel_name(char *buf, size_t buf_size, enum AVChannel channel);
 
 
 void av_channel_name_bprint(struct AVBPrint *bp, enum AVChannel channel_id);
-# 603 "./libavutil/channel_layout.h"
+# 607 "./libavutil/channel_layout.h"
 int av_channel_description(char *buf, size_t buf_size, enum AVChannel channel);
 
 
@@ -4205,9 +4209,11 @@ void av_channel_description_bprint(struct AVBPrint *bp, enum AVChannel channel_i
 
 
 enum AVChannel av_channel_from_string(const char *name);
-# 630 "./libavutil/channel_layout.h"
+# 639 "./libavutil/channel_layout.h"
+int av_channel_layout_custom_init(AVChannelLayout *channel_layout, int nb_channels);
+# 651 "./libavutil/channel_layout.h"
 int av_channel_layout_from_mask(AVChannelLayout *channel_layout, uint64_t mask);
-# 649 "./libavutil/channel_layout.h"
+# 670 "./libavutil/channel_layout.h"
 int av_channel_layout_from_string(AVChannelLayout *channel_layout,
                                   const char *str);
 
@@ -4218,7 +4224,7 @@ int av_channel_layout_from_string(AVChannelLayout *channel_layout,
 
 
 void av_channel_layout_default(AVChannelLayout *ch_layout, int nb_channels);
-# 669 "./libavutil/channel_layout.h"
+# 690 "./libavutil/channel_layout.h"
 const AVChannelLayout *av_channel_layout_standard(void **opaque);
 
 
@@ -4228,9 +4234,9 @@ const AVChannelLayout *av_channel_layout_standard(void **opaque);
 
 
 void av_channel_layout_uninit(AVChannelLayout *channel_layout);
-# 689 "./libavutil/channel_layout.h"
+# 710 "./libavutil/channel_layout.h"
 int av_channel_layout_copy(AVChannelLayout *dst, const AVChannelLayout *src);
-# 704 "./libavutil/channel_layout.h"
+# 725 "./libavutil/channel_layout.h"
 int av_channel_layout_describe(const AVChannelLayout *channel_layout,
                                char *buf, size_t buf_size);
 
@@ -4242,26 +4248,28 @@ int av_channel_layout_describe(const AVChannelLayout *channel_layout,
 
 int av_channel_layout_describe_bprint(const AVChannelLayout *channel_layout,
                                       struct AVBPrint *bp);
-# 725 "./libavutil/channel_layout.h"
+# 746 "./libavutil/channel_layout.h"
 enum AVChannel
 av_channel_layout_channel_from_index(const AVChannelLayout *channel_layout, unsigned int idx);
-# 737 "./libavutil/channel_layout.h"
+# 758 "./libavutil/channel_layout.h"
 int av_channel_layout_index_from_channel(const AVChannelLayout *channel_layout,
                                          enum AVChannel channel);
-# 752 "./libavutil/channel_layout.h"
+# 773 "./libavutil/channel_layout.h"
 int av_channel_layout_index_from_string(const AVChannelLayout *channel_layout,
                                         const char *name);
-# 767 "./libavutil/channel_layout.h"
+# 788 "./libavutil/channel_layout.h"
 enum AVChannel
 av_channel_layout_channel_from_string(const AVChannelLayout *channel_layout,
                                       const char *name);
-# 780 "./libavutil/channel_layout.h"
+# 801 "./libavutil/channel_layout.h"
 uint64_t av_channel_layout_subset(const AVChannelLayout *channel_layout,
                                   uint64_t mask);
-# 790 "./libavutil/channel_layout.h"
+# 811 "./libavutil/channel_layout.h"
 int av_channel_layout_check(const AVChannelLayout *channel_layout);
-# 805 "./libavutil/channel_layout.h"
+# 826 "./libavutil/channel_layout.h"
 int av_channel_layout_compare(const AVChannelLayout *chl, const AVChannelLayout *chl1);
+# 866 "./libavutil/channel_layout.h"
+int av_channel_layout_retype(AVChannelLayout *channel_layout, enum AVChannelOrder order, int flags);
 # 35 "./libavcodec/avcodec.h" 2
 # 1 "./libavutil/dict.h" 1
 # 89 "./libavutil/dict.h"
@@ -6099,35 +6107,42 @@ enum AVPacketSideDataType {
 
 
     AV_PKT_DATA_IAMF_RECON_GAIN_INFO_PARAM,
-# 334 "./libavcodec/packet.h"
+
+
+
+
+
+
+    AV_PKT_DATA_AMBIENT_VIEWING_ENVIRONMENT,
+# 341 "./libavcodec/packet.h"
     AV_PKT_DATA_NB
 };
-# 366 "./libavcodec/packet.h"
+# 373 "./libavcodec/packet.h"
 typedef struct AVPacketSideData {
     uint8_t *data;
     size_t size;
     enum AVPacketSideDataType type;
 } AVPacketSideData;
-# 386 "./libavcodec/packet.h"
+# 393 "./libavcodec/packet.h"
 AVPacketSideData *av_packet_side_data_new(AVPacketSideData **psd, int *pnb_sd,
                                           enum AVPacketSideDataType type,
                                           size_t size, int flags);
-# 409 "./libavcodec/packet.h"
+# 416 "./libavcodec/packet.h"
 AVPacketSideData *av_packet_side_data_add(AVPacketSideData **sd, int *nb_sd,
                                           enum AVPacketSideDataType type,
                                           void *data, size_t size, int flags);
-# 422 "./libavcodec/packet.h"
+# 429 "./libavcodec/packet.h"
 const AVPacketSideData *av_packet_side_data_get(const AVPacketSideData *sd,
                                                 int nb_sd,
                                                 enum AVPacketSideDataType type);
-# 435 "./libavcodec/packet.h"
+# 442 "./libavcodec/packet.h"
 void av_packet_side_data_remove(AVPacketSideData *sd, int *nb_sd,
                                 enum AVPacketSideDataType type);
-# 447 "./libavcodec/packet.h"
+# 454 "./libavcodec/packet.h"
 void av_packet_side_data_free(AVPacketSideData **sd, int *nb_sd);
 
 const char *av_packet_side_data_name(enum AVPacketSideDataType type);
-# 492 "./libavcodec/packet.h"
+# 499 "./libavcodec/packet.h"
 typedef struct AVPacket {
 
 
@@ -6135,7 +6150,7 @@ typedef struct AVPacket {
 
 
     AVBufferRef *buf;
-# 508 "./libavcodec/packet.h"
+# 515 "./libavcodec/packet.h"
     int64_t pts;
 
 
@@ -6169,7 +6184,7 @@ typedef struct AVPacket {
 
 
     void *opaque;
-# 551 "./libavcodec/packet.h"
+# 558 "./libavcodec/packet.h"
     AVBufferRef *opaque_ref;
 
 
@@ -6187,7 +6202,7 @@ typedef struct AVPacketList {
     AVPacket pkt;
     struct AVPacketList *next;
 } AVPacketList;
-# 591 "./libavcodec/packet.h"
+# 598 "./libavcodec/packet.h"
 enum AVSideDataParamChangeFlags {
 
 
@@ -6199,16 +6214,16 @@ enum AVSideDataParamChangeFlags {
     AV_SIDE_DATA_PARAM_CHANGE_SAMPLE_RATE = 0x0004,
     AV_SIDE_DATA_PARAM_CHANGE_DIMENSIONS = 0x0008,
 };
-# 614 "./libavcodec/packet.h"
+# 621 "./libavcodec/packet.h"
 AVPacket *av_packet_alloc(void);
-# 626 "./libavcodec/packet.h"
+# 633 "./libavcodec/packet.h"
 AVPacket *av_packet_clone(const AVPacket *src);
-# 635 "./libavcodec/packet.h"
+# 642 "./libavcodec/packet.h"
 void av_packet_free(AVPacket **pkt);
-# 652 "./libavcodec/packet.h"
+# 659 "./libavcodec/packet.h"
 __attribute__((deprecated))
 void av_init_packet(AVPacket *pkt);
-# 664 "./libavcodec/packet.h"
+# 671 "./libavcodec/packet.h"
 int av_new_packet(AVPacket *pkt, int size);
 
 
@@ -6226,23 +6241,23 @@ void av_shrink_packet(AVPacket *pkt, int size);
 
 
 int av_grow_packet(AVPacket *pkt, int grow_by);
-# 695 "./libavcodec/packet.h"
+# 702 "./libavcodec/packet.h"
 int av_packet_from_data(AVPacket *pkt, uint8_t *data, int size);
-# 705 "./libavcodec/packet.h"
+# 712 "./libavcodec/packet.h"
 uint8_t* av_packet_new_side_data(AVPacket *pkt, enum AVPacketSideDataType type,
                                  size_t size);
-# 721 "./libavcodec/packet.h"
+# 728 "./libavcodec/packet.h"
 int av_packet_add_side_data(AVPacket *pkt, enum AVPacketSideDataType type,
                             uint8_t *data, size_t size);
-# 732 "./libavcodec/packet.h"
+# 739 "./libavcodec/packet.h"
 int av_packet_shrink_side_data(AVPacket *pkt, enum AVPacketSideDataType type,
                                size_t size);
-# 744 "./libavcodec/packet.h"
+# 751 "./libavcodec/packet.h"
 uint8_t* av_packet_get_side_data(const AVPacket *pkt, enum AVPacketSideDataType type,
                                  size_t *size);
-# 754 "./libavcodec/packet.h"
+# 761 "./libavcodec/packet.h"
 uint8_t *av_packet_pack_dictionary(AVDictionary *dict, size_t *size);
-# 763 "./libavcodec/packet.h"
+# 770 "./libavcodec/packet.h"
 int av_packet_unpack_dictionary(const uint8_t *data, size_t size,
                                 AVDictionary **dict);
 
@@ -6253,19 +6268,19 @@ int av_packet_unpack_dictionary(const uint8_t *data, size_t size,
 
 
 void av_packet_free_side_data(AVPacket *pkt);
-# 791 "./libavcodec/packet.h"
+# 798 "./libavcodec/packet.h"
 int av_packet_ref(AVPacket *dst, const AVPacket *src);
-# 801 "./libavcodec/packet.h"
+# 808 "./libavcodec/packet.h"
 void av_packet_unref(AVPacket *pkt);
-# 811 "./libavcodec/packet.h"
+# 818 "./libavcodec/packet.h"
 void av_packet_move_ref(AVPacket *dst, AVPacket *src);
-# 824 "./libavcodec/packet.h"
+# 831 "./libavcodec/packet.h"
 int av_packet_copy_props(AVPacket *dst, const AVPacket *src);
-# 840 "./libavcodec/packet.h"
+# 847 "./libavcodec/packet.h"
 int av_packet_make_refcounted(AVPacket *pkt);
-# 851 "./libavcodec/packet.h"
+# 858 "./libavcodec/packet.h"
 int av_packet_make_writable(AVPacket *pkt);
-# 864 "./libavcodec/packet.h"
+# 871 "./libavcodec/packet.h"
 void av_packet_rescale_ts(AVPacket *pkt, AVRational tb_src, AVRational tb_dst);
 # 45 "./libavcodec/avcodec.h" 2
 
@@ -6483,14 +6498,14 @@ int av_get_audio_frame_duration2(AVCodecParameters *par, int frame_bytes);
 
 
 struct AVCodecParameters;
-# 200 "./libavcodec/avcodec.h"
+# 204 "./libavcodec/avcodec.h"
 typedef struct RcOverride{
     int start_frame;
     int end_frame;
     int qscale;
     float quality_factor;
 } RcOverride;
-# 441 "./libavcodec/avcodec.h"
+# 445 "./libavcodec/avcodec.h"
 typedef struct AVCodecContext {
 
 
@@ -6502,7 +6517,7 @@ typedef struct AVCodecContext {
     enum AVMediaType codec_type;
     const struct AVCodec *codec;
     enum AVCodecID codec_id;
-# 466 "./libavcodec/avcodec.h"
+# 470 "./libavcodec/avcodec.h"
     unsigned int codec_tag;
 
     void *priv_data;
@@ -6566,19 +6581,19 @@ typedef struct AVCodecContext {
 
 
     int flags2;
-# 542 "./libavcodec/avcodec.h"
+# 546 "./libavcodec/avcodec.h"
     uint8_t *extradata;
     int extradata_size;
-# 563 "./libavcodec/avcodec.h"
+# 567 "./libavcodec/avcodec.h"
     AVRational time_base;
-# 578 "./libavcodec/avcodec.h"
+# 582 "./libavcodec/avcodec.h"
     __attribute__((deprecated))
     int ticks_per_frame;
-# 604 "./libavcodec/avcodec.h"
+# 608 "./libavcodec/avcodec.h"
     int delay;
-# 621 "./libavcodec/avcodec.h"
+# 625 "./libavcodec/avcodec.h"
     int width, height;
-# 636 "./libavcodec/avcodec.h"
+# 640 "./libavcodec/avcodec.h"
     int coded_width, coded_height;
 
 
@@ -6587,13 +6602,13 @@ typedef struct AVCodecContext {
 
 
     int gop_size;
-# 658 "./libavcodec/avcodec.h"
+# 662 "./libavcodec/avcodec.h"
     enum AVPixelFormat pix_fmt;
-# 683 "./libavcodec/avcodec.h"
+# 687 "./libavcodec/avcodec.h"
     void (*draw_horiz_band)(struct AVCodecContext *s,
                             const AVFrame *src, int offset[8],
                             int y, int type, int height);
-# 712 "./libavcodec/avcodec.h"
+# 716 "./libavcodec/avcodec.h"
     enum AVPixelFormat (*get_format)(struct AVCodecContext *s, const enum AVPixelFormat * fmt);
 
 
@@ -6603,7 +6618,7 @@ typedef struct AVCodecContext {
 
 
     int max_b_frames;
-# 729 "./libavcodec/avcodec.h"
+# 733 "./libavcodec/avcodec.h"
     float b_quant_factor;
 
 
@@ -6620,7 +6635,7 @@ typedef struct AVCodecContext {
 
 
     int has_b_frames;
-# 753 "./libavcodec/avcodec.h"
+# 757 "./libavcodec/avcodec.h"
     float i_quant_factor;
 
 
@@ -6681,7 +6696,7 @@ typedef struct AVCodecContext {
 
     __attribute__((deprecated))
     int *slice_offset;
-# 822 "./libavcodec/avcodec.h"
+# 826 "./libavcodec/avcodec.h"
     AVRational sample_aspect_ratio;
 
 
@@ -6708,7 +6723,7 @@ typedef struct AVCodecContext {
 
 
     int ildct_cmp;
-# 871 "./libavcodec/avcodec.h"
+# 875 "./libavcodec/avcodec.h"
     int dia_size;
 
 
@@ -6738,7 +6753,7 @@ typedef struct AVCodecContext {
 
 
     int me_subpel_quality;
-# 908 "./libavcodec/avcodec.h"
+# 912 "./libavcodec/avcodec.h"
     int me_range;
 
 
@@ -6747,11 +6762,11 @@ typedef struct AVCodecContext {
 
 
     int slice_flags;
-# 925 "./libavcodec/avcodec.h"
+# 929 "./libavcodec/avcodec.h"
     int mb_decision;
-# 937 "./libavcodec/avcodec.h"
+# 941 "./libavcodec/avcodec.h"
     uint16_t *intra_matrix;
-# 946 "./libavcodec/avcodec.h"
+# 950 "./libavcodec/avcodec.h"
     uint16_t *inter_matrix;
 
 
@@ -6836,7 +6851,7 @@ typedef struct AVCodecContext {
 
 
     enum AVColorSpace colorspace;
-# 1039 "./libavcodec/avcodec.h"
+# 1043 "./libavcodec/avcodec.h"
     enum AVColorRange color_range;
 
 
@@ -6845,7 +6860,7 @@ typedef struct AVCodecContext {
 
 
     enum AVChromaLocation chroma_sample_location;
-# 1055 "./libavcodec/avcodec.h"
+# 1059 "./libavcodec/avcodec.h"
     int slices;
 
 
@@ -6872,9 +6887,9 @@ typedef struct AVCodecContext {
 
 
     enum AVSampleFormat sample_fmt;
-# 1092 "./libavcodec/avcodec.h"
+# 1096 "./libavcodec/avcodec.h"
     int frame_size;
-# 1105 "./libavcodec/avcodec.h"
+# 1109 "./libavcodec/avcodec.h"
     __attribute__((deprecated))
     int frame_number;
 
@@ -6891,7 +6906,7 @@ typedef struct AVCodecContext {
 
 
     int cutoff;
-# 1129 "./libavcodec/avcodec.h"
+# 1133 "./libavcodec/avcodec.h"
     __attribute__((deprecated))
     uint64_t channel_layout;
 
@@ -6919,7 +6934,7 @@ typedef struct AVCodecContext {
 
 
     enum AVSampleFormat request_sample_fmt;
-# 1237 "./libavcodec/avcodec.h"
+# 1241 "./libavcodec/avcodec.h"
     int (*get_buffer2)(struct AVCodecContext *s, AVFrame *frame, int flags);
 
 
@@ -7025,7 +7040,7 @@ typedef struct AVCodecContext {
 
 
     int workaround_bugs;
-# 1371 "./libavcodec/avcodec.h"
+# 1375 "./libavcodec/avcodec.h"
     int strict_std_compliance;
 
 
@@ -7034,11 +7049,11 @@ typedef struct AVCodecContext {
 
 
     int error_concealment;
-# 1388 "./libavcodec/avcodec.h"
+# 1392 "./libavcodec/avcodec.h"
     int debug;
-# 1412 "./libavcodec/avcodec.h"
+# 1416 "./libavcodec/avcodec.h"
     int err_recognition;
-# 1426 "./libavcodec/avcodec.h"
+# 1430 "./libavcodec/avcodec.h"
     __attribute__((deprecated))
     int64_t reordered_opaque;
 
@@ -7049,7 +7064,7 @@ typedef struct AVCodecContext {
 
 
     const struct AVHWAccel *hwaccel;
-# 1459 "./libavcodec/avcodec.h"
+# 1463 "./libavcodec/avcodec.h"
     void *hwaccel_context;
 
 
@@ -7065,9 +7080,9 @@ typedef struct AVCodecContext {
 
 
     int dct_algo;
-# 1486 "./libavcodec/avcodec.h"
+# 1490 "./libavcodec/avcodec.h"
     int idct_algo;
-# 1510 "./libavcodec/avcodec.h"
+# 1514 "./libavcodec/avcodec.h"
      int bits_per_coded_sample;
 
 
@@ -7091,13 +7106,13 @@ typedef struct AVCodecContext {
 
 
     int thread_count;
-# 1542 "./libavcodec/avcodec.h"
+# 1546 "./libavcodec/avcodec.h"
     int thread_type;
-# 1551 "./libavcodec/avcodec.h"
+# 1555 "./libavcodec/avcodec.h"
     int active_thread_type;
-# 1562 "./libavcodec/avcodec.h"
+# 1566 "./libavcodec/avcodec.h"
     int (*execute)(struct AVCodecContext *c, int (*func)(struct AVCodecContext *c2, void *arg), void *arg2, int *ret, int count, int size);
-# 1581 "./libavcodec/avcodec.h"
+# 1585 "./libavcodec/avcodec.h"
     int (*execute2)(struct AVCodecContext *c, int (*func)(struct AVCodecContext *c2, void *arg, int jobnr, int threadnr), void *arg2, int *ret, int count);
 
 
@@ -7114,9 +7129,9 @@ typedef struct AVCodecContext {
 
 
      int profile;
-# 1740 "./libavcodec/avcodec.h"
+# 1744 "./libavcodec/avcodec.h"
      int level;
-# 1752 "./libavcodec/avcodec.h"
+# 1756 "./libavcodec/avcodec.h"
     enum AVDiscard skip_loop_filter;
 
 
@@ -7132,12 +7147,12 @@ typedef struct AVCodecContext {
 
 
     enum AVDiscard skip_frame;
-# 1776 "./libavcodec/avcodec.h"
+# 1780 "./libavcodec/avcodec.h"
     uint8_t *subtitle_header;
     int subtitle_header_size;
-# 1794 "./libavcodec/avcodec.h"
+# 1798 "./libavcodec/avcodec.h"
     int initial_padding;
-# 1803 "./libavcodec/avcodec.h"
+# 1807 "./libavcodec/avcodec.h"
     AVRational framerate;
 
 
@@ -7185,7 +7200,7 @@ typedef struct AVCodecContext {
 
 
     int sub_charenc_mode;
-# 1867 "./libavcodec/avcodec.h"
+# 1871 "./libavcodec/avcodec.h"
     int skip_alpha;
 
 
@@ -7224,12 +7239,12 @@ typedef struct AVCodecContext {
 
 
     unsigned properties;
-# 1915 "./libavcodec/avcodec.h"
+# 1919 "./libavcodec/avcodec.h"
     AVPacketSideData *coded_side_data;
     int nb_coded_side_data;
-# 1940 "./libavcodec/avcodec.h"
+# 1944 "./libavcodec/avcodec.h"
     AVBufferRef *hw_frames_ctx;
-# 1951 "./libavcodec/avcodec.h"
+# 1955 "./libavcodec/avcodec.h"
     int trailing_padding;
 
 
@@ -7239,13 +7254,13 @@ typedef struct AVCodecContext {
 
 
     int64_t max_pixels;
-# 1981 "./libavcodec/avcodec.h"
+# 1985 "./libavcodec/avcodec.h"
     AVBufferRef *hw_device_ctx;
-# 1990 "./libavcodec/avcodec.h"
+# 1994 "./libavcodec/avcodec.h"
     int hwaccel_flags;
-# 2017 "./libavcodec/avcodec.h"
+# 2021 "./libavcodec/avcodec.h"
     int apply_cropping;
-# 2031 "./libavcodec/avcodec.h"
+# 2035 "./libavcodec/avcodec.h"
     int extra_hw_frames;
 
 
@@ -7263,9 +7278,9 @@ typedef struct AVCodecContext {
 
 
     int64_t max_samples;
-# 2057 "./libavcodec/avcodec.h"
+# 2061 "./libavcodec/avcodec.h"
     int export_side_data;
-# 2099 "./libavcodec/avcodec.h"
+# 2103 "./libavcodec/avcodec.h"
     int (*get_encode_buffer)(struct AVCodecContext *s, AVPacket *pkt, int flags);
 
 
@@ -7275,10 +7290,10 @@ typedef struct AVCodecContext {
 
 
     AVChannelLayout ch_layout;
-# 2118 "./libavcodec/avcodec.h"
+# 2122 "./libavcodec/avcodec.h"
     int64_t frame_num;
 } AVCodecContext;
-# 2129 "./libavcodec/avcodec.h"
+# 2133 "./libavcodec/avcodec.h"
 typedef struct AVHWAccel {
 
 
@@ -7314,7 +7329,7 @@ typedef struct AVHWAccel {
 
     int capabilities;
 } AVHWAccel;
-# 2221 "./libavcodec/avcodec.h"
+# 2225 "./libavcodec/avcodec.h"
 enum AVSubtitleType {
     SUBTITLE_NONE,
 
@@ -7386,7 +7401,7 @@ const char *avcodec_configuration(void);
 
 
 const char *avcodec_license(void);
-# 2306 "./libavcodec/avcodec.h"
+# 2310 "./libavcodec/avcodec.h"
 AVCodecContext *avcodec_alloc_context3(const AVCodec *codec);
 
 
@@ -7410,15 +7425,16 @@ const AVClass *avcodec_get_class(void);
 
 
 const AVClass *avcodec_get_subtitle_rect_class(void);
-# 2337 "./libavcodec/avcodec.h"
+# 2341 "./libavcodec/avcodec.h"
 int avcodec_parameters_from_context(struct AVCodecParameters *par,
                                     const AVCodecContext *codec);
-# 2348 "./libavcodec/avcodec.h"
+# 2352 "./libavcodec/avcodec.h"
 int avcodec_parameters_to_context(AVCodecContext *codec,
                                   const struct AVCodecParameters *par);
-# 2412 "./libavcodec/avcodec.h"
+# 2416 "./libavcodec/avcodec.h"
 int avcodec_open2(AVCodecContext *avctx, const AVCodec *codec, AVDictionary **options);
-# 2427 "./libavcodec/avcodec.h"
+# 2432 "./libavcodec/avcodec.h"
+__attribute__((deprecated))
 int avcodec_close(AVCodecContext *avctx);
 
 
@@ -7426,8 +7442,9 @@ int avcodec_close(AVCodecContext *avctx);
 
 
 
+
 void avsubtitle_free(AVSubtitle *sub);
-# 2450 "./libavcodec/avcodec.h"
+# 2457 "./libavcodec/avcodec.h"
 int avcodec_default_get_buffer2(AVCodecContext *s, AVFrame *frame, int flags);
 
 
@@ -7436,34 +7453,34 @@ int avcodec_default_get_buffer2(AVCodecContext *s, AVFrame *frame, int flags);
 
 
 int avcodec_default_get_encode_buffer(AVCodecContext *s, AVPacket *pkt, int flags);
-# 2466 "./libavcodec/avcodec.h"
+# 2473 "./libavcodec/avcodec.h"
 void avcodec_align_dimensions(AVCodecContext *s, int *width, int *height);
-# 2475 "./libavcodec/avcodec.h"
+# 2482 "./libavcodec/avcodec.h"
 void avcodec_align_dimensions2(AVCodecContext *s, int *width, int *height,
                                int linesize_align[8]);
-# 2489 "./libavcodec/avcodec.h"
+# 2496 "./libavcodec/avcodec.h"
  __attribute__((deprecated))
 int avcodec_enum_to_chroma_pos(int *xpos, int *ypos, enum AVChromaLocation pos);
-# 2502 "./libavcodec/avcodec.h"
+# 2509 "./libavcodec/avcodec.h"
  __attribute__((deprecated))
 enum AVChromaLocation avcodec_chroma_pos_to_enum(int xpos, int ypos);
-# 2533 "./libavcodec/avcodec.h"
+# 2540 "./libavcodec/avcodec.h"
 int avcodec_decode_subtitle2(AVCodecContext *avctx, AVSubtitle *sub,
                              int *got_sub_ptr, const AVPacket *avpkt);
-# 2582 "./libavcodec/avcodec.h"
+# 2589 "./libavcodec/avcodec.h"
 int avcodec_send_packet(AVCodecContext *avctx, const AVPacket *avpkt);
-# 2603 "./libavcodec/avcodec.h"
+# 2610 "./libavcodec/avcodec.h"
 int avcodec_receive_frame(AVCodecContext *avctx, AVFrame *frame);
-# 2639 "./libavcodec/avcodec.h"
+# 2646 "./libavcodec/avcodec.h"
 int avcodec_send_frame(AVCodecContext *avctx, const AVFrame *frame);
-# 2656 "./libavcodec/avcodec.h"
+# 2663 "./libavcodec/avcodec.h"
 int avcodec_receive_packet(AVCodecContext *avctx, AVPacket *avpkt);
-# 2755 "./libavcodec/avcodec.h"
+# 2762 "./libavcodec/avcodec.h"
 int avcodec_get_hw_frames_parameters(AVCodecContext *avctx,
                                      AVBufferRef *device_ref,
                                      enum AVPixelFormat hw_pix_fmt,
                                      AVBufferRef **out_frames_ref);
-# 2767 "./libavcodec/avcodec.h"
+# 2774 "./libavcodec/avcodec.h"
 enum AVPictureStructure {
     AV_PICTURE_STRUCTURE_UNKNOWN,
     AV_PICTURE_STRUCTURE_TOP_FIELD,
@@ -7480,7 +7497,7 @@ typedef struct AVCodecParserContext {
     int64_t next_frame_offset;
 
     int pict_type;
-# 2792 "./libavcodec/avcodec.h"
+# 2799 "./libavcodec/avcodec.h"
     int repeat_pict;
     int64_t pts;
     int64_t dts;
@@ -7513,11 +7530,11 @@ typedef struct AVCodecParserContext {
 
 
     int key_frame;
-# 2835 "./libavcodec/avcodec.h"
+# 2842 "./libavcodec/avcodec.h"
     int dts_sync_point;
-# 2850 "./libavcodec/avcodec.h"
+# 2857 "./libavcodec/avcodec.h"
     int dts_ref_dts_delta;
-# 2864 "./libavcodec/avcodec.h"
+# 2871 "./libavcodec/avcodec.h"
     int pts_dts_delta;
 
 
@@ -7545,7 +7562,7 @@ typedef struct AVCodecParserContext {
     int duration;
 
     enum AVFieldOrder field_order;
-# 2900 "./libavcodec/avcodec.h"
+# 2907 "./libavcodec/avcodec.h"
     enum AVPictureStructure picture_structure;
 
 
@@ -7567,7 +7584,7 @@ typedef struct AVCodecParserContext {
 
     int coded_width;
     int coded_height;
-# 2930 "./libavcodec/avcodec.h"
+# 2937 "./libavcodec/avcodec.h"
     int format;
 } AVCodecParserContext;
 
@@ -7584,11 +7601,11 @@ typedef struct AVCodecParser {
     void (*parser_close)(AVCodecParserContext *s);
     int (*split)(AVCodecContext *avctx, const uint8_t *buf, int buf_size);
 } AVCodecParser;
-# 2956 "./libavcodec/avcodec.h"
+# 2963 "./libavcodec/avcodec.h"
 const AVCodecParser *av_parser_iterate(void **opaque);
 
 AVCodecParserContext *av_parser_init(int codec_id);
-# 2991 "./libavcodec/avcodec.h"
+# 2998 "./libavcodec/avcodec.h"
 int av_parser_parse2(AVCodecParserContext *s,
                      AVCodecContext *avctx,
                      uint8_t **poutbuf, int *poutbuf_size,
@@ -7597,12 +7614,12 @@ int av_parser_parse2(AVCodecParserContext *s,
                      int64_t pos);
 
 void av_parser_close(AVCodecParserContext *s);
-# 3010 "./libavcodec/avcodec.h"
+# 3017 "./libavcodec/avcodec.h"
 int avcodec_encode_subtitle(AVCodecContext *avctx, uint8_t *buf, int buf_size,
                             const AVSubtitle *sub);
-# 3039 "./libavcodec/avcodec.h"
+# 3046 "./libavcodec/avcodec.h"
 unsigned int avcodec_pix_fmt_to_codec_tag(enum AVPixelFormat pix_fmt);
-# 3058 "./libavcodec/avcodec.h"
+# 3065 "./libavcodec/avcodec.h"
 enum AVPixelFormat avcodec_find_best_pix_fmt_of_list(const enum AVPixelFormat *pix_fmt_list,
                                             enum AVPixelFormat src_pix_fmt,
                                             int has_alpha, int *loss_ptr);
@@ -7617,15 +7634,15 @@ void avcodec_string(char *buf, int buf_size, AVCodecContext *enc, int encode);
 
 int avcodec_default_execute(AVCodecContext *c, int (*func)(AVCodecContext *c2, void *arg2),void *arg, int *ret, int count, int size);
 int avcodec_default_execute2(AVCodecContext *c, int (*func)(AVCodecContext *c2, void *arg2, int, int),void *arg, int *ret, int count);
-# 3097 "./libavcodec/avcodec.h"
+# 3104 "./libavcodec/avcodec.h"
 int avcodec_fill_audio_frame(AVFrame *frame, int nb_channels,
                              enum AVSampleFormat sample_fmt, const uint8_t *buf,
                              int buf_size, int align);
-# 3115 "./libavcodec/avcodec.h"
+# 3122 "./libavcodec/avcodec.h"
 void avcodec_flush_buffers(AVCodecContext *avctx);
-# 3125 "./libavcodec/avcodec.h"
+# 3132 "./libavcodec/avcodec.h"
 int av_get_audio_frame_duration(AVCodecContext *avctx, int frame_bytes);
-# 3136 "./libavcodec/avcodec.h"
+# 3143 "./libavcodec/avcodec.h"
 void av_fast_padded_malloc(void *ptr, unsigned int *size, size_t min_size);
 
 
@@ -7639,7 +7656,7 @@ void av_fast_padded_mallocz(void *ptr, unsigned int *size, size_t min_size);
 
 
 int avcodec_is_open(AVCodecContext *s);
-# 29 "fftools/cmdutils.h" 2
+# 29 "../ffmpeg/fftools/cmdutils.h" 2
 # 1 "./libavfilter/avfilter.h" 1
 # 38 "./libavfilter/avfilter.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
@@ -7728,11 +7745,11 @@ typedef struct AVFilter {
 
 
     union {
-# 318 "./libavfilter/avfilter.h"
+# 326 "./libavfilter/avfilter.h"
         int (*query_func)(AVFilterContext *);
-# 329 "./libavfilter/avfilter.h"
+# 341 "./libavfilter/avfilter.h"
         const enum AVPixelFormat *pixels_list;
-# 340 "./libavfilter/avfilter.h"
+# 352 "./libavfilter/avfilter.h"
         const enum AVSampleFormat *samples_list;
 
 
@@ -7747,9 +7764,9 @@ typedef struct AVFilter {
     int priv_size;
 
     int flags_internal;
-# 367 "./libavfilter/avfilter.h"
+# 379 "./libavfilter/avfilter.h"
     int (*process_command)(AVFilterContext *, const char *cmd, const char *arg, char *res, int res_len, int flags);
-# 381 "./libavfilter/avfilter.h"
+# 393 "./libavfilter/avfilter.h"
     int (*activate)(AVFilterContext *ctx);
 } AVFilter;
 
@@ -7784,7 +7801,7 @@ struct AVFilterContext {
     void *priv;
 
     struct AVFilterGraph *graph;
-# 432 "./libavfilter/avfilter.h"
+# 444 "./libavfilter/avfilter.h"
     int thread_type;
 
 
@@ -7798,7 +7815,7 @@ struct AVFilterContext {
     void *enable;
     double *var_values;
     int is_disabled;
-# 457 "./libavfilter/avfilter.h"
+# 469 "./libavfilter/avfilter.h"
     AVBufferRef *hw_device_ctx;
 
 
@@ -7814,10 +7831,10 @@ struct AVFilterContext {
 
 
     unsigned ready;
-# 487 "./libavfilter/avfilter.h"
+# 499 "./libavfilter/avfilter.h"
     int extra_hw_frames;
 };
-# 500 "./libavfilter/avfilter.h"
+# 512 "./libavfilter/avfilter.h"
 typedef struct AVFilterFormatsConfig {
 
 
@@ -7835,8 +7852,14 @@ typedef struct AVFilterFormatsConfig {
 
     AVFilterChannelLayouts *channel_layouts;
 
+
+
+
+    AVFilterFormats *color_spaces;
+    AVFilterFormats *color_ranges;
+
 } AVFilterFormatsConfig;
-# 531 "./libavfilter/avfilter.h"
+# 549 "./libavfilter/avfilter.h"
 struct AVFilterLink {
     AVFilterContext *src;
     AVFilterPad *srcpad;
@@ -7862,24 +7885,20 @@ struct AVFilterLink {
     int sample_rate;
 
     int format;
-# 564 "./libavfilter/avfilter.h"
+# 582 "./libavfilter/avfilter.h"
     AVRational time_base;
 
     AVChannelLayout ch_layout;
-# 579 "./libavfilter/avfilter.h"
+# 593 "./libavfilter/avfilter.h"
+    enum AVColorSpace colorspace;
+    enum AVColorRange color_range;
+# 607 "./libavfilter/avfilter.h"
     AVFilterFormatsConfig incfg;
 
 
 
 
     AVFilterFormatsConfig outcfg;
-
-
-    enum {
-        AVLINK_UNINIT = 0,
-        AVLINK_STARTINIT,
-        AVLINK_INIT
-    } init_state;
 
 
 
@@ -7897,14 +7916,9 @@ struct AVFilterLink {
 
 
     int64_t current_pts_us;
-
-
-
-
-    int age_index;
-# 626 "./libavfilter/avfilter.h"
+# 642 "./libavfilter/avfilter.h"
     AVRational frame_rate;
-# 635 "./libavfilter/avfilter.h"
+# 651 "./libavfilter/avfilter.h"
     int min_samples;
 
 
@@ -7926,11 +7940,6 @@ struct AVFilterLink {
 
 
 
-    void *frame_pool;
-
-
-
-
 
 
     int frame_wanted_out;
@@ -7940,11 +7949,8 @@ struct AVFilterLink {
 
 
     AVBufferRef *hw_frames_ctx;
-# 678 "./libavfilter/avfilter.h"
-    char reserved[0xF000];
-# 715 "./libavfilter/avfilter.h"
 };
-# 726 "./libavfilter/avfilter.h"
+# 692 "./libavfilter/avfilter.h"
 int avfilter_link(AVFilterContext *src, unsigned srcpad,
                   AVFilterContext *dst, unsigned dstpad);
 
@@ -7960,15 +7966,15 @@ void avfilter_link_free(AVFilterLink **link);
 
 
 int avfilter_config_links(AVFilterContext *filter);
-# 749 "./libavfilter/avfilter.h"
+# 715 "./libavfilter/avfilter.h"
 int avfilter_process_command(AVFilterContext *filter, const char *cmd, const char *arg, char *res, int res_len, int flags);
-# 760 "./libavfilter/avfilter.h"
+# 726 "./libavfilter/avfilter.h"
 const AVFilter *av_filter_iterate(void **opaque);
-# 769 "./libavfilter/avfilter.h"
+# 735 "./libavfilter/avfilter.h"
 const AVFilter *avfilter_get_by_name(const char *name);
-# 782 "./libavfilter/avfilter.h"
+# 748 "./libavfilter/avfilter.h"
 int avfilter_init_str(AVFilterContext *ctx, const char *args);
-# 804 "./libavfilter/avfilter.h"
+# 770 "./libavfilter/avfilter.h"
 int avfilter_init_dict(AVFilterContext *ctx, AVDictionary **options);
 
 
@@ -7978,7 +7984,7 @@ int avfilter_init_dict(AVFilterContext *ctx, AVDictionary **options);
 
 
 void avfilter_free(AVFilterContext *filter);
-# 823 "./libavfilter/avfilter.h"
+# 789 "./libavfilter/avfilter.h"
 int avfilter_insert_filter(AVFilterLink *link, AVFilterContext *filt,
                            unsigned filt_srcpad_idx, unsigned filt_dstpad_idx);
 
@@ -7990,9 +7996,9 @@ int avfilter_insert_filter(AVFilterLink *link, AVFilterContext *filt,
 const AVClass *avfilter_get_class(void);
 
 typedef struct AVFilterGraphInternal AVFilterGraphInternal;
-# 847 "./libavfilter/avfilter.h"
+# 813 "./libavfilter/avfilter.h"
 typedef int (avfilter_action_func)(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs);
-# 861 "./libavfilter/avfilter.h"
+# 827 "./libavfilter/avfilter.h"
 typedef int (avfilter_execute_func)(AVFilterContext *ctx, avfilter_action_func *func,
                                     void *arg, int *ret, int nb_jobs);
 
@@ -8002,7 +8008,7 @@ typedef struct AVFilterGraph {
     unsigned nb_filters;
 
     char *scale_sws_opts;
-# 883 "./libavfilter/avfilter.h"
+# 849 "./libavfilter/avfilter.h"
     int thread_type;
 
 
@@ -8023,15 +8029,10 @@ typedef struct AVFilterGraph {
 
 
     void *opaque;
-# 916 "./libavfilter/avfilter.h"
+# 882 "./libavfilter/avfilter.h"
     avfilter_execute_func *execute;
 
     char *aresample_swr_opts;
-# 927 "./libavfilter/avfilter.h"
-    AVFilterLink **sink_links;
-    int sink_links_count;
-
-    unsigned disable_auto_convert;
 } AVFilterGraph;
 
 
@@ -8040,24 +8041,24 @@ typedef struct AVFilterGraph {
 
 
 AVFilterGraph *avfilter_graph_alloc(void);
-# 954 "./libavfilter/avfilter.h"
+# 908 "./libavfilter/avfilter.h"
 AVFilterContext *avfilter_graph_alloc_filter(AVFilterGraph *graph,
                                              const AVFilter *filter,
                                              const char *name);
-# 966 "./libavfilter/avfilter.h"
+# 920 "./libavfilter/avfilter.h"
 AVFilterContext *avfilter_graph_get_filter(AVFilterGraph *graph, const char *name);
-# 981 "./libavfilter/avfilter.h"
+# 935 "./libavfilter/avfilter.h"
 int avfilter_graph_create_filter(AVFilterContext **filt_ctx, const AVFilter *filt,
                                  const char *name, const char *args, void *opaque,
                                  AVFilterGraph *graph_ctx);
-# 993 "./libavfilter/avfilter.h"
+# 947 "./libavfilter/avfilter.h"
 void avfilter_graph_set_auto_convert(AVFilterGraph *graph, unsigned flags);
 
 enum {
     AVFILTER_AUTO_CONVERT_ALL = 0,
     AVFILTER_AUTO_CONVERT_NONE = -1,
 };
-# 1007 "./libavfilter/avfilter.h"
+# 961 "./libavfilter/avfilter.h"
 int avfilter_graph_config(AVFilterGraph *graphctx, void *log_ctx);
 
 
@@ -8065,7 +8066,7 @@ int avfilter_graph_config(AVFilterGraph *graphctx, void *log_ctx);
 
 
 void avfilter_graph_free(AVFilterGraph **graph);
-# 1024 "./libavfilter/avfilter.h"
+# 978 "./libavfilter/avfilter.h"
 typedef struct AVFilterInOut {
 
     char *name;
@@ -8092,15 +8093,15 @@ AVFilterInOut *avfilter_inout_alloc(void);
 
 
 void avfilter_inout_free(AVFilterInOut **inout);
-# 1069 "./libavfilter/avfilter.h"
+# 1023 "./libavfilter/avfilter.h"
 int avfilter_graph_parse(AVFilterGraph *graph, const char *filters,
                          AVFilterInOut *inputs, AVFilterInOut *outputs,
                          void *log_ctx);
-# 1090 "./libavfilter/avfilter.h"
+# 1044 "./libavfilter/avfilter.h"
 int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
                              AVFilterInOut **inputs, AVFilterInOut **outputs,
                              void *log_ctx);
-# 1116 "./libavfilter/avfilter.h"
+# 1070 "./libavfilter/avfilter.h"
 int avfilter_graph_parse2(AVFilterGraph *graph, const char *filters,
                           AVFilterInOut **inputs,
                           AVFilterInOut **outputs);
@@ -8129,13 +8130,13 @@ typedef struct AVFilterPadParams {
 
 
 typedef struct AVFilterParams {
-# 1154 "./libavfilter/avfilter.h"
+# 1108 "./libavfilter/avfilter.h"
     AVFilterContext *filter;
-# 1171 "./libavfilter/avfilter.h"
+# 1125 "./libavfilter/avfilter.h"
     char *filter_name;
-# 1183 "./libavfilter/avfilter.h"
+# 1137 "./libavfilter/avfilter.h"
     char *instance_name;
-# 1195 "./libavfilter/avfilter.h"
+# 1149 "./libavfilter/avfilter.h"
     AVDictionary *opts;
 
     AVFilterPadParams **inputs;
@@ -8155,7 +8156,7 @@ typedef struct AVFilterChain {
     AVFilterParams **filters;
     size_t nb_filters;
 } AVFilterChain;
-# 1224 "./libavfilter/avfilter.h"
+# 1178 "./libavfilter/avfilter.h"
 typedef struct AVFilterGraphSegment {
 
 
@@ -8169,37 +8170,37 @@ typedef struct AVFilterGraphSegment {
 
     AVFilterChain **chains;
     size_t nb_chains;
-# 1246 "./libavfilter/avfilter.h"
+# 1200 "./libavfilter/avfilter.h"
     char *scale_sws_opts;
 } AVFilterGraphSegment;
-# 1273 "./libavfilter/avfilter.h"
+# 1227 "./libavfilter/avfilter.h"
 int avfilter_graph_segment_parse(AVFilterGraph *graph, const char *graph_str,
                                  int flags, AVFilterGraphSegment **seg);
-# 1301 "./libavfilter/avfilter.h"
+# 1255 "./libavfilter/avfilter.h"
 int avfilter_graph_segment_create_filters(AVFilterGraphSegment *seg, int flags);
-# 1330 "./libavfilter/avfilter.h"
+# 1284 "./libavfilter/avfilter.h"
 int avfilter_graph_segment_apply_opts(AVFilterGraphSegment *seg, int flags);
-# 1352 "./libavfilter/avfilter.h"
+# 1306 "./libavfilter/avfilter.h"
 int avfilter_graph_segment_init(AVFilterGraphSegment *seg, int flags);
-# 1387 "./libavfilter/avfilter.h"
+# 1341 "./libavfilter/avfilter.h"
 int avfilter_graph_segment_link(AVFilterGraphSegment *seg, int flags,
                                 AVFilterInOut **inputs,
                                 AVFilterInOut **outputs);
-# 1415 "./libavfilter/avfilter.h"
+# 1369 "./libavfilter/avfilter.h"
 int avfilter_graph_segment_apply(AVFilterGraphSegment *seg, int flags,
                                  AVFilterInOut **inputs,
                                  AVFilterInOut **outputs);
-# 1429 "./libavfilter/avfilter.h"
+# 1383 "./libavfilter/avfilter.h"
 void avfilter_graph_segment_free(AVFilterGraphSegment **seg);
-# 1446 "./libavfilter/avfilter.h"
+# 1400 "./libavfilter/avfilter.h"
 int avfilter_graph_send_command(AVFilterGraph *graph, const char *target, const char *cmd, const char *arg, char *res, int res_len, int flags);
-# 1463 "./libavfilter/avfilter.h"
+# 1417 "./libavfilter/avfilter.h"
 int avfilter_graph_queue_command(AVFilterGraph *graph, const char *target, const char *cmd, const char *arg, int flags, double ts);
-# 1474 "./libavfilter/avfilter.h"
+# 1428 "./libavfilter/avfilter.h"
 char *avfilter_graph_dump(AVFilterGraph *graph, const char *options);
-# 1494 "./libavfilter/avfilter.h"
+# 1448 "./libavfilter/avfilter.h"
 int avfilter_graph_request_oldest(AVFilterGraph *graph);
-# 30 "fftools/cmdutils.h" 2
+# 30 "../ffmpeg/fftools/cmdutils.h" 2
 # 1 "./libavformat/avformat.h" 1
 # 319 "./libavformat/avformat.h"
 # 1 "./libavformat/avio.h" 1
@@ -8845,11 +8846,76 @@ typedef struct AVStream {
 # 1018 "./libavformat/avformat.h"
     int pts_wrap_bits;
 } AVStream;
+# 1082 "./libavformat/avformat.h"
+typedef struct AVStreamGroupTileGrid {
+    const AVClass *av_class;
+
+
+
+
+
+
+    unsigned int nb_tiles;
+
+
+
+
+
+
+    int coded_width;
+
+
+
+
+
+    int coded_height;
+# 1115 "./libavformat/avformat.h"
+    struct {
+
+
+
+
+
+        unsigned int idx;
+
+
+
+
+        int horizontal;
+
+
+
+
+        int vertical;
+    } *offsets;
+# 1141 "./libavformat/avformat.h"
+    uint8_t background[4];
+
+
+
+
+
+
+
+    int horizontal_offset;
+
+
+
+
+
+
+    int vertical_offset;
+# 1167 "./libavformat/avformat.h"
+    int width;
+# 1177 "./libavformat/avformat.h"
+    int height;
+} AVStreamGroupTileGrid;
 
 enum AVStreamGroupParamsType {
     AV_STREAM_GROUP_PARAMS_NONE,
     AV_STREAM_GROUP_PARAMS_IAMF_AUDIO_ELEMENT,
     AV_STREAM_GROUP_PARAMS_IAMF_MIX_PRESENTATION,
+    AV_STREAM_GROUP_PARAMS_TILE_GRID,
 };
 
 struct AVIAMFAudioElement;
@@ -8890,8 +8956,9 @@ typedef struct AVStreamGroup {
     union {
         struct AVIAMFAudioElement *iamf_audio_element;
         struct AVIAMFMixPresentation *iamf_mix_presentation;
+        struct AVStreamGroupTileGrid *tile_grid;
     } params;
-# 1075 "./libavformat/avformat.h"
+# 1236 "./libavformat/avformat.h"
     AVDictionary *metadata;
 
 
@@ -8900,8 +8967,10 @@ typedef struct AVStreamGroup {
 
 
     unsigned int nb_streams;
-# 1095 "./libavformat/avformat.h"
+# 1256 "./libavformat/avformat.h"
     AVStream **streams;
+# 1266 "./libavformat/avformat.h"
+    int disposition;
 } AVStreamGroup;
 
 struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
@@ -8914,7 +8983,7 @@ struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
 
 __attribute__((deprecated))
 int64_t av_stream_get_end_pts(const AVStream *st);
-# 1118 "./libavformat/avformat.h"
+# 1289 "./libavformat/avformat.h"
 typedef struct AVProgram {
     int id;
     int flags;
@@ -8927,14 +8996,14 @@ typedef struct AVProgram {
     int pmt_pid;
     int pcr_pid;
     int pmt_version;
-# 1138 "./libavformat/avformat.h"
+# 1309 "./libavformat/avformat.h"
     int64_t start_time;
     int64_t end_time;
 
     int64_t pts_wrap_reference;
     int pts_wrap_behavior;
 } AVProgram;
-# 1153 "./libavformat/avformat.h"
+# 1324 "./libavformat/avformat.h"
 typedef struct AVChapter {
     int64_t id;
     AVRational time_base;
@@ -8961,7 +9030,7 @@ enum AVDurationEstimationMethod {
     AVFMT_DURATION_FROM_STREAM,
     AVFMT_DURATION_FROM_BITRATE
 };
-# 1194 "./libavformat/avformat.h"
+# 1365 "./libavformat/avformat.h"
 typedef struct AVFormatContext {
 
 
@@ -8982,9 +9051,9 @@ typedef struct AVFormatContext {
 
 
     const struct AVOutputFormat *oformat;
-# 1222 "./libavformat/avformat.h"
+# 1393 "./libavformat/avformat.h"
     void *priv_data;
-# 1236 "./libavformat/avformat.h"
+# 1407 "./libavformat/avformat.h"
     AVIOContext *pb;
 
 
@@ -9000,13 +9069,13 @@ typedef struct AVFormatContext {
 
 
     unsigned int nb_streams;
-# 1262 "./libavformat/avformat.h"
+# 1433 "./libavformat/avformat.h"
     AVStream **streams;
-# 1277 "./libavformat/avformat.h"
+# 1448 "./libavformat/avformat.h"
     char *url;
-# 1286 "./libavformat/avformat.h"
+# 1457 "./libavformat/avformat.h"
     int64_t start_time;
-# 1296 "./libavformat/avformat.h"
+# 1467 "./libavformat/avformat.h"
     int64_t duration;
 
 
@@ -9024,7 +9093,7 @@ typedef struct AVFormatContext {
 
 
     int flags;
-# 1348 "./libavformat/avformat.h"
+# 1519 "./libavformat/avformat.h"
     int64_t probesize;
 
 
@@ -9058,7 +9127,7 @@ typedef struct AVFormatContext {
 
 
     enum AVCodecID subtitle_codec_id;
-# 1392 "./libavformat/avformat.h"
+# 1563 "./libavformat/avformat.h"
     unsigned int max_index_size;
 
 
@@ -9066,12 +9135,12 @@ typedef struct AVFormatContext {
 
 
     unsigned int max_picture_buffer;
-# 1411 "./libavformat/avformat.h"
+# 1582 "./libavformat/avformat.h"
     unsigned int nb_chapters;
     AVChapter **chapters;
-# 1422 "./libavformat/avformat.h"
+# 1593 "./libavformat/avformat.h"
     AVDictionary *metadata;
-# 1435 "./libavformat/avformat.h"
+# 1606 "./libavformat/avformat.h"
     int64_t start_time_realtime;
 
 
@@ -9087,14 +9156,14 @@ typedef struct AVFormatContext {
 
 
     int error_recognition;
-# 1460 "./libavformat/avformat.h"
+# 1631 "./libavformat/avformat.h"
     AVIOInterruptCB interrupt_callback;
 
 
 
 
     int debug;
-# 1484 "./libavformat/avformat.h"
+# 1655 "./libavformat/avformat.h"
     int64_t max_interleave_delta;
 
 
@@ -9102,13 +9171,13 @@ typedef struct AVFormatContext {
 
 
     int strict_std_compliance;
-# 1503 "./libavformat/avformat.h"
+# 1674 "./libavformat/avformat.h"
     int event_flags;
-# 1516 "./libavformat/avformat.h"
+# 1687 "./libavformat/avformat.h"
     int max_ts_probe;
-# 1525 "./libavformat/avformat.h"
+# 1696 "./libavformat/avformat.h"
     int avoid_negative_ts;
-# 1535 "./libavformat/avformat.h"
+# 1706 "./libavformat/avformat.h"
     int ts_id;
 
 
@@ -9185,9 +9254,9 @@ typedef struct AVFormatContext {
 
 
     int flush_packets;
-# 1619 "./libavformat/avformat.h"
+# 1790 "./libavformat/avformat.h"
     int probe_score;
-# 1630 "./libavformat/avformat.h"
+# 1801 "./libavformat/avformat.h"
     int format_probesize;
 
 
@@ -9290,7 +9359,7 @@ typedef struct AVFormatContext {
 
 
     char *protocol_whitelist;
-# 1753 "./libavformat/avformat.h"
+# 1924 "./libavformat/avformat.h"
     int (*io_open)(struct AVFormatContext *s, AVIOContext **pb, const char *url,
                    int flags, AVDictionary **options);
 
@@ -9331,7 +9400,7 @@ typedef struct AVFormatContext {
 
 
     int max_probe_packets;
-# 1805 "./libavformat/avformat.h"
+# 1976 "./libavformat/avformat.h"
     int (*io_close2)(struct AVFormatContext *s, AVIOContext *pb);
 
 
@@ -9340,10 +9409,10 @@ typedef struct AVFormatContext {
 
 
     unsigned int nb_stream_groups;
-# 1825 "./libavformat/avformat.h"
+# 1996 "./libavformat/avformat.h"
     AVStreamGroup **stream_groups;
 } AVFormatContext;
-# 1838 "./libavformat/avformat.h"
+# 2009 "./libavformat/avformat.h"
 void av_format_inject_global_side_data(AVFormatContext *s);
 
 
@@ -9352,7 +9421,7 @@ void av_format_inject_global_side_data(AVFormatContext *s);
 
 
 enum AVDurationEstimationMethod av_fmt_ctx_get_duration_estimation_method(const AVFormatContext* ctx);
-# 1859 "./libavformat/avformat.h"
+# 2030 "./libavformat/avformat.h"
 unsigned avformat_version(void);
 
 
@@ -9364,7 +9433,7 @@ const char *avformat_configuration(void);
 
 
 const char *avformat_license(void);
-# 1885 "./libavformat/avformat.h"
+# 2056 "./libavformat/avformat.h"
 int avformat_network_init(void);
 
 
@@ -9372,9 +9441,9 @@ int avformat_network_init(void);
 
 
 int avformat_network_deinit(void);
-# 1902 "./libavformat/avformat.h"
+# 2073 "./libavformat/avformat.h"
 const AVOutputFormat *av_muxer_iterate(void **opaque);
-# 1913 "./libavformat/avformat.h"
+# 2084 "./libavformat/avformat.h"
 const AVInputFormat *av_demuxer_iterate(void **opaque);
 
 
@@ -9413,43 +9482,43 @@ const AVClass *av_stream_get_class(void);
 
 
 const AVClass *av_stream_group_get_class(void);
-# 1971 "./libavformat/avformat.h"
+# 2142 "./libavformat/avformat.h"
 AVStreamGroup *avformat_stream_group_create(AVFormatContext *s,
                                             enum AVStreamGroupParamsType type,
                                             AVDictionary **options);
-# 1992 "./libavformat/avformat.h"
+# 2163 "./libavformat/avformat.h"
 AVStream *avformat_new_stream(AVFormatContext *s, const struct AVCodec *c);
-# 2017 "./libavformat/avformat.h"
+# 2188 "./libavformat/avformat.h"
 int avformat_stream_group_add_stream(AVStreamGroup *stg, AVStream *st);
-# 2035 "./libavformat/avformat.h"
+# 2206 "./libavformat/avformat.h"
 __attribute__((deprecated))
 int av_stream_add_side_data(AVStream *st, enum AVPacketSideDataType type,
                             uint8_t *data, size_t size);
-# 2050 "./libavformat/avformat.h"
+# 2221 "./libavformat/avformat.h"
 __attribute__((deprecated))
 uint8_t *av_stream_new_side_data(AVStream *stream,
                                  enum AVPacketSideDataType type, size_t size);
-# 2065 "./libavformat/avformat.h"
+# 2236 "./libavformat/avformat.h"
 __attribute__((deprecated))
 uint8_t *av_stream_get_side_data(const AVStream *stream,
                                  enum AVPacketSideDataType type, size_t *size);
 
 
 AVProgram *av_new_program(AVFormatContext *s, int id);
-# 2094 "./libavformat/avformat.h"
+# 2265 "./libavformat/avformat.h"
 int avformat_alloc_output_context2(AVFormatContext **ctx, const AVOutputFormat *oformat,
                                    const char *format_name, const char *filename);
-# 2105 "./libavformat/avformat.h"
+# 2276 "./libavformat/avformat.h"
 const AVInputFormat *av_find_input_format(const char *short_name);
-# 2114 "./libavformat/avformat.h"
+# 2285 "./libavformat/avformat.h"
 const AVInputFormat *av_probe_input_format(const AVProbeData *pd, int is_opened);
-# 2128 "./libavformat/avformat.h"
+# 2299 "./libavformat/avformat.h"
 const AVInputFormat *av_probe_input_format2(const AVProbeData *pd,
                                             int is_opened, int *score_max);
-# 2138 "./libavformat/avformat.h"
+# 2309 "./libavformat/avformat.h"
 const AVInputFormat *av_probe_input_format3(const AVProbeData *pd,
                                             int is_opened, int *score_ret);
-# 2158 "./libavformat/avformat.h"
+# 2329 "./libavformat/avformat.h"
 int av_probe_input_buffer2(AVIOContext *pb, const AVInputFormat **fmt,
                            const char *url, void *logctx,
                            unsigned int offset, unsigned int max_probe_size);
@@ -9460,30 +9529,30 @@ int av_probe_input_buffer2(AVIOContext *pb, const AVInputFormat **fmt,
 int av_probe_input_buffer(AVIOContext *pb, const AVInputFormat **fmt,
                           const char *url, void *logctx,
                           unsigned int offset, unsigned int max_probe_size);
-# 2191 "./libavformat/avformat.h"
+# 2362 "./libavformat/avformat.h"
 int avformat_open_input(AVFormatContext **ps, const char *url,
                         const AVInputFormat *fmt, AVDictionary **options);
-# 2215 "./libavformat/avformat.h"
+# 2386 "./libavformat/avformat.h"
 int avformat_find_stream_info(AVFormatContext *ic, AVDictionary **options);
-# 2228 "./libavformat/avformat.h"
+# 2399 "./libavformat/avformat.h"
 AVProgram *av_find_program_from_stream(AVFormatContext *ic, AVProgram *last, int s);
 
 void av_program_add_stream_index(AVFormatContext *ac, int progid, unsigned int idx);
-# 2258 "./libavformat/avformat.h"
+# 2429 "./libavformat/avformat.h"
 int av_find_best_stream(AVFormatContext *ic,
                         enum AVMediaType type,
                         int wanted_stream_nb,
                         int related_stream,
                         const struct AVCodec **decoder_ret,
                         int flags);
-# 2292 "./libavformat/avformat.h"
+# 2463 "./libavformat/avformat.h"
 int av_read_frame(AVFormatContext *s, AVPacket *pkt);
-# 2308 "./libavformat/avformat.h"
+# 2479 "./libavformat/avformat.h"
 int av_seek_frame(AVFormatContext *s, int stream_index, int64_t timestamp,
                   int flags);
-# 2337 "./libavformat/avformat.h"
+# 2508 "./libavformat/avformat.h"
 int avformat_seek_file(AVFormatContext *s, int stream_index, int64_t min_ts, int64_t ts, int64_t max_ts, int flags);
-# 2355 "./libavformat/avformat.h"
+# 2526 "./libavformat/avformat.h"
 int avformat_flush(AVFormatContext *s);
 
 
@@ -9504,20 +9573,20 @@ int av_read_pause(AVFormatContext *s);
 
 
 void avformat_close_input(AVFormatContext **s);
-# 2415 "./libavformat/avformat.h"
+# 2586 "./libavformat/avformat.h"
 __attribute__((warn_unused_result))
 int avformat_write_header(AVFormatContext *s, AVDictionary **options);
-# 2443 "./libavformat/avformat.h"
+# 2614 "./libavformat/avformat.h"
 __attribute__((warn_unused_result))
 int avformat_init_output(AVFormatContext *s, AVDictionary **options);
-# 2483 "./libavformat/avformat.h"
+# 2654 "./libavformat/avformat.h"
 int av_write_frame(AVFormatContext *s, AVPacket *pkt);
-# 2527 "./libavformat/avformat.h"
+# 2698 "./libavformat/avformat.h"
 int av_interleaved_write_frame(AVFormatContext *s, AVPacket *pkt);
-# 2537 "./libavformat/avformat.h"
+# 2708 "./libavformat/avformat.h"
 int av_write_uncoded_frame(AVFormatContext *s, int stream_index,
                            struct AVFrame *frame);
-# 2556 "./libavformat/avformat.h"
+# 2727 "./libavformat/avformat.h"
 int av_interleaved_write_uncoded_frame(AVFormatContext *s, int stream_index,
                                        struct AVFrame *frame);
 
@@ -9528,9 +9597,9 @@ int av_interleaved_write_uncoded_frame(AVFormatContext *s, int stream_index,
 
 
 int av_write_uncoded_frame_query(AVFormatContext *s, int stream_index);
-# 2576 "./libavformat/avformat.h"
+# 2747 "./libavformat/avformat.h"
 int av_write_trailer(AVFormatContext *s);
-# 2590 "./libavformat/avformat.h"
+# 2761 "./libavformat/avformat.h"
 const AVOutputFormat *av_guess_format(const char *short_name,
                                       const char *filename,
                                       const char *mime_type);
@@ -9541,28 +9610,28 @@ const AVOutputFormat *av_guess_format(const char *short_name,
 enum AVCodecID av_guess_codec(const AVOutputFormat *fmt, const char *short_name,
                               const char *filename, const char *mime_type,
                               enum AVMediaType type);
-# 2618 "./libavformat/avformat.h"
+# 2789 "./libavformat/avformat.h"
 int av_get_output_timestamp(struct AVFormatContext *s, int stream,
                             int64_t *dts, int64_t *wall);
-# 2645 "./libavformat/avformat.h"
+# 2816 "./libavformat/avformat.h"
 void av_hex_dump(FILE *f, const uint8_t *buf, int size);
-# 2659 "./libavformat/avformat.h"
+# 2830 "./libavformat/avformat.h"
 void av_hex_dump_log(void *avcl, int level, const uint8_t *buf, int size);
-# 2669 "./libavformat/avformat.h"
+# 2840 "./libavformat/avformat.h"
 void av_pkt_dump2(FILE *f, const AVPacket *pkt, int dump_payload, const AVStream *st);
-# 2683 "./libavformat/avformat.h"
+# 2854 "./libavformat/avformat.h"
 void av_pkt_dump_log2(void *avcl, int level, const AVPacket *pkt, int dump_payload,
                       const AVStream *st);
-# 2694 "./libavformat/avformat.h"
+# 2865 "./libavformat/avformat.h"
 enum AVCodecID av_codec_get_id(const struct AVCodecTag * const *tags, unsigned int tag);
-# 2704 "./libavformat/avformat.h"
+# 2875 "./libavformat/avformat.h"
 unsigned int av_codec_get_tag(const struct AVCodecTag * const *tags, enum AVCodecID id);
-# 2715 "./libavformat/avformat.h"
+# 2886 "./libavformat/avformat.h"
 int av_codec_get_tag2(const struct AVCodecTag * const *tags, enum AVCodecID id,
                       unsigned int *tag);
 
 int av_find_default_stream_index(AVFormatContext *s);
-# 2731 "./libavformat/avformat.h"
+# 2902 "./libavformat/avformat.h"
 int av_index_search_timestamp(AVStream *st, int64_t timestamp, int flags);
 
 
@@ -9572,9 +9641,9 @@ int av_index_search_timestamp(AVStream *st, int64_t timestamp, int flags);
 
 
 int avformat_index_get_entries_count(const AVStream *st);
-# 2752 "./libavformat/avformat.h"
+# 2923 "./libavformat/avformat.h"
 const AVIndexEntry *avformat_index_get_entry(AVStream *st, int idx);
-# 2769 "./libavformat/avformat.h"
+# 2940 "./libavformat/avformat.h"
 const AVIndexEntry *avformat_index_get_entry_from_timestamp(AVStream *st,
                                                             int64_t wanted_timestamp,
                                                             int flags);
@@ -9586,19 +9655,19 @@ const AVIndexEntry *avformat_index_get_entry_from_timestamp(AVStream *st,
 
 int av_add_index_entry(AVStream *st, int64_t pos, int64_t timestamp,
                        int size, int distance, int flags);
-# 2801 "./libavformat/avformat.h"
+# 2972 "./libavformat/avformat.h"
 void av_url_split(char *proto, int proto_size,
                   char *authorization, int authorization_size,
                   char *hostname, int hostname_size,
                   int *port_ptr,
                   char *path, int path_size,
                   const char *url);
-# 2819 "./libavformat/avformat.h"
+# 2990 "./libavformat/avformat.h"
 void av_dump_format(AVFormatContext *ic,
                     int index,
                     const char *url,
                     int is_output);
-# 2840 "./libavformat/avformat.h"
+# 3011 "./libavformat/avformat.h"
 int av_get_frame_filename2(char *buf, int buf_size,
                           const char *path, int number, int flags);
 
@@ -9612,14 +9681,14 @@ int av_get_frame_filename(char *buf, int buf_size,
 
 
 int av_filename_number_test(const char *filename);
-# 2871 "./libavformat/avformat.h"
+# 3042 "./libavformat/avformat.h"
 int av_sdp_create(AVFormatContext *ac[], int n_files, char *buf, int size);
-# 2880 "./libavformat/avformat.h"
+# 3051 "./libavformat/avformat.h"
 int av_match_ext(const char *filename, const char *extensions);
-# 2892 "./libavformat/avformat.h"
+# 3063 "./libavformat/avformat.h"
 int avformat_query_codec(const AVOutputFormat *ofmt, enum AVCodecID codec_id,
                          int std_compliance);
-# 2910 "./libavformat/avformat.h"
+# 3081 "./libavformat/avformat.h"
 const struct AVCodecTag *avformat_get_riff_video_tags(void);
 
 
@@ -9633,13 +9702,13 @@ const struct AVCodecTag *avformat_get_mov_video_tags(void);
 
 
 const struct AVCodecTag *avformat_get_mov_audio_tags(void);
-# 2945 "./libavformat/avformat.h"
+# 3116 "./libavformat/avformat.h"
 AVRational av_guess_sample_aspect_ratio(AVFormatContext *format, AVStream *stream,
                                         struct AVFrame *frame);
-# 2956 "./libavformat/avformat.h"
+# 3127 "./libavformat/avformat.h"
 AVRational av_guess_frame_rate(AVFormatContext *ctx, AVStream *stream,
                                struct AVFrame *frame);
-# 2972 "./libavformat/avformat.h"
+# 3143 "./libavformat/avformat.h"
 int avformat_match_stream_specifier(AVFormatContext *s, AVStream *st,
                                     const char *spec);
 
@@ -9653,7 +9722,7 @@ enum AVTimebaseSource {
     AVFMT_TBCF_R_FRAMERATE,
 
 };
-# 2996 "./libavformat/avformat.h"
+# 3167 "./libavformat/avformat.h"
 int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt,
                                                   AVStream *ost, const AVStream *ist,
                                                   enum AVTimebaseSource copy_tb);
@@ -9664,7 +9733,7 @@ int avformat_transfer_internal_stream_timing_info(const AVOutputFormat *ofmt,
 
 
 AVRational av_stream_get_codec_timebase(const AVStream *st);
-# 31 "fftools/cmdutils.h" 2
+# 31 "../ffmpeg/fftools/cmdutils.h" 2
 # 1 "./libswscale/swscale.h" 1
 # 36 "./libswscale/swscale.h"
 # 1 "./libswscale/version_major.h" 1
@@ -9829,7 +9898,7 @@ void sws_convertPalette8ToPacked24(const uint8_t *src, uint8_t *dst, int num_pix
 
 
 const AVClass *sws_get_class(void);
-# 32 "fftools/cmdutils.h" 2
+# 32 "../ffmpeg/fftools/cmdutils.h" 2
 
 
 
@@ -9877,8 +9946,19 @@ int opt_default(void *optctx, const char *opt, const char *arg);
 
 
 int opt_timelimit(void *optctx, const char *opt, const char *arg);
-# 91 "fftools/cmdutils.h"
-int parse_number(const char *context, const char *numstr, int type,
+
+enum OptionType {
+    OPT_TYPE_FUNC,
+    OPT_TYPE_BOOL,
+    OPT_TYPE_STRING,
+    OPT_TYPE_INT,
+    OPT_TYPE_INT64,
+    OPT_TYPE_FLOAT,
+    OPT_TYPE_DOUBLE,
+    OPT_TYPE_TIME,
+};
+# 102 "../ffmpeg/fftools/cmdutils.h"
+int parse_number(const char *context, const char *numstr, enum OptionType type,
                  double min, double max, double *dst);
 
 typedef struct SpecifierOpt {
@@ -9893,10 +9973,20 @@ typedef struct SpecifierOpt {
     } u;
 } SpecifierOpt;
 
+typedef struct SpecifierOptList {
+    SpecifierOpt *opt;
+    int nb_opt;
+
+
+    const struct OptionDef *opt_canon;
+    enum OptionType type;
+} SpecifierOptList;
+
 typedef struct OptionDef {
     const char *name;
+    enum OptionType type;
     int flags;
-# 134 "fftools/cmdutils.h"
+# 178 "../ffmpeg/fftools/cmdutils.h"
      union {
         void *dst_ptr;
         int (*func_arg)(void *, const char *, const char *);
@@ -9904,10 +9994,19 @@ typedef struct OptionDef {
     } u;
     const char *help;
     const char *argname;
+
+    union {
+
+
+        const char *name_canon;
+
+
+        const char * const *names_alt;
+    } u1;
 } OptionDef;
-# 152 "fftools/cmdutils.h"
+# 204 "../ffmpeg/fftools/cmdutils.h"
 void show_help_options(const OptionDef *options, const char *msg, int req_flags,
-                       int rej_flags, int alt_flags);
+                       int rej_flags);
 
 
 
@@ -9920,7 +10019,7 @@ void show_help_children(const AVClass *class, int flags);
 
 
 void show_help_default(const char *opt, const char *arg);
-# 179 "fftools/cmdutils.h"
+# 231 "../ffmpeg/fftools/cmdutils.h"
 int parse_options(void *optctx, int argc, char **argv, const OptionDef *options,
                   int (* parse_arg_function)(void *optctx, const char*));
 
@@ -9997,8 +10096,8 @@ typedef struct OptionParseContext {
 
 
 
-int parse_optgroup(void *optctx, OptionGroup *g);
-# 275 "fftools/cmdutils.h"
+int parse_optgroup(void *optctx, OptionGroup *g, const OptionDef *defs);
+# 327 "../ffmpeg/fftools/cmdutils.h"
 int split_commandline(OptionParseContext *octx, int argc, char *argv[],
                       const OptionDef *options,
                       const OptionGroupDef *groups, int nb_groups);
@@ -10018,17 +10117,17 @@ void parse_loglevel(int argc, char **argv, const OptionDef *options);
 
 int locate_option(int argc, char **argv, const OptionDef *options,
                   const char *optname);
-# 304 "fftools/cmdutils.h"
+# 356 "../ffmpeg/fftools/cmdutils.h"
 int check_stream_specifier(AVFormatContext *s, AVStream *st, const char *spec);
-# 321 "fftools/cmdutils.h"
+# 373 "../ffmpeg/fftools/cmdutils.h"
 int filter_codec_opts(const AVDictionary *opts, enum AVCodecID codec_id,
                       AVFormatContext *s, AVStream *st, const AVCodec *codec,
                       AVDictionary **dst);
-# 333 "fftools/cmdutils.h"
+# 385 "../ffmpeg/fftools/cmdutils.h"
 int setup_find_stream_info_opts(AVFormatContext *s,
                                 AVDictionary *codec_opts,
                                 AVDictionary ***dst);
-# 346 "fftools/cmdutils.h"
+# 398 "../ffmpeg/fftools/cmdutils.h"
 void print_error(const char *filename, int err);
 
 
@@ -10043,24 +10142,27 @@ void show_banner(int argc, char **argv, const OptionDef *options);
 
 
 int read_yesno(void);
-# 379 "fftools/cmdutils.h"
+# 431 "../ffmpeg/fftools/cmdutils.h"
 FILE *get_preset_file(char *filename, size_t filename_size,
                       const char *preset_name, int is_path, const char *codec_name);
-# 392 "fftools/cmdutils.h"
+# 444 "../ffmpeg/fftools/cmdutils.h"
 int grow_array(void **array, int elem_size, int *size, int new_size);
-# 405 "fftools/cmdutils.h"
+# 457 "../ffmpeg/fftools/cmdutils.h"
 void *allocate_array_elem(void *array, size_t elem_size, int *nb_elems);
-# 423 "fftools/cmdutils.h"
+# 475 "../ffmpeg/fftools/cmdutils.h"
 double get_rotation(const int32_t *displaymatrix);
-# 30 "fftools/ffmpeg.h" 2
-# 1 "fftools/ffmpeg_sched.h" 1
-# 25 "fftools/ffmpeg_sched.h"
+
+
+char *file_read(const char *filename);
+# 30 "../ffmpeg/fftools/ffmpeg.h" 2
+# 1 "../ffmpeg/fftools/ffmpeg_sched.h" 1
+# 25 "../ffmpeg/fftools/ffmpeg_sched.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
-# 26 "fftools/ffmpeg_sched.h" 2
+# 26 "../ffmpeg/fftools/ffmpeg_sched.h" 2
 
 
-# 1 "fftools/ffmpeg_utils.h" 1
-# 30 "fftools/ffmpeg_utils.h"
+# 1 "../ffmpeg/fftools/ffmpeg_utils.h" 1
+# 30 "../ffmpeg/fftools/ffmpeg_utils.h"
 typedef struct Timestamp {
     int64_t ts;
     AVRational tb;
@@ -10086,8 +10188,8 @@ static inline void frame_move(void *dst, void *src)
 {
     av_frame_move_ref(dst, src);
 }
-# 29 "fftools/ffmpeg_sched.h" 2
-# 84 "fftools/ffmpeg_sched.h"
+# 29 "../ffmpeg/fftools/ffmpeg_sched.h" 2
+# 84 "../ffmpeg/fftools/ffmpeg_sched.h"
 struct AVFrame;
 struct AVPacket;
 
@@ -10110,30 +10212,30 @@ typedef struct SchedulerNode {
 } SchedulerNode;
 
 typedef void* (*SchThreadFunc)(void *arg);
-# 126 "fftools/ffmpeg_sched.h"
+# 126 "../ffmpeg/fftools/ffmpeg_sched.h"
 Scheduler *sch_alloc(void);
 void sch_free(Scheduler **sch);
 
 int sch_start(Scheduler *sch);
 int sch_stop(Scheduler *sch, int64_t *finish_ts);
-# 143 "fftools/ffmpeg_sched.h"
+# 143 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_wait(Scheduler *sch, uint64_t timeout_us, int64_t *transcode_ts);
-# 154 "fftools/ffmpeg_sched.h"
+# 154 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_demux(Scheduler *sch, SchThreadFunc func, void *ctx);
-# 163 "fftools/ffmpeg_sched.h"
+# 163 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_demux_stream(Scheduler *sch, unsigned demux_idx);
-# 177 "fftools/ffmpeg_sched.h"
+# 177 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_dec(Scheduler *sch, SchThreadFunc func, void *ctx,
                 int send_end_ts);
-# 191 "fftools/ffmpeg_sched.h"
+# 191 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_filtergraph(Scheduler *sch, unsigned nb_inputs, unsigned nb_outputs,
                         SchThreadFunc func, void *ctx);
-# 232 "fftools/ffmpeg_sched.h"
+# 234 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_mux(Scheduler *sch, SchThreadFunc func, int (*init)(void *),
-                void *ctx, int sdp_auto);
-# 242 "fftools/ffmpeg_sched.h"
+                void *ctx, int sdp_auto, unsigned thread_queue_size);
+# 244 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_mux_stream(Scheduler *sch, unsigned mux_idx);
-# 255 "fftools/ffmpeg_sched.h"
+# 257 "../ffmpeg/fftools/ffmpeg_sched.h"
 void sch_mux_stream_buffering(Scheduler *sch, unsigned mux_idx, unsigned stream_idx,
                               size_t data_threshold, int max_packets);
 
@@ -10142,12 +10244,12 @@ void sch_mux_stream_buffering(Scheduler *sch, unsigned mux_idx, unsigned stream_
 
 
 int sch_mux_stream_ready(Scheduler *sch, unsigned mux_idx, unsigned stream_idx);
-# 271 "fftools/ffmpeg_sched.h"
+# 273 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_sdp_filename(Scheduler *sch, const char *sdp_filename);
-# 287 "fftools/ffmpeg_sched.h"
+# 289 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_enc(Scheduler *sch, SchThreadFunc func, void *ctx,
                 int (*open_cb)(void *func_arg, const struct AVFrame *frame));
-# 299 "fftools/ffmpeg_sched.h"
+# 301 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_add_sq_enc(Scheduler *sch, uint64_t buf_size_us, void *logctx);
 int sch_sq_add_enc(Scheduler *sch, unsigned sq_idx, unsigned enc_idx,
                    int limiting, uint64_t max_frames);
@@ -10161,26 +10263,33 @@ enum DemuxSendFlags {
 
     DEMUX_SEND_STREAMCOPY_EOF = (1 << 0),
 };
-# 332 "fftools/ffmpeg_sched.h"
+# 334 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_demux_send(Scheduler *sch, unsigned demux_idx, struct AVPacket *pkt,
                    unsigned flags);
-# 351 "fftools/ffmpeg_sched.h"
+# 353 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_dec_receive(Scheduler *sch, unsigned dec_idx, struct AVPacket *pkt);
-# 364 "fftools/ffmpeg_sched.h"
+# 366 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_dec_send(Scheduler *sch, unsigned dec_idx, struct AVFrame *frame);
-# 389 "fftools/ffmpeg_sched.h"
+# 391 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_filter_receive(Scheduler *sch, unsigned fg_idx,
                        unsigned *in_idx, struct AVFrame *frame);
-# 405 "fftools/ffmpeg_sched.h"
+
+
+
+
+
+
+void sch_filter_receive_finish(Scheduler *sch, unsigned fg_idx, unsigned in_idx);
+# 414 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_filter_send(Scheduler *sch, unsigned fg_idx, unsigned out_idx,
                     struct AVFrame *frame);
 
 int sch_filter_command(Scheduler *sch, unsigned fg_idx, struct AVFrame *frame);
-# 423 "fftools/ffmpeg_sched.h"
+# 432 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_enc_receive(Scheduler *sch, unsigned enc_idx, struct AVFrame *frame);
-# 435 "fftools/ffmpeg_sched.h"
+# 444 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_enc_send (Scheduler *sch, unsigned enc_idx, struct AVPacket *pkt);
-# 454 "fftools/ffmpeg_sched.h"
+# 463 "../ffmpeg/fftools/ffmpeg_sched.h"
 int sch_mux_receive(Scheduler *sch, unsigned mux_idx, struct AVPacket *pkt);
 
 
@@ -10194,9 +10303,9 @@ int sch_mux_sub_heartbeat_add(Scheduler *sch, unsigned mux_idx, unsigned stream_
                               unsigned dec_idx);
 int sch_mux_sub_heartbeat(Scheduler *sch, unsigned mux_idx, unsigned stream_idx,
                           const AVPacket *pkt);
-# 31 "fftools/ffmpeg.h" 2
-# 1 "fftools/sync_queue.h" 1
-# 28 "fftools/sync_queue.h"
+# 31 "../ffmpeg/fftools/ffmpeg.h" 2
+# 1 "../ffmpeg/fftools/sync_queue.h" 1
+# 28 "../ffmpeg/fftools/sync_queue.h"
 enum SyncQueueType {
     SYNC_QUEUE_PACKETS,
     SYNC_QUEUE_FRAMES,
@@ -10206,7 +10315,7 @@ typedef union SyncQueueFrame {
     AVFrame *f;
     AVPacket *p;
 } SyncQueueFrame;
-# 46 "fftools/sync_queue.h"
+# 46 "../ffmpeg/fftools/sync_queue.h"
 typedef struct SyncQueue SyncQueue;
 
 
@@ -10216,7 +10325,7 @@ typedef struct SyncQueue SyncQueue;
 
 SyncQueue *sq_alloc(enum SyncQueueType type, int64_t buf_size_us, void *logctx);
 void sq_free(SyncQueue **sq);
-# 65 "fftools/sync_queue.h"
+# 65 "../ffmpeg/fftools/sync_queue.h"
 int sq_add_stream(SyncQueue *sq, int limiting);
 
 
@@ -10225,14 +10334,14 @@ int sq_add_stream(SyncQueue *sq, int limiting);
 
 void sq_limit_frames(SyncQueue *sq, unsigned int stream_idx,
                      uint64_t max_frames);
-# 81 "fftools/sync_queue.h"
+# 81 "../ffmpeg/fftools/sync_queue.h"
 void sq_frame_samples(SyncQueue *sq, unsigned int stream_idx,
                       int frame_samples);
-# 98 "fftools/sync_queue.h"
+# 98 "../ffmpeg/fftools/sync_queue.h"
 int sq_send(SyncQueue *sq, unsigned int stream_idx, SyncQueueFrame frame);
-# 116 "fftools/sync_queue.h"
+# 116 "../ffmpeg/fftools/sync_queue.h"
 int sq_receive(SyncQueue *sq, int stream_idx, SyncQueueFrame frame);
-# 32 "fftools/ffmpeg.h" 2
+# 32 "../ffmpeg/fftools/ffmpeg.h" 2
 
 
 
@@ -10361,7 +10470,7 @@ int av_bsf_list_finalize(AVBSFList **lst, AVBSFContext **bsf);
 int av_bsf_list_parse_str(const char *str, AVBSFContext **bsf);
 # 326 "./libavcodec/bsf.h"
 int av_bsf_get_null_filter(AVBSFContext **bsf);
-# 38 "fftools/ffmpeg.h" 2
+# 38 "../ffmpeg/fftools/ffmpeg.h" 2
 
 
 
@@ -10395,7 +10504,7 @@ int av_expr_count_func(AVExpr *e, unsigned *counter, int size, int arg);
 void av_expr_free(AVExpr *e);
 # 138 "./libavutil/eval.h"
 double av_strtod(const char *numstr, char **tail);
-# 44 "fftools/ffmpeg.h" 2
+# 44 "../ffmpeg/fftools/ffmpeg.h" 2
 # 1 "./libavutil/fifo.h" 1
 # 28 "./libavutil/fifo.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
@@ -10544,12 +10653,12 @@ static inline uint8_t *av_fifo_peek2(const AVFifoBuffer *f, int offs)
         ptr = f->end - (f->buffer - ptr);
     return ptr;
 }
-# 45 "fftools/ffmpeg.h" 2
+# 45 "../ffmpeg/fftools/ffmpeg.h" 2
 
 
 
 # 1 "./libavutil/thread.h" 1
-# 36 "./libavutil/thread.h"
+# 38 "./libavutil/thread.h"
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread.h" 1 3 4
 # 56 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread.h" 3 4
 # 1 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread/sched.h" 1 3 4
@@ -11063,17 +11172,18 @@ int
 pthread_cpu_number_np(size_t *cpu_number_out);
 # 746 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread.h" 3 4
 #pragma clang assume_nonnull end
-# 37 "./libavutil/thread.h" 2
-# 214 "./libavutil/thread.h"
+# 39 "./libavutil/thread.h" 2
+# 216 "./libavutil/thread.h"
 static inline int ff_thread_setname(const char *name)
 {
+    int ret = 0;
+# 233 "./libavutil/thread.h"
+    ret = (-(78));
 
 
-
-
-    return (-(78));
+    return ret;
 }
-# 49 "fftools/ffmpeg.h" 2
+# 49 "../ffmpeg/fftools/ffmpeg.h" 2
 # 1 "./libavutil/threadmessage.h" 1
 # 22 "./libavutil/threadmessage.h"
 typedef struct AVThreadMessageQueue AVThreadMessageQueue;
@@ -11136,7 +11246,7 @@ void av_thread_message_queue_set_free_func(AVThreadMessageQueue *mq,
 int av_thread_message_queue_nb_elems(AVThreadMessageQueue *mq);
 # 113 "./libavutil/threadmessage.h"
 void av_thread_message_flush(AVThreadMessageQueue *mq);
-# 50 "fftools/ffmpeg.h" 2
+# 50 "../ffmpeg/fftools/ffmpeg.h" 2
 
 # 1 "./libswresample/swresample.h" 1
 # 128 "./libswresample/swresample.h"
@@ -11259,8 +11369,8 @@ int swr_convert_frame(SwrContext *swr,
                       AVFrame *output, const AVFrame *input);
 # 643 "./libswresample/swresample.h"
 int swr_config_frame(SwrContext *swr, const AVFrame *out, const AVFrame *in);
-# 52 "fftools/ffmpeg.h" 2
-# 67 "fftools/ffmpeg.h"
+# 52 "../ffmpeg/fftools/ffmpeg.h" 2
+# 69 "../ffmpeg/fftools/ffmpeg.h"
 enum VideoSyncMethod {
     VSYNC_AUTO = -1,
     VSYNC_PASSTHROUGH,
@@ -11335,22 +11445,14 @@ typedef struct OptionsContext {
     int seek_timestamp;
     const char *format;
 
-    SpecifierOpt *codec_names;
-    int nb_codec_names;
-    SpecifierOpt *audio_ch_layouts;
-    int nb_audio_ch_layouts;
-    SpecifierOpt *audio_channels;
-    int nb_audio_channels;
-    SpecifierOpt *audio_sample_rate;
-    int nb_audio_sample_rate;
-    SpecifierOpt *frame_rates;
-    int nb_frame_rates;
-    SpecifierOpt *max_frame_rates;
-    int nb_max_frame_rates;
-    SpecifierOpt *frame_sizes;
-    int nb_frame_sizes;
-    SpecifierOpt *frame_pix_fmts;
-    int nb_frame_pix_fmts;
+    SpecifierOptList codec_names;
+    SpecifierOptList audio_ch_layouts;
+    SpecifierOptList audio_channels;
+    SpecifierOptList audio_sample_rate;
+    SpecifierOptList frame_rates;
+    SpecifierOptList max_frame_rates;
+    SpecifierOptList frame_sizes;
+    SpecifierOptList frame_pix_fmts;
 
 
     int64_t input_ts_offset;
@@ -11363,18 +11465,12 @@ typedef struct OptionsContext {
     int input_sync_ref;
     int find_stream_info;
 
-    SpecifierOpt *ts_scale;
-    int nb_ts_scale;
-    SpecifierOpt *dump_attachment;
-    int nb_dump_attachment;
-    SpecifierOpt *hwaccels;
-    int nb_hwaccels;
-    SpecifierOpt *hwaccel_devices;
-    int nb_hwaccel_devices;
-    SpecifierOpt *hwaccel_output_formats;
-    int nb_hwaccel_output_formats;
-    SpecifierOpt *autorotate;
-    int nb_autorotate;
+    SpecifierOptList ts_scale;
+    SpecifierOptList dump_attachment;
+    SpecifierOptList hwaccels;
+    SpecifierOptList hwaccel_devices;
+    SpecifierOptList hwaccel_output_formats;
+    SpecifierOptList autorotate;
 
 
     StreamMap *stream_maps;
@@ -11405,105 +11501,85 @@ typedef struct OptionsContext {
 
     AVDictionary *streamid;
 
-    SpecifierOpt *metadata;
-    int nb_metadata;
-    SpecifierOpt *max_frames;
-    int nb_max_frames;
-    SpecifierOpt *bitstream_filters;
-    int nb_bitstream_filters;
-    SpecifierOpt *codec_tags;
-    int nb_codec_tags;
-    SpecifierOpt *sample_fmts;
-    int nb_sample_fmts;
-    SpecifierOpt *qscale;
-    int nb_qscale;
-    SpecifierOpt *forced_key_frames;
-    int nb_forced_key_frames;
-    SpecifierOpt *fps_mode;
-    int nb_fps_mode;
-    SpecifierOpt *force_fps;
-    int nb_force_fps;
-    SpecifierOpt *frame_aspect_ratios;
-    int nb_frame_aspect_ratios;
-    SpecifierOpt *display_rotations;
-    int nb_display_rotations;
-    SpecifierOpt *display_hflips;
-    int nb_display_hflips;
-    SpecifierOpt *display_vflips;
-    int nb_display_vflips;
-    SpecifierOpt *rc_overrides;
-    int nb_rc_overrides;
-    SpecifierOpt *intra_matrices;
-    int nb_intra_matrices;
-    SpecifierOpt *inter_matrices;
-    int nb_inter_matrices;
-    SpecifierOpt *chroma_intra_matrices;
-    int nb_chroma_intra_matrices;
+    SpecifierOptList metadata;
+    SpecifierOptList max_frames;
+    SpecifierOptList bitstream_filters;
+    SpecifierOptList codec_tags;
+    SpecifierOptList sample_fmts;
+    SpecifierOptList qscale;
+    SpecifierOptList forced_key_frames;
+    SpecifierOptList fps_mode;
+    SpecifierOptList force_fps;
+    SpecifierOptList frame_aspect_ratios;
+    SpecifierOptList display_rotations;
+    SpecifierOptList display_hflips;
+    SpecifierOptList display_vflips;
+    SpecifierOptList rc_overrides;
+    SpecifierOptList intra_matrices;
+    SpecifierOptList inter_matrices;
+    SpecifierOptList chroma_intra_matrices;
 
-    SpecifierOpt *top_field_first;
-    int nb_top_field_first;
+    SpecifierOptList top_field_first;
 
-    SpecifierOpt *metadata_map;
-    int nb_metadata_map;
-    SpecifierOpt *presets;
-    int nb_presets;
-    SpecifierOpt *copy_initial_nonkeyframes;
-    int nb_copy_initial_nonkeyframes;
-    SpecifierOpt *copy_prior_start;
-    int nb_copy_prior_start;
-    SpecifierOpt *filters;
-    int nb_filters;
-    SpecifierOpt *filter_scripts;
-    int nb_filter_scripts;
-    SpecifierOpt *reinit_filters;
-    int nb_reinit_filters;
-    SpecifierOpt *fix_sub_duration;
-    int nb_fix_sub_duration;
-    SpecifierOpt *fix_sub_duration_heartbeat;
-    int nb_fix_sub_duration_heartbeat;
-    SpecifierOpt *canvas_sizes;
-    int nb_canvas_sizes;
-    SpecifierOpt *pass;
-    int nb_pass;
-    SpecifierOpt *passlogfiles;
-    int nb_passlogfiles;
-    SpecifierOpt *max_muxing_queue_size;
-    int nb_max_muxing_queue_size;
-    SpecifierOpt *muxing_queue_data_threshold;
-    int nb_muxing_queue_data_threshold;
-    SpecifierOpt *guess_layout_max;
-    int nb_guess_layout_max;
-    SpecifierOpt *apad;
-    int nb_apad;
-    SpecifierOpt *discard;
-    int nb_discard;
-    SpecifierOpt *disposition;
-    int nb_disposition;
-    SpecifierOpt *program;
-    int nb_program;
-    SpecifierOpt *stream_groups;
-    int nb_stream_groups;
-    SpecifierOpt *time_bases;
-    int nb_time_bases;
-    SpecifierOpt *enc_time_bases;
-    int nb_enc_time_bases;
-    SpecifierOpt *autoscale;
-    int nb_autoscale;
-    SpecifierOpt *bits_per_raw_sample;
-    int nb_bits_per_raw_sample;
-    SpecifierOpt *enc_stats_pre;
-    int nb_enc_stats_pre;
-    SpecifierOpt *enc_stats_post;
-    int nb_enc_stats_post;
-    SpecifierOpt *mux_stats;
-    int nb_mux_stats;
-    SpecifierOpt *enc_stats_pre_fmt;
-    int nb_enc_stats_pre_fmt;
-    SpecifierOpt *enc_stats_post_fmt;
-    int nb_enc_stats_post_fmt;
-    SpecifierOpt *mux_stats_fmt;
-    int nb_mux_stats_fmt;
+    SpecifierOptList metadata_map;
+    SpecifierOptList presets;
+    SpecifierOptList copy_initial_nonkeyframes;
+    SpecifierOptList copy_prior_start;
+    SpecifierOptList filters;
+
+    SpecifierOptList filter_scripts;
+
+    SpecifierOptList reinit_filters;
+    SpecifierOptList fix_sub_duration;
+    SpecifierOptList fix_sub_duration_heartbeat;
+    SpecifierOptList canvas_sizes;
+    SpecifierOptList pass;
+    SpecifierOptList passlogfiles;
+    SpecifierOptList max_muxing_queue_size;
+    SpecifierOptList muxing_queue_data_threshold;
+    SpecifierOptList guess_layout_max;
+    SpecifierOptList apad;
+    SpecifierOptList discard;
+    SpecifierOptList disposition;
+    SpecifierOptList program;
+    SpecifierOptList stream_groups;
+    SpecifierOptList time_bases;
+    SpecifierOptList enc_time_bases;
+    SpecifierOptList autoscale;
+    SpecifierOptList bits_per_raw_sample;
+    SpecifierOptList enc_stats_pre;
+    SpecifierOptList enc_stats_post;
+    SpecifierOptList mux_stats;
+    SpecifierOptList enc_stats_pre_fmt;
+    SpecifierOptList enc_stats_post_fmt;
+    SpecifierOptList mux_stats_fmt;
 } OptionsContext;
+
+enum IFilterFlags {
+    IFILTER_FLAG_AUTOROTATE = (1 << 0),
+    IFILTER_FLAG_REINIT = (1 << 1),
+    IFILTER_FLAG_CFR = (1 << 2),
+};
+
+typedef struct InputFilterOptions {
+    int64_t trim_start_us;
+    int64_t trim_end_us;
+
+    uint8_t *name;
+
+
+
+
+
+
+    AVRational framerate;
+
+    int sub2video_width;
+    int sub2video_height;
+
+
+    unsigned flags;
+} InputFilterOptions;
 
 typedef struct InputFilter {
     struct FilterGraph *graph;
@@ -11535,7 +11611,52 @@ typedef struct FilterGraph {
     int nb_outputs;
 } FilterGraph;
 
-typedef struct Decoder Decoder;
+enum DecoderFlags {
+    DECODER_FLAG_FIX_SUB_DURATION = (1 << 0),
+
+    DECODER_FLAG_TS_UNRELIABLE = (1 << 1),
+
+
+    DECODER_FLAG_FRAMERATE_FORCED = (1 << 2),
+
+    DECODER_FLAG_TOP_FIELD_FIRST = (1 << 3),
+
+    DECODER_FLAG_SEND_END_TS = (1 << 4),
+};
+
+typedef struct DecoderOpts {
+    int flags;
+
+    char *name;
+    void *log_parent;
+
+    const AVCodec *codec;
+    const AVCodecParameters *par;
+
+
+    enum HWAccelID hwaccel_id;
+    enum AVHWDeviceType hwaccel_device_type;
+    char *hwaccel_device;
+    enum AVPixelFormat hwaccel_output_format;
+
+    AVRational time_base;
+
+
+
+    AVRational framerate;
+} DecoderOpts;
+
+typedef struct Decoder {
+    const AVClass *class;
+
+    const uint8_t *subtitle_header;
+    int subtitle_header_size;
+
+
+    uint64_t frames_decoded;
+    uint64_t samples_decoded;
+    uint64_t decode_errors;
+} Decoder;
 
 typedef struct InputStream {
     const AVClass *class;
@@ -11547,16 +11668,17 @@ typedef struct InputStream {
 
     AVStream *st;
     int user_set_discard;
-    int decoding_needed;
-# 362 "fftools/ffmpeg.h"
+
+
+
+
+
+
     AVCodecParameters *par;
     Decoder *decoder;
-    AVCodecContext *dec_ctx;
     const AVCodec *dec;
 
-    AVRational framerate_guessed;
 
-    AVDictionary *decoder_opts;
     AVRational framerate;
 
     int top_field_first;
@@ -11565,10 +11687,6 @@ typedef struct InputStream {
     int autorotate;
 
     int fix_sub_duration;
-
-    struct sub2video {
-        int w, h;
-    } sub2video;
 
 
 
@@ -11582,29 +11700,12 @@ typedef struct InputStream {
 
     struct OutputStream **outputs;
     int nb_outputs;
-
-    int reinit_filters;
-
-
-    enum HWAccelID hwaccel_id;
-    enum AVHWDeviceType hwaccel_device_type;
-    char *hwaccel_device;
-    enum AVPixelFormat hwaccel_output_format;
-
-
-
-    uint64_t frames_decoded;
-    uint64_t samples_decoded;
-    uint64_t decode_errors;
 } InputStream;
 
 typedef struct InputFile {
     const AVClass *class;
 
     int index;
-
-
-    int format_nots;
 
     AVFormatContext *ctx;
     int64_t input_ts_offset;
@@ -11614,16 +11715,14 @@ typedef struct InputFile {
 
     int64_t start_time_effective;
     int64_t ts_offset;
+
     int64_t start_time;
-    int64_t recording_time;
 
 
 
 
     InputStream **streams;
     int nb_streams;
-
-    int accurate_seek;
 } InputFile;
 
 enum forced_keyframes_const {
@@ -11776,7 +11875,7 @@ typedef struct OutputStream {
     AVDictionary *swr_opts;
     char *apad;
 
-    const char *attachment_filename;
+    char *attachment_filename;
 
     int keep_pix_fmt;
 
@@ -11903,7 +12002,6 @@ void remove_avoptions(AVDictionary **a, AVDictionary *b);
 int check_avoptions(AVDictionary *m);
 
 int assert_file_overwrite(const char *filename);
-char *file_read(const char *filename);
 AVDictionary *strip_specifiers(const AVDictionary *dict);
 int find_codec(void *logctx, const char *name,
                enum AVMediaType type, int encoder, const AVCodec **codec);
@@ -11915,9 +12013,6 @@ int init_simple_filtergraph(InputStream *ist, OutputStream *ost,
                             char *graph_desc,
                             Scheduler *sch, unsigned sch_idx_enc);
 int init_complex_filtergraph(FilterGraph *fg);
-
-int copy_av_subtitle(AVSubtitle *dst, const AVSubtitle *src);
-int subtitle_wrap_frame(AVFrame *frame, AVSubtitle *subtitle, int copy);
 
 
 
@@ -11973,11 +12068,12 @@ void hw_device_free_all(void);
 
 
 AVBufferRef *hw_device_for_filter(void);
-
-int hwaccel_retrieve_data(AVCodecContext *avctx, AVFrame *input);
-
-int dec_open(InputStream *ist, Scheduler *sch, unsigned sch_idx);
+# 774 "../ffmpeg/fftools/ffmpeg.h"
+int dec_open(Decoder **pdec, Scheduler *sch,
+             AVDictionary **dec_opts, const DecoderOpts *o);
 void dec_free(Decoder **pdec);
+
+int dec_add_filter(Decoder *dec, InputFilter *ifilter);
 
 int enc_alloc(Encoder **penc, const AVCodec *codec,
               Scheduler *sch, unsigned sch_idx);
@@ -12004,7 +12100,8 @@ int ifile_open(const OptionsContext *o, const char *filename, Scheduler *sch);
 void ifile_close(InputFile **f);
 
 int ist_output_add(InputStream *ist, OutputStream *ost);
-int ist_filter_add(InputStream *ist, InputFilter *ifilter, int is_simple);
+int ist_filter_add(InputStream *ist, InputFilter *ifilter, int is_simple,
+                   InputFilterOptions *opts);
 
 
 
@@ -12020,22 +12117,17 @@ InputStream *ist_iter(InputStream *prev);
 OutputStream *ost_iter(OutputStream *prev);
 
 void update_benchmark(const char *fmt, ...);
-# 878 "fftools/ffmpeg.h"
-extern const char * const opt_name_codec_names[];
-extern const char * const opt_name_codec_tags[];
-extern const char * const opt_name_frame_rates[];
-
-extern const char * const opt_name_top_field_first[];
-
+# 861 "../ffmpeg/fftools/ffmpeg.h"
+const char *opt_match_per_type_str(const SpecifierOptList *sol,
+                                   char mediatype);
 
 void *muxer_thread(void *arg);
-void *decoder_thread(void *arg);
 void *encoder_thread(void *arg);
-# 31 "fftools/ffmpeg_opt.c" 2
+# 31 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 
-# 1 "fftools/opt_common.h" 1
-# 33 "fftools/opt_common.h"
+# 1 "../ffmpeg/fftools/opt_common.h" 1
+# 33 "../ffmpeg/fftools/opt_common.h"
 int show_sinks(void *optctx, const char *opt, const char *arg);
 
 
@@ -12043,7 +12135,7 @@ int show_sinks(void *optctx, const char *opt, const char *arg);
 
 
 int show_sources(void *optctx, const char *opt, const char *arg);
-# 58 "fftools/opt_common.h"
+# 58 "../ffmpeg/fftools/opt_common.h"
 int show_license(void *optctx, const char *opt, const char *arg);
 
 
@@ -12184,12 +12276,12 @@ int opt_cpuflags(void *optctx, const char *opt, const char *arg);
 
 
 int opt_cpucount(void *optctx, const char *opt, const char *arg);
-# 34 "fftools/ffmpeg_opt.c" 2
-# 43 "fftools/ffmpeg_opt.c"
+# 34 "../ffmpeg/fftools/ffmpeg_opt.c" 2
+# 43 "../ffmpeg/fftools/ffmpeg_opt.c"
 # 1 "./libavutil/avassert.h" 1
 # 76 "./libavutil/avassert.h"
 void av_assert0_fpu(void);
-# 44 "fftools/ffmpeg_opt.c" 2
+# 44 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 # 1 "./libavutil/avstring.h" 1
 # 24 "./libavutil/avstring.h"
 # 1 "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include/stddef.h" 1 3
@@ -12330,7 +12422,7 @@ int av_match_list(const char *name, const char *list, char separator);
 
 
 int av_sscanf(const char *string, const char *format, ...);
-# 45 "fftools/ffmpeg_opt.c" 2
+# 45 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 # 1 "./libavutil/bprint.h" 1
 # 93 "./libavutil/bprint.h"
@@ -12384,7 +12476,7 @@ int av_bprint_finalize(AVBPrint *buf, char **ret_str);
 # 249 "./libavutil/bprint.h"
 void av_bprint_escape(AVBPrint *dstbuf, const char *src, const char *special_chars,
                       enum AVEscapeMode mode, int flags);
-# 47 "fftools/ffmpeg_opt.c" 2
+# 47 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 # 1 "./libavutil/display.h" 1
 # 84 "./libavutil/display.h"
@@ -12393,7 +12485,7 @@ double av_display_rotation_get(const int32_t matrix[9]);
 void av_display_rotation_set(int32_t matrix[9], double angle);
 # 103 "./libavutil/display.h"
 void av_display_matrix_flip(int32_t matrix[9], int hflip, int vflip);
-# 49 "fftools/ffmpeg_opt.c" 2
+# 49 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 # 1 "./libavutil/intreadwrite.h" 1
 # 25 "./libavutil/intreadwrite.h"
 # 1 "./libavutil/bswap.h" 1
@@ -12443,7 +12535,7 @@ typedef union {
 union unaligned_64 { uint64_t l; } __attribute__((packed)) __attribute__((may_alias));
 union unaligned_32 { uint32_t l; } __attribute__((packed)) __attribute__((may_alias));
 union unaligned_16 { uint16_t l; } __attribute__((packed)) __attribute__((may_alias));
-# 50 "fftools/ffmpeg_opt.c" 2
+# 50 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 
 # 1 "./libavutil/opt.h" 1
@@ -12680,7 +12772,7 @@ int av_opt_is_set_to_default_by_name(void *obj, const char *name, int search_fla
 # 885 "./libavutil/opt.h"
 int av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,
                      const char key_val_sep, const char pairs_sep);
-# 53 "fftools/ffmpeg_opt.c" 2
+# 53 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 # 1 "./libavutil/parseutils.h" 1
 # 49 "./libavutil/parseutils.h"
 int av_parse_ratio(AVRational *q, const char *str, int max,
@@ -12711,7 +12803,7 @@ char *av_small_strptime(const char *p, const char *fmt, struct tm *dt);
 
 
 time_t av_timegm(struct tm *tm);
-# 54 "fftools/ffmpeg_opt.c" 2
+# 54 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 # 1 "./libavutil/pixdesc.h" 1
 # 30 "./libavutil/pixdesc.h"
 typedef struct AVComponentDescriptor {
@@ -12888,14 +12980,7 @@ int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt,
 # 437 "./libavutil/pixdesc.h"
 enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
                                              enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
-# 55 "fftools/ffmpeg_opt.c" 2
-
-
-const char *const opt_name_codec_names[] = {"c", "codec", "acodec", "vcodec", "scodec", "dcodec", ((void*)0)};
-const char *const opt_name_frame_rates[] = {"r", ((void*)0)};
-const char *const opt_name_codec_tags[] = {"tag", "atag", "vtag", "stag", ((void*)0)};
-
-const char *const opt_name_top_field_first[] = {"top", ((void*)0)};
+# 55 "../ffmpeg/fftools/ffmpeg_opt.c" 2
 
 
 HWDevice *filter_hw_device;
@@ -12906,7 +12991,9 @@ float audio_drift_threshold = 0.1;
 float dts_delta_threshold = 10;
 float dts_error_threshold = 3600*30;
 
+
 enum VideoSyncMethod video_sync_method = VSYNC_AUTO;
+
 float frame_drop_threshold = 0;
 int do_benchmark = 0;
 int do_benchmark_all = 0;
@@ -12946,17 +13033,16 @@ static void uninit_options(OptionsContext *o)
     while (po->name) {
         void *dst = (uint8_t*)o + po->u.off;
 
-        if (po->flags & (1 << 14)) {
-            SpecifierOpt **so = dst;
-            int i, *count = (int*)(so + 1);
-            for (i = 0; i < *count; i++) {
-                av_freep(&(*so)[i].specifier);
-                if (po->flags & (1 << 3))
-                    av_freep(&(*so)[i].u.str);
+        if (po->flags & (1 << 9)) {
+            SpecifierOptList *so = dst;
+            for (int i = 0; i < so->nb_opt; i++) {
+                av_freep(&so->opt[i].specifier);
+                if (po->type == OPT_TYPE_STRING)
+                    av_freep(&so->opt[i].u.str);
             }
-            av_freep(so);
-            *count = 0;
-        } else if (po->flags & (1 << 13) && po->flags & (1 << 3))
+            av_freep(&so->opt);
+            so->nb_opt = 0;
+        } else if (po->flags & (1 << 8) && po->type == OPT_TYPE_STRING)
             av_freep(dst);
         po++;
     }
@@ -12967,6 +13053,9 @@ static void uninit_options(OptionsContext *o)
 
     av_freep(&o->audio_channel_maps);
 
+
+    for (i = 0; i < o->nb_attachments; i++)
+        av_freep(&o->attachments[i]);
     av_freep(&o->attachments);
 
     av_dict_free(&o->streamid);
@@ -12984,7 +13073,7 @@ static void init_options(OptionsContext *o)
     o->limit_filesize = 9223372036854775807LL;
     o->chapters_input_file = 2147483647;
     o->accurate_seek = 1;
-    o->thread_queue_size = -1;
+    o->thread_queue_size = 0;
     o->input_sync_ref = -1;
     o->find_stream_info = 1;
     o->shortest_buf_duration = 10.f;
@@ -13020,6 +13109,19 @@ AVDictionary *strip_specifiers(const AVDictionary *dict)
     return ret;
 }
 
+const char *opt_match_per_type_str(const SpecifierOptList *sol,
+                                   char mediatype)
+{
+    do { if (!(!sol->nb_opt || sol->type == OPT_TYPE_STRING)) { av_log(((void*)0), 0, "Assertion %s failed at %s:%d\n", "!sol->nb_opt || sol->type == OPT_TYPE_STRING", "../ffmpeg/fftools/ffmpeg_opt.c", 186); abort(); } } while (0);
+
+    for (int i = 0; i < sol->nb_opt; i++) {
+        const char *spec = sol->opt[i].specifier;
+        if (spec[0] == mediatype && !spec[1])
+            return sol->opt[i].u.str;
+    }
+    return ((void*)0);
+}
+
 int parse_and_set_vsync(const char *arg, int *vsync_var, int file_idx, int st_idx, int is_global)
 {
     if (!av_strcasecmp(arg, "cfr")) *vsync_var = VSYNC_CFR;
@@ -13037,11 +13139,12 @@ int parse_and_set_vsync(const char *arg, int *vsync_var, int file_idx, int st_id
         return (-(22));
     }
 
+
     if (is_global && *vsync_var == VSYNC_AUTO) {
         int ret;
         double num;
 
-        ret = parse_number("vsync", arg, (1 << 6), VSYNC_AUTO, VSYNC_VFR, &num);
+        ret = parse_number("vsync", arg, OPT_TYPE_INT, VSYNC_AUTO, VSYNC_VFR, &num);
         if (ret < 0)
             return ret;
 
@@ -13049,6 +13152,8 @@ int parse_and_set_vsync(const char *arg, int *vsync_var, int file_idx, int st_id
         av_log(((void*)0), 24, "Passing a number to -vsync is deprecated,"
                " use a string argument as described in the manual.\n");
     }
+
+
     return 0;
 }
 
@@ -13161,7 +13266,7 @@ static int opt_abort_on(void *optctx, const char *opt, const char *arg)
         .class_name = "",
         .item_name = av_default_item_name,
         .option = opts,
-        .version = ((58)<<16 | (36)<<8 | (100)),
+        .version = ((58)<<16 | (39)<<8 | (100)),
     };
     const AVClass *pclass = &class;
 
@@ -13322,7 +13427,10 @@ static int opt_attach(void *optctx, const char *opt, const char *arg)
     if (ret < 0)
         return ret;
 
-    o->attachments[o->nb_attachments - 1] = arg;
+    o->attachments[o->nb_attachments - 1] = av_strdup(arg);
+    if (!o->attachments[o->nb_attachments - 1])
+        return (-(12));
+
     return 0;
 }
 
@@ -13424,7 +13532,7 @@ static int opt_sdp_file(void *optctx, const char *opt, const char *arg)
     Scheduler *sch = optctx;
     return sch_sdp_filename(sch, arg);
 }
-# 623 "fftools/ffmpeg_opt.c"
+# 639 "../ffmpeg/fftools/ffmpeg_opt.c"
 static int opt_init_hw_device(void *optctx, const char *opt, const char *arg)
 {
     if (!strcmp(arg, "list")) {
@@ -13553,32 +13661,6 @@ int assert_file_overwrite(const char *filename)
     }
 
     return 0;
-}
-
-
-char *file_read(const char *filename)
-{
-    AVIOContext *pb = ((void*)0);
-    int ret = avio_open(&pb, filename, 1);
-    AVBPrint bprint;
-    char *str;
-
-    if (ret < 0) {
-        av_log(((void*)0), 16, "Error opening file %s.\n", filename);
-        return ((void*)0);
-    }
-
-    av_bprint_init(&bprint, 0, ((unsigned)-1));
-    ret = avio_read_to_bprint(pb, &bprint, 18446744073709551615UL);
-    avio_closep(&pb);
-    if (ret < 0) {
-        av_bprint_finalize(&bprint, ((void*)0));
-        return ((void*)0);
-    }
-    ret = av_bprint_finalize(&bprint, &str);
-    if (ret < 0)
-        return ((void*)0);
-    return str;
 }
 
 
@@ -13825,9 +13907,7 @@ static int opt_preset(void *optctx, const char *opt, const char *arg)
     const char *codec_name = ((void*)0);
     int ret = 0;
 
-    tmp_line[0] = *opt;
-    tmp_line[1] = 0;
-    { int i; for (i = 0; i < o->nb_codec_names; i++) { char *spec = o->codec_names[i].specifier; if (!strcmp(spec, tmp_line)) codec_name = o->codec_names[i].u.str; }};
+    codec_name = opt_match_per_type_str(&o->codec_names, *opt);
 
     if (!(f = get_preset_file(filename, sizeof(filename), arg, *opt == 'f', codec_name))) {
         if(!strncmp(arg, "libx264-lossless", strlen("libx264-lossless"))){
@@ -13938,11 +14018,13 @@ static int opt_audio_filters(void *optctx, const char *opt, const char *arg)
     return parse_option(o, "filter:a", arg, options);
 }
 
+
 static int opt_vsync(void *optctx, const char *opt, const char *arg)
 {
     av_log(((void*)0), 24, "-vsync is deprecated. Use -fps_mode\n");
     return parse_and_set_vsync(arg, &video_sync_method, -1, -1, 1);
 }
+
 
 static int opt_timecode(void *optctx, const char *opt, const char *arg)
 {
@@ -13974,6 +14056,7 @@ static int opt_filter_complex(void *optctx, const char *opt, const char *arg)
     return fg_create(((void*)0), graph_desc, sch);
 }
 
+
 static int opt_filter_complex_script(void *optctx, const char *opt, const char *arg)
 {
     Scheduler *sch = optctx;
@@ -13981,13 +14064,15 @@ static int opt_filter_complex_script(void *optctx, const char *opt, const char *
     if (!graph_desc)
         return (-(22));
 
+    av_log(((void*)0), 24, "-%s is deprecated, use -/filter_complex %s instead\n",
+           opt, arg);
+
     return fg_create(((void*)0), graph_desc, sch);
 }
 
+
 void show_help_default(const char *opt, const char *arg)
 {
-
-    const int per_file = (1 << 14) | (1 << 13) | (1 << 12);
     int show_advanced = 0, show_avoptions = 0;
 
     if (opt && *opt) {
@@ -14007,38 +14092,85 @@ void show_help_default(const char *opt, const char *arg)
            "    -h full -- print all options (including all format and codec specific options, very long)\n"
            "    -h type=name -- print all options for the named decoder/encoder/demuxer/muxer/filter/bsf/protocol\n"
            "    See man %s for detailed description of the options.\n"
+           "\n"
+           "Per-stream options can be followed by :<stream_spec> to apply that option to specific streams only. "
+           "<stream_spec> can be a stream index, or v/a/s for video/audio/subtitle (see manual for full syntax).\n"
            "\n", program_name);
 
     show_help_options(options, "Print help / information / capabilities:",
-                      (1 << 10), 0, 0);
+                      (1 << 1), (1 << 2));
+    if (show_advanced)
+        show_help_options(options, "Advanced information / capabilities:",
+                          (1 << 1) | (1 << 2), 0);
 
     show_help_options(options, "Global options (affect whole program "
                       "instead of just one file):",
-                      0, per_file | (1 << 10) | (1 << 2), 0);
+                      0, (1 << 7) | (1 << 1) | (1 << 2));
     if (show_advanced)
         show_help_options(options, "Advanced global options:", (1 << 2),
-                          per_file | (1 << 10), 0);
+                          (1 << 7) | (1 << 1));
 
-    show_help_options(options, "Per-file main options:", 0,
-                      (1 << 2) | (1 << 5) | (1 << 4) | (1 << 8) |
-                      (1 << 10), per_file);
+    show_help_options(options, "Per-file options (input and output):",
+                      (1 << 7) | (1 << 11) | (1 << 12),
+                      (1 << 1) | (1 << 10) | (1 << 2) |
+                      (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
     if (show_advanced)
-        show_help_options(options, "Advanced per-file options:",
-                          (1 << 2), (1 << 5) | (1 << 4) | (1 << 8), per_file);
+        show_help_options(options, "Advanced per-file options (input and output):",
+                          (1 << 7) | (1 << 11) | (1 << 12) | (1 << 2),
+                          (1 << 1) | (1 << 10) |
+                          (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
+
+    show_help_options(options, "Per-file options (input-only):",
+                      (1 << 7) | (1 << 11),
+                      (1 << 1) | (1 << 10) | (1 << 12) | (1 << 2) |
+                      (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
+    if (show_advanced)
+        show_help_options(options, "Advanced per-file options (input-only):",
+                          (1 << 7) | (1 << 11) | (1 << 2),
+                          (1 << 1) | (1 << 10) | (1 << 12) |
+                          (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
+
+    show_help_options(options, "Per-file options (output-only):",
+                      (1 << 7) | (1 << 12),
+                      (1 << 1) | (1 << 10) | (1 << 11) | (1 << 2) |
+                      (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
+    if (show_advanced)
+        show_help_options(options, "Advanced per-file options (output-only):",
+                          (1 << 7) | (1 << 12) | (1 << 2),
+                          (1 << 1) | (1 << 10) | (1 << 11) |
+                          (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
+
+    show_help_options(options, "Per-stream options:",
+                      (1 << 10),
+                      (1 << 1) | (1 << 2) |
+                      (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
+    if (show_advanced)
+        show_help_options(options, "Advanced per-stream options:",
+                          (1 << 10) | (1 << 2),
+                          (1 << 1) |
+                          (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6));
 
     show_help_options(options, "Video options:",
-                      (1 << 4), (1 << 2) | (1 << 5), 0);
+                      (1 << 3), (1 << 2) | (1 << 4) | (1 << 5) | (1 << 6));
     if (show_advanced)
         show_help_options(options, "Advanced Video options:",
-                          (1 << 2) | (1 << 4), (1 << 5), 0);
+                          (1 << 2) | (1 << 3), (1 << 4) | (1 << 5) | (1 << 6));
 
     show_help_options(options, "Audio options:",
-                      (1 << 5), (1 << 2) | (1 << 4), 0);
+                      (1 << 4), (1 << 2) | (1 << 3) | (1 << 5) | (1 << 6));
     if (show_advanced)
         show_help_options(options, "Advanced Audio options:",
-                          (1 << 2) | (1 << 5), (1 << 4), 0);
+                          (1 << 2) | (1 << 4), (1 << 3) | (1 << 5) | (1 << 6));
+
     show_help_options(options, "Subtitle options:",
-                      (1 << 8), 0, 0);
+                      (1 << 5), (1 << 2) | (1 << 3) | (1 << 4) | (1 << 6));
+    if (show_advanced)
+        show_help_options(options, "Advanced Subtitle options:",
+                          (1 << 2) | (1 << 5), (1 << 3) | (1 << 4) | (1 << 6));
+
+    if (show_advanced)
+        show_help_options(options, "Data stream options:",
+                          (1 << 6), (1 << 3) | (1 << 4) | (1 << 5));
     printf("\n");
 
     if (show_avoptions) {
@@ -14058,7 +14190,7 @@ void show_help_default(const char *opt, const char *arg)
 
 void show_usage(void)
 {
-    av_log(((void*)0), 32, "Hyper fast Audio and Video encoder\n");
+    av_log(((void*)0), 32, "Universal media converter\n");
     av_log(((void*)0), 32, "usage: %s [options] [[infile options] -i infile]... {[outfile options] outfile}...\n", program_name);
     av_log(((void*)0), 32, "\n");
 }
@@ -14069,8 +14201,8 @@ enum OptGroup {
 };
 
 static const OptionGroupDef groups[] = {
-    [GROUP_OUTFILE] = { "output url", ((void*)0), (1 << 18) },
-    [GROUP_INFILE] = { "input url", "i", (1 << 17) },
+    [GROUP_OUTFILE] = { "output url", ((void*)0), (1 << 12) },
+    [GROUP_INFILE] = { "input url", "i", (1 << 11) },
 };
 
 static int open_files(OptionGroupList *l, const char *inout, Scheduler *sch,
@@ -14086,7 +14218,7 @@ static int open_files(OptionGroupList *l, const char *inout, Scheduler *sch,
         init_options(&o);
         o.g = g;
 
-        ret = parse_optgroup(&o, g);
+        ret = parse_optgroup(&o, g, options);
         if (ret < 0) {
             av_log(((void*)0), 16, "Error parsing options for %s file "
                    "%s.\n", inout, g->arg);
@@ -14125,7 +14257,7 @@ int ffmpeg_parse_options(int argc, char **argv, Scheduler *sch)
     }
 
 
-    ret = parse_optgroup(sch, &octx.global_opts);
+    ret = parse_optgroup(sch, &octx.global_opts, options);
     if (ret < 0) {
         errmsg = "parsing global options";
         goto fail;
@@ -14198,7 +14330,7 @@ int opt_timelimit(void *optctx, const char *opt, const char *arg)
     double lim;
     struct rlimit rl;
 
-    ret = parse_number(opt, arg, (1 << 9), 0, 2147483647, &lim);
+    ret = parse_number(opt, arg, OPT_TYPE_INT64, 0, 2147483647, &lim);
     if (ret < 0)
         return ret;
 
@@ -14227,433 +14359,567 @@ static int opt_adrift_threshold(void *optctx, const char *opt, const char *arg)
 }
 
 
+static const char *const alt_bsf[] = { "absf", "vbsf", ((void*)0) };
+static const char *const alt_channel_layout[] = { "ch_layout", ((void*)0)};
+static const char *const alt_codec[] = { "c", "acodec", "vcodec", "scodec", "dcodec", ((void*)0) };
+static const char *const alt_filter[] = { "af", "vf", ((void*)0) };
+static const char *const alt_frames[] = { "aframes", "vframes", "dframes", ((void*)0) };
+static const char *const alt_pre[] = { "apre", "vpre", "spre", ((void*)0)};
+static const char *const alt_qscale[] = { "q", ((void*)0)};
+static const char *const alt_tag[] = { "atag", "vtag", "stag", ((void*)0) };
+
 
 const OptionDef options[] = {
 
-    { "L", (1 << 10), { .func_arg = show_license }, "show license" }, { "h", (1 << 10), { .func_arg = show_help }, "show help", "topic" }, { "?", (1 << 10), { .func_arg = show_help }, "show help", "topic" }, { "help", (1 << 10), { .func_arg = show_help }, "show help", "topic" }, { "-help", (1 << 10), { .func_arg = show_help }, "show help", "topic" }, { "version", (1 << 10), { .func_arg = show_version }, "show version" }, { "buildconf", (1 << 10), { .func_arg = show_buildconf }, "show build configuration" }, { "formats", (1 << 10), { .func_arg = show_formats }, "show available formats" }, { "muxers", (1 << 10), { .func_arg = show_muxers }, "show available muxers" }, { "demuxers", (1 << 10), { .func_arg = show_demuxers }, "show available demuxers" }, { "devices", (1 << 10), { .func_arg = show_devices }, "show available devices" }, { "codecs", (1 << 10), { .func_arg = show_codecs }, "show available codecs" }, { "decoders", (1 << 10), { .func_arg = show_decoders }, "show available decoders" }, { "encoders", (1 << 10), { .func_arg = show_encoders }, "show available encoders" }, { "bsfs", (1 << 10), { .func_arg = show_bsfs }, "show available bit stream filters" }, { "protocols", (1 << 10), { .func_arg = show_protocols }, "show available protocols" }, { "filters", (1 << 10), { .func_arg = show_filters }, "show available filters" }, { "pix_fmts", (1 << 10), { .func_arg = show_pix_fmts }, "show available pixel formats" }, { "layouts", (1 << 10), { .func_arg = show_layouts }, "show standard channel layouts" }, { "sample_fmts", (1 << 10), { .func_arg = show_sample_fmts }, "show available audio sample formats" }, { "dispositions", (1 << 10), { .func_arg = show_dispositions}, "show available stream dispositions" }, { "colors", (1 << 10), { .func_arg = show_colors }, "show available color names" }, { "loglevel", (1 << 0), { .func_arg = opt_loglevel }, "set logging level", "loglevel" }, { "v", (1 << 0), { .func_arg = opt_loglevel }, "set logging level", "loglevel" }, { "report", 0, { .func_arg = opt_report }, "generate a report" }, { "max_alloc", (1 << 0), { .func_arg = opt_max_alloc }, "set maximum size of a single allocated block", "bytes" }, { "cpuflags", (1 << 0) | (1 << 2), { .func_arg = opt_cpuflags }, "force specific cpu flags", "flags" }, { "cpucount", (1 << 0) | (1 << 2), { .func_arg = opt_cpucount }, "force specific cpu count", "count" }, { "hide_banner", (1 << 1) | (1 << 2), {&hide_banner}, "do not show program banner", "hide_banner" }, { "sources" , (1 << 10) | (1 << 0), { .func_arg = show_sources }, "list sources of the input device", "device" }, { "sinks" , (1 << 10) | (1 << 0), { .func_arg = show_sinks }, "list sinks of the output device", "device" },
-    { "f", (1 << 0) | (1 << 3) | (1 << 13) |
-                        (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, format) },
-        "force format", "fmt" },
-    { "y", (1 << 1), { &file_overwrite },
+    { "L", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_license }, "show license" }, { "h", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_help }, "show help", "topic" }, { "?", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_help }, "show help", "topic" }, { "help", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_help }, "show help", "topic" }, { "-help", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_help }, "show help", "topic" }, { "version", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_version }, "show version" }, { "buildconf", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_buildconf }, "show build configuration" }, { "formats", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_formats }, "show available formats" }, { "muxers", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_muxers }, "show available muxers" }, { "demuxers", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_demuxers }, "show available demuxers" }, { "devices", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_devices }, "show available devices" }, { "codecs", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_codecs }, "show available codecs" }, { "decoders", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_decoders }, "show available decoders" }, { "encoders", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_encoders }, "show available encoders" }, { "bsfs", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_bsfs }, "show available bit stream filters" }, { "protocols", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_protocols }, "show available protocols" }, { "filters", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_filters }, "show available filters" }, { "pix_fmts", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_pix_fmts }, "show available pixel formats" }, { "layouts", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_layouts }, "show standard channel layouts" }, { "sample_fmts", OPT_TYPE_FUNC, (1 << 1), { .func_arg = show_sample_fmts }, "show available audio sample formats" }, { "dispositions", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_dispositions}, "show available stream dispositions" }, { "colors", OPT_TYPE_FUNC, (1 << 1) | (1 << 2), { .func_arg = show_colors }, "show available color names" }, { "loglevel", OPT_TYPE_FUNC, (1 << 0) | (1 << 2), { .func_arg = opt_loglevel }, "set logging level", "loglevel" }, { "v", OPT_TYPE_FUNC, (1 << 0), { .func_arg = opt_loglevel }, "set logging level", "loglevel" }, { "report", OPT_TYPE_FUNC, (1 << 2), { .func_arg = opt_report }, "generate a report" }, { "max_alloc", OPT_TYPE_FUNC, (1 << 0) | (1 << 2), { .func_arg = opt_max_alloc }, "set maximum size of a single allocated block", "bytes" }, { "cpuflags", OPT_TYPE_FUNC, (1 << 0) | (1 << 2), { .func_arg = opt_cpuflags }, "force specific cpu flags", "flags" }, { "cpucount", OPT_TYPE_FUNC, (1 << 0) | (1 << 2), { .func_arg = opt_cpucount }, "force specific cpu count", "count" }, { "hide_banner", OPT_TYPE_BOOL, (1 << 2), {&hide_banner}, "do not show program banner", "hide_banner" }, { "sources" , OPT_TYPE_FUNC, (1 << 1) | (1 << 0) | (1 << 2), { .func_arg = show_sources }, "list sources of the input device", "device" }, { "sinks" , OPT_TYPE_FUNC, (1 << 1) | (1 << 0) | (1 << 2), { .func_arg = show_sinks }, "list sinks of the output device", "device" },
+    { "f", OPT_TYPE_STRING, ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, format) },
+        "force container format (auto-detected otherwise)", "fmt" },
+    { "y", OPT_TYPE_BOOL, 0,
+        { &file_overwrite },
         "overwrite output files" },
-    { "n", (1 << 1), { &no_file_overwrite },
+    { "n", OPT_TYPE_BOOL, 0,
+        { &no_file_overwrite },
         "never overwrite output files" },
-    { "ignore_unknown", (1 << 1), { &ignore_unknown_streams },
+    { "ignore_unknown", OPT_TYPE_BOOL, (1 << 2),
+        { &ignore_unknown_streams },
         "Ignore unknown stream types" },
-    { "copy_unknown", (1 << 1) | (1 << 2), { &copy_unknown_streams },
+    { "copy_unknown", OPT_TYPE_BOOL, (1 << 2),
+        { &copy_unknown_streams },
         "Copy unknown stream types" },
-    { "recast_media", (1 << 1) | (1 << 2), { &recast_media },
+    { "recast_media", OPT_TYPE_BOOL, (1 << 2),
+        { &recast_media },
         "allow recasting stream type in order to force a decoder of different media type" },
-    { "c", (1 << 0) | (1 << 3) | (1 << 14) |
-                        (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, codec_names) },
-        "codec name", "codec" },
-    { "codec", (1 << 0) | (1 << 3) | (1 << 14) |
-                        (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, codec_names) },
-        "codec name", "codec" },
-    { "pre", (1 << 0) | (1 << 3) | (1 << 14) |
-                        (1 << 18), { .off = __builtin_offsetof(OptionsContext, presets) },
-        "preset name", "preset" },
-    { "map", (1 << 0) | (1 << 2) | (1 << 12) |
-                        (1 << 18), { .func_arg = opt_map },
+    { "c", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12) | (1 << 14),
+        { .off = __builtin_offsetof(OptionsContext, codec_names) },
+        "select encoder/decoder ('copy' to copy stream without reencoding)", "codec",
+        .u1.name_canon = "codec", },
+    { "codec", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12) | (1 << 2) | (1 << 13),
+        { .off = __builtin_offsetof(OptionsContext, codec_names) },
+        "alias for -c (select encoder/decoder)", "codec",
+        .u1.names_alt = alt_codec, },
+    { "pre", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12) | (1 << 2) | (1 << 13),
+        { .off = __builtin_offsetof(OptionsContext, presets) },
+        "preset name", "preset",
+        .u1.names_alt = alt_pre, },
+    { "map", OPT_TYPE_FUNC, (1 << 0) | (1 << 2) | (1 << 7) | (1 << 12),
+        { .func_arg = opt_map },
         "set input stream mapping",
         "[-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]]" },
-
-    { "map_channel", (1 << 0) | (1 << 2) | (1 << 12) | (1 << 18), { .func_arg = opt_map_channel },
-        "map an audio channel from one stream to another (deprecated)", "file.stream.channel[:syncfile.syncstream]" },
-
-    { "map_metadata", (1 << 0) | (1 << 3) | (1 << 14) |
-                        (1 << 18), { .off = __builtin_offsetof(OptionsContext, metadata_map) },
+    { "map_metadata", OPT_TYPE_STRING, ((1 << 9) | ((1 << 8) | (1 << 7))) | (1 << 12) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, metadata_map) },
         "set metadata information of outfile from infile",
         "outfile[,metadata]:infile[,metadata]" },
-    { "map_chapters", (1 << 0) | (1 << 6) | (1 << 2) | (1 << 13) |
-                        (1 << 18), { .off = __builtin_offsetof(OptionsContext, chapters_input_file) },
+    { "map_chapters", OPT_TYPE_INT, (1 << 2) | ((1 << 8) | (1 << 7)) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, chapters_input_file) },
         "set chapters mapping", "input_file_index" },
-    { "t", (1 << 0) | (1 << 15) | (1 << 13) |
-                        (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, recording_time) },
-        "record or transcode \"duration\" seconds of audio/video",
+    { "t", OPT_TYPE_TIME, ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, recording_time) },
+        "stop transcoding after specified duration",
         "duration" },
-    { "to", (1 << 0) | (1 << 15) | (1 << 13) | (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, stop_time) },
-        "record or transcode stop time", "time_stop" },
-    { "fs", (1 << 0) | (1 << 9) | (1 << 13) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, limit_filesize) },
+    { "to", OPT_TYPE_TIME, ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, stop_time) },
+        "stop transcoding after specified time is reached",
+        "time_stop" },
+    { "fs", OPT_TYPE_INT64, ((1 << 8) | (1 << 7)) | (1 << 12) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, limit_filesize) },
         "set the limit file size in bytes", "limit_size" },
-    { "ss", (1 << 0) | (1 << 15) | (1 << 13) |
-                        (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, start_time) },
-        "set the start time offset", "time_off" },
-    { "sseof", (1 << 0) | (1 << 15) | (1 << 13) |
-                        (1 << 17), { .off = __builtin_offsetof(OptionsContext, start_time_eof) },
+    { "ss", OPT_TYPE_TIME, ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, start_time) },
+        "start transcoding at specified time", "time_off" },
+    { "sseof", OPT_TYPE_TIME, ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, start_time_eof) },
         "set the start time offset relative to EOF", "time_off" },
-    { "seek_timestamp", (1 << 0) | (1 << 6) | (1 << 13) |
-                        (1 << 17), { .off = __builtin_offsetof(OptionsContext, seek_timestamp) },
+    { "seek_timestamp", OPT_TYPE_INT, ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, seek_timestamp) },
         "enable/disable seeking by timestamp with -ss" },
-    { "accurate_seek", (1 << 1) | (1 << 13) | (1 << 2) |
-                        (1 << 17), { .off = __builtin_offsetof(OptionsContext, accurate_seek) },
+    { "accurate_seek", OPT_TYPE_BOOL, ((1 << 8) | (1 << 7)) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, accurate_seek) },
         "enable/disable accurate seeking with -ss" },
-    { "isync", (1 << 0) | (1 << 6) | (1 << 13) |
-                        (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, input_sync_ref) },
+    { "isync", OPT_TYPE_INT, ((1 << 8) | (1 << 7)) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, input_sync_ref) },
         "Indicate the input index for sync reference", "sync ref" },
-    { "itsoffset", (1 << 0) | (1 << 15) | (1 << 13) |
-                        (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, input_ts_offset) },
+    { "itsoffset", OPT_TYPE_TIME, ((1 << 8) | (1 << 7)) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, input_ts_offset) },
         "set the input ts offset", "time_off" },
-    { "itsscale", (1 << 0) | (1 << 16) | (1 << 14) |
-                        (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, ts_scale) },
+    { "itsscale", OPT_TYPE_DOUBLE, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, ts_scale) },
         "set the input ts scale", "scale" },
-    { "timestamp", (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_recording_timestamp },
+    { "timestamp", OPT_TYPE_FUNC, (1 << 0) | (1 << 7) | (1 << 2) | (1 << 12),
+        { .func_arg = opt_recording_timestamp },
         "set the recording timestamp ('now' to set the current time)", "time" },
-    { "metadata", (1 << 0) | (1 << 3) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, metadata) },
-        "add metadata", "string=string" },
-    { "program", (1 << 0) | (1 << 3) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, program) },
+    { "metadata", OPT_TYPE_STRING, ((1 << 9) | ((1 << 8) | (1 << 7))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, metadata) },
+        "add metadata", "key=value" },
+    { "program", OPT_TYPE_STRING, ((1 << 9) | ((1 << 8) | (1 << 7))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, program) },
         "add program with specified streams", "title=string:st=number..." },
-    { "stream_group", (1 << 0) | (1 << 3) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, stream_groups) },
+    { "stream_group", OPT_TYPE_STRING, ((1 << 9) | ((1 << 8) | (1 << 7))) | (1 << 12) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, stream_groups) },
         "add stream group with specified streams and group type-specific arguments", "id=number:st=number..." },
-    { "dframes", (1 << 0) | (1 << 12) | (1 << 2) |
-                        (1 << 18), { .func_arg = opt_data_frames },
-        "set the number of data frames to output", "number" },
-    { "benchmark", (1 << 1) | (1 << 2), { &do_benchmark },
+    { "dframes", OPT_TYPE_FUNC, (1 << 0) | (1 << 7) | (1 << 2) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_data_frames },
+        "set the number of data frames to output", "number",
+        .u1.name_canon = "frames" },
+    { "benchmark", OPT_TYPE_BOOL, (1 << 2),
+        { &do_benchmark },
         "add timings for benchmarking" },
-    { "benchmark_all", (1 << 1) | (1 << 2), { &do_benchmark_all },
+    { "benchmark_all", OPT_TYPE_BOOL, (1 << 2),
+        { &do_benchmark_all },
       "add timings for each task" },
-    { "progress", (1 << 0) | (1 << 2), { .func_arg = opt_progress },
+    { "progress", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_progress },
       "write program-readable progress information", "url" },
-    { "stdin", (1 << 1) | (1 << 2), { &stdin_interaction },
+    { "stdin", OPT_TYPE_BOOL, (1 << 2),
+        { &stdin_interaction },
       "enable or disable interaction on standard input" },
-    { "timelimit", (1 << 0) | (1 << 2), { .func_arg = opt_timelimit },
+    { "timelimit", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_timelimit },
         "set max runtime in seconds in CPU user time", "limit" },
-    { "dump", (1 << 1) | (1 << 2), { &do_pkt_dump },
+    { "dump", OPT_TYPE_BOOL, (1 << 2),
+        { &do_pkt_dump },
         "dump each input packet" },
-    { "hex", (1 << 1) | (1 << 2), { &do_hex_dump },
+    { "hex", OPT_TYPE_BOOL, (1 << 2),
+        { &do_hex_dump },
         "when dumping packets, also dump the payload" },
-    { "re", (1 << 1) | (1 << 2) | (1 << 13) |
-                        (1 << 17), { .off = __builtin_offsetof(OptionsContext, rate_emu) },
+    { "re", OPT_TYPE_BOOL, (1 << 2) | ((1 << 8) | (1 << 7)) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, rate_emu) },
         "read input at native frame rate; equivalent to -readrate 1", "" },
-    { "readrate", (1 << 0) | (1 << 7) | (1 << 13) |
-                        (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, readrate) },
+    { "readrate", OPT_TYPE_FLOAT, ((1 << 8) | (1 << 7)) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, readrate) },
         "read input at specified rate", "speed" },
-    { "readrate_initial_burst", (1 << 0) | (1 << 16) | (1 << 13) |
-                                (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, readrate_initial_burst) },
+    { "readrate_initial_burst", OPT_TYPE_DOUBLE, ((1 << 8) | (1 << 7)) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, readrate_initial_burst) },
         "The initial amount of input to burst read before imposing any readrate", "seconds" },
-    { "target", (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_target },
+    { "target", OPT_TYPE_FUNC, (1 << 0) | (1 << 7) | (1 << 2) | (1 << 12),
+        { .func_arg = opt_target },
         "specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\" or \"dv50\" "
         "with optional prefixes \"pal-\", \"ntsc-\" or \"film-\")", "type" },
-    { "vsync", (1 << 0) | (1 << 2), { .func_arg = opt_vsync },
-        "set video sync method globally; deprecated, use -fps_mode", "" },
-    { "frame_drop_threshold", (1 << 0) | (1 << 7) | (1 << 2), { &frame_drop_threshold },
+    { "frame_drop_threshold", OPT_TYPE_FLOAT, (1 << 2),
+        { &frame_drop_threshold },
         "frame drop threshold", "" },
-
-    { "adrift_threshold", (1 << 0) | (1 << 2), { .func_arg = opt_adrift_threshold },
-        "deprecated, does nothing", "threshold" },
-
-    { "copyts", (1 << 1) | (1 << 2), { &copy_ts },
+    { "copyts", OPT_TYPE_BOOL, (1 << 2),
+        { &copy_ts },
         "copy timestamps" },
-    { "start_at_zero", (1 << 1) | (1 << 2), { &start_at_zero },
+    { "start_at_zero", OPT_TYPE_BOOL, (1 << 2),
+        { &start_at_zero },
         "shift input timestamps to start at 0 when using copyts" },
-    { "copytb", (1 << 0) | (1 << 6) | (1 << 2), { &copy_tb },
+    { "copytb", OPT_TYPE_INT, (1 << 2),
+        { &copy_tb },
         "copy input stream time base when stream copying", "mode" },
-    { "shortest", (1 << 1) | (1 << 2) | (1 << 13) |
-                        (1 << 18), { .off = __builtin_offsetof(OptionsContext, shortest) },
+    { "shortest", OPT_TYPE_BOOL, (1 << 2) | ((1 << 8) | (1 << 7)) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, shortest) },
         "finish encoding within shortest input" },
-    { "shortest_buf_duration", (1 << 0) | (1 << 7) | (1 << 2) | (1 << 13) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, shortest_buf_duration) },
+    { "shortest_buf_duration", OPT_TYPE_FLOAT, (1 << 2) | ((1 << 8) | (1 << 7)) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, shortest_buf_duration) },
         "maximum buffering duration (in seconds) for the -shortest option" },
-    { "bitexact", (1 << 1) | (1 << 2) | (1 << 13) |
-                        (1 << 18) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, bitexact) },
+    { "bitexact", OPT_TYPE_BOOL, (1 << 2) | ((1 << 8) | (1 << 7)) | (1 << 12) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, bitexact) },
         "bitexact mode" },
-    { "apad", (1 << 3) | (1 << 0) | (1 << 14) |
-                        (1 << 18), { .off = __builtin_offsetof(OptionsContext, apad) },
+    { "apad", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, apad) },
         "audio pad", "" },
-    { "dts_delta_threshold", (1 << 0) | (1 << 7) | (1 << 2), { &dts_delta_threshold },
+    { "dts_delta_threshold", OPT_TYPE_FLOAT, (1 << 2),
+        { &dts_delta_threshold },
         "timestamp discontinuity delta threshold", "threshold" },
-    { "dts_error_threshold", (1 << 0) | (1 << 7) | (1 << 2), { &dts_error_threshold },
+    { "dts_error_threshold", OPT_TYPE_FLOAT, (1 << 2),
+        { &dts_error_threshold },
         "timestamp error delta threshold", "threshold" },
-    { "xerror", (1 << 1) | (1 << 2), { &exit_on_error },
+    { "xerror", OPT_TYPE_BOOL, (1 << 2),
+        { &exit_on_error },
         "exit on error", "error" },
-    { "abort_on", (1 << 0) | (1 << 2), { .func_arg = opt_abort_on },
+    { "abort_on", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_abort_on },
         "abort on the specified condition flags", "flags" },
-    { "copyinkf", (1 << 1) | (1 << 2) | (1 << 14) |
-                        (1 << 18), { .off = __builtin_offsetof(OptionsContext, copy_initial_nonkeyframes) },
+    { "copyinkf", OPT_TYPE_BOOL, (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, copy_initial_nonkeyframes) },
         "copy initial non-keyframes" },
-    { "copypriorss", (1 << 6) | (1 << 0) | (1 << 2) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, copy_prior_start) },
+    { "copypriorss", OPT_TYPE_INT, (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, copy_prior_start) },
         "copy or discard frames before start time" },
-    { "frames", (1 << 9) | (1 << 0) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, max_frames) },
-        "set the number of frames to output", "number" },
-    { "tag", (1 << 3) | (1 << 0) | (1 << 14) |
-                        (1 << 2) | (1 << 18) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, codec_tags) },
-        "force codec tag/fourcc", "fourcc/tag" },
-    { "q", (1 << 0) | (1 << 2) | (1 << 16) |
-                        (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, qscale) },
-        "use fixed quality scale (VBR)", "q" },
-    { "qscale", (1 << 0) | (1 << 2) | (1 << 12) |
-                        (1 << 18), { .func_arg = opt_qscale },
-        "use fixed quality scale (VBR)", "q" },
-    { "profile", (1 << 0) | (1 << 2) | (1 << 12) | (1 << 18), { .func_arg = opt_profile },
+    { "frames", OPT_TYPE_INT64, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12) | (1 << 2) | (1 << 13),
+        { .off = __builtin_offsetof(OptionsContext, max_frames) },
+        "set the number of frames to output", "number",
+        .u1.names_alt = alt_frames, },
+    { "tag", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12) | (1 << 11) | (1 << 13),
+        { .off = __builtin_offsetof(OptionsContext, codec_tags) },
+        "force codec tag/fourcc", "fourcc/tag",
+        .u1.names_alt = alt_tag, },
+    { "q", OPT_TYPE_DOUBLE, (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12) | (1 << 14),
+        { .off = __builtin_offsetof(OptionsContext, qscale) },
+        "use fixed quality scale (VBR)", "q",
+        .u1.name_canon = "qscale", },
+    { "qscale", OPT_TYPE_FUNC, (1 << 0) | (1 << 2) | (1 << 7) | (1 << 12) | (1 << 13),
+        { .func_arg = opt_qscale },
+        "use fixed quality scale (VBR)", "q",
+        .u1.names_alt = alt_qscale, },
+    { "profile", OPT_TYPE_FUNC, (1 << 0) | (1 << 2) | (1 << 7) | (1 << 12),
+        { .func_arg = opt_profile },
         "set profile", "profile" },
-    { "filter", (1 << 0) | (1 << 3) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, filters) },
-        "set stream filtergraph", "filter_graph" },
-    { "filter_threads", (1 << 0), { .func_arg = opt_filter_threads },
+    { "filter", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12) | (1 << 13),
+        { .off = __builtin_offsetof(OptionsContext, filters) },
+        "apply specified filters to audio/video", "filter_graph",
+        .u1.names_alt = alt_filter, },
+    { "filter_threads", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_filter_threads },
         "number of non-complex filter threads" },
-    { "filter_script", (1 << 0) | (1 << 3) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, filter_scripts) },
-        "read stream filtergraph description from a file", "filename" },
-    { "reinit_filter", (1 << 0) | (1 << 6) | (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, reinit_filters) },
+
+    { "filter_script", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, filter_scripts) },
+        "deprecated, use -/filter", "filename" },
+
+    { "reinit_filter", OPT_TYPE_INT, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, reinit_filters) },
         "reinit filtergraph on input parameter changes", "" },
-    { "filter_complex", (1 << 0) | (1 << 2), { .func_arg = opt_filter_complex },
+    { "filter_complex", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_filter_complex },
         "create a complex filtergraph", "graph_description" },
-    { "filter_complex_threads", (1 << 0) | (1 << 6), { &filter_complex_nbthreads },
+    { "filter_complex_threads", OPT_TYPE_INT, (1 << 2),
+        { &filter_complex_nbthreads },
         "number of threads for -filter_complex" },
-    { "lavfi", (1 << 0) | (1 << 2), { .func_arg = opt_filter_complex },
+    { "lavfi", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_filter_complex },
         "create a complex filtergraph", "graph_description" },
-    { "filter_complex_script", (1 << 0) | (1 << 2), { .func_arg = opt_filter_complex_script },
-        "read complex filtergraph description from a file", "filename" },
-    { "auto_conversion_filters", (1 << 1) | (1 << 2), { &auto_conversion_filters },
+
+    { "filter_complex_script", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_filter_complex_script },
+        "deprecated, use -/filter_complex instead", "filename" },
+
+    { "auto_conversion_filters", OPT_TYPE_BOOL, (1 << 2),
+        { &auto_conversion_filters },
         "enable automatic conversion filters globally" },
-    { "stats", (1 << 1), { &print_stats },
+    { "stats", OPT_TYPE_BOOL, 0,
+        { &print_stats },
         "print progress report during encoding", },
-    { "stats_period", (1 << 0) | (1 << 2), { .func_arg = opt_stats_period },
+    { "stats_period", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_stats_period },
         "set the period at which ffmpeg updates stats and -progress output", "time" },
-    { "attach", (1 << 0) | (1 << 12) | (1 << 2) |
-                        (1 << 18), { .func_arg = opt_attach },
+    { "attach", OPT_TYPE_FUNC, (1 << 0) | (1 << 7) | (1 << 2) | (1 << 12),
+        { .func_arg = opt_attach },
         "add an attachment to the output file", "filename" },
-    { "dump_attachment", (1 << 0) | (1 << 3) | (1 << 14) |
-                         (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, dump_attachment) },
+    { "dump_attachment", OPT_TYPE_STRING, ((1 << 9) | ((1 << 8) | (1 << 7))) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, dump_attachment) },
         "extract an attachment into a file", "filename" },
-    { "stream_loop", (1 << 6) | (1 << 0) | (1 << 2) | (1 << 17) |
-                        (1 << 13), { .off = __builtin_offsetof(OptionsContext, loop) }, "set number of times input stream shall be looped", "loop count" },
-    { "debug_ts", (1 << 1) | (1 << 2), { &debug_ts },
+    { "stream_loop", OPT_TYPE_INT, (1 << 2) | (1 << 11) | ((1 << 8) | (1 << 7)),
+        { .off = __builtin_offsetof(OptionsContext, loop) }, "set number of times input stream shall be looped", "loop count" },
+    { "debug_ts", OPT_TYPE_BOOL, (1 << 2),
+        { &debug_ts },
         "print timestamp debugging info" },
-    { "max_error_rate", (1 << 0) | (1 << 7), { &max_error_rate },
+    { "max_error_rate", OPT_TYPE_FLOAT, (1 << 2),
+        { &max_error_rate },
         "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.", "maximum error rate" },
-    { "discard", (1 << 3) | (1 << 0) | (1 << 14) |
-                        (1 << 17), { .off = __builtin_offsetof(OptionsContext, discard) },
+    { "discard", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, discard) },
         "discard", "" },
-    { "disposition", (1 << 3) | (1 << 0) | (1 << 14) |
-                        (1 << 18), { .off = __builtin_offsetof(OptionsContext, disposition) },
+    { "disposition", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, disposition) },
         "disposition", "" },
-    { "thread_queue_size", (1 << 0) | (1 << 6) | (1 << 13) | (1 << 2) | (1 << 17) | (1 << 18),
-                                                                     { .off = __builtin_offsetof(OptionsContext, thread_queue_size) },
+    { "thread_queue_size", OPT_TYPE_INT, ((1 << 8) | (1 << 7)) | (1 << 2) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, thread_queue_size) },
         "set the maximum number of queued packets from the demuxer" },
-    { "find_stream_info", (1 << 1) | (1 << 17) | (1 << 2) | (1 << 13), { .off = __builtin_offsetof(OptionsContext, find_stream_info) },
+    { "find_stream_info", OPT_TYPE_BOOL, (1 << 11) | (1 << 2) | ((1 << 8) | (1 << 7)),
+        { .off = __builtin_offsetof(OptionsContext, find_stream_info) },
         "read and decode the streams to fill missing information with heuristics" },
-    { "bits_per_raw_sample", (1 << 6) | (1 << 0) | (1 << 2) | (1 << 14) | (1 << 18),
+    { "bits_per_raw_sample", OPT_TYPE_INT, (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
         { .off = __builtin_offsetof(OptionsContext, bits_per_raw_sample) },
         "set the number of bits per raw sample", "number" },
 
-    { "stats_enc_pre", (1 << 0) | (1 << 14) | (1 << 2) | (1 << 18) | (1 << 3), { .off = __builtin_offsetof(OptionsContext, enc_stats_pre) },
+    { "stats_enc_pre", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, enc_stats_pre) },
         "write encoding stats before encoding" },
-    { "stats_enc_post", (1 << 0) | (1 << 14) | (1 << 2) | (1 << 18) | (1 << 3), { .off = __builtin_offsetof(OptionsContext, enc_stats_post) },
+    { "stats_enc_post", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, enc_stats_post) },
         "write encoding stats after encoding" },
-    { "stats_mux_pre", (1 << 0) | (1 << 14) | (1 << 2) | (1 << 18) | (1 << 3), { .off = __builtin_offsetof(OptionsContext, mux_stats) },
+    { "stats_mux_pre", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, mux_stats) },
         "write packets stats before muxing" },
-    { "stats_enc_pre_fmt", (1 << 0) | (1 << 14) | (1 << 2) | (1 << 18) | (1 << 3), { .off = __builtin_offsetof(OptionsContext, enc_stats_pre_fmt) },
+    { "stats_enc_pre_fmt", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, enc_stats_pre_fmt) },
         "format of the stats written with -stats_enc_pre" },
-    { "stats_enc_post_fmt", (1 << 0) | (1 << 14) | (1 << 2) | (1 << 18) | (1 << 3), { .off = __builtin_offsetof(OptionsContext, enc_stats_post_fmt) },
+    { "stats_enc_post_fmt", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, enc_stats_post_fmt) },
         "format of the stats written with -stats_enc_post" },
-    { "stats_mux_pre_fmt", (1 << 0) | (1 << 14) | (1 << 2) | (1 << 18) | (1 << 3), { .off = __builtin_offsetof(OptionsContext, mux_stats_fmt) },
+    { "stats_mux_pre_fmt", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, mux_stats_fmt) },
         "format of the stats written with -stats_mux_pre" },
 
 
-    { "vframes", (1 << 4) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_video_frames },
-        "set the number of video frames to output", "number" },
-    { "r", (1 << 4) | (1 << 0) | (1 << 3) | (1 << 14) |
-                      (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, frame_rates) },
-        "set frame rate (Hz value, fraction or abbreviation)", "rate" },
-    { "fpsmax", (1 << 4) | (1 << 0) | (1 << 3) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, max_frame_rates) },
+    { "vframes", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 7) | (1 << 12) | (1 << 2) | (1 << 14),
+        { .func_arg = opt_video_frames },
+        "set the number of video frames to output", "number",
+        .u1.name_canon = "frames", },
+    { "r", OPT_TYPE_STRING, (1 << 3) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, frame_rates) },
+        "override input framerate/convert to given output framerate (Hz value, fraction or abbreviation)", "rate" },
+    { "fpsmax", OPT_TYPE_STRING, (1 << 3) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, max_frame_rates) },
         "set max frame rate (Hz value, fraction or abbreviation)", "rate" },
-    { "s", (1 << 4) | (1 << 0) | (1 << 8) | (1 << 3) | (1 << 14) |
-                      (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, frame_sizes) },
+    { "s", OPT_TYPE_STRING, (1 << 3) | (1 << 5) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, frame_sizes) },
         "set frame size (WxH or abbreviation)", "size" },
-    { "aspect", (1 << 4) | (1 << 0) | (1 << 3) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, frame_aspect_ratios) },
+    { "aspect", OPT_TYPE_STRING, (1 << 3) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, frame_aspect_ratios) },
         "set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)", "aspect" },
-    { "pix_fmt", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 3) | (1 << 14) |
-                      (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, frame_pix_fmts) },
+    { "pix_fmt", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, frame_pix_fmts) },
         "set pixel format", "format" },
-    { "display_rotation", (1 << 4) | (1 << 0) | (1 << 16) | (1 << 14) |
-                          (1 << 17), { .off = __builtin_offsetof(OptionsContext, display_rotations) },
+    { "display_rotation", OPT_TYPE_DOUBLE, (1 << 3) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, display_rotations) },
         "set pure counter-clockwise rotation in degrees for stream(s)",
         "angle" },
-    { "display_hflip", (1 << 4) | (1 << 1) | (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, display_hflips) },
+    { "display_hflip", OPT_TYPE_BOOL, (1 << 3) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, display_hflips) },
         "set display horizontal flip for stream(s) "
         "(overrides any display rotation if it is not set)"},
-    { "display_vflip", (1 << 4) | (1 << 1) | (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, display_vflips) },
+    { "display_vflip", OPT_TYPE_BOOL, (1 << 3) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, display_vflips) },
         "set display vertical flip for stream(s) "
         "(overrides any display rotation if it is not set)"},
-    { "vn", (1 << 4) | (1 << 1) | (1 << 13) | (1 << 17) | (1 << 18),{ .off = __builtin_offsetof(OptionsContext, video_disable) },
+    { "vn", OPT_TYPE_BOOL, (1 << 3) | ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, video_disable) },
         "disable video" },
-    { "rc_override", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 3) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, rc_overrides) },
+    { "rc_override", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, rc_overrides) },
         "rate control override for specific intervals", "override" },
-    { "vcodec", (1 << 4) | (1 << 0) | (1 << 12) | (1 << 17) |
-                      (1 << 18), { .func_arg = opt_video_codec },
-        "force video codec ('copy' to copy stream)", "codec" },
-    { "timecode", (1 << 4) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_timecode },
+    { "vcodec", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 7) | (1 << 11) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_video_codec },
+        "alias for -c:v (select encoder/decoder for video streams)", "codec",
+        .u1.name_canon = "codec", },
+    { "timecode", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 7) | (1 << 12) | (1 << 2),
+        { .func_arg = opt_timecode },
         "set initial TimeCode value.", "hh:mm:ss[:;.]ff" },
-    { "pass", (1 << 4) | (1 << 0) | (1 << 14) | (1 << 6) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, pass) },
+    { "pass", OPT_TYPE_INT, (1 << 3) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, pass) },
         "select the pass number (1 to 3)", "n" },
-    { "passlogfile", (1 << 4) | (1 << 0) | (1 << 3) | (1 << 2) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, passlogfiles) },
+    { "passlogfile", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, passlogfiles) },
         "select two pass log file name prefix", "prefix" },
-
-    { "psnr", (1 << 4) | (1 << 1) | (1 << 2), { &do_psnr },
-        "calculate PSNR of compressed frames (deprecated, use -flags +psnr)" },
-
-    { "vstats", (1 << 4) | (1 << 2) , { .func_arg = opt_vstats },
+    { "vstats", OPT_TYPE_FUNC, (1 << 3) | (1 << 2),
+        { .func_arg = opt_vstats },
         "dump video coding statistics to file" },
-    { "vstats_file", (1 << 4) | (1 << 0) | (1 << 2) , { .func_arg = opt_vstats_file },
+    { "vstats_file", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 2),
+        { .func_arg = opt_vstats_file },
         "dump video coding statistics to file", "file" },
-    { "vstats_version", (1 << 4) | (1 << 6) | (1 << 0) | (1 << 2) , { &vstats_version },
+    { "vstats_version", OPT_TYPE_INT, (1 << 3) | (1 << 2),
+        { &vstats_version },
         "Version of the vstats format to use."},
-    { "vf", (1 << 4) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_video_filters },
-        "set video filters", "filter_graph" },
-    { "intra_matrix", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 3) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, intra_matrices) },
+    { "vf", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_video_filters },
+        "alias for -filter:v (apply filters to video streams)", "filter_graph",
+        .u1.name_canon = "filter", },
+    { "intra_matrix", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, intra_matrices) },
         "specify intra matrix coeffs", "matrix" },
-    { "inter_matrix", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 3) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, inter_matrices) },
+    { "inter_matrix", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, inter_matrices) },
         "specify inter matrix coeffs", "matrix" },
-    { "chroma_intra_matrix", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 3) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, chroma_intra_matrices) },
+    { "chroma_intra_matrix", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, chroma_intra_matrices) },
         "specify intra matrix coeffs", "matrix" },
-
-    { "top", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 6)| (1 << 14) |
-                      (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, top_field_first) },
-        "deprecated, use the setfield video filter", "" },
-
-    { "vtag", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 12) |
-                      (1 << 17) | (1 << 18), { .func_arg = opt_old2new },
-        "force video tag/fourcc", "fourcc/tag" },
-
-    { "qphist", (1 << 4) | (1 << 2) , { .func_arg = opt_qphist },
-        "deprecated, does nothing" },
-
-    { "fps_mode", (1 << 4) | (1 << 0) | (1 << 3) | (1 << 2) |
-                      (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, fps_mode) },
+    { "vtag", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 2) | (1 << 7) | (1 << 11) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_old2new },
+        "force video tag/fourcc", "fourcc/tag",
+        .u1.name_canon = "tag", },
+    { "fps_mode", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, fps_mode) },
         "set framerate mode for matching video streams; overrides vsync" },
-    { "force_fps", (1 << 4) | (1 << 1) | (1 << 2) | (1 << 14) |
-                      (1 << 18), { .off = __builtin_offsetof(OptionsContext, force_fps) },
+    { "force_fps", OPT_TYPE_BOOL, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, force_fps) },
         "force the selected framerate, disable the best supported framerate selection" },
-    { "streamid", (1 << 4) | (1 << 0) | (1 << 2) | (1 << 12) |
-                      (1 << 18), { .func_arg = opt_streamid },
+    { "streamid", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 2) | (1 << 7) | (1 << 12),
+        { .func_arg = opt_streamid },
         "set the value of an outfile streamid", "streamIndex:value" },
-    { "force_key_frames", (1 << 4) | (1 << 3) | (1 << 0) | (1 << 2) |
-                          (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, forced_key_frames) },
+    { "force_key_frames", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, forced_key_frames) },
         "force key frames at specified timestamps", "timestamps" },
-    { "b", (1 << 4) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_bitrate },
+    { "b", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 7) | (1 << 12),
+        { .func_arg = opt_bitrate },
         "video bitrate (please use -b:v)", "bitrate" },
-    { "hwaccel", (1 << 4) | (1 << 3) | (1 << 0) | (1 << 2) |
-                          (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, hwaccels) },
+    { "hwaccel", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, hwaccels) },
         "use HW accelerated decoding", "hwaccel name" },
-    { "hwaccel_device", (1 << 4) | (1 << 3) | (1 << 0) | (1 << 2) |
-                          (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, hwaccel_devices) },
+    { "hwaccel_device", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, hwaccel_devices) },
         "select a device for HW acceleration", "devicename" },
-    { "hwaccel_output_format", (1 << 4) | (1 << 3) | (1 << 0) | (1 << 2) |
-                          (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, hwaccel_output_formats) },
+    { "hwaccel_output_format", OPT_TYPE_STRING, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, hwaccel_output_formats) },
         "select output format used with HW accelerated decoding", "format" },
-    { "hwaccels", (1 << 10), { .func_arg = show_hwaccels },
+    { "hwaccels", OPT_TYPE_FUNC, (1 << 1) | (1 << 2),
+        { .func_arg = show_hwaccels },
         "show available HW acceleration methods" },
-    { "autorotate", (1 << 0) | (1 << 1) | (1 << 14) |
-                          (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, autorotate) },
+    { "autorotate", OPT_TYPE_BOOL, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, autorotate) },
         "automatically insert correct rotate filters" },
-    { "autoscale", (1 << 0) | (1 << 1) | (1 << 14) |
-                          (1 << 2) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, autoscale) },
+    { "autoscale", OPT_TYPE_BOOL, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, autoscale) },
         "automatically insert a scale filter at the end of the filter graph" },
-    { "fix_sub_duration_heartbeat", (1 << 4) | (1 << 1) | (1 << 2) |
-                                    (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, fix_sub_duration_heartbeat) },
+    { "fix_sub_duration_heartbeat", OPT_TYPE_BOOL, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, fix_sub_duration_heartbeat) },
         "set this video output stream to be a heartbeat stream for "
         "fix_sub_duration, according to which subtitles should be split at "
         "random access points" },
 
 
-    { "aframes", (1 << 5) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_audio_frames },
-        "set the number of audio frames to output", "number" },
-    { "aq", (1 << 5) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_audio_qscale },
+    { "aframes", OPT_TYPE_FUNC, (1 << 4) | (1 << 0) | (1 << 7) | (1 << 12) | (1 << 2) | (1 << 14),
+        { .func_arg = opt_audio_frames },
+        "set the number of audio frames to output", "number",
+        .u1.name_canon = "frames", },
+    { "aq", OPT_TYPE_FUNC, (1 << 4) | (1 << 0) | (1 << 7) | (1 << 12),
+        { .func_arg = opt_audio_qscale },
         "set audio quality (codec-specific)", "quality", },
-    { "ar", (1 << 5) | (1 << 0) | (1 << 6) | (1 << 14) |
-                        (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, audio_sample_rate) },
+    { "ar", OPT_TYPE_INT, (1 << 4) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, audio_sample_rate) },
         "set audio sampling rate (in Hz)", "rate" },
-    { "ac", (1 << 5) | (1 << 0) | (1 << 6) | (1 << 14) |
-                        (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, audio_channels) },
+    { "ac", OPT_TYPE_INT, (1 << 4) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, audio_channels) },
         "set number of audio channels", "channels" },
-    { "an", (1 << 5) | (1 << 1) | (1 << 13) | (1 << 17) | (1 << 18),{ .off = __builtin_offsetof(OptionsContext, audio_disable) },
+    { "an", OPT_TYPE_BOOL, (1 << 4) | ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, audio_disable) },
         "disable audio" },
-    { "acodec", (1 << 5) | (1 << 0) | (1 << 12) |
-                        (1 << 17) | (1 << 18), { .func_arg = opt_audio_codec },
-        "force audio codec ('copy' to copy stream)", "codec" },
-    { "ab", (1 << 5) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_bitrate },
-        "audio bitrate (please use -b:a)", "bitrate" },
-    { "atag", (1 << 5) | (1 << 0) | (1 << 2) | (1 << 12) |
-                        (1 << 18), { .func_arg = opt_old2new },
-        "force audio tag/fourcc", "fourcc/tag" },
-    { "sample_fmt", (1 << 5) | (1 << 0) | (1 << 2) | (1 << 14) |
-                        (1 << 3) | (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, sample_fmts) },
+    { "acodec", OPT_TYPE_FUNC, (1 << 4) | (1 << 0) | (1 << 7) | (1 << 11) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_audio_codec },
+        "alias for -c:a (select encoder/decoder for audio streams)", "codec",
+        .u1.name_canon = "codec", },
+    { "ab", OPT_TYPE_FUNC, (1 << 4) | (1 << 0) | (1 << 7) | (1 << 12),
+        { .func_arg = opt_bitrate },
+        "alias for -b:a (select bitrate for audio streams)", "bitrate" },
+    { "atag", OPT_TYPE_FUNC, (1 << 4) | (1 << 0) | (1 << 2) | (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_old2new },
+        "force audio tag/fourcc", "fourcc/tag",
+        .u1.name_canon = "tag", },
+    { "sample_fmt", OPT_TYPE_STRING, (1 << 4) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, sample_fmts) },
         "set sample format", "format" },
-    { "channel_layout", (1 << 5) | (1 << 0) | (1 << 2) | (1 << 14) |
-                        (1 << 3) | (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, audio_ch_layouts) },
-        "set channel layout", "layout" },
-    { "ch_layout", (1 << 5) | (1 << 0) | (1 << 2) | (1 << 14) |
-                        (1 << 3) | (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, audio_ch_layouts) },
-        "set channel layout", "layout" },
-    { "af", (1 << 5) | (1 << 0) | (1 << 12) | (1 << 18), { .func_arg = opt_audio_filters },
-        "set audio filters", "filter_graph" },
-    { "guess_layout_max", (1 << 5) | (1 << 0) | (1 << 6) | (1 << 14) | (1 << 2) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, guess_layout_max) },
+    { "channel_layout", OPT_TYPE_STRING, (1 << 4) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12) | (1 << 13),
+        { .off = __builtin_offsetof(OptionsContext, audio_ch_layouts) },
+        "set channel layout", "layout",
+        .u1.names_alt = alt_channel_layout, },
+    { "ch_layout", OPT_TYPE_STRING, (1 << 4) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12) | (1 << 14),
+        { .off = __builtin_offsetof(OptionsContext, audio_ch_layouts) },
+        "set channel layout", "layout",
+        .u1.name_canon = "channel_layout", },
+    { "af", OPT_TYPE_FUNC, (1 << 4) | (1 << 0) | (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_audio_filters },
+        "alias for -filter:a (apply filters to audio streams)", "filter_graph",
+        .u1.name_canon = "filter", },
+    { "guess_layout_max", OPT_TYPE_INT, (1 << 4) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, guess_layout_max) },
       "set the maximum number of channels to try to guess the channel layout" },
 
 
-    { "sn", (1 << 8) | (1 << 1) | (1 << 13) | (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, subtitle_disable) },
+    { "sn", OPT_TYPE_BOOL, (1 << 5) | ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, subtitle_disable) },
         "disable subtitle" },
-    { "scodec", (1 << 8) | (1 << 0) | (1 << 12) | (1 << 17) | (1 << 18), { .func_arg = opt_subtitle_codec },
-        "force subtitle codec ('copy' to copy stream)", "codec" },
-    { "stag", (1 << 8) | (1 << 0) | (1 << 2) | (1 << 12) | (1 << 18), { .func_arg = opt_old2new }
-        , "force subtitle tag/fourcc", "fourcc/tag" },
-    { "fix_sub_duration", (1 << 1) | (1 << 2) | (1 << 8) | (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, fix_sub_duration) },
+    { "scodec", OPT_TYPE_FUNC, (1 << 5) | (1 << 0) | (1 << 7) | (1 << 11) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_subtitle_codec },
+        "alias for -c:s (select encoder/decoder for subtitle streams)", "codec",
+        .u1.name_canon = "codec", },
+    { "stag", OPT_TYPE_FUNC, (1 << 5) | (1 << 0) | (1 << 2) | (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_old2new }
+        , "force subtitle tag/fourcc", "fourcc/tag",
+        .u1.name_canon = "tag" },
+    { "fix_sub_duration", OPT_TYPE_BOOL, (1 << 2) | (1 << 5) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, fix_sub_duration) },
         "fix subtitles duration" },
-    { "canvas_size", (1 << 8) | (1 << 0) | (1 << 3) | (1 << 14) | (1 << 17), { .off = __builtin_offsetof(OptionsContext, canvas_sizes) },
+    { "canvas_size", OPT_TYPE_STRING, (1 << 5) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 2),
+        { .off = __builtin_offsetof(OptionsContext, canvas_sizes) },
         "set canvas size (WxH or abbreviation)", "size" },
 
 
-    { "muxdelay", (1 << 7) | (1 << 0) | (1 << 2) | (1 << 13) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, mux_max_delay) },
+    { "muxdelay", OPT_TYPE_FLOAT, (1 << 2) | ((1 << 8) | (1 << 7)) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, mux_max_delay) },
         "set the maximum demux-decode delay", "seconds" },
-    { "muxpreload", (1 << 7) | (1 << 0) | (1 << 2) | (1 << 13) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, mux_preload) },
+    { "muxpreload", OPT_TYPE_FLOAT, (1 << 2) | ((1 << 8) | (1 << 7)) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, mux_preload) },
         "set the initial demux-decode delay", "seconds" },
-    { "sdp_file", (1 << 0) | (1 << 2) | (1 << 18), { .func_arg = opt_sdp_file },
+    { "sdp_file", OPT_TYPE_FUNC, (1 << 0) | (1 << 2) | (1 << 12),
+        { .func_arg = opt_sdp_file },
         "specify a file in which to print sdp information", "file" },
 
-    { "time_base", (1 << 0) | (1 << 3) | (1 << 2) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, time_bases) },
+    { "time_base", OPT_TYPE_STRING, (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, time_bases) },
         "set the desired time base hint for output stream (1:24, 1:48000 or 0.04166, 2.0833e-5)", "ratio" },
-    { "enc_time_base", (1 << 0) | (1 << 3) | (1 << 2) | (1 << 14) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, enc_time_bases) },
+    { "enc_time_base", OPT_TYPE_STRING, (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, enc_time_bases) },
         "set the desired time base for the encoder (1:24, 1:48000 or 0.04166, 2.0833e-5). "
         "two special values are defined - "
         "0 = use frame rate (video) or sample rate (audio),"
         "-1 = match source time base", "ratio" },
 
-    { "bsf", (1 << 0) | (1 << 3) | (1 << 14) | (1 << 2) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, bitstream_filters) },
-        "A comma-separated list of bitstream filters", "bitstream_filters" },
-    { "absf", (1 << 0) | (1 << 5) | (1 << 2)| (1 << 12) | (1 << 18), { .func_arg = opt_old2new },
-        "deprecated", "audio bitstream_filters" },
-    { "vbsf", (1 << 4) | (1 << 0) | (1 << 2)| (1 << 12) | (1 << 18), { .func_arg = opt_old2new },
-        "deprecated", "video bitstream_filters" },
+    { "bsf", OPT_TYPE_STRING, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12) | (1 << 11),
+        { .off = __builtin_offsetof(OptionsContext, bitstream_filters) },
+        "A comma-separated list of bitstream filters", "bitstream_filters", },
 
-    { "apre", (1 << 0) | (1 << 5) | (1 << 2)| (1 << 12) | (1 << 18), { .func_arg = opt_preset },
-        "set the audio options to the indicated preset", "preset" },
-    { "vpre", (1 << 4) | (1 << 0) | (1 << 2)| (1 << 12) | (1 << 18), { .func_arg = opt_preset },
-        "set the video options to the indicated preset", "preset" },
-    { "spre", (1 << 0) | (1 << 8) | (1 << 2)| (1 << 12) | (1 << 18), { .func_arg = opt_preset },
-        "set the subtitle options to the indicated preset", "preset" },
-    { "fpre", (1 << 0) | (1 << 2)| (1 << 12) | (1 << 18), { .func_arg = opt_preset },
-        "set options from indicated preset file", "filename" },
+    { "apre", OPT_TYPE_FUNC, (1 << 0) | (1 << 4) | (1 << 2)| (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_preset },
+        "set the audio options to the indicated preset", "preset",
+        .u1.name_canon = "pre", },
+    { "vpre", OPT_TYPE_FUNC, (1 << 3) | (1 << 0) | (1 << 2)| (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_preset },
+        "set the video options to the indicated preset", "preset",
+        .u1.name_canon = "pre", },
+    { "spre", OPT_TYPE_FUNC, (1 << 0) | (1 << 5) | (1 << 2)| (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_preset },
+        "set the subtitle options to the indicated preset", "preset",
+        .u1.name_canon = "pre", },
+    { "fpre", OPT_TYPE_FUNC, (1 << 0) | (1 << 2)| (1 << 7) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_preset },
+        "set options from indicated preset file", "filename",
+        .u1.name_canon = "pre", },
 
-    { "max_muxing_queue_size", (1 << 0) | (1 << 6) | (1 << 14) | (1 << 2) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, max_muxing_queue_size) },
+    { "max_muxing_queue_size", OPT_TYPE_INT, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, max_muxing_queue_size) },
         "maximum number of packets that can be buffered while waiting for all streams to initialize", "packets" },
-    { "muxing_queue_data_threshold", (1 << 0) | (1 << 6) | (1 << 14) | (1 << 2) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, muxing_queue_data_threshold) },
+    { "muxing_queue_data_threshold", OPT_TYPE_INT, ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 2) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, muxing_queue_data_threshold) },
         "set the threshold after which max_muxing_queue_size is taken into account", "bytes" },
 
 
-    { "dcodec", (1 << 0) | (1 << 11) | (1 << 12) | (1 << 2) | (1 << 17) | (1 << 18), { .func_arg = opt_data_codec },
-        "force data codec ('copy' to copy stream)", "codec" },
-    { "dn", (1 << 1) | (1 << 4) | (1 << 13) | (1 << 17) | (1 << 18), { .off = __builtin_offsetof(OptionsContext, data_disable) },
-        "disable data" },
-# 1858 "fftools/ffmpeg_opt.c"
-    { "init_hw_device", (1 << 0) | (1 << 2), { .func_arg = opt_init_hw_device },
+    { "dcodec", OPT_TYPE_FUNC, (1 << 0) | (1 << 6) | (1 << 7) | (1 << 2) | (1 << 11) | (1 << 12) | (1 << 14),
+        { .func_arg = opt_data_codec },
+        "alias for -c:d (select encoder/decoder for data streams)", "codec",
+        .u1.name_canon = "codec", },
+    { "dn", OPT_TYPE_BOOL, (1 << 6) | ((1 << 8) | (1 << 7)) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, data_disable) }, "disable data" },
+# 2000 "../ffmpeg/fftools/ffmpeg_opt.c"
+    { "init_hw_device", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_init_hw_device },
         "initialise hardware device", "args" },
-    { "filter_hw_device", (1 << 0) | (1 << 2), { .func_arg = opt_filter_hw_device },
+    { "filter_hw_device", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_filter_hw_device },
         "set hardware device used when filtering", "device" },
+
+
+
+    { "map_channel", OPT_TYPE_FUNC, (1 << 0) | (1 << 2) | (1 << 7) | (1 << 12),
+        { .func_arg = opt_map_channel },
+        "map an audio channel from one stream to another (deprecated)", "file.stream.channel[:syncfile.syncstream]" },
+
+
+    { "adrift_threshold", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_adrift_threshold },
+        "deprecated, does nothing", "threshold" },
+
+
+    { "psnr", OPT_TYPE_BOOL, (1 << 3) | (1 << 2),
+        { &do_psnr },
+        "calculate PSNR of compressed frames (deprecated, use -flags +psnr)" },
+
+
+    { "top", OPT_TYPE_INT, (1 << 3) | (1 << 2) | ((1 << 10) | ((1 << 9) | ((1 << 8) | (1 << 7)))) | (1 << 11) | (1 << 12),
+        { .off = __builtin_offsetof(OptionsContext, top_field_first) },
+        "deprecated, use the setfield video filter", "" },
+
+
+    { "qphist", OPT_TYPE_FUNC, (1 << 3) | (1 << 2),
+        { .func_arg = opt_qphist },
+        "deprecated, does nothing" },
+
+
+    { "vsync", OPT_TYPE_FUNC, (1 << 0) | (1 << 2),
+        { .func_arg = opt_vsync },
+        "set video sync method globally; deprecated, use -fps_mode", "" },
+
 
     { ((void*)0), },
 };

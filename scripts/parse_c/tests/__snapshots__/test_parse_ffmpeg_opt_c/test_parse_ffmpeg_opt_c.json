@@ -1,1922 +1,2282 @@
 [
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show license",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "L"
+    "name": "L",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show help",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "h"
+    "name": "h",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show help",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "?"
+    "name": "?",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show help",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "help"
+    "name": "help",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show help",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "-help"
+    "name": "-help",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show version",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "version"
+    "name": "version",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show build configuration",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "buildconf"
+    "name": "buildconf",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show available formats",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "formats"
+    "name": "formats",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available muxers",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "muxers"
+    "name": "muxers",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available demuxers",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "demuxers"
+    "name": "demuxers",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available devices",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "devices"
+    "name": "devices",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show available codecs",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "codecs"
+    "name": "codecs",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available decoders",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "decoders"
+    "name": "decoders",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available encoders",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "encoders"
+    "name": "encoders",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show available bit stream filters",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "bsfs"
+    "name": "bsfs",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show available protocols",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "protocols"
+    "name": "protocols",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available filters",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "filters"
+    "name": "filters",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available pixel formats",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "pix_fmts"
+    "name": "pix_fmts",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show standard channel layouts",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "layouts"
+    "name": "layouts",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 2,
     "help": "show available audio sample formats",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "sample_fmts"
+    "name": "sample_fmts",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show available stream dispositions",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "dispositions"
+    "name": "dispositions",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show available color names",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "colors"
+    "name": "colors",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "loglevel",
+    "canon": null,
+    "flags": 5,
+    "help": "set logging level",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "loglevel",
+    "type": "OPT_TYPE_FUNC"
+  },
+  {
+    "argname": "loglevel",
+    "canon": null,
     "flags": 1,
     "help": "set logging level",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "loglevel"
-  },
-  {
-    "argname": "loglevel",
-    "flags": 1,
-    "help": "set logging level",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "v"
+    "name": "v",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 0,
+    "canon": null,
+    "flags": 4,
     "help": "generate a report",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "report"
+    "name": "report",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "bytes",
-    "flags": 1,
+    "canon": null,
+    "flags": 5,
     "help": "set maximum size of a single allocated block",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "max_alloc"
+    "name": "max_alloc",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "flags",
+    "canon": null,
     "flags": 5,
     "help": "force specific cpu flags",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "cpuflags"
+    "name": "cpuflags",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "count",
+    "canon": null,
     "flags": 5,
     "help": "force specific cpu count",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "cpucount"
+    "name": "cpucount",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "hide_banner",
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "do not show program banner",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "hide_banner"
+    "name": "hide_banner",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "device",
-    "flags": 1025,
+    "canon": null,
+    "flags": 7,
     "help": "list sources of the input device",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "sources"
+    "name": "sources",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "device",
-    "flags": 1025,
+    "canon": null,
+    "flags": 7,
     "help": "list sinks of the output device",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "sinks"
+    "name": "sinks",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "fmt",
-    "flags": 401417,
-    "help": "force format",
+    "canon": null,
+    "flags": 6528,
+    "help": "force container format (auto-detected otherwise)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "f"
+    "is_support_stream_specifier": true,
+    "name": "f",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 2,
+    "canon": null,
+    "flags": 0,
     "help": "overwrite output files",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "y"
+    "name": "y",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 2,
+    "canon": null,
+    "flags": 0,
     "help": "never overwrite output files",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "n"
+    "name": "n",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 2,
+    "canon": null,
+    "flags": 4,
     "help": "Ignore unknown stream types",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "ignore_unknown"
+    "name": "ignore_unknown",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "Copy unknown stream types",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "copy_unknown"
+    "name": "copy_unknown",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "allow recasting stream type in order to force a decoder of different media type",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "recast_media"
+    "name": "recast_media",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "codec",
-    "flags": 409609,
-    "help": "codec name",
+    "canon": ".u1.name_canon = \"codec\"",
+    "flags": 24448,
+    "help": "select encoder/decoder ('copy' to copy stream without reencoding)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "c"
+    "name": "c",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "codec",
-    "flags": 409609,
-    "help": "codec name",
+    "canon": ".u1.names_alt = alt_codec",
+    "flags": 16260,
+    "help": "alias for -c (select encoder/decoder)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "codec"
+    "name": "codec",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
-    "flags": 278537,
+    "canon": ".u1.names_alt = alt_pre",
+    "flags": 14212,
     "help": "preset name",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "pre"
+    "name": "pre",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "[-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]]",
-    "flags": 266245,
+    "canon": null,
+    "flags": 4229,
     "help": "set input stream mapping",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "map"
-  },
-  {
-    "argname": "file.stream.channel[:syncfile.syncstream]",
-    "flags": 266245,
-    "help": "map an audio channel from one stream to another (deprecated)",
-    "is_global_option": false,
-    "is_input_option": false,
-    "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "map_channel"
+    "is_support_stream_specifier": true,
+    "name": "map",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "outfile[,metadata]:infile[,metadata]",
-    "flags": 278537,
+    "canon": null,
+    "flags": 4996,
     "help": "set metadata information of outfile from infile",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "map_metadata"
+    "name": "map_metadata",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "input_file_index",
-    "flags": 270405,
+    "canon": null,
+    "flags": 4484,
     "help": "set chapters mapping",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "map_chapters"
+    "is_support_stream_specifier": true,
+    "name": "map_chapters",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "duration",
-    "flags": 434177,
-    "help": "record or transcode \\\"duration\\\" seconds of audio/video",
+    "canon": null,
+    "flags": 6528,
+    "help": "stop transcoding after specified duration",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "t"
+    "is_support_stream_specifier": true,
+    "name": "t",
+    "type": "OPT_TYPE_TIME"
   },
   {
     "argname": "time_stop",
-    "flags": 434177,
-    "help": "record or transcode stop time",
+    "canon": null,
+    "flags": 6528,
+    "help": "stop transcoding after specified time is reached",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "to"
+    "is_support_stream_specifier": true,
+    "name": "to",
+    "type": "OPT_TYPE_TIME"
   },
   {
     "argname": "limit_size",
-    "flags": 270849,
+    "canon": null,
+    "flags": 4484,
     "help": "set the limit file size in bytes",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "fs"
+    "is_support_stream_specifier": true,
+    "name": "fs",
+    "type": "OPT_TYPE_INT64"
   },
   {
     "argname": "time_off",
-    "flags": 434177,
-    "help": "set the start time offset",
+    "canon": null,
+    "flags": 6528,
+    "help": "start transcoding at specified time",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "ss"
+    "is_support_stream_specifier": true,
+    "name": "ss",
+    "type": "OPT_TYPE_TIME"
   },
   {
     "argname": "time_off",
-    "flags": 172033,
+    "canon": null,
+    "flags": 2436,
     "help": "set the start time offset relative to EOF",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "sseof"
+    "is_support_stream_specifier": true,
+    "name": "sseof",
+    "type": "OPT_TYPE_TIME"
   },
   {
     "argname": null,
-    "flags": 139329,
+    "canon": null,
+    "flags": 2436,
     "help": "enable/disable seeking by timestamp with -ss",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "seek_timestamp"
+    "is_support_stream_specifier": true,
+    "name": "seek_timestamp",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": null,
-    "flags": 139270,
+    "canon": null,
+    "flags": 2436,
     "help": "enable/disable accurate seeking with -ss",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "accurate_seek"
+    "is_support_stream_specifier": true,
+    "name": "accurate_seek",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "sync ref",
-    "flags": 139333,
+    "canon": null,
+    "flags": 2436,
     "help": "Indicate the input index for sync reference",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "isync"
+    "is_support_stream_specifier": true,
+    "name": "isync",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "time_off",
-    "flags": 172037,
+    "canon": null,
+    "flags": 2436,
     "help": "set the input ts offset",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "itsoffset"
+    "is_support_stream_specifier": true,
+    "name": "itsoffset",
+    "type": "OPT_TYPE_TIME"
   },
   {
     "argname": "scale",
-    "flags": 212997,
+    "canon": null,
+    "flags": 3972,
     "help": "set the input ts scale",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "itsscale"
+    "name": "itsscale",
+    "type": "OPT_TYPE_DOUBLE"
   },
   {
     "argname": "time",
-    "flags": 266241,
+    "canon": null,
+    "flags": 4229,
     "help": "set the recording timestamp ('now' to set the current time)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "timestamp"
+    "is_support_stream_specifier": true,
+    "name": "timestamp",
+    "type": "OPT_TYPE_FUNC"
   },
   {
-    "argname": "string=string",
-    "flags": 278537,
+    "argname": "key=value",
+    "canon": null,
+    "flags": 4992,
     "help": "add metadata",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "metadata"
+    "name": "metadata",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "title=string:st=number...",
-    "flags": 278537,
+    "canon": null,
+    "flags": 4996,
     "help": "add program with specified streams",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "program"
+    "name": "program",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "id=number:st=number...",
-    "flags": 278537,
+    "canon": null,
+    "flags": 4996,
     "help": "add stream group with specified streams and group type-specific arguments",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "stream_group"
+    "name": "stream_group",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "number",
-    "flags": 266245,
+    "canon": ".u1.name_canon = \"frames\"",
+    "flags": 20613,
     "help": "set the number of data frames to output",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "dframes"
+    "is_support_stream_specifier": true,
+    "name": "dframes",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "add timings for benchmarking",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "benchmark"
+    "name": "benchmark",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "add timings for each task",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "benchmark_all"
+    "name": "benchmark_all",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "url",
+    "canon": null,
     "flags": 5,
     "help": "write program-readable progress information",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "progress"
+    "name": "progress",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "enable or disable interaction on standard input",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "stdin"
+    "name": "stdin",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "limit",
+    "canon": null,
     "flags": 5,
     "help": "set max runtime in seconds in CPU user time",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "timelimit"
+    "name": "timelimit",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "dump each input packet",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "dump"
+    "name": "dump",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "when dumping packets, also dump the payload",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "hex"
+    "name": "hex",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "",
-    "flags": 139270,
+    "canon": null,
+    "flags": 2436,
     "help": "read input at native frame rate; equivalent to -readrate 1",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "re"
+    "is_support_stream_specifier": true,
+    "name": "re",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "speed",
-    "flags": 139397,
+    "canon": null,
+    "flags": 2436,
     "help": "read input at specified rate",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "readrate"
+    "is_support_stream_specifier": true,
+    "name": "readrate",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "seconds",
-    "flags": 204805,
+    "canon": null,
+    "flags": 2436,
     "help": "The initial amount of input to burst read before imposing any readrate",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "readrate_initial_burst"
+    "is_support_stream_specifier": true,
+    "name": "readrate_initial_burst",
+    "type": "OPT_TYPE_DOUBLE"
   },
   {
     "argname": "type",
-    "flags": 266241,
+    "canon": null,
+    "flags": 4229,
     "help": "specify target file type (\\\"vcd\\\", \\\"svcd\\\", \\\"dvd\\\", \\\"dv\\\" or \\\"dv50\\\n        \"with optional prefixes \\\"pal-\\\", \\\"ntsc-\\\" or \\\"film-\\\")",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "target"
+    "is_support_stream_specifier": true,
+    "name": "target",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "",
-    "flags": 5,
-    "help": "set video sync method globally; deprecated, use -fps_mode",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "vsync"
-  },
-  {
-    "argname": "",
-    "flags": 133,
+    "canon": null,
+    "flags": 4,
     "help": "frame drop threshold",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "frame_drop_threshold"
-  },
-  {
-    "argname": "threshold",
-    "flags": 5,
-    "help": "deprecated, does nothing",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "adrift_threshold"
+    "name": "frame_drop_threshold",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "copy timestamps",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "copyts"
+    "name": "copyts",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "shift input timestamps to start at 0 when using copyts",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "start_at_zero"
+    "name": "start_at_zero",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "mode",
-    "flags": 69,
+    "canon": null,
+    "flags": 4,
     "help": "copy input stream time base when stream copying",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "copytb"
+    "name": "copytb",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": null,
-    "flags": 270342,
+    "canon": null,
+    "flags": 4484,
     "help": "finish encoding within shortest input",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "shortest"
+    "is_support_stream_specifier": true,
+    "name": "shortest",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 270469,
+    "canon": null,
+    "flags": 4484,
     "help": "maximum buffering duration (in seconds) for the -shortest option",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "shortest_buf_duration"
+    "is_support_stream_specifier": true,
+    "name": "shortest_buf_duration",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": null,
-    "flags": 401414,
+    "canon": null,
+    "flags": 6532,
     "help": "bitexact mode",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "bitexact"
+    "is_support_stream_specifier": true,
+    "name": "bitexact",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "",
-    "flags": 278537,
+    "canon": null,
+    "flags": 6020,
     "help": "audio pad",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "apad"
+    "name": "apad",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "threshold",
-    "flags": 133,
+    "canon": null,
+    "flags": 4,
     "help": "timestamp discontinuity delta threshold",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "dts_delta_threshold"
+    "name": "dts_delta_threshold",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "threshold",
-    "flags": 133,
+    "canon": null,
+    "flags": 4,
     "help": "timestamp error delta threshold",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "dts_error_threshold"
+    "name": "dts_error_threshold",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "error",
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "exit on error",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "xerror"
+    "name": "xerror",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "flags",
+    "canon": null,
     "flags": 5,
     "help": "abort on the specified condition flags",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "abort_on"
+    "name": "abort_on",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 278534,
+    "canon": null,
+    "flags": 6020,
     "help": "copy initial non-keyframes",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "copyinkf"
+    "name": "copyinkf",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 278597,
+    "canon": null,
+    "flags": 6020,
     "help": "copy or discard frames before start time",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "copypriorss"
+    "name": "copypriorss",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "number",
-    "flags": 279041,
+    "canon": ".u1.names_alt = alt_frames",
+    "flags": 14212,
     "help": "set the number of frames to output",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "frames"
+    "name": "frames",
+    "type": "OPT_TYPE_INT64"
   },
   {
     "argname": "fourcc/tag",
-    "flags": 409613,
+    "canon": ".u1.names_alt = alt_tag",
+    "flags": 16260,
     "help": "force codec tag/fourcc",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "tag"
+    "name": "tag",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "q",
-    "flags": 344069,
+    "canon": ".u1.name_canon = \"qscale\"",
+    "flags": 22404,
     "help": "use fixed quality scale (VBR)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "q"
+    "name": "q",
+    "type": "OPT_TYPE_DOUBLE"
   },
   {
     "argname": "q",
-    "flags": 266245,
+    "canon": ".u1.names_alt = alt_qscale",
+    "flags": 12421,
     "help": "use fixed quality scale (VBR)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "qscale"
+    "is_support_stream_specifier": true,
+    "name": "qscale",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "profile",
-    "flags": 266245,
+    "canon": null,
+    "flags": 4229,
     "help": "set profile",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "profile"
+    "is_support_stream_specifier": true,
+    "name": "profile",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filter_graph",
-    "flags": 278537,
-    "help": "set stream filtergraph",
+    "canon": ".u1.names_alt = alt_filter",
+    "flags": 14208,
+    "help": "apply specified filters to audio/video",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "filter"
+    "name": "filter",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 1,
+    "canon": null,
+    "flags": 5,
     "help": "number of non-complex filter threads",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "filter_threads"
+    "name": "filter_threads",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
-    "flags": 278537,
-    "help": "read stream filtergraph description from a file",
+    "canon": null,
+    "flags": 6020,
+    "help": "deprecated, use -/filter",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "filter_script"
+    "name": "filter_script",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "",
-    "flags": 147521,
+    "canon": null,
+    "flags": 3972,
     "help": "reinit filtergraph on input parameter changes",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "reinit_filter"
+    "name": "reinit_filter",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "graph_description",
+    "canon": null,
     "flags": 5,
     "help": "create a complex filtergraph",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "filter_complex"
+    "name": "filter_complex",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 65,
+    "canon": null,
+    "flags": 4,
     "help": "number of threads for -filter_complex",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "filter_complex_threads"
+    "name": "filter_complex_threads",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "graph_description",
+    "canon": null,
     "flags": 5,
     "help": "create a complex filtergraph",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "lavfi"
+    "name": "lavfi",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
+    "canon": null,
     "flags": 5,
-    "help": "read complex filtergraph description from a file",
+    "help": "deprecated, use -/filter_complex instead",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "filter_complex_script"
+    "name": "filter_complex_script",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "enable automatic conversion filters globally",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "auto_conversion_filters"
+    "name": "auto_conversion_filters",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 2,
+    "canon": null,
+    "flags": 0,
     "help": "print progress report during encoding",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "stats"
+    "name": "stats",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "time",
+    "canon": null,
     "flags": 5,
     "help": "set the period at which ffmpeg updates stats and -progress output",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "stats_period"
+    "name": "stats_period",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
-    "flags": 266245,
+    "canon": null,
+    "flags": 4229,
     "help": "add an attachment to the output file",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "attach"
+    "is_support_stream_specifier": true,
+    "name": "attach",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
-    "flags": 147469,
+    "canon": null,
+    "flags": 2948,
     "help": "extract an attachment into a file",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "dump_attachment"
+    "name": "dump_attachment",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "loop count",
-    "flags": 139333,
+    "canon": null,
+    "flags": 2436,
     "help": "set number of times input stream shall be looped",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "stream_loop"
+    "is_support_stream_specifier": true,
+    "name": "stream_loop",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": null,
-    "flags": 6,
+    "canon": null,
+    "flags": 4,
     "help": "print timestamp debugging info",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "debug_ts"
+    "name": "debug_ts",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "maximum error rate",
-    "flags": 129,
+    "canon": null,
+    "flags": 4,
     "help": "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "max_error_rate"
+    "name": "max_error_rate",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "",
-    "flags": 147465,
+    "canon": null,
+    "flags": 3972,
     "help": "discard",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "discard"
+    "name": "discard",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "",
-    "flags": 278537,
+    "canon": null,
+    "flags": 6020,
     "help": "disposition",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "disposition"
+    "name": "disposition",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 401477,
+    "canon": null,
+    "flags": 6532,
     "help": "set the maximum number of queued packets from the demuxer",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "thread_queue_size"
+    "is_support_stream_specifier": true,
+    "name": "thread_queue_size",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": null,
-    "flags": 139270,
+    "canon": null,
+    "flags": 2436,
     "help": "read and decode the streams to fill missing information with heuristics",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "find_stream_info"
+    "is_support_stream_specifier": true,
+    "name": "find_stream_info",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "number",
-    "flags": 278597,
+    "canon": null,
+    "flags": 6020,
     "help": "set the number of bits per raw sample",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "bits_per_raw_sample"
+    "name": "bits_per_raw_sample",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": null,
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "write encoding stats before encoding",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "stats_enc_pre"
+    "name": "stats_enc_pre",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "write encoding stats after encoding",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "stats_enc_post"
+    "name": "stats_enc_post",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "write packets stats before muxing",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "stats_mux_pre"
+    "name": "stats_mux_pre",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "format of the stats written with -stats_enc_pre",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "stats_enc_pre_fmt"
+    "name": "stats_enc_pre_fmt",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "format of the stats written with -stats_enc_post",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "stats_enc_post_fmt"
+    "name": "stats_enc_post_fmt",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "format of the stats written with -stats_mux_pre",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "stats_mux_pre_fmt"
+    "name": "stats_mux_pre_fmt",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "number",
-    "flags": 266257,
+    "canon": ".u1.name_canon = \"frames\"",
+    "flags": 20621,
     "help": "set the number of video frames to output",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "vframes"
+    "is_support_stream_specifier": true,
+    "name": "vframes",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "rate",
-    "flags": 409625,
-    "help": "set frame rate (Hz value, fraction or abbreviation)",
+    "canon": null,
+    "flags": 8072,
+    "help": "override input framerate/convert to given output framerate (Hz value, fraction or abbreviation)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "r"
+    "name": "r",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "rate",
-    "flags": 278553,
+    "canon": null,
+    "flags": 6028,
     "help": "set max frame rate (Hz value, fraction or abbreviation)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "fpsmax"
+    "name": "fpsmax",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "size",
-    "flags": 409881,
+    "canon": null,
+    "flags": 8104,
     "help": "set frame size (WxH or abbreviation)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "s"
+    "name": "s",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "aspect",
-    "flags": 278553,
+    "canon": null,
+    "flags": 6024,
     "help": "set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "aspect"
+    "name": "aspect",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "format",
-    "flags": 409629,
+    "canon": null,
+    "flags": 8076,
     "help": "set pixel format",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "pix_fmt"
+    "name": "pix_fmt",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "angle",
-    "flags": 213009,
+    "canon": null,
+    "flags": 3980,
     "help": "set pure counter-clockwise rotation in degrees for stream(s)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "display_rotation"
+    "name": "display_rotation",
+    "type": "OPT_TYPE_DOUBLE"
   },
   {
     "argname": null,
-    "flags": 147474,
+    "canon": null,
+    "flags": 3980,
     "help": "set display horizontal flip for stream(s) (overrides any display rotation if it is not set)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "display_hflip"
+    "name": "display_hflip",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 147474,
+    "canon": null,
+    "flags": 3980,
     "help": "set display vertical flip for stream(s) (overrides any display rotation if it is not set)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "display_vflip"
+    "name": "display_vflip",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 401426,
+    "canon": null,
+    "flags": 6536,
     "help": "disable video",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "vn"
+    "is_support_stream_specifier": true,
+    "name": "vn",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "override",
-    "flags": 278557,
+    "canon": null,
+    "flags": 6028,
     "help": "rate control override for specific intervals",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "rc_override"
+    "name": "rc_override",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "codec",
-    "flags": 397329,
-    "help": "force video codec ('copy' to copy stream)",
+    "canon": ".u1.name_canon = \"codec\"",
+    "flags": 22665,
+    "help": "alias for -c:v (select encoder/decoder for video streams)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "vcodec"
+    "is_support_stream_specifier": true,
+    "name": "vcodec",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "hh:mm:ss[:;.]ff",
-    "flags": 266257,
+    "canon": null,
+    "flags": 4237,
     "help": "set initial TimeCode value.",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "timecode"
+    "is_support_stream_specifier": true,
+    "name": "timecode",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "n",
-    "flags": 278609,
+    "canon": null,
+    "flags": 6028,
     "help": "select the pass number (1 to 3)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "pass"
+    "name": "pass",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "prefix",
-    "flags": 278557,
+    "canon": null,
+    "flags": 6028,
     "help": "select two pass log file name prefix",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "passlogfile"
+    "name": "passlogfile",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 22,
-    "help": "calculate PSNR of compressed frames (deprecated, use -flags +psnr)",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "psnr"
-  },
-  {
-    "argname": null,
-    "flags": 20,
+    "canon": null,
+    "flags": 12,
     "help": "dump video coding statistics to file",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "vstats"
+    "name": "vstats",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "file",
-    "flags": 21,
+    "canon": null,
+    "flags": 13,
     "help": "dump video coding statistics to file",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "vstats_file"
+    "name": "vstats_file",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 85,
+    "canon": null,
+    "flags": 12,
     "help": "Version of the vstats format to use.",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "vstats_version"
+    "name": "vstats_version",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "filter_graph",
-    "flags": 266257,
-    "help": "set video filters",
+    "canon": ".u1.name_canon = \"filter\"",
+    "flags": 20617,
+    "help": "alias for -filter:v (apply filters to video streams)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "vf"
+    "is_support_stream_specifier": true,
+    "name": "vf",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "matrix",
-    "flags": 278557,
+    "canon": null,
+    "flags": 6028,
     "help": "specify intra matrix coeffs",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "intra_matrix"
+    "name": "intra_matrix",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "matrix",
-    "flags": 278557,
+    "canon": null,
+    "flags": 6028,
     "help": "specify inter matrix coeffs",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "inter_matrix"
+    "name": "inter_matrix",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "matrix",
-    "flags": 278557,
+    "canon": null,
+    "flags": 6028,
     "help": "specify intra matrix coeffs",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "chroma_intra_matrix"
-  },
-  {
-    "argname": "",
-    "flags": 409685,
-    "help": "deprecated, use the setfield video filter",
-    "is_global_option": false,
-    "is_input_option": true,
-    "is_output_option": true,
-    "is_support_stream_specifier": true,
-    "name": "top"
+    "name": "chroma_intra_matrix",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "fourcc/tag",
-    "flags": 397333,
+    "canon": ".u1.name_canon = \"tag\"",
+    "flags": 22669,
     "help": "force video tag/fourcc",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "vtag"
+    "is_support_stream_specifier": true,
+    "name": "vtag",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 20,
-    "help": "deprecated, does nothing",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "qphist"
-  },
-  {
-    "argname": null,
-    "flags": 278557,
+    "canon": null,
+    "flags": 6028,
     "help": "set framerate mode for matching video streams; overrides vsync",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "fps_mode"
+    "name": "fps_mode",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 278550,
+    "canon": null,
+    "flags": 6028,
     "help": "force the selected framerate, disable the best supported framerate selection",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "force_fps"
+    "name": "force_fps",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "streamIndex:value",
-    "flags": 266261,
+    "canon": null,
+    "flags": 4237,
     "help": "set the value of an outfile streamid",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "streamid"
+    "is_support_stream_specifier": true,
+    "name": "streamid",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "timestamps",
-    "flags": 278557,
+    "canon": null,
+    "flags": 6028,
     "help": "force key frames at specified timestamps",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "force_key_frames"
+    "name": "force_key_frames",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "bitrate",
-    "flags": 266257,
+    "canon": null,
+    "flags": 4233,
     "help": "video bitrate (please use -b:v)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "b"
+    "is_support_stream_specifier": true,
+    "name": "b",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "hwaccel name",
-    "flags": 147485,
+    "canon": null,
+    "flags": 3980,
     "help": "use HW accelerated decoding",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "hwaccel"
+    "name": "hwaccel",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "devicename",
-    "flags": 147485,
+    "canon": null,
+    "flags": 3980,
     "help": "select a device for HW acceleration",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "hwaccel_device"
+    "name": "hwaccel_device",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "format",
-    "flags": 147485,
+    "canon": null,
+    "flags": 3980,
     "help": "select output format used with HW accelerated decoding",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "hwaccel_output_format"
+    "name": "hwaccel_output_format",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
-    "flags": 1024,
+    "canon": null,
+    "flags": 6,
     "help": "show available HW acceleration methods",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "hwaccels"
+    "name": "hwaccels",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 147463,
+    "canon": null,
+    "flags": 3972,
     "help": "automatically insert correct rotate filters",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "autorotate"
+    "name": "autorotate",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 278535,
+    "canon": null,
+    "flags": 6020,
     "help": "automatically insert a scale filter at the end of the filter graph",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "autoscale"
+    "name": "autoscale",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
-    "flags": 278550,
+    "canon": null,
+    "flags": 6028,
     "help": "set this video output stream to be a heartbeat stream for fix_sub_duration, according to which subtitles should be split at random access points",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "fix_sub_duration_heartbeat"
+    "name": "fix_sub_duration_heartbeat",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "number",
-    "flags": 266273,
+    "canon": ".u1.name_canon = \"frames\"",
+    "flags": 20629,
     "help": "set the number of audio frames to output",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "aframes"
+    "is_support_stream_specifier": true,
+    "name": "aframes",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "quality",
-    "flags": 266273,
+    "canon": null,
+    "flags": 4241,
     "help": "set audio quality (codec-specific)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "aq"
+    "is_support_stream_specifier": true,
+    "name": "aq",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "rate",
-    "flags": 409697,
+    "canon": null,
+    "flags": 8080,
     "help": "set audio sampling rate (in Hz)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "ar"
+    "name": "ar",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "channels",
-    "flags": 409697,
+    "canon": null,
+    "flags": 8080,
     "help": "set number of audio channels",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "ac"
+    "name": "ac",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": null,
-    "flags": 401442,
+    "canon": null,
+    "flags": 6544,
     "help": "disable audio",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "an"
+    "is_support_stream_specifier": true,
+    "name": "an",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "codec",
-    "flags": 397345,
-    "help": "force audio codec ('copy' to copy stream)",
+    "canon": ".u1.name_canon = \"codec\"",
+    "flags": 22673,
+    "help": "alias for -c:a (select encoder/decoder for audio streams)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "acodec"
+    "is_support_stream_specifier": true,
+    "name": "acodec",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "bitrate",
-    "flags": 266273,
-    "help": "audio bitrate (please use -b:a)",
+    "canon": null,
+    "flags": 4241,
+    "help": "alias for -b:a (select bitrate for audio streams)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "ab"
+    "is_support_stream_specifier": true,
+    "name": "ab",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "fourcc/tag",
-    "flags": 266277,
+    "canon": ".u1.name_canon = \"tag\"",
+    "flags": 20629,
     "help": "force audio tag/fourcc",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "atag"
+    "is_support_stream_specifier": true,
+    "name": "atag",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "format",
-    "flags": 409645,
+    "canon": null,
+    "flags": 8084,
     "help": "set sample format",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "sample_fmt"
+    "name": "sample_fmt",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "layout",
-    "flags": 409645,
+    "canon": ".u1.names_alt = alt_channel_layout",
+    "flags": 16276,
     "help": "set channel layout",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "channel_layout"
+    "name": "channel_layout",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "layout",
-    "flags": 409645,
+    "canon": ".u1.name_canon = \"channel_layout\"",
+    "flags": 24468,
     "help": "set channel layout",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "ch_layout"
+    "name": "ch_layout",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "filter_graph",
-    "flags": 266273,
-    "help": "set audio filters",
+    "canon": ".u1.name_canon = \"filter\"",
+    "flags": 20625,
+    "help": "alias for -filter:a (apply filters to audio streams)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "af"
+    "is_support_stream_specifier": true,
+    "name": "af",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 147557,
+    "canon": null,
+    "flags": 3988,
     "help": "set the maximum number of channels to try to guess the channel layout",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "guess_layout_max"
+    "name": "guess_layout_max",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": null,
-    "flags": 401666,
+    "canon": null,
+    "flags": 6560,
     "help": "disable subtitle",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "sn"
+    "is_support_stream_specifier": true,
+    "name": "sn",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "codec",
-    "flags": 397569,
-    "help": "force subtitle codec ('copy' to copy stream)",
+    "canon": ".u1.name_canon = \"codec\"",
+    "flags": 22689,
+    "help": "alias for -c:s (select encoder/decoder for subtitle streams)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "scodec"
+    "is_support_stream_specifier": true,
+    "name": "scodec",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "fourcc/tag",
-    "flags": 266501,
+    "canon": ".u1.name_canon = \"tag\"",
+    "flags": 20645,
     "help": "force subtitle tag/fourcc",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "stag"
+    "is_support_stream_specifier": true,
+    "name": "stag",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 147718,
+    "canon": null,
+    "flags": 4004,
     "help": "fix subtitles duration",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "fix_sub_duration"
+    "name": "fix_sub_duration",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "size",
-    "flags": 147721,
+    "canon": null,
+    "flags": 4004,
     "help": "set canvas size (WxH or abbreviation)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": false,
     "is_support_stream_specifier": true,
-    "name": "canvas_size"
+    "name": "canvas_size",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "seconds",
-    "flags": 270469,
+    "canon": null,
+    "flags": 4484,
     "help": "set the maximum demux-decode delay",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "muxdelay"
+    "is_support_stream_specifier": true,
+    "name": "muxdelay",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "seconds",
-    "flags": 270469,
+    "canon": null,
+    "flags": 4484,
     "help": "set the initial demux-decode delay",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "muxpreload"
+    "is_support_stream_specifier": true,
+    "name": "muxpreload",
+    "type": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "file",
-    "flags": 262149,
+    "canon": null,
+    "flags": 4101,
     "help": "specify a file in which to print sdp information",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": false,
-    "name": "sdp_file"
+    "name": "sdp_file",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "ratio",
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "set the desired time base hint for output stream (1:24, 1:48000 or 0.04166, 2.0833e-5)",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "time_base"
+    "name": "time_base",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "ratio",
-    "flags": 278541,
+    "canon": null,
+    "flags": 6020,
     "help": "set the desired time base for the encoder (1:24, 1:48000 or 0.04166, 2.0833e-5). two special values are defined - 0 = use frame rate (video) or sample rate (audio),-1 = match source time base",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "enc_time_base"
+    "name": "enc_time_base",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "bitstream_filters",
-    "flags": 278541,
+    "canon": null,
+    "flags": 8068,
     "help": "A comma-separated list of bitstream filters",
     "is_global_option": false,
-    "is_input_option": false,
+    "is_input_option": true,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "bsf"
-  },
-  {
-    "argname": "audio bitstream_filters",
-    "flags": 266277,
-    "help": "deprecated",
-    "is_global_option": false,
-    "is_input_option": false,
-    "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "absf"
-  },
-  {
-    "argname": "video bitstream_filters",
-    "flags": 266261,
-    "help": "deprecated",
-    "is_global_option": false,
-    "is_input_option": false,
-    "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "vbsf"
+    "name": "bsf",
+    "type": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
-    "flags": 266277,
+    "canon": ".u1.name_canon = \"pre\"",
+    "flags": 20629,
     "help": "set the audio options to the indicated preset",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "apre"
+    "is_support_stream_specifier": true,
+    "name": "apre",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "preset",
-    "flags": 266261,
+    "canon": ".u1.name_canon = \"pre\"",
+    "flags": 20621,
     "help": "set the video options to the indicated preset",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "vpre"
+    "is_support_stream_specifier": true,
+    "name": "vpre",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "preset",
-    "flags": 266501,
+    "canon": ".u1.name_canon = \"pre\"",
+    "flags": 20645,
     "help": "set the subtitle options to the indicated preset",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "spre"
+    "is_support_stream_specifier": true,
+    "name": "spre",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
-    "flags": 266245,
+    "canon": ".u1.name_canon = \"pre\"",
+    "flags": 20613,
     "help": "set options from indicated preset file",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "fpre"
+    "is_support_stream_specifier": true,
+    "name": "fpre",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "packets",
-    "flags": 278597,
+    "canon": null,
+    "flags": 6020,
     "help": "maximum number of packets that can be buffered while waiting for all streams to initialize",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "max_muxing_queue_size"
+    "name": "max_muxing_queue_size",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "bytes",
-    "flags": 278597,
+    "canon": null,
+    "flags": 6020,
     "help": "set the threshold after which max_muxing_queue_size is taken into account",
     "is_global_option": false,
     "is_input_option": false,
     "is_output_option": true,
     "is_support_stream_specifier": true,
-    "name": "muxing_queue_data_threshold"
+    "name": "muxing_queue_data_threshold",
+    "type": "OPT_TYPE_INT"
   },
   {
     "argname": "codec",
-    "flags": 399365,
-    "help": "force data codec ('copy' to copy stream)",
+    "canon": ".u1.name_canon = \"codec\"",
+    "flags": 22725,
+    "help": "alias for -c:d (select encoder/decoder for data streams)",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "dcodec"
+    "is_support_stream_specifier": true,
+    "name": "dcodec",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
-    "flags": 401426,
+    "canon": null,
+    "flags": 6592,
     "help": "disable data",
     "is_global_option": false,
     "is_input_option": true,
     "is_output_option": true,
-    "is_support_stream_specifier": false,
-    "name": "dn"
+    "is_support_stream_specifier": true,
+    "name": "dn",
+    "type": "OPT_TYPE_BOOL"
   },
   {
     "argname": "args",
+    "canon": null,
     "flags": 5,
     "help": "initialise hardware device",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "init_hw_device"
+    "name": "init_hw_device",
+    "type": "OPT_TYPE_FUNC"
   },
   {
     "argname": "device",
+    "canon": null,
     "flags": 5,
     "help": "set hardware device used when filtering",
     "is_global_option": true,
     "is_input_option": false,
     "is_output_option": false,
     "is_support_stream_specifier": false,
-    "name": "filter_hw_device"
+    "name": "filter_hw_device",
+    "type": "OPT_TYPE_FUNC"
+  },
+  {
+    "argname": "file.stream.channel[:syncfile.syncstream]",
+    "canon": null,
+    "flags": 4229,
+    "help": "map an audio channel from one stream to another (deprecated)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "map_channel",
+    "type": "OPT_TYPE_FUNC"
+  },
+  {
+    "argname": "threshold",
+    "canon": null,
+    "flags": 5,
+    "help": "deprecated, does nothing",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "adrift_threshold",
+    "type": "OPT_TYPE_FUNC"
+  },
+  {
+    "argname": null,
+    "canon": null,
+    "flags": 12,
+    "help": "calculate PSNR of compressed frames (deprecated, use -flags +psnr)",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "psnr",
+    "type": "OPT_TYPE_BOOL"
+  },
+  {
+    "argname": "",
+    "canon": null,
+    "flags": 8076,
+    "help": "deprecated, use the setfield video filter",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "top",
+    "type": "OPT_TYPE_INT"
+  },
+  {
+    "argname": null,
+    "canon": null,
+    "flags": 12,
+    "help": "deprecated, does nothing",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "qphist",
+    "type": "OPT_TYPE_FUNC"
+  },
+  {
+    "argname": "",
+    "canon": null,
+    "flags": 5,
+    "help": "set video sync method globally; deprecated, use -fps_mode",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "vsync",
+    "type": "OPT_TYPE_FUNC"
   }
 ]

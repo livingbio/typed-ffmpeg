@@ -138,6 +138,7 @@ class OptionDef(pydantic.BaseModel):
     flags: int
     help: str
     argname: str | None = None
+    canon: str | None = None
 
     @property
     def is_input_option(self):

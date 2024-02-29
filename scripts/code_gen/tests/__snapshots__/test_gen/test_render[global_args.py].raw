@@ -13,7 +13,7 @@ class GlobalArgs(ABC):
         ...
 
     def global_args(
-        self, 
+        self,
         *,**kwargs: Any
     ) -> GlobalStream:
         """
