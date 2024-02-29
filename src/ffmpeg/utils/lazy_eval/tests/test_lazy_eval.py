@@ -63,6 +63,8 @@ def test_lazyoperator_number(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(KeyError):
         Op.eval(**{VarX.key: 30})
 
+    assert snapshot(name="partial") == str(Op.partial(**{VarX.key: 30}))
+
     assert Op.ready() is False
     assert snapshot == Op.eval(**{VarX.key: 30, VarY.key: 45})
     assert snapshot == Op
