@@ -3,6 +3,7 @@ import pathlib
 from pathlib import Path
 
 import jinja2
+from parse_c.schema import OptionDef
 
 from .schema import FFmpegFilter
 
@@ -36,14 +37,14 @@ env.filters["stream_name_safe"] = stream_name_safe
 env.filters["option_name_safe"] = option_name_safe
 
 
-def render(filters: list[FFmpegFilter], outpath: pathlib.Path) -> list[pathlib.Path]:
+def render(filters: list[FFmpegFilter], options: list[OptionDef], outpath: pathlib.Path) -> list[pathlib.Path]:
     outpath.mkdir(exist_ok=True)
     output = []
     for template_file in template_folder.glob("**/*.py.jinja"):
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
-        code = template.render(filters=filters)
+        code = template.render(filters=filters, options=options)
 
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)

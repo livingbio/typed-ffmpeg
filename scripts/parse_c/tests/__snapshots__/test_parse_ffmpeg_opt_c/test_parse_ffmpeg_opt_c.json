@@ -1,0 +1,1922 @@
+[
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show license",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "L"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "h"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "?"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "help"
+  },
+  {
+    "argname": "topic",
+    "flags": 1024,
+    "help": "show help",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "-help"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show version",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "version"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show build configuration",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "buildconf"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available formats",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "formats"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available muxers",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "muxers"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available demuxers",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "demuxers"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available devices",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "devices"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available codecs",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "codecs"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available decoders",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "decoders"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available encoders",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "encoders"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available bit stream filters",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "bsfs"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available protocols",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "protocols"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available filters",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "filters"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available pixel formats",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "pix_fmts"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show standard channel layouts",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "layouts"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available audio sample formats",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "sample_fmts"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available stream dispositions",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "dispositions"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available color names",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "colors"
+  },
+  {
+    "argname": "loglevel",
+    "flags": 1,
+    "help": "set logging level",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "loglevel"
+  },
+  {
+    "argname": "loglevel",
+    "flags": 1,
+    "help": "set logging level",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "v"
+  },
+  {
+    "argname": null,
+    "flags": 0,
+    "help": "generate a report",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "report"
+  },
+  {
+    "argname": "bytes",
+    "flags": 1,
+    "help": "set maximum size of a single allocated block",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "max_alloc"
+  },
+  {
+    "argname": "flags",
+    "flags": 5,
+    "help": "force specific cpu flags",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "cpuflags"
+  },
+  {
+    "argname": "count",
+    "flags": 5,
+    "help": "force specific cpu count",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "cpucount"
+  },
+  {
+    "argname": "hide_banner",
+    "flags": 6,
+    "help": "do not show program banner",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "hide_banner"
+  },
+  {
+    "argname": "device",
+    "flags": 1025,
+    "help": "list sources of the input device",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "sources"
+  },
+  {
+    "argname": "device",
+    "flags": 1025,
+    "help": "list sinks of the output device",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "sinks"
+  },
+  {
+    "argname": "fmt",
+    "flags": 401417,
+    "help": "force format",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "f"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "overwrite output files",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "y"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "never overwrite output files",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "n"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "Ignore unknown stream types",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "ignore_unknown"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "Copy unknown stream types",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "copy_unknown"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "allow recasting stream type in order to force a decoder of different media type",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "recast_media"
+  },
+  {
+    "argname": "codec",
+    "flags": 409609,
+    "help": "codec name",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "c"
+  },
+  {
+    "argname": "codec",
+    "flags": 409609,
+    "help": "codec name",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "codec"
+  },
+  {
+    "argname": "preset",
+    "flags": 278537,
+    "help": "preset name",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "pre"
+  },
+  {
+    "argname": "[-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]]",
+    "flags": 266245,
+    "help": "set input stream mapping",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "map"
+  },
+  {
+    "argname": "file.stream.channel[:syncfile.syncstream]",
+    "flags": 266245,
+    "help": "map an audio channel from one stream to another (deprecated)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "map_channel"
+  },
+  {
+    "argname": "outfile[,metadata]:infile[,metadata]",
+    "flags": 278537,
+    "help": "set metadata information of outfile from infile",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "map_metadata"
+  },
+  {
+    "argname": "input_file_index",
+    "flags": 270405,
+    "help": "set chapters mapping",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "map_chapters"
+  },
+  {
+    "argname": "duration",
+    "flags": 434177,
+    "help": "record or transcode \\\"duration\\\" seconds of audio/video",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "t"
+  },
+  {
+    "argname": "time_stop",
+    "flags": 434177,
+    "help": "record or transcode stop time",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "to"
+  },
+  {
+    "argname": "limit_size",
+    "flags": 270849,
+    "help": "set the limit file size in bytes",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "fs"
+  },
+  {
+    "argname": "time_off",
+    "flags": 434177,
+    "help": "set the start time offset",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "ss"
+  },
+  {
+    "argname": "time_off",
+    "flags": 172033,
+    "help": "set the start time offset relative to EOF",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "sseof"
+  },
+  {
+    "argname": null,
+    "flags": 139329,
+    "help": "enable/disable seeking by timestamp with -ss",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "seek_timestamp"
+  },
+  {
+    "argname": null,
+    "flags": 139270,
+    "help": "enable/disable accurate seeking with -ss",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "accurate_seek"
+  },
+  {
+    "argname": "sync ref",
+    "flags": 139333,
+    "help": "Indicate the input index for sync reference",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "isync"
+  },
+  {
+    "argname": "time_off",
+    "flags": 172037,
+    "help": "set the input ts offset",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "itsoffset"
+  },
+  {
+    "argname": "scale",
+    "flags": 212997,
+    "help": "set the input ts scale",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "itsscale"
+  },
+  {
+    "argname": "time",
+    "flags": 266241,
+    "help": "set the recording timestamp ('now' to set the current time)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "timestamp"
+  },
+  {
+    "argname": "string=string",
+    "flags": 278537,
+    "help": "add metadata",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "metadata"
+  },
+  {
+    "argname": "title=string:st=number...",
+    "flags": 278537,
+    "help": "add program with specified streams",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "program"
+  },
+  {
+    "argname": "id=number:st=number...",
+    "flags": 278537,
+    "help": "add stream group with specified streams and group type-specific arguments",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "stream_group"
+  },
+  {
+    "argname": "number",
+    "flags": 266245,
+    "help": "set the number of data frames to output",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "dframes"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "add timings for benchmarking",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "benchmark"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "add timings for each task",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "benchmark_all"
+  },
+  {
+    "argname": "url",
+    "flags": 5,
+    "help": "write program-readable progress information",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "progress"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "enable or disable interaction on standard input",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "stdin"
+  },
+  {
+    "argname": "limit",
+    "flags": 5,
+    "help": "set max runtime in seconds in CPU user time",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "timelimit"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "dump each input packet",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "dump"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "when dumping packets, also dump the payload",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "hex"
+  },
+  {
+    "argname": "",
+    "flags": 139270,
+    "help": "read input at native frame rate; equivalent to -readrate 1",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "re"
+  },
+  {
+    "argname": "speed",
+    "flags": 139397,
+    "help": "read input at specified rate",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "readrate"
+  },
+  {
+    "argname": "seconds",
+    "flags": 204805,
+    "help": "The initial amount of input to burst read before imposing any readrate",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "readrate_initial_burst"
+  },
+  {
+    "argname": "type",
+    "flags": 266241,
+    "help": "specify target file type (\\\"vcd\\\", \\\"svcd\\\", \\\"dvd\\\", \\\"dv\\\" or \\\"dv50\\\n        \"with optional prefixes \\\"pal-\\\", \\\"ntsc-\\\" or \\\"film-\\\")",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "target"
+  },
+  {
+    "argname": "",
+    "flags": 5,
+    "help": "set video sync method globally; deprecated, use -fps_mode",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "vsync"
+  },
+  {
+    "argname": "",
+    "flags": 133,
+    "help": "frame drop threshold",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "frame_drop_threshold"
+  },
+  {
+    "argname": "threshold",
+    "flags": 5,
+    "help": "deprecated, does nothing",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "adrift_threshold"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "copy timestamps",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "copyts"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "shift input timestamps to start at 0 when using copyts",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "start_at_zero"
+  },
+  {
+    "argname": "mode",
+    "flags": 69,
+    "help": "copy input stream time base when stream copying",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "copytb"
+  },
+  {
+    "argname": null,
+    "flags": 270342,
+    "help": "finish encoding within shortest input",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "shortest"
+  },
+  {
+    "argname": null,
+    "flags": 270469,
+    "help": "maximum buffering duration (in seconds) for the -shortest option",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "shortest_buf_duration"
+  },
+  {
+    "argname": null,
+    "flags": 401414,
+    "help": "bitexact mode",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "bitexact"
+  },
+  {
+    "argname": "",
+    "flags": 278537,
+    "help": "audio pad",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "apad"
+  },
+  {
+    "argname": "threshold",
+    "flags": 133,
+    "help": "timestamp discontinuity delta threshold",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "dts_delta_threshold"
+  },
+  {
+    "argname": "threshold",
+    "flags": 133,
+    "help": "timestamp error delta threshold",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "dts_error_threshold"
+  },
+  {
+    "argname": "error",
+    "flags": 6,
+    "help": "exit on error",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "xerror"
+  },
+  {
+    "argname": "flags",
+    "flags": 5,
+    "help": "abort on the specified condition flags",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "abort_on"
+  },
+  {
+    "argname": null,
+    "flags": 278534,
+    "help": "copy initial non-keyframes",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "copyinkf"
+  },
+  {
+    "argname": null,
+    "flags": 278597,
+    "help": "copy or discard frames before start time",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "copypriorss"
+  },
+  {
+    "argname": "number",
+    "flags": 279041,
+    "help": "set the number of frames to output",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "frames"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 409613,
+    "help": "force codec tag/fourcc",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "tag"
+  },
+  {
+    "argname": "q",
+    "flags": 344069,
+    "help": "use fixed quality scale (VBR)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "q"
+  },
+  {
+    "argname": "q",
+    "flags": 266245,
+    "help": "use fixed quality scale (VBR)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "qscale"
+  },
+  {
+    "argname": "profile",
+    "flags": 266245,
+    "help": "set profile",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "profile"
+  },
+  {
+    "argname": "filter_graph",
+    "flags": 278537,
+    "help": "set stream filtergraph",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "filter"
+  },
+  {
+    "argname": null,
+    "flags": 1,
+    "help": "number of non-complex filter threads",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "filter_threads"
+  },
+  {
+    "argname": "filename",
+    "flags": 278537,
+    "help": "read stream filtergraph description from a file",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "filter_script"
+  },
+  {
+    "argname": "",
+    "flags": 147521,
+    "help": "reinit filtergraph on input parameter changes",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "reinit_filter"
+  },
+  {
+    "argname": "graph_description",
+    "flags": 5,
+    "help": "create a complex filtergraph",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "filter_complex"
+  },
+  {
+    "argname": null,
+    "flags": 65,
+    "help": "number of threads for -filter_complex",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "filter_complex_threads"
+  },
+  {
+    "argname": "graph_description",
+    "flags": 5,
+    "help": "create a complex filtergraph",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "lavfi"
+  },
+  {
+    "argname": "filename",
+    "flags": 5,
+    "help": "read complex filtergraph description from a file",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "filter_complex_script"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "enable automatic conversion filters globally",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "auto_conversion_filters"
+  },
+  {
+    "argname": null,
+    "flags": 2,
+    "help": "print progress report during encoding",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "stats"
+  },
+  {
+    "argname": "time",
+    "flags": 5,
+    "help": "set the period at which ffmpeg updates stats and -progress output",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "stats_period"
+  },
+  {
+    "argname": "filename",
+    "flags": 266245,
+    "help": "add an attachment to the output file",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "attach"
+  },
+  {
+    "argname": "filename",
+    "flags": 147469,
+    "help": "extract an attachment into a file",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "dump_attachment"
+  },
+  {
+    "argname": "loop count",
+    "flags": 139333,
+    "help": "set number of times input stream shall be looped",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "stream_loop"
+  },
+  {
+    "argname": null,
+    "flags": 6,
+    "help": "print timestamp debugging info",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "debug_ts"
+  },
+  {
+    "argname": "maximum error rate",
+    "flags": 129,
+    "help": "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "max_error_rate"
+  },
+  {
+    "argname": "",
+    "flags": 147465,
+    "help": "discard",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "discard"
+  },
+  {
+    "argname": "",
+    "flags": 278537,
+    "help": "disposition",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "disposition"
+  },
+  {
+    "argname": null,
+    "flags": 401477,
+    "help": "set the maximum number of queued packets from the demuxer",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "thread_queue_size"
+  },
+  {
+    "argname": null,
+    "flags": 139270,
+    "help": "read and decode the streams to fill missing information with heuristics",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "find_stream_info"
+  },
+  {
+    "argname": "number",
+    "flags": 278597,
+    "help": "set the number of bits per raw sample",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "bits_per_raw_sample"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "write encoding stats before encoding",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "stats_enc_pre"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "write encoding stats after encoding",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "stats_enc_post"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "write packets stats before muxing",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "stats_mux_pre"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "format of the stats written with -stats_enc_pre",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "stats_enc_pre_fmt"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "format of the stats written with -stats_enc_post",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "stats_enc_post_fmt"
+  },
+  {
+    "argname": null,
+    "flags": 278541,
+    "help": "format of the stats written with -stats_mux_pre",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "stats_mux_pre_fmt"
+  },
+  {
+    "argname": "number",
+    "flags": 266257,
+    "help": "set the number of video frames to output",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "vframes"
+  },
+  {
+    "argname": "rate",
+    "flags": 409625,
+    "help": "set frame rate (Hz value, fraction or abbreviation)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "r"
+  },
+  {
+    "argname": "rate",
+    "flags": 278553,
+    "help": "set max frame rate (Hz value, fraction or abbreviation)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "fpsmax"
+  },
+  {
+    "argname": "size",
+    "flags": 409881,
+    "help": "set frame size (WxH or abbreviation)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "s"
+  },
+  {
+    "argname": "aspect",
+    "flags": 278553,
+    "help": "set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "aspect"
+  },
+  {
+    "argname": "format",
+    "flags": 409629,
+    "help": "set pixel format",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "pix_fmt"
+  },
+  {
+    "argname": "angle",
+    "flags": 213009,
+    "help": "set pure counter-clockwise rotation in degrees for stream(s)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "display_rotation"
+  },
+  {
+    "argname": null,
+    "flags": 147474,
+    "help": "set display horizontal flip for stream(s) (overrides any display rotation if it is not set)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "display_hflip"
+  },
+  {
+    "argname": null,
+    "flags": 147474,
+    "help": "set display vertical flip for stream(s) (overrides any display rotation if it is not set)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "display_vflip"
+  },
+  {
+    "argname": null,
+    "flags": 401426,
+    "help": "disable video",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "vn"
+  },
+  {
+    "argname": "override",
+    "flags": 278557,
+    "help": "rate control override for specific intervals",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "rc_override"
+  },
+  {
+    "argname": "codec",
+    "flags": 397329,
+    "help": "force video codec ('copy' to copy stream)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "vcodec"
+  },
+  {
+    "argname": "hh:mm:ss[:;.]ff",
+    "flags": 266257,
+    "help": "set initial TimeCode value.",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "timecode"
+  },
+  {
+    "argname": "n",
+    "flags": 278609,
+    "help": "select the pass number (1 to 3)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "pass"
+  },
+  {
+    "argname": "prefix",
+    "flags": 278557,
+    "help": "select two pass log file name prefix",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "passlogfile"
+  },
+  {
+    "argname": null,
+    "flags": 22,
+    "help": "calculate PSNR of compressed frames (deprecated, use -flags +psnr)",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "psnr"
+  },
+  {
+    "argname": null,
+    "flags": 20,
+    "help": "dump video coding statistics to file",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "vstats"
+  },
+  {
+    "argname": "file",
+    "flags": 21,
+    "help": "dump video coding statistics to file",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "vstats_file"
+  },
+  {
+    "argname": null,
+    "flags": 85,
+    "help": "Version of the vstats format to use.",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "vstats_version"
+  },
+  {
+    "argname": "filter_graph",
+    "flags": 266257,
+    "help": "set video filters",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "vf"
+  },
+  {
+    "argname": "matrix",
+    "flags": 278557,
+    "help": "specify intra matrix coeffs",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "intra_matrix"
+  },
+  {
+    "argname": "matrix",
+    "flags": 278557,
+    "help": "specify inter matrix coeffs",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "inter_matrix"
+  },
+  {
+    "argname": "matrix",
+    "flags": 278557,
+    "help": "specify intra matrix coeffs",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "chroma_intra_matrix"
+  },
+  {
+    "argname": "",
+    "flags": 409685,
+    "help": "deprecated, use the setfield video filter",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "top"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 397333,
+    "help": "force video tag/fourcc",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "vtag"
+  },
+  {
+    "argname": null,
+    "flags": 20,
+    "help": "deprecated, does nothing",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "qphist"
+  },
+  {
+    "argname": null,
+    "flags": 278557,
+    "help": "set framerate mode for matching video streams; overrides vsync",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "fps_mode"
+  },
+  {
+    "argname": null,
+    "flags": 278550,
+    "help": "force the selected framerate, disable the best supported framerate selection",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "force_fps"
+  },
+  {
+    "argname": "streamIndex:value",
+    "flags": 266261,
+    "help": "set the value of an outfile streamid",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "streamid"
+  },
+  {
+    "argname": "timestamps",
+    "flags": 278557,
+    "help": "force key frames at specified timestamps",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "force_key_frames"
+  },
+  {
+    "argname": "bitrate",
+    "flags": 266257,
+    "help": "video bitrate (please use -b:v)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "b"
+  },
+  {
+    "argname": "hwaccel name",
+    "flags": 147485,
+    "help": "use HW accelerated decoding",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "hwaccel"
+  },
+  {
+    "argname": "devicename",
+    "flags": 147485,
+    "help": "select a device for HW acceleration",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "hwaccel_device"
+  },
+  {
+    "argname": "format",
+    "flags": 147485,
+    "help": "select output format used with HW accelerated decoding",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "hwaccel_output_format"
+  },
+  {
+    "argname": null,
+    "flags": 1024,
+    "help": "show available HW acceleration methods",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "hwaccels"
+  },
+  {
+    "argname": null,
+    "flags": 147463,
+    "help": "automatically insert correct rotate filters",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "autorotate"
+  },
+  {
+    "argname": null,
+    "flags": 278535,
+    "help": "automatically insert a scale filter at the end of the filter graph",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "autoscale"
+  },
+  {
+    "argname": null,
+    "flags": 278550,
+    "help": "set this video output stream to be a heartbeat stream for fix_sub_duration, according to which subtitles should be split at random access points",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "fix_sub_duration_heartbeat"
+  },
+  {
+    "argname": "number",
+    "flags": 266273,
+    "help": "set the number of audio frames to output",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "aframes"
+  },
+  {
+    "argname": "quality",
+    "flags": 266273,
+    "help": "set audio quality (codec-specific)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "aq"
+  },
+  {
+    "argname": "rate",
+    "flags": 409697,
+    "help": "set audio sampling rate (in Hz)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "ar"
+  },
+  {
+    "argname": "channels",
+    "flags": 409697,
+    "help": "set number of audio channels",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "ac"
+  },
+  {
+    "argname": null,
+    "flags": 401442,
+    "help": "disable audio",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "an"
+  },
+  {
+    "argname": "codec",
+    "flags": 397345,
+    "help": "force audio codec ('copy' to copy stream)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "acodec"
+  },
+  {
+    "argname": "bitrate",
+    "flags": 266273,
+    "help": "audio bitrate (please use -b:a)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "ab"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 266277,
+    "help": "force audio tag/fourcc",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "atag"
+  },
+  {
+    "argname": "format",
+    "flags": 409645,
+    "help": "set sample format",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "sample_fmt"
+  },
+  {
+    "argname": "layout",
+    "flags": 409645,
+    "help": "set channel layout",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "channel_layout"
+  },
+  {
+    "argname": "layout",
+    "flags": 409645,
+    "help": "set channel layout",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "ch_layout"
+  },
+  {
+    "argname": "filter_graph",
+    "flags": 266273,
+    "help": "set audio filters",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "af"
+  },
+  {
+    "argname": null,
+    "flags": 147557,
+    "help": "set the maximum number of channels to try to guess the channel layout",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "guess_layout_max"
+  },
+  {
+    "argname": null,
+    "flags": 401666,
+    "help": "disable subtitle",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "sn"
+  },
+  {
+    "argname": "codec",
+    "flags": 397569,
+    "help": "force subtitle codec ('copy' to copy stream)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "scodec"
+  },
+  {
+    "argname": "fourcc/tag",
+    "flags": 266501,
+    "help": "force subtitle tag/fourcc",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "stag"
+  },
+  {
+    "argname": null,
+    "flags": 147718,
+    "help": "fix subtitles duration",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "fix_sub_duration"
+  },
+  {
+    "argname": "size",
+    "flags": 147721,
+    "help": "set canvas size (WxH or abbreviation)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": false,
+    "is_support_stream_specifier": true,
+    "name": "canvas_size"
+  },
+  {
+    "argname": "seconds",
+    "flags": 270469,
+    "help": "set the maximum demux-decode delay",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "muxdelay"
+  },
+  {
+    "argname": "seconds",
+    "flags": 270469,
+    "help": "set the initial demux-decode delay",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "muxpreload"
+  },
+  {
+    "argname": "file",
+    "flags": 262149,
+    "help": "specify a file in which to print sdp information",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "sdp_file"
+  },
+  {
+    "argname": "ratio",
+    "flags": 278541,
+    "help": "set the desired time base hint for output stream (1:24, 1:48000 or 0.04166, 2.0833e-5)",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "time_base"
+  },
+  {
+    "argname": "ratio",
+    "flags": 278541,
+    "help": "set the desired time base for the encoder (1:24, 1:48000 or 0.04166, 2.0833e-5). two special values are defined - 0 = use frame rate (video) or sample rate (audio),-1 = match source time base",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "enc_time_base"
+  },
+  {
+    "argname": "bitstream_filters",
+    "flags": 278541,
+    "help": "A comma-separated list of bitstream filters",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "bsf"
+  },
+  {
+    "argname": "audio bitstream_filters",
+    "flags": 266277,
+    "help": "deprecated",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "absf"
+  },
+  {
+    "argname": "video bitstream_filters",
+    "flags": 266261,
+    "help": "deprecated",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "vbsf"
+  },
+  {
+    "argname": "preset",
+    "flags": 266277,
+    "help": "set the audio options to the indicated preset",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "apre"
+  },
+  {
+    "argname": "preset",
+    "flags": 266261,
+    "help": "set the video options to the indicated preset",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "vpre"
+  },
+  {
+    "argname": "preset",
+    "flags": 266501,
+    "help": "set the subtitle options to the indicated preset",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "spre"
+  },
+  {
+    "argname": "filename",
+    "flags": 266245,
+    "help": "set options from indicated preset file",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "fpre"
+  },
+  {
+    "argname": "packets",
+    "flags": 278597,
+    "help": "maximum number of packets that can be buffered while waiting for all streams to initialize",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "max_muxing_queue_size"
+  },
+  {
+    "argname": "bytes",
+    "flags": 278597,
+    "help": "set the threshold after which max_muxing_queue_size is taken into account",
+    "is_global_option": false,
+    "is_input_option": false,
+    "is_output_option": true,
+    "is_support_stream_specifier": true,
+    "name": "muxing_queue_data_threshold"
+  },
+  {
+    "argname": "codec",
+    "flags": 399365,
+    "help": "force data codec ('copy' to copy stream)",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "dcodec"
+  },
+  {
+    "argname": null,
+    "flags": 401426,
+    "help": "disable data",
+    "is_global_option": false,
+    "is_input_option": true,
+    "is_output_option": true,
+    "is_support_stream_specifier": false,
+    "name": "dn"
+  },
+  {
+    "argname": "args",
+    "flags": 5,
+    "help": "initialise hardware device",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "init_hw_device"
+  },
+  {
+    "argname": "device",
+    "flags": 5,
+    "help": "set hardware device used when filtering",
+    "is_global_option": true,
+    "is_input_option": false,
+    "is_output_option": false,
+    "is_support_stream_specifier": false,
+    "name": "filter_hw_device"
+  }
+]

@@ -3,10 +3,11 @@ import re
 from typing import Any, Literal
 
 from .dag.nodes import FilterableStream, FilterNode
-from .schema import Default, StreamType, _to_tuple
+from .schema import Default, StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
-from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String, Video_rate
+from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String
+from .utils.run import _to_tuple
 
 
 def acrossfade(
@@ -114,92 +115,6 @@ def acrossfade(
         ),
     )
     return filter_node.audio(0)
-
-
-def afir(
-    *streams: AudioStream,
-    dry: Float = Default(1.0),
-    wet: Float = Default(1.0),
-    length: Float = Default(1.0),
-    gtype: Int | Literal["none", "peak", "dc", "gn", "ac", "rms"] | Default = Default("peak"),
-    irgain: Float = Default(1.0),
-    irfmt: Int | Literal["mono", "input"] | Default = Default("input"),
-    maxir: Float = Default(30.0),
-    response: Boolean = Default(False),
-    channel: Int = Default(0),
-    size: Image_size = Default("hd720"),
-    rate: Video_rate = Default("25"),
-    minp: Int = Default(8192),
-    maxp: Int = Default(8192),
-    nbirs: Int = Default(1),
-    ir: Int = Default(0),
-    precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
-    irload: Int | Literal["init", "access"] | Default = Default("init"),
-    **kwargs: Any
-) -> FilterNode:
-    """
-
-    Apply Finite Impulse Response filter with supplied coefficients in additional stream(s).
-
-    Args:
-        dry: set dry gain (from 0 to 10) (default 1)
-        wet: set wet gain (from 0 to 10) (default 1)
-        length: set IR length (from 0 to 1) (default 1)
-        gtype: set IR auto gain type (from -1 to 4) (default peak)
-        irgain: set IR gain (from 0 to 1) (default 1)
-        irfmt: set IR format (from 0 to 1) (default input)
-        maxir: set max IR length (from 0.1 to 60) (default 30)
-        response: show IR frequency response (default false)
-        channel: set IR channel to display frequency response (from 0 to 1024) (default 0)
-        size: set video size (default "hd720")
-        rate: set video rate (default "25")
-        minp: set min partition size (from 1 to 65536) (default 8192)
-        maxp: set max partition size (from 8 to 65536) (default 8192)
-        nbirs: set number of input IRs (from 1 to 32) (default 1)
-        ir: select IR (from 0 to 31) (default 0)
-        precision: set processing precision (from 0 to 2) (default auto)
-        irload: set IR loading type (from 0 to 1) (default init)
-
-    Returns:
-        filter_node: the filter node
-
-
-    References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afir)
-
-    """
-    filter_node = FilterNode(
-        name="afir",
-        input_typings=tuple([StreamType.audio] * int(nbirs)),
-        output_typings=(StreamType.audio,),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "dry": dry,
-                    "wet": wet,
-                    "length": length,
-                    "gtype": gtype,
-                    "irgain": irgain,
-                    "irfmt": irfmt,
-                    "maxir": maxir,
-                    "response": response,
-                    "channel": channel,
-                    "size": size,
-                    "rate": rate,
-                    "minp": minp,
-                    "maxp": maxp,
-                    "nbirs": nbirs,
-                    "ir": ir,
-                    "precision": precision,
-                    "irload": irload,
-                }
-                | kwargs
-            )
-        ),
-    )
-
-    return filter_node
 
 
 def ainterleave(

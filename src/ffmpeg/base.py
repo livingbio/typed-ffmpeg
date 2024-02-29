@@ -2,37 +2,18 @@
 This module defined the basic functions for creating the ffmpeg filter graph.
 """
 
+from pathlib import Path
 from typing import Any
 
 from ffmpeg.schema import StreamType
 
-from .dag.nodes import FilterableStream, FilterNode, GlobalNode, GlobalStream, InputNode, OutputNode, OutputStream
+from .dag.nodes import FilterableStream, FilterNode, GlobalNode, GlobalStream, OutputNode, OutputStream
+from .streams._input import input
 from .streams.audio import AudioStream
-from .streams.av import AVStream
 from .streams.video import VideoStream
 
 
-def input(filename: str, **kwargs: Any) -> AVStream:
-    """
-    Input file URL (ffmpeg ``-i`` option)
-
-    Args:
-        filename: Input file URL
-        **kwargs: ffmpeg's input file options
-
-    Returns:
-        Input stream
-
-    Examples:
-    ```py
-    >>> input('input.mp4')
-    <AVStream:input.mp4:0>
-    ```
-    """
-    return InputNode(filename=filename, kwargs=tuple(kwargs.items())).stream()
-
-
-def output(*streams: FilterableStream, filename: str, **kwargs: Any) -> OutputStream:
+def output(*streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputStream:
     """
     Output the streams to a file URL
 
@@ -44,7 +25,7 @@ def output(*streams: FilterableStream, filename: str, **kwargs: Any) -> OutputSt
     Returns:
         the output stream
     """
-    return OutputNode(filename=filename, inputs=streams, kwargs=tuple(kwargs.items())).stream()
+    return OutputNode(filename=str(filename), inputs=streams, kwargs=tuple(kwargs.items())).stream()
 
 
 def merge_outputs(*streams: OutputStream) -> GlobalStream:
@@ -144,3 +125,6 @@ def filter_multi_output(
         input_typings=input_typings,
         output_typings=output_tyings,
     )
+
+
+__all__ = ["input", "output", "merge_outputs", "vfilter", "afilter", "filter_multi_output"]

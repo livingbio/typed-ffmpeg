@@ -5,7 +5,7 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..helper import dump
-from ..parse_c import parse_all_filter_names, parse_c
+from ..parse_c import parse_c
 
 datadir = pathlib.Path(__file__).parent / "test_parse_c"
 
@@ -29,9 +29,3 @@ def test_parse_c(path: pathlib.Path, snapshot: SnapshotAssertion) -> None:
             for filter in filters
         ]
     )
-
-
-def test_parse_all_filter_names(shared_datadir: pathlib.Path, snapshot: SnapshotAssertion) -> None:
-    filters = parse_all_filter_names(shared_datadir / "allfilters.c")
-    assert snapshot(extension_class=JSONSnapshotExtension) == filters
-    assert snapshot == len(filters)
