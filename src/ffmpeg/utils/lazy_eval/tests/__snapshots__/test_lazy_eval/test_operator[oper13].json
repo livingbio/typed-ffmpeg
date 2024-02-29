@@ -1,0 +1,8 @@
+{
+  "__class__": "ffmpeg.utils.lazy_eval.operator.Pow",
+  "left": 1,
+  "right": {
+    "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+    "key": "X"
+  }
+}

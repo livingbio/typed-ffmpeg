@@ -14,3 +14,147 @@
 # name: test_lazyoperator_number[repr]
   '((((((((((1+X)+Y)-5)*3)/16)*-X)++Y)+abs(X))+(X%Y))+(X//Y))'
 # ---
+# name: test_operator[oper0].2
+  4
+# ---
+# name: test_operator[oper0][repr]
+  '(X+1)'
+# ---
+# name: test_operator[oper10].2
+  0.3333333333333333
+# ---
+# name: test_operator[oper10][repr]
+  '(1/X)'
+# ---
+# name: test_operator[oper11].2
+  0.6
+# ---
+# name: test_operator[oper11][repr]
+  '(X/Y)'
+# ---
+# name: test_operator[oper12].2
+  3
+# ---
+# name: test_operator[oper12][repr]
+  '(X**1)'
+# ---
+# name: test_operator[oper13].2
+  1
+# ---
+# name: test_operator[oper13][repr]
+  '(1**X)'
+# ---
+# name: test_operator[oper14].2
+  243
+# ---
+# name: test_operator[oper14][repr]
+  '(X**Y)'
+# ---
+# name: test_operator[oper15].2
+  -3
+# ---
+# name: test_operator[oper15][repr]
+  '-X'
+# ---
+# name: test_operator[oper16].2
+  3
+# ---
+# name: test_operator[oper16][repr]
+  '+X'
+# ---
+# name: test_operator[oper17].2
+  3
+# ---
+# name: test_operator[oper17][repr]
+  'abs(X)'
+# ---
+# name: test_operator[oper18].2
+  0
+# ---
+# name: test_operator[oper18][repr]
+  '(X%1)'
+# ---
+# name: test_operator[oper19].2
+  1
+# ---
+# name: test_operator[oper19][repr]
+  '(1%X)'
+# ---
+# name: test_operator[oper1].2
+  4
+# ---
+# name: test_operator[oper1][repr]
+  '(1+X)'
+# ---
+# name: test_operator[oper20].2
+  3
+# ---
+# name: test_operator[oper20][repr]
+  '(X%Y)'
+# ---
+# name: test_operator[oper21].2
+  3
+# ---
+# name: test_operator[oper21][repr]
+  '(X//1)'
+# ---
+# name: test_operator[oper22].2
+  0
+# ---
+# name: test_operator[oper22][repr]
+  '(1//X)'
+# ---
+# name: test_operator[oper23].2
+  0
+# ---
+# name: test_operator[oper23][repr]
+  '(X//Y)'
+# ---
+# name: test_operator[oper2].2
+  8
+# ---
+# name: test_operator[oper2][repr]
+  '(X+Y)'
+# ---
+# name: test_operator[oper3].2
+  2
+# ---
+# name: test_operator[oper3][repr]
+  '(X-1)'
+# ---
+# name: test_operator[oper4].2
+  -2
+# ---
+# name: test_operator[oper4][repr]
+  '(1-X)'
+# ---
+# name: test_operator[oper5].2
+  -2
+# ---
+# name: test_operator[oper5][repr]
+  '(X-Y)'
+# ---
+# name: test_operator[oper6].2
+  3
+# ---
+# name: test_operator[oper6][repr]
+  '(X*1)'
+# ---
+# name: test_operator[oper7].2
+  3
+# ---
+# name: test_operator[oper7][repr]
+  '(1*X)'
+# ---
+# name: test_operator[oper8].2
+  15
+# ---
+# name: test_operator[oper8][repr]
+  '(X*Y)'
+# ---
+# name: test_operator[oper9].2
+  3.0
+# ---
+# name: test_operator[oper9][repr]
+  '(X/1)'
+# ---
