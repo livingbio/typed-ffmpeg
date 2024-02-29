@@ -19,19 +19,20 @@ def pre_compile(folder: pathlib.Path) -> None:
 
 @app.command()
 def parse_ffmpeg_options() -> list[OptionDef]:
-    ffmpeg_opt_c = source_folder / "ffmpeg_opt.c"
+    ffmpeg_opt_c = source_folder / "fftools/ffmpeg_opt.c"
     return parse_ffmpeg_opt_c(ffmpeg_opt_c.read_text())
 
 
 @app.command()
 def parse_filters() -> list[AVFilter]:
-    allfilter_c = source_folder / "allfilters.c"
+    allfilter_c = source_folder / "libavfilter/allfilters.c"
     root = source_folder
     all_filter_names = set(k[2] for k in parse_all_filter_names(allfilter_c))
 
     total = 0
-    parsed_filters: list[AVFilter] = []
-    for path in root.glob("*.[cm]"):
+    parsed_filters: dict[str, AVFilter] = {}
+
+    for path in root.glob("**/*.[cm]"):
         try:
             filters = parse_c(path)
         except Exception as e:
@@ -43,15 +44,20 @@ def parse_filters() -> list[AVFilter]:
         else:
             sprint(f"Processing {path}... {len(filters)} filters " + ",".join(k.name for k in filters), sprint.green)
             total += len(filters)
-            parsed_filters.extend(filters)
 
-    parsed_filter_names = {f.id for f in parsed_filters}
+            for f in filters:
+                if f.id in parsed_filters:
+                    sprint(f"Duplicate filter {f.id}")
+
+                parsed_filters[f.id] = f
+
+    parsed_filter_names = parsed_filters.keys()
     print(f"Total filters: {total} / {len(all_filter_names)}")
 
     print(f"not exists filters {parsed_filter_names - all_filter_names}")
     print(f"not found filters {all_filter_names - parsed_filter_names}")
 
-    return parsed_filters
+    return list(parsed_filters.values())
 
 
 if __name__ == "__main__":

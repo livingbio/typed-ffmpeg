@@ -42,7 +42,6 @@ def input(
     display_vflip: bool = None,
     vn: bool = None,
     vcodec: str = None,
-    top: int = None,
     vtag: str = None,
     hwaccel: str = None,
     hwaccel_device: str = None,
@@ -60,8 +59,10 @@ def input(
     scodec: str = None,
     fix_sub_duration: bool = None,
     canvas_size: str = None,
+    bsf: str = None,
     dcodec: str = None,
     dn: bool = None,
+    top: int = None,
     **kwargs: Any
 ) -> AVStream:
     """
@@ -69,12 +70,12 @@ def input(
 
     Args:
         filename: Input file URL
-        f: force format
-        c: codec name
-        codec: codec name
-        t: record or transcode \"duration\" seconds of audio/video
-        to: record or transcode stop time
-        ss: set the start time offset
+        f: force container format (auto-detected otherwise)
+        c: select encoder/decoder ('copy' to copy stream without reencoding)
+        codec: alias for -c (select encoder/decoder)
+        t: stop transcoding after specified duration
+        to: stop transcoding after specified time is reached
+        ss: start transcoding at specified time
         sseof: set the start time offset relative to EOF
         seek_timestamp: enable/disable seeking by timestamp with -ss
         accurate_seek: enable/disable accurate seeking with -ss
@@ -92,15 +93,14 @@ def input(
         discard: discard
         thread_queue_size: set the maximum number of queued packets from the demuxer
         find_stream_info: read and decode the streams to fill missing information with heuristics
-        r: set frame rate (Hz value, fraction or abbreviation)
+        r: override input framerate/convert to given output framerate (Hz value, fraction or abbreviation)
         s: set frame size (WxH or abbreviation)
         pix_fmt: set pixel format
         display_rotation: set pure counter-clockwise rotation in degrees for stream(s)
         display_hflip: set display horizontal flip for stream(s) (overrides any display rotation if it is not set)
         display_vflip: set display vertical flip for stream(s) (overrides any display rotation if it is not set)
         vn: disable video
-        vcodec: force video codec ('copy' to copy stream)
-        top: deprecated, use the setfield video filter
+        vcodec: alias for -c:v (select encoder/decoder for video streams)
         vtag: force video tag/fourcc
         hwaccel: use HW accelerated decoding
         hwaccel_device: select a device for HW acceleration
@@ -109,17 +109,19 @@ def input(
         ar: set audio sampling rate (in Hz)
         ac: set number of audio channels
         an: disable audio
-        acodec: force audio codec ('copy' to copy stream)
+        acodec: alias for -c:a (select encoder/decoder for audio streams)
         sample_fmt: set sample format
         channel_layout: set channel layout
         ch_layout: set channel layout
         guess_layout_max: set the maximum number of channels to try to guess the channel layout
         sn: disable subtitle
-        scodec: force subtitle codec ('copy' to copy stream)
+        scodec: alias for -c:s (select encoder/decoder for subtitle streams)
         fix_sub_duration: fix subtitles duration
         canvas_size: set canvas size (WxH or abbreviation)
-        dcodec: force data codec ('copy' to copy stream)
+        bsf: A comma-separated list of bitstream filters
+        dcodec: alias for -c:d (select encoder/decoder for data streams)
         dn: disable data
+        top: deprecated, use the setfield video filter
         **kwargs: ffmpeg's input file options
 
     Returns:
@@ -166,7 +168,6 @@ def input(
             "display_vflip": display_vflip,
             "vn": vn,
             "vcodec": vcodec,
-            "top": top,
             "vtag": vtag,
             "hwaccel": hwaccel,
             "hwaccel_device": hwaccel_device,
@@ -184,8 +185,10 @@ def input(
             "scodec": scodec,
             "fix_sub_duration": fix_sub_duration,
             "canvas_size": canvas_size,
+            "bsf": bsf,
             "dcodec": dcodec,
             "dn": dn,
+            "top": top,
         }.items()
         if v is not None
     }

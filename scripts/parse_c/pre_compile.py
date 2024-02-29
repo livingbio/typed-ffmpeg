@@ -19,6 +19,10 @@ def precompile(folder: pathlib.Path):
     with open("config_components.h", "w") as f:
         f.write(text)
 
-    for file in folder.glob("libavfilter/*.[cm]"):
+    for file in folder.glob("**/*.[cm]"):
         print(f"precompile {file}")
-        os.system(f"gcc -E -I. {file} > {(source_folder / file.name).resolve()}")
+        p = file.relative_to(folder)
+        compiled_path = (source_folder / p).resolve()
+        compiled_path.parent.mkdir(parents=True, exist_ok=True)
+
+        os.system(f"gcc -E -I. {file} > {compiled_path}")

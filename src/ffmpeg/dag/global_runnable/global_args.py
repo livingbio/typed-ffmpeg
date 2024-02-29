@@ -18,7 +18,7 @@ class GlobalArgs(ABC):
         *,
         loglevel: str = None,
         v: str = None,
-        report: bool = None,
+        report: str = None,
         max_alloc: str = None,
         cpuflags: str = None,
         cpucount: str = None,
@@ -35,9 +35,7 @@ class GlobalArgs(ABC):
         timelimit: str = None,
         dump: bool = None,
         hex: bool = None,
-        vsync: str = None,
         frame_drop_threshold: float = None,
-        adrift_threshold: str = None,
         copyts: bool = None,
         start_at_zero: bool = None,
         copytb: int = None,
@@ -55,13 +53,15 @@ class GlobalArgs(ABC):
         stats_period: str = None,
         debug_ts: bool = None,
         max_error_rate: float = None,
-        psnr: bool = None,
-        vstats: bool = None,
+        vstats: str = None,
         vstats_file: str = None,
         vstats_version: int = None,
-        qphist: bool = None,
         init_hw_device: str = None,
         filter_hw_device: str = None,
+        adrift_threshold: str = None,
+        psnr: bool = None,
+        qphist: str = None,
+        vsync: str = None,
         **kwargs: Any,
     ) -> GlobalStream:
         """
@@ -87,9 +87,7 @@ class GlobalArgs(ABC):
             timelimit: set max runtime in seconds in CPU user time
             dump: dump each input packet
             hex: when dumping packets, also dump the payload
-            vsync: set video sync method globally; deprecated, use -fps_mode
             frame_drop_threshold: frame drop threshold
-            adrift_threshold: deprecated, does nothing
             copyts: copy timestamps
             start_at_zero: shift input timestamps to start at 0 when using copyts
             copytb: copy input stream time base when stream copying
@@ -101,19 +99,21 @@ class GlobalArgs(ABC):
             filter_complex: create a complex filtergraph
             filter_complex_threads: number of threads for -filter_complex
             lavfi: create a complex filtergraph
-            filter_complex_script: read complex filtergraph description from a file
+            filter_complex_script: deprecated, use -/filter_complex instead
             auto_conversion_filters: enable automatic conversion filters globally
             stats: print progress report during encoding
             stats_period: set the period at which ffmpeg updates stats and -progress output
             debug_ts: print timestamp debugging info
             max_error_rate: ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.
-            psnr: calculate PSNR of compressed frames (deprecated, use -flags +psnr)
             vstats: dump video coding statistics to file
             vstats_file: dump video coding statistics to file
             vstats_version: Version of the vstats format to use.
-            qphist: deprecated, does nothing
             init_hw_device: initialise hardware device
             filter_hw_device: set hardware device used when filtering
+            adrift_threshold: deprecated, does nothing
+            psnr: calculate PSNR of compressed frames (deprecated, use -flags +psnr)
+            qphist: deprecated, does nothing
+            vsync: set video sync method globally; deprecated, use -fps_mode
             **kwargs: Additional options
 
         Returns:
@@ -144,9 +144,7 @@ class GlobalArgs(ABC):
                         "timelimit": timelimit,
                         "dump": dump,
                         "hex": hex,
-                        "vsync": vsync,
                         "frame_drop_threshold": frame_drop_threshold,
-                        "adrift_threshold": adrift_threshold,
                         "copyts": copyts,
                         "start_at_zero": start_at_zero,
                         "copytb": copytb,
@@ -164,13 +162,15 @@ class GlobalArgs(ABC):
                         "stats_period": stats_period,
                         "debug_ts": debug_ts,
                         "max_error_rate": max_error_rate,
-                        "psnr": psnr,
                         "vstats": vstats,
                         "vstats_file": vstats_file,
                         "vstats_version": vstats_version,
-                        "qphist": qphist,
                         "init_hw_device": init_hw_device,
                         "filter_hw_device": filter_hw_device,
+                        "adrift_threshold": adrift_threshold,
+                        "psnr": psnr,
+                        "qphist": qphist,
+                        "vsync": vsync,
                     }.items()
                     if v is not None
                 }
