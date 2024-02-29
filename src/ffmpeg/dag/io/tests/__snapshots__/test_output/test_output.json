@@ -1,0 +1,11 @@
+[
+  "ffmpeg",
+  "-i",
+  "input.mp4",
+  "-c",
+  "copy",
+  "-shortest",
+  "-ar",
+  "44100",
+  "output.mp4"
+]

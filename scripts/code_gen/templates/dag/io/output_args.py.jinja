@@ -1,0 +1,54 @@
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from ..nodes import FilterableStream, OutputNode, OutputStream
+
+
+class OutputArgs(ABC):
+    @abstractmethod
+    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
+        ...
+
+    def output(
+        self,
+        *streams: "FilterableStream",
+        filename: str | Path,
+        {%- for option in options -%}
+        {%- if option.is_output_option -%}
+        {{ option.name | option_name_safe }}: {{ option.typing }} = None,
+        {%- endif -%}
+        {%- endfor -%}
+        **kwargs: Any
+    ) -> OutputStream:
+        """
+        Output file URL
+
+        Args:
+            *streams: the streams to output
+            filename: the filename to output to
+            {% for option in options %}
+            {%- if option.is_output_option -%}
+            {{option.name | option_name_safe}}: {{option.help }}
+            {% endif %}
+            {%- endfor -%}
+            **kwargs: the arguments for the output
+
+        Returns:
+            the output stream
+        """
+
+        options = {
+            k: v for k, v in {
+                {% for option in options %}
+                    {%- if option.is_output_option -%}
+                    "{{ option.name}}": {{ option.name | option_name_safe }},
+                    {% endif %}
+                    {% endfor %}
+            }.items() if v is not None
+        }
+
+        return self._output_node(*streams, filename=filename, **options, **kwargs).stream()

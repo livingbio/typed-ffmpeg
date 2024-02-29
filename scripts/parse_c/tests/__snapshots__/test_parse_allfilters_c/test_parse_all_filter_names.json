@@ -1376,6 +1376,11 @@
   ],
   [
     "vf",
+    "fsync",
+    "ff_vf_fsync"
+  ],
+  [
+    "vf",
     "gblur",
     "ff_vf_gblur"
   ],
@@ -1933,6 +1938,16 @@
     "vf",
     "qp",
     "ff_vf_qp"
+  ],
+  [
+    "vf",
+    "qrencode",
+    "ff_vf_qrencode"
+  ],
+  [
+    "vf",
+    "quirc",
+    "ff_vf_quirc"
   ],
   [
     "vf",
@@ -2681,6 +2696,11 @@
   ],
   [
     "vsrc",
+    "qrencodesrc",
+    "ff_vsrc_qrencodesrc"
+  ],
+  [
+    "vsrc",
     "pal75bars",
     "ff_vsrc_pal75bars"
   ],
@@ -2840,13 +2860,23 @@
     "ff_avsrc_movie"
   ],
   [
-    "af",
-    "afifo",
-    "ff_af_afifo"
+    "asrc",
+    "abuffer",
+    "ff_asrc_abuffer"
   ],
   [
-    "vf",
-    "fifo",
-    "ff_vf_fifo"
+    "vsrc",
+    "buffer",
+    "ff_vsrc_buffer"
+  ],
+  [
+    "asink",
+    "abuffer",
+    "ff_asink_abuffer"
+  ],
+  [
+    "vsink",
+    "buffer",
+    "ff_vsink_buffer"
   ]
 ]

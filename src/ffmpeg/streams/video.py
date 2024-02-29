@@ -5101,27 +5101,6 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def fifo(self, **kwargs: Any) -> VideoStream:
-        """
-
-        Buffer input images and send them when they are requested.
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fifo_002c-afifo)
-
-        """
-        filter_node = FilterNode(
-            name="fifo",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
-        )
-        return filter_node.video(0)
-
     def fillborders(
         self,
         *,
