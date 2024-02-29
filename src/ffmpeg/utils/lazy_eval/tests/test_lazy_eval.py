@@ -44,10 +44,10 @@ VarY = PlaceHolder(key="Y")
     ],
 )
 def test_operator(snapshot: SnapshotAssertion, oper: LazyOperator) -> None:
-    assert snapshot(extension_class=JSONSnapshotExtension) == loads(dumps(oper))
-    assert snapshot(name="repr") == str(oper)
+    assert snapshot(name=str(oper), extension_class=JSONSnapshotExtension) == loads(dumps(oper))
+    assert snapshot(name=f"{oper}") == str(oper)
 
-    assert snapshot == oper.eval(**{VarX.key: 3, VarY.key: 5})
+    assert snapshot(name=f"{oper}=") == oper.eval(**{VarX.key: 3, VarY.key: 5})
 
 
 def test_lazyoperator_number(snapshot: SnapshotAssertion) -> None:
