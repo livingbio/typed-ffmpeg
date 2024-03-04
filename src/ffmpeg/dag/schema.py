@@ -5,6 +5,7 @@ from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import TYPE_CHECKING, Literal
 
+from ..types import Common_Type
 from .utils import is_dag
 
 if TYPE_CHECKING:
@@ -74,7 +75,7 @@ class Node(HashableBaseModel, ABC):
         Each node in the DAG represents a single operation that transforms the data from its input form to its output form. The node is an essential component of the DAG, as it defines the nature of the operations that are performed on the data.
     """
 
-    kwargs: tuple[tuple[str, str | int | float | bool], ...] = ()
+    kwargs: tuple[tuple[str, Common_Type], ...] = ()
     """
     Represents the keyword arguments of the node.
     """

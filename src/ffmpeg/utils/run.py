@@ -1,6 +1,7 @@
 import shlex
 
 from ..schema import Default
+from ..types import Common_Type
 
 
 def command_line(args: list[str]) -> str:
@@ -16,9 +17,7 @@ def command_line(args: list[str]) -> str:
     return " ".join(shlex.quote(arg) for arg in args)
 
 
-def _to_tuple(
-    kwargs: dict[str, str | int | float | bool | Default]
-) -> tuple[tuple[str, str | int | float | bool], ...]:
+def _to_tuple(kwargs: dict[str, Common_Type | Default]) -> tuple[tuple[str, Common_Type], ...]:
     """
     Convert the values of the dictionary to strings.
     """
