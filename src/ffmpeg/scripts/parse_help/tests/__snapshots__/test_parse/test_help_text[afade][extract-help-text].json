@@ -1,7 +1,9 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Fade in/out input audio.",
   "input_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "audio"
     }
@@ -14,18 +16,21 @@
   "name": "afade",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "type",
         "t"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "fade-in",
           "name": "in",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "fade-out",
           "name": "out",
@@ -41,6 +46,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "start_sample",
         "ss"
@@ -55,6 +61,7 @@
       "typing": "int64"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "nb_samples",
         "ns"
@@ -69,6 +76,7 @@
       "typing": "int64"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "start_time",
         "st"
@@ -83,6 +91,7 @@
       "typing": "duration"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "duration",
         "d"
@@ -97,150 +106,175 @@
       "typing": "duration"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "curve",
         "c"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "no fade; keep audio as-is",
           "name": "nofade",
           "value": "-1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "linear slope",
           "name": "tri",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "quarter of sine wave",
           "name": "qsin",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "exponential sine wave",
           "name": "esin",
           "value": "2"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "half of sine wave",
           "name": "hsin",
           "value": "3"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "logarithmic",
           "name": "log",
           "value": "4"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "inverted parabola",
           "name": "ipar",
           "value": "5"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "quadratic",
           "name": "qua",
           "value": "6"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "cubic",
           "name": "cub",
           "value": "7"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "square root",
           "name": "squ",
           "value": "8"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "cubic root",
           "name": "cbr",
           "value": "9"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "parabola",
           "name": "par",
           "value": "10"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "exponential",
           "name": "exp",
           "value": "11"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "inverted quarter of sine wave",
           "name": "iqsin",
           "value": "12"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "inverted half of sine wave",
           "name": "ihsin",
           "value": "13"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "double-exponential seat",
           "name": "dese",
           "value": "14"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "double-exponential sigmoid",
           "name": "desi",
           "value": "15"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "logistic sigmoid",
           "name": "losi",
           "value": "16"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "sine cardinal function",
           "name": "sinc",
           "value": "17"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "inverted sine cardinal function",
           "name": "isinc",
           "value": "18"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "quartic",
           "name": "quat",
           "value": "19"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "quartic root",
           "name": "quatr",
           "value": "20"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "squared quarter of sine wave",
           "name": "qsin2",
           "value": "21"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "squared half of sine wave",
           "name": "hsin2",
@@ -256,6 +290,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "silence"
       ],
@@ -269,6 +304,7 @@
       "typing": "double"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "unity"
       ],
@@ -284,6 +320,7 @@
   ],
   "output_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "audio"
     }

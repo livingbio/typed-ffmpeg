@@ -1,7 +1,9 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Negate input video.",
   "input_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "video"
     }
@@ -14,47 +16,55 @@
   "name": "negate",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "components"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.....T.",
           "help": "set luma component",
           "name": "y",
           "value": "y"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.....T.",
           "help": "set u component",
           "name": "u",
           "value": "u"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.....T.",
           "help": "set v component",
           "name": "v",
           "value": "v"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.....T.",
           "help": "set red component",
           "name": "r",
           "value": "r"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.....T.",
           "help": "set green component",
           "name": "g",
           "value": "g"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.....T.",
           "help": "set blue component",
           "name": "b",
           "value": "b"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.....T.",
           "help": "set alpha component",
           "name": "a",
@@ -70,6 +80,7 @@
       "typing": "flags"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "negate_alpha"
       ],
@@ -85,6 +96,7 @@
   ],
   "output_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "video"
     }

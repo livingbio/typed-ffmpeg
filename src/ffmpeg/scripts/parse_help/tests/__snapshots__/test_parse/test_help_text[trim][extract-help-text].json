@@ -1,7 +1,9 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Pick one continuous section from the input, drop the rest.",
   "input_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "video"
     }
@@ -14,6 +16,7 @@
   "name": "trim",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "start",
         "starti"
@@ -28,6 +31,7 @@
       "typing": "duration"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "end",
         "endi"
@@ -42,6 +46,7 @@
       "typing": "duration"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "start_pts"
       ],
@@ -55,6 +60,7 @@
       "typing": "int64"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "end_pts"
       ],
@@ -68,6 +74,7 @@
       "typing": "int64"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "duration",
         "durationi"
@@ -82,6 +89,7 @@
       "typing": "duration"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "start_frame"
       ],
@@ -95,6 +103,7 @@
       "typing": "int64"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "end_frame"
       ],
@@ -110,6 +119,7 @@
   ],
   "output_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "video"
     }

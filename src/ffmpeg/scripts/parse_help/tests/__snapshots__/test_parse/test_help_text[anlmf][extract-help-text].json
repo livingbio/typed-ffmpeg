@@ -1,11 +1,14 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Apply Normalized Least-Mean-Fourth algorithm to first audio stream.",
   "input_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "input",
       "type": "audio"
     },
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "desired",
       "type": "audio"
     }
@@ -18,6 +21,7 @@
   "name": "anlmf",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "order"
       ],
@@ -31,6 +35,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "mu"
       ],
@@ -44,6 +49,7 @@
       "typing": "float"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "eps"
       ],
@@ -57,6 +63,7 @@
       "typing": "float"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "leakage"
       ],
@@ -70,35 +77,41 @@
       "typing": "float"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "out_mode"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "input",
           "name": "i",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "desired",
           "name": "d",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "output",
           "name": "o",
           "value": "2"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "noise",
           "name": "n",
           "value": "3"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A....T.",
           "help": "error",
           "name": "e",
@@ -116,6 +129,7 @@
   ],
   "output_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "audio"
     }

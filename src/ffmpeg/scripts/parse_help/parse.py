@@ -8,6 +8,15 @@ from .schema import AVChoice, AVFilter, AVOption
 
 
 def help_text(filter_name: str) -> str:
+    """
+    Get help text from ffmpeg for a filter
+
+    Args:
+        filter_name: filter name
+
+    Returns:
+        help text from ffmpeg
+    """
     result = subprocess.run(
         ["ffmpeg", "-h", f"filter={filter_name}", "-hide_banner"], stdout=subprocess.PIPE, text=True
     )
@@ -15,6 +24,16 @@ def help_text(filter_name: str) -> str:
 
 
 def _left_space(line: str) -> int:
+    """
+    Get the number of left spaces in a string
+
+    Args:
+        line: input string
+
+    Returns:
+        number of left spaces
+    """
+
     for i in range(len(line)):
         if line[i] != " ":
             return i
@@ -23,6 +42,16 @@ def _left_space(line: str) -> int:
 
 
 def parse_section_tree(text: str) -> dict[str, list[str]]:
+    """
+    Parse the help text into a tree structure
+
+    Args:
+        text: help text
+
+    Returns:
+        tree structure
+    """
+
     output: dict[str, list[str]] = defaultdict(list)
     paths: list[tuple[int, str]] = []
 
@@ -45,11 +74,32 @@ def parse_section_tree(text: str) -> dict[str, list[str]]:
 
 
 def _parse_io(line: str) -> tuple[int, str, Literal["video", "audio"]]:
+    """
+    Parse the input/output line
+
+    Args:
+        line: input/output line
+
+    Returns:
+        index, name, type
+    """
+
     index, name, _type = re.findall(r"#([\d]+): ([\w]+) (.+)", line)[0]
     return int(index), name, _type.strip("()")
 
 
-def _parse_default(default: str | None, type: str) -> int | float | bool | str:
+def _parse_default(default: str | None, type: str) -> int | float | bool | str | None:
+    """
+    Parse the default value
+
+    Args:
+        default: default value
+        type: type
+
+    Returns:
+        parsed default value
+    """
+
     if default is not None:
         default = default.strip('"')
 
@@ -59,6 +109,7 @@ def _parse_default(default: str | None, type: str) -> int | float | bool | str:
                 assert default in ("true", "false")
                 return default == "true"
             case "duration":
+                assert default is not None
                 return float(default)
             case "color":
                 return default
@@ -69,12 +120,16 @@ def _parse_default(default: str | None, type: str) -> int | float | bool | str:
             case "pix_fmt":
                 return default
             case "int":
+                assert default is not None
                 return int(default)
             case "int64":
+                assert default is not None
                 return int(default)
             case "double":
+                assert default is not None
                 return float(default)
             case "float":
+                assert default is not None
                 return float(default)
             case "string":
                 return default
@@ -89,7 +144,9 @@ def _parse_default(default: str | None, type: str) -> int | float | bool | str:
             case "binary":
                 return default
     except ValueError:
-        return default
+        pass
+
+    return default
 
 
 def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOption]:
@@ -155,6 +212,16 @@ def _remove_repeat_options(options: list[AVOption]) -> list[AVOption]:
 
 
 def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
+    """
+    Extract filter info from help text
+
+    Args:
+        filter_name: filter name
+
+    Returns:
+        filter info
+    """
+
     text = help_text(filter_name)
 
     if "Unknown filter" in text:
@@ -208,9 +275,9 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
         is_dynamic_inputs=is_input_dynamic,
         is_dynamic_outputs=is_output_dynamic,
         is_support_timeline=is_suppoert_timeline,
-        input_types=input_types,
-        output_types=output_types,
-        options=options,
+        input_types=tuple(input_types) if input_types else (),
+        output_types=tuple(output_types) if output_types else (),
+        options=tuple(options),
     )
 
 

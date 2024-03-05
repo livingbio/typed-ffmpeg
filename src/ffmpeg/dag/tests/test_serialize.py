@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
+from ...common.serialize import dumps, loads
 from ...filters import concat
-from ..serialize import dumps, loads
 
 
 # Define your dataclasses

@@ -1,7 +1,9 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Buffer audio frames, and make them available to the end of the filter graph.",
   "input_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "audio"
     }
@@ -14,6 +16,7 @@
   "name": "abuffersink",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "sample_fmts"
       ],
@@ -27,6 +30,7 @@
       "typing": "binary"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "sample_rates"
       ],
@@ -40,6 +44,7 @@
       "typing": "binary"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "channel_layouts"
       ],
@@ -53,6 +58,7 @@
       "typing": "binary"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "channel_counts"
       ],
@@ -66,6 +72,7 @@
       "typing": "binary"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "ch_layouts"
       ],
@@ -79,6 +86,7 @@
       "typing": "string"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "all_channel_counts"
       ],

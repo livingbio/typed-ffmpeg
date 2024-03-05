@@ -1,7 +1,9 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Remove clipping from input audio.",
   "input_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "audio"
     }
@@ -14,6 +16,7 @@
   "name": "adeclip",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "window",
         "w"
@@ -28,6 +31,7 @@
       "typing": "double"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "overlap",
         "o"
@@ -42,6 +46,7 @@
       "typing": "double"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "arorder",
         "a"
@@ -56,6 +61,7 @@
       "typing": "double"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "threshold",
         "t"
@@ -70,6 +76,7 @@
       "typing": "double"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "hsize",
         "n"
@@ -84,30 +91,35 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "method",
         "m"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A......",
           "help": "overlap-add",
           "name": "add",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A......",
           "help": "overlap-add",
           "name": "a",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A......",
           "help": "overlap-save",
           "name": "save",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..F.A......",
           "help": "overlap-save",
           "name": "s",
@@ -125,6 +137,7 @@
   ],
   "output_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "audio"
     }

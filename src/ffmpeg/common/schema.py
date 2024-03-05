@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
-from ..dag.serialize import dumps, loads
+from .serialize import dumps, loads
 
 schema_path = Path(__file__).parent / "../scripts/schemas"
 schema_path.mkdir(exist_ok=True)

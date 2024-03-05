@@ -1,4 +1,5 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Buffer audio frames, and make them accessible to the filterchain.",
   "input_types": [],
   "is_dynamic_inputs": false,
@@ -9,6 +10,7 @@
   "name": "abuffer",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "time_base"
       ],
@@ -22,6 +24,7 @@
       "typing": "rational"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "sample_rate"
       ],
@@ -35,6 +38,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "sample_fmt"
       ],
@@ -48,6 +52,7 @@
       "typing": "sample_fmt"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "channel_layout"
       ],
@@ -61,6 +66,7 @@
       "typing": "string"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "channels"
       ],
@@ -76,6 +82,7 @@
   ],
   "output_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "audio"
     }

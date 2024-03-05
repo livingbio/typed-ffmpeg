@@ -1,11 +1,14 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Scale the input video size and/or convert the image format to the given reference.",
   "input_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "video"
     },
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "ref",
       "type": "video"
     }
@@ -18,6 +21,7 @@
   "name": "scale2ref",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "w",
         "width"
@@ -32,6 +36,7 @@
       "typing": "string"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "h",
         "height"
@@ -46,6 +51,7 @@
       "typing": "string"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "flags"
       ],
@@ -59,6 +65,7 @@
       "typing": "string"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "interl"
       ],
@@ -72,53 +79,62 @@
       "typing": "boolean"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "in_color_matrix"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "auto"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt601",
           "value": "bt601"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt470",
           "value": "bt470"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte170m",
           "value": "smpte170m"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt709",
           "value": "bt709"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "fcc",
           "value": "fcc"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte240m",
           "value": "smpte240m"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt2020",
@@ -134,53 +150,62 @@
       "typing": "string"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "out_color_matrix"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "auto"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt601",
           "value": "bt601"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt470",
           "value": "bt470"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte170m",
           "value": "smpte170m"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt709",
           "value": "bt709"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "fcc",
           "value": "fcc"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte240m",
           "value": "smpte240m"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt2020",
@@ -196,53 +221,62 @@
       "typing": "string"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "in_range"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "unknown",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "full",
           "value": "2"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "limited",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "jpeg",
           "value": "2"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "mpeg",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "tv",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "pc",
@@ -258,53 +292,62 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "out_range"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "unknown",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "full",
           "value": "2"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "limited",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "jpeg",
           "value": "2"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "mpeg",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "tv",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "pc",
@@ -320,6 +363,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "in_v_chr_pos"
       ],
@@ -333,6 +377,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "in_h_chr_pos"
       ],
@@ -346,6 +391,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "out_v_chr_pos"
       ],
@@ -359,6 +405,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "out_h_chr_pos"
       ],
@@ -372,23 +419,27 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "force_original_aspect_ratio"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "disable",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "decrease",
           "value": "1"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "increase",
@@ -404,6 +455,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "force_divisible_by"
       ],
@@ -417,6 +469,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "param0"
       ],
@@ -430,6 +483,7 @@
       "typing": "double"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "param1"
       ],
@@ -443,17 +497,20 @@
       "typing": "double"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "eval"
       ],
       "choices": [
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "eval expressions once during initialization",
           "name": "init",
           "value": "0"
         },
         {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
           "flags": "..FV.......",
           "help": "eval expressions during initialization and per-frame",
           "name": "frame",
@@ -471,10 +528,12 @@
   ],
   "output_types": [
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "default",
       "type": "video"
     },
     {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
       "name": "ref",
       "type": "video"
     }

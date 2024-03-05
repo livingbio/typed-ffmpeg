@@ -6,13 +6,18 @@ from enum import Enum
 from typing import Literal
 
 from ...common.schema import FFMpegIOType
-from ...dag.serialize import dumps, loads
+from ...common.serialize import dumps, loads
 
 schema_path = pathlib.Path(__file__).parent / "helps"
 schema_path.mkdir(exist_ok=True)
 
 
 class Flag(str, Enum):
+    """
+    from opt.c
+
+    """
+
     # from opt.c
     AV_OPT_FLAG_ENCODING_PARAM = "E"
     AV_OPT_FLAG_DECODING_PARAM = "D"
@@ -39,7 +44,7 @@ class AVChoice:
 class AVOption:
     name: str
     alias: tuple[str, ...] = ()
-    description: str | None = None
+    description: str
 
     typing: Literal[
         "boolean",
@@ -77,8 +82,8 @@ class AVFilter:
 
     is_dynamic_inputs: bool = False
     is_dynamic_outputs: bool = False
-    input_types: tuple[FFMpegIOType, ...] | None = None
-    output_types: tuple[FFMpegIOType, ...] | None = None
+    input_types: tuple[FFMpegIOType, ...] = ()
+    output_types: tuple[FFMpegIOType, ...] = ()
 
     options: tuple[AVOption, ...] = ()
 

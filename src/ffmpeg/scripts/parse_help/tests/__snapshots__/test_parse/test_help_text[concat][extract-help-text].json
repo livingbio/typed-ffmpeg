@@ -1,6 +1,7 @@
 {
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
   "description": "Concatenate audio and video streams.",
-  "input_types": null,
+  "input_types": [],
   "is_dynamic_inputs": true,
   "is_dynamic_outputs": true,
   "is_slice_threading_supported": false,
@@ -9,6 +10,7 @@
   "name": "concat",
   "options": [
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "n"
       ],
@@ -22,6 +24,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "v"
       ],
@@ -35,6 +38,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "a"
       ],
@@ -48,6 +52,7 @@
       "typing": "int"
     },
     {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
       "alias": [
         "unsafe"
       ],
@@ -61,5 +66,5 @@
       "typing": "boolean"
     }
   ],
-  "output_types": null
+  "output_types": []
 }
