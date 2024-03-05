@@ -17,10 +17,10 @@ class StreamType(str, enum.Enum):
         return f"StreamType.{self.value}"
 
 
-class FFmpegFilterOption(BaseModel):
+class FFMpegFilterOption(BaseModel):
     name: str
     alias: list[str] = []
-    description: str | None = None
+    description: str
 
     typing: str
     default: bool | int | float | str | None = None
@@ -64,7 +64,7 @@ class FFmpegFilter(BaseModel):
     formula_input_typings: str | None = None
     formula_output_typings: str | None = None
 
-    options: list[FFmpegFilterOption] = []
+    options: list[FFMpegFilterOption] = []
 
     @property
     def is_input_type_mixed(self) -> bool:

@@ -1,0 +1,166 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Pick one continuous section from the input, drop the rest.",
+  "filter_type": null,
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": null,
+  "input_stream_typings": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "trim",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "start",
+        "starti"
+      ],
+      "choices": [],
+      "default": "INT64_MAX",
+      "description": "Timestamp of the first frame that should be passed (default INT64_MAX)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "start",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "duration"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "end",
+        "endi"
+      ],
+      "choices": [],
+      "default": "INT64_MAX",
+      "description": "Timestamp of the first frame that should be dropped again (default INT64_MAX)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "end",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "duration"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "start_pts"
+      ],
+      "choices": [],
+      "default": "I64_MIN",
+      "description": "Timestamp of the first frame that should be  passed (from I64_MIN to I64_MAX) (default I64_MIN)",
+      "flags": "..FV.......",
+      "max": "I64_MAX",
+      "min": "I64_MIN",
+      "name": "start_pts",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int64"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "end_pts"
+      ],
+      "choices": [],
+      "default": "I64_MIN",
+      "description": "Timestamp of the first frame that should be dropped again (from I64_MIN to I64_MAX) (default I64_MIN)",
+      "flags": "..FV.......",
+      "max": "I64_MAX",
+      "min": "I64_MIN",
+      "name": "end_pts",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int64"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "duration",
+        "durationi"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "Maximum duration of the output (default 0)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "duration",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "duration"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "start_frame"
+      ],
+      "choices": [],
+      "default": -1,
+      "description": "Number of the first frame that should be passed to the output (from -1 to I64_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "I64_MAX",
+      "min": "-1",
+      "name": "start_frame",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int64"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "end_frame"
+      ],
+      "choices": [],
+      "default": "I64_MAX",
+      "description": "Number of the first frame that should be dropped again (from 0 to I64_MAX) (default I64_MAX)",
+      "flags": "..FV.......",
+      "max": "I64_MAX",
+      "min": "0",
+      "name": "end_frame",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int64"
+      }
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ],
+  "ref": null
+}

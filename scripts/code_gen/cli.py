@@ -10,17 +10,17 @@ from parse_help.parse import extract
 from parse_help.schema import AVFilter as HelpAVFilter
 
 from .gen import render
-from .schema import FFmpegFilter, FFmpegFilterOption
+from .schema import FFmpegFilter, FFMpegFilterOption
 
 app = typer.Typer()
 
 
-def parse_help_options(filter: HelpAVFilter) -> list[FFmpegFilterOption]:
-    options: list[FFmpegFilterOption] = []
+def parse_help_options(filter: HelpAVFilter) -> list[FFMpegFilterOption]:
+    options: list[FFMpegFilterOption] = []
 
     for option in filter.options:
         options.append(
-            FFmpegFilterOption(
+            FFMpegFilterOption(
                 name=option.name,
                 alias=option.alias,
                 description=option.description,
@@ -33,7 +33,7 @@ def parse_help_options(filter: HelpAVFilter) -> list[FFmpegFilterOption]:
 
     if filter.is_support_timeline:
         options.append(
-            FFmpegFilterOption(
+            FFMpegFilterOption(
                 name="enable",
                 description="timeline editing",
                 typing="str",
@@ -57,7 +57,7 @@ def update_or_create(
     is_support_framesync: bool,
     input_stream_typings: list[tuple[str, str]],
     output_stream_typings: list[tuple[str, str]],
-    options: list[FFmpegFilterOption],
+    options: list[FFMpegFilterOption],
 ) -> FFmpegFilter:
     try:
         ffmpeg_filter = FFmpegFilter.load(id)
