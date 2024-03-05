@@ -74,6 +74,7 @@ mkdocstrings = "^0.24.0"
 mkdocstrings-python = "^1.8.0"
 pymdown-extensions = "^10.7"
 griffe_inherited_docstrings = "*"
+black = "*"
 
 [tool.mypy]
 exclude = "^(migrations|commands|scripts|sandbox|samples|sdk)/"
