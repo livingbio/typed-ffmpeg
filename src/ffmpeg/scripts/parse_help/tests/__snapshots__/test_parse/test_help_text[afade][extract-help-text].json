@@ -278,18 +278,82 @@
           "help": "inverted sine cardinal function",
           "name": "isinc",
           "value": "18"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "quartic",
+          "name": "quat",
+          "value": "19"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "quartic root",
+          "name": "quatr",
+          "value": "20"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "squared quarter of sine wave",
+          "name": "qsin2",
+          "value": "21"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "squared half of sine wave",
+          "name": "hsin2",
+          "value": "22"
         }
       ],
       "default": "tri",
-      "description": "set fade curve type (from -1 to 18) (default tri)",
+      "description": "set fade curve type (from -1 to 22) (default tri)",
       "flags": "..F.A....T.",
-      "max": "18",
+      "max": "22",
       "min": "-1",
       "name": "curve",
       "required": false,
       "typing": {
         "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
         "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "silence"
+      ],
+      "choices": [],
+      "default": 0.0,
+      "description": "set the silence gain (from 0 to 1) (default 0)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "silence",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "unity"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set the unity gain (from 0 to 1) (default 1)",
+      "flags": "..F.A....T.",
+      "max": "1",
+      "min": "0",
+      "name": "unity",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "double"
       }
     }
   ],

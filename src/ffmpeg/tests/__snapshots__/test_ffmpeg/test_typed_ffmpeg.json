@@ -28,6 +28,7 @@
   "output",
   "probe",
   "schema",
+  "scripts",
   "streams",
   "tests",
   "types",

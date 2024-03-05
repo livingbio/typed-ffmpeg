@@ -140,8 +140,8 @@
     "out_h_chr_pos     <int>        ..FV....... output horizontal chroma position in luma grid/256 (from -513 to 512) (default -513)",
     "force_original_aspect_ratio <int>        ..FV....... decrease or increase w/h if necessary to keep the original AR (from 0 to 2) (default disable)",
     "force_divisible_by <int>        ..FV....... enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used (from 1 to 256) (default 1)",
-    "param0            <double>     ..FV....... Scaler param 0 (from INT_MIN to INT_MAX) (default 123456)",
-    "param1            <double>     ..FV....... Scaler param 1 (from INT_MIN to INT_MAX) (default 123456)",
+    "param0            <double>     ..FV....... Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
+    "param1            <double>     ..FV....... Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
     "eval              <int>        ..FV....... specify when to evaluate expressions (from 0 to 1) (default init)"
   ]
 }
