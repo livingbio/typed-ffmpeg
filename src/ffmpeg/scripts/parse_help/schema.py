@@ -5,7 +5,7 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-from ..code_gen.schema import FFMpegIOType
+from ...common.schema import FFMpegIOType
 
 schema_path = pathlib.Path(__file__).parent / "helps"
 schema_path.mkdir(exist_ok=True)

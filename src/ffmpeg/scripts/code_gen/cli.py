@@ -3,14 +3,14 @@ import pathlib
 
 import pydantic
 import typer
-from parse_c.cli import parse_ffmpeg_options, parse_filters
-from parse_docs.cli import split_documents
-from parse_docs.schema import FilterDocument
-from parse_help.parse import extract
-from parse_help.schema import AVFilter as HelpAVFilter
 
+from ...common.schema import FFmpegFilter, FFmpegFilterOption
+from ..parse_c.cli import parse_ffmpeg_options, parse_filters
+from ..parse_docs.cli import split_documents
+from ..parse_docs.schema import FilterDocument
+from ..parse_help.parse import extract
+from ..parse_help.schema import AVFilter as HelpAVFilter
 from .gen import render
-from .schema import FFmpegFilter, FFmpegFilterOption
 
 app = typer.Typer()
 

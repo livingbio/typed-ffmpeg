@@ -18,41 +18,42 @@ class FFMpegFilterOptionChoice:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFilterOption:
+class FFmpegFilterOption:
     name: str
-    alias: tuple[str, ...]
-    description: str | None
+    alias: tuple[str, ...] = ()
+    description: str | None = None
     typing: str
-    default: bool | int | float | str | None
-    required: bool
-    choices: tuple[FFMpegFilterOptionChoice, ...]
+    default: bool | int | float | str | None = None
+    required: bool = False
+    choices: tuple[FFMpegFilterOptionChoice, ...] = ()
 
 
+@dataclass(frozen=True, kw_only=True)
 class FFMpegIOType:
     name: str
     type: Literal["video", "audio"]
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFilter:
+class FFmpegFilter:
     id: str
-    filter_type: Literal["af", "asrc", "asink", "vf", "vsrc", "vsink", "avsrc", "avf", "vaf"]
+    filter_type: Literal["af", "asrc", "asink", "vf", "vsrc", "vsink", "avsrc", "avf", "vaf"] | None = None
 
-    name: str
-    description: str
-    ref: str
+    name: str | None = None
+    description: str | None = None
+    ref: str | None = None
 
-    is_input_dynamic: bool
-    is_output_dynamic: bool
-    is_support_timeline: bool
-    is_support_framesync: bool
+    is_input_dynamic: bool = False
+    is_output_dynamic: bool = False
+    is_support_timeline: bool = False
+    is_support_framesync: bool = False
 
-    input_stream_typings: tuple[FFMpegIOType, ...] | None
-    output_stream_typings: tuple[FFMpegIOType, ...] | None
-    formula_input_typings: str | None
-    formula_output_typings: str | None
+    input_stream_typings: tuple[FFMpegIOType, ...] | None = None
+    output_stream_typings: tuple[FFMpegIOType, ...] | None = None
+    formula_input_typings: str | None = None
+    formula_output_typings: str | None = None
 
-    options: tuple[FFMpegFilterOption, ...]
+    options: tuple[FFmpegFilterOption, ...] = ()
 
     @property
     def is_input_type_mixed(self) -> bool:
@@ -77,12 +78,12 @@ class FFMpegFilter:
         return str([k.type for k in self.output_stream_typings])
 
     @classmethod
-    def load(cls, id: str) -> FFMpegFilter:
+    def load(cls, id: str) -> FFmpegFilter:
         path = schema_path / f"{id}.json"
 
         with path.open() as ifile:
             obj = loads(ifile.read())
-            assert isinstance(obj, FFMpegFilter)
+            assert isinstance(obj, FFmpegFilter)
             return obj
 
     def save(self) -> None:

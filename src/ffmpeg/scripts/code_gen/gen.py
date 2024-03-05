@@ -4,8 +4,8 @@ from pathlib import Path
 
 import jinja2
 
+from ...common.schema import FFmpegFilter
 from ..parse_c.schema import OptionDef
-from .schema import FFmpegFilter
 
 template_folder = Path(__file__).parent / "templates"
 

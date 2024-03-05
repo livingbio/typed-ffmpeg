@@ -37,7 +37,7 @@ def aap(
     
         order: 
 
-int = 
+ = 
 
 Default(None)
 
@@ -49,7 +49,7 @@ Default(None)
     
         projection: 
 
-int = 
+ = 
 
 Default(None)
 
@@ -60,7 +60,7 @@ Default(None)
 
 
     **kwargs: Any
-)-> AudioStream:
+)-> :
     """
     
 description
@@ -78,8 +78,8 @@ References:
     """
     filter_node = FilterNode(
         name="aap",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
+        input_typings=tuple(['audio', 'audio']),
+        output_typings=tuple(['audio']),
         inputs=(
             
 
@@ -103,7 +103,7 @@ References:
             
         } | kwargs)),
     )
-    return filter_node.audio(0)
+    return filter_node.(0)
 
 
     

@@ -1,8 +1,9 @@
 import re
 import subprocess
 from collections import defaultdict
+from typing import Literal
 
-from ..code_gen.schema import FFMpegIOType, StreamType
+from ...common.schema import FFMpegIOType
 from .schema import AVChoice, AVFilter, AVOption
 
 
@@ -43,9 +44,9 @@ def parse_section_tree(text: str) -> dict[str, list[str]]:
     return output
 
 
-def _parse_io(line: str) -> tuple[int, str, StreamType]:
+def _parse_io(line: str) -> tuple[int, str, Literal["video", "audio"]]:
     index, name, _type = re.findall(r"#([\d]+): ([\w]+) (.+)", line)[0]
-    return int(index), name, StreamType(_type.strip("()"))
+    return int(index), name, _type.strip("()")
 
 
 def _parse_default(default: str | None, type: str) -> int | float | bool | str:
