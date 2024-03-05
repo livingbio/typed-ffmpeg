@@ -1,0 +1,35 @@
+# NOTE: this file is auto-generated, do not modify
+
+
+from pathlib import Path
+
+from ..nodes import OutputNode, OutputStream, FilterableStream
+from typing import Any
+
+def output(
+    *streams: FilterableStream,
+    filename: str | Path,**kwargs: Any
+) -> OutputStream:
+    """
+    Output file URL
+
+    Args:
+        *streams: the streams to output
+        filename: the filename to output to
+        **kwargs: the arguments for the output
+
+    Returns:
+        the output stream
+    """
+
+    options = {
+        k: v for k, v in {
+            
+        }.items() if v is not None
+    }
+
+    return OutputNode(
+        inputs=streams,
+        filename=str(filename),
+        kwargs=tuple((options | kwargs).items())
+    ).stream()

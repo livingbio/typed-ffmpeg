@@ -3,8 +3,8 @@
 
 from pathlib import Path
 
-from ..dag.nodes import InputNode
-from .av import AVStream
+from ..nodes import InputNode
+from ...streams.av import AVStream
 from typing import Any
 
 def input(
