@@ -2,8 +2,7 @@ import re
 import subprocess
 from collections import defaultdict
 
-from code_gen.schema import FFMpegIOType, StreamType
-
+from ..code_gen.schema import FFMpegIOType, StreamType
 from .schema import AVChoice, AVFilter, AVOption
 
 

@@ -20,7 +20,6 @@ class FFMpegFilterOption:
     choices: tuple[FFMpegFilterOptionChoice, ...]
 
 
-@dataclass(frozen=True, kw_only=True)
 class FFMpegIOType:
     name: str
     type: Literal["video", "audio"]

@@ -2,8 +2,9 @@ import enum
 import json
 import pathlib
 
-from parse_c.schema import Choice, FilterType
 from pydantic import BaseModel, HttpUrl
+
+from ..parse_c.schema import Choice, FilterType
 
 schema_path = pathlib.Path(__file__).parent / "schemas"
 schema_path.mkdir(exist_ok=True)

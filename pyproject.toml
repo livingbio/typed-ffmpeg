@@ -38,15 +38,13 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 
+# graph
 graphviz = {"version" = "*", optional=true}
 
 [tool.poetry.extras]
 graph = [
     "graphviz",
 ]
-codegen = [
-]
-
 
 [tool.poetry.group.dev]
 optional = true
@@ -60,6 +58,14 @@ syrupy = "^4.6.0"
 pre-commit = "*"
 mypy = "*"
 graphviz = "*"
+
+# codegen
+typer = "*"
+jinja2 = "*"
+devtools = "*"
+beautifulsoup4 = "*"
+html2text = "*"
+pydantic = ">1.0"
 
 # Doc
 mkdocs = "*"

@@ -1,9 +1,9 @@
 import pytest
-from parse_c.helper import dump
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
+from ...parse_c.helper import dump
 from ..parse import extract_avfilter_info_from_help, help_text, parse_section_tree
 
 

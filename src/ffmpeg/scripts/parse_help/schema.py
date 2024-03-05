@@ -3,8 +3,9 @@ import pathlib
 from enum import Enum
 from typing import Literal
 
-from code_gen.schema import FFMpegIOType
 from pydantic import BaseModel
+
+from ..code_gen.schema import FFMpegIOType
 
 schema_path = pathlib.Path(__file__).parent / "helps"
 schema_path.mkdir(exist_ok=True)
