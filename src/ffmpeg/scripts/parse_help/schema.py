@@ -1,11 +1,12 @@
-import json
+from __future__ import annotations
+
 import pathlib
+from dataclasses import dataclass
 from enum import Enum
 from typing import Literal
 
-from pydantic import BaseModel
-
 from ...common.schema import FFMpegIOType
+from ...dag.serialize import dumps, loads
 
 schema_path = pathlib.Path(__file__).parent / "helps"
 schema_path.mkdir(exist_ok=True)
@@ -26,16 +27,18 @@ class Flag(str, Enum):
     AV_OPT_FLAG_DEPRECATED = "P"
 
 
-class AVChoice(BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class AVChoice:
     name: str
     help: str
     value: int | str
-    flags: str = None
+    flags: str | None = None
 
 
-class AVOption(BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class AVOption:
     name: str
-    alias: list[str] = []
+    alias: tuple[str, ...] = ()
     description: str | None = None
 
     typing: Literal[
@@ -59,11 +62,12 @@ class AVOption(BaseModel):
     min: str | None = None
     max: str | None = None
     default: bool | int | float | str | None = None
-    choices: list[AVChoice] = []
-    flags: str = None
+    choices: tuple[AVChoice, ...] = ()
+    flags: str | None = None
 
 
-class AVFilter(BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class AVFilter:
     name: str
     description: str
 
@@ -73,18 +77,20 @@ class AVFilter(BaseModel):
 
     is_dynamic_inputs: bool = False
     is_dynamic_outputs: bool = False
-    input_types: list[FFMpegIOType] | None = None
-    output_types: list[FFMpegIOType] | None = None
+    input_types: tuple[FFMpegIOType, ...] | None = None
+    output_types: tuple[FFMpegIOType, ...] | None = None
 
-    options: list[AVOption] = []
+    options: tuple[AVOption, ...] = ()
 
     @classmethod
-    def load(cls, id: str) -> "AVFilter":
+    def load(cls, id: str) -> AVFilter:
         path = schema_path / f"{id}.json"
 
         with path.open() as ifile:
-            return AVFilter(**json.load(ifile))
+            obj = loads(ifile.read())
+            assert isinstance(obj, AVFilter)
+            return obj
 
     def save(self) -> None:
         with (schema_path / f"{self.name}.json").open("w") as ofile:
-            ofile.write(self.model_dump_json(indent=2))
+            ofile.write(dumps(self))
