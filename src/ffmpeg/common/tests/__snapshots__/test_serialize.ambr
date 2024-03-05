@@ -3,7 +3,7 @@
   Person(name='John Doe', age=30, address=Address(street='123 Main St', city='Anytown'))
 # ---
 # name: test_load_and_dump[serialized]
-  '{"__class__": "ffmpeg.dag.tests.test_serialize.Person", "name": "John Doe", "age": 30, "address": {"__class__": "ffmpeg.dag.tests.test_serialize.Address", "street": "123 Main St", "city": "Anytown"}}'
+  '{"__class__": "ffmpeg.common.tests.test_serialize.Person", "name": "John Doe", "age": 30, "address": {"__class__": "ffmpeg.common.tests.test_serialize.Address", "street": "123 Main St", "city": "Anytown"}}'
 # ---
 # name: test_load_and_dump_mixed_type[serialized]
   '[{"__class__": "ffmpeg.streams.av.AVStream", "node": {"__class__": "ffmpeg.dag.nodes.InputNode", "kwargs": [], "inputs": [], "filename": "input.mp4"}, "index": null}, true]'
