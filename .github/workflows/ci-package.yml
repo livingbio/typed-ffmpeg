@@ -21,19 +21,31 @@ jobs:
         run: |
           pip install poetry
           poetry install --with dev
-      # Install Graphviz & FFmpeg
-      - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install ffmpeg graphviz -y && ffmpeg -version && dot -V
+      # Install FFmpeg
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://ffmpeg.org/releases/ffmpeg-release-amd64-static.tar.xz
+          tar -xvf ffmpeg-release-amd64-static.tar.xz
+          sudo mv ffmpeg-*-amd64-static/ffmpeg /usr/local/bin/
+          ffmpeg -version
+      # Install Graphviz
+      - name: Install graphviz
+        run: sudo apt-get update && sudo apt-get install -y graphviz
+      - name: Check Graphviz version
+        run: dot -V
       - name: Run unittest
         run: poetry run pytest src/ --cov=./src --cov-report xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage.xml
-          flags: $${{ matrix.python-version }}
+          flags: ${{ matrix.python-version }}
           token: ${{ secrets.CODECOV_TOKEN }} # required
           verbose: true # optional (default = false)
       - name: lint
         run: poetry run pre-commit run --all-files
         working-directory: src
-      - run: poetry run mkdocs build # ensure mkdocs build is successful
+      - name: Build Mkdocs
+        run: poetry run mkdocs build # ensure mkdocs build is successful
