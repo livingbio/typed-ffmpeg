@@ -7,9 +7,13 @@ exclude_lines =
 
 [run]
 omit =
+    # autogen
     src/ffmpeg/dag/global_runnable/global_args.py
     src/ffmpeg/filters.py
     src/ffmpeg/streams/video.py
     src/ffmpeg/streams/audio.py
+    # test
     test_*.py
     */test_*.py
+    # codegen
+    src/ffmpeg/scripts/*
