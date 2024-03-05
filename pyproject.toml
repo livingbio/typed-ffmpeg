@@ -6,7 +6,7 @@ authors = ["lucemia <lucemia@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "ffmpeg", from = "src" }]
 include = ["ffmpeg/py.typed"]
-exclude = ["**/tests"]
+exclude = ["**/tests", "**/scripts"]
 license = "MIT"
 homepage = "https://livingbio.github.io/typed-ffmpeg/"
 repository = "https://github.com/livingbio/typed-ffmpeg"
@@ -44,6 +44,9 @@ graphviz = {"version" = "*", optional=true}
 graph = [
     "graphviz",
 ]
+codegen = [
+]
+
 
 [tool.poetry.group.dev]
 optional = true
