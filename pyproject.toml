@@ -56,7 +56,6 @@ pytest-recording = "^0.13.1"
 syrupy = "^4.6.0"
 pre-commit = "*"
 mypy = "*"
-imagehash = "*"
 graphviz = "*"
 
 # Doc
