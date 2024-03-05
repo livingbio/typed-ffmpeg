@@ -28,12 +28,10 @@
     "st                <duration>   ..F.A....T. set time to start fading (default 0)",
     "duration          <duration>   ..F.A....T. set fade duration (default 0)",
     "d                 <duration>   ..F.A....T. set fade duration (default 0)",
-    "curve             <int>        ..F.A....T. set fade curve type (from -1 to 22) (default tri)",
-    "c                 <int>        ..F.A....T. set fade curve type (from -1 to 22) (default tri)",
-    "silence           <double>     ..F.A....T. set the silence gain (from 0 to 1) (default 0)",
-    "unity             <double>     ..F.A....T. set the unity gain (from 0 to 1) (default 1)"
+    "curve             <int>        ..F.A....T. set fade curve type (from -1 to 18) (default tri)",
+    "c                 <int>        ..F.A....T. set fade curve type (from -1 to 18) (default tri)"
   ],
-  "c                 <int>        ..F.A....T. set fade curve type (from -1 to 22) (default tri)": [
+  "c                 <int>        ..F.A....T. set fade curve type (from -1 to 18) (default tri)": [
     "nofade          -1           ..F.A....T. no fade; keep audio as-is",
     "tri             0            ..F.A....T. linear slope",
     "qsin            1            ..F.A....T. quarter of sine wave",
@@ -53,13 +51,9 @@
     "desi            15           ..F.A....T. double-exponential sigmoid",
     "losi            16           ..F.A....T. logistic sigmoid",
     "sinc            17           ..F.A....T. sine cardinal function",
-    "isinc           18           ..F.A....T. inverted sine cardinal function",
-    "quat            19           ..F.A....T. quartic",
-    "quatr           20           ..F.A....T. quartic root",
-    "qsin2           21           ..F.A....T. squared quarter of sine wave",
-    "hsin2           22           ..F.A....T. squared half of sine wave"
+    "isinc           18           ..F.A....T. inverted sine cardinal function"
   ],
-  "curve             <int>        ..F.A....T. set fade curve type (from -1 to 22) (default tri)": [
+  "curve             <int>        ..F.A....T. set fade curve type (from -1 to 18) (default tri)": [
     "nofade          -1           ..F.A....T. no fade; keep audio as-is",
     "tri             0            ..F.A....T. linear slope",
     "qsin            1            ..F.A....T. quarter of sine wave",
@@ -79,11 +73,7 @@
     "desi            15           ..F.A....T. double-exponential sigmoid",
     "losi            16           ..F.A....T. logistic sigmoid",
     "sinc            17           ..F.A....T. sine cardinal function",
-    "isinc           18           ..F.A....T. inverted sine cardinal function",
-    "quat            19           ..F.A....T. quartic",
-    "quatr           20           ..F.A....T. quartic root",
-    "qsin2           21           ..F.A....T. squared quarter of sine wave",
-    "hsin2           22           ..F.A....T. squared half of sine wave"
+    "isinc           18           ..F.A....T. inverted sine cardinal function"
   ],
   "t                 <int>        ..F.A....T. set the fade direction (from 0 to 1) (default in)": [
     "in              0            ..F.A....T. fade-in",

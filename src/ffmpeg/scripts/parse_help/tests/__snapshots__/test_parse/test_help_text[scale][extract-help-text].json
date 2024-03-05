@@ -417,11 +417,11 @@
         "param0"
       ],
       "choices": [],
-      "default": "DBL_MAX",
-      "description": "Scaler param 0 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
+      "default": 123456.0,
+      "description": "Scaler param 0 (from INT_MIN to INT_MAX) (default 123456)",
       "flags": "..FV.......",
-      "max": "DBL_MAX",
-      "min": "-DBL_MAX",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "param0",
       "typing": "double"
     },
@@ -430,11 +430,11 @@
         "param1"
       ],
       "choices": [],
-      "default": "DBL_MAX",
-      "description": "Scaler param 1 (from -DBL_MAX to DBL_MAX) (default DBL_MAX)",
+      "default": 123456.0,
+      "description": "Scaler param 1 (from INT_MIN to INT_MAX) (default 123456)",
       "flags": "..FV.......",
-      "max": "DBL_MAX",
-      "min": "-DBL_MAX",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
       "name": "param1",
       "typing": "double"
     },

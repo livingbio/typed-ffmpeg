@@ -97,18 +97,12 @@
           "help": "noise",
           "name": "n",
           "value": "3"
-        },
-        {
-          "flags": "..F.A....T.",
-          "help": "error",
-          "name": "e",
-          "value": "4"
         }
       ],
       "default": "o",
-      "description": "set output mode (from 0 to 4) (default o)",
+      "description": "set output mode (from 0 to 3) (default o)",
       "flags": "..F.A....T.",
-      "max": "4",
+      "max": "3",
       "min": "0",
       "name": "out_mode",
       "typing": "int"

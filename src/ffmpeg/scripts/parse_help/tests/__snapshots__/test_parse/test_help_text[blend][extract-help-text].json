@@ -1534,32 +1534,6 @@
       "min": null,
       "name": "repeatlast",
       "typing": "boolean"
-    },
-    {
-      "alias": [
-        "ts_sync_mode"
-      ],
-      "choices": [
-        {
-          "flags": "..FV.......",
-          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
-          "name": "default",
-          "value": "0"
-        },
-        {
-          "flags": "..FV.......",
-          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
-          "name": "nearest",
-          "value": "1"
-        }
-      ],
-      "default": "default",
-      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
-      "flags": "..FV.......",
-      "max": "1",
-      "min": "0",
-      "name": "ts_sync_mode",
-      "typing": "int"
     }
   ],
   "output_types": [
