@@ -6,7 +6,7 @@ authors = ["lucemia <lucemia@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "ffmpeg", from = "src" }]
 include = ["ffmpeg/py.typed"]
-exclude = ["**/tests"]
+exclude = ["**/tests", "**/scripts"]
 license = "MIT"
 homepage = "https://livingbio.github.io/typed-ffmpeg/"
 repository = "https://github.com/livingbio/typed-ffmpeg"
@@ -38,6 +38,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 
+# graph
 graphviz = {"version" = "*", optional=true}
 
 [tool.poetry.extras]
@@ -57,6 +58,13 @@ syrupy = "^4.6.0"
 pre-commit = "*"
 mypy = "*"
 graphviz = "*"
+
+# codegen
+typer = "*"
+jinja2 = "*"
+devtools = "*"
+beautifulsoup4 = "*"
+html2text = "*"
 
 # Doc
 mkdocs = "*"
@@ -78,6 +86,9 @@ disallow_any_generics = true  # Forces specifying types for generics, like `List
 check_untyped_defs = true     # Would type-check functions without type annotations, but it's commented out.
 no_implicit_reexport = true   # Requires explicit re-export of imported names.
 disallow_untyped_defs = true  # Forces all functions to have type annotations.
+
+[tool.poetry.scripts]
+scripts = "ffmpeg.scripts.main:app"
 
 [tool.poetry-dynamic-versioning]
 enable = true
