@@ -5,7 +5,7 @@ from typing import Literal
 
 from ...common.schema import FFMpegIOType
 from .schema import AVChoice, AVFilter, AVOption
-
+from dataclasses import replace
 
 def help_text(filter_name: str) -> str:
     """
@@ -26,10 +26,10 @@ def help_text(filter_name: str) -> str:
 def _left_space(line: str) -> int:
     """
     Get the number of left spaces in a string
-
+    
     Args:
         line: input string
-
+        
     Returns:
         number of left spaces
     """
@@ -44,10 +44,10 @@ def _left_space(line: str) -> int:
 def parse_section_tree(text: str) -> dict[str, list[str]]:
     """
     Parse the help text into a tree structure
-
+    
     Args:
         text: help text
-
+    
     Returns:
         tree structure
     """
@@ -79,7 +79,7 @@ def _parse_io(line: str) -> tuple[int, str, Literal["video", "audio"]]:
 
     Args:
         line: input/output line
-
+    
     Returns:
         index, name, type
     """
@@ -91,11 +91,11 @@ def _parse_io(line: str) -> tuple[int, str, Literal["video", "audio"]]:
 def _parse_default(default: str | None, type: str) -> int | float | bool | str | None:
     """
     Parse the default value
-
+    
     Args:
         default: default value
         type: type
-
+    
     Returns:
         parsed default value
     """
@@ -144,20 +144,24 @@ def _parse_default(default: str | None, type: str) -> int | float | bool | str |
             case "binary":
                 return default
     except ValueError:
+        # NOTE: 
+        # some options use enum
         pass
-
+    
     return default
 
 
 def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOption]:
     output: list[AVOption] = []
     for line in lines:
-        name, type, flags, help = re.findall(r"([\-\w]+)\s+<([\w]+)>\s+([\w\.]{11})(\s+.*)?", line)[0]
+        match: list[tuple[str, str, str, str]] = re.findall(r"([\-\w]+)\s+<([\w]+)>\s+([\w\.]{11})(\s+.*)?", line)
+        assert match, match
+        name, type, flags, help = match[0]
         if name[0] == "-":
             continue
 
         if output and help.strip() and output[-1].description.strip() == help.strip():
-            output[-1].alias.append(name)
+            output[-1] = replace(output[-1], alias=output[-1].alias + (name,))
             continue
 
         if match := re.findall(r"\(default ([^\)]+)\)", help):
@@ -173,7 +177,10 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
 
         choices = []
         for choice in tree.get(line, []):
-            _name, _value, _flags, _help = re.findall(r"([\w]+)\s+([\s\-\w]+)\s+([\w\.]{11})(\s+.*)?", choice)[0]
+            match: list[str] = re.findall(r"([\w]+)\s+([\s\-\w]+)\s+([\w\.]{11})(\s+.*)?", choice)
+            assert match, match
+            _name, _value, _flags, _help = match[0]
+
             if not _value.strip():
                 _value = _name
 
@@ -183,7 +190,7 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
 
         output.append(
             AVOption(
-                alias=[name],
+                alias=(name,),
                 name=name,
                 description=help.strip(),
                 typing=type,
@@ -191,7 +198,7 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[AVOptio
                 min=min,
                 max=max,
                 default=default,
-                choices=choices,
+                choices=tuple(choices),
             )
         )
 
@@ -217,7 +224,7 @@ def extract_avfilter_info_from_help(filter_name: str) -> AVFilter:
 
     Args:
         filter_name: filter name
-
+    
     Returns:
         filter info
     """
