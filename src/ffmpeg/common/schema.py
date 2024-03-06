@@ -94,25 +94,3 @@ class FFMpegFilter:
     formula_typings_output: str | None = None
 
     options: tuple[FFMpegFilterOption, ...] = ()
-
-    @property
-    def is_input_type_mixed(self) -> bool:
-        if self.input_types:
-            return "video" in self.input_types and "audio" in self.input_types
-        return False
-
-    @property
-    def input_types(self) -> str | None:
-        if self.is_dynamic_input:
-            return self.forumla_typings_input
-
-        assert self.stream_typings_input
-        return str([k.type for k in self.stream_typings_input])
-
-    @property
-    def output_types(self) -> str | None:
-        if self.is_dynamic_ouptut:
-            return self.formula_typings_output
-
-        assert self.stream_typings_output
-        return str([k.type for k in self.stream_typings_output])
