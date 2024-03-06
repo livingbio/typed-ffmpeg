@@ -1,0 +1,296 @@
+{
+  "__class__": "ffmpeg.scripts.parse_help.schema.AVFilter",
+  "description": "Draw a graph using input audio metadata.",
+  "input_types": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": "audio"
+    }
+  ],
+  "is_dynamic_inputs": false,
+  "is_dynamic_outputs": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "adrawgraph",
+  "options": [
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "m1"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 1st metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m1",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "fg1"
+      ],
+      "choices": [],
+      "default": "0xffff0000",
+      "description": "set 1st foreground color expression (default \"0xffff0000\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg1",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "m2"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 2nd metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m2",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "fg2"
+      ],
+      "choices": [],
+      "default": "0xff00ff00",
+      "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg2",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "m3"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 3rd metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m3",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "fg3"
+      ],
+      "choices": [],
+      "default": "0xffff00ff",
+      "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg3",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "m4"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 4th metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m4",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "fg4"
+      ],
+      "choices": [],
+      "default": "0xffffff00",
+      "description": "set 4th foreground color expression (default \"0xffffff00\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg4",
+      "typing": "string"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "bg"
+      ],
+      "choices": [],
+      "default": "white",
+      "description": "set background color (default \"white\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "bg",
+      "typing": "color"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "min"
+      ],
+      "choices": [],
+      "default": -1.0,
+      "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "min",
+      "typing": "float"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "max"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "max",
+      "typing": "float"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "draw bars",
+          "name": "bar",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "draw dots",
+          "name": "dot",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "draw lines",
+          "name": "line",
+          "value": "2"
+        }
+      ],
+      "default": "line",
+      "description": "set graph mode (from 0 to 2) (default line)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "typing": "int"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "slide"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "draw new frames",
+          "name": "frame",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "replace old columns with new",
+          "name": "replace",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "scroll from right to left",
+          "name": "scroll",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "scroll from left to right",
+          "name": "rscroll",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.scripts.parse_help.schema.AVChoice",
+          "flags": "..FV.......",
+          "help": "display graph in single frame",
+          "name": "picture",
+          "value": "4"
+        }
+      ],
+      "default": "frame",
+      "description": "set slide mode (from 0 to 4) (default frame)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "0",
+      "name": "slide",
+      "typing": "int"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "900x256",
+      "description": "set graph size (default \"900x256\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "typing": "image_size"
+    },
+    {
+      "__class__": "ffmpeg.scripts.parse_help.schema.AVOption",
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "25",
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "typing": "video_rate"
+    }
+  ],
+  "output_types": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": "video"
+    }
+  ]
+}

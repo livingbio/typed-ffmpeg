@@ -10,6 +10,10 @@ from ..parse import extract_avfilter_info_from_help, help_text, parse_section_tr
 @pytest.mark.parametrize(
     "filter_name",
     [
+        "amovie",  # typing: dictionary
+        "adrawgraph",  # typing: color
+        "mergeplanes",  # typing: pix_fmt
+        "a3dscope",  # typing: video_rate, image_size
         "bitplanenoise",
         "anlmf",
         "negate",
