@@ -150,4 +150,4 @@ def dumps(instance: Any) -> str:
         The serialized instance.
     """
     obj = to_dict_with_class_info(instance)
-    return json.dumps(obj)
+    return json.dumps(obj, indent=2)
