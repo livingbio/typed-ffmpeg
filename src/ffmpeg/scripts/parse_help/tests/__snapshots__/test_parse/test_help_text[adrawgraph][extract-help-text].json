@@ -1,0 +1,367 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Draw a graph using input audio metadata.",
+  "filter_type": null,
+  "formula_input_typings": null,
+  "formula_output_typings": null,
+  "id": null,
+  "input_stream_typings": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "audio"
+      }
+    }
+  ],
+  "is_input_dynamic": false,
+  "is_output_dynamic": false,
+  "is_slice_threading_supported": false,
+  "is_support_framesync": false,
+  "is_support_timeline": false,
+  "name": "adrawgraph",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "m1"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 1st metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m1",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "fg1"
+      ],
+      "choices": [],
+      "default": "0xffff0000",
+      "description": "set 1st foreground color expression (default \"0xffff0000\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg1",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "m2"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 2nd metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m2",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "fg2"
+      ],
+      "choices": [],
+      "default": "0xff00ff00",
+      "description": "set 2nd foreground color expression (default \"0xff00ff00\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg2",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "m3"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 3rd metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m3",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "fg3"
+      ],
+      "choices": [],
+      "default": "0xffff00ff",
+      "description": "set 3rd foreground color expression (default \"0xffff00ff\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg3",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "m4"
+      ],
+      "choices": [],
+      "default": "",
+      "description": "set 4th metadata key (default \"\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "m4",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "fg4"
+      ],
+      "choices": [],
+      "default": "0xffffff00",
+      "description": "set 4th foreground color expression (default \"0xffffff00\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "fg4",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "bg"
+      ],
+      "choices": [],
+      "default": "white",
+      "description": "set background color (default \"white\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "bg",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "color"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "min"
+      ],
+      "choices": [],
+      "default": -1.0,
+      "description": "set minimal value (from INT_MIN to INT_MAX) (default -1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "min",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "float"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "max"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set maximal value (from INT_MIN to INT_MAX) (default 1)",
+      "flags": "..FV.......",
+      "max": "INT_MAX",
+      "min": "INT_MIN",
+      "name": "max",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "float"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "draw bars",
+          "name": "bar",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "draw dots",
+          "name": "dot",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "draw lines",
+          "name": "line",
+          "value": "2"
+        }
+      ],
+      "default": "line",
+      "description": "set graph mode (from 0 to 2) (default line)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "mode",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "slide"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "draw new frames",
+          "name": "frame",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "replace old columns with new",
+          "name": "replace",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "scroll from right to left",
+          "name": "scroll",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "scroll from left to right",
+          "name": "rscroll",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "display graph in single frame",
+          "name": "picture",
+          "value": "4"
+        }
+      ],
+      "default": "frame",
+      "description": "set slide mode (from 0 to 4) (default frame)",
+      "flags": "..FV.......",
+      "max": "4",
+      "min": "0",
+      "name": "slide",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "size",
+        "s"
+      ],
+      "choices": [],
+      "default": "900x256",
+      "description": "set graph size (default \"900x256\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "size",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "image_size"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "rate",
+        "r"
+      ],
+      "choices": [],
+      "default": "25",
+      "description": "set video rate (default \"25\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "rate",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "video_rate"
+      }
+    }
+  ],
+  "output_stream_typings": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ],
+  "ref": null
+}
