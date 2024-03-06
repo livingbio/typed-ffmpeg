@@ -1,0 +1,6 @@
+{
+  "__class__": "ffmpeg.scripts.manual.schema.FFMpegFilterManuallyDefined",
+  "formula_typings_output": null,
+  "forumla_typings_input": "[StreamType.video] + [StreamType.video] if guidance else []",
+  "name": "guided"
+}

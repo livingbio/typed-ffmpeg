@@ -1,0 +1,6 @@
+{
+  "__class__": "ffmpeg.scripts.manual.schema.FFMpegFilterManuallyDefined",
+  "formula_typings_output": "[StreamType.audio] * int(outputs)",
+  "forumla_typings_input": null,
+  "name": "asplit"
+}
