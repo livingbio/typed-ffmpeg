@@ -14,8 +14,8 @@ def all_filters() -> list[FFMpegFilter]:
     for filter_info in extract():
         try:
             filter_info_from_help = extract_avfilter_info_from_help(filter_info.name)
-        except AssertionError:
-            typer.echo(f"Failed to parse filter {filter_info.name}")
+        except AssertionError:  # pragma: no cover
+            typer.echo(f"Failed to parse filter {filter_info.name}")  #
             continue
 
         output.append(
