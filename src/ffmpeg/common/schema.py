@@ -64,7 +64,7 @@ class FFMpegFilterOption:
 
 @dataclass(frozen=True, kw_only=True)
 class FFMpegIOType:
-    name: str
+    name: str | None = None
     type: StreamType
 
 
@@ -77,17 +77,21 @@ class FFMpegFilter:
     description: str
     ref: str | None = None
 
-    is_slice_threading_supported: bool = False
-    is_support_timeline: bool = False
-    is_support_framesync: bool = False
+    # Flags
+    is_support_slice_threading: bool | None = None
+    is_support_timeline: bool | None = None
+    is_support_framesync: bool | None = None
+    is_support_command: bool | None = None
+    is_filter_sink: bool | None = None
+    is_filter_source: bool | None = None
 
-    is_output_dynamic: bool = False
-    is_input_dynamic: bool = False
-
-    input_stream_typings: tuple[FFMpegIOType, ...] = ()
-    output_stream_typings: tuple[FFMpegIOType, ...] = ()
-    formula_input_typings: str | None = None
-    formula_output_typings: str | None = None
+    # IO Typing
+    is_dynamic_input: bool = False
+    is_dynamic_ouptut: bool = False
+    stream_typings_input: tuple[FFMpegIOType, ...] = ()
+    stream_typings_output: tuple[FFMpegIOType, ...] = ()
+    forumla_typings_input: str | None = None
+    formula_typings_output: str | None = None
 
     options: tuple[FFMpegFilterOption, ...] = ()
 
@@ -99,16 +103,16 @@ class FFMpegFilter:
 
     @property
     def input_types(self) -> str | None:
-        if self.is_input_dynamic:
-            return self.formula_input_typings
+        if self.is_dynamic_input:
+            return self.forumla_typings_input
 
-        assert self.input_stream_typings
-        return str([k.type for k in self.input_stream_typings])
+        assert self.stream_typings_input
+        return str([k.type for k in self.stream_typings_input])
 
     @property
     def output_types(self) -> str | None:
-        if self.is_output_dynamic:
-            return self.formula_output_typings
+        if self.is_dynamic_ouptut:
+            return self.formula_typings_output
 
-        assert self.output_stream_typings
-        return str([k.type for k in self.output_stream_typings])
+        assert self.stream_typings_output
+        return str([k.type for k in self.stream_typings_output])

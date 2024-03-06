@@ -1,0 +1,183 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Remove clipping from input audio.",
+  "filter_type": null,
+  "formula_typings_output": null,
+  "forumla_typings_input": null,
+  "id": null,
+  "is_dynamic_input": false,
+  "is_dynamic_ouptut": false,
+  "is_filter_sink": null,
+  "is_filter_source": null,
+  "is_support_command": null,
+  "is_support_framesync": false,
+  "is_support_slice_threading": true,
+  "is_support_timeline": true,
+  "name": "adeclip",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "window",
+        "w"
+      ],
+      "choices": [],
+      "default": 55.0,
+      "description": "set window size (from 10 to 100) (default 55)",
+      "flags": "..F.A......",
+      "max": "100",
+      "min": "10",
+      "name": "window",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "overlap",
+        "o"
+      ],
+      "choices": [],
+      "default": 75.0,
+      "description": "set window overlap (from 50 to 95) (default 75)",
+      "flags": "..F.A......",
+      "max": "95",
+      "min": "50",
+      "name": "overlap",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "arorder",
+        "a"
+      ],
+      "choices": [],
+      "default": 8.0,
+      "description": "set autoregression order (from 0 to 25) (default 8)",
+      "flags": "..F.A......",
+      "max": "25",
+      "min": "0",
+      "name": "arorder",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "threshold",
+        "t"
+      ],
+      "choices": [],
+      "default": 10.0,
+      "description": "set threshold (from 1 to 100) (default 10)",
+      "flags": "..F.A......",
+      "max": "100",
+      "min": "1",
+      "name": "threshold",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "hsize",
+        "n"
+      ],
+      "choices": [],
+      "default": 1000,
+      "description": "set histogram size (from 100 to 9999) (default 1000)",
+      "flags": "..F.A......",
+      "max": "9999",
+      "min": "100",
+      "name": "hsize",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "method",
+        "m"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A......",
+          "help": "overlap-add",
+          "name": "add",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A......",
+          "help": "overlap-add",
+          "name": "a",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A......",
+          "help": "overlap-save",
+          "name": "save",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..F.A......",
+          "help": "overlap-save",
+          "name": "s",
+          "value": "1"
+        }
+      ],
+      "default": "add",
+      "description": "set overlap method (from 0 to 1) (default add)",
+      "flags": "..F.A......",
+      "max": "1",
+      "min": "0",
+      "name": "method",
+      "required": false,
+      "typing": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+        "value": "int"
+      }
+    }
+  ],
+  "ref": null,
+  "stream_typings_input": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "audio"
+      }
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "audio"
+      }
+    }
+  ]
+}

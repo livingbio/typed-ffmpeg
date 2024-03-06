@@ -13,7 +13,7 @@ from ...common.schema import (
 )
 
 
-def help_text(filter_name: str) -> str:
+def extract_filter_help_text(filter_name: str) -> str:
     """
     Get the help text for a filter.
 
@@ -266,21 +266,8 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[FFMpegF
     return output
 
 
-def _remove_repeat_options(options: list[FFMpegFilterOption]) -> list[FFMpegFilterOption]:
-    names = set()
-    output = []
-    for option in options:
-        if option.name in names:
-            continue
-
-        names.add(option.name)
-        output.append(option)
-
-    return output
-
-
 def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
-    text = help_text(filter_name)
+    text = extract_filter_help_text(filter_name)
 
     if "Unknown filter" in text:
         raise ValueError(f"Unknown filter {filter_name}")
@@ -323,17 +310,17 @@ def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
         if "AVOptions:" in item:
             options.extend(_parse_options(tree[item], tree))
 
-    options = _remove_repeat_options(options)
-
     return FFMpegFilter(
         name=filter_name,
         description=description,
-        is_slice_threading_supported=slice_threading_supported,
-        is_support_framesync=is_support_framesync,
-        is_input_dynamic=is_input_dynamic,
-        is_output_dynamic=is_output_dynamic,
+        # flags
+        is_support_slice_threading=slice_threading_supported,
         is_support_timeline=is_suppoert_timeline,
-        input_stream_typings=tuple(input_types) if input_types else (),
-        output_stream_typings=tuple(output_types) if output_types else (),
+        is_support_framesync=is_support_framesync,
+        # IO Typing
+        is_dynamic_input=is_input_dynamic,
+        is_dynamic_ouptut=is_output_dynamic,
+        stream_typings_input=tuple(input_types) if input_types else (),
+        stream_typings_output=tuple(output_types) if output_types else (),
         options=tuple(options),
     )
