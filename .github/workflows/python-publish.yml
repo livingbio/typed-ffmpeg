@@ -36,7 +36,7 @@ jobs:
       - name: Build package
         run: poetry build
       - name: Publish package
-        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        uses: pypa/gh-action-pypi-publish@e53eb8b103ffcb59469888563dc324e3c8ba6f06
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
