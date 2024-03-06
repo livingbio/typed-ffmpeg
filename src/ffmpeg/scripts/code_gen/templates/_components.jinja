@@ -1,0 +1,191 @@
+{% macro stream_typings(f, type) -%}
+{% if type == "method" %}
+    self,
+{% endif %}
+{% if f.is_input_dynamic %}
+    {% if f.is_input_type_mixed %}
+    *streams: FilterableStream,
+    {% elif f.filter_type.value in ["vf", "vaf"] %}
+    *streams: VideoStream,
+    {% elif f.filter_type.value in ["af", "avf"] %}
+    *streams: AudioStream,
+    {% endif %}
+{% elif f.input_stream_typings | length == 1 %}
+{% else %}
+    {% for stream_typing in f.input_stream_typings %}
+        {% if type == "method" and loop.index0 == 0 %}
+        {% elif stream_typing.type.value == "video" %}
+        {{ stream_typing.name | stream_name_safe }}: VideoStream,
+        {% else %}
+        {{ stream_typing.name | stream_name_safe }}: AudioStream,
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+
+{% macro default_value(option) %}
+{% if option.default == option.default %}
+Default({{option.default.__repr__()}})
+{% else %}
+{# comparing NaN to itself results in False. #}
+Default("nan")
+{% endif %}
+{% endmacro %}
+
+
+{% macro default_typing(option) %}
+{% if option.choices %}
+{{option._typing}} | Default = {{ default_value(option) }}
+{% else %}
+{{option._typing}} = {{ default_value(option) }}
+{% endif %}
+{% endmacro %}
+
+{% macro option_typings(f) %}
+{% for option in f.options %}
+    {% if option.required %}
+        {{option.name | option_name_safe}}: {{option._typing}},
+    {% else %}
+        {{option.name | option_name_safe}}: {{ default_typing(option) }},
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
+
+{%- macro return_stream_typings(f) -%}
+{%- if f.filter_type.value in ["vf", "avf"] -%}
+    {% set return_type = "VideoStream" %}
+{%- elif f.filter_type.value in ["af", "vaf"] -%}
+    {% set return_type = "AudioStream" %}
+{%- endif -%}
+{%- if f.is_output_dynamic -%}
+-> FilterNode:
+{%- elif f.output_stream_typings | length == 1 -%}
+-> {{ return_type }}:
+{%- else -%}
+-> tuple[
+    {% for stream_typing in f.output_stream_typings %}
+        {% if stream_typing.type.value == "video" %}
+            VideoStream,
+        {% else %}
+            AudioStream,
+        {% endif %}
+    {% endfor %}
+]:
+{%- endif -%}
+{%- endmacro -%}
+
+{% macro docstring(f) %}
+{{ f.description }}
+{% if f.options | length > 0 %}
+Args:
+{%- for option in f.options %}
+    {{option.name | option_name_safe}}: {{option.description | striptags }}
+{%- endfor %}
+{% endif %}
+Returns:
+{%- if f.is_output_dynamic %}
+    filter_node: the filter node
+{% else -%}
+    {% for stream_typing in f.output_stream_typings %}
+    {%- if stream_typing.type.value == "video" %}
+    {{ stream_typing.name}}: the video stream
+    {%- else %}
+    {{ stream_typing.name}}: the audio stream
+    {%- endif -%}
+    {%- endfor %}
+{%- endif %}
+
+References:
+    [FFmpeg Documentation]({{ f.ref }})
+{% endmacro %}
+
+
+{% macro stream_params(f, type) -%}
+{% if type == "method" %}
+    self,
+{% endif %}
+{% if f.is_input_dynamic %}
+    {% if f.filter_type.value in ["vf", "vaf"] %}
+    *streams,
+    {% elif f.filter_type.value in ["af", "avf"] %}
+    *streams,
+    {% endif %}
+{% elif f.input_stream_typings | length == 1 %}
+{% else %}
+    {% for stream_typing in f.input_stream_typings %}
+        {% if type == "method" and loop.index0 == 0 %}
+        {% elif stream_typing.type.value == "video" %}
+        {{ stream_typing.name | stream_name_safe }},
+        {% else %}
+        {{ stream_typing.name | stream_name_safe }},
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endmacro %}
+
+
+{% macro process(f, type) %}
+{%- if f.filter_type.value in ["vf", "avf"] -%}
+    {% set return_type = "video" %}
+{%- elif f.filter_type.value in ["af", "vaf"] -%}
+    {% set return_type = "audio" %}
+{%- endif -%}
+filter_node = FilterNode(
+    name="{{ f.name }}",
+    input_typings={%if f.input_types %}tuple({{f.input_types}}){% else %}None{% endif %},
+    output_typings={%if f.output_types %}tuple({{f.output_types}}){% else %}None{% endif %},
+    inputs=(
+        {{ stream_params(f, type) }}
+    ),
+    kwargs=_to_tuple(({
+        {% for option in f.options %}
+        "{{ option.name}}": {{ option.name | option_name_safe }},
+        {% endfor %}
+    } | kwargs)),
+)
+{% if f.is_output_dynamic %}
+return filter_node
+{%- elif f.output_stream_typings | length == 1 -%}
+return filter_node.{{return_type}}(0)
+{%- else -%}
+return (
+    {% for stream_typing in f.output_stream_typings %}
+        {% if stream_typing.type.value == "video" %}
+            filter_node.video({{loop.index0}}),
+        {% else %}
+            filter_node.audio({{loop.index0}}),
+        {% endif %}
+    {% endfor %}
+)
+{% endif %}
+{% endmacro %}
+
+
+{% macro filter_method(f) %}
+    def {{f.name}}(
+    {{ stream_typings(f, "method") }}
+    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
+    {{ option_typings(f) }}
+    **kwargs: Any
+    ) {{- return_stream_typings(f) }}
+        """
+        {{ docstring(f) }}
+        """
+{{ process(f, "method") | indent(8, True) }}
+{% endmacro %}
+
+
+{% macro filter_function(f) %}
+def {{f.name}}(
+    {{ stream_typings(f, "function") }}
+    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
+    {{ option_typings(f) }}
+    **kwargs: Any
+) {{- return_stream_typings(f) }}
+    """
+    {{ docstring(f) }}
+    """
+{{ process(f, "function") | indent(4, True) }}
+{% endmacro %}
