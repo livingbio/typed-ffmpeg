@@ -38,3 +38,8 @@ def test_help_text(snapshot: SnapshotAssertion, filter_name: str) -> None:
     assert snapshot(name="parse-section-tree", extension_class=JSONSnapshotExtension) == parse_section_tree(
         text=help_text(filter_name=filter_name)
     )
+
+
+def test_extract_not_exist_filter() -> None:
+    with pytest.raises(ValueError):
+        extract_avfilter_info_from_help("not-exist")
