@@ -13,3 +13,4 @@ omit =
     src/ffmpeg/streams/audio.py
     test_*.py
     */test_*.py
+    main.py
