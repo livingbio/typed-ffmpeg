@@ -109,7 +109,7 @@ def _parse_default(default: str | None, type: str) -> int | float | bool | str |
     try:
         match (type):
             case "boolean":
-                assert default in ("true", "false")
+                assert default in ("true", "false"), f"Invalid default value for boolean: {default}"
                 return default == "true"
             case "duration":
                 assert default is not None
@@ -147,7 +147,7 @@ def _parse_default(default: str | None, type: str) -> int | float | bool | str |
             case "binary":
                 return default
 
-    except ValueError:
+    except (ValueError, AssertionError):
         pass
 
     return default
