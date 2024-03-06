@@ -13,3 +13,5 @@ updates:
     allow:
       - dependency-type: "all"
   - package-ecosystem: "github-actions"
+    schedule:
+      interval: "weekly"
