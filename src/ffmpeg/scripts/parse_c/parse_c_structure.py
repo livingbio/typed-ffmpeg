@@ -12,7 +12,7 @@ def parse_c_structure(text: str) -> list[Any]:
 
     buffer = ""
     level = 0
-    output = []
+    output: list[Any] = []
     in_text = False
     in_bracket = False
 

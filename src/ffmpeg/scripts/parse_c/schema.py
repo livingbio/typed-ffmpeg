@@ -1,13 +1,12 @@
-import enum
 import re
 from collections import defaultdict
+from dataclasses import dataclass
+from enum import Enum
 from functools import cached_property
 from itertools import groupby
 
-import pydantic
 
-
-class AVOptionFlags(int, enum.Enum):
+class AVOptionFlags(int, Enum):
     # ref: libavutil/opt.h
     AV_OPT_FLAG_ENCODING_PARAM = 1
     AV_OPT_FLAG_DECODING_PARAM = 2
@@ -23,7 +22,7 @@ class AVOptionFlags(int, enum.Enum):
     AV_OPT_FLAG_CHILD_CONSTS = 1 << 18
 
 
-class AVOptionType(str, enum.Enum):
+class AVOptionType(str, Enum):
     AV_OPT_TYPE_FLAGS = "AV_OPT_TYPE_FLAGS"
     AV_OPT_TYPE_INT = "AV_OPT_TYPE_INT"
     AV_OPT_TYPE_INT64 = "AV_OPT_TYPE_INT64"
@@ -46,7 +45,7 @@ class AVOptionType(str, enum.Enum):
     AV_OPT_TYPE_CHLAYOUT = "AV_OPT_TYPE_CHLAYOUT"
 
 
-class OptionDefFlag(int, enum.Enum):
+class OptionDefFlag(int, Enum):
     OPT_FUNC_ARG = 1 << 0
     """
     The OPT_TYPE_FUNC option takes an argument.
@@ -121,7 +120,7 @@ class OptionDefFlag(int, enum.Enum):
     """
 
 
-class OptionTypeDef(str, enum.Enum):
+class OptionTypeDef(str, Enum):
     OPT_TYPE_FUNC = "OPT_TYPE_FUNC"
     OPT_TYPE_BOOL = "OPT_TYPE_BOOL"
     OPT_TYPE_STRING = "OPT_TYPE_STRING"
@@ -132,7 +131,8 @@ class OptionTypeDef(str, enum.Enum):
     OPT_TYPE_TIME = "OPT_TYPE_TIME"
 
 
-class OptionDef(pydantic.BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class OptionDef:
     name: str
     type: OptionTypeDef
     flags: int
@@ -141,24 +141,24 @@ class OptionDef(pydantic.BaseModel):
     canon: str | None = None
 
     @property
-    def is_input_option(self):
+    def is_input_option(self) -> bool:
         return bool(self.flags & OptionDefFlag.OPT_INPUT)
 
     @property
-    def is_output_option(self):
+    def is_output_option(self) -> bool:
         return bool(self.flags & OptionDefFlag.OPT_OUTPUT)
 
     @property
-    def is_global_option(self):
+    def is_global_option(self) -> bool:
         return not self.is_input_option and not self.is_output_option and not (self.flags & OptionDefFlag.OPT_EXIT)
 
     @property
-    def is_support_stream_specifier(self):
+    def is_support_stream_specifier(self) -> bool:
         return bool(self.flags & OptionDefFlag.OPT_SPEC)
 
     @property
     def typing(self) -> str:
-        def base_typing(self) -> str:
+        def base_typing(self: OptionDef) -> str:
             if self.type == OptionTypeDef.OPT_TYPE_FUNC:
                 return "str"
 
@@ -191,7 +191,8 @@ class OptionDef(pydantic.BaseModel):
         return base
 
 
-class AVOption(pydantic.BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class AVOption:
     name: str
     help: str
     offset: str
@@ -218,13 +219,15 @@ class AVOption(pydantic.BaseModel):
         return bool(self.flags_value & AVOptionFlags.AV_OPT_FLAG_DEPRECATED)
 
 
-class Choice(pydantic.BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class Choice:
     name: str
     help: str
     value: int | str
 
 
-class Option(pydantic.BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class Option:
     name: str
     help: str
     type: str
@@ -234,24 +237,22 @@ class Option(pydantic.BaseModel):
     deprecated: bool = False
 
     choices: list[Choice] = []
-
-    @pydantic.computed_field
-    @property
-    def required(self) -> bool:
-        return False
+    required: bool = False
 
 
-class AVFilterPadType(str, enum.Enum):
+class AVFilterPadType(str, Enum):
     video = "AVMEDIA_TYPE_VIDEO"
     audio = "AVMEDIA_TYPE_AUDIO"
 
 
-class AVFilterPad(pydantic.BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class AVFilterPad:
     name: str
     type: AVFilterPadType
 
 
-class AVClass(pydantic.BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class AVClass:
     class_name: str
     item_name: str
     option: str
@@ -263,7 +264,7 @@ class AVClass(pydantic.BaseModel):
     category: str | None = None
 
 
-class AVFilterFlags(int, enum.Enum):
+class AVFilterFlags(int, Enum):
     # ref: libavfilter/avfilter.h
     AVFILTER_FLAG_DYNAMIC_INPUTS = 1 << 0
     AVFILTER_FLAG_DYNAMIC_OUTPUTS = 1 << 1
@@ -281,7 +282,7 @@ def parse_av_filter_flags(text: str | None) -> int:
 
     text = text.replace("\n", "")
 
-    def convert_avfilter_flag(match) -> str:
+    def convert_avfilter_flag(match: re.Match) -> str:
         return str(AVFilterFlags[match.group(1)].value)
 
     if "AVFILTER" in text:
@@ -290,7 +291,7 @@ def parse_av_filter_flags(text: str | None) -> int:
     return eval(text)
 
 
-class FilterType(str, enum.Enum):
+class FilterType(str, Enum):
     AUDIO_FILTER = "af"
     AUDIO_SOURCE = "asrc"
     AUDIO_SINK = "asink"
@@ -323,9 +324,11 @@ def parse_default(text: str) -> str | float | int | bool | None:
                 return value
     except ValueError:
         return value
+    return value
 
 
-class AVFilter(pydantic.BaseModel):
+@dataclass(frozen=True, kw_only=True)
+class AVFilter:
     id: str  # the varname of the filter
     name: str
     description: str
@@ -356,6 +359,7 @@ class AVFilter(pydantic.BaseModel):
 
     @property
     def init_value(self) -> str:
+        assert self.init
         return self.init.strip("&")
 
     @property
@@ -407,7 +411,7 @@ class AVFilter(pydantic.BaseModel):
         options: list[AVOption]
 
         # collect choices
-        choices = {}
+        choices: dict[str, Choice] = {}
         for unit, options in groupby(
             [k for k in self.options if k.unit and k.type == "AV_OPT_TYPE_CONST"], key=lambda i: i.unit
         ):

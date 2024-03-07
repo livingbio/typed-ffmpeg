@@ -1,6 +1,5 @@
+from dataclasses import asdict, is_dataclass
 from typing import Any
-
-import pydantic
 
 
 def dump(items: list[Any] | dict[str, Any] | Any) -> list[Any] | dict[str, Any] | Any:
@@ -8,6 +7,6 @@ def dump(items: list[Any] | dict[str, Any] | Any) -> list[Any] | dict[str, Any] 
         return [dump(item) for item in items]
     elif isinstance(items, dict):
         return {key: dump(value) for key, value in items.items()}
-    elif isinstance(items, pydantic.BaseModel):
-        return items.model_dump()
+    elif is_dataclass(items):
+        return asdict(items)
     return items
