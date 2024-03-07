@@ -319,7 +319,7 @@ def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
         is_support_framesync=is_support_framesync,
         # IO Typing
         is_dynamic_input=is_input_dynamic,
-        is_dynamic_ouptut=is_output_dynamic,
+        is_dynamic_output=is_output_dynamic,
         stream_typings_input=tuple(input_types) if input_types else (),
         stream_typings_output=tuple(output_types) if output_types else (),
         options=tuple(options),

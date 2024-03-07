@@ -31,7 +31,7 @@ def all_filters() -> list[FFMpegFilter]:
                 is_filter_source=filter_info.is_filter_source,
                 # IO Typing
                 is_dynamic_input=filter_info.is_dynamic_input,
-                is_dynamic_ouptut=filter_info.is_dynamic_ouptut,
+                is_dynamic_output=filter_info.is_dynamic_output,
                 stream_typings_input=filter_info.stream_typings_input,
                 stream_typings_output=filter_info.stream_typings_output,
                 options=filter_info_from_help.options,

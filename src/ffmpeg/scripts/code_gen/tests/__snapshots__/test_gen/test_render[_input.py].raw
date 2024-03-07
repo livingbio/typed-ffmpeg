@@ -1,0 +1,40 @@
+# NOTE: this file is auto-generated, do not modify
+
+
+from pathlib import Path
+
+from ..nodes import InputNode
+from ...streams.av import AVStream
+from typing import Any
+
+def input(
+    filename: str | Path,
+    *,**kwargs: Any
+) -> AVStream:
+    """
+    Input file URL (ffmpeg ``-i`` option)
+
+    Args:
+        filename: Input file URL
+        **kwargs: ffmpeg's input file options
+
+    Returns:
+        Input stream
+
+    Examples:
+    ```py
+    >>> input('input.mp4')
+    <AVStream:input.mp4:0>
+    ```
+    """
+
+    options = {
+        k: v for k, v in {
+            
+        }.items() if v is not None
+    }
+
+    return InputNode(
+        filename=str(filename),
+        kwargs=tuple((options | kwargs).items())
+    ).stream()

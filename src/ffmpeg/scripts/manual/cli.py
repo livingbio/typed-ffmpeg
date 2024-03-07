@@ -13,7 +13,7 @@ app = typer.Typer()
 @app.command()
 def init_config() -> None:
     for filter in extract():
-        if filter.is_dynamic_input or filter.is_dynamic_ouptut:
+        if filter.is_dynamic_input or filter.is_dynamic_output:
             info = FFMpegFilterManuallyDefined(name=filter.name)
             save(info, filter.name)
 

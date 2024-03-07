@@ -86,7 +86,7 @@ def extract_filter_info(text: str) -> list[FFMpegFilter]:
                 is_filter_source="|->" in io,
                 # IO Typing
                 is_dynamic_input="N->" in io,
-                is_dynamic_ouptut="->N" in io,
+                is_dynamic_output="->N" in io,
                 stream_typings_input=input_typing,
                 stream_typings_output=output_typing,
             )
