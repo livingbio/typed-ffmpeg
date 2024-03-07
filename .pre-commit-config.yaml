@@ -53,7 +53,7 @@ repos:
         name: mypy
         entry: mypy
         types: [python]
-        exclude: migrations/|commands/|scripts/|sandbox/|samples|sdk
+        exclude: migrations/|commands/|sandbox/|samples|sdk
         additional_dependencies: [pytest, syrupy, types-Pillow]
         args: [
           "--config-file=pyproject.toml"
