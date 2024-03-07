@@ -4,7 +4,7 @@ from pathlib import Path
 import typer
 
 from ..cache import load, save
-from ..parse_help.cli import extract
+from ..parse_help.cli import all_filters
 from .schema import FFMpegFilterManuallyDefined
 
 app = typer.Typer()
@@ -12,7 +12,7 @@ app = typer.Typer()
 
 @app.command()
 def init_config() -> None:
-    for filter in extract():
+    for filter in all_filters():
         if filter.is_dynamic_input or filter.is_dynamic_output:
             try:
                 info = load(FFMpegFilterManuallyDefined, filter.name)

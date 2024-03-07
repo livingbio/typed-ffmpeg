@@ -5,6 +5,7 @@ from pathlib import Path
 import typer
 
 from ...common.schema import FFMpegFilter, FFMpegOption
+from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
 from ..parse_help.cli import all_filters
 from .gen import render
@@ -21,7 +22,7 @@ def gen_filter_info(filter: FFMpegFilter) -> FFMpegFilter:
 
 
 def gen_option_info() -> list[FFMpegOption]:
-    ...
+    return parse_ffmpeg_options()
 
 
 @app.command()

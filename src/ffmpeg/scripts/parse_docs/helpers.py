@@ -1,5 +1,5 @@
 import html2text
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 from .schema import FilterDocument
 
@@ -34,15 +34,24 @@ def convert_html_to_markdown(html: str) -> str:
 def parse_filter_document(body: str) -> FilterDocument:
     soup = BeautifulSoup(body, "html.parser")
     h3 = soup.find("h3")
+
+    assert isinstance(h3, Tag)
+
     title = h3.text
     index, filter_namestr = title.split(" ", 1)
     filter_names = map(lambda i: i.strip(), filter_namestr.split(","))
+
+    assert isinstance(h3.a, Tag)
+    assert isinstance(h3.a["href"], str)
+
     ref = h3.a["href"].replace("#toc-", "").replace("-1", "")
 
     # check cross reference
     refs: set[str] = set()
+    a: Tag
     for a in soup.find_all("a"):
         href = a.get("href")
+        assert isinstance(href, str)
         if href.startswith("#") and not href.startswith("#toc-"):
             refs.add(href[1:])
 
@@ -55,7 +64,7 @@ def parse_filter_document(body: str) -> FilterDocument:
     )
 
 
-def parse_paremeters(soup: BeautifulSoup) -> dict[str, str]:
+def parse_paremeters(soup: Tag) -> dict[str, str]:
     parameters = []
     current_params = []
 

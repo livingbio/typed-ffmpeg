@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from enum import Enum
 from functools import cached_property
 from itertools import groupby
+from typing import Iterable
 
 
 class AVOptionFlags(int, Enum):
@@ -223,7 +224,7 @@ class AVOption:
 class Choice:
     name: str
     help: str
-    value: int | str
+    value: int | str | None
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -233,10 +234,10 @@ class Option:
     type: str
     default: str | None = None
     default_value: str | int | float | None = None
-    alias: list[str] = []
+    alias: tuple[str, ...] = ()
     deprecated: bool = False
 
-    choices: list[Choice] = []
+    choices: tuple[Choice, ...] = ()
     required: bool = False
 
 
@@ -282,7 +283,7 @@ def parse_av_filter_flags(text: str | None) -> int:
 
     text = text.replace("\n", "")
 
-    def convert_avfilter_flag(match: re.Match) -> str:
+    def convert_avfilter_flag(match: re.Match[str]) -> str:
         return str(AVFilterFlags[match.group(1)].value)
 
     if "AVFILTER" in text:
@@ -348,9 +349,9 @@ class AVFilter:
     flags: str | None = None
     # process_command: str
 
-    options: list[AVOption] = []
-    input_filter_pads: list[AVFilterPad] = []
-    output_filter_pads: list[AVFilterPad] = []
+    options: tuple[AVOption, ...] = ()
+    input_filter_pads: tuple[AVFilterPad, ...] = ()
+    output_filter_pads: tuple[AVFilterPad, ...] = ()
 
     @property
     def type(self) -> FilterType:
@@ -408,14 +409,15 @@ class AVFilter:
         output = []
 
         unit: str | None
-        options: list[AVOption]
+        options: Iterable[AVOption]
 
         # collect choices
-        choices: dict[str, Choice] = {}
+        choices: dict[str, list[Choice]] = {}
         for unit, options in groupby(
             [k for k in self.options if k.unit and k.type == "AV_OPT_TYPE_CONST"], key=lambda i: i.unit
         ):
             for option in options:
+                assert option.unit and unit
                 choices[unit] = choices.get(option.unit, []) + [
                     Choice(name=option.name, help=option.help, value=parse_default(option.default))
                 ]

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from functools import cached_property
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -35,5 +35,6 @@ class FilterDocument:
             options = soup.find("dl")
 
         if options:
+            assert isinstance(options, Tag)
             return parse_paremeters(options)
         return {}
