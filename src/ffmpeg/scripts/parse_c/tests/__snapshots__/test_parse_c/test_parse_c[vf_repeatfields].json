@@ -1,0 +1,27 @@
+[
+  {
+    "description": "Hard repeat fields based on MPEG repeat field flag.",
+    "flags": null,
+    "id": "ff_vf_repeatfields",
+    "init": null,
+    "init_src": null,
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(repeatfields_inputs)",
+    "name": "repeatfields",
+    "options": [],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
+    "preinit": null,
+    "priv_class": null
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "description": "Pass on the input to N video outputs.",
+    "flags": "(1 << 1) | (1 << 3)",
+    "id": "ff_vf_split",
+    "init": "split_init",
+    "init_src": "static __attribute__((cold)) int split_init(AVFilterContext *ctx)\n{\n    SplitContext *s = ctx->priv;\n    int i, ret;\n\n    for (i = 0; i < s->nb_outputs; i++) {\n        AVFilterPad pad = { 0 };\n\n        pad.type = ctx->filter->inputs[0].type;\n        pad.name = av_asprintf(\"output%d\", i);\n        if (!pad.name)\n            return (-(12));\n\n        if ((ret = ff_append_outpad_free_name(ctx, &pad)) < 0)\n            return ret;\n    }\n\n    return 0;\n}",
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(ff_video_default_filterpad)",
+    "name": "split",
+    "options": [
+      {
+        "default": "['.i64 = 2']",
+        "flags": "(8 | 16 | (1<<16))",
+        "help": "set number of outputs",
+        "max": "2147483647",
+        "min": "1",
+        "name": "outputs",
+        "offset": "__builtin_offsetof(SplitContext, nb_outputs)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "output_filter_pads": [],
+    "outputs": "((void*)0)",
+    "preinit": null,
+    "priv_class": "&split_class"
+  },
+  {
+    "description": "Pass on the audio input to N audio outputs.",
+    "flags": "(1 << 1) | (1 << 3)",
+    "id": "ff_af_asplit",
+    "init": "split_init",
+    "init_src": "static __attribute__((cold)) int split_init(AVFilterContext *ctx)\n{\n    SplitContext *s = ctx->priv;\n    int i, ret;\n\n    for (i = 0; i < s->nb_outputs; i++) {\n        AVFilterPad pad = { 0 };\n\n        pad.type = ctx->filter->inputs[0].type;\n        pad.name = av_asprintf(\"output%d\", i);\n        if (!pad.name)\n            return (-(12));\n\n        if ((ret = ff_append_outpad_free_name(ctx, &pad)) < 0)\n            return ret;\n    }\n\n    return 0;\n}",
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "inputs": "(ff_audio_default_filterpad)",
+    "name": "asplit",
+    "options": [
+      {
+        "default": "['.i64 = 2']",
+        "flags": "(8 | 16 | (1<<16))",
+        "help": "set number of outputs",
+        "max": "2147483647",
+        "min": "1",
+        "name": "outputs",
+        "offset": "__builtin_offsetof(SplitContext, nb_outputs)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      }
+    ],
+    "output_filter_pads": [],
+    "outputs": "((void*)0)",
+    "preinit": null,
+    "priv_class": "&split_class"
+  }
+]

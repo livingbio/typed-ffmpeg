@@ -1,0 +1,169 @@
+[
+  {
+    "flags_value": 0,
+    "inputs_value": null,
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_vsrc_buffer_outputs",
+    "parsed_options": [
+      {
+        "alias": [
+          "width",
+          "video_size"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "width",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "height"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "height",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "pix_fmt"
+        ],
+        "choices": [],
+        "default": "['.i64 = AV_PIX_FMT_NONE']",
+        "default_value": "AV_PIX_FMT_NONE",
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "pix_fmt",
+        "required": false,
+        "type": "AV_OPT_TYPE_PIXEL_FMT"
+      },
+      {
+        "alias": [
+          "sar",
+          "pixel_aspect"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "sample aspect ratio",
+        "name": "sar",
+        "required": false,
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": [
+          "time_base"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "time_base",
+        "required": false,
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": [
+          "frame_rate"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "frame_rate",
+        "required": false,
+        "type": "AV_OPT_TYPE_RATIONAL"
+      }
+    ],
+    "priv_class_value": "buffer_class",
+    "type": "vsrc"
+  },
+  {
+    "flags_value": 0,
+    "inputs_value": null,
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "outputs_value": "avfilter_asrc_abuffer_outputs",
+    "parsed_options": [
+      {
+        "alias": [
+          "time_base"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "time_base",
+        "required": false,
+        "type": "AV_OPT_TYPE_RATIONAL"
+      },
+      {
+        "alias": [
+          "sample_rate"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "sample_rate",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "sample_fmt"
+        ],
+        "choices": [],
+        "default": "['.i64 = AV_SAMPLE_FMT_NONE']",
+        "default_value": "AV_SAMPLE_FMT_NONE",
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "sample_fmt",
+        "required": false,
+        "type": "AV_OPT_TYPE_SAMPLE_FMT"
+      },
+      {
+        "alias": [
+          "channel_layout"
+        ],
+        "choices": [],
+        "default": null,
+        "default_value": null,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "channel_layout",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "channels"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "((void*)0)",
+        "name": "channels",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class_value": "abuffer_class",
+    "type": "asrc"
+  }
+]

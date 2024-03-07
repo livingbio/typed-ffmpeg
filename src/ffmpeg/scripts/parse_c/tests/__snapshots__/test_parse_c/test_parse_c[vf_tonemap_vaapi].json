@@ -1,0 +1,105 @@
+[
+  {
+    "description": "VAAPI VPP for tone-mapping",
+    "flags": null,
+    "id": "ff_vf_tonemap_vaapi",
+    "init": "&tonemap_vaapi_init",
+    "init_src": null,
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(tonemap_vaapi_inputs)",
+    "name": "tonemap_vaapi",
+    "options": [
+      {
+        "default": null,
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Output pixel format set",
+        "max": null,
+        "min": null,
+        "name": "format",
+        "offset": "__builtin_offsetof(HDRVAAPIContext, output_format_string)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": "format"
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Output color matrix coefficient set",
+        "max": null,
+        "min": null,
+        "name": "matrix",
+        "offset": "__builtin_offsetof(HDRVAAPIContext, color_matrix_string)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": "matrix"
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Output color matrix coefficient set",
+        "max": null,
+        "min": null,
+        "name": "m",
+        "offset": "__builtin_offsetof(HDRVAAPIContext, color_matrix_string)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": "matrix"
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Output color primaries set",
+        "max": null,
+        "min": null,
+        "name": "primaries",
+        "offset": "__builtin_offsetof(HDRVAAPIContext, color_primaries_string)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": "primaries"
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Output color primaries set",
+        "max": null,
+        "min": null,
+        "name": "p",
+        "offset": "__builtin_offsetof(HDRVAAPIContext, color_primaries_string)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": "primaries"
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Output color transfer characteristics set",
+        "max": null,
+        "min": null,
+        "name": "transfer",
+        "offset": "__builtin_offsetof(HDRVAAPIContext, color_transfer_string)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": "transfer"
+      },
+      {
+        "default": "['.str = ((void*)0)']",
+        "flags": ".flags = (16 | (1<<16))",
+        "help": "Output color transfer characteristics set",
+        "max": null,
+        "min": null,
+        "name": "t",
+        "offset": "__builtin_offsetof(HDRVAAPIContext, color_transfer_string)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": "transfer"
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(tonemap_vaapi_outputs)",
+    "preinit": null,
+    "priv_class": "&tonemap_vaapi_class"
+  }
+]

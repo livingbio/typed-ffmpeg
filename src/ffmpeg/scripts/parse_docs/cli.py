@@ -1,5 +1,6 @@
 import re
 import urllib.request
+from functools import lru_cache
 from pathlib import Path
 
 import typer
@@ -35,6 +36,7 @@ def download_ffmpeg_filter_documents() -> Path:
     return filter_path
 
 
+@lru_cache
 @app.command()
 def process_docs() -> list[FilterDocument]:
     # split documents into individual files for easier processing
@@ -56,3 +58,12 @@ def process_docs() -> list[FilterDocument]:
             save(info, info.hash)
 
     return infos
+
+
+@app.command()
+def extract_docs(filter_name: str) -> FilterDocument:
+    for doc in process_docs():
+        if filter_name in doc.filter_names:
+            return doc
+
+    raise ValueError(f"Unknown filter {filter_name}")

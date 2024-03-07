@@ -1,0 +1,68 @@
+[
+  {
+    "flags_value": 0,
+    "inputs_value": "tonemap_vaapi_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "outputs_value": "tonemap_vaapi_outputs",
+    "parsed_options": [
+      {
+        "alias": [
+          "format"
+        ],
+        "choices": [],
+        "default": null,
+        "default_value": null,
+        "deprecated": false,
+        "help": "Output pixel format set",
+        "name": "format",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "matrix",
+          "m"
+        ],
+        "choices": [],
+        "default": "['.str = ((void*)0)']",
+        "default_value": "((void*)0)",
+        "deprecated": false,
+        "help": "Output color matrix coefficient set",
+        "name": "matrix",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "primaries",
+          "p"
+        ],
+        "choices": [],
+        "default": "['.str = ((void*)0)']",
+        "default_value": "((void*)0)",
+        "deprecated": false,
+        "help": "Output color primaries set",
+        "name": "primaries",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "transfer",
+          "t"
+        ],
+        "choices": [],
+        "default": "['.str = ((void*)0)']",
+        "default_value": "((void*)0)",
+        "deprecated": false,
+        "help": "Output color transfer characteristics set",
+        "name": "transfer",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      }
+    ],
+    "priv_class_value": "tonemap_vaapi_class",
+    "type": "vf"
+  }
+]

@@ -1,0 +1,226 @@
+[
+  {
+    "flags_value": 65540,
+    "inputs_value": "lut3d_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "outputs_value": "ff_video_default_filterpad",
+    "parsed_options": [
+      {
+        "alias": [
+          "file"
+        ],
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "default_value": "((void*)0)",
+        "deprecated": false,
+        "help": "set 3D LUT file name",
+        "name": "file",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "clut"
+        ],
+        "choices": [
+          {
+            "help": "process only first CLUT, ignore rest",
+            "name": "first",
+            "value": 0
+          },
+          {
+            "help": "process all CLUTs",
+            "name": "all",
+            "value": 1
+          }
+        ],
+        "default": "['.i64=1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "when to process CLUT",
+        "name": "clut",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "interp"
+        ],
+        "choices": [
+          {
+            "help": "use values from the nearest defined points",
+            "name": "nearest",
+            "value": "INTERPOLATE_NEAREST"
+          },
+          {
+            "help": "interpolate values using the 8 points defining a cube",
+            "name": "trilinear",
+            "value": "INTERPOLATE_TRILINEAR"
+          },
+          {
+            "help": "interpolate values using a tetrahedron",
+            "name": "tetrahedral",
+            "value": "INTERPOLATE_TETRAHEDRAL"
+          },
+          {
+            "help": "interpolate values using a pyramid",
+            "name": "pyramid",
+            "value": "INTERPOLATE_PYRAMID"
+          },
+          {
+            "help": "interpolate values using a prism",
+            "name": "prism",
+            "value": "INTERPOLATE_PRISM"
+          }
+        ],
+        "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+        "default_value": "INTERPOLATE_TETRAHEDRAL",
+        "deprecated": false,
+        "help": "select interpolation mode",
+        "name": "interp",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class_value": "lut3d_class",
+    "type": "vf"
+  },
+  {
+    "flags_value": 131076,
+    "inputs_value": "haldclut_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "outputs_value": "haldclut_outputs",
+    "parsed_options": [
+      {
+        "alias": [
+          "clut"
+        ],
+        "choices": [
+          {
+            "help": "process only first CLUT, ignore rest",
+            "name": "first",
+            "value": 0
+          },
+          {
+            "help": "process all CLUTs",
+            "name": "all",
+            "value": 1
+          }
+        ],
+        "default": "['.i64=1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "when to process CLUT",
+        "name": "clut",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "interp"
+        ],
+        "choices": [
+          {
+            "help": "use values from the nearest defined points",
+            "name": "nearest",
+            "value": "INTERPOLATE_NEAREST"
+          },
+          {
+            "help": "interpolate values using the 8 points defining a cube",
+            "name": "trilinear",
+            "value": "INTERPOLATE_TRILINEAR"
+          },
+          {
+            "help": "interpolate values using a tetrahedron",
+            "name": "tetrahedral",
+            "value": "INTERPOLATE_TETRAHEDRAL"
+          },
+          {
+            "help": "interpolate values using a pyramid",
+            "name": "pyramid",
+            "value": "INTERPOLATE_PYRAMID"
+          },
+          {
+            "help": "interpolate values using a prism",
+            "name": "prism",
+            "value": "INTERPOLATE_PRISM"
+          }
+        ],
+        "default": "['.i64=INTERPOLATE_TETRAHEDRAL']",
+        "default_value": "INTERPOLATE_TETRAHEDRAL",
+        "deprecated": false,
+        "help": "select interpolation mode",
+        "name": "interp",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class_value": "haldclut_class",
+    "type": "vf"
+  },
+  {
+    "flags_value": 65540,
+    "inputs_value": "lut1d_inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "outputs_value": "ff_video_default_filterpad",
+    "parsed_options": [
+      {
+        "alias": [
+          "file"
+        ],
+        "choices": [],
+        "default": "['.str=((void*)0)']",
+        "default_value": "((void*)0)",
+        "deprecated": false,
+        "help": "set 1D LUT file name",
+        "name": "file",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "interp"
+        ],
+        "choices": [
+          {
+            "help": "use values from the nearest defined points",
+            "name": "nearest",
+            "value": "INTERPOLATE_1D_NEAREST"
+          },
+          {
+            "help": "use values from the linear interpolation",
+            "name": "linear",
+            "value": "INTERPOLATE_1D_LINEAR"
+          },
+          {
+            "help": "use values from the cosine interpolation",
+            "name": "cosine",
+            "value": "INTERPOLATE_1D_COSINE"
+          },
+          {
+            "help": "use values from the cubic interpolation",
+            "name": "cubic",
+            "value": "INTERPOLATE_1D_CUBIC"
+          },
+          {
+            "help": "use values from the spline interpolation",
+            "name": "spline",
+            "value": "INTERPOLATE_1D_SPLINE"
+          }
+        ],
+        "default": "['.i64=INTERPOLATE_1D_LINEAR']",
+        "default_value": "INTERPOLATE_1D_LINEAR",
+        "deprecated": false,
+        "help": "select interpolation mode",
+        "name": "interp",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class_value": "lut1d_class",
+    "type": "vf"
+  }
+]

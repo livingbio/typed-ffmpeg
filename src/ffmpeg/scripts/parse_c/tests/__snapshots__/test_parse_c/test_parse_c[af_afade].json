@@ -1,0 +1,872 @@
+[
+  {
+    "description": "Fade in/out input audio.",
+    "flags": "(1 << 16)",
+    "id": "ff_af_afade",
+    "init": "init",
+    "init_src": null,
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "inputs": "(avfilter_af_afade_inputs)",
+    "name": "afade",
+    "options": [
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set the fade direction",
+        "max": "1",
+        "min": "0",
+        "name": "type",
+        "offset": "__builtin_offsetof(AudioFadeContext, type)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "type"
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set the fade direction",
+        "max": "1",
+        "min": "0",
+        "name": "t",
+        "offset": "__builtin_offsetof(AudioFadeContext, type)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "type"
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "fade-in",
+        "max": "0",
+        "min": "0",
+        "name": "in",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "type"
+      },
+      {
+        "default": "['.i64 = 1']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "fade-out",
+        "max": "0",
+        "min": "0",
+        "name": "out",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "type"
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set number of first sample to start fading",
+        "max": "9223372036854775807LL",
+        "min": "0",
+        "name": "start_sample",
+        "offset": "__builtin_offsetof(AudioFadeContext, start_sample)",
+        "type": "AV_OPT_TYPE_INT64",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set number of first sample to start fading",
+        "max": "9223372036854775807LL",
+        "min": "0",
+        "name": "ss",
+        "offset": "__builtin_offsetof(AudioFadeContext, start_sample)",
+        "type": "AV_OPT_TYPE_INT64",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 44100']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set number of samples for fade duration",
+        "max": "9223372036854775807LL",
+        "min": "1",
+        "name": "nb_samples",
+        "offset": "__builtin_offsetof(AudioFadeContext, nb_samples)",
+        "type": "AV_OPT_TYPE_INT64",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 44100']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set number of samples for fade duration",
+        "max": "9223372036854775807LL",
+        "min": "1",
+        "name": "ns",
+        "offset": "__builtin_offsetof(AudioFadeContext, nb_samples)",
+        "type": "AV_OPT_TYPE_INT64",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set time to start fading",
+        "max": "9223372036854775807LL",
+        "min": "0",
+        "name": "start_time",
+        "offset": "__builtin_offsetof(AudioFadeContext, start_time)",
+        "type": "AV_OPT_TYPE_DURATION",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set time to start fading",
+        "max": "9223372036854775807LL",
+        "min": "0",
+        "name": "st",
+        "offset": "__builtin_offsetof(AudioFadeContext, start_time)",
+        "type": "AV_OPT_TYPE_DURATION",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set fade duration",
+        "max": "9223372036854775807LL",
+        "min": "0",
+        "name": "duration",
+        "offset": "__builtin_offsetof(AudioFadeContext, duration)",
+        "type": "AV_OPT_TYPE_DURATION",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set fade duration",
+        "max": "9223372036854775807LL",
+        "min": "0",
+        "name": "d",
+        "offset": "__builtin_offsetof(AudioFadeContext, duration)",
+        "type": "AV_OPT_TYPE_DURATION",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set fade curve type",
+        "max": "NB_CURVES - 1",
+        "min": "NONE",
+        "name": "curve",
+        "offset": "__builtin_offsetof(AudioFadeContext, curve)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set fade curve type",
+        "max": "NB_CURVES - 1",
+        "min": "NONE",
+        "name": "c",
+        "offset": "__builtin_offsetof(AudioFadeContext, curve)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = NONE']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "no fade; keep audio as-is",
+        "max": "0",
+        "min": "0",
+        "name": "nofade",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "linear slope",
+        "max": "0",
+        "min": "0",
+        "name": "tri",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QSIN']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "quarter of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "qsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = ESIN']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "exponential sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "esin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = HSIN']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "half of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "hsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = LOG']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "logarithmic",
+        "max": "0",
+        "min": "0",
+        "name": "log",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = IPAR']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "inverted parabola",
+        "max": "0",
+        "min": "0",
+        "name": "ipar",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QUA']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "quadratic",
+        "max": "0",
+        "min": "0",
+        "name": "qua",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = CUB']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "cubic",
+        "max": "0",
+        "min": "0",
+        "name": "cub",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = SQU']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "square root",
+        "max": "0",
+        "min": "0",
+        "name": "squ",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = CBR']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "cubic root",
+        "max": "0",
+        "min": "0",
+        "name": "cbr",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = PAR']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "parabola",
+        "max": "0",
+        "min": "0",
+        "name": "par",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = EXP']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "exponential",
+        "max": "0",
+        "min": "0",
+        "name": "exp",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = IQSIN']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "inverted quarter of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "iqsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = IHSIN']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "inverted half of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "ihsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = DESE']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "double-exponential seat",
+        "max": "0",
+        "min": "0",
+        "name": "dese",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = DESI']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "double-exponential sigmoid",
+        "max": "0",
+        "min": "0",
+        "name": "desi",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = LOSI']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "logistic sigmoid",
+        "max": "0",
+        "min": "0",
+        "name": "losi",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = SINC']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "sine cardinal function",
+        "max": "0",
+        "min": "0",
+        "name": "sinc",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = ISINC']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "inverted sine cardinal function",
+        "max": "0",
+        "min": "0",
+        "name": "isinc",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QUAT']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "quartic",
+        "max": "0",
+        "min": "0",
+        "name": "quat",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QUATR']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "quartic root",
+        "max": "0",
+        "min": "0",
+        "name": "quatr",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QSIN2']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "squared quarter of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "qsin2",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = HSIN2']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "squared half of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "hsin2",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.dbl = 0']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set the silence gain",
+        "max": "1",
+        "min": "0",
+        "name": "silence",
+        "offset": "__builtin_offsetof(AudioFadeContext, silence)",
+        "type": "AV_OPT_TYPE_DOUBLE",
+        "unit": null
+      },
+      {
+        "default": "['.dbl = 1']",
+        "flags": "8|(1<<16)|(1<<15)",
+        "help": "set the unity gain",
+        "max": "1",
+        "min": "0",
+        "name": "unity",
+        "offset": "__builtin_offsetof(AudioFadeContext, unity)",
+        "type": "AV_OPT_TYPE_DOUBLE",
+        "unit": null
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "outputs": "(avfilter_af_afade_outputs)",
+    "preinit": null,
+    "priv_class": "&afade_class"
+  },
+  {
+    "description": "Cross fade two input audio streams.",
+    "flags": null,
+    "id": "ff_af_acrossfade",
+    "init": null,
+    "init_src": null,
+    "input_filter_pads": [
+      {
+        "name": "crossfade0",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      },
+      {
+        "name": "crossfade1",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "inputs": "(avfilter_af_acrossfade_inputs)",
+    "name": "acrossfade",
+    "options": [
+      {
+        "default": "['.i64 = 44100']",
+        "flags": "8|(1<<16)",
+        "help": "set number of samples for cross fade duration",
+        "max": "2147483647/10",
+        "min": "1",
+        "name": "nb_samples",
+        "offset": "__builtin_offsetof(AudioFadeContext, nb_samples)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 44100']",
+        "flags": "8|(1<<16)",
+        "help": "set number of samples for cross fade duration",
+        "max": "2147483647/10",
+        "min": "1",
+        "name": "ns",
+        "offset": "__builtin_offsetof(AudioFadeContext, nb_samples)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)",
+        "help": "set cross fade duration",
+        "max": "60000000",
+        "min": "0",
+        "name": "duration",
+        "offset": "__builtin_offsetof(AudioFadeContext, duration)",
+        "type": "AV_OPT_TYPE_DURATION",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 0']",
+        "flags": "8|(1<<16)",
+        "help": "set cross fade duration",
+        "max": "60000000",
+        "min": "0",
+        "name": "d",
+        "offset": "__builtin_offsetof(AudioFadeContext, duration)",
+        "type": "AV_OPT_TYPE_DURATION",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 1']",
+        "flags": "8|(1<<16)",
+        "help": "overlap 1st stream end with 2nd stream start",
+        "max": "1",
+        "min": "0",
+        "name": "overlap",
+        "offset": "__builtin_offsetof(AudioFadeContext, overlap)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = 1']",
+        "flags": "8|(1<<16)",
+        "help": "overlap 1st stream end with 2nd stream start",
+        "max": "1",
+        "min": "0",
+        "name": "o",
+        "offset": "__builtin_offsetof(AudioFadeContext, overlap)",
+        "type": "AV_OPT_TYPE_BOOL",
+        "unit": null
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)",
+        "help": "set fade curve type for 1st stream",
+        "max": "NB_CURVES - 1",
+        "min": "NONE",
+        "name": "curve1",
+        "offset": "__builtin_offsetof(AudioFadeContext, curve)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)",
+        "help": "set fade curve type for 1st stream",
+        "max": "NB_CURVES - 1",
+        "min": "NONE",
+        "name": "c1",
+        "offset": "__builtin_offsetof(AudioFadeContext, curve)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = NONE']",
+        "flags": "8|(1<<16)",
+        "help": "no fade; keep audio as-is",
+        "max": "0",
+        "min": "0",
+        "name": "nofade",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)",
+        "help": "linear slope",
+        "max": "0",
+        "min": "0",
+        "name": "tri",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QSIN']",
+        "flags": "8|(1<<16)",
+        "help": "quarter of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "qsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = ESIN']",
+        "flags": "8|(1<<16)",
+        "help": "exponential sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "esin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = HSIN']",
+        "flags": "8|(1<<16)",
+        "help": "half of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "hsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = LOG']",
+        "flags": "8|(1<<16)",
+        "help": "logarithmic",
+        "max": "0",
+        "min": "0",
+        "name": "log",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = IPAR']",
+        "flags": "8|(1<<16)",
+        "help": "inverted parabola",
+        "max": "0",
+        "min": "0",
+        "name": "ipar",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QUA']",
+        "flags": "8|(1<<16)",
+        "help": "quadratic",
+        "max": "0",
+        "min": "0",
+        "name": "qua",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = CUB']",
+        "flags": "8|(1<<16)",
+        "help": "cubic",
+        "max": "0",
+        "min": "0",
+        "name": "cub",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = SQU']",
+        "flags": "8|(1<<16)",
+        "help": "square root",
+        "max": "0",
+        "min": "0",
+        "name": "squ",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = CBR']",
+        "flags": "8|(1<<16)",
+        "help": "cubic root",
+        "max": "0",
+        "min": "0",
+        "name": "cbr",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = PAR']",
+        "flags": "8|(1<<16)",
+        "help": "parabola",
+        "max": "0",
+        "min": "0",
+        "name": "par",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = EXP']",
+        "flags": "8|(1<<16)",
+        "help": "exponential",
+        "max": "0",
+        "min": "0",
+        "name": "exp",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = IQSIN']",
+        "flags": "8|(1<<16)",
+        "help": "inverted quarter of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "iqsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = IHSIN']",
+        "flags": "8|(1<<16)",
+        "help": "inverted half of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "ihsin",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = DESE']",
+        "flags": "8|(1<<16)",
+        "help": "double-exponential seat",
+        "max": "0",
+        "min": "0",
+        "name": "dese",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = DESI']",
+        "flags": "8|(1<<16)",
+        "help": "double-exponential sigmoid",
+        "max": "0",
+        "min": "0",
+        "name": "desi",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = LOSI']",
+        "flags": "8|(1<<16)",
+        "help": "logistic sigmoid",
+        "max": "0",
+        "min": "0",
+        "name": "losi",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = SINC']",
+        "flags": "8|(1<<16)",
+        "help": "sine cardinal function",
+        "max": "0",
+        "min": "0",
+        "name": "sinc",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = ISINC']",
+        "flags": "8|(1<<16)",
+        "help": "inverted sine cardinal function",
+        "max": "0",
+        "min": "0",
+        "name": "isinc",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QUAT']",
+        "flags": "8|(1<<16)",
+        "help": "quartic",
+        "max": "0",
+        "min": "0",
+        "name": "quat",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QUATR']",
+        "flags": "8|(1<<16)",
+        "help": "quartic root",
+        "max": "0",
+        "min": "0",
+        "name": "quatr",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = QSIN2']",
+        "flags": "8|(1<<16)",
+        "help": "squared quarter of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "qsin2",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = HSIN2']",
+        "flags": "8|(1<<16)",
+        "help": "squared half of sine wave",
+        "max": "0",
+        "min": "0",
+        "name": "hsin2",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)",
+        "help": "set fade curve type for 2nd stream",
+        "max": "NB_CURVES - 1",
+        "min": "NONE",
+        "name": "curve2",
+        "offset": "__builtin_offsetof(AudioFadeContext, curve2)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "curve"
+      },
+      {
+        "default": "['.i64 = TRI']",
+        "flags": "8|(1<<16)",
+        "help": "set fade curve type for 2nd stream",
+        "max": "NB_CURVES - 1",
+        "min": "NONE",
+        "name": "c2",
+        "offset": "__builtin_offsetof(AudioFadeContext, curve2)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "curve"
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_AUDIO"
+      }
+    ],
+    "outputs": "(avfilter_af_acrossfade_outputs)",
+    "preinit": null,
+    "priv_class": "&acrossfade_class"
+  }
+]

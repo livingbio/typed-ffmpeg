@@ -26,6 +26,7 @@ def all_filters() -> list[FFMpegFilter]:
                 is_support_timeline=filter_info.is_support_timeline,
                 is_support_slice_threading=filter_info.is_support_slice_threading,
                 is_support_command=filter_info.is_support_command,
+                # NOTE: is_support_framesync can only be determined by filter_info_from_help
                 is_support_framesync=filter_info_from_help.is_support_framesync,
                 is_filter_sink=filter_info.is_filter_sink,
                 is_filter_source=filter_info.is_filter_source,

@@ -1,0 +1,314 @@
+[
+  {
+    "description": "Adjust components curves.",
+    "flags": "(1 << 16) | (1 << 2)",
+    "id": "ff_vf_curves",
+    "init": "curves_init",
+    "init_src": null,
+    "input_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "inputs": "(curves_inputs)",
+    "name": "curves",
+    "options": [
+      {
+        "default": "['.i64=PRESET_NONE']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "select a color curves preset",
+        "max": "NB_PRESETS-1",
+        "min": "PRESET_NONE",
+        "name": "preset",
+        "offset": "__builtin_offsetof(CurvesContext, preset)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_NONE']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "none",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_COLOR_NEGATIVE']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "color_negative",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_CROSS_PROCESS']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "cross_process",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_DARKER']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "darker",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_INCREASE_CONTRAST']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "increase_contrast",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_LIGHTER']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "lighter",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_LINEAR_CONTRAST']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "linear_contrast",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_MEDIUM_CONTRAST']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "medium_contrast",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_NEGATIVE']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "negative",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_STRONG_CONTRAST']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "strong_contrast",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.i64=PRESET_VINTAGE']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "((void*)0)",
+        "max": "0",
+        "min": "0",
+        "name": "vintage",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "preset_name"
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set master points coordinates",
+        "max": null,
+        "min": null,
+        "name": "master",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[3])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set master points coordinates",
+        "max": null,
+        "min": null,
+        "name": "m",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[3])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set red points coordinates",
+        "max": null,
+        "min": null,
+        "name": "red",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[0])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set red points coordinates",
+        "max": null,
+        "min": null,
+        "name": "r",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[0])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set green points coordinates",
+        "max": null,
+        "min": null,
+        "name": "green",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[1])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set green points coordinates",
+        "max": null,
+        "min": null,
+        "name": "g",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[1])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set blue points coordinates",
+        "max": null,
+        "min": null,
+        "name": "blue",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[2])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set blue points coordinates",
+        "max": null,
+        "min": null,
+        "name": "b",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str[2])",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set points coordinates for all components",
+        "max": null,
+        "min": null,
+        "name": "all",
+        "offset": "__builtin_offsetof(CurvesContext, comp_points_str_all)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "set Photoshop curves file name",
+        "max": null,
+        "min": null,
+        "name": "psfile",
+        "offset": "__builtin_offsetof(CurvesContext, psfile)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.str=((void*)0)']",
+        "flags": ".flags = (1<<16)|16|(1<<15)",
+        "help": "save Gnuplot script of the curves in specified file",
+        "max": null,
+        "min": null,
+        "name": "plot",
+        "offset": "__builtin_offsetof(CurvesContext, plot_filename)",
+        "type": "AV_OPT_TYPE_STRING",
+        "unit": null
+      },
+      {
+        "default": "['.i64=INTERP_NATURAL']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "specify the kind of interpolation",
+        "max": "NB_INTERPS-1",
+        "min": "INTERP_NATURAL",
+        "name": "interp",
+        "offset": "__builtin_offsetof(CurvesContext, interp)",
+        "type": "AV_OPT_TYPE_INT",
+        "unit": "interp_name"
+      },
+      {
+        "default": "['.i64=INTERP_NATURAL']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "natural cubic spline",
+        "max": "0",
+        "min": "0",
+        "name": "natural",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "interp_name"
+      },
+      {
+        "default": "['.i64=INTERP_PCHIP']",
+        "flags": "(1<<16)|16|(1<<15)",
+        "help": "monotonically cubic interpolation",
+        "max": "0",
+        "min": "0",
+        "name": "pchip",
+        "offset": "0",
+        "type": "AV_OPT_TYPE_CONST",
+        "unit": "interp_name"
+      }
+    ],
+    "output_filter_pads": [
+      {
+        "name": "default",
+        "type": "AVMEDIA_TYPE_VIDEO"
+      }
+    ],
+    "outputs": "(ff_video_default_filterpad)",
+    "preinit": null,
+    "priv_class": "&curves_class"
+  }
+]

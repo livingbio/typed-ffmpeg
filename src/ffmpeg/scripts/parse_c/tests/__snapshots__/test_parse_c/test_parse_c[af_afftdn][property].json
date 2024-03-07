@@ -1,0 +1,328 @@
+[
+  {
+    "flags_value": 131076,
+    "inputs_value": "inputs",
+    "is_dynamic_inputs": false,
+    "is_dynamic_outputs": false,
+    "outputs_value": "ff_audio_default_filterpad",
+    "parsed_options": [
+      {
+        "alias": [
+          "noise_reduction",
+          "nr"
+        ],
+        "choices": [],
+        "default": "['.dbl = 12']",
+        "default_value": 12.0,
+        "deprecated": false,
+        "help": "set the noise reduction",
+        "name": "noise_reduction",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "noise_floor",
+          "nf"
+        ],
+        "choices": [],
+        "default": "['.dbl =-50']",
+        "default_value": -50.0,
+        "deprecated": false,
+        "help": "set the noise floor",
+        "name": "noise_floor",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "noise_type",
+          "nt"
+        ],
+        "choices": [
+          {
+            "help": "white noise",
+            "name": "white",
+            "value": "WHITE_NOISE"
+          },
+          {
+            "help": "white noise",
+            "name": "w",
+            "value": "WHITE_NOISE"
+          },
+          {
+            "help": "vinyl noise",
+            "name": "vinyl",
+            "value": "VINYL_NOISE"
+          },
+          {
+            "help": "vinyl noise",
+            "name": "v",
+            "value": "VINYL_NOISE"
+          },
+          {
+            "help": "shellac noise",
+            "name": "shellac",
+            "value": "SHELLAC_NOISE"
+          },
+          {
+            "help": "shellac noise",
+            "name": "s",
+            "value": "SHELLAC_NOISE"
+          },
+          {
+            "help": "custom noise",
+            "name": "custom",
+            "value": "CUSTOM_NOISE"
+          },
+          {
+            "help": "custom noise",
+            "name": "c",
+            "value": "CUSTOM_NOISE"
+          }
+        ],
+        "default": "['.i64 = WHITE_NOISE']",
+        "default_value": "WHITE_NOISE",
+        "deprecated": false,
+        "help": "set the noise type",
+        "name": "noise_type",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "band_noise",
+          "bn"
+        ],
+        "choices": [],
+        "default": "['.str = 0']",
+        "default_value": "0",
+        "deprecated": false,
+        "help": "set the custom bands noise",
+        "name": "band_noise",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "residual_floor",
+          "rf"
+        ],
+        "choices": [],
+        "default": "['.dbl =-38']",
+        "default_value": -38.0,
+        "deprecated": false,
+        "help": "set the residual floor",
+        "name": "residual_floor",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "track_noise",
+          "tn"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "track noise",
+        "name": "track_noise",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "track_residual",
+          "tr"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "track residual",
+        "name": "track_residual",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "output_mode",
+          "om"
+        ],
+        "choices": [
+          {
+            "help": "input",
+            "name": "input",
+            "value": "IN_MODE"
+          },
+          {
+            "help": "input",
+            "name": "i",
+            "value": "IN_MODE"
+          },
+          {
+            "help": "output",
+            "name": "output",
+            "value": "OUT_MODE"
+          },
+          {
+            "help": "output",
+            "name": "o",
+            "value": "OUT_MODE"
+          },
+          {
+            "help": "noise",
+            "name": "noise",
+            "value": "NOISE_MODE"
+          },
+          {
+            "help": "noise",
+            "name": "n",
+            "value": "NOISE_MODE"
+          }
+        ],
+        "default": "['.i64 = OUT_MODE']",
+        "default_value": "OUT_MODE",
+        "deprecated": false,
+        "help": "set output mode",
+        "name": "output_mode",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "adaptivity",
+          "ad"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.5']",
+        "default_value": 0.5,
+        "deprecated": false,
+        "help": "set adaptivity factor",
+        "name": "adaptivity",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "floor_offset",
+          "fo"
+        ],
+        "choices": [],
+        "default": "['.dbl = 1.0']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "set noise floor offset factor",
+        "name": "floor_offset",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "noise_link",
+          "nl"
+        ],
+        "choices": [
+          {
+            "help": "none",
+            "name": "none",
+            "value": "NONE_LINK"
+          },
+          {
+            "help": "min",
+            "name": "min",
+            "value": "MIN_LINK"
+          },
+          {
+            "help": "max",
+            "name": "max",
+            "value": "MAX_LINK"
+          },
+          {
+            "help": "average",
+            "name": "average",
+            "value": "AVERAGE_LINK"
+          }
+        ],
+        "default": "['.i64 = MIN_LINK']",
+        "default_value": "MIN_LINK",
+        "deprecated": false,
+        "help": "set the noise floor link",
+        "name": "noise_link",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "band_multiplier",
+          "bm"
+        ],
+        "choices": [],
+        "default": "['.dbl = 1.25']",
+        "default_value": 1.25,
+        "deprecated": false,
+        "help": "set band multiplier",
+        "name": "band_multiplier",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "sample_noise",
+          "sn"
+        ],
+        "choices": [
+          {
+            "help": "none",
+            "name": "none",
+            "value": "SAMPLE_NONE"
+          },
+          {
+            "help": "start",
+            "name": "start",
+            "value": "SAMPLE_START"
+          },
+          {
+            "help": "start",
+            "name": "begin",
+            "value": "SAMPLE_START"
+          },
+          {
+            "help": "stop",
+            "name": "stop",
+            "value": "SAMPLE_STOP"
+          },
+          {
+            "help": "stop",
+            "name": "end",
+            "value": "SAMPLE_STOP"
+          }
+        ],
+        "default": "['.i64 = SAMPLE_NONE']",
+        "default_value": "SAMPLE_NONE",
+        "deprecated": false,
+        "help": "set sample noise mode",
+        "name": "sample_noise",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "gain_smooth",
+          "gs"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "set gain smooth radius",
+        "name": "gain_smooth",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      }
+    ],
+    "priv_class_value": "afftdn_class",
+    "type": "af"
+  }
+]

@@ -1,52 +1,41 @@
 import os
+from dataclasses import replace
 from pathlib import Path
 
 import typer
 
+from ...common.schema import FFMpegFilter, FFMpegOption
+from ..parse_docs.cli import extract_docs
 from ..parse_help.cli import all_filters
 from .gen import render
 
 app = typer.Typer()
 
 
+def gen_filter_info(filter: FFMpegFilter) -> FFMpegFilter:
+    filter_doc = extract_docs(filter.name)
+
+    # NOTE:
+    # currently we only use filter_doc's url info
+    return replace(filter, ref=filter_doc.url)
+
+
+def gen_option_info() -> list[FFMpegOption]:
+    ...
+
+
 @app.command()
-def generate(outpath: Path = Path("./src/ffmpeg")) -> None:
+def generate() -> None:
+    outpath = Path(__file__).parent.parent.parent
+
+    ffmpeg_filters = []
+
     for f in all_filters():
-        help_info = None
-        try:
-            help_info = extract(f.name)
-        except ValueError:
-            typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"Unknown filter {f.name}")
-            continue
-        except Exception as e:
-            typer.echo(typer.style("ERROR: ", fg=typer.colors.RED) + f"{f.name} {e}")
-            continue
+        ffmpeg_filters.append(gen_filter_info(f))
 
-        # TODO:
-        # verify parse_c and parse_help results is consistent
+    ffmpeg_options = gen_option_info()
 
-        doc = filter_doc_mapping[f.name]
-        ffmpeg_filter = update_or_create(
-            id=f.id,
-            filter_type=f.type,
-            name=f.name,
-            description=help_info.description,
-            ref=doc.url,
-            is_input_dynamic=help_info.is_dynamic_inputs,
-            is_output_dynamic=help_info.is_dynamic_outputs,
-            is_support_timeline=help_info.is_support_timeline,
-            is_support_framesync=help_info.is_support_framesync,
-            input_stream_typings=help_info.input_types,
-            output_stream_typings=help_info.output_types,
-            options=parse_help_options(help_info),
-        )
-
-        ffmpeg_filter.save()
-        output.append(ffmpeg_filter)
-
-    ffmpeg_options = parse_ffmpeg_options()
-
-    render(output, ffmpeg_options, outpath)
+    render(ffmpeg_filters, ffmpeg_options, outpath)
     os.system("pre-commit run -a")
 
 

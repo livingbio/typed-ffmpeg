@@ -1,0 +1,1478 @@
+[
+  {
+    "flags_value": 17,
+    "inputs_value": null,
+    "is_dynamic_inputs": true,
+    "is_dynamic_outputs": false,
+    "outputs_value": "libplacebo_outputs",
+    "parsed_options": [
+      {
+        "alias": [
+          "inputs"
+        ],
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "Number of inputs",
+        "name": "inputs",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "w"
+        ],
+        "choices": [],
+        "default": "['.str = \"iw\"']",
+        "default_value": "iw",
+        "deprecated": false,
+        "help": "Output video frame width",
+        "name": "w",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "h"
+        ],
+        "choices": [],
+        "default": "['.str = \"ih\"']",
+        "default_value": "ih",
+        "deprecated": false,
+        "help": "Output video frame height",
+        "name": "h",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "fps"
+        ],
+        "choices": [],
+        "default": "['.str = \"none\"']",
+        "default_value": "none",
+        "deprecated": false,
+        "help": "Output video frame rate",
+        "name": "fps",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "crop_x"
+        ],
+        "choices": [],
+        "default": "['.str = \"(iw-cw)/2\"']",
+        "default_value": "(iw-cw)/2",
+        "deprecated": false,
+        "help": "Input video crop x",
+        "name": "crop_x",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "crop_y"
+        ],
+        "choices": [],
+        "default": "['.str = \"(ih-ch)/2\"']",
+        "default_value": "(ih-ch)/2",
+        "deprecated": false,
+        "help": "Input video crop y",
+        "name": "crop_y",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "crop_w"
+        ],
+        "choices": [],
+        "default": "['.str = \"iw\"']",
+        "default_value": "iw",
+        "deprecated": false,
+        "help": "Input video crop w",
+        "name": "crop_w",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "crop_h"
+        ],
+        "choices": [],
+        "default": "['.str = \"ih\"']",
+        "default_value": "ih",
+        "deprecated": false,
+        "help": "Input video crop h",
+        "name": "crop_h",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "pos_x"
+        ],
+        "choices": [],
+        "default": "['.str = \"(ow-pw)/2\"']",
+        "default_value": "(ow-pw)/2",
+        "deprecated": false,
+        "help": "Output video placement x",
+        "name": "pos_x",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "pos_y"
+        ],
+        "choices": [],
+        "default": "['.str = \"(oh-ph)/2\"']",
+        "default_value": "(oh-ph)/2",
+        "deprecated": false,
+        "help": "Output video placement y",
+        "name": "pos_y",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "pos_w"
+        ],
+        "choices": [],
+        "default": "['.str = \"ow\"']",
+        "default_value": "ow",
+        "deprecated": false,
+        "help": "Output video placement w",
+        "name": "pos_w",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "pos_h"
+        ],
+        "choices": [],
+        "default": "['.str = \"oh\"']",
+        "default_value": "oh",
+        "deprecated": false,
+        "help": "Output video placement h",
+        "name": "pos_h",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "format"
+        ],
+        "choices": [],
+        "default": null,
+        "default_value": null,
+        "deprecated": false,
+        "help": "Output video format",
+        "name": "format",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "force_original_aspect_ratio"
+        ],
+        "choices": [
+          {
+            "help": "((void*)0)",
+            "name": "disable",
+            "value": 0
+          },
+          {
+            "help": "((void*)0)",
+            "name": "decrease",
+            "value": 1
+          },
+          {
+            "help": "((void*)0)",
+            "name": "increase",
+            "value": 2
+          }
+        ],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "decrease or increase w/h if necessary to keep the original AR",
+        "name": "force_original_aspect_ratio",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "force_divisible_by"
+        ],
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "enforce that the output resolution is divisible by a defined integer when force_original_aspect_ratio is used",
+        "name": "force_divisible_by",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "normalize_sar"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "force SAR normalization to 1:1 by adjusting pos_x/y/w/h",
+        "name": "normalize_sar",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "pad_crop_ratio"
+        ],
+        "choices": [],
+        "default": "['.dbl=0.0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "ratio between padding and cropping when normalizing SAR (0=pad, 1=crop)",
+        "name": "pad_crop_ratio",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "fillcolor"
+        ],
+        "choices": [],
+        "default": "['.str = \"black\"']",
+        "default_value": "black",
+        "deprecated": false,
+        "help": "Background fill color",
+        "name": "fillcolor",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "corner_rounding"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "Corner rounding radius",
+        "name": "corner_rounding",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "extra_opts"
+        ],
+        "choices": [],
+        "default": null,
+        "default_value": null,
+        "deprecated": false,
+        "help": "Pass extra libplacebo-specific options using a :-separated list of key=value pairs",
+        "name": "extra_opts",
+        "required": false,
+        "type": "AV_OPT_TYPE_DICT"
+      },
+      {
+        "alias": [
+          "colorspace"
+        ],
+        "choices": [
+          {
+            "help": "keep the same colorspace",
+            "name": "auto",
+            "value": -1
+          },
+          {
+            "help": "((void*)0)",
+            "name": "gbr",
+            "value": "AVCOL_SPC_RGB"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt709",
+            "value": "AVCOL_SPC_BT709"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "AVCOL_SPC_UNSPECIFIED"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470bg",
+            "value": "AVCOL_SPC_BT470BG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte170m",
+            "value": "AVCOL_SPC_SMPTE170M"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte240m",
+            "value": "AVCOL_SPC_SMPTE240M"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "ycgco",
+            "value": "AVCOL_SPC_YCGCO"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020nc",
+            "value": "AVCOL_SPC_BT2020_NCL"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020c",
+            "value": "AVCOL_SPC_BT2020_CL"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "ictcp",
+            "value": "AVCOL_SPC_ICTCP"
+          }
+        ],
+        "default": "['.i64=-1']",
+        "default_value": -1,
+        "deprecated": false,
+        "help": "select colorspace",
+        "name": "colorspace",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "range"
+        ],
+        "choices": [
+          {
+            "help": "keep the same color range",
+            "name": "auto",
+            "value": -1
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unspecified",
+            "value": "AVCOL_RANGE_UNSPECIFIED"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "AVCOL_RANGE_UNSPECIFIED"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "limited",
+            "value": "AVCOL_RANGE_MPEG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "tv",
+            "value": "AVCOL_RANGE_MPEG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "mpeg",
+            "value": "AVCOL_RANGE_MPEG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "full",
+            "value": "AVCOL_RANGE_JPEG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "pc",
+            "value": "AVCOL_RANGE_JPEG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "jpeg",
+            "value": "AVCOL_RANGE_JPEG"
+          }
+        ],
+        "default": "['.i64=-1']",
+        "default_value": -1,
+        "deprecated": false,
+        "help": "select color range",
+        "name": "range",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "color_primaries"
+        ],
+        "choices": [
+          {
+            "help": "keep the same color primaries",
+            "name": "auto",
+            "value": -1
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt709",
+            "value": "AVCOL_PRI_BT709"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "AVCOL_PRI_UNSPECIFIED"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470m",
+            "value": "AVCOL_PRI_BT470M"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470bg",
+            "value": "AVCOL_PRI_BT470BG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte170m",
+            "value": "AVCOL_PRI_SMPTE170M"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte240m",
+            "value": "AVCOL_PRI_SMPTE240M"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "film",
+            "value": "AVCOL_PRI_FILM"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020",
+            "value": "AVCOL_PRI_BT2020"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte428",
+            "value": "AVCOL_PRI_SMPTE428"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte431",
+            "value": "AVCOL_PRI_SMPTE431"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte432",
+            "value": "AVCOL_PRI_SMPTE432"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "jedec-p22",
+            "value": "AVCOL_PRI_JEDEC_P22"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "ebu3213",
+            "value": "AVCOL_PRI_EBU3213"
+          }
+        ],
+        "default": "['.i64=-1']",
+        "default_value": -1,
+        "deprecated": false,
+        "help": "select color primaries",
+        "name": "color_primaries",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "color_trc"
+        ],
+        "choices": [
+          {
+            "help": "keep the same color transfer",
+            "name": "auto",
+            "value": -1
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt709",
+            "value": "AVCOL_TRC_BT709"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "unknown",
+            "value": "AVCOL_TRC_UNSPECIFIED"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470m",
+            "value": "AVCOL_TRC_GAMMA22"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt470bg",
+            "value": "AVCOL_TRC_GAMMA28"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte170m",
+            "value": "AVCOL_TRC_SMPTE170M"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte240m",
+            "value": "AVCOL_TRC_SMPTE240M"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "linear",
+            "value": "AVCOL_TRC_LINEAR"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "iec61966-2-4",
+            "value": "AVCOL_TRC_IEC61966_2_4"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt1361e",
+            "value": "AVCOL_TRC_BT1361_ECG"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "iec61966-2-1",
+            "value": "AVCOL_TRC_IEC61966_2_1"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020-10",
+            "value": "AVCOL_TRC_BT2020_10"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "bt2020-12",
+            "value": "AVCOL_TRC_BT2020_12"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "smpte2084",
+            "value": "AVCOL_TRC_SMPTE2084"
+          },
+          {
+            "help": "((void*)0)",
+            "name": "arib-std-b67",
+            "value": "AVCOL_TRC_ARIB_STD_B67"
+          }
+        ],
+        "default": "['.i64=-1']",
+        "default_value": -1,
+        "deprecated": false,
+        "help": "select color transfer",
+        "name": "color_trc",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "upscaler"
+        ],
+        "choices": [],
+        "default": "['.str = \"spline36\"']",
+        "default_value": "spline36",
+        "deprecated": false,
+        "help": "Upscaler function",
+        "name": "upscaler",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "downscaler"
+        ],
+        "choices": [],
+        "default": "['.str = \"mitchell\"']",
+        "default_value": "mitchell",
+        "deprecated": false,
+        "help": "Downscaler function",
+        "name": "downscaler",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "frame_mixer"
+        ],
+        "choices": [],
+        "default": "['.str = \"none\"']",
+        "default_value": "none",
+        "deprecated": false,
+        "help": "Frame mixing function",
+        "name": "frame_mixer",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "lut_entries"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Number of scaler LUT entries",
+        "name": "lut_entries",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "antiringing"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "Antiringing strength (for non-EWA filters)",
+        "name": "antiringing",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "sigmoid"
+        ],
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "Enable sigmoid upscaling",
+        "name": "sigmoid",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "apply_filmgrain"
+        ],
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "Apply film grain metadata",
+        "name": "apply_filmgrain",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "apply_dolbyvision"
+        ],
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "Apply Dolby Vision metadata",
+        "name": "apply_dolbyvision",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "deband"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Enable debanding",
+        "name": "deband",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "deband_iterations"
+        ],
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "Deband iterations",
+        "name": "deband_iterations",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "deband_threshold"
+        ],
+        "choices": [],
+        "default": "['.dbl = 4.0']",
+        "default_value": 4.0,
+        "deprecated": false,
+        "help": "Deband threshold",
+        "name": "deband_threshold",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "deband_radius"
+        ],
+        "choices": [],
+        "default": "['.dbl = 16.0']",
+        "default_value": 16.0,
+        "deprecated": false,
+        "help": "Deband radius",
+        "name": "deband_radius",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "deband_grain"
+        ],
+        "choices": [],
+        "default": "['.dbl = 6.0']",
+        "default_value": 6.0,
+        "deprecated": false,
+        "help": "Deband grain",
+        "name": "deband_grain",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "brightness"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "Brightness boost",
+        "name": "brightness",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "contrast"
+        ],
+        "choices": [],
+        "default": "['.dbl = 1.0']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "Contrast gain",
+        "name": "contrast",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "saturation"
+        ],
+        "choices": [],
+        "default": "['.dbl = 1.0']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "Saturation gain",
+        "name": "saturation",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "hue"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "Hue shift",
+        "name": "hue",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "gamma"
+        ],
+        "choices": [],
+        "default": "['.dbl = 1.0']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "Gamma adjustment",
+        "name": "gamma",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "peak_detect"
+        ],
+        "choices": [],
+        "default": "['.i64 = 1']",
+        "default_value": 1,
+        "deprecated": false,
+        "help": "Enable dynamic peak detection for HDR tone-mapping",
+        "name": "peak_detect",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "smoothing_period"
+        ],
+        "choices": [],
+        "default": "['.dbl = 100.0']",
+        "default_value": 100.0,
+        "deprecated": false,
+        "help": "Peak detection smoothing period",
+        "name": "smoothing_period",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "minimum_peak"
+        ],
+        "choices": [],
+        "default": "['.dbl = 1.0']",
+        "default_value": 1.0,
+        "deprecated": false,
+        "help": "Peak detection minimum peak",
+        "name": "minimum_peak",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "scene_threshold_low"
+        ],
+        "choices": [],
+        "default": "['.dbl = 5.5']",
+        "default_value": 5.5,
+        "deprecated": false,
+        "help": "Scene change low threshold",
+        "name": "scene_threshold_low",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "scene_threshold_high"
+        ],
+        "choices": [],
+        "default": "['.dbl = 10.0']",
+        "default_value": 10.0,
+        "deprecated": false,
+        "help": "Scene change high threshold",
+        "name": "scene_threshold_high",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "percentile"
+        ],
+        "choices": [],
+        "default": "['.dbl = 99.995']",
+        "default_value": 99.995,
+        "deprecated": false,
+        "help": "Peak detection percentile",
+        "name": "percentile",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "gamut_mode"
+        ],
+        "choices": [
+          {
+            "help": "Hard-clip (RGB per-channel)",
+            "name": "clip",
+            "value": "GAMUT_MAP_CLIP"
+          },
+          {
+            "help": "Colorimetric soft clipping",
+            "name": "perceptual",
+            "value": "GAMUT_MAP_PERCEPTUAL"
+          },
+          {
+            "help": "Relative colorimetric clipping",
+            "name": "relative",
+            "value": "GAMUT_MAP_RELATIVE"
+          },
+          {
+            "help": "Saturation mapping (RGB -> RGB)",
+            "name": "saturation",
+            "value": "GAMUT_MAP_SATURATION"
+          },
+          {
+            "help": "Absolute colorimetric clipping",
+            "name": "absolute",
+            "value": "GAMUT_MAP_ABSOLUTE"
+          },
+          {
+            "help": "Colorimetrically desaturate colors towards white",
+            "name": "desaturate",
+            "value": "GAMUT_MAP_DESATURATE"
+          },
+          {
+            "help": "Colorimetric clip with bias towards darkening image to fit gamut",
+            "name": "darken",
+            "value": "GAMUT_MAP_DARKEN"
+          },
+          {
+            "help": "Highlight out-of-gamut colors",
+            "name": "warn",
+            "value": "GAMUT_MAP_HIGHLIGHT"
+          },
+          {
+            "help": "Linearly reduce chromaticity to fit gamut",
+            "name": "linear",
+            "value": "GAMUT_MAP_LINEAR"
+          }
+        ],
+        "default": "['.i64 = GAMUT_MAP_PERCEPTUAL']",
+        "default_value": "GAMUT_MAP_PERCEPTUAL",
+        "deprecated": false,
+        "help": "Gamut-mapping mode",
+        "name": "gamut_mode",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "tonemapping"
+        ],
+        "choices": [
+          {
+            "help": "Automatic selection",
+            "name": "auto",
+            "value": "TONE_MAP_AUTO"
+          },
+          {
+            "help": "No tone mapping (clip",
+            "name": "clip",
+            "value": "TONE_MAP_CLIP"
+          },
+          {
+            "help": "ITU-R BT.2390 EETF",
+            "name": "bt.2390",
+            "value": "TONE_MAP_BT2390"
+          },
+          {
+            "help": "ITU-R BT.2446 Method A",
+            "name": "bt.2446a",
+            "value": "TONE_MAP_BT2446A"
+          },
+          {
+            "help": "Single-pivot polynomial spline",
+            "name": "spline",
+            "value": "TONE_MAP_SPLINE"
+          },
+          {
+            "help": "Reinhard",
+            "name": "reinhard",
+            "value": "TONE_MAP_REINHARD"
+          },
+          {
+            "help": "Mobius",
+            "name": "mobius",
+            "value": "TONE_MAP_MOBIUS"
+          },
+          {
+            "help": "Filmic tone-mapping (Hable)",
+            "name": "hable",
+            "value": "TONE_MAP_HABLE"
+          },
+          {
+            "help": "Gamma function with knee",
+            "name": "gamma",
+            "value": "TONE_MAP_GAMMA"
+          },
+          {
+            "help": "Perceptually linear stretch",
+            "name": "linear",
+            "value": "TONE_MAP_LINEAR"
+          }
+        ],
+        "default": "['.i64 = TONE_MAP_AUTO']",
+        "default_value": "TONE_MAP_AUTO",
+        "deprecated": false,
+        "help": "Tone-mapping algorithm",
+        "name": "tonemapping",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "tonemapping_param"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "Tunable parameter for some tone-mapping functions",
+        "name": "tonemapping_param",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "inverse_tonemapping"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Inverse tone mapping (range expansion)",
+        "name": "inverse_tonemapping",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "tonemapping_lut_size"
+        ],
+        "choices": [],
+        "default": "['.i64 = 256']",
+        "default_value": 256,
+        "deprecated": false,
+        "help": "Tone-mapping LUT size",
+        "name": "tonemapping_lut_size",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "contrast_recovery"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.30']",
+        "default_value": 0.3,
+        "deprecated": false,
+        "help": "HDR contrast recovery strength",
+        "name": "contrast_recovery",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "contrast_smoothness"
+        ],
+        "choices": [],
+        "default": "['.dbl = 3.50']",
+        "default_value": 3.5,
+        "deprecated": false,
+        "help": "HDR contrast recovery smoothness",
+        "name": "contrast_smoothness",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "desaturation_strength"
+        ],
+        "choices": [],
+        "default": "['.dbl = -1.0']",
+        "default_value": -1.0,
+        "deprecated": true,
+        "help": "Desaturation strength",
+        "name": "desaturation_strength",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "desaturation_exponent"
+        ],
+        "choices": [],
+        "default": "['.dbl = -1.0']",
+        "default_value": -1.0,
+        "deprecated": true,
+        "help": "Desaturation exponent",
+        "name": "desaturation_exponent",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "gamut_warning"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": true,
+        "help": "Highlight out-of-gamut colors",
+        "name": "gamut_warning",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "gamut_clipping"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": true,
+        "help": "Enable desaturating colorimetric gamut clipping",
+        "name": "gamut_clipping",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "intent"
+        ],
+        "choices": [
+          {
+            "help": "Perceptual",
+            "name": "perceptual",
+            "value": "PL_INTENT_PERCEPTUAL"
+          },
+          {
+            "help": "Relative colorimetric",
+            "name": "relative",
+            "value": "PL_INTENT_RELATIVE_COLORIMETRIC"
+          },
+          {
+            "help": "Absolute colorimetric",
+            "name": "absolute",
+            "value": "PL_INTENT_ABSOLUTE_COLORIMETRIC"
+          },
+          {
+            "help": "Saturation mapping",
+            "name": "saturation",
+            "value": "PL_INTENT_SATURATION"
+          }
+        ],
+        "default": "['.i64 = PL_INTENT_PERCEPTUAL']",
+        "default_value": "PL_INTENT_PERCEPTUAL",
+        "deprecated": true,
+        "help": "Rendering intent",
+        "name": "intent",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "tonemapping_mode"
+        ],
+        "choices": [
+          {
+            "help": "Automatic selection",
+            "name": "auto",
+            "value": 0
+          },
+          {
+            "help": "Per-channel (RGB)",
+            "name": "rgb",
+            "value": 1
+          },
+          {
+            "help": "Maximum component",
+            "name": "max",
+            "value": 2
+          },
+          {
+            "help": "Hybrid of Luma/RGB",
+            "name": "hybrid",
+            "value": 3
+          },
+          {
+            "help": "Luminance",
+            "name": "luma",
+            "value": 4
+          }
+        ],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": true,
+        "help": "Tone-mapping mode",
+        "name": "tonemapping_mode",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "tonemapping_crosstalk"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.04']",
+        "default_value": 0.04,
+        "deprecated": true,
+        "help": "Crosstalk factor for tone-mapping",
+        "name": "tonemapping_crosstalk",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "overshoot"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.05']",
+        "default_value": 0.05,
+        "deprecated": true,
+        "help": "Tone-mapping overshoot margin",
+        "name": "overshoot",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "hybrid_mix"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.20']",
+        "default_value": 0.2,
+        "deprecated": false,
+        "help": "Tone-mapping hybrid LMS mixing coefficient",
+        "name": "hybrid_mix",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "dithering"
+        ],
+        "choices": [
+          {
+            "help": "Disable dithering",
+            "name": "none",
+            "value": -1
+          },
+          {
+            "help": "Blue noise",
+            "name": "blue",
+            "value": "PL_DITHER_BLUE_NOISE"
+          },
+          {
+            "help": "Ordered LUT",
+            "name": "ordered",
+            "value": "PL_DITHER_ORDERED_LUT"
+          },
+          {
+            "help": "Fixed function ordered",
+            "name": "ordered_fixed",
+            "value": "PL_DITHER_ORDERED_FIXED"
+          },
+          {
+            "help": "White noise",
+            "name": "white",
+            "value": "PL_DITHER_WHITE_NOISE"
+          }
+        ],
+        "default": "['.i64 = PL_DITHER_BLUE_NOISE']",
+        "default_value": "PL_DITHER_BLUE_NOISE",
+        "deprecated": false,
+        "help": "Dither method to use",
+        "name": "dithering",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "dither_lut_size"
+        ],
+        "choices": [],
+        "default": "['.i64 = 6']",
+        "default_value": 6,
+        "deprecated": false,
+        "help": "Dithering LUT size",
+        "name": "dither_lut_size",
+        "required": false,
+        "type": "AV_OPT_TYPE_INT"
+      },
+      {
+        "alias": [
+          "dither_temporal"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Enable temporal dithering",
+        "name": "dither_temporal",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "cones"
+        ],
+        "choices": [
+          {
+            "help": "L cone",
+            "name": "l",
+            "value": "PL_CONE_L"
+          },
+          {
+            "help": "M cone",
+            "name": "m",
+            "value": "PL_CONE_M"
+          },
+          {
+            "help": "S cone",
+            "name": "s",
+            "value": "PL_CONE_S"
+          }
+        ],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Colorblindness adaptation model",
+        "name": "cones",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLAGS"
+      },
+      {
+        "alias": [
+          "cone-strength"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0.0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "Colorblindness adaptation strength",
+        "name": "cone-strength",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "custom_shader_path"
+        ],
+        "choices": [],
+        "default": null,
+        "default_value": null,
+        "deprecated": false,
+        "help": "Path to custom user shader (mpv .hook format)",
+        "name": "custom_shader_path",
+        "required": false,
+        "type": "AV_OPT_TYPE_STRING"
+      },
+      {
+        "alias": [
+          "custom_shader_bin"
+        ],
+        "choices": [],
+        "default": null,
+        "default_value": null,
+        "deprecated": false,
+        "help": "Custom user shader as binary (mpv .hook format)",
+        "name": "custom_shader_bin",
+        "required": false,
+        "type": "AV_OPT_TYPE_BINARY"
+      },
+      {
+        "alias": [
+          "skip_aa"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Skip anti-aliasing",
+        "name": "skip_aa",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "polar_cutoff"
+        ],
+        "choices": [],
+        "default": "['.dbl = 0']",
+        "default_value": 0.0,
+        "deprecated": false,
+        "help": "Polar LUT cutoff",
+        "name": "polar_cutoff",
+        "required": false,
+        "type": "AV_OPT_TYPE_FLOAT"
+      },
+      {
+        "alias": [
+          "disable_linear"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Disable linear scaling",
+        "name": "disable_linear",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "disable_builtin"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Disable built-in scalers",
+        "name": "disable_builtin",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "force_icc_lut"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": true,
+        "help": "Deprecated, does nothing",
+        "name": "force_icc_lut",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "force_dither"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Force dithering",
+        "name": "force_dither",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      },
+      {
+        "alias": [
+          "disable_fbos"
+        ],
+        "choices": [],
+        "default": "['.i64 = 0']",
+        "default_value": 0,
+        "deprecated": false,
+        "help": "Force-disable FBOs",
+        "name": "disable_fbos",
+        "required": false,
+        "type": "AV_OPT_TYPE_BOOL"
+      }
+    ],
+    "priv_class_value": "libplacebo_class",
+    "type": "vf"
+  }
+]
