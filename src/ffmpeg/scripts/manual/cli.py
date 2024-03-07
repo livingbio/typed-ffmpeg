@@ -16,7 +16,7 @@ def init_config() -> None:
         if filter.is_dynamic_input or filter.is_dynamic_output:
             try:
                 info = load(FFMpegFilterManuallyDefined, filter.name)
-            except IOError:
+            except IOError:  # pragma: no cover
                 info = FFMpegFilterManuallyDefined(name=filter.name)
                 save(info, filter.name)
 

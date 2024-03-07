@@ -19,7 +19,7 @@ def download_ffmpeg_filter_documents() -> Path:
     # download ffmpeg filter documents
     filter_path = document_path / "ffmpeg-filters.html"
 
-    if filter_path.exists():
+    if filter_path.exists():  # pragma: no cover
         typer.echo("Filter documents already downloaded")
         return filter_path
 
