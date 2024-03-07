@@ -5,7 +5,7 @@ source_folder = pathlib.Path(__file__).parent / "ffmpeg"
 source_folder.mkdir(exist_ok=True)
 
 
-def precompile(folder: pathlib.Path):
+def precompile(folder: pathlib.Path) -> None:
     os.chdir(folder)
 
     if not os.path.exists("config_components.h"):

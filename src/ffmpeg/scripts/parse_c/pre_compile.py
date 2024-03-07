@@ -5,7 +5,7 @@ source_folder = pathlib.Path(__file__).parent / "ffmpeg"
 source_folder.mkdir(exist_ok=True)
 
 
-def precompile(folder: pathlib.Path):
+def precompile(folder: pathlib.Path) -> None:
     os.chdir(folder)
 
     if not os.path.exists("config_components.h"):
@@ -24,5 +24,4 @@ def precompile(folder: pathlib.Path):
         p = file.relative_to(folder)
         compiled_path = (source_folder / p).resolve()
         compiled_path.parent.mkdir(parents=True, exist_ok=True)
-
         os.system(f"gcc -E -I. {file} > {compiled_path}")

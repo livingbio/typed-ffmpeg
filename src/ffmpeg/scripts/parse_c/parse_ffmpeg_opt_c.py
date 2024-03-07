@@ -1,13 +1,15 @@
 import re
+from dataclasses import replace
 
+from ...common.schema import FFMpegOption, FFMpegOptionFlag
 from .parse_c_structure import parse_c_structure
 
 
-def parse_ffmpeg_opt_c(text: str) -> list[OptionDef]:
+def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
     match = re.findall(r"const OptionDef options\[\] = (\{.*?\n\})", text, re.MULTILINE | re.DOTALL)
     data = parse_c_structure(match[0])
 
-    output: dict[str, OptionDef] = {}
+    output: dict[str, FFMpegOption] = {}
 
     for line in data:
         name = None
@@ -33,12 +35,12 @@ def parse_ffmpeg_opt_c(text: str) -> list[OptionDef]:
         arg_name = arg_name.strip('"') if arg_name else None
         flags = flags.replace("\n", "")
         flags = eval(flags)
-        output[name] = OptionDef(name=name, type=type, flags=flags, help=help, argname=arg_name, canon=canon)
+        output[name] = FFMpegOption(name=name, typing=type, flags=flags, help=help, argname=arg_name, canon=canon)
 
     # process canon
-    for opt in output.values():
-        if opt.flags & OptionDefFlag.OPT_HAS_CANON:
+    for key, opt in output.items():
+        if opt.flags & FFMpegOptionFlag.OPT_HAS_CANON:
             ref = opt.canon.split("=")[1].strip().strip('"')
-            opt.type = output[ref].type
+            output[key] = replace(opt, typing=output[ref].typing)
 
     return list(output.values())

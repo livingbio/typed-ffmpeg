@@ -1,4 +1,4 @@
-import pathlib
+from pathlib import Path
 
 import typer
 from devtools import sprint
@@ -13,7 +13,8 @@ app = typer.Typer()
 
 
 @app.command()
-def pre_compile(folder: pathlib.Path) -> None:
+def pre_compile() -> None:
+    folder = Path(__file__).parent.parent / "ffmpeg"
     precompile(folder)
 
 

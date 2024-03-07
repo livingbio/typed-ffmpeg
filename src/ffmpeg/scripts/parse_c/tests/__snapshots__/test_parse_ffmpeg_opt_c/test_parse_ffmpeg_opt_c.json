@@ -9,7 +9,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "L",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
@@ -21,7 +21,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "h",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
@@ -33,7 +33,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "?",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
@@ -45,7 +45,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "help",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "topic",
@@ -57,7 +57,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "-help",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -69,7 +69,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "version",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -81,7 +81,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "buildconf",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -93,7 +93,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "formats",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -105,7 +105,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "muxers",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -117,7 +117,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "demuxers",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -129,7 +129,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "devices",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -141,7 +141,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "codecs",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -153,7 +153,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "decoders",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -165,7 +165,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "encoders",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -177,7 +177,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "bsfs",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -189,7 +189,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "protocols",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -201,7 +201,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "filters",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -213,7 +213,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "pix_fmts",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -225,7 +225,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "layouts",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -237,7 +237,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "sample_fmts",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -249,7 +249,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "dispositions",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -261,7 +261,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "colors",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "loglevel",
@@ -273,7 +273,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "loglevel",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "loglevel",
@@ -285,7 +285,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "v",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -297,7 +297,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "report",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "bytes",
@@ -309,7 +309,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "max_alloc",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "flags",
@@ -321,7 +321,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "cpuflags",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "count",
@@ -333,7 +333,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "cpucount",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "hide_banner",
@@ -345,7 +345,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "hide_banner",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "device",
@@ -357,7 +357,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "sources",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "device",
@@ -369,7 +369,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "sinks",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "fmt",
@@ -381,7 +381,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "f",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -393,7 +393,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "y",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -405,7 +405,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "n",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -417,7 +417,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "ignore_unknown",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -429,7 +429,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "copy_unknown",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -441,7 +441,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "recast_media",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "codec",
@@ -453,7 +453,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "c",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "codec",
@@ -465,7 +465,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "codec",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
@@ -477,7 +477,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "pre",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "[-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]]",
@@ -489,7 +489,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "map",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "outfile[,metadata]:infile[,metadata]",
@@ -501,7 +501,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "map_metadata",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "input_file_index",
@@ -513,7 +513,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "map_chapters",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "duration",
@@ -525,7 +525,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "t",
-    "type": "OPT_TYPE_TIME"
+    "typing": "OPT_TYPE_TIME"
   },
   {
     "argname": "time_stop",
@@ -537,7 +537,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "to",
-    "type": "OPT_TYPE_TIME"
+    "typing": "OPT_TYPE_TIME"
   },
   {
     "argname": "limit_size",
@@ -549,7 +549,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "fs",
-    "type": "OPT_TYPE_INT64"
+    "typing": "OPT_TYPE_INT64"
   },
   {
     "argname": "time_off",
@@ -561,7 +561,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "ss",
-    "type": "OPT_TYPE_TIME"
+    "typing": "OPT_TYPE_TIME"
   },
   {
     "argname": "time_off",
@@ -573,7 +573,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "sseof",
-    "type": "OPT_TYPE_TIME"
+    "typing": "OPT_TYPE_TIME"
   },
   {
     "argname": null,
@@ -585,7 +585,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "seek_timestamp",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -597,7 +597,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "accurate_seek",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "sync ref",
@@ -609,7 +609,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "isync",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "time_off",
@@ -621,7 +621,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "itsoffset",
-    "type": "OPT_TYPE_TIME"
+    "typing": "OPT_TYPE_TIME"
   },
   {
     "argname": "scale",
@@ -633,7 +633,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "itsscale",
-    "type": "OPT_TYPE_DOUBLE"
+    "typing": "OPT_TYPE_DOUBLE"
   },
   {
     "argname": "time",
@@ -645,7 +645,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "timestamp",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "key=value",
@@ -657,7 +657,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "metadata",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "title=string:st=number...",
@@ -669,7 +669,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "program",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "id=number:st=number...",
@@ -681,7 +681,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stream_group",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "number",
@@ -693,7 +693,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "dframes",
-    "type": "OPT_TYPE_INT64"
+    "typing": "OPT_TYPE_INT64"
   },
   {
     "argname": null,
@@ -705,7 +705,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "benchmark",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -717,7 +717,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "benchmark_all",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "url",
@@ -729,7 +729,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "progress",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -741,7 +741,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "stdin",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "limit",
@@ -753,7 +753,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "timelimit",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -765,7 +765,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "dump",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -777,7 +777,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "hex",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "",
@@ -789,7 +789,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "re",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "speed",
@@ -801,7 +801,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "readrate",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "seconds",
@@ -813,7 +813,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "readrate_initial_burst",
-    "type": "OPT_TYPE_DOUBLE"
+    "typing": "OPT_TYPE_DOUBLE"
   },
   {
     "argname": "type",
@@ -825,7 +825,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "target",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "",
@@ -837,7 +837,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "frame_drop_threshold",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": null,
@@ -849,7 +849,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "copyts",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -861,7 +861,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "start_at_zero",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "mode",
@@ -873,7 +873,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "copytb",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -885,7 +885,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "shortest",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -897,7 +897,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "shortest_buf_duration",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": null,
@@ -909,7 +909,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "bitexact",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "",
@@ -921,7 +921,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "apad",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "threshold",
@@ -933,7 +933,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "dts_delta_threshold",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "threshold",
@@ -945,7 +945,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "dts_error_threshold",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "error",
@@ -957,7 +957,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "xerror",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "flags",
@@ -969,7 +969,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "abort_on",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -981,7 +981,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "copyinkf",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -993,7 +993,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "copypriorss",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "number",
@@ -1005,7 +1005,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "frames",
-    "type": "OPT_TYPE_INT64"
+    "typing": "OPT_TYPE_INT64"
   },
   {
     "argname": "fourcc/tag",
@@ -1017,7 +1017,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "tag",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "q",
@@ -1029,7 +1029,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "q",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "q",
@@ -1041,7 +1041,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "qscale",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "profile",
@@ -1053,7 +1053,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "profile",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filter_graph",
@@ -1065,7 +1065,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "filter",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1077,7 +1077,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "filter_threads",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
@@ -1089,7 +1089,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "filter_script",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "",
@@ -1101,7 +1101,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "reinit_filter",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "graph_description",
@@ -1113,7 +1113,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "filter_complex",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -1125,7 +1125,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "filter_complex_threads",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "graph_description",
@@ -1137,7 +1137,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "lavfi",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
@@ -1149,7 +1149,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "filter_complex_script",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -1161,7 +1161,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "auto_conversion_filters",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -1173,7 +1173,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "stats",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "time",
@@ -1185,7 +1185,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "stats_period",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
@@ -1197,7 +1197,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "attach",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "filename",
@@ -1209,7 +1209,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "dump_attachment",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "loop count",
@@ -1221,7 +1221,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "stream_loop",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -1233,7 +1233,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "debug_ts",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "maximum error rate",
@@ -1245,7 +1245,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "max_error_rate",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "",
@@ -1257,7 +1257,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "discard",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "",
@@ -1269,7 +1269,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "disposition",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1281,7 +1281,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "thread_queue_size",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -1293,7 +1293,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "find_stream_info",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "number",
@@ -1305,7 +1305,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "bits_per_raw_sample",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -1317,7 +1317,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stats_enc_pre",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1329,7 +1329,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stats_enc_post",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1341,7 +1341,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stats_mux_pre",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1353,7 +1353,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stats_enc_pre_fmt",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1365,7 +1365,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stats_enc_post_fmt",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1377,7 +1377,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stats_mux_pre_fmt",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "number",
@@ -1389,7 +1389,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vframes",
-    "type": "OPT_TYPE_INT64"
+    "typing": "OPT_TYPE_INT64"
   },
   {
     "argname": "rate",
@@ -1401,7 +1401,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "r",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "rate",
@@ -1413,7 +1413,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "fpsmax",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "size",
@@ -1425,7 +1425,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "s",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "aspect",
@@ -1437,7 +1437,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "aspect",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "format",
@@ -1449,7 +1449,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "pix_fmt",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "angle",
@@ -1461,7 +1461,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "display_rotation",
-    "type": "OPT_TYPE_DOUBLE"
+    "typing": "OPT_TYPE_DOUBLE"
   },
   {
     "argname": null,
@@ -1473,7 +1473,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "display_hflip",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -1485,7 +1485,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "display_vflip",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -1497,7 +1497,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vn",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "override",
@@ -1509,7 +1509,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "rc_override",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "codec",
@@ -1521,7 +1521,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vcodec",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "hh:mm:ss[:;.]ff",
@@ -1533,7 +1533,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "timecode",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "n",
@@ -1545,7 +1545,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "pass",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "prefix",
@@ -1557,7 +1557,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "passlogfile",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1569,7 +1569,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "vstats",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "file",
@@ -1581,7 +1581,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "vstats_file",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -1593,7 +1593,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "vstats_version",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "filter_graph",
@@ -1605,7 +1605,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vf",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "matrix",
@@ -1617,7 +1617,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "intra_matrix",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "matrix",
@@ -1629,7 +1629,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "inter_matrix",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "matrix",
@@ -1641,7 +1641,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "chroma_intra_matrix",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "fourcc/tag",
@@ -1653,7 +1653,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vtag",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1665,7 +1665,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "fps_mode",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1677,7 +1677,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "force_fps",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "streamIndex:value",
@@ -1689,7 +1689,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "streamid",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "timestamps",
@@ -1701,7 +1701,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "force_key_frames",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "bitrate",
@@ -1713,7 +1713,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "b",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "hwaccel name",
@@ -1725,7 +1725,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "hwaccel",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "devicename",
@@ -1737,7 +1737,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "hwaccel_device",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "format",
@@ -1749,7 +1749,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "hwaccel_output_format",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1761,7 +1761,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "hwaccels",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -1773,7 +1773,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "autorotate",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -1785,7 +1785,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "autoscale",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": null,
@@ -1797,7 +1797,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "fix_sub_duration_heartbeat",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "number",
@@ -1809,7 +1809,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "aframes",
-    "type": "OPT_TYPE_INT64"
+    "typing": "OPT_TYPE_INT64"
   },
   {
     "argname": "quality",
@@ -1821,7 +1821,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "aq",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "rate",
@@ -1833,7 +1833,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "ar",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "channels",
@@ -1845,7 +1845,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "ac",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -1857,7 +1857,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "an",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "codec",
@@ -1869,7 +1869,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "acodec",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "bitrate",
@@ -1881,7 +1881,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "ab",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "fourcc/tag",
@@ -1893,7 +1893,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "atag",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "format",
@@ -1905,7 +1905,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "sample_fmt",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "layout",
@@ -1917,7 +1917,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "channel_layout",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "layout",
@@ -1929,7 +1929,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "ch_layout",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "filter_graph",
@@ -1941,7 +1941,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "af",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -1953,7 +1953,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "guess_layout_max",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -1965,7 +1965,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "sn",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "codec",
@@ -1977,7 +1977,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "scodec",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "fourcc/tag",
@@ -1989,7 +1989,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "stag",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -2001,7 +2001,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "fix_sub_duration",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "size",
@@ -2013,7 +2013,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": true,
     "name": "canvas_size",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "seconds",
@@ -2025,7 +2025,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "muxdelay",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "seconds",
@@ -2037,7 +2037,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "muxpreload",
-    "type": "OPT_TYPE_FLOAT"
+    "typing": "OPT_TYPE_FLOAT"
   },
   {
     "argname": "file",
@@ -2049,7 +2049,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": false,
     "name": "sdp_file",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "ratio",
@@ -2061,7 +2061,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "time_base",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "ratio",
@@ -2073,7 +2073,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "enc_time_base",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "bitstream_filters",
@@ -2085,7 +2085,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "bsf",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
@@ -2097,7 +2097,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "apre",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
@@ -2109,7 +2109,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "vpre",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "preset",
@@ -2121,7 +2121,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "spre",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "filename",
@@ -2133,7 +2133,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "fpre",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": "packets",
@@ -2145,7 +2145,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "max_muxing_queue_size",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "bytes",
@@ -2157,7 +2157,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "muxing_queue_data_threshold",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": "codec",
@@ -2169,7 +2169,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "dcodec",
-    "type": "OPT_TYPE_STRING"
+    "typing": "OPT_TYPE_STRING"
   },
   {
     "argname": null,
@@ -2181,7 +2181,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "dn",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "args",
@@ -2193,7 +2193,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "init_hw_device",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "device",
@@ -2205,7 +2205,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "filter_hw_device",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "file.stream.channel[:syncfile.syncstream]",
@@ -2217,7 +2217,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "map_channel",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "threshold",
@@ -2229,7 +2229,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "adrift_threshold",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": null,
@@ -2241,7 +2241,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "psnr",
-    "type": "OPT_TYPE_BOOL"
+    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "",
@@ -2253,7 +2253,7 @@
     "is_output_option": true,
     "is_support_stream_specifier": true,
     "name": "top",
-    "type": "OPT_TYPE_INT"
+    "typing": "OPT_TYPE_INT"
   },
   {
     "argname": null,
@@ -2265,7 +2265,7 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "qphist",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   },
   {
     "argname": "",
@@ -2277,6 +2277,6 @@
     "is_output_option": false,
     "is_support_stream_specifier": false,
     "name": "vsync",
-    "type": "OPT_TYPE_FUNC"
+    "typing": "OPT_TYPE_FUNC"
   }
 ]
