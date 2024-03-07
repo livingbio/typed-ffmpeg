@@ -6,7 +6,7 @@
   "forumla_typings_input": null,
   "id": null,
   "is_dynamic_input": true,
-  "is_dynamic_ouptut": true,
+  "is_dynamic_output": true,
   "is_filter_sink": null,
   "is_filter_source": null,
   "is_support_command": null,
