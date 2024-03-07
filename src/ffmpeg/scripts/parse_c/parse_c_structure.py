@@ -3,12 +3,31 @@ from typing import Any
 
 
 def remove_string_concat(text: str) -> str:
+    """
+    Remove string concatenation from a string
+
+    Args:
+        text: The string to remove string concatenation from
+    
+    Returns:
+        The string with string concatenation removed
+    """
+
     if text.count('"') > 2:
         return re.sub(r"\"\s*\"", "", text)
     return text
 
 
 def parse_c_structure(text: str) -> list[Any]:
+    """
+    Parse a C structure from a string
+
+    Args:
+        text: The string to parse
+
+    Returns:
+        The parsed C structure
+    """
 
     buffer = ""
     level = 0
