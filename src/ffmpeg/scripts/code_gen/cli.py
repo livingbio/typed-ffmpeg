@@ -32,8 +32,10 @@ def generate() -> None:
     ffmpeg_filters = []
 
     for f in all_filters():
-        ffmpeg_filters.append(gen_filter_info(f))
-
+        try:
+            ffmpeg_filters.append(gen_filter_info(f))
+        except ValueError:
+            print(f"Failed to generate filter info for {f.name}")
     ffmpeg_options = gen_option_info()
 
     render(ffmpeg_filters, ffmpeg_options, outpath)

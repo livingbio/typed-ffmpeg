@@ -35,13 +35,13 @@ def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
         arg_name = arg_name.strip('"') if arg_name else None
         flags = flags.replace("\n", "")
         flags = eval(flags)
-        output[name] = FFMpegOption(name=name, typing=type, flags=flags, help=help, argname=arg_name, canon=canon)
+        output[name] = FFMpegOption(name=name, type=type, flags=flags, help=help, argname=arg_name, canon=canon)
 
     # process canon
     for key, opt in output.items():
         if opt.flags & FFMpegOptionFlag.OPT_HAS_CANON:
             assert opt.canon
             ref = opt.canon.split("=")[1].strip().strip('"')
-            output[key] = replace(opt, typing=output[ref].typing)
+            output[key] = replace(opt, type=output[ref].type)
 
     return list(output.values())

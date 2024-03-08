@@ -185,11 +185,30 @@ class FFMpegOptionTyping(str, Enum):
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOption:
     name: str
-    typing: FFMpegOptionTyping
+    type: FFMpegOptionTyping
     flags: int
     help: str
     argname: str | None = None
     canon: str | None = None
+
+    @property
+    def typing(self) -> str:
+        if self.type == FFMpegOptionTyping.OPT_TYPE_FUNC:
+            return "str"
+        elif self.type == FFMpegOptionTyping.OPT_TYPE_BOOL:
+            return "bool"
+        elif self.type == FFMpegOptionTyping.OPT_TYPE_STRING:
+            return "str"
+        elif self.type == FFMpegOptionTyping.OPT_TYPE_INT:
+            return "int"
+        elif self.type == FFMpegOptionTyping.OPT_TYPE_INT64:
+            return "int"
+        elif self.type == FFMpegOptionTyping.OPT_TYPE_FLOAT:
+            return "float"
+        elif self.type == FFMpegOptionTyping.OPT_TYPE_DOUBLE:
+            return "float"
+        elif self.type == FFMpegOptionTyping.OPT_TYPE_TIME:
+            return "str"
 
     @property
     def is_input_option(self) -> bool:
