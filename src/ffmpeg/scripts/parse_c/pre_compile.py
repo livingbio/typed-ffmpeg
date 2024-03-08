@@ -5,6 +5,11 @@ source_folder = pathlib.Path(__file__).parent / "ffmpeg"
 source_folder.mkdir(exist_ok=True)
 
 
+def pre_compile_file(file: pathlib.Path, target: pathlib.Path) -> None:
+    print(f"precompile {file}")
+    os.system(f"gcc -E -I. {file} > {target}")
+
+
 def precompile(folder: pathlib.Path) -> None:
     os.chdir(folder)
 
@@ -20,8 +25,7 @@ def precompile(folder: pathlib.Path) -> None:
         f.write(text)
 
     for file in folder.glob("**/*.[cm]"):
-        print(f"precompile {file}")
         p = file.relative_to(folder)
         compiled_path = (source_folder / p).resolve()
         compiled_path.parent.mkdir(parents=True, exist_ok=True)
-        os.system(f"gcc -E -I. {file} > {compiled_path}")
+        pre_compile_file(file, compiled_path)
