@@ -16,3 +16,98 @@ import re
 
 
     
+
+def aap(
+    
+
+    
+        
+        _input: AudioStream,
+        
+    
+        
+        _desired: AudioStream,
+        
+    
+
+
+    *,
+    
+
+    
+        order: 
+
+int = 
+
+Default(None)
+
+
+
+,
+    
+
+    
+        projection: 
+
+int = 
+
+Default(None)
+
+
+
+,
+    
+
+
+    **kwargs: Any
+)-> tuple[
+    
+]:
+    """
+    
+description
+
+Args:
+    order: set the filter order
+    projection: set the filter projection
+
+Returns:
+
+References:
+    [FFmpeg Documentation](None)
+
+    """
+    filter_node = FilterNode(
+        name="aap",
+        input_typings=None,
+        output_typings=None,
+        inputs=(
+            
+
+        
+            
+            _input,
+            
+        
+            
+            _desired,
+            
+        
+
+
+        ),
+        kwargs=_to_tuple(({
+            
+            "order": order,
+            
+            "projection": projection,
+            
+        } | kwargs)),
+    )
+    return (
+        
+    )
+
+
+
+    

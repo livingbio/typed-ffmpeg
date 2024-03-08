@@ -27,6 +27,13 @@ class AudioStream(FilterableStream):
 
 
     
+        
+        
+    
+        
+        _desired: AudioStream,
+        
+    
 
 
     *,
@@ -35,7 +42,7 @@ class AudioStream(FilterableStream):
     
         order: 
 
- = 
+int = 
 
 Default(None)
 
@@ -47,7 +54,7 @@ Default(None)
     
         projection: 
 
- = 
+int = 
 
 Default(None)
 
@@ -84,6 +91,13 @@ References:
             self,
 
 
+            
+                
+                
+            
+                
+                _desired,
+                
             
 
 

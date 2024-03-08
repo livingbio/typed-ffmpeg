@@ -9,7 +9,7 @@ class StreamType(str, Enum):
     audio = "audio"
 
 
-class FFMpegFilterOptionTyping(str, Enum):
+class FFMpegFilterOptionType(str, Enum):
     boolean = "boolean"
     duration = "duration"
     color = "color"
@@ -53,13 +53,48 @@ class FFMpegFilterOption:
     name: str
     alias: tuple[str, ...] = ()
     description: str
-    typing: FFMpegFilterOptionTyping
+    type: FFMpegFilterOptionType
     min: str | None = None
     max: str | None = None
     default: bool | int | float | str | None = None
     required: bool = False
     choices: tuple[FFMpegFilterOptionChoice, ...] = ()
     flags: str | None = None
+
+    @property
+    def typing(self) -> str:
+        if self.type == FFMpegFilterOptionType.boolean:
+            return "bool"
+        elif self.type == FFMpegFilterOptionType.duration:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.color:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.flags:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.dictionary:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.pix_fmt:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.int:
+            return "int"
+        elif self.type == FFMpegFilterOptionType.int64:
+            return "int"
+        elif self.type == FFMpegFilterOptionType.double:
+            return "float"
+        elif self.type == FFMpegFilterOptionType.float:
+            return "float"
+        elif self.type == FFMpegFilterOptionType.string:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.video_rate:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.image_size:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.rational:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.sample_fmt:
+            return "str"
+        elif self.type == FFMpegFilterOptionType.binary:
+            return "str"
 
 
 @dataclass(frozen=True, kw_only=True)

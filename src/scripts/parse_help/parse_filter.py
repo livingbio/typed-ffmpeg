@@ -7,7 +7,7 @@ from ffmpeg.common.schema import (
     FFMpegFilter,
     FFMpegFilterOption,
     FFMpegFilterOptionChoice,
-    FFMpegFilterOptionTyping,
+    FFMpegFilterOptionType,
     FFMpegIOType,
     StreamType,
 )
@@ -254,7 +254,7 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[FFMpegF
                 alias=(name,),
                 name=name,
                 description=help.strip(),
-                typing=FFMpegFilterOptionTyping(type),
+                type=FFMpegFilterOptionType(type),
                 flags=flags,
                 min=min,
                 max=max,
