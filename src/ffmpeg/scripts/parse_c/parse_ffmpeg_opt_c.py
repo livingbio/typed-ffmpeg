@@ -40,6 +40,7 @@ def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
     # process canon
     for key, opt in output.items():
         if opt.flags & FFMpegOptionFlag.OPT_HAS_CANON:
+            assert opt.canon
             ref = opt.canon.split("=")[1].strip().strip('"')
             output[key] = replace(opt, typing=output[ref].typing)
 
