@@ -6,6 +6,7 @@ source_folder.mkdir(exist_ok=True)
 
 
 def pre_compile_file(file: pathlib.Path, target: pathlib.Path) -> None:
+    assert file.exists(), f"{file} does not exist"
     print(f"precompile {file}")
     os.system(f"gcc -E -I. {file} > {target}")
 
