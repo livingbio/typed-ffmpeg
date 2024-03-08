@@ -71,7 +71,6 @@ class FFMpegIOType:
 @dataclass(frozen=True, kw_only=True)
 class FFMpegFilter:
     id: str | None = None
-    filter_type: FFMpegFilterType | None = None
 
     name: str
     description: str
@@ -94,6 +93,26 @@ class FFMpegFilter:
     formula_typings_output: str | None = None
 
     options: tuple[FFMpegFilterOption, ...] = ()
+
+    @property
+    def filter_type(self) -> FFMpegFilterType:
+        if self.stream_typings_output:
+            if self.stream_typings_output[0].type == StreamType.video:
+                return FFMpegFilterType.vf
+            elif self.stream_typings_output[0].type == StreamType.audio:
+                return FFMpegFilterType.af
+        elif self.is_dynamic_output:
+            assert self.formula_typings_output
+            if self.formula_typings_output.index("video") < 0:
+                return FFMpegFilterType.af
+            elif self.formula_typings_output.index("audio") < 0:
+                return FFMpegFilterType.vf
+            return (
+                FFMpegFilterType.vf
+                if self.formula_typings_output.index("video") < self.formula_typings_output.index("audio")
+                else FFMpegFilterType.af
+            )
+        raise ValueError(f"Unknown filter type for {self.name}")
 
 
 class FFMpegOptionFlag(int, Enum):
@@ -208,7 +227,7 @@ class FFMpegOption:
         elif self.type == FFMpegOptionTyping.OPT_TYPE_DOUBLE:
             return "float"
         elif self.type == FFMpegOptionTyping.OPT_TYPE_TIME:
-            return "str"
+            return "str | float"
 
     @property
     def is_input_option(self) -> bool:
