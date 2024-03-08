@@ -1,5 +1,6 @@
 import os
 import pathlib
+import subprocess
 
 source_folder = pathlib.Path(__file__).parent.parent.parent.parent.parent / "ffmpeg"
 
@@ -12,7 +13,11 @@ def precompile() -> None:
     os.chdir(source_folder)
 
     if not os.path.exists("config_components.h"):
-        assert os.system("./configure")
+        try:
+            subprocess.check_call(["./configure", "--verbose"], stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            print("Failed to execute './configure':", e.output)
+            raise
 
     with open("config_components.h") as f:
         text = f.read()
