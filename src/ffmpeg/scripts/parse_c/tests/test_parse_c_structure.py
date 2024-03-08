@@ -15,5 +15,5 @@ def test_parse_c_structure(snapshot: SnapshotAssertion, filepath: pathlib.Path) 
     assert snapshot(extension_class=JSONSnapshotExtension) == parse_c_structure(text)
 
 
-def test_parse_c_structure_samples(snapshot: SnapshotAssertion):
+def test_parse_c_structure_samples(snapshot: SnapshotAssertion) -> None:
     assert snapshot(extension_class=JSONSnapshotExtension) == parse_c_structure("""{{ .str = "" }}""")

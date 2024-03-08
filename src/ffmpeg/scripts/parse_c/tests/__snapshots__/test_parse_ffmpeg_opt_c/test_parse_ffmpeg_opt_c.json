@@ -2208,18 +2208,6 @@
     "typing": "OPT_TYPE_FUNC"
   },
   {
-    "argname": "file.stream.channel[:syncfile.syncstream]",
-    "canon": null,
-    "flags": 4229,
-    "help": "map an audio channel from one stream to another (deprecated)",
-    "is_global_option": false,
-    "is_input_option": false,
-    "is_output_option": true,
-    "is_support_stream_specifier": true,
-    "name": "map_channel",
-    "typing": "OPT_TYPE_FUNC"
-  },
-  {
     "argname": "threshold",
     "canon": null,
     "flags": 5,
@@ -2230,18 +2218,6 @@
     "is_support_stream_specifier": false,
     "name": "adrift_threshold",
     "typing": "OPT_TYPE_FUNC"
-  },
-  {
-    "argname": null,
-    "canon": null,
-    "flags": 12,
-    "help": "calculate PSNR of compressed frames (deprecated, use -flags +psnr)",
-    "is_global_option": true,
-    "is_input_option": false,
-    "is_output_option": false,
-    "is_support_stream_specifier": false,
-    "name": "psnr",
-    "typing": "OPT_TYPE_BOOL"
   },
   {
     "argname": "",
