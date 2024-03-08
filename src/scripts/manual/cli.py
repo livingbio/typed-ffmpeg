@@ -46,5 +46,8 @@ def migrate_config() -> None:  # pragma: no cover
 
 
 @app.command()
-def load_config(name: str) -> FFMpegFilterManuallyDefined:
-    return load(FFMpegFilterManuallyDefined, name)
+def load_config(name: str) -> FFMpegFilterManuallyDefined | None:
+    try:
+        return load(FFMpegFilterManuallyDefined, name)
+    except IOError:
+        return None

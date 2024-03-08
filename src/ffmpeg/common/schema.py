@@ -138,16 +138,18 @@ class FFMpegFilter:
                 return FFMpegFilterType.af
         elif self.is_dynamic_output:
             assert self.formula_typings_output
-            if self.formula_typings_output.index("video") < 0:
+            if "video" not in self.formula_typings_output:
                 return FFMpegFilterType.af
-            elif self.formula_typings_output.index("audio") < 0:
+            elif "audio" not in self.formula_typings_output:
                 return FFMpegFilterType.vf
             return (
                 FFMpegFilterType.vf
                 if self.formula_typings_output.index("video") < self.formula_typings_output.index("audio")
                 else FFMpegFilterType.af
             )
-        raise ValueError(f"Unknown filter type for {self.name}")
+        else:
+            # FIXME:
+            return FFMpegFilterType.asink
 
 
 class FFMpegOptionFlag(int, Enum):

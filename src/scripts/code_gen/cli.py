@@ -1,11 +1,12 @@
 import os
-from dataclasses import replace
+from dataclasses import asdict, replace
 from pathlib import Path
 
 import typer
 
 from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
 
+from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
 from ..parse_help.cli import all_filters
@@ -35,6 +36,11 @@ def generate() -> None:
     for f in all_filters():
         if f.name == "afir":
             continue
+
+        manual_config = load_config(f.name)
+        if manual_config:
+            f = replace(f, **asdict(manual_config))
+
         try:
             ffmpeg_filters.append(gen_filter_info(f))
         except ValueError:
