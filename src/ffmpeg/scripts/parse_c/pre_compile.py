@@ -14,9 +14,11 @@ def precompile() -> None:
 
     if not os.path.exists("config_components.h"):
         try:
-            subprocess.check_call(["./configure", "--verbose"], stderr=subprocess.STDOUT)
+            # Ensure the output is captured in case of an error
+            subprocess.check_output(["./configure"], stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
-            print("Failed to execute './configure':", e.output)
+            print(f"Configure script failed with exit status {e.returncode}")
+            print("Output:", e.output.decode())
             raise
 
     with open("config_components.h") as f:
