@@ -1,7 +1,6 @@
 {
   "__class__": "ffmpeg.common.schema.FFMpegFilter",
   "description": "Concatenate audio and video streams.",
-  "filter_type": null,
   "formula_typings_output": null,
   "forumla_typings_input": null,
   "id": null,
@@ -28,8 +27,8 @@
       "min": "1",
       "name": "n",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -46,8 +45,8 @@
       "min": "0",
       "name": "v",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -64,8 +63,8 @@
       "min": "0",
       "name": "a",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -82,8 +81,8 @@
       "min": null,
       "name": "unsafe",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "boolean"
       }
     }

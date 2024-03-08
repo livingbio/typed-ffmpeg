@@ -249,19 +249,20 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[FFMpegF
         choices = _parse_choices(tree.get(line, []))
         default = _parse_default(default_line, type)
 
-        output.append(
-            FFMpegFilterOption(
-                alias=(name,),
-                name=name,
-                description=help.strip(),
-                type=FFMpegFilterOptionType(type),
-                flags=flags,
-                min=min,
-                max=max,
-                default=default,
-                choices=tuple(choices),
+        if not any(k.name == name for k in output):
+            output.append(
+                FFMpegFilterOption(
+                    alias=(name,),
+                    name=name,
+                    description=help.strip(),
+                    type=FFMpegFilterOptionType(type),
+                    flags=flags,
+                    min=min,
+                    max=max,
+                    default=default,
+                    choices=tuple(choices),
+                )
             )
-        )
 
     return output
 

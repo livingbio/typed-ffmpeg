@@ -1,7 +1,6 @@
 {
   "__class__": "ffmpeg.common.schema.FFMpegFilter",
   "description": "Apply Normalized Least-Mean-Fourth algorithm to first audio stream.",
-  "filter_type": null,
   "formula_typings_output": null,
   "forumla_typings_input": null,
   "id": null,
@@ -28,8 +27,8 @@
       "min": "1",
       "name": "order",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -46,8 +45,8 @@
       "min": "0",
       "name": "mu",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -64,8 +63,8 @@
       "min": "0",
       "name": "eps",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -82,8 +81,8 @@
       "min": "0",
       "name": "leakage",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -136,8 +135,8 @@
       "min": "0",
       "name": "out_mode",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     }

@@ -37,7 +37,7 @@ def aap(
     
         order: 
 
-int = 
+Int = 
 
 Default(None)
 
@@ -49,7 +49,7 @@ Default(None)
     
         projection: 
 
-int = 
+Int = 
 
 Default(None)
 
@@ -60,9 +60,7 @@ Default(None)
 
 
     **kwargs: Any
-)-> tuple[
-    
-]:
+)-> AudioStream:
     """
     
 description
@@ -72,6 +70,7 @@ Args:
     projection: set the filter projection
 
 Returns:
+    default: the audio stream
 
 References:
     [FFmpeg Documentation](None)
@@ -104,10 +103,7 @@ References:
             
         } | kwargs)),
     )
-    return (
-        
-    )
-
+    return filter_node.audio(0)
 
 
     

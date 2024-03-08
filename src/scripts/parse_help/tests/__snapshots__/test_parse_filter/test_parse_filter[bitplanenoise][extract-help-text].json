@@ -1,7 +1,6 @@
 {
   "__class__": "ffmpeg.common.schema.FFMpegFilter",
   "description": "Measure bit plane noise.",
-  "filter_type": null,
   "formula_typings_output": null,
   "forumla_typings_input": null,
   "id": null,
@@ -28,8 +27,8 @@
       "min": "1",
       "name": "bitplane",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -46,8 +45,8 @@
       "min": null,
       "name": "filter",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "boolean"
       }
     }

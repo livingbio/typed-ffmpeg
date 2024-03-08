@@ -1,7 +1,6 @@
 {
   "__class__": "ffmpeg.common.schema.FFMpegFilter",
   "description": "Scale the input video size and/or convert the image format.",
-  "filter_type": null,
   "formula_typings_output": null,
   "forumla_typings_input": null,
   "id": null,
@@ -29,8 +28,8 @@
       "min": null,
       "name": "w",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "string"
       }
     },
@@ -48,8 +47,8 @@
       "min": null,
       "name": "h",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "string"
       }
     },
@@ -66,8 +65,8 @@
       "min": null,
       "name": "flags",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "string"
       }
     },
@@ -84,8 +83,8 @@
       "min": null,
       "name": "interl",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "boolean"
       }
     },
@@ -159,8 +158,8 @@
       "min": null,
       "name": "in_color_matrix",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "string"
       }
     },
@@ -234,8 +233,8 @@
       "min": null,
       "name": "out_color_matrix",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "string"
       }
     },
@@ -309,8 +308,8 @@
       "min": "0",
       "name": "in_range",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -384,8 +383,8 @@
       "min": "0",
       "name": "out_range",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -402,8 +401,8 @@
       "min": "-513",
       "name": "in_v_chr_pos",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -420,8 +419,8 @@
       "min": "-513",
       "name": "in_h_chr_pos",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -438,8 +437,8 @@
       "min": "-513",
       "name": "out_v_chr_pos",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -456,8 +455,8 @@
       "min": "-513",
       "name": "out_h_chr_pos",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -496,8 +495,8 @@
       "min": "0",
       "name": "force_original_aspect_ratio",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -514,8 +513,8 @@
       "min": "1",
       "name": "force_divisible_by",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     },
@@ -532,8 +531,8 @@
       "min": "-DBL_MAX",
       "name": "param0",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "double"
       }
     },
@@ -550,8 +549,8 @@
       "min": "-DBL_MAX",
       "name": "param1",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "double"
       }
     },
@@ -583,8 +582,8 @@
       "min": "0",
       "name": "eval",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     }

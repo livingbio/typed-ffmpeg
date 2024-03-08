@@ -1,7 +1,6 @@
 {
   "__class__": "ffmpeg.common.schema.FFMpegFilter",
   "description": "Convert input audio to 3d scope video output.",
-  "filter_type": null,
   "formula_typings_output": null,
   "forumla_typings_input": null,
   "id": null,
@@ -29,8 +28,8 @@
       "min": null,
       "name": "rate",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "video_rate"
       }
     },
@@ -48,8 +47,8 @@
       "min": null,
       "name": "size",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "image_size"
       }
     },
@@ -66,8 +65,8 @@
       "min": "40",
       "name": "fov",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -84,8 +83,8 @@
       "min": "-180",
       "name": "roll",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -102,8 +101,8 @@
       "min": "-180",
       "name": "pitch",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -120,8 +119,8 @@
       "min": "-180",
       "name": "yaw",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -140,8 +139,8 @@
       "min": "0.01",
       "name": "xzoom",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -160,8 +159,8 @@
       "min": "-60",
       "name": "xpos",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "float"
       }
     },
@@ -178,8 +177,8 @@
       "min": "1",
       "name": "length",
       "required": false,
-      "typing": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionTyping",
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "int"
       }
     }

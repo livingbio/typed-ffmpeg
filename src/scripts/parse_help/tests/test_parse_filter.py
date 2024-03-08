@@ -28,6 +28,7 @@ from ..parse_filter import extract_avfilter_info_from_help, extract_filter_help_
         "adeclip",
         "concat",
         "scale2ref",
+        "overlay",  # has duplicate option
     ],
 )
 def test_parse_filter(snapshot: SnapshotAssertion, filter_name: str) -> None:
