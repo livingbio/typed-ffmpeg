@@ -64,37 +64,37 @@ class FFMpegFilterOption:
     @property
     def typing(self) -> str:
         if self.type == FFMpegFilterOptionType.boolean:
-            return "bool"
+            return "Bool"
         elif self.type == FFMpegFilterOptionType.duration:
-            return "str"
+            return "Duration"
         elif self.type == FFMpegFilterOptionType.color:
-            return "str"
+            return "Color"
         elif self.type == FFMpegFilterOptionType.flags:
-            return "str"
+            return "Flags"
         elif self.type == FFMpegFilterOptionType.dictionary:
-            return "str"
+            return "Dictionary"
         elif self.type == FFMpegFilterOptionType.pix_fmt:
-            return "str"
+            return "Pix_fmt"
         elif self.type == FFMpegFilterOptionType.int:
-            return "int"
+            return "Int"
         elif self.type == FFMpegFilterOptionType.int64:
-            return "int"
+            return "Int64"
         elif self.type == FFMpegFilterOptionType.double:
-            return "float"
+            return "Double"
         elif self.type == FFMpegFilterOptionType.float:
-            return "float"
+            return "Float"
         elif self.type == FFMpegFilterOptionType.string:
-            return "str"
+            return "String"
         elif self.type == FFMpegFilterOptionType.video_rate:
-            return "str"
+            return "Video_rate"
         elif self.type == FFMpegFilterOptionType.image_size:
-            return "str"
+            return "Image_size"
         elif self.type == FFMpegFilterOptionType.rational:
-            return "str"
+            return "Rational"
         elif self.type == FFMpegFilterOptionType.sample_fmt:
-            return "str"
+            return "Sample_fmt"
         elif self.type == FFMpegFilterOptionType.binary:
-            return "str"
+            return "Binary"
 
 
 @dataclass(frozen=True, kw_only=True)
