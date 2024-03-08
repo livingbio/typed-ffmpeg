@@ -1,0 +1,6 @@
+{
+  "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
+  "formula_typings_output": "[StreamType.video] if video else [] + [StreamType.audio]",
+  "forumla_typings_input": null,
+  "name": "ebur128"
+}

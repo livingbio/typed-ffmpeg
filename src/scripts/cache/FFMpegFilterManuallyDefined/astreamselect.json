@@ -1,0 +1,6 @@
+{
+  "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
+  "formula_typings_output": "[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
+  "forumla_typings_input": "[StreamType.audio] * int(inputs)",
+  "name": "astreamselect"
+}

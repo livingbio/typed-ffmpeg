@@ -34,8 +34,9 @@ def all_filters() -> list[FFMpegFilter]:
                 # IO Typing
                 is_dynamic_input=filter_info.is_dynamic_input,
                 is_dynamic_output=filter_info.is_dynamic_output,
-                stream_typings_input=filter_info.stream_typings_input,
-                stream_typings_output=filter_info.stream_typings_output,
+                # stream_typings's name can only be determined by filter_info_from_help
+                stream_typings_input=filter_info_from_help.stream_typings_input,
+                stream_typings_output=filter_info_from_help.stream_typings_output,
                 options=filter_info_from_help.options,
             )
         )

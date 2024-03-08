@@ -33,6 +33,8 @@ def generate() -> None:
     ffmpeg_filters = []
 
     for f in all_filters():
+        if f.name == "afir":
+            continue
         try:
             ffmpeg_filters.append(gen_filter_info(f))
         except ValueError:
