@@ -1,22 +1,10 @@
 import os
 import pathlib
-import tempfile
 
 source_folder = pathlib.Path(__file__).parent.parent.parent.parent.parent / "ffmpeg"
 
 target_folder = pathlib.Path(__file__).parent / "ffmpeg"
 target_folder.mkdir(exist_ok=True)
-
-
-def pre_compile_file(file: pathlib.Path) -> pathlib.Path:
-    os.chdir(source_folder)
-
-    assert file.exists(), f"{file} does not exist"
-    print(f"precompile {file}")
-    target = pathlib.Path(tempfile.mktemp(suffix=file.suffix))
-
-    os.system(f"gcc -E -I. {file} > {target}")
-    return target
 
 
 def precompile() -> None:
@@ -34,9 +22,12 @@ def precompile() -> None:
         f.write(text)
 
     for file in source_folder.glob("**/*.[cm]"):
+        print(f"precompile {file}")
         p = file.relative_to(source_folder)
         target_path = (target_folder / p).resolve()
-        target_path.parent.mkdir(parents=True, exist_ok=True)
 
-        compiled_file = pre_compile_file(file)
-        compiled_file.rename(target_path)
+        if target_path.exists():
+            continue
+
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        os.system(f"gcc -E -I. {file} > {target_path}") == 0
