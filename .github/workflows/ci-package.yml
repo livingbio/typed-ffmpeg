@@ -45,9 +45,12 @@ jobs:
       - name: Check Graphviz version
         run: dot -V
 
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y build-essential
+
       # Run unittests
       - name: Run Unittest
-        run: poetry run pytest src/ --cov=./src --cov-report xml
+        run: poetry run pytest src/ --cov=./src --cov-report xml -s
 
       # Upload coverage to Codecov
       - name: Upload coverage to Codecov

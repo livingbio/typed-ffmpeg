@@ -8,6 +8,7 @@ target_folder.mkdir(exist_ok=True)
 
 
 def precompile() -> None:
+    print("precompile")
     os.chdir(source_folder)
 
     if not os.path.exists("config_components.h"):
