@@ -1,6 +1,3 @@
-import tempfile
-from pathlib import Path
-
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
@@ -9,9 +6,7 @@ from ..pre_compile import pre_compile_file, source_folder
 
 
 def test_parse_ffmpeg_opt_c(snapshot: SnapshotAssertion) -> None:
-    filename = tempfile.NamedTemporaryFile()
-    p = Path(filename.name)
-    pre_compile_file(source_folder / "fftools/ffmpeg_opt.c", p)
+    p = pre_compile_file(source_folder / "fftools/ffmpeg_opt.c")
 
     assert snapshot(extension_class=JSONSnapshotExtension) == [
         {
