@@ -12,7 +12,7 @@ def precompile() -> None:
     os.chdir(source_folder)
 
     if not os.path.exists("config_components.h"):
-        os.system("./configure")
+        assert os.system("./configure")
 
     with open("config_components.h") as f:
         text = f.read()
