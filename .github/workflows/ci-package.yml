@@ -50,7 +50,7 @@ jobs:
 
       # Run unittests
       - name: Run Unittest
-        run: poetry run pytest src/ --cov=./src --cov-report xml -s
+        run: poetry run pytest src/ --cov=./src --cov-report xml
 
       # Upload coverage to Codecov
       - name: Upload coverage to Codecov
