@@ -4,14 +4,7 @@ from pathlib import Path
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
-from ffmpeg.common.schema import (
-    FFMpegFilter,
-    FFMpegFilterOption,
-    FFMpegFilterOptionTyping,
-    FFMpegFilterType,
-    FFMpegIOType,
-    StreamType,
-)
+from ffmpeg.common.schema import FFMpegFilter, FFMpegFilterOption, FFMpegFilterOptionTyping, FFMpegIOType, StreamType
 
 from ..gen import render
 
@@ -20,7 +13,6 @@ def test_render(snapshot: SnapshotAssertion) -> None:
     filters = [
         FFMpegFilter(
             id="ff_af_aap",
-            filter_type=FFMpegFilterType.af,
             name="aap",
             description="description",
             is_dynamic_input=False,

@@ -2,7 +2,7 @@
 {% if type == "method" %}
     self,
 {% endif %}
-{% if f.is_input_dynamic %}
+{% if f.is_dynamic_input %}
     {% if f.is_input_type_mixed %}
     *streams: FilterableStream,
     {% elif f.filter_type.value in ["vf", "vaf"] %}
@@ -10,9 +10,9 @@
     {% elif f.filter_type.value in ["af", "avf"] %}
     *streams: AudioStream,
     {% endif %}
-{% elif f.input_stream_typings | length == 1 %}
+{% elif f.stream_typings_input | length == 1 %}
 {% else %}
-    {% for stream_typing in f.input_stream_typings %}
+    {% for stream_typing in f.stream_typings_input %}
         {% if type == "method" and loop.index0 == 0 %}
         {% elif stream_typing.type.value == "video" %}
         {{ stream_typing.name | stream_name_safe }}: VideoStream,
@@ -59,7 +59,7 @@ Default("nan")
 {%- elif f.filter_type.value in ["af", "vaf"] -%}
     {% set return_type = "AudioStream" %}
 {%- endif -%}
-{%- if f.is_output_dynamic -%}
+{%- if f.is_dynamic_output -%}
 -> FilterNode:
 {%- elif f.output_stream_typings | length == 1 -%}
 -> {{ return_type }}:
@@ -85,7 +85,7 @@ Args:
 {%- endfor %}
 {% endif %}
 Returns:
-{%- if f.is_output_dynamic %}
+{%- if f.is_dynamic_output %}
     filter_node: the filter node
 {% else -%}
     {% for stream_typing in f.output_stream_typings %}
@@ -106,15 +106,15 @@ References:
 {% if type == "method" %}
     self,
 {% endif %}
-{% if f.is_input_dynamic %}
+{% if f.is_dynamic_input %}
     {% if f.filter_type.value in ["vf", "vaf"] %}
     *streams,
     {% elif f.filter_type.value in ["af", "avf"] %}
     *streams,
     {% endif %}
-{% elif f.input_stream_typings | length == 1 %}
+{% elif f.stream_typings_input | length == 1 %}
 {% else %}
-    {% for stream_typing in f.input_stream_typings %}
+    {% for stream_typing in f.stream_typings_input %}
         {% if type == "method" and loop.index0 == 0 %}
         {% elif stream_typing.type.value == "video" %}
         {{ stream_typing.name | stream_name_safe }},
@@ -145,7 +145,7 @@ filter_node = FilterNode(
         {% endfor %}
     } | kwargs)),
 )
-{% if f.is_output_dynamic %}
+{% if f.is_dynamic_output %}
 return filter_node
 {%- elif f.output_stream_typings | length == 1 -%}
 return filter_node.{{return_type}}(0)
@@ -166,7 +166,7 @@ return (
 {% macro filter_method(f) %}
     def {{f.name}}(
     {{ stream_typings(f, "method") }}
-    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
+    {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ option_typings(f) }}
     **kwargs: Any
     ) {{- return_stream_typings(f) }}
@@ -180,7 +180,7 @@ return (
 {% macro filter_function(f) %}
 def {{f.name}}(
     {{ stream_typings(f, "function") }}
-    {% if not f.is_input_dynamic and f.options | length > 0 %}*,{% endif %}
+    {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ option_typings(f) }}
     **kwargs: Any
 ) {{- return_stream_typings(f) }}

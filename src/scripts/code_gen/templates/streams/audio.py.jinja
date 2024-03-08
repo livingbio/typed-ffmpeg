@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 class AudioStream(FilterableStream):
     {% for f in filters %}
-        {% if f.filter_type.value in ["af", "avf"] and not f.is_input_dynamic %}
+        {% if f.filter_type.value in ["af", "avf"] and not f.is_dynamic_input %}
     {{ _components.filter_method(f) }}
         {% endif %}
     {% endfor %}

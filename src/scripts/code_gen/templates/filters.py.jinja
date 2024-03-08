@@ -14,7 +14,7 @@ import re
 {% import "_components.jinja" as _components %}
 
 {% for f in filters %}
-    {% if f.is_input_dynamic or f.input_stream_typings | length > 1 %}
+    {% if f.is_dynamic_input or f.stream_typings_input | length > 1 %}
 {{ _components.filter_function(f) }}
     {% endif %}
 {% endfor %}
