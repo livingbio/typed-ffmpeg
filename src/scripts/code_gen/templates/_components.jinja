@@ -134,8 +134,8 @@ References:
 {%- endif -%}
 filter_node = FilterNode(
     name="{{ f.name }}",
-    input_typings={%if f.stream_typings_input %}tuple({{f.stream_typings_input}}){% else %}None{% endif %},
-    output_typings={%if f.stream_typings_output %}tuple({{f.stream_typings_output}}){% else %}None{% endif %},
+    input_typings={%if f.stream_typings_input %}tuple({{f.input_typings}}){% else %}None{% endif %},
+    output_typings={%if f.stream_typings_output %}tuple({{f.output_typings}}){% else %}None{% endif %},
     inputs=(
         {{ stream_params(f, type) }}
     ),

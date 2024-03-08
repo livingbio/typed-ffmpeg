@@ -130,6 +130,14 @@ class FFMpegFilter:
     options: tuple[FFMpegFilterOption, ...] = ()
 
     @property
+    def input_typings(self) -> str:
+        return "[" + ",".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input) + "]"
+
+    @property
+    def output_typings(self) -> str:
+        return "[" + ",".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output) + "]"
+
+    @property
     def filter_type(self) -> FFMpegFilterType:
         if self.stream_typings_output:
             if self.stream_typings_output[0].type == StreamType.video:
