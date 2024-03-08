@@ -8,7 +8,7 @@ def remove_string_concat(text: str) -> str:
 
     Args:
         text: The string to remove string concatenation from
-    
+
     Returns:
         The string with string concatenation removed
     """
