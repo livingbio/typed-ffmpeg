@@ -249,20 +249,39 @@ def _parse_options(lines: list[str], tree: dict[str, list[str]]) -> list[FFMpegF
         choices = _parse_choices(tree.get(line, []))
         default = _parse_default(default_line, type)
 
-        if not any(k.name == name for k in output):
-            output.append(
-                FFMpegFilterOption(
-                    alias=(name,),
-                    name=name,
-                    description=help.strip(),
-                    type=FFMpegFilterOptionType(type),
-                    flags=flags,
-                    min=min,
-                    max=max,
-                    default=default,
-                    choices=tuple(choices),
-                )
+        output.append(
+            FFMpegFilterOption(
+                alias=(name,),
+                name=name,
+                description=help.strip(),
+                type=FFMpegFilterOptionType(type),
+                flags=flags,
+                min=min,
+                max=max,
+                default=default,
+                choices=tuple(choices),
             )
+        )
+
+    return output
+
+
+def _remove_duplicate(options: list[FFMpegFilterOption]) -> list[FFMpegFilterOption]:
+    """
+    Remove duplicate options.
+
+    Args:
+        options: The options to check.
+
+    Returns:
+        The options with duplicates removed.
+    """
+    output = []
+    seen = set()
+    for option in options:
+        if option.name not in seen:
+            output.append(option)
+            seen.add(option.name)
 
     return output
 
@@ -323,5 +342,5 @@ def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
         is_dynamic_output=is_output_dynamic,
         stream_typings_input=tuple(input_types) if input_types else (),
         stream_typings_output=tuple(output_types) if output_types else (),
-        options=tuple(options),
+        options=tuple(_remove_duplicate(options)),
     )

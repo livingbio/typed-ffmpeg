@@ -64,7 +64,7 @@ class FFMpegFilterOption:
     @property
     def typing(self) -> str:
         if self.type == FFMpegFilterOptionType.boolean:
-            return "Bool"
+            return "Boolean"
         elif self.type == FFMpegFilterOptionType.duration:
             return "Duration"
         elif self.type == FFMpegFilterOptionType.color:
