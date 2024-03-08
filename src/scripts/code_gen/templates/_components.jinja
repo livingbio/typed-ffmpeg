@@ -61,11 +61,11 @@ Default("nan")
 {%- endif -%}
 {%- if f.is_dynamic_output -%}
 -> FilterNode:
-{%- elif f.output_stream_typings | length == 1 -%}
+{%- elif f.stream_typings_output | length == 1 -%}
 -> {{ return_type }}:
 {%- else -%}
 -> tuple[
-    {% for stream_typing in f.output_stream_typings %}
+    {% for stream_typing in f.stream_typings_output %}
         {% if stream_typing.type.value == "video" %}
             VideoStream,
         {% else %}
@@ -88,7 +88,7 @@ Returns:
 {%- if f.is_dynamic_output %}
     filter_node: the filter node
 {% else -%}
-    {% for stream_typing in f.output_stream_typings %}
+    {% for stream_typing in f.stream_typings_output %}
     {%- if stream_typing.type.value == "video" %}
     {{ stream_typing.name}}: the video stream
     {%- else %}
@@ -147,11 +147,11 @@ filter_node = FilterNode(
 )
 {% if f.is_dynamic_output %}
 return filter_node
-{%- elif f.output_stream_typings | length == 1 -%}
+{%- elif f.stream_typings_output | length == 1 -%}
 return filter_node.{{return_type}}(0)
 {%- else -%}
 return (
-    {% for stream_typing in f.output_stream_typings %}
+    {% for stream_typing in f.stream_typings_output %}
         {% if stream_typing.type.value == "video" %}
             filter_node.video({{loop.index0}}),
         {% else %}
