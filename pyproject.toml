@@ -89,7 +89,7 @@ no_implicit_reexport = true   # Requires explicit re-export of imported names.
 disallow_untyped_defs = true  # Forces all functions to have type annotations.
 
 [tool.poetry.scripts]
-scripts = "ffmpeg.scripts.main:app"
+scripts = "scripts.main:app"
 
 [tool.poetry-dynamic-versioning]
 enable = true
