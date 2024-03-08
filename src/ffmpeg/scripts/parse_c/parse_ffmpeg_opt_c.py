@@ -27,7 +27,7 @@ def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
             name, type, flags, _, help, arg_name, canon = line
         elif len(line) == 1:
             continue
-        else:
+        else:  # pragma: no cover
             raise ValueError(line)
 
         name = name.strip('"')

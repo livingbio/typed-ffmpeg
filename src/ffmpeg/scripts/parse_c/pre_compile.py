@@ -16,7 +16,7 @@ def precompile() -> None:
         try:
             # Ensure the output is captured in case of an error
             subprocess.check_output(["./configure"], stderr=subprocess.STDOUT)
-        except subprocess.CalledProcessError as e:
+        except subprocess.CalledProcessError as e:  # pragma: no cover
             print(f"Configure script failed with exit status {e.returncode}")
             print("Output:", e.output.decode())
             raise
