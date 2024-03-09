@@ -63,38 +63,46 @@ class FFMpegFilterOption:
 
     @property
     def typing(self) -> str:
+        base_type = None
         if self.type == FFMpegFilterOptionType.boolean:
-            return "Boolean"
+            base_type = "Boolean"
         elif self.type == FFMpegFilterOptionType.duration:
-            return "Duration"
+            base_type = "Duration"
         elif self.type == FFMpegFilterOptionType.color:
-            return "Color"
+            base_type = "Color"
         elif self.type == FFMpegFilterOptionType.flags:
-            return "Flags"
+            base_type = "Flags"
         elif self.type == FFMpegFilterOptionType.dictionary:
-            return "Dictionary"
+            base_type = "Dictionary"
         elif self.type == FFMpegFilterOptionType.pix_fmt:
-            return "Pix_fmt"
+            base_type = "Pix_fmt"
         elif self.type == FFMpegFilterOptionType.int:
-            return "Int"
+            base_type = "Int"
         elif self.type == FFMpegFilterOptionType.int64:
-            return "Int64"
+            base_type = "Int64"
         elif self.type == FFMpegFilterOptionType.double:
-            return "Double"
+            base_type = "Double"
         elif self.type == FFMpegFilterOptionType.float:
-            return "Float"
+            base_type = "Float"
         elif self.type == FFMpegFilterOptionType.string:
-            return "String"
+            base_type = "String"
         elif self.type == FFMpegFilterOptionType.video_rate:
-            return "Video_rate"
+            base_type = "Video_rate"
         elif self.type == FFMpegFilterOptionType.image_size:
-            return "Image_size"
+            base_type = "Image_size"
         elif self.type == FFMpegFilterOptionType.rational:
-            return "Rational"
+            base_type = "Rational"
         elif self.type == FFMpegFilterOptionType.sample_fmt:
-            return "Sample_fmt"
+            base_type = "Sample_fmt"
         elif self.type == FFMpegFilterOptionType.binary:
-            return "Binary"
+            base_type = "Binary"
+
+        assert base_type, f"{self.type} not fit"
+        if not self.choices:
+            return base_type
+
+        values = ",".join(f'"{i.name}"' for i in self.choices)
+        return base_type + f"| Literal[{values}]"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -124,40 +132,50 @@ class FFMpegFilter:
     is_dynamic_output: bool = False
     stream_typings_input: tuple[FFMpegIOType, ...] = ()
     stream_typings_output: tuple[FFMpegIOType, ...] = ()
-    forumla_typings_input: str | None = None
+    formula_typings_input: str | None = None
     formula_typings_output: str | None = None
 
     options: tuple[FFMpegFilterOption, ...] = ()
 
     @property
     def input_typings(self) -> str:
+        if self.formula_typings_input:
+            return self.formula_typings_input
         return "[" + ",".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input) + "]"
 
     @property
     def output_typings(self) -> str:
+        if self.formula_typings_output:
+            return self.formula_typings_output
         return "[" + ",".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output) + "]"
 
     @property
     def filter_type(self) -> FFMpegFilterType:
-        if self.stream_typings_output:
-            if self.stream_typings_output[0].type == StreamType.video:
+        if self.stream_typings_input:
+            if self.stream_typings_input[0].type == StreamType.video:
                 return FFMpegFilterType.vf
-            elif self.stream_typings_output[0].type == StreamType.audio:
+            elif self.stream_typings_input[0].type == StreamType.audio:
                 return FFMpegFilterType.af
-        elif self.is_dynamic_output:
-            assert self.formula_typings_output
-            if "video" not in self.formula_typings_output:
+        elif self.is_dynamic_input:
+            assert self.formula_typings_input
+            if "video" not in self.formula_typings_input:
                 return FFMpegFilterType.af
-            elif "audio" not in self.formula_typings_output:
+            elif "audio" not in self.formula_typings_input:
                 return FFMpegFilterType.vf
             return (
                 FFMpegFilterType.vf
-                if self.formula_typings_output.index("video") < self.formula_typings_output.index("audio")
+                if self.formula_typings_input.index("video") < self.formula_typings_input.index("audio")
                 else FFMpegFilterType.af
             )
-        else:
-            # FIXME:
+
+        # FIXME:
+        if not self.stream_typings_input and not self.is_dynamic_input:
+            return FFMpegFilterType.asrc
+
+        if not self.stream_typings_output and not self.is_dynamic_output:
             return FFMpegFilterType.asink
+
+        raise ValueError(f"Unknown filter type for {self.name}")
 
 
 class FFMpegOptionFlag(int, Enum):

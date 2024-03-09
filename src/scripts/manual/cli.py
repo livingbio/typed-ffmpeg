@@ -38,7 +38,7 @@ def migrate_config() -> None:  # pragma: no cover
 
         info = FFMpegFilterManuallyDefined(
             name=info["name"],
-            forumla_typings_input=info["formula_input_typings"],
+            formula_typings_input=info["formula_input_typings"],
             formula_typings_output=info["formula_output_typings"],
         )
 

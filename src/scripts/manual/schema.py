@@ -5,5 +5,5 @@ from dataclasses import dataclass
 class FFMpegFilterManuallyDefined:
     name: str
 
-    forumla_typings_input: str | None = None
+    formula_typings_input: str | None = None
     formula_typings_output: str | None = None

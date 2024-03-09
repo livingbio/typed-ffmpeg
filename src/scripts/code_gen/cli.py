@@ -33,7 +33,7 @@ def generate() -> None:
 
     ffmpeg_filters = []
 
-    for f in all_filters():
+    for f in sorted(all_filters(), key=lambda i: i.name):
         if f.name == "afir":
             continue
 

@@ -1,6 +1,6 @@
 {
   "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.video] * int(inputs)",
   "formula_typings_output": null,
-  "forumla_typings_input": "[StreamType.video] * int(inputs)",
   "name": "mix"
 }
