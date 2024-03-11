@@ -138,42 +138,75 @@ class FFMpegFilter:
     options: tuple[FFMpegFilterOption, ...] = ()
 
     @property
-    def input_typings(self) -> str:
-        if self.formula_typings_input:
-            return self.formula_typings_input
-        return "[" + ",".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input) + "]"
+    def input_typings(self) -> set[StreamType]:
+        if self.is_filter_source:
+            return set()
+        if not self.is_dynamic_input:
+            return {i.type for i in self.stream_typings_input}
+        else:
+            assert self.formula_typings_input, f"{self.name} has no input"
+            if "video" not in self.formula_typings_input:
+                assert "audio" in self.formula_typings_input, f"{self.name} has no video input"
+                return {StreamType.audio}
+            elif "audio" not in self.formula_typings_input:
+                assert "video" in self.formula_typings_input, f"{self.name} has no audio input"
+                return {StreamType.video}
+            assert (
+                "video" in self.formula_typings_input and "audio" in self.formula_typings_input
+            ), f"{self.name} has no video or audio input"
+            return {StreamType.video, StreamType.audio}
 
     @property
-    def output_typings(self) -> str:
-        if self.formula_typings_output:
-            return self.formula_typings_output
-        return "[" + ",".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output) + "]"
+    def output_typings(self) -> set[StreamType]:
+        if self.is_filter_sink:
+            return set()
+        if not self.is_dynamic_output:
+            return {i.type for i in self.stream_typings_output}
+        else:
+            assert self.formula_typings_output, f"{self.name} has no output"
+            if "video" not in self.formula_typings_output:
+                assert "audio" in self.formula_typings_output, f"{self.name} has no video output"
+                return {StreamType.audio}
+            elif "audio" not in self.formula_typings_output:
+                assert "video" in self.formula_typings_output, f"{self.name} has no audio output"
+                return {StreamType.video}
+            assert (
+                "video" in self.formula_typings_output and "audio" in self.formula_typings_output
+            ), f"{self.name} has no video or audio output"
+            return {StreamType.video, StreamType.audio}
 
     @property
     def filter_type(self) -> FFMpegFilterType:
-        # FIXME:
-        if not self.stream_typings_input and not self.is_dynamic_input:
-            return FFMpegFilterType.asrc
+        if self.is_filter_sink:
+            assert len(self.input_typings) == 1
+            if {StreamType.video} == self.input_typings:
+                return FFMpegFilterType.vsink
+            if {StreamType.audio} == self.input_typings:
+                return FFMpegFilterType.asink
+        elif self.is_filter_source:
+            if {StreamType.video, StreamType.audio} == self.output_typings:
+                return FFMpegFilterType.avsrc
+            if {StreamType.video} == self.output_typings:
+                return FFMpegFilterType.vsrc
+            if {StreamType.audio} == self.output_typings:
+                return FFMpegFilterType.asrc
 
-        if not self.stream_typings_output and not self.is_dynamic_output:
-            return FFMpegFilterType.asink
+        assert self.input_typings
 
-        if self.stream_typings_input:
-            if self.stream_typings_input[0].type == StreamType.video:
+        if self.input_typings == {StreamType.video}:
+            if StreamType.audio in self.output_typings:
+                return FFMpegFilterType.vaf
+            if self.output_typings == {StreamType.video}:
                 return FFMpegFilterType.vf
-            elif self.stream_typings_input[0].type == StreamType.audio:
+
+        if self.input_typings == {StreamType.audio}:
+            if self.output_typings == {StreamType.audio}:
                 return FFMpegFilterType.af
-        elif self.is_dynamic_input:
-            assert self.formula_typings_input
-            if "video" not in self.formula_typings_input:
-                return FFMpegFilterType.af
-            elif "audio" not in self.formula_typings_input:
-                return FFMpegFilterType.vf
-            return (
-                FFMpegFilterType.vf
-                if self.formula_typings_input.index("video") < self.formula_typings_input.index("audio")
-                else FFMpegFilterType.af
-            )
+            if StreamType.video in self.output_typings:
+                return FFMpegFilterType.avf
+
+        if self.input_typings == {StreamType.video, StreamType.audio}:
+            return FFMpegFilterType.avf
 
         raise ValueError(f"Unknown filter type for {self.name}")
 
