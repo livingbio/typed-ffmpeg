@@ -151,6 +151,13 @@ class FFMpegFilter:
 
     @property
     def filter_type(self) -> FFMpegFilterType:
+        # FIXME:
+        if not self.stream_typings_input and not self.is_dynamic_input:
+            return FFMpegFilterType.asrc
+
+        if not self.stream_typings_output and not self.is_dynamic_output:
+            return FFMpegFilterType.asink
+
         if self.stream_typings_input:
             if self.stream_typings_input[0].type == StreamType.video:
                 return FFMpegFilterType.vf
@@ -167,13 +174,6 @@ class FFMpegFilter:
                 if self.formula_typings_input.index("video") < self.formula_typings_input.index("audio")
                 else FFMpegFilterType.af
             )
-
-        # FIXME:
-        if not self.stream_typings_input and not self.is_dynamic_input:
-            return FFMpegFilterType.asrc
-
-        if not self.stream_typings_output and not self.is_dynamic_output:
-            return FFMpegFilterType.asink
 
         raise ValueError(f"Unknown filter type for {self.name}")
 
