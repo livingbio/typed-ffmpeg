@@ -100,10 +100,24 @@ def option_typing(self: FFMpegOption) -> str:
         return "str | float"
 
 
+def input_typings(self: FFMpegFilter) -> str:
+    if self.formula_typings_input:
+        return self.formula_typings_input
+    return ", ".join(f"StreamType.{i}" for i in self.stream_typings_input)
+
+
+def output_typings(self: FFMpegFilter) -> str:
+    if self.formula_typings_output:
+        return self.formula_typings_output
+    return ", ".join(f"StreamType.{i}" for i in self.stream_typings_output)
+
+
 env.filters["stream_name_safe"] = stream_name_safe
 env.filters["option_name_safe"] = option_name_safe
 env.filters["filter_option_typing"] = filter_option_typing
 env.filters["option_typing"] = option_typing
+env.filters["input_typings"] = input_typings
+env.filters["output_typings"] = output_typings
 
 
 def render(filters: list[FFMpegFilter], options: list[FFMpegOption], outpath: pathlib.Path) -> list[pathlib.Path]:
