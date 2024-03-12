@@ -1,0 +1,101 @@
+### 11.153 lut, lutrgb, lutyuv
+
+Compute a look-up table for binding each pixel component input value to an
+output value, and apply it to the input video.
+
+lutyuv applies a lookup table to a YUV input video, lutrgb to an RGB input
+video.
+
+These filters accept the following parameters:
+
+**c0**
+
+    set first pixel component expression 
+
+**c1**
+
+    set second pixel component expression 
+
+**c2**
+
+    set third pixel component expression 
+
+**c3**
+
+    set fourth pixel component expression, corresponds to the alpha component 
+
+**r**
+
+    set red component expression 
+
+**g**
+
+    set green component expression 
+
+**b**
+
+    set blue component expression 
+
+**a**
+
+    alpha component expression 
+
+**y**
+
+    set Y/luma component expression 
+
+**u**
+
+    set U/Cb component expression 
+
+**v**
+
+    set V/Cr component expression 
+
+Each of them specifies the expression to use for computing the lookup table
+for the corresponding pixel component values.
+
+The exact component associated to each of the c* options depends on the format
+in input.
+
+The lut filter requires either YUV or RGB pixel formats in input, lutrgb
+requires RGB pixel formats in input, and lutyuv requires YUV.
+
+The expressions can contain the following constants and functions:
+
+**w**
+
+**h**
+
+    The input width and height. 
+
+**val**
+
+    The input value for the pixel component. 
+
+**clipval**
+
+    The input value, clipped to the minval-maxval range. 
+
+**maxval**
+
+    The maximum value for the pixel component. 
+
+**minval**
+
+    The minimum value for the pixel component. 
+
+**negval**
+
+    The negated value for the pixel component value, clipped to the minval-maxval range; it corresponds to the expression "maxval-clipval+minval". 
+
+**clip(val)**
+
+    The computed value in val, clipped to the minval-maxval range. 
+
+**gammaval(gamma)**
+
+    The computed gamma correction value of the pixel component value, clipped to the minval-maxval range. It corresponds to the expression "pow((clipval-minval)/(maxval-minval),gamma)*(maxval-minval)+minval" 
+
+All expressions default to "clipval".
+

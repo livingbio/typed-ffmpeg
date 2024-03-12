@@ -1,0 +1,20 @@
+from typing import Any, Literal
+
+from .dag.nodes import FilterNode, FilterableStream
+from .schema import Default, StreamType
+from .types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
+from .streams.video import VideoStream
+from .streams.audio import AudioStream
+from .streams.av import AVStream
+from .streams.channel_layout import CHANNEL_LAYOUT
+from .utils.run import _to_tuple
+
+import re
+
+{% import "_components.jinja" as _components %}
+
+{% for f in filters %}
+    {% if f.is_dynamic_input or f.stream_typings_input | length > 1 %}
+{{ _components.filter_function(f) }}
+    {% endif %}
+{% endfor %}

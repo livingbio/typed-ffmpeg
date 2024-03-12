@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -30,8 +32,8 @@ jobs:
         run: |
           sudo apt-get update -q
           sudo apt-get install -y wget -q
-          wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz -q
-          tar -xf ffmpeg-release-amd64-static.tar.xz
+          wget https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.0-amd64-static.tar.xz -q
+          tar -xf ffmpeg-6.0-amd64-static.tar.xz
           sudo mv ffmpeg-*-amd64-static/ffmpeg /usr/local/bin/
           sudo mv ffmpeg-*-amd64-static/ffprobe /usr/local/bin/
           ffmpeg -version
@@ -42,6 +44,14 @@ jobs:
 
       - name: Check Graphviz version
         run: dot -V
+
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
+
+      # Run linting
+      - name: Linting
+        run: poetry run pre-commit run --all-files
+        working-directory: src
 
       # Run unittests
       - name: Run Unittest
@@ -55,11 +65,6 @@ jobs:
           flags: ${{ matrix.python-version }}
           token: ${{ secrets.CODECOV_TOKEN }} # required
           verbose: true # optional (default = false)
-
-      # Run linting
-      - name: Linting
-        run: poetry run pre-commit run --all-files
-        working-directory: src
 
       # Build Mkdocs
       - name: Build Mkdocs

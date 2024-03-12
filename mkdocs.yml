@@ -49,6 +49,8 @@ nav:
       - filters: src/filters.md
       - probe: src/probe.md
       - exceptions: src/exceptions.md
+      - Common:
+          - serialize: src/common/serialize.md
       - Streams:
           - video stream: src/streams/video_stream.md
           - audio stream: src/streams/audio_stream.md
@@ -58,7 +60,6 @@ nav:
           - context: src/dag/context.md
           - nodes: src/dag/nodes.md
           - schema: src/dag/schema.md
-          - serialize: src/dag/serialize.md
           - utils: src/dag/utils.md
           - validate: src/dag/validate.md
           - global_runnable:

@@ -1,0 +1,40 @@
+# NOTE: this file is auto-generated, do not modify
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from ..nodes import FilterableStream, OutputNode, OutputStream
+
+
+class OutputArgs(ABC):
+    @abstractmethod
+    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
+        ...
+
+    def output(
+        self,
+        *streams: "FilterableStream",
+        filename: str | Path,**kwargs: Any
+    ) -> OutputStream:
+        """
+        Output file URL
+
+        Args:
+            *streams: the streams to output
+            filename: the filename to output to
+            **kwargs: the arguments for the output
+
+        Returns:
+            the output stream
+        """
+
+        options = {
+            k: v for k, v in {
+                
+            }.items() if v is not None
+        }
+
+        return self._output_node(*streams, filename=filename, **options, **kwargs).stream()

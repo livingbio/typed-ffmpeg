@@ -59,7 +59,6 @@ class GlobalArgs(ABC):
         init_hw_device: str = None,
         filter_hw_device: str = None,
         adrift_threshold: str = None,
-        psnr: bool = None,
         qphist: str = None,
         vsync: str = None,
         **kwargs: Any,
@@ -111,7 +110,6 @@ class GlobalArgs(ABC):
             init_hw_device: initialise hardware device
             filter_hw_device: set hardware device used when filtering
             adrift_threshold: deprecated, does nothing
-            psnr: calculate PSNR of compressed frames (deprecated, use -flags +psnr)
             qphist: deprecated, does nothing
             vsync: set video sync method globally; deprecated, use -fps_mode
             **kwargs: Additional options
@@ -168,7 +166,6 @@ class GlobalArgs(ABC):
                         "init_hw_device": init_hw_device,
                         "filter_hw_device": filter_hw_device,
                         "adrift_threshold": adrift_threshold,
-                        "psnr": psnr,
                         "qphist": qphist,
                         "vsync": vsync,
                     }.items()

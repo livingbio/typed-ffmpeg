@@ -1,0 +1,120 @@
+{
+  "": [
+    "Filter acrossfade",
+    "acrossfade AVOptions:"
+  ],
+  "Cross fade two input audio streams.": [
+    "Inputs:",
+    "Outputs:"
+  ],
+  "Filter acrossfade": [
+    "Cross fade two input audio streams."
+  ],
+  "Inputs:": [
+    "#0: crossfade0 (audio)",
+    "#1: crossfade1 (audio)"
+  ],
+  "Outputs:": [
+    "#0: default (audio)"
+  ],
+  "acrossfade AVOptions:": [
+    "nb_samples        <int>        ..F.A...... set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)",
+    "ns                <int>        ..F.A...... set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)",
+    "duration          <duration>   ..F.A...... set cross fade duration (default 0)",
+    "d                 <duration>   ..F.A...... set cross fade duration (default 0)",
+    "overlap           <boolean>    ..F.A...... overlap 1st stream end with 2nd stream start (default true)",
+    "o                 <boolean>    ..F.A...... overlap 1st stream end with 2nd stream start (default true)",
+    "curve1            <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 18) (default tri)",
+    "c1                <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 18) (default tri)",
+    "curve2            <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 18) (default tri)",
+    "c2                <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 18) (default tri)"
+  ],
+  "c1                <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 18) (default tri)": [
+    "nofade          -1           ..F.A...... no fade; keep audio as-is",
+    "tri             0            ..F.A...... linear slope",
+    "qsin            1            ..F.A...... quarter of sine wave",
+    "esin            2            ..F.A...... exponential sine wave",
+    "hsin            3            ..F.A...... half of sine wave",
+    "log             4            ..F.A...... logarithmic",
+    "ipar            5            ..F.A...... inverted parabola",
+    "qua             6            ..F.A...... quadratic",
+    "cub             7            ..F.A...... cubic",
+    "squ             8            ..F.A...... square root",
+    "cbr             9            ..F.A...... cubic root",
+    "par             10           ..F.A...... parabola",
+    "exp             11           ..F.A...... exponential",
+    "iqsin           12           ..F.A...... inverted quarter of sine wave",
+    "ihsin           13           ..F.A...... inverted half of sine wave",
+    "dese            14           ..F.A...... double-exponential seat",
+    "desi            15           ..F.A...... double-exponential sigmoid",
+    "losi            16           ..F.A...... logistic sigmoid",
+    "sinc            17           ..F.A...... sine cardinal function",
+    "isinc           18           ..F.A...... inverted sine cardinal function"
+  ],
+  "c2                <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 18) (default tri)": [
+    "nofade          -1           ..F.A...... no fade; keep audio as-is",
+    "tri             0            ..F.A...... linear slope",
+    "qsin            1            ..F.A...... quarter of sine wave",
+    "esin            2            ..F.A...... exponential sine wave",
+    "hsin            3            ..F.A...... half of sine wave",
+    "log             4            ..F.A...... logarithmic",
+    "ipar            5            ..F.A...... inverted parabola",
+    "qua             6            ..F.A...... quadratic",
+    "cub             7            ..F.A...... cubic",
+    "squ             8            ..F.A...... square root",
+    "cbr             9            ..F.A...... cubic root",
+    "par             10           ..F.A...... parabola",
+    "exp             11           ..F.A...... exponential",
+    "iqsin           12           ..F.A...... inverted quarter of sine wave",
+    "ihsin           13           ..F.A...... inverted half of sine wave",
+    "dese            14           ..F.A...... double-exponential seat",
+    "desi            15           ..F.A...... double-exponential sigmoid",
+    "losi            16           ..F.A...... logistic sigmoid",
+    "sinc            17           ..F.A...... sine cardinal function",
+    "isinc           18           ..F.A...... inverted sine cardinal function"
+  ],
+  "curve1            <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 18) (default tri)": [
+    "nofade          -1           ..F.A...... no fade; keep audio as-is",
+    "tri             0            ..F.A...... linear slope",
+    "qsin            1            ..F.A...... quarter of sine wave",
+    "esin            2            ..F.A...... exponential sine wave",
+    "hsin            3            ..F.A...... half of sine wave",
+    "log             4            ..F.A...... logarithmic",
+    "ipar            5            ..F.A...... inverted parabola",
+    "qua             6            ..F.A...... quadratic",
+    "cub             7            ..F.A...... cubic",
+    "squ             8            ..F.A...... square root",
+    "cbr             9            ..F.A...... cubic root",
+    "par             10           ..F.A...... parabola",
+    "exp             11           ..F.A...... exponential",
+    "iqsin           12           ..F.A...... inverted quarter of sine wave",
+    "ihsin           13           ..F.A...... inverted half of sine wave",
+    "dese            14           ..F.A...... double-exponential seat",
+    "desi            15           ..F.A...... double-exponential sigmoid",
+    "losi            16           ..F.A...... logistic sigmoid",
+    "sinc            17           ..F.A...... sine cardinal function",
+    "isinc           18           ..F.A...... inverted sine cardinal function"
+  ],
+  "curve2            <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 18) (default tri)": [
+    "nofade          -1           ..F.A...... no fade; keep audio as-is",
+    "tri             0            ..F.A...... linear slope",
+    "qsin            1            ..F.A...... quarter of sine wave",
+    "esin            2            ..F.A...... exponential sine wave",
+    "hsin            3            ..F.A...... half of sine wave",
+    "log             4            ..F.A...... logarithmic",
+    "ipar            5            ..F.A...... inverted parabola",
+    "qua             6            ..F.A...... quadratic",
+    "cub             7            ..F.A...... cubic",
+    "squ             8            ..F.A...... square root",
+    "cbr             9            ..F.A...... cubic root",
+    "par             10           ..F.A...... parabola",
+    "exp             11           ..F.A...... exponential",
+    "iqsin           12           ..F.A...... inverted quarter of sine wave",
+    "ihsin           13           ..F.A...... inverted half of sine wave",
+    "dese            14           ..F.A...... double-exponential seat",
+    "desi            15           ..F.A...... double-exponential sigmoid",
+    "losi            16           ..F.A...... logistic sigmoid",
+    "sinc            17           ..F.A...... sine cardinal function",
+    "isinc           18           ..F.A...... inverted sine cardinal function"
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Negate input video.",
+  "formula_typings_input": null,
+  "formula_typings_output": null,
+  "id": null,
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_filter_sink": null,
+  "is_filter_source": null,
+  "is_support_command": null,
+  "is_support_framesync": false,
+  "is_support_slice_threading": true,
+  "is_support_timeline": true,
+  "name": "negate",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "components"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "set luma component",
+          "name": "y",
+          "value": "y"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "set u component",
+          "name": "u",
+          "value": "u"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "set v component",
+          "name": "v",
+          "value": "v"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "set red component",
+          "name": "r",
+          "value": "r"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "set green component",
+          "name": "g",
+          "value": "g"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "set blue component",
+          "name": "b",
+          "value": "b"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "set alpha component",
+          "name": "a",
+          "value": "a"
+        }
+      ],
+      "default": "y+u+v+r+g+b",
+      "description": "set components to negate (default y+u+v+r+g+b)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "components",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "flags"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "negate_alpha"
+      ],
+      "choices": [],
+      "default": false,
+      "description": "(default false)",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "negate_alpha",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "boolean"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "flags": null,
+      "max": null,
+      "min": null,
+      "name": "enable",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    }
+  ],
+  "ref": null,
+  "stream_typings_input": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
+  "formula_typings_input": "[StreamType.video] * int(nb_inputs)",
+  "formula_typings_output": null,
+  "name": "interleave"
+}

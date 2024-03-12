@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
+from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, String, Video_rate
 from ..utils.run import _to_tuple
 from .channel_layout import CHANNEL_LAYOUT
 
@@ -305,10 +305,6 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
         | Default = Default("tri"),
         curve2: Int
@@ -333,10 +329,6 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
         | Default = Default("tri"),
         **kwargs: Any,
@@ -349,8 +341,8 @@ class AudioStream(FilterableStream):
             nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
             duration: set cross fade duration (default 0)
             overlap: overlap 1st stream end with 2nd stream start (default true)
-            curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
-            curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
+            curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
+            curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
 
         Returns:
             default: the audio stream
@@ -448,7 +440,7 @@ class AudioStream(FilterableStream):
         lfo: Boolean = Default(False),
         lforange: Double = Default(20.0),
         lforate: Double = Default(0.3),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -554,7 +546,7 @@ class AudioStream(FilterableStream):
         threshold: Double = Default(2.0),
         burst: Double = Default(2.0),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -608,7 +600,7 @@ class AudioStream(FilterableStream):
         threshold: Double = Default(10.0),
         hsize: Int = Default(1000),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -654,7 +646,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def adecorrelate(
-        self, *, stages: Int = Default(6), seed: Int64 = Default(-1), enable: str = Default(None), **kwargs: Any
+        self, *, stages: Int = Default(6), seed: Int64 = Default(-1), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -695,7 +687,7 @@ class AudioStream(FilterableStream):
         *,
         delays: String = Default(None),
         all: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -737,7 +729,7 @@ class AudioStream(FilterableStream):
         *,
         level: Double = Default(-351.0),
         type: Int | Literal["dc", "ac", "square", "pulse"] | Default = Default("dc"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -774,7 +766,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def aderivative(self, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def aderivative(self, *, enable: String = Default(None), **kwargs: Any) -> AudioStream:
         """
 
         Compute derivative of input audio.
@@ -890,7 +882,7 @@ class AudioStream(FilterableStream):
         attack: Double = Default(50.0),
         release: Double = Default(100.0),
         channels: String = Default("all"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -945,12 +937,10 @@ class AudioStream(FilterableStream):
         makeup: Double = Default(0.0),
         range: Double = Default(50.0),
         mode: Int | Literal["listen", "cut", "boost"] | Default = Default("cut"),
-        dftype: Int | Literal["bandpass", "lowpass", "highpass", "peak"] | Default = Default("bandpass"),
         tftype: Int | Literal["bell", "lowshelf", "highshelf"] | Default = Default("bell"),
         direction: Int | Literal["downward", "upward"] | Default = Default("downward"),
         auto: Int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
-        precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -969,11 +959,9 @@ class AudioStream(FilterableStream):
             makeup: set makeup gain (from 0 to 100) (default 0)
             range: set max gain (from 1 to 200) (default 50)
             mode: set mode (from -1 to 1) (default cut)
-            dftype: set detection filter type (from 0 to 3) (default bandpass)
             tftype: set target filter type (from 0 to 2) (default bell)
             direction: set direction (from 0 to 1) (default downward)
             auto: set auto threshold (from -1 to 1) (default disabled)
-            precision: set processing precision (from 0 to 2) (default auto)
             enable: timeline editing
 
         Returns:
@@ -1002,11 +990,9 @@ class AudioStream(FilterableStream):
                         "makeup": makeup,
                         "range": range,
                         "mode": mode,
-                        "dftype": dftype,
                         "tftype": tftype,
                         "direction": direction,
                         "auto": auto,
-                        "precision": precision,
                         "enable": enable,
                     }
                     | kwargs
@@ -1020,7 +1006,7 @@ class AudioStream(FilterableStream):
         *,
         sensitivity: Double = Default(2.0),
         basefreq: Double = Default(22050.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1111,7 +1097,7 @@ class AudioStream(FilterableStream):
         type: Int
         | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
         | Default = Default("cd"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1157,7 +1143,7 @@ class AudioStream(FilterableStream):
         *,
         exprs: String = Default(None),
         channel_layout: String = Default(None),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1205,7 +1191,7 @@ class AudioStream(FilterableStream):
         freq: Double = Default(7500.0),
         ceil: Double = Default(9999.0),
         listen: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1284,15 +1270,11 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
         | Default = Default("tri"),
         silence: Double = Default(0.0),
         unity: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1305,7 +1287,7 @@ class AudioStream(FilterableStream):
             nb_samples: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
             start_time: set time to start fading (default 0)
             duration: set fade duration (default 0)
-            curve: set fade curve type (from -1 to 22) (default tri)
+            curve: set fade curve type (from -1 to 18) (default tri)
             silence: set the silence gain (from 0 to 1) (default 0)
             unity: set the unity gain (from 0 to 1) (default 1)
             enable: timeline editing
@@ -1360,7 +1342,7 @@ class AudioStream(FilterableStream):
         band_multiplier: Float = Default(1.25),
         sample_noise: Int | Literal["none", "start", "begin", "stop", "end"] | Default = Default("none"),
         gain_smooth: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1454,7 +1436,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         overlap: Float = Default(0.75),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1545,7 +1527,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default(0.0),
         level: Double = Default(1.0),
         order: Int = Default(8),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1595,7 +1577,7 @@ class AudioStream(FilterableStream):
         adaptive: Boolean = Default(False),
         samples: Int = Default(8192),
         softness: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1659,7 +1641,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1721,11 +1703,9 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
-        mode: Flags | Literal["full", "compact", "nozero", "noeof", "nodisabled"] | Default = Default("0"),
+        mode: Int | Literal["full", "compact"] | Default = Default("full"),
         flags: Flags
         | Literal[
-            "none",
-            "all",
             "queue",
             "frame_count_in",
             "frame_count_out",
@@ -1742,9 +1722,8 @@ class AudioStream(FilterableStream):
             "sample_count_in",
             "sample_count_out",
             "sample_count_delta",
-            "disabled",
         ]
-        | Default = Default("all+queue"),
+        | Default = Default("queue"),
         rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> VideoStream:
@@ -1755,8 +1734,8 @@ class AudioStream(FilterableStream):
         Args:
             size: set monitor size (default "hd720")
             opacity: set video opacity (from 0 to 1) (default 0.9)
-            mode: set mode (default 0)
-            flags: set flags (default all+queue)
+            mode: set mode (from 0 to 1) (default full)
+            flags: set flags (default queue)
             rate: set video rate (default "25")
 
         Returns:
@@ -1926,7 +1905,7 @@ class AudioStream(FilterableStream):
 
         return filter_node
 
-    def aintegral(self, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def aintegral(self, *, enable: String = Default(None), **kwargs: Any) -> AudioStream:
         """
 
         Compute integral of input audio.
@@ -1957,7 +1936,7 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def alatency(self, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def alatency(self, *, enable: String = Default(None), **kwargs: Any) -> AudioStream:
         """
 
         Report audio filtering latency.
@@ -2000,7 +1979,7 @@ class AudioStream(FilterableStream):
         asc_level: Double = Default(0.5),
         level: Boolean = Default(True),
         latency: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2063,7 +2042,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(2),
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2115,13 +2094,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def aloop(
-        self,
-        *,
-        loop: Int = Default(0),
-        size: Int64 = Default(0),
-        start: Int64 = Default(0),
-        time: Duration = Default("INT64_MAX"),
-        **kwargs: Any,
+        self, *, loop: Int = Default(0), size: Int64 = Default(0), start: Int64 = Default(0), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -2130,8 +2103,7 @@ class AudioStream(FilterableStream):
         Args:
             loop: number of loops (from -1 to INT_MAX) (default 0)
             size: max number of samples to loop (from 0 to INT_MAX) (default 0)
-            start: set the loop start sample (from -1 to I64_MAX) (default 0)
-            time: set the loop start time (default INT64_MAX)
+            start: set the loop start sample (from 0 to I64_MAX) (default 0)
 
         Returns:
             default: the audio stream
@@ -2151,7 +2123,6 @@ class AudioStream(FilterableStream):
                         "loop": loop,
                         "size": size,
                         "start": start,
-                        "time": time,
                     }
                     | kwargs
                 )
@@ -2171,7 +2142,7 @@ class AudioStream(FilterableStream):
         expr: String = Default(None),
         file: String = Default(None),
         direct: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2251,7 +2222,7 @@ class AudioStream(FilterableStream):
         mgain: Double = Default(60.0),
         fscale: Int | Literal["lin", "log"] | Default = Default("log"),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -2306,7 +2277,7 @@ class AudioStream(FilterableStream):
         research: Duration = Default(0.006),
         output: Int | Literal["i", "o", "n"] | Default = Default("o"),
         smooth: Float = Default(11.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2357,8 +2328,8 @@ class AudioStream(FilterableStream):
         mu: Float = Default(0.75),
         eps: Float = Default(1.0),
         leakage: Float = Default(0.0),
-        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-        enable: str = Default(None),
+        out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2370,7 +2341,7 @@ class AudioStream(FilterableStream):
             mu: set the filter mu (from 0 to 2) (default 0.75)
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
-            out_mode: set output mode (from 0 to 4) (default o)
+            out_mode: set output mode (from 0 to 3) (default o)
             enable: timeline editing
 
         Returns:
@@ -2412,8 +2383,8 @@ class AudioStream(FilterableStream):
         mu: Float = Default(0.75),
         eps: Float = Default(1.0),
         leakage: Float = Default(0.0),
-        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-        enable: str = Default(None),
+        out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2425,7 +2396,7 @@ class AudioStream(FilterableStream):
             mu: set the filter mu (from 0 to 2) (default 0.75)
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
-            out_mode: set output mode (from 0 to 4) (default o)
+            out_mode: set output mode (from 0 to 3) (default o)
             enable: timeline editing
 
         Returns:
@@ -2488,7 +2459,7 @@ class AudioStream(FilterableStream):
         whole_len: Int64 = Default(-1),
         pad_dur: Duration = Default(-1e-06),
         whole_dur: Duration = Default(-1e-06),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2536,7 +2507,7 @@ class AudioStream(FilterableStream):
         *,
         mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
         seed: Int64 = Default(-1),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2698,7 +2669,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default(0.0),
         level: Double = Default(1.0),
         order: Int = Default(8),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2737,40 +2708,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def apsnr(self, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
-        """
-
-        Measure Audio Peak Signal-to-Noise Ratio.
-
-        Args:
-            enable: timeline editing
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
-
-        """
-        filter_node = FilterNode(
-            name="apsnr",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _input1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
-        )
-        return filter_node.audio(0)
-
     def apsyclip(
         self,
         *,
@@ -2781,7 +2718,7 @@ class AudioStream(FilterableStream):
         adaptive: Double = Default(0.5),
         iterations: Int = Default(10),
         level: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2979,60 +2916,8 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def arls(
-        self,
-        _desired: AudioStream,
-        *,
-        order: Int = Default(16),
-        _lambda: Float = Default(1.0),
-        delta: Float = Default(2.0),
-        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-        enable: str = Default(None),
-        **kwargs: Any,
-    ) -> AudioStream:
-        """
-
-        Apply Recursive Least Squares algorithm to first audio stream.
-
-        Args:
-            order: set the filter order (from 1 to 32767) (default 16)
-            _lambda: set the filter lambda (from 0 to 1) (default 1)
-            delta: set the filter delta (from 0 to 32767) (default 2)
-            out_mode: set output mode (from 0 to 4) (default o)
-            enable: timeline editing
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
-
-        """
-        filter_node = FilterNode(
-            name="arls",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _desired,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "order": order,
-                        "lambda": _lambda,
-                        "delta": delta,
-                        "out_mode": out_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
-        )
-        return filter_node.audio(0)
-
     def arnndn(
-        self, *, model: String = Default(None), mix: Float = Default(1.0), enable: str = Default(None), **kwargs: Any
+        self, *, model: String = Default(None), mix: Float = Default(1.0), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -3068,13 +2953,10 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asdr(self, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def asdr(self, _input1: AudioStream, **kwargs: Any) -> AudioStream:
         """
 
         Measure Audio Signal-to-Distortion Ratio.
-
-        Args:
-            enable: timeline editing
 
         Returns:
             default: the audio stream
@@ -3091,14 +2973,7 @@ class AudioStream(FilterableStream):
                 self,
                 _input1,
             ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -3210,12 +3085,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def asetnsamples(
-        self,
-        *,
-        nb_out_samples: Int = Default(1024),
-        pad: Boolean = Default(True),
-        enable: str = Default(None),
-        **kwargs: Any,
+        self, *, nb_out_samples: Int = Default(1024), pad: Boolean = Default(True), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -3224,7 +3094,6 @@ class AudioStream(FilterableStream):
         Args:
             nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
             pad: pad last frame with zeros (default true)
-            enable: timeline editing
 
         Returns:
             default: the audio stream
@@ -3243,7 +3112,6 @@ class AudioStream(FilterableStream):
                     {
                         "nb_out_samples": nb_out_samples,
                         "pad": pad,
-                        "enable": enable,
                     }
                     | kwargs
                 )
@@ -3394,7 +3262,7 @@ class AudioStream(FilterableStream):
             "SEI_UNREGISTERED",
         ]
         | Default = Default(-1),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3431,40 +3299,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def asisdr(self, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
-        """
-
-        Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
-
-        Args:
-            enable: timeline editing
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
-
-        """
-        filter_node = FilterNode(
-            name="asisdr",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _input1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
-        )
-        return filter_node.audio(0)
-
     def asoftclip(
         self,
         *,
@@ -3475,7 +3309,7 @@ class AudioStream(FilterableStream):
         output: Double = Default(1.0),
         param: Double = Default(1.0),
         oversample: Int = Default(1),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3676,10 +3510,9 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
-            "Abs_Peak_count",
         ]
         | Default = Default(
-            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
         ),
         measure_overall: Flags
         | Literal[
@@ -3710,10 +3543,9 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
-            "Abs_Peak_count",
         ]
         | Default = Default(
-            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
         ),
         **kwargs: Any,
     ) -> AudioStream:
@@ -3725,8 +3557,8 @@ class AudioStream(FilterableStream):
             length: set the window length (from 0 to 10) (default 0.05)
             metadata: inject metadata in the filtergraph (default false)
             reset: Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)
-            measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
-            measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
+            measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
+            measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
 
         Returns:
             default: the audio stream
@@ -3767,7 +3599,7 @@ class AudioStream(FilterableStream):
         slope: Double = Default(0.5),
         delay: Double = Default(20.0),
         channels: String = Default("all"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3824,7 +3656,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default(20.0),
         order: Int = Default(10),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3869,7 +3701,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default(20000.0),
         order: Int = Default(10),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3915,7 +3747,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(4),
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3963,7 +3795,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(4),
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4043,7 +3875,7 @@ class AudioStream(FilterableStream):
         width: Double = Default(1000.0),
         order: Int = Default(5),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4226,7 +4058,7 @@ class AudioStream(FilterableStream):
         _axcorrelate1: AudioStream,
         *,
         size: Int = Default(256),
-        algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
+        algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4234,8 +4066,8 @@ class AudioStream(FilterableStream):
         Cross-correlate two audio streams.
 
         Args:
-            size: set the segment size (from 2 to 131072) (default 256)
-            algo: set the algorithm (from 0 to 2) (default best)
+            size: set segment size (from 2 to 131072) (default 256)
+            algo: set algorithm (from 0 to 1) (default slow)
 
         Returns:
             default: the audio stream
@@ -4264,37 +4096,6 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def azmq(self, *, bind_address: String = Default("tcp://*:5555"), **kwargs: Any) -> AudioStream:
-        """
-
-        Receive commands through ZMQ and broker them to filters.
-
-        Args:
-            bind_address: set bind address (default "tcp://*:5555")
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
-
-        """
-        filter_node = FilterNode(
-            name="azmq",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "bind_address": bind_address,
-                    }
-                    | kwargs
-                )
-            ),
-        )
-        return filter_node.audio(0)
-
     def bandpass(
         self,
         *,
@@ -4308,7 +4109,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4373,7 +4174,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4438,7 +4239,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4504,7 +4305,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4739,7 +4540,7 @@ class AudioStream(FilterableStream):
         dry: Double = Default(0.0),
         wet: Double = Default(1.0),
         temp: Int = Default(20),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4793,7 +4594,7 @@ class AudioStream(FilterableStream):
         level_in: Double = Default(0.9),
         level_out: Double = Default(1.0),
         block_size: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4839,7 +4640,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def crystalizer(
-        self, *, i: Float = Default(2.0), c: Boolean = Default(True), enable: str = Default(None), **kwargs: Any
+        self, *, i: Float = Default(2.0), c: Boolean = Default(True), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -4880,7 +4681,7 @@ class AudioStream(FilterableStream):
         *,
         shift: Double = Default(0.0),
         limitergain: Double = Default(0.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4924,7 +4725,7 @@ class AudioStream(FilterableStream):
         m: Double = Default(0.5),
         f: Double = Default(0.5),
         s: Int | Literal["i", "o", "e"] | Default = Default("o"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4971,7 +4772,7 @@ class AudioStream(FilterableStream):
         original: Double = Default(1.0),
         enhance: Double = Default(1.0),
         voice: Double = Default(2.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5057,7 +4858,7 @@ class AudioStream(FilterableStream):
         channels: String = Default("all"),
         overlap: Double = Default(0.0),
         curve: String = Default(None),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5151,12 +4952,6 @@ class AudioStream(FilterableStream):
         target: Int = Default(-23),
         gauge: Int | Literal["momentary", "m", "shortterm", "s"] | Default = Default("momentary"),
         scale: Int | Literal["absolute", "LUFS", "relative", "LU"] | Default = Default("absolute"),
-        integrated: Double = Default(0.0),
-        range: Double = Default(0.0),
-        lra_low: Double = Default(0.0),
-        lra_high: Double = Default(0.0),
-        sample_peak: Double = Default(0.0),
-        true_peak: Double = Default(0.0),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -5175,12 +4970,6 @@ class AudioStream(FilterableStream):
             target: set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)
             gauge: set gauge display type (from 0 to 1) (default momentary)
             scale: sets display method for the stats (from 0 to 1) (default absolute)
-            integrated: integrated loudness (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            range: loudness range (LU) (from -DBL_MAX to DBL_MAX) (default 0)
-            lra_low: LRA low (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            lra_high: LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            sample_peak: sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            true_peak: true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
 
         Returns:
             filter_node: the filter node
@@ -5209,12 +4998,6 @@ class AudioStream(FilterableStream):
                         "target": target,
                         "gauge": gauge,
                         "scale": scale,
-                        "integrated": integrated,
-                        "range": range,
-                        "lra_low": lra_low,
-                        "lra_high": lra_high,
-                        "sample_peak": sample_peak,
-                        "true_peak": true_peak,
                     }
                     | kwargs
                 )
@@ -5236,7 +5019,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5290,7 +5073,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def extrastereo(
-        self, *, m: Float = Default(2.5), c: Boolean = Default(True), enable: str = Default(None), **kwargs: Any
+        self, *, m: Float = Default(2.5), c: Boolean = Default(True), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -5604,7 +5387,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5671,7 +5454,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5805,7 +5588,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5872,7 +5655,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5996,16 +5779,10 @@ class AudioStream(FilterableStream):
         )
         return filter_node.audio(0)
 
-    def replaygain(
-        self, *, track_gain: Float = Default(0.0), track_peak: Float = Default(0.0), **kwargs: Any
-    ) -> AudioStream:
+    def replaygain(self, **kwargs: Any) -> AudioStream:
         """
 
         ReplayGain scanner.
-
-        Args:
-            track_gain: track gain (dB) (from -FLT_MAX to FLT_MAX) (default 0)
-            track_peak: track peak (from -FLT_MAX to FLT_MAX) (default 0)
 
         Returns:
             default: the audio stream
@@ -6019,15 +5796,7 @@ class AudioStream(FilterableStream):
             input_typings=tuple([StreamType.audio]),
             output_typings=tuple([StreamType.audio]),
             inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "track_gain": track_gain,
-                        "track_peak": track_peak,
-                    }
-                    | kwargs
-                )
-            ),
+            kwargs=_to_tuple(({} | kwargs)),
         )
         return filter_node.audio(0)
 
@@ -6042,7 +5811,7 @@ class AudioStream(FilterableStream):
         window: Int | Literal["standard", "short", "long"] | Default = Default("standard"),
         smoothing: Int | Literal["off", "on"] | Default = Default("off"),
         formant: Int | Literal["shifted", "preserved"] | Default = Default("shifted"),
-        pitchq: Int | Literal["quality", "speed", "consistency"] | Default = Default("speed"),
+        pitchq: Int | Literal["quality", "speed", "consistency"] | Default = Default("quality"),
         channels: Int | Literal["apart", "together"] | Default = Default("apart"),
         **kwargs: Any,
     ) -> AudioStream:
@@ -6059,7 +5828,7 @@ class AudioStream(FilterableStream):
             window: set window (from 0 to INT_MAX) (default standard)
             smoothing: set smoothing (from 0 to INT_MAX) (default off)
             formant: set formant (from 0 to INT_MAX) (default shifted)
-            pitchq: set pitch quality (from 0 to INT_MAX) (default speed)
+            pitchq: set pitch quality (from 0 to INT_MAX) (default quality)
             channels: set channels (from 0 to INT_MAX) (default apart)
 
         Returns:
@@ -6212,22 +5981,15 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("640x512"),
         rate: String = Default("25"),
-        scale: Int
-        | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt"]
-        | Default = Default("linear"),
-        iscale: Int | Literal["linear", "log", "sqrt", "cbrt", "qdrt"] | Default = Default("log"),
+        scale: Int | Literal["linear", "log2", "bark", "mel", "erbs"] | Default = Default("linear"),
         min: Float = Default(20.0),
         max: Float = Default(20000.0),
-        imin: Float = Default(0.0),
-        imax: Float = Default(1.0),
         logb: Float = Default(0.0001),
         deviation: Float = Default(1.0),
         pps: Int = Default(64),
         mode: Int | Literal["magnitude", "phase", "magphase", "channel", "stereo"] | Default = Default("magnitude"),
         slide: Int | Literal["replace", "scroll", "frame"] | Default = Default("replace"),
         direction: Int | Literal["lr", "rl", "ud", "du"] | Default = Default("lr"),
-        bar: Float = Default(0.0),
-        rotation: Float = Default(0.0),
         **kwargs: Any,
     ) -> VideoStream:
         """
@@ -6237,20 +5999,15 @@ class AudioStream(FilterableStream):
         Args:
             size: set video size (default "640x512")
             rate: set video rate (default "25")
-            scale: set frequency scale (from 0 to 7) (default linear)
-            iscale: set intensity scale (from 0 to 4) (default log)
-            min: set minimum frequency (from 1 to 192000) (default 20)
-            max: set maximum frequency (from 1 to 192000) (default 20000)
-            imin: set minimum intensity (from 0 to 1) (default 0)
-            imax: set maximum intensity (from 0 to 1) (default 1)
+            scale: set frequency scale (from 0 to 4) (default linear)
+            min: set minimum frequency (from 1 to 2000) (default 20)
+            max: set maximum frequency (from 0 to 192000) (default 20000)
             logb: set logarithmic basis (from 0 to 1) (default 0.0001)
-            deviation: set frequency deviation (from 0 to 100) (default 1)
+            deviation: set frequency deviation (from 0 to 10) (default 1)
             pps: set pixels per second (from 1 to 1024) (default 64)
             mode: set output mode (from 0 to 4) (default magnitude)
             slide: set slide mode (from 0 to 2) (default replace)
             direction: set direction mode (from 0 to 3) (default lr)
-            bar: set bar ratio (from 0 to 1) (default 0)
-            rotation: set color rotation (from -1 to 1) (default 0)
 
         Returns:
             default: the video stream
@@ -6270,19 +6027,14 @@ class AudioStream(FilterableStream):
                         "size": size,
                         "rate": rate,
                         "scale": scale,
-                        "iscale": iscale,
                         "min": min,
                         "max": max,
-                        "imin": imin,
-                        "imax": imax,
                         "logb": logb,
                         "deviation": deviation,
                         "pps": pps,
                         "mode": mode,
                         "slide": slide,
                         "direction": direction,
-                        "bar": bar,
-                        "rotation": rotation,
                     }
                     | kwargs
                 )
@@ -6803,7 +6555,7 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("600x240"),
         mode: Int | Literal["point", "line", "p2p", "cline"] | Default = Default("point"),
-        n: Rational = Default("0/1"),
+        n: Int = Default(0),
         rate: Video_rate = Default("25"),
         split_channels: Boolean = Default(False),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
@@ -6818,7 +6570,7 @@ class AudioStream(FilterableStream):
         Args:
             size: set video size (default "600x240")
             mode: select display mode (from 0 to 3) (default point)
-            n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0/1)
+            n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0)
             rate: set video rate (default "25")
             split_channels: draw channels separately (default false)
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
@@ -6995,7 +6747,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7104,11 +6856,9 @@ class AudioStream(FilterableStream):
         stop_duration: Duration = Default(0.0),
         stop_threshold: Double = Default(0.0),
         stop_silence: Duration = Default(0.0),
-        stop_mode: Int | Literal["any", "all"] | Default = Default("all"),
-        detection: Int | Literal["avg", "rms", "peak", "median", "ptp", "dev"] | Default = Default("rms"),
+        stop_mode: Int | Literal["any", "all"] | Default = Default("any"),
+        detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         window: Duration = Default(0.02),
-        timestamp: Int | Literal["write", "copy"] | Default = Default("write"),
-        enable: str = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7122,14 +6872,12 @@ class AudioStream(FilterableStream):
             start_silence: set start duration of silence part to keep (default 0)
             start_mode: set which channel will trigger trimming from start (from 0 to 1) (default any)
             stop_periods: set periods of silence parts to skip from end (from -9000 to 9000) (default 0)
-            stop_duration: set stop duration of silence part (default 0)
+            stop_duration: set stop duration of non-silence part (default 0)
             stop_threshold: set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)
             stop_silence: set stop duration of silence part to keep (default 0)
-            stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default all)
-            detection: set how silence is detected (from 0 to 5) (default rms)
+            stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default any)
+            detection: set how silence is detected (from 0 to 1) (default rms)
             window: set duration of window for silence detection (default 0.02)
-            timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
-            enable: timeline editing
 
         Returns:
             default: the audio stream
@@ -7158,8 +6906,6 @@ class AudioStream(FilterableStream):
                         "stop_mode": stop_mode,
                         "detection": detection,
                         "window": window,
-                        "timestamp": timestamp,
-                        "enable": enable,
                     }
                     | kwargs
                 )
@@ -7180,7 +6926,7 @@ class AudioStream(FilterableStream):
         invert: Boolean = Default(False),
         link: Boolean = Default(False),
         rms: Double = Default(0.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7258,7 +7004,7 @@ class AudioStream(FilterableStream):
         phase: Double = Default(0.0),
         bmode_in: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
         bmode_out: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7338,7 +7084,7 @@ class AudioStream(FilterableStream):
         feedback: Float = Default(0.3),
         crossfeed: Float = Default(0.3),
         drymix: Float = Default(0.8),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7688,7 +7434,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7757,7 +7503,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7813,7 +7559,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def tremolo(
-        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: str = Default(None), **kwargs: Any
+        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -7850,7 +7596,7 @@ class AudioStream(FilterableStream):
         return filter_node.audio(0)
 
     def vibrato(
-        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: str = Default(None), **kwargs: Any
+        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -7891,7 +7637,7 @@ class AudioStream(FilterableStream):
         *,
         cutoff: Double = Default(250.0),
         strength: Double = Default(3.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7937,7 +7683,7 @@ class AudioStream(FilterableStream):
         replaygain: Int | Literal["drop", "ignore", "track", "album"] | Default = Default("drop"),
         replaygain_preamp: Double = Default(0.0),
         replaygain_noclip: Boolean = Default(True),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """

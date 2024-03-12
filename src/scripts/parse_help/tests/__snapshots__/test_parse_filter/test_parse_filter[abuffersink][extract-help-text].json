@@ -1,0 +1,138 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Buffer audio frames, and make them available to the end of the filter graph.",
+  "formula_typings_input": null,
+  "formula_typings_output": null,
+  "id": null,
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_filter_sink": null,
+  "is_filter_source": null,
+  "is_support_command": null,
+  "is_support_framesync": false,
+  "is_support_slice_threading": false,
+  "is_support_timeline": false,
+  "name": "abuffersink",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "sample_fmts"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the supported sample formats",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "sample_fmts",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "binary"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "sample_rates"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the supported sample rates",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "sample_rates",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "binary"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "channel_layouts"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the supported channel layouts (deprecated, use ch_layouts)",
+      "flags": "..F.A.....P",
+      "max": null,
+      "min": null,
+      "name": "channel_layouts",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "binary"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "channel_counts"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set the supported channel counts (deprecated, use ch_layouts)",
+      "flags": "..F.A.....P",
+      "max": null,
+      "min": null,
+      "name": "channel_counts",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "binary"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "ch_layouts"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set a '|'-separated list of supported channel layouts",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "ch_layouts",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "all_channel_counts"
+      ],
+      "choices": [],
+      "default": false,
+      "description": "accept all channel counts (default false)",
+      "flags": "..F.A......",
+      "max": null,
+      "min": null,
+      "name": "all_channel_counts",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "boolean"
+      }
+    }
+  ],
+  "ref": null,
+  "stream_typings_input": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "audio"
+      }
+    }
+  ],
+  "stream_typings_output": []
+}
