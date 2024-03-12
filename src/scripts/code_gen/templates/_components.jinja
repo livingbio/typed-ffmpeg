@@ -36,16 +36,16 @@ Default("nan")
 
 {% macro default_typing(option) %}
 {% if option.choices %}
-{{filter_option_typing(option)}} | Default = {{ default_value(option) }}
+{{option | filter_option_typing}} | Default = {{ default_value(option) }}
 {% else %}
-{{filter_option_typing(option)}} = {{ default_value(option) }}
+{{option | filter_option_typing}} = {{ default_value(option) }}
 {% endif %}
 {% endmacro %}
 
 {% macro option_typings(f) %}
 {% for option in f.options %}
     {% if option.required %}
-        {{option.name | option_name_safe}}: {{filter_option_typing(option)}},
+        {{option.name | option_name_safe}}: {{option | filter_option_typing}},
     {% else %}
         {{option.name | option_name_safe}}: {{ default_typing(option) }},
     {% endif %}
