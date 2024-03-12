@@ -10,7 +10,7 @@ def output(
     filename: str | Path,
     {%- for option in options -%}
     {%- if option.is_output_option -%}
-    {{ option.name | option_name_safe }}: {{ option.typing }} = None,
+    {{ option.name | option_name_safe }}: {{ option_typing(option) }} = None,
     {%- endif -%}
     {%- endfor -%}
     **kwargs: Any

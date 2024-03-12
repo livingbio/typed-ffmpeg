@@ -4,7 +4,13 @@ from pathlib import Path
 
 import jinja2
 
-from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
+from ffmpeg.common.schema import (
+    FFMpegFilter,
+    FFMpegFilterOption,
+    FFMpegFilterOptionType,
+    FFMpegOption,
+    FFMpegOptionType,
+)
 
 template_folder = Path(__file__).parent / "templates"
 
@@ -12,6 +18,49 @@ loader = jinja2.FileSystemLoader(template_folder)
 env = jinja2.Environment(
     loader=loader,
 )
+
+
+def filter_option_typing(self: FFMpegFilterOption) -> str:
+    base_type = None
+    if self.type == FFMpegFilterOptionType.boolean:
+        base_type = "Boolean"
+    elif self.type == FFMpegFilterOptionType.duration:
+        base_type = "Duration"
+    elif self.type == FFMpegFilterOptionType.color:
+        base_type = "Color"
+    elif self.type == FFMpegFilterOptionType.flags:
+        base_type = "Flags"
+    elif self.type == FFMpegFilterOptionType.dictionary:
+        base_type = "Dictionary"
+    elif self.type == FFMpegFilterOptionType.pix_fmt:
+        base_type = "Pix_fmt"
+    elif self.type == FFMpegFilterOptionType.int:
+        base_type = "Int"
+    elif self.type == FFMpegFilterOptionType.int64:
+        base_type = "Int64"
+    elif self.type == FFMpegFilterOptionType.double:
+        base_type = "Double"
+    elif self.type == FFMpegFilterOptionType.float:
+        base_type = "Float"
+    elif self.type == FFMpegFilterOptionType.string:
+        base_type = "String"
+    elif self.type == FFMpegFilterOptionType.video_rate:
+        base_type = "Video_rate"
+    elif self.type == FFMpegFilterOptionType.image_size:
+        base_type = "Image_size"
+    elif self.type == FFMpegFilterOptionType.rational:
+        base_type = "Rational"
+    elif self.type == FFMpegFilterOptionType.sample_fmt:
+        base_type = "Sample_fmt"
+    elif self.type == FFMpegFilterOptionType.binary:
+        base_type = "Binary"
+
+    assert base_type, f"{self.type} not fit"
+    if not self.choices:
+        return base_type
+
+    values = ",".join(f'"{i.name}"' for i in self.choices)
+    return base_type + f"| Literal[{values}]"
 
 
 def stream_name_safe(string: str) -> str:
@@ -32,8 +81,29 @@ def option_name_safe(string: str) -> str:
     return string
 
 
+def option_typing(self: FFMpegOption) -> str:
+    if self.type == FFMpegOptionType.OPT_TYPE_FUNC:
+        return "str"
+    elif self.type == FFMpegOptionType.OPT_TYPE_BOOL:
+        return "bool"
+    elif self.type == FFMpegOptionType.OPT_TYPE_STRING:
+        return "str"
+    elif self.type == FFMpegOptionType.OPT_TYPE_INT:
+        return "int"
+    elif self.type == FFMpegOptionType.OPT_TYPE_INT64:
+        return "int"
+    elif self.type == FFMpegOptionType.OPT_TYPE_FLOAT:
+        return "float"
+    elif self.type == FFMpegOptionType.OPT_TYPE_DOUBLE:
+        return "float"
+    elif self.type == FFMpegOptionType.OPT_TYPE_TIME:
+        return "str | float"
+
+
 env.filters["stream_name_safe"] = stream_name_safe
 env.filters["option_name_safe"] = option_name_safe
+env.filters["filter_option_typing"] = filter_option_typing
+env.filters["option_typing"] = option_typing
 
 
 def render(filters: list[FFMpegFilter], options: list[FFMpegOption], outpath: pathlib.Path) -> list[pathlib.Path]:

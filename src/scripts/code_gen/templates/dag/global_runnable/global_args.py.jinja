@@ -17,7 +17,7 @@ class GlobalArgs(ABC):
 
         {%- for option in options -%}
         {%- if option.is_global_option -%}
-        {{ option.name }}: {{ option.typing }} = None,
+        {{ option.name }}: {{ option_typing(option) }} = None,
         {%- endif -%}
         {%- endfor -%}
         **kwargs: Any
