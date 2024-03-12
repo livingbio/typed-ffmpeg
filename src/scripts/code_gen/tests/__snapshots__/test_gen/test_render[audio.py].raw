@@ -83,8 +83,8 @@ References:
         """
         filter_node = FilterNode(
             name="aap",
-            input_typings=None,
-            output_typings=None,
+            input_typings=tuple([StreamType.audio, StreamType.audio]),
+            output_typings=tuple([StreamType.audio]),
             inputs=(
                 
             self,

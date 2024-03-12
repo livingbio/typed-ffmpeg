@@ -49,6 +49,22 @@
         "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
         "value": "boolean"
       }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "flags": null,
+      "max": null,
+      "min": null,
+      "name": "enable",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
     }
   ],
   "ref": null,
