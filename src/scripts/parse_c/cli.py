@@ -15,6 +15,8 @@ def pre_compile() -> None:
 
 @app.command()
 def parse_ffmpeg_options() -> list[FFMpegOption]:
+    precompile()
+
     ffmpeg_opt_c = target_folder / "fftools/ffmpeg_opt.c"
     return parse_ffmpeg_opt_c(ffmpeg_opt_c.read_text())
 
