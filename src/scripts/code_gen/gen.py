@@ -97,19 +97,19 @@ def option_typing(self: FFMpegOption) -> str:
     elif self.type == FFMpegOptionType.OPT_TYPE_DOUBLE:
         return "float"
     elif self.type == FFMpegOptionType.OPT_TYPE_TIME:
-        return "str | float"
+        return "str | float | None"
 
 
 def input_typings(self: FFMpegFilter) -> str:
     if self.formula_typings_input:
         return self.formula_typings_input
-    return ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input)
+    return "[" + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input) + "]"
 
 
 def output_typings(self: FFMpegFilter) -> str:
     if self.formula_typings_output:
         return self.formula_typings_output
-    return ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output)
+    return "[" + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output) + "]"
 
 
 env.filters["stream_name_safe"] = stream_name_safe

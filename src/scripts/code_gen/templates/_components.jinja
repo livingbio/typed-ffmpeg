@@ -3,7 +3,7 @@
     self,
 {% endif %}
 {% if f.is_dynamic_input %}
-    {% if f.is_input_type_mixed %}
+    {% if f.input_typings | length > 1 %}
     *streams: FilterableStream,
     {% elif f.filter_type.value in ["vf", "vaf"] %}
     *streams: VideoStream,
