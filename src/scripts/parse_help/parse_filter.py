@@ -330,6 +330,11 @@ def extract_avfilter_info_from_help(filter_name: str) -> FFMpegFilter:
         if "AVOptions:" in item:
             options.extend(_parse_options(tree[item], tree))
 
+    if is_suppoert_timeline:
+        options.append(
+            FFMpegFilterOption(name="enable", description="timeline editing", type=FFMpegFilterOptionType.string)
+        )
+
     return FFMpegFilter(
         name=filter_name,
         description=description,

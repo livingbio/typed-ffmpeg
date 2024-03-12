@@ -1,8 +1,8 @@
 {
   "__class__": "ffmpeg.common.schema.FFMpegFilter",
   "description": "Concatenate audio and video streams.",
+  "formula_typings_input": null,
   "formula_typings_output": null,
-  "forumla_typings_input": null,
   "id": null,
   "is_dynamic_input": true,
   "is_dynamic_output": true,

@@ -1,0 +1,21 @@
+Filter alphamerge
+  Copy the luma value of the second input into the alpha channel of the first input.
+    Inputs:
+       #0: main (video)
+       #1: alpha (video)
+    Outputs:
+       #0: default (video)
+alphamerge AVOptions:
+
+framesync AVOptions:
+   eof_action        <int>        ..FV....... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)
+     repeat          0            ..FV....... Repeat the previous frame.
+     endall          1            ..FV....... End both streams.
+     pass            2            ..FV....... Pass through the main input.
+   shortest          <boolean>    ..FV....... force termination when the shortest input terminates (default false)
+   repeatlast        <boolean>    ..FV....... extend last frame of secondary streams beyond EOF (default true)
+   ts_sync_mode      <int>        ..FV....... How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
+     default         0            ..FV....... Frame from secondary input with the nearest lower or equal timestamp to the primary input frame
+     nearest         1            ..FV....... Frame from secondary input with the absolute nearest timestamp to the primary input frame
+
+This filter has support for timeline through the 'enable' option.

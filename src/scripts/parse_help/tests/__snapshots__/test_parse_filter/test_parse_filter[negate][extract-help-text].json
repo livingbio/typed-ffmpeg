@@ -1,8 +1,8 @@
 {
   "__class__": "ffmpeg.common.schema.FFMpegFilter",
   "description": "Negate input video.",
+  "formula_typings_input": null,
   "formula_typings_output": null,
-  "forumla_typings_input": null,
   "id": null,
   "is_dynamic_input": false,
   "is_dynamic_output": false,
