@@ -78,7 +78,6 @@ References:
     [FFmpeg Documentation](None)
 
     """
-    FFMpegFilterDef(name='aap', typings_input=('audio', 'audio'), typings_output=('audio',))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name='aap', typings_input=('audio', 'audio'), typings_output=('audio',)),
         
