@@ -11,6 +11,8 @@ from ..types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, I
 from ..utils.typing import override
 from ..utils.run import _to_tuple
 from .channel_layout import CHANNEL_LAYOUT
+from ..common.schema import FFMpegFilterDef
+from ..dag.factory import filter_node_factory
 
 if TYPE_CHECKING:
     from .video import VideoStream

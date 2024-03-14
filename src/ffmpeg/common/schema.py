@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from typing import Literal
 
 
 class StreamType(str, Enum):
@@ -69,6 +70,14 @@ class FFMpegIOType:
 
 
 @dataclass(frozen=True, kw_only=True)
+class FFMpegFilterDef:
+    name: str
+
+    typings_input: str | tuple[Literal["video", "audio"], ...]
+    typings_output: str | tuple[Literal["video", "audio"], ...]
+
+
+@dataclass(frozen=True, kw_only=True)
 class FFMpegFilter:
     id: str | None = None
 
@@ -93,6 +102,14 @@ class FFMpegFilter:
     formula_typings_output: str | None = None
 
     options: tuple[FFMpegFilterOption, ...] = ()
+
+    @property
+    def to_def(self) -> FFMpegFilterDef:
+        return FFMpegFilterDef(
+            name=self.name,
+            typings_input=self.formula_typings_input or tuple(k.type.value for k in self.stream_typings_input),
+            typings_output=self.formula_typings_output or tuple(k.type.value for k in self.stream_typings_output),
+        )
 
     @property
     def input_typings(self) -> set[StreamType]:

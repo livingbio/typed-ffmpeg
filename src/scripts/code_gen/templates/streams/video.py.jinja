@@ -10,7 +10,8 @@ from ..schema import Default, StreamType
 from ..types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
 from ..utils.typing import override
 from ..utils.run import _to_tuple
-
+from ..common.schema import FFMpegFilterDef
+from ..dag.factory import filter_node_factory
 
 if TYPE_CHECKING:
     from .audio import AudioStream
