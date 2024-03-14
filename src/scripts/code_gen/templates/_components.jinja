@@ -132,7 +132,6 @@ References:
 {%- elif f.filter_type.value in ["af", "vaf"] -%}
     {% set return_type = "audio" %}
 {%- endif -%}
-{{ f.to_def }}
 filter_node = filter_node_factory(
     {{f.to_def}},
     {{ stream_params(f, type) }}

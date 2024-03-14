@@ -46,7 +46,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#addroi)
 
         """
-        FFMpegFilterDef(name="addroi", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="addroi", typings_input=("video",), typings_output=("video",)),
             self,
@@ -74,7 +73,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphaextract)
 
         """
-        FFMpegFilterDef(name="alphaextract", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="alphaextract", typings_input=("video",), typings_output=("video",)),
             self,
@@ -111,7 +109,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
         """
-        FFMpegFilterDef(name="alphamerge", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="alphamerge", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -161,7 +158,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amplify)
 
         """
-        FFMpegFilterDef(name="amplify", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="amplify", typings_input=("video",), typings_output=("video",)),
             self,
@@ -207,7 +203,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ass)
 
         """
-        FFMpegFilterDef(name="ass", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="ass", typings_input=("video",), typings_output=("video",)),
             self,
@@ -266,7 +261,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atadenoise)
 
         """
-        FFMpegFilterDef(name="atadenoise", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="atadenoise", typings_input=("video",), typings_output=("video",)),
             self,
@@ -315,7 +309,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avgblur)
 
         """
-        FFMpegFilterDef(name="avgblur", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="avgblur", typings_input=("video",), typings_output=("video",)),
             self,
@@ -355,7 +348,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#backgroundkey)
 
         """
-        FFMpegFilterDef(name="backgroundkey", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="backgroundkey", typings_input=("video",), typings_output=("video",)),
             self,
@@ -385,7 +377,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bbox)
 
         """
-        FFMpegFilterDef(name="bbox", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="bbox", typings_input=("video",), typings_output=("video",)),
             self,
@@ -414,7 +405,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
 
         """
-        FFMpegFilterDef(name="bench", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="bench", typings_input=("video",), typings_output=("video",)),
             self,
@@ -451,7 +441,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bilateral)
 
         """
-        FFMpegFilterDef(name="bilateral", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="bilateral", typings_input=("video",), typings_output=("video",)),
             self,
@@ -489,7 +478,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise)
 
         """
-        FFMpegFilterDef(name="bitplanenoise", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="bitplanenoise", typings_input=("video",), typings_output=("video",)),
             self,
@@ -526,7 +514,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackdetect)
 
         """
-        FFMpegFilterDef(name="blackdetect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="blackdetect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -555,7 +542,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackframe)
 
         """
-        FFMpegFilterDef(name="blackframe", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="blackframe", typings_input=("video",), typings_output=("video",)),
             self,
@@ -851,7 +837,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
         """
-        FFMpegFilterDef(name="blend", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="blend", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -901,7 +886,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blockdetect)
 
         """
-        FFMpegFilterDef(name="blockdetect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="blockdetect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -944,7 +928,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blurdetect)
 
         """
-        FFMpegFilterDef(name="blurdetect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="blurdetect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -992,7 +975,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#boxblur)
 
         """
-        FFMpegFilterDef(name="boxblur", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="boxblur", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1035,7 +1017,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bwdif)
 
         """
-        FFMpegFilterDef(name="bwdif", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="bwdif", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1073,7 +1054,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cas)
 
         """
-        FFMpegFilterDef(name="cas", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="cas", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1114,7 +1094,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromahold)
 
         """
-        FFMpegFilterDef(name="chromahold", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="chromahold", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1157,7 +1136,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromakey)
 
         """
-        FFMpegFilterDef(name="chromakey", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="chromakey", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1210,7 +1188,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromanr)
 
         """
-        FFMpegFilterDef(name="chromanr", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="chromanr", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1260,7 +1237,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromashift)
 
         """
-        FFMpegFilterDef(name="chromashift", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="chromashift", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1348,7 +1324,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ciescope)
 
         """
-        FFMpegFilterDef(name="ciescope", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="ciescope", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1398,7 +1373,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#codecview)
 
         """
-        FFMpegFilterDef(name="codecview", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="codecview", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1454,7 +1428,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorbalance)
 
         """
-        FFMpegFilterDef(name="colorbalance", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorbalance", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1531,7 +1504,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorchannelmixer)
 
         """
-        FFMpegFilterDef(name="colorchannelmixer", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorchannelmixer", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1594,7 +1566,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcontrast)
 
         """
-        FFMpegFilterDef(name="colorcontrast", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorcontrast", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1644,7 +1615,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcorrect)
 
         """
-        FFMpegFilterDef(name="colorcorrect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorcorrect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1687,7 +1657,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorhold)
 
         """
-        FFMpegFilterDef(name="colorhold", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorhold", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1729,7 +1698,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorize)
 
         """
-        FFMpegFilterDef(name="colorize", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorize", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1770,7 +1738,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorkey)
 
         """
-        FFMpegFilterDef(name="colorkey", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorkey", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1838,7 +1805,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorlevels)
 
         """
-        FFMpegFilterDef(name="colorlevels", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorlevels", typings_input=("video",), typings_output=("video",)),
             self,
@@ -1896,7 +1862,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
         """
-        FFMpegFilterDef(name="colormap", typings_input=("video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colormap", typings_input=("video", "video", "video"), typings_output=("video",)),
             self,
@@ -1941,7 +1906,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormatrix)
 
         """
-        FFMpegFilterDef(name="colormatrix", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colormatrix", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2086,7 +2050,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorspace)
 
         """
-        FFMpegFilterDef(name="colorspace", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colorspace", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2137,7 +2100,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colortemperature)
 
         """
-        FFMpegFilterDef(name="colortemperature", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="colortemperature", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2203,7 +2165,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolution)
 
         """
-        FFMpegFilterDef(name="convolution", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="convolution", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2265,7 +2226,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
         """
-        FFMpegFilterDef(name="convolve", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="convolve", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -2296,7 +2256,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#copy)
 
         """
-        FFMpegFilterDef(name="copy", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="copy", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
@@ -2331,7 +2290,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
 
         """
-        FFMpegFilterDef(name="corr", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="corr", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -2369,7 +2327,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cover_005frect)
 
         """
-        FFMpegFilterDef(name="cover_rect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="cover_rect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2411,7 +2368,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crop)
 
         """
-        FFMpegFilterDef(name="crop", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="crop", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2467,7 +2423,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cropdetect)
 
         """
-        FFMpegFilterDef(name="cropdetect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="cropdetect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2512,7 +2467,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cue)
 
         """
-        FFMpegFilterDef(name="cue", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="cue", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2577,7 +2531,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#curves)
 
         """
-        FFMpegFilterDef(name="curves", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="curves", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2631,7 +2584,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#datascope)
 
         """
-        FFMpegFilterDef(name="datascope", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="datascope", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2675,7 +2627,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dblur)
 
         """
-        FFMpegFilterDef(name="dblur", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dblur", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2717,7 +2668,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dctdnoiz)
 
         """
-        FFMpegFilterDef(name="dctdnoiz", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dctdnoiz", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2768,7 +2718,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deband)
 
         """
-        FFMpegFilterDef(name="deband", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="deband", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2821,7 +2770,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deblock)
 
         """
-        FFMpegFilterDef(name="deblock", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="deblock", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2874,7 +2822,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
         """
-        FFMpegFilterDef(name="deconvolve", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="deconvolve", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -2923,7 +2870,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dedot)
 
         """
-        FFMpegFilterDef(name="dedot", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dedot", typings_input=("video",), typings_output=("video",)),
             self,
@@ -2967,7 +2913,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflate)
 
         """
-        FFMpegFilterDef(name="deflate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="deflate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3006,7 +2951,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflicker)
 
         """
-        FFMpegFilterDef(name="deflicker", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="deflicker", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3034,7 +2978,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dejudder)
 
         """
-        FFMpegFilterDef(name="dejudder", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dejudder", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3075,7 +3018,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#delogo)
 
         """
-        FFMpegFilterDef(name="delogo", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="delogo", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3121,7 +3063,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#derain)
 
         """
-        FFMpegFilterDef(name="derain", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="derain", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3179,7 +3120,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deshake)
 
         """
-        FFMpegFilterDef(name="deshake", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="deshake", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3237,7 +3177,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#despill)
 
         """
-        FFMpegFilterDef(name="despill", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="despill", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3280,7 +3219,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#detelecine)
 
         """
-        FFMpegFilterDef(name="detelecine", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="detelecine", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3323,7 +3261,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dilation)
 
         """
-        FFMpegFilterDef(name="dilation", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dilation", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3363,7 +3300,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
         """
-        FFMpegFilterDef(name="displace", typings_input=("video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="displace", typings_input=("video", "video", "video"), typings_output=("video",)),
             self,
@@ -3415,7 +3351,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fclassify)
 
         """
-        FFMpegFilterDef(name="dnn_classify", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dnn_classify", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3471,7 +3406,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fdetect)
 
         """
-        FFMpegFilterDef(name="dnn_detect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dnn_detect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3522,7 +3456,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing)
 
         """
-        FFMpegFilterDef(name="dnn_processing", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="dnn_processing", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3556,7 +3489,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
 
         """
-        FFMpegFilterDef(name="doubleweave", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="doubleweave", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3603,7 +3535,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawbox)
 
         """
-        FFMpegFilterDef(name="drawbox", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="drawbox", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3670,7 +3601,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgraph)
 
         """
-        FFMpegFilterDef(name="drawgraph", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="drawgraph", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3729,7 +3659,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgrid)
 
         """
-        FFMpegFilterDef(name="drawgrid", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="drawgrid", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3847,7 +3776,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawtext)
 
         """
-        FFMpegFilterDef(name="drawtext", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="drawtext", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3917,7 +3845,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#edgedetect)
 
         """
-        FFMpegFilterDef(name="edgedetect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="edgedetect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3960,7 +3887,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#elbg)
 
         """
-        FFMpegFilterDef(name="elbg", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="elbg", typings_input=("video",), typings_output=("video",)),
             self,
@@ -3997,7 +3923,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#entropy)
 
         """
-        FFMpegFilterDef(name="entropy", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="entropy", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4024,7 +3949,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#epx)
 
         """
-        FFMpegFilterDef(name="epx", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="epx", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4073,7 +3997,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#eq)
 
         """
-        FFMpegFilterDef(name="eq", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="eq", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4123,7 +4046,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#erosion)
 
         """
-        FFMpegFilterDef(name="erosion", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="erosion", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4177,7 +4099,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#estdif)
 
         """
-        FFMpegFilterDef(name="estdif", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="estdif", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4221,7 +4142,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#exposure)
 
         """
-        FFMpegFilterDef(name="exposure", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="exposure", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4252,9 +4172,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extractplanes)
 
         """
-        FFMpegFilterDef(
-            name="extractplanes", typings_input=("video",), typings_output="[StreamType.video] * len(planes.split('+'))"
-        )
         filter_node = filter_node_factory(
             FFMpegFilterDef(
                 name="extractplanes",
@@ -4304,7 +4221,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fade)
 
         """
-        FFMpegFilterDef(name="fade", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fade", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4341,7 +4257,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
 
         """
-        FFMpegFilterDef(name="feedback", typings_input=("video", "video"), typings_output=("video", "video"))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="feedback", typings_input=("video", "video"), typings_output=("video", "video")),
             self,
@@ -4420,7 +4335,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz)
 
         """
-        FFMpegFilterDef(name="fftdnoiz", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fftdnoiz", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4474,7 +4388,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftfilt)
 
         """
-        FFMpegFilterDef(name="fftfilt", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fftfilt", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4507,7 +4420,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#field)
 
         """
-        FFMpegFilterDef(name="field", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="field", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4540,7 +4452,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldhint)
 
         """
-        FFMpegFilterDef(name="fieldhint", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fieldhint", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4574,7 +4485,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldorder)
 
         """
-        FFMpegFilterDef(name="fieldorder", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fieldorder", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4620,7 +4530,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fillborders)
 
         """
-        FFMpegFilterDef(name="fillborders", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fillborders", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4665,7 +4574,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#find_005frect)
 
         """
-        FFMpegFilterDef(name="find_rect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="find_rect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4720,7 +4628,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#floodfill)
 
         """
-        FFMpegFilterDef(name="floodfill", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="floodfill", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4756,7 +4663,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#format)
 
         """
-        FFMpegFilterDef(name="format", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="format", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4793,7 +4699,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fps)
 
         """
-        FFMpegFilterDef(name="fps", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fps", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4828,7 +4733,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
         """
-        FFMpegFilterDef(name="framepack", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="framepack", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -4868,7 +4772,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framerate)
 
         """
-        FFMpegFilterDef(name="framerate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="framerate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4899,7 +4802,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framestep)
 
         """
-        FFMpegFilterDef(name="framestep", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="framestep", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4927,7 +4829,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezedetect)
 
         """
-        FFMpegFilterDef(name="freezedetect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="freezedetect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -4964,7 +4865,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
 
         """
-        FFMpegFilterDef(name="freezeframes", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="freezeframes", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -5002,7 +4902,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#frei0r)
 
         """
-        FFMpegFilterDef(name="frei0r", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="frei0r", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5043,7 +4942,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fspp)
 
         """
-        FFMpegFilterDef(name="fspp", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="fspp", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5086,7 +4984,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gblur)
 
         """
-        FFMpegFilterDef(name="gblur", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="gblur", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5137,7 +5034,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#geq)
 
         """
-        FFMpegFilterDef(name="geq", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="geq", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5180,7 +5076,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gradfun)
 
         """
-        FFMpegFilterDef(name="gradfun", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="gradfun", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5240,7 +5135,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#graphmonitor)
 
         """
-        FFMpegFilterDef(name="graphmonitor", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="graphmonitor", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5270,7 +5164,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#grayworld)
 
         """
-        FFMpegFilterDef(name="grayworld", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="grayworld", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5307,7 +5200,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#greyedge)
 
         """
-        FFMpegFilterDef(name="greyedge", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="greyedge", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5356,7 +5248,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
         """
-        FFMpegFilterDef(name="haldclut", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="haldclut", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -5389,7 +5280,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hflip)
 
         """
-        FFMpegFilterDef(name="hflip", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hflip", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5426,7 +5316,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histeq)
 
         """
-        FFMpegFilterDef(name="histeq", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="histeq", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5487,7 +5376,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histogram)
 
         """
-        FFMpegFilterDef(name="histogram", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="histogram", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5533,7 +5421,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqdn3d)
 
         """
-        FFMpegFilterDef(name="hqdn3d", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hqdn3d", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5563,7 +5450,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqx)
 
         """
-        FFMpegFilterDef(name="hqx", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hqx", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5604,7 +5490,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvhold)
 
         """
-        FFMpegFilterDef(name="hsvhold", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hsvhold", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5650,7 +5535,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvkey)
 
         """
-        FFMpegFilterDef(name="hsvkey", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hsvkey", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5694,7 +5578,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hue)
 
         """
-        FFMpegFilterDef(name="hue", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hue", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5747,7 +5630,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#huesaturation)
 
         """
-        FFMpegFilterDef(name="huesaturation", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="huesaturation", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5779,7 +5661,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwdownload)
 
         """
-        FFMpegFilterDef(name="hwdownload", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hwdownload", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
@@ -5809,7 +5690,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwmap)
 
         """
-        FFMpegFilterDef(name="hwmap", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hwmap", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5837,7 +5717,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwupload)
 
         """
-        FFMpegFilterDef(name="hwupload", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hwupload", typings_input=("video",), typings_output=("video",)),
             self,
@@ -5881,7 +5760,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
 
         """
-        FFMpegFilterDef(name="hysteresis", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="hysteresis", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -5928,7 +5806,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
         """
-        FFMpegFilterDef(name="identity", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="identity", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -5972,7 +5849,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#idet)
 
         """
-        FFMpegFilterDef(name="idet", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="idet", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6019,7 +5895,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#il)
 
         """
-        FFMpegFilterDef(name="il", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="il", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6064,7 +5939,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#inflate)
 
         """
-        FFMpegFilterDef(name="inflate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="inflate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6101,7 +5975,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interlace)
 
         """
-        FFMpegFilterDef(name="interlace", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="interlace", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6141,7 +6014,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kerndeint)
 
         """
-        FFMpegFilterDef(name="kerndeint", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="kerndeint", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6182,7 +6054,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kirsch)
 
         """
-        FFMpegFilterDef(name="kirsch", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="kirsch", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6220,7 +6091,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lagfun)
 
         """
-        FFMpegFilterDef(name="lagfun", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lagfun", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6248,7 +6118,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
 
         """
-        FFMpegFilterDef(name="latency", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="latency", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6291,7 +6160,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lenscorrection)
 
         """
-        FFMpegFilterDef(name="lenscorrection", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lenscorrection", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6361,7 +6229,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
 
         """
-        FFMpegFilterDef(name="libvmaf", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="libvmaf", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -6415,7 +6282,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limiter)
 
         """
-        FFMpegFilterDef(name="limiter", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="limiter", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6448,7 +6314,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loop)
 
         """
-        FFMpegFilterDef(name="loop", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="loop", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6487,7 +6352,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lumakey)
 
         """
-        FFMpegFilterDef(name="lumakey", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lumakey", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6543,7 +6407,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        FFMpegFilterDef(name="lut", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lut", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6589,7 +6452,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut1d)
 
         """
-        FFMpegFilterDef(name="lut1d", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lut1d", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6641,7 +6503,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
         """
-        FFMpegFilterDef(name="lut2", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lut2", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -6690,7 +6551,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut3d)
 
         """
-        FFMpegFilterDef(name="lut3d", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lut3d", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6746,7 +6606,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        FFMpegFilterDef(name="lutrgb", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lutrgb", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6810,7 +6669,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        FFMpegFilterDef(name="lutyuv", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="lutyuv", typings_input=("video",), typings_output=("video",)),
             self,
@@ -6860,7 +6718,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
         """
-        FFMpegFilterDef(name="maskedclamp", typings_input=("video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="maskedclamp", typings_input=("video", "video", "video"), typings_output=("video",)),
             self,
@@ -6900,7 +6757,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
         """
-        FFMpegFilterDef(name="maskedmax", typings_input=("video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="maskedmax", typings_input=("video", "video", "video"), typings_output=("video",)),
             self,
@@ -6938,7 +6794,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
         """
-        FFMpegFilterDef(name="maskedmerge", typings_input=("video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="maskedmerge", typings_input=("video", "video", "video"), typings_output=("video",)),
             self,
@@ -6976,7 +6831,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
 
         """
-        FFMpegFilterDef(name="maskedmin", typings_input=("video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="maskedmin", typings_input=("video", "video", "video"), typings_output=("video",)),
             self,
@@ -7017,7 +6871,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
 
         """
-        FFMpegFilterDef(name="maskedthreshold", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="maskedthreshold", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -7062,7 +6915,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskfun)
 
         """
-        FFMpegFilterDef(name="maskfun", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="maskfun", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7106,7 +6958,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#median)
 
         """
-        FFMpegFilterDef(name="median", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="median", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7147,7 +6998,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mestimate)
 
         """
-        FFMpegFilterDef(name="mestimate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="mestimate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7196,7 +7046,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
 
         """
-        FFMpegFilterDef(name="metadata", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="metadata", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7232,7 +7081,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
 
         """
-        FFMpegFilterDef(name="midequalizer", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="midequalizer", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -7285,7 +7133,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#minterpolate)
 
         """
-        FFMpegFilterDef(name="minterpolate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="minterpolate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7333,7 +7180,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#monochrome)
 
         """
-        FFMpegFilterDef(name="monochrome", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="monochrome", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7385,7 +7231,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
         """
-        FFMpegFilterDef(name="morpho", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="morpho", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -7430,7 +7275,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mpdecimate)
 
         """
-        FFMpegFilterDef(name="mpdecimate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="mpdecimate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7473,7 +7317,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
         """
-        FFMpegFilterDef(name="msad", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="msad", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -7516,7 +7359,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
 
         """
-        FFMpegFilterDef(name="multiply", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="multiply", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -7555,7 +7397,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#negate)
 
         """
-        FFMpegFilterDef(name="negate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="negate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7598,7 +7439,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nlmeans)
 
         """
-        FFMpegFilterDef(name="nlmeans", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="nlmeans", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7652,7 +7492,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nnedi)
 
         """
-        FFMpegFilterDef(name="nnedi", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="nnedi", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7687,7 +7526,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noformat)
 
         """
-        FFMpegFilterDef(name="noformat", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="noformat", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7748,7 +7586,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noise)
 
         """
-        FFMpegFilterDef(name="noise", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="noise", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7804,7 +7641,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#normalize)
 
         """
-        FFMpegFilterDef(name="normalize", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="normalize", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7832,7 +7668,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#null)
 
         """
-        FFMpegFilterDef(name="null", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="null", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
@@ -7884,7 +7719,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#oscilloscope)
 
         """
-        FFMpegFilterDef(name="oscilloscope", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="oscilloscope", typings_input=("video",), typings_output=("video",)),
             self,
@@ -7949,7 +7783,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
         """
-        FFMpegFilterDef(name="overlay", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="overlay", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -7996,7 +7829,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#owdenoise)
 
         """
-        FFMpegFilterDef(name="owdenoise", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="owdenoise", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8042,7 +7874,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pad)
 
         """
-        FFMpegFilterDef(name="pad", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pad", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8085,7 +7916,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#palettegen)
 
         """
-        FFMpegFilterDef(name="palettegen", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="palettegen", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8132,7 +7962,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
         """
-        FFMpegFilterDef(name="paletteuse", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="paletteuse", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -8173,7 +8002,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
 
         """
-        FFMpegFilterDef(name="perms", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="perms", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8228,7 +8056,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perspective)
 
         """
-        FFMpegFilterDef(name="perspective", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="perspective", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8272,7 +8099,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#phase)
 
         """
-        FFMpegFilterDef(name="phase", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="phase", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8310,7 +8136,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#photosensitivity)
 
         """
-        FFMpegFilterDef(name="photosensitivity", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="photosensitivity", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8336,7 +8161,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixdesctest)
 
         """
-        FFMpegFilterDef(name="pixdesctest", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pixdesctest", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8372,7 +8196,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixelize)
 
         """
-        FFMpegFilterDef(name="pixelize", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pixelize", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8421,7 +8244,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixscope)
 
         """
-        FFMpegFilterDef(name="pixscope", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pixscope", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8455,7 +8277,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp)
 
         """
-        FFMpegFilterDef(name="pp", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pp", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8491,7 +8312,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp7)
 
         """
-        FFMpegFilterDef(name="pp7", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pp7", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8530,7 +8350,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#prewitt)
 
         """
-        FFMpegFilterDef(name="prewitt", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="prewitt", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8597,7 +8416,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pseudocolor)
 
         """
-        FFMpegFilterDef(name="pseudocolor", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pseudocolor", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8650,7 +8468,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
         """
-        FFMpegFilterDef(name="psnr", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="psnr", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -8699,7 +8516,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pullup)
 
         """
-        FFMpegFilterDef(name="pullup", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="pullup", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8731,7 +8547,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#qp)
 
         """
-        FFMpegFilterDef(name="qp", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="qp", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8759,7 +8574,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#random)
 
         """
-        FFMpegFilterDef(name="random", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="random", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8801,7 +8615,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readeia608)
 
         """
-        FFMpegFilterDef(name="readeia608", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="readeia608", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8836,7 +8649,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readvitc)
 
         """
-        FFMpegFilterDef(name="readvitc", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="readvitc", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8865,7 +8677,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
 
         """
-        FFMpegFilterDef(name="realtime", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="realtime", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8901,7 +8712,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
 
         """
-        FFMpegFilterDef(name="remap", typings_input=("video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="remap", typings_input=("video", "video", "video"), typings_output=("video",)),
             self,
@@ -8943,7 +8753,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removegrain)
 
         """
-        FFMpegFilterDef(name="removegrain", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="removegrain", typings_input=("video",), typings_output=("video",)),
             self,
@@ -8976,7 +8785,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removelogo)
 
         """
-        FFMpegFilterDef(name="removelogo", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="removelogo", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9000,7 +8808,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#repeatfields)
 
         """
-        FFMpegFilterDef(name="repeatfields", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="repeatfields", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9020,7 +8827,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#reverse)
 
         """
-        FFMpegFilterDef(name="reverse", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="reverse", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
@@ -9064,7 +8870,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rgbashift)
 
         """
-        FFMpegFilterDef(name="rgbashift", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="rgbashift", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9110,7 +8915,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#roberts)
 
         """
-        FFMpegFilterDef(name="roberts", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="roberts", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9154,7 +8958,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rotate)
 
         """
-        FFMpegFilterDef(name="rotate", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="rotate", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9202,7 +9005,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sab)
 
         """
-        FFMpegFilterDef(name="sab", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="sab", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9279,7 +9081,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale)
 
         """
-        FFMpegFilterDef(name="scale", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="scale", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9368,7 +9169,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale2ref)
 
         """
-        FFMpegFilterDef(name="scale2ref", typings_input=("video", "video"), typings_output=("video", "video"))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="scale2ref", typings_input=("video", "video"), typings_output=("video", "video")),
             self,
@@ -9417,7 +9217,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scdet)
 
         """
-        FFMpegFilterDef(name="scdet", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="scdet", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9455,7 +9254,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scharr)
 
         """
-        FFMpegFilterDef(name="scharr", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="scharr", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9497,7 +9295,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scroll)
 
         """
-        FFMpegFilterDef(name="scroll", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="scroll", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9531,11 +9328,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
 
         """
-        FFMpegFilterDef(
-            name="segment",
-            typings_input=("video",),
-            typings_output="[StreamType.video] * len((str(timestamps or frames)).split('|'))",
-        )
         filter_node = filter_node_factory(
             FFMpegFilterDef(
                 name="segment",
@@ -9569,7 +9361,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
 
         """
-        FFMpegFilterDef(name="select", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)")
         filter_node = filter_node_factory(
             FFMpegFilterDef(
                 name="select", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)"
@@ -9626,7 +9417,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#selectivecolor)
 
         """
-        FFMpegFilterDef(name="selectivecolor", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="selectivecolor", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9666,7 +9456,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
 
         """
-        FFMpegFilterDef(name="sendcmd", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="sendcmd", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9690,7 +9479,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#separatefields)
 
         """
-        FFMpegFilterDef(name="separatefields", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="separatefields", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9714,7 +9502,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
 
         """
-        FFMpegFilterDef(name="setdar", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="setdar", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9743,7 +9530,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setfield)
 
         """
-        FFMpegFilterDef(name="setfield", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="setfield", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9840,7 +9626,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setparams)
 
         """
-        FFMpegFilterDef(name="setparams", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="setparams", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9870,7 +9655,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
 
         """
-        FFMpegFilterDef(name="setpts", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="setpts", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9903,7 +9687,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setrange)
 
         """
-        FFMpegFilterDef(name="setrange", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="setrange", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9930,7 +9713,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
 
         """
-        FFMpegFilterDef(name="setsar", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="setsar", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9957,7 +9739,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
 
         """
-        FFMpegFilterDef(name="settb", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="settb", typings_input=("video",), typings_output=("video",)),
             self,
@@ -9996,7 +9777,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shear)
 
         """
-        FFMpegFilterDef(name="shear", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="shear", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10026,7 +9806,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showinfo)
 
         """
-        FFMpegFilterDef(name="showinfo", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="showinfo", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10052,7 +9831,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showpalette)
 
         """
-        FFMpegFilterDef(name="showpalette", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="showpalette", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10081,7 +9859,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleframes)
 
         """
-        FFMpegFilterDef(name="shuffleframes", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="shuffleframes", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10123,7 +9900,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shufflepixels)
 
         """
-        FFMpegFilterDef(name="shufflepixels", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="shufflepixels", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10167,7 +9943,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes)
 
         """
-        FFMpegFilterDef(name="shuffleplanes", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="shuffleplanes", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10230,7 +10005,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
 
         """
-        FFMpegFilterDef(name="sidedata", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="sidedata", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10267,7 +10041,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signalstats)
 
         """
-        FFMpegFilterDef(name="signalstats", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="signalstats", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10295,7 +10068,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#siti)
 
         """
-        FFMpegFilterDef(name="siti", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="siti", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10338,7 +10110,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#smartblur)
 
         """
-        FFMpegFilterDef(name="smartblur", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="smartblur", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10381,7 +10152,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sobel)
 
         """
-        FFMpegFilterDef(name="sobel", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="sobel", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10453,7 +10223,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
         """
-        FFMpegFilterDef(name="spectrumsynth", typings_input=("video", "video"), typings_output=("audio",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="spectrumsynth", typings_input=("video", "video"), typings_output=("audio",)),
             self,
@@ -10487,7 +10256,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
 
         """
-        FFMpegFilterDef(name="split", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)")
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="split", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)"),
             self,
@@ -10527,7 +10295,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spp)
 
         """
-        FFMpegFilterDef(name="spp", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="spp", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10570,7 +10337,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sr)
 
         """
-        FFMpegFilterDef(name="sr", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="sr", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10616,7 +10382,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
         """
-        FFMpegFilterDef(name="ssim", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="ssim", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -10716,7 +10481,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereo3d)
 
         """
-        FFMpegFilterDef(name="stereo3d", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="stereo3d", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10760,7 +10524,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#subtitles)
 
         """
-        FFMpegFilterDef(name="subtitles", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="subtitles", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10789,7 +10552,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#super2xsai)
 
         """
-        FFMpegFilterDef(name="super2xsai", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="super2xsai", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
@@ -10827,7 +10589,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swaprect)
 
         """
-        FFMpegFilterDef(name="swaprect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="swaprect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -10859,7 +10620,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swapuv)
 
         """
-        FFMpegFilterDef(name="swapuv", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="swapuv", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11145,7 +10905,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tblend)
 
         """
-        FFMpegFilterDef(name="tblend", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tblend", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11193,7 +10952,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#telecine)
 
         """
-        FFMpegFilterDef(name="telecine", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="telecine", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11239,7 +10997,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thistogram)
 
         """
-        FFMpegFilterDef(name="thistogram", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="thistogram", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11282,7 +11039,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
 
         """
-        FFMpegFilterDef(name="threshold", typings_input=("video", "video", "video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(
                 name="threshold", typings_input=("video", "video", "video", "video"), typings_output=("video",)
@@ -11323,7 +11079,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thumbnail)
 
         """
-        FFMpegFilterDef(name="thumbnail", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="thumbnail", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11368,7 +11123,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tile)
 
         """
-        FFMpegFilterDef(name="tile", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tile", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11409,7 +11163,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tinterlace)
 
         """
-        FFMpegFilterDef(name="tinterlace", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tinterlace", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11448,7 +11201,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
         """
-        FFMpegFilterDef(name="tlut2", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tlut2", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11489,7 +11241,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmedian)
 
         """
-        FFMpegFilterDef(name="tmedian", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tmedian", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11529,7 +11280,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmidequalizer)
 
         """
-        FFMpegFilterDef(name="tmidequalizer", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tmidequalizer", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11571,7 +11321,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmix)
 
         """
-        FFMpegFilterDef(name="tmix", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tmix", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11614,7 +11363,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tonemap)
 
         """
-        FFMpegFilterDef(name="tonemap", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tonemap", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11660,7 +11408,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tpad)
 
         """
-        FFMpegFilterDef(name="tpad", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="tpad", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11699,7 +11446,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose)
 
         """
-        FFMpegFilterDef(name="transpose", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="transpose", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11743,7 +11489,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#trim)
 
         """
-        FFMpegFilterDef(name="trim", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="trim", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11798,7 +11543,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unsharp)
 
         """
-        FFMpegFilterDef(name="unsharp", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="unsharp", typings_input=("video",), typings_output=("video",)),
             self,
@@ -11833,7 +11577,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#untile)
 
         """
-        FFMpegFilterDef(name="untile", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="untile", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12016,7 +11759,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#v360)
 
         """
-        FFMpegFilterDef(name="v360", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="v360", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12094,7 +11836,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser)
 
         """
-        FFMpegFilterDef(name="vaguedenoiser", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vaguedenoiser", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12146,7 +11887,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
 
         """
-        FFMpegFilterDef(name="varblur", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="varblur", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -12213,7 +11953,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vectorscope)
 
         """
-        FFMpegFilterDef(name="vectorscope", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vectorscope", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12252,7 +11991,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vflip)
 
         """
-        FFMpegFilterDef(name="vflip", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vflip", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12275,7 +12013,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vfrdet)
 
         """
-        FFMpegFilterDef(name="vfrdet", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vfrdet", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
@@ -12317,7 +12054,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrance)
 
         """
-        FFMpegFilterDef(name="vibrance", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vibrance", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12368,7 +12104,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabdetect)
 
         """
-        FFMpegFilterDef(name="vidstabdetect", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vidstabdetect", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12431,7 +12166,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform)
 
         """
-        FFMpegFilterDef(name="vidstabtransform", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vidstabtransform", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12484,7 +12218,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
         """
-        FFMpegFilterDef(name="vif", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vif", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -12534,7 +12267,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vignette)
 
         """
-        FFMpegFilterDef(name="vignette", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vignette", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12567,7 +12299,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vmafmotion)
 
         """
-        FFMpegFilterDef(name="vmafmotion", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="vmafmotion", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12606,7 +12337,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#w3fdif)
 
         """
-        FFMpegFilterDef(name="w3fdif", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="w3fdif", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12671,7 +12401,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#waveform)
 
         """
-        FFMpegFilterDef(name="waveform", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="waveform", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12713,7 +12442,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
 
         """
-        FFMpegFilterDef(name="weave", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="weave", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12739,7 +12467,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xbr)
 
         """
-        FFMpegFilterDef(name="xbr", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="xbr", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12783,7 +12510,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
 
         """
-        FFMpegFilterDef(name="xcorrelate", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="xcorrelate", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -12878,7 +12604,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
         """
-        FFMpegFilterDef(name="xfade", typings_input=("video", "video"), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="xfade", typings_input=("video", "video"), typings_output=("video",)),
             self,
@@ -12921,7 +12646,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yadif)
 
         """
-        FFMpegFilterDef(name="yadif", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="yadif", typings_input=("video",), typings_output=("video",)),
             self,
@@ -12961,7 +12685,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yaepblur)
 
         """
-        FFMpegFilterDef(name="yaepblur", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="yaepblur", typings_input=("video",), typings_output=("video",)),
             self,
@@ -13005,7 +12728,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zoompan)
 
         """
-        FFMpegFilterDef(name="zoompan", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="zoompan", typings_input=("video",), typings_output=("video",)),
             self,
@@ -13223,7 +12945,6 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zscale)
 
         """
-        FFMpegFilterDef(name="zscale", typings_input=("video",), typings_output=("video",))
         filter_node = filter_node_factory(
             FFMpegFilterDef(name="zscale", typings_input=("video",), typings_output=("video",)),
             self,

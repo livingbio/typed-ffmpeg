@@ -85,7 +85,6 @@ def acrossfade(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
     """
-    FFMpegFilterDef(name="acrossfade", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="acrossfade", typings_input=("audio", "audio"), typings_output=("audio",)),
         _crossfade0,
@@ -123,7 +122,6 @@ def ainterleave(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
-    FFMpegFilterDef(name="ainterleave", typings_input="[StreamType.audio] * int(nb_inputs)", typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="ainterleave", typings_input="[StreamType.audio] * int(nb_inputs)", typings_output=("audio",)
@@ -167,7 +165,6 @@ def alphamerge(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
     """
-    FFMpegFilterDef(name="alphamerge", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="alphamerge", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -199,7 +196,6 @@ def amerge(*streams: AudioStream, inputs: Int = Default(2), **kwargs: Any) -> Au
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
 
     """
-    FFMpegFilterDef(name="amerge", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="amerge", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",)),
         *streams,
@@ -238,7 +234,6 @@ def amix(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
 
     """
-    FFMpegFilterDef(name="amix", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="amix", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",)),
         *streams,
@@ -266,7 +261,6 @@ def amultiply(_multiply0: AudioStream, _multiply1: AudioStream, **kwargs: Any) -
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
     """
-    FFMpegFilterDef(name="amultiply", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="amultiply", typings_input=("audio", "audio"), typings_output=("audio",)),
         _multiply0,
@@ -307,7 +301,6 @@ def anlmf(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
-    FFMpegFilterDef(name="anlmf", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="anlmf", typings_input=("audio", "audio"), typings_output=("audio",)),
         _input,
@@ -356,7 +349,6 @@ def anlms(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
-    FFMpegFilterDef(name="anlms", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="anlms", typings_input=("audio", "audio"), typings_output=("audio",)),
         _input,
@@ -386,7 +378,6 @@ def asdr(_input0: AudioStream, _input1: AudioStream, **kwargs: Any) -> AudioStre
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
     """
-    FFMpegFilterDef(name="asdr", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="asdr", typings_input=("audio", "audio"), typings_output=("audio",)),
         _input0,
@@ -415,11 +406,6 @@ def astreamselect(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
-    FFMpegFilterDef(
-        name="astreamselect",
-        typings_input="[StreamType.audio] * int(inputs)",
-        typings_output="[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="astreamselect",
@@ -460,7 +446,6 @@ def axcorrelate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
     """
-    FFMpegFilterDef(name="axcorrelate", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="axcorrelate", typings_input=("audio", "audio"), typings_output=("audio",)),
         _axcorrelate0,
@@ -758,7 +743,6 @@ def blend(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
     """
-    FFMpegFilterDef(name="blend", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="blend", typings_input=("video", "video"), typings_output=("video",)),
         _top,
@@ -831,9 +815,6 @@ def bm3d(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
 
     """
-    FFMpegFilterDef(
-        name="bm3d", typings_input="[StreamType.video] + [StreamType.video] if ref else []", typings_output=("video",)
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="bm3d",
@@ -890,7 +871,6 @@ def colormap(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
     """
-    FFMpegFilterDef(name="colormap", typings_input=("video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="colormap", typings_input=("video", "video", "video"), typings_output=("video",)),
         _default,
@@ -934,11 +914,6 @@ def concat(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
 
     """
-    FFMpegFilterDef(
-        name="concat",
-        typings_input="([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
-        typings_output="[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="concat",
@@ -993,7 +968,6 @@ def convolve(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
     """
-    FFMpegFilterDef(name="convolve", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="convolve", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -1042,7 +1016,6 @@ def corr(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
 
     """
-    FFMpegFilterDef(name="corr", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="corr", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -1092,11 +1065,6 @@ def decimate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
 
     """
-    FFMpegFilterDef(
-        name="decimate",
-        typings_input="[StreamType.video] + ([StreamType.video] if ppsrc else [])",
-        typings_output=("video",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="decimate",
@@ -1154,7 +1122,6 @@ def deconvolve(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
     """
-    FFMpegFilterDef(name="deconvolve", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="deconvolve", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -1198,7 +1165,6 @@ def displace(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
     """
-    FFMpegFilterDef(name="displace", typings_input=("video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="displace", typings_input=("video", "video", "video"), typings_output=("video",)),
         _source,
@@ -1232,7 +1198,6 @@ def feedback(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
 
     """
-    FFMpegFilterDef(name="feedback", typings_input=("video", "video"), typings_output=("video", "video"))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="feedback", typings_input=("video", "video"), typings_output=("video", "video")),
         _default,
@@ -1294,11 +1259,6 @@ def fieldmatch(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
 
     """
-    FFMpegFilterDef(
-        name="fieldmatch",
-        typings_input="[StreamType.video] + [StreamType.video] if ppsrc else []",
-        typings_output=("video",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="fieldmatch",
@@ -1348,7 +1308,6 @@ def framepack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
     """
-    FFMpegFilterDef(name="framepack", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="framepack", typings_input=("video", "video"), typings_output=("video",)),
         _left,
@@ -1386,7 +1345,6 @@ def freezeframes(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
 
     """
-    FFMpegFilterDef(name="freezeframes", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="freezeframes", typings_input=("video", "video"), typings_output=("video",)),
         _source,
@@ -1432,11 +1390,6 @@ def guided(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
 
     """
-    FFMpegFilterDef(
-        name="guided",
-        typings_input="[StreamType.video] + [StreamType.video] if guidance else []",
-        typings_output=("video",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="guided",
@@ -1491,7 +1444,6 @@ def haldclut(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
     """
-    FFMpegFilterDef(name="haldclut", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="haldclut", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -1539,11 +1491,6 @@ def headphone(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
 
     """
-    FFMpegFilterDef(
-        name="headphone",
-        typings_input="[StreamType.audio] + [StreamType.audio] * (len(str(map).split('|')) - 1) if int(hrir) == 1 else []",
-        typings_output=("audio",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="headphone",
@@ -1582,7 +1529,6 @@ def hstack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
 
     """
-    FFMpegFilterDef(name="hstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="hstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
         *streams,
@@ -1628,7 +1574,6 @@ def hysteresis(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
 
     """
-    FFMpegFilterDef(name="hysteresis", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="hysteresis", typings_input=("video", "video"), typings_output=("video",)),
         _base,
@@ -1676,7 +1621,6 @@ def identity(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
     """
-    FFMpegFilterDef(name="identity", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="identity", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -1714,7 +1658,6 @@ def interleave(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
-    FFMpegFilterDef(name="interleave", typings_input="[StreamType.video] * int(nb_inputs)", typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="interleave", typings_input="[StreamType.video] * int(nb_inputs)", typings_output=("video",)
@@ -1752,7 +1695,6 @@ def join(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
 
     """
-    FFMpegFilterDef(name="join", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="join", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",)),
         *streams,
@@ -1819,7 +1761,6 @@ def libvmaf(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
 
     """
-    FFMpegFilterDef(name="libvmaf", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="libvmaf", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -1875,11 +1816,6 @@ def limitdiff(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
 
     """
-    FFMpegFilterDef(
-        name="limitdiff",
-        typings_input="[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])",
-        typings_output=("video",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="limitdiff",
@@ -1938,7 +1874,6 @@ def lut2(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
     """
-    FFMpegFilterDef(name="lut2", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="lut2", typings_input=("video", "video"), typings_output=("video",)),
         _srcx,
@@ -1988,7 +1923,6 @@ def maskedclamp(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
     """
-    FFMpegFilterDef(name="maskedclamp", typings_input=("video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="maskedclamp", typings_input=("video", "video", "video"), typings_output=("video",)),
         _base,
@@ -2029,7 +1963,6 @@ def maskedmax(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
     """
-    FFMpegFilterDef(name="maskedmax", typings_input=("video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="maskedmax", typings_input=("video", "video", "video"), typings_output=("video",)),
         _source,
@@ -2068,7 +2001,6 @@ def maskedmerge(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
     """
-    FFMpegFilterDef(name="maskedmerge", typings_input=("video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="maskedmerge", typings_input=("video", "video", "video"), typings_output=("video",)),
         _base,
@@ -2107,7 +2039,6 @@ def maskedmin(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
 
     """
-    FFMpegFilterDef(name="maskedmin", typings_input=("video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="maskedmin", typings_input=("video", "video", "video"), typings_output=("video",)),
         _source,
@@ -2149,7 +2080,6 @@ def maskedthreshold(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
 
     """
-    FFMpegFilterDef(name="maskedthreshold", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="maskedthreshold", typings_input=("video", "video"), typings_output=("video",)),
         _source,
@@ -2202,11 +2132,6 @@ def mergeplanes(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
 
     """
-    FFMpegFilterDef(
-        name="mergeplanes",
-        typings_input="[StreamType.video] * int(max(hex(int(mapping))[2::2]))",
-        typings_output=("video",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="mergeplanes",
@@ -2249,7 +2174,6 @@ def midequalizer(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
 
     """
-    FFMpegFilterDef(name="midequalizer", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="midequalizer", typings_input=("video", "video"), typings_output=("video",)),
         _in0,
@@ -2292,7 +2216,6 @@ def mix(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
 
     """
-    FFMpegFilterDef(name="mix", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="mix", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
         *streams,
@@ -2346,7 +2269,6 @@ def morpho(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
     """
-    FFMpegFilterDef(name="morpho", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="morpho", typings_input=("video", "video"), typings_output=("video",)),
         _default,
@@ -2395,7 +2317,6 @@ def msad(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
     """
-    FFMpegFilterDef(name="msad", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="msad", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -2439,7 +2360,6 @@ def multiply(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
 
     """
-    FFMpegFilterDef(name="multiply", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="multiply", typings_input=("video", "video"), typings_output=("video",)),
         _source,
@@ -2496,7 +2416,6 @@ def overlay(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
     """
-    FFMpegFilterDef(name="overlay", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="overlay", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -2551,7 +2470,6 @@ def paletteuse(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
     """
-    FFMpegFilterDef(name="paletteuse", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="paletteuse", typings_input=("video", "video"), typings_output=("video",)),
         _default,
@@ -2592,11 +2510,6 @@ def premultiply(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
 
     """
-    FFMpegFilterDef(
-        name="premultiply",
-        typings_input="[StreamType.video] + [StreamType.video] if inplace else []",
-        typings_output=("video",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="premultiply",
@@ -2649,7 +2562,6 @@ def psnr(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
     """
-    FFMpegFilterDef(name="psnr", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="psnr", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -2693,7 +2605,6 @@ def remap(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
 
     """
-    FFMpegFilterDef(name="remap", typings_input=("video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="remap", typings_input=("video", "video", "video"), typings_output=("video",)),
         _source,
@@ -2770,7 +2681,6 @@ def scale2ref(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale2ref)
 
     """
-    FFMpegFilterDef(name="scale2ref", typings_input=("video", "video"), typings_output=("video", "video"))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="scale2ref", typings_input=("video", "video"), typings_output=("video", "video")),
         _default,
@@ -2845,7 +2755,6 @@ def sidechaincompress(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
     """
-    FFMpegFilterDef(name="sidechaincompress", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="sidechaincompress", typings_input=("audio", "audio"), typings_output=("audio",)),
         _main,
@@ -2914,7 +2823,6 @@ def sidechaingate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
     """
-    FFMpegFilterDef(name="sidechaingate", typings_input=("audio", "audio"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="sidechaingate", typings_input=("audio", "audio"), typings_output=("audio",)),
         _main,
@@ -2974,7 +2882,6 @@ def signature(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
 
     """
-    FFMpegFilterDef(name="signature", typings_input="[StreamType.video] * int(nb_inputs)", typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="signature", typings_input="[StreamType.video] * int(nb_inputs)", typings_output=("video",)
@@ -3054,7 +2961,6 @@ def spectrumsynth(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
     """
-    FFMpegFilterDef(name="spectrumsynth", typings_input=("video", "video"), typings_output=("audio",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="spectrumsynth", typings_input=("video", "video"), typings_output=("audio",)),
         _magnitude,
@@ -3104,7 +3010,6 @@ def ssim(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
     """
-    FFMpegFilterDef(name="ssim", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="ssim", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -3141,11 +3046,6 @@ def streamselect(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
-    FFMpegFilterDef(
-        name="streamselect",
-        typings_input="[StreamType.video] * int(inputs)",
-        typings_output="[StreamType.video] * len(re.findall(r'\\d+', str(map)))",
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="streamselect",
@@ -3188,7 +3088,6 @@ def threshold(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
 
     """
-    FFMpegFilterDef(name="threshold", typings_input=("video", "video", "video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="threshold", typings_input=("video", "video", "video", "video"), typings_output=("video",)
@@ -3229,11 +3128,6 @@ def unpremultiply(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
 
     """
-    FFMpegFilterDef(
-        name="unpremultiply",
-        typings_input="[StreamType.video] + ([StreamType.video] if inplace else [])",
-        typings_output=("video",),
-    )
     filter_node = filter_node_factory(
         FFMpegFilterDef(
             name="unpremultiply",
@@ -3286,7 +3180,6 @@ def varblur(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
 
     """
-    FFMpegFilterDef(name="varblur", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="varblur", typings_input=("video", "video"), typings_output=("video",)),
         _default,
@@ -3335,7 +3228,6 @@ def vif(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
     """
-    FFMpegFilterDef(name="vif", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="vif", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -3370,7 +3262,6 @@ def vstack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
 
     """
-    FFMpegFilterDef(name="vstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="vstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
         *streams,
@@ -3416,7 +3307,6 @@ def xcorrelate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
 
     """
-    FFMpegFilterDef(name="xcorrelate", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="xcorrelate", typings_input=("video", "video"), typings_output=("video",)),
         _primary,
@@ -3512,7 +3402,6 @@ def xfade(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
     """
-    FFMpegFilterDef(name="xfade", typings_input=("video", "video"), typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="xfade", typings_input=("video", "video"), typings_output=("video",)),
         _main,
@@ -3561,7 +3450,6 @@ def xmedian(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
 
     """
-    FFMpegFilterDef(name="xmedian", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="xmedian", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
         *streams,
@@ -3607,7 +3495,6 @@ def xstack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
 
     """
-    FFMpegFilterDef(name="xstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",))
     filter_node = filter_node_factory(
         FFMpegFilterDef(name="xstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
         *streams,
