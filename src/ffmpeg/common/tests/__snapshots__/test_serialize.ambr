@@ -112,10 +112,16 @@
                               ],
                               "name": "trim",
                               "input_typings": [
-                                "video"
+                                {
+                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "value": "video"
+                                }
                               ],
                               "output_typings": [
-                                "video"
+                                {
+                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "value": "video"
+                                }
                               ]
                             },
                             "index": 0
@@ -148,10 +154,16 @@
                               ],
                               "name": "trim",
                               "input_typings": [
-                                "video"
+                                {
+                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "value": "video"
+                                }
                               ],
                               "output_typings": [
-                                "video"
+                                {
+                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "value": "video"
+                                }
                               ]
                             },
                             "index": 0
@@ -196,10 +208,16 @@
                         ],
                         "name": "hflip",
                         "input_typings": [
-                          "video"
+                          {
+                            "__class__": "ffmpeg.common.schema.StreamType",
+                            "value": "video"
+                          }
                         ],
                         "output_typings": [
-                          "video"
+                          {
+                            "__class__": "ffmpeg.common.schema.StreamType",
+                            "value": "video"
+                          }
                         ]
                       },
                       "index": 0
@@ -207,11 +225,20 @@
                   ],
                   "name": "overlay",
                   "input_typings": [
-                    "video",
-                    "video"
+                    {
+                      "__class__": "ffmpeg.common.schema.StreamType",
+                      "value": "video"
+                    },
+                    {
+                      "__class__": "ffmpeg.common.schema.StreamType",
+                      "value": "video"
+                    }
                   ],
                   "output_typings": [
-                    "video"
+                    {
+                      "__class__": "ffmpeg.common.schema.StreamType",
+                      "value": "video"
+                    }
                   ]
                 },
                 "index": 0
@@ -219,10 +246,16 @@
             ],
             "name": "drawbox",
             "input_typings": [
-              "video"
+              {
+                "__class__": "ffmpeg.common.schema.StreamType",
+                "value": "video"
+              }
             ],
             "output_typings": [
-              "video"
+              {
+                "__class__": "ffmpeg.common.schema.StreamType",
+                "value": "video"
+              }
             ]
           },
           "index": 0

@@ -11,12 +11,12 @@ def filter_node_factory(filter: FFMpegFilterDef, *inputs: FilterableStream, **kw
     if isinstance(filter.typings_input, str):
         input_typings = tuple(eval(filter.typings_input, {"StreamType": StreamType, "re": re, **kwargs}))
     else:
-        input_typings = filter.typings_input
+        input_typings = tuple(StreamType.video if k == "video" else StreamType.audio for k in filter.typings_input)
 
     if isinstance(filter.typings_output, str):
         output_typings = tuple(eval(filter.typings_output, {"StreamType": StreamType, "re": re, **kwargs}))
     else:
-        output_typings = filter.typings_output
+        output_typings = tuple(StreamType.video if k == "video" else StreamType.audio for k in filter.typings_output)
 
     return FilterNode(
         name=filter.name,
