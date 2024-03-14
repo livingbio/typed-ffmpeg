@@ -6,8 +6,14 @@ from typing import Literal
 
 
 class StreamType(str, Enum):
-    video = "video"
+    """
+    The type of a stream. (audio or video)
+    """
+
     audio = "audio"
+    """it is an audio stream"""
+    video = "video"
+    """it is a video stream"""
 
 
 class FFMpegFilterOptionType(str, Enum):

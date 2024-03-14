@@ -2,18 +2,8 @@
 Defines the basic schema for the ffmpeg command line options.
 """
 
-import enum
 
-
-class StreamType(enum.Enum):
-    """
-    The type of a stream. (audio or video)
-    """
-
-    audio = "audio"
-    """it is an audio stream"""
-    video = "video"
-    """it is a video stream"""
+from .common.schema import StreamType
 
 
 class Default(str):
@@ -23,3 +13,9 @@ class Default(str):
     """
 
     ...
+
+
+__all__ = [
+    "Default",
+    "StreamType",
+]
