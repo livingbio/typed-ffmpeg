@@ -1,0 +1,371 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Overlay a video source on top of the input.",
+  "formula_typings_input": null,
+  "formula_typings_output": null,
+  "id": null,
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_filter_sink": null,
+  "is_filter_source": null,
+  "is_support_command": null,
+  "is_support_framesync": true,
+  "is_support_slice_threading": true,
+  "is_support_timeline": true,
+  "name": "overlay",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "x"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the x expression (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "x",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "y"
+      ],
+      "choices": [],
+      "default": "0",
+      "description": "set the y expression (default \"0\")",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "y",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "eof_action"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        }
+      ],
+      "default": "repeat",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "eof_action",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "eval"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "eval expressions once during initialization",
+          "name": "init",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "eval expressions per-frame",
+          "name": "frame",
+          "value": "1"
+        }
+      ],
+      "default": "frame",
+      "description": "specify when to evaluate expressions (from 0 to 1) (default frame)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "eval",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": false,
+      "description": "force termination when the shortest input terminates (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "shortest",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "boolean"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "format"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "yuv420",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "yuv420p10",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "yuv422",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "yuv422p10",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "yuv444",
+          "value": "4"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "rgb",
+          "value": "5"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "gbrp",
+          "value": "6"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "auto",
+          "value": "7"
+        }
+      ],
+      "default": "yuv420",
+      "description": "set output format (from 0 to 7) (default yuv420)",
+      "flags": "..FV.......",
+      "max": "7",
+      "min": "0",
+      "name": "format",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "repeatlast"
+      ],
+      "choices": [],
+      "default": true,
+      "description": "repeat overlay of the last overlay frame (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "repeatlast",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "boolean"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "alpha"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "straight",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "",
+          "name": "premultiplied",
+          "value": "1"
+        }
+      ],
+      "default": "straight",
+      "description": "alpha format (from 0 to 1) (default straight)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "alpha",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "ts_sync_mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+          "name": "default",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
+          "name": "nearest",
+          "value": "1"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "ts_sync_mode",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "flags": null,
+      "max": null,
+      "min": null,
+      "name": "enable",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    }
+  ],
+  "pre": [],
+  "ref": null,
+  "stream_typings_input": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "main",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "overlay",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1918 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Blend two video frames into each other.",
+  "formula_typings_input": null,
+  "formula_typings_output": null,
+  "id": null,
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_filter_sink": null,
+  "is_filter_source": null,
+  "is_support_command": null,
+  "is_support_framesync": true,
+  "is_support_slice_threading": true,
+  "is_support_timeline": true,
+  "name": "blend",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c0_mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #0 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c0_mode",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c1_mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #1 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c1_mode",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c2_mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #2 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c2_mode",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c3_mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": "normal",
+      "description": "set component #3 blend mode (from 0 to 39) (default normal)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "0",
+      "name": "c3_mode",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "all_mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "addition128",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainmerge",
+          "value": "28"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "and",
+          "value": "2"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "average",
+          "value": "3"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "burn",
+          "value": "4"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "darken",
+          "value": "5"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference",
+          "value": "6"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "difference128",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "grainextract",
+          "value": "7"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "divide",
+          "value": "8"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "dodge",
+          "value": "9"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "exclusion",
+          "value": "10"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "extremity",
+          "value": "32"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "freeze",
+          "value": "31"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "glow",
+          "value": "27"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardlight",
+          "value": "11"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardmix",
+          "value": "25"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "heat",
+          "value": "30"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "lighten",
+          "value": "12"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "linearlight",
+          "value": "26"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply",
+          "value": "13"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "multiply128",
+          "value": "29"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "negation",
+          "value": "14"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "normal",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "or",
+          "value": "15"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "overlay",
+          "value": "16"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "phoenix",
+          "value": "17"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "pinlight",
+          "value": "18"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "reflect",
+          "value": "19"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "screen",
+          "value": "20"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softlight",
+          "value": "21"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "subtract",
+          "value": "22"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "vividlight",
+          "value": "23"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "xor",
+          "value": "24"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "softdifference",
+          "value": "33"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "geometric",
+          "value": "34"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "harmonic",
+          "value": "35"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "bleach",
+          "value": "36"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "stain",
+          "value": "37"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "interpolate",
+          "value": "38"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.....T.",
+          "help": "",
+          "name": "hardoverlay",
+          "value": "39"
+        }
+      ],
+      "default": -1,
+      "description": "set blend mode for all components (from -1 to 39) (default -1)",
+      "flags": "..FV.....T.",
+      "max": "39",
+      "min": "-1",
+      "name": "all_mode",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c0_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #0 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c0_expr",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c1_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #1 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c1_expr",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c2_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #2 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c2_expr",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c3_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set color component #3 expression",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "c3_expr",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "all_expr"
+      ],
+      "choices": [],
+      "default": null,
+      "description": "set expression for all color components",
+      "flags": "..FV.....T.",
+      "max": null,
+      "min": null,
+      "name": "all_expr",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c0_opacity"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set color component #0 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c0_opacity",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c1_opacity"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set color component #1 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c1_opacity",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c2_opacity"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set color component #2 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c2_opacity",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "c3_opacity"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set color component #3 opacity (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "c3_opacity",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "all_opacity"
+      ],
+      "choices": [],
+      "default": 1.0,
+      "description": "set opacity for all color components (from 0 to 1) (default 1)",
+      "flags": "..FV.....T.",
+      "max": "1",
+      "min": "0",
+      "name": "all_opacity",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "double"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "eof_action"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Repeat the previous frame.",
+          "name": "repeat",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "End both streams.",
+          "name": "endall",
+          "value": "1"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Pass through the main input.",
+          "name": "pass",
+          "value": "2"
+        }
+      ],
+      "default": "repeat",
+      "description": "Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
+      "flags": "..FV.......",
+      "max": "2",
+      "min": "0",
+      "name": "eof_action",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "shortest"
+      ],
+      "choices": [],
+      "default": false,
+      "description": "force termination when the shortest input terminates (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "shortest",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "boolean"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "repeatlast"
+      ],
+      "choices": [],
+      "default": true,
+      "description": "extend last frame of secondary streams beyond EOF (default true)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "repeatlast",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "boolean"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "ts_sync_mode"
+      ],
+      "choices": [
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
+          "name": "default",
+          "value": "0"
+        },
+        {
+          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "flags": "..FV.......",
+          "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
+          "name": "nearest",
+          "value": "1"
+        }
+      ],
+      "default": "default",
+      "description": "How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)",
+      "flags": "..FV.......",
+      "max": "1",
+      "min": "0",
+      "name": "ts_sync_mode",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "flags": null,
+      "max": null,
+      "min": null,
+      "name": "enable",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    }
+  ],
+  "pre": [],
+  "ref": null,
+  "stream_typings_input": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "top",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "bottom",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ]
+}

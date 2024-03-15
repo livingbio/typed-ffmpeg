@@ -103,7 +103,6 @@ def output(
     muxing_queue_data_threshold: int = None,
     dcodec: str = None,
     dn: bool = None,
-    map_channel: str = None,
     top: int = None,
     **kwargs: Any
 ) -> OutputStream:
@@ -207,7 +206,6 @@ def output(
         muxing_queue_data_threshold: set the threshold after which max_muxing_queue_size is taken into account
         dcodec: alias for -c:d (select encoder/decoder for data streams)
         dn: disable data
-        map_channel: map an audio channel from one stream to another (deprecated)
         top: deprecated, use the setfield video filter
         **kwargs: the arguments for the output
 
@@ -311,7 +309,6 @@ def output(
             "muxing_queue_data_threshold": muxing_queue_data_threshold,
             "dcodec": dcodec,
             "dn": dn,
-            "map_channel": map_channel,
             "top": top,
         }.items()
         if v is not None

@@ -1,0 +1,26 @@
+{% import "_components.jinja" as _components %}
+
+from __future__ import annotations
+
+import re
+from typing import TYPE_CHECKING, Any, Literal
+
+from ..dag.nodes import FilterableStream, FilterNode
+from ..schema import Default, StreamType, Auto
+from ..types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
+from ..utils.typing import override
+from ..utils.run import _to_tuple
+from .channel_layout import CHANNEL_LAYOUT
+from ..common.schema import FFMpegFilterDef
+from ..dag.factory import filter_node_factory
+
+if TYPE_CHECKING:
+    from .video import VideoStream
+
+
+class AudioStream(FilterableStream):
+    {% for f in filters %}
+        {% if f.filter_type.value in ["af", "avf"] and not f.is_dynamic_input %}
+    {{ _components.filter_method(f) }}
+        {% endif %}
+    {% endfor %}

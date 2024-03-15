@@ -7,8 +7,15 @@ version: 2
 updates:
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
-
     schedule:
       interval: "weekly"
     allow:
       - dependency-type: "all"
+  - package-ecosystem: "github-actions"
+    directory: "/" # Typically GitHub Actions workflows are located in .github/workflows
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "devcontainers"
+    directory: "/" # Typically Dev Container configuration is located in .devcontainer
+    schedule:
+      interval: "weekly"

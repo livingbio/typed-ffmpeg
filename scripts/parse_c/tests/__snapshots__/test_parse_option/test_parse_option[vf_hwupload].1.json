@@ -1,3 +1,0 @@
-[
-  "AVOption(name='derive_device', help='Derive a new device of this type', type='AV_OPT_TYPE_STRING', default='NULL', min=0.0, max=0.0, flags='FLAGS', unit=None)"
-]

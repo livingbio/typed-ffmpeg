@@ -3,14 +3,13 @@
 
 from __future__ import annotations
 
-import re
 from typing import TYPE_CHECKING, Any, Literal
 
+from ..common.schema import FFMpegFilterDef
+from ..dag.factory import filter_node_factory
 from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default, StreamType
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
-from ..utils.run import _to_tuple
-from .channel_layout import CHANNEL_LAYOUT
+from ..schema import Default
+from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, String, Video_rate
 
 if TYPE_CHECKING:
     from .video import VideoStream
@@ -53,27 +52,21 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#a3dscope)
 
         """
-        filter_node = FilterNode(
-            name="a3dscope",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rate": rate,
-                        "size": size,
-                        "fov": fov,
-                        "roll": roll,
-                        "pitch": pitch,
-                        "yaw": yaw,
-                        "xzoom": xzoom,
-                        "xpos": xpos,
-                        "length": length,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="a3dscope", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "rate": rate,
+                "size": size,
+                "fov": fov,
+                "roll": roll,
+                "pitch": pitch,
+                "yaw": yaw,
+                "xzoom": xzoom,
+                "xpos": xpos,
+                "length": length,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -94,19 +87,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
 
         """
-        filter_node = FilterNode(
-            name="abench",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "action": action,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="abench", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "action": action,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -136,22 +123,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#abitscope)
 
         """
-        filter_node = FilterNode(
-            name="abitscope",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rate": rate,
-                        "size": size,
-                        "colors": colors,
-                        "mode": mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="abitscope", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "rate": rate,
+                "size": size,
+                "colors": colors,
+                "mode": mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -197,30 +178,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acompressor)
 
         """
-        filter_node = FilterNode(
-            name="acompressor",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "mode": mode,
-                        "threshold": threshold,
-                        "ratio": ratio,
-                        "attack": attack,
-                        "release": release,
-                        "makeup": makeup,
-                        "knee": knee,
-                        "link": link,
-                        "detection": detection,
-                        "level_sc": level_sc,
-                        "mix": mix,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="acompressor", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "mode": mode,
+                "threshold": threshold,
+                "ratio": ratio,
+                "attack": attack,
+                "release": release,
+                "makeup": makeup,
+                "knee": knee,
+                "link": link,
+                "detection": detection,
+                "level_sc": level_sc,
+                "mix": mix,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -239,19 +214,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acontrast)
 
         """
-        filter_node = FilterNode(
-            name="acontrast",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "contrast": contrast,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="acontrast", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "contrast": contrast,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -267,12 +236,8 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acopy)
 
         """
-        filter_node = FilterNode(
-            name="acopy",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="acopy", typings_input=("audio",), typings_output=("audio",)), self, **{} | kwargs
         )
         return filter_node.audio(0)
 
@@ -305,10 +270,6 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
         | Default = Default("tri"),
         curve2: Int
@@ -333,10 +294,6 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
         | Default = Default("tri"),
         **kwargs: Any,
@@ -349,8 +306,8 @@ class AudioStream(FilterableStream):
             nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
             duration: set cross fade duration (default 0)
             overlap: overlap 1st stream end with 2nd stream start (default true)
-            curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
-            curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
+            curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
+            curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
 
         Returns:
             default: the audio stream
@@ -359,26 +316,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
         """
-        filter_node = FilterNode(
-            name="acrossfade",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _crossfade1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "nb_samples": nb_samples,
-                        "duration": duration,
-                        "overlap": overlap,
-                        "curve1": curve1,
-                        "curve2": curve2,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="acrossfade", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _crossfade1,
+            **{
+                "nb_samples": nb_samples,
+                "duration": duration,
+                "overlap": overlap,
+                "curve1": curve1,
+                "curve2": curve2,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -413,23 +362,21 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossover)
 
         """
-        filter_node = FilterNode(
-            name="acrossover",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] * len(re.split(r"[ |]+", str(split)))),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "split": split,
-                        "order": order,
-                        "level": level,
-                        "gain": gain,
-                        "precision": precision,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="acrossover",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] * len(re.split(r'[ |]+', str(split)))",
             ),
+            self,
+            **{
+                "split": split,
+                "order": order,
+                "level": level,
+                "gain": gain,
+                "precision": precision,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -448,7 +395,7 @@ class AudioStream(FilterableStream):
         lfo: Boolean = Default(False),
         lforange: Double = Default(20.0),
         lforate: Double = Default(0.3),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -476,30 +423,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrusher)
 
         """
-        filter_node = FilterNode(
-            name="acrusher",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "bits": bits,
-                        "mix": mix,
-                        "mode": mode,
-                        "dc": dc,
-                        "aa": aa,
-                        "samples": samples,
-                        "lfo": lfo,
-                        "lforange": lforange,
-                        "lforate": lforate,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="acrusher", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "bits": bits,
+                "mix": mix,
+                "mode": mode,
+                "dc": dc,
+                "aa": aa,
+                "samples": samples,
+                "lfo": lfo,
+                "lforange": lforange,
+                "lforate": lforate,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -527,21 +468,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acue)
 
         """
-        filter_node = FilterNode(
-            name="acue",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cue": cue,
-                        "preroll": preroll,
-                        "buffer": buffer,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="acue", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "cue": cue,
+                "preroll": preroll,
+                "buffer": buffer,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -554,7 +489,7 @@ class AudioStream(FilterableStream):
         threshold: Double = Default(2.0),
         burst: Double = Default(2.0),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -577,25 +512,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclick)
 
         """
-        filter_node = FilterNode(
-            name="adeclick",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "window": window,
-                        "overlap": overlap,
-                        "arorder": arorder,
-                        "threshold": threshold,
-                        "burst": burst,
-                        "method": method,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adeclick", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "window": window,
+                "overlap": overlap,
+                "arorder": arorder,
+                "threshold": threshold,
+                "burst": burst,
+                "method": method,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -608,7 +537,7 @@ class AudioStream(FilterableStream):
         threshold: Double = Default(10.0),
         hsize: Int = Default(1000),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -631,30 +560,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adeclip)
 
         """
-        filter_node = FilterNode(
-            name="adeclip",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "window": window,
-                        "overlap": overlap,
-                        "arorder": arorder,
-                        "threshold": threshold,
-                        "hsize": hsize,
-                        "method": method,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adeclip", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "window": window,
+                "overlap": overlap,
+                "arorder": arorder,
+                "threshold": threshold,
+                "hsize": hsize,
+                "method": method,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
     def adecorrelate(
-        self, *, stages: Int = Default(6), seed: Int64 = Default(-1), enable: str = Default(None), **kwargs: Any
+        self, *, stages: Int = Default(6), seed: Int64 = Default(-1), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -672,21 +595,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adecorrelate)
 
         """
-        filter_node = FilterNode(
-            name="adecorrelate",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "stages": stages,
-                        "seed": seed,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adecorrelate", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "stages": stages,
+                "seed": seed,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -695,7 +612,7 @@ class AudioStream(FilterableStream):
         *,
         delays: String = Default(None),
         all: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -714,21 +631,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adelay)
 
         """
-        filter_node = FilterNode(
-            name="adelay",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "delays": delays,
-                        "all": all,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adelay", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "delays": delays,
+                "all": all,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -737,7 +648,7 @@ class AudioStream(FilterableStream):
         *,
         level: Double = Default(-351.0),
         type: Int | Literal["dc", "ac", "square", "pulse"] | Default = Default("dc"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -756,25 +667,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adenorm)
 
         """
-        filter_node = FilterNode(
-            name="adenorm",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level": level,
-                        "type": type,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adenorm", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level": level,
+                "type": type,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
-    def aderivative(self, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def aderivative(self, *, enable: String = Default(None), **kwargs: Any) -> AudioStream:
         """
 
         Compute derivative of input audio.
@@ -789,19 +694,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
 
         """
-        filter_node = FilterNode(
-            name="aderivative",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aderivative", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -853,33 +752,27 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrawgraph)
 
         """
-        filter_node = FilterNode(
-            name="adrawgraph",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "m1": m1,
-                        "fg1": fg1,
-                        "m2": m2,
-                        "fg2": fg2,
-                        "m3": m3,
-                        "fg3": fg3,
-                        "m4": m4,
-                        "fg4": fg4,
-                        "bg": bg,
-                        "min": min,
-                        "max": max,
-                        "mode": mode,
-                        "slide": slide,
-                        "size": size,
-                        "rate": rate,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adrawgraph", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "m1": m1,
+                "fg1": fg1,
+                "m2": m2,
+                "fg2": fg2,
+                "m3": m3,
+                "fg3": fg3,
+                "m4": m4,
+                "fg4": fg4,
+                "bg": bg,
+                "min": min,
+                "max": max,
+                "mode": mode,
+                "slide": slide,
+                "size": size,
+                "rate": rate,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -890,7 +783,7 @@ class AudioStream(FilterableStream):
         attack: Double = Default(50.0),
         release: Double = Default(100.0),
         channels: String = Default("all"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -911,23 +804,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adrc)
 
         """
-        filter_node = FilterNode(
-            name="adrc",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "transfer": transfer,
-                        "attack": attack,
-                        "release": release,
-                        "channels": channels,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adrc", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "transfer": transfer,
+                "attack": attack,
+                "release": release,
+                "channels": channels,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -945,12 +832,10 @@ class AudioStream(FilterableStream):
         makeup: Double = Default(0.0),
         range: Double = Default(50.0),
         mode: Int | Literal["listen", "cut", "boost"] | Default = Default("cut"),
-        dftype: Int | Literal["bandpass", "lowpass", "highpass", "peak"] | Default = Default("bandpass"),
         tftype: Int | Literal["bell", "lowshelf", "highshelf"] | Default = Default("bell"),
         direction: Int | Literal["downward", "upward"] | Default = Default("downward"),
         auto: Int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
-        precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -969,11 +854,9 @@ class AudioStream(FilterableStream):
             makeup: set makeup gain (from 0 to 100) (default 0)
             range: set max gain (from 1 to 200) (default 50)
             mode: set mode (from -1 to 1) (default cut)
-            dftype: set detection filter type (from 0 to 3) (default bandpass)
             tftype: set target filter type (from 0 to 2) (default bell)
             direction: set direction (from 0 to 1) (default downward)
             auto: set auto threshold (from -1 to 1) (default disabled)
-            precision: set processing precision (from 0 to 2) (default auto)
             enable: timeline editing
 
         Returns:
@@ -983,35 +866,27 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicequalizer)
 
         """
-        filter_node = FilterNode(
-            name="adynamicequalizer",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold": threshold,
-                        "dfrequency": dfrequency,
-                        "dqfactor": dqfactor,
-                        "tfrequency": tfrequency,
-                        "tqfactor": tqfactor,
-                        "attack": attack,
-                        "release": release,
-                        "ratio": ratio,
-                        "makeup": makeup,
-                        "range": range,
-                        "mode": mode,
-                        "dftype": dftype,
-                        "tftype": tftype,
-                        "direction": direction,
-                        "auto": auto,
-                        "precision": precision,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adynamicequalizer", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "threshold": threshold,
+                "dfrequency": dfrequency,
+                "dqfactor": dqfactor,
+                "tfrequency": tfrequency,
+                "tqfactor": tqfactor,
+                "attack": attack,
+                "release": release,
+                "ratio": ratio,
+                "makeup": makeup,
+                "range": range,
+                "mode": mode,
+                "tftype": tftype,
+                "direction": direction,
+                "auto": auto,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1020,7 +895,7 @@ class AudioStream(FilterableStream):
         *,
         sensitivity: Double = Default(2.0),
         basefreq: Double = Default(22050.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1039,21 +914,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#adynamicsmooth)
 
         """
-        filter_node = FilterNode(
-            name="adynamicsmooth",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sensitivity": sensitivity,
-                        "basefreq": basefreq,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="adynamicsmooth", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "sensitivity": sensitivity,
+                "basefreq": basefreq,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1083,22 +952,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aecho)
 
         """
-        filter_node = FilterNode(
-            name="aecho",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "in_gain": in_gain,
-                        "out_gain": out_gain,
-                        "delays": delays,
-                        "decays": decays,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aecho", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "in_gain": in_gain,
+                "out_gain": out_gain,
+                "delays": delays,
+                "decays": decays,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1111,7 +974,7 @@ class AudioStream(FilterableStream):
         type: Int
         | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
         | Default = Default("cd"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1132,23 +995,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aemphasis)
 
         """
-        filter_node = FilterNode(
-            name="aemphasis",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "mode": mode,
-                        "type": type,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aemphasis", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "mode": mode,
+                "type": type,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1157,7 +1014,7 @@ class AudioStream(FilterableStream):
         *,
         exprs: String = Default(None),
         channel_layout: String = Default(None),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1176,21 +1033,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aeval)
 
         """
-        filter_node = FilterNode(
-            name="aeval",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "exprs": exprs,
-                        "channel_layout": channel_layout,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aeval", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "exprs": exprs,
+                "channel_layout": channel_layout,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1205,7 +1056,7 @@ class AudioStream(FilterableStream):
         freq: Double = Default(7500.0),
         ceil: Double = Default(9999.0),
         listen: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1230,27 +1081,21 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aexciter)
 
         """
-        filter_node = FilterNode(
-            name="aexciter",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "amount": amount,
-                        "drive": drive,
-                        "blend": blend,
-                        "freq": freq,
-                        "ceil": ceil,
-                        "listen": listen,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aexciter", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "amount": amount,
+                "drive": drive,
+                "blend": blend,
+                "freq": freq,
+                "ceil": ceil,
+                "listen": listen,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1284,15 +1129,11 @@ class AudioStream(FilterableStream):
             "losi",
             "sinc",
             "isinc",
-            "quat",
-            "quatr",
-            "qsin2",
-            "hsin2",
         ]
         | Default = Default("tri"),
         silence: Double = Default(0.0),
         unity: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1305,7 +1146,7 @@ class AudioStream(FilterableStream):
             nb_samples: set number of samples for fade duration (from 1 to I64_MAX) (default 44100)
             start_time: set time to start fading (default 0)
             duration: set fade duration (default 0)
-            curve: set fade curve type (from -1 to 22) (default tri)
+            curve: set fade curve type (from -1 to 18) (default tri)
             silence: set the silence gain (from 0 to 1) (default 0)
             unity: set the unity gain (from 0 to 1) (default 1)
             enable: timeline editing
@@ -1317,27 +1158,21 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afade)
 
         """
-        filter_node = FilterNode(
-            name="afade",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "type": type,
-                        "start_sample": start_sample,
-                        "nb_samples": nb_samples,
-                        "start_time": start_time,
-                        "duration": duration,
-                        "curve": curve,
-                        "silence": silence,
-                        "unity": unity,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="afade", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "type": type,
+                "start_sample": start_sample,
+                "nb_samples": nb_samples,
+                "start_time": start_time,
+                "duration": duration,
+                "curve": curve,
+                "silence": silence,
+                "unity": unity,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1360,7 +1195,7 @@ class AudioStream(FilterableStream):
         band_multiplier: Float = Default(1.25),
         sample_noise: Int | Literal["none", "start", "begin", "stop", "end"] | Default = Default("none"),
         gain_smooth: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1391,33 +1226,27 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftdn)
 
         """
-        filter_node = FilterNode(
-            name="afftdn",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "noise_reduction": noise_reduction,
-                        "noise_floor": noise_floor,
-                        "noise_type": noise_type,
-                        "band_noise": band_noise,
-                        "residual_floor": residual_floor,
-                        "track_noise": track_noise,
-                        "track_residual": track_residual,
-                        "output_mode": output_mode,
-                        "adaptivity": adaptivity,
-                        "floor_offset": floor_offset,
-                        "noise_link": noise_link,
-                        "band_multiplier": band_multiplier,
-                        "sample_noise": sample_noise,
-                        "gain_smooth": gain_smooth,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="afftdn", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "noise_reduction": noise_reduction,
+                "noise_floor": noise_floor,
+                "noise_type": noise_type,
+                "band_noise": band_noise,
+                "residual_floor": residual_floor,
+                "track_noise": track_noise,
+                "track_residual": track_residual,
+                "output_mode": output_mode,
+                "adaptivity": adaptivity,
+                "floor_offset": floor_offset,
+                "noise_link": noise_link,
+                "band_multiplier": band_multiplier,
+                "sample_noise": sample_noise,
+                "gain_smooth": gain_smooth,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1454,7 +1283,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         overlap: Float = Default(0.75),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1476,24 +1305,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afftfilt)
 
         """
-        filter_node = FilterNode(
-            name="afftfilt",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "real": real,
-                        "imag": imag,
-                        "win_size": win_size,
-                        "win_func": win_func,
-                        "overlap": overlap,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="afftfilt", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "real": real,
+                "imag": imag,
+                "win_size": win_size,
+                "win_func": win_func,
+                "overlap": overlap,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1521,21 +1344,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aformat)
 
         """
-        filter_node = FilterNode(
-            name="aformat",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sample_fmts": sample_fmts,
-                        "sample_rates": sample_rates,
-                        "channel_layouts": channel_layouts,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aformat", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "sample_fmts": sample_fmts,
+                "sample_rates": sample_rates,
+                "channel_layouts": channel_layouts,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1545,7 +1362,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default(0.0),
         level: Double = Default(1.0),
         order: Int = Default(8),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1565,22 +1382,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afreqshift)
 
         """
-        filter_node = FilterNode(
-            name="afreqshift",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "shift": shift,
-                        "level": level,
-                        "order": order,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="afreqshift", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "shift": shift,
+                "level": level,
+                "order": order,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1595,7 +1406,7 @@ class AudioStream(FilterableStream):
         adaptive: Boolean = Default(False),
         samples: Int = Default(8192),
         softness: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1620,27 +1431,21 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#afwtdn)
 
         """
-        filter_node = FilterNode(
-            name="afwtdn",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sigma": sigma,
-                        "levels": levels,
-                        "wavet": wavet,
-                        "percent": percent,
-                        "profile": profile,
-                        "adaptive": adaptive,
-                        "samples": samples,
-                        "softness": softness,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="afwtdn", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "sigma": sigma,
+                "levels": levels,
+                "wavet": wavet,
+                "percent": percent,
+                "profile": profile,
+                "adaptive": adaptive,
+                "samples": samples,
+                "softness": softness,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1659,7 +1464,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -1688,31 +1493,25 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agate)
 
         """
-        filter_node = FilterNode(
-            name="agate",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "mode": mode,
-                        "range": range,
-                        "threshold": threshold,
-                        "ratio": ratio,
-                        "attack": attack,
-                        "release": release,
-                        "makeup": makeup,
-                        "knee": knee,
-                        "detection": detection,
-                        "link": link,
-                        "level_sc": level_sc,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="agate", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "mode": mode,
+                "range": range,
+                "threshold": threshold,
+                "ratio": ratio,
+                "attack": attack,
+                "release": release,
+                "makeup": makeup,
+                "knee": knee,
+                "detection": detection,
+                "link": link,
+                "level_sc": level_sc,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -1721,11 +1520,9 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
-        mode: Flags | Literal["full", "compact", "nozero", "noeof", "nodisabled"] | Default = Default("0"),
+        mode: Int | Literal["full", "compact"] | Default = Default("full"),
         flags: Flags
         | Literal[
-            "none",
-            "all",
             "queue",
             "frame_count_in",
             "frame_count_out",
@@ -1742,9 +1539,8 @@ class AudioStream(FilterableStream):
             "sample_count_in",
             "sample_count_out",
             "sample_count_delta",
-            "disabled",
         ]
-        | Default = Default("all+queue"),
+        | Default = Default("queue"),
         rate: Video_rate = Default("25"),
         **kwargs: Any,
     ) -> VideoStream:
@@ -1755,8 +1551,8 @@ class AudioStream(FilterableStream):
         Args:
             size: set monitor size (default "hd720")
             opacity: set video opacity (from 0 to 1) (default 0.9)
-            mode: set mode (default 0)
-            flags: set flags (default all+queue)
+            mode: set mode (from 0 to 1) (default full)
+            flags: set flags (default queue)
             rate: set video rate (default "25")
 
         Returns:
@@ -1766,23 +1562,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#agraphmonitor)
 
         """
-        filter_node = FilterNode(
-            name="agraphmonitor",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "opacity": opacity,
-                        "mode": mode,
-                        "flags": flags,
-                        "rate": rate,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="agraphmonitor", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "opacity": opacity,
+                "mode": mode,
+                "flags": flags,
+                "rate": rate,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1822,27 +1612,21 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ahistogram)
 
         """
-        filter_node = FilterNode(
-            name="ahistogram",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dmode": dmode,
-                        "rate": rate,
-                        "size": size,
-                        "scale": scale,
-                        "ascale": ascale,
-                        "acount": acount,
-                        "rheight": rheight,
-                        "slide": slide,
-                        "hmode": hmode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="ahistogram", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "dmode": dmode,
+                "rate": rate,
+                "size": size,
+                "scale": scale,
+                "ascale": ascale,
+                "acount": acount,
+                "rheight": rheight,
+                "slide": slide,
+                "hmode": hmode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1895,38 +1679,36 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aiir)
 
         """
-        filter_node = FilterNode(
-            name="aiir",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] + [StreamType.video] if response else []),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "zeros": zeros,
-                        "poles": poles,
-                        "gains": gains,
-                        "dry": dry,
-                        "wet": wet,
-                        "format": format,
-                        "process": process,
-                        "precision": precision,
-                        "e": e,
-                        "normalize": normalize,
-                        "mix": mix,
-                        "response": response,
-                        "channel": channel,
-                        "size": size,
-                        "rate": rate,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="aiir",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] + [StreamType.video] if response else []",
             ),
+            self,
+            **{
+                "zeros": zeros,
+                "poles": poles,
+                "gains": gains,
+                "dry": dry,
+                "wet": wet,
+                "format": format,
+                "process": process,
+                "precision": precision,
+                "e": e,
+                "normalize": normalize,
+                "mix": mix,
+                "response": response,
+                "channel": channel,
+                "size": size,
+                "rate": rate,
+            }
+            | kwargs,
         )
 
         return filter_node
 
-    def aintegral(self, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def aintegral(self, *, enable: String = Default(None), **kwargs: Any) -> AudioStream:
         """
 
         Compute integral of input audio.
@@ -1941,23 +1723,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aderivative_002c-aintegral)
 
         """
-        filter_node = FilterNode(
-            name="aintegral",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aintegral", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
-    def alatency(self, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def alatency(self, *, enable: String = Default(None), **kwargs: Any) -> AudioStream:
         """
 
         Report audio filtering latency.
@@ -1972,19 +1748,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
 
         """
-        filter_node = FilterNode(
-            name="alatency",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="alatency", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2000,7 +1770,7 @@ class AudioStream(FilterableStream):
         asc_level: Double = Default(0.5),
         level: Boolean = Default(True),
         latency: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2026,28 +1796,22 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alimiter)
 
         """
-        filter_node = FilterNode(
-            name="alimiter",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "limit": limit,
-                        "attack": attack,
-                        "release": release,
-                        "asc": asc,
-                        "asc_level": asc_level,
-                        "level": level,
-                        "latency": latency,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="alimiter", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "limit": limit,
+                "attack": attack,
+                "release": release,
+                "asc": asc,
+                "asc_level": asc_level,
+                "level": level,
+                "latency": latency,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2063,7 +1827,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(2),
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2089,39 +1853,27 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#allpass)
 
         """
-        filter_node = FilterNode(
-            name="allpass",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "order": order,
-                        "transform": transform,
-                        "precision": precision,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="allpass", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "order": order,
+                "transform": transform,
+                "precision": precision,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
     def aloop(
-        self,
-        *,
-        loop: Int = Default(0),
-        size: Int64 = Default(0),
-        start: Int64 = Default(0),
-        time: Duration = Default("INT64_MAX"),
-        **kwargs: Any,
+        self, *, loop: Int = Default(0), size: Int64 = Default(0), start: Int64 = Default(0), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -2130,8 +1882,7 @@ class AudioStream(FilterableStream):
         Args:
             loop: number of loops (from -1 to INT_MAX) (default 0)
             size: max number of samples to loop (from 0 to INT_MAX) (default 0)
-            start: set the loop start sample (from -1 to I64_MAX) (default 0)
-            time: set the loop start time (default INT64_MAX)
+            start: set the loop start sample (from 0 to I64_MAX) (default 0)
 
         Returns:
             default: the audio stream
@@ -2140,22 +1891,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aloop)
 
         """
-        filter_node = FilterNode(
-            name="aloop",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "loop": loop,
-                        "size": size,
-                        "start": start,
-                        "time": time,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aloop", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "loop": loop,
+                "size": size,
+                "start": start,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2171,7 +1915,7 @@ class AudioStream(FilterableStream):
         expr: String = Default(None),
         file: String = Default(None),
         direct: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2195,26 +1939,20 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
 
         """
-        filter_node = FilterNode(
-            name="ametadata",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "key": key,
-                        "value": value,
-                        "function": function,
-                        "expr": expr,
-                        "file": file,
-                        "direct": direct,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="ametadata", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "mode": mode,
+                "key": key,
+                "value": value,
+                "function": function,
+                "expr": expr,
+                "file": file,
+                "direct": direct,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2230,15 +1968,11 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
         """
-        filter_node = FilterNode(
-            name="amultiply",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _multiply1,
-            ),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="amultiply", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _multiply1,
+            **{} | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2251,7 +1985,7 @@ class AudioStream(FilterableStream):
         mgain: Double = Default(60.0),
         fscale: Int | Literal["lin", "log"] | Default = Default("log"),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -2275,25 +2009,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anequalizer)
 
         """
-        filter_node = FilterNode(
-            name="anequalizer",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] + [StreamType.video] if curves else []),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "params": params,
-                        "curves": curves,
-                        "size": size,
-                        "mgain": mgain,
-                        "fscale": fscale,
-                        "colors": colors,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="anequalizer",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] + [StreamType.video] if curves else []",
             ),
+            self,
+            **{
+                "params": params,
+                "curves": curves,
+                "size": size,
+                "mgain": mgain,
+                "fscale": fscale,
+                "colors": colors,
+                "enable": enable,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -2306,7 +2038,7 @@ class AudioStream(FilterableStream):
         research: Duration = Default(0.006),
         output: Int | Literal["i", "o", "n"] | Default = Default("o"),
         smooth: Float = Default(11.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2328,24 +2060,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmdn)
 
         """
-        filter_node = FilterNode(
-            name="anlmdn",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "strength": strength,
-                        "patch": patch,
-                        "research": research,
-                        "output": output,
-                        "smooth": smooth,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="anlmdn", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "strength": strength,
+                "patch": patch,
+                "research": research,
+                "output": output,
+                "smooth": smooth,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2357,8 +2083,8 @@ class AudioStream(FilterableStream):
         mu: Float = Default(0.75),
         eps: Float = Default(1.0),
         leakage: Float = Default(0.0),
-        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-        enable: str = Default(None),
+        out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2370,7 +2096,7 @@ class AudioStream(FilterableStream):
             mu: set the filter mu (from 0 to 2) (default 0.75)
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
-            out_mode: set output mode (from 0 to 4) (default o)
+            out_mode: set output mode (from 0 to 3) (default o)
             enable: timeline editing
 
         Returns:
@@ -2380,27 +2106,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
         """
-        filter_node = FilterNode(
-            name="anlmf",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _desired,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "order": order,
-                        "mu": mu,
-                        "eps": eps,
-                        "leakage": leakage,
-                        "out_mode": out_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="anlmf", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _desired,
+            **{
+                "order": order,
+                "mu": mu,
+                "eps": eps,
+                "leakage": leakage,
+                "out_mode": out_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2412,8 +2130,8 @@ class AudioStream(FilterableStream):
         mu: Float = Default(0.75),
         eps: Float = Default(1.0),
         leakage: Float = Default(0.0),
-        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-        enable: str = Default(None),
+        out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2425,7 +2143,7 @@ class AudioStream(FilterableStream):
             mu: set the filter mu (from 0 to 2) (default 0.75)
             eps: set the filter eps (from 0 to 1) (default 1)
             leakage: set the filter leakage (from 0 to 1) (default 0)
-            out_mode: set output mode (from 0 to 4) (default o)
+            out_mode: set output mode (from 0 to 3) (default o)
             enable: timeline editing
 
         Returns:
@@ -2435,27 +2153,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
         """
-        filter_node = FilterNode(
-            name="anlms",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _desired,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "order": order,
-                        "mu": mu,
-                        "eps": eps,
-                        "leakage": leakage,
-                        "out_mode": out_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="anlms", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _desired,
+            **{
+                "order": order,
+                "mu": mu,
+                "eps": eps,
+                "leakage": leakage,
+                "out_mode": out_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2471,12 +2181,8 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anull)
 
         """
-        filter_node = FilterNode(
-            name="anull",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="anull", typings_input=("audio",), typings_output=("audio",)), self, **{} | kwargs
         )
         return filter_node.audio(0)
 
@@ -2488,7 +2194,7 @@ class AudioStream(FilterableStream):
         whole_len: Int64 = Default(-1),
         pad_dur: Duration = Default(-1e-06),
         whole_dur: Duration = Default(-1e-06),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2510,24 +2216,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apad)
 
         """
-        filter_node = FilterNode(
-            name="apad",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "packet_size": packet_size,
-                        "pad_len": pad_len,
-                        "whole_len": whole_len,
-                        "pad_dur": pad_dur,
-                        "whole_dur": whole_dur,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="apad", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "packet_size": packet_size,
+                "pad_len": pad_len,
+                "whole_len": whole_len,
+                "pad_dur": pad_dur,
+                "whole_dur": whole_dur,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2536,7 +2236,7 @@ class AudioStream(FilterableStream):
         *,
         mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
         seed: Int64 = Default(-1),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2555,21 +2255,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
 
         """
-        filter_node = FilterNode(
-            name="aperms",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "seed": seed,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aperms", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "mode": mode,
+                "seed": seed,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2614,29 +2308,27 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphasemeter)
 
         """
-        filter_node = FilterNode(
-            name="aphasemeter",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] + ([StreamType.video] if video else [])),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rate": rate,
-                        "size": size,
-                        "rc": rc,
-                        "gc": gc,
-                        "bc": bc,
-                        "mpc": mpc,
-                        "video": video,
-                        "phasing": phasing,
-                        "tolerance": tolerance,
-                        "angle": angle,
-                        "duration": duration,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="aphasemeter",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] + ([StreamType.video] if video else [])",
             ),
+            self,
+            **{
+                "rate": rate,
+                "size": size,
+                "rc": rc,
+                "gc": gc,
+                "bc": bc,
+                "mpc": mpc,
+                "video": video,
+                "phasing": phasing,
+                "tolerance": tolerance,
+                "angle": angle,
+                "duration": duration,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -2671,24 +2363,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaser)
 
         """
-        filter_node = FilterNode(
-            name="aphaser",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "in_gain": in_gain,
-                        "out_gain": out_gain,
-                        "delay": delay,
-                        "decay": decay,
-                        "speed": speed,
-                        "type": type,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aphaser", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "in_gain": in_gain,
+                "out_gain": out_gain,
+                "delay": delay,
+                "decay": decay,
+                "speed": speed,
+                "type": type,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2698,7 +2384,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default(0.0),
         level: Double = Default(1.0),
         order: Int = Default(8),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2718,56 +2404,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aphaseshift)
 
         """
-        filter_node = FilterNode(
-            name="aphaseshift",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "shift": shift,
-                        "level": level,
-                        "order": order,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
-        )
-        return filter_node.audio(0)
-
-    def apsnr(self, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
-        """
-
-        Measure Audio Peak Signal-to-Noise Ratio.
-
-        Args:
-            enable: timeline editing
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
-
-        """
-        filter_node = FilterNode(
-            name="apsnr",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _input1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aphaseshift", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "shift": shift,
+                "level": level,
+                "order": order,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2781,7 +2427,7 @@ class AudioStream(FilterableStream):
         adaptive: Double = Default(0.5),
         iterations: Int = Default(10),
         level: Boolean = Default(False),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -2805,26 +2451,20 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsyclip)
 
         """
-        filter_node = FilterNode(
-            name="apsyclip",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "clip": clip,
-                        "diff": diff,
-                        "adaptive": adaptive,
-                        "iterations": iterations,
-                        "level": level,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="apsyclip", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "clip": clip,
+                "diff": diff,
+                "adaptive": adaptive,
+                "iterations": iterations,
+                "level": level,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2868,29 +2508,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apulsator)
 
         """
-        filter_node = FilterNode(
-            name="apulsator",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "mode": mode,
-                        "amount": amount,
-                        "offset_l": offset_l,
-                        "offset_r": offset_r,
-                        "width": width,
-                        "timing": timing,
-                        "bpm": bpm,
-                        "ms": ms,
-                        "hz": hz,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="apulsator", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "mode": mode,
+                "amount": amount,
+                "offset_l": offset_l,
+                "offset_r": offset_r,
+                "width": width,
+                "timing": timing,
+                "bpm": bpm,
+                "ms": ms,
+                "hz": hz,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2910,20 +2544,14 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
 
         """
-        filter_node = FilterNode(
-            name="arealtime",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "limit": limit,
-                        "speed": speed,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="arealtime", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "limit": limit,
+                "speed": speed,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2942,19 +2570,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aresample)
 
         """
-        filter_node = FilterNode(
-            name="aresample",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sample_rate": sample_rate,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aresample", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "sample_rate": sample_rate,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -2970,69 +2592,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#areverse)
 
         """
-        filter_node = FilterNode(
-            name="areverse",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
-        )
-        return filter_node.audio(0)
-
-    def arls(
-        self,
-        _desired: AudioStream,
-        *,
-        order: Int = Default(16),
-        _lambda: Float = Default(1.0),
-        delta: Float = Default(2.0),
-        out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-        enable: str = Default(None),
-        **kwargs: Any,
-    ) -> AudioStream:
-        """
-
-        Apply Recursive Least Squares algorithm to first audio stream.
-
-        Args:
-            order: set the filter order (from 1 to 32767) (default 16)
-            _lambda: set the filter lambda (from 0 to 1) (default 1)
-            delta: set the filter delta (from 0 to 32767) (default 2)
-            out_mode: set output mode (from 0 to 4) (default o)
-            enable: timeline editing
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
-
-        """
-        filter_node = FilterNode(
-            name="arls",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _desired,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "order": order,
-                        "lambda": _lambda,
-                        "delta": delta,
-                        "out_mode": out_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="areverse", typings_input=("audio",), typings_output=("audio",)), self, **{} | kwargs
         )
         return filter_node.audio(0)
 
     def arnndn(
-        self, *, model: String = Default(None), mix: Float = Default(1.0), enable: str = Default(None), **kwargs: Any
+        self, *, model: String = Default(None), mix: Float = Default(1.0), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -3050,31 +2616,22 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arnndn)
 
         """
-        filter_node = FilterNode(
-            name="arnndn",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "model": model,
-                        "mix": mix,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="arnndn", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "model": model,
+                "mix": mix,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
-    def asdr(self, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
+    def asdr(self, _input1: AudioStream, **kwargs: Any) -> AudioStream:
         """
 
         Measure Audio Signal-to-Distortion Ratio.
-
-        Args:
-            enable: timeline editing
 
         Returns:
             default: the audio stream
@@ -3083,22 +2640,11 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
         """
-        filter_node = FilterNode(
-            name="asdr",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _input1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asdr", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _input1,
+            **{} | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3121,20 +2667,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
 
         """
-        filter_node = FilterNode(
-            name="asegment",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] * len(str(timestamps or samples).split("|"))),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "timestamps": timestamps,
-                        "samples": samples,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="asegment",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] * len(str(timestamps or samples).split('|'))",
             ),
+            self,
+            **{
+                "timestamps": timestamps,
+                "samples": samples,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -3156,20 +2700,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
 
         """
-        filter_node = FilterNode(
-            name="aselect",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] * int(outputs)),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "expr": expr,
-                        "outputs": outputs,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="aselect", typings_input=("audio",), typings_output="[StreamType.audio] * int(outputs)"
             ),
+            self,
+            **{
+                "expr": expr,
+                "outputs": outputs,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -3192,30 +2732,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
 
         """
-        filter_node = FilterNode(
-            name="asendcmd",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "commands": commands,
-                        "filename": filename,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asendcmd", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "commands": commands,
+                "filename": filename,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
     def asetnsamples(
-        self,
-        *,
-        nb_out_samples: Int = Default(1024),
-        pad: Boolean = Default(True),
-        enable: str = Default(None),
-        **kwargs: Any,
+        self, *, nb_out_samples: Int = Default(1024), pad: Boolean = Default(True), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -3224,7 +2753,6 @@ class AudioStream(FilterableStream):
         Args:
             nb_out_samples: set the number of per-frame output samples (from 1 to INT_MAX) (default 1024)
             pad: pad last frame with zeros (default true)
-            enable: timeline editing
 
         Returns:
             default: the audio stream
@@ -3233,21 +2761,14 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetnsamples)
 
         """
-        filter_node = FilterNode(
-            name="asetnsamples",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "nb_out_samples": nb_out_samples,
-                        "pad": pad,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asetnsamples", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "nb_out_samples": nb_out_samples,
+                "pad": pad,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3266,19 +2787,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
 
         """
-        filter_node = FilterNode(
-            name="asetpts",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "expr": expr,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asetpts", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "expr": expr,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3297,19 +2812,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asetrate)
 
         """
-        filter_node = FilterNode(
-            name="asetrate",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sample_rate": sample_rate,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asetrate", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "sample_rate": sample_rate,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3328,19 +2837,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
 
         """
-        filter_node = FilterNode(
-            name="asettb",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "expr": expr,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asettb", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "expr": expr,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3356,12 +2859,8 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ashowinfo)
 
         """
-        filter_node = FilterNode(
-            name="ashowinfo",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="ashowinfo", typings_input=("audio",), typings_output=("audio",)), self, **{} | kwargs
         )
         return filter_node.audio(0)
 
@@ -3394,7 +2893,7 @@ class AudioStream(FilterableStream):
             "SEI_UNREGISTERED",
         ]
         | Default = Default(-1),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3413,55 +2912,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
 
         """
-        filter_node = FilterNode(
-            name="asidedata",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "type": type,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
-        )
-        return filter_node.audio(0)
-
-    def asisdr(self, _input1: AudioStream, *, enable: str = Default(None), **kwargs: Any) -> AudioStream:
-        """
-
-        Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
-
-        Args:
-            enable: timeline editing
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
-
-        """
-        filter_node = FilterNode(
-            name="asisdr",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _input1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asidedata", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "mode": mode,
+                "type": type,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3475,7 +2934,7 @@ class AudioStream(FilterableStream):
         output: Double = Default(1.0),
         param: Double = Default(1.0),
         oversample: Int = Default(1),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3497,24 +2956,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asoftclip)
 
         """
-        filter_node = FilterNode(
-            name="asoftclip",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "type": type,
-                        "threshold": threshold,
-                        "output": output,
-                        "param": param,
-                        "oversample": oversample,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asoftclip", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "type": type,
+                "threshold": threshold,
+                "output": output,
+                "param": param,
+                "oversample": oversample,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3589,22 +3042,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#aspectralstats)
 
         """
-        filter_node = FilterNode(
-            name="aspectralstats",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "win_size": win_size,
-                        "win_func": win_func,
-                        "overlap": overlap,
-                        "measure": measure,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="aspectralstats", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "win_size": win_size,
+                "win_func": win_func,
+                "overlap": overlap,
+                "measure": measure,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3624,19 +3071,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
 
         """
-        filter_node = FilterNode(
-            name="asplit",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] * int(outputs)),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "outputs": outputs,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="asplit", typings_input=("audio",), typings_output="[StreamType.audio] * int(outputs)"
             ),
+            self,
+            **{
+                "outputs": outputs,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -3676,10 +3119,9 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
-            "Abs_Peak_count",
         ]
         | Default = Default(
-            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
         ),
         measure_overall: Flags
         | Literal[
@@ -3710,10 +3152,9 @@ class AudioStream(FilterableStream):
             "RMS_trough",
             "Zero_crossings",
             "Zero_crossings_rate",
-            "Abs_Peak_count",
         ]
         | Default = Default(
-            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
+            "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate"
         ),
         **kwargs: Any,
     ) -> AudioStream:
@@ -3725,8 +3166,8 @@ class AudioStream(FilterableStream):
             length: set the window length (from 0 to 10) (default 0.05)
             metadata: inject metadata in the filtergraph (default false)
             reset: Set the number of frames over which cumulative stats are calculated before being reset (from 0 to INT_MAX) (default 0)
-            measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
-            measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count)
+            measure_perchannel: Select the parameters which are measured per channel (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
+            measure_overall: Select the parameters which are measured overall (default all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate)
 
         Returns:
             default: the audio stream
@@ -3735,23 +3176,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#astats)
 
         """
-        filter_node = FilterNode(
-            name="astats",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "length": length,
-                        "metadata": metadata,
-                        "reset": reset,
-                        "measure_perchannel": measure_perchannel,
-                        "measure_overall": measure_overall,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="astats", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "length": length,
+                "metadata": metadata,
+                "reset": reset,
+                "measure_perchannel": measure_perchannel,
+                "measure_overall": measure_overall,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3767,7 +3202,7 @@ class AudioStream(FilterableStream):
         slope: Double = Default(0.5),
         delay: Double = Default(20.0),
         channels: String = Default("all"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3793,28 +3228,22 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubboost)
 
         """
-        filter_node = FilterNode(
-            name="asubboost",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dry": dry,
-                        "wet": wet,
-                        "boost": boost,
-                        "decay": decay,
-                        "feedback": feedback,
-                        "cutoff": cutoff,
-                        "slope": slope,
-                        "delay": delay,
-                        "channels": channels,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asubboost", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "dry": dry,
+                "wet": wet,
+                "boost": boost,
+                "decay": decay,
+                "feedback": feedback,
+                "cutoff": cutoff,
+                "slope": slope,
+                "delay": delay,
+                "channels": channels,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3824,7 +3253,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default(20.0),
         order: Int = Default(10),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3844,22 +3273,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asubcut)
 
         """
-        filter_node = FilterNode(
-            name="asubcut",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cutoff": cutoff,
-                        "order": order,
-                        "level": level,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asubcut", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "cutoff": cutoff,
+                "order": order,
+                "level": level,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3869,7 +3292,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default(20000.0),
         order: Int = Default(10),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3889,22 +3312,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asupercut)
 
         """
-        filter_node = FilterNode(
-            name="asupercut",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cutoff": cutoff,
-                        "order": order,
-                        "level": level,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asupercut", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "cutoff": cutoff,
+                "order": order,
+                "level": level,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3915,7 +3332,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(4),
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3936,23 +3353,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperpass)
 
         """
-        filter_node = FilterNode(
-            name="asuperpass",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "centerf": centerf,
-                        "order": order,
-                        "qfactor": qfactor,
-                        "level": level,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asuperpass", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "centerf": centerf,
+                "order": order,
+                "qfactor": qfactor,
+                "level": level,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -3963,7 +3374,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(4),
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -3984,23 +3395,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asuperstop)
 
         """
-        filter_node = FilterNode(
-            name="asuperstop",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "centerf": centerf,
-                        "order": order,
-                        "qfactor": qfactor,
-                        "level": level,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="asuperstop", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "centerf": centerf,
+                "order": order,
+                "qfactor": qfactor,
+                "level": level,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4019,19 +3424,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atempo)
 
         """
-        filter_node = FilterNode(
-            name="atempo",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "tempo": tempo,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="atempo", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "tempo": tempo,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4043,7 +3442,7 @@ class AudioStream(FilterableStream):
         width: Double = Default(1000.0),
         order: Int = Default(5),
         level: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4065,24 +3464,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atilt)
 
         """
-        filter_node = FilterNode(
-            name="atilt",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "freq": freq,
-                        "slope": slope,
-                        "width": width,
-                        "order": order,
-                        "level": level,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="atilt", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "freq": freq,
+                "slope": slope,
+                "width": width,
+                "order": order,
+                "level": level,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4118,25 +3511,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atrim)
 
         """
-        filter_node = FilterNode(
-            name="atrim",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "start": start,
-                        "end": end,
-                        "start_pts": start_pts,
-                        "end_pts": end_pts,
-                        "duration": duration,
-                        "start_sample": start_sample,
-                        "end_sample": end_sample,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="atrim", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "start": start,
+                "end": end,
+                "start_pts": start_pts,
+                "end_pts": end_pts,
+                "duration": duration,
+                "start_sample": start_sample,
+                "end_sample": end_sample,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4190,34 +3577,28 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avectorscope)
 
         """
-        filter_node = FilterNode(
-            name="avectorscope",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "rate": rate,
-                        "size": size,
-                        "rc": rc,
-                        "gc": gc,
-                        "bc": bc,
-                        "ac": ac,
-                        "rf": rf,
-                        "gf": gf,
-                        "bf": bf,
-                        "af": af,
-                        "zoom": zoom,
-                        "draw": draw,
-                        "scale": scale,
-                        "swap": swap,
-                        "mirror": mirror,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="avectorscope", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "rate": rate,
+                "size": size,
+                "rc": rc,
+                "gc": gc,
+                "bc": bc,
+                "ac": ac,
+                "rf": rf,
+                "gf": gf,
+                "bf": bf,
+                "af": af,
+                "zoom": zoom,
+                "draw": draw,
+                "scale": scale,
+                "swap": swap,
+                "mirror": mirror,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4226,7 +3607,7 @@ class AudioStream(FilterableStream):
         _axcorrelate1: AudioStream,
         *,
         size: Int = Default(256),
-        algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
+        algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4234,8 +3615,8 @@ class AudioStream(FilterableStream):
         Cross-correlate two audio streams.
 
         Args:
-            size: set the segment size (from 2 to 131072) (default 256)
-            algo: set the algorithm (from 0 to 2) (default best)
+            size: set segment size (from 2 to 131072) (default 256)
+            algo: set algorithm (from 0 to 1) (default slow)
 
         Returns:
             default: the audio stream
@@ -4244,54 +3625,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
         """
-        filter_node = FilterNode(
-            name="axcorrelate",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _axcorrelate1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "algo": algo,
-                    }
-                    | kwargs
-                )
-            ),
-        )
-        return filter_node.audio(0)
-
-    def azmq(self, *, bind_address: String = Default("tcp://*:5555"), **kwargs: Any) -> AudioStream:
-        """
-
-        Receive commands through ZMQ and broker them to filters.
-
-        Args:
-            bind_address: set bind address (default "tcp://*:5555")
-
-        Returns:
-            default: the audio stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
-
-        """
-        filter_node = FilterNode(
-            name="azmq",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "bind_address": bind_address,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="axcorrelate", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _axcorrelate1,
+            **{
+                "size": size,
+                "algo": algo,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4308,7 +3650,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4335,29 +3677,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandpass)
 
         """
-        filter_node = FilterNode(
-            name="bandpass",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "csg": csg,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bandpass", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "csg": csg,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4373,7 +3709,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4399,28 +3735,22 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bandreject)
 
         """
-        filter_node = FilterNode(
-            name="bandreject",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bandreject", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4438,7 +3768,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4466,30 +3796,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
         """
-        filter_node = FilterNode(
-            name="bass",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "gain": gain,
-                        "poles": poles,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bass", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "gain": gain,
+                "poles": poles,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4504,7 +3828,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4529,27 +3853,21 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#biquad)
 
         """
-        filter_node = FilterNode(
-            name="biquad",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "a0": a0,
-                        "a1": a1,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="biquad", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "a0": a0,
+                "a1": a1,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4571,20 +3889,14 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelmap)
 
         """
-        filter_node = FilterNode(
-            name="channelmap",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "map": map,
-                        "channel_layout": channel_layout,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="channelmap", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "map": map,
+                "channel_layout": channel_layout,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4607,20 +3919,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#channelsplit)
 
         """
-        filter_node = FilterNode(
-            name="channelsplit",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "channel_layout": channel_layout,
-                        "channels": channels,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="channelsplit",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] * CHANNEL_LAYOUT[str(channel_layout)]",
             ),
+            self,
+            **{
+                "channel_layout": channel_layout,
+                "channels": channels,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -4655,24 +3965,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chorus)
 
         """
-        filter_node = FilterNode(
-            name="chorus",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "in_gain": in_gain,
-                        "out_gain": out_gain,
-                        "delays": delays,
-                        "decays": decays,
-                        "speeds": speeds,
-                        "depths": depths,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="chorus", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "in_gain": in_gain,
+                "out_gain": out_gain,
+                "delays": delays,
+                "decays": decays,
+                "speeds": speeds,
+                "depths": depths,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4708,25 +4012,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compand)
 
         """
-        filter_node = FilterNode(
-            name="compand",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "attacks": attacks,
-                        "decays": decays,
-                        "points": points,
-                        "soft-knee": soft_knee,
-                        "gain": gain,
-                        "volume": volume,
-                        "delay": delay,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="compand", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "attacks": attacks,
+                "decays": decays,
+                "points": points,
+                "soft-knee": soft_knee,
+                "gain": gain,
+                "volume": volume,
+                "delay": delay,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4739,7 +4037,7 @@ class AudioStream(FilterableStream):
         dry: Double = Default(0.0),
         wet: Double = Default(1.0),
         temp: Int = Default(20),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4762,25 +4060,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#compensationdelay)
 
         """
-        filter_node = FilterNode(
-            name="compensationdelay",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mm": mm,
-                        "cm": cm,
-                        "m": m,
-                        "dry": dry,
-                        "wet": wet,
-                        "temp": temp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="compensationdelay", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "mm": mm,
+                "cm": cm,
+                "m": m,
+                "dry": dry,
+                "wet": wet,
+                "temp": temp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4793,7 +4085,7 @@ class AudioStream(FilterableStream):
         level_in: Double = Default(0.9),
         level_out: Double = Default(1.0),
         block_size: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4816,30 +4108,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crossfeed)
 
         """
-        filter_node = FilterNode(
-            name="crossfeed",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "strength": strength,
-                        "range": range,
-                        "slope": slope,
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "block_size": block_size,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="crossfeed", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "strength": strength,
+                "range": range,
+                "slope": slope,
+                "level_in": level_in,
+                "level_out": level_out,
+                "block_size": block_size,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
     def crystalizer(
-        self, *, i: Float = Default(2.0), c: Boolean = Default(True), enable: str = Default(None), **kwargs: Any
+        self, *, i: Float = Default(2.0), c: Boolean = Default(True), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -4857,21 +4143,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crystalizer)
 
         """
-        filter_node = FilterNode(
-            name="crystalizer",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "i": i,
-                        "c": c,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="crystalizer", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "i": i,
+                "c": c,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4880,7 +4160,7 @@ class AudioStream(FilterableStream):
         *,
         shift: Double = Default(0.0),
         limitergain: Double = Default(0.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4899,21 +4179,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dcshift)
 
         """
-        filter_node = FilterNode(
-            name="dcshift",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "shift": shift,
-                        "limitergain": limitergain,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dcshift", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "shift": shift,
+                "limitergain": limitergain,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4924,7 +4198,7 @@ class AudioStream(FilterableStream):
         m: Double = Default(0.5),
         f: Double = Default(0.5),
         s: Int | Literal["i", "o", "e"] | Default = Default("o"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4945,23 +4219,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deesser)
 
         """
-        filter_node = FilterNode(
-            name="deesser",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "i": i,
-                        "m": m,
-                        "f": f,
-                        "s": s,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="deesser", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "i": i,
+                "m": m,
+                "f": f,
+                "s": s,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -4971,7 +4239,7 @@ class AudioStream(FilterableStream):
         original: Double = Default(1.0),
         enhance: Double = Default(1.0),
         voice: Double = Default(2.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -4991,22 +4259,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dialoguenhance)
 
         """
-        filter_node = FilterNode(
-            name="dialoguenhance",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "original": original,
-                        "enhance": enhance,
-                        "voice": voice,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dialoguenhance", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "original": original,
+                "enhance": enhance,
+                "voice": voice,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5025,19 +4287,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drmeter)
 
         """
-        filter_node = FilterNode(
-            name="drmeter",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "length": length,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="drmeter", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "length": length,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5057,7 +4313,7 @@ class AudioStream(FilterableStream):
         channels: String = Default("all"),
         overlap: Double = Default(0.0),
         curve: String = Default(None),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5087,32 +4343,26 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dynaudnorm)
 
         """
-        filter_node = FilterNode(
-            name="dynaudnorm",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "framelen": framelen,
-                        "gausssize": gausssize,
-                        "peak": peak,
-                        "maxgain": maxgain,
-                        "targetrms": targetrms,
-                        "coupling": coupling,
-                        "correctdc": correctdc,
-                        "altboundary": altboundary,
-                        "compress": compress,
-                        "threshold": threshold,
-                        "channels": channels,
-                        "overlap": overlap,
-                        "curve": curve,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dynaudnorm", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "framelen": framelen,
+                "gausssize": gausssize,
+                "peak": peak,
+                "maxgain": maxgain,
+                "targetrms": targetrms,
+                "coupling": coupling,
+                "correctdc": correctdc,
+                "altboundary": altboundary,
+                "compress": compress,
+                "threshold": threshold,
+                "channels": channels,
+                "overlap": overlap,
+                "curve": curve,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5128,12 +4378,8 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#earwax)
 
         """
-        filter_node = FilterNode(
-            name="earwax",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="earwax", typings_input=("audio",), typings_output=("audio",)), self, **{} | kwargs
         )
         return filter_node.audio(0)
 
@@ -5151,12 +4397,6 @@ class AudioStream(FilterableStream):
         target: Int = Default(-23),
         gauge: Int | Literal["momentary", "m", "shortterm", "s"] | Default = Default("momentary"),
         scale: Int | Literal["absolute", "LUFS", "relative", "LU"] | Default = Default("absolute"),
-        integrated: Double = Default(0.0),
-        range: Double = Default(0.0),
-        lra_low: Double = Default(0.0),
-        lra_high: Double = Default(0.0),
-        sample_peak: Double = Default(0.0),
-        true_peak: Double = Default(0.0),
         **kwargs: Any,
     ) -> FilterNode:
         """
@@ -5175,12 +4415,6 @@ class AudioStream(FilterableStream):
             target: set a specific target level in LUFS (-23 to 0) (from -23 to 0) (default -23)
             gauge: set gauge display type (from 0 to 1) (default momentary)
             scale: sets display method for the stats (from 0 to 1) (default absolute)
-            integrated: integrated loudness (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            range: loudness range (LU) (from -DBL_MAX to DBL_MAX) (default 0)
-            lra_low: LRA low (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            lra_high: LRA high (LUFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            sample_peak: sample peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
-            true_peak: true peak (dBFS) (from -DBL_MAX to DBL_MAX) (default 0)
 
         Returns:
             filter_node: the filter node
@@ -5190,35 +4424,27 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ebur128)
 
         """
-        filter_node = FilterNode(
-            name="ebur128",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video] if video else [] + [StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "video": video,
-                        "size": size,
-                        "meter": meter,
-                        "framelog": framelog,
-                        "metadata": metadata,
-                        "peak": peak,
-                        "dualmono": dualmono,
-                        "panlaw": panlaw,
-                        "target": target,
-                        "gauge": gauge,
-                        "scale": scale,
-                        "integrated": integrated,
-                        "range": range,
-                        "lra_low": lra_low,
-                        "lra_high": lra_high,
-                        "sample_peak": sample_peak,
-                        "true_peak": true_peak,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="ebur128",
+                typings_input=("audio",),
+                typings_output="[StreamType.video] if video else [] + [StreamType.audio]",
             ),
+            self,
+            **{
+                "video": video,
+                "size": size,
+                "meter": meter,
+                "framelog": framelog,
+                "metadata": metadata,
+                "peak": peak,
+                "dualmono": dualmono,
+                "panlaw": panlaw,
+                "target": target,
+                "gauge": gauge,
+                "scale": scale,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -5236,7 +4462,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5263,34 +4489,28 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#equalizer)
 
         """
-        filter_node = FilterNode(
-            name="equalizer",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "gain": gain,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="equalizer", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "gain": gain,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
     def extrastereo(
-        self, *, m: Float = Default(2.5), c: Boolean = Default(True), enable: str = Default(None), **kwargs: Any
+        self, *, m: Float = Default(2.5), c: Boolean = Default(True), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -5308,21 +4528,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extrastereo)
 
         """
-        filter_node = FilterNode(
-            name="extrastereo",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "m": m,
-                        "c": c,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="extrastereo", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "m": m,
+                "c": c,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5383,31 +4597,25 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
 
         """
-        filter_node = FilterNode(
-            name="firequalizer",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "gain": gain,
-                        "gain_entry": gain_entry,
-                        "delay": delay,
-                        "accuracy": accuracy,
-                        "wfunc": wfunc,
-                        "fixed": fixed,
-                        "multi": multi,
-                        "zero_phase": zero_phase,
-                        "scale": scale,
-                        "dumpfile": dumpfile,
-                        "dumpscale": dumpscale,
-                        "fft2": fft2,
-                        "min_phase": min_phase,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="firequalizer", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "gain": gain,
+                "gain_entry": gain_entry,
+                "delay": delay,
+                "accuracy": accuracy,
+                "wfunc": wfunc,
+                "fixed": fixed,
+                "multi": multi,
+                "zero_phase": zero_phase,
+                "scale": scale,
+                "dumpfile": dumpfile,
+                "dumpscale": dumpscale,
+                "fft2": fft2,
+                "min_phase": min_phase,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5445,26 +4653,20 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#flanger)
 
         """
-        filter_node = FilterNode(
-            name="flanger",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "delay": delay,
-                        "depth": depth,
-                        "regen": regen,
-                        "width": width,
-                        "speed": speed,
-                        "shape": shape,
-                        "phase": phase,
-                        "interp": interp,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="flanger", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "delay": delay,
+                "depth": depth,
+                "regen": regen,
+                "width": width,
+                "speed": speed,
+                "shape": shape,
+                "phase": phase,
+                "interp": interp,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5512,31 +4714,25 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haas)
 
         """
-        filter_node = FilterNode(
-            name="haas",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "side_gain": side_gain,
-                        "middle_source": middle_source,
-                        "middle_phase": middle_phase,
-                        "left_delay": left_delay,
-                        "left_balance": left_balance,
-                        "left_gain": left_gain,
-                        "left_phase": left_phase,
-                        "right_delay": right_delay,
-                        "right_balance": right_balance,
-                        "right_gain": right_gain,
-                        "right_phase": right_phase,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="haas", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "side_gain": side_gain,
+                "middle_source": middle_source,
+                "middle_phase": middle_phase,
+                "left_delay": left_delay,
+                "left_balance": left_balance,
+                "left_gain": left_gain,
+                "left_phase": left_phase,
+                "right_delay": right_delay,
+                "right_balance": right_balance,
+                "right_gain": right_gain,
+                "right_phase": right_phase,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5570,24 +4766,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hdcd)
 
         """
-        filter_node = FilterNode(
-            name="hdcd",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "disable_autoconvert": disable_autoconvert,
-                        "process_stereo": process_stereo,
-                        "cdt_ms": cdt_ms,
-                        "force_pe": force_pe,
-                        "analyze_mode": analyze_mode,
-                        "bits_per_sample": bits_per_sample,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hdcd", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "disable_autoconvert": disable_autoconvert,
+                "process_stereo": process_stereo,
+                "cdt_ms": cdt_ms,
+                "force_pe": force_pe,
+                "analyze_mode": analyze_mode,
+                "bits_per_sample": bits_per_sample,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5604,7 +4794,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5631,29 +4821,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#highpass)
 
         """
-        filter_node = FilterNode(
-            name="highpass",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "poles": poles,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="highpass", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "poles": poles,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5671,7 +4855,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5699,30 +4883,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
         """
-        filter_node = FilterNode(
-            name="highshelf",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "gain": gain,
-                        "poles": poles,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="highshelf", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "gain": gain,
+                "poles": poles,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5766,29 +4944,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loudnorm)
 
         """
-        filter_node = FilterNode(
-            name="loudnorm",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "I": I,
-                        "LRA": LRA,
-                        "TP": TP,
-                        "measured_I": measured_I,
-                        "measured_LRA": measured_LRA,
-                        "measured_TP": measured_TP,
-                        "measured_thresh": measured_thresh,
-                        "offset": offset,
-                        "linear": linear,
-                        "dual_mono": dual_mono,
-                        "print_format": print_format,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="loudnorm", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "I": I,
+                "LRA": LRA,
+                "TP": TP,
+                "measured_I": measured_I,
+                "measured_LRA": measured_LRA,
+                "measured_TP": measured_TP,
+                "measured_thresh": measured_thresh,
+                "offset": offset,
+                "linear": linear,
+                "dual_mono": dual_mono,
+                "print_format": print_format,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5805,7 +4977,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5832,29 +5004,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lowpass)
 
         """
-        filter_node = FilterNode(
-            name="lowpass",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "poles": poles,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lowpass", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "poles": poles,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5872,7 +5038,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -5900,30 +5066,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
 
         """
-        filter_node = FilterNode(
-            name="lowshelf",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "gain": gain,
-                        "poles": poles,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lowshelf", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "gain": gain,
+                "poles": poles,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5949,19 +5109,13 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcompand)
 
         """
-        filter_node = FilterNode(
-            name="mcompand",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "args": args,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="mcompand", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "args": args,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -5980,32 +5134,20 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pan)
 
         """
-        filter_node = FilterNode(
-            name="pan",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "args": args,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pan", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "args": args,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
-    def replaygain(
-        self, *, track_gain: Float = Default(0.0), track_peak: Float = Default(0.0), **kwargs: Any
-    ) -> AudioStream:
+    def replaygain(self, **kwargs: Any) -> AudioStream:
         """
 
         ReplayGain scanner.
-
-        Args:
-            track_gain: track gain (dB) (from -FLT_MAX to FLT_MAX) (default 0)
-            track_peak: track peak (from -FLT_MAX to FLT_MAX) (default 0)
 
         Returns:
             default: the audio stream
@@ -6014,20 +5156,8 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#replaygain)
 
         """
-        filter_node = FilterNode(
-            name="replaygain",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "track_gain": track_gain,
-                        "track_peak": track_peak,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="replaygain", typings_input=("audio",), typings_output=("audio",)), self, **{} | kwargs
         )
         return filter_node.audio(0)
 
@@ -6042,7 +5172,7 @@ class AudioStream(FilterableStream):
         window: Int | Literal["standard", "short", "long"] | Default = Default("standard"),
         smoothing: Int | Literal["off", "on"] | Default = Default("off"),
         formant: Int | Literal["shifted", "preserved"] | Default = Default("shifted"),
-        pitchq: Int | Literal["quality", "speed", "consistency"] | Default = Default("speed"),
+        pitchq: Int | Literal["quality", "speed", "consistency"] | Default = Default("quality"),
         channels: Int | Literal["apart", "together"] | Default = Default("apart"),
         **kwargs: Any,
     ) -> AudioStream:
@@ -6059,7 +5189,7 @@ class AudioStream(FilterableStream):
             window: set window (from 0 to INT_MAX) (default standard)
             smoothing: set smoothing (from 0 to INT_MAX) (default off)
             formant: set formant (from 0 to INT_MAX) (default shifted)
-            pitchq: set pitch quality (from 0 to INT_MAX) (default speed)
+            pitchq: set pitch quality (from 0 to INT_MAX) (default quality)
             channels: set channels (from 0 to INT_MAX) (default apart)
 
         Returns:
@@ -6069,28 +5199,22 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rubberband)
 
         """
-        filter_node = FilterNode(
-            name="rubberband",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "tempo": tempo,
-                        "pitch": pitch,
-                        "transients": transients,
-                        "detector": detector,
-                        "phase": phase,
-                        "window": window,
-                        "smoothing": smoothing,
-                        "formant": formant,
-                        "pitchq": pitchq,
-                        "channels": channels,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="rubberband", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "tempo": tempo,
+                "pitch": pitch,
+                "transients": transients,
+                "detector": detector,
+                "phase": phase,
+                "window": window,
+                "smoothing": smoothing,
+                "formant": formant,
+                "pitchq": pitchq,
+                "channels": channels,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -6166,44 +5290,38 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcqt)
 
         """
-        filter_node = FilterNode(
-            name="showcqt",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "fps": fps,
-                        "bar_h": bar_h,
-                        "axis_h": axis_h,
-                        "sono_h": sono_h,
-                        "fullhd": fullhd,
-                        "sono_v": sono_v,
-                        "bar_v": bar_v,
-                        "sono_g": sono_g,
-                        "bar_g": bar_g,
-                        "bar_t": bar_t,
-                        "timeclamp": timeclamp,
-                        "attack": attack,
-                        "basefreq": basefreq,
-                        "endfreq": endfreq,
-                        "coeffclamp": coeffclamp,
-                        "tlength": tlength,
-                        "count": count,
-                        "fcount": fcount,
-                        "fontfile": fontfile,
-                        "font": font,
-                        "fontcolor": fontcolor,
-                        "axisfile": axisfile,
-                        "axis": axis,
-                        "csp": csp,
-                        "cscheme": cscheme,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showcqt", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "fps": fps,
+                "bar_h": bar_h,
+                "axis_h": axis_h,
+                "sono_h": sono_h,
+                "fullhd": fullhd,
+                "sono_v": sono_v,
+                "bar_v": bar_v,
+                "sono_g": sono_g,
+                "bar_g": bar_g,
+                "bar_t": bar_t,
+                "timeclamp": timeclamp,
+                "attack": attack,
+                "basefreq": basefreq,
+                "endfreq": endfreq,
+                "coeffclamp": coeffclamp,
+                "tlength": tlength,
+                "count": count,
+                "fcount": fcount,
+                "fontfile": fontfile,
+                "font": font,
+                "fontcolor": fontcolor,
+                "axisfile": axisfile,
+                "axis": axis,
+                "csp": csp,
+                "cscheme": cscheme,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6212,22 +5330,15 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("640x512"),
         rate: String = Default("25"),
-        scale: Int
-        | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt"]
-        | Default = Default("linear"),
-        iscale: Int | Literal["linear", "log", "sqrt", "cbrt", "qdrt"] | Default = Default("log"),
+        scale: Int | Literal["linear", "log2", "bark", "mel", "erbs"] | Default = Default("linear"),
         min: Float = Default(20.0),
         max: Float = Default(20000.0),
-        imin: Float = Default(0.0),
-        imax: Float = Default(1.0),
         logb: Float = Default(0.0001),
         deviation: Float = Default(1.0),
         pps: Int = Default(64),
         mode: Int | Literal["magnitude", "phase", "magphase", "channel", "stereo"] | Default = Default("magnitude"),
         slide: Int | Literal["replace", "scroll", "frame"] | Default = Default("replace"),
         direction: Int | Literal["lr", "rl", "ud", "du"] | Default = Default("lr"),
-        bar: Float = Default(0.0),
-        rotation: Float = Default(0.0),
         **kwargs: Any,
     ) -> VideoStream:
         """
@@ -6237,20 +5348,15 @@ class AudioStream(FilterableStream):
         Args:
             size: set video size (default "640x512")
             rate: set video rate (default "25")
-            scale: set frequency scale (from 0 to 7) (default linear)
-            iscale: set intensity scale (from 0 to 4) (default log)
-            min: set minimum frequency (from 1 to 192000) (default 20)
-            max: set maximum frequency (from 1 to 192000) (default 20000)
-            imin: set minimum intensity (from 0 to 1) (default 0)
-            imax: set maximum intensity (from 0 to 1) (default 1)
+            scale: set frequency scale (from 0 to 4) (default linear)
+            min: set minimum frequency (from 1 to 2000) (default 20)
+            max: set maximum frequency (from 0 to 192000) (default 20000)
             logb: set logarithmic basis (from 0 to 1) (default 0.0001)
-            deviation: set frequency deviation (from 0 to 100) (default 1)
+            deviation: set frequency deviation (from 0 to 10) (default 1)
             pps: set pixels per second (from 1 to 1024) (default 64)
             mode: set output mode (from 0 to 4) (default magnitude)
             slide: set slide mode (from 0 to 2) (default replace)
             direction: set direction mode (from 0 to 3) (default lr)
-            bar: set bar ratio (from 0 to 1) (default 0)
-            rotation: set color rotation (from -1 to 1) (default 0)
 
         Returns:
             default: the video stream
@@ -6259,34 +5365,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showcwt)
 
         """
-        filter_node = FilterNode(
-            name="showcwt",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "rate": rate,
-                        "scale": scale,
-                        "iscale": iscale,
-                        "min": min,
-                        "max": max,
-                        "imin": imin,
-                        "imax": imax,
-                        "logb": logb,
-                        "deviation": deviation,
-                        "pps": pps,
-                        "mode": mode,
-                        "slide": slide,
-                        "direction": direction,
-                        "bar": bar,
-                        "rotation": rotation,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showcwt", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "rate": rate,
+                "scale": scale,
+                "min": min,
+                "max": max,
+                "logb": logb,
+                "deviation": deviation,
+                "pps": pps,
+                "mode": mode,
+                "slide": slide,
+                "direction": direction,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6361,32 +5456,26 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showfreqs)
 
         """
-        filter_node = FilterNode(
-            name="showfreqs",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "rate": rate,
-                        "mode": mode,
-                        "ascale": ascale,
-                        "fscale": fscale,
-                        "win_size": win_size,
-                        "win_func": win_func,
-                        "overlap": overlap,
-                        "averaging": averaging,
-                        "colors": colors,
-                        "cmode": cmode,
-                        "minamp": minamp,
-                        "data": data,
-                        "channels": channels,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showfreqs", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "rate": rate,
+                "mode": mode,
+                "ascale": ascale,
+                "fscale": fscale,
+                "win_size": win_size,
+                "win_func": win_func,
+                "overlap": overlap,
+                "averaging": averaging,
+                "colors": colors,
+                "cmode": cmode,
+                "minamp": minamp,
+                "data": data,
+                "channels": channels,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6441,22 +5530,16 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspatial)
 
         """
-        filter_node = FilterNode(
-            name="showspatial",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "win_size": win_size,
-                        "win_func": win_func,
-                        "rate": rate,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showspatial", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "win_size": win_size,
+                "win_func": win_func,
+                "rate": rate,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6561,38 +5644,32 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
 
         """
-        filter_node = FilterNode(
-            name="showspectrum",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "slide": slide,
-                        "mode": mode,
-                        "color": color,
-                        "scale": scale,
-                        "fscale": fscale,
-                        "saturation": saturation,
-                        "win_func": win_func,
-                        "orientation": orientation,
-                        "overlap": overlap,
-                        "gain": gain,
-                        "data": data,
-                        "rotation": rotation,
-                        "start": start,
-                        "stop": stop,
-                        "fps": fps,
-                        "legend": legend,
-                        "drange": drange,
-                        "limit": limit,
-                        "opacity": opacity,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showspectrum", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "slide": slide,
+                "mode": mode,
+                "color": color,
+                "scale": scale,
+                "fscale": fscale,
+                "saturation": saturation,
+                "win_func": win_func,
+                "orientation": orientation,
+                "overlap": overlap,
+                "gain": gain,
+                "data": data,
+                "rotation": rotation,
+                "start": start,
+                "stop": stop,
+                "fps": fps,
+                "legend": legend,
+                "drange": drange,
+                "limit": limit,
+                "opacity": opacity,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6689,34 +5766,28 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showspectrumpic)
 
         """
-        filter_node = FilterNode(
-            name="showspectrumpic",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "mode": mode,
-                        "color": color,
-                        "scale": scale,
-                        "fscale": fscale,
-                        "saturation": saturation,
-                        "win_func": win_func,
-                        "orientation": orientation,
-                        "gain": gain,
-                        "legend": legend,
-                        "rotation": rotation,
-                        "start": start,
-                        "stop": stop,
-                        "drange": drange,
-                        "limit": limit,
-                        "opacity": opacity,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showspectrumpic", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "mode": mode,
+                "color": color,
+                "scale": scale,
+                "fscale": fscale,
+                "saturation": saturation,
+                "win_func": win_func,
+                "orientation": orientation,
+                "gain": gain,
+                "legend": legend,
+                "rotation": rotation,
+                "start": start,
+                "stop": stop,
+                "drange": drange,
+                "limit": limit,
+                "opacity": opacity,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6768,33 +5839,27 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showvolume)
 
         """
-        filter_node = FilterNode(
-            name="showvolume",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rate": rate,
-                        "b": b,
-                        "w": w,
-                        "h": h,
-                        "f": f,
-                        "c": c,
-                        "t": t,
-                        "v": v,
-                        "dm": dm,
-                        "dmc": dmc,
-                        "o": o,
-                        "s": s,
-                        "p": p,
-                        "m": m,
-                        "ds": ds,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showvolume", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "rate": rate,
+                "b": b,
+                "w": w,
+                "h": h,
+                "f": f,
+                "c": c,
+                "t": t,
+                "v": v,
+                "dm": dm,
+                "dmc": dmc,
+                "o": o,
+                "s": s,
+                "p": p,
+                "m": m,
+                "ds": ds,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6803,7 +5868,7 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("600x240"),
         mode: Int | Literal["point", "line", "p2p", "cline"] | Default = Default("point"),
-        n: Rational = Default("0/1"),
+        n: Int = Default(0),
         rate: Video_rate = Default("25"),
         split_channels: Boolean = Default(False),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
@@ -6818,7 +5883,7 @@ class AudioStream(FilterableStream):
         Args:
             size: set video size (default "600x240")
             mode: select display mode (from 0 to 3) (default point)
-            n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0/1)
+            n: set how many samples to show in the same point (from 0 to INT_MAX) (default 0)
             rate: set video rate (default "25")
             split_channels: draw channels separately (default false)
             colors: set channels colors (default "red|green|blue|yellow|orange|lime|pink|magenta|brown")
@@ -6832,26 +5897,20 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwaves)
 
         """
-        filter_node = FilterNode(
-            name="showwaves",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "mode": mode,
-                        "n": n,
-                        "rate": rate,
-                        "split_channels": split_channels,
-                        "colors": colors,
-                        "scale": scale,
-                        "draw": draw,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showwaves", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "mode": mode,
+                "n": n,
+                "rate": rate,
+                "split_channels": split_channels,
+                "colors": colors,
+                "scale": scale,
+                "draw": draw,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6885,24 +5944,18 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showwavespic)
 
         """
-        filter_node = FilterNode(
-            name="showwavespic",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "split_channels": split_channels,
-                        "colors": colors,
-                        "scale": scale,
-                        "draw": draw,
-                        "filter": filter,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showwavespic", typings_input=("audio",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "split_channels": split_channels,
+                "colors": colors,
+                "scale": scale,
+                "draw": draw,
+                "filter": filter,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6949,33 +6002,25 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
         """
-        filter_node = FilterNode(
-            name="sidechaincompress",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _sidechain,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "mode": mode,
-                        "threshold": threshold,
-                        "ratio": ratio,
-                        "attack": attack,
-                        "release": release,
-                        "makeup": makeup,
-                        "knee": knee,
-                        "link": link,
-                        "detection": detection,
-                        "level_sc": level_sc,
-                        "mix": mix,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="sidechaincompress", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _sidechain,
+            **{
+                "level_in": level_in,
+                "mode": mode,
+                "threshold": threshold,
+                "ratio": ratio,
+                "attack": attack,
+                "release": release,
+                "makeup": makeup,
+                "knee": knee,
+                "link": link,
+                "detection": detection,
+                "level_sc": level_sc,
+                "mix": mix,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -6995,7 +6040,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7024,34 +6069,26 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
         """
-        filter_node = FilterNode(
-            name="sidechaingate",
-            input_typings=tuple([StreamType.audio, StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _sidechain,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "mode": mode,
-                        "range": range,
-                        "threshold": threshold,
-                        "ratio": ratio,
-                        "attack": attack,
-                        "release": release,
-                        "makeup": makeup,
-                        "knee": knee,
-                        "detection": detection,
-                        "link": link,
-                        "level_sc": level_sc,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="sidechaingate", typings_input=("audio", "audio"), typings_output=("audio",)),
+            self,
+            _sidechain,
+            **{
+                "level_in": level_in,
+                "mode": mode,
+                "range": range,
+                "threshold": threshold,
+                "ratio": ratio,
+                "attack": attack,
+                "release": release,
+                "makeup": makeup,
+                "knee": knee,
+                "detection": detection,
+                "link": link,
+                "level_sc": level_sc,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7074,21 +6111,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silencedetect)
 
         """
-        filter_node = FilterNode(
-            name="silencedetect",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "n": n,
-                        "d": d,
-                        "mono": mono,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="silencedetect", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "n": n,
+                "d": d,
+                "mono": mono,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7104,11 +6135,9 @@ class AudioStream(FilterableStream):
         stop_duration: Duration = Default(0.0),
         stop_threshold: Double = Default(0.0),
         stop_silence: Duration = Default(0.0),
-        stop_mode: Int | Literal["any", "all"] | Default = Default("all"),
-        detection: Int | Literal["avg", "rms", "peak", "median", "ptp", "dev"] | Default = Default("rms"),
+        stop_mode: Int | Literal["any", "all"] | Default = Default("any"),
+        detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         window: Duration = Default(0.02),
-        timestamp: Int | Literal["write", "copy"] | Default = Default("write"),
-        enable: str = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7122,14 +6151,12 @@ class AudioStream(FilterableStream):
             start_silence: set start duration of silence part to keep (default 0)
             start_mode: set which channel will trigger trimming from start (from 0 to 1) (default any)
             stop_periods: set periods of silence parts to skip from end (from -9000 to 9000) (default 0)
-            stop_duration: set stop duration of silence part (default 0)
+            stop_duration: set stop duration of non-silence part (default 0)
             stop_threshold: set threshold for stop silence detection (from 0 to DBL_MAX) (default 0)
             stop_silence: set stop duration of silence part to keep (default 0)
-            stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default all)
-            detection: set how silence is detected (from 0 to 5) (default rms)
+            stop_mode: set which channel will trigger trimming from end (from 0 to 1) (default any)
+            detection: set how silence is detected (from 0 to 1) (default rms)
             window: set duration of window for silence detection (default 0.02)
-            timestamp: set how every output frame timestamp is processed (from 0 to 1) (default write)
-            enable: timeline editing
 
         Returns:
             default: the audio stream
@@ -7138,32 +6165,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#silenceremove)
 
         """
-        filter_node = FilterNode(
-            name="silenceremove",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "start_periods": start_periods,
-                        "start_duration": start_duration,
-                        "start_threshold": start_threshold,
-                        "start_silence": start_silence,
-                        "start_mode": start_mode,
-                        "stop_periods": stop_periods,
-                        "stop_duration": stop_duration,
-                        "stop_threshold": stop_threshold,
-                        "stop_silence": stop_silence,
-                        "stop_mode": stop_mode,
-                        "detection": detection,
-                        "window": window,
-                        "timestamp": timestamp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="silenceremove", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "start_periods": start_periods,
+                "start_duration": start_duration,
+                "start_threshold": start_threshold,
+                "start_silence": start_silence,
+                "start_mode": start_mode,
+                "stop_periods": stop_periods,
+                "stop_duration": stop_duration,
+                "stop_threshold": stop_threshold,
+                "stop_silence": stop_silence,
+                "stop_mode": stop_mode,
+                "detection": detection,
+                "window": window,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7180,7 +6199,7 @@ class AudioStream(FilterableStream):
         invert: Boolean = Default(False),
         link: Boolean = Default(False),
         rms: Double = Default(0.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7207,29 +6226,23 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#speechnorm)
 
         """
-        filter_node = FilterNode(
-            name="speechnorm",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "peak": peak,
-                        "expansion": expansion,
-                        "compression": compression,
-                        "threshold": threshold,
-                        "raise": _raise,
-                        "fall": fall,
-                        "channels": channels,
-                        "invert": invert,
-                        "link": link,
-                        "rms": rms,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="speechnorm", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "peak": peak,
+                "expansion": expansion,
+                "compression": compression,
+                "threshold": threshold,
+                "raise": _raise,
+                "fall": fall,
+                "channels": channels,
+                "invert": invert,
+                "link": link,
+                "rms": rms,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7258,7 +6271,7 @@ class AudioStream(FilterableStream):
         phase: Double = Default(0.0),
         bmode_in: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
         bmode_out: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7295,39 +6308,33 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereotools)
 
         """
-        filter_node = FilterNode(
-            name="stereotools",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "balance_in": balance_in,
-                        "balance_out": balance_out,
-                        "softclip": softclip,
-                        "mutel": mutel,
-                        "muter": muter,
-                        "phasel": phasel,
-                        "phaser": phaser,
-                        "mode": mode,
-                        "slev": slev,
-                        "sbal": sbal,
-                        "mlev": mlev,
-                        "mpan": mpan,
-                        "base": base,
-                        "delay": delay,
-                        "sclevel": sclevel,
-                        "phase": phase,
-                        "bmode_in": bmode_in,
-                        "bmode_out": bmode_out,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="stereotools", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "level_in": level_in,
+                "level_out": level_out,
+                "balance_in": balance_in,
+                "balance_out": balance_out,
+                "softclip": softclip,
+                "mutel": mutel,
+                "muter": muter,
+                "phasel": phasel,
+                "phaser": phaser,
+                "mode": mode,
+                "slev": slev,
+                "sbal": sbal,
+                "mlev": mlev,
+                "mpan": mpan,
+                "base": base,
+                "delay": delay,
+                "sclevel": sclevel,
+                "phase": phase,
+                "bmode_in": bmode_in,
+                "bmode_out": bmode_out,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7338,7 +6345,7 @@ class AudioStream(FilterableStream):
         feedback: Float = Default(0.3),
         crossfeed: Float = Default(0.3),
         drymix: Float = Default(0.8),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7359,23 +6366,17 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereowiden)
 
         """
-        filter_node = FilterNode(
-            name="stereowiden",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "delay": delay,
-                        "feedback": feedback,
-                        "crossfeed": crossfeed,
-                        "drymix": drymix,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="stereowiden", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "delay": delay,
+                "feedback": feedback,
+                "crossfeed": crossfeed,
+                "drymix": drymix,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7433,36 +6434,30 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#superequalizer)
 
         """
-        filter_node = FilterNode(
-            name="superequalizer",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "1b": _1b,
-                        "2b": _2b,
-                        "3b": _3b,
-                        "4b": _4b,
-                        "5b": _5b,
-                        "6b": _6b,
-                        "7b": _7b,
-                        "8b": _8b,
-                        "9b": _9b,
-                        "10b": _10b,
-                        "11b": _11b,
-                        "12b": _12b,
-                        "13b": _13b,
-                        "14b": _14b,
-                        "15b": _15b,
-                        "16b": _16b,
-                        "17b": _17b,
-                        "18b": _18b,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="superequalizer", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "1b": _1b,
+                "2b": _2b,
+                "3b": _3b,
+                "4b": _4b,
+                "5b": _5b,
+                "6b": _6b,
+                "7b": _7b,
+                "8b": _8b,
+                "9b": _9b,
+                "10b": _10b,
+                "11b": _11b,
+                "12b": _12b,
+                "13b": _13b,
+                "14b": _14b,
+                "15b": _15b,
+                "16b": _16b,
+                "17b": _17b,
+                "18b": _18b,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7609,68 +6604,62 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#surround)
 
         """
-        filter_node = FilterNode(
-            name="surround",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "chl_out": chl_out,
-                        "chl_in": chl_in,
-                        "level_in": level_in,
-                        "level_out": level_out,
-                        "lfe": lfe,
-                        "lfe_low": lfe_low,
-                        "lfe_high": lfe_high,
-                        "lfe_mode": lfe_mode,
-                        "smooth": smooth,
-                        "angle": angle,
-                        "focus": focus,
-                        "fc_in": fc_in,
-                        "fc_out": fc_out,
-                        "fl_in": fl_in,
-                        "fl_out": fl_out,
-                        "fr_in": fr_in,
-                        "fr_out": fr_out,
-                        "sl_in": sl_in,
-                        "sl_out": sl_out,
-                        "sr_in": sr_in,
-                        "sr_out": sr_out,
-                        "bl_in": bl_in,
-                        "bl_out": bl_out,
-                        "br_in": br_in,
-                        "br_out": br_out,
-                        "bc_in": bc_in,
-                        "bc_out": bc_out,
-                        "lfe_in": lfe_in,
-                        "lfe_out": lfe_out,
-                        "allx": allx,
-                        "ally": ally,
-                        "fcx": fcx,
-                        "flx": flx,
-                        "frx": frx,
-                        "blx": blx,
-                        "brx": brx,
-                        "slx": slx,
-                        "srx": srx,
-                        "bcx": bcx,
-                        "fcy": fcy,
-                        "fly": fly,
-                        "fry": fry,
-                        "bly": bly,
-                        "bry": bry,
-                        "sly": sly,
-                        "sry": sry,
-                        "bcy": bcy,
-                        "win_size": win_size,
-                        "win_func": win_func,
-                        "overlap": overlap,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="surround", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "chl_out": chl_out,
+                "chl_in": chl_in,
+                "level_in": level_in,
+                "level_out": level_out,
+                "lfe": lfe,
+                "lfe_low": lfe_low,
+                "lfe_high": lfe_high,
+                "lfe_mode": lfe_mode,
+                "smooth": smooth,
+                "angle": angle,
+                "focus": focus,
+                "fc_in": fc_in,
+                "fc_out": fc_out,
+                "fl_in": fl_in,
+                "fl_out": fl_out,
+                "fr_in": fr_in,
+                "fr_out": fr_out,
+                "sl_in": sl_in,
+                "sl_out": sl_out,
+                "sr_in": sr_in,
+                "sr_out": sr_out,
+                "bl_in": bl_in,
+                "bl_out": bl_out,
+                "br_in": br_in,
+                "br_out": br_out,
+                "bc_in": bc_in,
+                "bc_out": bc_out,
+                "lfe_in": lfe_in,
+                "lfe_out": lfe_out,
+                "allx": allx,
+                "ally": ally,
+                "fcx": fcx,
+                "flx": flx,
+                "frx": frx,
+                "blx": blx,
+                "brx": brx,
+                "slx": slx,
+                "srx": srx,
+                "bcx": bcx,
+                "fcy": fcy,
+                "fly": fly,
+                "fry": fry,
+                "bly": bly,
+                "bry": bry,
+                "sly": sly,
+                "sry": sry,
+                "bcy": bcy,
+                "win_size": win_size,
+                "win_func": win_func,
+                "overlap": overlap,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7688,7 +6677,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7716,30 +6705,24 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tiltshelf)
 
         """
-        filter_node = FilterNode(
-            name="tiltshelf",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "gain": gain,
-                        "poles": poles,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tiltshelf", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "gain": gain,
+                "poles": poles,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7757,7 +6740,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7785,35 +6768,29 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#treble_002c-highshelf)
 
         """
-        filter_node = FilterNode(
-            name="treble",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frequency": frequency,
-                        "width_type": width_type,
-                        "width": width,
-                        "gain": gain,
-                        "poles": poles,
-                        "mix": mix,
-                        "channels": channels,
-                        "normalize": normalize,
-                        "transform": transform,
-                        "precision": precision,
-                        "blocksize": blocksize,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="treble", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "frequency": frequency,
+                "width_type": width_type,
+                "width": width,
+                "gain": gain,
+                "poles": poles,
+                "mix": mix,
+                "channels": channels,
+                "normalize": normalize,
+                "transform": transform,
+                "precision": precision,
+                "blocksize": blocksize,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
     def tremolo(
-        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: str = Default(None), **kwargs: Any
+        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -7831,26 +6808,20 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tremolo)
 
         """
-        filter_node = FilterNode(
-            name="tremolo",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "f": f,
-                        "d": d,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tremolo", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "f": f,
+                "d": d,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
     def vibrato(
-        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: str = Default(None), **kwargs: Any
+        self, *, f: Double = Default(5.0), d: Double = Default(0.5), enable: String = Default(None), **kwargs: Any
     ) -> AudioStream:
         """
 
@@ -7868,21 +6839,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrato)
 
         """
-        filter_node = FilterNode(
-            name="vibrato",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "f": f,
-                        "d": d,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vibrato", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "f": f,
+                "d": d,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7891,7 +6856,7 @@ class AudioStream(FilterableStream):
         *,
         cutoff: Double = Default(250.0),
         strength: Double = Default(3.0),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7910,21 +6875,15 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#virtualbass)
 
         """
-        filter_node = FilterNode(
-            name="virtualbass",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cutoff": cutoff,
-                        "strength": strength,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="virtualbass", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "cutoff": cutoff,
+                "strength": strength,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7937,7 +6896,7 @@ class AudioStream(FilterableStream):
         replaygain: Int | Literal["drop", "ignore", "track", "album"] | Default = Default("drop"),
         replaygain_preamp: Double = Default(0.0),
         replaygain_noclip: Boolean = Default(True),
-        enable: str = Default(None),
+        enable: String = Default(None),
         **kwargs: Any,
     ) -> AudioStream:
         """
@@ -7960,25 +6919,19 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volume)
 
         """
-        filter_node = FilterNode(
-            name="volume",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "volume": volume,
-                        "precision": precision,
-                        "eval": eval,
-                        "replaygain": replaygain,
-                        "replaygain_preamp": replaygain_preamp,
-                        "replaygain_noclip": replaygain_noclip,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="volume", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{
+                "volume": volume,
+                "precision": precision,
+                "eval": eval,
+                "replaygain": replaygain,
+                "replaygain_preamp": replaygain_preamp,
+                "replaygain_noclip": replaygain_noclip,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -7994,11 +6947,9 @@ class AudioStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)
 
         """
-        filter_node = FilterNode(
-            name="volumedetect",
-            input_typings=tuple([StreamType.audio]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="volumedetect", typings_input=("audio",), typings_output=("audio",)),
+            self,
+            **{} | kwargs,
         )
         return filter_node.audio(0)

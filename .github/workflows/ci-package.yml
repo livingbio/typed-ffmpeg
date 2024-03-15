@@ -12,28 +12,60 @@ jobs:
         python-version: ["3.10", "3.11", "3.12"]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: |
           pip install poetry
           poetry install --with dev
-      # Install Graphviz & FFmpeg
-      - name: Install ffmpeg
-        run: sudo apt-get update && sudo apt-get install ffmpeg graphviz -y && ffmpeg -version && dot -V
-      - name: Run unittest
+
+      # Install FFmpeg
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y wget -q
+          wget https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.0-amd64-static.tar.xz -q
+          tar -xf ffmpeg-6.0-amd64-static.tar.xz
+          sudo mv ffmpeg-*-amd64-static/ffmpeg /usr/local/bin/
+          sudo mv ffmpeg-*-amd64-static/ffprobe /usr/local/bin/
+          ffmpeg -version
+
+      # Install Graphviz
+      - name: Install Graphviz
+        run: sudo apt-get update && sudo apt-get install -y graphviz
+
+      - name: Check Graphviz version
+        run: dot -V
+
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
+
+      # Run linting
+      - name: Linting
+        run: poetry run pre-commit run --all-files
+        working-directory: src
+
+      # Run unittests
+      - name: Run Unittest
         run: poetry run pytest src/ --cov=./src --cov-report xml
+
+      # Upload coverage to Codecov
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage.xml
-          flags: $${{ matrix.python-version }}
+          flags: ${{ matrix.python-version }}
           token: ${{ secrets.CODECOV_TOKEN }} # required
           verbose: true # optional (default = false)
-      - name: lint
-        run: poetry run pre-commit run --all-files
-        working-directory: src
-      - run: poetry run mkdocs build # ensure mkdocs build is successful
+
+      # Build Mkdocs
+      - name: Build Mkdocs
+        run: poetry run mkdocs build

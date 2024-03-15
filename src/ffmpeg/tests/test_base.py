@@ -14,9 +14,9 @@ def test_filter_node(snapshot: SnapshotAssertion) -> None:
     input2 = input("input2")
     input3 = input("input3")
 
-    with pytest.raises(ValueError) as e:
-        concat(*(input1, input2, input2))
-    assert snapshot == e
+    # with pytest.raises(ValueError) as e:
+    concat(*(input1, input2, input2))  # will auto correct n's value now
+    # assert snapshot == e
 
     concat(*(input1, input2, input3), n=3)
     assert isinstance(concat(*(input1, input2, input3), n=3).video(0), VideoStream)

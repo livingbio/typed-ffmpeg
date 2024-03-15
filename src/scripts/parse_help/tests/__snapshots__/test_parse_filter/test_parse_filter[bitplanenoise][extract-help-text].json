@@ -1,0 +1,92 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "description": "Measure bit plane noise.",
+  "formula_typings_input": null,
+  "formula_typings_output": null,
+  "id": null,
+  "is_dynamic_input": false,
+  "is_dynamic_output": false,
+  "is_filter_sink": null,
+  "is_filter_source": null,
+  "is_support_command": null,
+  "is_support_framesync": false,
+  "is_support_slice_threading": false,
+  "is_support_timeline": true,
+  "name": "bitplanenoise",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "bitplane"
+      ],
+      "choices": [],
+      "default": 1,
+      "description": "set bit plane to use for measuring noise (from 1 to 16) (default 1)",
+      "flags": "..FV.......",
+      "max": "16",
+      "min": "1",
+      "name": "bitplane",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "int"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [
+        "filter"
+      ],
+      "choices": [],
+      "default": false,
+      "description": "show noisy pixels (default false)",
+      "flags": "..FV.......",
+      "max": null,
+      "min": null,
+      "name": "filter",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "boolean"
+      }
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "alias": [],
+      "choices": [],
+      "default": null,
+      "description": "timeline editing",
+      "flags": null,
+      "max": null,
+      "min": null,
+      "name": "enable",
+      "required": false,
+      "type": {
+        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "value": "string"
+      }
+    }
+  ],
+  "pre": [],
+  "ref": null,
+  "stream_typings_input": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ],
+  "stream_typings_output": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "name": "default",
+      "type": {
+        "__class__": "ffmpeg.common.schema.StreamType",
+        "value": "video"
+      }
+    }
+  ]
+}

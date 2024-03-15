@@ -53,18 +53,8 @@ repos:
         name: mypy
         entry: mypy
         types: [python]
-        exclude: migrations/|commands/|scripts/|sandbox/|samples|sdk
-        additional_dependencies: [pytest, syrupy, imagehash, types-Pillow]
-        args:
-          [
-            --pretty,
-            --show-error-codes,
-            --implicit-optional,
-            --follow-imports=silent,
-            --warn-redundant-casts,
-            --warn-unused-ignores,
-            --disallow-any-generics,
-            --check-untyped-defs,
-            --no-implicit-reexport,
-            --disallow-untyped-defs
-          ]
+        exclude: migrations/|commands/|sandbox/|samples|sdk
+        additional_dependencies: [pytest, syrupy, types-Pillow, typer, jinja2, types-beautifulsoup4, devtools, html2text]
+        args: [
+          "--config-file=pyproject.toml"
+        ]
