@@ -79,8 +79,8 @@ class FFMpegIOType:
 class FFMpegFilterDef:
     name: str
 
-    typings_input: str | tuple[Literal["video", "audio"], ...]
-    typings_output: str | tuple[Literal["video", "audio"], ...]
+    typings_input: str | tuple[Literal["video", "audio"], ...] = ()
+    typings_output: str | tuple[Literal["video", "audio"], ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
