@@ -82,7 +82,12 @@
                       "__class__": "ffmpeg.streams.video.VideoStream",
                       "node": {
                         "__class__": "ffmpeg.dag.nodes.FilterNode",
-                        "kwargs": [],
+                        "kwargs": [
+                          [
+                            "n",
+                            2.0
+                          ]
+                        ],
                         "inputs": [
                           {
                             "__class__": "ffmpeg.streams.video.VideoStream",
