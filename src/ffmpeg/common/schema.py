@@ -107,6 +107,7 @@ class FFMpegFilter:
     formula_typings_input: str | None = None
     formula_typings_output: str | None = None
 
+    pre: tuple[tuple[str, str], ...] = ()
     options: tuple[FFMpegFilterOption, ...] = ()
 
     @property

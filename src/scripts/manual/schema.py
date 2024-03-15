@@ -1,6 +1,12 @@
 from dataclasses import dataclass
 
 
+@dataclass(kw_only=True, frozen=True)
+class FFMpegFilterManuallyDefinedHook:
+    name: str
+    function: str
+
+
 @dataclass(kw_only=True)
 class FFMpegFilterManuallyDefined:
     name: str
@@ -8,4 +14,4 @@ class FFMpegFilterManuallyDefined:
     formula_typings_input: str | None = None
     formula_typings_output: str | None = None
 
-    pre: dict[str, str] = {}
+    pre: tuple[tuple[str, str], ...] = ()
