@@ -3,6 +3,7 @@ from typing import Any
 
 from ..common.schema import FFMpegFilterDef, StreamType
 from ..schema import Auto
+from ..utils.run import ignore_default
 from .nodes import FilterableStream, FilterNode
 
 
@@ -26,5 +27,5 @@ def filter_node_factory(filter: FFMpegFilterDef, *inputs: FilterableStream, **kw
         input_typings=input_typings,
         output_typings=output_typings,
         inputs=inputs,
-        kwargs=tuple(kwargs.items()),
+        kwargs=ignore_default(kwargs),
     )
