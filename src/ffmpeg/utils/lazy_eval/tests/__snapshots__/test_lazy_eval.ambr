@@ -9,7 +9,7 @@
   -294.375
 # ---
 # name: test_lazyoperator_number.5
-  Add(left=Add(left=Add(left=Add(left=Mul(left=TrueDiv(left=Mul(left=Sub(left=Add(left=Add(left=1, right=PlaceHolder(key='X')), right=PlaceHolder(key='Y')), right=5), right=3), right=16), right=Neg(left=PlaceHolder(key='X'), right=None)), right=Pos(left=PlaceHolder(key='Y'), right=None)), right=Abs(left=PlaceHolder(key='X'), right=None)), right=Mod(left=PlaceHolder(key='X'), right=PlaceHolder(key='Y'))), right=FloorDiv(left=PlaceHolder(key='X'), right=PlaceHolder(key='Y')))
+  Add(left=Add(left=Add(left=Add(left=Mul(left=TrueDiv(left=Mul(left=Sub(left=Add(left=Add(left=1, right=Symbol(key='X')), right=Symbol(key='Y')), right=5), right=3), right=16), right=Neg(left=Symbol(key='X'), right=None)), right=Pos(left=Symbol(key='Y'), right=None)), right=Abs(left=Symbol(key='X'), right=None)), right=Mod(left=Symbol(key='X'), right=Symbol(key='Y'))), right=FloorDiv(left=Symbol(key='X'), right=Symbol(key='Y')))
 # ---
 # name: test_lazyoperator_number[partial]
   '(((((((((31+Y)-5)*3)/16)*-30)++Y)+30)+(30%Y))+(30//Y))'

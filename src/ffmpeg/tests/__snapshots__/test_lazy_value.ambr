@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_symbol
+  OutputStream(node=OutputNode(kwargs=(), inputs=(VideoStream(node=FilterNode(kwargs=(('w', Symbol(key='w')),), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='input.mp4'), index=None),), name='scale', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output.mp4'), index=None)
+# ---

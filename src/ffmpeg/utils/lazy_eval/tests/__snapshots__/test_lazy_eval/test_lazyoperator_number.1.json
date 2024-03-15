@@ -20,12 +20,12 @@
                     "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
                     "left": 1,
                     "right": {
-                      "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+                      "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
                       "key": "X"
                     }
                   },
                   "right": {
-                    "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+                    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
                     "key": "Y"
                   }
                 },
@@ -38,7 +38,7 @@
           "right": {
             "__class__": "ffmpeg.utils.lazy_eval.operator.Neg",
             "left": {
-              "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+              "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
               "key": "X"
             },
             "right": null
@@ -47,7 +47,7 @@
         "right": {
           "__class__": "ffmpeg.utils.lazy_eval.operator.Pos",
           "left": {
-            "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+            "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
             "key": "Y"
           },
           "right": null
@@ -56,7 +56,7 @@
       "right": {
         "__class__": "ffmpeg.utils.lazy_eval.operator.Abs",
         "left": {
-          "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+          "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
           "key": "X"
         },
         "right": null
@@ -65,11 +65,11 @@
     "right": {
       "__class__": "ffmpeg.utils.lazy_eval.operator.Mod",
       "left": {
-        "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+        "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
         "key": "X"
       },
       "right": {
-        "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+        "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
         "key": "Y"
       }
     }
@@ -77,11 +77,11 @@
   "right": {
     "__class__": "ffmpeg.utils.lazy_eval.operator.FloorDiv",
     "left": {
-      "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+      "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
       "key": "X"
     },
     "right": {
-      "__class__": "ffmpeg.utils.lazy_eval.schema.PlaceHolder",
+      "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
       "key": "Y"
     }
   }
