@@ -28,6 +28,7 @@
   "output",
   "probe",
   "schema",
+  "serialize",
   "streams",
   "tests",
   "types",
