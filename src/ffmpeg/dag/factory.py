@@ -3,7 +3,6 @@ from typing import Any
 
 from ..common.schema import FFMpegFilterDef, StreamType
 from ..schema import Auto
-from ..utils.run import _to_tuple
 from .nodes import FilterableStream, FilterNode
 
 
@@ -27,5 +26,5 @@ def filter_node_factory(filter: FFMpegFilterDef, *inputs: FilterableStream, **kw
         input_typings=input_typings,
         output_typings=output_typings,
         inputs=inputs,
-        kwargs=_to_tuple(kwargs),
+        kwargs=tuple(kwargs.items()),
     )

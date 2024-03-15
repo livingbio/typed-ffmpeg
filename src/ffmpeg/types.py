@@ -108,4 +108,4 @@ Sample_fmt = str | Default | LazyValue
 Binary = str | Default | LazyValue
 
 
-Common_Type = str | int | float | bool | LazyValue
+Filter_Node_Option_Type = str | int | float | bool | LazyValue
