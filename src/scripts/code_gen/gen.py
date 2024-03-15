@@ -1,5 +1,6 @@
 import keyword
 import pathlib
+from math import isnan
 from pathlib import Path
 
 import jinja2
@@ -112,12 +113,38 @@ def output_typings(self: FFMpegFilter) -> str:
     return "[" + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output) + "]"
 
 
+def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
+    if option.name in f.pre_dict:
+        return f"Auto({repr(f.pre_dict[option.name])})"
+    if not isinstance(option.default, float) or not isnan(option.default):
+        return f"Default({repr(option.default)})"
+    return f'Default("nan")'
+
+
+def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
+    if option.choices:
+        return f"{filter_option_typing(option)} | Default = {default_value(option, f)}"
+    return f"{filter_option_typing(option)} = {default_value(option, f)}"
+
+
+def filter_option_typings(self: FFMpegFilter) -> str:
+    output = []
+
+    for option in self.options:
+        output.append(f"{option_name_safe(option.name)}: {default_typings(option, self)}")
+
+    if output:
+        return ",".join(output) + ","
+    return ""
+
+
 env.filters["stream_name_safe"] = stream_name_safe
 env.filters["option_name_safe"] = option_name_safe
 env.filters["filter_option_typing"] = filter_option_typing
 env.filters["option_typing"] = option_typing
 env.filters["input_typings"] = input_typings
 env.filters["output_typings"] = output_typings
+env.filters["filter_option_typings"] = filter_option_typings
 
 
 def render(filters: list[FFMpegFilter], options: list[FFMpegOption], outpath: pathlib.Path) -> list[pathlib.Path]:

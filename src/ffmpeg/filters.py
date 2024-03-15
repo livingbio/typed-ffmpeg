@@ -1,13 +1,13 @@
 # NOTE: this file is auto-generated, do not modify
-import re
 from typing import Any, Literal
 
+from .common.schema import FFMpegFilterDef
+from .dag.factory import filter_node_factory
 from .dag.nodes import FilterableStream, FilterNode
-from .schema import Default, StreamType
+from .schema import Auto, Default
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
 from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String
-from .utils.run import _to_tuple
 
 
 def acrossfade(
@@ -85,33 +85,25 @@ def acrossfade(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#acrossfade)
 
     """
-    filter_node = FilterNode(
-        name="acrossfade",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _crossfade0,
-            _crossfade1,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "nb_samples": nb_samples,
-                    "duration": duration,
-                    "overlap": overlap,
-                    "curve1": curve1,
-                    "curve2": curve2,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="acrossfade", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _crossfade0,
+        _crossfade1,
+        **{
+            "nb_samples": nb_samples,
+            "duration": duration,
+            "overlap": overlap,
+            "curve1": curve1,
+            "curve2": curve2,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
 
 def ainterleave(
     *streams: AudioStream,
-    nb_inputs: Int = Default(2),
+    nb_inputs: Int = Auto("len(streams)"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> AudioStream:
@@ -130,20 +122,16 @@ def ainterleave(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
-    filter_node = FilterNode(
-        name="ainterleave",
-        input_typings=tuple([StreamType.audio] * int(nb_inputs)),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "nb_inputs": nb_inputs,
-                    "duration": duration,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="ainterleave", typings_input="[StreamType.audio] * int(nb_inputs)", typings_output=("audio",)
         ),
+        *streams,
+        **{
+            "nb_inputs": nb_inputs,
+            "duration": duration,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -177,31 +165,23 @@ def alphamerge(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
     """
-    filter_node = FilterNode(
-        name="alphamerge",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _alpha,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="alphamerge", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _alpha,
+        **{
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
-def amerge(*streams: AudioStream, inputs: Int = Default(2), **kwargs: Any) -> AudioStream:
+def amerge(*streams: AudioStream, inputs: Int = Auto("len(streams)"), **kwargs: Any) -> AudioStream:
     """
 
     Merge two or more audio streams into a single multi-channel stream.
@@ -216,26 +196,20 @@ def amerge(*streams: AudioStream, inputs: Int = Default(2), **kwargs: Any) -> Au
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amerge)
 
     """
-    filter_node = FilterNode(
-        name="amerge",
-        input_typings=tuple([StreamType.audio] * int(inputs)),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="amerge", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",)),
+        *streams,
+        **{
+            "inputs": inputs,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
 
 def amix(
     *streams: AudioStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     dropout_transition: Float = Default(2.0),
     weights: String = Default("1 1"),
@@ -260,23 +234,17 @@ def amix(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amix)
 
     """
-    filter_node = FilterNode(
-        name="amix",
-        input_typings=tuple([StreamType.audio] * int(inputs)),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "duration": duration,
-                    "dropout_transition": dropout_transition,
-                    "weights": weights,
-                    "normalize": normalize,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="amix", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",)),
+        *streams,
+        **{
+            "inputs": inputs,
+            "duration": duration,
+            "dropout_transition": dropout_transition,
+            "weights": weights,
+            "normalize": normalize,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -293,15 +261,11 @@ def amultiply(_multiply0: AudioStream, _multiply1: AudioStream, **kwargs: Any) -
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amultiply)
 
     """
-    filter_node = FilterNode(
-        name="amultiply",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _multiply0,
-            _multiply1,
-        ),
-        kwargs=_to_tuple(({} | kwargs)),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="amultiply", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _multiply0,
+        _multiply1,
+        **{} | kwargs
     )
     return filter_node.audio(0)
 
@@ -337,27 +301,19 @@ def anlmf(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
-    filter_node = FilterNode(
-        name="anlmf",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _input,
-            _desired,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "order": order,
-                    "mu": mu,
-                    "eps": eps,
-                    "leakage": leakage,
-                    "out_mode": out_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="anlmf", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _input,
+        _desired,
+        **{
+            "order": order,
+            "mu": mu,
+            "eps": eps,
+            "leakage": leakage,
+            "out_mode": out_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -393,27 +349,19 @@ def anlms(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#anlmf_002c-anlms)
 
     """
-    filter_node = FilterNode(
-        name="anlms",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _input,
-            _desired,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "order": order,
-                    "mu": mu,
-                    "eps": eps,
-                    "leakage": leakage,
-                    "out_mode": out_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="anlms", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _input,
+        _desired,
+        **{
+            "order": order,
+            "mu": mu,
+            "eps": eps,
+            "leakage": leakage,
+            "out_mode": out_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -430,21 +378,17 @@ def asdr(_input0: AudioStream, _input1: AudioStream, **kwargs: Any) -> AudioStre
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asdr)
 
     """
-    filter_node = FilterNode(
-        name="asdr",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _input0,
-            _input1,
-        ),
-        kwargs=_to_tuple(({} | kwargs)),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="asdr", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _input0,
+        _input1,
+        **{} | kwargs
     )
     return filter_node.audio(0)
 
 
 def astreamselect(
-    *streams: AudioStream, inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
+    *streams: AudioStream, inputs: Int = Auto("len(streams)"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -462,20 +406,18 @@ def astreamselect(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
-    filter_node = FilterNode(
-        name="astreamselect",
-        input_typings=tuple([StreamType.audio] * int(inputs)),
-        output_typings=tuple([StreamType.audio] * len(re.findall(r"\d+", str(map)))),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "map": map,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="astreamselect",
+            typings_input="[StreamType.audio] * int(inputs)",
+            typings_output="[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
         ),
+        *streams,
+        **{
+            "inputs": inputs,
+            "map": map,
+        }
+        | kwargs
     )
 
     return filter_node
@@ -504,23 +446,15 @@ def axcorrelate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#axcorrelate)
 
     """
-    filter_node = FilterNode(
-        name="axcorrelate",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _axcorrelate0,
-            _axcorrelate1,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "size": size,
-                    "algo": algo,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="axcorrelate", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _axcorrelate0,
+        _axcorrelate1,
+        **{
+            "size": size,
+            "algo": algo,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -809,41 +743,33 @@ def blend(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
     """
-    filter_node = FilterNode(
-        name="blend",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _top,
-            _bottom,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "c0_mode": c0_mode,
-                    "c1_mode": c1_mode,
-                    "c2_mode": c2_mode,
-                    "c3_mode": c3_mode,
-                    "all_mode": all_mode,
-                    "c0_expr": c0_expr,
-                    "c1_expr": c1_expr,
-                    "c2_expr": c2_expr,
-                    "c3_expr": c3_expr,
-                    "all_expr": all_expr,
-                    "c0_opacity": c0_opacity,
-                    "c1_opacity": c1_opacity,
-                    "c2_opacity": c2_opacity,
-                    "c3_opacity": c3_opacity,
-                    "all_opacity": all_opacity,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="blend", typings_input=("video", "video"), typings_output=("video",)),
+        _top,
+        _bottom,
+        **{
+            "c0_mode": c0_mode,
+            "c1_mode": c1_mode,
+            "c2_mode": c2_mode,
+            "c3_mode": c3_mode,
+            "all_mode": all_mode,
+            "c0_expr": c0_expr,
+            "c1_expr": c1_expr,
+            "c2_expr": c2_expr,
+            "c3_expr": c3_expr,
+            "all_expr": all_expr,
+            "c0_opacity": c0_opacity,
+            "c1_opacity": c1_opacity,
+            "c2_opacity": c2_opacity,
+            "c3_opacity": c3_opacity,
+            "all_opacity": all_opacity,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -889,30 +815,28 @@ def bm3d(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bm3d)
 
     """
-    filter_node = FilterNode(
-        name="bm3d",
-        input_typings=tuple([StreamType.video] + [StreamType.video] if ref else []),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "sigma": sigma,
-                    "block": block,
-                    "bstep": bstep,
-                    "group": group,
-                    "range": range,
-                    "mstep": mstep,
-                    "thmse": thmse,
-                    "hdthr": hdthr,
-                    "estim": estim,
-                    "ref": ref,
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="bm3d",
+            typings_input="[StreamType.video] + [StreamType.video] if ref else []",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "sigma": sigma,
+            "block": block,
+            "bstep": bstep,
+            "group": group,
+            "range": range,
+            "mstep": mstep,
+            "thmse": thmse,
+            "hdthr": hdthr,
+            "estim": estim,
+            "ref": ref,
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -947,34 +871,26 @@ def colormap(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
     """
-    filter_node = FilterNode(
-        name="colormap",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _default,
-            _source,
-            _target,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "patch_size": patch_size,
-                    "nb_patches": nb_patches,
-                    "type": type,
-                    "kernel": kernel,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="colormap", typings_input=("video", "video", "video"), typings_output=("video",)),
+        _default,
+        _source,
+        _target,
+        **{
+            "patch_size": patch_size,
+            "nb_patches": nb_patches,
+            "type": type,
+            "kernel": kernel,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def concat(
     *streams: FilterableStream,
-    n: Int = Default(2),
+    n: Int = Auto("len(streams) // (int(v) + int(a))"),
     v: Int = Default(1),
     a: Int = Default(0),
     unsafe: Boolean = Default(False),
@@ -998,22 +914,20 @@ def concat(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#concat)
 
     """
-    filter_node = FilterNode(
-        name="concat",
-        input_typings=tuple(([StreamType.video] * int(v) + [StreamType.audio] * int(a)) * int(n)),
-        output_typings=tuple([StreamType.video] * int(v) + [StreamType.audio] * int(a)),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "n": n,
-                    "v": v,
-                    "a": a,
-                    "unsafe": unsafe,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="concat",
+            typings_input="([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
+            typings_output="[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
         ),
+        *streams,
+        **{
+            "n": n,
+            "v": v,
+            "a": a,
+            "unsafe": unsafe,
+        }
+        | kwargs
     )
 
     return filter_node
@@ -1054,29 +968,21 @@ def convolve(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
     """
-    filter_node = FilterNode(
-        name="convolve",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _impulse,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "impulse": impulse,
-                    "noise": noise,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="convolve", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _impulse,
+        **{
+            "planes": planes,
+            "impulse": impulse,
+            "noise": noise,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1110,26 +1016,18 @@ def corr(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
 
     """
-    filter_node = FilterNode(
-        name="corr",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="corr", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _reference,
+        **{
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1167,26 +1065,24 @@ def decimate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#decimate)
 
     """
-    filter_node = FilterNode(
-        name="decimate",
-        input_typings=tuple([StreamType.video] + ([StreamType.video] if ppsrc else [])),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "cycle": cycle,
-                    "dupthresh": dupthresh,
-                    "scthresh": scthresh,
-                    "blockx": blockx,
-                    "blocky": blocky,
-                    "ppsrc": ppsrc,
-                    "chroma": chroma,
-                    "mixed": mixed,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="decimate",
+            typings_input="[StreamType.video] + ([StreamType.video] if ppsrc else [])",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "cycle": cycle,
+            "dupthresh": dupthresh,
+            "scthresh": scthresh,
+            "blockx": blockx,
+            "blocky": blocky,
+            "ppsrc": ppsrc,
+            "chroma": chroma,
+            "mixed": mixed,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1226,29 +1122,21 @@ def deconvolve(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
     """
-    filter_node = FilterNode(
-        name="deconvolve",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _impulse,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "impulse": impulse,
-                    "noise": noise,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="deconvolve", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _impulse,
+        **{
+            "planes": planes,
+            "impulse": impulse,
+            "noise": noise,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1277,24 +1165,16 @@ def displace(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
     """
-    filter_node = FilterNode(
-        name="displace",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _xmap,
-            _ymap,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "edge": edge,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="displace", typings_input=("video", "video", "video"), typings_output=("video",)),
+        _source,
+        _xmap,
+        _ymap,
+        **{
+            "edge": edge,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1318,23 +1198,15 @@ def feedback(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
 
     """
-    filter_node = FilterNode(
-        name="feedback",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video, StreamType.video]),
-        inputs=(
-            _default,
-            _feedin,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "x": x,
-                    "w": w,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="feedback", typings_input=("video", "video"), typings_output=("video", "video")),
+        _default,
+        _feedin,
+        **{
+            "x": x,
+            "w": w,
+        }
+        | kwargs
     )
     return (
         filter_node.video(0),
@@ -1387,32 +1259,30 @@ def fieldmatch(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldmatch)
 
     """
-    filter_node = FilterNode(
-        name="fieldmatch",
-        input_typings=tuple([StreamType.video] + [StreamType.video] if ppsrc else []),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "order": order,
-                    "mode": mode,
-                    "ppsrc": ppsrc,
-                    "field": field,
-                    "mchroma": mchroma,
-                    "y0": y0,
-                    "scthresh": scthresh,
-                    "combmatch": combmatch,
-                    "combdbg": combdbg,
-                    "cthresh": cthresh,
-                    "chroma": chroma,
-                    "blockx": blockx,
-                    "blocky": blocky,
-                    "combpel": combpel,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="fieldmatch",
+            typings_input="[StreamType.video] + [StreamType.video] if ppsrc else []",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "order": order,
+            "mode": mode,
+            "ppsrc": ppsrc,
+            "field": field,
+            "mchroma": mchroma,
+            "y0": y0,
+            "scthresh": scthresh,
+            "combmatch": combmatch,
+            "combdbg": combdbg,
+            "cthresh": cthresh,
+            "chroma": chroma,
+            "blockx": blockx,
+            "blocky": blocky,
+            "combpel": combpel,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1438,22 +1308,14 @@ def framepack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
     """
-    filter_node = FilterNode(
-        name="framepack",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _left,
-            _right,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "format": format,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="framepack", typings_input=("video", "video"), typings_output=("video",)),
+        _left,
+        _right,
+        **{
+            "format": format,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1483,24 +1345,16 @@ def freezeframes(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
 
     """
-    filter_node = FilterNode(
-        name="freezeframes",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _replace,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "first": first,
-                    "last": last,
-                    "replace": replace,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="freezeframes", typings_input=("video", "video"), typings_output=("video",)),
+        _source,
+        _replace,
+        **{
+            "first": first,
+            "last": last,
+            "replace": replace,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1536,25 +1390,23 @@ def guided(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#guided)
 
     """
-    filter_node = FilterNode(
-        name="guided",
-        input_typings=tuple([StreamType.video] + [StreamType.video] if guidance else []),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "radius": radius,
-                    "eps": eps,
-                    "mode": mode,
-                    "sub": sub,
-                    "guidance": guidance,
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="guided",
+            typings_input="[StreamType.video] + [StreamType.video] if guidance else []",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "radius": radius,
+            "eps": eps,
+            "mode": mode,
+            "sub": sub,
+            "guidance": guidance,
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1592,28 +1444,20 @@ def haldclut(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
     """
-    filter_node = FilterNode(
-        name="haldclut",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _clut,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "clut": clut,
-                    "interp": interp,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="haldclut", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _clut,
+        **{
+            "clut": clut,
+            "interp": interp,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1647,32 +1491,28 @@ def headphone(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#headphone)
 
     """
-    filter_node = FilterNode(
-        name="headphone",
-        input_typings=tuple(
-            [StreamType.audio] + [StreamType.audio] * (len(str(map).split("|")) - 1) if int(hrir) == 1 else []
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="headphone",
+            typings_input="[StreamType.audio] + [StreamType.audio] * (len(str(map).split('|')) - 1) if int(hrir) == 1 else []",
+            typings_output=("audio",),
         ),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "map": map,
-                    "gain": gain,
-                    "lfe": lfe,
-                    "type": type,
-                    "size": size,
-                    "hrir": hrir,
-                }
-                | kwargs
-            )
-        ),
+        *streams,
+        **{
+            "map": map,
+            "gain": gain,
+            "lfe": lfe,
+            "type": type,
+            "size": size,
+            "hrir": hrir,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
 
 def hstack(
-    *streams: VideoStream, inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
+    *streams: VideoStream, inputs: Int = Auto("len(streams)"), shortest: Boolean = Default(False), **kwargs: Any
 ) -> VideoStream:
     """
 
@@ -1689,20 +1529,14 @@ def hstack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hstack)
 
     """
-    filter_node = FilterNode(
-        name="hstack",
-        input_typings=tuple([StreamType.video] * int(inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="hstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
+        *streams,
+        **{
+            "inputs": inputs,
+            "shortest": shortest,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1740,28 +1574,20 @@ def hysteresis(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
 
     """
-    filter_node = FilterNode(
-        name="hysteresis",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _base,
-            _alt,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "threshold": threshold,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="hysteresis", typings_input=("video", "video"), typings_output=("video",)),
+        _base,
+        _alt,
+        **{
+            "planes": planes,
+            "threshold": threshold,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -1795,33 +1621,25 @@ def identity(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
     """
-    filter_node = FilterNode(
-        name="identity",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="identity", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _reference,
+        **{
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def interleave(
     *streams: VideoStream,
-    nb_inputs: Int = Default(2),
+    nb_inputs: Int = Auto("len(streams)"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> VideoStream:
@@ -1840,27 +1658,23 @@ def interleave(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interleave_002c-ainterleave)
 
     """
-    filter_node = FilterNode(
-        name="interleave",
-        input_typings=tuple([StreamType.video] * int(nb_inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "nb_inputs": nb_inputs,
-                    "duration": duration,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="interleave", typings_input="[StreamType.video] * int(nb_inputs)", typings_output=("video",)
         ),
+        *streams,
+        **{
+            "nb_inputs": nb_inputs,
+            "duration": duration,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def join(
     *streams: AudioStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     channel_layout: String = Default("stereo"),
     map: String = Default(None),
     **kwargs: Any
@@ -1881,21 +1695,15 @@ def join(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#join)
 
     """
-    filter_node = FilterNode(
-        name="join",
-        input_typings=tuple([StreamType.audio] * int(inputs)),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "channel_layout": channel_layout,
-                    "map": map,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="join", typings_input="[StreamType.audio] * int(inputs)", typings_output=("audio",)),
+        *streams,
+        **{
+            "inputs": inputs,
+            "channel_layout": channel_layout,
+            "map": map,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -1953,38 +1761,30 @@ def libvmaf(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
 
     """
-    filter_node = FilterNode(
-        name="libvmaf",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "model_path": model_path,
-                    "log_path": log_path,
-                    "log_fmt": log_fmt,
-                    "enable_transform": enable_transform,
-                    "psnr": psnr,
-                    "ssim": ssim,
-                    "ms_ssim": ms_ssim,
-                    "pool": pool,
-                    "n_threads": n_threads,
-                    "n_subsample": n_subsample,
-                    "enable_conf_interval": enable_conf_interval,
-                    "model": model,
-                    "feature": feature,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="libvmaf", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _reference,
+        **{
+            "model_path": model_path,
+            "log_path": log_path,
+            "log_fmt": log_fmt,
+            "enable_transform": enable_transform,
+            "psnr": psnr,
+            "ssim": ssim,
+            "ms_ssim": ms_ssim,
+            "pool": pool,
+            "n_threads": n_threads,
+            "n_subsample": n_subsample,
+            "enable_conf_interval": enable_conf_interval,
+            "model": model,
+            "feature": feature,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2016,23 +1816,21 @@ def limitdiff(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limitdiff)
 
     """
-    filter_node = FilterNode(
-        name="limitdiff",
-        input_typings=tuple([StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "threshold": threshold,
-                    "elasticity": elasticity,
-                    "reference": reference,
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="limitdiff",
+            typings_input="[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "threshold": threshold,
+            "elasticity": elasticity,
+            "reference": reference,
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2076,31 +1874,23 @@ def lut2(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
     """
-    filter_node = FilterNode(
-        name="lut2",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _srcx,
-            _srcy,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "c0": c0,
-                    "c1": c1,
-                    "c2": c2,
-                    "c3": c3,
-                    "d": d,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="lut2", typings_input=("video", "video"), typings_output=("video",)),
+        _srcx,
+        _srcy,
+        **{
+            "c0": c0,
+            "c1": c1,
+            "c2": c2,
+            "c3": c3,
+            "d": d,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2133,26 +1923,18 @@ def maskedclamp(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
     """
-    filter_node = FilterNode(
-        name="maskedclamp",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _base,
-            _dark,
-            _bright,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "undershoot": undershoot,
-                    "overshoot": overshoot,
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="maskedclamp", typings_input=("video", "video", "video"), typings_output=("video",)),
+        _base,
+        _dark,
+        _bright,
+        **{
+            "undershoot": undershoot,
+            "overshoot": overshoot,
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2181,24 +1963,16 @@ def maskedmax(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
     """
-    filter_node = FilterNode(
-        name="maskedmax",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _filter1,
-            _filter2,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="maskedmax", typings_input=("video", "video", "video"), typings_output=("video",)),
+        _source,
+        _filter1,
+        _filter2,
+        **{
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2227,24 +2001,16 @@ def maskedmerge(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
     """
-    filter_node = FilterNode(
-        name="maskedmerge",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _base,
-            _overlay,
-            _mask,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="maskedmerge", typings_input=("video", "video", "video"), typings_output=("video",)),
+        _base,
+        _overlay,
+        _mask,
+        **{
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2273,24 +2039,16 @@ def maskedmin(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
 
     """
-    filter_node = FilterNode(
-        name="maskedmin",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _filter1,
-            _filter2,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="maskedmin", typings_input=("video", "video", "video"), typings_output=("video",)),
+        _source,
+        _filter1,
+        _filter2,
+        **{
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2322,25 +2080,17 @@ def maskedthreshold(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
 
     """
-    filter_node = FilterNode(
-        name="maskedthreshold",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "threshold": threshold,
-                    "planes": planes,
-                    "mode": mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="maskedthreshold", typings_input=("video", "video"), typings_output=("video",)),
+        _source,
+        _reference,
+        **{
+            "threshold": threshold,
+            "planes": planes,
+            "mode": mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2382,28 +2132,26 @@ def mergeplanes(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mergeplanes)
 
     """
-    filter_node = FilterNode(
-        name="mergeplanes",
-        input_typings=tuple([StreamType.video] * int(max(hex(int(mapping))[2::2]))),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "mapping": mapping,
-                    "format": format,
-                    "map0s": map0s,
-                    "map0p": map0p,
-                    "map1s": map1s,
-                    "map1p": map1p,
-                    "map2s": map2s,
-                    "map2p": map2p,
-                    "map3s": map3s,
-                    "map3p": map3p,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="mergeplanes",
+            typings_input="[StreamType.video] * int(max(hex(int(mapping))[2::2]))",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "mapping": mapping,
+            "format": format,
+            "map0s": map0s,
+            "map0p": map0p,
+            "map1s": map1s,
+            "map1p": map1p,
+            "map2s": map2s,
+            "map2p": map2p,
+            "map3s": map3s,
+            "map3p": map3p,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2426,30 +2174,22 @@ def midequalizer(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
 
     """
-    filter_node = FilterNode(
-        name="midequalizer",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _in0,
-            _in1,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="midequalizer", typings_input=("video", "video"), typings_output=("video",)),
+        _in0,
+        _in1,
+        **{
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def mix(
     *streams: VideoStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     weights: String = Default("1 1"),
     scale: Float = Default(0.0),
     planes: Flags = Default("F"),
@@ -2476,24 +2216,18 @@ def mix(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mix)
 
     """
-    filter_node = FilterNode(
-        name="mix",
-        input_typings=tuple([StreamType.video] * int(inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "weights": weights,
-                    "scale": scale,
-                    "planes": planes,
-                    "duration": duration,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="mix", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
+        *streams,
+        **{
+            "inputs": inputs,
+            "weights": weights,
+            "scale": scale,
+            "planes": planes,
+            "duration": duration,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2535,29 +2269,21 @@ def morpho(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
     """
-    filter_node = FilterNode(
-        name="morpho",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _default,
-            _structure,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "mode": mode,
-                    "planes": planes,
-                    "structure": structure,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="morpho", typings_input=("video", "video"), typings_output=("video",)),
+        _default,
+        _structure,
+        **{
+            "mode": mode,
+            "planes": planes,
+            "structure": structure,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2591,26 +2317,18 @@ def msad(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
     """
-    filter_node = FilterNode(
-        name="msad",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="msad", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _reference,
+        **{
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2642,25 +2360,17 @@ def multiply(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
 
     """
-    filter_node = FilterNode(
-        name="multiply",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _factor,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "scale": scale,
-                    "offset": offset,
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="multiply", typings_input=("video", "video"), typings_output=("video",)),
+        _source,
+        _factor,
+        **{
+            "scale": scale,
+            "offset": offset,
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2706,31 +2416,23 @@ def overlay(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
     """
-    filter_node = FilterNode(
-        name="overlay",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _overlay,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "x": x,
-                    "y": y,
-                    "eof_action": eof_action,
-                    "eval": eval,
-                    "shortest": shortest,
-                    "format": format,
-                    "repeatlast": repeatlast,
-                    "alpha": alpha,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="overlay", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _overlay,
+        **{
+            "x": x,
+            "y": y,
+            "eof_action": eof_action,
+            "eval": eval,
+            "shortest": shortest,
+            "format": format,
+            "repeatlast": repeatlast,
+            "alpha": alpha,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2768,27 +2470,19 @@ def paletteuse(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
     """
-    filter_node = FilterNode(
-        name="paletteuse",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _default,
-            _palette,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "dither": dither,
-                    "bayer_scale": bayer_scale,
-                    "diff_mode": diff_mode,
-                    "new": new,
-                    "alpha_threshold": alpha_threshold,
-                    "debug_kdtree": debug_kdtree,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="paletteuse", typings_input=("video", "video"), typings_output=("video",)),
+        _default,
+        _palette,
+        **{
+            "dither": dither,
+            "bayer_scale": bayer_scale,
+            "diff_mode": diff_mode,
+            "new": new,
+            "alpha_threshold": alpha_threshold,
+            "debug_kdtree": debug_kdtree,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2816,21 +2510,19 @@ def premultiply(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#premultiply)
 
     """
-    filter_node = FilterNode(
-        name="premultiply",
-        input_typings=tuple([StreamType.video] + [StreamType.video] if inplace else []),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "inplace": inplace,
-                    "enable": enable,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="premultiply",
+            typings_input="[StreamType.video] + [StreamType.video] if inplace else []",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "planes": planes,
+            "inplace": inplace,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2870,29 +2562,21 @@ def psnr(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
     """
-    filter_node = FilterNode(
-        name="psnr",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "stats_file": stats_file,
-                    "stats_version": stats_version,
-                    "output_max": output_max,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="psnr", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _reference,
+        **{
+            "stats_file": stats_file,
+            "stats_version": stats_version,
+            "output_max": output_max,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -2921,24 +2605,16 @@ def remap(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
 
     """
-    filter_node = FilterNode(
-        name="remap",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _source,
-            _xmap,
-            _ymap,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "format": format,
-                    "fill": fill,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="remap", typings_input=("video", "video", "video"), typings_output=("video",)),
+        _source,
+        _xmap,
+        _ymap,
+        **{
+            "format": format,
+            "fill": fill,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -3005,38 +2681,30 @@ def scale2ref(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale2ref)
 
     """
-    filter_node = FilterNode(
-        name="scale2ref",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video, StreamType.video]),
-        inputs=(
-            _default,
-            _ref,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "w": w,
-                    "h": h,
-                    "flags": flags,
-                    "interl": interl,
-                    "in_color_matrix": in_color_matrix,
-                    "out_color_matrix": out_color_matrix,
-                    "in_range": in_range,
-                    "out_range": out_range,
-                    "in_v_chr_pos": in_v_chr_pos,
-                    "in_h_chr_pos": in_h_chr_pos,
-                    "out_v_chr_pos": out_v_chr_pos,
-                    "out_h_chr_pos": out_h_chr_pos,
-                    "force_original_aspect_ratio": force_original_aspect_ratio,
-                    "force_divisible_by": force_divisible_by,
-                    "param0": param0,
-                    "param1": param1,
-                    "eval": eval,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="scale2ref", typings_input=("video", "video"), typings_output=("video", "video")),
+        _default,
+        _ref,
+        **{
+            "w": w,
+            "h": h,
+            "flags": flags,
+            "interl": interl,
+            "in_color_matrix": in_color_matrix,
+            "out_color_matrix": out_color_matrix,
+            "in_range": in_range,
+            "out_range": out_range,
+            "in_v_chr_pos": in_v_chr_pos,
+            "in_h_chr_pos": in_h_chr_pos,
+            "out_v_chr_pos": out_v_chr_pos,
+            "out_h_chr_pos": out_h_chr_pos,
+            "force_original_aspect_ratio": force_original_aspect_ratio,
+            "force_divisible_by": force_divisible_by,
+            "param0": param0,
+            "param1": param1,
+            "eval": eval,
+        }
+        | kwargs
     )
     return (
         filter_node.video(0),
@@ -3087,33 +2755,25 @@ def sidechaincompress(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaincompress)
 
     """
-    filter_node = FilterNode(
-        name="sidechaincompress",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _main,
-            _sidechain,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "level_in": level_in,
-                    "mode": mode,
-                    "threshold": threshold,
-                    "ratio": ratio,
-                    "attack": attack,
-                    "release": release,
-                    "makeup": makeup,
-                    "knee": knee,
-                    "link": link,
-                    "detection": detection,
-                    "level_sc": level_sc,
-                    "mix": mix,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="sidechaincompress", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _main,
+        _sidechain,
+        **{
+            "level_in": level_in,
+            "mode": mode,
+            "threshold": threshold,
+            "ratio": ratio,
+            "attack": attack,
+            "release": release,
+            "makeup": makeup,
+            "knee": knee,
+            "link": link,
+            "detection": detection,
+            "level_sc": level_sc,
+            "mix": mix,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -3163,34 +2823,26 @@ def sidechaingate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidechaingate)
 
     """
-    filter_node = FilterNode(
-        name="sidechaingate",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _main,
-            _sidechain,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "level_in": level_in,
-                    "mode": mode,
-                    "range": range,
-                    "threshold": threshold,
-                    "ratio": ratio,
-                    "attack": attack,
-                    "release": release,
-                    "makeup": makeup,
-                    "knee": knee,
-                    "detection": detection,
-                    "link": link,
-                    "level_sc": level_sc,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="sidechaingate", typings_input=("audio", "audio"), typings_output=("audio",)),
+        _main,
+        _sidechain,
+        **{
+            "level_in": level_in,
+            "mode": mode,
+            "range": range,
+            "threshold": threshold,
+            "ratio": ratio,
+            "attack": attack,
+            "release": release,
+            "makeup": makeup,
+            "knee": knee,
+            "detection": detection,
+            "link": link,
+            "level_sc": level_sc,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -3198,7 +2850,7 @@ def sidechaingate(
 def signature(
     *streams: VideoStream,
     detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
-    nb_inputs: Int = Default(1),
+    nb_inputs: Int = Auto("len(streams)"),
     filename: String = Default(""),
     format: Int | Literal["binary", "xml"] | Default = Default("binary"),
     th_d: Int = Default(9000),
@@ -3230,27 +2882,23 @@ def signature(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signature)
 
     """
-    filter_node = FilterNode(
-        name="signature",
-        input_typings=tuple([StreamType.video] * int(nb_inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "detectmode": detectmode,
-                    "nb_inputs": nb_inputs,
-                    "filename": filename,
-                    "format": format,
-                    "th_d": th_d,
-                    "th_dc": th_dc,
-                    "th_xh": th_xh,
-                    "th_di": th_di,
-                    "th_it": th_it,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="signature", typings_input="[StreamType.video] * int(nb_inputs)", typings_output=("video",)
         ),
+        *streams,
+        **{
+            "detectmode": detectmode,
+            "nb_inputs": nb_inputs,
+            "filename": filename,
+            "format": format,
+            "th_d": th_d,
+            "th_dc": th_dc,
+            "th_xh": th_xh,
+            "th_di": th_di,
+            "th_it": th_it,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -3313,28 +2961,20 @@ def spectrumsynth(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
     """
-    filter_node = FilterNode(
-        name="spectrumsynth",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            _magnitude,
-            _phase,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "sample_rate": sample_rate,
-                    "channels": channels,
-                    "scale": scale,
-                    "slide": slide,
-                    "win_func": win_func,
-                    "overlap": overlap,
-                    "orientation": orientation,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="spectrumsynth", typings_input=("video", "video"), typings_output=("audio",)),
+        _magnitude,
+        _phase,
+        **{
+            "sample_rate": sample_rate,
+            "channels": channels,
+            "scale": scale,
+            "slide": slide,
+            "win_func": win_func,
+            "overlap": overlap,
+            "orientation": orientation,
+        }
+        | kwargs
     )
     return filter_node.audio(0)
 
@@ -3370,33 +3010,25 @@ def ssim(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
     """
-    filter_node = FilterNode(
-        name="ssim",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "stats_file": stats_file,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="ssim", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _reference,
+        **{
+            "stats_file": stats_file,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def streamselect(
-    *streams: VideoStream, inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
+    *streams: VideoStream, inputs: Int = Auto("len(streams)"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -3414,20 +3046,18 @@ def streamselect(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#streamselect_002c-astreamselect)
 
     """
-    filter_node = FilterNode(
-        name="streamselect",
-        input_typings=tuple([StreamType.video] * int(inputs)),
-        output_typings=tuple([StreamType.video] * len(re.findall(r"\d+", str(map)))),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "map": map,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="streamselect",
+            typings_input="[StreamType.video] * int(inputs)",
+            typings_output="[StreamType.video] * len(re.findall(r'\\d+', str(map)))",
         ),
+        *streams,
+        **{
+            "inputs": inputs,
+            "map": map,
+        }
+        | kwargs
     )
 
     return filter_node
@@ -3458,25 +3088,19 @@ def threshold(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
 
     """
-    filter_node = FilterNode(
-        name="threshold",
-        input_typings=tuple([StreamType.video, StreamType.video, StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _default,
-            _threshold,
-            _min,
-            _max,
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="threshold", typings_input=("video", "video", "video", "video"), typings_output=("video",)
         ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+        _default,
+        _threshold,
+        _min,
+        _max,
+        **{
+            "planes": planes,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -3504,21 +3128,19 @@ def unpremultiply(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unpremultiply)
 
     """
-    filter_node = FilterNode(
-        name="unpremultiply",
-        input_typings=tuple([StreamType.video] + ([StreamType.video] if inplace else [])),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "inplace": inplace,
-                    "enable": enable,
-                }
-                | kwargs
-            )
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(
+            name="unpremultiply",
+            typings_input="[StreamType.video] + ([StreamType.video] if inplace else [])",
+            typings_output=("video",),
         ),
+        *streams,
+        **{
+            "planes": planes,
+            "inplace": inplace,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -3558,29 +3180,21 @@ def varblur(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
 
     """
-    filter_node = FilterNode(
-        name="varblur",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _default,
-            _radius,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "min_r": min_r,
-                    "max_r": max_r,
-                    "planes": planes,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="varblur", typings_input=("video", "video"), typings_output=("video",)),
+        _default,
+        _radius,
+        **{
+            "min_r": min_r,
+            "max_r": max_r,
+            "planes": planes,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -3614,32 +3228,24 @@ def vif(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
     """
-    filter_node = FilterNode(
-        name="vif",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _reference,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="vif", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _reference,
+        **{
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def vstack(
-    *streams: VideoStream, inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
+    *streams: VideoStream, inputs: Int = Auto("len(streams)"), shortest: Boolean = Default(False), **kwargs: Any
 ) -> VideoStream:
     """
 
@@ -3656,20 +3262,14 @@ def vstack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vstack)
 
     """
-    filter_node = FilterNode(
-        name="vstack",
-        input_typings=tuple([StreamType.video] * int(inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "shortest": shortest,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="vstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
+        *streams,
+        **{
+            "inputs": inputs,
+            "shortest": shortest,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -3707,28 +3307,20 @@ def xcorrelate(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
 
     """
-    filter_node = FilterNode(
-        name="xcorrelate",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _primary,
-            _secondary,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "planes": planes,
-                    "secondary": secondary,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="xcorrelate", typings_input=("video", "video"), typings_output=("video",)),
+        _primary,
+        _secondary,
+        **{
+            "planes": planes,
+            "secondary": secondary,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
@@ -3810,32 +3402,24 @@ def xfade(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
     """
-    filter_node = FilterNode(
-        name="xfade",
-        input_typings=tuple([StreamType.video, StreamType.video]),
-        output_typings=tuple([StreamType.video]),
-        inputs=(
-            _main,
-            _xfade,
-        ),
-        kwargs=_to_tuple(
-            (
-                {
-                    "transition": transition,
-                    "duration": duration,
-                    "offset": offset,
-                    "expr": expr,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="xfade", typings_input=("video", "video"), typings_output=("video",)),
+        _main,
+        _xfade,
+        **{
+            "transition": transition,
+            "duration": duration,
+            "offset": offset,
+            "expr": expr,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def xmedian(
     *streams: VideoStream,
-    inputs: Int = Default(3),
+    inputs: Int = Auto("len(streams)"),
     planes: Int = Default(15),
     percentile: Float = Default(0.5),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
@@ -3866,33 +3450,27 @@ def xmedian(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xmedian)
 
     """
-    filter_node = FilterNode(
-        name="xmedian",
-        input_typings=tuple([StreamType.video] * int(inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "planes": planes,
-                    "percentile": percentile,
-                    "eof_action": eof_action,
-                    "shortest": shortest,
-                    "repeatlast": repeatlast,
-                    "ts_sync_mode": ts_sync_mode,
-                    "enable": enable,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="xmedian", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
+        *streams,
+        **{
+            "inputs": inputs,
+            "planes": planes,
+            "percentile": percentile,
+            "eof_action": eof_action,
+            "shortest": shortest,
+            "repeatlast": repeatlast,
+            "ts_sync_mode": ts_sync_mode,
+            "enable": enable,
+        }
+        | kwargs
     )
     return filter_node.video(0)
 
 
 def xstack(
     *streams: VideoStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     layout: String = Default(None),
     grid: Image_size = Default(None),
     shortest: Boolean = Default(False),
@@ -3917,22 +3495,16 @@ def xstack(
         [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xstack)
 
     """
-    filter_node = FilterNode(
-        name="xstack",
-        input_typings=tuple([StreamType.video] * int(inputs)),
-        output_typings=tuple([StreamType.video]),
-        inputs=(*streams,),
-        kwargs=_to_tuple(
-            (
-                {
-                    "inputs": inputs,
-                    "layout": layout,
-                    "grid": grid,
-                    "shortest": shortest,
-                    "fill": fill,
-                }
-                | kwargs
-            )
-        ),
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name="xstack", typings_input="[StreamType.video] * int(inputs)", typings_output=("video",)),
+        *streams,
+        **{
+            "inputs": inputs,
+            "layout": layout,
+            "grid": grid,
+            "shortest": shortest,
+            "fill": fill,
+        }
+        | kwargs
     )
     return filter_node.video(0)

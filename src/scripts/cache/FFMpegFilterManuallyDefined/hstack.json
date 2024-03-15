@@ -2,5 +2,8 @@
   "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
   "formula_typings_input": "[StreamType.video] * int(inputs)",
   "formula_typings_output": null,
-  "name": "hstack"
+  "name": "hstack",
+  "pre": {
+    "inputs": "len(streams)"
+  }
 }

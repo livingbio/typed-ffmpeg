@@ -2,13 +2,15 @@
 from typing import Any, Literal
 
 from .dag.nodes import FilterNode, FilterableStream
-from .schema import Default, StreamType
+from .schema import Default, StreamType, Auto
 from .types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
 from .streams.video import VideoStream
 from .streams.audio import AudioStream
 from .streams.av import AVStream
 from .streams.channel_layout import CHANNEL_LAYOUT
 from .utils.run import _to_tuple
+from .common.schema import FFMpegFilterDef
+from .dag.factory import filter_node_factory
 
 import re
 
@@ -32,33 +34,7 @@ def aap(
 
 
     *,
-    
-
-    
-        order: 
-
-Int = 
-
-Default(None)
-
-
-
-,
-    
-
-    
-        projection: 
-
-Int = 
-
-Default(None)
-
-
-
-,
-    
-
-
+    order: Int = Default(None),projection: Int = Default(None),
     **kwargs: Any
 )-> AudioStream:
     """
@@ -76,12 +52,9 @@ References:
     [FFmpeg Documentation](None)
 
     """
-    filter_node = FilterNode(
-        name="aap",
-        input_typings=tuple([StreamType.audio, StreamType.audio]),
-        output_typings=tuple([StreamType.audio]),
-        inputs=(
-            
+    filter_node = filter_node_factory(
+        FFMpegFilterDef(name='aap', typings_input=('audio', 'audio'), typings_output=('audio',)),
+        
 
         
             
@@ -94,14 +67,13 @@ References:
         
 
 
-        ),
-        kwargs=_to_tuple(({
+        **{
             
             "order": order,
             
             "projection": projection,
             
-        } | kwargs)),
+        } | kwargs
     )
     return filter_node.audio(0)
 

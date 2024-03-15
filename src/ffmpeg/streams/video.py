@@ -5,10 +5,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Literal
 
+from ..common.schema import FFMpegFilterDef
+from ..dag.factory import filter_node_factory
 from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default, StreamType
+from ..schema import Default
 from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
-from ..utils.run import _to_tuple
 
 if TYPE_CHECKING:
     from .audio import AudioStream
@@ -45,24 +46,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#addroi)
 
         """
-        filter_node = FilterNode(
-            name="addroi",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "w": w,
-                        "h": h,
-                        "qoffset": qoffset,
-                        "clear": clear,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="addroi", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "w": w,
+                "h": h,
+                "qoffset": qoffset,
+                "clear": clear,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -78,12 +73,10 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphaextract)
 
         """
-        filter_node = FilterNode(
-            name="alphaextract",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="alphaextract", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{} | kwargs,
         )
         return filter_node.video(0)
 
@@ -116,26 +109,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#alphamerge)
 
         """
-        filter_node = FilterNode(
-            name="alphamerge",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _alpha,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="alphamerge", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _alpha,
+            **{
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -173,26 +158,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#amplify)
 
         """
-        filter_node = FilterNode(
-            name="amplify",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "radius": radius,
-                        "factor": factor,
-                        "threshold": threshold,
-                        "tolerance": tolerance,
-                        "low": low,
-                        "high": high,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="amplify", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "radius": radius,
+                "factor": factor,
+                "threshold": threshold,
+                "tolerance": tolerance,
+                "low": low,
+                "high": high,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -224,23 +203,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ass)
 
         """
-        filter_node = FilterNode(
-            name="ass",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "filename": filename,
-                        "original_size": original_size,
-                        "fontsdir": fontsdir,
-                        "alpha": alpha,
-                        "shaping": shaping,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="ass", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "filename": filename,
+                "original_size": original_size,
+                "fontsdir": fontsdir,
+                "alpha": alpha,
+                "shaping": shaping,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -288,31 +261,25 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#atadenoise)
 
         """
-        filter_node = FilterNode(
-            name="atadenoise",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "0a": _0a,
-                        "0b": _0b,
-                        "1a": _1a,
-                        "1b": _1b,
-                        "2a": _2a,
-                        "2b": _2b,
-                        "s": s,
-                        "p": p,
-                        "a": a,
-                        "0s": _0s,
-                        "1s": _1s,
-                        "2s": _2s,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="atadenoise", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "0a": _0a,
+                "0b": _0b,
+                "1a": _1a,
+                "1b": _1b,
+                "2a": _2a,
+                "2b": _2b,
+                "s": s,
+                "p": p,
+                "a": a,
+                "0s": _0s,
+                "1s": _1s,
+                "2s": _2s,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -342,22 +309,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#avgblur)
 
         """
-        filter_node = FilterNode(
-            name="avgblur",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sizeX": sizeX,
-                        "planes": planes,
-                        "sizeY": sizeY,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="avgblur", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "sizeX": sizeX,
+                "planes": planes,
+                "sizeY": sizeY,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -387,22 +348,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#backgroundkey)
 
         """
-        filter_node = FilterNode(
-            name="backgroundkey",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold": threshold,
-                        "similarity": similarity,
-                        "blend": blend,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="backgroundkey", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "threshold": threshold,
+                "similarity": similarity,
+                "blend": blend,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -422,20 +377,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bbox)
 
         """
-        filter_node = FilterNode(
-            name="bbox",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "min_val": min_val,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bbox", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "min_val": min_val,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -456,19 +405,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bench_002c-abench)
 
         """
-        filter_node = FilterNode(
-            name="bench",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "action": action,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bench", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "action": action,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -498,22 +441,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bilateral)
 
         """
-        filter_node = FilterNode(
-            name="bilateral",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sigmaS": sigmaS,
-                        "sigmaR": sigmaR,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bilateral", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "sigmaS": sigmaS,
+                "sigmaR": sigmaR,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -541,21 +478,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bitplanenoise)
 
         """
-        filter_node = FilterNode(
-            name="bitplanenoise",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "bitplane": bitplane,
-                        "filter": filter,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bitplanenoise", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "bitplane": bitplane,
+                "filter": filter,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -583,21 +514,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackdetect)
 
         """
-        filter_node = FilterNode(
-            name="blackdetect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "d": d,
-                        "picture_black_ratio_th": picture_black_ratio_th,
-                        "pixel_black_th": pixel_black_th,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="blackdetect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "d": d,
+                "picture_black_ratio_th": picture_black_ratio_th,
+                "pixel_black_th": pixel_black_th,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -617,20 +542,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blackframe)
 
         """
-        filter_node = FilterNode(
-            name="blackframe",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "amount": amount,
-                        "threshold": threshold,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="blackframe", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "amount": amount,
+                "threshold": threshold,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -918,41 +837,33 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
         """
-        filter_node = FilterNode(
-            name="blend",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _bottom,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0_mode": c0_mode,
-                        "c1_mode": c1_mode,
-                        "c2_mode": c2_mode,
-                        "c3_mode": c3_mode,
-                        "all_mode": all_mode,
-                        "c0_expr": c0_expr,
-                        "c1_expr": c1_expr,
-                        "c2_expr": c2_expr,
-                        "c3_expr": c3_expr,
-                        "all_expr": all_expr,
-                        "c0_opacity": c0_opacity,
-                        "c1_opacity": c1_opacity,
-                        "c2_opacity": c2_opacity,
-                        "c3_opacity": c3_opacity,
-                        "all_opacity": all_opacity,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="blend", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _bottom,
+            **{
+                "c0_mode": c0_mode,
+                "c1_mode": c1_mode,
+                "c2_mode": c2_mode,
+                "c3_mode": c3_mode,
+                "all_mode": all_mode,
+                "c0_expr": c0_expr,
+                "c1_expr": c1_expr,
+                "c2_expr": c2_expr,
+                "c3_expr": c3_expr,
+                "all_expr": all_expr,
+                "c0_opacity": c0_opacity,
+                "c1_opacity": c1_opacity,
+                "c2_opacity": c2_opacity,
+                "c3_opacity": c3_opacity,
+                "all_opacity": all_opacity,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -975,21 +886,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blockdetect)
 
         """
-        filter_node = FilterNode(
-            name="blockdetect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "period_min": period_min,
-                        "period_max": period_max,
-                        "planes": planes,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="blockdetect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "period_min": period_min,
+                "period_max": period_max,
+                "planes": planes,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1023,24 +928,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#blurdetect)
 
         """
-        filter_node = FilterNode(
-            name="blurdetect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "high": high,
-                        "low": low,
-                        "radius": radius,
-                        "block_pct": block_pct,
-                        "block_width": block_width,
-                        "planes": planes,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="blurdetect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "high": high,
+                "low": low,
+                "radius": radius,
+                "block_pct": block_pct,
+                "block_width": block_width,
+                "planes": planes,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1076,25 +975,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#boxblur)
 
         """
-        filter_node = FilterNode(
-            name="boxblur",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "luma_radius": luma_radius,
-                        "luma_power": luma_power,
-                        "chroma_radius": chroma_radius,
-                        "chroma_power": chroma_power,
-                        "alpha_radius": alpha_radius,
-                        "alpha_power": alpha_power,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="boxblur", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "luma_radius": luma_radius,
+                "luma_power": luma_power,
+                "chroma_radius": chroma_radius,
+                "chroma_power": chroma_power,
+                "alpha_radius": alpha_radius,
+                "alpha_power": alpha_power,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1124,22 +1017,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bwdif)
 
         """
-        filter_node = FilterNode(
-            name="bwdif",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "parity": parity,
-                        "deint": deint,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="bwdif", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1167,21 +1054,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cas)
 
         """
-        filter_node = FilterNode(
-            name="cas",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "strength": strength,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="cas", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "strength": strength,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1213,23 +1094,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromahold)
 
         """
-        filter_node = FilterNode(
-            name="chromahold",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "color": color,
-                        "similarity": similarity,
-                        "blend": blend,
-                        "yuv": yuv,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="chromahold", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "color": color,
+                "similarity": similarity,
+                "blend": blend,
+                "yuv": yuv,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1261,23 +1136,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromakey)
 
         """
-        filter_node = FilterNode(
-            name="chromakey",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "color": color,
-                        "similarity": similarity,
-                        "blend": blend,
-                        "yuv": yuv,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="chromakey", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "color": color,
+                "similarity": similarity,
+                "blend": blend,
+                "yuv": yuv,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1319,28 +1188,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromanr)
 
         """
-        filter_node = FilterNode(
-            name="chromanr",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "thres": thres,
-                        "sizew": sizew,
-                        "sizeh": sizeh,
-                        "stepw": stepw,
-                        "steph": steph,
-                        "threy": threy,
-                        "threu": threu,
-                        "threv": threv,
-                        "distance": distance,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="chromanr", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "thres": thres,
+                "sizew": sizew,
+                "sizeh": sizeh,
+                "stepw": stepw,
+                "steph": steph,
+                "threy": threy,
+                "threu": threu,
+                "threv": threv,
+                "distance": distance,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1374,24 +1237,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#chromashift)
 
         """
-        filter_node = FilterNode(
-            name="chromashift",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cbh": cbh,
-                        "cbv": cbv,
-                        "crh": crh,
-                        "crv": crv,
-                        "edge": edge,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="chromashift", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "cbh": cbh,
+                "cbv": cbv,
+                "crh": crh,
+                "crv": crv,
+                "edge": edge,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1467,28 +1324,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ciescope)
 
         """
-        filter_node = FilterNode(
-            name="ciescope",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "system": system,
-                        "cie": cie,
-                        "gamuts": gamuts,
-                        "size": size,
-                        "intensity": intensity,
-                        "contrast": contrast,
-                        "corrgamma": corrgamma,
-                        "showwhite": showwhite,
-                        "gamma": gamma,
-                        "fill": fill,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="ciescope", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "system": system,
+                "cie": cie,
+                "gamuts": gamuts,
+                "size": size,
+                "intensity": intensity,
+                "contrast": contrast,
+                "corrgamma": corrgamma,
+                "showwhite": showwhite,
+                "gamma": gamma,
+                "fill": fill,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1522,24 +1373,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#codecview)
 
         """
-        filter_node = FilterNode(
-            name="codecview",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mv": mv,
-                        "qp": qp,
-                        "mv_type": mv_type,
-                        "frame_type": frame_type,
-                        "block": block,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="codecview", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mv": mv,
+                "qp": qp,
+                "mv_type": mv_type,
+                "frame_type": frame_type,
+                "block": block,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1583,29 +1428,23 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorbalance)
 
         """
-        filter_node = FilterNode(
-            name="colorbalance",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rs": rs,
-                        "gs": gs,
-                        "bs": bs,
-                        "rm": rm,
-                        "gm": gm,
-                        "bm": bm,
-                        "rh": rh,
-                        "gh": gh,
-                        "bh": bh,
-                        "pl": pl,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorbalance", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "rs": rs,
+                "gs": gs,
+                "bs": bs,
+                "rm": rm,
+                "gm": gm,
+                "bm": bm,
+                "rh": rh,
+                "gh": gh,
+                "bh": bh,
+                "pl": pl,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1665,37 +1504,31 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorchannelmixer)
 
         """
-        filter_node = FilterNode(
-            name="colorchannelmixer",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rr": rr,
-                        "rg": rg,
-                        "rb": rb,
-                        "ra": ra,
-                        "gr": gr,
-                        "gg": gg,
-                        "gb": gb,
-                        "ga": ga,
-                        "br": br,
-                        "bg": bg,
-                        "bb": bb,
-                        "ba": ba,
-                        "ar": ar,
-                        "ag": ag,
-                        "ab": ab,
-                        "aa": aa,
-                        "pc": pc,
-                        "pa": pa,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorchannelmixer", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "rr": rr,
+                "rg": rg,
+                "rb": rb,
+                "ra": ra,
+                "gr": gr,
+                "gg": gg,
+                "gb": gb,
+                "ga": ga,
+                "br": br,
+                "bg": bg,
+                "bb": bb,
+                "ba": ba,
+                "ar": ar,
+                "ag": ag,
+                "ab": ab,
+                "aa": aa,
+                "pc": pc,
+                "pa": pa,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1733,26 +1566,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcontrast)
 
         """
-        filter_node = FilterNode(
-            name="colorcontrast",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rc": rc,
-                        "gm": gm,
-                        "by": by,
-                        "rcw": rcw,
-                        "gmw": gmw,
-                        "byw": byw,
-                        "pl": pl,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorcontrast", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "rc": rc,
+                "gm": gm,
+                "by": by,
+                "rcw": rcw,
+                "gmw": gmw,
+                "byw": byw,
+                "pl": pl,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1788,25 +1615,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorcorrect)
 
         """
-        filter_node = FilterNode(
-            name="colorcorrect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rl": rl,
-                        "bl": bl,
-                        "rh": rh,
-                        "bh": bh,
-                        "saturation": saturation,
-                        "analyze": analyze,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorcorrect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "rl": rl,
+                "bl": bl,
+                "rh": rh,
+                "bh": bh,
+                "saturation": saturation,
+                "analyze": analyze,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1836,22 +1657,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorhold)
 
         """
-        filter_node = FilterNode(
-            name="colorhold",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "color": color,
-                        "similarity": similarity,
-                        "blend": blend,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorhold", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "color": color,
+                "similarity": similarity,
+                "blend": blend,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1883,23 +1698,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorize)
 
         """
-        filter_node = FilterNode(
-            name="colorize",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "hue": hue,
-                        "saturation": saturation,
-                        "lightness": lightness,
-                        "mix": mix,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorize", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "hue": hue,
+                "saturation": saturation,
+                "lightness": lightness,
+                "mix": mix,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -1929,22 +1738,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorkey)
 
         """
-        filter_node = FilterNode(
-            name="colorkey",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "color": color,
-                        "similarity": similarity,
-                        "blend": blend,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorkey", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "color": color,
+                "similarity": similarity,
+                "blend": blend,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2002,36 +1805,30 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorlevels)
 
         """
-        filter_node = FilterNode(
-            name="colorlevels",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rimin": rimin,
-                        "gimin": gimin,
-                        "bimin": bimin,
-                        "aimin": aimin,
-                        "rimax": rimax,
-                        "gimax": gimax,
-                        "bimax": bimax,
-                        "aimax": aimax,
-                        "romin": romin,
-                        "gomin": gomin,
-                        "bomin": bomin,
-                        "aomin": aomin,
-                        "romax": romax,
-                        "gomax": gomax,
-                        "bomax": bomax,
-                        "aomax": aomax,
-                        "preserve": preserve,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorlevels", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "rimin": rimin,
+                "gimin": gimin,
+                "bimin": bimin,
+                "aimin": aimin,
+                "rimax": rimax,
+                "gimax": gimax,
+                "bimax": bimax,
+                "aimax": aimax,
+                "romin": romin,
+                "gomin": gomin,
+                "bomin": bomin,
+                "aomin": aomin,
+                "romax": romax,
+                "gomax": gomax,
+                "bomax": bomax,
+                "aomax": aomax,
+                "preserve": preserve,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2065,27 +1862,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormap)
 
         """
-        filter_node = FilterNode(
-            name="colormap",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _source,
-                _target,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "patch_size": patch_size,
-                        "nb_patches": nb_patches,
-                        "type": type,
-                        "kernel": kernel,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colormap", typings_input=("video", "video", "video"), typings_output=("video",)),
+            self,
+            _source,
+            _target,
+            **{
+                "patch_size": patch_size,
+                "nb_patches": nb_patches,
+                "type": type,
+                "kernel": kernel,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2117,21 +1906,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colormatrix)
 
         """
-        filter_node = FilterNode(
-            name="colormatrix",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "src": src,
-                        "dst": dst,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colormatrix", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "src": src,
+                "dst": dst,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2267,33 +2050,27 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colorspace)
 
         """
-        filter_node = FilterNode(
-            name="colorspace",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "all": all,
-                        "space": space,
-                        "range": range,
-                        "primaries": primaries,
-                        "trc": trc,
-                        "format": format,
-                        "fast": fast,
-                        "dither": dither,
-                        "wpadapt": wpadapt,
-                        "iall": iall,
-                        "ispace": ispace,
-                        "irange": irange,
-                        "iprimaries": iprimaries,
-                        "itrc": itrc,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colorspace", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "all": all,
+                "space": space,
+                "range": range,
+                "primaries": primaries,
+                "trc": trc,
+                "format": format,
+                "fast": fast,
+                "dither": dither,
+                "wpadapt": wpadapt,
+                "iall": iall,
+                "ispace": ispace,
+                "irange": irange,
+                "iprimaries": iprimaries,
+                "itrc": itrc,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2323,22 +2100,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#colortemperature)
 
         """
-        filter_node = FilterNode(
-            name="colortemperature",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "temperature": temperature,
-                        "mix": mix,
-                        "pl": pl,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="colortemperature", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "temperature": temperature,
+                "mix": mix,
+                "pl": pl,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2394,35 +2165,29 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolution)
 
         """
-        filter_node = FilterNode(
-            name="convolution",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "0m": _0m,
-                        "1m": _1m,
-                        "2m": _2m,
-                        "3m": _3m,
-                        "0rdiv": _0rdiv,
-                        "1rdiv": _1rdiv,
-                        "2rdiv": _2rdiv,
-                        "3rdiv": _3rdiv,
-                        "0bias": _0bias,
-                        "1bias": _1bias,
-                        "2bias": _2bias,
-                        "3bias": _3bias,
-                        "0mode": _0mode,
-                        "1mode": _1mode,
-                        "2mode": _2mode,
-                        "3mode": _3mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="convolution", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "0m": _0m,
+                "1m": _1m,
+                "2m": _2m,
+                "3m": _3m,
+                "0rdiv": _0rdiv,
+                "1rdiv": _1rdiv,
+                "2rdiv": _2rdiv,
+                "3rdiv": _3rdiv,
+                "0bias": _0bias,
+                "1bias": _1bias,
+                "2bias": _2bias,
+                "3bias": _3bias,
+                "0mode": _0mode,
+                "1mode": _1mode,
+                "2mode": _2mode,
+                "3mode": _3mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2461,29 +2226,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#convolve)
 
         """
-        filter_node = FilterNode(
-            name="convolve",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _impulse,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "impulse": impulse,
-                        "noise": noise,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="convolve", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _impulse,
+            **{
+                "planes": planes,
+                "impulse": impulse,
+                "noise": noise,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2499,12 +2256,8 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#copy)
 
         """
-        filter_node = FilterNode(
-            name="copy",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="copy", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
         return filter_node.video(0)
 
@@ -2537,26 +2290,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#corr)
 
         """
-        filter_node = FilterNode(
-            name="corr",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="corr", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2582,20 +2327,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cover_005frect)
 
         """
-        filter_node = FilterNode(
-            name="cover_rect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cover": cover,
-                        "mode": mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="cover_rect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "cover": cover,
+                "mode": mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2629,24 +2368,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#crop)
 
         """
-        filter_node = FilterNode(
-            name="crop",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "out_w": out_w,
-                        "out_h": out_h,
-                        "x": x,
-                        "y": y,
-                        "keep_aspect": keep_aspect,
-                        "exact": exact,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="crop", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "out_w": out_w,
+                "out_h": out_h,
+                "x": x,
+                "y": y,
+                "keep_aspect": keep_aspect,
+                "exact": exact,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2690,29 +2423,23 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cropdetect)
 
         """
-        filter_node = FilterNode(
-            name="cropdetect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "limit": limit,
-                        "round": round,
-                        "reset": reset,
-                        "skip": skip,
-                        "reset_count": reset_count,
-                        "max_outliers": max_outliers,
-                        "mode": mode,
-                        "high": high,
-                        "low": low,
-                        "mv_threshold": mv_threshold,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="cropdetect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "limit": limit,
+                "round": round,
+                "reset": reset,
+                "skip": skip,
+                "reset_count": reset_count,
+                "max_outliers": max_outliers,
+                "mode": mode,
+                "high": high,
+                "low": low,
+                "mv_threshold": mv_threshold,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2740,21 +2467,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#cue)
 
         """
-        filter_node = FilterNode(
-            name="cue",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cue": cue,
-                        "preroll": preroll,
-                        "buffer": buffer,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="cue", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "cue": cue,
+                "preroll": preroll,
+                "buffer": buffer,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2810,28 +2531,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#curves)
 
         """
-        filter_node = FilterNode(
-            name="curves",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "preset": preset,
-                        "master": master,
-                        "red": red,
-                        "green": green,
-                        "blue": blue,
-                        "all": all,
-                        "psfile": psfile,
-                        "plot": plot,
-                        "interp": interp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="curves", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "preset": preset,
+                "master": master,
+                "red": red,
+                "green": green,
+                "blue": blue,
+                "all": all,
+                "psfile": psfile,
+                "plot": plot,
+                "interp": interp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2869,26 +2584,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#datascope)
 
         """
-        filter_node = FilterNode(
-            name="datascope",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "x": x,
-                        "y": y,
-                        "mode": mode,
-                        "axis": axis,
-                        "opacity": opacity,
-                        "format": format,
-                        "components": components,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="datascope", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "x": x,
+                "y": y,
+                "mode": mode,
+                "axis": axis,
+                "opacity": opacity,
+                "format": format,
+                "components": components,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2918,22 +2627,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dblur)
 
         """
-        filter_node = FilterNode(
-            name="dblur",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "angle": angle,
-                        "radius": radius,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dblur", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "angle": angle,
+                "radius": radius,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -2965,23 +2668,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dctdnoiz)
 
         """
-        filter_node = FilterNode(
-            name="dctdnoiz",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sigma": sigma,
-                        "overlap": overlap,
-                        "expr": expr,
-                        "n": n,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dctdnoiz", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "sigma": sigma,
+                "overlap": overlap,
+                "expr": expr,
+                "n": n,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3021,27 +2718,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deband)
 
         """
-        filter_node = FilterNode(
-            name="deband",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "1thr": _1thr,
-                        "2thr": _2thr,
-                        "3thr": _3thr,
-                        "4thr": _4thr,
-                        "range": range,
-                        "direction": direction,
-                        "blur": blur,
-                        "coupling": coupling,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="deband", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "1thr": _1thr,
+                "2thr": _2thr,
+                "3thr": _3thr,
+                "4thr": _4thr,
+                "range": range,
+                "direction": direction,
+                "blur": blur,
+                "coupling": coupling,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3079,26 +2770,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deblock)
 
         """
-        filter_node = FilterNode(
-            name="deblock",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "filter": filter,
-                        "block": block,
-                        "alpha": alpha,
-                        "beta": beta,
-                        "gamma": gamma,
-                        "delta": delta,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="deblock", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "filter": filter,
+                "block": block,
+                "alpha": alpha,
+                "beta": beta,
+                "gamma": gamma,
+                "delta": delta,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3137,29 +2822,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deconvolve)
 
         """
-        filter_node = FilterNode(
-            name="deconvolve",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _impulse,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "impulse": impulse,
-                        "noise": noise,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="deconvolve", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _impulse,
+            **{
+                "planes": planes,
+                "impulse": impulse,
+                "noise": noise,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3193,24 +2870,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dedot)
 
         """
-        filter_node = FilterNode(
-            name="dedot",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "m": m,
-                        "lt": lt,
-                        "tl": tl,
-                        "tc": tc,
-                        "ct": ct,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dedot", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "m": m,
+                "lt": lt,
+                "tl": tl,
+                "tc": tc,
+                "ct": ct,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3242,23 +2913,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflate)
 
         """
-        filter_node = FilterNode(
-            name="deflate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold0": threshold0,
-                        "threshold1": threshold1,
-                        "threshold2": threshold2,
-                        "threshold3": threshold3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="deflate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "threshold0": threshold0,
+                "threshold1": threshold1,
+                "threshold2": threshold2,
+                "threshold3": threshold3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3286,21 +2951,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deflicker)
 
         """
-        filter_node = FilterNode(
-            name="deflicker",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "mode": mode,
-                        "bypass": bypass,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="deflicker", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "mode": mode,
+                "bypass": bypass,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3319,19 +2978,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dejudder)
 
         """
-        filter_node = FilterNode(
-            name="dejudder",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cycle": cycle,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dejudder", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "cycle": cycle,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3365,24 +3018,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#delogo)
 
         """
-        filter_node = FilterNode(
-            name="delogo",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "w": w,
-                        "h": h,
-                        "show": show,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="delogo", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "w": w,
+                "h": h,
+                "show": show,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3416,24 +3063,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#derain)
 
         """
-        filter_node = FilterNode(
-            name="derain",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "filter_type": filter_type,
-                        "dnn_backend": dnn_backend,
-                        "model": model,
-                        "input": input,
-                        "output": output,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="derain", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "filter_type": filter_type,
+                "dnn_backend": dnn_backend,
+                "model": model,
+                "input": input,
+                "output": output,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3479,30 +3120,24 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#deshake)
 
         """
-        filter_node = FilterNode(
-            name="deshake",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "w": w,
-                        "h": h,
-                        "rx": rx,
-                        "ry": ry,
-                        "edge": edge,
-                        "blocksize": blocksize,
-                        "contrast": contrast,
-                        "search": search,
-                        "filename": filename,
-                        "opencl": opencl,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="deshake", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "w": w,
+                "h": h,
+                "rx": rx,
+                "ry": ry,
+                "edge": edge,
+                "blocksize": blocksize,
+                "contrast": contrast,
+                "search": search,
+                "filename": filename,
+                "opencl": opencl,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3542,27 +3177,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#despill)
 
         """
-        filter_node = FilterNode(
-            name="despill",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "type": type,
-                        "mix": mix,
-                        "expand": expand,
-                        "red": red,
-                        "green": green,
-                        "blue": blue,
-                        "brightness": brightness,
-                        "alpha": alpha,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="despill", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "type": type,
+                "mix": mix,
+                "expand": expand,
+                "red": red,
+                "green": green,
+                "blue": blue,
+                "brightness": brightness,
+                "alpha": alpha,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3590,21 +3219,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#detelecine)
 
         """
-        filter_node = FilterNode(
-            name="detelecine",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "first_field": first_field,
-                        "pattern": pattern,
-                        "start_frame": start_frame,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="detelecine", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "first_field": first_field,
+                "pattern": pattern,
+                "start_frame": start_frame,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3638,24 +3261,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dilation)
 
         """
-        filter_node = FilterNode(
-            name="dilation",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "coordinates": coordinates,
-                        "threshold0": threshold0,
-                        "threshold1": threshold1,
-                        "threshold2": threshold2,
-                        "threshold3": threshold3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dilation", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "coordinates": coordinates,
+                "threshold0": threshold0,
+                "threshold1": threshold1,
+                "threshold2": threshold2,
+                "threshold3": threshold3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3683,24 +3300,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#displace)
 
         """
-        filter_node = FilterNode(
-            name="displace",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _xmap,
-                _ymap,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "edge": edge,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="displace", typings_input=("video", "video", "video"), typings_output=("video",)),
+            self,
+            _xmap,
+            _ymap,
+            **{
+                "edge": edge,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3742,28 +3351,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fclassify)
 
         """
-        filter_node = FilterNode(
-            name="dnn_classify",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dnn_backend": dnn_backend,
-                        "model": model,
-                        "input": input,
-                        "output": output,
-                        "backend_configs": backend_configs,
-                        "options": options,
-                        "async": _async,
-                        "confidence": confidence,
-                        "labels": labels,
-                        "target": target,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dnn_classify", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "dnn_backend": dnn_backend,
+                "model": model,
+                "input": input,
+                "output": output,
+                "backend_configs": backend_configs,
+                "options": options,
+                "async": _async,
+                "confidence": confidence,
+                "labels": labels,
+                "target": target,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3803,27 +3406,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fdetect)
 
         """
-        filter_node = FilterNode(
-            name="dnn_detect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dnn_backend": dnn_backend,
-                        "model": model,
-                        "input": input,
-                        "output": output,
-                        "backend_configs": backend_configs,
-                        "options": options,
-                        "async": _async,
-                        "confidence": confidence,
-                        "labels": labels,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dnn_detect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "dnn_backend": dnn_backend,
+                "model": model,
+                "input": input,
+                "output": output,
+                "backend_configs": backend_configs,
+                "options": options,
+                "async": _async,
+                "confidence": confidence,
+                "labels": labels,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3859,25 +3456,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#dnn_005fprocessing)
 
         """
-        filter_node = FilterNode(
-            name="dnn_processing",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dnn_backend": dnn_backend,
-                        "model": model,
-                        "input": input,
-                        "output": output,
-                        "backend_configs": backend_configs,
-                        "options": options,
-                        "async": _async,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="dnn_processing", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "dnn_backend": dnn_backend,
+                "model": model,
+                "input": input,
+                "output": output,
+                "backend_configs": backend_configs,
+                "options": options,
+                "async": _async,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3898,19 +3489,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
 
         """
-        filter_node = FilterNode(
-            name="doubleweave",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "first_field": first_field,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="doubleweave", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "first_field": first_field,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -3950,27 +3535,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawbox)
 
         """
-        filter_node = FilterNode(
-            name="drawbox",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "width": width,
-                        "height": height,
-                        "color": color,
-                        "thickness": thickness,
-                        "replace": replace,
-                        "box_source": box_source,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="drawbox", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "width": width,
+                "height": height,
+                "color": color,
+                "thickness": thickness,
+                "replace": replace,
+                "box_source": box_source,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4022,33 +3601,27 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgraph)
 
         """
-        filter_node = FilterNode(
-            name="drawgraph",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "m1": m1,
-                        "fg1": fg1,
-                        "m2": m2,
-                        "fg2": fg2,
-                        "m3": m3,
-                        "fg3": fg3,
-                        "m4": m4,
-                        "fg4": fg4,
-                        "bg": bg,
-                        "min": min,
-                        "max": max,
-                        "mode": mode,
-                        "slide": slide,
-                        "size": size,
-                        "rate": rate,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="drawgraph", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "m1": m1,
+                "fg1": fg1,
+                "m2": m2,
+                "fg2": fg2,
+                "m3": m3,
+                "fg3": fg3,
+                "m4": m4,
+                "fg4": fg4,
+                "bg": bg,
+                "min": min,
+                "max": max,
+                "mode": mode,
+                "slide": slide,
+                "size": size,
+                "rate": rate,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4086,26 +3659,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawgrid)
 
         """
-        filter_node = FilterNode(
-            name="drawgrid",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "width": width,
-                        "height": height,
-                        "color": color,
-                        "thickness": thickness,
-                        "replace": replace,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="drawgrid", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "width": width,
+                "height": height,
+                "color": color,
+                "thickness": thickness,
+                "replace": replace,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4209,50 +3776,44 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#drawtext)
 
         """
-        filter_node = FilterNode(
-            name="drawtext",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "fontfile": fontfile,
-                        "text": text,
-                        "textfile": textfile,
-                        "fontcolor": fontcolor,
-                        "fontcolor_expr": fontcolor_expr,
-                        "boxcolor": boxcolor,
-                        "bordercolor": bordercolor,
-                        "shadowcolor": shadowcolor,
-                        "box": box,
-                        "boxborderw": boxborderw,
-                        "line_spacing": line_spacing,
-                        "fontsize": fontsize,
-                        "x": x,
-                        "y": y,
-                        "shadowx": shadowx,
-                        "shadowy": shadowy,
-                        "borderw": borderw,
-                        "tabsize": tabsize,
-                        "basetime": basetime,
-                        "font": font,
-                        "expansion": expansion,
-                        "timecode": timecode,
-                        "tc24hmax": tc24hmax,
-                        "timecode_rate": timecode_rate,
-                        "reload": reload,
-                        "alpha": alpha,
-                        "fix_bounds": fix_bounds,
-                        "start_number": start_number,
-                        "text_source": text_source,
-                        "text_shaping": text_shaping,
-                        "ft_load_flags": ft_load_flags,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="drawtext", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "fontfile": fontfile,
+                "text": text,
+                "textfile": textfile,
+                "fontcolor": fontcolor,
+                "fontcolor_expr": fontcolor_expr,
+                "boxcolor": boxcolor,
+                "bordercolor": bordercolor,
+                "shadowcolor": shadowcolor,
+                "box": box,
+                "boxborderw": boxborderw,
+                "line_spacing": line_spacing,
+                "fontsize": fontsize,
+                "x": x,
+                "y": y,
+                "shadowx": shadowx,
+                "shadowy": shadowy,
+                "borderw": borderw,
+                "tabsize": tabsize,
+                "basetime": basetime,
+                "font": font,
+                "expansion": expansion,
+                "timecode": timecode,
+                "tc24hmax": tc24hmax,
+                "timecode_rate": timecode_rate,
+                "reload": reload,
+                "alpha": alpha,
+                "fix_bounds": fix_bounds,
+                "start_number": start_number,
+                "text_source": text_source,
+                "text_shaping": text_shaping,
+                "ft_load_flags": ft_load_flags,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4284,23 +3845,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#edgedetect)
 
         """
-        filter_node = FilterNode(
-            name="edgedetect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "high": high,
-                        "low": low,
-                        "mode": mode,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="edgedetect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "high": high,
+                "low": low,
+                "mode": mode,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4332,23 +3887,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#elbg)
 
         """
-        filter_node = FilterNode(
-            name="elbg",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "codebook_length": codebook_length,
-                        "nb_steps": nb_steps,
-                        "seed": seed,
-                        "pal8": pal8,
-                        "use_alpha": use_alpha,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="elbg", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "codebook_length": codebook_length,
+                "nb_steps": nb_steps,
+                "seed": seed,
+                "pal8": pal8,
+                "use_alpha": use_alpha,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4374,20 +3923,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#entropy)
 
         """
-        filter_node = FilterNode(
-            name="entropy",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="entropy", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4406,19 +3949,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#epx)
 
         """
-        filter_node = FilterNode(
-            name="epx",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "n": n,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="epx", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "n": n,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4460,28 +3997,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#eq)
 
         """
-        filter_node = FilterNode(
-            name="eq",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "contrast": contrast,
-                        "brightness": brightness,
-                        "saturation": saturation,
-                        "gamma": gamma,
-                        "gamma_r": gamma_r,
-                        "gamma_g": gamma_g,
-                        "gamma_b": gamma_b,
-                        "gamma_weight": gamma_weight,
-                        "eval": eval,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="eq", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "contrast": contrast,
+                "brightness": brightness,
+                "saturation": saturation,
+                "gamma": gamma,
+                "gamma_r": gamma_r,
+                "gamma_g": gamma_g,
+                "gamma_b": gamma_b,
+                "gamma_weight": gamma_weight,
+                "eval": eval,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4515,24 +4046,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#erosion)
 
         """
-        filter_node = FilterNode(
-            name="erosion",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "coordinates": coordinates,
-                        "threshold0": threshold0,
-                        "threshold1": threshold1,
-                        "threshold2": threshold2,
-                        "threshold3": threshold3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="erosion", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "coordinates": coordinates,
+                "threshold0": threshold0,
+                "threshold1": threshold1,
+                "threshold2": threshold2,
+                "threshold3": threshold3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4574,28 +4099,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#estdif)
 
         """
-        filter_node = FilterNode(
-            name="estdif",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "parity": parity,
-                        "deint": deint,
-                        "rslope": rslope,
-                        "redge": redge,
-                        "ecost": ecost,
-                        "mcost": mcost,
-                        "dcost": dcost,
-                        "interp": interp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="estdif", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+                "rslope": rslope,
+                "redge": redge,
+                "ecost": ecost,
+                "mcost": mcost,
+                "dcost": dcost,
+                "interp": interp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4623,21 +4142,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#exposure)
 
         """
-        filter_node = FilterNode(
-            name="exposure",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "exposure": exposure,
-                        "black": black,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="exposure", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "exposure": exposure,
+                "black": black,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4659,19 +4172,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#extractplanes)
 
         """
-        filter_node = FilterNode(
-            name="extractplanes",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video] * len(planes.split("+"))),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="extractplanes",
+                typings_input=("video",),
+                typings_output="[StreamType.video] * len(planes.split('+'))",
             ),
+            self,
+            **{
+                "planes": planes,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -4710,26 +4221,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fade)
 
         """
-        filter_node = FilterNode(
-            name="fade",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "type": type,
-                        "start_frame": start_frame,
-                        "nb_frames": nb_frames,
-                        "alpha": alpha,
-                        "start_time": start_time,
-                        "duration": duration,
-                        "color": color,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fade", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "type": type,
+                "start_frame": start_frame,
+                "nb_frames": nb_frames,
+                "alpha": alpha,
+                "start_time": start_time,
+                "duration": duration,
+                "color": color,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4752,23 +4257,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#feedback)
 
         """
-        filter_node = FilterNode(
-            name="feedback",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video, StreamType.video]),
-            inputs=(
-                self,
-                _feedin,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "w": w,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="feedback", typings_input=("video", "video"), typings_output=("video", "video")),
+            self,
+            _feedin,
+            **{
+                "x": x,
+                "w": w,
+            }
+            | kwargs,
         )
         return (
             filter_node.video(0),
@@ -4838,28 +4335,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftdnoiz)
 
         """
-        filter_node = FilterNode(
-            name="fftdnoiz",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sigma": sigma,
-                        "amount": amount,
-                        "block": block,
-                        "overlap": overlap,
-                        "method": method,
-                        "prev": prev,
-                        "next": next,
-                        "planes": planes,
-                        "window": window,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fftdnoiz", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "sigma": sigma,
+                "amount": amount,
+                "block": block,
+                "overlap": overlap,
+                "method": method,
+                "prev": prev,
+                "next": next,
+                "planes": planes,
+                "window": window,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4897,26 +4388,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fftfilt)
 
         """
-        filter_node = FilterNode(
-            name="fftfilt",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dc_Y": dc_Y,
-                        "dc_U": dc_U,
-                        "dc_V": dc_V,
-                        "weight_Y": weight_Y,
-                        "weight_U": weight_U,
-                        "weight_V": weight_V,
-                        "eval": eval,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fftfilt", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "dc_Y": dc_Y,
+                "dc_U": dc_U,
+                "dc_V": dc_V,
+                "weight_Y": weight_Y,
+                "weight_U": weight_U,
+                "weight_V": weight_V,
+                "eval": eval,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4935,19 +4420,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#field)
 
         """
-        filter_node = FilterNode(
-            name="field",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "type": type,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="field", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "type": type,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -4973,20 +4452,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldhint)
 
         """
-        filter_node = FilterNode(
-            name="fieldhint",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "hint": hint,
-                        "mode": mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fieldhint", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "hint": hint,
+                "mode": mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5012,20 +4485,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fieldorder)
 
         """
-        filter_node = FilterNode(
-            name="fieldorder",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "order": order,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fieldorder", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "order": order,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5063,25 +4530,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fillborders)
 
         """
-        filter_node = FilterNode(
-            name="fillborders",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "left": left,
-                        "right": right,
-                        "top": top,
-                        "bottom": bottom,
-                        "mode": mode,
-                        "color": color,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fillborders", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "left": left,
+                "right": right,
+                "top": top,
+                "bottom": bottom,
+                "mode": mode,
+                "color": color,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5113,23 +4574,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#find_005frect)
 
         """
-        filter_node = FilterNode(
-            name="find_rect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "object": object,
-                        "threshold": threshold,
-                        "mipmaps": mipmaps,
-                        "xmin": xmin,
-                        "discard": discard,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="find_rect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "object": object,
+                "threshold": threshold,
+                "mipmaps": mipmaps,
+                "xmin": xmin,
+                "discard": discard,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5173,29 +4628,23 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#floodfill)
 
         """
-        filter_node = FilterNode(
-            name="floodfill",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "s0": s0,
-                        "s1": s1,
-                        "s2": s2,
-                        "s3": s3,
-                        "d0": d0,
-                        "d1": d1,
-                        "d2": d2,
-                        "d3": d3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="floodfill", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "s0": s0,
+                "s1": s1,
+                "s2": s2,
+                "s3": s3,
+                "d0": d0,
+                "d1": d1,
+                "d2": d2,
+                "d3": d3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5214,19 +4663,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#format)
 
         """
-        filter_node = FilterNode(
-            name="format",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "pix_fmts": pix_fmts,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="format", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "pix_fmts": pix_fmts,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5256,22 +4699,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fps)
 
         """
-        filter_node = FilterNode(
-            name="fps",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "fps": fps,
-                        "start_time": start_time,
-                        "round": round,
-                        "eof_action": eof_action,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fps", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "fps": fps,
+                "start_time": start_time,
+                "round": round,
+                "eof_action": eof_action,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5296,22 +4733,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framepack)
 
         """
-        filter_node = FilterNode(
-            name="framepack",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _right,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "format": format,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="framepack", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _right,
+            **{
+                "format": format,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5343,23 +4772,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framerate)
 
         """
-        filter_node = FilterNode(
-            name="framerate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "fps": fps,
-                        "interp_start": interp_start,
-                        "interp_end": interp_end,
-                        "scene": scene,
-                        "flags": flags,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="framerate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "fps": fps,
+                "interp_start": interp_start,
+                "interp_end": interp_end,
+                "scene": scene,
+                "flags": flags,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5379,20 +4802,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#framestep)
 
         """
-        filter_node = FilterNode(
-            name="framestep",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "step": step,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="framestep", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "step": step,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5412,20 +4829,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezedetect)
 
         """
-        filter_node = FilterNode(
-            name="freezedetect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "n": n,
-                        "d": d,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="freezedetect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "n": n,
+                "d": d,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5454,24 +4865,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#freezeframes)
 
         """
-        filter_node = FilterNode(
-            name="freezeframes",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _replace,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "first": first,
-                        "last": last,
-                        "replace": replace,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="freezeframes", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _replace,
+            **{
+                "first": first,
+                "last": last,
+                "replace": replace,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5499,21 +4902,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#frei0r)
 
         """
-        filter_node = FilterNode(
-            name="frei0r",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "filter_name": filter_name,
-                        "filter_params": filter_params,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="frei0r", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "filter_name": filter_name,
+                "filter_params": filter_params,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5545,23 +4942,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#fspp)
 
         """
-        filter_node = FilterNode(
-            name="fspp",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "quality": quality,
-                        "qp": qp,
-                        "strength": strength,
-                        "use_bframe_qp": use_bframe_qp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="fspp", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "quality": quality,
+                "qp": qp,
+                "strength": strength,
+                "use_bframe_qp": use_bframe_qp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5593,23 +4984,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gblur)
 
         """
-        filter_node = FilterNode(
-            name="gblur",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sigma": sigma,
-                        "steps": steps,
-                        "planes": planes,
-                        "sigmaV": sigmaV,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="gblur", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "sigma": sigma,
+                "steps": steps,
+                "planes": planes,
+                "sigmaV": sigmaV,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5649,27 +5034,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#geq)
 
         """
-        filter_node = FilterNode(
-            name="geq",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "lum_expr": lum_expr,
-                        "cb_expr": cb_expr,
-                        "cr_expr": cr_expr,
-                        "alpha_expr": alpha_expr,
-                        "red_expr": red_expr,
-                        "green_expr": green_expr,
-                        "blue_expr": blue_expr,
-                        "interpolation": interpolation,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="geq", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "lum_expr": lum_expr,
+                "cb_expr": cb_expr,
+                "cr_expr": cr_expr,
+                "alpha_expr": alpha_expr,
+                "red_expr": red_expr,
+                "green_expr": green_expr,
+                "blue_expr": blue_expr,
+                "interpolation": interpolation,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5697,21 +5076,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#gradfun)
 
         """
-        filter_node = FilterNode(
-            name="gradfun",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "strength": strength,
-                        "radius": radius,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="gradfun", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "strength": strength,
+                "radius": radius,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5762,23 +5135,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#graphmonitor)
 
         """
-        filter_node = FilterNode(
-            name="graphmonitor",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "size": size,
-                        "opacity": opacity,
-                        "mode": mode,
-                        "flags": flags,
-                        "rate": rate,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="graphmonitor", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "size": size,
+                "opacity": opacity,
+                "mode": mode,
+                "flags": flags,
+                "rate": rate,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5797,19 +5164,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#grayworld)
 
         """
-        filter_node = FilterNode(
-            name="grayworld",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="grayworld", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5839,22 +5200,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#greyedge)
 
         """
-        filter_node = FilterNode(
-            name="greyedge",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "difford": difford,
-                        "minknorm": minknorm,
-                        "sigma": sigma,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="greyedge", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "difford": difford,
+                "minknorm": minknorm,
+                "sigma": sigma,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5893,28 +5248,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#haldclut)
 
         """
-        filter_node = FilterNode(
-            name="haldclut",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _clut,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "clut": clut,
-                        "interp": interp,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="haldclut", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _clut,
+            **{
+                "clut": clut,
+                "interp": interp,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5933,19 +5280,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hflip)
 
         """
-        filter_node = FilterNode(
-            name="hflip",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hflip", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -5975,22 +5316,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histeq)
 
         """
-        filter_node = FilterNode(
-            name="histeq",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "strength": strength,
-                        "intensity": intensity,
-                        "antibanding": antibanding,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="histeq", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "strength": strength,
+                "intensity": intensity,
+                "antibanding": antibanding,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6041,26 +5376,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#histogram)
 
         """
-        filter_node = FilterNode(
-            name="histogram",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "level_height": level_height,
-                        "scale_height": scale_height,
-                        "display_mode": display_mode,
-                        "levels_mode": levels_mode,
-                        "components": components,
-                        "fgopacity": fgopacity,
-                        "bgopacity": bgopacity,
-                        "colors_mode": colors_mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="histogram", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "level_height": level_height,
+                "scale_height": scale_height,
+                "display_mode": display_mode,
+                "levels_mode": levels_mode,
+                "components": components,
+                "fgopacity": fgopacity,
+                "bgopacity": bgopacity,
+                "colors_mode": colors_mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6092,23 +5421,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqdn3d)
 
         """
-        filter_node = FilterNode(
-            name="hqdn3d",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "luma_spatial": luma_spatial,
-                        "chroma_spatial": chroma_spatial,
-                        "luma_tmp": luma_tmp,
-                        "chroma_tmp": chroma_tmp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hqdn3d", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "luma_spatial": luma_spatial,
+                "chroma_spatial": chroma_spatial,
+                "luma_tmp": luma_tmp,
+                "chroma_tmp": chroma_tmp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6127,19 +5450,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hqx)
 
         """
-        filter_node = FilterNode(
-            name="hqx",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "n": n,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hqx", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "n": n,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6173,24 +5490,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvhold)
 
         """
-        filter_node = FilterNode(
-            name="hsvhold",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "hue": hue,
-                        "sat": sat,
-                        "val": val,
-                        "similarity": similarity,
-                        "blend": blend,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hsvhold", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "hue": hue,
+                "sat": sat,
+                "val": val,
+                "similarity": similarity,
+                "blend": blend,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6224,24 +5535,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hsvkey)
 
         """
-        filter_node = FilterNode(
-            name="hsvkey",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "hue": hue,
-                        "sat": sat,
-                        "val": val,
-                        "similarity": similarity,
-                        "blend": blend,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hsvkey", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "hue": hue,
+                "sat": sat,
+                "val": val,
+                "similarity": similarity,
+                "blend": blend,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6273,23 +5578,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hue)
 
         """
-        filter_node = FilterNode(
-            name="hue",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "h": h,
-                        "s": s,
-                        "H": H,
-                        "b": b,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hue", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "h": h,
+                "s": s,
+                "H": H,
+                "b": b,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6331,28 +5630,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#huesaturation)
 
         """
-        filter_node = FilterNode(
-            name="huesaturation",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "hue": hue,
-                        "saturation": saturation,
-                        "intensity": intensity,
-                        "colors": colors,
-                        "strength": strength,
-                        "rw": rw,
-                        "gw": gw,
-                        "bw": bw,
-                        "lightness": lightness,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="huesaturation", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "hue": hue,
+                "saturation": saturation,
+                "intensity": intensity,
+                "colors": colors,
+                "strength": strength,
+                "rw": rw,
+                "gw": gw,
+                "bw": bw,
+                "lightness": lightness,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6368,12 +5661,8 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwdownload)
 
         """
-        filter_node = FilterNode(
-            name="hwdownload",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hwdownload", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
         return filter_node.video(0)
 
@@ -6401,21 +5690,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwmap)
 
         """
-        filter_node = FilterNode(
-            name="hwmap",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "derive_device": derive_device,
-                        "reverse": reverse,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hwmap", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "derive_device": derive_device,
+                "reverse": reverse,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6434,19 +5717,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hwupload)
 
         """
-        filter_node = FilterNode(
-            name="hwupload",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "derive_device": derive_device,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hwupload", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "derive_device": derive_device,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6483,28 +5760,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#hysteresis)
 
         """
-        filter_node = FilterNode(
-            name="hysteresis",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _alt,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "threshold": threshold,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="hysteresis", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _alt,
+            **{
+                "planes": planes,
+                "threshold": threshold,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6537,26 +5806,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#identity)
 
         """
-        filter_node = FilterNode(
-            name="identity",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="identity", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6588,23 +5849,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#idet)
 
         """
-        filter_node = FilterNode(
-            name="idet",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "intl_thres": intl_thres,
-                        "prog_thres": prog_thres,
-                        "rep_thres": rep_thres,
-                        "half_life": half_life,
-                        "analyze_interlaced_flag": analyze_interlaced_flag,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="idet", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "intl_thres": intl_thres,
+                "prog_thres": prog_thres,
+                "rep_thres": rep_thres,
+                "half_life": half_life,
+                "analyze_interlaced_flag": analyze_interlaced_flag,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6640,25 +5895,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#il)
 
         """
-        filter_node = FilterNode(
-            name="il",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "luma_mode": luma_mode,
-                        "chroma_mode": chroma_mode,
-                        "alpha_mode": alpha_mode,
-                        "luma_swap": luma_swap,
-                        "chroma_swap": chroma_swap,
-                        "alpha_swap": alpha_swap,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="il", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "luma_mode": luma_mode,
+                "chroma_mode": chroma_mode,
+                "alpha_mode": alpha_mode,
+                "luma_swap": luma_swap,
+                "chroma_swap": chroma_swap,
+                "alpha_swap": alpha_swap,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6690,23 +5939,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#inflate)
 
         """
-        filter_node = FilterNode(
-            name="inflate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold0": threshold0,
-                        "threshold1": threshold1,
-                        "threshold2": threshold2,
-                        "threshold3": threshold3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="inflate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "threshold0": threshold0,
+                "threshold1": threshold1,
+                "threshold2": threshold2,
+                "threshold3": threshold3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6732,20 +5975,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interlace)
 
         """
-        filter_node = FilterNode(
-            name="interlace",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "scan": scan,
-                        "lowpass": lowpass,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="interlace", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "scan": scan,
+                "lowpass": lowpass,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6777,23 +6014,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kerndeint)
 
         """
-        filter_node = FilterNode(
-            name="kerndeint",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "thresh": thresh,
-                        "map": map,
-                        "order": order,
-                        "sharp": sharp,
-                        "twoway": twoway,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="kerndeint", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "thresh": thresh,
+                "map": map,
+                "order": order,
+                "sharp": sharp,
+                "twoway": twoway,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6823,22 +6054,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#kirsch)
 
         """
-        filter_node = FilterNode(
-            name="kirsch",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "scale": scale,
-                        "delta": delta,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="kirsch", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6866,21 +6091,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lagfun)
 
         """
-        filter_node = FilterNode(
-            name="lagfun",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "decay": decay,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lagfun", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "decay": decay,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6899,19 +6118,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#latency_002c-alatency)
 
         """
-        filter_node = FilterNode(
-            name="latency",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="latency", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -6947,25 +6160,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lenscorrection)
 
         """
-        filter_node = FilterNode(
-            name="lenscorrection",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cx": cx,
-                        "cy": cy,
-                        "k1": k1,
-                        "k2": k2,
-                        "i": i,
-                        "fc": fc,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lenscorrection", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "cx": cx,
+                "cy": cy,
+                "k1": k1,
+                "k2": k2,
+                "i": i,
+                "fc": fc,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7022,38 +6229,30 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
 
         """
-        filter_node = FilterNode(
-            name="libvmaf",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "model_path": model_path,
-                        "log_path": log_path,
-                        "log_fmt": log_fmt,
-                        "enable_transform": enable_transform,
-                        "psnr": psnr,
-                        "ssim": ssim,
-                        "ms_ssim": ms_ssim,
-                        "pool": pool,
-                        "n_threads": n_threads,
-                        "n_subsample": n_subsample,
-                        "enable_conf_interval": enable_conf_interval,
-                        "model": model,
-                        "feature": feature,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="libvmaf", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "model_path": model_path,
+                "log_path": log_path,
+                "log_fmt": log_fmt,
+                "enable_transform": enable_transform,
+                "psnr": psnr,
+                "ssim": ssim,
+                "ms_ssim": ms_ssim,
+                "pool": pool,
+                "n_threads": n_threads,
+                "n_subsample": n_subsample,
+                "enable_conf_interval": enable_conf_interval,
+                "model": model,
+                "feature": feature,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7083,22 +6282,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#limiter)
 
         """
-        filter_node = FilterNode(
-            name="limiter",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "min": min,
-                        "max": max,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="limiter", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "min": min,
+                "max": max,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7121,21 +6314,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#loop)
 
         """
-        filter_node = FilterNode(
-            name="loop",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "loop": loop,
-                        "size": size,
-                        "start": start,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="loop", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "loop": loop,
+                "size": size,
+                "start": start,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7165,22 +6352,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lumakey)
 
         """
-        filter_node = FilterNode(
-            name="lumakey",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold": threshold,
-                        "tolerance": tolerance,
-                        "softness": softness,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lumakey", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "threshold": threshold,
+                "tolerance": tolerance,
+                "softness": softness,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7226,30 +6407,24 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        filter_node = FilterNode(
-            name="lut",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0": c0,
-                        "c1": c1,
-                        "c2": c2,
-                        "c3": c3,
-                        "y": y,
-                        "u": u,
-                        "v": v,
-                        "r": r,
-                        "g": g,
-                        "b": b,
-                        "a": a,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lut", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "y": y,
+                "u": u,
+                "v": v,
+                "r": r,
+                "g": g,
+                "b": b,
+                "a": a,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7277,21 +6452,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut1d)
 
         """
-        filter_node = FilterNode(
-            name="lut1d",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "file": file,
-                        "interp": interp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lut1d", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "file": file,
+                "interp": interp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7334,31 +6503,23 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
         """
-        filter_node = FilterNode(
-            name="lut2",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _srcy,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0": c0,
-                        "c1": c1,
-                        "c2": c2,
-                        "c3": c3,
-                        "d": d,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lut2", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _srcy,
+            **{
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "d": d,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7390,22 +6551,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut3d)
 
         """
-        filter_node = FilterNode(
-            name="lut3d",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "file": file,
-                        "clut": clut,
-                        "interp": interp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lut3d", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "file": file,
+                "clut": clut,
+                "interp": interp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7451,30 +6606,24 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        filter_node = FilterNode(
-            name="lutrgb",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0": c0,
-                        "c1": c1,
-                        "c2": c2,
-                        "c3": c3,
-                        "y": y,
-                        "u": u,
-                        "v": v,
-                        "r": r,
-                        "g": g,
-                        "b": b,
-                        "a": a,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lutrgb", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "y": y,
+                "u": u,
+                "v": v,
+                "r": r,
+                "g": g,
+                "b": b,
+                "a": a,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7520,30 +6669,24 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut_002c-lutrgb_002c-lutyuv)
 
         """
-        filter_node = FilterNode(
-            name="lutyuv",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0": c0,
-                        "c1": c1,
-                        "c2": c2,
-                        "c3": c3,
-                        "y": y,
-                        "u": u,
-                        "v": v,
-                        "r": r,
-                        "g": g,
-                        "b": b,
-                        "a": a,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="lutyuv", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "y": y,
+                "u": u,
+                "v": v,
+                "r": r,
+                "g": g,
+                "b": b,
+                "a": a,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7575,26 +6718,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedclamp)
 
         """
-        filter_node = FilterNode(
-            name="maskedclamp",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _dark,
-                _bright,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "undershoot": undershoot,
-                        "overshoot": overshoot,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="maskedclamp", typings_input=("video", "video", "video"), typings_output=("video",)),
+            self,
+            _dark,
+            _bright,
+            **{
+                "undershoot": undershoot,
+                "overshoot": overshoot,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7622,24 +6757,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmax)
 
         """
-        filter_node = FilterNode(
-            name="maskedmax",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _filter1,
-                _filter2,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="maskedmax", typings_input=("video", "video", "video"), typings_output=("video",)),
+            self,
+            _filter1,
+            _filter2,
+            **{
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7667,24 +6794,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmerge)
 
         """
-        filter_node = FilterNode(
-            name="maskedmerge",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _overlay,
-                _mask,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="maskedmerge", typings_input=("video", "video", "video"), typings_output=("video",)),
+            self,
+            _overlay,
+            _mask,
+            **{
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7712,24 +6831,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedmin)
 
         """
-        filter_node = FilterNode(
-            name="maskedmin",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _filter1,
-                _filter2,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="maskedmin", typings_input=("video", "video", "video"), typings_output=("video",)),
+            self,
+            _filter1,
+            _filter2,
+            **{
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7760,25 +6871,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskedthreshold)
 
         """
-        filter_node = FilterNode(
-            name="maskedthreshold",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold": threshold,
-                        "planes": planes,
-                        "mode": mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="maskedthreshold", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "threshold": threshold,
+                "planes": planes,
+                "mode": mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7812,24 +6915,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#maskfun)
 
         """
-        filter_node = FilterNode(
-            name="maskfun",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "low": low,
-                        "high": high,
-                        "planes": planes,
-                        "fill": fill,
-                        "sum": sum,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="maskfun", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "low": low,
+                "high": high,
+                "planes": planes,
+                "fill": fill,
+                "sum": sum,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7861,23 +6958,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#median)
 
         """
-        filter_node = FilterNode(
-            name="median",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "radius": radius,
-                        "planes": planes,
-                        "radiusV": radiusV,
-                        "percentile": percentile,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="median", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "radius": radius,
+                "planes": planes,
+                "radiusV": radiusV,
+                "percentile": percentile,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7907,21 +6998,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mestimate)
 
         """
-        filter_node = FilterNode(
-            name="mestimate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "method": method,
-                        "mb_size": mb_size,
-                        "search_param": search_param,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="mestimate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "method": method,
+                "mb_size": mb_size,
+                "search_param": search_param,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -7961,26 +7046,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#metadata_002c-ametadata)
 
         """
-        filter_node = FilterNode(
-            name="metadata",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "key": key,
-                        "value": value,
-                        "function": function,
-                        "expr": expr,
-                        "file": file,
-                        "direct": direct,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="metadata", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "key": key,
+                "value": value,
+                "function": function,
+                "expr": expr,
+                "file": file,
+                "direct": direct,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8002,23 +7081,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#midequalizer)
 
         """
-        filter_node = FilterNode(
-            name="midequalizer",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _in1,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="midequalizer", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _in1,
+            **{
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8062,28 +7133,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#minterpolate)
 
         """
-        filter_node = FilterNode(
-            name="minterpolate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "fps": fps,
-                        "mi_mode": mi_mode,
-                        "mc_mode": mc_mode,
-                        "me_mode": me_mode,
-                        "me": me,
-                        "mb_size": mb_size,
-                        "search_param": search_param,
-                        "vsbmc": vsbmc,
-                        "scd": scd,
-                        "scd_threshold": scd_threshold,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="minterpolate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "fps": fps,
+                "mi_mode": mi_mode,
+                "mc_mode": mc_mode,
+                "me_mode": me_mode,
+                "me": me,
+                "mb_size": mb_size,
+                "search_param": search_param,
+                "vsbmc": vsbmc,
+                "scd": scd,
+                "scd_threshold": scd_threshold,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8115,23 +7180,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#monochrome)
 
         """
-        filter_node = FilterNode(
-            name="monochrome",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "cb": cb,
-                        "cr": cr,
-                        "size": size,
-                        "high": high,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="monochrome", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "cb": cb,
+                "cr": cr,
+                "size": size,
+                "high": high,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8172,29 +7231,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#morpho)
 
         """
-        filter_node = FilterNode(
-            name="morpho",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _structure,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "planes": planes,
-                        "structure": structure,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="morpho", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _structure,
+            **{
+                "mode": mode,
+                "planes": planes,
+                "structure": structure,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8224,22 +7275,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mpdecimate)
 
         """
-        filter_node = FilterNode(
-            name="mpdecimate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "max": max,
-                        "hi": hi,
-                        "lo": lo,
-                        "frac": frac,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="mpdecimate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "max": max,
+                "hi": hi,
+                "lo": lo,
+                "frac": frac,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8272,26 +7317,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#msad)
 
         """
-        filter_node = FilterNode(
-            name="msad",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="msad", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8322,25 +7359,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#multiply)
 
         """
-        filter_node = FilterNode(
-            name="multiply",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _factor,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "scale": scale,
-                        "offset": offset,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="multiply", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _factor,
+            **{
+                "scale": scale,
+                "offset": offset,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8368,21 +7397,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#negate)
 
         """
-        filter_node = FilterNode(
-            name="negate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "components": components,
-                        "negate_alpha": negate_alpha,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="negate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "components": components,
+                "negate_alpha": negate_alpha,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8416,24 +7439,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nlmeans)
 
         """
-        filter_node = FilterNode(
-            name="nlmeans",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "s": s,
-                        "p": p,
-                        "pc": pc,
-                        "r": r,
-                        "rc": rc,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="nlmeans", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "s": s,
+                "p": p,
+                "pc": pc,
+                "r": r,
+                "rc": rc,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8475,28 +7492,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#nnedi)
 
         """
-        filter_node = FilterNode(
-            name="nnedi",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "weights": weights,
-                        "deint": deint,
-                        "field": field,
-                        "planes": planes,
-                        "nsize": nsize,
-                        "nns": nns,
-                        "qual": qual,
-                        "etype": etype,
-                        "pscrn": pscrn,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="nnedi", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "weights": weights,
+                "deint": deint,
+                "field": field,
+                "planes": planes,
+                "nsize": nsize,
+                "nns": nns,
+                "qual": qual,
+                "etype": etype,
+                "pscrn": pscrn,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8515,19 +7526,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noformat)
 
         """
-        filter_node = FilterNode(
-            name="noformat",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "pix_fmts": pix_fmts,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="noformat", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "pix_fmts": pix_fmts,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8581,34 +7586,28 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#noise)
 
         """
-        filter_node = FilterNode(
-            name="noise",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "all_seed": all_seed,
-                        "all_strength": all_strength,
-                        "all_flags": all_flags,
-                        "c0_seed": c0_seed,
-                        "c0_strength": c0_strength,
-                        "c0_flags": c0_flags,
-                        "c1_seed": c1_seed,
-                        "c1_strength": c1_strength,
-                        "c1_flags": c1_flags,
-                        "c2_seed": c2_seed,
-                        "c2_strength": c2_strength,
-                        "c2_flags": c2_flags,
-                        "c3_seed": c3_seed,
-                        "c3_strength": c3_strength,
-                        "c3_flags": c3_flags,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="noise", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "all_seed": all_seed,
+                "all_strength": all_strength,
+                "all_flags": all_flags,
+                "c0_seed": c0_seed,
+                "c0_strength": c0_strength,
+                "c0_flags": c0_flags,
+                "c1_seed": c1_seed,
+                "c1_strength": c1_strength,
+                "c1_flags": c1_flags,
+                "c2_seed": c2_seed,
+                "c2_strength": c2_strength,
+                "c2_flags": c2_flags,
+                "c3_seed": c3_seed,
+                "c3_strength": c3_strength,
+                "c3_flags": c3_flags,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8642,24 +7641,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#normalize)
 
         """
-        filter_node = FilterNode(
-            name="normalize",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "blackpt": blackpt,
-                        "whitept": whitept,
-                        "smoothing": smoothing,
-                        "independence": independence,
-                        "strength": strength,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="normalize", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "blackpt": blackpt,
+                "whitept": whitept,
+                "smoothing": smoothing,
+                "independence": independence,
+                "strength": strength,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8675,12 +7668,8 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#null)
 
         """
-        filter_node = FilterNode(
-            name="null",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="null", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
         return filter_node.video(0)
 
@@ -8730,32 +7719,26 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#oscilloscope)
 
         """
-        filter_node = FilterNode(
-            name="oscilloscope",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "s": s,
-                        "t": t,
-                        "o": o,
-                        "tx": tx,
-                        "ty": ty,
-                        "tw": tw,
-                        "th": th,
-                        "c": c,
-                        "g": g,
-                        "st": st,
-                        "sc": sc,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="oscilloscope", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "s": s,
+                "t": t,
+                "o": o,
+                "tx": tx,
+                "ty": ty,
+                "tw": tw,
+                "th": th,
+                "c": c,
+                "g": g,
+                "st": st,
+                "sc": sc,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8800,31 +7783,23 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#overlay)
 
         """
-        filter_node = FilterNode(
-            name="overlay",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _overlay,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "eof_action": eof_action,
-                        "eval": eval,
-                        "shortest": shortest,
-                        "format": format,
-                        "repeatlast": repeatlast,
-                        "alpha": alpha,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="overlay", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _overlay,
+            **{
+                "x": x,
+                "y": y,
+                "eof_action": eof_action,
+                "eval": eval,
+                "shortest": shortest,
+                "format": format,
+                "repeatlast": repeatlast,
+                "alpha": alpha,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8854,22 +7829,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#owdenoise)
 
         """
-        filter_node = FilterNode(
-            name="owdenoise",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "depth": depth,
-                        "luma_strength": luma_strength,
-                        "chroma_strength": chroma_strength,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="owdenoise", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "depth": depth,
+                "luma_strength": luma_strength,
+                "chroma_strength": chroma_strength,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8905,25 +7874,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pad)
 
         """
-        filter_node = FilterNode(
-            name="pad",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "width": width,
-                        "height": height,
-                        "x": x,
-                        "y": y,
-                        "color": color,
-                        "eval": eval,
-                        "aspect": aspect,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pad", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "width": width,
+                "height": height,
+                "x": x,
+                "y": y,
+                "color": color,
+                "eval": eval,
+                "aspect": aspect,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -8953,22 +7916,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#palettegen)
 
         """
-        filter_node = FilterNode(
-            name="palettegen",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "max_colors": max_colors,
-                        "reserve_transparent": reserve_transparent,
-                        "transparency_color": transparency_color,
-                        "stats_mode": stats_mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="palettegen", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "max_colors": max_colors,
+                "reserve_transparent": reserve_transparent,
+                "transparency_color": transparency_color,
+                "stats_mode": stats_mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9005,27 +7962,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#paletteuse)
 
         """
-        filter_node = FilterNode(
-            name="paletteuse",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _palette,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dither": dither,
-                        "bayer_scale": bayer_scale,
-                        "diff_mode": diff_mode,
-                        "new": new,
-                        "alpha_threshold": alpha_threshold,
-                        "debug_kdtree": debug_kdtree,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="paletteuse", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _palette,
+            **{
+                "dither": dither,
+                "bayer_scale": bayer_scale,
+                "diff_mode": diff_mode,
+                "new": new,
+                "alpha_threshold": alpha_threshold,
+                "debug_kdtree": debug_kdtree,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9053,21 +8002,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perms_002c-aperms)
 
         """
-        filter_node = FilterNode(
-            name="perms",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "seed": seed,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="perms", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "seed": seed,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9113,30 +8056,24 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#perspective)
 
         """
-        filter_node = FilterNode(
-            name="perspective",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x0": x0,
-                        "y0": y0,
-                        "x1": x1,
-                        "y1": y1,
-                        "x2": x2,
-                        "y2": y2,
-                        "x3": x3,
-                        "y3": y3,
-                        "interpolation": interpolation,
-                        "sense": sense,
-                        "eval": eval,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="perspective", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x0": x0,
+                "y0": y0,
+                "x1": x1,
+                "y1": y1,
+                "x2": x2,
+                "y2": y2,
+                "x3": x3,
+                "y3": y3,
+                "interpolation": interpolation,
+                "sense": sense,
+                "eval": eval,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9162,20 +8099,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#phase)
 
         """
-        filter_node = FilterNode(
-            name="phase",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="phase", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9205,22 +8136,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#photosensitivity)
 
         """
-        filter_node = FilterNode(
-            name="photosensitivity",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frames": frames,
-                        "threshold": threshold,
-                        "skip": skip,
-                        "bypass": bypass,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="photosensitivity", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "frames": frames,
+                "threshold": threshold,
+                "skip": skip,
+                "bypass": bypass,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9236,12 +8161,10 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixdesctest)
 
         """
-        filter_node = FilterNode(
-            name="pixdesctest",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pixdesctest", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{} | kwargs,
         )
         return filter_node.video(0)
 
@@ -9273,23 +8196,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixelize)
 
         """
-        filter_node = FilterNode(
-            name="pixelize",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "width": width,
-                        "height": height,
-                        "mode": mode,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pixelize", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "width": width,
+                "height": height,
+                "mode": mode,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9327,26 +8244,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pixscope)
 
         """
-        filter_node = FilterNode(
-            name="pixscope",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "x": x,
-                        "y": y,
-                        "w": w,
-                        "h": h,
-                        "o": o,
-                        "wx": wx,
-                        "wy": wy,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pixscope", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "x": x,
+                "y": y,
+                "w": w,
+                "h": h,
+                "o": o,
+                "wx": wx,
+                "wy": wy,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9366,20 +8277,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp)
 
         """
-        filter_node = FilterNode(
-            name="pp",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "subfilters": subfilters,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pp", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "subfilters": subfilters,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9407,21 +8312,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pp7)
 
         """
-        filter_node = FilterNode(
-            name="pp7",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "qp": qp,
-                        "mode": mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pp7", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "qp": qp,
+                "mode": mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9451,22 +8350,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#prewitt)
 
         """
-        filter_node = FilterNode(
-            name="prewitt",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "scale": scale,
-                        "delta": delta,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="prewitt", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9523,26 +8416,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pseudocolor)
 
         """
-        filter_node = FilterNode(
-            name="pseudocolor",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0": c0,
-                        "c1": c1,
-                        "c2": c2,
-                        "c3": c3,
-                        "index": index,
-                        "preset": preset,
-                        "opacity": opacity,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pseudocolor", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "index": index,
+                "preset": preset,
+                "opacity": opacity,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9581,29 +8468,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#psnr)
 
         """
-        filter_node = FilterNode(
-            name="psnr",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "stats_file": stats_file,
-                        "stats_version": stats_version,
-                        "output_max": output_max,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="psnr", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "stats_file": stats_file,
+                "stats_version": stats_version,
+                "output_max": output_max,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9637,24 +8516,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#pullup)
 
         """
-        filter_node = FilterNode(
-            name="pullup",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "jl": jl,
-                        "jr": jr,
-                        "jt": jt,
-                        "jb": jb,
-                        "sb": sb,
-                        "mp": mp,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="pullup", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "jl": jl,
+                "jr": jr,
+                "jt": jt,
+                "jb": jb,
+                "sb": sb,
+                "mp": mp,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9674,20 +8547,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#qp)
 
         """
-        filter_node = FilterNode(
-            name="qp",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "qp": qp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="qp", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "qp": qp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9707,20 +8574,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#random)
 
         """
-        filter_node = FilterNode(
-            name="random",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frames": frames,
-                        "seed": seed,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="random", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "frames": frames,
+                "seed": seed,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9754,24 +8615,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readeia608)
 
         """
-        filter_node = FilterNode(
-            name="readeia608",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "scan_min": scan_min,
-                        "scan_max": scan_max,
-                        "spw": spw,
-                        "chp": chp,
-                        "lp": lp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="readeia608", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "scan_min": scan_min,
+                "scan_max": scan_max,
+                "spw": spw,
+                "chp": chp,
+                "lp": lp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9794,21 +8649,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#readvitc)
 
         """
-        filter_node = FilterNode(
-            name="readvitc",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "scan_max": scan_max,
-                        "thr_b": thr_b,
-                        "thr_w": thr_w,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="readvitc", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "scan_max": scan_max,
+                "thr_b": thr_b,
+                "thr_w": thr_w,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9828,20 +8677,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#realtime_002c-arealtime)
 
         """
-        filter_node = FilterNode(
-            name="realtime",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "limit": limit,
-                        "speed": speed,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="realtime", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "limit": limit,
+                "speed": speed,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9869,24 +8712,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#remap)
 
         """
-        filter_node = FilterNode(
-            name="remap",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _xmap,
-                _ymap,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "format": format,
-                        "fill": fill,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="remap", typings_input=("video", "video", "video"), typings_output=("video",)),
+            self,
+            _xmap,
+            _ymap,
+            **{
+                "format": format,
+                "fill": fill,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9918,23 +8753,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removegrain)
 
         """
-        filter_node = FilterNode(
-            name="removegrain",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "m0": m0,
-                        "m1": m1,
-                        "m2": m2,
-                        "m3": m3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="removegrain", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "m0": m0,
+                "m1": m1,
+                "m2": m2,
+                "m3": m3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9956,20 +8785,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#removelogo)
 
         """
-        filter_node = FilterNode(
-            name="removelogo",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "filename": filename,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="removelogo", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "filename": filename,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -9985,12 +8808,10 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#repeatfields)
 
         """
-        filter_node = FilterNode(
-            name="repeatfields",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="repeatfields", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{} | kwargs,
         )
         return filter_node.video(0)
 
@@ -10006,12 +8827,8 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#reverse)
 
         """
-        filter_node = FilterNode(
-            name="reverse",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="reverse", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
         return filter_node.video(0)
 
@@ -10053,28 +8870,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rgbashift)
 
         """
-        filter_node = FilterNode(
-            name="rgbashift",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "rh": rh,
-                        "rv": rv,
-                        "gh": gh,
-                        "gv": gv,
-                        "bh": bh,
-                        "bv": bv,
-                        "ah": ah,
-                        "av": av,
-                        "edge": edge,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="rgbashift", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "rh": rh,
+                "rv": rv,
+                "gh": gh,
+                "gv": gv,
+                "bh": bh,
+                "bv": bv,
+                "ah": ah,
+                "av": av,
+                "edge": edge,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10104,22 +8915,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#roberts)
 
         """
-        filter_node = FilterNode(
-            name="roberts",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "scale": scale,
-                        "delta": delta,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="roberts", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10153,24 +8958,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#rotate)
 
         """
-        filter_node = FilterNode(
-            name="rotate",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "angle": angle,
-                        "out_w": out_w,
-                        "out_h": out_h,
-                        "fillcolor": fillcolor,
-                        "bilinear": bilinear,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="rotate", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "angle": angle,
+                "out_w": out_w,
+                "out_h": out_h,
+                "fillcolor": fillcolor,
+                "bilinear": bilinear,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10206,25 +9005,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sab)
 
         """
-        filter_node = FilterNode(
-            name="sab",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "luma_radius": luma_radius,
-                        "luma_pre_filter_radius": luma_pre_filter_radius,
-                        "luma_strength": luma_strength,
-                        "chroma_radius": chroma_radius,
-                        "chroma_pre_filter_radius": chroma_pre_filter_radius,
-                        "chroma_strength": chroma_strength,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="sab", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "luma_radius": luma_radius,
+                "luma_pre_filter_radius": luma_pre_filter_radius,
+                "luma_strength": luma_strength,
+                "chroma_radius": chroma_radius,
+                "chroma_pre_filter_radius": chroma_pre_filter_radius,
+                "chroma_strength": chroma_strength,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10288,35 +9081,29 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale)
 
         """
-        filter_node = FilterNode(
-            name="scale",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "w": w,
-                        "h": h,
-                        "flags": flags,
-                        "interl": interl,
-                        "in_color_matrix": in_color_matrix,
-                        "out_color_matrix": out_color_matrix,
-                        "in_range": in_range,
-                        "out_range": out_range,
-                        "in_v_chr_pos": in_v_chr_pos,
-                        "in_h_chr_pos": in_h_chr_pos,
-                        "out_v_chr_pos": out_v_chr_pos,
-                        "out_h_chr_pos": out_h_chr_pos,
-                        "force_original_aspect_ratio": force_original_aspect_ratio,
-                        "force_divisible_by": force_divisible_by,
-                        "param0": param0,
-                        "param1": param1,
-                        "eval": eval,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="scale", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "w": w,
+                "h": h,
+                "flags": flags,
+                "interl": interl,
+                "in_color_matrix": in_color_matrix,
+                "out_color_matrix": out_color_matrix,
+                "in_range": in_range,
+                "out_range": out_range,
+                "in_v_chr_pos": in_v_chr_pos,
+                "in_h_chr_pos": in_h_chr_pos,
+                "out_v_chr_pos": out_v_chr_pos,
+                "out_h_chr_pos": out_h_chr_pos,
+                "force_original_aspect_ratio": force_original_aspect_ratio,
+                "force_divisible_by": force_divisible_by,
+                "param0": param0,
+                "param1": param1,
+                "eval": eval,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10382,38 +9169,30 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale2ref)
 
         """
-        filter_node = FilterNode(
-            name="scale2ref",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video, StreamType.video]),
-            inputs=(
-                self,
-                _ref,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "w": w,
-                        "h": h,
-                        "flags": flags,
-                        "interl": interl,
-                        "in_color_matrix": in_color_matrix,
-                        "out_color_matrix": out_color_matrix,
-                        "in_range": in_range,
-                        "out_range": out_range,
-                        "in_v_chr_pos": in_v_chr_pos,
-                        "in_h_chr_pos": in_h_chr_pos,
-                        "out_v_chr_pos": out_v_chr_pos,
-                        "out_h_chr_pos": out_h_chr_pos,
-                        "force_original_aspect_ratio": force_original_aspect_ratio,
-                        "force_divisible_by": force_divisible_by,
-                        "param0": param0,
-                        "param1": param1,
-                        "eval": eval,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="scale2ref", typings_input=("video", "video"), typings_output=("video", "video")),
+            self,
+            _ref,
+            **{
+                "w": w,
+                "h": h,
+                "flags": flags,
+                "interl": interl,
+                "in_color_matrix": in_color_matrix,
+                "out_color_matrix": out_color_matrix,
+                "in_range": in_range,
+                "out_range": out_range,
+                "in_v_chr_pos": in_v_chr_pos,
+                "in_h_chr_pos": in_h_chr_pos,
+                "out_v_chr_pos": out_v_chr_pos,
+                "out_h_chr_pos": out_h_chr_pos,
+                "force_original_aspect_ratio": force_original_aspect_ratio,
+                "force_divisible_by": force_divisible_by,
+                "param0": param0,
+                "param1": param1,
+                "eval": eval,
+            }
+            | kwargs,
         )
         return (
             filter_node.video(0),
@@ -10438,20 +9217,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scdet)
 
         """
-        filter_node = FilterNode(
-            name="scdet",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold": threshold,
-                        "sc_pass": sc_pass,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="scdet", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "threshold": threshold,
+                "sc_pass": sc_pass,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10481,22 +9254,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scharr)
 
         """
-        filter_node = FilterNode(
-            name="scharr",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "scale": scale,
-                        "delta": delta,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="scharr", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10528,23 +9295,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scroll)
 
         """
-        filter_node = FilterNode(
-            name="scroll",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "horizontal": horizontal,
-                        "vertical": vertical,
-                        "hpos": hpos,
-                        "vpos": vpos,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="scroll", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "horizontal": horizontal,
+                "vertical": vertical,
+                "hpos": hpos,
+                "vpos": vpos,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10567,20 +9328,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#segment_002c-asegment)
 
         """
-        filter_node = FilterNode(
-            name="segment",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video] * len((str(timestamps or frames)).split("|"))),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "timestamps": timestamps,
-                        "frames": frames,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="segment",
+                typings_input=("video",),
+                typings_output="[StreamType.video] * len((str(timestamps or frames)).split('|'))",
             ),
+            self,
+            **{
+                "timestamps": timestamps,
+                "frames": frames,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -10602,20 +9361,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect)
 
         """
-        filter_node = FilterNode(
-            name="select",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video] * int(outputs)),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "expr": expr,
-                        "outputs": outputs,
-                    }
-                    | kwargs
-                )
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="select", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)"
             ),
+            self,
+            **{
+                "expr": expr,
+                "outputs": outputs,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -10662,30 +9417,24 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#selectivecolor)
 
         """
-        filter_node = FilterNode(
-            name="selectivecolor",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "correction_method": correction_method,
-                        "reds": reds,
-                        "yellows": yellows,
-                        "greens": greens,
-                        "cyans": cyans,
-                        "blues": blues,
-                        "magentas": magentas,
-                        "whites": whites,
-                        "neutrals": neutrals,
-                        "blacks": blacks,
-                        "psfile": psfile,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="selectivecolor", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "correction_method": correction_method,
+                "reds": reds,
+                "yellows": yellows,
+                "greens": greens,
+                "cyans": cyans,
+                "blues": blues,
+                "magentas": magentas,
+                "whites": whites,
+                "neutrals": neutrals,
+                "blacks": blacks,
+                "psfile": psfile,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10707,20 +9456,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sendcmd_002c-asendcmd)
 
         """
-        filter_node = FilterNode(
-            name="sendcmd",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "commands": commands,
-                        "filename": filename,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="sendcmd", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "commands": commands,
+                "filename": filename,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10736,12 +9479,10 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#separatefields)
 
         """
-        filter_node = FilterNode(
-            name="separatefields",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="separatefields", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{} | kwargs,
         )
         return filter_node.video(0)
 
@@ -10761,20 +9502,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
 
         """
-        filter_node = FilterNode(
-            name="setdar",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dar": dar,
-                        "max": max,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="setdar", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "dar": dar,
+                "max": max,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10795,19 +9530,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setfield)
 
         """
-        filter_node = FilterNode(
-            name="setfield",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="setfield", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10897,23 +9626,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setparams)
 
         """
-        filter_node = FilterNode(
-            name="setparams",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "field_mode": field_mode,
-                        "range": range,
-                        "color_primaries": color_primaries,
-                        "color_trc": color_trc,
-                        "colorspace": colorspace,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="setparams", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "field_mode": field_mode,
+                "range": range,
+                "color_primaries": color_primaries,
+                "color_trc": color_trc,
+                "colorspace": colorspace,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10932,19 +9655,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setpts_002c-asetpts)
 
         """
-        filter_node = FilterNode(
-            name="setpts",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "expr": expr,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="setpts", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "expr": expr,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -10970,19 +9687,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setrange)
 
         """
-        filter_node = FilterNode(
-            name="setrange",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "range": range,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="setrange", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "range": range,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11002,20 +9713,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#setdar_002c-setsar)
 
         """
-        filter_node = FilterNode(
-            name="setsar",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sar": sar,
-                        "max": max,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="setsar", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "sar": sar,
+                "max": max,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11034,19 +9739,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#settb_002c-asettb)
 
         """
-        filter_node = FilterNode(
-            name="settb",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "expr": expr,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="settb", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "expr": expr,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11078,23 +9777,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shear)
 
         """
-        filter_node = FilterNode(
-            name="shear",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "shx": shx,
-                        "shy": shy,
-                        "fillcolor": fillcolor,
-                        "interp": interp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="shear", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "shx": shx,
+                "shy": shy,
+                "fillcolor": fillcolor,
+                "interp": interp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11113,19 +9806,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showinfo)
 
         """
-        filter_node = FilterNode(
-            name="showinfo",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "checksum": checksum,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showinfo", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "checksum": checksum,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11144,19 +9831,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#showpalette)
 
         """
-        filter_node = FilterNode(
-            name="showpalette",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "s": s,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="showpalette", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "s": s,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11178,20 +9859,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleframes)
 
         """
-        filter_node = FilterNode(
-            name="shuffleframes",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mapping": mapping,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="shuffleframes", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mapping": mapping,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11225,24 +9900,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shufflepixels)
 
         """
-        filter_node = FilterNode(
-            name="shufflepixels",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "direction": direction,
-                        "mode": mode,
-                        "width": width,
-                        "height": height,
-                        "seed": seed,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="shufflepixels", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "direction": direction,
+                "mode": mode,
+                "width": width,
+                "height": height,
+                "seed": seed,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11274,23 +9943,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#shuffleplanes)
 
         """
-        filter_node = FilterNode(
-            name="shuffleplanes",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "map0": map0,
-                        "map1": map1,
-                        "map2": map2,
-                        "map3": map3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="shuffleplanes", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "map0": map0,
+                "map1": map1,
+                "map2": map2,
+                "map3": map3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11342,21 +10005,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sidedata_002c-asidedata)
 
         """
-        filter_node = FilterNode(
-            name="sidedata",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "type": type,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="sidedata", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "type": type,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11384,21 +10041,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#signalstats)
 
         """
-        filter_node = FilterNode(
-            name="signalstats",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "stat": stat,
-                        "out": out,
-                        "c": c,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="signalstats", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "stat": stat,
+                "out": out,
+                "c": c,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11417,19 +10068,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#siti)
 
         """
-        filter_node = FilterNode(
-            name="siti",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "print_summary": print_summary,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="siti", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "print_summary": print_summary,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11465,25 +10110,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#smartblur)
 
         """
-        filter_node = FilterNode(
-            name="smartblur",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "luma_radius": luma_radius,
-                        "luma_strength": luma_strength,
-                        "luma_threshold": luma_threshold,
-                        "chroma_radius": chroma_radius,
-                        "chroma_strength": chroma_strength,
-                        "chroma_threshold": chroma_threshold,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="smartblur", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "luma_radius": luma_radius,
+                "luma_strength": luma_strength,
+                "luma_threshold": luma_threshold,
+                "chroma_radius": chroma_radius,
+                "chroma_strength": chroma_strength,
+                "chroma_threshold": chroma_threshold,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11513,22 +10152,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sobel)
 
         """
-        filter_node = FilterNode(
-            name="sobel",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "scale": scale,
-                        "delta": delta,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="sobel", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "planes": planes,
+                "scale": scale,
+                "delta": delta,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11590,28 +10223,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spectrumsynth)
 
         """
-        filter_node = FilterNode(
-            name="spectrumsynth",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.audio]),
-            inputs=(
-                self,
-                _phase,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "sample_rate": sample_rate,
-                        "channels": channels,
-                        "scale": scale,
-                        "slide": slide,
-                        "win_func": win_func,
-                        "overlap": overlap,
-                        "orientation": orientation,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="spectrumsynth", typings_input=("video", "video"), typings_output=("audio",)),
+            self,
+            _phase,
+            **{
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "scale": scale,
+                "slide": slide,
+                "win_func": win_func,
+                "overlap": overlap,
+                "orientation": orientation,
+            }
+            | kwargs,
         )
         return filter_node.audio(0)
 
@@ -11631,19 +10256,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit)
 
         """
-        filter_node = FilterNode(
-            name="split",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video] * int(outputs)),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "outputs": outputs,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="split", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)"),
+            self,
+            **{
+                "outputs": outputs,
+            }
+            | kwargs,
         )
 
         return filter_node
@@ -11676,23 +10295,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#spp)
 
         """
-        filter_node = FilterNode(
-            name="spp",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "quality": quality,
-                        "qp": qp,
-                        "mode": mode,
-                        "use_bframe_qp": use_bframe_qp,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="spp", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "quality": quality,
+                "qp": qp,
+                "mode": mode,
+                "use_bframe_qp": use_bframe_qp,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11724,23 +10337,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sr)
 
         """
-        filter_node = FilterNode(
-            name="sr",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dnn_backend": dnn_backend,
-                        "scale_factor": scale_factor,
-                        "model": model,
-                        "input": input,
-                        "output": output,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="sr", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "dnn_backend": dnn_backend,
+                "scale_factor": scale_factor,
+                "model": model,
+                "input": input,
+                "output": output,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11775,27 +10382,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ssim)
 
         """
-        filter_node = FilterNode(
-            name="ssim",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "stats_file": stats_file,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="ssim", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "stats_file": stats_file,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11882,20 +10481,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#stereo3d)
 
         """
-        filter_node = FilterNode(
-            name="stereo3d",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "in": _in,
-                        "out": out,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="stereo3d", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "in": _in,
+                "out": out,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11931,25 +10524,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#subtitles)
 
         """
-        filter_node = FilterNode(
-            name="subtitles",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "filename": filename,
-                        "original_size": original_size,
-                        "fontsdir": fontsdir,
-                        "alpha": alpha,
-                        "charenc": charenc,
-                        "stream_index": stream_index,
-                        "force_style": force_style,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="subtitles", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "filename": filename,
+                "original_size": original_size,
+                "fontsdir": fontsdir,
+                "alpha": alpha,
+                "charenc": charenc,
+                "stream_index": stream_index,
+                "force_style": force_style,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -11965,12 +10552,8 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#super2xsai)
 
         """
-        filter_node = FilterNode(
-            name="super2xsai",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="super2xsai", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
         return filter_node.video(0)
 
@@ -12006,25 +10589,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swaprect)
 
         """
-        filter_node = FilterNode(
-            name="swaprect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "w": w,
-                        "h": h,
-                        "x1": x1,
-                        "y1": y1,
-                        "x2": x2,
-                        "y2": y2,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="swaprect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "w": w,
+                "h": h,
+                "x1": x1,
+                "y1": y1,
+                "x2": x2,
+                "y2": y2,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12043,19 +10620,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#swapuv)
 
         """
-        filter_node = FilterNode(
-            name="swapuv",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="swapuv", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12334,34 +10905,28 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tblend)
 
         """
-        filter_node = FilterNode(
-            name="tblend",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0_mode": c0_mode,
-                        "c1_mode": c1_mode,
-                        "c2_mode": c2_mode,
-                        "c3_mode": c3_mode,
-                        "all_mode": all_mode,
-                        "c0_expr": c0_expr,
-                        "c1_expr": c1_expr,
-                        "c2_expr": c2_expr,
-                        "c3_expr": c3_expr,
-                        "all_expr": all_expr,
-                        "c0_opacity": c0_opacity,
-                        "c1_opacity": c1_opacity,
-                        "c2_opacity": c2_opacity,
-                        "c3_opacity": c3_opacity,
-                        "all_opacity": all_opacity,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tblend", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "c0_mode": c0_mode,
+                "c1_mode": c1_mode,
+                "c2_mode": c2_mode,
+                "c3_mode": c3_mode,
+                "all_mode": all_mode,
+                "c0_expr": c0_expr,
+                "c1_expr": c1_expr,
+                "c2_expr": c2_expr,
+                "c3_expr": c3_expr,
+                "all_expr": all_expr,
+                "c0_opacity": c0_opacity,
+                "c1_opacity": c1_opacity,
+                "c2_opacity": c2_opacity,
+                "c3_opacity": c3_opacity,
+                "all_opacity": all_opacity,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12387,20 +10952,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#telecine)
 
         """
-        filter_node = FilterNode(
-            name="telecine",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "first_field": first_field,
-                        "pattern": pattern,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="telecine", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "first_field": first_field,
+                "pattern": pattern,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12438,26 +10997,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thistogram)
 
         """
-        filter_node = FilterNode(
-            name="thistogram",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "width": width,
-                        "display_mode": display_mode,
-                        "levels_mode": levels_mode,
-                        "components": components,
-                        "bgopacity": bgopacity,
-                        "envelope": envelope,
-                        "ecolor": ecolor,
-                        "slide": slide,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="thistogram", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "width": width,
+                "display_mode": display_mode,
+                "levels_mode": levels_mode,
+                "components": components,
+                "bgopacity": bgopacity,
+                "envelope": envelope,
+                "ecolor": ecolor,
+                "slide": slide,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12486,25 +11039,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#threshold)
 
         """
-        filter_node = FilterNode(
-            name="threshold",
-            input_typings=tuple([StreamType.video, StreamType.video, StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _threshold,
-                _min,
-                _max,
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="threshold", typings_input=("video", "video", "video", "video"), typings_output=("video",)
             ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+            self,
+            _threshold,
+            _min,
+            _max,
+            **{
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12532,21 +11079,15 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#thumbnail)
 
         """
-        filter_node = FilterNode(
-            name="thumbnail",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "n": n,
-                        "log": log,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="thumbnail", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "n": n,
+                "log": log,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12582,25 +11123,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tile)
 
         """
-        filter_node = FilterNode(
-            name="tile",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "layout": layout,
-                        "nb_frames": nb_frames,
-                        "margin": margin,
-                        "padding": padding,
-                        "color": color,
-                        "overlap": overlap,
-                        "init_padding": init_padding,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tile", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "layout": layout,
+                "nb_frames": nb_frames,
+                "margin": margin,
+                "padding": padding,
+                "color": color,
+                "overlap": overlap,
+                "init_padding": init_padding,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12628,19 +11163,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tinterlace)
 
         """
-        filter_node = FilterNode(
-            name="tinterlace",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tinterlace", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12672,23 +11201,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#lut2_002c-tlut2)
 
         """
-        filter_node = FilterNode(
-            name="tlut2",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "c0": c0,
-                        "c1": c1,
-                        "c2": c2,
-                        "c3": c3,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tlut2", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12718,22 +11241,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmedian)
 
         """
-        filter_node = FilterNode(
-            name="tmedian",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "radius": radius,
-                        "planes": planes,
-                        "percentile": percentile,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tmedian", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "radius": radius,
+                "planes": planes,
+                "percentile": percentile,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12763,22 +11280,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmidequalizer)
 
         """
-        filter_node = FilterNode(
-            name="tmidequalizer",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "radius": radius,
-                        "sigma": sigma,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tmidequalizer", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "radius": radius,
+                "sigma": sigma,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12810,23 +11321,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tmix)
 
         """
-        filter_node = FilterNode(
-            name="tmix",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "frames": frames,
-                        "weights": weights,
-                        "scale": scale,
-                        "planes": planes,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tmix", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "frames": frames,
+                "weights": weights,
+                "scale": scale,
+                "planes": planes,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12858,22 +11363,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tonemap)
 
         """
-        filter_node = FilterNode(
-            name="tonemap",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "tonemap": tonemap,
-                        "param": param,
-                        "desat": desat,
-                        "peak": peak,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tonemap", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "tonemap": tonemap,
+                "param": param,
+                "desat": desat,
+                "peak": peak,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12909,25 +11408,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#tpad)
 
         """
-        filter_node = FilterNode(
-            name="tpad",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "start": start,
-                        "stop": stop,
-                        "start_mode": start_mode,
-                        "stop_mode": stop_mode,
-                        "start_duration": start_duration,
-                        "stop_duration": stop_duration,
-                        "color": color,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="tpad", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "start": start,
+                "stop": stop,
+                "start_mode": start_mode,
+                "stop_mode": stop_mode,
+                "start_duration": start_duration,
+                "stop_duration": stop_duration,
+                "color": color,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -12953,20 +11446,14 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose)
 
         """
-        filter_node = FilterNode(
-            name="transpose",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "dir": dir,
-                        "passthrough": passthrough,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="transpose", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "dir": dir,
+                "passthrough": passthrough,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13002,25 +11489,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#trim)
 
         """
-        filter_node = FilterNode(
-            name="trim",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "start": start,
-                        "end": end,
-                        "start_pts": start_pts,
-                        "end_pts": end_pts,
-                        "duration": duration,
-                        "start_frame": start_frame,
-                        "end_frame": end_frame,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="trim", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "start": start,
+                "end": end,
+                "start_pts": start_pts,
+                "end_pts": end_pts,
+                "duration": duration,
+                "start_frame": start_frame,
+                "end_frame": end_frame,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13062,28 +11543,22 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#unsharp)
 
         """
-        filter_node = FilterNode(
-            name="unsharp",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "luma_msize_x": luma_msize_x,
-                        "luma_msize_y": luma_msize_y,
-                        "luma_amount": luma_amount,
-                        "chroma_msize_x": chroma_msize_x,
-                        "chroma_msize_y": chroma_msize_y,
-                        "chroma_amount": chroma_amount,
-                        "alpha_msize_x": alpha_msize_x,
-                        "alpha_msize_y": alpha_msize_y,
-                        "alpha_amount": alpha_amount,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="unsharp", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "luma_msize_x": luma_msize_x,
+                "luma_msize_y": luma_msize_y,
+                "luma_amount": luma_amount,
+                "chroma_msize_x": chroma_msize_x,
+                "chroma_msize_y": chroma_msize_y,
+                "chroma_amount": chroma_amount,
+                "alpha_msize_x": alpha_msize_x,
+                "alpha_msize_y": alpha_msize_y,
+                "alpha_amount": alpha_amount,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13102,19 +11577,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#untile)
 
         """
-        filter_node = FilterNode(
-            name="untile",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "layout": layout,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="untile", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "layout": layout,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13290,54 +11759,48 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#v360)
 
         """
-        filter_node = FilterNode(
-            name="v360",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "input": input,
-                        "output": output,
-                        "interp": interp,
-                        "w": w,
-                        "h": h,
-                        "in_stereo": in_stereo,
-                        "out_stereo": out_stereo,
-                        "in_forder": in_forder,
-                        "out_forder": out_forder,
-                        "in_frot": in_frot,
-                        "out_frot": out_frot,
-                        "in_pad": in_pad,
-                        "out_pad": out_pad,
-                        "fin_pad": fin_pad,
-                        "fout_pad": fout_pad,
-                        "yaw": yaw,
-                        "pitch": pitch,
-                        "roll": roll,
-                        "rorder": rorder,
-                        "h_fov": h_fov,
-                        "v_fov": v_fov,
-                        "d_fov": d_fov,
-                        "h_flip": h_flip,
-                        "v_flip": v_flip,
-                        "d_flip": d_flip,
-                        "ih_flip": ih_flip,
-                        "iv_flip": iv_flip,
-                        "in_trans": in_trans,
-                        "out_trans": out_trans,
-                        "ih_fov": ih_fov,
-                        "iv_fov": iv_fov,
-                        "id_fov": id_fov,
-                        "h_offset": h_offset,
-                        "v_offset": v_offset,
-                        "alpha_mask": alpha_mask,
-                        "reset_rot": reset_rot,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="v360", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "input": input,
+                "output": output,
+                "interp": interp,
+                "w": w,
+                "h": h,
+                "in_stereo": in_stereo,
+                "out_stereo": out_stereo,
+                "in_forder": in_forder,
+                "out_forder": out_forder,
+                "in_frot": in_frot,
+                "out_frot": out_frot,
+                "in_pad": in_pad,
+                "out_pad": out_pad,
+                "fin_pad": fin_pad,
+                "fout_pad": fout_pad,
+                "yaw": yaw,
+                "pitch": pitch,
+                "roll": roll,
+                "rorder": rorder,
+                "h_fov": h_fov,
+                "v_fov": v_fov,
+                "d_fov": d_fov,
+                "h_flip": h_flip,
+                "v_flip": v_flip,
+                "d_flip": d_flip,
+                "ih_flip": ih_flip,
+                "iv_flip": iv_flip,
+                "in_trans": in_trans,
+                "out_trans": out_trans,
+                "ih_fov": ih_fov,
+                "iv_fov": iv_fov,
+                "id_fov": id_fov,
+                "h_offset": h_offset,
+                "v_offset": v_offset,
+                "alpha_mask": alpha_mask,
+                "reset_rot": reset_rot,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13373,25 +11836,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vaguedenoiser)
 
         """
-        filter_node = FilterNode(
-            name="vaguedenoiser",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "threshold": threshold,
-                        "method": method,
-                        "nsteps": nsteps,
-                        "percent": percent,
-                        "planes": planes,
-                        "type": type,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vaguedenoiser", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "threshold": threshold,
+                "method": method,
+                "nsteps": nsteps,
+                "percent": percent,
+                "planes": planes,
+                "type": type,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13430,29 +11887,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#varblur)
 
         """
-        filter_node = FilterNode(
-            name="varblur",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _radius,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "min_r": min_r,
-                        "max_r": max_r,
-                        "planes": planes,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="varblur", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _radius,
+            **{
+                "min_r": min_r,
+                "max_r": max_r,
+                "planes": planes,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13504,32 +11953,26 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vectorscope)
 
         """
-        filter_node = FilterNode(
-            name="vectorscope",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "x": x,
-                        "y": y,
-                        "intensity": intensity,
-                        "envelope": envelope,
-                        "graticule": graticule,
-                        "opacity": opacity,
-                        "flags": flags,
-                        "bgopacity": bgopacity,
-                        "lthreshold": lthreshold,
-                        "hthreshold": hthreshold,
-                        "colorspace": colorspace,
-                        "tint0": tint0,
-                        "tint1": tint1,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vectorscope", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "x": x,
+                "y": y,
+                "intensity": intensity,
+                "envelope": envelope,
+                "graticule": graticule,
+                "opacity": opacity,
+                "flags": flags,
+                "bgopacity": bgopacity,
+                "lthreshold": lthreshold,
+                "hthreshold": hthreshold,
+                "colorspace": colorspace,
+                "tint0": tint0,
+                "tint1": tint1,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13548,19 +11991,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vflip)
 
         """
-        filter_node = FilterNode(
-            name="vflip",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vflip", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13576,12 +12013,8 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vfrdet)
 
         """
-        filter_node = FilterNode(
-            name="vfrdet",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(({} | kwargs)),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vfrdet", typings_input=("video",), typings_output=("video",)), self, **{} | kwargs
         )
         return filter_node.video(0)
 
@@ -13621,27 +12054,21 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vibrance)
 
         """
-        filter_node = FilterNode(
-            name="vibrance",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "intensity": intensity,
-                        "rbal": rbal,
-                        "gbal": gbal,
-                        "bbal": bbal,
-                        "rlum": rlum,
-                        "glum": glum,
-                        "blum": blum,
-                        "alternate": alternate,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vibrance", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "intensity": intensity,
+                "rbal": rbal,
+                "gbal": gbal,
+                "bbal": bbal,
+                "rlum": rlum,
+                "glum": glum,
+                "blum": blum,
+                "alternate": alternate,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13677,25 +12104,19 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabdetect)
 
         """
-        filter_node = FilterNode(
-            name="vidstabdetect",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "result": result,
-                        "shakiness": shakiness,
-                        "accuracy": accuracy,
-                        "stepsize": stepsize,
-                        "mincontrast": mincontrast,
-                        "show": show,
-                        "tripod": tripod,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vidstabdetect", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "result": result,
+                "shakiness": shakiness,
+                "accuracy": accuracy,
+                "stepsize": stepsize,
+                "mincontrast": mincontrast,
+                "show": show,
+                "tripod": tripod,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13745,32 +12166,26 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vidstabtransform)
 
         """
-        filter_node = FilterNode(
-            name="vidstabtransform",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "input": input,
-                        "smoothing": smoothing,
-                        "optalgo": optalgo,
-                        "maxshift": maxshift,
-                        "maxangle": maxangle,
-                        "crop": crop,
-                        "invert": invert,
-                        "relative": relative,
-                        "zoom": zoom,
-                        "optzoom": optzoom,
-                        "zoomspeed": zoomspeed,
-                        "interpol": interpol,
-                        "tripod": tripod,
-                        "debug": debug,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vidstabtransform", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "input": input,
+                "smoothing": smoothing,
+                "optalgo": optalgo,
+                "maxshift": maxshift,
+                "maxangle": maxangle,
+                "crop": crop,
+                "invert": invert,
+                "relative": relative,
+                "zoom": zoom,
+                "optzoom": optzoom,
+                "zoomspeed": zoomspeed,
+                "interpol": interpol,
+                "tripod": tripod,
+                "debug": debug,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13803,26 +12218,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vif)
 
         """
-        filter_node = FilterNode(
-            name="vif",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _reference,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vif", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _reference,
+            **{
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13860,26 +12267,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vignette)
 
         """
-        filter_node = FilterNode(
-            name="vignette",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "angle": angle,
-                        "x0": x0,
-                        "y0": y0,
-                        "mode": mode,
-                        "eval": eval,
-                        "dither": dither,
-                        "aspect": aspect,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vignette", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "angle": angle,
+                "x0": x0,
+                "y0": y0,
+                "mode": mode,
+                "eval": eval,
+                "dither": dither,
+                "aspect": aspect,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13898,19 +12299,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#vmafmotion)
 
         """
-        filter_node = FilterNode(
-            name="vmafmotion",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "stats_file": stats_file,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="vmafmotion", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "stats_file": stats_file,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -13942,23 +12337,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#w3fdif)
 
         """
-        filter_node = FilterNode(
-            name="w3fdif",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "filter": filter,
-                        "mode": mode,
-                        "parity": parity,
-                        "deint": deint,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="w3fdif", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "filter": filter,
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14012,33 +12401,27 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#waveform)
 
         """
-        filter_node = FilterNode(
-            name="waveform",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "intensity": intensity,
-                        "mirror": mirror,
-                        "display": display,
-                        "components": components,
-                        "envelope": envelope,
-                        "filter": filter,
-                        "graticule": graticule,
-                        "opacity": opacity,
-                        "flags": flags,
-                        "scale": scale,
-                        "bgopacity": bgopacity,
-                        "tint0": tint0,
-                        "tint1": tint1,
-                        "fitmode": fitmode,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="waveform", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "intensity": intensity,
+                "mirror": mirror,
+                "display": display,
+                "components": components,
+                "envelope": envelope,
+                "filter": filter,
+                "graticule": graticule,
+                "opacity": opacity,
+                "flags": flags,
+                "scale": scale,
+                "bgopacity": bgopacity,
+                "tint0": tint0,
+                "tint1": tint1,
+                "fitmode": fitmode,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14059,19 +12442,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#weave_002c-doubleweave)
 
         """
-        filter_node = FilterNode(
-            name="weave",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "first_field": first_field,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="weave", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "first_field": first_field,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14090,19 +12467,13 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xbr)
 
         """
-        filter_node = FilterNode(
-            name="xbr",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "n": n,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="xbr", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "n": n,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14139,28 +12510,20 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xcorrelate)
 
         """
-        filter_node = FilterNode(
-            name="xcorrelate",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _secondary,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "planes": planes,
-                        "secondary": secondary,
-                        "eof_action": eof_action,
-                        "shortest": shortest,
-                        "repeatlast": repeatlast,
-                        "ts_sync_mode": ts_sync_mode,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="xcorrelate", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _secondary,
+            **{
+                "planes": planes,
+                "secondary": secondary,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14241,25 +12604,17 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#xfade)
 
         """
-        filter_node = FilterNode(
-            name="xfade",
-            input_typings=tuple([StreamType.video, StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(
-                self,
-                _xfade,
-            ),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "transition": transition,
-                        "duration": duration,
-                        "offset": offset,
-                        "expr": expr,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="xfade", typings_input=("video", "video"), typings_output=("video",)),
+            self,
+            _xfade,
+            **{
+                "transition": transition,
+                "duration": duration,
+                "offset": offset,
+                "expr": expr,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14291,22 +12646,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yadif)
 
         """
-        filter_node = FilterNode(
-            name="yadif",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "mode": mode,
-                        "parity": parity,
-                        "deint": deint,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="yadif", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "mode": mode,
+                "parity": parity,
+                "deint": deint,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14336,22 +12685,16 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#yaepblur)
 
         """
-        filter_node = FilterNode(
-            name="yaepblur",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "radius": radius,
-                        "planes": planes,
-                        "sigma": sigma,
-                        "enable": enable,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="yaepblur", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "radius": radius,
+                "planes": planes,
+                "sigma": sigma,
+                "enable": enable,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14385,24 +12728,18 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zoompan)
 
         """
-        filter_node = FilterNode(
-            name="zoompan",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "zoom": zoom,
-                        "x": x,
-                        "y": y,
-                        "d": d,
-                        "s": s,
-                        "fps": fps,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="zoompan", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "zoom": zoom,
+                "x": x,
+                "y": y,
+                "d": d,
+                "s": s,
+                "fps": fps,
+            }
+            | kwargs,
         )
         return filter_node.video(0)
 
@@ -14608,36 +12945,30 @@ class VideoStream(FilterableStream):
             [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zscale)
 
         """
-        filter_node = FilterNode(
-            name="zscale",
-            input_typings=tuple([StreamType.video]),
-            output_typings=tuple([StreamType.video]),
-            inputs=(self,),
-            kwargs=_to_tuple(
-                (
-                    {
-                        "w": w,
-                        "h": h,
-                        "size": size,
-                        "dither": dither,
-                        "filter": filter,
-                        "out_range": out_range,
-                        "primaries": primaries,
-                        "transfer": transfer,
-                        "matrix": matrix,
-                        "in_range": in_range,
-                        "primariesin": primariesin,
-                        "transferin": transferin,
-                        "matrixin": matrixin,
-                        "chromal": chromal,
-                        "chromalin": chromalin,
-                        "npl": npl,
-                        "agamma": agamma,
-                        "param_a": param_a,
-                        "param_b": param_b,
-                    }
-                    | kwargs
-                )
-            ),
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(name="zscale", typings_input=("video",), typings_output=("video",)),
+            self,
+            **{
+                "w": w,
+                "h": h,
+                "size": size,
+                "dither": dither,
+                "filter": filter,
+                "out_range": out_range,
+                "primaries": primaries,
+                "transfer": transfer,
+                "matrix": matrix,
+                "in_range": in_range,
+                "primariesin": primariesin,
+                "transferin": transferin,
+                "matrixin": matrixin,
+                "chromal": chromal,
+                "chromalin": chromalin,
+                "npl": npl,
+                "agamma": agamma,
+                "param_a": param_a,
+                "param_b": param_b,
+            }
+            | kwargs,
         )
         return filter_node.video(0)

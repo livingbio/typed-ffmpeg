@@ -82,7 +82,12 @@
                       "__class__": "ffmpeg.streams.video.VideoStream",
                       "node": {
                         "__class__": "ffmpeg.dag.nodes.FilterNode",
-                        "kwargs": [],
+                        "kwargs": [
+                          [
+                            "n",
+                            2
+                          ]
+                        ],
                         "inputs": [
                           {
                             "__class__": "ffmpeg.streams.video.VideoStream",
@@ -113,13 +118,13 @@
                               "name": "trim",
                               "input_typings": [
                                 {
-                                  "__class__": "ffmpeg.schema.StreamType",
+                                  "__class__": "ffmpeg.common.schema.StreamType",
                                   "value": "video"
                                 }
                               ],
                               "output_typings": [
                                 {
-                                  "__class__": "ffmpeg.schema.StreamType",
+                                  "__class__": "ffmpeg.common.schema.StreamType",
                                   "value": "video"
                                 }
                               ]
@@ -155,13 +160,13 @@
                               "name": "trim",
                               "input_typings": [
                                 {
-                                  "__class__": "ffmpeg.schema.StreamType",
+                                  "__class__": "ffmpeg.common.schema.StreamType",
                                   "value": "video"
                                 }
                               ],
                               "output_typings": [
                                 {
-                                  "__class__": "ffmpeg.schema.StreamType",
+                                  "__class__": "ffmpeg.common.schema.StreamType",
                                   "value": "video"
                                 }
                               ]
@@ -172,17 +177,17 @@
                         "name": "concat",
                         "input_typings": [
                           {
-                            "__class__": "ffmpeg.schema.StreamType",
+                            "__class__": "ffmpeg.common.schema.StreamType",
                             "value": "video"
                           },
                           {
-                            "__class__": "ffmpeg.schema.StreamType",
+                            "__class__": "ffmpeg.common.schema.StreamType",
                             "value": "video"
                           }
                         ],
                         "output_typings": [
                           {
-                            "__class__": "ffmpeg.schema.StreamType",
+                            "__class__": "ffmpeg.common.schema.StreamType",
                             "value": "video"
                           }
                         ]
@@ -209,13 +214,13 @@
                         "name": "hflip",
                         "input_typings": [
                           {
-                            "__class__": "ffmpeg.schema.StreamType",
+                            "__class__": "ffmpeg.common.schema.StreamType",
                             "value": "video"
                           }
                         ],
                         "output_typings": [
                           {
-                            "__class__": "ffmpeg.schema.StreamType",
+                            "__class__": "ffmpeg.common.schema.StreamType",
                             "value": "video"
                           }
                         ]
@@ -226,17 +231,17 @@
                   "name": "overlay",
                   "input_typings": [
                     {
-                      "__class__": "ffmpeg.schema.StreamType",
+                      "__class__": "ffmpeg.common.schema.StreamType",
                       "value": "video"
                     },
                     {
-                      "__class__": "ffmpeg.schema.StreamType",
+                      "__class__": "ffmpeg.common.schema.StreamType",
                       "value": "video"
                     }
                   ],
                   "output_typings": [
                     {
-                      "__class__": "ffmpeg.schema.StreamType",
+                      "__class__": "ffmpeg.common.schema.StreamType",
                       "value": "video"
                     }
                   ]
@@ -247,13 +252,13 @@
             "name": "drawbox",
             "input_typings": [
               {
-                "__class__": "ffmpeg.schema.StreamType",
+                "__class__": "ffmpeg.common.schema.StreamType",
                 "value": "video"
               }
             ],
             "output_typings": [
               {
-                "__class__": "ffmpeg.schema.StreamType",
+                "__class__": "ffmpeg.common.schema.StreamType",
                 "value": "video"
               }
             ]

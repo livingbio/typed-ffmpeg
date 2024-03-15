@@ -2,11 +2,18 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from typing import Literal
 
 
 class StreamType(str, Enum):
-    video = "video"
+    """
+    The type of a stream. (audio or video)
+    """
+
     audio = "audio"
+    """it is an audio stream"""
+    video = "video"
+    """it is a video stream"""
 
 
 class FFMpegFilterOptionType(str, Enum):
@@ -69,6 +76,14 @@ class FFMpegIOType:
 
 
 @dataclass(frozen=True, kw_only=True)
+class FFMpegFilterDef:
+    name: str
+
+    typings_input: str | tuple[Literal["video", "audio"], ...] = ()
+    typings_output: str | tuple[Literal["video", "audio"], ...] = ()
+
+
+@dataclass(frozen=True, kw_only=True)
 class FFMpegFilter:
     id: str | None = None
 
@@ -92,7 +107,20 @@ class FFMpegFilter:
     formula_typings_input: str | None = None
     formula_typings_output: str | None = None
 
+    pre: tuple[tuple[str, str], ...] = ()
     options: tuple[FFMpegFilterOption, ...] = ()
+
+    @property
+    def pre_dict(self) -> dict[str, str]:
+        return dict(self.pre)
+
+    @property
+    def to_def(self) -> FFMpegFilterDef:
+        return FFMpegFilterDef(
+            name=self.name,
+            typings_input=self.formula_typings_input or tuple(k.type.value for k in self.stream_typings_input),
+            typings_output=self.formula_typings_output or tuple(k.type.value for k in self.stream_typings_output),
+        )
 
     @property
     def input_typings(self) -> set[StreamType]:

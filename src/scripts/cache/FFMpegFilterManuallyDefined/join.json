@@ -2,5 +2,8 @@
   "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
   "formula_typings_input": "[StreamType.audio] * int(inputs)",
   "formula_typings_output": null,
-  "name": "join"
+  "name": "join",
+  "pre": {
+    "inputs": "len(streams)"
+  }
 }

@@ -1,0 +1,10 @@
+# serializer version: 1
+# name: test_filter_node_factory
+  FilterNode(kwargs=(('n', 0),), inputs=(), name='foo', input_typings=(), output_typings=())
+# ---
+# name: test_filter_node_factory.1
+  FilterNode(kwargs=(('n', 1),), inputs=(VideoStream(node=InputNode(kwargs=(), inputs=(), filename='foo.mp4'), index=None),), name='foo', input_typings=(<StreamType.video: 'video'>,), output_typings=())
+# ---
+# name: test_filter_node_factory.2
+  FilterNode(kwargs=(('n', 2),), inputs=(VideoStream(node=InputNode(kwargs=(), inputs=(), filename='foo.mp4'), index=None), VideoStream(node=InputNode(kwargs=(), inputs=(), filename='foo.mp4'), index=None)), name='foo', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=())
+# ---

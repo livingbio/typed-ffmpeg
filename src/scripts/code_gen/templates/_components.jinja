@@ -24,33 +24,6 @@
 {% endmacro %}
 
 
-{% macro default_value(option) %}
-{% if option.default == option.default %}
-Default({{option.default.__repr__()}})
-{% else %}
-{# comparing NaN to itself results in False. #}
-Default("nan")
-{% endif %}
-{% endmacro %}
-
-
-{% macro default_typing(option) %}
-{% if option.choices %}
-{{option | filter_option_typing}} | Default = {{ default_value(option) }}
-{% else %}
-{{option | filter_option_typing}} = {{ default_value(option) }}
-{% endif %}
-{% endmacro %}
-
-{% macro option_typings(f) %}
-{% for option in f.options %}
-    {% if option.required %}
-        {{option.name | option_name_safe}}: {{option | filter_option_typing}},
-    {% else %}
-        {{option.name | option_name_safe}}: {{ default_typing(option) }},
-    {% endif %}
-{% endfor %}
-{% endmacro %}
 
 
 {%- macro return_stream_typings(f) -%}
@@ -132,18 +105,14 @@ References:
 {%- elif f.filter_type.value in ["af", "vaf"] -%}
     {% set return_type = "audio" %}
 {%- endif -%}
-filter_node = FilterNode(
-    name="{{ f.name }}",
-    input_typings=tuple({{f | input_typings}}),
-    output_typings=tuple({{f | output_typings}}),
-    inputs=(
-        {{ stream_params(f, type) }}
-    ),
-    kwargs=_to_tuple(({
+filter_node = filter_node_factory(
+    {{f.to_def}},
+    {{ stream_params(f, type) }}
+    **{
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
-    } | kwargs)),
+    } | kwargs
 )
 {% if f.is_dynamic_output %}
 return filter_node
@@ -167,7 +136,7 @@ return (
     def {{f.name}}(
     {{ stream_typings(f, "method") }}
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
-    {{ option_typings(f) }}
+    {{ f | filter_option_typings }}
     **kwargs: Any
     ) {{- return_stream_typings(f) }}
         """
@@ -181,7 +150,7 @@ return (
 def {{f.name}}(
     {{ stream_typings(f, "function") }}
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
-    {{ option_typings(f) }}
+    {{ f | filter_option_typings }}
     **kwargs: Any
 ) {{- return_stream_typings(f) }}
     """
