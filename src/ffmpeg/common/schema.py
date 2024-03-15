@@ -111,6 +111,10 @@ class FFMpegFilter:
     options: tuple[FFMpegFilterOption, ...] = ()
 
     @property
+    def pre_dict(self) -> dict[str, str]:
+        return dict(self.pre)
+
+    @property
     def to_def(self) -> FFMpegFilterDef:
         return FFMpegFilterDef(
             name=self.name,

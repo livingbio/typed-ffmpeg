@@ -15,7 +15,15 @@ class Default(str):
     ...
 
 
+class Auto(Default):
+    """
+    This is the auto value for an option. It is used for annotation purposes only
+    and will not be passed to the ffmpeg command line.
+    """
+
+
 __all__ = [
+    "Auto",
     "Default",
     "StreamType",
 ]

@@ -4,7 +4,7 @@ from typing import Any, Literal
 from .common.schema import FFMpegFilterDef
 from .dag.factory import filter_node_factory
 from .dag.nodes import FilterableStream, FilterNode
-from .schema import Default
+from .schema import Auto, Default
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
 from .types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Pix_fmt, String
@@ -103,7 +103,7 @@ def acrossfade(
 
 def ainterleave(
     *streams: AudioStream,
-    nb_inputs: Int = Default(2),
+    nb_inputs: Int = Auto("len(streams)"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> AudioStream:
@@ -181,7 +181,7 @@ def alphamerge(
     return filter_node.video(0)
 
 
-def amerge(*streams: AudioStream, inputs: Int = Default(2), **kwargs: Any) -> AudioStream:
+def amerge(*streams: AudioStream, inputs: Int = Auto("len(streams)"), **kwargs: Any) -> AudioStream:
     """
 
     Merge two or more audio streams into a single multi-channel stream.
@@ -209,7 +209,7 @@ def amerge(*streams: AudioStream, inputs: Int = Default(2), **kwargs: Any) -> Au
 
 def amix(
     *streams: AudioStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     dropout_transition: Float = Default(2.0),
     weights: String = Default("1 1"),
@@ -388,7 +388,7 @@ def asdr(_input0: AudioStream, _input1: AudioStream, **kwargs: Any) -> AudioStre
 
 
 def astreamselect(
-    *streams: AudioStream, inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
+    *streams: AudioStream, inputs: Int = Auto("len(streams)"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -890,7 +890,7 @@ def colormap(
 
 def concat(
     *streams: FilterableStream,
-    n: Int = Default(2),
+    n: Int = Auto("len(streams) / (v + a)"),
     v: Int = Default(1),
     a: Int = Default(0),
     unsafe: Boolean = Default(False),
@@ -1512,7 +1512,7 @@ def headphone(
 
 
 def hstack(
-    *streams: VideoStream, inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
+    *streams: VideoStream, inputs: Int = Auto("len(streams)"), shortest: Boolean = Default(False), **kwargs: Any
 ) -> VideoStream:
     """
 
@@ -1639,7 +1639,7 @@ def identity(
 
 def interleave(
     *streams: VideoStream,
-    nb_inputs: Int = Default(2),
+    nb_inputs: Int = Auto("len(streams)"),
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default("longest"),
     **kwargs: Any
 ) -> VideoStream:
@@ -1674,7 +1674,7 @@ def interleave(
 
 def join(
     *streams: AudioStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     channel_layout: String = Default("stereo"),
     map: String = Default(None),
     **kwargs: Any
@@ -2189,7 +2189,7 @@ def midequalizer(
 
 def mix(
     *streams: VideoStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     weights: String = Default("1 1"),
     scale: Float = Default(0.0),
     planes: Flags = Default("F"),
@@ -2850,7 +2850,7 @@ def sidechaingate(
 def signature(
     *streams: VideoStream,
     detectmode: Int | Literal["off", "full", "fast"] | Default = Default("off"),
-    nb_inputs: Int = Default(1),
+    nb_inputs: Int = Auto("len(streams)"),
     filename: String = Default(""),
     format: Int | Literal["binary", "xml"] | Default = Default("binary"),
     th_d: Int = Default(9000),
@@ -3028,7 +3028,7 @@ def ssim(
 
 
 def streamselect(
-    *streams: VideoStream, inputs: Int = Default(2), map: String = Default(None), **kwargs: Any
+    *streams: VideoStream, inputs: Int = Auto("len(streams)"), map: String = Default(None), **kwargs: Any
 ) -> FilterNode:
     """
 
@@ -3245,7 +3245,7 @@ def vif(
 
 
 def vstack(
-    *streams: VideoStream, inputs: Int = Default(2), shortest: Boolean = Default(False), **kwargs: Any
+    *streams: VideoStream, inputs: Int = Auto("len(streams)"), shortest: Boolean = Default(False), **kwargs: Any
 ) -> VideoStream:
     """
 
@@ -3419,7 +3419,7 @@ def xfade(
 
 def xmedian(
     *streams: VideoStream,
-    inputs: Int = Default(3),
+    inputs: Int = Auto("len(streams)"),
     planes: Int = Default(15),
     percentile: Float = Default(0.5),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
@@ -3470,7 +3470,7 @@ def xmedian(
 
 def xstack(
     *streams: VideoStream,
-    inputs: Int = Default(2),
+    inputs: Int = Auto("len(streams)"),
     layout: String = Default(None),
     grid: Image_size = Default(None),
     shortest: Boolean = Default(False),
