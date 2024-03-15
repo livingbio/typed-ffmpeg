@@ -5,7 +5,7 @@
   "-i",
   "overlay.png",
   "-filter_complex",
-  "[0]trim=start_frame=10:end_frame=20[s0];[0]trim=start_frame=30:end_frame=40[s1];[1]hflip[s2];[s0][s1]concat=n=2.0[s3];[s3][s2]overlay[s4];[s4]drawbox=x=50:y=50:width=120:height=120:color=red:thickness=5[s5]",
+  "[0]trim=start_frame=10:end_frame=20[s0];[0]trim=start_frame=30:end_frame=40[s1];[1]hflip[s2];[s0][s1]concat=n=2[s3];[s3][s2]overlay[s4];[s4]drawbox=x=50:y=50:width=120:height=120:color=red:thickness=5[s5]",
   "-map",
   "[s5]",
   "out.mp4"

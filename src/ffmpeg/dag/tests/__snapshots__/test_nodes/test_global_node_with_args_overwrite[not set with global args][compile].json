@@ -5,7 +5,7 @@
   "-i",
   "tmp2.mp4",
   "-filter_complex",
-  "[0:v][1:v]concat=n=2.0[s0]",
+  "[0:v][1:v]concat=n=2[s0]",
   "-map",
   "[s0]",
   "output.mp4"

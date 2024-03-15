@@ -5,7 +5,7 @@
   "-i",
   "in2.mp4",
   "-filter_complex",
-  "[0:v]hflip[s0];[1:v]reverse[s1];[1:a]areverse[s2];[s1]hue=s=0[s3];[s2]aphaser[s4];[s0][0:a][s3][s4]concat=n=2.0:v=1:a=1[s5#0][s5#1];[s5#1]volume=volume=0.8[s6]",
+  "[0:v]hflip[s0];[1:v]reverse[s1];[1:a]areverse[s2];[s1]hue=s=0[s3];[s2]aphaser[s4];[s0][0:a][s3][s4]concat=n=2:v=1:a=1[s5#0][s5#1];[s5#1]volume=volume=0.8[s6]",
   "-map",
   "[s5#0]",
   "-map",

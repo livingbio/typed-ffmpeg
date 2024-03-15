@@ -4,6 +4,6 @@
   "formula_typings_output": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
   "name": "concat",
   "pre": {
-    "n": "len(streams) / (int(v) + int(a))"
+    "n": "len(streams) // (int(v) + int(a))"
   }
 }

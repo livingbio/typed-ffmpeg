@@ -890,7 +890,7 @@ def colormap(
 
 def concat(
     *streams: FilterableStream,
-    n: Int = Auto("len(streams) / (int(v) + int(a))"),
+    n: Int = Auto("len(streams) // (int(v) + int(a))"),
     v: Int = Default(1),
     a: Int = Default(0),
     unsafe: Boolean = Default(False),
