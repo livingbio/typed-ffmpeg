@@ -2,5 +2,8 @@
   "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
   "formula_typings_input": "[StreamType.audio] * int(nbirs)",
   "formula_typings_output": null,
-  "name": "afir"
+  "name": "afir",
+  "pre": {
+    "nbirs": "len(streams)"
+  }
 }

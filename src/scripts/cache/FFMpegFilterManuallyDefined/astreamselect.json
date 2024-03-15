@@ -2,5 +2,8 @@
   "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
   "formula_typings_input": "[StreamType.audio] * int(inputs)",
   "formula_typings_output": "[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
-  "name": "astreamselect"
+  "name": "astreamselect",
+  "pre": {
+    "inputs": "len(streams)"
+  }
 }

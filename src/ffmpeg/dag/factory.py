@@ -2,11 +2,15 @@ import re
 from typing import Any
 
 from ..common.schema import FFMpegFilterDef, StreamType
+from ..schema import Auto
 from ..utils.run import _to_tuple
 from .nodes import FilterableStream, FilterNode
 
 
 def filter_node_factory(filter: FFMpegFilterDef, *inputs: FilterableStream, **kwargs: Any) -> FilterNode:
+    for k, v in kwargs.items():
+        if isinstance(v, Auto):
+            kwargs[k] = eval(v, {"StreamType": StreamType, "re": re, **kwargs, "streams": inputs})
 
     if isinstance(filter.typings_input, str):
         input_typings = tuple(eval(filter.typings_input, {"StreamType": StreamType, "re": re, **kwargs}))

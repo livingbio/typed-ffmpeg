@@ -23,3 +23,9 @@ def save(obj: T, id: str) -> None:
 
     with (schema_path / f"{id}.json").open("w") as ofile:
         ofile.write(dumps(obj))
+
+
+def list_all(cls: type[T]) -> list[T]:
+    path = cache_path / f"{cls.__name__}"
+
+    return [loads(i.read_text()) for i in path.glob("*.json")]

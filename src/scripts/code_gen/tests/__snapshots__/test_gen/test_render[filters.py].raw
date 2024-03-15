@@ -2,7 +2,7 @@
 from typing import Any, Literal
 
 from .dag.nodes import FilterNode, FilterableStream
-from .schema import Default, StreamType
+from .schema import Default, StreamType, Auto
 from .types import Boolean, Duration, Color, Flags, Dictionary, Pix_fmt, Int, Int64, Double, Float, String, Video_rate, Image_size, Rational, Sample_fmt, Binary
 from .streams.video import VideoStream
 from .streams.audio import AudioStream
@@ -34,33 +34,7 @@ def aap(
 
 
     *,
-    
-
-    
-        order: 
-
-Int = 
-
-Default(None)
-
-
-
-,
-    
-
-    
-        projection: 
-
-Int = 
-
-Default(None)
-
-
-
-,
-    
-
-
+    order: Int = Default(None),projection: Int = Default(None),
     **kwargs: Any
 )-> AudioStream:
     """

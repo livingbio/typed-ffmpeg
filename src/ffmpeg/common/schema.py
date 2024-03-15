@@ -79,8 +79,8 @@ class FFMpegIOType:
 class FFMpegFilterDef:
     name: str
 
-    typings_input: str | tuple[Literal["video", "audio"], ...]
-    typings_output: str | tuple[Literal["video", "audio"], ...]
+    typings_input: str | tuple[Literal["video", "audio"], ...] = ()
+    typings_output: str | tuple[Literal["video", "audio"], ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -107,7 +107,12 @@ class FFMpegFilter:
     formula_typings_input: str | None = None
     formula_typings_output: str | None = None
 
+    pre: tuple[tuple[str, str], ...] = ()
     options: tuple[FFMpegFilterOption, ...] = ()
+
+    @property
+    def pre_dict(self) -> dict[str, str]:
+        return dict(self.pre)
 
     @property
     def to_def(self) -> FFMpegFilterDef:
