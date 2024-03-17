@@ -8,6 +8,10 @@ from ..typing import override
 
 
 class LazyValue(ABC):
+    """
+    A base class for lazy evaluation.
+    """
+
     def __add__(self, v: Any) -> LazyValue:
         from .operator import Add
 
@@ -94,25 +98,59 @@ class LazyValue(ABC):
         return FloorDiv(left=v, right=self)
 
     def eval(self, **values: Any) -> Any:
+        """
+        Evaluate the lazy value with the given values.
+
+        Args:
+            **values: Values to be used for evaluation.
+
+        Returns:
+            Any: The evaluated value.
+
+        Raises:
+            ValueError: If the lazy value is not ready to be evaluated.
+        """
         v = self.partial(**values)
         if isinstance(v, LazyValue):
-            raise KeyError(v.keys())
+            raise ValueError(v.keys())
         return v
 
     @abstractmethod
     def partial(self, **values: Any) -> Any:
+        """
+        Partially evaluate the lazy value with the given values.
+
+        Args:
+            **values: Values to be used for evaluation.
+
+        Returns:
+            Any: The partially evaluated value.
+        """
+
         ...
 
     def ready(self) -> bool:
+        """
+        Check if the lazy value is ready to be evaluated.
+        """
         return not self.keys()
 
     @abstractmethod
     def keys(self) -> set[str]:
+        """
+        Get the keys that are required to evaluate the lazy value.
+        """
         ...
 
 
 @dataclass(frozen=True)
 class Symbol(LazyValue):
+    """
+    A symbol that represents a variable in the lazy evaluation.
+
+    Such as `x`, `y`, `z`, etc.
+    """
+
     key: str
 
     def __str__(self) -> str:
@@ -131,11 +169,20 @@ class Symbol(LazyValue):
 
 @dataclass(frozen=True, kw_only=True)
 class LazyOperator(LazyValue):
+    """
+    A base class for lazy operators.
+
+    Such as `Add`, `Sub`, `Mul`, `TrueDiv`, `Pow`, `Neg`, `Pos`, `Abs`, `Mod`, `FloorDiv`.
+    """
+
     left: Any = None
     right: Any = None
 
     @abstractmethod
     def _eval(self, left: Any, right: Any) -> Any:
+        """
+        Evaluate the operator with the given values.
+        """
         ...
 
     @override

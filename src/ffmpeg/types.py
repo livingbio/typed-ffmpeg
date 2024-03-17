@@ -109,3 +109,6 @@ Binary = str | Default | LazyValue
 
 
 Filter_Node_Option_Type = str | int | float | bool | LazyValue
+"""
+This represents the type of options that can be used with FFmpeg's filter nodes.
+"""

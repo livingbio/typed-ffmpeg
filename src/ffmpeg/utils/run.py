@@ -1,7 +1,7 @@
 import shlex
 
 from ..schema import Default
-from ..types import Filter_Node_Option_Type
+from ..utils.lazy_eval.schema import LazyValue
 
 
 def command_line(args: list[str]) -> str:
@@ -17,9 +17,10 @@ def command_line(args: list[str]) -> str:
     return " ".join(shlex.quote(arg) for arg in args)
 
 
+# Filter_Node_Option_Type
 def ignore_default(
-    kwargs: dict[str, Filter_Node_Option_Type | Default]
-) -> tuple[tuple[str, Filter_Node_Option_Type], ...]:
+    kwargs: dict[str, str | int | float | bool | Default]
+) -> tuple[tuple[str, str | int | float | bool | LazyValue], ...]:
     """
     Convert the values of the dictionary to strings.
     """
