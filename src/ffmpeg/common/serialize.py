@@ -1,6 +1,7 @@
 from __future__ import absolute_import, annotations
 
 import datetime
+import importlib
 import json
 from dataclasses import fields, is_dataclass
 from enum import Enum
@@ -19,7 +20,7 @@ def load_class(path: str) -> Any:
         The class.
     """
     module_path, class_name = path.rsplit(".", 1)
-    module = __import__(module_path, fromlist=[class_name])
+    module = importlib.import_module(module_path)
     return getattr(module, class_name)
 
 
