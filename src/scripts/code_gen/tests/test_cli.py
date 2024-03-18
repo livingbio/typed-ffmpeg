@@ -1,5 +1,9 @@
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
 from ..cli import generate
 
 
 def test_generate() -> None:
-    generate()
+    outpath = Path(TemporaryDirectory().name)
+    generate(outpath)

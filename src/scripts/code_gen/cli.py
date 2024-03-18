@@ -28,8 +28,9 @@ def gen_option_info() -> list[FFMpegOption]:
 
 
 @app.command()
-def generate() -> None:
-    outpath = Path(__file__).parent.parent.parent / "ffmpeg"
+def generate(outpath: Path = None) -> None:
+    if not outpath:
+        outpath = Path(__file__).parent.parent.parent / "ffmpeg"
 
     ffmpeg_filters = []
 
