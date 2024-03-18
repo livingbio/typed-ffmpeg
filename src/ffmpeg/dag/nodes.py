@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING, Any
 from ..exceptions import FFMpegTypeError, FFMpegValueError
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
+from ..utils.lazy_eval.schema import LazyValue
 from ..utils.typing import override
 from .global_runnable.runnable import GlobalRunable
 from .io.output_args import OutputArgs
@@ -131,6 +132,8 @@ class FilterNode(Node):
 
         commands = []
         for key, value in self.kwargs:
+            assert not isinstance(value, LazyValue), f"LazyValue should have been evaluated: {key}={value}"
+
             # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
             if isinstance(value, bool):
                 value = str(int(value))

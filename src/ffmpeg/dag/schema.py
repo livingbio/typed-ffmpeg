@@ -5,6 +5,7 @@ from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import TYPE_CHECKING, Literal
 
+from ..utils.lazy_eval.schema import LazyValue
 from .utils import is_dag
 
 if TYPE_CHECKING:
@@ -74,7 +75,8 @@ class Node(HashableBaseModel, ABC):
         Each node in the DAG represents a single operation that transforms the data from its input form to its output form. The node is an essential component of the DAG, as it defines the nature of the operations that are performed on the data.
     """
 
-    kwargs: tuple[tuple[str, str | int | float | bool], ...] = ()
+    # Filter_Node_Option_Type
+    kwargs: tuple[tuple[str, str | int | float | bool | LazyValue], ...] = ()
     """
     Represents the keyword arguments of the node.
     """

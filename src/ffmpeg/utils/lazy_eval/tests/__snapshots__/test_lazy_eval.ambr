@@ -1,0 +1,163 @@
+# serializer version: 1
+# name: test_lazyoperator_number.2
+  set({
+    'X',
+    'Y',
+  })
+# ---
+# name: test_lazyoperator_number.4
+  -294.375
+# ---
+# name: test_lazyoperator_number.5
+  Add(left=Add(left=Add(left=Add(left=Mul(left=TrueDiv(left=Mul(left=Sub(left=Add(left=Add(left=1, right=Symbol(key='X')), right=Symbol(key='Y')), right=5), right=3), right=16), right=Neg(left=Symbol(key='X'), right=None)), right=Pos(left=Symbol(key='Y'), right=None)), right=Abs(left=Symbol(key='X'), right=None)), right=Mod(left=Symbol(key='X'), right=Symbol(key='Y'))), right=FloorDiv(left=Symbol(key='X'), right=Symbol(key='Y')))
+# ---
+# name: test_lazyoperator_number[partial]
+  '(((((((((31+Y)-5)*3)/16)*-30)++Y)+30)+(30%Y))+(30//Y))'
+# ---
+# name: test_lazyoperator_number[repr]
+  '((((((((((1+X)+Y)-5)*3)/16)*-X)++Y)+abs(X))+(X%Y))+(X//Y))'
+# ---
+# name: test_operator[oper0][(X+1)=]
+  4
+# ---
+# name: test_operator[oper0][(X+1)]
+  '(X+1)'
+# ---
+# name: test_operator[oper10][(1/X)=]
+  0.3333333333333333
+# ---
+# name: test_operator[oper10][(1/X)]
+  '(1/X)'
+# ---
+# name: test_operator[oper11][(X/Y)=]
+  0.6
+# ---
+# name: test_operator[oper11][(X/Y)]
+  '(X/Y)'
+# ---
+# name: test_operator[oper12][(X**1)=]
+  3
+# ---
+# name: test_operator[oper12][(X**1)]
+  '(X**1)'
+# ---
+# name: test_operator[oper13][(1**X)=]
+  1
+# ---
+# name: test_operator[oper13][(1**X)]
+  '(1**X)'
+# ---
+# name: test_operator[oper14][(X**Y)=]
+  243
+# ---
+# name: test_operator[oper14][(X**Y)]
+  '(X**Y)'
+# ---
+# name: test_operator[oper15][-X=]
+  -3
+# ---
+# name: test_operator[oper15][-X]
+  '-X'
+# ---
+# name: test_operator[oper16][+X=]
+  3
+# ---
+# name: test_operator[oper16][+X]
+  '+X'
+# ---
+# name: test_operator[oper17][abs(X)=]
+  3
+# ---
+# name: test_operator[oper17][abs(X)]
+  'abs(X)'
+# ---
+# name: test_operator[oper18][(X%1)=]
+  0
+# ---
+# name: test_operator[oper18][(X%1)]
+  '(X%1)'
+# ---
+# name: test_operator[oper19][(1%X)=]
+  1
+# ---
+# name: test_operator[oper19][(1%X)]
+  '(1%X)'
+# ---
+# name: test_operator[oper1][(1+X)=]
+  4
+# ---
+# name: test_operator[oper1][(1+X)]
+  '(1+X)'
+# ---
+# name: test_operator[oper20][(X%Y)=]
+  3
+# ---
+# name: test_operator[oper20][(X%Y)]
+  '(X%Y)'
+# ---
+# name: test_operator[oper21][(X//1)=]
+  3
+# ---
+# name: test_operator[oper21][(X//1)]
+  '(X//1)'
+# ---
+# name: test_operator[oper22][(1//X)=]
+  0
+# ---
+# name: test_operator[oper22][(1//X)]
+  '(1//X)'
+# ---
+# name: test_operator[oper23][(X//Y)=]
+  0
+# ---
+# name: test_operator[oper23][(X//Y)]
+  '(X//Y)'
+# ---
+# name: test_operator[oper2][(X+Y)=]
+  8
+# ---
+# name: test_operator[oper2][(X+Y)]
+  '(X+Y)'
+# ---
+# name: test_operator[oper3][(X-1)=]
+  2
+# ---
+# name: test_operator[oper3][(X-1)]
+  '(X-1)'
+# ---
+# name: test_operator[oper4][(1-X)=]
+  -2
+# ---
+# name: test_operator[oper4][(1-X)]
+  '(1-X)'
+# ---
+# name: test_operator[oper5][(X-Y)=]
+  -2
+# ---
+# name: test_operator[oper5][(X-Y)]
+  '(X-Y)'
+# ---
+# name: test_operator[oper6][(X*1)=]
+  3
+# ---
+# name: test_operator[oper6][(X*1)]
+  '(X*1)'
+# ---
+# name: test_operator[oper7][(1*X)=]
+  3
+# ---
+# name: test_operator[oper7][(1*X)]
+  '(1*X)'
+# ---
+# name: test_operator[oper8][(X*Y)=]
+  15
+# ---
+# name: test_operator[oper8][(X*Y)]
+  '(X*Y)'
+# ---
+# name: test_operator[oper9][(X/1)=]
+  3.0
+# ---
+# name: test_operator[oper9][(X/1)]
+  '(X/1)'
+# ---
