@@ -84,21 +84,21 @@ def option_name_safe(string: str) -> str:
 
 def option_typing(self: FFMpegOption) -> str:
     if self.type == FFMpegOptionType.OPT_TYPE_FUNC:
-        return "str"
+        return "Func"
     elif self.type == FFMpegOptionType.OPT_TYPE_BOOL:
-        return "bool"
+        return "Boolean"
     elif self.type == FFMpegOptionType.OPT_TYPE_STRING:
-        return "str"
+        return "String"
     elif self.type == FFMpegOptionType.OPT_TYPE_INT:
-        return "int"
+        return "Int"
     elif self.type == FFMpegOptionType.OPT_TYPE_INT64:
-        return "int"
+        return "Int64"
     elif self.type == FFMpegOptionType.OPT_TYPE_FLOAT:
-        return "float"
+        return "Float"
     elif self.type == FFMpegOptionType.OPT_TYPE_DOUBLE:
-        return "float"
+        return "Double"
     elif self.type == FFMpegOptionType.OPT_TYPE_TIME:
-        return "str | float | None"
+        return "Time"
 
 
 def input_typings(self: FFMpegFilter) -> str:
