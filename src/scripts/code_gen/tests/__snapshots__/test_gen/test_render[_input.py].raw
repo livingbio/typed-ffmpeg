@@ -6,6 +6,7 @@ from pathlib import Path
 from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
+from ...types import *
 
 def input(
     filename: str | Path,
