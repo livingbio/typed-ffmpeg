@@ -5,6 +5,7 @@ from pathlib import Path
 
 from ..nodes import OutputNode, OutputStream, FilterableStream
 from typing import Any
+from ...types import *
 
 def output(
     *streams: FilterableStream,

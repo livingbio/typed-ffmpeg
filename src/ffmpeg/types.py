@@ -107,8 +107,13 @@ Note:
 Sample_fmt = str | Default | LazyValue
 Binary = str | Default | LazyValue
 
-
-Filter_Node_Option_Type = str | int | float | bool | LazyValue
+# OPT Type
+Func = str | int | float | Default | LazyValue
 """
-This represents the type of options that can be used with FFmpeg's filter nodes.
+ref: OPT_TYPE_FUNC
+"""
+
+Time = str | int | float | Default | LazyValue
+"""
+ref: OPT_TYPE_TIME
 """
