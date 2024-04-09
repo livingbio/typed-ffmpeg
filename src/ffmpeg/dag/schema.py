@@ -69,8 +69,8 @@ class Stream(HashableBaseModel):
         with open(self.view(format="png"), "rb") as f:
             return f.read()
 
-    def _repr_svg_(self) -> bytes:  # pragma: no cover
-        with open(self.view(format="svg"), "rb") as f:
+    def _repr_svg_(self) -> str:  # pragma: no cover
+        with open(self.view(format="svg"), "r") as f:
             return f.read()
 
 
@@ -205,6 +205,6 @@ class Node(HashableBaseModel, ABC):
         with open(self.view(format="png"), "rb") as f:
             return f.read()
 
-    def _repr_svg_(self) -> bytes:  # pragma: no cover
-        with open(self.view(format="svg"), "rb") as f:
+    def _repr_svg_(self) -> str:  # pragma: no cover
+        with open(self.view(format="svg"), "r") as f:
             return f.read()

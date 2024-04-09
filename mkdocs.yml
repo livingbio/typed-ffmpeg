@@ -44,6 +44,7 @@ nav:
       - Basic API Usage: usage/basic-api-usage.ipynb
       - Complex Filtering: usage/complex-filtering.ipynb
       - Customizing Filters: usage/customizing-filters.ipynb
+      - Execute: usage/execute.ipynb
   - API Documentation:
       - ffmpeg: src/base.md
       - types: src/types.md
