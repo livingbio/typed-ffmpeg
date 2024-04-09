@@ -32,15 +32,15 @@
 - **Filter Graph Serialization:** Enables saving and reloading of filter graphs in JSON format for ease of use and repeatability.
 - **Graph Visualization:** Leverages `graphviz` for visual representation, aiding in understanding and debugging.
 - **Validation and Auto-correction:** Assists in identifying and fixing errors within filter graphs.
+- **Input and Output Options Support:** Provide a more comprehensive interface for input and output options, including support for additional codecs and formats.
+- **Partial Evaluation:** Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.
 
 ### Planned Features
 
 Please note that the following features are under consideration or development for future releases:
 
-- **Partial Evaluation:** Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.
 - **Extended FFmpeg Version Support:** While `typed-ffmpeg` is currently built with FFmpeg version 6.0 in mind, we are working to ensure compatibility across different FFmpeg versions. Feedback and issue reports are welcome to improve version support.
 - **Additional Filter Support:** We aim to expand the range of FFmpeg filters supported by `typed-ffmpeg`. Continuous updates will be made to include more complex and varied filters.
-- **Input and Output Options Support:** Provide a more comprehensive interface for input and output options, including support for additional codecs and formats.
 
 ---
 
