@@ -41,7 +41,10 @@ nav:
   - Get Started:
       - Overview: index.md
   - Usage:
-      - How to Use: usage/how_to_use.md
+      - Basic API Usage: usage/basic-api-usage.ipynb
+      - Complex Filtering: usage/complex-filtering.ipynb
+      - Customizing Filters: usage/customizing-filters.ipynb
+      - Execute: usage/execute.ipynb
   - API Documentation:
       - ffmpeg: src/base.md
       - types: src/types.md
@@ -110,6 +113,11 @@ markdown_extensions:
 
 plugins:
   - search
+  - mknotebooks:
+      execute: false
+      timeout: 100
+      # preamble:  "<path/to/your/script>"
+      allow_errors: true
   - mkdocstrings:
       handlers:
         python:

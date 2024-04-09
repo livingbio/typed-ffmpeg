@@ -75,6 +75,8 @@ mkdocstrings-python = "^1.8.0"
 pymdown-extensions = "^10.7"
 griffe_inherited_docstrings = "*"
 black = "*"
+ipykernel = "^6.29.4"
+mknotebooks = "*"
 
 [tool.mypy]
 exclude = "^(migrations|commands|sandbox|samples|sdk)/"
