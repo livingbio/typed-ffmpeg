@@ -59,6 +59,6 @@ def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
 
     for node in context.all_nodes:
         for idx, stream in enumerate(node.inputs):
-            graph.edge(stream.node.hex, node.hex, label=f"{stream.index or '*'} => {idx}")
+            graph.edge(stream.node.hex, node.hex, label=f"{'*' if stream.index is None else stream.index} => {idx}")
 
     return graph.render(engine="dot")

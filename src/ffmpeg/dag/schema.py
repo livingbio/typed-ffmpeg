@@ -69,6 +69,10 @@ class Stream(HashableBaseModel):
         with open(self.view(format="png"), "rb") as f:
             return f.read()
 
+    def _repr_svg_(self) -> bytes:  # pragma: no cover
+        with open(self.view(format="svg"), "rb") as f:
+            return f.read()
+
 
 @dataclass(frozen=True, kw_only=True)
 class Node(HashableBaseModel, ABC):
@@ -182,3 +186,25 @@ class Node(HashableBaseModel, ABC):
             output |= input.node.upstream_nodes
 
         return output
+
+    def view(self, format: Literal["png", "svg", "dot"] = "png") -> str:
+        """
+        Visualize the Node.
+
+        Args:
+            format: The format of the view.
+
+        Returns:
+            The file path of the visualization.
+        """
+        from ..utils.view import view
+
+        return view(self, format=format)
+
+    def _repr_png_(self) -> bytes:  # pragma: no cover
+        with open(self.view(format="png"), "rb") as f:
+            return f.read()
+
+    def _repr_svg_(self) -> bytes:  # pragma: no cover
+        with open(self.view(format="svg"), "rb") as f:
+            return f.read()
