@@ -2,11 +2,11 @@ digraph {
 	rankdir=LR
 	fontname=Helvetica
 	fontsize=12
-	"26e08007e96b0500" [label="input.mp4" fillcolor="#99cc00" fontname=Helvetica fontsize=12 shape=box style=filled]
-	fa972b1371ee42 [label=trim fillcolor="#ffcc00" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"5743b0bcdcc2315" [label=drawtext fillcolor="#ffcc00" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"27ddb9a484ce2094" [label="output.mp4" fillcolor="#99ccff" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"26e08007e96b0500" -> fa972b1371ee42 [label="* => 0"]
-	fa972b1371ee42 -> "5743b0bcdcc2315" [label="0 => 0"]
-	"5743b0bcdcc2315" -> "27ddb9a484ce2094" [label="0 => 0"]
+	"1dcc16374ae0cb51" [label="input1.mp4" fillcolor="#99cc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+	5224866572894552 [label=split fillcolor="#ffcc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"842f5e9cde9c463" [label=trim fillcolor="#ffcc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"53dfdefbca6d5c3b" [label="tmp.mp4" fillcolor="#99ccff" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"1dcc16374ae0cb51" -> 5224866572894552 [label="* => 0"]
+	5224866572894552 -> "842f5e9cde9c463" [label="0 => 0"]
+	"842f5e9cde9c463" -> "53dfdefbca6d5c3b" [label="0 => 0"]
 }

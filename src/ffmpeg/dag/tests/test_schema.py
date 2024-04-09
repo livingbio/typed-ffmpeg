@@ -104,7 +104,6 @@ def test_replace(
         )
 
 
-@pytest.mark.skip("graphviz's result is not deterministic")
 def test_stream_view(snapshot: SnapshotAssertion) -> None:
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
@@ -112,6 +111,9 @@ def test_stream_view(snapshot: SnapshotAssertion) -> None:
     d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
     stream = Stream(node=d)
     png = stream.view()
+
+    # test node.view()
+    stream.node.view()
 
     with open(png, "rb") as ifile:
         assert snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
