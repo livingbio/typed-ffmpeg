@@ -65,7 +65,7 @@ class Stream(HashableBaseModel):
 
         return view(self.node, format=format)
 
-    def _repr_png_(self) -> bytes:
+    def _repr_png_(self) -> bytes:  # pragma: no cover
         with open(self.view(format="png"), "rb") as f:
             return f.read()
 
