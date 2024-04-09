@@ -41,7 +41,7 @@ nav:
   - Get Started:
       - Overview: index.md
   - Usage:
-      - How to Use: usage/how_to_use.md
+      - How to Use: usage/how_to_use-1.ipynb
   - API Documentation:
       - ffmpeg: src/base.md
       - types: src/types.md
@@ -110,6 +110,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - mknotebooks
   - mkdocstrings:
       handlers:
         python:
