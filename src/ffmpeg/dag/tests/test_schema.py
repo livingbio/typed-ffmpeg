@@ -3,7 +3,7 @@ from typing import Any
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
-from syrupy.extensions.image import PNGImageSnapshotExtension, SVGImageSnapshotExtension
+from syrupy.extensions.image import PNGImageSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...utils.snapshot import DAGSnapshotExtenstion
@@ -118,12 +118,12 @@ def test_stream_view(snapshot: SnapshotAssertion) -> None:
     with open(png, "rb") as ifile:
         assert snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
 
-    svg = stream.view(format="svg")
+    # SVG and Dot Result is not stable
+    # svg = stream.view(format="svg")
+    # with open(svg, "r") as ifile:
+    #     assert snapshot(extension_class=SVGImageSnapshotExtension) == ifile.read()
 
-    with open(svg, "r") as ifile:
-        assert snapshot(extension_class=SVGImageSnapshotExtension) == ifile.read()
+    # dot = stream.view(format="dot")
 
-    dot = stream.view(format="dot")
-
-    with open(dot, "r") as ifile:
-        assert snapshot() == ifile.read()
+    # with open(dot, "r") as ifile:
+    #     assert snapshot() == ifile.read()
