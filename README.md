@@ -70,6 +70,9 @@ Note: This requires Graphviz to be installed on your system.
 
 Here's how to quickly start using `typed-ffmpeg`:
 
+
+
+
 ```python
 import ffmpeg
 
@@ -80,14 +83,24 @@ f = (
     .hflip()
     .output(filename='output.mp4')
 )
-f.run()
+f
 ```
 
-![](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quick-usage.png)
+
+
+
+
+![svg](README_files/README_1_0.svg)
+
+
+
 
 For a more complex example:
 
+
+
 ```python
+import ffmpeg.filters
 import ffmpeg
 
 # Complex filter graph example
@@ -95,21 +108,30 @@ in_file = ffmpeg.input("input.mp4")
 overlay_file = ffmpeg.input("overlay.png")
 
 f = (
-    ffmpeg
+    ffmpeg.filters
     .concat(
         in_file.trim(start_frame=10, end_frame=20),
         in_file.trim(start_frame=30, end_frame=40),
     )
+    .video(0)
     .overlay(overlay_file.hflip())
     .drawbox(x="50", y="50", width="120", height="120", color="red", thickness="5")
     .output(filename="out.mp4")
 )
-f.run()
+f
 ```
 
-![](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/quick-usage-complex.png)
+
+
+
+
+![svg](README_files/README_3_0.svg)
+
+
+
 
 See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/typed/) section in our documentation for more examples and detailed guides.
+
 
 ---
 
