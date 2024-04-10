@@ -90,7 +90,7 @@ f
 
 
 
-![svg](docs/media/README_files/README_1_0.svg)
+![svg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/README_files/README_1_0.svg)
 
 
 
@@ -125,7 +125,7 @@ f
 
 
 
-![svg](docs/media/README_files/README_3_0.svg)
+![svg](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/README_files/README_3_0.svg)
 
 
 

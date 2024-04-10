@@ -5,6 +5,8 @@ import typer
 
 
 def post_process(markdown_file: str, original_folder: str, new_folder: str) -> None:
+    rel_path = "https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/" + new_folder
+
     # Move the folder
     if os.path.exists(original_folder):
         for filepath in os.listdir(original_folder):
@@ -21,7 +23,7 @@ def post_process(markdown_file: str, original_folder: str, new_folder: str) -> N
     with open(markdown_file, "r") as file:
         content = file.read()
 
-    content = content.replace(original_folder, new_folder)
+    content = content.replace(original_folder, rel_path)
 
     with open(markdown_file, "w") as file:
         file.write(content)
