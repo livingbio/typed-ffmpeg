@@ -90,7 +90,7 @@ f
 
 
 
-![svg](README_files/README_1_0.svg)
+![svg](docs/media/README_files/README_1_0.svg)
 
 
 
@@ -125,7 +125,7 @@ f
 
 
 
-![svg](README_files/README_3_0.svg)
+![svg](docs/media/README_files/README_3_0.svg)
 
 
 
