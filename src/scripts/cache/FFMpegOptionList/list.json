@@ -1,0 +1,1697 @@
+{
+  "__class__": "ffmpeg.common.schema.FFMpegOptionList",
+  "options": [
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "L",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show license",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "h",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show help",
+      "argname": "topic",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "?",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show help",
+      "argname": "topic",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "help",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show help",
+      "argname": "topic",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "-help",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show help",
+      "argname": "topic",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "version",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show version",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "buildconf",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show build configuration",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "formats",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show available formats",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "muxers",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available muxers",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "demuxers",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available demuxers",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "devices",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available devices",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "codecs",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show available codecs",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "decoders",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available decoders",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "encoders",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available encoders",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "bsfs",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show available bit stream filters",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "protocols",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show available protocols",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filters",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available filters",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "pix_fmts",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available pixel formats",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "layouts",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show standard channel layouts",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "sample_fmts",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 2,
+      "help": "show available audio sample formats",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dispositions",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show available stream dispositions",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "colors",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show available color names",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "loglevel",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "set logging level",
+      "argname": "loglevel",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "v",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 1,
+      "help": "set logging level",
+      "argname": "loglevel",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "report",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4,
+      "help": "generate a report",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "max_alloc",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "set maximum size of a single allocated block",
+      "argname": "bytes",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "cpuflags",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "force specific cpu flags",
+      "argname": "flags",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "cpucount",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "force specific cpu count",
+      "argname": "count",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "hide_banner",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "do not show program banner",
+      "argname": "hide_banner",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "sources",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 7,
+      "help": "list sources of the input device",
+      "argname": "device",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "sinks",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 7,
+      "help": "list sinks of the output device",
+      "argname": "device",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "f",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6528,
+      "help": "force container format (auto-detected otherwise)",
+      "argname": "fmt",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "y",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 0,
+      "help": "overwrite output files",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "n",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 0,
+      "help": "never overwrite output files",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "ignore_unknown",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "Ignore unknown stream types",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "copy_unknown",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "Copy unknown stream types",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "recast_media",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "allow recasting stream type in order to force a decoder of different media type",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "c",
+      "type": "OPT_TYPE_STRING",
+      "flags": 24448,
+      "help": "select encoder/decoder ('copy' to copy stream without reencoding)",
+      "argname": "codec",
+      "canon": ".u1.name_canon = \"codec\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "codec",
+      "type": "OPT_TYPE_STRING",
+      "flags": 16260,
+      "help": "alias for -c (select encoder/decoder)",
+      "argname": "codec",
+      "canon": ".u1.names_alt = alt_codec"
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "pre",
+      "type": "OPT_TYPE_STRING",
+      "flags": 14212,
+      "help": "preset name",
+      "argname": "preset",
+      "canon": ".u1.names_alt = alt_pre"
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "map",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4229,
+      "help": "set input stream mapping",
+      "argname": "[-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]]",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "map_metadata",
+      "type": "OPT_TYPE_STRING",
+      "flags": 4996,
+      "help": "set metadata information of outfile from infile",
+      "argname": "outfile[,metadata]:infile[,metadata]",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "map_chapters",
+      "type": "OPT_TYPE_INT",
+      "flags": 4484,
+      "help": "set chapters mapping",
+      "argname": "input_file_index",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "t",
+      "type": "OPT_TYPE_TIME",
+      "flags": 6528,
+      "help": "stop transcoding after specified duration",
+      "argname": "duration",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "to",
+      "type": "OPT_TYPE_TIME",
+      "flags": 6528,
+      "help": "stop transcoding after specified time is reached",
+      "argname": "time_stop",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "fs",
+      "type": "OPT_TYPE_INT64",
+      "flags": 4484,
+      "help": "set the limit file size in bytes",
+      "argname": "limit_size",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "ss",
+      "type": "OPT_TYPE_TIME",
+      "flags": 6528,
+      "help": "start transcoding at specified time",
+      "argname": "time_off",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "sseof",
+      "type": "OPT_TYPE_TIME",
+      "flags": 2436,
+      "help": "set the start time offset relative to EOF",
+      "argname": "time_off",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "seek_timestamp",
+      "type": "OPT_TYPE_INT",
+      "flags": 2436,
+      "help": "enable/disable seeking by timestamp with -ss",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "accurate_seek",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 2436,
+      "help": "enable/disable accurate seeking with -ss",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "isync",
+      "type": "OPT_TYPE_INT",
+      "flags": 2436,
+      "help": "Indicate the input index for sync reference",
+      "argname": "sync ref",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "itsoffset",
+      "type": "OPT_TYPE_TIME",
+      "flags": 2436,
+      "help": "set the input ts offset",
+      "argname": "time_off",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "itsscale",
+      "type": "OPT_TYPE_DOUBLE",
+      "flags": 3972,
+      "help": "set the input ts scale",
+      "argname": "scale",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "timestamp",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4229,
+      "help": "set the recording timestamp ('now' to set the current time)",
+      "argname": "time",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "metadata",
+      "type": "OPT_TYPE_STRING",
+      "flags": 4992,
+      "help": "add metadata",
+      "argname": "key=value",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "program",
+      "type": "OPT_TYPE_STRING",
+      "flags": 4996,
+      "help": "add program with specified streams",
+      "argname": "title=string:st=number...",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stream_group",
+      "type": "OPT_TYPE_STRING",
+      "flags": 4996,
+      "help": "add stream group with specified streams and group type-specific arguments",
+      "argname": "id=number:st=number...",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dframes",
+      "type": "OPT_TYPE_INT64",
+      "flags": 20613,
+      "help": "set the number of data frames to output",
+      "argname": "number",
+      "canon": ".u1.name_canon = \"frames\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "benchmark",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "add timings for benchmarking",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "benchmark_all",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "add timings for each task",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "progress",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "write program-readable progress information",
+      "argname": "url",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stdin",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "enable or disable interaction on standard input",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "timelimit",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "set max runtime in seconds in CPU user time",
+      "argname": "limit",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dump",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "dump each input packet",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "hex",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "when dumping packets, also dump the payload",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "re",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 2436,
+      "help": "read input at native frame rate; equivalent to -readrate 1",
+      "argname": "",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "readrate",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 2436,
+      "help": "read input at specified rate",
+      "argname": "speed",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "readrate_initial_burst",
+      "type": "OPT_TYPE_DOUBLE",
+      "flags": 2436,
+      "help": "The initial amount of input to burst read before imposing any readrate",
+      "argname": "seconds",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "target",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4229,
+      "help": "specify target file type (\\\"vcd\\\", \\\"svcd\\\", \\\"dvd\\\", \\\"dv\\\" or \\\"dv50\\\n        \"with optional prefixes \\\"pal-\\\", \\\"ntsc-\\\" or \\\"film-\\\")",
+      "argname": "type",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "frame_drop_threshold",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 4,
+      "help": "frame drop threshold",
+      "argname": "",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "copyts",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "copy timestamps",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "start_at_zero",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "shift input timestamps to start at 0 when using copyts",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "copytb",
+      "type": "OPT_TYPE_INT",
+      "flags": 4,
+      "help": "copy input stream time base when stream copying",
+      "argname": "mode",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "shortest",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4484,
+      "help": "finish encoding within shortest input",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "shortest_buf_duration",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 4484,
+      "help": "maximum buffering duration (in seconds) for the -shortest option",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "bitexact",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6532,
+      "help": "bitexact mode",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "apad",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "audio pad",
+      "argname": "",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dts_delta_threshold",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 4,
+      "help": "timestamp discontinuity delta threshold",
+      "argname": "threshold",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dts_error_threshold",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 4,
+      "help": "timestamp error delta threshold",
+      "argname": "threshold",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "xerror",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "exit on error",
+      "argname": "error",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "abort_on",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "abort on the specified condition flags",
+      "argname": "flags",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "copyinkf",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6020,
+      "help": "copy initial non-keyframes",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "copypriorss",
+      "type": "OPT_TYPE_INT",
+      "flags": 6020,
+      "help": "copy or discard frames before start time",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "frames",
+      "type": "OPT_TYPE_INT64",
+      "flags": 14212,
+      "help": "set the number of frames to output",
+      "argname": "number",
+      "canon": ".u1.names_alt = alt_frames"
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "tag",
+      "type": "OPT_TYPE_STRING",
+      "flags": 16260,
+      "help": "force codec tag/fourcc",
+      "argname": "fourcc/tag",
+      "canon": ".u1.names_alt = alt_tag"
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "q",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 22404,
+      "help": "use fixed quality scale (VBR)",
+      "argname": "q",
+      "canon": ".u1.name_canon = \"qscale\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "qscale",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 12421,
+      "help": "use fixed quality scale (VBR)",
+      "argname": "q",
+      "canon": ".u1.names_alt = alt_qscale"
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "profile",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4229,
+      "help": "set profile",
+      "argname": "profile",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filter",
+      "type": "OPT_TYPE_STRING",
+      "flags": 14208,
+      "help": "apply specified filters to audio/video",
+      "argname": "filter_graph",
+      "canon": ".u1.names_alt = alt_filter"
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filter_threads",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "number of non-complex filter threads",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filter_script",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "deprecated, use -/filter",
+      "argname": "filename",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "reinit_filter",
+      "type": "OPT_TYPE_INT",
+      "flags": 3972,
+      "help": "reinit filtergraph on input parameter changes",
+      "argname": "",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filter_complex",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "create a complex filtergraph",
+      "argname": "graph_description",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filter_complex_threads",
+      "type": "OPT_TYPE_INT",
+      "flags": 4,
+      "help": "number of threads for -filter_complex",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "lavfi",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "create a complex filtergraph",
+      "argname": "graph_description",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filter_complex_script",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "deprecated, use -/filter_complex instead",
+      "argname": "filename",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "auto_conversion_filters",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "enable automatic conversion filters globally",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 0,
+      "help": "print progress report during encoding",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats_period",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "set the period at which ffmpeg updates stats and -progress output",
+      "argname": "time",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "attach",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4229,
+      "help": "add an attachment to the output file",
+      "argname": "filename",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dump_attachment",
+      "type": "OPT_TYPE_STRING",
+      "flags": 2948,
+      "help": "extract an attachment into a file",
+      "argname": "filename",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stream_loop",
+      "type": "OPT_TYPE_INT",
+      "flags": 2436,
+      "help": "set number of times input stream shall be looped",
+      "argname": "loop count",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "debug_ts",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4,
+      "help": "print timestamp debugging info",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "max_error_rate",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 4,
+      "help": "ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.",
+      "argname": "maximum error rate",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "discard",
+      "type": "OPT_TYPE_STRING",
+      "flags": 3972,
+      "help": "discard",
+      "argname": "",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "disposition",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "disposition",
+      "argname": "",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "thread_queue_size",
+      "type": "OPT_TYPE_INT",
+      "flags": 6532,
+      "help": "set the maximum number of queued packets from the demuxer",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "find_stream_info",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 2436,
+      "help": "read and decode the streams to fill missing information with heuristics",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "bits_per_raw_sample",
+      "type": "OPT_TYPE_INT",
+      "flags": 6020,
+      "help": "set the number of bits per raw sample",
+      "argname": "number",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats_enc_pre",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "write encoding stats before encoding",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats_enc_post",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "write encoding stats after encoding",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats_mux_pre",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "write packets stats before muxing",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats_enc_pre_fmt",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "format of the stats written with -stats_enc_pre",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats_enc_post_fmt",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "format of the stats written with -stats_enc_post",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stats_mux_pre_fmt",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "format of the stats written with -stats_mux_pre",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vframes",
+      "type": "OPT_TYPE_INT64",
+      "flags": 20621,
+      "help": "set the number of video frames to output",
+      "argname": "number",
+      "canon": ".u1.name_canon = \"frames\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "r",
+      "type": "OPT_TYPE_STRING",
+      "flags": 8072,
+      "help": "override input framerate/convert to given output framerate (Hz value, fraction or abbreviation)",
+      "argname": "rate",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "fpsmax",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "set max frame rate (Hz value, fraction or abbreviation)",
+      "argname": "rate",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "s",
+      "type": "OPT_TYPE_STRING",
+      "flags": 8104,
+      "help": "set frame size (WxH or abbreviation)",
+      "argname": "size",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "aspect",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6024,
+      "help": "set aspect ratio (4:3, 16:9 or 1.3333, 1.7777)",
+      "argname": "aspect",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "pix_fmt",
+      "type": "OPT_TYPE_STRING",
+      "flags": 8076,
+      "help": "set pixel format",
+      "argname": "format",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "display_rotation",
+      "type": "OPT_TYPE_DOUBLE",
+      "flags": 3980,
+      "help": "set pure counter-clockwise rotation in degrees for stream(s)",
+      "argname": "angle",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "display_hflip",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 3980,
+      "help": "set display horizontal flip for stream(s) (overrides any display rotation if it is not set)",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "display_vflip",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 3980,
+      "help": "set display vertical flip for stream(s) (overrides any display rotation if it is not set)",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vn",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6536,
+      "help": "disable video",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "rc_override",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "rate control override for specific intervals",
+      "argname": "override",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vcodec",
+      "type": "OPT_TYPE_STRING",
+      "flags": 22665,
+      "help": "alias for -c:v (select encoder/decoder for video streams)",
+      "argname": "codec",
+      "canon": ".u1.name_canon = \"codec\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "timecode",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4237,
+      "help": "set initial TimeCode value.",
+      "argname": "hh:mm:ss[:;.]ff",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "pass",
+      "type": "OPT_TYPE_INT",
+      "flags": 6028,
+      "help": "select the pass number (1 to 3)",
+      "argname": "n",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "passlogfile",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "select two pass log file name prefix",
+      "argname": "prefix",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vstats",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 12,
+      "help": "dump video coding statistics to file",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vstats_file",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 13,
+      "help": "dump video coding statistics to file",
+      "argname": "file",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vstats_version",
+      "type": "OPT_TYPE_INT",
+      "flags": 12,
+      "help": "Version of the vstats format to use.",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vf",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20617,
+      "help": "alias for -filter:v (apply filters to video streams)",
+      "argname": "filter_graph",
+      "canon": ".u1.name_canon = \"filter\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "intra_matrix",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "specify intra matrix coeffs",
+      "argname": "matrix",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "inter_matrix",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "specify inter matrix coeffs",
+      "argname": "matrix",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "chroma_intra_matrix",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "specify intra matrix coeffs",
+      "argname": "matrix",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vtag",
+      "type": "OPT_TYPE_STRING",
+      "flags": 22669,
+      "help": "force video tag/fourcc",
+      "argname": "fourcc/tag",
+      "canon": ".u1.name_canon = \"tag\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "fps_mode",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "set framerate mode for matching video streams; overrides vsync",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "force_fps",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6028,
+      "help": "force the selected framerate, disable the best supported framerate selection",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "streamid",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4237,
+      "help": "set the value of an outfile streamid",
+      "argname": "streamIndex:value",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "force_key_frames",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6028,
+      "help": "force key frames at specified timestamps",
+      "argname": "timestamps",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "b",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4233,
+      "help": "video bitrate (please use -b:v)",
+      "argname": "bitrate",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "hwaccel",
+      "type": "OPT_TYPE_STRING",
+      "flags": 3980,
+      "help": "use HW accelerated decoding",
+      "argname": "hwaccel name",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "hwaccel_device",
+      "type": "OPT_TYPE_STRING",
+      "flags": 3980,
+      "help": "select a device for HW acceleration",
+      "argname": "devicename",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "hwaccel_output_format",
+      "type": "OPT_TYPE_STRING",
+      "flags": 3980,
+      "help": "select output format used with HW accelerated decoding",
+      "argname": "format",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "hwaccels",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 6,
+      "help": "show available HW acceleration methods",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "autorotate",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 3972,
+      "help": "automatically insert correct rotate filters",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "autoscale",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6020,
+      "help": "automatically insert a scale filter at the end of the filter graph",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "fix_sub_duration_heartbeat",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6028,
+      "help": "set this video output stream to be a heartbeat stream for fix_sub_duration, according to which subtitles should be split at random access points",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "aframes",
+      "type": "OPT_TYPE_INT64",
+      "flags": 20629,
+      "help": "set the number of audio frames to output",
+      "argname": "number",
+      "canon": ".u1.name_canon = \"frames\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "aq",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4241,
+      "help": "set audio quality (codec-specific)",
+      "argname": "quality",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "ar",
+      "type": "OPT_TYPE_INT",
+      "flags": 8080,
+      "help": "set audio sampling rate (in Hz)",
+      "argname": "rate",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "ac",
+      "type": "OPT_TYPE_INT",
+      "flags": 8080,
+      "help": "set number of audio channels",
+      "argname": "channels",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "an",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6544,
+      "help": "disable audio",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "acodec",
+      "type": "OPT_TYPE_STRING",
+      "flags": 22673,
+      "help": "alias for -c:a (select encoder/decoder for audio streams)",
+      "argname": "codec",
+      "canon": ".u1.name_canon = \"codec\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "ab",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4241,
+      "help": "alias for -b:a (select bitrate for audio streams)",
+      "argname": "bitrate",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "atag",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20629,
+      "help": "force audio tag/fourcc",
+      "argname": "fourcc/tag",
+      "canon": ".u1.name_canon = \"tag\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "sample_fmt",
+      "type": "OPT_TYPE_STRING",
+      "flags": 8084,
+      "help": "set sample format",
+      "argname": "format",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "channel_layout",
+      "type": "OPT_TYPE_STRING",
+      "flags": 16276,
+      "help": "set channel layout",
+      "argname": "layout",
+      "canon": ".u1.names_alt = alt_channel_layout"
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "ch_layout",
+      "type": "OPT_TYPE_STRING",
+      "flags": 24468,
+      "help": "set channel layout",
+      "argname": "layout",
+      "canon": ".u1.name_canon = \"channel_layout\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "af",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20625,
+      "help": "alias for -filter:a (apply filters to audio streams)",
+      "argname": "filter_graph",
+      "canon": ".u1.name_canon = \"filter\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "guess_layout_max",
+      "type": "OPT_TYPE_INT",
+      "flags": 3988,
+      "help": "set the maximum number of channels to try to guess the channel layout",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "sn",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6560,
+      "help": "disable subtitle",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "scodec",
+      "type": "OPT_TYPE_STRING",
+      "flags": 22689,
+      "help": "alias for -c:s (select encoder/decoder for subtitle streams)",
+      "argname": "codec",
+      "canon": ".u1.name_canon = \"codec\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "stag",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20645,
+      "help": "force subtitle tag/fourcc",
+      "argname": "fourcc/tag",
+      "canon": ".u1.name_canon = \"tag\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "fix_sub_duration",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 4004,
+      "help": "fix subtitles duration",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "canvas_size",
+      "type": "OPT_TYPE_STRING",
+      "flags": 4004,
+      "help": "set canvas size (WxH or abbreviation)",
+      "argname": "size",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "muxdelay",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 4484,
+      "help": "set the maximum demux-decode delay",
+      "argname": "seconds",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "muxpreload",
+      "type": "OPT_TYPE_FLOAT",
+      "flags": 4484,
+      "help": "set the initial demux-decode delay",
+      "argname": "seconds",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "sdp_file",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 4101,
+      "help": "specify a file in which to print sdp information",
+      "argname": "file",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "time_base",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "set the desired time base hint for output stream (1:24, 1:48000 or 0.04166, 2.0833e-5)",
+      "argname": "ratio",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "enc_time_base",
+      "type": "OPT_TYPE_STRING",
+      "flags": 6020,
+      "help": "set the desired time base for the encoder (1:24, 1:48000 or 0.04166, 2.0833e-5). two special values are defined - 0 = use frame rate (video) or sample rate (audio),-1 = match source time base",
+      "argname": "ratio",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "bsf",
+      "type": "OPT_TYPE_STRING",
+      "flags": 8068,
+      "help": "A comma-separated list of bitstream filters",
+      "argname": "bitstream_filters",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "apre",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20629,
+      "help": "set the audio options to the indicated preset",
+      "argname": "preset",
+      "canon": ".u1.name_canon = \"pre\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vpre",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20621,
+      "help": "set the video options to the indicated preset",
+      "argname": "preset",
+      "canon": ".u1.name_canon = \"pre\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "spre",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20645,
+      "help": "set the subtitle options to the indicated preset",
+      "argname": "preset",
+      "canon": ".u1.name_canon = \"pre\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "fpre",
+      "type": "OPT_TYPE_STRING",
+      "flags": 20613,
+      "help": "set options from indicated preset file",
+      "argname": "filename",
+      "canon": ".u1.name_canon = \"pre\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "max_muxing_queue_size",
+      "type": "OPT_TYPE_INT",
+      "flags": 6020,
+      "help": "maximum number of packets that can be buffered while waiting for all streams to initialize",
+      "argname": "packets",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "muxing_queue_data_threshold",
+      "type": "OPT_TYPE_INT",
+      "flags": 6020,
+      "help": "set the threshold after which max_muxing_queue_size is taken into account",
+      "argname": "bytes",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dcodec",
+      "type": "OPT_TYPE_STRING",
+      "flags": 22725,
+      "help": "alias for -c:d (select encoder/decoder for data streams)",
+      "argname": "codec",
+      "canon": ".u1.name_canon = \"codec\""
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "dn",
+      "type": "OPT_TYPE_BOOL",
+      "flags": 6592,
+      "help": "disable data",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "init_hw_device",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "initialise hardware device",
+      "argname": "args",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "filter_hw_device",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "set hardware device used when filtering",
+      "argname": "device",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "adrift_threshold",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "deprecated, does nothing",
+      "argname": "threshold",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "top",
+      "type": "OPT_TYPE_INT",
+      "flags": 8076,
+      "help": "deprecated, use the setfield video filter",
+      "argname": "",
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "qphist",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 12,
+      "help": "deprecated, does nothing",
+      "argname": null,
+      "canon": null
+    },
+    {
+      "__class__": "ffmpeg.common.schema.FFMpegOption",
+      "name": "vsync",
+      "type": "OPT_TYPE_FUNC",
+      "flags": 5,
+      "help": "set video sync method globally; deprecated, use -fps_mode",
+      "argname": "",
+      "canon": null
+    }
+  ]
+}

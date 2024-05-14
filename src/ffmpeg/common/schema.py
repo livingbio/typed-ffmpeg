@@ -306,3 +306,7 @@ class FFMpegOption:
     @property
     def is_support_stream_specifier(self) -> bool:
         return bool(self.flags & FFMpegOptionFlag.OPT_SPEC)
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegOptionList:
+    options: tuple[FFMpegOption, ...]
