@@ -24,5 +24,14 @@
   "name": "Python Development",
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "waitFor": "postCreateCommand",
-  "workspaceFolder": "/workspaces/typed-ffmpeg"
+  "workspaceFolder": "/workspaces/typed-ffmpeg",// Build the volume mount for gcloud config.
+  "mounts": [
+    // 把本機的 gcloud config 綁到 container 內使用
+    "source=${localEnv:HOME}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached",
+    // for ssh login to github
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    // 為了在不同 devcontainer 切換時，保留相同的 bash history
+    "source=gstudio-zshhistory,target=/root/commandhistory,type=volume",
+    "source=poetry-virtualenvs,target=/root/.cache/pypoetry/virtualenvs,type=volume"
+  ],
 }
