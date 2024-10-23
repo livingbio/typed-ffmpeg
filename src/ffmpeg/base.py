@@ -4,11 +4,10 @@ This module defined the basic functions for creating the ffmpeg filter graph.
 
 from typing import Any
 
-from ffmpeg.schema import StreamType
-
 from .dag.io._input import input
 from .dag.io._output import output
 from .dag.nodes import FilterableStream, FilterNode, GlobalNode, GlobalStream, OutputStream
+from .schema import StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
 

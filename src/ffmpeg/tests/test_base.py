@@ -2,10 +2,9 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ffmpeg.schema import StreamType
-
 from ..base import input, merge_outputs, output, vfilter
 from ..filters import concat, join
+from ..schema import StreamType
 from ..streams.video import VideoStream
 
 
