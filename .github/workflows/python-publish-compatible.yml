@@ -1,0 +1,48 @@
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Upload Python Package
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Install Poetry & export Requirements
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          poetry self add poetry-dynamic-versioning[plugin]
+      - name: build compatible version
+        run: |
+          mv pyproject-compatible.toml pyproject.toml
+          mv src/ffmpeg src/typed_ffmpeg
+      - name: Build package
+        run: poetry build
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@f7600683efdcb7656dec5b29656edb7bc586e597
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+      - run: poetry install --with dev
+      - run: poetry run mkdocs gh-deploy --force
