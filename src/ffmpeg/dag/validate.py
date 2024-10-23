@@ -2,8 +2,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 
-from ffmpeg.exceptions import FFMpegValueError
-
+from ..exceptions import FFMpegValueError
 from ..streams.audio import AudioStream
 from ..streams.video import VideoStream
 from .context import DAGContext

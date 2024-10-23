@@ -1,0 +1,102 @@
+[tool.poetry]
+name = "typed-ffmpeg-compatible"
+version = "0.0.0"
+description = "Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
+authors = ["lucemia <lucemia@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "typed_ffmpeg", from = "src" }]
+include = ["typed_ffmpeg/py.typed"]
+exclude = ["**/tests", "**/scripts"]
+license = "MIT"
+homepage = "https://livingbio.github.io/typed-ffmpeg/"
+repository = "https://github.com/livingbio/typed-ffmpeg"
+keywords = [
+    "ffmpeg",
+    "video",
+    "audio",
+    "multimedia",
+    "filter",
+]
+classifiers = [
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Topic :: Multimedia :: Video',
+        'Topic :: Multimedia :: Sound/Audio',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Software Development :: Libraries :: Application Frameworks',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+
+# graph
+graphviz = {"version" = "*", optional=true}
+
+[tool.poetry.extras]
+graph = [
+    "graphviz",
+]
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+# test
+pytest-cov = ">=4.1,<6.0"
+pytest-datadir = "^1.5.0"
+pytest-recording = "^0.13.1"
+syrupy = "^4.6.0"
+pre-commit = "*"
+mypy = "*"
+graphviz = "*"
+
+# codegen
+typer = "*"
+jinja2 = "*"
+devtools = "*"
+beautifulsoup4 = "*"
+html2text = "*"
+
+# Doc
+mkdocs = "*"
+markdown-callouts = "^0.4.0"
+mkdocs-material = "^9.5.9"
+mkdocstrings = ">=0.24,<0.27"
+mkdocstrings-python = "^1.8.0"
+pymdown-extensions = "^10.7"
+griffe_inherited_docstrings = "*"
+black = "*"
+ipykernel = "^6.29.4"
+mknotebooks = "*"
+
+[tool.mypy]
+exclude = "^(migrations|commands|sandbox|samples|sdk)/"
+show_error_codes = true       # Enables showing error codes in messages for easier issue identification.
+implicit_optional = true      # Assumes arguments with a default `None` value are `Optional`.
+follow_imports = "silent"     # Ignores import errors for a cleaner output on external libraries.
+warn_redundant_casts = true   # Issues warnings for unnecessary type casts.
+warn_unused_ignores = true    # Alerts on unnecessary '# type: ignore' comments.
+disallow_any_generics = true  # Forces specifying types for generics, like `List[int]` instead of just `List`.
+check_untyped_defs = true     # Would type-check functions without type annotations, but it's commented out.
+no_implicit_reexport = true   # Requires explicit re-export of imported names.
+disallow_untyped_defs = true  # Forces all functions to have type annotations.
+
+[tool.poetry.scripts]
+scripts = "scripts.main:app"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+pattern = "default-unprefixed"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"

@@ -54,6 +54,8 @@ pip install typed-ffmpeg
 
 Note: FFmpeg must be installed on your system.
 
+Note: If you need to install `ffmpeg-python` at the same time, use `pip install typed-ffmpeg-compatible` to prevent conflicts with the module name.​
+
 ### Visualization Support
 
 To enable graph visualization features:
