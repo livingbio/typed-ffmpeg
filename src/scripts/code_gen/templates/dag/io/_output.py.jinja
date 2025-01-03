@@ -14,7 +14,7 @@ def output(
     {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
-    params: dict[str, Any],
+    extra_options: dict[str, Any],
     **kwargs: Any
 ) -> OutputStream:
     """
@@ -28,7 +28,7 @@ def output(
         {{option.name | option_name_safe}}: {{option.help }}
         {% endif %}
         {%- endfor -%}
-        params: the arguments for the output
+        extra_options: the arguments for the output
         **kwargs: the arguments for the output
 
     Returns:
@@ -48,5 +48,5 @@ def output(
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=tuple((options | params | kwargs).items())
+        kwargs=tuple((options | extra_options | kwargs).items())
     ).stream()

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 class GlobalArgs(ABC):
     @abstractmethod
-    def _global_node(self, *streams: OutputStream, params: dict[str, Any], **kwargs: Any) -> GlobalNode:
+    def _global_node(self, *streams: OutputStream, extra_options: dict[str, Any], **kwargs: Any) -> GlobalNode:
         ...
 
     def global_args(
@@ -21,7 +21,7 @@ class GlobalArgs(ABC):
         {{ option.name }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
-        params: dict[str, Any],
+        extra_options: dict[str, Any],
         **kwargs: Any
     ) -> GlobalStream:
         """
@@ -33,7 +33,7 @@ class GlobalArgs(ABC):
             {{option.name | option_name_safe}}: {{option.help }}
             {% endif %}
             {%- endfor -%}
-            params: Additional options
+            extra_options: Additional options
             **kwargs: Additional options
 
         Returns:
@@ -47,5 +47,5 @@ class GlobalArgs(ABC):
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-            }.items() if v is not None} | params | kwargs),
+            }.items() if v is not None} | extra_options | kwargs),
         ).stream()
