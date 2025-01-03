@@ -23,7 +23,7 @@ class OutputArgs(ABC):
         {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
-        extra_options: dict[str, Any],
+        extra_options: dict[str, Any] = None,
         **kwargs: Any
     ) -> OutputStream:
         """
@@ -54,4 +54,4 @@ class OutputArgs(ABC):
             }.items() if v is not None
         }
 
-        return self._output_node(*streams, filename=filename, **options, **extra_options, **kwargs).stream()
+        return self._output_node(*streams, filename=filename, **options, **(extra_options or {}), **kwargs).stream()
