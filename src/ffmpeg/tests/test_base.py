@@ -8,6 +8,18 @@ from ..schema import StreamType
 from ..streams.video import VideoStream
 
 
+def test_output_node(snapshot: SnapshotAssertion) -> None:
+    input1 = input("input1")
+
+    value = {"str": "x", "int": 1, "float": 0.1}
+    # due to https://github.com/python/mypy/issues/11583
+    out = input1.output(filename="out.mp4", **value)  # type: ignore[arg-type]
+    assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
+
+    out = input1.output(filename="out.mp4", extra_options=value)
+    assert snapshot(extension_class=JSONSnapshotExtension) == (out.compile())
+
+
 def test_filter_node(snapshot: SnapshotAssertion) -> None:
     input1 = input("input1")
     input2 = input("input2")

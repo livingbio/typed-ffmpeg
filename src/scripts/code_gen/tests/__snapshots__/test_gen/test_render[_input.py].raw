@@ -10,13 +10,15 @@ from ...types import *
 
 def input(
     filename: str | Path,
-    *,**kwargs: Any
+    *,extra_options: dict[str, Any] = None,
+    **kwargs: Any
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
 
     Args:
         filename: Input file URL
+        extra_options: ffmpeg's input file options
         **kwargs: ffmpeg's input file options
 
     Returns:
@@ -37,5 +39,5 @@ def input(
 
     return InputNode(
         filename=str(filename),
-        kwargs=tuple((options | kwargs).items())
+        kwargs=tuple((options | (extra_options or {}) | kwargs).items())
     ).stream()

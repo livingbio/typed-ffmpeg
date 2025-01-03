@@ -21,6 +21,7 @@ class GlobalArgs(ABC):
         {{ option.name }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
+        extra_options: dict[str, Any] = None,
         **kwargs: Any
     ) -> GlobalStream:
         """
@@ -32,6 +33,7 @@ class GlobalArgs(ABC):
             {{option.name | option_name_safe}}: {{option.help }}
             {% endif %}
             {%- endfor -%}
+            extra_options: Additional options
             **kwargs: Additional options
 
         Returns:
@@ -45,5 +47,5 @@ class GlobalArgs(ABC):
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-            }.items() if v is not None} | kwargs),
+            }.items() if v is not None} | (extra_options or {}) | kwargs),
         ).stream()

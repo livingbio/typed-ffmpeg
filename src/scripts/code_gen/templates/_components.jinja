@@ -112,7 +112,7 @@ filter_node = filter_node_factory(
         {% for option in f.options %}
         "{{ option.name}}": {{ option.name | option_name_safe }},
         {% endfor %}
-    } | kwargs
+    } | (extra_options or {}) | kwargs
 )
 {% if f.is_dynamic_output %}
 return filter_node
@@ -137,6 +137,7 @@ return (
     {{ stream_typings(f, "method") }}
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ f | filter_option_typings }}
+    extra_options: dict[str, Any] = None,
     **kwargs: Any
     ) {{- return_stream_typings(f) }}
         """
@@ -151,6 +152,7 @@ def {{f.name}}(
     {{ stream_typings(f, "function") }}
     {% if not f.is_dynamic_input and f.options | length > 0 %}*,{% endif %}
     {{ f | filter_option_typings }}
+    extra_options: dict[str, Any] = None,
     **kwargs: Any
 ) {{- return_stream_typings(f) }}
     """

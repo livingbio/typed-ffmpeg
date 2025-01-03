@@ -39,6 +39,7 @@ class AudioStream(FilterableStream):
 
     *,
     order: Int = Default(None),projection: Int = Default(None),
+    extra_options: dict[str, Any] = None,
     **kwargs: Any
     )-> AudioStream:
         """
@@ -78,7 +79,7 @@ References:
                 
                 "projection": projection,
                 
-            } | kwargs
+            } | (extra_options or {}) | kwargs
         )
         return filter_node.audio(0)
 
