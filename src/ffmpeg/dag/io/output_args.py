@@ -114,6 +114,7 @@ class OutputArgs(ABC):
         dcodec: String = None,
         dn: Boolean = None,
         top: Int = None,
+        extra_options: dict[str, Any] = None,
         **kwargs: Any,
     ) -> OutputStream:
         """
@@ -217,6 +218,7 @@ class OutputArgs(ABC):
             dcodec: alias for -c:d (select encoder/decoder for data streams)
             dn: disable data
             top: deprecated, use the setfield video filter
+            extra_options: the arguments for the output
             **kwargs: the arguments for the output
 
         Returns:
@@ -324,4 +326,4 @@ class OutputArgs(ABC):
             if v is not None
         }
 
-        return self._output_node(*streams, filename=filename, **options, **kwargs).stream()
+        return self._output_node(*streams, filename=filename, **options, **(extra_options or {}), **kwargs).stream()

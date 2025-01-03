@@ -64,6 +64,7 @@ def input(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
+    extra_options: dict[str, Any] = None,
     **kwargs: Any
 ) -> AVStream:
     """
@@ -123,6 +124,7 @@ def input(
         dcodec: alias for -c:d (select encoder/decoder for data streams)
         dn: disable data
         top: deprecated, use the setfield video filter
+        extra_options: ffmpeg's input file options
         **kwargs: ffmpeg's input file options
 
     Returns:
@@ -194,4 +196,4 @@ def input(
         if v is not None
     }
 
-    return InputNode(filename=str(filename), kwargs=tuple((options | kwargs).items())).stream()
+    return InputNode(filename=str(filename), kwargs=tuple((options | (extra_options or {}) | kwargs).items())).stream()

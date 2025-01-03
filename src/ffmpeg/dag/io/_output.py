@@ -105,6 +105,7 @@ def output(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
+    extra_options: dict[str, Any] = None,
     **kwargs: Any
 ) -> OutputStream:
     """
@@ -208,6 +209,7 @@ def output(
         dcodec: alias for -c:d (select encoder/decoder for data streams)
         dn: disable data
         top: deprecated, use the setfield video filter
+        extra_options: the arguments for the output
         **kwargs: the arguments for the output
 
     Returns:
@@ -315,4 +317,6 @@ def output(
         if v is not None
     }
 
-    return OutputNode(inputs=streams, filename=str(filename), kwargs=tuple((options | kwargs).items())).stream()
+    return OutputNode(
+        inputs=streams, filename=str(filename), kwargs=tuple((options | (extra_options or {}) | kwargs).items())
+    ).stream()
