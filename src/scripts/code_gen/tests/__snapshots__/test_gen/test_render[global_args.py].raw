@@ -15,12 +15,14 @@ class GlobalArgs(ABC):
 
     def global_args(
         self,
-        *,**kwargs: Any
+        *,extra_options: dict[str, Any] = None,
+        **kwargs: Any
     ) -> GlobalStream:
         """
         Set global options.
 
         Args:
+            extra_options: Additional options
             **kwargs: Additional options
 
         Returns:
@@ -30,5 +32,5 @@ class GlobalArgs(ABC):
         return self._global_node(
             **({k: v for k, v in {
                 
-            }.items() if v is not None} | kwargs),
+            }.items() if v is not None} | (extra_options or {}) | kwargs),
         ).stream()
