@@ -16,7 +16,6 @@ def input(
     {%- endif -%}
     {%- endfor -%}
     extra_options: dict[str, Any] = None,
-    **kwargs: Any
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
@@ -29,7 +28,6 @@ def input(
         {% endif %}
         {%- endfor -%}
         extra_options: ffmpeg's input file options
-        **kwargs: ffmpeg's input file options
 
     Returns:
         Input stream
@@ -53,5 +51,5 @@ def input(
 
     return InputNode(
         filename=str(filename),
-        kwargs=tuple((options | (extra_options or {}) | kwargs).items())
+        kwargs=tuple((options | (extra_options or {}) ).items())
     ).stream()

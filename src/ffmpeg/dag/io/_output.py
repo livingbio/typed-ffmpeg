@@ -106,7 +106,6 @@ def output(
     dn: Boolean = None,
     top: Int = None,
     extra_options: dict[str, Any] = None,
-    **kwargs: Any
 ) -> OutputStream:
     """
     Output file URL
@@ -210,7 +209,6 @@ def output(
         dn: disable data
         top: deprecated, use the setfield video filter
         extra_options: the arguments for the output
-        **kwargs: the arguments for the output
 
     Returns:
         the output stream
@@ -318,5 +316,5 @@ def output(
     }
 
     return OutputNode(
-        inputs=streams, filename=str(filename), kwargs=tuple((options | (extra_options or {}) | kwargs).items())
+        inputs=streams, filename=str(filename), kwargs=tuple((options | (extra_options or {})).items())
     ).stream()

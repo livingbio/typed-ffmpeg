@@ -64,7 +64,6 @@ class GlobalArgs(ABC):
         qphist: Func = None,
         vsync: Func = None,
         extra_options: dict[str, Any] = None,
-        **kwargs: Any,
     ) -> GlobalStream:
         """
         Set global options.
@@ -116,7 +115,6 @@ class GlobalArgs(ABC):
             qphist: deprecated, does nothing
             vsync: set video sync method globally; deprecated, use -fps_mode
             extra_options: Additional options
-            **kwargs: Additional options
 
         Returns:
             GlobalStream: GlobalStream instance
@@ -176,6 +174,5 @@ class GlobalArgs(ABC):
                     if v is not None
                 }
                 | (extra_options or {})
-                | kwargs
             ),
         ).stream()
