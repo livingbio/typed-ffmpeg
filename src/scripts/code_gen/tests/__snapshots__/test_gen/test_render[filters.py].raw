@@ -35,7 +35,6 @@ def aap(
     *,
     order: Int = Default(None),projection: Int = Default(None),
     extra_options: dict[str, Any] = None,
-    **kwargs: Any
 )-> AudioStream:
     """
     
@@ -73,7 +72,7 @@ References:
             
             "projection": projection,
             
-        } | (extra_options or {}) | kwargs
+        } | (extra_options or {})
     )
     return filter_node.audio(0)
 

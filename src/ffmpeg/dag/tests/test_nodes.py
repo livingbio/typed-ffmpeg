@@ -36,7 +36,10 @@ from ..schema import Node
             id="filter-node",
         ),
         pytest.param(
-            input(filename="tmp.mp4").output(filename="temp").global_args(y=True, no=False, speed=1).node,
+            input(filename="tmp.mp4")
+            .output(filename="temp")
+            .global_args(y=True, extra_options={"no": False, "speed": 1})
+            .node,
             GlobalNode,
             id="global-node",
         ),

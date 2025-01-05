@@ -19,7 +19,6 @@ class OutputArgs(ABC):
         self,
         *streams: "FilterableStream",
         filename: str | Path,extra_options: dict[str, Any] = None,
-        **kwargs: Any
     ) -> OutputStream:
         """
         Output file URL
@@ -28,7 +27,6 @@ class OutputArgs(ABC):
             *streams: the streams to output
             filename: the filename to output to
             extra_options: the arguments for the output
-            **kwargs: the arguments for the output
 
         Returns:
             the output stream
@@ -40,4 +38,4 @@ class OutputArgs(ABC):
             }.items() if v is not None
         }
 
-        return self._output_node(*streams, filename=filename, **options, **(extra_options or {}), **kwargs).stream()
+        return self._output_node(*streams, filename=filename, **options, **(extra_options or {})).stream()

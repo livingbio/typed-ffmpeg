@@ -15,7 +15,6 @@ def output(
     {%- endif -%}
     {%- endfor -%}
     extra_options: dict[str, Any] = None,
-    **kwargs: Any
 ) -> OutputStream:
     """
     Output file URL
@@ -29,7 +28,6 @@ def output(
         {% endif %}
         {%- endfor -%}
         extra_options: the arguments for the output
-        **kwargs: the arguments for the output
 
     Returns:
         the output stream
@@ -48,5 +46,5 @@ def output(
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=tuple((options | (extra_options or {}) | kwargs).items())
+        kwargs=tuple((options | (extra_options or {})).items())
     ).stream()
