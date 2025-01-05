@@ -66,18 +66,24 @@ def test_generate_thumbnail_for_video(snapshot: SnapshotAssertion) -> None:
 def test_assemble_video_from_sequence_of_frames(snapshot: SnapshotAssertion) -> None:
     # ["ffmpeg", "-framerate", "25", "-pattern_type", "glob", "-i", "/path/to/jpegs/*.jpg", "movie.mp4""]
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("/path/to/jpegs/*.jpg", framerate=25, pattern_type="glob").output(filename="movie.mp4").compile()
+        input("/path/to/jpegs/*.jpg", extra_options={"framerate": 25, "pattern_type": "glob"})
+        .output(filename="movie.mp4")
+        .compile()
     )
 
 
 def test_assemble_video_from_sequence_of_frames_with_additional_filtering(snapshot: SnapshotAssertion) -> None:
     # ["ffmpeg", "-framerate", "25", "-pattern_type", "glob", "-i", "/path/to/jpegs/*.jpg", "-filter_complex", "[0]deflicker=mode=pm:size=10[s0];[s0]scale=force_original_aspect_ratio=increase:size=hd1080[s1]", "-map", "[s1]", "-crf", "20", "-movflags", "faststart", "-pix_fmt", "yuv420p", "-preset", "slower", "movie.mp4"]
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("/path/to/jpegs/*.jpg", framerate=25, pattern_type="glob")
+        input("/path/to/jpegs/*.jpg", extra_options={"framerate": 25, "pattern_type": "glob"})
         .deflicker(mode="pm", size=10)
         # FIXME: scale's w,h options should be optional
-        .scale(size="hd1080", force_original_aspect_ratio="increase")
-        .output(filename="movie.mp4", crf=20, movflags="faststart", pix_fmt="yuv420p", preset="slower")
+        .scale(force_original_aspect_ratio="increase", extra_options={"size": "hd1000"})
+        .output(
+            filename="movie.mp4",
+            pix_fmt="yuv420p",
+            extra_options={"crf": 20, "movflags": "faststart", "preset": "slower"},
+        )
         .compile()
     )
 
@@ -124,11 +130,17 @@ def test_drawtext_escaping(snapshot: SnapshotAssertion) -> None:
 
 def test_compile_bool_option(snapshot: SnapshotAssertion) -> None:
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("input.mp4").drawtext(text="hello", escape_text=False).output(filename="output.mp4").compile()
+        input("input.mp4")
+        .drawtext(text="hello", extra_options={"escape_text": False})
+        .output(filename="output.mp4")
+        .compile()
     )
 
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("input.mp4").drawtext(text="hello", escape_text=True).output(filename="output.mp4").compile()
+        input("input.mp4")
+        .drawtext(text="hello", extra_options={"escape_text": True})
+        .output(filename="output.mp4")
+        .compile()
     )
 
 
@@ -157,8 +169,10 @@ def test_concat_dumuxer(snapshot: SnapshotAssertion) -> None:
     stream = input(
         "files.txt",
         f="concat",
-        safe="0",
-        protocol_whitelist="file,http,https,tcp,tls",
+        extra_options={
+            "safe": 0,
+            "protocol_whitelist": "file,http,https,tcp,tls",
+        },
     )
 
     assert snapshot(extension_class=JSONSnapshotExtension) == (stream.output(filename="output.mp4").compile())
