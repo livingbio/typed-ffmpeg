@@ -30,6 +30,8 @@ jobs:
         with:
           python-version: "3.x"
       - name: Install Poetry & export Requirements
+        env:
+          POETRY_VERSION: "1.5.1"  # Specify the desired Poetry version here
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           poetry self add poetry-dynamic-versioning[plugin]
