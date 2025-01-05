@@ -1,8 +1,8 @@
 {
-  "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
+  "__class__": "src.ffmpeg.utils.lazy_eval.operator.Add",
   "left": 1,
   "right": {
-    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+    "__class__": "src.ffmpeg.utils.lazy_eval.schema.Symbol",
     "key": "X"
   }
 }

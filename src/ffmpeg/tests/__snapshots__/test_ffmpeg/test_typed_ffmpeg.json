@@ -29,7 +29,6 @@
   "probe",
   "schema",
   "streams",
-  "tests",
   "types",
   "utils",
   "vfilter"
