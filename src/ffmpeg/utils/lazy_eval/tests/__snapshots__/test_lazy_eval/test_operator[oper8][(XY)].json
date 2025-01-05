@@ -1,11 +1,11 @@
 {
-  "__class__": "src.ffmpeg.utils.lazy_eval.operator.Mul",
+  "__class__": "ffmpeg.utils.lazy_eval.operator.Mul",
   "left": {
-    "__class__": "src.ffmpeg.utils.lazy_eval.schema.Symbol",
+    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
     "key": "X"
   },
   "right": {
-    "__class__": "src.ffmpeg.utils.lazy_eval.schema.Symbol",
+    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
     "key": "Y"
   }
 }

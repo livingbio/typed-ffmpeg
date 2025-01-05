@@ -78,7 +78,7 @@ def test_assemble_video_from_sequence_of_frames_with_additional_filtering(snapsh
         input("/path/to/jpegs/*.jpg", extra_options={"framerate": 25, "pattern_type": "glob"})
         .deflicker(mode="pm", size=10)
         # FIXME: scale's w,h options should be optional
-        .scale(force_original_aspect_ratio="increase", extra_options={"size": "hd1000"})
+        .scale(force_original_aspect_ratio="increase", extra_options={"size": "hd1080"})
         .output(
             filename="movie.mp4",
             pix_fmt="yuv420p",
