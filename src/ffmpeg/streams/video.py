@@ -7909,7 +7909,7 @@ class VideoStream(FilterableStream):
         Args:
             datapath: set datapath
             language: set language (default "eng")
-            whitelist: set character whitelist (default "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?"'[]{}()|/\=*&%$#@!~ ")
+            whitelist: set character whitelist (default "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?"'[]{}()|/\\=*&%$#@!~ ")
             blacklist: set character blacklist (default "")
 
         Returns:
