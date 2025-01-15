@@ -451,6 +451,8 @@ class GlobalNode(Node):
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
+                elif value is False:
+                    commands += [f"-no{key}"]
                 # NOTE: the -no{key} format since not really for global options
             else:
                 commands += [f"-{key}", str(value)]

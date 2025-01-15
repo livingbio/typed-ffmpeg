@@ -1,5 +1,6 @@
 [
   "ffmpeg",
+  "-noy",
   "-i",
   "tmp1.mp4",
   "-i",
