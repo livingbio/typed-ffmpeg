@@ -48,11 +48,12 @@
   "GlobalNode(kwargs=(('y', True), ('no', False), ('speed', 1)), inputs=(OutputStream(node=OutputNode(kwargs=(), inputs=(AVStream(node=InputNode(kwargs=(), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
 # ---
 # name: test_node_prop[global-node][f.repr]
-  '-y -speed 1'
+  '-y -nono -speed 1'
 # ---
 # name: test_node_prop[global-node][get_args]
   list([
     '-y',
+    '-nono',
     '-speed',
     '1',
   ])
@@ -92,5 +93,14 @@
     '-bufsize',
     '64k',
     'test.mp4',
+  ])
+# ---
+# name: test_nostdin
+  list([
+    'ffmpeg',
+    '-nostdin',
+    '-i',
+    'tmp1.mp4',
+    'output.mp4',
   ])
 # ---

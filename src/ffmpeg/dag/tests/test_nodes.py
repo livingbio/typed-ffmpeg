@@ -106,6 +106,12 @@ def test_global_node_with_args_overwrite(
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == stream.node
 
 
+def test_nostdin(snapshot: SnapshotAssertion) -> None:
+    input1 = input("tmp1.mp4")
+    stream = input1.output(filename="output.mp4").global_args(stdin=False)
+    assert stream.compile() == snapshot
+
+
 def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
     input1 = input("tmp1.mp4")
     input2 = input("tmp2.mp4")
