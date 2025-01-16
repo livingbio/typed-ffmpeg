@@ -11,3 +11,9 @@ def test_input(snapshot: SnapshotAssertion) -> None:
         .output(filename="output.mp4")
         .compile()
     )
+
+
+def test_input_with_filter(snapshot: SnapshotAssertion) -> None:
+    assert input("anullsrc", f="lavfi", t=10).output(filename="output.mp4").compile() == snapshot(
+        extension_class=JSONSnapshotExtension
+    )

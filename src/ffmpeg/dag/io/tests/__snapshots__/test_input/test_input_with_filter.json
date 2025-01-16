@@ -1,0 +1,10 @@
+[
+  "ffmpeg",
+  "-f",
+  "lavfi",
+  "-t",
+  "10",
+  "-i",
+  "anullsrc",
+  "output.mp4"
+]
