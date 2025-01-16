@@ -5,6 +5,7 @@
   "-c",
   "copy",
   "-shortest",
+  "-noforce_fps",
   "-ar",
   "44100",
   "output.mp4"

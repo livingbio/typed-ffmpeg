@@ -351,7 +351,8 @@ class InputNode(Node):
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
-                # NOTE: the -nooption is not supported
+                elif value is False:
+                    commands += [f"-no{key}"]
             else:
                 commands += [f"-{key}", str(value)]
         commands += ["-i", self.filename]
@@ -398,7 +399,8 @@ class OutputNode(Node):
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
-                # NOTE: the -nooption is not supported
+                elif value is False:
+                    commands += [f"-no{key}"]
             else:
                 commands += [f"-{key}", str(value)]
         commands += [self.filename]
@@ -453,7 +455,6 @@ class GlobalNode(Node):
                     commands += [f"-{key}"]
                 elif value is False:
                     commands += [f"-no{key}"]
-                # NOTE: the -no{key} format since not really for global options
             else:
                 commands += [f"-{key}", str(value)]
         return commands

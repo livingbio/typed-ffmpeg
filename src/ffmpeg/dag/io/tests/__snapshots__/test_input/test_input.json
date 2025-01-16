@@ -7,6 +7,7 @@
   "-accurate_seek",
   "-display_rotation",
   "1.0",
+  "-nodisplay_vflip",
   "-i",
   "input.mp4",
   "output.mp4"
