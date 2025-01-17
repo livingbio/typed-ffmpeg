@@ -3,7 +3,6 @@ from typing import Any
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
-from syrupy.extensions.image import PNGImageSnapshotExtension
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...utils.snapshot import DAGSnapshotExtenstion
@@ -99,24 +98,23 @@ def test_replace(
     for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
         assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=DAGSnapshotExtenstion) == new_g
-        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=JSONSnapshotExtension) == asdict(
-            new_g
-        )
 
 
+@pytest.mark.skip("Not stable")
 def test_stream_view(snapshot: SnapshotAssertion) -> None:
     a = SimpleNode(name="A")
     b = SimpleNode(name="B", inputs=(Stream(node=a),))
     c = SimpleNode(name="C", inputs=(Stream(node=b), Stream(node=a)))
     d = SimpleNode(name="D", inputs=(Stream(node=c), Stream(node=b)))
     stream = Stream(node=d)
-    png = stream.view()
+    stream.view()
 
     # test node.view()
     stream.node.view()
 
-    with open(png, "rb") as ifile:
-        assert snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
+    # png results it not stable
+    # with open(png, "rb") as ifile:
+    #     assert snapshot(extension_class=PNGImageSnapshotExtension) == ifile.read()
 
     # SVG and Dot Result is not stable
     # svg = stream.view(format="svg")

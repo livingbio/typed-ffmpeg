@@ -1,0 +1,425 @@
+{
+  "index": null,
+  "node": {
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "index": 0,
+        "node": {
+          "input_typings": [
+            "video",
+            "audio",
+            "video",
+            "audio"
+          ],
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "reverse",
+                      "output_typings": [
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            },
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "audio"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "audio"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input2.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "areverse",
+                      "output_typings": [
+                        "audio"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "asplit",
+                "output_typings": [
+                  "audio",
+                  "audio"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "reverse",
+                      "output_typings": [
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "node": {
+                "input_typings": [
+                  "audio"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "audio"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input2.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "areverse",
+                      "output_typings": [
+                        "audio"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "asplit",
+                "output_typings": [
+                  "audio",
+                  "audio"
+                ]
+              }
+            }
+          ],
+          "kwargs": [
+            [
+              "n",
+              2
+            ],
+            [
+              "v",
+              1
+            ],
+            [
+              "a",
+              1
+            ]
+          ],
+          "name": "concat",
+          "output_typings": [
+            "video",
+            "audio"
+          ]
+        }
+      },
+      {
+        "index": 1,
+        "node": {
+          "input_typings": [
+            "video",
+            "audio",
+            "video",
+            "audio"
+          ],
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "reverse",
+                      "output_typings": [
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            },
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "audio"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "audio"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input2.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "areverse",
+                      "output_typings": [
+                        "audio"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "asplit",
+                "output_typings": [
+                  "audio",
+                  "audio"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "reverse",
+                      "output_typings": [
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "node": {
+                "input_typings": [
+                  "audio"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "audio"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input2.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "areverse",
+                      "output_typings": [
+                        "audio"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "asplit",
+                "output_typings": [
+                  "audio",
+                  "audio"
+                ]
+              }
+            }
+          ],
+          "kwargs": [
+            [
+              "n",
+              2
+            ],
+            [
+              "v",
+              1
+            ],
+            [
+              "a",
+              1
+            ]
+          ],
+          "name": "concat",
+          "output_typings": [
+            "video",
+            "audio"
+          ]
+        }
+      }
+    ],
+    "kwargs": []
+  }
+}

@@ -1,14 +1,17 @@
 {
-  "inputs": [
-    {
-      "index": null,
-      "node": {
-        "inputs": [],
-        "kwargs": [],
-        "name": "A"
+  "index": null,
+  "node": {
+    "inputs": [
+      {
+        "index": null,
+        "node": {
+          "inputs": [],
+          "kwargs": [],
+          "name": "A"
+        }
       }
-    }
-  ],
-  "kwargs": [],
-  "name": "E"
+    ],
+    "kwargs": [],
+    "name": "E"
+  }
 }

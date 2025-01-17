@@ -20,33 +20,15 @@
                   }
                 ],
                 "kwargs": [],
-                "name": "E"
+                "name": "B"
               }
             },
             {
               "index": null,
               "node": {
-                "inputs": [
-                  {
-                    "index": null,
-                    "node": {
-                      "inputs": [
-                        {
-                          "index": null,
-                          "node": {
-                            "inputs": [],
-                            "kwargs": [],
-                            "name": "A"
-                          }
-                        }
-                      ],
-                      "kwargs": [],
-                      "name": "E"
-                    }
-                  }
-                ],
+                "inputs": [],
                 "kwargs": [],
-                "name": "B"
+                "name": "A"
               }
             }
           ],
@@ -61,18 +43,9 @@
             {
               "index": null,
               "node": {
-                "inputs": [
-                  {
-                    "index": null,
-                    "node": {
-                      "inputs": [],
-                      "kwargs": [],
-                      "name": "A"
-                    }
-                  }
-                ],
+                "inputs": [],
                 "kwargs": [],
-                "name": "E"
+                "name": "A"
               }
             }
           ],
