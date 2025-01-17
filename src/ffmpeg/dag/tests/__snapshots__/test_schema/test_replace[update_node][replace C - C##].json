@@ -1,57 +1,60 @@
 {
-  "inputs": [
-    {
-      "index": null,
-      "node": {
-        "inputs": [
-          {
-            "index": null,
-            "node": {
-              "inputs": [
-                {
-                  "index": null,
-                  "node": {
-                    "inputs": [],
-                    "kwargs": [],
-                    "name": "A"
+  "index": null,
+  "node": {
+    "inputs": [
+      {
+        "index": null,
+        "node": {
+          "inputs": [
+            {
+              "index": null,
+              "node": {
+                "inputs": [
+                  {
+                    "index": null,
+                    "node": {
+                      "inputs": [],
+                      "kwargs": [],
+                      "name": "A"
+                    }
                   }
-                }
-              ],
-              "kwargs": [],
-              "name": "B#"
+                ],
+                "kwargs": [],
+                "name": "B#"
+              }
+            },
+            {
+              "index": null,
+              "node": {
+                "inputs": [],
+                "kwargs": [],
+                "name": "A"
+              }
             }
-          },
-          {
-            "index": null,
-            "node": {
-              "inputs": [],
-              "kwargs": [],
-              "name": "A"
+          ],
+          "kwargs": [],
+          "name": "C##"
+        }
+      },
+      {
+        "index": null,
+        "node": {
+          "inputs": [
+            {
+              "index": null,
+              "node": {
+                "inputs": [],
+                "kwargs": [],
+                "name": "A"
+              }
             }
-          }
-        ],
-        "kwargs": [],
-        "name": "C##"
+          ],
+          "kwargs": [],
+          "name": "B"
+        }
       }
-    },
-    {
-      "index": null,
-      "node": {
-        "inputs": [
-          {
-            "index": null,
-            "node": {
-              "inputs": [],
-              "kwargs": [],
-              "name": "A"
-            }
-          }
-        ],
-        "kwargs": [],
-        "name": "B"
-      }
-    }
-  ],
-  "kwargs": [],
-  "name": "D"
+    ],
+    "kwargs": [],
+    "name": "D"
+  }
 }

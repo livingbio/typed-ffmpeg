@@ -1,12 +1,13 @@
+from dataclasses import asdict
 from typing import Optional
 
-from syrupy.extensions.image import PNGImageSnapshotExtension
+from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.types import PropertyFilter, PropertyMatcher, SerializableData, SerializedData
 
 from ..dag.schema import Stream
 
 
-class DAGSnapshotExtenstion(PNGImageSnapshotExtension):
+class DAGSnapshotExtenstion(JSONSnapshotExtension):
     """
     A snapshot extension for the DAG. This extension is used to serialize and match the DAG.
     """
@@ -20,7 +21,5 @@ class DAGSnapshotExtenstion(PNGImageSnapshotExtension):
         matcher: Optional["PropertyMatcher"] = None,
     ) -> "SerializedData":
         stream = Stream(node=data)
-        graph_path = stream.view()
 
-        with open(graph_path, "rb") as ifile:
-            return super().serialize(ifile.read())
+        return super().serialize(asdict(stream))

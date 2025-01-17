@@ -1,0 +1,118 @@
+{
+  "index": null,
+  "node": {
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "index": 0,
+        "node": {
+          "input_typings": [
+            "video",
+            "video"
+          ],
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "reverse",
+                      "output_typings": [
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "reverse",
+                      "output_typings": [
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "outputs",
+                    2
+                  ]
+                ],
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            }
+          ],
+          "kwargs": [
+            [
+              "n",
+              2
+            ]
+          ],
+          "name": "concat",
+          "output_typings": [
+            "video"
+          ]
+        }
+      }
+    ],
+    "kwargs": []
+  }
+}

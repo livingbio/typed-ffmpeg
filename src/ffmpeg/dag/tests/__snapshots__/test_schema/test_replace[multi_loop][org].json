@@ -9,18 +9,9 @@
             {
               "index": null,
               "node": {
-                "inputs": [
-                  {
-                    "index": null,
-                    "node": {
-                      "inputs": [],
-                      "kwargs": [],
-                      "name": "A"
-                    }
-                  }
-                ],
+                "inputs": [],
                 "kwargs": [],
-                "name": "E"
+                "name": "A"
               }
             },
             {
@@ -30,18 +21,9 @@
                   {
                     "index": null,
                     "node": {
-                      "inputs": [
-                        {
-                          "index": null,
-                          "node": {
-                            "inputs": [],
-                            "kwargs": [],
-                            "name": "A"
-                          }
-                        }
-                      ],
+                      "inputs": [],
                       "kwargs": [],
-                      "name": "E"
+                      "name": "A"
                     }
                   }
                 ],
@@ -61,18 +43,9 @@
             {
               "index": null,
               "node": {
-                "inputs": [
-                  {
-                    "index": null,
-                    "node": {
-                      "inputs": [],
-                      "kwargs": [],
-                      "name": "A"
-                    }
-                  }
-                ],
+                "inputs": [],
                 "kwargs": [],
-                "name": "E"
+                "name": "A"
               }
             }
           ],

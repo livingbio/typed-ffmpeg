@@ -1,0 +1,27 @@
+{
+  "index": null,
+  "node": {
+    "input_typings": [],
+    "inputs": [],
+    "kwargs": [
+      [
+        "w",
+        "1920"
+      ],
+      [
+        "h",
+        "1080"
+      ],
+      [
+        "true",
+        true
+      ],
+      [
+        "false",
+        false
+      ]
+    ],
+    "name": "scale",
+    "output_typings": []
+  }
+}

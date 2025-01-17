@@ -5,39 +5,38 @@
       {
         "index": null,
         "node": {
+          "filename": "out1.mp4",
           "inputs": [
             {
               "index": null,
               "node": {
+                "filename": "tmp1.mp4",
                 "inputs": [],
-                "kwargs": [],
-                "name": "A"
+                "kwargs": []
               }
             }
           ],
-          "kwargs": [],
-          "name": "C"
+          "kwargs": []
         }
       },
       {
         "index": null,
         "node": {
+          "filename": "out2.mp4",
           "inputs": [
             {
               "index": null,
               "node": {
+                "filename": "tmp2.mp4",
                 "inputs": [],
-                "kwargs": [],
-                "name": "A"
+                "kwargs": []
               }
             }
           ],
-          "kwargs": [],
-          "name": "E"
+          "kwargs": []
         }
       }
     ],
-    "kwargs": [],
-    "name": "D"
+    "kwargs": []
   }
 }

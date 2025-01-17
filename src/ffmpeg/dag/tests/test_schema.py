@@ -99,9 +99,6 @@ def test_replace(
     for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
         assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=DAGSnapshotExtenstion) == new_g
-        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=JSONSnapshotExtension) == asdict(
-            new_g
-        )
 
 
 def test_stream_view(snapshot: SnapshotAssertion) -> None:

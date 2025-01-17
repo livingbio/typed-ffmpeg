@@ -1,0 +1,59 @@
+{
+  "index": null,
+  "node": {
+    "inputs": [
+      {
+        "index": null,
+        "node": {
+          "filename": "output.mp4",
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "video",
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": null,
+                    "node": {
+                      "filename": "tmp1.mp4",
+                      "inputs": [],
+                      "kwargs": []
+                    }
+                  },
+                  {
+                    "index": null,
+                    "node": {
+                      "filename": "tmp2.mp4",
+                      "inputs": [],
+                      "kwargs": []
+                    }
+                  }
+                ],
+                "kwargs": [
+                  [
+                    "n",
+                    2
+                  ]
+                ],
+                "name": "concat",
+                "output_typings": [
+                  "video"
+                ]
+              }
+            }
+          ],
+          "kwargs": []
+        }
+      }
+    ],
+    "kwargs": [
+      [
+        "n",
+        true
+      ]
+    ]
+  }
+}

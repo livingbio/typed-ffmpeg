@@ -1,0 +1,95 @@
+{
+  "index": null,
+  "node": {
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "index": 0,
+        "node": {
+          "input_typings": [
+            "audio",
+            "audio"
+          ],
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "audio"
+                ],
+                "inputs": [
+                  {
+                    "index": null,
+                    "node": {
+                      "filename": "input1.mp4",
+                      "inputs": [],
+                      "kwargs": []
+                    }
+                  }
+                ],
+                "kwargs": [],
+                "name": "areverse",
+                "output_typings": [
+                  "audio"
+                ]
+              }
+            },
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "audio"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "audio"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": []
+                          }
+                        }
+                      ],
+                      "kwargs": [],
+                      "name": "areverse",
+                      "output_typings": [
+                        "audio"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": [],
+                "name": "areverse",
+                "output_typings": [
+                  "audio"
+                ]
+              }
+            }
+          ],
+          "kwargs": [
+            [
+              "inputs",
+              2
+            ],
+            [
+              "duration",
+              "first"
+            ]
+          ],
+          "name": "amix",
+          "output_typings": [
+            "audio"
+          ]
+        }
+      }
+    ],
+    "kwargs": []
+  }
+}

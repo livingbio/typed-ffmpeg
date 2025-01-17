@@ -5,22 +5,34 @@
       {
         "index": null,
         "node": {
+          "filename": "temp",
           "inputs": [
             {
               "index": null,
               "node": {
+                "filename": "tmp.mp4",
                 "inputs": [],
-                "kwargs": [],
-                "name": "A"
+                "kwargs": []
               }
             }
           ],
-          "kwargs": [],
-          "name": "E"
+          "kwargs": []
         }
       }
     ],
-    "kwargs": [],
-    "name": "D"
+    "kwargs": [
+      [
+        "y",
+        true
+      ],
+      [
+        "no",
+        false
+      ],
+      [
+        "speed",
+        1
+      ]
+    ]
   }
 }

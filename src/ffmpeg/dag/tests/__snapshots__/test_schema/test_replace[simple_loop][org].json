@@ -9,23 +9,6 @@
             {
               "index": null,
               "node": {
-                "inputs": [
-                  {
-                    "index": null,
-                    "node": {
-                      "inputs": [],
-                      "kwargs": [],
-                      "name": "A"
-                    }
-                  }
-                ],
-                "kwargs": [],
-                "name": "B"
-              }
-            },
-            {
-              "index": null,
-              "node": {
                 "inputs": [],
                 "kwargs": [],
                 "name": "A"
@@ -33,7 +16,7 @@
             }
           ],
           "kwargs": [],
-          "name": "C#"
+          "name": "C"
         }
       },
       {
