@@ -4,7 +4,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..escaping import convert_kwargs_to_cmd_line_args, escape
+from ffmpeg.utils.escaping import convert_kwargs_to_cmd_line_args, escape
 
 
 @pytest.mark.parametrize(

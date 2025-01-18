@@ -1,8 +1,8 @@
 from syrupy.assertion import SnapshotAssertion
 
-from ...base import input
-from ...filters import concat
-from ..context import DAGContext
+from ffmpeg.base import input
+from ffmpeg.dag.context import DAGContext
+from ffmpeg.filters import concat
 
 
 def test_context(snapshot: SnapshotAssertion) -> None:

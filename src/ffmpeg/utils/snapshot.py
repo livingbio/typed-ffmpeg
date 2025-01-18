@@ -4,7 +4,7 @@ from typing import Optional
 from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.types import PropertyFilter, PropertyMatcher, SerializableData, SerializedData
 
-from ..dag.schema import Stream
+from ffmpeg.dag.schema import Stream
 
 
 class DAGSnapshotExtenstion(JSONSnapshotExtension):

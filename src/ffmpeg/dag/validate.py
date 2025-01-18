@@ -2,9 +2,10 @@ from __future__ import annotations
 
 from dataclasses import replace
 
-from ..exceptions import FFMpegValueError
-from ..streams.audio import AudioStream
-from ..streams.video import VideoStream
+from ffmpeg.exceptions import FFMpegValueError
+from ffmpeg.streams.audio import AudioStream
+from ffmpeg.streams.video import VideoStream
+
 from .context import DAGContext
 from .nodes import FilterNode, InputNode
 from .schema import Node, Stream

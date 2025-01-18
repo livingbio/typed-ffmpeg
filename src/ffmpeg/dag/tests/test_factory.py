@@ -1,9 +1,9 @@
 from syrupy.assertion import SnapshotAssertion
 
-from ...base import input
-from ...common.schema import FFMpegFilterDef
-from ...schema import Auto
-from ..factory import filter_node_factory
+from ffmpeg.base import input
+from ffmpeg.common.schema import FFMpegFilterDef
+from ffmpeg.dag.factory import filter_node_factory
+from ffmpeg.schema import Auto
 
 
 def test_filter_node_factory(snapshot: SnapshotAssertion) -> None:
@@ -25,7 +25,7 @@ def test_filter_node_factory(snapshot: SnapshotAssertion) -> None:
         FFMpegFilterDef(name="foo", typings_input="[StreamType.video]*n"),
         in_file.video,
         in_file.video,
-        **{"n": Auto("len(streams)")}
+        **{"n": Auto("len(streams)")},
     )
     assert snapshot == f
     assert f.kwargs == tuple({"n": 2}.items())

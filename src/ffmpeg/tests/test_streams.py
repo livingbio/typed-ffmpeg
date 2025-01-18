@@ -1,4 +1,4 @@
-from ..base import input
+from ffmpeg.base import input
 
 
 def test_trim_type() -> None:

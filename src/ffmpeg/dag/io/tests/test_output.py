@@ -1,8 +1,8 @@
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from .._input import input
-from .._output import output
+from ffmpeg.dag.io._input import input
+from ffmpeg.dag.io._output import output
 
 
 def test_output(snapshot: SnapshotAssertion) -> None:

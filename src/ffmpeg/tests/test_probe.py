@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from ..probe import probe
+from ffmpeg.probe import probe
 
 
 def test_probe(datadir: Path) -> None:

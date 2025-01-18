@@ -1328,7 +1328,10 @@ def feedback(
     x: Int = Default(0),
     w: Int = Default(0),
     extra_options: dict[str, Any] = None,
-) -> tuple[VideoStream, VideoStream,]:
+) -> tuple[
+    VideoStream,
+    VideoStream,
+]:
     """
 
     Apply feedback video filter.
@@ -2373,9 +2376,9 @@ def morpho(
     _default: VideoStream,
     _structure: VideoStream,
     *,
-    mode: Int
-    | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
-    | Default = Default("erode"),
+    mode: Int | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"] | Default = Default(
+        "erode"
+    ),
     planes: Int = Default(7),
     structure: Int | Literal["first", "all"] | Default = Default("all"),
     eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),

@@ -4,9 +4,9 @@
 from pathlib import Path
 from typing import Any
 
-from ...streams.av import AVStream
-from ...types import Boolean, Double, Float, Int, String, Time
-from ..nodes import InputNode
+from ffmpeg.dag.nodes import InputNode
+from ffmpeg.streams.av import AVStream
+from ffmpeg.types import Boolean, Double, Float, Int, String, Time
 
 
 def input(

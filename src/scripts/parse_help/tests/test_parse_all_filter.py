@@ -1,4 +1,4 @@
-from ..parse_all_filter import extract
+from scripts.parse_help.parse_all_filter import extract
 
 
 def test_extract() -> None:

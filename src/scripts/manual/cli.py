@@ -3,8 +3,9 @@ from pathlib import Path
 
 import typer
 
-from ..cache import load, save
-from ..parse_help.cli import all_filters
+from scripts.cache import load, save
+from scripts.parse_help.cli import all_filters
+
 from .schema import FFMpegFilterManuallyDefined
 
 app = typer.Typer()
@@ -16,7 +17,7 @@ def init_config() -> None:
         if filter.is_dynamic_input or filter.is_dynamic_output:
             try:
                 info = load(FFMpegFilterManuallyDefined, filter.name)
-            except IOError:  # pragma: no cover
+            except OSError:  # pragma: no cover
                 info = FFMpegFilterManuallyDefined(name=filter.name)
                 save(info, filter.name)
 
@@ -49,5 +50,5 @@ def migrate_config() -> None:  # pragma: no cover
 def load_config(name: str) -> FFMpegFilterManuallyDefined | None:
     try:
         return load(FFMpegFilterManuallyDefined, name)
-    except IOError:
+    except OSError:
         return None

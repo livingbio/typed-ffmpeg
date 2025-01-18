@@ -84,7 +84,7 @@ def filter_multi_output(
     name: str,
     input_typings: tuple[StreamType, ...] = (),
     output_tyings: tuple[StreamType, ...] = (),
-    **kwargs: Any
+    **kwargs: Any,
 ) -> FilterNode:
     """
     Apply a custom filter which has multiple outputs to this stream

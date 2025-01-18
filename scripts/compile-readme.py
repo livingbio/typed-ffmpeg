@@ -20,7 +20,7 @@ def post_process(markdown_file: str, original_folder: str, new_folder: str) -> N
             print(f"Moved {filepath} to {new_folder}")
 
     # Update paths in the Markdown file
-    with open(markdown_file, "r") as file:
+    with open(markdown_file) as file:
         content = file.read()
 
     content = content.replace(original_folder, rel_path)

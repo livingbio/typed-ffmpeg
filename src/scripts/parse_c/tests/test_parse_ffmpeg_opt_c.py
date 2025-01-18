@@ -1,8 +1,8 @@
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..parse_ffmpeg_opt_c import parse_ffmpeg_opt_c
-from ..pre_compile import precompile, target_folder
+from scripts.parse_c.parse_ffmpeg_opt_c import parse_ffmpeg_opt_c
+from scripts.parse_c.pre_compile import precompile, target_folder
 
 
 def test_parse_ffmpeg_opt_c(snapshot: SnapshotAssertion) -> None:

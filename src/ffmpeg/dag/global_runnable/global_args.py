@@ -4,16 +4,15 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
-from ...types import Boolean, Float, Func, Int
+from ffmpeg.types import Boolean, Float, Func, Int
 
 if TYPE_CHECKING:
-    from ..nodes import GlobalNode, GlobalStream, OutputStream
+    from ffmpeg.dag.nodes import GlobalNode, GlobalStream, OutputStream
 
 
 class GlobalArgs(ABC):
     @abstractmethod
-    def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode:
-        ...
+    def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode: ...
 
     def global_args(
         self,

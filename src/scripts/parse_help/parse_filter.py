@@ -107,7 +107,7 @@ def _parse_default(default: str | None, type: str) -> int | float | bool | str |
         default = default.strip('"')
 
     try:
-        match (type):
+        match type:
             case "boolean":
                 assert default in ("true", "false"), f"Invalid default value for boolean: {default}"
                 return default == "true"

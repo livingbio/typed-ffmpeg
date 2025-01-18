@@ -1,6 +1,6 @@
 import pytest
 
-from ..utils import is_dag
+from ffmpeg.dag.utils import is_dag
 
 
 @pytest.mark.parametrize(

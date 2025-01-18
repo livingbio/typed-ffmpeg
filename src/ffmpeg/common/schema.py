@@ -136,9 +136,9 @@ class FFMpegFilter:
             elif "audio" not in self.formula_typings_input:
                 assert "video" in self.formula_typings_input, f"{self.name} has no audio input"
                 return {StreamType.video}
-            assert (
-                "video" in self.formula_typings_input and "audio" in self.formula_typings_input
-            ), f"{self.name} has no video or audio input"
+            assert "video" in self.formula_typings_input and "audio" in self.formula_typings_input, (
+                f"{self.name} has no video or audio input"
+            )
             return {StreamType.video, StreamType.audio}
 
     @property
@@ -155,9 +155,9 @@ class FFMpegFilter:
             elif "audio" not in self.formula_typings_output:
                 assert "video" in self.formula_typings_output, f"{self.name} has no audio output"
                 return {StreamType.video}
-            assert (
-                "video" in self.formula_typings_output and "audio" in self.formula_typings_output
-            ), f"{self.name} has no video or audio output"
+            assert "video" in self.formula_typings_output and "audio" in self.formula_typings_output, (
+                f"{self.name} has no video or audio output"
+            )
             return {StreamType.video, StreamType.audio}
 
     @property

@@ -4,12 +4,13 @@ import logging
 import subprocess
 from typing import TYPE_CHECKING
 
-from ...exceptions import FFMpegExecuteError
-from ...utils.run import command_line
+from ffmpeg.exceptions import FFMpegExecuteError
+from ffmpeg.utils.run import command_line
+
 from .global_args import GlobalArgs
 
 if TYPE_CHECKING:
-    from ..nodes import GlobalStream, OutputStream
+    from ffmpeg.dag.nodes import GlobalStream, OutputStream
 
 logger = logging.getLogger(__name__)
 
@@ -53,7 +54,7 @@ class GlobalRunable(GlobalArgs):
         Returns:
             the command-line
         """
-        from ..compile import compile
+        from ffmpeg.dag.compile import compile
 
         if isinstance(cmd, str):
             cmd = [cmd]

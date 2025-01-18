@@ -1,4 +1,5 @@
-from typing import Any, Iterable
+from collections.abc import Iterable
+from typing import Any
 
 
 def escape(text: str | int | float, chars: str = "\\'=:") -> str:
@@ -39,11 +40,11 @@ def convert_kwargs_to_cmd_line_args(kwargs: dict[str, Any]) -> list[str]:
         v = kwargs[k]
         if isinstance(v, Iterable) and not isinstance(v, str):
             for value in v:
-                args.append("-{}".format(k))
+                args.append(f"-{k}")
                 if value is not None:
-                    args.append("{}".format(value))
+                    args.append(f"{value}")
             continue
-        args.append("-{}".format(k))
+        args.append(f"-{k}")
         if v is not None:
-            args.append("{}".format(v))
+            args.append(f"{v}")
     return args

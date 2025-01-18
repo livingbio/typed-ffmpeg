@@ -6,8 +6,8 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ....common.serialize import dumps
-from ..schema import LazyOperator, Symbol
+from ffmpeg.common.serialize import dumps
+from ffmpeg.utils.lazy_eval.schema import LazyOperator, Symbol
 
 VarX = Symbol(key="X")
 

@@ -3,12 +3,12 @@ from typing import Any, Protocol
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ...base import input
-from ...filters import amix, concat
-from ...utils.snapshot import DAGSnapshotExtenstion
-from ..context import DAGContext
-from ..schema import Stream
-from ..validate import add_split, remove_split
+from ffmpeg.base import input
+from ffmpeg.dag.context import DAGContext
+from ffmpeg.dag.schema import Stream
+from ffmpeg.dag.validate import add_split, remove_split
+from ffmpeg.filters import amix, concat
+from ffmpeg.utils.snapshot import DAGSnapshotExtenstion
 
 
 def not_utilize_split() -> Any:
@@ -109,5 +109,4 @@ def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
 
 
 class Validator(Protocol):
-    def __call__(self, context: DAGContext = ..., auto_fix: bool = False) -> DAGContext:
-        ...
+    def __call__(self, context: DAGContext = ..., auto_fix: bool = False) -> DAGContext: ...

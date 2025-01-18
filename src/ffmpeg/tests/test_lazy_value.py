@@ -1,7 +1,7 @@
 from syrupy.assertion import SnapshotAssertion
 
-from ..base import input
-from ..utils.lazy_eval.schema import Symbol
+from ffmpeg.base import input
+from ffmpeg.utils.lazy_eval.schema import Symbol
 
 
 def test_symbol(snapshot: SnapshotAssertion) -> None:

@@ -1,5 +1,5 @@
-from ..cli import init_config, load_config
-from ..schema import FFMpegFilterManuallyDefined
+from scripts.manual.cli import init_config, load_config
+from scripts.manual.schema import FFMpegFilterManuallyDefined
 
 
 def test_init_config() -> None:

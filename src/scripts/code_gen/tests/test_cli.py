@@ -1,7 +1,7 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from ..cli import generate
+from scripts.code_gen.cli import generate
 
 
 def test_generate() -> None:

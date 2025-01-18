@@ -4,7 +4,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..parse_c_structure import parse_c_structure
+from scripts.parse_c.parse_c_structure import parse_c_structure
 
 test_data = pathlib.Path(__file__).parent / "test_parse_c_structure"
 

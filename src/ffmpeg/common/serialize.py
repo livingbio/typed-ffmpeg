@@ -1,4 +1,4 @@
-from __future__ import absolute_import, annotations
+from __future__ import annotations
 
 import importlib
 import json
@@ -65,7 +65,7 @@ def object_hook(obj: Any, strict: bool = True) -> Any:
                 # NOTE: in our application, the dataclass is always frozen
                 return cls(**{k: frozen(v) for k, v in obj.items()})
 
-            return cls(**{k: v for k, v in obj.items()})
+            return cls(**dict(obj.items()))
 
     return obj
 

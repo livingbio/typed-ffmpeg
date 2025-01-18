@@ -1,5 +1,6 @@
-from ..dag.nodes import InputNode
-from ..utils.typing import override
+from ffmpeg.dag.nodes import InputNode
+from ffmpeg.utils.typing import override
+
 from .audio import AudioStream
 from .video import VideoStream
 

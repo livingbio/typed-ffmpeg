@@ -7,7 +7,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 from syrupy.filters import props
 
-from ..helpers import convert_html_to_markdown, parse_filter_document
+from scripts.parse_docs.helpers import convert_html_to_markdown, parse_filter_document
 
 test_data = pathlib.Path(__file__).parent / "test_helpers"
 

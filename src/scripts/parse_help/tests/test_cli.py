@@ -1,4 +1,4 @@
-from ..cli import all_filters
+from scripts.parse_help.cli import all_filters
 
 
 def test_all_filters() -> None:

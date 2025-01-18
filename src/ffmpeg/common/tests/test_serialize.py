@@ -2,9 +2,9 @@ from dataclasses import dataclass
 
 from syrupy.assertion import SnapshotAssertion
 
-from ...base import input
-from ...filters import concat
-from ..serialize import dumps, loads
+from ffmpeg.base import input
+from ffmpeg.common.serialize import dumps, loads
+from ffmpeg.filters import concat
 
 
 # Define your dataclasses

@@ -5,11 +5,24 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Literal
 
-from ..common.schema import FFMpegFilterDef
-from ..dag.factory import filter_node_factory
-from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
+from ffmpeg.common.schema import FFMpegFilterDef
+from ffmpeg.dag.factory import filter_node_factory
+from ffmpeg.dag.nodes import FilterableStream, FilterNode
+from ffmpeg.schema import Default
+from ffmpeg.types import (
+    Boolean,
+    Color,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Rational,
+    String,
+    Video_rate,
+)
 
 if TYPE_CHECKING:
     from .audio import AudioStream
@@ -4361,7 +4374,10 @@ class VideoStream(FilterableStream):
         x: Int = Default(0),
         w: Int = Default(0),
         extra_options: dict[str, Any] = None,
-    ) -> tuple[VideoStream, VideoStream,]:
+    ) -> tuple[
+        VideoStream,
+        VideoStream,
+    ]:
         """
 
         Apply feedback video filter.
@@ -4629,9 +4645,9 @@ class VideoStream(FilterableStream):
         right: Int = Default(0),
         top: Int = Default(0),
         bottom: Int = Default(0),
-        mode: Int
-        | Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"]
-        | Default = Default("smear"),
+        mode: Int | Literal["smear", "mirror", "fixed", "reflect", "wrap", "fade", "margins"] | Default = Default(
+            "smear"
+        ),
         color: Color = Default("black"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -5369,9 +5385,9 @@ class VideoStream(FilterableStream):
         _clut: VideoStream,
         *,
         clut: Int | Literal["first", "all"] | Default = Default("all"),
-        interp: Int
-        | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
-        | Default = Default("tetrahedral"),
+        interp: Int | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"] | Default = Default(
+            "tetrahedral"
+        ),
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
@@ -6694,9 +6710,9 @@ class VideoStream(FilterableStream):
         *,
         file: String = Default(None),
         clut: Int | Literal["first", "all"] | Default = Default("all"),
-        interp: Int
-        | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
-        | Default = Default("tetrahedral"),
+        interp: Int | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"] | Default = Default(
+            "tetrahedral"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -7177,9 +7193,9 @@ class VideoStream(FilterableStream):
     def mestimate(
         self,
         *,
-        method: Int
-        | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"]
-        | Default = Default("esa"),
+        method: Int | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"] | Default = Default(
+            "esa"
+        ),
         mb_size: Int = Default(16),
         search_param: Int = Default(7),
         extra_options: dict[str, Any] = None,
@@ -7307,9 +7323,9 @@ class VideoStream(FilterableStream):
         mi_mode: Int | Literal["dup", "blend", "mci"] | Default = Default("mci"),
         mc_mode: Int | Literal["obmc", "aobmc"] | Default = Default("obmc"),
         me_mode: Int | Literal["bidir", "bilat"] | Default = Default("bilat"),
-        me: Int
-        | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"]
-        | Default = Default("epzs"),
+        me: Int | Literal["esa", "tss", "tdls", "ntss", "fss", "ds", "hexbs", "epzs", "umh"] | Default = Default(
+            "epzs"
+        ),
         mb_size: Int = Default(16),
         search_param: Int = Default(32),
         vsbmc: Int = Default(0),
@@ -7405,9 +7421,9 @@ class VideoStream(FilterableStream):
         self,
         _structure: VideoStream,
         *,
-        mode: Int
-        | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"]
-        | Default = Default("erode"),
+        mode: Int | Literal["erode", "dilate", "open", "close", "gradient", "tophat", "blackhat"] | Default = Default(
+            "erode"
+        ),
         planes: Int = Default(7),
         structure: Int | Literal["first", "all"] | Default = Default("all"),
         eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
@@ -9343,12 +9359,12 @@ class VideoStream(FilterableStream):
         out_color_matrix: String
         | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
         | Default = Default(None),
-        in_range: Int
-        | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-        | Default = Default("auto"),
-        out_range: Int
-        | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
-        | Default = Default("auto"),
+        in_range: Int | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"] | Default = Default(
+            "auto"
+        ),
+        out_range: Int | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"] | Default = Default(
+            "auto"
+        ),
         in_v_chr_pos: Int = Default(-513),
         in_h_chr_pos: Int = Default(-513),
         out_v_chr_pos: Int = Default(-513),
@@ -11680,9 +11696,9 @@ class VideoStream(FilterableStream):
     def tonemap(
         self,
         *,
-        tonemap: Int
-        | Literal["none", "linear", "gamma", "clip", "reinhard", "hable", "mobius"]
-        | Default = Default("none"),
+        tonemap: Int | Literal["none", "linear", "gamma", "clip", "reinhard", "hable", "mobius"] | Default = Default(
+            "none"
+        ),
         param: Double = Default("nan"),
         desat: Double = Default(2.0),
         peak: Double = Default(0.0),
@@ -12332,9 +12348,9 @@ class VideoStream(FilterableStream):
     def vectorscope(
         self,
         *,
-        mode: Int
-        | Literal["gray", "tint", "color", "color2", "color3", "color4", "color5"]
-        | Default = Default("gray"),
+        mode: Int | Literal["gray", "tint", "color", "color2", "color3", "color4", "color5"] | Default = Default(
+            "gray"
+        ),
         x: Int = Default(1),
         y: Int = Default(2),
         intensity: Float = Default(0.004),
@@ -13245,9 +13261,9 @@ class VideoStream(FilterableStream):
         h: String = Default(None),
         size: String = Default(None),
         dither: Int | Literal["none", "ordered", "random", "error_diffusion"] | Default = Default("none"),
-        filter: Int
-        | Literal["point", "bilinear", "bicubic", "spline16", "spline36", "lanczos"]
-        | Default = Default("bilinear"),
+        filter: Int | Literal["point", "bilinear", "bicubic", "spline16", "spline36", "lanczos"] | Default = Default(
+            "bilinear"
+        ),
         out_range: Int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | Default = Default("input"),
         primaries: Int
         | Literal[
@@ -13396,9 +13412,9 @@ class VideoStream(FilterableStream):
             "ictcp",
         ]
         | Default = Default("input"),
-        chromal: Int
-        | Literal["input", "left", "center", "topleft", "top", "bottomleft", "bottom"]
-        | Default = Default("input"),
+        chromal: Int | Literal["input", "left", "center", "topleft", "top", "bottomleft", "bottom"] | Default = Default(
+            "input"
+        ),
         chromalin: Int
         | Literal["input", "left", "center", "topleft", "top", "bottomleft", "bottom"]
         | Default = Default("input"),

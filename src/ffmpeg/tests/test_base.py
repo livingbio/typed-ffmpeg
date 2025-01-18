@@ -2,10 +2,10 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..base import input, merge_outputs, output, vfilter
-from ..filters import concat, join
-from ..schema import StreamType
-from ..streams.video import VideoStream
+from ffmpeg.base import input, merge_outputs, output, vfilter
+from ffmpeg.filters import concat, join
+from ffmpeg.schema import StreamType
+from ffmpeg.streams.video import VideoStream
 
 
 def test_output_node(snapshot: SnapshotAssertion) -> None:

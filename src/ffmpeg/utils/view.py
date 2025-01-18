@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import Literal
 
-from ..dag.context import DAGContext
-from ..dag.nodes import FilterNode, InputNode, OutputNode
-from ..dag.schema import Node
+from ffmpeg.dag.context import DAGContext
+from ffmpeg.dag.nodes import FilterNode, InputNode, OutputNode
+from ffmpeg.dag.schema import Node
 
 
 def _get_node_color(node: Node) -> str | None:
@@ -35,7 +35,7 @@ def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
         import graphviz  # type: ignore
     except ImportError:
         raise ImportError(
-            "failed to import graphviz; please make sure graphviz is installed (e.g. " "`pip install graphviz`)"
+            "failed to import graphviz; please make sure graphviz is installed (e.g. `pip install graphviz`)"
         )
 
     graph = graphviz.Digraph(format=format)

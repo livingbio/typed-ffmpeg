@@ -4,8 +4,8 @@
 from pathlib import Path
 from typing import Any
 
-from ...types import Boolean, Float, Func, Int, Int64, String, Time
-from ..nodes import FilterableStream, OutputNode, OutputStream
+from ffmpeg.dag.nodes import FilterableStream, OutputNode, OutputStream
+from ffmpeg.types import Boolean, Float, Func, Int, Int64, String, Time
 
 
 def output(

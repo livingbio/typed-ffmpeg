@@ -4,14 +4,14 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ...base import input
-from ...exceptions import FFMpegExecuteError
-from ...filters import concat
-from ...schema import StreamType
-from ...utils.snapshot import DAGSnapshotExtenstion
-from ..context import DAGContext
-from ..nodes import FilterNode, GlobalNode, GlobalStream, InputNode, OutputNode, OutputStream
-from ..schema import Node
+from ffmpeg.base import input
+from ffmpeg.dag.context import DAGContext
+from ffmpeg.dag.nodes import FilterNode, GlobalNode, GlobalStream, InputNode, OutputNode, OutputStream
+from ffmpeg.dag.schema import Node
+from ffmpeg.exceptions import FFMpegExecuteError
+from ffmpeg.filters import concat
+from ffmpeg.schema import StreamType
+from ffmpeg.utils.snapshot import DAGSnapshotExtenstion
 
 
 @pytest.mark.parametrize(
@@ -57,7 +57,7 @@ def test_node_prop(node: Node, expected_type: type[Node], snapshot: SnapshotAsse
     assert snapshot(name="f.repr") == node.repr()
     assert snapshot(name="__repr__") == repr(node)
     assert snapshot(name="get_args") == node.get_args()
-    assert type(node) == expected_type
+    assert isinstance(node, expected_type)
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == node
 
 
@@ -151,10 +151,10 @@ def test_filter_node_output_typings() -> None:
         output_typings=(StreamType.audio,),
     )
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         f.video(0)
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         f.audio(1)
 
 
@@ -168,7 +168,7 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
         input_typings=(StreamType.video, StreamType.audio),
     )
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         FilterNode(
             name="scale",
             inputs=(in_file.video,),

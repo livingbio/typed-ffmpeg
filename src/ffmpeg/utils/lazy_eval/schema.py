@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Any
 
-from ..typing import override
+from ffmpeg.utils.typing import override
 
 
 class LazyValue(ABC):

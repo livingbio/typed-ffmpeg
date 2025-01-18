@@ -5,11 +5,11 @@ from pathlib import Path
 import typer
 
 from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
+from scripts.manual.cli import load_config
+from scripts.parse_c.cli import parse_ffmpeg_options
+from scripts.parse_docs.cli import extract_docs
+from scripts.parse_help.cli import all_filters
 
-from ..manual.cli import load_config
-from ..parse_c.cli import parse_ffmpeg_options
-from ..parse_docs.cli import extract_docs
-from ..parse_help.cli import all_filters
 from .gen import render
 
 app = typer.Typer()

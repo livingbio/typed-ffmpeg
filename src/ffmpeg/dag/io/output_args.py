@@ -5,20 +5,19 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-from ...types import Boolean, Float, Func, Int, Int64, String, Time
+from ffmpeg.types import Boolean, Float, Func, Int, Int64, String, Time
 
 if TYPE_CHECKING:
-    from ..nodes import FilterableStream, OutputNode, OutputStream
+    from ffmpeg.dag.nodes import FilterableStream, OutputNode, OutputStream
 
 
 class OutputArgs(ABC):
     @abstractmethod
-    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
-        ...
+    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode: ...
 
     def output(
         self,
-        *streams: "FilterableStream",
+        *streams: FilterableStream,
         filename: str | Path,
         f: String = None,
         c: String = None,

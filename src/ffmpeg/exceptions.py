@@ -39,4 +39,4 @@ class FFMpegExecuteError(FFMpegError):
         self.cmd = cmd
         self.retcode = retcode
 
-        super(FFMpegExecuteError, self).__init__(f"{cmd} error (see stderr output for detail) {stderr!r}")
+        super().__init__(f"{cmd} error (see stderr output for detail) {stderr!r}")

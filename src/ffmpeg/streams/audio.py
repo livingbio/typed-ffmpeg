@@ -5,11 +5,24 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Literal
 
-from ..common.schema import FFMpegFilterDef
-from ..dag.factory import filter_node_factory
-from ..dag.nodes import FilterableStream, FilterNode
-from ..schema import Default
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
+from ffmpeg.common.schema import FFMpegFilterDef
+from ffmpeg.dag.factory import filter_node_factory
+from ffmpeg.dag.nodes import FilterableStream, FilterNode
+from ffmpeg.schema import Default
+from ffmpeg.types import (
+    Boolean,
+    Color,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Rational,
+    String,
+    Video_rate,
+)
 
 if TYPE_CHECKING:
     from .video import VideoStream
@@ -1008,9 +1021,9 @@ class AudioStream(FilterableStream):
         level_in: Double = Default(1.0),
         level_out: Double = Default(1.0),
         mode: Int | Literal["reproduction", "production"] | Default = Default("reproduction"),
-        type: Int
-        | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
-        | Default = Default("cd"),
+        type: Int | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"] | Default = Default(
+            "cd"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
@@ -1222,9 +1235,9 @@ class AudioStream(FilterableStream):
         *,
         noise_reduction: Float = Default(12.0),
         noise_floor: Float = Default(-50.0),
-        noise_type: Int
-        | Literal["white", "w", "vinyl", "v", "shellac", "s", "custom", "c"]
-        | Default = Default("white"),
+        noise_type: Int | Literal["white", "w", "vinyl", "v", "shellac", "s", "custom", "c"] | Default = Default(
+            "white"
+        ),
         band_noise: String = Default(None),
         residual_floor: Float = Default(-38.0),
         track_noise: Boolean = Default(False),
@@ -3180,9 +3193,9 @@ class AudioStream(FilterableStream):
     def asoftclip(
         self,
         *,
-        type: Int
-        | Literal["hard", "tanh", "atan", "cubic", "exp", "alg", "quintic", "sin", "erf"]
-        | Default = Default("tanh"),
+        type: Int | Literal["hard", "tanh", "atan", "cubic", "exp", "alg", "quintic", "sin", "erf"] | Default = Default(
+            "tanh"
+        ),
         threshold: Double = Default(1.0),
         output: Double = Default(1.0),
         param: Double = Default(1.0),
@@ -5692,9 +5705,9 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("640x512"),
         rate: String = Default("25"),
-        scale: Int
-        | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt"]
-        | Default = Default("linear"),
+        scale: Int | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt"] | Default = Default(
+            "linear"
+        ),
         iscale: Int | Literal["linear", "log", "sqrt", "cbrt", "qdrt"] | Default = Default("log"),
         min: Float = Default(20.0),
         max: Float = Default(20000.0),
@@ -6648,9 +6661,9 @@ class AudioStream(FilterableStream):
         muter: Boolean = Default(False),
         phasel: Boolean = Default(False),
         phaser: Boolean = Default(False),
-        mode: Int
-        | Literal["lr", "ms", "lr", "ll", "rr", "r", "rl", "ll", "rr", "rl", "r"]
-        | Default = Default("lr>lr"),
+        mode: Int | Literal["lr", "ms", "lr", "ll", "rr", "r", "rl", "ll", "rr", "rl", "r"] | Default = Default(
+            "lr>lr"
+        ),
         slev: Double = Default(1.0),
         sbal: Double = Default(0.0),
         mlev: Double = Default(1.0),

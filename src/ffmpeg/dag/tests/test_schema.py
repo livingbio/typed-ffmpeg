@@ -5,9 +5,9 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ...utils.snapshot import DAGSnapshotExtenstion
-from ..context import DAGContext
-from ..schema import Node, Stream
+from ffmpeg.dag.context import DAGContext
+from ffmpeg.dag.schema import Node, Stream
+from ffmpeg.utils.snapshot import DAGSnapshotExtenstion
 
 
 @dataclass(frozen=True, kw_only=True, repr=False)

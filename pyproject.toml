@@ -115,6 +115,10 @@ select = [
     "UP",  # pyupgrade
     "TID252",  # Ban Relative Import https://docs.astral.sh/ruff/rules/relative-imports/#relative-imports-tid252
 ]
+ignore = [
+    "E501",
+    "E741",
+]
 
 [tool.ruff.format]  # https://docs.astral.sh/ruff/settings/#format
 quote-style = "double"  # 引號風格，雙引號是預設值

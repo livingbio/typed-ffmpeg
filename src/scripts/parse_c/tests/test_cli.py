@@ -1,4 +1,4 @@
-from ..cli import parse_ffmpeg_options, pre_compile
+from scripts.parse_c.cli import parse_ffmpeg_options, pre_compile
 
 
 def test_pre_compile() -> None:

@@ -5,7 +5,8 @@ from dataclasses import dataclass
 from functools import cached_property
 from typing import Any, TypeVar
 
-from ..utils.typing import override
+from ffmpeg.utils.typing import override
+
 from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
 
@@ -180,7 +181,7 @@ class DAGContext:
             The label of the node.
         """
 
-        assert isinstance(node, (InputNode, FilterNode)), "Only input and filter nodes have labels"
+        assert isinstance(node, InputNode | FilterNode), "Only input and filter nodes have labels"
         return self.node_labels[node]
 
     @override
@@ -207,7 +208,7 @@ class DAGContext:
             The rendered object.
         """
 
-        if isinstance(obj, (list, tuple)):
+        if isinstance(obj, list | tuple):
             return [self.render(o) for o in obj]
         elif isinstance(obj, dict):
             return {self.render(k): self.render(v) for k, v in obj.items()}

@@ -70,7 +70,7 @@ def extract_filter_info(text: str) -> list[FFMpegFilter]:
             r"(?P<flags>[^\s]+)\s+(?P<name>[\w]+)\s+(?P<io>[^ ]+) (?P<desc>.*)", line
         )
         assert match, f"Failed to parse line: {line}"
-        flags, name, io, desc = [k.strip() for k in match[0]]
+        flags, name, io, desc = (k.strip() for k in match[0])
 
         input_typing, output_typing = _extract_io(io)
         output.append(

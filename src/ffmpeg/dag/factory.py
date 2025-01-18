@@ -1,9 +1,10 @@
 import re
 from typing import Any
 
-from ..common.schema import FFMpegFilterDef, StreamType
-from ..schema import Auto
-from ..utils.run import ignore_default
+from ffmpeg.common.schema import FFMpegFilterDef, StreamType
+from ffmpeg.schema import Auto
+from ffmpeg.utils.run import ignore_default
+
 from .nodes import FilterableStream, FilterNode
 
 

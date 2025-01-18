@@ -1,6 +1,6 @@
 import pytest
 
-from ..cli import extract_docs, process_docs
+from scripts.parse_docs.cli import extract_docs, process_docs
 
 
 def test_process_docs() -> None:

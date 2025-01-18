@@ -5,8 +5,7 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
 from ffmpeg.common.schema import FFMpegFilter, FFMpegFilterOption, FFMpegFilterOptionType, FFMpegIOType, StreamType
-
-from ..gen import render
+from scripts.code_gen.gen import render
 
 
 def test_render(snapshot: SnapshotAssertion) -> None:
