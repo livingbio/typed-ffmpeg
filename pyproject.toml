@@ -97,6 +97,29 @@ scripts = "scripts.main:app"
 enable = true
 pattern = "default-unprefixed"
 
+[tool.ruff]
+line-length = 120
+exclude = ["**/__snapshots__/"]
+src = ["src"]
+target-version = "py310"
+
+[tool.ruff.lint]  # https://docs.astral.sh/ruff/settings/#lint
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    # "B",   # flake8-bugbear
+    "B006",   # flake8-bugbear: Do not use mutable data structures for argument defaults
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "TID252",  # Ban Relative Import https://docs.astral.sh/ruff/rules/relative-imports/#relative-imports-tid252
+]
+
+[tool.ruff.format]  # https://docs.astral.sh/ruff/settings/#format
+quote-style = "double"  # 引號風格，雙引號是預設值
+docstring-code-format = true
+
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
