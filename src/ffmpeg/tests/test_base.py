@@ -192,3 +192,13 @@ def test_customize_vfilter(snapshot: SnapshotAssertion) -> None:
     )
 
     assert snapshot(extension_class=JSONSnapshotExtension) == gltransition.output(filename="output.mp4").compile()
+
+
+def test_filter_with_zero(snapshot: SnapshotAssertion) -> None:
+    stream = input("input.mp4").audio.volume(volume=0.0)
+
+    assert stream.output(filename="output.mp4").compile() == snapshot(extension_class=JSONSnapshotExtension)
+
+    stream = input("input.mp4").audio.volume(volume="0.0")
+
+    assert stream.output(filename="output.mp4").compile() == snapshot(extension_class=JSONSnapshotExtension)
