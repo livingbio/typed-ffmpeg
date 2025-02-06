@@ -23,7 +23,7 @@ class OutputArgs(ABC):
         {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> OutputStream:
         """
         Output file URL

@@ -3,13 +3,27 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Literal
 
 from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
+from ..types import (
+    Boolean,
+    Color,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Rational,
+    String,
+    Value,
+    Video_rate,
+)
 
 if TYPE_CHECKING:
     from .video import VideoStream
@@ -28,7 +42,7 @@ class AudioStream(FilterableStream):
         xzoom: Float = Default(1.0),
         xpos: Float = Default(0.0),
         length: Int = Default(15),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -74,7 +88,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         action: Int | Literal["start", "stop"] | Default = Default("start"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -107,7 +121,7 @@ class AudioStream(FilterableStream):
         size: Image_size = Default("1024x256"),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
         mode: Int | Literal["bars", "trace"] | Default = Default("bars"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -154,7 +168,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         level_sc: Double = Default(1.0),
         mix: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -206,7 +220,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         contrast: Float = Default(33.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -234,7 +248,7 @@ class AudioStream(FilterableStream):
 
     def acopy(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -317,7 +331,7 @@ class AudioStream(FilterableStream):
             "hsin2",
         ]
         | Default = Default("tri"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -362,7 +376,7 @@ class AudioStream(FilterableStream):
         level: Float = Default(1.0),
         gain: String = Default("1.f"),
         precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -417,7 +431,7 @@ class AudioStream(FilterableStream):
         lforange: Double = Default(20.0),
         lforate: Double = Default(0.3),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -471,7 +485,7 @@ class AudioStream(FilterableStream):
         cue: Int64 = Default(0),
         preroll: Duration = Default(0.0),
         buffer: Duration = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -511,7 +525,7 @@ class AudioStream(FilterableStream):
         burst: Double = Default(2.0),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -559,7 +573,7 @@ class AudioStream(FilterableStream):
         hsize: Int = Default(1000),
         method: Int | Literal["add", "a", "save", "s"] | Default = Default("add"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -603,7 +617,7 @@ class AudioStream(FilterableStream):
         stages: Int = Default(6),
         seed: Int64 = Default(-1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -639,7 +653,7 @@ class AudioStream(FilterableStream):
         delays: String = Default(None),
         all: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -675,7 +689,7 @@ class AudioStream(FilterableStream):
         level: Double = Default(-351.0),
         type: Int | Literal["dc", "ac", "square", "pulse"] | Default = Default("dc"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -709,7 +723,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -753,7 +767,7 @@ class AudioStream(FilterableStream):
         slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
         size: Image_size = Default("900x256"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -815,7 +829,7 @@ class AudioStream(FilterableStream):
         release: Double = Default(100.0),
         channels: String = Default("all"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -869,7 +883,7 @@ class AudioStream(FilterableStream):
         auto: Int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
         precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -933,7 +947,7 @@ class AudioStream(FilterableStream):
         sensitivity: Double = Default(2.0),
         basefreq: Double = Default(22050.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -970,7 +984,7 @@ class AudioStream(FilterableStream):
         out_gain: Float = Default(0.3),
         delays: String = Default("1000"),
         decays: String = Default("0.5"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1012,7 +1026,7 @@ class AudioStream(FilterableStream):
         | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
         | Default = Default("cd"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1052,7 +1066,7 @@ class AudioStream(FilterableStream):
         exprs: String = Default(None),
         channel_layout: String = Default(None),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1094,7 +1108,7 @@ class AudioStream(FilterableStream):
         ceil: Double = Default(9999.0),
         listen: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1175,7 +1189,7 @@ class AudioStream(FilterableStream):
         silence: Double = Default(0.0),
         unity: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1237,7 +1251,7 @@ class AudioStream(FilterableStream):
         sample_noise: Int | Literal["none", "start", "begin", "stop", "end"] | Default = Default("none"),
         gain_smooth: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1325,7 +1339,7 @@ class AudioStream(FilterableStream):
         | Default = Default("hann"),
         overlap: Float = Default(0.75),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1367,7 +1381,7 @@ class AudioStream(FilterableStream):
         sample_fmts: String = Default(None),
         sample_rates: String = Default(None),
         channel_layouts: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1404,7 +1418,7 @@ class AudioStream(FilterableStream):
         level: Double = Default(1.0),
         order: Int = Default(8),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1448,7 +1462,7 @@ class AudioStream(FilterableStream):
         samples: Int = Default(8192),
         softness: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1506,7 +1520,7 @@ class AudioStream(FilterableStream):
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1586,7 +1600,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("all+queue"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -1632,7 +1646,7 @@ class AudioStream(FilterableStream):
         rheight: Float = Default(0.1),
         slide: Int | Literal["replace", "scroll"] | Default = Default("replace"),
         hmode: Int | Literal["abs", "sign"] | Default = Default("abs"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -1692,7 +1706,7 @@ class AudioStream(FilterableStream):
         channel: Int = Default(0),
         size: Image_size = Default("hd720"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -1756,7 +1770,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1786,7 +1800,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1825,7 +1839,7 @@ class AudioStream(FilterableStream):
         level: Boolean = Default(True),
         latency: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1882,7 +1896,7 @@ class AudioStream(FilterableStream):
         transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1933,7 +1947,7 @@ class AudioStream(FilterableStream):
         size: Int64 = Default(0),
         start: Int64 = Default(0),
         time: Duration = Default("INT64_MAX"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -1978,7 +1992,7 @@ class AudioStream(FilterableStream):
         file: String = Default(None),
         direct: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2021,7 +2035,7 @@ class AudioStream(FilterableStream):
     def amultiply(
         self,
         _multiply1: AudioStream,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2052,7 +2066,7 @@ class AudioStream(FilterableStream):
         fscale: Int | Literal["lin", "log"] | Default = Default("log"),
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -2105,7 +2119,7 @@ class AudioStream(FilterableStream):
         output: Int | Literal["i", "o", "n"] | Default = Default("o"),
         smooth: Float = Default(11.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2151,7 +2165,7 @@ class AudioStream(FilterableStream):
         leakage: Float = Default(0.0),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2198,7 +2212,7 @@ class AudioStream(FilterableStream):
         leakage: Float = Default(0.0),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2237,7 +2251,7 @@ class AudioStream(FilterableStream):
 
     def anull(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2266,7 +2280,7 @@ class AudioStream(FilterableStream):
         pad_dur: Duration = Default(-1e-06),
         whole_dur: Duration = Default(-1e-06),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2308,7 +2322,7 @@ class AudioStream(FilterableStream):
         mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
         seed: Int64 = Default(-1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2352,7 +2366,7 @@ class AudioStream(FilterableStream):
         tolerance: Float = Default(0.0),
         angle: Float = Default(170.0),
         duration: Duration = Default(2.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -2413,7 +2427,7 @@ class AudioStream(FilterableStream):
         decay: Double = Default(0.4),
         speed: Double = Default(0.5),
         type: Int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("triangular"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2456,7 +2470,7 @@ class AudioStream(FilterableStream):
         level: Double = Default(1.0),
         order: Int = Default(8),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2493,7 +2507,7 @@ class AudioStream(FilterableStream):
         _input1: AudioStream,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2531,7 +2545,7 @@ class AudioStream(FilterableStream):
         iterations: Int = Default(10),
         level: Boolean = Default(False),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2585,7 +2599,7 @@ class AudioStream(FilterableStream):
         bpm: Double = Default(120.0),
         ms: Int = Default(500),
         hz: Double = Default(2.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2636,7 +2650,7 @@ class AudioStream(FilterableStream):
         *,
         limit: Duration = Default(2.0),
         speed: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2668,7 +2682,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         sample_rate: Int = Default(0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2696,7 +2710,7 @@ class AudioStream(FilterableStream):
 
     def areverse(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2725,7 +2739,7 @@ class AudioStream(FilterableStream):
         delta: Float = Default(2.0),
         out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2766,7 +2780,7 @@ class AudioStream(FilterableStream):
         model: String = Default(None),
         mix: Float = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2801,7 +2815,7 @@ class AudioStream(FilterableStream):
         _input1: AudioStream,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2833,7 +2847,7 @@ class AudioStream(FilterableStream):
         *,
         timestamps: String = Default(None),
         samples: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -2872,7 +2886,7 @@ class AudioStream(FilterableStream):
         *,
         expr: String = Default("1"),
         outputs: Int = Default(1),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -2909,7 +2923,7 @@ class AudioStream(FilterableStream):
         *,
         commands: String = Default(None),
         filename: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2943,7 +2957,7 @@ class AudioStream(FilterableStream):
         nb_out_samples: Int = Default(1024),
         pad: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -2977,7 +2991,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         expr: String = Default("PTS"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3007,7 +3021,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         sample_rate: Int = Default(44100),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3037,7 +3051,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         expr: String = Default("intb"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3065,7 +3079,7 @@ class AudioStream(FilterableStream):
 
     def ashowinfo(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3115,7 +3129,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default(-1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3150,7 +3164,7 @@ class AudioStream(FilterableStream):
         _input1: AudioStream,
         *,
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3188,7 +3202,7 @@ class AudioStream(FilterableStream):
         param: Double = Default(1.0),
         oversample: Int = Default(1),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3276,7 +3290,7 @@ class AudioStream(FilterableStream):
         | Default = Default(
             "all+mean+variance+centroid+spread+skewness+kurtosis+entropy+flatness+crest+flux+slope+decrease+rolloff"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3312,7 +3326,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         outputs: Int = Default(2),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -3416,7 +3430,7 @@ class AudioStream(FilterableStream):
         | Default = Default(
             "all+Bit_depth+Crest_factor+DC_offset+Dynamic_range+Entropy+Flat_factor+Max_difference+Max_level+Mean_difference+Min_difference+Min_level+Noise_floor+Noise_floor_count+Number_of_Infs+Number_of_NaNs+Number_of_denormals+Number_of_samples+Peak_count+Peak_level+RMS_difference+RMS_level+RMS_peak+RMS_trough+Zero_crossings+Zero_crossings_rate+Abs_Peak_count"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3463,7 +3477,7 @@ class AudioStream(FilterableStream):
         delay: Double = Default(20.0),
         channels: String = Default("all"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3514,7 +3528,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(10),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3553,7 +3567,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(10),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3593,7 +3607,7 @@ class AudioStream(FilterableStream):
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3635,7 +3649,7 @@ class AudioStream(FilterableStream):
         qfactor: Double = Default(1.0),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3673,7 +3687,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         tempo: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3708,7 +3722,7 @@ class AudioStream(FilterableStream):
         order: Int = Default(5),
         level: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3754,7 +3768,7 @@ class AudioStream(FilterableStream):
         duration: Duration = Default(0.0),
         start_sample: Int64 = Default(-1),
         end_sample: Int64 = Default("I64_MAX"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3811,7 +3825,7 @@ class AudioStream(FilterableStream):
         scale: Int | Literal["lin", "sqrt", "cbrt", "log"] | Default = Default("lin"),
         swap: Boolean = Default(True),
         mirror: Int | Literal["none", "x", "y", "xy"] | Default = Default("none"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -3873,7 +3887,7 @@ class AudioStream(FilterableStream):
         *,
         size: Int = Default(256),
         algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3906,7 +3920,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         bind_address: String = Default("tcp://*:5555"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -3946,7 +3960,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4005,7 +4019,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4064,7 +4078,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4124,7 +4138,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4171,7 +4185,7 @@ class AudioStream(FilterableStream):
         *,
         map: String = Default(None),
         channel_layout: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4204,7 +4218,7 @@ class AudioStream(FilterableStream):
         *,
         channel_layout: String = Default("stereo"),
         channels: String = Default("all"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -4247,7 +4261,7 @@ class AudioStream(FilterableStream):
         decays: String = Default(None),
         speeds: String = Default(None),
         depths: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4293,7 +4307,7 @@ class AudioStream(FilterableStream):
         gain: Double = Default(0.0),
         volume: Double = Default(0.0),
         delay: Double = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4341,7 +4355,7 @@ class AudioStream(FilterableStream):
         wet: Double = Default(1.0),
         temp: Int = Default(20),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4389,7 +4403,7 @@ class AudioStream(FilterableStream):
         level_out: Double = Default(1.0),
         block_size: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4433,7 +4447,7 @@ class AudioStream(FilterableStream):
         i: Float = Default(2.0),
         c: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4469,7 +4483,7 @@ class AudioStream(FilterableStream):
         shift: Double = Default(0.0),
         limitergain: Double = Default(0.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4507,7 +4521,7 @@ class AudioStream(FilterableStream):
         f: Double = Default(0.5),
         s: Int | Literal["i", "o", "e"] | Default = Default("o"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4548,7 +4562,7 @@ class AudioStream(FilterableStream):
         enhance: Double = Default(1.0),
         voice: Double = Default(2.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4584,7 +4598,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         length: Double = Default(3.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4627,7 +4641,7 @@ class AudioStream(FilterableStream):
         overlap: Double = Default(0.0),
         curve: String = Default(None),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4681,7 +4695,7 @@ class AudioStream(FilterableStream):
 
     def earwax(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4721,7 +4735,7 @@ class AudioStream(FilterableStream):
         lra_high: Double = Default(0.0),
         sample_peak: Double = Default(0.0),
         true_peak: Double = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> FilterNode:
         """
 
@@ -4799,7 +4813,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4851,7 +4865,7 @@ class AudioStream(FilterableStream):
         m: Float = Default(2.5),
         c: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4910,7 +4924,7 @@ class AudioStream(FilterableStream):
         dumpscale: Int | Literal["linlin", "linlog", "loglin", "loglog"] | Default = Default("linlog"),
         fft2: Boolean = Default(False),
         min_phase: Boolean = Default(False),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -4971,7 +4985,7 @@ class AudioStream(FilterableStream):
         shape: Int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("sinusoidal"),
         phase: Double = Default(25.0),
         interp: Int | Literal["linear", "quadratic"] | Default = Default("linear"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5027,7 +5041,7 @@ class AudioStream(FilterableStream):
         right_balance: Double = Default(1.0),
         right_gain: Double = Default(1.0),
         right_phase: Boolean = Default(True),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5086,7 +5100,7 @@ class AudioStream(FilterableStream):
         force_pe: Boolean = Default(False),
         analyze_mode: Int | Literal["off", "lle", "pe", "cdt", "tgm"] | Default = Default("off"),
         bits_per_sample: Int | Literal["16", "20", "24"] | Default = Default(16),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5136,7 +5150,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5197,7 +5211,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5259,7 +5273,7 @@ class AudioStream(FilterableStream):
         linear: Boolean = Default(True),
         dual_mono: Boolean = Default(False),
         print_format: Int | Literal["none", "json", "summary"] | Default = Default("none"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5319,7 +5333,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5380,7 +5394,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5434,7 +5448,7 @@ class AudioStream(FilterableStream):
         args: String = Default(
             "0.005,0.1 6 -47/-40,-34/-34,-17/-33 100 | 0.003,0.05 6 -47/-40,-34/-34,-17/-33 400 | 0.000625,0.0125 6 -47/-40,-34/-34,-15/-33 1600 | 0.0001,0.025 6 -47/-40,-34/-34,-31/-31,-0/-30 6400 | 0,0.025 6 -38/-31,-28/-28,-0/-25 22000"
         ),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5464,7 +5478,7 @@ class AudioStream(FilterableStream):
         self,
         *,
         args: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5495,7 +5509,7 @@ class AudioStream(FilterableStream):
         *,
         track_gain: Float = Default(0.0),
         track_peak: Float = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5536,7 +5550,7 @@ class AudioStream(FilterableStream):
         formant: Int | Literal["shifted", "preserved"] | Default = Default("shifted"),
         pitchq: Int | Literal["quality", "speed", "consistency"] | Default = Default("speed"),
         channels: Int | Literal["apart", "together"] | Default = Default("apart"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -5611,7 +5625,7 @@ class AudioStream(FilterableStream):
         | Literal["unspecified", "bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "bt2020ncl"]
         | Default = Default("unspecified"),
         cscheme: String = Default("1|0.5|0|0|0.5|1"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -5708,7 +5722,7 @@ class AudioStream(FilterableStream):
         direction: Int | Literal["lr", "rl", "ud", "du"] | Default = Default("lr"),
         bar: Float = Default(0.0),
         rotation: Float = Default(0.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -5806,7 +5820,7 @@ class AudioStream(FilterableStream):
         minamp: Float = Default(1e-06),
         data: Int | Literal["magnitude", "phase", "delay"] | Default = Default("magnitude"),
         channels: String = Default("all"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -5890,7 +5904,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         rate: Video_rate = Default("25"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -5988,7 +6002,7 @@ class AudioStream(FilterableStream):
         drange: Float = Default(120.0),
         limit: Float = Default(0.0),
         opacity: Float = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -6114,7 +6128,7 @@ class AudioStream(FilterableStream):
         drange: Float = Default(120.0),
         limit: Float = Default(0.0),
         opacity: Float = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -6188,7 +6202,7 @@ class AudioStream(FilterableStream):
         p: Float = Default(0.0),
         m: Int | Literal["p", "r"] | Default = Default("p"),
         ds: Int | Literal["lin", "log"] | Default = Default("lin"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -6253,7 +6267,7 @@ class AudioStream(FilterableStream):
         colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
         draw: Int | Literal["scale", "full"] | Default = Default("scale"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -6302,7 +6316,7 @@ class AudioStream(FilterableStream):
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
         draw: Int | Literal["scale", "full"] | Default = Default("scale"),
         filter: Int | Literal["average", "peak"] | Default = Default("average"),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> VideoStream:
         """
 
@@ -6354,7 +6368,7 @@ class AudioStream(FilterableStream):
         detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
         level_sc: Double = Default(1.0),
         mix: Double = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6420,7 +6434,7 @@ class AudioStream(FilterableStream):
         link: Int | Literal["average", "maximum"] | Default = Default("average"),
         level_sc: Double = Default(1.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6477,7 +6491,7 @@ class AudioStream(FilterableStream):
         n: Double = Default(0.001),
         d: Duration = Default(2.0),
         mono: Boolean = Default(False),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6524,7 +6538,7 @@ class AudioStream(FilterableStream):
         window: Duration = Default(0.02),
         timestamp: Int | Literal["write", "copy"] | Default = Default("write"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6590,7 +6604,7 @@ class AudioStream(FilterableStream):
         link: Boolean = Default(False),
         rms: Double = Default(0.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6662,7 +6676,7 @@ class AudioStream(FilterableStream):
         bmode_in: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
         bmode_out: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6736,7 +6750,7 @@ class AudioStream(FilterableStream):
         crossfeed: Float = Default(0.3),
         drymix: Float = Default(0.8),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6791,7 +6805,7 @@ class AudioStream(FilterableStream):
         _16b: Float = Default(1.0),
         _17b: Float = Default(1.0),
         _18b: Float = Default(1.0),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -6929,7 +6943,7 @@ class AudioStream(FilterableStream):
         ]
         | Default = Default("hann"),
         overlap: Float = Default(0.5),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -7068,7 +7082,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -7131,7 +7145,7 @@ class AudioStream(FilterableStream):
         precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -7185,7 +7199,7 @@ class AudioStream(FilterableStream):
         f: Double = Default(5.0),
         d: Double = Default(0.5),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -7221,7 +7235,7 @@ class AudioStream(FilterableStream):
         f: Double = Default(5.0),
         d: Double = Default(0.5),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -7257,7 +7271,7 @@ class AudioStream(FilterableStream):
         cutoff: Double = Default(250.0),
         strength: Double = Default(3.0),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -7297,7 +7311,7 @@ class AudioStream(FilterableStream):
         replaygain_preamp: Double = Default(0.0),
         replaygain_noclip: Boolean = Default(True),
         enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 
@@ -7337,7 +7351,7 @@ class AudioStream(FilterableStream):
 
     def volumedetect(
         self,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> AudioStream:
         """
 

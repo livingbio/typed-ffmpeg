@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-from ...types import Boolean, Float, Func, Int, Int64, String, Time
+from ...types import Boolean, Float, Func, Int, Int64, String, Time, Value
 
 if TYPE_CHECKING:
     from ..nodes import FilterableStream, OutputNode, OutputStream
@@ -114,7 +114,7 @@ class OutputArgs(ABC):
         dcodec: String = None,
         dn: Boolean = None,
         top: Int = None,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> OutputStream:
         """
         Output file URL

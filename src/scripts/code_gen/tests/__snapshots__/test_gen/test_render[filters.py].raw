@@ -34,7 +34,7 @@ def aap(
 
     *,
     order: Int = Default(None),projection: Int = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Value] = None,
 )-> AudioStream:
     """
     

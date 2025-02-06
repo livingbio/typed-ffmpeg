@@ -18,7 +18,7 @@ class OutputArgs(ABC):
     def output(
         self,
         *streams: "FilterableStream",
-        filename: str | Path,extra_options: dict[str, Any] = None,
+        filename: str | Path,extra_options: dict[str, Value] = None,
     ) -> OutputStream:
         """
         Output file URL

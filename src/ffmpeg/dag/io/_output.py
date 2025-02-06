@@ -2,9 +2,8 @@
 
 
 from pathlib import Path
-from typing import Any
 
-from ...types import Boolean, Float, Func, Int, Int64, String, Time
+from ...types import Boolean, Float, Func, Int, Int64, String, Time, Value
 from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
@@ -105,7 +104,7 @@ def output(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Value] = None,
 ) -> OutputStream:
     """
     Output file URL
