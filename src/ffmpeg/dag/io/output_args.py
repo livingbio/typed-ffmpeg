@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Mapping
 
 from ...types import Boolean, Float, Func, Int, Int64, String, Time, Value
 
@@ -114,7 +114,7 @@ class OutputArgs(ABC):
         dcodec: String = None,
         dn: Boolean = None,
         top: Int = None,
-        extra_options: dict[str, Value] = None,
+        extra_options: Mapping[str, Value] = None,
     ) -> OutputStream:
         """
         Output file URL
