@@ -14,7 +14,10 @@ from ..validate import add_split, remove_split
 def not_utilize_split() -> Any:
     input1 = input("input1.mp4")
 
-    return pytest.param(input1.reverse().split(outputs=2).video(0).output(filename="tmp.mp4"), id="not-utilize-split")
+    return pytest.param(
+        input1.reverse().split(outputs=2).video(0).output(filename="tmp.mp4"),
+        id="not-utilize-split",
+    )
 
 
 def redundant_split_outputs_1() -> Any:
@@ -38,7 +41,11 @@ def reduntant_split_duplicate() -> Any:
 
 def reuse_input() -> Any:
     input_stream = input("input.mp4")
-    graph = concat(input_stream.video, input_stream.video).video(0).output(filename="tmp.mp4")
+    graph = (
+        concat(input_stream.video, input_stream.video)
+        .video(0)
+        .output(filename="tmp.mp4")
+    )
     return pytest.param(graph, id="reuse-input")
 
 
@@ -64,18 +71,18 @@ def complex_stream() -> Any:
 def amix_stream() -> Any:
     input1 = input("input1.mp4")
 
-    graph = amix(input1.audio.areverse().areverse(), input1.audio.areverse(), duration="first").output(
-        filename="tmp.mp4"
-    )
+    graph = amix(
+        input1.audio.areverse().areverse(), input1.audio.areverse(), duration="first"
+    ).output(filename="tmp.mp4")
     return pytest.param(graph, id="amix-stream")
 
 
 def amix_stream_2() -> Any:
     input1 = input("input1.mp4")
 
-    graph = amix(input1.audio.areverse(), input1.audio.areverse().areverse(), duration="first").output(
-        filename="tmp.mp4"
-    )
+    graph = amix(
+        input1.audio.areverse(), input1.audio.areverse().areverse(), duration="first"
+    ).output(filename="tmp.mp4")
     return pytest.param(graph, id="amix-stream-2")
 
 
@@ -102,12 +109,19 @@ def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
 
     assert snapshot(name="before", extension_class=DAGSnapshotExtenstion) == graph.node
     removed_split = remove_split(graph)
-    assert snapshot(name="remove-split", extension_class=DAGSnapshotExtenstion) == removed_split[0].node
+    assert (
+        snapshot(name="remove-split", extension_class=DAGSnapshotExtenstion)
+        == removed_split[0].node
+    )
 
     added_split = add_split(removed_split[0])
-    assert snapshot(name="add-split", extension_class=DAGSnapshotExtenstion) == added_split[0].node
+    assert (
+        snapshot(name="add-split", extension_class=DAGSnapshotExtenstion)
+        == added_split[0].node
+    )
 
 
 class Validator(Protocol):
-    def __call__(self, context: DAGContext = ..., auto_fix: bool = False) -> DAGContext:
-        ...
+    def __call__(
+        self, context: DAGContext = ..., auto_fix: bool = False
+    ) -> DAGContext: ...

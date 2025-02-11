@@ -70,7 +70,7 @@ class Stream(HashableBaseModel):
             return f.read()
 
     def _repr_svg_(self) -> str:  # pragma: no cover
-        with open(self.view(format="svg"), "r") as f:
+        with open(self.view(format="svg")) as f:
             return f.read()
 
 
@@ -109,7 +109,7 @@ class Node(HashableBaseModel, ABC):
 
             nodes.extend(k.node for k in node.inputs)
 
-            output[node.hex] = set(k.node.hex for k in node.inputs)
+            output[node.hex] = {k.node.hex for k in node.inputs}
 
         if not is_dag(output):
             raise ValueError(f"Graph is not a DAG: {output}")  # pragma: no cover
@@ -206,5 +206,5 @@ class Node(HashableBaseModel, ABC):
             return f.read()
 
     def _repr_svg_(self) -> str:  # pragma: no cover
-        with open(self.view(format="svg"), "r") as f:
+        with open(self.view(format="svg")) as f:
             return f.read()

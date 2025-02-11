@@ -2,7 +2,6 @@
 Defines the basic schema for the ffmpeg command line options.
 """
 
-
 from .common.schema import StreamType
 
 

@@ -6,7 +6,13 @@ from typing import Any
 
 from .dag.io._input import input
 from .dag.io._output import output
-from .dag.nodes import FilterableStream, FilterNode, GlobalNode, GlobalStream, OutputStream
+from .dag.nodes import (
+    FilterableStream,
+    FilterNode,
+    GlobalNode,
+    GlobalStream,
+    OutputStream,
+)
 from .schema import StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
@@ -26,7 +32,10 @@ def merge_outputs(*streams: OutputStream) -> GlobalStream:
 
 
 def vfilter(
-    *streams: FilterableStream, name: str, input_typings: tuple[StreamType, ...] = (StreamType.video,), **kwargs: Any
+    *streams: FilterableStream,
+    name: str,
+    input_typings: tuple[StreamType, ...] = (StreamType.video,),
+    **kwargs: Any,
 ) -> VideoStream:
     """
     Apply a custom video filter which has only one output to this stream
@@ -53,7 +62,10 @@ def vfilter(
 
 
 def afilter(
-    *streams: FilterableStream, name: str, input_typings: tuple[StreamType, ...] = (StreamType.audio,), **kwargs: Any
+    *streams: FilterableStream,
+    name: str,
+    input_typings: tuple[StreamType, ...] = (StreamType.audio,),
+    **kwargs: Any,
 ) -> AudioStream:
     """
     Apply a custom audio filter which has only one output to this stream
@@ -84,7 +96,7 @@ def filter_multi_output(
     name: str,
     input_typings: tuple[StreamType, ...] = (),
     output_tyings: tuple[StreamType, ...] = (),
-    **kwargs: Any
+    **kwargs: Any,
 ) -> FilterNode:
     """
     Apply a custom filter which has multiple outputs to this stream
@@ -111,4 +123,11 @@ def filter_multi_output(
     )
 
 
-__all__ = ["input", "output", "merge_outputs", "vfilter", "afilter", "filter_multi_output"]
+__all__ = [
+    "input",
+    "output",
+    "merge_outputs",
+    "vfilter",
+    "afilter",
+    "filter_multi_output",
+]

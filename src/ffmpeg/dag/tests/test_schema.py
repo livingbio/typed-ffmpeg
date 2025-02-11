@@ -87,7 +87,9 @@ def update_node() -> Any:
     return pytest.param(d, [(b, b_new), (c, c_new), (c, c_new_new)], id="update_node")
 
 
-@pytest.mark.parametrize("graph, replace_pattern", [linear(), simple_loop(), multi_loop(), update_node()])
+@pytest.mark.parametrize(
+    "graph, replace_pattern", [linear(), simple_loop(), multi_loop(), update_node()]
+)
 def test_replace(
     graph: Node,
     replace_pattern: list[tuple[Node, Node]],
@@ -97,7 +99,13 @@ def test_replace(
 
     for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
-        assert snapshot(name=f"replace {node} -> {replaced_node}", extension_class=DAGSnapshotExtenstion) == new_g
+        assert (
+            snapshot(
+                name=f"replace {node} -> {replaced_node}",
+                extension_class=DAGSnapshotExtenstion,
+            )
+            == new_g
+        )
 
 
 @pytest.mark.skip("Not stable")

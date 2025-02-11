@@ -10,7 +10,9 @@ from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
 
 
-def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -> tuple[Stream, dict[Stream, Stream]]:
+def remove_split(
+    current_stream: Stream, mapping: dict[Stream, Stream] = None
+) -> tuple[Stream, dict[Stream, Stream]]:
     """
     Rebuild the graph with the given mapping.
 
@@ -37,20 +39,28 @@ def remove_split(current_stream: Stream, mapping: dict[Stream, Stream] = None) -
     if isinstance(current_stream.node, FilterNode):
         # if the current node is a split node, we need to remove it
         if current_stream.node.name in ("split", "asplit"):
-            new_stream, _mapping = remove_split(current_stream=current_stream.node.inputs[0], mapping=mapping)
+            new_stream, _mapping = remove_split(
+                current_stream=current_stream.node.inputs[0], mapping=mapping
+            )
             mapping[current_stream] = mapping[current_stream.node.inputs[0]]
             return mapping[current_stream.node.inputs[0]], mapping
 
     inputs = {}
     for idx, input_stream in sorted(
-        enumerate(current_stream.node.inputs), key=lambda idx_stream: -len(idx_stream[1].node.upstream_nodes)
+        enumerate(current_stream.node.inputs),
+        key=lambda idx_stream: -len(idx_stream[1].node.upstream_nodes),
     ):
-        new_stream, _mapping = remove_split(current_stream=input_stream, mapping=mapping)
+        new_stream, _mapping = remove_split(
+            current_stream=input_stream, mapping=mapping
+        )
         inputs[idx] = new_stream
         mapping |= _mapping
 
     new_node = replace(
-        current_stream.node, inputs=tuple(stream for idx, stream in sorted(inputs.items(), key=lambda x: x[0]))
+        current_stream.node,
+        inputs=tuple(
+            stream for idx, stream in sorted(inputs.items(), key=lambda x: x[0])
+        ),
     )
     new_stream = replace(current_stream, node=new_node)
 
@@ -91,16 +101,24 @@ def add_split(
     inputs = {}
 
     for idx, input_stream in sorted(
-        enumerate(current_stream.node.inputs), key=lambda idx_stream: -len(idx_stream[1].node.upstream_nodes)
+        enumerate(current_stream.node.inputs),
+        key=lambda idx_stream: -len(idx_stream[1].node.upstream_nodes),
     ):
         new_stream, _mapping = add_split(
-            current_stream=input_stream, down_node=current_stream.node, down_index=idx, mapping=mapping, context=context
+            current_stream=input_stream,
+            down_node=current_stream.node,
+            down_index=idx,
+            mapping=mapping,
+            context=context,
         )
         inputs[idx] = new_stream
         mapping |= _mapping
 
     new_node = replace(
-        current_stream.node, inputs=tuple(stream for idx, stream in sorted(inputs.items(), key=lambda x: x[0]))
+        current_stream.node,
+        inputs=tuple(
+            stream for idx, stream in sorted(inputs.items(), key=lambda x: x[0])
+        ),
     )
     new_stream = replace(current_stream, node=new_node)
 

@@ -13,12 +13,13 @@ if TYPE_CHECKING:
 
 class OutputArgs(ABC):
     @abstractmethod
-    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
-        ...
+    def _output_node(
+        self, *streams: FilterableStream, filename: str | Path, **kwargs: Any
+    ) -> OutputNode: ...
 
     def output(
         self,
-        *streams: "FilterableStream",
+        *streams: FilterableStream,
         filename: str | Path,
         f: String = None,
         c: String = None,
@@ -324,4 +325,6 @@ class OutputArgs(ABC):
             if v is not None
         }
 
-        return self._output_node(*streams, filename=filename, **options, **(extra_options or {})).stream()
+        return self._output_node(
+            *streams, filename=filename, **options, **(extra_options or {})
+        ).stream()

@@ -194,4 +194,6 @@ def input(
         if v is not None
     }
 
-    return InputNode(filename=str(filename), kwargs=tuple((options | (extra_options or {})).items())).stream()
+    return InputNode(
+        filename=str(filename), kwargs=tuple((options | (extra_options or {})).items())
+    ).stream()

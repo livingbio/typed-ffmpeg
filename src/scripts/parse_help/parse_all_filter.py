@@ -12,7 +12,9 @@ def extract_all_filters_text() -> str:
         The help text.
     """
 
-    result = subprocess.run(["ffmpeg", "-filters", "-hide_banner"], stdout=subprocess.PIPE, text=True)
+    result = subprocess.run(
+        ["ffmpeg", "-filters", "-hide_banner"], stdout=subprocess.PIPE, text=True
+    )
     return result.stdout
 
 

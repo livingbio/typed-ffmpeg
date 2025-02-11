@@ -104,13 +104,21 @@ def option_typing(self: FFMpegOption) -> str:
 def input_typings(self: FFMpegFilter) -> str:
     if self.formula_typings_input:
         return self.formula_typings_input
-    return "[" + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input) + "]"
+    return (
+        "["
+        + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input)
+        + "]"
+    )
 
 
 def output_typings(self: FFMpegFilter) -> str:
     if self.formula_typings_output:
         return self.formula_typings_output
-    return "[" + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output) + "]"
+    return (
+        "["
+        + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output)
+        + "]"
+    )
 
 
 def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
@@ -118,7 +126,7 @@ def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
         return f"Auto({repr(f.pre_dict[option.name])})"
     if not isinstance(option.default, float) or not isnan(option.default):
         return f"Default({repr(option.default)})"
-    return f'Default("nan")'
+    return 'Default("nan")'
 
 
 def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
@@ -131,7 +139,9 @@ def filter_option_typings(self: FFMpegFilter) -> str:
     output = []
 
     for option in self.options:
-        output.append(f"{option_name_safe(option.name)}: {default_typings(option, self)}")
+        output.append(
+            f"{option_name_safe(option.name)}: {default_typings(option, self)}"
+        )
 
     if output:
         return ",".join(output) + ","
@@ -147,7 +157,9 @@ env.filters["output_typings"] = output_typings
 env.filters["filter_option_typings"] = filter_option_typings
 
 
-def render(filters: list[FFMpegFilter], options: list[FFMpegOption], outpath: pathlib.Path) -> list[pathlib.Path]:
+def render(
+    filters: list[FFMpegFilter], options: list[FFMpegOption], outpath: pathlib.Path
+) -> list[pathlib.Path]:
     outpath.mkdir(exist_ok=True)
     output = []
     for template_file in template_folder.glob("**/*.py.jinja"):

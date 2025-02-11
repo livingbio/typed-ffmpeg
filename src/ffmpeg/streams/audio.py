@@ -9,7 +9,20 @@ from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
+from ..types import (
+    Boolean,
+    Color,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Rational,
+    String,
+    Video_rate,
+)
 
 if TYPE_CHECKING:
     from .video import VideoStream
@@ -53,7 +66,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="a3dscope", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="a3dscope", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "rate": rate,
@@ -91,7 +106,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="abench", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="abench", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "action": action,
@@ -105,7 +122,9 @@ class AudioStream(FilterableStream):
         *,
         rate: Video_rate = Default("25"),
         size: Image_size = Default("1024x256"),
-        colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        colors: String = Default(
+            "red|green|blue|yellow|orange|lime|pink|magenta|brown"
+        ),
         mode: Int | Literal["bars", "trace"] | Default = Default("bars"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -127,7 +146,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="abitscope", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="abitscope", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "rate": rate,
@@ -182,7 +203,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="acompressor", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="acompressor", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -223,7 +246,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="acontrast", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="acontrast", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "contrast": contrast,
@@ -248,7 +273,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="acopy", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="acopy", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -338,7 +365,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="acrossfade", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="acrossfade",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _crossfade1,
             **{
@@ -357,7 +388,9 @@ class AudioStream(FilterableStream):
         *,
         split: String = Default("500"),
         order: Int
-        | Literal["2nd", "4th", "6th", "8th", "10th", "12th", "14th", "16th", "18th", "20th"]
+        | Literal[
+            "2nd", "4th", "6th", "8th", "10th", "12th", "14th", "16th", "18th", "20th"
+        ]
         | Default = Default("4th"),
         level: Float = Default(1.0),
         gain: String = Default("1.f"),
@@ -445,7 +478,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="acrusher", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="acrusher", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -490,7 +525,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="acue", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="acue", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "cue": cue,
@@ -534,7 +571,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adeclick", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adeclick", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "window": window,
@@ -582,7 +621,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adeclip", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adeclip", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "window": window,
@@ -622,7 +663,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adecorrelate", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adecorrelate", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "stages": stages,
@@ -658,7 +701,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adelay", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adelay", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "delays": delays,
@@ -694,7 +739,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adenorm", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adenorm", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level": level,
@@ -726,7 +773,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aderivative", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aderivative", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -750,7 +799,9 @@ class AudioStream(FilterableStream):
         min: Float = Default(-1.0),
         max: Float = Default(1.0),
         mode: Int | Literal["bar", "dot", "line"] | Default = Default("line"),
-        slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
+        slide: Int
+        | Literal["frame", "replace", "scroll", "rscroll", "picture"]
+        | Default = Default("frame"),
         size: Image_size = Default("900x256"),
         rate: Video_rate = Default("25"),
         extra_options: dict[str, Any] = None,
@@ -784,7 +835,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adrawgraph", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="adrawgraph", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "m1": m1,
@@ -836,7 +889,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adrc", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adrc", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "transfer": transfer,
@@ -863,8 +918,12 @@ class AudioStream(FilterableStream):
         makeup: Double = Default(0.0),
         range: Double = Default(50.0),
         mode: Int | Literal["listen", "cut", "boost"] | Default = Default("cut"),
-        dftype: Int | Literal["bandpass", "lowpass", "highpass", "peak"] | Default = Default("bandpass"),
-        tftype: Int | Literal["bell", "lowshelf", "highshelf"] | Default = Default("bell"),
+        dftype: Int
+        | Literal["bandpass", "lowpass", "highpass", "peak"]
+        | Default = Default("bandpass"),
+        tftype: Int | Literal["bell", "lowshelf", "highshelf"] | Default = Default(
+            "bell"
+        ),
         direction: Int | Literal["downward", "upward"] | Default = Default("downward"),
         auto: Int | Literal["disabled", "off", "on"] | Default = Default("disabled"),
         precision: Int | Literal["auto", "float", "double"] | Default = Default("auto"),
@@ -902,7 +961,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adynamicequalizer", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adynamicequalizer",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "threshold": threshold,
@@ -952,7 +1015,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="adynamicsmooth", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="adynamicsmooth",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "sensitivity": sensitivity,
@@ -990,7 +1057,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aecho", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aecho", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "in_gain": in_gain,
@@ -1007,7 +1076,9 @@ class AudioStream(FilterableStream):
         *,
         level_in: Double = Default(1.0),
         level_out: Double = Default(1.0),
-        mode: Int | Literal["reproduction", "production"] | Default = Default("reproduction"),
+        mode: Int | Literal["reproduction", "production"] | Default = Default(
+            "reproduction"
+        ),
         type: Int
         | Literal["col", "emi", "bsi", "riaa", "cd", "50fm", "75fm", "50kf", "75kf"]
         | Default = Default("cd"),
@@ -1033,7 +1104,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aemphasis", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aemphasis", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -1071,7 +1144,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aeval", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aeval", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "exprs": exprs,
@@ -1119,7 +1194,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aexciter", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aexciter", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -1200,7 +1277,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="afade", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="afade", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "type": type,
@@ -1229,12 +1308,18 @@ class AudioStream(FilterableStream):
         residual_floor: Float = Default(-38.0),
         track_noise: Boolean = Default(False),
         track_residual: Boolean = Default(False),
-        output_mode: Int | Literal["input", "i", "output", "o", "noise", "n"] | Default = Default("output"),
+        output_mode: Int
+        | Literal["input", "i", "output", "o", "noise", "n"]
+        | Default = Default("output"),
         adaptivity: Float = Default(0.5),
         floor_offset: Float = Default(1.0),
-        noise_link: Int | Literal["none", "min", "max", "average"] | Default = Default("min"),
+        noise_link: Int | Literal["none", "min", "max", "average"] | Default = Default(
+            "min"
+        ),
         band_multiplier: Float = Default(1.25),
-        sample_noise: Int | Literal["none", "start", "begin", "stop", "end"] | Default = Default("none"),
+        sample_noise: Int
+        | Literal["none", "start", "begin", "stop", "end"]
+        | Default = Default("none"),
         gain_smooth: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -1268,7 +1353,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="afftdn", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="afftdn", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "noise_reduction": noise_reduction,
@@ -1347,7 +1434,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="afftfilt", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="afftfilt", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "real": real,
@@ -1386,7 +1475,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aformat", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aformat", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "sample_fmts": sample_fmts,
@@ -1424,7 +1515,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="afreqshift", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="afreqshift", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "shift": shift,
@@ -1441,7 +1534,9 @@ class AudioStream(FilterableStream):
         *,
         sigma: Double = Default(0.0),
         levels: Int = Default(10),
-        wavet: Int | Literal["sym2", "sym4", "rbior68", "deb10", "sym10", "coif5", "bl3"] | Default = Default("sym10"),
+        wavet: Int
+        | Literal["sym2", "sym4", "rbior68", "deb10", "sym10", "coif5", "bl3"]
+        | Default = Default("sym10"),
         percent: Double = Default(85.0),
         profile: Boolean = Default(False),
         adaptive: Boolean = Default(False),
@@ -1473,7 +1568,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="afwtdn", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="afwtdn", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "sigma": sigma,
@@ -1535,7 +1632,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="agate", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="agate", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -1561,7 +1660,9 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
-        mode: Flags | Literal["full", "compact", "nozero", "noeof", "nodisabled"] | Default = Default("0"),
+        mode: Flags
+        | Literal["full", "compact", "nozero", "noeof", "nodisabled"]
+        | Default = Default("0"),
         flags: Flags
         | Literal[
             "none",
@@ -1607,7 +1708,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="agraphmonitor", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="agraphmonitor",
+                typings_input=("audio",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "size": size,
@@ -1626,7 +1731,9 @@ class AudioStream(FilterableStream):
         dmode: Int | Literal["single", "separate"] | Default = Default("single"),
         rate: Video_rate = Default("25"),
         size: Image_size = Default("hd720"),
-        scale: Int | Literal["log", "sqrt", "cbrt", "lin", "rlog"] | Default = Default("log"),
+        scale: Int | Literal["log", "sqrt", "cbrt", "lin", "rlog"] | Default = Default(
+            "log"
+        ),
         ascale: Int | Literal["log", "lin"] | Default = Default("log"),
         acount: Int = Default(1),
         rheight: Float = Default(0.1),
@@ -1657,7 +1764,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ahistogram", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="ahistogram", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "dmode": dmode,
@@ -1682,7 +1791,9 @@ class AudioStream(FilterableStream):
         gains: String = Default("1|1"),
         dry: Double = Default(1.0),
         wet: Double = Default(1.0),
-        format: Int | Literal["ll", "sf", "tf", "zp", "pr", "pd", "sp"] | Default = Default("zp"),
+        format: Int
+        | Literal["ll", "sf", "tf", "zp", "pr", "pd", "sp"]
+        | Default = Default("zp"),
         process: Int | Literal["d", "s", "p"] | Default = Default("s"),
         precision: Int | Literal["dbl", "flt", "i32", "i16"] | Default = Default("dbl"),
         e: Int | Literal["dbl", "flt", "i32", "i16"] | Default = Default("dbl"),
@@ -1773,7 +1884,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aintegral", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aintegral", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -1803,7 +1916,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="alatency", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="alatency", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -1851,7 +1966,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="alimiter", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="alimiter", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -1879,8 +1996,12 @@ class AudioStream(FilterableStream):
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
         order: Int = Default(2),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
@@ -1908,7 +2029,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="allpass", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="allpass", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -1953,7 +2076,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aloop", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aloop", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "loop": loop,
@@ -1968,11 +2093,15 @@ class AudioStream(FilterableStream):
     def ametadata(
         self,
         *,
-        mode: Int | Literal["select", "add", "modify", "delete", "print"] | Default = Default("select"),
+        mode: Int
+        | Literal["select", "add", "modify", "delete", "print"]
+        | Default = Default("select"),
         key: String = Default(None),
         value: String = Default(None),
         function: Int
-        | Literal["same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"]
+        | Literal[
+            "same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"
+        ]
         | Default = Default("same_str"),
         expr: String = Default(None),
         file: String = Default(None),
@@ -2002,7 +2131,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ametadata", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="ametadata", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -2035,7 +2166,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="amultiply", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="amultiply",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _multiply1,
             **{} | (extra_options or {}),
@@ -2050,7 +2185,9 @@ class AudioStream(FilterableStream):
         size: Image_size = Default("hd720"),
         mgain: Double = Default(60.0),
         fscale: Int | Literal["lin", "log"] | Default = Default("log"),
-        colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        colors: String = Default(
+            "red|green|blue|yellow|orange|lime|pink|magenta|brown"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> FilterNode:
@@ -2127,7 +2264,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="anlmdn", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="anlmdn", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "strength": strength,
@@ -2173,7 +2312,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="anlmf", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="anlmf",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _desired,
             **{
@@ -2220,7 +2363,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="anlms", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="anlms",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _desired,
             **{
@@ -2251,7 +2398,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="anull", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="anull", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -2288,7 +2437,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="apad", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="apad", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "packet_size": packet_size,
@@ -2305,7 +2456,9 @@ class AudioStream(FilterableStream):
     def aperms(
         self,
         *,
-        mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
+        mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default(
+            "none"
+        ),
         seed: Int64 = Default(-1),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -2327,7 +2480,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aperms", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aperms", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -2412,7 +2567,9 @@ class AudioStream(FilterableStream):
         delay: Double = Default(3.0),
         decay: Double = Default(0.4),
         speed: Double = Default(0.5),
-        type: Int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("triangular"),
+        type: Int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default(
+            "triangular"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
         """
@@ -2435,7 +2592,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aphaser", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aphaser", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "in_gain": in_gain,
@@ -2476,7 +2635,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aphaseshift", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aphaseshift", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "shift": shift,
@@ -2510,7 +2671,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="apsnr", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="apsnr",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _input1,
             **{
@@ -2555,7 +2720,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="apsyclip", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="apsyclip", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -2576,7 +2743,9 @@ class AudioStream(FilterableStream):
         *,
         level_in: Double = Default(1.0),
         level_out: Double = Default(1.0),
-        mode: Int | Literal["sine", "triangle", "square", "sawup", "sawdown"] | Default = Default("sine"),
+        mode: Int
+        | Literal["sine", "triangle", "square", "sawup", "sawdown"]
+        | Default = Default("sine"),
         amount: Double = Default(1.0),
         offset_l: Double = Default(0.0),
         offset_r: Double = Default(0.5),
@@ -2612,7 +2781,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="apulsator", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="apulsator", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -2654,7 +2825,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="arealtime", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="arealtime", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "limit": limit,
@@ -2685,7 +2858,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aresample", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aresample", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "sample_rate": sample_rate,
@@ -2710,7 +2885,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="areverse", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="areverse", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -2746,7 +2923,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="arls", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="arls", typings_input=("audio", "audio"), typings_output=("audio",)
+            ),
             self,
             _desired,
             **{
@@ -2785,7 +2964,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="arnndn", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="arnndn", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "model": model,
@@ -2818,7 +2999,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asdr", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asdr", typings_input=("audio", "audio"), typings_output=("audio",)
+            ),
             self,
             _input1,
             **{
@@ -2892,7 +3075,9 @@ class AudioStream(FilterableStream):
         """
         filter_node = filter_node_factory(
             FFMpegFilterDef(
-                name="aselect", typings_input=("audio",), typings_output="[StreamType.audio] * int(outputs)"
+                name="aselect",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] * int(outputs)",
             ),
             self,
             **{
@@ -2927,7 +3112,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asendcmd", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asendcmd", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "commands": commands,
@@ -2962,7 +3149,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asetnsamples", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asetnsamples", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "nb_out_samples": nb_out_samples,
@@ -2994,7 +3183,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asetpts", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asetpts", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "expr": expr,
@@ -3024,7 +3215,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asetrate", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asetrate", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "sample_rate": sample_rate,
@@ -3054,7 +3247,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asettb", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asettb", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "expr": expr,
@@ -3079,7 +3274,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ashowinfo", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="ashowinfo", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -3134,7 +3331,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asidedata", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asidedata", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -3167,7 +3366,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asisdr", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asisdr",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _input1,
             **{
@@ -3181,7 +3384,9 @@ class AudioStream(FilterableStream):
         self,
         *,
         type: Int
-        | Literal["hard", "tanh", "atan", "cubic", "exp", "alg", "quintic", "sin", "erf"]
+        | Literal[
+            "hard", "tanh", "atan", "cubic", "exp", "alg", "quintic", "sin", "erf"
+        ]
         | Default = Default("tanh"),
         threshold: Double = Default(1.0),
         output: Double = Default(1.0),
@@ -3210,7 +3415,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asoftclip", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asoftclip", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "type": type,
@@ -3296,7 +3503,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="aspectralstats", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="aspectralstats",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "win_size": win_size,
@@ -3331,7 +3542,9 @@ class AudioStream(FilterableStream):
         """
         filter_node = filter_node_factory(
             FFMpegFilterDef(
-                name="asplit", typings_input=("audio",), typings_output="[StreamType.audio] * int(outputs)"
+                name="asplit",
+                typings_input=("audio",),
+                typings_output="[StreamType.audio] * int(outputs)",
             ),
             self,
             **{
@@ -3437,7 +3650,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="astats", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="astats", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "length": length,
@@ -3489,7 +3704,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asubboost", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asubboost", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "dry": dry,
@@ -3534,7 +3751,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asubcut", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asubcut", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "cutoff": cutoff,
@@ -3573,7 +3792,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asupercut", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asupercut", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "cutoff": cutoff,
@@ -3614,7 +3835,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asuperpass", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asuperpass", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "centerf": centerf,
@@ -3656,7 +3879,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="asuperstop", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="asuperstop", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "centerf": centerf,
@@ -3690,7 +3915,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="atempo", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="atempo", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "tempo": tempo,
@@ -3730,7 +3957,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="atilt", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="atilt", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "freq": freq,
@@ -3777,7 +4006,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="atrim", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="atrim", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "start": start,
@@ -3795,7 +4026,9 @@ class AudioStream(FilterableStream):
     def avectorscope(
         self,
         *,
-        mode: Int | Literal["lissajous", "lissajous_xy", "polar"] | Default = Default("lissajous"),
+        mode: Int | Literal["lissajous", "lissajous_xy", "polar"] | Default = Default(
+            "lissajous"
+        ),
         rate: Video_rate = Default("25"),
         size: Image_size = Default("400x400"),
         rc: Int = Default(40),
@@ -3843,7 +4076,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="avectorscope", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="avectorscope", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -3891,7 +4126,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="axcorrelate", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="axcorrelate",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _axcorrelate1,
             **{
@@ -3923,7 +4162,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="azmq", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="azmq", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "bind_address": bind_address,
@@ -3942,8 +4183,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -3973,7 +4218,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bandpass", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="bandpass", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -4001,8 +4248,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -4031,7 +4282,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bandreject", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="bandreject", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -4060,8 +4313,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -4092,7 +4349,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bass", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="bass", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -4120,8 +4379,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -4149,7 +4412,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="biquad", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="biquad", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "a0": a0,
@@ -4189,7 +4454,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="channelmap", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="channelmap", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "map": map,
@@ -4269,7 +4536,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="chorus", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="chorus", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "in_gain": in_gain,
@@ -4316,7 +4585,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="compand", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="compand", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "attacks": attacks,
@@ -4364,7 +4635,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="compensationdelay", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="compensationdelay",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "mm": mm,
@@ -4412,7 +4687,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="crossfeed", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="crossfeed", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "strength": strength,
@@ -4452,7 +4729,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="crystalizer", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="crystalizer", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "i": i,
@@ -4488,7 +4767,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dcshift", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="dcshift", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "shift": shift,
@@ -4528,7 +4809,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="deesser", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="deesser", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "i": i,
@@ -4568,7 +4851,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dialoguenhance", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="dialoguenhance",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "original": original,
@@ -4601,7 +4888,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="drmeter", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="drmeter", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "length": length,
@@ -4657,7 +4946,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dynaudnorm", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="dynaudnorm", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "framelen": framelen,
@@ -4695,7 +4986,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="earwax", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="earwax", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -4713,8 +5006,12 @@ class AudioStream(FilterableStream):
         dualmono: Boolean = Default(False),
         panlaw: Double = Default(-3.0103),
         target: Int = Default(-23),
-        gauge: Int | Literal["momentary", "m", "shortterm", "s"] | Default = Default("momentary"),
-        scale: Int | Literal["absolute", "LUFS", "relative", "LU"] | Default = Default("absolute"),
+        gauge: Int | Literal["momentary", "m", "shortterm", "s"] | Default = Default(
+            "momentary"
+        ),
+        scale: Int | Literal["absolute", "LUFS", "relative", "LU"] | Default = Default(
+            "absolute"
+        ),
         integrated: Double = Default(0.0),
         range: Double = Default(0.0),
         lra_low: Double = Default(0.0),
@@ -4795,8 +5092,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -4826,7 +5127,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="equalizer", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="equalizer", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -4870,7 +5173,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="extrastereo", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="extrastereo", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "m": m,
@@ -4905,9 +5210,13 @@ class AudioStream(FilterableStream):
         fixed: Boolean = Default(False),
         multi: Boolean = Default(False),
         zero_phase: Boolean = Default(False),
-        scale: Int | Literal["linlin", "linlog", "loglin", "loglog"] | Default = Default("linlog"),
+        scale: Int
+        | Literal["linlin", "linlog", "loglin", "loglog"]
+        | Default = Default("linlog"),
         dumpfile: String = Default(None),
-        dumpscale: Int | Literal["linlin", "linlog", "loglin", "loglog"] | Default = Default("linlog"),
+        dumpscale: Int
+        | Literal["linlin", "linlog", "loglin", "loglog"]
+        | Default = Default("linlog"),
         fft2: Boolean = Default(False),
         min_phase: Boolean = Default(False),
         extra_options: dict[str, Any] = None,
@@ -4939,7 +5248,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="firequalizer", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="firequalizer", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "gain": gain,
@@ -4968,7 +5279,9 @@ class AudioStream(FilterableStream):
         regen: Double = Default(0.0),
         width: Double = Default(71.0),
         speed: Double = Default(0.5),
-        shape: Int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default("sinusoidal"),
+        shape: Int | Literal["triangular", "t", "sinusoidal", "s"] | Default = Default(
+            "sinusoidal"
+        ),
         phase: Double = Default(25.0),
         interp: Int | Literal["linear", "quadratic"] | Default = Default("linear"),
         extra_options: dict[str, Any] = None,
@@ -4995,7 +5308,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="flanger", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="flanger", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "delay": delay,
@@ -5017,7 +5332,9 @@ class AudioStream(FilterableStream):
         level_in: Double = Default(1.0),
         level_out: Double = Default(1.0),
         side_gain: Double = Default(1.0),
-        middle_source: Int | Literal["left", "right", "mid", "side"] | Default = Default("mid"),
+        middle_source: Int
+        | Literal["left", "right", "mid", "side"]
+        | Default = Default("mid"),
         middle_phase: Boolean = Default(False),
         left_delay: Double = Default(2.05),
         left_balance: Double = Default(-1.0),
@@ -5056,7 +5373,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="haas", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="haas", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -5084,7 +5403,9 @@ class AudioStream(FilterableStream):
         process_stereo: Boolean = Default(True),
         cdt_ms: Int = Default(2000),
         force_pe: Boolean = Default(False),
-        analyze_mode: Int | Literal["off", "lle", "pe", "cdt", "tgm"] | Default = Default("off"),
+        analyze_mode: Int
+        | Literal["off", "lle", "pe", "cdt", "tgm"]
+        | Default = Default("off"),
         bits_per_sample: Int | Literal["16", "20", "24"] | Default = Default(16),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
@@ -5108,7 +5429,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hdcd", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="hdcd", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "disable_autoconvert": disable_autoconvert,
@@ -5132,8 +5455,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -5163,7 +5490,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="highpass", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="highpass", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -5193,8 +5522,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -5225,7 +5558,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="highshelf", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="highshelf", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -5258,7 +5593,9 @@ class AudioStream(FilterableStream):
         offset: Double = Default(0.0),
         linear: Boolean = Default(True),
         dual_mono: Boolean = Default(False),
-        print_format: Int | Literal["none", "json", "summary"] | Default = Default("none"),
+        print_format: Int | Literal["none", "json", "summary"] | Default = Default(
+            "none"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
         """
@@ -5286,7 +5623,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="loudnorm", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="loudnorm", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "I": I,
@@ -5315,8 +5654,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -5346,7 +5689,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lowpass", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="lowpass", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -5376,8 +5721,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -5408,7 +5757,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lowshelf", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="lowshelf", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -5451,7 +5802,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="mcompand", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="mcompand", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "args": args,
@@ -5481,7 +5834,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pan", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="pan", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "args": args,
@@ -5513,7 +5868,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="replaygain", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="replaygain", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "track_gain": track_gain,
@@ -5528,13 +5885,21 @@ class AudioStream(FilterableStream):
         *,
         tempo: Double = Default(1.0),
         pitch: Double = Default(1.0),
-        transients: Int | Literal["crisp", "mixed", "smooth"] | Default = Default("crisp"),
-        detector: Int | Literal["compound", "percussive", "soft"] | Default = Default("compound"),
+        transients: Int | Literal["crisp", "mixed", "smooth"] | Default = Default(
+            "crisp"
+        ),
+        detector: Int | Literal["compound", "percussive", "soft"] | Default = Default(
+            "compound"
+        ),
         phase: Int | Literal["laminar", "independent"] | Default = Default("laminar"),
-        window: Int | Literal["standard", "short", "long"] | Default = Default("standard"),
+        window: Int | Literal["standard", "short", "long"] | Default = Default(
+            "standard"
+        ),
         smoothing: Int | Literal["off", "on"] | Default = Default("off"),
         formant: Int | Literal["shifted", "preserved"] | Default = Default("shifted"),
-        pitchq: Int | Literal["quality", "speed", "consistency"] | Default = Default("speed"),
+        pitchq: Int | Literal["quality", "speed", "consistency"] | Default = Default(
+            "speed"
+        ),
         channels: Int | Literal["apart", "together"] | Default = Default("apart"),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
@@ -5562,7 +5927,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="rubberband", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="rubberband", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "tempo": tempo,
@@ -5608,7 +5975,15 @@ class AudioStream(FilterableStream):
         axisfile: String = Default(None),
         axis: Boolean = Default(True),
         csp: Int
-        | Literal["unspecified", "bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "bt2020ncl"]
+        | Literal[
+            "unspecified",
+            "bt709",
+            "fcc",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "bt2020ncl",
+        ]
         | Default = Default("unspecified"),
         cscheme: String = Default("1|0.5|0|0|0.5|1"),
         extra_options: dict[str, Any] = None,
@@ -5653,7 +6028,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showcqt", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showcqt", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -5695,7 +6072,9 @@ class AudioStream(FilterableStream):
         scale: Int
         | Literal["linear", "log", "bark", "mel", "erbs", "sqrt", "cbrt", "qdrt"]
         | Default = Default("linear"),
-        iscale: Int | Literal["linear", "log", "sqrt", "cbrt", "qdrt"] | Default = Default("log"),
+        iscale: Int
+        | Literal["linear", "log", "sqrt", "cbrt", "qdrt"]
+        | Default = Default("log"),
         min: Float = Default(20.0),
         max: Float = Default(20000.0),
         imin: Float = Default(0.0),
@@ -5703,8 +6082,12 @@ class AudioStream(FilterableStream):
         logb: Float = Default(0.0001),
         deviation: Float = Default(1.0),
         pps: Int = Default(64),
-        mode: Int | Literal["magnitude", "phase", "magphase", "channel", "stereo"] | Default = Default("magnitude"),
-        slide: Int | Literal["replace", "scroll", "frame"] | Default = Default("replace"),
+        mode: Int
+        | Literal["magnitude", "phase", "magphase", "channel", "stereo"]
+        | Default = Default("magnitude"),
+        slide: Int | Literal["replace", "scroll", "frame"] | Default = Default(
+            "replace"
+        ),
         direction: Int | Literal["lr", "rl", "ud", "du"] | Default = Default("lr"),
         bar: Float = Default(0.0),
         rotation: Float = Default(0.0),
@@ -5740,7 +6123,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showcwt", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showcwt", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -5801,10 +6186,14 @@ class AudioStream(FilterableStream):
         | Default = Default("hann"),
         overlap: Float = Default(1.0),
         averaging: Int = Default(1),
-        colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        colors: String = Default(
+            "red|green|blue|yellow|orange|lime|pink|magenta|brown"
+        ),
         cmode: Int | Literal["combined", "separate"] | Default = Default("combined"),
         minamp: Float = Default(1e-06),
-        data: Int | Literal["magnitude", "phase", "delay"] | Default = Default("magnitude"),
+        data: Int | Literal["magnitude", "phase", "delay"] | Default = Default(
+            "magnitude"
+        ),
         channels: String = Default("all"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -5836,7 +6225,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showfreqs", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showfreqs", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -5910,7 +6301,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showspatial", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showspatial", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -5926,7 +6319,9 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default("640x512"),
-        slide: Int | Literal["replace", "scroll", "fullframe", "rscroll", "lreplace"] | Default = Default("replace"),
+        slide: Int
+        | Literal["replace", "scroll", "fullframe", "rscroll", "lreplace"]
+        | Default = Default("replace"),
         mode: Int | Literal["combined", "separate"] | Default = Default("combined"),
         color: Int
         | Literal[
@@ -5947,7 +6342,9 @@ class AudioStream(FilterableStream):
             "terrain",
         ]
         | Default = Default("channel"),
-        scale: Int | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"] | Default = Default("sqrt"),
+        scale: Int
+        | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"]
+        | Default = Default("sqrt"),
         fscale: Int | Literal["lin", "log"] | Default = Default("lin"),
         saturation: Float = Default(1.0),
         win_func: Int
@@ -5976,10 +6373,14 @@ class AudioStream(FilterableStream):
             "kaiser",
         ]
         | Default = Default("hann"),
-        orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
+        orientation: Int | Literal["vertical", "horizontal"] | Default = Default(
+            "vertical"
+        ),
         overlap: Float = Default(0.0),
         gain: Float = Default(1.0),
-        data: Int | Literal["magnitude", "phase", "uphase"] | Default = Default("magnitude"),
+        data: Int | Literal["magnitude", "phase", "uphase"] | Default = Default(
+            "magnitude"
+        ),
         rotation: Float = Default(0.0),
         start: Int = Default(0),
         stop: Int = Default(0),
@@ -6024,7 +6425,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showspectrum", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showspectrum", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -6076,7 +6479,9 @@ class AudioStream(FilterableStream):
             "terrain",
         ]
         | Default = Default("intensity"),
-        scale: Int | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"] | Default = Default("log"),
+        scale: Int
+        | Literal["lin", "sqrt", "cbrt", "log", "4thrt", "5thrt"]
+        | Default = Default("log"),
         fscale: Int | Literal["lin", "log"] | Default = Default("lin"),
         saturation: Float = Default(1.0),
         win_func: Int
@@ -6105,7 +6510,9 @@ class AudioStream(FilterableStream):
             "kaiser",
         ]
         | Default = Default("hann"),
-        orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
+        orientation: Int | Literal["vertical", "horizontal"] | Default = Default(
+            "vertical"
+        ),
         gain: Float = Default(1.0),
         legend: Boolean = Default(True),
         rotation: Float = Default(0.0),
@@ -6146,7 +6553,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showspectrumpic", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showspectrumpic",
+                typings_input=("audio",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "size": size,
@@ -6219,7 +6630,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showvolume", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showvolume", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "rate": rate,
@@ -6246,11 +6659,15 @@ class AudioStream(FilterableStream):
         self,
         *,
         size: Image_size = Default("600x240"),
-        mode: Int | Literal["point", "line", "p2p", "cline"] | Default = Default("point"),
+        mode: Int | Literal["point", "line", "p2p", "cline"] | Default = Default(
+            "point"
+        ),
         n: Rational = Default("0/1"),
         rate: Video_rate = Default("25"),
         split_channels: Boolean = Default(False),
-        colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        colors: String = Default(
+            "red|green|blue|yellow|orange|lime|pink|magenta|brown"
+        ),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
         draw: Int | Literal["scale", "full"] | Default = Default("scale"),
         extra_options: dict[str, Any] = None,
@@ -6277,7 +6694,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showwaves", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showwaves", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -6298,7 +6717,9 @@ class AudioStream(FilterableStream):
         *,
         size: Image_size = Default("600x240"),
         split_channels: Boolean = Default(False),
-        colors: String = Default("red|green|blue|yellow|orange|lime|pink|magenta|brown"),
+        colors: String = Default(
+            "red|green|blue|yellow|orange|lime|pink|magenta|brown"
+        ),
         scale: Int | Literal["lin", "log", "sqrt", "cbrt"] | Default = Default("lin"),
         draw: Int | Literal["scale", "full"] | Default = Default("scale"),
         filter: Int | Literal["average", "peak"] | Default = Default("average"),
@@ -6324,7 +6745,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showwavespic", typings_input=("audio",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showwavespic", typings_input=("audio",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -6382,7 +6805,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="sidechaincompress", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="sidechaincompress",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _sidechain,
             **{
@@ -6449,7 +6876,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="sidechaingate", typings_input=("audio", "audio"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="sidechaingate",
+                typings_input=("audio", "audio"),
+                typings_output=("audio",),
+            ),
             self,
             _sidechain,
             **{
@@ -6496,7 +6927,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="silencedetect", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="silencedetect",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "n": n,
@@ -6520,7 +6955,9 @@ class AudioStream(FilterableStream):
         stop_threshold: Double = Default(0.0),
         stop_silence: Duration = Default(0.0),
         stop_mode: Int | Literal["any", "all"] | Default = Default("all"),
-        detection: Int | Literal["avg", "rms", "peak", "median", "ptp", "dev"] | Default = Default("rms"),
+        detection: Int
+        | Literal["avg", "rms", "peak", "median", "ptp", "dev"]
+        | Default = Default("rms"),
         window: Duration = Default(0.02),
         timestamp: Int | Literal["write", "copy"] | Default = Default("write"),
         enable: String = Default(None),
@@ -6554,7 +6991,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="silenceremove", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="silenceremove",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "start_periods": start_periods,
@@ -6617,7 +7058,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="speechnorm", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="speechnorm", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "peak": peak,
@@ -6659,8 +7102,12 @@ class AudioStream(FilterableStream):
         delay: Double = Default(0.0),
         sclevel: Double = Default(1.0),
         phase: Double = Default(0.0),
-        bmode_in: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
-        bmode_out: Int | Literal["balance", "amplitude", "power"] | Default = Default("balance"),
+        bmode_in: Int | Literal["balance", "amplitude", "power"] | Default = Default(
+            "balance"
+        ),
+        bmode_out: Int | Literal["balance", "amplitude", "power"] | Default = Default(
+            "balance"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
@@ -6699,7 +7146,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="stereotools", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="stereotools", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "level_in": level_in,
@@ -6757,7 +7206,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="stereowiden", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="stereowiden", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "delay": delay,
@@ -6825,7 +7276,11 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="superequalizer", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="superequalizer",
+                typings_input=("audio",),
+                typings_output=("audio",),
+            ),
             self,
             **{
                 "1b": _1b,
@@ -6995,7 +7450,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="surround", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="surround", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "chl_out": chl_out,
@@ -7064,8 +7521,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -7096,7 +7557,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tiltshelf", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="tiltshelf", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -7127,8 +7590,12 @@ class AudioStream(FilterableStream):
         mix: Double = Default(1.0),
         channels: String = Default("all"),
         normalize: Boolean = Default(False),
-        transform: Int | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"] | Default = Default("di"),
-        precision: Int | Literal["auto", "s16", "s32", "f32", "f64"] | Default = Default("auto"),
+        transform: Int
+        | Literal["di", "dii", "tdi", "tdii", "latt", "svf", "zdf"]
+        | Default = Default("di"),
+        precision: Int
+        | Literal["auto", "s16", "s32", "f32", "f64"]
+        | Default = Default("auto"),
         blocksize: Int = Default(0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -7159,7 +7626,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="treble", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="treble", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "frequency": frequency,
@@ -7204,7 +7673,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tremolo", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="tremolo", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "f": f,
@@ -7240,7 +7711,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vibrato", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="vibrato", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "f": f,
@@ -7276,7 +7749,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="virtualbass", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="virtualbass", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "cutoff": cutoff,
@@ -7291,9 +7766,13 @@ class AudioStream(FilterableStream):
         self,
         *,
         volume: String = Default("1.0"),
-        precision: Int | Literal["fixed", "float", "double"] | Default = Default("float"),
+        precision: Int | Literal["fixed", "float", "double"] | Default = Default(
+            "float"
+        ),
         eval: Int | Literal["once", "frame"] | Default = Default("once"),
-        replaygain: Int | Literal["drop", "ignore", "track", "album"] | Default = Default("drop"),
+        replaygain: Int
+        | Literal["drop", "ignore", "track", "album"]
+        | Default = Default("drop"),
         replaygain_preamp: Double = Default(0.0),
         replaygain_noclip: Boolean = Default(True),
         enable: String = Default(None),
@@ -7320,7 +7799,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="volume", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="volume", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{
                 "volume": volume,
@@ -7351,7 +7832,9 @@ class AudioStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="volumedetect", typings_input=("audio",), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="volumedetect", typings_input=("audio",), typings_output=("audio",)
+            ),
             self,
             **{} | (extra_options or {}),
         )

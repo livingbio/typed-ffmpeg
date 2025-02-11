@@ -1,4 +1,4 @@
-from __future__ import absolute_import, annotations
+from __future__ import annotations
 
 import importlib
 import json
@@ -21,7 +21,9 @@ def load_class(path: str, strict: bool = True) -> Any:
         The class.
     """
     if strict:
-        assert path.startswith("ffmpeg."), f"Only support loading class from ffmpeg package: {path}"
+        assert path.startswith("ffmpeg."), (
+            f"Only support loading class from ffmpeg package: {path}"
+        )
 
     module_path, class_name = path.rsplit(".", 1)
     module = importlib.import_module(module_path)
@@ -65,7 +67,7 @@ def object_hook(obj: Any, strict: bool = True) -> Any:
                 # NOTE: in our application, the dataclass is always frozen
                 return cls(**{k: frozen(v) for k, v in obj.items()})
 
-            return cls(**{k: v for k, v in obj.items()})
+            return cls(**dict(obj.items()))
 
     return obj
 
@@ -107,7 +109,10 @@ def to_dict_with_class_info(instance: Any) -> Any:
     elif is_dataclass(instance):
         return {
             "__class__": f"{instance.__class__.__module__}.{instance.__class__.__name__}",
-            **{k.name: to_dict_with_class_info(getattr(instance, k.name)) for k in fields(instance)},
+            **{
+                k.name: to_dict_with_class_info(getattr(instance, k.name))
+                for k in fields(instance)
+            },
         }
     elif isinstance(instance, Enum):
         return {

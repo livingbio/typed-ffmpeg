@@ -4,7 +4,13 @@ from pathlib import Path
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileSnapshotExtension
 
-from ffmpeg.common.schema import FFMpegFilter, FFMpegFilterOption, FFMpegFilterOptionType, FFMpegIOType, StreamType
+from ffmpeg.common.schema import (
+    FFMpegFilter,
+    FFMpegFilterOption,
+    FFMpegFilterOptionType,
+    FFMpegIOType,
+    StreamType,
+)
 
 from ..gen import render
 
@@ -21,7 +27,9 @@ def test_render(snapshot: SnapshotAssertion) -> None:
                 FFMpegIOType(name="input", type=StreamType.audio),
                 FFMpegIOType(name="desired", type=StreamType.audio),
             ),
-            stream_typings_output=(FFMpegIOType(name="default", type=StreamType.audio),),
+            stream_typings_output=(
+                FFMpegIOType(name="default", type=StreamType.audio),
+            ),
             options=(
                 FFMpegFilterOption(
                     name="order",
@@ -43,4 +51,7 @@ def test_render(snapshot: SnapshotAssertion) -> None:
         outputs = render(filters, [], Path(outpath))
 
         for outfile in outputs:
-            assert snapshot(name=outfile.name, extension_class=SingleFileSnapshotExtension) == outfile.read_bytes()
+            assert (
+                snapshot(name=outfile.name, extension_class=SingleFileSnapshotExtension)
+                == outfile.read_bytes()
+            )

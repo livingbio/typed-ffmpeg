@@ -56,7 +56,9 @@ def get_codecs() -> tuple[Codec, ...]:
 
     retcode = p.poll()
     if p.returncode != 0:
-        raise FFMpegExecuteError(retcode=retcode, cmd=command_line(args), stdout=out, stderr=err)
+        raise FFMpegExecuteError(
+            retcode=retcode, cmd=command_line(args), stdout=out, stderr=err
+        )
 
     codecs = out.decode("utf-8")
     codecs_lines = codecs.strip().split("\n")
@@ -141,7 +143,9 @@ def get_decoders() -> tuple[Coder, ...]:
 
     retcode = p.poll()
     if p.returncode != 0:
-        raise FFMpegExecuteError(retcode=retcode, cmd=command_line(args), stdout=out, stderr=err)
+        raise FFMpegExecuteError(
+            retcode=retcode, cmd=command_line(args), stdout=out, stderr=err
+        )
 
     decoders = out.decode("utf-8")
     return get_coders(decoders)
@@ -155,7 +159,9 @@ def get_encoders() -> tuple[Coder, ...]:
 
     retcode = p.poll()
     if p.returncode != 0:
-        raise FFMpegExecuteError(retcode=retcode, cmd=command_line(args), stdout=out, stderr=err)
+        raise FFMpegExecuteError(
+            retcode=retcode, cmd=command_line(args), stdout=out, stderr=err
+        )
 
     encoders = out.decode("utf-8")
     return get_coders(encoders)

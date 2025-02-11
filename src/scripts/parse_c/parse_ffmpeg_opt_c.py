@@ -7,7 +7,9 @@ from .parse_c_structure import parse_c_structure
 
 
 def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
-    match = re.findall(r"const OptionDef options\[\] = (\{.*?\n\})", text, re.MULTILINE | re.DOTALL)
+    match = re.findall(
+        r"const OptionDef options\[\] = (\{.*?\n\})", text, re.MULTILINE | re.DOTALL
+    )
     data = parse_c_structure(match[0])
 
     output: dict[str, FFMpegOption] = {}
@@ -36,7 +38,9 @@ def parse_ffmpeg_opt_c(text: str) -> list[FFMpegOption]:
         arg_name = arg_name.strip('"') if arg_name else None
         flags = flags.replace("\n", "")
         flags = eval(flags)
-        output[name] = FFMpegOption(name=name, type=type, flags=flags, help=help, argname=arg_name, canon=canon)
+        output[name] = FFMpegOption(
+            name=name, type=type, flags=flags, help=help, argname=arg_name, canon=canon
+        )
 
     # process canon
     for key, opt in output.items():

@@ -118,8 +118,10 @@ class FFMpegFilter:
     def to_def(self) -> FFMpegFilterDef:
         return FFMpegFilterDef(
             name=self.name,
-            typings_input=self.formula_typings_input or tuple(k.type.value for k in self.stream_typings_input),
-            typings_output=self.formula_typings_output or tuple(k.type.value for k in self.stream_typings_output),
+            typings_input=self.formula_typings_input
+            or tuple(k.type.value for k in self.stream_typings_input),
+            typings_output=self.formula_typings_output
+            or tuple(k.type.value for k in self.stream_typings_output),
         )
 
     @property
@@ -131,13 +133,18 @@ class FFMpegFilter:
         else:
             assert self.formula_typings_input, f"{self.name} has no input"
             if "video" not in self.formula_typings_input:
-                assert "audio" in self.formula_typings_input, f"{self.name} has no video input"
+                assert "audio" in self.formula_typings_input, (
+                    f"{self.name} has no video input"
+                )
                 return {StreamType.audio}
             elif "audio" not in self.formula_typings_input:
-                assert "video" in self.formula_typings_input, f"{self.name} has no audio input"
+                assert "video" in self.formula_typings_input, (
+                    f"{self.name} has no audio input"
+                )
                 return {StreamType.video}
             assert (
-                "video" in self.formula_typings_input and "audio" in self.formula_typings_input
+                "video" in self.formula_typings_input
+                and "audio" in self.formula_typings_input
             ), f"{self.name} has no video or audio input"
             return {StreamType.video, StreamType.audio}
 
@@ -150,13 +157,18 @@ class FFMpegFilter:
         else:
             assert self.formula_typings_output, f"{self.name} has no output"
             if "video" not in self.formula_typings_output:
-                assert "audio" in self.formula_typings_output, f"{self.name} has no video output"
+                assert "audio" in self.formula_typings_output, (
+                    f"{self.name} has no video output"
+                )
                 return {StreamType.audio}
             elif "audio" not in self.formula_typings_output:
-                assert "video" in self.formula_typings_output, f"{self.name} has no audio output"
+                assert "video" in self.formula_typings_output, (
+                    f"{self.name} has no audio output"
+                )
                 return {StreamType.video}
             assert (
-                "video" in self.formula_typings_output and "audio" in self.formula_typings_output
+                "video" in self.formula_typings_output
+                and "audio" in self.formula_typings_output
             ), f"{self.name} has no video or audio output"
             return {StreamType.video, StreamType.audio}
 
@@ -301,7 +313,11 @@ class FFMpegOption:
 
     @property
     def is_global_option(self) -> bool:
-        return not self.is_input_option and not self.is_output_option and not (self.flags & FFMpegOptionFlag.OPT_EXIT)
+        return (
+            not self.is_input_option
+            and not self.is_output_option
+            and not (self.flags & FFMpegOptionFlag.OPT_EXIT)
+        )
 
     @property
     def is_support_stream_specifier(self) -> bool:
