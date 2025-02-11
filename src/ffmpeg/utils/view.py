@@ -35,7 +35,8 @@ def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
         import graphviz  # type: ignore
     except ImportError:
         raise ImportError(
-            "failed to import graphviz; please make sure graphviz is installed (e.g. " "`pip install graphviz`)"
+            "failed to import graphviz; please make sure graphviz is installed (e.g. "
+            "`pip install graphviz`)"
         )
 
     graph = graphviz.Digraph(format=format)
@@ -59,6 +60,10 @@ def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
 
     for node in context.all_nodes:
         for idx, stream in enumerate(node.inputs):
-            graph.edge(stream.node.hex, node.hex, label=f"{'*' if stream.index is None else stream.index} => {idx}")
+            graph.edge(
+                stream.node.hex,
+                node.hex,
+                label=f"{'*' if stream.index is None else stream.index} => {idx}",
+            )
 
     return graph.render(engine="dot")

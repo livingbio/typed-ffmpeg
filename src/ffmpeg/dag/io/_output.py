@@ -316,5 +316,7 @@ def output(
     }
 
     return OutputNode(
-        inputs=streams, filename=str(filename), kwargs=tuple((options | (extra_options or {})).items())
+        inputs=streams,
+        filename=str(filename),
+        kwargs=tuple((options | (extra_options or {})).items()),
     ).stream()

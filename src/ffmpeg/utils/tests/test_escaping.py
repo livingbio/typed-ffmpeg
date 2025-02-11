@@ -8,7 +8,11 @@ from ..escaping import convert_kwargs_to_cmd_line_args, escape
 
 
 @pytest.mark.parametrize(
-    "text", ["this is a 'string': may contain one, or more, special characters", "this is a string[0]"]
+    "text",
+    [
+        "this is a 'string': may contain one, or more, special characters",
+        "this is a string[0]",
+    ],
 )
 def test_escaping(snapshot: SnapshotAssertion, text: str) -> None:
     assert snapshot == escape(text, "\\'[],;")
@@ -24,5 +28,9 @@ def test_escaping(snapshot: SnapshotAssertion, text: str) -> None:
         {"true": True, "false": False},
     ],
 )
-def test_convert_kwargs_to_cmd_line_args(snapshot: SnapshotAssertion, options: dict[str, Any]) -> None:
-    assert snapshot(extension_class=JSONSnapshotExtension) == convert_kwargs_to_cmd_line_args(options)
+def test_convert_kwargs_to_cmd_line_args(
+    snapshot: SnapshotAssertion, options: dict[str, Any]
+) -> None:
+    assert snapshot(
+        extension_class=JSONSnapshotExtension
+    ) == convert_kwargs_to_cmd_line_args(options)

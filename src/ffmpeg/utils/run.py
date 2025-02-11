@@ -19,7 +19,7 @@ def command_line(args: list[str]) -> str:
 
 # Filter_Node_Option_Type
 def ignore_default(
-    kwargs: dict[str, str | int | float | bool | Default]
+    kwargs: dict[str, str | int | float | bool | Default],
 ) -> tuple[tuple[str, str | int | float | bool | LazyValue], ...]:
     """
     Convert the values of the dictionary to strings.

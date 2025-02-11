@@ -11,7 +11,12 @@ from .utils.run import command_line
 logger = logging.getLogger(__name__)
 
 
-def probe(filename: str | Path, cmd: str = "ffprobe", timeout: int | None = None, **kwargs: Any) -> dict[str, Any]:
+def probe(
+    filename: str | Path,
+    cmd: str = "ffprobe",
+    timeout: int | None = None,
+    **kwargs: Any,
+) -> dict[str, Any]:
     """
     Run ffprobe on the given file and return a JSON representation of the output
 
@@ -38,6 +43,8 @@ def probe(filename: str | Path, cmd: str = "ffprobe", timeout: int | None = None
 
     retcode = p.poll()
     if p.returncode != 0:
-        raise FFMpegExecuteError(retcode=retcode, cmd=command_line(args), stdout=out, stderr=err)
+        raise FFMpegExecuteError(
+            retcode=retcode, cmd=command_line(args), stdout=out, stderr=err
+        )
 
     return json.loads(out.decode("utf-8"))

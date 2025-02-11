@@ -67,9 +67,13 @@ class FilterNode(Node):
         """
         from ..streams.video import VideoStream
 
-        video_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.video]
+        video_outputs = [
+            i for i, k in enumerate(self.output_typings) if k == StreamType.video
+        ]
         if not len(video_outputs) > index:
-            raise FFMpegValueError(f"Specified index {index} is out of range for video outputs {len(video_outputs)}")
+            raise FFMpegValueError(
+                f"Specified index {index} is out of range for video outputs {len(video_outputs)}"
+            )
         return VideoStream(node=self, index=video_outputs[index])
 
     def audio(self, index: int) -> "AudioStream":
@@ -84,9 +88,13 @@ class FilterNode(Node):
         """
         from ..streams.audio import AudioStream
 
-        audio_outputs = [i for i, k in enumerate(self.output_typings) if k == StreamType.audio]
+        audio_outputs = [
+            i for i, k in enumerate(self.output_typings) if k == StreamType.audio
+        ]
         if not len(audio_outputs) > index:
-            raise FFMpegValueError(f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}")
+            raise FFMpegValueError(
+                f"Specified index {index} is out of range for audio outputs {len(audio_outputs)}"
+            )
 
         return AudioStream(node=self, index=audio_outputs[index])
 
@@ -97,12 +105,16 @@ class FilterNode(Node):
         super().__post_init__()
 
         if len(self.inputs) != len(self.input_typings):
-            raise FFMpegValueError(f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}")
+            raise FFMpegValueError(
+                f"Expected {len(self.input_typings)} inputs, got {len(self.inputs)}"
+            )
 
         stream: FilterableStream
         expected_type: StreamType
 
-        for i, (stream, expected_type) in enumerate(zip(self.inputs, self.input_typings)):
+        for i, (stream, expected_type) in enumerate(
+            zip(self.inputs, self.input_typings)
+        ):
             if expected_type == StreamType.video:
                 if not isinstance(stream, VideoStream):
                     raise FFMpegTypeError(
@@ -132,7 +144,9 @@ class FilterNode(Node):
 
         commands = []
         for key, value in self.kwargs:
-            assert not isinstance(value, LazyValue), f"LazyValue should have been evaluated: {key}={value}"
+            assert not isinstance(value, LazyValue), (
+                f"LazyValue should have been evaluated: {key}={value}"
+            )
 
             # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
             if isinstance(value, bool):
@@ -142,7 +156,12 @@ class FilterNode(Node):
                 commands += [f"{key}={escape(value)}"]
 
         if commands:
-            return [incoming_labels] + [f"{self.name}="] + [escape(":".join(commands), "\\'[],;")] + [outgoing_labels]
+            return (
+                [incoming_labels]
+                + [f"{self.name}="]
+                + [escape(":".join(commands), "\\'[],;")]
+                + [outgoing_labels]
+            )
         return [incoming_labels] + [f"{self.name}"] + [outgoing_labels]
 
 
@@ -155,7 +174,9 @@ class FilterableStream(Stream, OutputArgs):
     node: "FilterNode | InputNode"
 
     @override
-    def _output_node(self, *streams: FilterableStream, filename: str | Path, **kwargs: Any) -> OutputNode:
+    def _output_node(
+        self, *streams: FilterableStream, filename: str | Path, **kwargs: Any
+    ) -> OutputNode:
         """
         Output the streams to a file URL
 
@@ -167,7 +188,11 @@ class FilterableStream(Stream, OutputArgs):
         Returns:
             the output stream
         """
-        return OutputNode(inputs=(self, *streams), filename=str(filename), kwargs=tuple(kwargs.items()))
+        return OutputNode(
+            inputs=(self, *streams),
+            filename=str(filename),
+            kwargs=tuple(kwargs.items()),
+        )
 
     def vfilter(
         self,
@@ -277,13 +302,17 @@ class FilterableStream(Stream, OutputArgs):
                 return f"{context.get_node_label(self.node)}:v"
             elif isinstance(self, AudioStream):
                 return f"{context.get_node_label(self.node)}:a"
-            raise FFMpegValueError(f"Unknown stream type: {self.__class__.__name__}")  # pragma: no cover
+            raise FFMpegValueError(
+                f"Unknown stream type: {self.__class__.__name__}"
+            )  # pragma: no cover
 
         if isinstance(self.node, FilterNode):
             if len(self.node.output_typings) > 1:
                 return f"{context.get_node_label(self.node)}#{self.index}"
             return f"{context.get_node_label(self.node)}"
-        raise FFMpegValueError(f"Unknown node type: {self.node.__class__.__name__}")  # pragma: no cover
+        raise FFMpegValueError(
+            f"Unknown node type: {self.node.__class__.__name__}"
+        )  # pragma: no cover
 
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):

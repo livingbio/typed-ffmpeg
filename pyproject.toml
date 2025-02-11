@@ -111,13 +111,13 @@ src = ["src"]
 [tool.ruff.lint]  # https://docs.astral.sh/ruff/settings/#lint
 select = [
     "E",   # pycodestyle errors
-    "W",   # pycodestyle warnings
-    "F",   # pyflakes
-    "I",   # isort
+#    "W",   # pycodestyle warnings
+#    "F",   # pyflakes
+#    "I",   # isort
     # "B",   # flake8-bugbear
-    "B006",   # flake8-bugbear: Do not use mutable data structures for argument defaults
-    "C4",  # flake8-comprehensions
-    "UP",  # pyupgrade
+#    "B006",   # flake8-bugbear: Do not use mutable data structures for argument defaults
+#    "C4",  # flake8-comprehensions
+#    "UP",  # pyupgrade
 ]
 ignore = [
     "E741",  # Ambiguous variable name: `I`
@@ -126,8 +126,6 @@ ignore = [
     "E712",  # not work for pandas
     "F811",  # FIXME: we relay on it to share fixture across app
 ]
-[tool.ruff.lint.isort]
-required-imports = ["from __future__ import annotations"]
 
 [tool.ruff.format]  # https://docs.astral.sh/ruff/settings/#format
 quote-style = "double"  # 引號風格，雙引號是預設值

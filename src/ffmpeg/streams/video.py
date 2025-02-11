@@ -9,7 +9,20 @@ from ..common.schema import FFMpegFilterDef
 from ..dag.factory import filter_node_factory
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default
-from ..types import Boolean, Color, Double, Duration, Flags, Float, Image_size, Int, Int64, Rational, String, Video_rate
+from ..types import (
+    Boolean,
+    Color,
+    Double,
+    Duration,
+    Flags,
+    Float,
+    Image_size,
+    Int,
+    Int64,
+    Rational,
+    String,
+    Video_rate,
+)
 
 if TYPE_CHECKING:
     from .audio import AudioStream
@@ -47,7 +60,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="addroi", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="addroi", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -77,7 +92,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="alphaextract", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="alphaextract", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -87,10 +104,14 @@ class VideoStream(FilterableStream):
         self,
         _alpha: VideoStream,
         *,
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -113,7 +134,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="alphamerge", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="alphamerge",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _alpha,
             **{
@@ -162,7 +187,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="amplify", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="amplify", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "radius": radius,
@@ -207,7 +234,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ass", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="ass", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "filename": filename,
@@ -265,7 +294,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="atadenoise", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="atadenoise", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "0a": _0a,
@@ -313,7 +344,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="avgblur", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="avgblur", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "sizeX": sizeX,
@@ -352,7 +385,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="backgroundkey", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="backgroundkey",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "threshold": threshold,
@@ -387,7 +424,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bbox", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="bbox", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "min_val": min_val,
@@ -418,7 +457,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bench", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="bench", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "action": action,
@@ -454,7 +495,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bilateral", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="bilateral", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "sigmaS": sigmaS,
@@ -491,7 +534,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bitplanenoise", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="bitplanenoise",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "bitplane": bitplane,
@@ -527,7 +574,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="blackdetect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="blackdetect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "d": d,
@@ -561,7 +610,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="blackframe", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="blackframe", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "amount": amount,
@@ -815,10 +866,14 @@ class VideoStream(FilterableStream):
         c2_opacity: Double = Default(1.0),
         c3_opacity: Double = Default(1.0),
         all_opacity: Double = Default(1.0),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -856,7 +911,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="blend", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="blend",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _bottom,
             **{
@@ -910,7 +969,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="blockdetect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="blockdetect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "period_min": period_min,
@@ -952,7 +1013,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="blurdetect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="blurdetect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "high": high,
@@ -999,7 +1062,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="boxblur", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="boxblur", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "luma_radius": luma_radius,
@@ -1017,7 +1082,9 @@ class VideoStream(FilterableStream):
     def bwdif(
         self,
         *,
-        mode: Int | Literal["send_frame", "send_field"] | Default = Default("send_field"),
+        mode: Int | Literal["send_frame", "send_field"] | Default = Default(
+            "send_field"
+        ),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         enable: String = Default(None),
@@ -1041,7 +1108,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="bwdif", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="bwdif", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -1078,7 +1147,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="cas", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="cas", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "strength": strength,
@@ -1105,7 +1176,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ccrepack", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="ccrepack", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -1140,7 +1213,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="chromahold", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="chromahold", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "color": color,
@@ -1182,7 +1257,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="chromakey", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="chromakey", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "color": color,
@@ -1206,7 +1283,9 @@ class VideoStream(FilterableStream):
         threy: Float = Default(200.0),
         threu: Float = Default(200.0),
         threv: Float = Default(200.0),
-        distance: Int | Literal["manhattan", "euclidean"] | Default = Default("manhattan"),
+        distance: Int | Literal["manhattan", "euclidean"] | Default = Default(
+            "manhattan"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -1234,7 +1313,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="chromanr", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="chromanr", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "thres": thres,
@@ -1283,7 +1364,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="chromashift", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="chromashift", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "cbh": cbh,
@@ -1370,7 +1453,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ciescope", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="ciescope", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "system": system,
@@ -1419,7 +1504,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="codecview", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="codecview", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mv": mv,
@@ -1474,7 +1561,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorbalance", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorbalance", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "rs": rs,
@@ -1512,7 +1601,9 @@ class VideoStream(FilterableStream):
         ag: Double = Default(0.0),
         ab: Double = Default(0.0),
         aa: Double = Default(1.0),
-        pc: Int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | Default = Default("none"),
+        pc: Int
+        | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"]
+        | Default = Default("none"),
         pa: Double = Default(0.0),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -1550,7 +1641,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorchannelmixer", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorchannelmixer",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "rr": rr,
@@ -1612,7 +1707,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorcontrast", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorcontrast",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "rc": rc,
@@ -1636,7 +1735,9 @@ class VideoStream(FilterableStream):
         rh: Float = Default(0.0),
         bh: Float = Default(0.0),
         saturation: Float = Default(1.0),
-        analyze: Int | Literal["manual", "average", "minmax", "median"] | Default = Default("manual"),
+        analyze: Int
+        | Literal["manual", "average", "minmax", "median"]
+        | Default = Default("manual"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -1661,7 +1762,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorcorrect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorcorrect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "rl": rl,
@@ -1703,7 +1806,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorhold", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorhold", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "color": color,
@@ -1744,7 +1849,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorize", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorize", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "hue": hue,
@@ -1784,7 +1891,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorkey", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorkey", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "color": color,
@@ -1815,7 +1924,9 @@ class VideoStream(FilterableStream):
         gomax: Double = Default(1.0),
         bomax: Double = Default(1.0),
         aomax: Double = Default(1.0),
-        preserve: Int | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"] | Default = Default("none"),
+        preserve: Int
+        | Literal["none", "lum", "max", "avg", "sum", "nrm", "pwr"]
+        | Default = Default("none"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -1851,7 +1962,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorlevels", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorlevels", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "rimin": rimin,
@@ -1885,7 +1998,9 @@ class VideoStream(FilterableStream):
         patch_size: Image_size = Default("64x64"),
         nb_patches: Int = Default(0),
         type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
-        kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
+        kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default(
+            "euclidean"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -1908,7 +2023,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colormap", typings_input=("video", "video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colormap",
+                typings_input=("video", "video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _source,
             _target,
@@ -1927,10 +2046,28 @@ class VideoStream(FilterableStream):
         self,
         *,
         src: Int
-        | Literal["bt709", "fcc", "bt601", "bt470", "bt470bg", "smpte170m", "smpte240m", "bt2020"]
+        | Literal[
+            "bt709",
+            "fcc",
+            "bt601",
+            "bt470",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "bt2020",
+        ]
         | Default = Default(-1),
         dst: Int
-        | Literal["bt709", "fcc", "bt601", "bt470", "bt470bg", "smpte170m", "smpte240m", "bt2020"]
+        | Literal[
+            "bt709",
+            "fcc",
+            "bt601",
+            "bt470",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "bt2020",
+        ]
         | Default = Default(-1),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -1952,7 +2089,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colormatrix", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colormatrix", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "src": src,
@@ -1967,10 +2106,29 @@ class VideoStream(FilterableStream):
         self,
         *,
         all: Int
-        | Literal["bt470m", "bt470bg", "525", "625", "bt709", "smpte170m", "smpte240m", "bt2020"]
+        | Literal[
+            "bt470m",
+            "bt470bg",
+            "525",
+            "625",
+            "bt709",
+            "smpte170m",
+            "smpte240m",
+            "bt2020",
+        ]
         | Default = Default(0),
         space: Int
-        | Literal["bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "ycgco", "gbr", "bt2020nc", "bt2020ncl"]
+        | Literal[
+            "bt709",
+            "fcc",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "ycgco",
+            "gbr",
+            "bt2020nc",
+            "bt2020ncl",
+        ]
         | Default = Default(2),
         range: Int | Literal["tv", "mpeg", "pc", "jpeg"] | Default = Default(0),
         primaries: Int
@@ -2022,12 +2180,33 @@ class VideoStream(FilterableStream):
         | Default = Default(-1),
         fast: Boolean = Default(False),
         dither: Int | Literal["none", "fsb"] | Default = Default("none"),
-        wpadapt: Int | Literal["bradford", "vonkries", "identity"] | Default = Default("bradford"),
+        wpadapt: Int | Literal["bradford", "vonkries", "identity"] | Default = Default(
+            "bradford"
+        ),
         iall: Int
-        | Literal["bt470m", "bt470bg", "525", "625", "bt709", "smpte170m", "smpte240m", "bt2020"]
+        | Literal[
+            "bt470m",
+            "bt470bg",
+            "525",
+            "625",
+            "bt709",
+            "smpte170m",
+            "smpte240m",
+            "bt2020",
+        ]
         | Default = Default(0),
         ispace: Int
-        | Literal["bt709", "fcc", "bt470bg", "smpte170m", "smpte240m", "ycgco", "gbr", "bt2020nc", "bt2020ncl"]
+        | Literal[
+            "bt709",
+            "fcc",
+            "bt470bg",
+            "smpte170m",
+            "smpte240m",
+            "ycgco",
+            "gbr",
+            "bt2020nc",
+            "bt2020ncl",
+        ]
         | Default = Default(2),
         irange: Int | Literal["tv", "mpeg", "pc", "jpeg"] | Default = Default(0),
         iprimaries: Int
@@ -2096,7 +2275,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colorspace", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colorspace", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "all": all,
@@ -2146,7 +2327,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="colortemperature", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="colortemperature",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "temperature": temperature,
@@ -2211,7 +2396,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="convolution", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="convolution", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "0m": _0m,
@@ -2243,10 +2430,14 @@ class VideoStream(FilterableStream):
         planes: Int = Default(7),
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
         noise: Float = Default(1e-07),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -2272,7 +2463,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="convolve", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="convolve",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _impulse,
             **{
@@ -2305,7 +2500,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="copy", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="copy", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -2338,7 +2535,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="coreimage", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="coreimage", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "list_filters": list_filters,
@@ -2354,10 +2553,14 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         *,
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -2380,7 +2583,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="corr", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="corr", typings_input=("video", "video"), typings_output=("video",)
+            ),
             self,
             _reference,
             **{
@@ -2417,7 +2622,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="cover_rect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="cover_rect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "cover": cover,
@@ -2458,7 +2665,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="crop", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="crop", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "out_w": out_w,
@@ -2513,7 +2722,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="cropdetect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="cropdetect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "limit": limit,
@@ -2557,7 +2768,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="cue", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="cue", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "cue": cue,
@@ -2621,7 +2834,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="curves", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="curves", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "preset": preset,
@@ -2674,7 +2889,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="datascope", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="datascope", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -2717,7 +2934,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dblur", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dblur", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "angle": angle,
@@ -2758,7 +2977,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dctdnoiz", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dctdnoiz", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "sigma": sigma,
@@ -2808,7 +3029,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="deband", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="deband", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "1thr": _1thr,
@@ -2860,7 +3083,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="deblock", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="deblock", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "filter": filter,
@@ -2883,10 +3108,14 @@ class VideoStream(FilterableStream):
         planes: Int = Default(7),
         impulse: Int | Literal["first", "all"] | Default = Default("all"),
         noise: Float = Default(1e-07),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -2912,7 +3141,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="deconvolve", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="deconvolve",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _impulse,
             **{
@@ -2932,7 +3165,9 @@ class VideoStream(FilterableStream):
     def dedot(
         self,
         *,
-        m: Flags | Literal["dotcrawl", "rainbows"] | Default = Default("dotcrawl+rainbows"),
+        m: Flags | Literal["dotcrawl", "rainbows"] | Default = Default(
+            "dotcrawl+rainbows"
+        ),
         lt: Float = Default(0.079),
         tl: Float = Default(0.079),
         tc: Float = Default(0.058),
@@ -2960,7 +3195,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dedot", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dedot", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "m": m,
@@ -3003,7 +3240,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="deflate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="deflate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "threshold0": threshold0,
@@ -3020,7 +3259,9 @@ class VideoStream(FilterableStream):
         self,
         *,
         size: Int = Default(5),
-        mode: Int | Literal["am", "gm", "hm", "qm", "cm", "pm", "median"] | Default = Default("am"),
+        mode: Int
+        | Literal["am", "gm", "hm", "qm", "cm", "pm", "median"]
+        | Default = Default("am"),
         bypass: Boolean = Default(False),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -3041,7 +3282,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="deflicker", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="deflicker", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -3073,7 +3316,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dejudder", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dejudder", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "cycle": cycle,
@@ -3113,7 +3358,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="delogo", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="delogo", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -3158,7 +3405,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="derain", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="derain", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "filter_type": filter_type,
@@ -3181,7 +3430,9 @@ class VideoStream(FilterableStream):
         h: Int = Default(-1),
         rx: Int = Default(16),
         ry: Int = Default(16),
-        edge: Int | Literal["blank", "original", "clamp", "mirror"] | Default = Default("mirror"),
+        edge: Int | Literal["blank", "original", "clamp", "mirror"] | Default = Default(
+            "mirror"
+        ),
         blocksize: Int = Default(8),
         contrast: Int = Default(125),
         search: Int | Literal["exhaustive", "less"] | Default = Default("exhaustive"),
@@ -3215,7 +3466,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="deshake", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="deshake", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -3272,7 +3525,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="despill", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="despill", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "type": type,
@@ -3292,7 +3547,9 @@ class VideoStream(FilterableStream):
     def detelecine(
         self,
         *,
-        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
+        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default(
+            "top"
+        ),
         pattern: String = Default("23"),
         start_frame: Int = Default(0),
         extra_options: dict[str, Any] = None,
@@ -3314,7 +3571,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="detelecine", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="detelecine", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "first_field": first_field,
@@ -3356,7 +3615,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dilation", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dilation", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "coordinates": coordinates,
@@ -3375,7 +3636,9 @@ class VideoStream(FilterableStream):
         _xmap: VideoStream,
         _ymap: VideoStream,
         *,
-        edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default("smear"),
+        edge: Int | Literal["blank", "smear", "wrap", "mirror"] | Default = Default(
+            "smear"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -3395,7 +3658,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="displace", typings_input=("video", "video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="displace",
+                typings_input=("video", "video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _xmap,
             _ymap,
@@ -3446,7 +3713,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dnn_classify", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dnn_classify", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "dnn_backend": dnn_backend,
@@ -3501,7 +3770,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dnn_detect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dnn_detect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "dnn_backend": dnn_backend,
@@ -3551,7 +3822,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="dnn_processing", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="dnn_processing",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "dnn_backend": dnn_backend,
@@ -3569,7 +3844,9 @@ class VideoStream(FilterableStream):
     def doubleweave(
         self,
         *,
-        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
+        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default(
+            "top"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -3587,7 +3864,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="doubleweave", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="doubleweave", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "first_field": first_field,
@@ -3633,7 +3912,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="drawbox", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="drawbox", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -3665,7 +3946,9 @@ class VideoStream(FilterableStream):
         min: Float = Default(-1.0),
         max: Float = Default(1.0),
         mode: Int | Literal["bar", "dot", "line"] | Default = Default("line"),
-        slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("frame"),
+        slide: Int
+        | Literal["frame", "replace", "scroll", "rscroll", "picture"]
+        | Default = Default("frame"),
         size: Image_size = Default("900x256"),
         rate: Video_rate = Default("25"),
         extra_options: dict[str, Any] = None,
@@ -3699,7 +3982,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="drawgraph", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="drawgraph", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "m1": m1,
@@ -3757,7 +4042,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="drawgrid", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="drawgrid", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -3789,7 +4076,20 @@ class VideoStream(FilterableStream):
         line_spacing: Int = Default(0),
         fontsize: String = Default(None),
         text_align: Flags
-        | Literal["left", "L", "right", "R", "center", "C", "top", "T", "bottom", "B", "middle", "M"]
+        | Literal[
+            "left",
+            "L",
+            "right",
+            "R",
+            "center",
+            "C",
+            "top",
+            "T",
+            "bottom",
+            "B",
+            "middle",
+            "M",
+        ]
         | Default = Default("0"),
         x: String = Default("0"),
         y: String = Default("0"),
@@ -3801,7 +4101,9 @@ class VideoStream(FilterableStream):
         tabsize: Int = Default(4),
         basetime: Int64 = Default("I64_MIN"),
         font: String = Default("Sans"),
-        expansion: Int | Literal["none", "normal", "strftime"] | Default = Default("normal"),
+        expansion: Int | Literal["none", "normal", "strftime"] | Default = Default(
+            "normal"
+        ),
         y_align: Int | Literal["text", "baseline", "font"] | Default = Default("text"),
         timecode: String = Default(None),
         tc24hmax: Boolean = Default(False),
@@ -3882,7 +4184,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="drawtext", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="drawtext", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "fontfile": fontfile,
@@ -3931,7 +4235,9 @@ class VideoStream(FilterableStream):
         high: Double = Default(0.196078),
         low: Double = Default(0.0784314),
         mode: Int | Literal["wires", "colormix", "canny"] | Default = Default("wires"),
-        planes: Flags | Literal["y", "u", "v", "r", "g", "b"] | Default = Default("y+u+v+r+g+b"),
+        planes: Flags | Literal["y", "u", "v", "r", "g", "b"] | Default = Default(
+            "y+u+v+r+g+b"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -3954,7 +4260,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="edgedetect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="edgedetect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "high": high,
@@ -3996,7 +4304,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="elbg", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="elbg", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "codebook_length": codebook_length,
@@ -4032,7 +4342,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="entropy", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="entropy", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -4063,7 +4375,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="epx", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="epx", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "n": n,
@@ -4111,7 +4425,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="eq", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="eq", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "contrast": contrast,
@@ -4160,7 +4476,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="erosion", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="erosion", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "coordinates": coordinates,
@@ -4213,7 +4531,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="estdif", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="estdif", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -4256,7 +4576,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="exposure", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="exposure", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "exposure": exposure,
@@ -4270,7 +4592,9 @@ class VideoStream(FilterableStream):
     def extractplanes(
         self,
         *,
-        planes: Flags | Literal["y", "u", "v", "r", "g", "b", "a"] | Default = Default("r"),
+        planes: Flags | Literal["y", "u", "v", "r", "g", "b", "a"] | Default = Default(
+            "r"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> FilterNode:
         """
@@ -4338,7 +4662,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fade", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fade", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "type": type,
@@ -4361,7 +4687,10 @@ class VideoStream(FilterableStream):
         x: Int = Default(0),
         w: Int = Default(0),
         extra_options: dict[str, Any] = None,
-    ) -> tuple[VideoStream, VideoStream,]:
+    ) -> tuple[
+        VideoStream,
+        VideoStream,
+    ]:
         """
 
         Apply feedback video filter.
@@ -4379,7 +4708,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="feedback", typings_input=("video", "video"), typings_output=("video", "video")),
+            FFMpegFilterDef(
+                name="feedback",
+                typings_input=("video", "video"),
+                typings_output=("video", "video"),
+            ),
             self,
             _feedin,
             **{
@@ -4457,7 +4790,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fftdnoiz", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fftdnoiz", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "sigma": sigma,
@@ -4510,7 +4845,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fftfilt", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fftfilt", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "dc_Y": dc_Y,
@@ -4547,7 +4884,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="field", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="field", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "type": type,
@@ -4560,7 +4899,9 @@ class VideoStream(FilterableStream):
         self,
         *,
         hint: String = Default(None),
-        mode: Int | Literal["absolute", "relative", "pattern"] | Default = Default("absolute"),
+        mode: Int | Literal["absolute", "relative", "pattern"] | Default = Default(
+            "absolute"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -4579,7 +4920,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fieldhint", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fieldhint", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "hint": hint,
@@ -4612,7 +4955,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fieldorder", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fieldorder", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "order": order,
@@ -4657,7 +5002,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fillborders", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fillborders", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "left": left,
@@ -4701,7 +5048,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="find_rect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="find_rect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "object": object,
@@ -4755,7 +5104,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="floodfill", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="floodfill", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -4795,7 +5146,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="format", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="format", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "pix_fmts": pix_fmts,
@@ -4809,7 +5162,9 @@ class VideoStream(FilterableStream):
         *,
         fps: String = Default("25"),
         start_time: Double = Default("DBL_MAX"),
-        round: Int | Literal["zero", "inf", "down", "up", "near"] | Default = Default("near"),
+        round: Int | Literal["zero", "inf", "down", "up", "near"] | Default = Default(
+            "near"
+        ),
         eof_action: Int | Literal["round", "pass"] | Default = Default("round"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -4831,7 +5186,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fps", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fps", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "fps": fps,
@@ -4847,7 +5204,9 @@ class VideoStream(FilterableStream):
         self,
         _right: VideoStream,
         *,
-        format: Int | Literal["sbs", "tab", "frameseq", "lines", "columns"] | Default = Default("sbs"),
+        format: Int
+        | Literal["sbs", "tab", "frameseq", "lines", "columns"]
+        | Default = Default("sbs"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -4865,7 +5224,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="framepack", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="framepack",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _right,
             **{
@@ -4882,7 +5245,9 @@ class VideoStream(FilterableStream):
         interp_start: Int = Default(15),
         interp_end: Int = Default(240),
         scene: Double = Default(8.2),
-        flags: Flags | Literal["scene_change_detect", "scd"] | Default = Default("scene_change_detect+scd"),
+        flags: Flags | Literal["scene_change_detect", "scd"] | Default = Default(
+            "scene_change_detect+scd"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -4904,7 +5269,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="framerate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="framerate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "fps": fps,
@@ -4940,7 +5307,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="framestep", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="framestep", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "step": step,
@@ -4973,7 +5342,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="freezedetect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="freezedetect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "n": n,
@@ -5009,7 +5380,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="freezeframes", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="freezeframes",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _replace,
             **{
@@ -5046,7 +5421,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="frei0r", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="frei0r", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "filter_name": filter_name,
@@ -5086,7 +5463,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="fspp", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="fspp", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "quality": quality,
@@ -5128,7 +5507,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="gblur", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="gblur", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "sigma": sigma,
@@ -5151,7 +5532,9 @@ class VideoStream(FilterableStream):
         red_expr: String = Default(None),
         green_expr: String = Default(None),
         blue_expr: String = Default(None),
-        interpolation: Int | Literal["nearest", "n", "bilinear", "b"] | Default = Default("bilinear"),
+        interpolation: Int
+        | Literal["nearest", "n", "bilinear", "b"]
+        | Default = Default("bilinear"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -5178,7 +5561,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="geq", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="geq", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "lum_expr": lum_expr,
@@ -5220,7 +5605,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="gradfun", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="gradfun", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "strength": strength,
@@ -5236,7 +5623,9 @@ class VideoStream(FilterableStream):
         *,
         size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
-        mode: Flags | Literal["full", "compact", "nozero", "noeof", "nodisabled"] | Default = Default("0"),
+        mode: Flags
+        | Literal["full", "compact", "nozero", "noeof", "nodisabled"]
+        | Default = Default("0"),
         flags: Flags
         | Literal[
             "none",
@@ -5282,7 +5671,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="graphmonitor", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="graphmonitor", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "size": size,
@@ -5316,7 +5707,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="grayworld", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="grayworld", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -5352,7 +5745,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="greyedge", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="greyedge", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "difford": difford,
@@ -5372,10 +5767,14 @@ class VideoStream(FilterableStream):
         interp: Int
         | Literal["nearest", "trilinear", "tetrahedral", "pyramid", "prism"]
         | Default = Default("tetrahedral"),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -5400,7 +5799,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="haldclut", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="haldclut",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _clut,
             **{
@@ -5437,7 +5840,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hflip", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hflip", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -5451,7 +5856,9 @@ class VideoStream(FilterableStream):
         *,
         strength: Float = Default(0.2),
         intensity: Float = Default(0.21),
-        antibanding: Int | Literal["none", "weak", "strong"] | Default = Default("none"),
+        antibanding: Int | Literal["none", "weak", "strong"] | Default = Default(
+            "none"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -5473,7 +5880,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="histeq", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="histeq", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "strength": strength,
@@ -5490,8 +5899,12 @@ class VideoStream(FilterableStream):
         *,
         level_height: Int = Default(200),
         scale_height: Int = Default(12),
-        display_mode: Int | Literal["overlay", "parade", "stack"] | Default = Default("stack"),
-        levels_mode: Int | Literal["linear", "logarithmic"] | Default = Default("linear"),
+        display_mode: Int | Literal["overlay", "parade", "stack"] | Default = Default(
+            "stack"
+        ),
+        levels_mode: Int | Literal["linear", "logarithmic"] | Default = Default(
+            "linear"
+        ),
         components: Int = Default(7),
         fgopacity: Float = Default(0.7),
         bgopacity: Float = Default(0.5),
@@ -5533,7 +5946,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="histogram", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="histogram", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "level_height": level_height,
@@ -5578,7 +5993,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hqdn3d", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hqdn3d", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "luma_spatial": luma_spatial,
@@ -5612,7 +6029,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hqx", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hqx", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "n": n,
@@ -5652,7 +6071,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hsvhold", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hsvhold", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "hue": hue,
@@ -5697,7 +6118,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hsvkey", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hsvkey", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "hue": hue,
@@ -5740,7 +6163,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hue", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hue", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "h": h,
@@ -5759,7 +6184,9 @@ class VideoStream(FilterableStream):
         hue: Float = Default(0.0),
         saturation: Float = Default(0.0),
         intensity: Float = Default(0.0),
-        colors: Flags | Literal["r", "y", "g", "c", "b", "m", "a"] | Default = Default("r+y+g+c+b+m+a"),
+        colors: Flags | Literal["r", "y", "g", "c", "b", "m", "a"] | Default = Default(
+            "r+y+g+c+b+m+a"
+        ),
         strength: Float = Default(1.0),
         rw: Float = Default(0.333),
         gw: Float = Default(0.334),
@@ -5792,7 +6219,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="huesaturation", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="huesaturation",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "hue": hue,
@@ -5826,7 +6257,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hwdownload", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hwdownload", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -5835,7 +6268,9 @@ class VideoStream(FilterableStream):
     def hwmap(
         self,
         *,
-        mode: Flags | Literal["read", "write", "overwrite", "direct"] | Default = Default("read+write"),
+        mode: Flags
+        | Literal["read", "write", "overwrite", "direct"]
+        | Default = Default("read+write"),
         derive_device: String = Default(None),
         reverse: Int = Default(0),
         extra_options: dict[str, Any] = None,
@@ -5857,7 +6292,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hwmap", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hwmap", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -5889,7 +6326,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hwupload", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hwupload", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "derive_device": derive_device,
@@ -5904,10 +6343,14 @@ class VideoStream(FilterableStream):
         *,
         planes: Int = Default(15),
         threshold: Int = Default(0),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -5932,7 +6375,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="hysteresis", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="hysteresis",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _alt,
             **{
@@ -5952,10 +6399,14 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         *,
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -5978,7 +6429,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="identity", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="identity",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _reference,
             **{
@@ -6021,7 +6476,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="idet", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="idet", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "intl_thres": intl_thres,
@@ -6037,9 +6494,15 @@ class VideoStream(FilterableStream):
     def il(
         self,
         *,
-        luma_mode: Int | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
-        chroma_mode: Int | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
-        alpha_mode: Int | Literal["none", "interleave", "i", "deinterleave", "d"] | Default = Default("none"),
+        luma_mode: Int
+        | Literal["none", "interleave", "i", "deinterleave", "d"]
+        | Default = Default("none"),
+        chroma_mode: Int
+        | Literal["none", "interleave", "i", "deinterleave", "d"]
+        | Default = Default("none"),
+        alpha_mode: Int
+        | Literal["none", "interleave", "i", "deinterleave", "d"]
+        | Default = Default("none"),
         luma_swap: Boolean = Default(False),
         chroma_swap: Boolean = Default(False),
         alpha_swap: Boolean = Default(False),
@@ -6067,7 +6530,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="il", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="il", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "luma_mode": luma_mode,
@@ -6111,7 +6576,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="inflate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="inflate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "threshold0": threshold0,
@@ -6128,7 +6595,9 @@ class VideoStream(FilterableStream):
         self,
         *,
         scan: Int | Literal["tff", "bff"] | Default = Default("tff"),
-        lowpass: Int | Literal["off", "linear", "complex"] | Default = Default("linear"),
+        lowpass: Int | Literal["off", "linear", "complex"] | Default = Default(
+            "linear"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -6147,7 +6616,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="interlace", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="interlace", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "scan": scan,
@@ -6186,7 +6657,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="kerndeint", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="kerndeint", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "thresh": thresh,
@@ -6226,7 +6699,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="kirsch", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="kirsch", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "planes": planes,
@@ -6263,7 +6738,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lagfun", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lagfun", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "decay": decay,
@@ -6295,7 +6772,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="latency", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="latency", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -6337,7 +6816,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lenscorrection", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lenscorrection",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "cx": cx,
@@ -6363,10 +6846,14 @@ class VideoStream(FilterableStream):
         n_subsample: Int = Default(1),
         model: String = Default("version=vmaf_v0.6.1"),
         feature: String = Default(None),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -6394,7 +6881,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="libvmaf", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="libvmaf",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _reference,
             **{
@@ -6441,7 +6932,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="limiter", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="limiter", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "min": min,
@@ -6480,7 +6973,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="loop", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="loop", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "loop": loop,
@@ -6519,7 +7014,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lumakey", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lumakey", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "threshold": threshold,
@@ -6574,7 +7071,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lut", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lut", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "c0": c0,
@@ -6598,7 +7097,9 @@ class VideoStream(FilterableStream):
         self,
         *,
         file: String = Default(None),
-        interp: Int | Literal["nearest", "linear", "cosine", "cubic", "spline"] | Default = Default("linear"),
+        interp: Int
+        | Literal["nearest", "linear", "cosine", "cubic", "spline"]
+        | Default = Default("linear"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -6619,7 +7120,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lut1d", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lut1d", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "file": file,
@@ -6639,10 +7142,14 @@ class VideoStream(FilterableStream):
         c2: String = Default("x"),
         c3: String = Default("x"),
         d: Int = Default(0),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -6670,7 +7177,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lut2", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lut2", typings_input=("video", "video"), typings_output=("video",)
+            ),
             self,
             _srcy,
             **{
@@ -6718,7 +7227,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lut3d", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lut3d", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "file": file,
@@ -6773,7 +7284,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lutrgb", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lutrgb", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "c0": c0,
@@ -6836,7 +7349,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="lutyuv", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="lutyuv", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "c0": c0,
@@ -6885,7 +7400,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="maskedclamp", typings_input=("video", "video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="maskedclamp",
+                typings_input=("video", "video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _dark,
             _bright,
@@ -6924,7 +7443,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="maskedmax", typings_input=("video", "video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="maskedmax",
+                typings_input=("video", "video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _filter1,
             _filter2,
@@ -6961,7 +7484,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="maskedmerge", typings_input=("video", "video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="maskedmerge",
+                typings_input=("video", "video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _overlay,
             _mask,
@@ -6998,7 +7525,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="maskedmin", typings_input=("video", "video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="maskedmin",
+                typings_input=("video", "video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _filter1,
             _filter2,
@@ -7038,7 +7569,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="maskedthreshold", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="maskedthreshold",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _reference,
             **{
@@ -7082,7 +7617,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="maskfun", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="maskfun", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "low": low,
@@ -7099,7 +7636,9 @@ class VideoStream(FilterableStream):
     def mcdeint(
         self,
         *,
-        mode: Int | Literal["fast", "medium", "slow", "extra_slow"] | Default = Default("fast"),
+        mode: Int | Literal["fast", "medium", "slow", "extra_slow"] | Default = Default(
+            "fast"
+        ),
         parity: Int | Literal["tff", "bff"] | Default = Default("bff"),
         qp: Int = Default(1),
         extra_options: dict[str, Any] = None,
@@ -7121,7 +7660,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="mcdeint", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="mcdeint", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -7161,7 +7702,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="median", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="median", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "radius": radius,
@@ -7201,7 +7744,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="mestimate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="mestimate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "method": method,
@@ -7215,11 +7760,15 @@ class VideoStream(FilterableStream):
     def metadata(
         self,
         *,
-        mode: Int | Literal["select", "add", "modify", "delete", "print"] | Default = Default("select"),
+        mode: Int
+        | Literal["select", "add", "modify", "delete", "print"]
+        | Default = Default("select"),
         key: String = Default(None),
         value: String = Default(None),
         function: Int
-        | Literal["same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"]
+        | Literal[
+            "same_str", "starts_with", "less", "equal", "greater", "expr", "ends_with"
+        ]
         | Default = Default("same_str"),
         expr: String = Default(None),
         file: String = Default(None),
@@ -7249,7 +7798,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="metadata", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="metadata", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -7289,7 +7840,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="midequalizer", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="midequalizer",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _in1,
             **{
@@ -7341,7 +7896,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="minterpolate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="minterpolate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "fps": fps,
@@ -7388,7 +7945,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="monochrome", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="monochrome", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "cb": cb,
@@ -7410,10 +7969,14 @@ class VideoStream(FilterableStream):
         | Default = Default("erode"),
         planes: Int = Default(7),
         structure: Int | Literal["first", "all"] | Default = Default("all"),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -7439,7 +8002,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="morpho", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="morpho",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _structure,
             **{
@@ -7485,7 +8052,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="mpdecimate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="mpdecimate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "max": max,
@@ -7502,10 +8071,14 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         *,
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -7528,7 +8101,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="msad", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="msad", typings_input=("video", "video"), typings_output=("video",)
+            ),
             self,
             _reference,
             **{
@@ -7570,7 +8145,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="multiply", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="multiply",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _factor,
             **{
@@ -7586,7 +8165,9 @@ class VideoStream(FilterableStream):
     def negate(
         self,
         *,
-        components: Flags | Literal["y", "u", "v", "r", "g", "b", "a"] | Default = Default("y+u+v+r+g+b"),
+        components: Flags
+        | Literal["y", "u", "v", "r", "g", "b", "a"]
+        | Default = Default("y+u+v+r+g+b"),
         negate_alpha: Boolean = Default(False),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -7608,7 +8189,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="negate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="negate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "components": components,
@@ -7650,7 +8233,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="nlmeans", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="nlmeans", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "s": s,
@@ -7671,11 +8256,17 @@ class VideoStream(FilterableStream):
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         field: Int | Literal["af", "a", "t", "b", "tf", "bf"] | Default = Default("a"),
         planes: Int = Default(7),
-        nsize: Int | Literal["s8x6", "s16x6", "s32x6", "s48x6", "s8x4", "s16x4", "s32x4"] | Default = Default("s32x4"),
-        nns: Int | Literal["n16", "n32", "n64", "n128", "n256"] | Default = Default("n32"),
+        nsize: Int
+        | Literal["s8x6", "s16x6", "s32x6", "s48x6", "s8x4", "s16x4", "s32x4"]
+        | Default = Default("s32x4"),
+        nns: Int | Literal["n16", "n32", "n64", "n128", "n256"] | Default = Default(
+            "n32"
+        ),
         qual: Int | Literal["fast", "slow"] | Default = Default("fast"),
         etype: Int | Literal["a", "abs", "s", "mse"] | Default = Default("a"),
-        pscrn: Int | Literal["none", "original", "new", "new2", "new3"] | Default = Default("new"),
+        pscrn: Int
+        | Literal["none", "original", "new", "new2", "new3"]
+        | Default = Default("new"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -7703,7 +8294,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="nnedi", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="nnedi", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "weights": weights,
@@ -7742,7 +8335,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="noformat", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="noformat", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "pix_fmts": pix_fmts,
@@ -7802,7 +8397,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="noise", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="noise", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "all_seed": all_seed,
@@ -7857,7 +8454,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="normalize", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="normalize", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "blackpt": blackpt,
@@ -7887,7 +8486,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="null", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="null", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -7898,7 +8499,9 @@ class VideoStream(FilterableStream):
         *,
         datapath: String = Default(None),
         language: String = Default("eng"),
-        whitelist: String = Default("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}("),
+        whitelist: String = Default(
+            "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}("
+        ),
         blacklist: String = Default(""),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -7920,7 +8523,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ocr", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="ocr", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "datapath": datapath,
@@ -7979,7 +8584,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="oscilloscope", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="oscilloscope", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -8007,15 +8614,31 @@ class VideoStream(FilterableStream):
         *,
         x: String = Default("0"),
         y: String = Default("0"),
-        eof_action: Int | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int
+        | Literal["repeat", "endall", "pass", "repeat", "endall", "pass"]
+        | Default = Default("repeat"),
         eval: Int | Literal["init", "frame"] | Default = Default("frame"),
         shortest: Boolean = Default(False),
         format: Int
-        | Literal["yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "yuv444p10", "rgb", "gbrp", "auto"]
+        | Literal[
+            "yuv420",
+            "yuv420p10",
+            "yuv422",
+            "yuv422p10",
+            "yuv444",
+            "yuv444p10",
+            "rgb",
+            "gbrp",
+            "auto",
+        ]
         | Default = Default("yuv420"),
         repeatlast: Boolean = Default(True),
-        alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        alpha: Int | Literal["straight", "premultiplied"] | Default = Default(
+            "straight"
+        ),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -8043,7 +8666,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="overlay", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="overlay",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _overlay,
             **{
@@ -8089,7 +8716,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="owdenoise", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="owdenoise", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "depth": depth,
@@ -8134,7 +8763,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pad", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pad", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "width": width,
@@ -8176,7 +8807,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="palettegen", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="palettegen", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "max_colors": max_colors,
@@ -8193,7 +8826,16 @@ class VideoStream(FilterableStream):
         _palette: VideoStream,
         *,
         dither: Int
-        | Literal["bayer", "heckbert", "floyd_steinberg", "sierra2", "sierra2_4a", "sierra3", "burkes", "atkinson"]
+        | Literal[
+            "bayer",
+            "heckbert",
+            "floyd_steinberg",
+            "sierra2",
+            "sierra2_4a",
+            "sierra3",
+            "burkes",
+            "atkinson",
+        ]
         | Default = Default("sierra2_4a"),
         bayer_scale: Int = Default(2),
         diff_mode: Int | Literal["rectangle"] | Default = Default(0),
@@ -8222,7 +8864,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="paletteuse", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="paletteuse",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _palette,
             **{
@@ -8240,7 +8886,9 @@ class VideoStream(FilterableStream):
     def perms(
         self,
         *,
-        mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default("none"),
+        mode: Int | Literal["none", "ro", "rw", "toggle", "random"] | Default = Default(
+            "none"
+        ),
         seed: Int64 = Default(-1),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -8262,7 +8910,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="perms", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="perms", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -8316,7 +8966,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="perspective", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="perspective", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x0": x0,
@@ -8339,7 +8991,9 @@ class VideoStream(FilterableStream):
     def phase(
         self,
         *,
-        mode: Int | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"] | Default = Default("A"),
+        mode: Int
+        | Literal["p", "t", "b", "T", "B", "u", "U", "a", "A"]
+        | Default = Default("A"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -8359,7 +9013,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="phase", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="phase", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -8396,7 +9052,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="photosensitivity", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="photosensitivity",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "frames": frames,
@@ -8424,7 +9084,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pixdesctest", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pixdesctest", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -8459,7 +9121,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pixelize", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pixelize", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "width": width,
@@ -8507,7 +9171,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pixscope", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pixscope", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "x": x,
@@ -8546,7 +9212,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pp", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pp", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "subfilters": subfilters,
@@ -8581,7 +9249,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pp7", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pp7", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "qp": qp,
@@ -8619,7 +9289,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="prewitt", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="prewitt", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "planes": planes,
@@ -8691,7 +9363,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pseudocolor", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pseudocolor", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "c0": c0,
@@ -8714,10 +9388,14 @@ class VideoStream(FilterableStream):
         stats_file: String = Default(None),
         stats_version: Int = Default(1),
         output_max: Boolean = Default(False),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -8743,7 +9421,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="psnr", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="psnr", typings_input=("video", "video"), typings_output=("video",)
+            ),
             self,
             _reference,
             **{
@@ -8791,7 +9471,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="pullup", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="pullup", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "jl": jl,
@@ -8828,7 +9510,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="qp", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="qp", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "qp": qp,
@@ -8861,7 +9545,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="random", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="random", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "frames": frames,
@@ -8902,7 +9588,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="readeia608", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="readeia608", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "scan_min": scan_min,
@@ -8941,7 +9629,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="readvitc", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="readvitc", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "scan_max": scan_max,
@@ -8975,7 +9665,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="realtime", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="realtime", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "limit": limit,
@@ -9010,7 +9702,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="remap", typings_input=("video", "video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="remap",
+                typings_input=("video", "video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _xmap,
             _ymap,
@@ -9051,7 +9747,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="removegrain", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="removegrain", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "m0": m0,
@@ -9087,7 +9785,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="removelogo", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="removelogo", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "filename": filename,
@@ -9113,7 +9813,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="repeatfields", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="repeatfields", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -9135,7 +9837,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="reverse", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="reverse", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -9180,7 +9884,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="rgbashift", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="rgbashift", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "rh": rh,
@@ -9225,7 +9931,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="roberts", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="roberts", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "planes": planes,
@@ -9268,7 +9976,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="rotate", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="rotate", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "angle": angle,
@@ -9315,7 +10025,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="sab", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="sab", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "luma_radius": luma_radius,
@@ -9338,10 +10050,14 @@ class VideoStream(FilterableStream):
         flags: String = Default(""),
         interl: Boolean = Default(False),
         in_color_matrix: String
-        | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
+        | Literal[
+            "auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"
+        ]
         | Default = Default("auto"),
         out_color_matrix: String
-        | Literal["auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"]
+        | Literal[
+            "auto", "bt601", "bt470", "smpte170m", "bt709", "fcc", "smpte240m", "bt2020"
+        ]
         | Default = Default(None),
         in_range: Int
         | Literal["auto", "unknown", "full", "limited", "jpeg", "mpeg", "tv", "pc"]
@@ -9353,7 +10069,9 @@ class VideoStream(FilterableStream):
         in_h_chr_pos: Int = Default(-513),
         out_v_chr_pos: Int = Default(-513),
         out_h_chr_pos: Int = Default(-513),
-        force_original_aspect_ratio: Int | Literal["disable", "decrease", "increase"] | Default = Default("disable"),
+        force_original_aspect_ratio: Int
+        | Literal["disable", "decrease", "increase"]
+        | Default = Default("disable"),
         force_divisible_by: Int = Default(1),
         param0: Double = Default("DBL_MAX"),
         param1: Double = Default("DBL_MAX"),
@@ -9391,7 +10109,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="scale", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="scale", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "w": w,
@@ -9445,7 +10165,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="scale_vt", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="scale_vt", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "w": w,
@@ -9481,7 +10203,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="scdet", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="scdet", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "threshold": threshold,
@@ -9518,7 +10242,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="scharr", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="scharr", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "planes": planes,
@@ -9559,7 +10285,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="scroll", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="scroll", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "horizontal": horizontal,
@@ -9636,7 +10364,9 @@ class VideoStream(FilterableStream):
         """
         filter_node = filter_node_factory(
             FFMpegFilterDef(
-                name="select", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)"
+                name="select",
+                typings_input=("video",),
+                typings_output="[StreamType.video] * int(outputs)",
             ),
             self,
             **{
@@ -9651,7 +10381,9 @@ class VideoStream(FilterableStream):
     def selectivecolor(
         self,
         *,
-        correction_method: Int | Literal["absolute", "relative"] | Default = Default("absolute"),
+        correction_method: Int | Literal["absolute", "relative"] | Default = Default(
+            "absolute"
+        ),
         reds: String = Default(None),
         yellows: String = Default(None),
         greens: String = Default(None),
@@ -9691,7 +10423,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="selectivecolor", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="selectivecolor",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "correction_method": correction_method,
@@ -9734,7 +10470,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="sendcmd", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="sendcmd", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "commands": commands,
@@ -9760,7 +10498,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="separatefields", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="separatefields",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -9789,7 +10531,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="setdar", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="setdar", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "dar": dar,
@@ -9820,7 +10564,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="setfield", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="setfield", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -9832,9 +10578,21 @@ class VideoStream(FilterableStream):
     def setparams(
         self,
         *,
-        field_mode: Int | Literal["auto", "bff", "tff", "prog"] | Default = Default("auto"),
+        field_mode: Int | Literal["auto", "bff", "tff", "prog"] | Default = Default(
+            "auto"
+        ),
         range: Int
-        | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
+        | Literal[
+            "auto",
+            "unspecified",
+            "unknown",
+            "limited",
+            "tv",
+            "mpeg",
+            "full",
+            "pc",
+            "jpeg",
+        ]
         | Default = Default("auto"),
         color_primaries: Int
         | Literal[
@@ -9916,7 +10674,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="setparams", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="setparams", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "field_mode": field_mode,
@@ -9950,7 +10710,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="setpts", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="setpts", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "expr": expr,
@@ -9963,7 +10725,17 @@ class VideoStream(FilterableStream):
         self,
         *,
         range: Int
-        | Literal["auto", "unspecified", "unknown", "limited", "tv", "mpeg", "full", "pc", "jpeg"]
+        | Literal[
+            "auto",
+            "unspecified",
+            "unknown",
+            "limited",
+            "tv",
+            "mpeg",
+            "full",
+            "pc",
+            "jpeg",
+        ]
         | Default = Default("auto"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -9982,7 +10754,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="setrange", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="setrange", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "range": range,
@@ -10014,7 +10788,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="setsar", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="setsar", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "sar": sar,
@@ -10045,7 +10821,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="settb", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="settb", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "expr": expr,
@@ -10083,7 +10861,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="shear", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="shear", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "shx": shx,
@@ -10117,7 +10897,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showinfo", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showinfo", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "checksum": checksum,
@@ -10147,7 +10929,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="showpalette", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="showpalette", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "s": s,
@@ -10179,7 +10963,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="shuffleframes", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="shuffleframes",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "mapping": mapping,
@@ -10193,7 +10981,9 @@ class VideoStream(FilterableStream):
         self,
         *,
         direction: Int | Literal["forward", "inverse"] | Default = Default("forward"),
-        mode: Int | Literal["horizontal", "vertical", "block"] | Default = Default("horizontal"),
+        mode: Int | Literal["horizontal", "vertical", "block"] | Default = Default(
+            "horizontal"
+        ),
         width: Int = Default(10),
         height: Int = Default(10),
         seed: Int64 = Default(-1),
@@ -10220,7 +11010,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="shufflepixels", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="shufflepixels",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "direction": direction,
@@ -10263,7 +11057,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="shuffleplanes", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="shuffleplanes",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "map0": map0,
@@ -10325,7 +11123,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="sidedata", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="sidedata", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -10361,7 +11161,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="signalstats", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="signalstats", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "stat": stat,
@@ -10393,7 +11195,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="siti", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="siti", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "print_summary": print_summary,
@@ -10435,7 +11239,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="smartblur", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="smartblur", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "luma_radius": luma_radius,
@@ -10477,7 +11283,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="sobel", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="sobel", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "planes": planes,
@@ -10496,7 +11304,9 @@ class VideoStream(FilterableStream):
         sample_rate: Int = Default(44100),
         channels: Int = Default(1),
         scale: Int | Literal["lin", "log"] | Default = Default("log"),
-        slide: Int | Literal["replace", "scroll", "fullframe", "rscroll"] | Default = Default("fullframe"),
+        slide: Int
+        | Literal["replace", "scroll", "fullframe", "rscroll"]
+        | Default = Default("fullframe"),
         win_func: Int
         | Literal[
             "rect",
@@ -10524,7 +11334,9 @@ class VideoStream(FilterableStream):
         ]
         | Default = Default("rect"),
         overlap: Float = Default(1.0),
-        orientation: Int | Literal["vertical", "horizontal"] | Default = Default("vertical"),
+        orientation: Int | Literal["vertical", "horizontal"] | Default = Default(
+            "vertical"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> AudioStream:
         """
@@ -10548,7 +11360,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="spectrumsynth", typings_input=("video", "video"), typings_output=("audio",)),
+            FFMpegFilterDef(
+                name="spectrumsynth",
+                typings_input=("video", "video"),
+                typings_output=("audio",),
+            ),
             self,
             _phase,
             **{
@@ -10586,7 +11402,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="split", typings_input=("video",), typings_output="[StreamType.video] * int(outputs)"),
+            FFMpegFilterDef(
+                name="split",
+                typings_input=("video",),
+                typings_output="[StreamType.video] * int(outputs)",
+            ),
             self,
             **{
                 "outputs": outputs,
@@ -10625,7 +11445,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="spp", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="spp", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "quality": quality,
@@ -10667,7 +11489,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="sr", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="sr", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "dnn_backend": dnn_backend,
@@ -10685,10 +11509,14 @@ class VideoStream(FilterableStream):
         _reference: VideoStream,
         *,
         stats_file: String = Default(None),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -10712,7 +11540,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="ssim", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="ssim", typings_input=("video", "video"), typings_output=("video",)
+            ),
             self,
             _reference,
             **{
@@ -10811,7 +11641,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="stereo3d", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="stereo3d", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "in": _in,
@@ -10856,7 +11688,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="subtitles", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="subtitles", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "filename": filename,
@@ -10888,7 +11722,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="super2xsai", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="super2xsai", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -10927,7 +11763,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="swaprect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="swaprect", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "w": w,
@@ -10963,7 +11801,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="swapuv", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="swapuv", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -11248,7 +12088,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tblend", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tblend", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "c0_mode": c0_mode,
@@ -11275,7 +12117,9 @@ class VideoStream(FilterableStream):
     def telecine(
         self,
         *,
-        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
+        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default(
+            "top"
+        ),
         pattern: String = Default("23"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -11295,7 +12139,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="telecine", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="telecine", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "first_field": first_field,
@@ -11309,13 +12155,19 @@ class VideoStream(FilterableStream):
         self,
         *,
         width: Int = Default(0),
-        display_mode: Int | Literal["overlay", "parade", "stack"] | Default = Default("stack"),
-        levels_mode: Int | Literal["linear", "logarithmic"] | Default = Default("linear"),
+        display_mode: Int | Literal["overlay", "parade", "stack"] | Default = Default(
+            "stack"
+        ),
+        levels_mode: Int | Literal["linear", "logarithmic"] | Default = Default(
+            "linear"
+        ),
         components: Int = Default(7),
         bgopacity: Float = Default(0.9),
         envelope: Boolean = Default(False),
         ecolor: Color = Default("gold"),
-        slide: Int | Literal["frame", "replace", "scroll", "rscroll", "picture"] | Default = Default("replace"),
+        slide: Int
+        | Literal["frame", "replace", "scroll", "rscroll", "picture"]
+        | Default = Default("replace"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -11340,7 +12192,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="thistogram", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="thistogram", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "width": width,
@@ -11383,7 +12237,9 @@ class VideoStream(FilterableStream):
         """
         filter_node = filter_node_factory(
             FFMpegFilterDef(
-                name="threshold", typings_input=("video", "video", "video", "video"), typings_output=("video",)
+                name="threshold",
+                typings_input=("video", "video", "video", "video"),
+                typings_output=("video",),
             ),
             self,
             _threshold,
@@ -11422,7 +12278,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="thumbnail", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="thumbnail", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "n": n,
@@ -11466,7 +12324,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tile", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tile", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "layout": layout,
@@ -11486,7 +12346,14 @@ class VideoStream(FilterableStream):
         *,
         mode: Int
         | Literal[
-            "merge", "drop_even", "drop_odd", "pad", "interleave_top", "interleave_bottom", "interlacex2", "mergex2"
+            "merge",
+            "drop_even",
+            "drop_odd",
+            "pad",
+            "interleave_top",
+            "interleave_bottom",
+            "interlacex2",
+            "mergex2",
         ]
         | Default = Default("merge"),
         extra_options: dict[str, Any] = None,
@@ -11506,7 +12373,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tinterlace", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tinterlace", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -11544,7 +12413,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tlut2", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tlut2", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "c0": c0,
@@ -11584,7 +12455,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tmedian", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tmedian", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "radius": radius,
@@ -11623,7 +12496,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tmidequalizer", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tmidequalizer",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "radius": radius,
@@ -11664,7 +12541,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tmix", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tmix", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "frames": frames,
@@ -11706,7 +12585,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tonemap", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tonemap", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "tonemap": tonemap,
@@ -11751,7 +12632,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="tpad", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="tpad", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "start": start,
@@ -11769,8 +12652,12 @@ class VideoStream(FilterableStream):
     def transpose(
         self,
         *,
-        dir: Int | Literal["cclock_flip", "clock", "cclock", "clock_flip"] | Default = Default("cclock_flip"),
-        passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default("none"),
+        dir: Int
+        | Literal["cclock_flip", "clock", "cclock", "clock_flip"]
+        | Default = Default("cclock_flip"),
+        passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default(
+            "none"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -11789,7 +12676,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="transpose", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="transpose", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "dir": dir,
@@ -11803,9 +12692,13 @@ class VideoStream(FilterableStream):
         self,
         *,
         dir: Int
-        | Literal["cclock_flip", "clock", "cclock", "clock_flip", "reversal", "hflip", "vflip"]
+        | Literal[
+            "cclock_flip", "clock", "cclock", "clock_flip", "reversal", "hflip", "vflip"
+        ]
         | Default = Default("cclock_flip"),
-        passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default("none"),
+        passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default(
+            "none"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -11824,7 +12717,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="transpose_vt", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="transpose_vt", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "dir": dir,
@@ -11867,7 +12762,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="trim", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="trim", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "start": start,
@@ -11921,7 +12818,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="unsharp", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="unsharp", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "luma_msize_x": luma_msize_x,
@@ -11960,7 +12859,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="untile", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="untile", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "layout": layout,
@@ -11998,7 +12899,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="uspp", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="uspp", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "quality": quality,
@@ -12184,7 +13087,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="v360", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="v360", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "input": input,
@@ -12261,7 +13166,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vaguedenoiser", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vaguedenoiser",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "threshold": threshold,
@@ -12283,10 +13192,14 @@ class VideoStream(FilterableStream):
         min_r: Int = Default(0),
         max_r: Int = Default(8),
         planes: Int = Default(15),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -12312,7 +13225,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="varblur", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="varblur",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _radius,
             **{
@@ -12338,8 +13255,12 @@ class VideoStream(FilterableStream):
         x: Int = Default(1),
         y: Int = Default(2),
         intensity: Float = Default(0.004),
-        envelope: Int | Literal["none", "instant", "peak", "instant"] | Default = Default("none"),
-        graticule: Int | Literal["none", "green", "color", "invert"] | Default = Default("none"),
+        envelope: Int
+        | Literal["none", "instant", "peak", "instant"]
+        | Default = Default("none"),
+        graticule: Int
+        | Literal["none", "green", "color", "invert"]
+        | Default = Default("none"),
         opacity: Float = Default(0.75),
         flags: Flags | Literal["white", "black", "name"] | Default = Default("name"),
         bgopacity: Float = Default(0.3),
@@ -12378,7 +13299,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vectorscope", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vectorscope", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -12421,7 +13344,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vflip", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vflip", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "enable": enable,
@@ -12446,7 +13371,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vfrdet", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vfrdet", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{} | (extra_options or {}),
         )
@@ -12489,7 +13416,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vibrance", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vibrance", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "intensity": intensity,
@@ -12541,7 +13470,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vidstabdetect", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vidstabdetect",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "result": result,
@@ -12571,7 +13504,9 @@ class VideoStream(FilterableStream):
         zoom: Double = Default(0.0),
         optzoom: Int = Default(1),
         zoomspeed: Double = Default(0.25),
-        interpol: Int | Literal["no", "linear", "bilinear", "bicubic"] | Default = Default("bilinear"),
+        interpol: Int
+        | Literal["no", "linear", "bilinear", "bicubic"]
+        | Default = Default("bilinear"),
         tripod: Boolean = Default(False),
         debug: Boolean = Default(False),
         extra_options: dict[str, Any] = None,
@@ -12604,7 +13539,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vidstabtransform", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vidstabtransform",
+                typings_input=("video",),
+                typings_output=("video",),
+            ),
             self,
             **{
                 "input": input,
@@ -12630,10 +13569,14 @@ class VideoStream(FilterableStream):
         self,
         _reference: VideoStream,
         *,
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -12656,7 +13599,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vif", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vif", typings_input=("video", "video"), typings_output=("video",)
+            ),
             self,
             _reference,
             **{
@@ -12705,7 +13650,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vignette", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vignette", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "angle": angle,
@@ -12742,7 +13689,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="vmafmotion", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="vmafmotion", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "stats_file": stats_file,
@@ -12780,7 +13729,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="w3fdif", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="w3fdif", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "filter": filter,
@@ -12799,16 +13750,26 @@ class VideoStream(FilterableStream):
         mode: Int | Literal["row", "column"] | Default = Default("column"),
         intensity: Float = Default(0.04),
         mirror: Boolean = Default(True),
-        display: Int | Literal["overlay", "stack", "parade"] | Default = Default("stack"),
+        display: Int | Literal["overlay", "stack", "parade"] | Default = Default(
+            "stack"
+        ),
         components: Int = Default(1),
-        envelope: Int | Literal["none", "instant", "peak", "instant"] | Default = Default("none"),
+        envelope: Int
+        | Literal["none", "instant", "peak", "instant"]
+        | Default = Default("none"),
         filter: Int
-        | Literal["lowpass", "flat", "aflat", "chroma", "color", "acolor", "xflat", "yflat"]
+        | Literal[
+            "lowpass", "flat", "aflat", "chroma", "color", "acolor", "xflat", "yflat"
+        ]
         | Default = Default("lowpass"),
-        graticule: Int | Literal["none", "green", "orange", "invert"] | Default = Default("none"),
+        graticule: Int
+        | Literal["none", "green", "orange", "invert"]
+        | Default = Default("none"),
         opacity: Float = Default(0.75),
         flags: Flags | Literal["numbers", "dots"] | Default = Default("numbers"),
-        scale: Int | Literal["digital", "millivolts", "ire"] | Default = Default("digital"),
+        scale: Int | Literal["digital", "millivolts", "ire"] | Default = Default(
+            "digital"
+        ),
         bgopacity: Float = Default(0.75),
         tint0: Float = Default(0.0),
         tint1: Float = Default(0.0),
@@ -12846,7 +13807,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="waveform", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="waveform", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -12873,7 +13836,9 @@ class VideoStream(FilterableStream):
     def weave(
         self,
         *,
-        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default("top"),
+        first_field: Int | Literal["top", "t", "bottom", "b"] | Default = Default(
+            "top"
+        ),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -12891,7 +13856,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="weave", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="weave", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "first_field": first_field,
@@ -12921,7 +13888,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="xbr", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="xbr", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "n": n,
@@ -12936,10 +13905,14 @@ class VideoStream(FilterableStream):
         *,
         planes: Int = Default(7),
         secondary: Int | Literal["first", "all"] | Default = Default("all"),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
+        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
+            "repeat"
+        ),
         shortest: Boolean = Default(False),
         repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
+        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
+            "default"
+        ),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -12964,7 +13937,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="xcorrelate", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="xcorrelate",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _secondary,
             **{
@@ -13070,7 +14047,11 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="xfade", typings_input=("video", "video"), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="xfade",
+                typings_input=("video", "video"),
+                typings_output=("video",),
+            ),
             self,
             _xfade,
             **{
@@ -13087,7 +14068,9 @@ class VideoStream(FilterableStream):
         self,
         *,
         mode: Int
-        | Literal["send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"]
+        | Literal[
+            "send_frame", "send_field", "send_frame_nospatial", "send_field_nospatial"
+        ]
         | Default = Default("send_frame"),
         parity: Int | Literal["tff", "bff", "auto"] | Default = Default("auto"),
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
@@ -13112,7 +14095,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="yadif", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="yadif", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "mode": mode,
@@ -13151,7 +14136,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="yaepblur", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="yaepblur", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "radius": radius,
@@ -13184,7 +14171,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="zmq", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="zmq", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "bind_address": bind_address,
@@ -13224,7 +14213,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="zoompan", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="zoompan", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "zoom": zoom,
@@ -13244,11 +14235,15 @@ class VideoStream(FilterableStream):
         w: String = Default(None),
         h: String = Default(None),
         size: String = Default(None),
-        dither: Int | Literal["none", "ordered", "random", "error_diffusion"] | Default = Default("none"),
+        dither: Int
+        | Literal["none", "ordered", "random", "error_diffusion"]
+        | Default = Default("none"),
         filter: Int
         | Literal["point", "bilinear", "bicubic", "spline16", "spline36", "lanczos"]
         | Default = Default("bilinear"),
-        out_range: Int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | Default = Default("input"),
+        out_range: Int
+        | Literal["input", "limited", "full", "unknown", "tv", "pc"]
+        | Default = Default("input"),
         primaries: Int
         | Literal[
             "input",
@@ -13322,7 +14317,9 @@ class VideoStream(FilterableStream):
             "ictcp",
         ]
         | Default = Default("input"),
-        in_range: Int | Literal["input", "limited", "full", "unknown", "tv", "pc"] | Default = Default("input"),
+        in_range: Int
+        | Literal["input", "limited", "full", "unknown", "tv", "pc"]
+        | Default = Default("input"),
         primariesin: Int
         | Literal[
             "input",
@@ -13441,7 +14438,9 @@ class VideoStream(FilterableStream):
 
         """
         filter_node = filter_node_factory(
-            FFMpegFilterDef(name="zscale", typings_input=("video",), typings_output=("video",)),
+            FFMpegFilterDef(
+                name="zscale", typings_input=("video",), typings_output=("video",)
+            ),
             self,
             **{
                 "w": w,

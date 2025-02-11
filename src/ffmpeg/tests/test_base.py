@@ -59,23 +59,34 @@ def test_compile(snapshot: SnapshotAssertion) -> None:
 def test_generate_thumbnail_for_video(snapshot: SnapshotAssertion) -> None:
     # ["ffmpeg", "-ss", "10", "-i", "input.mp4", "-filter_complex", "[0]scale=800:-1[s0]", "-map", "[s0]", "-vframes", "1", "output.mp4"]
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("input.mp4", ss=10).scale(w="800", h="-1").output(filename="output.mp4", vframes=1).compile()
+        input("input.mp4", ss=10)
+        .scale(w="800", h="-1")
+        .output(filename="output.mp4", vframes=1)
+        .compile()
     )
 
 
 def test_assemble_video_from_sequence_of_frames(snapshot: SnapshotAssertion) -> None:
     # ["ffmpeg", "-framerate", "25", "-pattern_type", "glob", "-i", "/path/to/jpegs/*.jpg", "movie.mp4""]
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("/path/to/jpegs/*.jpg", extra_options={"framerate": 25, "pattern_type": "glob"})
+        input(
+            "/path/to/jpegs/*.jpg",
+            extra_options={"framerate": 25, "pattern_type": "glob"},
+        )
         .output(filename="movie.mp4")
         .compile()
     )
 
 
-def test_assemble_video_from_sequence_of_frames_with_additional_filtering(snapshot: SnapshotAssertion) -> None:
+def test_assemble_video_from_sequence_of_frames_with_additional_filtering(
+    snapshot: SnapshotAssertion,
+) -> None:
     # ["ffmpeg", "-framerate", "25", "-pattern_type", "glob", "-i", "/path/to/jpegs/*.jpg", "-filter_complex", "[0]deflicker=mode=pm:size=10[s0];[s0]scale=force_original_aspect_ratio=increase:size=hd1080[s1]", "-map", "[s1]", "-crf", "20", "-movflags", "faststart", "-pix_fmt", "yuv420p", "-preset", "slower", "movie.mp4"]
     assert snapshot(extension_class=JSONSnapshotExtension) == (
-        input("/path/to/jpegs/*.jpg", extra_options={"framerate": 25, "pattern_type": "glob"})
+        input(
+            "/path/to/jpegs/*.jpg",
+            extra_options={"framerate": 25, "pattern_type": "glob"},
+        )
         .deflicker(mode="pm", size=10)
         # FIXME: scale's w,h options should be optional
         .scale(force_original_aspect_ratio="increase", extra_options={"size": "hd1080"})
@@ -99,7 +110,10 @@ def test_audio_video_pipeline(snapshot: SnapshotAssertion) -> None:
     joined = concat(v1, a1, v2, a2, v=1, a=1)
     v3 = joined.video(0)
     a3 = joined.audio(0).volume(volume="0.8")
-    assert snapshot(extension_class=JSONSnapshotExtension) == output(v3, a3, filename="out.mp4").compile()
+    assert (
+        snapshot(extension_class=JSONSnapshotExtension)
+        == output(v3, a3, filename="out.mp4").compile()
+    )
 
 
 def test_mono_to_stereo_with_offsets_and_video(snapshot: SnapshotAssertion) -> None:
@@ -109,7 +123,9 @@ def test_mono_to_stereo_with_offsets_and_video(snapshot: SnapshotAssertion) -> N
     input_video = input("input-video.mp4")
     assert snapshot(extension_class=JSONSnapshotExtension) == (
         join(audio_left, audio_right, inputs=2, channel_layout="stereo")
-        .output(input_video.video, filename="output-video.mp4", shortest=True, vcodec="copy")
+        .output(
+            input_video.video, filename="output-video.mp4", shortest=True, vcodec="copy"
+        )
         .overwrite_output()
         .compile()
     )
@@ -162,7 +178,9 @@ def test_compile_merge_outputs_with_filter_complex(snapshot: SnapshotAssertion) 
     output1 = output(splitted.video(0), filename="output1.mp4")
     output2 = output(splitted.video(1), filename="output2.mp4")
 
-    assert snapshot(extension_class=JSONSnapshotExtension) == (merge_outputs(output1, output2).compile())
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        merge_outputs(output1, output2).compile()
+    )
 
 
 def test_concat_dumuxer(snapshot: SnapshotAssertion) -> None:
@@ -175,7 +193,9 @@ def test_concat_dumuxer(snapshot: SnapshotAssertion) -> None:
         },
     )
 
-    assert snapshot(extension_class=JSONSnapshotExtension) == (stream.output(filename="output.mp4").compile())
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        stream.output(filename="output.mp4").compile()
+    )
 
 
 def test_customize_vfilter(snapshot: SnapshotAssertion) -> None:
@@ -191,4 +211,7 @@ def test_customize_vfilter(snapshot: SnapshotAssertion) -> None:
         input_typings=(StreamType.video, StreamType.video),
     )
 
-    assert snapshot(extension_class=JSONSnapshotExtension) == gltransition.output(filename="output.mp4").compile()
+    assert (
+        snapshot(extension_class=JSONSnapshotExtension)
+        == gltransition.output(filename="output.mp4").compile()
+    )

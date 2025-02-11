@@ -105,7 +105,10 @@ class DAGContext:
         """
         All streams in the graph sorted by the number of upstream nodes and the index of the stream.
         """
-        return sorted(self.streams, key=lambda stream: (len(stream.node.upstream_nodes), stream.index))
+        return sorted(
+            self.streams,
+            key=lambda stream: (len(stream.node.upstream_nodes), stream.index),
+        )
 
     @cached_property
     def outgoing_nodes(self) -> dict[Stream, list[tuple[Node, int]]]:
@@ -180,7 +183,9 @@ class DAGContext:
             The label of the node.
         """
 
-        assert isinstance(node, (InputNode, FilterNode)), "Only input and filter nodes have labels"
+        assert isinstance(node, (InputNode, FilterNode)), (
+            "Only input and filter nodes have labels"
+        )
         return self.node_labels[node]
 
     @override
