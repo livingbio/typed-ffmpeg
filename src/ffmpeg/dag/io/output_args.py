@@ -19,7 +19,7 @@ class OutputArgs(ABC):
 
     def output(
         self,
-        *streams: "FilterableStream",
+        *streams: FilterableStream,
         filename: str | Path,
         f: String = None,
         c: String = None,

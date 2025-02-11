@@ -55,7 +55,7 @@ class FilterNode(Node):
     def repr(self) -> str:
         return self.name
 
-    def video(self, index: int) -> "VideoStream":
+    def video(self, index: int) -> VideoStream:
         """
         Return the video stream at the specified index
 
@@ -76,7 +76,7 @@ class FilterNode(Node):
             )
         return VideoStream(node=self, index=video_outputs[index])
 
-    def audio(self, index: int) -> "AudioStream":
+    def audio(self, index: int) -> AudioStream:
         """
         Return the audio stream at the specified index
 
@@ -171,7 +171,7 @@ class FilterableStream(Stream, OutputArgs):
     A stream that can be used as input to a filter
     """
 
-    node: "FilterNode | InputNode"
+    node: FilterNode | InputNode
 
     @override
     def _output_node(
@@ -196,11 +196,11 @@ class FilterableStream(Stream, OutputArgs):
 
     def vfilter(
         self,
-        *streams: "FilterableStream",
+        *streams: FilterableStream,
         name: str,
         input_typings: tuple[StreamType, ...] = (StreamType.video,),
         **kwargs: Any,
-    ) -> "VideoStream":
+    ) -> VideoStream:
         """
         Apply a custom video filter which has only one output to this stream
 
@@ -223,11 +223,11 @@ class FilterableStream(Stream, OutputArgs):
 
     def afilter(
         self,
-        *streams: "FilterableStream",
+        *streams: FilterableStream,
         name: str,
         input_typings: tuple[StreamType, ...] = (StreamType.audio,),
         **kwargs: Any,
-    ) -> "AudioStream":
+    ) -> AudioStream:
         """
         Apply a custom audio filter which has only one output to this stream
 
@@ -250,12 +250,12 @@ class FilterableStream(Stream, OutputArgs):
 
     def filter_multi_output(
         self,
-        *streams: "FilterableStream",
+        *streams: FilterableStream,
         name: str,
         input_typings: tuple[StreamType, ...] = (),
         output_typings: tuple[StreamType, ...] = (),
         **kwargs: Any,
-    ) -> "FilterNode":
+    ) -> FilterNode:
         """
         Apply a custom filter which has multiple outputs to this stream
 
@@ -339,7 +339,7 @@ class InputNode(Node):
         return os.path.basename(self.filename)
 
     @property
-    def video(self) -> "VideoStream":
+    def video(self) -> VideoStream:
         """
         Return the video stream of this node
 
@@ -351,7 +351,7 @@ class InputNode(Node):
         return VideoStream(node=self)
 
     @property
-    def audio(self) -> "AudioStream":
+    def audio(self) -> AudioStream:
         """
         Return the audio stream of this node
 
@@ -362,7 +362,7 @@ class InputNode(Node):
 
         return AudioStream(node=self)
 
-    def stream(self) -> "AVStream":
+    def stream(self) -> AVStream:
         """
         Return the output stream of this node
 
@@ -400,7 +400,7 @@ class OutputNode(Node):
     def repr(self) -> str:
         return os.path.basename(self.filename)
 
-    def stream(self) -> "OutputStream":
+    def stream(self) -> OutputStream:
         """
         Return the output stream of this node
 
@@ -466,7 +466,7 @@ class GlobalNode(Node):
     def repr(self) -> str:
         return " ".join(self.get_args())
 
-    def stream(self) -> "GlobalStream":
+    def stream(self) -> GlobalStream:
         """
         Return the output stream of this node
 

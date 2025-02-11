@@ -70,7 +70,7 @@ class Stream(HashableBaseModel):
             return f.read()
 
     def _repr_svg_(self) -> str:  # pragma: no cover
-        with open(self.view(format="svg"), "r") as f:
+        with open(self.view(format="svg")) as f:
             return f.read()
 
 
@@ -206,5 +206,5 @@ class Node(HashableBaseModel, ABC):
             return f.read()
 
     def _repr_svg_(self) -> str:  # pragma: no cover
-        with open(self.view(format="svg"), "r") as f:
+        with open(self.view(format="svg")) as f:
             return f.read()
