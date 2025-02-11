@@ -21,7 +21,9 @@ def load_class(path: str, strict: bool = True) -> Any:
         The class.
     """
     if strict:
-        assert path.startswith("ffmpeg."), f"Only support loading class from ffmpeg package: {path}"
+        assert path.startswith("ffmpeg."), (
+            f"Only support loading class from ffmpeg package: {path}"
+        )
 
     module_path, class_name = path.rsplit(".", 1)
     module = importlib.import_module(module_path)
@@ -107,7 +109,10 @@ def to_dict_with_class_info(instance: Any) -> Any:
     elif is_dataclass(instance):
         return {
             "__class__": f"{instance.__class__.__module__}.{instance.__class__.__name__}",
-            **{k.name: to_dict_with_class_info(getattr(instance, k.name)) for k in fields(instance)},
+            **{
+                k.name: to_dict_with_class_info(getattr(instance, k.name))
+                for k in fields(instance)
+            },
         }
     elif isinstance(instance, Enum):
         return {

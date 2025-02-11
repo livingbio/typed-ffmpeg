@@ -82,7 +82,9 @@ class GlobalRunable(GlobalArgs):
         Returns:
             the command-line
         """
-        return command_line(self.compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix))
+        return command_line(
+            self.compile(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)
+        )
 
     def run_async(
         self,
@@ -115,7 +117,9 @@ class GlobalRunable(GlobalArgs):
         stdout_stream = subprocess.PIPE if pipe_stdout or quiet else None
         stderr_stream = subprocess.PIPE if pipe_stderr or quiet else None
 
-        logger.info(f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)}")
+        logger.info(
+            f"Running command: {self.compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix)}"
+        )
 
         return subprocess.Popen(
             args,
@@ -166,7 +170,9 @@ class GlobalRunable(GlobalArgs):
         if retcode:
             raise FFMpegExecuteError(
                 retcode=retcode,
-                cmd=self.compile_line(cmd, overwrite_output=overwrite_output, auto_fix=auto_fix),
+                cmd=self.compile_line(
+                    cmd, overwrite_output=overwrite_output, auto_fix=auto_fix
+                ),
                 stdout=stdout,
                 stderr=stderr,
             )

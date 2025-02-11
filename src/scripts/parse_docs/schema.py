@@ -27,7 +27,9 @@ class FilterDocument:
         from .helpers import parse_paremeters
 
         soup = BeautifulSoup(self.body, "html.parser")
-        options_p_tag = soup.find("p", string=lambda text: "options" in text.lower() if text else False)
+        options_p_tag = soup.find(
+            "p", string=lambda text: "options" in text.lower() if text else False
+        )
 
         if options_p_tag:
             options = options_p_tag.find_next("dl")

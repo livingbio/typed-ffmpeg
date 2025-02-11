@@ -46,7 +46,9 @@ def process_docs() -> list[FilterDocument]:
     )
 
     def extract_filter(html: str) -> list[tuple[str, str]]:
-        return [(m.group("name"), m.group("body")) for m in section_pattern.finditer(html)]
+        return [
+            (m.group("name"), m.group("body")) for m in section_pattern.finditer(html)
+        ]
 
     infos: list[FilterDocument] = []
     with (download_ffmpeg_filter_documents()).open() as ifile:

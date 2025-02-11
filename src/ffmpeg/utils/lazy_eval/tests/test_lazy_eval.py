@@ -44,14 +44,22 @@ VarY = Symbol(key="Y")
     ],
 )
 def test_operator(snapshot: SnapshotAssertion, oper: LazyOperator) -> None:
-    assert snapshot(name=str(oper), extension_class=JSONSnapshotExtension) == loads(dumps(oper))
+    assert snapshot(name=str(oper), extension_class=JSONSnapshotExtension) == loads(
+        dumps(oper)
+    )
     assert snapshot(name=f"{oper}") == str(oper)
 
     assert snapshot(name=f"{oper}=") == oper.eval(**{VarX.key: 3, VarY.key: 5})
 
 
 def test_lazyoperator_number(snapshot: SnapshotAssertion) -> None:
-    Op = ((1 + VarX + VarY - 5) * 3) / 4**2 * (-VarX) + (+VarY) + (abs(VarX)) + (VarX % VarY) + (VarX // VarY)
+    Op = (
+        ((1 + VarX + VarY - 5) * 3) / 4**2 * (-VarX)
+        + (+VarY)
+        + (abs(VarX))
+        + (VarX % VarY)
+        + (VarX // VarY)
+    )
 
     assert snapshot(name="repr") == str(Op)
     assert snapshot(extension_class=JSONSnapshotExtension) == loads(dumps(Op))

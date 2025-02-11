@@ -12,8 +12,7 @@ if TYPE_CHECKING:
 
 class GlobalArgs(ABC):
     @abstractmethod
-    def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode:
-        ...
+    def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode: ...
 
     def global_args(
         self,

@@ -111,7 +111,7 @@ src = ["src"]
 [tool.ruff.lint]  # https://docs.astral.sh/ruff/settings/#lint
 select = [
     "E",   # pycodestyle errors
-#    "W",   # pycodestyle warnings
+    "W",   # pycodestyle warnings
 #    "F",   # pyflakes
 #    "I",   # isort
     # "B",   # flake8-bugbear

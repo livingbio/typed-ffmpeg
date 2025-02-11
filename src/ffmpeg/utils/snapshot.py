@@ -2,7 +2,12 @@ from dataclasses import asdict
 from typing import Optional
 
 from syrupy.extensions.json import JSONSnapshotExtension
-from syrupy.types import PropertyFilter, PropertyMatcher, SerializableData, SerializedData
+from syrupy.types import (
+    PropertyFilter,
+    PropertyMatcher,
+    SerializableData,
+    SerializedData,
+)
 
 from ..dag.schema import Stream
 
