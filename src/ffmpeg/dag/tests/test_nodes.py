@@ -186,10 +186,10 @@ def test_filter_node_output_typings() -> None:
         output_typings=(StreamType.audio,),
     )
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         f.video(0)
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         f.audio(1)
 
 
@@ -203,7 +203,7 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
         input_typings=(StreamType.video, StreamType.audio),
     )
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         FilterNode(
             name="scale",
             inputs=(in_file.video,),

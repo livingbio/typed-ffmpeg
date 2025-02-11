@@ -126,7 +126,7 @@ def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
         return f"Auto({repr(f.pre_dict[option.name])})"
     if not isinstance(option.default, float) or not isnan(option.default):
         return f"Default({repr(option.default)})"
-    return f'Default("nan")'
+    return 'Default("nan")'
 
 
 def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
