@@ -109,7 +109,7 @@ class Node(HashableBaseModel, ABC):
 
             nodes.extend(k.node for k in node.inputs)
 
-            output[node.hex] = set(k.node.hex for k in node.inputs)
+            output[node.hex] = {k.node.hex for k in node.inputs}
 
         if not is_dag(output):
             raise ValueError(f"Graph is not a DAG: {output}")  # pragma: no cover

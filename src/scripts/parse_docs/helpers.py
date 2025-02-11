@@ -39,7 +39,7 @@ def parse_filter_document(body: str) -> FilterDocument:
 
     title = h3.text
     index, filter_namestr = title.split(" ", 1)
-    filter_names = map(lambda i: i.strip(), filter_namestr.split(","))
+    filter_names = (i.strip() for i in filter_namestr.split(","))
 
     assert isinstance(h3.a, Tag)
     assert isinstance(h3.a["href"], str)

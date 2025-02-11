@@ -113,10 +113,10 @@ select = [
     "E",   # pycodestyle errors
     "W",   # pycodestyle warnings
     "F",   # pyflakes
-#    "I",   # isort
+    "I",   # isort
     # "B",   # flake8-bugbear
-#    "B006",   # flake8-bugbear: Do not use mutable data structures for argument defaults
-#    "C4",  # flake8-comprehensions
+   "B006",   # flake8-bugbear: Do not use mutable data structures for argument defaults
+    "C4",  # flake8-comprehensions
 #    "UP",  # pyupgrade
 ]
 ignore = [
