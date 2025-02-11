@@ -10,7 +10,7 @@ from ...types import *
 
 def input(
     filename: str | Path,
-    *,extra_options: dict[str, Any] = None,
+    *,extra_options: dict[str, Value] = None,
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)

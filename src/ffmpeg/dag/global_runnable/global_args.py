@@ -4,7 +4,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 
-from ...types import Boolean, Float, Func, Int
+from ...types import Boolean, Float, Func, Int, Value
 
 if TYPE_CHECKING:
     from ..nodes import GlobalNode, GlobalStream, OutputStream
@@ -63,7 +63,7 @@ class GlobalArgs(ABC):
         adrift_threshold: Func = None,
         qphist: Func = None,
         vsync: Func = None,
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Value] = None,
     ) -> GlobalStream:
         """
         Set global options.

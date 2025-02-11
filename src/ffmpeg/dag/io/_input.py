@@ -2,10 +2,9 @@
 
 
 from pathlib import Path
-from typing import Any
 
 from ...streams.av import AVStream
-from ...types import Boolean, Double, Float, Int, String, Time
+from ...types import Boolean, Double, Float, Int, String, Time, Value
 from ..nodes import InputNode
 
 
@@ -64,7 +63,7 @@ def input(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Value] = None,
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)

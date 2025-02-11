@@ -15,7 +15,7 @@ class GlobalArgs(ABC):
 
     def global_args(
         self,
-        *,extra_options: dict[str, Any] = None,
+        *,extra_options: dict[str, Value] = None,
     ) -> GlobalStream:
         """
         Set global options.

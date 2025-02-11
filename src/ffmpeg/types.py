@@ -117,3 +117,8 @@ Time = str | int | float | Default | LazyValue
 """
 ref: OPT_TYPE_TIME
 """
+
+Value = bool | str | int | float | LazyValue
+"""
+A value that can be either a boolean, string, integer, or float but canot be None.
+"""
