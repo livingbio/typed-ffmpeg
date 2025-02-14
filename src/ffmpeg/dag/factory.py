@@ -8,7 +8,7 @@ from .nodes import FilterableStream, FilterNode
 
 
 def filter_node_factory(
-    filter: FFMpegFilterDef, *inputs: FilterableStream, **kwargs: Any
+    ffmpeg_filter_def: FFMpegFilterDef, *inputs: FilterableStream, **kwargs: Any
 ) -> FilterNode:
     for k, v in kwargs.items():
         if isinstance(v, Auto):
@@ -16,28 +16,34 @@ def filter_node_factory(
                 v, {"StreamType": StreamType, "re": re, **kwargs, "streams": inputs}
             )
 
-    if isinstance(filter.typings_input, str):
+    if isinstance(ffmpeg_filter_def.typings_input, str):
         input_typings = tuple(
-            eval(filter.typings_input, {"StreamType": StreamType, "re": re, **kwargs})
+            eval(
+                ffmpeg_filter_def.typings_input,
+                {"StreamType": StreamType, "re": re, **kwargs},
+            )
         )
     else:
         input_typings = tuple(
             StreamType.video if k == "video" else StreamType.audio
-            for k in filter.typings_input
+            for k in ffmpeg_filter_def.typings_input
         )
 
-    if isinstance(filter.typings_output, str):
+    if isinstance(ffmpeg_filter_def.typings_output, str):
         output_typings = tuple(
-            eval(filter.typings_output, {"StreamType": StreamType, "re": re, **kwargs})
+            eval(
+                ffmpeg_filter_def.typings_output,
+                {"StreamType": StreamType, "re": re, **kwargs},
+            )
         )
     else:
         output_typings = tuple(
             StreamType.video if k == "video" else StreamType.audio
-            for k in filter.typings_output
+            for k in ffmpeg_filter_def.typings_output
         )
 
     return FilterNode(
-        name=filter.name,
+        name=ffmpeg_filter_def.name,
         input_typings=input_typings,
         output_typings=output_typings,
         inputs=inputs,
