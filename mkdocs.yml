@@ -40,6 +40,7 @@ edit_uri: edit/main/docs/
 nav:
   - Get Started:
       - Overview: index.md
+      - FaQ: faq.md
   - Usage:
       - Basic API Usage: usage/basic-api-usage.ipynb
       - Complex Filtering: usage/complex-filtering.ipynb
