@@ -78,7 +78,7 @@ griffe_inherited_docstrings = "*"
 black = "*"
 ipykernel = "^6.29.4"
 mknotebooks = "*"
-ruff = "^0.9.6"
+ruff = ">=0.9.6,<0.12.0"
 
 [tool.mypy]
 exclude = "^(migrations|commands|sandbox|samples|sdk)/"
