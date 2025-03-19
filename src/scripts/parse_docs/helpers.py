@@ -12,8 +12,7 @@ def convert_html_to_markdown(html: str) -> str:
         html: The HTML to convert to Markdown
 
     Returns:
-        The Markdown
-    """
+        The Markdown"""
     soup = BeautifulSoup(html, "html.parser")
 
     # Convert <dt> and <dd> tags to a more Markdown-friendly format
@@ -82,7 +81,7 @@ def parse_filter_document(body: str) -> FilterDocument:
     )
 
 
-def parse_paremeters(soup: Tag) -> dict[str, str]:
+def parse_parameters(soup: Tag) -> dict[str, str]:
     """
     Parse parameters from a filter document
 

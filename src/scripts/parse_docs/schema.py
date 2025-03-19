@@ -61,7 +61,7 @@ class FilterDocument:
         Returns:
             The parameter descriptions of the filter document
         """
-        from .helpers import parse_paremeters
+        from .helpers import parse_parameters
 
         soup = BeautifulSoup(self.body, "html.parser")
         options_p_tag = soup.find(
@@ -75,5 +75,5 @@ class FilterDocument:
 
         if options:
             assert isinstance(options, Tag)
-            return parse_paremeters(options)
+            return parse_parameters(options)
         return {}
