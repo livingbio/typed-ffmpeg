@@ -137,40 +137,44 @@ def option_typing(option: FFMpegOption) -> str:
         return "Time"
 
 
-def input_typings(filter: FFMpegFilter) -> str:
+def input_typings(ffmpeg_filter: FFMpegFilter) -> str:
     """
     The input typings of the filter
 
     Args:
-        filter: The filter
+        ffmpeg_filter: The filter
 
     Returns:
         The input typings of the filter
     """
-    if filter.formula_typings_input:
-        return filter.formula_typings_input
+    if ffmpeg_filter.formula_typings_input:
+        return ffmpeg_filter.formula_typings_input
     return (
         "["
-        + ", ".join(f"StreamType.{i.type.value}" for i in filter.stream_typings_input)
+        + ", ".join(
+            f"StreamType.{i.type.value}" for i in ffmpeg_filter.stream_typings_input
+        )
         + "]"
     )
 
 
-def output_typings(filter: FFMpegFilter) -> str:
+def output_typings(ffmpeg_filter: FFMpegFilter) -> str:
     """
     The output typings of the filter
 
     Args:
-        filter: The filter
+        ffmpeg_filter: The filter
 
     Returns:
         The output typings of the filter
     """
-    if filter.formula_typings_output:
-        return filter.formula_typings_output
+    if ffmpeg_filter.formula_typings_output:
+        return ffmpeg_filter.formula_typings_output
     return (
         "["
-        + ", ".join(f"StreamType.{i.type.value}" for i in filter.stream_typings_output)
+        + ", ".join(
+            f"StreamType.{i.type.value}" for i in ffmpeg_filter.stream_typings_output
+        )
         + "]"
     )
 
@@ -209,21 +213,21 @@ def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
     return f"{filter_option_typing(option)} = {default_value(option, f)}"
 
 
-def filter_option_typings(filter: FFMpegFilter) -> str:
+def filter_option_typings(ffmpeg_filter: FFMpegFilter) -> str:
     """
     The typing of the filter options
 
     Args:
-        filter: The filter
+        ffmpeg_filter: The filter
 
     Returns:
         The typing of the filter options
     """
     output = []
 
-    for option in filter.options:
+    for option in ffmpeg_filter.options:
         output.append(
-            f"{option_name_safe(option.name)}: {default_typings(option, filter)}"
+            f"{option_name_safe(option.name)}: {default_typings(option, ffmpeg_filter)}"
         )
 
     if output:

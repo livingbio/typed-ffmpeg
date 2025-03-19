@@ -15,21 +15,21 @@ from .gen import render
 app = typer.Typer()
 
 
-def gen_filter_info(filter: FFMpegFilter) -> FFMpegFilter:
+def gen_filter_info(ffmpeg_filter: FFMpegFilter) -> FFMpegFilter:
     """
     Generate filter info
 
     Args:
-        filter: The filter
+        ffmpeg_filter: The filter
 
     Returns:
         The filter info
     """
-    filter_doc = extract_docs(filter.name)
+    filter_doc = extract_docs(ffmpeg_filter.name)
 
     # NOTE:
     # currently we only use filter_doc's url info
-    return replace(filter, ref=filter_doc.url)
+    return replace(ffmpeg_filter, ref=filter_doc.url)
 
 
 def gen_option_info() -> list[FFMpegOption]:
