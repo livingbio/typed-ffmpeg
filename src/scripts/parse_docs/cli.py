@@ -1,3 +1,7 @@
+"""
+Parse ffmpeg filter documents from the official ffmpeg documentation
+"""
+
 import re
 import urllib.request
 from functools import lru_cache
@@ -14,6 +18,12 @@ app = typer.Typer()
 
 @app.command()
 def download_ffmpeg_filter_documents() -> Path:
+    """
+    Download ffmpeg filter documents
+
+    Returns:
+        Path to the downloaded document
+    """
     document_path = cache_path / "docs"
     document_path.mkdir(exist_ok=True)
 
@@ -39,6 +49,12 @@ def download_ffmpeg_filter_documents() -> Path:
 @lru_cache
 @app.command()
 def process_docs() -> list[FilterDocument]:
+    """
+    Process ffmpeg filter documents
+
+    Returns:
+        List of FilterDocument objects
+    """
     # split documents into individual files for easier processing
     section_pattern = re.compile(
         r'(?P<body><h3 class="section"><a href="(.*?)">(?P<name>.*?)</a></h3>(.*?))<span',
@@ -64,6 +80,15 @@ def process_docs() -> list[FilterDocument]:
 
 @app.command()
 def extract_docs(filter_name: str) -> FilterDocument:
+    """
+    Extract ffmpeg filter document
+
+    Args:
+        filter_name: The name of the filter
+
+    Returns:
+        FilterDocument object
+    """
     for doc in process_docs():
         if filter_name in doc.filter_names:
             return doc
