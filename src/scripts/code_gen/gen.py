@@ -21,50 +21,68 @@ env = jinja2.Environment(
 )
 
 
-def filter_option_typing(self: FFMpegFilterOption) -> str:
+def filter_option_typing(option: FFMpegFilterOption) -> str:
+    """
+    The typing of the filter option
+
+    Args:
+        option: The filter option
+
+    Returns:
+        The typing of the filter option
+    """
     base_type = None
-    if self.type == FFMpegFilterOptionType.boolean:
+    if option.type == FFMpegFilterOptionType.boolean:
         base_type = "Boolean"
-    elif self.type == FFMpegFilterOptionType.duration:
+    elif option.type == FFMpegFilterOptionType.duration:
         base_type = "Duration"
-    elif self.type == FFMpegFilterOptionType.color:
+    elif option.type == FFMpegFilterOptionType.color:
         base_type = "Color"
-    elif self.type == FFMpegFilterOptionType.flags:
+    elif option.type == FFMpegFilterOptionType.flags:
         base_type = "Flags"
-    elif self.type == FFMpegFilterOptionType.dictionary:
+    elif option.type == FFMpegFilterOptionType.dictionary:
         base_type = "Dictionary"
-    elif self.type == FFMpegFilterOptionType.pix_fmt:
+    elif option.type == FFMpegFilterOptionType.pix_fmt:
         base_type = "Pix_fmt"
-    elif self.type == FFMpegFilterOptionType.int:
+    elif option.type == FFMpegFilterOptionType.int:
         base_type = "Int"
-    elif self.type == FFMpegFilterOptionType.int64:
+    elif option.type == FFMpegFilterOptionType.int64:
         base_type = "Int64"
-    elif self.type == FFMpegFilterOptionType.double:
+    elif option.type == FFMpegFilterOptionType.double:
         base_type = "Double"
-    elif self.type == FFMpegFilterOptionType.float:
+    elif option.type == FFMpegFilterOptionType.float:
         base_type = "Float"
-    elif self.type == FFMpegFilterOptionType.string:
+    elif option.type == FFMpegFilterOptionType.string:
         base_type = "String"
-    elif self.type == FFMpegFilterOptionType.video_rate:
+    elif option.type == FFMpegFilterOptionType.video_rate:
         base_type = "Video_rate"
-    elif self.type == FFMpegFilterOptionType.image_size:
+    elif option.type == FFMpegFilterOptionType.image_size:
         base_type = "Image_size"
-    elif self.type == FFMpegFilterOptionType.rational:
+    elif option.type == FFMpegFilterOptionType.rational:
         base_type = "Rational"
-    elif self.type == FFMpegFilterOptionType.sample_fmt:
+    elif option.type == FFMpegFilterOptionType.sample_fmt:
         base_type = "Sample_fmt"
-    elif self.type == FFMpegFilterOptionType.binary:
+    elif option.type == FFMpegFilterOptionType.binary:
         base_type = "Binary"
 
-    assert base_type, f"{self.type} not fit"
-    if not self.choices:
+    assert base_type, f"{option.type} not fit"
+    if not option.choices:
         return base_type
 
-    values = ",".join(f'"{i.name}"' for i in self.choices)
+    values = ",".join(f'"{i.name}"' for i in option.choices)
     return base_type + f"| Literal[{values}]"
 
 
 def stream_name_safe(string: str) -> str:
+    """
+    Convert stream name to safe name
+
+    Args:
+        string: The stream name
+
+    Returns:
+        The stream name safe
+    """
     opt_name = option_name_safe(string)
     if not opt_name.startswith("_"):
         return "_" + opt_name
@@ -72,6 +90,15 @@ def stream_name_safe(string: str) -> str:
 
 
 def option_name_safe(string: str) -> str:
+    """
+    Convert option name to safe name
+
+    Args:
+        string: The option name
+
+    Returns:
+        The option name safe
+    """
     if string in keyword.kwlist:
         return "_" + string
     if string[0].isdigit():
@@ -82,46 +109,83 @@ def option_name_safe(string: str) -> str:
     return string
 
 
-def option_typing(self: FFMpegOption) -> str:
-    if self.type == FFMpegOptionType.OPT_TYPE_FUNC:
+def option_typing(option: FFMpegOption) -> str:
+    """
+    The typing of the option
+
+    Args:
+        option: The option
+
+    Returns:
+        The typing of the option
+    """
+    if option.type == FFMpegOptionType.OPT_TYPE_FUNC:
         return "Func"
-    elif self.type == FFMpegOptionType.OPT_TYPE_BOOL:
+    elif option.type == FFMpegOptionType.OPT_TYPE_BOOL:
         return "Boolean"
-    elif self.type == FFMpegOptionType.OPT_TYPE_STRING:
+    elif option.type == FFMpegOptionType.OPT_TYPE_STRING:
         return "String"
-    elif self.type == FFMpegOptionType.OPT_TYPE_INT:
+    elif option.type == FFMpegOptionType.OPT_TYPE_INT:
         return "Int"
-    elif self.type == FFMpegOptionType.OPT_TYPE_INT64:
+    elif option.type == FFMpegOptionType.OPT_TYPE_INT64:
         return "Int64"
-    elif self.type == FFMpegOptionType.OPT_TYPE_FLOAT:
+    elif option.type == FFMpegOptionType.OPT_TYPE_FLOAT:
         return "Float"
-    elif self.type == FFMpegOptionType.OPT_TYPE_DOUBLE:
+    elif option.type == FFMpegOptionType.OPT_TYPE_DOUBLE:
         return "Double"
-    elif self.type == FFMpegOptionType.OPT_TYPE_TIME:
+    elif option.type == FFMpegOptionType.OPT_TYPE_TIME:
         return "Time"
 
 
-def input_typings(self: FFMpegFilter) -> str:
-    if self.formula_typings_input:
-        return self.formula_typings_input
+def input_typings(filter: FFMpegFilter) -> str:
+    """
+    The input typings of the filter
+
+    Args:
+        filter: The filter
+
+    Returns:
+        The input typings of the filter
+    """
+    if filter.formula_typings_input:
+        return filter.formula_typings_input
     return (
         "["
-        + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_input)
+        + ", ".join(f"StreamType.{i.type.value}" for i in filter.stream_typings_input)
         + "]"
     )
 
 
-def output_typings(self: FFMpegFilter) -> str:
-    if self.formula_typings_output:
-        return self.formula_typings_output
+def output_typings(filter: FFMpegFilter) -> str:
+    """
+    The output typings of the filter
+
+    Args:
+        filter: The filter
+
+    Returns:
+        The output typings of the filter
+    """
+    if filter.formula_typings_output:
+        return filter.formula_typings_output
     return (
         "["
-        + ", ".join(f"StreamType.{i.type.value}" for i in self.stream_typings_output)
+        + ", ".join(f"StreamType.{i.type.value}" for i in filter.stream_typings_output)
         + "]"
     )
 
 
 def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
+    """
+    The default value of the filter option
+
+    Args:
+        option: The filter option
+        f: The filter
+
+    Returns:
+        The default value of the filter option
+    """
     if option.name in f.pre_dict:
         return f"Auto({repr(f.pre_dict[option.name])})"
     if not isinstance(option.default, float) or not isnan(option.default):
@@ -130,17 +194,36 @@ def default_value(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
 
 
 def default_typings(option: FFMpegFilterOption, f: FFMpegFilter) -> str:
+    """
+    The default typing of the filter option
+
+    Args:
+        option: The filter option
+        f: The filter
+
+    Returns:
+        The default typing of the filter option
+    """
     if option.choices:
         return f"{filter_option_typing(option)} | Default = {default_value(option, f)}"
     return f"{filter_option_typing(option)} = {default_value(option, f)}"
 
 
-def filter_option_typings(self: FFMpegFilter) -> str:
+def filter_option_typings(filter: FFMpegFilter) -> str:
+    """
+    The typing of the filter options
+
+    Args:
+        filter: The filter
+
+    Returns:
+        The typing of the filter options
+    """
     output = []
 
-    for option in self.options:
+    for option in filter.options:
         output.append(
-            f"{option_name_safe(option.name)}: {default_typings(option, self)}"
+            f"{option_name_safe(option.name)}: {default_typings(option, filter)}"
         )
 
     if output:
@@ -160,6 +243,17 @@ env.filters["filter_option_typings"] = filter_option_typings
 def render(
     filters: list[FFMpegFilter], options: list[FFMpegOption], outpath: pathlib.Path
 ) -> list[pathlib.Path]:
+    """
+    Render the filter and option documents
+
+    Args:
+        filters: The filters
+        options: The options
+        outpath: The output path
+
+    Returns:
+        The rendered files
+    """
     outpath.mkdir(exist_ok=True)
     output = []
     for template_file in template_folder.glob("**/*.py.jinja"):

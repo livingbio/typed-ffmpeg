@@ -10,6 +10,12 @@ app = typer.Typer()
 
 @app.command()
 def all_filters() -> list[FFMpegFilter]:
+    """
+    Parse all filters from ffmpeg help
+
+    Returns:
+        The parsed filters
+    """
     output = []
 
     for filter_info in extract():

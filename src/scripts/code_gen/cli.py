@@ -16,6 +16,15 @@ app = typer.Typer()
 
 
 def gen_filter_info(filter: FFMpegFilter) -> FFMpegFilter:
+    """
+    Generate filter info
+
+    Args:
+        filter: The filter
+
+    Returns:
+        The filter info
+    """
     filter_doc = extract_docs(filter.name)
 
     # NOTE:
@@ -24,11 +33,23 @@ def gen_filter_info(filter: FFMpegFilter) -> FFMpegFilter:
 
 
 def gen_option_info() -> list[FFMpegOption]:
+    """
+    Generate option info
+
+    Returns:
+        The option info
+    """
     return parse_ffmpeg_options()
 
 
 @app.command()
 def generate(outpath: Path = None) -> None:
+    """
+    Generate filter and option documents
+
+    Args:
+        outpath: The output path
+    """
     if not outpath:
         outpath = Path(__file__).parent.parent.parent / "ffmpeg"
 
