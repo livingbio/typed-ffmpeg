@@ -5,6 +5,14 @@ from .schema import FilterDocument
 
 
 def convert_html_to_markdown(html: str) -> str:
+    """
+    Convert HTML to Markdown
+
+    Args:
+        html: The HTML to convert to Markdown
+
+    Returns:
+        The Markdown"""
     soup = BeautifulSoup(html, "html.parser")
 
     # Convert <dt> and <dd> tags to a more Markdown-friendly format
@@ -32,6 +40,15 @@ def convert_html_to_markdown(html: str) -> str:
 
 
 def parse_filter_document(body: str) -> FilterDocument:
+    """
+    Parse filter document
+
+    Args:
+        body: The HTML body of the filter document
+
+    Returns:
+        The parsed filter document
+    """
     soup = BeautifulSoup(body, "html.parser")
     h3 = soup.find("h3")
 
@@ -64,7 +81,16 @@ def parse_filter_document(body: str) -> FilterDocument:
     )
 
 
-def parse_paremeters(soup: Tag) -> dict[str, str]:
+def parse_parameters(soup: Tag) -> dict[str, str]:
+    """
+    Parse parameters from a filter document
+
+    Args:
+        soup: The BeautifulSoup object containing the filter document
+
+    Returns:
+        A dictionary of parameter names and descriptions
+    """
     parameters = []
     current_params = []
 
