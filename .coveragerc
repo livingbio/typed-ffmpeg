@@ -9,6 +9,7 @@ exclude_lines =
 omit =
     src/ffmpeg/dag/global_runnable/global_args.py
     src/ffmpeg/filters.py
+    src/ffmpge/sources.py
     src/ffmpeg/streams/video.py
     src/ffmpeg/streams/audio.py
     test_*.py
