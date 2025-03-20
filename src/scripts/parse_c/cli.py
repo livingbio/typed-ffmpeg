@@ -10,11 +10,17 @@ app = typer.Typer()
 
 @app.command()
 def pre_compile() -> None:
+    """
+    Pre-compile the ffmpeg source code
+    """
     precompile()
 
 
 @app.command()
 def parse_ffmpeg_options() -> list[FFMpegOption]:
+    """
+    Parse the ffmpeg options from C code
+    """
     precompile()
 
     ffmpeg_opt_c = target_folder / "fftools/ffmpeg_opt.c"

@@ -9,6 +9,9 @@ target_folder.mkdir(exist_ok=True)
 
 
 def precompile() -> None:
+    """
+    Pre-compile the ffmpeg source code
+    """
     print("precompile")
     os.chdir(source_folder)
 
