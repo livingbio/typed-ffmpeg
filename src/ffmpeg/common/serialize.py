@@ -8,6 +8,54 @@ from functools import partial
 from pathlib import Path
 from typing import Any
 
+CLASS_REGISTRY: dict[str, type[Serializable]] = {}
+"""
+A registry of all classes that implement the Serializable interface.
+"""
+
+
+class SerializableMeta(type):
+    """Metaclass that automatically registers Serializable subclasses."""
+
+    def __new__(
+        cls, name: str, bases: tuple[type, ...], class_dict: dict[str, Any]
+    ) -> type:
+        new_class = super().__new__(cls, name, bases, class_dict)
+
+        if issubclass(new_class, Serializable):
+            assert name not in CLASS_REGISTRY, f"Duplicate class name: {name}"
+            CLASS_REGISTRY[name] = new_class
+
+        return new_class
+
+
+class Serializable(metaclass=SerializableMeta):
+    """Interface for serializable objects.
+
+    Classes implementing this interface must provide methods to convert instances
+    to and from dictionaries. The serialization format should be JSON-compatible.
+    """
+
+    def serialize(self) -> dict[str, Any]:
+        """Serialize this instance to a dictionary.
+
+        Returns:
+            A dictionary containing the serialized data.
+        """
+        raise NotImplementedError()
+
+    @classmethod
+    def deserialize(cls, data: dict[str, Any]) -> Serializable:
+        """Deserialize a dictionary into an instance of this class.
+
+        Args:
+            data: Dictionary containing the serialized data.
+
+        Returns:
+            A new instance created from the serialized data.
+        """
+        raise NotImplementedError()
+
 
 def load_class(path: str, strict: bool = True) -> Any:
     """
