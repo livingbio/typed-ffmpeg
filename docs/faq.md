@@ -1,5 +1,13 @@
 # FAQ
 
+## How to use source filter
+
+typed-ffmpeg support ffmpeg source filters:
+
+- How to use predefined video/audio source filter can be find [Complex Filters](./usage/complex-filtering.ipynb)
+- How to customized video/audio source filter can be find [Customizing Filters](./usage/customizing-filters.ipynb)
+
+
 ## Differences Between ffmpeg-python and typed-ffmpeg
 
 typed-ffmpeg is designed with inspiration from ffmpeg-python and aims to follow good design principles. However, due to differences in approach and static typing requirements, there are some key distinctions. Below are the major differences between ffmpeg-python and typed-ffmpeg. If you notice any discrepancies or have suggestions for improvements, feel free to open an issue or submit a pull request.
@@ -27,7 +35,7 @@ The equivalent in typed-ffmpeg would be:
 )
 ```
 
-For more details: please read [Customizing Filters](./usage/complex-filtering.ipynb)
+For more details: please read [Complex Filters](./usage/complex-filtering.ipynb)
 
 ### Additional Notes
 

@@ -5,6 +5,7 @@ from syrupy.extensions.json import JSONSnapshotExtension
 from ..base import input, merge_outputs, output, vfilter
 from ..filters import concat, join
 from ..schema import StreamType
+from ..sources import color
 from ..streams.video import VideoStream
 
 
@@ -214,4 +215,17 @@ def test_customize_vfilter(snapshot: SnapshotAssertion) -> None:
     assert (
         snapshot(extension_class=JSONSnapshotExtension)
         == gltransition.output(filename="output.mp4").compile()
+    )
+
+
+def test_source_filter(snapshot: SnapshotAssertion) -> None:
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        color(color="red", size="hd1080").output(filename="output.mp4").compile()
+    )
+
+    in_file = input("input.mp4")
+    assert snapshot(extension_class=JSONSnapshotExtension) == (
+        output(
+            in_file, color(color="red", size="hd1080"), filename="output.mp4"
+        ).compile()
     )

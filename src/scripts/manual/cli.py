@@ -12,6 +12,9 @@ app = typer.Typer()
 
 @app.command()
 def init_config() -> None:
+    """
+    Initialize the configuration
+    """
     for filter in all_filters():
         if filter.is_dynamic_input or filter.is_dynamic_output:
             try:
@@ -47,6 +50,15 @@ def migrate_config() -> None:  # pragma: no cover
 
 @app.command()
 def load_config(name: str) -> FFMpegFilterManuallyDefined | None:
+    """
+    Load the configuration
+
+    Args:
+        name: The name of the filter
+
+    Returns:
+        The configuration
+    """
     try:
         return load(FFMpegFilterManuallyDefined, name)
     except OSError:

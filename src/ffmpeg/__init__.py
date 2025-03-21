@@ -1,4 +1,4 @@
-from . import dag, filters
+from . import dag, filters, sources
 from .base import afilter, filter_multi_output, input, merge_outputs, output, vfilter
 from .dag import Stream
 from .exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
@@ -7,6 +7,7 @@ from .probe import probe
 from .streams import AudioStream, AVStream, VideoStream
 
 __all__ = [
+    "sources",
     "filters",
     "input",
     "output",
