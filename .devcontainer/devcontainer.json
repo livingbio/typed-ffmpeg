@@ -8,8 +8,10 @@
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
+        "ms-python.mypy-type-checker",
         "GitHub.copilot",
-        "ms-python.mypy-type-checker"
+        "GitHub.vscode-pull-request-github",
+        "mhutchie.git-graph"
       ],
       "settings": {
         "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
@@ -18,8 +20,16 @@
     }
   },
   "dockerFile": "Dockerfile",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
   "forwardPorts": [
     5000
+  ],
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=typed-ffmpeg-zshhistory,target=/root/commandhistory,type=volume",
+    "source=poetry-virtualenvs,target=/root/.cache/pypoetry/virtualenvs,type=volume"
   ],
   "name": "Python Development",
   "postCreateCommand": "bash .devcontainer/setup.sh",
