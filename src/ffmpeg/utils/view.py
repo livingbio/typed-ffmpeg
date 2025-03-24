@@ -1,3 +1,11 @@
+"""
+Visualization utilities for FFmpeg filter graphs.
+
+This module provides functionality to generate visual representations of
+FFmpeg filter graphs using Graphviz. These visualizations can be useful for
+understanding complex filter chains, debugging, and documentation purposes.
+"""
+
 from __future__ import annotations
 
 from typing import Literal
@@ -8,6 +16,22 @@ from ..dag.schema import Node
 
 
 def _get_node_color(node: Node) -> str | None:
+    """
+    Determine the appropriate color for a node in the graph visualization.
+
+    This internal helper function assigns specific colors to different types of nodes
+    to enhance visual differentiation in the rendered graph:
+    - Input nodes: green (#99cc00)
+    - Output nodes: blue (#99ccff)
+    - Filter nodes: yellow (#ffcc00)
+    - Other nodes: no specific color (None)
+
+    Args:
+        node: The node to assign a color to
+
+    Returns:
+        A hex color string or None if no specific color is assigned
+    """
     if isinstance(node, InputNode):
         color = "#99cc00"
     elif isinstance(node, OutputNode):
@@ -21,14 +45,32 @@ def _get_node_color(node: Node) -> str | None:
 
 def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
     """
-    Visualize the graph via graphviz.
+    Visualize a filter graph node and its dependencies using Graphviz.
+
+    This function creates a graphical representation of the FFmpeg filter graph
+    starting from the given node. It traverses the entire graph and generates
+    a visual diagram showing all nodes and their connections. The visualization
+    uses different colors to distinguish between input, output, and filter nodes.
 
     Args:
-        node: The node to visualize.
-        format: The format to render the graph in.
+        node: The root node to visualize (typically an output node)
+        format: The output format for the visualization (png, svg, or dot)
 
     Returns:
-        The path to the rendered graph.
+        The path to the rendered graph file
+
+    Raises:
+        ImportError: If the graphviz package is not installed
+
+    Example:
+        ```python
+        # Create a filter graph and visualize it
+        output = (
+            ffmpeg.input("input.mp4").filter("scale", 1280, 720).output("output.mp4")
+        )
+        graph_path = ffmpeg.utils.view(output, format="png")
+        print(f"Graph visualization saved to {graph_path}")
+        ```
     """
 
     try:

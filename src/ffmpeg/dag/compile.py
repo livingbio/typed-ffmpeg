@@ -1,3 +1,12 @@
+"""
+Compiles FFmpeg filter graphs into command-line arguments.
+
+This module provides functionality to convert the internal DAG (Directed Acyclic Graph)
+representation of an FFmpeg filter chain into the actual command-line arguments
+that would be passed to FFmpeg. It traverses the graph in the correct order,
+handling global options, inputs, complex filtergraphs, and outputs.
+"""
+
 from __future__ import annotations
 
 from .context import DAGContext
@@ -8,14 +17,40 @@ from .validate import validate
 
 def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
     """
-    Compile the stream into a list of arguments.
+    Compile a stream into a list of FFmpeg command-line arguments.
+
+    This function takes a Stream object representing an FFmpeg filter graph
+    and converts it into a list of command-line arguments that can be passed
+    to FFmpeg. It processes the graph in the correct order:
+    1. Global nodes (general FFmpeg options)
+    2. Input nodes (input files and their options)
+    3. Filter nodes (combined into a -filter_complex argument)
+    4. Output nodes (output files and their options)
+
+    The function validates the graph before compilation to ensure it's properly
+    formed. If auto_fix is enabled, it will attempt to fix common issues.
 
     Args:
-        stream: The stream to compile.
-        auto_fix: Whether to automatically fix the stream.
+        stream: The Stream object to compile into arguments
+        auto_fix: Whether to automatically fix issues in the stream
+                 (e.g., reconnecting disconnected nodes)
 
     Returns:
-        The list of arguments.
+        A list of strings representing FFmpeg command-line arguments
+
+    Example:
+        ```python
+        # Create a simple video scaling filter graph
+        input_stream = ffmpeg.input("input.mp4")
+        scaled = input_stream.filter("scale", 1280, 720)
+        output_stream = scaled.output("output.mp4")
+
+        # Compile to FFmpeg arguments
+        args = ffmpeg.dag.compile(output_stream)
+        print(
+            args
+        )  # ['ffmpeg', '-i', 'input.mp4', '-filter_complex', '...', 'output.mp4']
+        ```
     """
 
     stream = validate(stream, auto_fix=auto_fix)
