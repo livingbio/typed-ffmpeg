@@ -12,27 +12,14 @@
               "node": {
                 "filename": "tmp.mp4",
                 "inputs": [],
-                "kwargs": []
+                "kwargs": "FrozenDict({})"
               }
             }
           ],
-          "kwargs": []
+          "kwargs": "FrozenDict({})"
         }
       }
     ],
-    "kwargs": [
-      [
-        "y",
-        true
-      ],
-      [
-        "no",
-        false
-      ],
-      [
-        "speed",
-        1
-      ]
-    ]
+    "kwargs": "FrozenDict({'y': True, 'no': False, 'speed': 1})"
   }
 }

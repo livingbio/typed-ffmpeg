@@ -14,22 +14,22 @@
                     "index": null,
                     "node": {
                       "inputs": [],
-                      "kwargs": [],
+                      "kwargs": "FrozenDict({})",
                       "name": "A"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "E"
               }
             }
           ],
-          "kwargs": [],
+          "kwargs": "FrozenDict({})",
           "name": "C"
         }
       }
     ],
-    "kwargs": [],
+    "kwargs": "FrozenDict({})",
     "name": "D"
   }
 }

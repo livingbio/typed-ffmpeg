@@ -6,6 +6,7 @@ from typing import Any
 
 from ...streams.av import AVStream
 from ...types import Boolean, Double, Float, Int, String, Time
+from ...utils.forzendict import FrozenDict
 from ..nodes import InputNode
 
 
@@ -195,5 +196,5 @@ def input(
     }
 
     return InputNode(
-        filename=str(filename), kwargs=tuple((options | (extra_options or {})).items())
+        filename=str(filename), kwargs=FrozenDict(options | (extra_options or {}))
     ).stream()

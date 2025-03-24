@@ -12,11 +12,11 @@
               "node": {
                 "filename": "tmp1.mp4",
                 "inputs": [],
-                "kwargs": []
+                "kwargs": "FrozenDict({})"
               }
             }
           ],
-          "kwargs": []
+          "kwargs": "FrozenDict({})"
         }
       },
       {
@@ -29,14 +29,14 @@
               "node": {
                 "filename": "tmp2.mp4",
                 "inputs": [],
-                "kwargs": []
+                "kwargs": "FrozenDict({})"
               }
             }
           ],
-          "kwargs": []
+          "kwargs": "FrozenDict({})"
         }
       }
     ],
-    "kwargs": []
+    "kwargs": "FrozenDict({})"
   }
 }

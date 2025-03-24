@@ -16,6 +16,7 @@ from .dag.nodes import (
 from .schema import StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
+from .utils.forzendict import FrozenDict
 
 
 def merge_outputs(*streams: OutputStream) -> GlobalStream:
@@ -57,7 +58,7 @@ def vfilter(
         inputs=streams,
         output_typings=(StreamType.video,),
         input_typings=input_typings,
-        kwargs=tuple(kwargs.items()),
+        kwargs=FrozenDict(kwargs),
     ).video(0)
 
 
@@ -87,7 +88,7 @@ def afilter(
         inputs=streams,
         output_typings=(StreamType.audio,),
         input_typings=input_typings,
-        kwargs=tuple(kwargs.items()),
+        kwargs=FrozenDict(kwargs),
     ).audio(0)
 
 
@@ -116,7 +117,7 @@ def filter_multi_output(
     """
     return FilterNode(
         name=name,
-        kwargs=tuple(kwargs.items()),
+        kwargs=FrozenDict(kwargs),
         inputs=streams,
         input_typings=input_typings,
         output_typings=output_tyings,

@@ -10,12 +10,12 @@
               "index": null,
               "node": {
                 "inputs": [],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "A"
               }
             }
           ],
-          "kwargs": [],
+          "kwargs": "FrozenDict({})",
           "name": "E"
         }
       },
@@ -27,17 +27,17 @@
               "index": null,
               "node": {
                 "inputs": [],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "A"
               }
             }
           ],
-          "kwargs": [],
+          "kwargs": "FrozenDict({})",
           "name": "B"
         }
       }
     ],
-    "kwargs": [],
+    "kwargs": "FrozenDict({})",
     "name": "D"
   }
 }

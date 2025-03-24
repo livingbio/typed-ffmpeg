@@ -5,6 +5,7 @@ from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import TYPE_CHECKING, Literal
 
+from ..utils.forzendict import FrozenDict
 from ..utils.lazy_eval.schema import LazyValue
 from .utils import is_dag
 
@@ -84,7 +85,8 @@ class Node(HashableBaseModel, ABC):
     """
 
     # Filter_Node_Option_Type
-    kwargs: tuple[tuple[str, str | int | float | bool | LazyValue], ...] = ()
+    # kwargs: tuple[tuple[str, str | int | float | bool | LazyValue], ...] = ()
+    kwargs: FrozenDict[str, str | int | float | bool | LazyValue] = FrozenDict({})
     """
     Represents the keyword arguments of the node.
     """

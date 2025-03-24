@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING, Any
 from ..exceptions import FFMpegTypeError, FFMpegValueError
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
+from ..utils.forzendict import FrozenDict
 from ..utils.lazy_eval.schema import LazyValue
 from ..utils.typing import override
 from .global_runnable.runnable import GlobalRunable
@@ -143,7 +144,7 @@ class FilterNode(Node):
             outgoing_labels += f"[{output.label(context)}]"
 
         commands = []
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             assert not isinstance(value, LazyValue), (
                 f"LazyValue should have been evaluated: {key}={value}"
             )
@@ -191,7 +192,7 @@ class FilterableStream(Stream, OutputArgs):
         return OutputNode(
             inputs=(self, *streams),
             filename=str(filename),
-            kwargs=tuple(kwargs.items()),
+            kwargs=FrozenDict(kwargs),
         )
 
     def vfilter(
@@ -271,7 +272,7 @@ class FilterableStream(Stream, OutputArgs):
         """
         return FilterNode(
             name=name,
-            kwargs=tuple(kwargs.items()),
+            kwargs=FrozenDict(kwargs),
             inputs=(self, *streams),
             input_typings=input_typings,
             output_typings=output_typings,
@@ -376,7 +377,7 @@ class InputNode(Node):
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
@@ -424,7 +425,7 @@ class OutputNode(Node):
                 else:
                     commands += ["-map", f"[{input.label(context)}]"]
 
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
@@ -451,7 +452,7 @@ class OutputStream(Stream, GlobalRunable):
         Returns:
             the output stream
         """
-        return GlobalNode(inputs=(self, *streams), kwargs=tuple(kwargs.items()))
+        return GlobalNode(inputs=(self, *streams), kwargs=FrozenDict(kwargs))
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -478,7 +479,7 @@ class GlobalNode(Node):
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
@@ -507,5 +508,5 @@ class GlobalStream(Stream, GlobalRunable):
         inputs = (*self.node.inputs, *streams)
         kwargs = dict(self.node.kwargs) | kwargs
 
-        new_node = replace(self.node, inputs=inputs, kwargs=tuple(kwargs.items()))
+        new_node = replace(self.node, inputs=inputs, kwargs=FrozenDict(kwargs))
         return new_node

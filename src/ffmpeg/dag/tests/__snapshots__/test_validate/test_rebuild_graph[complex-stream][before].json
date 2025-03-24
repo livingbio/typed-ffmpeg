@@ -25,11 +25,11 @@
                     "node": {
                       "filename": "input1.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "reverse",
                 "output_typings": [
                   "video"
@@ -48,11 +48,11 @@
                     "node": {
                       "filename": "input2.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "areverse",
                 "output_typings": [
                   "audio"
@@ -71,11 +71,11 @@
                     "node": {
                       "filename": "input1.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "reverse",
                 "output_typings": [
                   "video"
@@ -94,11 +94,11 @@
                     "node": {
                       "filename": "input2.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "areverse",
                 "output_typings": [
                   "audio"
@@ -106,20 +106,7 @@
               }
             }
           ],
-          "kwargs": [
-            [
-              "n",
-              2
-            ],
-            [
-              "v",
-              1
-            ],
-            [
-              "a",
-              1
-            ]
-          ],
+          "kwargs": "FrozenDict({'n': 2, 'v': 1, 'a': 1})",
           "name": "concat",
           "output_typings": [
             "video",
@@ -149,11 +136,11 @@
                     "node": {
                       "filename": "input1.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "reverse",
                 "output_typings": [
                   "video"
@@ -172,11 +159,11 @@
                     "node": {
                       "filename": "input2.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "areverse",
                 "output_typings": [
                   "audio"
@@ -195,11 +182,11 @@
                     "node": {
                       "filename": "input1.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "reverse",
                 "output_typings": [
                   "video"
@@ -218,11 +205,11 @@
                     "node": {
                       "filename": "input2.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "areverse",
                 "output_typings": [
                   "audio"
@@ -230,20 +217,7 @@
               }
             }
           ],
-          "kwargs": [
-            [
-              "n",
-              2
-            ],
-            [
-              "v",
-              1
-            ],
-            [
-              "a",
-              1
-            ]
-          ],
+          "kwargs": "FrozenDict({'n': 2, 'v': 1, 'a': 1})",
           "name": "concat",
           "output_typings": [
             "video",
@@ -252,6 +226,6 @@
         }
       }
     ],
-    "kwargs": []
+    "kwargs": "FrozenDict({})"
   }
 }

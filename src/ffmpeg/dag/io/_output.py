@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from ...types import Boolean, Float, Func, Int, Int64, String, Time
+from ...utils.forzendict import FrozenDict
 from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
@@ -318,5 +319,5 @@ def output(
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=tuple((options | (extra_options or {})).items()),
+        kwargs=FrozenDict(options | (extra_options or {})),
     ).stream()

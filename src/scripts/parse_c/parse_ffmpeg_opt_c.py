@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+"""
+Module for parsing FFmpeg options from C source code.
+
+This module extracts FFmpeg command-line options by parsing the options array
+in the ffmpeg_opt.c file. It identifies option names, types, flags, help text,
+and other properties to build a structured representation of FFmpeg's CLI options.
+"""
+
 import re
 from dataclasses import replace
 

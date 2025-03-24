@@ -3,11 +3,6 @@
   "node": {
     "filename": "test.mp4",
     "inputs": [],
-    "kwargs": [
-      [
-        "bufsize",
-        "64k"
-      ]
-    ]
+    "kwargs": "FrozenDict({'bufsize': '64k'})"
   }
 }
