@@ -2,10 +2,10 @@
 
 
 from pathlib import Path
-from types import MappingProxyType
 from typing import Any
 
 from ...types import Boolean, Float, Func, Int, Int64, String, Time
+from ...utils.forzendict import FrozenDict
 from ..nodes import FilterableStream, OutputNode, OutputStream
 
 
@@ -319,5 +319,5 @@ def output(
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=MappingProxyType(options | (extra_options or {})),
+        kwargs=FrozenDict(options | (extra_options or {})),
     ).stream()

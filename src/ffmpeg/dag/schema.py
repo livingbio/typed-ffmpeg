@@ -3,9 +3,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
-from types import MappingProxyType
 from typing import TYPE_CHECKING, Literal
 
+from ..utils.forzendict import FrozenDict
 from ..utils.lazy_eval.schema import LazyValue
 from .utils import is_dag
 
@@ -86,9 +86,7 @@ class Node(HashableBaseModel, ABC):
 
     # Filter_Node_Option_Type
     # kwargs: tuple[tuple[str, str | int | float | bool | LazyValue], ...] = ()
-    kwargs: MappingProxyType[str, str | int | float | bool | LazyValue] = (
-        MappingProxyType({})
-    )
+    kwargs: FrozenDict[str, str | int | float | bool | LazyValue] = FrozenDict({})
     """
     Represents the keyword arguments of the node.
     """

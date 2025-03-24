@@ -14,12 +14,12 @@
                     "index": null,
                     "node": {
                       "inputs": [],
-                      "kwargs": [],
+                      "kwargs": "FrozenDict({})",
                       "name": "A"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "B"
               }
             },
@@ -27,12 +27,12 @@
               "index": null,
               "node": {
                 "inputs": [],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "A"
               }
             }
           ],
-          "kwargs": [],
+          "kwargs": "FrozenDict({})",
           "name": "C#"
         }
       },
@@ -44,17 +44,17 @@
               "index": null,
               "node": {
                 "inputs": [],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "A"
               }
             }
           ],
-          "kwargs": [],
+          "kwargs": "FrozenDict({})",
           "name": "B"
         }
       }
     ],
-    "kwargs": [],
+    "kwargs": "FrozenDict({})",
     "name": "D"
   }
 }

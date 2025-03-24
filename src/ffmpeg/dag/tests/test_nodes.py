@@ -1,5 +1,4 @@
 from pathlib import Path
-from types import MappingProxyType
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
@@ -9,6 +8,7 @@ from ...base import input
 from ...exceptions import FFMpegExecuteError
 from ...filters import concat
 from ...schema import StreamType
+from ...utils.forzendict import FrozenDict
 from ...utils.snapshot import DAGSnapshotExtenstion
 from ..context import DAGContext
 from ..nodes import (
@@ -28,7 +28,7 @@ from ..schema import Node
         pytest.param(
             InputNode(
                 filename="test.mp4",
-                kwargs=MappingProxyType(
+                kwargs=FrozenDict(
                     {"f": "mp4"},
                 ),
             ),
@@ -38,7 +38,7 @@ from ..schema import Node
         pytest.param(
             OutputNode(
                 filename="test.mp4",
-                kwargs=MappingProxyType(
+                kwargs=FrozenDict(
                     {"bufsize": "64k"},
                 ),
                 inputs=(),
@@ -49,7 +49,7 @@ from ..schema import Node
         pytest.param(
             FilterNode(
                 name="scale",
-                kwargs=MappingProxyType(
+                kwargs=FrozenDict(
                     {"w": "1920", "h": "1080", "true": True, "false": False}
                 ),
             ),
@@ -185,7 +185,7 @@ def test_output_run(datadir: Path) -> None:
 def test_filter_node_output_typings() -> None:
     f = FilterNode(
         name="scale",
-        kwargs=MappingProxyType(
+        kwargs=FrozenDict(
             {
                 "w": "1920",
                 "h": "1080",
@@ -198,7 +198,7 @@ def test_filter_node_output_typings() -> None:
 
     f = FilterNode(
         name="scale",
-        kwargs=MappingProxyType({"w": "1920", "h": "1080"}),
+        kwargs=FrozenDict({"w": "1920", "h": "1080"}),
         output_typings=(StreamType.audio,),
     )
 
@@ -214,7 +214,7 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
 
     assert snapshot(extension_class=JSONSnapshotExtension) == FilterNode(
         name="scale",
-        kwargs=MappingProxyType({"w": "1920", "h": "1080"}),
+        kwargs=FrozenDict({"w": "1920", "h": "1080"}),
         inputs=(in_file.video, in_file.audio),
         input_typings=(StreamType.video, StreamType.audio),
     )
@@ -229,7 +229,7 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(TypeError) as te:
         FilterNode(
             name="scale",
-            kwargs=MappingProxyType({"w": "1920", "h": "1080"}),
+            kwargs=FrozenDict({"w": "1920", "h": "1080"}),
             inputs=(in_file.video,),
             input_typings=(StreamType.audio,),
         )
@@ -239,7 +239,7 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
     with pytest.raises(TypeError) as te:
         FilterNode(
             name="scale",
-            kwargs=MappingProxyType({"w": "1920", "h": "1080"}),
+            kwargs=FrozenDict({"w": "1920", "h": "1080"}),
             inputs=(in_file.audio,),
             input_typings=(StreamType.video,),
         )
@@ -260,7 +260,7 @@ def test_custom_filter(snapshot: SnapshotAssertion) -> None:
 
 
 def test_input_selector(snapshot: SnapshotAssertion) -> None:
-    node = InputNode(filename="test.mp4", kwargs=MappingProxyType({"f": "mp4"}))
+    node = InputNode(filename="test.mp4", kwargs=FrozenDict({"f": "mp4"}))
 
     assert (
         snapshot(extension_class=JSONSnapshotExtension)

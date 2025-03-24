@@ -4,12 +4,12 @@ import logging
 import os.path
 from dataclasses import dataclass, replace
 from pathlib import Path
-from types import MappingProxyType
 from typing import TYPE_CHECKING, Any
 
 from ..exceptions import FFMpegTypeError, FFMpegValueError
 from ..schema import Default, StreamType
 from ..utils.escaping import escape
+from ..utils.forzendict import FrozenDict
 from ..utils.lazy_eval.schema import LazyValue
 from ..utils.typing import override
 from .global_runnable.runnable import GlobalRunable
@@ -192,7 +192,7 @@ class FilterableStream(Stream, OutputArgs):
         return OutputNode(
             inputs=(self, *streams),
             filename=str(filename),
-            kwargs=MappingProxyType(kwargs),
+            kwargs=FrozenDict(kwargs),
         )
 
     def vfilter(
@@ -272,7 +272,7 @@ class FilterableStream(Stream, OutputArgs):
         """
         return FilterNode(
             name=name,
-            kwargs=MappingProxyType(kwargs),
+            kwargs=FrozenDict(kwargs),
             inputs=(self, *streams),
             input_typings=input_typings,
             output_typings=output_typings,
@@ -452,7 +452,7 @@ class OutputStream(Stream, GlobalRunable):
         Returns:
             the output stream
         """
-        return GlobalNode(inputs=(self, *streams), kwargs=MappingProxyType(kwargs))
+        return GlobalNode(inputs=(self, *streams), kwargs=FrozenDict(kwargs))
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -508,5 +508,5 @@ class GlobalStream(Stream, GlobalRunable):
         inputs = (*self.node.inputs, *streams)
         kwargs = dict(self.node.kwargs) | kwargs
 
-        new_node = replace(self.node, inputs=inputs, kwargs=MappingProxyType(kwargs))
+        new_node = replace(self.node, inputs=inputs, kwargs=FrozenDict(kwargs))
         return new_node

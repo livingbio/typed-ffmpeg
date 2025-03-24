@@ -3,11 +3,6 @@
   "node": {
     "filename": "test.mp4",
     "inputs": [],
-    "kwargs": [
-      [
-        "f",
-        "mp4"
-      ]
-    ]
+    "kwargs": "FrozenDict({'f': 'mp4'})"
   }
 }

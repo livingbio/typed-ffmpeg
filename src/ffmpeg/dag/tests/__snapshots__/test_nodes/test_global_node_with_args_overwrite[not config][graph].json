@@ -16,7 +16,7 @@
               "node": {
                 "filename": "tmp1.mp4",
                 "inputs": [],
-                "kwargs": []
+                "kwargs": "FrozenDict({})"
               }
             },
             {
@@ -24,16 +24,11 @@
               "node": {
                 "filename": "tmp2.mp4",
                 "inputs": [],
-                "kwargs": []
+                "kwargs": "FrozenDict({})"
               }
             }
           ],
-          "kwargs": [
-            [
-              "n",
-              2
-            ]
-          ],
+          "kwargs": "FrozenDict({'n': 2})",
           "name": "concat",
           "output_typings": [
             "video"
@@ -41,6 +36,6 @@
         }
       }
     ],
-    "kwargs": []
+    "kwargs": "FrozenDict({})"
   }
 }

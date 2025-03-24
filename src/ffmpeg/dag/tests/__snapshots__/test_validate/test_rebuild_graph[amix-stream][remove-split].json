@@ -30,11 +30,11 @@
                           "node": {
                             "filename": "input1.mp4",
                             "inputs": [],
-                            "kwargs": []
+                            "kwargs": "FrozenDict({})"
                           }
                         }
                       ],
-                      "kwargs": [],
+                      "kwargs": "FrozenDict({})",
                       "name": "areverse",
                       "output_typings": [
                         "audio"
@@ -42,7 +42,7 @@
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "areverse",
                 "output_typings": [
                   "audio"
@@ -61,11 +61,11 @@
                     "node": {
                       "filename": "input1.mp4",
                       "inputs": [],
-                      "kwargs": []
+                      "kwargs": "FrozenDict({})"
                     }
                   }
                 ],
-                "kwargs": [],
+                "kwargs": "FrozenDict({})",
                 "name": "areverse",
                 "output_typings": [
                   "audio"
@@ -73,16 +73,7 @@
               }
             }
           ],
-          "kwargs": [
-            [
-              "inputs",
-              2
-            ],
-            [
-              "duration",
-              "first"
-            ]
-          ],
+          "kwargs": "FrozenDict({'inputs': 2, 'duration': 'first'})",
           "name": "amix",
           "output_typings": [
             "audio"
@@ -90,6 +81,6 @@
         }
       }
     ],
-    "kwargs": []
+    "kwargs": "FrozenDict({})"
   }
 }

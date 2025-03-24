@@ -14,7 +14,7 @@ def test_filter_node_factory(snapshot: SnapshotAssertion) -> None:
         **{"n": Auto("len(streams)")},
     )
     assert snapshot == f
-    assert f.kwargs == tuple({"n": 0}.items())
+    assert f.kwargs == {"n": 0}
 
     f = filter_node_factory(
         FFMpegFilterDef(name="foo", typings_input="[StreamType.video]*n"),
@@ -22,7 +22,7 @@ def test_filter_node_factory(snapshot: SnapshotAssertion) -> None:
         **{"n": Auto("len(streams)")},
     )
     assert snapshot == f
-    assert f.kwargs == tuple({"n": 1}.items())
+    assert f.kwargs == {"n": 1}
 
     f = filter_node_factory(
         FFMpegFilterDef(name="foo", typings_input="[StreamType.video]*n"),
@@ -31,4 +31,4 @@ def test_filter_node_factory(snapshot: SnapshotAssertion) -> None:
         **{"n": Auto("len(streams)")},
     )
     assert snapshot == f
-    assert f.kwargs == tuple({"n": 2}.items())
+    assert f.kwargs == {"n": 2}

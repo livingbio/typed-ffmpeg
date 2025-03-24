@@ -30,11 +30,11 @@
                           "node": {
                             "filename": "input.mp4",
                             "inputs": [],
-                            "kwargs": []
+                            "kwargs": "FrozenDict({})"
                           }
                         }
                       ],
-                      "kwargs": [],
+                      "kwargs": "FrozenDict({})",
                       "name": "reverse",
                       "output_typings": [
                         "video"
@@ -42,12 +42,7 @@
                     }
                   }
                 ],
-                "kwargs": [
-                  [
-                    "outputs",
-                    2
-                  ]
-                ],
+                "kwargs": "FrozenDict({'outputs': 2})",
                 "name": "split",
                 "output_typings": [
                   "video",
@@ -74,11 +69,11 @@
                           "node": {
                             "filename": "input.mp4",
                             "inputs": [],
-                            "kwargs": []
+                            "kwargs": "FrozenDict({})"
                           }
                         }
                       ],
-                      "kwargs": [],
+                      "kwargs": "FrozenDict({})",
                       "name": "reverse",
                       "output_typings": [
                         "video"
@@ -86,12 +81,7 @@
                     }
                   }
                 ],
-                "kwargs": [
-                  [
-                    "outputs",
-                    2
-                  ]
-                ],
+                "kwargs": "FrozenDict({'outputs': 2})",
                 "name": "split",
                 "output_typings": [
                   "video",
@@ -100,12 +90,7 @@
               }
             }
           ],
-          "kwargs": [
-            [
-              "n",
-              2
-            ]
-          ],
+          "kwargs": "FrozenDict({'n': 2})",
           "name": "concat",
           "output_typings": [
             "video"
@@ -113,6 +98,6 @@
         }
       }
     ],
-    "kwargs": []
+    "kwargs": "FrozenDict({})"
   }
 }
