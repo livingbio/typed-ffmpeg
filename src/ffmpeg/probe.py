@@ -1,3 +1,11 @@
+"""
+Module for analyzing media files with ffprobe.
+
+This module provides functionality to extract detailed metadata from media files
+using FFmpeg's ffprobe utility. It returns a structured representation of the
+file's format, streams, and other relevant information.
+"""
+
 import json
 import logging
 import subprocess
@@ -18,16 +26,33 @@ def probe(
     **kwargs: Any,
 ) -> dict[str, Any]:
     """
-    Run ffprobe on the given file and return a JSON representation of the output
+    Analyze a media file using ffprobe and return its metadata as a dictionary.
+
+    This function executes ffprobe to extract detailed information about a media file,
+    including format metadata (container format, duration, bitrate) and stream information
+    (codecs, resolution, sample rate, etc). The result is returned as a Python dictionary
+    parsed from ffprobe's JSON output.
 
     Args:
-        filename: The path to the file to probe.
-        cmd: The ffprobe command to run. Defaults to "ffprobe".
-        timeout: The timeout for the command. Defaults to None.
-        **kwargs: The arguments for the ffprobe command.
+        filename: Path to the media file to analyze
+        cmd: Path or name of the ffprobe executable (default: "ffprobe")
+        timeout: Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)
+        **kwargs: Additional arguments to pass to ffprobe as command line parameters
+            (e.g., loglevel="quiet", skip_frame="nokey")
 
     Returns:
-        The JSON representation of the ffprobe output.
+        A dictionary containing the parsed JSON output from ffprobe with format and stream information
+
+    Raises:
+        FFMpegExecuteError: If ffprobe returns a non-zero exit code
+        subprocess.TimeoutExpired: If the timeout is reached before ffprobe completes
+
+    Example:
+        ```python
+        info = probe("video.mp4")
+        print(f"Duration: {float(info['format']['duration']):.2f} seconds")
+        print(f"Streams: {len(info['streams'])}")
+        ```
     """
     args = [cmd, "-show_format", "-show_streams", "-of", "json"]
     args += convert_kwargs_to_cmd_line_args(kwargs)
