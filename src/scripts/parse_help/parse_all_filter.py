@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+"""
+Module for extracting filter information from FFmpeg's -filters output.
+
+This module parses the output of the 'ffmpeg -filters' command to extract
+information about all available filters, including their capabilities,
+input/output stream types, and other metadata.
+"""
+
 import re
 import subprocess
 

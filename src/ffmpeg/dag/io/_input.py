@@ -2,6 +2,7 @@
 
 
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any
 
 from ...streams.av import AVStream
@@ -195,5 +196,5 @@ def input(
     }
 
     return InputNode(
-        filename=str(filename), kwargs=tuple((options | (extra_options or {})).items())
+        filename=str(filename), kwargs=MappingProxyType(options | (extra_options or {}))
     ).stream()

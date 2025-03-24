@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+"""
+Module for parsing detailed filter information from FFmpeg's filter help output.
+
+This module extracts detailed information about individual FFmpeg filters by parsing
+the output of 'ffmpeg -h filter=<filter_name>'. It extracts information about filter
+options, input/output stream types, and other metadata that isn't available from the
+general filters list.
+"""
+
 import re
 import subprocess
 from collections import defaultdict

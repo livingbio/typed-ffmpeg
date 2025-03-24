@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+"""
+CLI for parsing FFmpeg C source code.
+
+This module provides commands to pre-compile FFmpeg source code and parse
+options from the C code, extracting structured information about FFmpeg's
+command-line options and their properties.
+"""
+
 import typer
 
 from ffmpeg.common.schema import FFMpegOption
@@ -5,7 +14,7 @@ from ffmpeg.common.schema import FFMpegOption
 from .parse_ffmpeg_opt_c import parse_ffmpeg_opt_c
 from .pre_compile import precompile, target_folder
 
-app = typer.Typer()
+app = typer.Typer(help="Parse FFmpeg C source code")
 
 
 @app.command()

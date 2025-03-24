@@ -4,6 +4,7 @@ import logging
 import os.path
 from dataclasses import dataclass, replace
 from pathlib import Path
+from types import MappingProxyType
 from typing import TYPE_CHECKING, Any
 
 from ..exceptions import FFMpegTypeError, FFMpegValueError
@@ -143,7 +144,7 @@ class FilterNode(Node):
             outgoing_labels += f"[{output.label(context)}]"
 
         commands = []
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             assert not isinstance(value, LazyValue), (
                 f"LazyValue should have been evaluated: {key}={value}"
             )
@@ -191,7 +192,7 @@ class FilterableStream(Stream, OutputArgs):
         return OutputNode(
             inputs=(self, *streams),
             filename=str(filename),
-            kwargs=tuple(kwargs.items()),
+            kwargs=MappingProxyType(kwargs),
         )
 
     def vfilter(
@@ -271,7 +272,7 @@ class FilterableStream(Stream, OutputArgs):
         """
         return FilterNode(
             name=name,
-            kwargs=tuple(kwargs.items()),
+            kwargs=MappingProxyType(kwargs),
             inputs=(self, *streams),
             input_typings=input_typings,
             output_typings=output_typings,
@@ -376,7 +377,7 @@ class InputNode(Node):
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
@@ -424,7 +425,7 @@ class OutputNode(Node):
                 else:
                     commands += ["-map", f"[{input.label(context)}]"]
 
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
@@ -451,7 +452,7 @@ class OutputStream(Stream, GlobalRunable):
         Returns:
             the output stream
         """
-        return GlobalNode(inputs=(self, *streams), kwargs=tuple(kwargs.items()))
+        return GlobalNode(inputs=(self, *streams), kwargs=MappingProxyType(kwargs))
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -478,7 +479,7 @@ class GlobalNode(Node):
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
         commands = []
-        for key, value in self.kwargs:
+        for key, value in self.kwargs.items():
             if isinstance(value, bool):
                 if value is True:
                     commands += [f"-{key}"]
@@ -507,5 +508,5 @@ class GlobalStream(Stream, GlobalRunable):
         inputs = (*self.node.inputs, *streams)
         kwargs = dict(self.node.kwargs) | kwargs
 
-        new_node = replace(self.node, inputs=inputs, kwargs=tuple(kwargs.items()))
+        new_node = replace(self.node, inputs=inputs, kwargs=MappingProxyType(kwargs))
         return new_node

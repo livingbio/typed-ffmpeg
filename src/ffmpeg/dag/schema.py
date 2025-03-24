@@ -3,6 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
+from types import MappingProxyType
 from typing import TYPE_CHECKING, Literal
 
 from ..utils.lazy_eval.schema import LazyValue
@@ -84,7 +85,10 @@ class Node(HashableBaseModel, ABC):
     """
 
     # Filter_Node_Option_Type
-    kwargs: tuple[tuple[str, str | int | float | bool | LazyValue], ...] = ()
+    # kwargs: tuple[tuple[str, str | int | float | bool | LazyValue], ...] = ()
+    kwargs: MappingProxyType[str, str | int | float | bool | LazyValue] = (
+        MappingProxyType({})
+    )
     """
     Represents the keyword arguments of the node.
     """

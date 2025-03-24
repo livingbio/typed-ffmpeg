@@ -2,6 +2,7 @@
 
 
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any
 
 from ...types import Boolean, Float, Func, Int, Int64, String, Time
@@ -318,5 +319,5 @@ def output(
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=tuple((options | (extra_options or {})).items()),
+        kwargs=MappingProxyType(options | (extra_options or {})),
     ).stream()

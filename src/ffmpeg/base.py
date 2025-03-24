@@ -2,6 +2,7 @@
 This module defined the basic functions for creating the ffmpeg filter graph.
 """
 
+from types import MappingProxyType
 from typing import Any
 
 from .dag.io._input import input
@@ -57,7 +58,7 @@ def vfilter(
         inputs=streams,
         output_typings=(StreamType.video,),
         input_typings=input_typings,
-        kwargs=tuple(kwargs.items()),
+        kwargs=MappingProxyType(kwargs),
     ).video(0)
 
 
@@ -87,7 +88,7 @@ def afilter(
         inputs=streams,
         output_typings=(StreamType.audio,),
         input_typings=input_typings,
-        kwargs=tuple(kwargs.items()),
+        kwargs=MappingProxyType(kwargs),
     ).audio(0)
 
 
@@ -116,7 +117,7 @@ def filter_multi_output(
     """
     return FilterNode(
         name=name,
-        kwargs=tuple(kwargs.items()),
+        kwargs=MappingProxyType(kwargs),
         inputs=streams,
         input_typings=input_typings,
         output_typings=output_tyings,

@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+"""
+CLI for parsing FFmpeg filter help information.
+
+This module provides commands to extract and parse filter information from FFmpeg's
+help output. It combines information from multiple sources to create comprehensive
+filter definitions with proper typing information.
+"""
+
 import typer
 
 from ffmpeg.common.schema import FFMpegFilter
@@ -5,7 +14,7 @@ from ffmpeg.common.schema import FFMpegFilter
 from .parse_all_filter import extract
 from .parse_filter import extract_avfilter_info_from_help
 
-app = typer.Typer()
+app = typer.Typer(help="Parse FFmpeg filter help information")
 
 
 @app.command()
