@@ -19,13 +19,13 @@ def init_config() -> None:
     dynamic inputs or outputs. These configuration files can then be manually edited
     to provide custom typing information for complex filters.
     """
-    for filter in all_filters():
-        if filter.is_dynamic_input or filter.is_dynamic_output:
+    for ffmpeg_filter in all_filters():
+        if ffmpeg_filter.is_dynamic_input or ffmpeg_filter.is_dynamic_output:
             try:
-                info = load(FFMpegFilterManuallyDefined, filter.name)
+                info = load(FFMpegFilterManuallyDefined, ffmpeg_filter.name)
             except OSError:  # pragma: no cover
-                info = FFMpegFilterManuallyDefined(name=filter.name)
-                save(info, filter.name)
+                info = FFMpegFilterManuallyDefined(name=ffmpeg_filter.name)
+                save(info, ffmpeg_filter.name)
 
 
 @app.command()
