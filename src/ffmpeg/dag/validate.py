@@ -114,7 +114,7 @@ def add_split(
         down_index: The input index in down_node where current_stream connects (for recursion)
         context: The DAG context containing graph relationship information
         mapping: Dictionary tracking the transformations (used for recursion,
-                pass None for initial call)
+                 pass None for initial call)
 
     Returns:
         A tuple containing:
