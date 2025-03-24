@@ -8,11 +8,16 @@ def convert_html_to_markdown(html: str) -> str:
     """
     Convert HTML to Markdown
 
+    This function converts HTML content to Markdown format, making special handling
+    for definition lists and other structures to ensure they're properly formatted
+    in the resulting Markdown.
+
     Args:
-        html: The HTML to convert to Markdown
+        html: The HTML content to convert to Markdown
 
     Returns:
-        The Markdown"""
+        The converted Markdown text
+    """
     soup = BeautifulSoup(html, "html.parser")
 
     # Convert <dt> and <dd> tags to a more Markdown-friendly format
@@ -41,13 +46,17 @@ def convert_html_to_markdown(html: str) -> str:
 
 def parse_filter_document(body: str) -> FilterDocument:
     """
-    Parse filter document
+    Parse filter document from HTML body content
+
+    This function extracts structured filter information from the HTML body content
+    of a filter documentation section. It identifies the filter title, names (as some
+    filters have multiple names/aliases), section reference identifiers, and cross-references.
 
     Args:
-        body: The HTML body of the filter document
+        body: The HTML body of the filter document section
 
     Returns:
-        The parsed filter document
+        A FilterDocument object containing the structured filter information
     """
     soup = BeautifulSoup(body, "html.parser")
     h3 = soup.find("h3")
@@ -85,11 +94,16 @@ def parse_parameters(soup: Tag) -> dict[str, str]:
     """
     Parse parameters from a filter document
 
+    This function extracts parameter information from a BeautifulSoup representation
+    of a filter document. It specifically looks for definition lists (dt/dd tags) where
+    parameters are defined, extracts parameter names from the <samp> elements in definition
+    terms, and their descriptions from the corresponding definition descriptions.
+
     Args:
-        soup: The BeautifulSoup object containing the filter document
+        soup: The BeautifulSoup Tag object containing the filter document
 
     Returns:
-        A dictionary of parameter names and descriptions
+        A dictionary mapping parameter names to their HTML descriptions
     """
     parameters = []
     current_params = []

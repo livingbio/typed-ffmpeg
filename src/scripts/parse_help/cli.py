@@ -20,10 +20,17 @@ app = typer.Typer(help="Parse FFmpeg filter help information")
 @app.command()
 def all_filters() -> list[FFMpegFilter]:
     """
-    Parse all filters from ffmpeg help
+    Parse all filters from FFmpeg help output
+
+    This function combines information from two sources:
+    1. The general filter list from 'ffmpeg -filters'
+    2. Detailed filter information from 'ffmpeg -h filter=<filter_name>'
+
+    It merges these sources to create comprehensive FFMpegFilter objects that include
+    both the high-level filter capabilities and detailed option information for each filter.
 
     Returns:
-        The parsed filters
+        A list of FFMpegFilter objects with complete filter information
     """
     output = []
 

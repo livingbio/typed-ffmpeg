@@ -21,12 +21,14 @@
   },
   "dockerFile": "Dockerfile",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/dhoeric/features/google-cloud-cli:1": {}
   },
   "forwardPorts": [
     5000
   ],
   "mounts": [
+    "source=${localEnv:HOME}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached",
     "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
     "source=typed-ffmpeg-zshhistory,target=/root/commandhistory,type=volume",
     "source=poetry-virtualenvs,target=/root/.cache/pypoetry/virtualenvs,type=volume"

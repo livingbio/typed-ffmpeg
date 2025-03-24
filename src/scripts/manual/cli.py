@@ -13,7 +13,11 @@ app = typer.Typer()
 @app.command()
 def init_config() -> None:
     """
-    Initialize the configuration
+    Initialize manual configuration files for filters
+
+    This command creates default manual configuration files for all filters that have
+    dynamic inputs or outputs. These configuration files can then be manually edited
+    to provide custom typing information for complex filters.
     """
     for filter in all_filters():
         if filter.is_dynamic_input or filter.is_dynamic_output:
@@ -27,7 +31,13 @@ def init_config() -> None:
 @app.command()
 def migrate_config() -> None:  # pragma: no cover
     """
-    Migrate the old schema to the new schema (it should only used once)
+    Migrate legacy configuration files to the current schema format
+
+    This command is meant to be run only once when transitioning from an older
+    version of the schema format to the current one. It locates legacy JSON schema
+    files, extracts relevant information, and saves them in the new format.
+
+    Note: This function is not covered by tests as it's a one-time migration utility.
     """
 
     for file in Path("./scripts/code_gen/schemas").glob("*.json"):
@@ -51,13 +61,17 @@ def migrate_config() -> None:  # pragma: no cover
 @app.command()
 def load_config(name: str) -> FFMpegFilterManuallyDefined | None:
     """
-    Load the configuration
+    Load manual configuration for a specific filter
+
+    This function attempts to load the manual configuration for a given filter by name.
+    If the configuration exists in the cache, it returns the configuration object.
+    If no configuration is found, it returns None.
 
     Args:
-        name: The name of the filter
+        name: The name of the filter to load configuration for
 
     Returns:
-        The configuration
+        The filter's manual configuration if found, None otherwise
     """
     try:
         return load(FFMpegFilterManuallyDefined, name)
