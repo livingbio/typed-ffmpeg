@@ -8,6 +8,8 @@ from functools import partial
 from pathlib import Path
 from typing import Any
 
+from ..utils.forzendict import FrozenDict
+
 
 def load_class(path: str, strict: bool = True) -> Any:
     """
@@ -44,7 +46,7 @@ def frozen(v: Any) -> Any:
         return tuple(frozen(i) for i in v)
 
     if isinstance(v, dict):
-        return tuple((key, frozen(value)) for key, value in v.items())
+        return FrozenDict({k: frozen(v) for k, v in v.items()})
 
     return v
 
@@ -98,7 +100,7 @@ def to_dict_with_class_info(instance: Any) -> Any:
         The dictionary with class information
     """
 
-    if isinstance(instance, dict):
+    if isinstance(instance, dict | FrozenDict):
         return {k: to_dict_with_class_info(v) for k, v in instance.items()}
     elif isinstance(instance, list):
         return [to_dict_with_class_info(v) for v in instance]
