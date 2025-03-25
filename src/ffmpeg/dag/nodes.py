@@ -174,7 +174,8 @@ class FilterNode(Node):
 
         This method creates the filter string that will be used in the
         filter_complex argument of the FFmpeg command. The format follows
-        FFmpeg's syntax: [in1][in2]filtername=param1=value1:param2=value2[out]
+        FFmpeg's syntax where input labels are followed by the filter name
+        and parameters, and then output labels.
 
         Args:
             context: Optional DAG context for resolving stream labels.
