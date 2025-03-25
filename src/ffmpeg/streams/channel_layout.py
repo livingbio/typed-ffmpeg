@@ -1,3 +1,16 @@
+"""
+Audio channel layout definitions for FFmpeg.
+
+This module defines a mapping between FFmpeg's channel layout names and
+the corresponding number of audio channels. This information is used for
+audio stream processing, filtering, and conversion operations.
+
+Channel layouts in FFmpeg represent different speaker configurations,
+such as mono (1 channel), stereo (2 channels), 5.1 (6 channels), etc.
+The names used in this dictionary match the standard names used by FFmpeg's
+channel layout API.
+"""
+
 CHANNEL_LAYOUT = {
     "mono": 1,
     "stereo": 2,

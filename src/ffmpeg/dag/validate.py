@@ -1,3 +1,13 @@
+"""
+Graph validation and transformation for FFmpeg filter chains.
+
+This module provides functionality to validate and fix FFmpeg filter graphs,
+particularly handling the case of stream reuse. In FFmpeg, a stream cannot
+be used as input to multiple filters without explicit split/asplit filters.
+This module detects such cases and automatically inserts the necessary split
+filters to ensure the graph is valid for FFmpeg processing.
+"""
+
 from __future__ import annotations
 
 from dataclasses import replace
@@ -14,14 +24,25 @@ def remove_split(
     current_stream: Stream, mapping: dict[Stream, Stream] = None
 ) -> tuple[Stream, dict[Stream, Stream]]:
     """
-    Rebuild the graph with the given mapping.
+    Remove all split nodes from the graph to prepare for reconstruction.
+
+    This function performs the first step of graph repair by recursively traversing
+    the graph and removing all existing split/asplit nodes. This creates a clean
+    graph without any stream splitting, which will then be reconstructed with proper
+    split nodes where needed.
+
+    The function works recursively, processing each node's inputs and creating a
+    new graph structure with the split nodes removed.
 
     Args:
-        current_stream: The stream to rebuild the graph with.
-        mapping: The mapping to rebuild the graph with.
+        current_stream: The starting stream to process
+        mapping: Dictionary mapping original streams to their new versions without splits
+                (used for recursion, pass None for initial call)
 
     Returns:
-        A tuple of the new node and the new mapping.
+        A tuple containing:
+        - The new stream corresponding to the input stream but with splits removed
+        - A mapping dictionary relating original streams to their new versions
     """
 
     # remove all split nodes
@@ -76,17 +97,31 @@ def add_split(
     mapping: dict[tuple[Stream, Node | None, int | None], Stream] = None,
 ) -> tuple[Stream, dict[tuple[Stream, Node | None, int | None], Stream]]:
     """
-    Add split nodes to the graph.
+    Add split nodes to the graph where streams are reused.
+
+    This function performs the second step of graph repair by traversing the
+    graph and adding split/asplit nodes where a stream is used as input to
+    multiple downstream nodes. In FFmpeg, each stream can only be used once
+    unless explicitly split.
+
+    The function detects cases where a stream has multiple outgoing connections
+    and inserts the appropriate split filter (split for video, asplit for audio),
+    connecting each output of the split to the corresponding downstream node.
 
     Args:
-        current_stream: The stream to add split nodes to.
-        down_node: The node use current_stream as input.
-        down_index: The index of the input stream in down_node.
-        context: The DAG context.
-        mapping: The mapping to add split nodes to.
+        current_stream: The stream to process for potential splitting
+        down_node: The downstream node that uses current_stream as input (for recursion)
+        down_index: The input index in down_node where current_stream connects (for recursion)
+        context: The DAG context containing graph relationship information
+        mapping: Dictionary tracking the transformations (used for recursion,
+                 pass None for initial call)
 
     Returns:
-        A tuple of the new node and the new mapping.
+        Stream: The new stream (possibly from a split node output) for the specified downstream connection
+        dict: A mapping dictionary relating original stream/connections to their new versions
+
+    Raises:
+        FFMpegValueError: If an unsupported stream type is encountered
     """
 
     if not context:
@@ -149,17 +184,24 @@ def add_split(
 
 def fix_graph(stream: Stream) -> Stream:
     """
-    Fix the graph by removing and adding split nodes.
+    Fix stream reuse issues in the filter graph by properly adding split nodes.
+
+    This function performs a complete graph repair operation by:
+    1. First removing all existing split/asplit nodes from the graph
+    2. Then adding new split/asplit nodes where needed to handle stream reuse
+
+    This ensures that the graph follows FFmpeg's requirement that each stream
+    output can only be used as input to one filter unless explicitly split.
 
     Args:
-        stream: The stream to fix.
+        stream: The root stream of the graph to fix (typically an output stream)
 
     Returns:
-        The fixed stream.
+        A new stream representing the fixed graph with proper splitting
 
     Note:
-        Fix the graph by resetting split nodes.
-        This function is for internal use only.
+        This function creates a new graph structure rather than modifying the
+        existing one, preserving the original graph.
     """
 
     stream, _ = remove_split(stream)
@@ -169,14 +211,35 @@ def fix_graph(stream: Stream) -> Stream:
 
 def validate(stream: Stream, auto_fix: bool = True) -> Stream:
     """
-    Validate the given DAG. If auto_fix is True, the graph will be automatically fixed to follow ffmpeg's rule.
+    Validate a filter graph and optionally fix stream reuse issues.
+
+    This function validates that the filter graph follows FFmpeg's rules,
+    particularly regarding stream reuse. In FFmpeg, a stream cannot be used
+    as input to multiple filters without an explicit split/asplit filter.
+
+    When auto_fix is True (the default), this function automatically inserts
+    the necessary split filters where needed, ensuring the graph is valid for
+    FFmpeg processing.
 
     Args:
-        stream: The DAG to validate.
-        auto_fix: Whether to automatically fix the graph.
+        stream: The stream representing the filter graph to validate
+        auto_fix: Whether to automatically fix stream reuse issues by adding
+                  appropriate split nodes
 
     Returns:
-        The validated DAG context.
+        Either the original stream (if no fixing needed/requested) or a new
+        stream representing the fixed graph
+
+    Example:
+        ```python
+        # Create a graph where the same stream is used twice (reused)
+        input_stream = ffmpeg.input("input.mp4")
+        # Use the same stream for both scaling and blurring (invalid in FFmpeg)
+        scaled = input_stream.filter("scale", 1280, 720)
+        blurred = input_stream.filter("boxblur", 2)
+        # Validate will automatically insert a split filter
+        valid_stream = ffmpeg.dag.validate(scaled.output("output.mp4"))
+        ```
     """
     if auto_fix:
         stream = fix_graph(stream)

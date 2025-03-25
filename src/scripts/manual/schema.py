@@ -4,7 +4,12 @@ from dataclasses import dataclass
 @dataclass(kw_only=True)
 class FFMpegFilterManuallyDefined:
     """
-    The manually defined filter
+    Manual definitions for FFmpeg filters
+
+    This class represents manually defined configuration for FFmpeg filters, particularly
+    for complex filters that cannot be fully automatically typed through parsing alone.
+    It allows for defining custom input/output type formulas and pre-processing steps
+    that are applied before code generation.
     """
 
     name: str

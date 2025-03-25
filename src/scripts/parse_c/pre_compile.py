@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+"""
+Module for pre-compiling FFmpeg source code.
+
+This module handles the preprocessing of FFmpeg C source code to make it easier
+to parse and analyze. It runs the FFmpeg configure script if needed, modifies
+configuration files to enable all components, and uses the C preprocessor to
+expand macros and includes in the source files, producing preprocessed versions
+that are more amenable to regex-based parsing.
+"""
+
 import os
 import pathlib
 import subprocess
