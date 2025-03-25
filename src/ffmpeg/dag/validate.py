@@ -117,10 +117,8 @@ def add_split(
                  pass None for initial call)
 
     Returns:
-        A tuple containing:
-        - The new stream (possibly from a split node output) for the specified
-          downstream connection
-        - A mapping dictionary relating original stream/connections to their new versions
+        Stream: The new stream (possibly from a split node output) for the specified downstream connection
+        dict: A mapping dictionary relating original stream/connections to their new versions
 
     Raises:
         FFMpegValueError: If an unsupported stream type is encountered
