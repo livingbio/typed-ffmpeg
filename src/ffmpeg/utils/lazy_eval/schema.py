@@ -1,3 +1,13 @@
+"""
+Schema for lazy evaluation of expressions in FFmpeg filter parameters.
+
+This module defines the core classes for lazy evaluation of expressions in
+FFmpeg filter parameters. It provides a way to represent expressions that
+can be evaluated at a later time, when all required values are available.
+This is particularly useful for parameters that depend on runtime information
+or need to be computed based on other parameters.
+"""
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
@@ -9,7 +19,15 @@ from ..typing import override
 
 class LazyValue(ABC):
     """
-    A base class for lazy evaluation.
+    Abstract base class for lazy evaluation of expressions.
+
+    LazyValue represents an expression that can be evaluated at a later time,
+    when all required values are available. It supports various arithmetic
+    operations, allowing complex expressions to be built and evaluated lazily.
+
+    This class serves as the foundation for the lazy evaluation system, with
+    concrete implementations like Symbol and LazyOperator providing specific
+    functionality.
     """
 
     def __add__(self, v: Any) -> LazyValue:
@@ -132,6 +150,14 @@ class LazyValue(ABC):
     def ready(self) -> bool:
         """
         Check if the lazy value is ready to be evaluated.
+
+        A lazy value is considered ready for evaluation when it doesn't require
+        any additional values to be provided. This is determined by checking if
+        the set of required keys is empty.
+
+        Returns:
+            True if the lazy value can be evaluated without additional values,
+            False otherwise
         """
         return not self.keys()
 
@@ -139,6 +165,14 @@ class LazyValue(ABC):
     def keys(self) -> set[str]:
         """
         Get the keys that are required to evaluate the lazy value.
+
+        This method returns the set of symbol names that must be provided
+        as values for the lazy value to be fully evaluated. For example,
+        if the lazy value represents the expression 'width * height',
+        this method would return {'width', 'height'}.
+
+        Returns:
+            A set of strings representing the required symbol names
         """
         ...
 
@@ -146,33 +180,80 @@ class LazyValue(ABC):
 @dataclass(frozen=True)
 class Symbol(LazyValue):
     """
-    A symbol that represents a variable in the lazy evaluation.
+    A symbol that represents a variable in lazy evaluation expressions.
 
-    Such as `x`, `y`, `z`, etc.
+    Symbol is a concrete implementation of LazyValue that represents a named
+    variable in an expression. When evaluating the expression, the actual value
+    of the symbol is provided through a dictionary of values.
+
+    Examples of symbols include variable names like 'width', 'height', or any
+    other parameter that will be provided at evaluation time rather than at
+    expression creation time.
+
+    Attributes:
+        key: The name of the variable this symbol represents
     """
 
     key: str
 
     def __str__(self) -> str:
+        """
+        Get a string representation of this symbol.
+
+        Returns:
+            The symbol's key as a string
+        """
         return str(self.key)
 
     @override
     def partial(self, **values: Any) -> Any:
+        """
+        Partially evaluate this symbol with the given values.
+
+        If the symbol's key is present in the values dictionary, returns the
+        corresponding value. Otherwise, returns the symbol itself (unchanged).
+
+        Args:
+            **values: Dictionary mapping symbol names to their values
+
+        Returns:
+            The value for this symbol if available, otherwise the symbol itself
+        """
         if self.key in values:
             return values[self.key]
         return self
 
     @override
     def keys(self) -> set[str]:
+        """
+        Get the set of symbol names required to evaluate this symbol.
+
+        For a Symbol, this is simply a set containing its own key.
+
+        Returns:
+            A set containing the symbol's key
+        """
         return {self.key}
 
 
 @dataclass(frozen=True, kw_only=True)
 class LazyOperator(LazyValue):
     """
-    A base class for lazy operators.
+    Abstract base class for operators in lazy evaluation expressions.
 
-    Such as `Add`, `Sub`, `Mul`, `TrueDiv`, `Pow`, `Neg`, `Pos`, `Abs`, `Mod`, `FloorDiv`.
+    LazyOperator is an abstract implementation of LazyValue that represents
+    mathematical operations in an expression. Concrete subclasses implement
+    specific operations like addition, subtraction, multiplication, etc.
+
+    This class provides the common structure and behavior for all operators,
+    including handling of operands that may themselves be LazyValues.
+
+    Attributes:
+        left: The left operand of the operation (or the only operand for unary operations)
+        right: The right operand of the operation (None for unary operations)
+
+    Concrete implementations include:
+        Add, Sub, Mul, TrueDiv, Pow, Neg, Pos, Abs, Mod, FloorDiv
     """
 
     left: Any = None
@@ -181,12 +262,37 @@ class LazyOperator(LazyValue):
     @abstractmethod
     def _eval(self, left: Any, right: Any) -> Any:
         """
-        Evaluate the operator with the given values.
+        Evaluate the operator with the given operand values.
+
+        This abstract method must be implemented by concrete operator subclasses
+        to define the specific operation to perform (e.g., addition, multiplication).
+
+        Args:
+            left: The evaluated left operand (or only operand for unary operations)
+            right: The evaluated right operand (may be None for unary operations)
+
+        Returns:
+            The result of applying the operation to the operands
         """
         ...
 
     @override
     def partial(self, **values: Any) -> Any:
+        """
+        Partially evaluate this operator with the given values.
+
+        This method recursively evaluates the operands (which may themselves be
+        LazyValues) with the provided values, then applies the operator's
+        specific operation to the results.
+
+        Args:
+            **values: Dictionary mapping symbol names to their values
+
+        Returns:
+            The result of applying the operation to the partially evaluated operands,
+            which may be a concrete value or another LazyValue if some symbols
+            remain unevaluated
+        """
         if isinstance(self.left, LazyValue):
             left = self.left.partial(**values)
         else:
@@ -201,6 +307,16 @@ class LazyOperator(LazyValue):
 
     @override
     def keys(self) -> set[str]:
+        """
+        Get the set of symbol names required to evaluate this operator.
+
+        This method collects the required symbol names from both operands
+        (if they are LazyValues) and returns their union.
+
+        Returns:
+            A set of strings representing all symbol names required to
+            fully evaluate this operator
+        """
         r = set()
         if isinstance(self.left, LazyValue):
             r |= self.left.keys()

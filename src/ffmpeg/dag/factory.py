@@ -1,3 +1,11 @@
+"""
+Factory functions for creating FFmpeg filter nodes.
+
+This module provides factory functions that create filter nodes based on
+FFmpeg filter definitions. These factories handle the evaluation of automatic
+parameters and the conversion of input/output typing specifications.
+"""
+
 import re
 from typing import Any
 
@@ -10,6 +18,25 @@ from .nodes import FilterableStream, FilterNode
 def filter_node_factory(
     ffmpeg_filter_def: FFMpegFilterDef, *inputs: FilterableStream, **kwargs: Any
 ) -> FilterNode:
+    """
+    Create a FilterNode from an FFmpeg filter definition.
+
+    This function creates a FilterNode based on the provided FFmpeg filter definition.
+    It handles the evaluation of Auto parameters and the conversion of input/output
+    typing specifications from the filter definition.
+
+    Args:
+        ffmpeg_filter_def: The FFmpeg filter definition to create a node from
+        *inputs: The input streams to connect to the filter
+        **kwargs: Filter-specific parameters as keyword arguments
+
+    Returns:
+        A FilterNode configured according to the filter definition
+
+    Note:
+        This function is primarily used internally by the filter generation system
+        to create filter nodes from the FFmpeg filter definitions.
+    """
     for k, v in kwargs.items():
         if isinstance(v, Auto):
             kwargs[k] = eval(
