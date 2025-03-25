@@ -29,42 +29,61 @@ logger = logging.getLogger(__name__)
 @dataclass(frozen=True, kw_only=True)
 class FilterNode(Node):
     """
-    A filter node that can be used to apply filters to streams
+    A node that represents an FFmpeg filter operation in the filter graph.
+
+    FilterNode represents a single filter operation in the FFmpeg filter graph,
+    such as scaling, cropping, or audio mixing. It connects input streams to
+    output streams and defines the parameters for the filter operation.
     """
 
     name: str
     """
-    The name of the filter
+    The name of the filter as used in FFmpeg (e.g., 'scale', 'overlay', 'amix')
     """
 
     inputs: tuple[FilterableStream, ...] = ()
     """
-    The input streams
+    The input streams that this filter processes
     """
 
     input_typings: tuple[StreamType, ...] = ()
     """
-    The input typings
+    The expected types (audio/video) for each input stream
     """
 
     output_typings: tuple[StreamType, ...] = ()
     """
-    The output typings
+    The types (audio/video) of each output stream this filter produces
     """
 
     @override
     def repr(self) -> str:
+        """
+        Get a string representation of this filter node.
+
+        Returns:
+            The name of the filter
+        """
         return self.name
 
     def video(self, index: int) -> VideoStream:
         """
-        Return the video stream at the specified index
+        Get a video output stream from this filter node.
+
+        This method retrieves a specific video output stream from the filter,
+        identified by its index among all video outputs. For example, if a filter
+        produces multiple video outputs (like 'split'), this method allows
+        accessing each one individually.
 
         Args:
-            index: the index of the video stream
+            index: The index of the video stream to retrieve (0-based)
+                  among all video outputs of this filter
 
         Returns:
-            the video stream at the specified index
+            A VideoStream object representing the specified output
+
+        Raises:
+            FFMpegValueError: If the specified index is out of range
         """
         from ..streams.video import VideoStream
 
@@ -79,13 +98,22 @@ class FilterNode(Node):
 
     def audio(self, index: int) -> AudioStream:
         """
-        Return the audio stream at the specified index
+        Get an audio output stream from this filter node.
+
+        This method retrieves a specific audio output stream from the filter,
+        identified by its index among all audio outputs. For example, if a filter
+        produces multiple audio outputs (like 'asplit'), this method allows
+        accessing each one individually.
 
         Args:
-            index: the index of the audio stream
+            index: The index of the audio stream to retrieve (0-based)
+                  among all audio outputs of this filter
 
         Returns:
-            the audio stream at the specified index
+            An AudioStream object representing the specified output
+
+        Raises:
+            FFMpegValueError: If the specified index is out of range
         """
         from ..streams.audio import AudioStream
 
@@ -100,6 +128,18 @@ class FilterNode(Node):
         return AudioStream(node=self, index=audio_outputs[index])
 
     def __post_init__(self) -> None:
+        """
+        Validate the filter node after initialization.
+
+        This method performs type checking to ensure that the input streams
+        match the expected types (audio/video) specified in input_typings.
+        It also verifies that the number of inputs matches the number of
+        input type specifications.
+
+        Raises:
+            FFMpegValueError: If the number of inputs doesn't match input_typings
+            FFMpegTypeError: If an input stream doesn't match its expected type
+        """
         from ..streams.audio import AudioStream
         from ..streams.video import VideoStream
 
@@ -129,6 +169,25 @@ class FilterNode(Node):
 
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
+        """
+        Generate the FFmpeg filter string for this filter node.
+
+        This method creates the filter string that will be used in the
+        filter_complex argument of the FFmpeg command. The format follows
+        FFmpeg's syntax: [in1][in2]filtername=param1=value1:param2=value2[out]
+
+        Args:
+            context: Optional DAG context for resolving stream labels.
+                    If not provided, a new context will be built.
+
+        Returns:
+            A list of strings that, when joined, form the filter string
+            for this node in the filter_complex argument
+
+        Example:
+            For a scale filter with width=1280 and height=720, this might return:
+            ['[0:v]', 'scale=', 'width=1280:height=720', '[s0]']
+        """
         from .context import DAGContext
 
         if not context:
@@ -169,7 +228,14 @@ class FilterNode(Node):
 @dataclass(frozen=True, kw_only=True)
 class FilterableStream(Stream, OutputArgs):
     """
-    A stream that can be used as input to a filter
+    A stream that can be used as input to an FFmpeg filter.
+
+    FilterableStream represents a media stream (audio or video) that can be
+    processed by FFmpeg filters. It provides methods for applying various
+    filters to the stream and for outputting the stream to a file.
+
+    This class serves as a base for specific stream types like VideoStream
+    and AudioStream, providing common functionality for filter operations.
     """
 
     node: FilterNode | InputNode
@@ -179,15 +245,28 @@ class FilterableStream(Stream, OutputArgs):
         self, *streams: FilterableStream, filename: str | Path, **kwargs: Any
     ) -> OutputNode:
         """
-        Output the streams to a file URL
+        Create an output node that writes this stream (and optionally others) to a file.
+
+        This method creates an OutputNode that represents writing one or more
+        streams to a file. The resulting node can be used to generate the
+        FFmpeg command-line arguments for the output file.
 
         Args:
-            *streams: the other streams to output
-            filename: the filename to output to
-            **kwargs: the arguments for the output
+            *streams: Additional streams to include in the same output file
+            filename: Path to the output file
+            **kwargs: FFmpeg output options (e.g., codec, bitrate, format)
+                     as keyword arguments
 
         Returns:
-            the output stream
+            An OutputNode representing the file output operation
+
+        Example:
+            ```python
+            # Output a video stream to an MP4 file with H.264 codec
+            output_node = video_stream._output_node(
+                filename="output.mp4", c="libx264", crf=23
+            )
+            ```
         """
         return OutputNode(
             inputs=(self, *streams),
@@ -203,16 +282,28 @@ class FilterableStream(Stream, OutputArgs):
         **kwargs: Any,
     ) -> VideoStream:
         """
-        Apply a custom video filter which has only one output to this stream
+        Apply a custom video filter to this stream.
+
+        This method applies a custom FFmpeg video filter to this stream and
+        returns the resulting video stream. It's a convenience wrapper around
+        filter_multi_output that handles the case of filters with a single
+        video output.
 
         Args:
-            *streams (FilterableStream): the streams to apply the filter to
-            name: the name of the filter
-            input_typings: the input typings
-            **kwargs: the arguments for the filter
+            *streams: Additional input streams for the filter
+            name: The name of the FFmpeg filter to apply
+            input_typings: The expected types of the input streams
+                          (defaults to all video)
+            **kwargs: Filter-specific parameters as keyword arguments
 
         Returns:
-            the output stream
+            A VideoStream representing the filter's output
+
+        Example:
+            ```python
+            # Apply a blur filter to a video stream
+            blurred = stream.vfilter(name="boxblur", luma_radius=2)
+            ```
         """
         return self.filter_multi_output(
             *streams,
@@ -230,16 +321,28 @@ class FilterableStream(Stream, OutputArgs):
         **kwargs: Any,
     ) -> AudioStream:
         """
-        Apply a custom audio filter which has only one output to this stream
+        Apply a custom audio filter to this stream.
+
+        This method applies a custom FFmpeg audio filter to this stream and
+        returns the resulting audio stream. It's a convenience wrapper around
+        filter_multi_output that handles the case of filters with a single
+        audio output.
 
         Args:
-            *streams (FilterableStream): the streams to apply the filter to
-            name: the name of the filter
-            input_typings: the input typings
-            **kwargs: the arguments for the filter
+            *streams: Additional input streams for the filter
+            name: The name of the FFmpeg filter to apply
+            input_typings: The expected types of the input streams
+                          (defaults to all audio)
+            **kwargs: Filter-specific parameters as keyword arguments
 
         Returns:
-            the output stream
+            An AudioStream representing the filter's output
+
+        Example:
+            ```python
+            # Apply a volume filter to an audio stream
+            louder = stream.afilter(name="volume", volume=2.0)
+            ```
         """
         return self.filter_multi_output(
             *streams,
@@ -258,17 +361,32 @@ class FilterableStream(Stream, OutputArgs):
         **kwargs: Any,
     ) -> FilterNode:
         """
-        Apply a custom filter which has multiple outputs to this stream
+        Apply a custom filter with multiple outputs to this stream.
+
+        This method creates a FilterNode that applies a custom FFmpeg filter
+        to this stream (and optionally additional streams). Unlike vfilter and
+        afilter which return a single stream, this method returns the FilterNode
+        itself, allowing access to multiple output streams.
 
         Args:
-            *streams (FilterableStream): the streams to apply the filter to
-            name: the name of the filter
-            input_typings: the input typings
-            output_typings: the output typings
-            **kwargs: the arguments for the filter
+            *streams: Additional input streams for the filter
+            name: The name of the FFmpeg filter to apply
+            input_typings: The expected types of the input streams
+            output_typings: The types of output streams this filter produces
+            **kwargs: Filter-specific parameters as keyword arguments
 
         Returns:
-            the FilterNode
+            A FilterNode that can be used to access the filter's outputs
+
+        Example:
+            ```python
+            # Split a video into two identical streams
+            split_node = stream.filter_multi_output(
+                name="split", output_typings=(StreamType.video, StreamType.video)
+            )
+            stream1 = split_node.video(0)
+            stream2 = split_node.video(1)
+            ```
         """
         return FilterNode(
             name=name,
@@ -280,13 +398,30 @@ class FilterableStream(Stream, OutputArgs):
 
     def label(self, context: DAGContext = None) -> str:
         """
-        Return the label for this stream
+        Generate the FFmpeg label for this stream in filter graphs.
+
+        This method creates the label string used to identify this stream in
+        FFmpeg filter graphs. The format of the label depends on the stream's
+        source (input file or filter) and type (video or audio).
+
+        For input streams, labels follow FFmpeg's stream specifier syntax:
+        - Video streams: "0:v" (first input, video stream)
+        - Audio streams: "0:a" (first input, audio stream)
+        - AV streams: "0" (first input, all streams)
+
+        For filter outputs, labels use the filter's label:
+        - Single output filters: "filterlabel"
+        - Multi-output filters: "filterlabel#index"
 
         Args:
-            context: the DAG context
+            context: Optional DAG context for resolving node labels.
+                    If not provided, a new context will be built.
 
         Returns:
-            the label for this stream
+            A string label for this stream in FFmpeg filter syntax
+
+        Raises:
+            FFMpegValueError: If the stream has an unknown type or node type
         """
         from ..streams.audio import AudioStream
         from ..streams.av import AVStream
@@ -325,27 +460,52 @@ class FilterableStream(Stream, OutputArgs):
 @dataclass(frozen=True, kw_only=True)
 class InputNode(Node):
     """
-    A node that can be used to read from files
+    A node that represents an input file in the FFmpeg filter graph.
+
+    InputNode represents a media file that serves as input to the FFmpeg
+    command. It provides access to the video and audio streams contained
+    in the file, which can then be processed by filters.
     """
 
     filename: str
     """
-    The filename to read from
+    The path to the input media file
     """
 
     inputs: tuple[()] = ()
+    """
+    Input nodes have no inputs themselves (they are source nodes)
+    """
 
     @override
     def repr(self) -> str:
+        """
+        Get a string representation of this input node.
+
+        Returns:
+            The basename of the input file
+        """
         return os.path.basename(self.filename)
 
     @property
     def video(self) -> VideoStream:
         """
-        Return the video stream of this node
+        Get the video stream from this input file.
+
+        This property provides access to the video component of the input file.
+        The resulting VideoStream can be used as input to video filters.
 
         Returns:
-            the video stream
+            A VideoStream representing the video content of this input file
+
+        Example:
+            ```python
+            # Access the video stream from an input file
+            input_node = ffmpeg.input("input.mp4")
+            video = input_node.video
+            # Apply a filter to the video stream
+            scaled = video.scale(width=1280, height=720)
+            ```
         """
         from ..streams.video import VideoStream
 
@@ -354,10 +514,22 @@ class InputNode(Node):
     @property
     def audio(self) -> AudioStream:
         """
-        Return the audio stream of this node
+        Get the audio stream from this input file.
+
+        This property provides access to the audio component of the input file.
+        The resulting AudioStream can be used as input to audio filters.
 
         Returns:
-            the audio stream
+            An AudioStream representing the audio content of this input file
+
+        Example:
+            ```python
+            # Access the audio stream from an input file
+            input_node = ffmpeg.input("input.mp4")
+            audio = input_node.audio
+            # Apply a filter to the audio stream
+            volume_adjusted = audio.volume(volume=2.0)
+            ```
         """
         from ..streams.audio import AudioStream
 
@@ -365,10 +537,23 @@ class InputNode(Node):
 
     def stream(self) -> AVStream:
         """
-        Return the output stream of this node
+        Get a combined audio-video stream from this input file.
+
+        This method provides access to both the audio and video components
+        of the input file as a single AVStream. This is useful when you need
+        to work with both components together.
 
         Returns:
-            the output stream
+            An AVStream representing both audio and video content
+
+        Example:
+            ```python
+            # Access both audio and video from an input file
+            input_node = ffmpeg.input("input.mp4")
+            av_stream = input_node.stream()
+            # Output both audio and video to a new file
+            output = av_stream.output("output.mp4")
+            ```
         """
         from ..streams.av import AVStream
 
@@ -376,6 +561,22 @@ class InputNode(Node):
 
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
+        """
+        Generate the FFmpeg command-line arguments for this input file.
+
+        This method creates the command-line arguments needed to specify
+        this input file to FFmpeg, including any input-specific options.
+
+        Args:
+            context: Optional DAG context (not used for input nodes)
+
+        Returns:
+            A list of strings representing FFmpeg command-line arguments
+
+        Example:
+            For an input file "input.mp4" with options like seeking to 10 seconds:
+            ['-ss', '10', '-i', 'input.mp4']
+        """
         commands = []
         for key, value in self.kwargs.items():
             if isinstance(value, bool):
@@ -391,27 +592,75 @@ class InputNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class OutputNode(Node):
+    """
+    A node that represents an output file in the FFmpeg filter graph.
+
+    OutputNode represents a destination file where processed media streams
+    will be written. It connects one or more streams (video, audio, or both)
+    to an output file and specifies output options like codecs and formats.
+    """
+
     filename: str
     """
-    The filename to output to
+    The path to the output media file
     """
+
     inputs: tuple[FilterableStream, ...]
+    """
+    The streams to be written to this output file
+    """
 
     @override
     def repr(self) -> str:
+        """
+        Get a string representation of this output node.
+
+        Returns:
+            The basename of the output file
+        """
         return os.path.basename(self.filename)
 
     def stream(self) -> OutputStream:
         """
-        Return the output stream of this node
+        Get an output stream representing this output file.
+
+        This method creates an OutputStream object that wraps this OutputNode,
+        allowing it to be used in operations that require an output stream,
+        such as adding global options.
 
         Returns:
-            the output stream
+            An OutputStream representing this output file
+
+        Example:
+            ```python
+            # Create an output file and add global options
+            output_node = video.output("output.mp4")
+            output_stream = output_node.stream()
+            with_global_opts = output_stream.global_args(y=True)
+            ```
         """
         return OutputStream(node=self)
 
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
+        """
+        Generate the FFmpeg command-line arguments for this output file.
+
+        This method creates the command-line arguments needed to specify
+        this output file to FFmpeg, including stream mapping and output-specific
+        options like codecs and formats.
+
+        Args:
+            context: Optional DAG context for resolving stream labels.
+                    If not provided, a new context will be built.
+
+        Returns:
+            A list of strings representing FFmpeg command-line arguments
+
+        Example:
+            For an output file "output.mp4" with H.264 video codec:
+            ['-map', '[v0]', '-c:v', 'libx264', 'output.mp4']
+        """
         # !handle mapping
         commands = []
 
@@ -439,18 +688,39 @@ class OutputNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class OutputStream(Stream, GlobalRunable):
+    """
+    A stream representing an output file with additional capabilities.
+
+    OutputStream wraps an OutputNode and provides additional functionality,
+    particularly the ability to add global FFmpeg options. This class serves
+    as an intermediate step between creating an output file and executing
+    the FFmpeg command.
+    """
+
     node: OutputNode
+    """The output node this stream represents"""
 
     @override
     def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode:
         """
-        Add extra global command-line argument
+        Create a GlobalNode with additional global FFmpeg options.
+
+        This method creates a GlobalNode that applies global options to the
+        FFmpeg command. These options affect the entire command rather than
+        specific inputs or outputs.
 
         Args:
-            **kwargs: the extra arguments
+            *streams: Additional output streams to include in the same command
+            **kwargs: Global FFmpeg options as keyword arguments
 
         Returns:
-            the output stream
+            A GlobalNode with the specified options
+
+        Example:
+            ```python
+            # Add global options to an output stream
+            global_node = output_stream._global_node(y=True, loglevel="quiet")
+            ```
         """
         return GlobalNode(inputs=(self, *streams), kwargs=FrozenDict(kwargs))
 
@@ -458,26 +728,67 @@ class OutputStream(Stream, GlobalRunable):
 @dataclass(frozen=True, kw_only=True)
 class GlobalNode(Node):
     """
-    A node that can be used to set global options
+    A node that represents global FFmpeg options.
+
+    GlobalNode represents options that apply to the entire FFmpeg command
+    rather than to specific inputs or outputs. These include options like
+    overwrite (-y), log level, and other general FFmpeg settings.
     """
 
     inputs: tuple[OutputStream, ...]
+    """The output streams this node applies to"""
 
     @override
     def repr(self) -> str:
+        """
+        Get a string representation of this global node.
+
+        Returns:
+            A space-separated string of the global options
+        """
         return " ".join(self.get_args())
 
     def stream(self) -> GlobalStream:
         """
-        Return the output stream of this node
+        Get a global stream representing this global node.
+
+        This method creates a GlobalStream object that wraps this GlobalNode,
+        allowing it to be used in operations that require a global stream,
+        such as adding more global options or executing the command.
 
         Returns:
-            the output stream
+            A GlobalStream representing this global node
+
+        Example:
+            ```python
+            # Create a global node and get its stream
+            global_node = ffmpeg.global_args(y=True)
+            global_stream = global_node.stream()
+            # Execute the command
+            global_stream.run()
+            ```
         """
         return GlobalStream(node=self)
 
     @override
     def get_args(self, context: DAGContext = None) -> list[str]:
+        """
+        Generate the FFmpeg command-line arguments for these global options.
+
+        This method creates the command-line arguments needed to specify
+        global options to FFmpeg, such as -y for overwrite or -loglevel for
+        controlling log output.
+
+        Args:
+            context: Optional DAG context (not used for global options)
+
+        Returns:
+            A list of strings representing FFmpeg command-line arguments
+
+        Example:
+            For global options like overwrite and quiet logging:
+            ['-y', '-loglevel', 'quiet']
+        """
         commands = []
         for key, value in self.kwargs.items():
             if isinstance(value, bool):
@@ -492,18 +803,40 @@ class GlobalNode(Node):
 
 @dataclass(frozen=True, kw_only=True)
 class GlobalStream(Stream, GlobalRunable):
+    """
+    A stream representing a set of global FFmpeg options.
+
+    GlobalStream wraps a GlobalNode and provides additional functionality,
+    particularly the ability to add more global options or execute the
+    FFmpeg command. This class is typically the final step in the FFmpeg
+    command construction process.
+    """
+
     node: GlobalNode
+    """The global node this stream represents"""
 
     @override
     def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode:
         """
-        Add extra global command-line argument
+        Add additional global FFmpeg options to this stream.
+
+        This method creates a new GlobalNode that combines the existing global
+        options with new ones. It also allows adding more output streams to
+        the command.
 
         Args:
-            **kwargs: the extra arguments
+            *streams: Additional output streams to include in the command
+            **kwargs: Additional global FFmpeg options as keyword arguments
 
         Returns:
-            the output stream
+            A new GlobalNode with the combined options and streams
+
+        Example:
+            ```python
+            # Add more global options to an existing global stream
+            global_stream = ffmpeg.output("output.mp4").global_args(y=True)
+            enhanced = global_stream._global_node(loglevel="quiet")
+            ```
         """
         inputs = (*self.node.inputs, *streams)
         kwargs = dict(self.node.kwargs) | kwargs
