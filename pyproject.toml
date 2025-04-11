@@ -67,17 +67,22 @@ devtools = "*"
 beautifulsoup4 = "*"
 html2text = "*"
 
-# Doc
-mkdocs = "*"
+# Documentation
+mkdocs = ">=1.5.0"
+mkdocs-material = ">=9.0.0"
+mkdocstrings = ">=0.23.0"
+mkdocstrings-python = ">=1.7.0"
+mkdocs-gen-files = ">=0.4.0"
+mkdocs-literate-nav = ">=0.6.0"
+mkdocs-section-index = ">=0.3.5"
+mknotebooks = "*"
 markdown-callouts = "^0.4.0"
-mkdocs-material = "^9.5.9"
-mkdocstrings = ">=0.24,<0.30"
-mkdocstrings-python = "^1.8.0"
 pymdown-extensions = "^10.7"
 griffe_inherited_docstrings = "*"
-black = "*"
 ipykernel = "^6.29.4"
-mknotebooks = "*"
+
+# Code quality
+black = "*"
 ruff = ">=0.9.6,<0.12.0"
 
 [tool.mypy]
