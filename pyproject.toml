@@ -86,7 +86,7 @@ black = "*"
 ruff = ">=0.9.6,<0.12.0"
 
 [tool.mypy]
-exclude = "^(migrations|commands|sandbox|samples|sdk)/"
+exclude = "^(migrations|commands|sandbox|samples|sdk|scripts)/"
 show_error_codes = true       # Enables showing error codes in messages for easier issue identification.
 implicit_optional = true      # Assumes arguments with a default `None` value are `Optional`.
 follow_imports = "silent"     # Ignores import errors for a cleaner output on external libraries.
