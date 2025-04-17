@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PyScript FFMPEG Example</title>
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.2.1/core.css" />
+  <script type="module" src="https://pyscript.net/releases/2024.2.1/core.js"></script>
+
+  <py-config>
+    packages = ["micropip"]
+  </py-config>
+</head>
+<body>
+  <h2>Enter video input path:</h2>
+  <input type="text" id="video-input" value="example.mp4">
+  <button id="submit-btn">Submit</button>
+
+  <h3>Result:</h3>
+  <pre id="output">Loading PyScript...</pre>
+
+  <script type="py">
+import asyncio
+import micropip
+from js import document
+from pyodide.ffi import create_proxy
+
+async def setup():
+    output = document.getElementById("output")
+    output.textContent = "📦 Installing typed-ffmpeg..."
+    try:
+        await micropip.install("typed-ffmpeg")
+        output.textContent = "✅ typed-ffmpeg installed"
+    except Exception as e:
+        output.textContent = f"❌ Installation failed: {e}"
+
+    # Register a JS-safe proxy for the Python function
+    callback_proxy = create_proxy(run_ffmpeg)
+    document.getElementById("submit-btn").addEventListener("click", callback_proxy)
+
+def run_ffmpeg(event=None):
+    try:
+        import ffmpeg
+        input_path = document.getElementById("video-input").value
+        result = ffmpeg.input(input_path).output(filename="out.mp4").compile()
+        document.getElementById("output").textContent = "✅ Compiled command:\n" + " ".join(result)
+    except Exception as e:
+        document.getElementById("output").textContent = f"❌ Error: {e}"
+
+asyncio.ensure_future(setup())
+  </script>
+</body>
+</html>
