@@ -1,4 +1,35 @@
 # serializer version: 1
+# name: test_custom_filter
+  list([
+    '[0:a]',
+    'volume=',
+    'v=0.5:a=0.3',
+    '',
+  ])
+# ---
+# name: test_custom_filter.1
+  list([
+    '[0:v]',
+    'rotate=',
+    'angle=90:xx=30',
+    '',
+  ])
+# ---
+# name: test_filter_node_with_inputs.1
+  <ExceptionInfo FFMpegTypeError('Expected input 0 to have audio component, got VideoStream') tblen=3>
+# ---
+# name: test_filter_node_with_inputs.2
+  <ExceptionInfo FFMpegTypeError('Expected input 0 to have video component, got AudioStream') tblen=3>
+# ---
+# name: test_filterable_stream
+  '1'
+# ---
+# name: test_filterable_stream.1
+  '0'
+# ---
+# name: test_filterable_stream.2
+  's0#0'
+# ---
 # name: test_node_prop[filter-node][__repr__]
   "FilterNode(kwargs=FrozenDict({'w': '1920', 'h': '1080', 'true': True, 'false': False}), inputs=(), name='scale', input_typings=(), output_typings=())"
 # ---
