@@ -48,21 +48,19 @@ class Serializable:
 
 def load_class(name: str) -> type[Serializable] | type[Enum]:
     """
-    Load a class from a string path.
+    Load a class from its name.
 
-    This function dynamically imports a class based on its fully qualified
-    path (e.g., 'ffmpeg.dag.nodes.FilterNode'). It's used during deserialization
-    to reconstruct objects from their class names.
+    This function looks up a class by its name in the CLASS_REGISTRY. It's used during
+    deserialization to reconstruct objects from their class names.
 
     Args:
-        name: The fully qualified name to the class (ClassName)
+        name: The simple class name (e.g., 'FilterNode')
 
     Returns:
         The class object that can be instantiated
 
     Raises:
-        AssertionError: If strict is True and the path doesn't start with 'ffmpeg.'
-        ImportError: If the module or class cannot be found
+        AssertionError: If the class name is not found in the registry
 
     Example:
         ```python
