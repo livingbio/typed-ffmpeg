@@ -4,18 +4,18 @@ from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
 from ...filters import concat
-from ..serialize import dumps, loads
+from ..serialize import Serializable, dumps, loads
 
 
 # Define your dataclasses
 @dataclass
-class Address:
+class Address(Serializable):
     street: str
     city: str
 
 
 @dataclass
-class Person:
+class Person(Serializable):
     name: str
     age: int
     address: Address

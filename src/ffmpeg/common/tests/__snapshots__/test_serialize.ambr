@@ -5,11 +5,11 @@
 # name: test_load_and_dump[serialized]
   '''
   {
-    "__class__": "ffmpeg.common.tests.test_serialize.Person",
+    "__class__": "Person",
     "name": "John Doe",
     "age": 30,
     "address": {
-      "__class__": "ffmpeg.common.tests.test_serialize.Address",
+      "__class__": "Address",
       "street": "123 Main St",
       "city": "Anytown"
     }
@@ -20,9 +20,9 @@
   '''
   [
     {
-      "__class__": "ffmpeg.streams.av.AVStream",
+      "__class__": "AVStream",
       "node": {
-        "__class__": "ffmpeg.dag.nodes.InputNode",
+        "__class__": "InputNode",
         "kwargs": {},
         "inputs": [],
         "filename": "input.mp4"
@@ -36,15 +36,15 @@
 # name: test_load_and_dump_on_complex_filter[serialized]
   '''
   {
-    "__class__": "ffmpeg.dag.nodes.OutputStream",
+    "__class__": "OutputStream",
     "node": {
-      "__class__": "ffmpeg.dag.nodes.OutputNode",
+      "__class__": "OutputNode",
       "kwargs": {},
       "inputs": [
         {
-          "__class__": "ffmpeg.streams.video.VideoStream",
+          "__class__": "VideoStream",
           "node": {
-            "__class__": "ffmpeg.dag.nodes.FilterNode",
+            "__class__": "FilterNode",
             "kwargs": {
               "x": "50",
               "y": "50",
@@ -55,32 +55,32 @@
             },
             "inputs": [
               {
-                "__class__": "ffmpeg.streams.video.VideoStream",
+                "__class__": "VideoStream",
                 "node": {
-                  "__class__": "ffmpeg.dag.nodes.FilterNode",
+                  "__class__": "FilterNode",
                   "kwargs": {},
                   "inputs": [
                     {
-                      "__class__": "ffmpeg.streams.video.VideoStream",
+                      "__class__": "VideoStream",
                       "node": {
-                        "__class__": "ffmpeg.dag.nodes.FilterNode",
+                        "__class__": "FilterNode",
                         "kwargs": {
                           "n": 2
                         },
                         "inputs": [
                           {
-                            "__class__": "ffmpeg.streams.video.VideoStream",
+                            "__class__": "VideoStream",
                             "node": {
-                              "__class__": "ffmpeg.dag.nodes.FilterNode",
+                              "__class__": "FilterNode",
                               "kwargs": {
                                 "start_frame": 10,
                                 "end_frame": 20
                               },
                               "inputs": [
                                 {
-                                  "__class__": "ffmpeg.streams.av.AVStream",
+                                  "__class__": "AVStream",
                                   "node": {
-                                    "__class__": "ffmpeg.dag.nodes.InputNode",
+                                    "__class__": "InputNode",
                                     "kwargs": {},
                                     "inputs": [],
                                     "filename": "input.mp4"
@@ -91,13 +91,13 @@
                               "name": "trim",
                               "input_typings": [
                                 {
-                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "__class__": "StreamType",
                                   "value": "video"
                                 }
                               ],
                               "output_typings": [
                                 {
-                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "__class__": "StreamType",
                                   "value": "video"
                                 }
                               ]
@@ -105,18 +105,18 @@
                             "index": 0
                           },
                           {
-                            "__class__": "ffmpeg.streams.video.VideoStream",
+                            "__class__": "VideoStream",
                             "node": {
-                              "__class__": "ffmpeg.dag.nodes.FilterNode",
+                              "__class__": "FilterNode",
                               "kwargs": {
                                 "start_frame": 30,
                                 "end_frame": 40
                               },
                               "inputs": [
                                 {
-                                  "__class__": "ffmpeg.streams.av.AVStream",
+                                  "__class__": "AVStream",
                                   "node": {
-                                    "__class__": "ffmpeg.dag.nodes.InputNode",
+                                    "__class__": "InputNode",
                                     "kwargs": {},
                                     "inputs": [],
                                     "filename": "input.mp4"
@@ -127,13 +127,13 @@
                               "name": "trim",
                               "input_typings": [
                                 {
-                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "__class__": "StreamType",
                                   "value": "video"
                                 }
                               ],
                               "output_typings": [
                                 {
-                                  "__class__": "ffmpeg.common.schema.StreamType",
+                                  "__class__": "StreamType",
                                   "value": "video"
                                 }
                               ]
@@ -144,17 +144,17 @@
                         "name": "concat",
                         "input_typings": [
                           {
-                            "__class__": "ffmpeg.common.schema.StreamType",
+                            "__class__": "StreamType",
                             "value": "video"
                           },
                           {
-                            "__class__": "ffmpeg.common.schema.StreamType",
+                            "__class__": "StreamType",
                             "value": "video"
                           }
                         ],
                         "output_typings": [
                           {
-                            "__class__": "ffmpeg.common.schema.StreamType",
+                            "__class__": "StreamType",
                             "value": "video"
                           }
                         ]
@@ -162,15 +162,15 @@
                       "index": 0
                     },
                     {
-                      "__class__": "ffmpeg.streams.video.VideoStream",
+                      "__class__": "VideoStream",
                       "node": {
-                        "__class__": "ffmpeg.dag.nodes.FilterNode",
+                        "__class__": "FilterNode",
                         "kwargs": {},
                         "inputs": [
                           {
-                            "__class__": "ffmpeg.streams.av.AVStream",
+                            "__class__": "AVStream",
                             "node": {
-                              "__class__": "ffmpeg.dag.nodes.InputNode",
+                              "__class__": "InputNode",
                               "kwargs": {},
                               "inputs": [],
                               "filename": "overlay.png"
@@ -181,13 +181,13 @@
                         "name": "hflip",
                         "input_typings": [
                           {
-                            "__class__": "ffmpeg.common.schema.StreamType",
+                            "__class__": "StreamType",
                             "value": "video"
                           }
                         ],
                         "output_typings": [
                           {
-                            "__class__": "ffmpeg.common.schema.StreamType",
+                            "__class__": "StreamType",
                             "value": "video"
                           }
                         ]
@@ -198,17 +198,17 @@
                   "name": "overlay",
                   "input_typings": [
                     {
-                      "__class__": "ffmpeg.common.schema.StreamType",
+                      "__class__": "StreamType",
                       "value": "video"
                     },
                     {
-                      "__class__": "ffmpeg.common.schema.StreamType",
+                      "__class__": "StreamType",
                       "value": "video"
                     }
                   ],
                   "output_typings": [
                     {
-                      "__class__": "ffmpeg.common.schema.StreamType",
+                      "__class__": "StreamType",
                       "value": "video"
                     }
                   ]
@@ -219,13 +219,13 @@
             "name": "drawbox",
             "input_typings": [
               {
-                "__class__": "ffmpeg.common.schema.StreamType",
+                "__class__": "StreamType",
                 "value": "video"
               }
             ],
             "output_typings": [
               {
-                "__class__": "ffmpeg.common.schema.StreamType",
+                "__class__": "StreamType",
                 "value": "video"
               }
             ]

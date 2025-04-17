@@ -12,7 +12,10 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Literal
 
+from ffmpeg.common.serialize import Serializable, serializable
 
+
+@serializable
 class StreamType(str, Enum):
     """
     Enumeration of possible stream types in FFmpeg.
@@ -198,7 +201,7 @@ class FFMpegFilterDef:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFilter:
+class FFMpegFilter(Serializable):
     """
     Comprehensive representation of an FFmpeg filter with all its metadata.
 
