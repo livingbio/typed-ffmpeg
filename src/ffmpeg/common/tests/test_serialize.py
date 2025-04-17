@@ -26,7 +26,7 @@ def test_serializable_decorator() -> None:
 
         assert False, "Should have raised an AssertionError"
     except AssertionError as e:
-        assert "Class TestClass already registered" in str(e)
+        assert "Class TestEnum already registered" in str(e)
 
 
 def test_load_and_dump(snapshot: SnapshotAssertion) -> None:

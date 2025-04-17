@@ -1,1 +1,0 @@
-"FilterNode(kwargs=FrozenDict({'w': '1920', 'h': '1080'}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='test.mp4'), index=None), AudioStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='test.mp4'), index=None)), name='scale', input_typings=(<StreamType.video: 'video'>, <StreamType.audio: 'audio'>), output_typings=())"
