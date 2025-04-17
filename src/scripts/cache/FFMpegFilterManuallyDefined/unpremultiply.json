@@ -1,5 +1,5 @@
 {
-  "__class__": "scripts.manual.schema.FFMpegFilterManuallyDefined",
+  "__class__": "FFMpegFilterManuallyDefined",
   "formula_typings_input": "[StreamType.video] + ([StreamType.video] if inplace else [])",
   "formula_typings_output": null,
   "name": "unpremultiply"

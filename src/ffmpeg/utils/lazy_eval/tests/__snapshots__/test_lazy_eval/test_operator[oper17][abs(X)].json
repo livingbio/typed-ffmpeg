@@ -1,7 +1,7 @@
 {
-  "__class__": "ffmpeg.utils.lazy_eval.operator.Abs",
+  "__class__": "Abs",
   "left": {
-    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+    "__class__": "Symbol",
     "key": "X"
   },
   "right": null

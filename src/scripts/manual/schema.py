@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 
+from ffmpeg.common.serialize import Serializable
+
 
 @dataclass(kw_only=True)
-class FFMpegFilterManuallyDefined:
+class FFMpegFilterManuallyDefined(Serializable):
     """
     Manual definitions for FFmpeg filters
 

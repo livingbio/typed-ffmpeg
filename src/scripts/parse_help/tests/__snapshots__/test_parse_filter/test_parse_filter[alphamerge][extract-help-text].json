@@ -1,5 +1,5 @@
 {
-  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "__class__": "FFMpegFilter",
   "description": "Copy the luma value of the second input into the alpha channel of the first input.",
   "formula_typings_input": null,
   "formula_typings_output": null,
@@ -15,27 +15,27 @@
   "name": "alphamerge",
   "options": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "eof_action"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "Repeat the previous frame.",
           "name": "repeat",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "End both streams.",
           "name": "endall",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "Pass through the main input.",
           "name": "pass",
@@ -50,12 +50,12 @@
       "name": "eof_action",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "shortest"
       ],
@@ -68,12 +68,12 @@
       "name": "shortest",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "boolean"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "repeatlast"
       ],
@@ -86,25 +86,25 @@
       "name": "repeatlast",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "boolean"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "ts_sync_mode"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "Frame from secondary input with the nearest lower or equal timestamp to the primary input frame",
           "name": "default",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "Frame from secondary input with the absolute nearest timestamp to the primary input frame",
           "name": "nearest",
@@ -119,12 +119,12 @@
       "name": "ts_sync_mode",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [],
       "choices": [],
       "default": null,
@@ -135,7 +135,7 @@
       "name": "enable",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     }
@@ -144,28 +144,28 @@
   "ref": null,
   "stream_typings_input": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "main",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "alpha",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }
   ],
   "stream_typings_output": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }
