@@ -1,5 +1,5 @@
 {
-  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "__class__": "FFMpegFilter",
   "description": "Buffer audio frames, and make them accessible to the filterchain.",
   "formula_typings_input": null,
   "formula_typings_output": null,
@@ -15,7 +15,7 @@
   "name": "abuffer",
   "options": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "time_base"
       ],
@@ -28,12 +28,12 @@
       "name": "time_base",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "rational"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "sample_rate"
       ],
@@ -46,12 +46,12 @@
       "name": "sample_rate",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "sample_fmt"
       ],
@@ -64,12 +64,12 @@
       "name": "sample_fmt",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "sample_fmt"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "channel_layout"
       ],
@@ -82,12 +82,12 @@
       "name": "channel_layout",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "channels"
       ],
@@ -100,7 +100,7 @@
       "name": "channels",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     }
@@ -110,10 +110,10 @@
   "stream_typings_input": [],
   "stream_typings_output": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "audio"
       }
     }

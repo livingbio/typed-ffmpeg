@@ -1,5 +1,5 @@
 {
-  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "__class__": "FFMpegFilter",
   "description": "Scale the input video size and/or convert the image format to the given reference.",
   "formula_typings_input": null,
   "formula_typings_output": null,
@@ -15,7 +15,7 @@
   "name": "scale2ref",
   "options": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "w",
         "width"
@@ -29,12 +29,12 @@
       "name": "w",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "h",
         "height"
@@ -48,12 +48,12 @@
       "name": "h",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "flags"
       ],
@@ -66,12 +66,12 @@
       "name": "flags",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "interl"
       ],
@@ -84,67 +84,67 @@
       "name": "interl",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "boolean"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "in_color_matrix"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "auto"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt601",
           "value": "bt601"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt470",
           "value": "bt470"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte170m",
           "value": "smpte170m"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt709",
           "value": "bt709"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "fcc",
           "value": "fcc"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte240m",
           "value": "smpte240m"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt2020",
@@ -159,67 +159,67 @@
       "name": "in_color_matrix",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "out_color_matrix"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "auto"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt601",
           "value": "bt601"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt470",
           "value": "bt470"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte170m",
           "value": "smpte170m"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt709",
           "value": "bt709"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "fcc",
           "value": "fcc"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "smpte240m",
           "value": "smpte240m"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "bt2020",
@@ -234,67 +234,67 @@
       "name": "out_color_matrix",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "in_range"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "unknown",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "full",
           "value": "2"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "limited",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "jpeg",
           "value": "2"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "mpeg",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "tv",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "pc",
@@ -309,67 +309,67 @@
       "name": "in_range",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "out_range"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "auto",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "unknown",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "full",
           "value": "2"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "limited",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "jpeg",
           "value": "2"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "mpeg",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "tv",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "pc",
@@ -384,12 +384,12 @@
       "name": "out_range",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "in_v_chr_pos"
       ],
@@ -402,12 +402,12 @@
       "name": "in_v_chr_pos",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "in_h_chr_pos"
       ],
@@ -420,12 +420,12 @@
       "name": "in_h_chr_pos",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "out_v_chr_pos"
       ],
@@ -438,12 +438,12 @@
       "name": "out_v_chr_pos",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "out_h_chr_pos"
       ],
@@ -456,32 +456,32 @@
       "name": "out_h_chr_pos",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "force_original_aspect_ratio"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "disable",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "decrease",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "",
           "name": "increase",
@@ -496,12 +496,12 @@
       "name": "force_original_aspect_ratio",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "force_divisible_by"
       ],
@@ -514,12 +514,12 @@
       "name": "force_divisible_by",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "param0"
       ],
@@ -532,12 +532,12 @@
       "name": "param0",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "double"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "param1"
       ],
@@ -550,25 +550,25 @@
       "name": "param1",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "double"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "eval"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "eval expressions once during initialization",
           "name": "init",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "eval expressions during initialization and per-frame",
           "name": "frame",
@@ -583,7 +583,7 @@
       "name": "eval",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     }
@@ -592,36 +592,36 @@
   "ref": null,
   "stream_typings_input": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "ref",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }
   ],
   "stream_typings_output": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "ref",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }

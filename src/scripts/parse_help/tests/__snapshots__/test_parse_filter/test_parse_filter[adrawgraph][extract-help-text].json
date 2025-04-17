@@ -1,5 +1,5 @@
 {
-  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "__class__": "FFMpegFilter",
   "description": "Draw a graph using input audio metadata.",
   "formula_typings_input": null,
   "formula_typings_output": null,
@@ -15,7 +15,7 @@
   "name": "adrawgraph",
   "options": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "m1"
       ],
@@ -28,12 +28,12 @@
       "name": "m1",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "fg1"
       ],
@@ -46,12 +46,12 @@
       "name": "fg1",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "m2"
       ],
@@ -64,12 +64,12 @@
       "name": "m2",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "fg2"
       ],
@@ -82,12 +82,12 @@
       "name": "fg2",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "m3"
       ],
@@ -100,12 +100,12 @@
       "name": "m3",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "fg3"
       ],
@@ -118,12 +118,12 @@
       "name": "fg3",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "m4"
       ],
@@ -136,12 +136,12 @@
       "name": "m4",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "fg4"
       ],
@@ -154,12 +154,12 @@
       "name": "fg4",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "bg"
       ],
@@ -172,12 +172,12 @@
       "name": "bg",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "color"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "min"
       ],
@@ -190,12 +190,12 @@
       "name": "min",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "float"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "max"
       ],
@@ -208,32 +208,32 @@
       "name": "max",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "float"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "mode"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "draw bars",
           "name": "bar",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "draw dots",
           "name": "dot",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "draw lines",
           "name": "line",
@@ -248,46 +248,46 @@
       "name": "mode",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "slide"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "draw new frames",
           "name": "frame",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "replace old columns with new",
           "name": "replace",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "scroll from right to left",
           "name": "scroll",
           "value": "2"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "scroll from left to right",
           "name": "rscroll",
           "value": "3"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.......",
           "help": "display graph in single frame",
           "name": "picture",
@@ -302,12 +302,12 @@
       "name": "slide",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "size",
         "s"
@@ -321,12 +321,12 @@
       "name": "size",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "image_size"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "rate",
         "r"
@@ -340,7 +340,7 @@
       "name": "rate",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "video_rate"
       }
     }
@@ -349,20 +349,20 @@
   "ref": null,
   "stream_typings_input": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "audio"
       }
     }
   ],
   "stream_typings_output": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }

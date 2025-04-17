@@ -1,11 +1,11 @@
 {
-  "__class__": "ffmpeg.utils.lazy_eval.operator.Mod",
+  "__class__": "Mod",
   "left": {
-    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+    "__class__": "Symbol",
     "key": "X"
   },
   "right": {
-    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+    "__class__": "Symbol",
     "key": "Y"
   }
 }

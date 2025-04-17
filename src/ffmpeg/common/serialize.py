@@ -9,7 +9,6 @@ saved to disk and loaded back.
 
 from __future__ import annotations
 
-import importlib
 import json
 from dataclasses import fields, is_dataclass
 from enum import Enum
@@ -19,43 +18,62 @@ from typing import Any
 
 from ..utils.forzendict import FrozenDict
 
+CLASS_REGISTRY: dict[str, type[Serializable | Enum]] = {}
+"""
+A registry of classes that have been loaded, and can be deserialized.
+"""
 
-def load_class(path: str, strict: bool = True) -> Any:
+
+def serializable(
+    cls: type[Serializable] | type[Enum],
+) -> type[Serializable] | type[Enum]:
     """
-    Load a class from a string path.
+    Register a class with the serialization system.
+    """
+    assert cls.__name__ not in CLASS_REGISTRY, (
+        f"Class {cls.__name__} already registered"
+    )
+    CLASS_REGISTRY[cls.__name__] = cls
 
-    This function dynamically imports a class based on its fully qualified
-    path (e.g., 'ffmpeg.dag.nodes.FilterNode'). It's used during deserialization
-    to reconstruct objects from their class names.
+    return cls
+
+
+class Serializable:
+    """
+    A base class for all serializable classes.
+    """
+
+    def __init_subclass__(cls, **kwargs: Any) -> None:
+        super().__init_subclass__(**kwargs)
+        serializable(cls)
+
+
+def load_class(name: str) -> type[Serializable] | type[Enum]:
+    """
+    Load a class from its name.
+
+    This function looks up a class by its name in the CLASS_REGISTRY. It's used during
+    deserialization to reconstruct objects from their class names.
 
     Args:
-        path: The fully qualified path to the class (module.submodule.ClassName)
-        strict: If True, only allow loading classes from the ffmpeg package
-               as a security measure
+        name: The simple class name (e.g., 'FilterNode')
 
     Returns:
         The class object that can be instantiated
 
     Raises:
-        AssertionError: If strict is True and the path doesn't start with 'ffmpeg.'
-        ImportError: If the module or class cannot be found
+        AssertionError: If the class name is not found in the registry
 
     Example:
         ```python
         # Load the FilterNode class
-        FilterNode = load_class('ffmpeg.dag.nodes.FilterNode')
+        FilterNode = load_class('FilterNode')
         # Create an instance
         node = FilterNode(name='scale', ...)
         ```
     """
-    if strict:
-        assert path.startswith("ffmpeg."), (
-            f"Only support loading class from ffmpeg package: {path}"
-        )
-
-    module_path, class_name = path.rsplit(".", 1)
-    module = importlib.import_module(module_path)
-    return getattr(module, class_name)
+    assert name in CLASS_REGISTRY, f"Class {name} not registered"
+    return CLASS_REGISTRY[name]
 
 
 def frozen(v: Any) -> Any:
@@ -110,7 +128,7 @@ def object_hook(obj: Any, strict: bool = True) -> Any:
         ```python
         # A JSON object with class information
         json_obj = {
-            "__class__": "ffmpeg.dag.nodes.FilterNode",
+            "__class__": "FilterNode",
             "name": "scale",
             "kwargs": {"width": 1280, "height": 720},
         }
@@ -119,7 +137,7 @@ def object_hook(obj: Any, strict: bool = True) -> Any:
     """
     if isinstance(obj, dict):
         if obj.get("__class__"):
-            cls = load_class(obj.pop("__class__"), strict=strict)
+            cls = load_class(obj.pop("__class__"))
 
             if is_dataclass(cls):
                 # NOTE: in our application, the dataclass is always frozen
@@ -148,7 +166,7 @@ def loads(raw: str, strict: bool = True) -> Any:
     Example:
         ```python
         # Deserialize a filter graph from JSON
-        json_str = '{"__class__": "ffmpeg.dag.nodes.FilterNode", "name": "scale", ...}'
+        json_str = '{"__class__": "FilterNode", "name": "scale", ...}'
         filter_node = loads(json_str)
         # filter_node is now a FilterNode instance
         ```
@@ -192,7 +210,7 @@ def to_dict_with_class_info(instance: Any) -> Any:
         return str(instance)
     elif is_dataclass(instance):
         return {
-            "__class__": f"{instance.__class__.__module__}.{instance.__class__.__name__}",
+            "__class__": instance.__class__.__name__,
             **{
                 k.name: to_dict_with_class_info(getattr(instance, k.name))
                 for k in fields(instance)
@@ -200,7 +218,7 @@ def to_dict_with_class_info(instance: Any) -> Any:
         }
     elif isinstance(instance, Enum):
         return {
-            "__class__": f"{instance.__class__.__module__}.{instance.__class__.__name__}",
+            "__class__": instance.__class__.__name__,
             "value": instance.value,
         }
     return instance

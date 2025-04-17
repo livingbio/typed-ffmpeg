@@ -1,5 +1,5 @@
 {
-  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "__class__": "FFMpegFilter",
   "description": "Negate input video.",
   "formula_typings_input": null,
   "formula_typings_output": null,
@@ -15,55 +15,55 @@
   "name": "negate",
   "options": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "components"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.....T.",
           "help": "set luma component",
           "name": "y",
           "value": "y"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.....T.",
           "help": "set u component",
           "name": "u",
           "value": "u"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.....T.",
           "help": "set v component",
           "name": "v",
           "value": "v"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.....T.",
           "help": "set red component",
           "name": "r",
           "value": "r"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.....T.",
           "help": "set green component",
           "name": "g",
           "value": "g"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.....T.",
           "help": "set blue component",
           "name": "b",
           "value": "b"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..FV.....T.",
           "help": "set alpha component",
           "name": "a",
@@ -78,12 +78,12 @@
       "name": "components",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "flags"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "negate_alpha"
       ],
@@ -96,12 +96,12 @@
       "name": "negate_alpha",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "boolean"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [],
       "choices": [],
       "default": null,
@@ -112,7 +112,7 @@
       "name": "enable",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     }
@@ -121,20 +121,20 @@
   "ref": null,
   "stream_typings_input": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }
   ],
   "stream_typings_output": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }

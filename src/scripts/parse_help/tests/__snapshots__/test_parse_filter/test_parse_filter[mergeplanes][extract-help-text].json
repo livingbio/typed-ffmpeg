@@ -1,5 +1,5 @@
 {
-  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "__class__": "FFMpegFilter",
   "description": "Merge planes.",
   "formula_typings_input": null,
   "formula_typings_output": null,
@@ -15,7 +15,7 @@
   "name": "mergeplanes",
   "options": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "mapping"
       ],
@@ -28,12 +28,12 @@
       "name": "mapping",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "format"
       ],
@@ -46,12 +46,12 @@
       "name": "format",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "pix_fmt"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map0s"
       ],
@@ -64,12 +64,12 @@
       "name": "map0s",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map0p"
       ],
@@ -82,12 +82,12 @@
       "name": "map0p",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map1s"
       ],
@@ -100,12 +100,12 @@
       "name": "map1s",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map1p"
       ],
@@ -118,12 +118,12 @@
       "name": "map1p",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map2s"
       ],
@@ -136,12 +136,12 @@
       "name": "map2s",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map2p"
       ],
@@ -154,12 +154,12 @@
       "name": "map2p",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map3s"
       ],
@@ -172,12 +172,12 @@
       "name": "map3s",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "map3p"
       ],
@@ -190,7 +190,7 @@
       "name": "map3p",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     }
@@ -200,10 +200,10 @@
   "stream_typings_input": [],
   "stream_typings_output": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "video"
       }
     }

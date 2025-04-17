@@ -1,31 +1,31 @@
 {
-  "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
+  "__class__": "Add",
   "left": {
-    "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
+    "__class__": "Add",
     "left": {
-      "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
+      "__class__": "Add",
       "left": {
-        "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
+        "__class__": "Add",
         "left": {
-          "__class__": "ffmpeg.utils.lazy_eval.operator.Mul",
+          "__class__": "Mul",
           "left": {
-            "__class__": "ffmpeg.utils.lazy_eval.operator.TrueDiv",
+            "__class__": "TrueDiv",
             "left": {
-              "__class__": "ffmpeg.utils.lazy_eval.operator.Mul",
+              "__class__": "Mul",
               "left": {
-                "__class__": "ffmpeg.utils.lazy_eval.operator.Sub",
+                "__class__": "Sub",
                 "left": {
-                  "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
+                  "__class__": "Add",
                   "left": {
-                    "__class__": "ffmpeg.utils.lazy_eval.operator.Add",
+                    "__class__": "Add",
                     "left": 1,
                     "right": {
-                      "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+                      "__class__": "Symbol",
                       "key": "X"
                     }
                   },
                   "right": {
-                    "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+                    "__class__": "Symbol",
                     "key": "Y"
                   }
                 },
@@ -36,52 +36,52 @@
             "right": 16
           },
           "right": {
-            "__class__": "ffmpeg.utils.lazy_eval.operator.Neg",
+            "__class__": "Neg",
             "left": {
-              "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+              "__class__": "Symbol",
               "key": "X"
             },
             "right": null
           }
         },
         "right": {
-          "__class__": "ffmpeg.utils.lazy_eval.operator.Pos",
+          "__class__": "Pos",
           "left": {
-            "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+            "__class__": "Symbol",
             "key": "Y"
           },
           "right": null
         }
       },
       "right": {
-        "__class__": "ffmpeg.utils.lazy_eval.operator.Abs",
+        "__class__": "Abs",
         "left": {
-          "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+          "__class__": "Symbol",
           "key": "X"
         },
         "right": null
       }
     },
     "right": {
-      "__class__": "ffmpeg.utils.lazy_eval.operator.Mod",
+      "__class__": "Mod",
       "left": {
-        "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+        "__class__": "Symbol",
         "key": "X"
       },
       "right": {
-        "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+        "__class__": "Symbol",
         "key": "Y"
       }
     }
   },
   "right": {
-    "__class__": "ffmpeg.utils.lazy_eval.operator.FloorDiv",
+    "__class__": "FloorDiv",
     "left": {
-      "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+      "__class__": "Symbol",
       "key": "X"
     },
     "right": {
-      "__class__": "ffmpeg.utils.lazy_eval.schema.Symbol",
+      "__class__": "Symbol",
       "key": "Y"
     }
   }

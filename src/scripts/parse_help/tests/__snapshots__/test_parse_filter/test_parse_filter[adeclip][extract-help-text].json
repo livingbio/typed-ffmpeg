@@ -1,5 +1,5 @@
 {
-  "__class__": "ffmpeg.common.schema.FFMpegFilter",
+  "__class__": "FFMpegFilter",
   "description": "Remove clipping from input audio.",
   "formula_typings_input": null,
   "formula_typings_output": null,
@@ -15,7 +15,7 @@
   "name": "adeclip",
   "options": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "window",
         "w"
@@ -29,12 +29,12 @@
       "name": "window",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "double"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "overlap",
         "o"
@@ -48,12 +48,12 @@
       "name": "overlap",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "double"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "arorder",
         "a"
@@ -67,12 +67,12 @@
       "name": "arorder",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "double"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "threshold",
         "t"
@@ -86,12 +86,12 @@
       "name": "threshold",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "double"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "hsize",
         "n"
@@ -105,40 +105,40 @@
       "name": "hsize",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [
         "method",
         "m"
       ],
       "choices": [
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..F.A......",
           "help": "overlap-add",
           "name": "add",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..F.A......",
           "help": "overlap-add",
           "name": "a",
           "value": "0"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..F.A......",
           "help": "overlap-save",
           "name": "save",
           "value": "1"
         },
         {
-          "__class__": "ffmpeg.common.schema.FFMpegFilterOptionChoice",
+          "__class__": "FFMpegFilterOptionChoice",
           "flags": "..F.A......",
           "help": "overlap-save",
           "name": "s",
@@ -153,12 +153,12 @@
       "name": "method",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "int"
       }
     },
     {
-      "__class__": "ffmpeg.common.schema.FFMpegFilterOption",
+      "__class__": "FFMpegFilterOption",
       "alias": [],
       "choices": [],
       "default": null,
@@ -169,7 +169,7 @@
       "name": "enable",
       "required": false,
       "type": {
-        "__class__": "ffmpeg.common.schema.FFMpegFilterOptionType",
+        "__class__": "FFMpegFilterOptionType",
         "value": "string"
       }
     }
@@ -178,20 +178,20 @@
   "ref": null,
   "stream_typings_input": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "audio"
       }
     }
   ],
   "stream_typings_output": [
     {
-      "__class__": "ffmpeg.common.schema.FFMpegIOType",
+      "__class__": "FFMpegIOType",
       "name": "default",
       "type": {
-        "__class__": "ffmpeg.common.schema.StreamType",
+        "__class__": "StreamType",
         "value": "audio"
       }
     }
