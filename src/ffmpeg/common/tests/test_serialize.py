@@ -1,27 +1,47 @@
 from dataclasses import dataclass
+from enum import Enum
 
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
 from ...filters import concat
-from ..serialize import Serializable, dumps, loads
+from ..serialize import Serializable, dumps, load_class, loads, serializable
 
 
-# Define your dataclasses
-@dataclass
-class Address(Serializable):
-    street: str
-    city: str
+def test_serializable_decorator() -> None:
+    @serializable
+    class TestEnum(Enum):
+        VALUE1 = "value1"
+        VALUE2 = "value2"
 
+    # Test that classes can be loaded by name
+    assert load_class("TestEnum") is TestEnum
 
-@dataclass
-class Person(Serializable):
-    name: str
-    age: int
-    address: Address
+    # Test that duplicate registration raises an error
+    try:
+
+        @serializable
+        class TestEnum(Enum):  # type: ignore[no-redef]
+            pass
+
+        assert False, "Should have raised an AssertionError"
+    except AssertionError as e:
+        assert "Class TestClass already registered" in str(e)
 
 
 def test_load_and_dump(snapshot: SnapshotAssertion) -> None:
+    # Define your dataclasses
+    @dataclass
+    class Address(Serializable):
+        street: str
+        city: str
+
+    @dataclass
+    class Person(Serializable):
+        name: str
+        age: int
+        address: Address
+
     # Example usage
     person = Person("John Doe", 30, Address("123 Main St", "Anytown"))
     serialized = dumps(person)

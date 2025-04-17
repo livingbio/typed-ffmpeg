@@ -24,7 +24,9 @@ A registry of classes that have been loaded, and can be deserialized.
 """
 
 
-def serializable(cls: type[Serializable | Enum]) -> type[Serializable | Enum]:
+def serializable(
+    cls: type[Serializable] | type[Enum],
+) -> type[Serializable] | type[Enum]:
     """
     Register a class with the serialization system.
     """

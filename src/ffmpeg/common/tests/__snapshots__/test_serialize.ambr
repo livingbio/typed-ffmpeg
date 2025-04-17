@@ -1,6 +1,6 @@
 # serializer version: 1
 # name: test_load_and_dump[deserialized]
-  Person(name='John Doe', age=30, address=Address(street='123 Main St', city='Anytown'))
+  test_load_and_dump.<locals>.Person(name='John Doe', age=30, address=test_load_and_dump.<locals>.Address(street='123 Main St', city='Anytown'))
 # ---
 # name: test_load_and_dump[serialized]
   '''
