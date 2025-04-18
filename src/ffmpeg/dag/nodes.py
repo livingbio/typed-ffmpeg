@@ -665,10 +665,7 @@ class OutputNode(Node):
         # !handle mapping
         commands = []
 
-        if context and (
-            any(isinstance(k.node, FilterNode) for k in self.inputs)
-            or len([k for k in context.all_nodes if isinstance(k, OutputNode)]) >= 1
-        ):
+        if context:
             for input in self.inputs:
                 if isinstance(input.node, InputNode):
                     commands += ["-map", input.label(context)]
