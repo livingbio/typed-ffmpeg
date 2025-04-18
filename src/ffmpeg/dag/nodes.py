@@ -667,7 +667,7 @@ class OutputNode(Node):
 
         if context and (
             any(isinstance(k.node, FilterNode) for k in self.inputs)
-            or len([k for k in context.all_nodes if isinstance(k, OutputNode)]) > 1
+            or len([k for k in context.all_nodes if isinstance(k, OutputNode)]) >= 1
         ):
             for input in self.inputs:
                 if isinstance(input.node, InputNode):
