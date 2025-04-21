@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Literal
 
-from ffmpeg.common.serialize import Serializable, serializable
+from .serialize import Serializable, serializable
 
 
 @serializable
