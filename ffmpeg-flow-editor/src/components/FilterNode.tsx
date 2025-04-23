@@ -11,7 +11,7 @@ interface FilterNodeData {
 }
 
 interface ValidationError {
-  [key: string]: string;
+  [key: string]: string | null;
 }
 
 function FilterNode({ data }: NodeProps<FilterNodeData>) {
@@ -68,6 +68,7 @@ function FilterNode({ data }: NodeProps<FilterNodeData>) {
         .filter(([_, value]) => value !== '')
         .map(([key, value]) => `${key}=${value}`)
         .join(':');
+
       return `${data.filterName}${paramString ? '=' + paramString : ''}`;
     }
     return '';
@@ -102,11 +103,20 @@ function FilterNode({ data }: NodeProps<FilterNodeData>) {
                   fullWidth
                   size="small"
                   label={param.name}
-                  value={parameters[param.name] || ''}
+                  placeholder={param.default?.toString()}
+                  value={parameters[param.name] ?? ''}
                   onChange={(e) => handleParameterChange(param.name, e.target.value)}
                   variant="outlined"
                   error={!!errors[param.name]}
-                  helperText={errors[param.name]}
+                  helperText={errors[param.name] || param.description}
+                  InputProps={{
+                    sx: {
+                      '& input::placeholder': {
+                        color: 'text.disabled',
+                        opacity: 1,
+                      },
+                    },
+                  }}
                 />
               </Box>
             ))}
