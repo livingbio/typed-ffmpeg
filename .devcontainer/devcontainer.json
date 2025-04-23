@@ -11,11 +11,22 @@
         "ms-python.mypy-type-checker",
         "GitHub.copilot",
         "GitHub.vscode-pull-request-github",
-        "mhutchie.git-graph"
+        "mhutchie.git-graph",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "Vue.volar",
+        "Vue.vscode-typescript-vue-plugin"
       ],
       "settings": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
         "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "typescript.tsdk": "node_modules/typescript/lib"
       }
     }
   },
@@ -25,7 +36,8 @@
     "ghcr.io/dhoeric/features/google-cloud-cli:1": {}
   },
   "forwardPorts": [
-    5000
+    5000,
+    5173
   ],
   "mounts": [
     "source=${localEnv:HOME}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached",
