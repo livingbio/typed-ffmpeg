@@ -2,10 +2,11 @@ from syrupy.assertion import SnapshotAssertion
 
 from ffmpeg.common.schema import FFMpegFilter
 
-from ..cache import list_all, load, save
+from ..cache import clean, list_all, load, save
 
 
 def test_save_and_load(snapshot: SnapshotAssertion) -> None:
+    clean(FFMpegFilter)
     ffmpeg_filter = FFMpegFilter(name="foo", description="bar")
     save(ffmpeg_filter, ffmpeg_filter.name)
 
