@@ -55,3 +55,12 @@ def list_all(cls: type[T]) -> list[T]:
     path = cache_path / f"{cls.__name__}"
 
     return [loads(i.read_text()) for i in path.glob("*.json")]
+
+
+def clean(cls: type[T]) -> None:
+    """
+    Clean the cache for a class
+    """
+    path = cache_path / f"{cls.__name__}"
+    for i in path.glob("*.json"):
+        i.unlink()

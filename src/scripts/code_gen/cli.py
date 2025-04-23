@@ -6,6 +6,7 @@ import typer
 
 from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
 
+from ..cache import save
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
@@ -64,7 +65,9 @@ def generate(outpath: Path = None) -> None:
             f = replace(f, **asdict(manual_config))
 
         try:
-            ffmpeg_filters.append(gen_filter_info(f))
+            filter_info = gen_filter_info(f)
+            save(filter_info, filter_info.name)
+            ffmpeg_filters.append(filter_info)
         except ValueError:
             print(f"Failed to generate filter info for {f.name}")
     ffmpeg_options = gen_option_info()
