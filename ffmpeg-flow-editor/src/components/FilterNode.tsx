@@ -1,7 +1,7 @@
-import { memo, useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip, FormHelperText } from '@mui/material';
-import { FFmpegFilter, FilterParameter, predefinedFilters } from '@/types/ffmpeg';
+import { FFmpegFilter, FilterParameter, predefinedFilters } from '../types/ffmpeg';
 
 interface FilterNodeData {
   label: string;
@@ -14,9 +14,14 @@ interface ValidationError {
   [key: string]: string | null;
 }
 
-function FilterNode({ data }: NodeProps<FilterNodeData>) {
+function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
+
+  // Update local state when data changes
+  useEffect(() => {
+    setParameters(data.parameters || {});
+  }, [data.parameters]);
 
   const validateParameter = (param: FilterParameter, value: string): string | null => {
     if (!value) {
@@ -56,10 +61,23 @@ function FilterNode({ data }: NodeProps<FilterNodeData>) {
       [paramName]: error || ''
     }));
 
-    setParameters(prev => ({
-      ...prev,
+    const newParameters = {
+      ...parameters,
       [paramName]: value
-    }));
+    };
+    setParameters(newParameters);
+
+    // Update the node data
+    const event = new CustomEvent('updateNodeData', {
+      detail: {
+        id,
+        data: {
+          ...data,
+          parameters: newParameters
+        }
+      }
+    });
+    window.dispatchEvent(event);
   };
 
   const getFilterString = () => {

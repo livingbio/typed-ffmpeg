@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import ReactFlow, {
   Node,
   Edge,
@@ -14,7 +14,7 @@ import { Box } from '@mui/material';
 import FilterNode from './FilterNode';
 import Toolbar from './Toolbar';
 import PreviewPanel from './PreviewPanel';
-import { predefinedFilters } from '@/types/ffmpeg';
+import { predefinedFilters } from '../types/ffmpeg';
 
 const nodeTypes = {
   filter: FilterNode,
@@ -48,6 +48,32 @@ const initialEdges: Edge[] = [];
 export default function FFmpegFlowEditor() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  // Add event listener for node data updates
+  useEffect(() => {
+    const handleNodeDataUpdate = (event: CustomEvent) => {
+      const { id, data } = event.detail;
+      setNodes((nds) =>
+        nds.map((node) => {
+          if (node.id === id) {
+            return {
+              ...node,
+              data: {
+                ...node.data,
+                ...data,
+              },
+            };
+          }
+          return node;
+        })
+      );
+    };
+
+    window.addEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+    return () => {
+      window.removeEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+    };
+  }, [setNodes]);
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((eds) => addEdge(params, eds)),
@@ -105,8 +131,8 @@ export default function FFmpegFlowEditor() {
         <Background />
         <Controls />
         <Toolbar onAddFilter={onAddFilter} />
-        <PreviewPanel nodes={nodes} edges={edges} />
       </ReactFlow>
+      <PreviewPanel nodes={nodes} edges={edges} />
     </Box>
   );
 }

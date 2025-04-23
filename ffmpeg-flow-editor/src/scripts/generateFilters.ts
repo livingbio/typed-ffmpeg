@@ -1,17 +1,17 @@
-import { readdirSync, readFileSync, writeFileSync } from 'fs';
-import { join, basename, dirname } from 'path';
+import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
-import { FFmpegFilter, FilterParameter } from '@/types/ffmpeg';
+import { FFmpegFilter, FilterParameter } from '../types/ffmpeg';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
-const CACHE_DIR = join(__dirname, '../../../src/scripts/cache/FFMpegFilter');
+const CACHE_DIR = path.join(__dirname, '../../../src/scripts/cache/FFMpegFilter');
 
 function readCacheFiles(): string[] {
-  return readdirSync(CACHE_DIR)
+  return fs.readdirSync(CACHE_DIR)
     .filter((file: string) => file.endsWith('.json'))
-    .map((file: string) => join(CACHE_DIR, file));
+    .map((file: string) => path.join(CACHE_DIR, file));
 }
 
 function mapOptionToParameter(option: any): FilterParameter {
@@ -38,7 +38,7 @@ function mapOptionToParameter(option: any): FilterParameter {
 
 function parseFilterFile(filePath: string): FFmpegFilter | null {
   try {
-    const content = readFileSync(filePath, 'utf-8');
+    const content = fs.readFileSync(filePath, 'utf-8');
     // Replace NaN with null in the JSON string
     const sanitizedContent = content.replace(/:\s*NaN/g, ': null');
     const filterData = JSON.parse(sanitizedContent);
@@ -65,8 +65,8 @@ function generateFiltersJson(): void {
     filters,
   };
 
-  const outputPath = join(__dirname, '../config/filters.json');
-  writeFileSync(outputPath, JSON.stringify(output, null, 2));
+  const outputPath = path.join(__dirname, '../config/filters.json');
+  fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
 
   console.log(`Generated ${filters.length} filters in ${outputPath}`);
 }
