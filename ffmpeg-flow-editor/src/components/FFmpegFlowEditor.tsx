@@ -12,8 +12,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { Box } from '@mui/material';
 import FilterNode from './FilterNode';
-import Toolbar from './Toolbar';
-import PreviewPanel from './PreviewPanel';
+import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 
 const nodeTypes = {
@@ -130,9 +129,8 @@ export default function FFmpegFlowEditor() {
       >
         <Background />
         <Controls />
-        <Toolbar onAddFilter={onAddFilter} />
       </ReactFlow>
-      <PreviewPanel nodes={nodes} edges={edges} />
+      <Sidebar nodes={nodes} edges={edges} onAddFilter={onAddFilter} />
     </Box>
   );
 }

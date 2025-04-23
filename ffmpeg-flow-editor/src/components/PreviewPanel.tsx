@@ -1,4 +1,4 @@
-import { Box, Paper, Typography, Button, Tabs, Tab } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { Node, Edge } from 'reactflow';
 import { FFmpegCommand } from '../types/ffmpeg';
 import { useState, useEffect } from 'react';
@@ -6,31 +6,6 @@ import { useState, useEffect } from 'react';
 interface PreviewPanelProps {
   nodes: Node[];
   edges: Edge[];
-}
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`preview-tabpanel-${index}`}
-      aria-labelledby={`preview-tab-${index}`}
-      {...other}
-      style={{ display: value === index ? 'block' : 'none' }}
-    >
-      <Box sx={{ p: 3 }}>
-        {children}
-      </Box>
-    </div>
-  );
 }
 
 function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { ffmpeg: FFmpegCommand; python: string } {
@@ -143,7 +118,6 @@ function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { ffmpeg: FFmpegCo
 }
 
 export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
-  const [tabValue, setTabValue] = useState(0);
   const [previewData, setPreviewData] = useState<{ ffmpeg: FFmpegCommand; python: string }>({
     ffmpeg: {
       input: '',
@@ -159,89 +133,86 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
     setPreviewData(newData);
   }, [nodes, edges]);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setTabValue(newValue);
-  };
-
-  const handleCopy = () => {
-    const textToCopy = tabValue === 0
+  const handleCopy = (type: 'ffmpeg' | 'python') => {
+    const textToCopy = type === 'ffmpeg'
       ? `ffmpeg -i ${previewData.ffmpeg.input} -filter_complex "${previewData.ffmpeg.filters}" ${previewData.ffmpeg.options.join(' ')} ${previewData.ffmpeg.output}`
       : previewData.python;
     navigator.clipboard.writeText(textToCopy);
   };
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        position: 'fixed',
-        bottom: 20,
-        right: 20,
-        maxWidth: 600,
-        width: '100%',
-        backgroundColor: '#fff',
-        zIndex: 1000,
-      }}
-    >
-      <Tabs
-        value={tabValue}
-        onChange={handleTabChange}
-        sx={{
-          borderBottom: 1,
-          borderColor: 'divider',
-        }}
-      >
-        <Tab label="FFmpeg Command" />
-        <Tab label="Python Code" />
-      </Tabs>
-
-      <TabPanel value={tabValue} index={0}>
-        <Typography variant="h6" gutterBottom>
-          FFmpeg Command Preview
-        </Typography>
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="body2" color="text.secondary">
-            Input: {previewData.ffmpeg.input}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Output: {previewData.ffmpeg.output}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Filter Complex: {previewData.ffmpeg.filters}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Options: {previewData.ffmpeg.options.join(' ')}
-          </Typography>
+    <Box>
+      {/* FFmpeg Command */}
+      <Box sx={{ mb: 3 }}>
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mb: 1,
+        }}>
+          <Typography variant="subtitle2">FFmpeg Command</Typography>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => handleCopy('ffmpeg')}
+          >
+            Copy
+          </Button>
         </Box>
-      </TabPanel>
-
-      <TabPanel value={tabValue} index={1}>
-        <Typography variant="h6" gutterBottom>
-          Python Code Preview
-        </Typography>
-        <Box sx={{ mb: 2 }}>
+        <Box sx={{
+          p: 1.5,
+          backgroundColor: '#f5f5f5',
+          borderRadius: 1,
+        }}>
           <pre style={{
-            backgroundColor: '#f5f5f5',
-            padding: '1rem',
-            borderRadius: '4px',
-            overflow: 'auto',
+            margin: 0,
+            padding: 0,
+            fontFamily: 'monospace',
+            fontSize: '0.875rem',
+            lineHeight: 1.5,
             whiteSpace: 'pre-wrap',
-            fontFamily: 'monospace'
+            wordBreak: 'break-word',
+          }}>
+            {`ffmpeg -i ${previewData.ffmpeg.input} -filter_complex "${previewData.ffmpeg.filters}" ${previewData.ffmpeg.options.join(' ')} ${previewData.ffmpeg.output}`}
+          </pre>
+        </Box>
+      </Box>
+
+      {/* Python Code */}
+      <Box>
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mb: 1,
+        }}>
+          <Typography variant="subtitle2">Python Code</Typography>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => handleCopy('python')}
+          >
+            Copy
+          </Button>
+        </Box>
+        <Box sx={{
+          p: 1.5,
+          backgroundColor: '#f5f5f5',
+          borderRadius: 1,
+        }}>
+          <pre style={{
+            margin: 0,
+            padding: 0,
+            fontFamily: 'monospace',
+            fontSize: '0.875rem',
+            lineHeight: 1.5,
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word',
           }}>
             {previewData.python}
           </pre>
         </Box>
-      </TabPanel>
-
-      <Box sx={{ p: 2, display: 'flex', justifyContent: 'flex-end' }}>
-        <Button
-          variant="contained"
-          size="small"
-          onClick={handleCopy}
-        >
-          Copy {tabValue === 0 ? 'Command' : 'Code'}
-        </Button>
       </Box>
-    </Paper>
+    </Box>
   );
 }
