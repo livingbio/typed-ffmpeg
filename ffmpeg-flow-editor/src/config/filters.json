@@ -1,0 +1,231 @@
+{
+  "filters": [
+    {
+      "name": "scale",
+      "label": "Scale",
+      "description": "Scale the input video to a new size",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "description": "Output width",
+          "validation": { "min": 1 }
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "description": "Output height",
+          "validation": { "min": 1 }
+        },
+        {
+          "name": "force_original_aspect_ratio",
+          "type": "string",
+          "required": false,
+          "description": "Force original aspect ratio (decrease/increase)"
+        }
+      ]
+    },
+    {
+      "name": "crop",
+      "label": "Crop",
+      "description": "Crop the input video",
+      "parameters": [
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "description": "Crop width",
+          "validation": { "min": 1 }
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "description": "Crop height",
+          "validation": { "min": 1 }
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "required": false,
+          "description": "X position",
+          "validation": { "min": 0 }
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "required": false,
+          "description": "Y position",
+          "validation": { "min": 0 }
+        }
+      ]
+    },
+    {
+      "name": "overlay",
+      "label": "Overlay",
+      "description": "Overlay one video on top of another",
+      "parameters": [
+        {
+          "name": "x",
+          "type": "number",
+          "required": false,
+          "description": "X position"
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "required": false,
+          "description": "Y position"
+        }
+      ]
+    },
+    {
+      "name": "trim",
+      "label": "Trim",
+      "description": "Trim the input video",
+      "parameters": [
+        {
+          "name": "start",
+          "type": "number",
+          "required": false,
+          "description": "Start time in seconds",
+          "validation": { "min": 0 }
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "required": false,
+          "description": "End time in seconds",
+          "validation": { "min": 0 }
+        }
+      ]
+    },
+    {
+      "name": "fade",
+      "label": "Fade",
+      "description": "Add fade in/out effect",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "description": "Fade type (in/out)",
+          "default": "in"
+        },
+        {
+          "name": "duration",
+          "type": "number",
+          "required": false,
+          "description": "Fade duration in seconds",
+          "validation": { "min": 0 }
+        }
+      ]
+    },
+    {
+      "name": "hflip",
+      "label": "Horizontal Flip",
+      "description": "Flip the video horizontally",
+      "parameters": []
+    },
+    {
+      "name": "vflip",
+      "label": "Vertical Flip",
+      "description": "Flip the video vertically",
+      "parameters": []
+    },
+    {
+      "name": "rotate",
+      "label": "Rotate",
+      "description": "Rotate the video",
+      "parameters": [
+        {
+          "name": "angle",
+          "type": "number",
+          "required": false,
+          "description": "Rotation angle in degrees"
+        },
+        {
+          "name": "out_w",
+          "type": "number",
+          "required": false,
+          "description": "Output width",
+          "validation": { "min": 1 }
+        },
+        {
+          "name": "out_h",
+          "type": "number",
+          "required": false,
+          "description": "Output height",
+          "validation": { "min": 1 }
+        }
+      ]
+    },
+    {
+      "name": "drawtext",
+      "label": "Draw Text",
+      "description": "Draw text on the video",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "required": false,
+          "description": "Text to draw"
+        },
+        {
+          "name": "x",
+          "type": "number",
+          "required": false,
+          "description": "X position"
+        },
+        {
+          "name": "y",
+          "type": "number",
+          "required": false,
+          "description": "Y position"
+        },
+        {
+          "name": "fontsize",
+          "type": "number",
+          "required": false,
+          "description": "Font size",
+          "validation": { "min": 1 }
+        },
+        {
+          "name": "fontcolor",
+          "type": "string",
+          "required": false,
+          "description": "Font color (e.g., white, #FFFFFF)"
+        }
+      ]
+    },
+    {
+      "name": "setpts",
+      "label": "Set PTS",
+      "description": "Set the Presentation TimeStamp",
+      "parameters": [
+        {
+          "name": "expr",
+          "type": "string",
+          "required": false,
+          "description": "Expression (e.g., PTS-STARTPTS)"
+        }
+      ]
+    },
+    {
+      "name": "fps",
+      "label": "FPS",
+      "description": "Change the frame rate",
+      "parameters": [
+        {
+          "name": "fps",
+          "type": "number",
+          "required": false,
+          "description": "Target frame rate",
+          "validation": { "min": 0 }
+        }
+      ]
+    }
+  ]
+}

@@ -11,6 +11,7 @@ import typer
 
 from ffmpeg.common.schema import FFMpegFilter
 
+from ..cache import save
 from .parse_all_filter import extract
 from .parse_filter import extract_avfilter_info_from_help
 
@@ -41,26 +42,26 @@ def all_filters() -> list[FFMpegFilter]:
             typer.echo(f"Failed to parse filter {filter_info.name}")  #
             continue
 
-        output.append(
-            FFMpegFilter(
-                name=filter_info.name,
-                description=filter_info.description,
-                # flags
-                is_support_timeline=filter_info.is_support_timeline,
-                is_support_slice_threading=filter_info.is_support_slice_threading,
-                is_support_command=filter_info.is_support_command,
-                # NOTE: is_support_framesync can only be determined by filter_info_from_help
-                is_support_framesync=filter_info_from_help.is_support_framesync,
-                is_filter_sink=filter_info.is_filter_sink,
-                is_filter_source=filter_info.is_filter_source,
-                # IO Typing
-                is_dynamic_input=filter_info.is_dynamic_input,
-                is_dynamic_output=filter_info.is_dynamic_output,
-                # stream_typings's name can only be determined by filter_info_from_help
-                stream_typings_input=filter_info_from_help.stream_typings_input,
-                stream_typings_output=filter_info_from_help.stream_typings_output,
-                options=filter_info_from_help.options,
-            )
+        ffmpeg_filter = FFMpegFilter(
+            name=filter_info.name,
+            description=filter_info.description,
+            # flags
+            is_support_timeline=filter_info.is_support_timeline,
+            is_support_slice_threading=filter_info.is_support_slice_threading,
+            is_support_command=filter_info.is_support_command,
+            # NOTE: is_support_framesync can only be determined by filter_info_from_help
+            is_support_framesync=filter_info_from_help.is_support_framesync,
+            is_filter_sink=filter_info.is_filter_sink,
+            is_filter_source=filter_info.is_filter_source,
+            # IO Typing
+            is_dynamic_input=filter_info.is_dynamic_input,
+            is_dynamic_output=filter_info.is_dynamic_output,
+            # stream_typings's name can only be determined by filter_info_from_help
+            stream_typings_input=filter_info_from_help.stream_typings_input,
+            stream_typings_output=filter_info_from_help.stream_typings_output,
+            options=filter_info_from_help.options,
         )
+        save(ffmpeg_filter, ffmpeg_filter.name)
+        output.append(ffmpeg_filter)
 
     return output
