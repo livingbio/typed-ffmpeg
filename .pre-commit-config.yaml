@@ -5,6 +5,7 @@ repos:
       # - id: check-added-large-files
       - id: check-case-conflict
       - id: check-json
+        exclude: "__snapshots__/|ffmpeg-flow-editor/"
       - id: check-merge-conflict
       - id: check-yaml
       - id: end-of-file-fixer
@@ -17,7 +18,7 @@ repos:
         exclude: "__snapshots__/"
       - id: pretty-format-json
         args: [--autofix]
-        exclude: "__snapshots__/"
+        exclude: "__snapshots__/|ffmpeg-flow-editor/"
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.

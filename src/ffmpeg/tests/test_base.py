@@ -229,3 +229,26 @@ def test_source_filter(snapshot: SnapshotAssertion) -> None:
             in_file, color(color="red", size="hd1080"), filename="output.mp4"
         ).compile()
     )
+
+
+def test_map(snapshot: SnapshotAssertion) -> None:
+    input_video_file_path = "input_video.mp4"
+    input_audio_file_path = "input_audio.mp3"
+    output_video_file_path = "output_video.mp4"
+
+    video_stream = input(input_video_file_path).video
+    audio_stream = input(input_audio_file_path).audio
+
+    assert (
+        snapshot(extension_class=JSONSnapshotExtension)
+        == output(
+            video_stream,
+            audio_stream,
+            filename=output_video_file_path,
+            vcodec="copy",
+            acodec="aac",
+            shortest=True,
+        )
+        .overwrite_output()
+        .compile()
+    )

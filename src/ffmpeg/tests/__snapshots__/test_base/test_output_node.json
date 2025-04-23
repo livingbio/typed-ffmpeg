@@ -2,6 +2,8 @@
   "ffmpeg",
   "-i",
   "input1",
+  "-map",
+  "0",
   "-str",
   "x",
   "-int",
