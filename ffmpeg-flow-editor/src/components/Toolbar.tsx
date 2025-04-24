@@ -1,6 +1,6 @@
 import { Button, Box, TextField, InputAdornment, Paper } from '@mui/material';
 import { useState, useRef, useEffect } from 'react';
-import { predefinedFilters } from '@/types/ffmpeg';
+import { predefinedFilters } from '../types/ffmpeg';
 import SearchIcon from '@mui/icons-material/Search';
 
 interface ToolbarProps {
