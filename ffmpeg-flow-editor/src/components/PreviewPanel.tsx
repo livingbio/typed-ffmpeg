@@ -1,6 +1,5 @@
 import { Box, Typography, Button } from "@mui/material";
 import { Node, Edge } from "reactflow";
-import { FFmpegCommand } from "../types/ffmpeg";
 import { useState, useEffect } from "react";
 
 // Add type declarations for Pyodide
@@ -21,25 +20,17 @@ interface PreviewPanelProps {
 function generateFFmpegCommand(
   nodes: Node[],
   edges: Edge[]
-): { ffmpeg: FFmpegCommand; python: string } {
+): { python: string } {
   const inputNode = nodes.find((n) => n.data.filterType === "input");
   const outputNode = nodes.find((n) => n.data.filterType === "output");
-  const filterNodes = nodes.filter((n) => n.data.filterType === "filter");
 
   if (!inputNode || !outputNode) {
     return {
-      ffmpeg: {
-        input: "",
-        output: "",
-        filters: "",
-        options: [],
-      },
       python: "",
     };
   }
 
   // Build filter chain
-  const filterChain: string[] = [];
   const padNames: Record<string, string> = {};
   let padCounter = 0;
 
@@ -47,31 +38,6 @@ function generateFFmpegCommand(
   nodes.forEach((node) => {
     if (node.data.filterType === "filter") {
       padNames[node.id] = `[${padCounter++}]`;
-    }
-  });
-
-  // Build filter string for each node
-  filterNodes.forEach((node) => {
-    const filterString = node.data.filterString || "";
-    if (filterString) {
-      filterChain.push(`${padNames[node.id]}${filterString}`);
-    }
-  });
-
-  // Connect pads based on edges
-  edges.forEach((edge) => {
-    const sourceNode = nodes.find((n) => n.id === edge.source);
-    const targetNode = nodes.find((n) => n.id === edge.target);
-    if (sourceNode && targetNode) {
-      const sourcePad =
-        sourceNode.data.filterType === "input"
-          ? "[0:v]"
-          : padNames[sourceNode.id];
-      const targetPad =
-        targetNode.data.filterType === "output"
-          ? "[outv]"
-          : padNames[targetNode.id];
-      filterChain.push(`${sourcePad}${targetPad}`);
     }
   });
 
@@ -129,27 +95,14 @@ function generateFFmpegCommand(
   pythonCode += "    .compile_line())";
 
   return {
-    ffmpeg: {
-      input: "input.mp4",
-      output: "output.mp4",
-      filters: filterChain.join(";"),
-      options: ["-c:v libx264", "-preset medium", "-crf 23"],
-    },
     python: pythonCode,
   };
 }
 
 export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
   const [previewData, setPreviewData] = useState<{
-    ffmpeg: FFmpegCommand;
     python: string;
   }>({
-    ffmpeg: {
-      input: "",
-      output: "",
-      filters: "",
-      options: [],
-    },
     python: "",
   });
 
@@ -187,86 +140,36 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
     setPreviewData(newData);
   }, [nodes, edges]);
 
-  const handleCopy = (type: "ffmpeg" | "python") => {
-    const textToCopy =
-      type === "ffmpeg"
-        ? `ffmpeg -i ${previewData.ffmpeg.input} -filter_complex "${
-            previewData.ffmpeg.filters
-          }" ${previewData.ffmpeg.options.join(" ")} ${
-            previewData.ffmpeg.output
-          }`
-        : previewData.python;
-    navigator.clipboard.writeText(textToCopy);
-  };
+  // Add new useEffect to automatically run Python when code changes
+  useEffect(() => {
+    async function runPython() {
+      if (!pyodide || !previewData.python) {
+        return;
+      }
 
-  const handleRunPython = async () => {
-    if (!pyodide) {
-      setResult("Python environment not loaded");
-      return;
+      try {
+        setIsLoading(true);
+        const output = await pyodide.runPythonAsync(previewData.python);
+        setResult(output.toString());
+      } catch (error) {
+        console.error("Python execution error:", error);
+        setResult(
+          `Error: ${error instanceof Error ? error.message : String(error)}`
+        );
+      } finally {
+        setIsLoading(false);
+      }
     }
 
-    try {
-      setIsLoading(true);
-      const output = await pyodide.runPythonAsync(previewData.python);
-      setResult(output.toString());
-    } catch (error) {
-      console.error("Python execution error:", error);
-      setResult(
-        `Error: ${error instanceof Error ? error.message : String(error)}`
-      );
-    } finally {
-      setIsLoading(false);
-    }
+    runPython();
+  }, [pyodide, previewData.python]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(previewData.python);
   };
 
   return (
     <Box>
-      {/* FFmpeg Command */}
-      <Box sx={{ mb: 3 }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mb: 1,
-          }}
-        >
-          <Typography variant="subtitle2">FFmpeg Command</Typography>
-          <Button
-            variant="outlined"
-            size="small"
-            onClick={() => handleCopy("ffmpeg")}
-          >
-            Copy
-          </Button>
-        </Box>
-        <Box
-          sx={{
-            p: 1.5,
-            backgroundColor: "#f5f5f5",
-            borderRadius: 1,
-          }}
-        >
-          <pre
-            style={{
-              margin: 0,
-              padding: 0,
-              fontFamily: "monospace",
-              fontSize: "0.875rem",
-              lineHeight: 1.5,
-              whiteSpace: "pre-wrap",
-              wordBreak: "break-word",
-            }}
-          >
-            {`ffmpeg -i ${previewData.ffmpeg.input} -filter_complex "${
-              previewData.ffmpeg.filters
-            }" ${previewData.ffmpeg.options.join(" ")} ${
-              previewData.ffmpeg.output
-            }`}
-          </pre>
-        </Box>
-      </Box>
-
       {/* Python Code */}
       <Box sx={{ mb: 3 }}>
         <Box
@@ -278,24 +181,9 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
           }}
         >
           <Typography variant="subtitle2">Python Code</Typography>
-          <Box>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={() => handleCopy("python")}
-              sx={{ mr: 1 }}
-            >
-              Copy
-            </Button>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={handleRunPython}
-              disabled={isLoading || !pyodide}
-            >
-              {isLoading ? "Running..." : "Run"}
-            </Button>
-          </Box>
+          <Button variant="outlined" size="small" onClick={handleCopy}>
+            Copy
+          </Button>
         </Box>
         <Box
           sx={{
@@ -321,34 +209,32 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
       </Box>
 
       {/* Result */}
-      {result && (
-        <Box>
-          <Typography variant="subtitle2" sx={{ mb: 1 }}>
-            Result
-          </Typography>
-          <Box
-            sx={{
-              p: 1.5,
-              backgroundColor: "#f5f5f5",
-              borderRadius: 1,
+      <Box>
+        <Typography variant="subtitle2" sx={{ mb: 1 }}>
+          Result {isLoading && "(Loading...)"}
+        </Typography>
+        <Box
+          sx={{
+            p: 1.5,
+            backgroundColor: "#f5f5f5",
+            borderRadius: 1,
+          }}
+        >
+          <pre
+            style={{
+              margin: 0,
+              padding: 0,
+              fontFamily: "monospace",
+              fontSize: "0.875rem",
+              lineHeight: 1.5,
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
             }}
           >
-            <pre
-              style={{
-                margin: 0,
-                padding: 0,
-                fontFamily: "monospace",
-                fontSize: "0.875rem",
-                lineHeight: 1.5,
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-word",
-              }}
-            >
-              {result}
-            </pre>
-          </Box>
+            {result || "No result yet"}
+          </pre>
         </Box>
-      )}
+      </Box>
     </Box>
   );
 }
