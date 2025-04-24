@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from "react";
 import ReactFlow, {
   Node,
   Edge,
@@ -8,12 +8,12 @@ import ReactFlow, {
   useEdgesState,
   addEdge,
   Connection,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
-import { Box } from '@mui/material';
-import FilterNode from './FilterNode';
-import Sidebar from './Sidebar';
-import { predefinedFilters } from '../types/ffmpeg';
+} from "reactflow";
+import "reactflow/dist/style.css";
+import { Box } from "@mui/material";
+import FilterNode from "./FilterNode";
+import Sidebar from "./Sidebar";
+import { predefinedFilters } from "../types/ffmpeg";
 
 const nodeTypes = {
   filter: FilterNode,
@@ -21,23 +21,23 @@ const nodeTypes = {
 
 const initialNodes: Node[] = [
   {
-    id: 'input',
-    type: 'filter',
+    id: "input",
+    type: "filter",
     position: { x: 100, y: 100 },
     data: {
-      label: 'Input',
-      filterType: 'input',
-      filterString: '[0:v]',
+      label: "Input",
+      filterType: "input",
+      filterString: "[0:v]",
     },
   },
   {
-    id: 'output',
-    type: 'filter',
+    id: "output",
+    type: "filter",
     position: { x: 800, y: 100 },
     data: {
-      label: 'Output',
-      filterType: 'output',
-      filterString: '[outv]',
+      label: "Output",
+      filterType: "output",
+      filterString: "[outv]",
     },
   },
 ];
@@ -68,32 +68,57 @@ export default function FFmpegFlowEditor() {
       );
     };
 
-    window.addEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+    window.addEventListener(
+      "updateNodeData",
+      handleNodeDataUpdate as EventListener
+    );
     return () => {
-      window.removeEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+      window.removeEventListener(
+        "updateNodeData",
+        handleNodeDataUpdate as EventListener
+      );
     };
   }, [setNodes]);
 
+  const isValidConnection = (connection: Connection) => {
+    // Check if target already has a connection
+    const targetHasConnection = edges.some(
+      (edge) => edge.target === connection.target
+    );
+
+    // Check if source already has a connection
+    const sourceHasConnection = edges.some(
+      (edge) => edge.source === connection.source
+    );
+
+    // Don't allow connection if either source or target already has a connection
+    return !targetHasConnection && !sourceHasConnection;
+  };
+
   const onConnect = useCallback(
-    (params: Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    (params: Connection) => {
+      if (isValidConnection(params)) {
+        setEdges((eds) => addEdge(params, eds));
+      }
+    },
+    [setEdges, edges]
   );
 
   const onAddFilter = useCallback(
     (filterType: string, parameters?: Record<string, string>) => {
-      const filter = predefinedFilters.find(f => f.name === filterType);
+      const filter = predefinedFilters.find((f) => f.name === filterType);
       if (!filter) return;
 
       const newNode: Node = {
         id: `${filterType}-${Date.now()}`,
-        type: 'filter',
+        type: "filter",
         position: {
           x: Math.random() * 500 + 200,
           y: Math.random() * 300 + 100,
         },
         data: {
           label: filter.label,
-          filterType: 'filter',
+          filterType: "filter",
           filterName: filter.name,
           parameters: parameters || {},
         },
@@ -105,26 +130,29 @@ export default function FFmpegFlowEditor() {
   );
 
   return (
-    <Box sx={{
-      position: 'fixed',
-      width: '100vw',
-      height: '100vh',
-      top: 0,
-      left: 0,
-      overflow: 'hidden'
-    }}>
+    <Box
+      sx={{
+        position: "fixed",
+        width: "100vw",
+        height: "100vh",
+        top: 0,
+        left: 0,
+        overflow: "hidden",
+      }}
+    >
       <ReactFlow
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        isValidConnection={isValidConnection}
         nodeTypes={nodeTypes}
         fitView
         style={{
-          width: '100%',
-          height: '100%',
-          background: '#f5f5f5'
+          width: "100%",
+          height: "100%",
+          background: "#f5f5f5",
         }}
       >
         <Background />

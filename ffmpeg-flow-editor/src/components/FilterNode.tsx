@@ -1,5 +1,5 @@
 import { memo, useState, useEffect } from "react";
-import { Handle, Position, NodeProps } from "reactflow";
+import { Handle, Position, NodeProps, useEdges } from "reactflow";
 import { Paper, Typography, TextField, Box, Tooltip } from "@mui/material";
 import { FilterParameter, predefinedFilters } from "../types/ffmpeg";
 
@@ -19,11 +19,18 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     data.parameters || {}
   );
   const [errors, setErrors] = useState<ValidationError>({});
+  const edges = useEdges();
 
   // Update local state when data changes
   useEffect(() => {
     setParameters(data.parameters || {});
   }, [data.parameters]);
+
+  // Check if input is connected
+  const isInputConnected = edges.some((edge) => edge.target === id);
+
+  // Check if output is connected
+  const isOutputConnected = edges.some((edge) => edge.source === id);
 
   const validateParameter = (
     param: FilterParameter,
@@ -118,10 +125,20 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
         border: "1px solid #ccc",
       }}
     >
-      {/* Only show input handle if not an input node */}
-      {data.filterType !== "input" && (
-        <Handle type="target" position={Position.Left} />
+      {/* Input handle - only show if not an input node and not already connected */}
+      {data.filterType !== "input" && !isInputConnected && (
+        <Handle
+          type="target"
+          position={Position.Left}
+          maxConnections={1}
+          style={{
+            backgroundColor: "#555",
+            width: "8px",
+            height: "8px",
+          }}
+        />
       )}
+
       <Typography variant="h6" gutterBottom>
         {data.label}
       </Typography>
@@ -171,7 +188,20 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
           </Tooltip>
         </Box>
       )}
-      <Handle type="source" position={Position.Right} />
+
+      {/* Output handle - only show if not an output node and not already connected */}
+      {data.filterType !== "output" && !isOutputConnected && (
+        <Handle
+          type="source"
+          position={Position.Right}
+          maxConnections={1}
+          style={{
+            backgroundColor: "#555",
+            width: "8px",
+            height: "8px",
+          }}
+        />
+      )}
     </Paper>
   );
 }
