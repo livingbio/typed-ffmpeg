@@ -19,15 +19,15 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
+    "no-constant-condition": "off",
     "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "@typescript-eslint/no-explicit-any": "off",
-    "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "no-constant-condition": "off"
+    "react/react-in-jsx-scope": "off",
+    "semi": ["error", "always"]
   },
   "settings": {
     "react": {

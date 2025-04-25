@@ -1,2 +1,3 @@
 #!/bin/sh
+pre-commit run
 npx lint-staged
