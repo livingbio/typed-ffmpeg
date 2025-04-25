@@ -5,20 +5,20 @@ repos:
       # - id: check-added-large-files
       - id: check-case-conflict
       - id: check-json
-        exclude: "__snapshots__/|ffmpeg-flow-editor/"
+        exclude: '__snapshots__/|ffmpeg-flow-editor/|.eslintrc.json'
       - id: check-merge-conflict
       - id: check-yaml
       - id: end-of-file-fixer
-        exclude: "__snapshots__/"
+        exclude: '__snapshots__/'
       - id: fix-encoding-pragma
         args: [--remove]
       - id: mixed-line-ending
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-        exclude: "__snapshots__/"
+        exclude: '__snapshots__/'
       - id: pretty-format-json
         args: [--autofix]
-        exclude: "__snapshots__/|ffmpeg-flow-editor/"
+        exclude: '__snapshots__/|ffmpeg-flow-editor/|.eslintrc.json'
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
@@ -38,7 +38,6 @@ repos:
         entry: mypy
         types: [python]
         exclude: migrations/|commands/|sandbox/|samples|sdk
-        additional_dependencies: [pytest, syrupy, types-Pillow, typer, jinja2, types-beautifulsoup4, devtools, html2text]
-        args: [
-          "--config-file=pyproject.toml"
-        ]
+        additional_dependencies:
+          [pytest, syrupy, types-Pillow, typer, jinja2, types-beautifulsoup4, devtools, html2text]
+        args: ['--config-file=pyproject.toml']
