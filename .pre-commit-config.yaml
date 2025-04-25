@@ -41,3 +41,12 @@ repos:
         additional_dependencies:
           [pytest, syrupy, types-Pillow, typer, jinja2, types-beautifulsoup4, devtools, html2text]
         args: ['--config-file=pyproject.toml']
+
+  - repo: local
+    hooks:
+      - id: check-staged-tsx
+        name: Check staged TypeScript files
+        entry: bash -c 'git diff --cached --name-only --diff-filter=ACMR | grep "\.tsx$" | xargs -r eslint'
+        language: system
+        types: [file]
+        pass_filenames: false
