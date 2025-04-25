@@ -117,7 +117,7 @@ export default function FFmpegFlowEditor() {
           y: Math.random() * 300 + 100,
         },
         data: {
-          label: filter.label,
+          label: filter.name,
           filterType: "filter",
           filterName: filter.name,
           parameters: parameters || {},

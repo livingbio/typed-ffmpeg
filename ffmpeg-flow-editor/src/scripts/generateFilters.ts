@@ -1,53 +1,50 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { FFmpegFilter, FilterParameter } from '../types/ffmpeg';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { FFmpegFilter } from "../types/ffmpeg";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const CACHE_DIR = path.join(__dirname, '../../../src/scripts/cache/FFMpegFilter');
+const CACHE_DIR = path.join(
+  __dirname,
+  "../../../src/scripts/cache/FFMpegFilter"
+);
 
 function readCacheFiles(): string[] {
-  return fs.readdirSync(CACHE_DIR)
-    .filter((file: string) => file.endsWith('.json'))
+  return fs
+    .readdirSync(CACHE_DIR)
+    .filter((file: string) => file.endsWith(".json"))
     .map((file: string) => path.join(CACHE_DIR, file));
-}
-
-function mapOptionToParameter(option: any): FilterParameter {
-  const validation: { min?: number; max?: number; pattern?: string } = {};
-
-  if (option.type.value === 'int' || option.type.value === 'float') {
-    if (option.min !== null) validation.min = parseFloat(option.min);
-    if (option.max !== null) validation.max = parseFloat(option.max);
-  }
-
-  return {
-    name: option.name,
-    type: option.type.value === 'int' || option.type.value === 'float' ? 'number' :
-          option.type.value === 'boolean' ? 'boolean' : 'string',
-    description: option.description,
-    required: option.required,
-    default: option.default === 'auto' || option.default === null ? undefined :
-            option.type.value === 'int' ? parseInt(option.default) :
-            option.type.value === 'float' ? parseFloat(option.default) :
-            option.default,
-    validation: Object.keys(validation).length > 0 ? validation : undefined
-  };
 }
 
 function parseFilterFile(filePath: string): FFmpegFilter | null {
   try {
-    const content = fs.readFileSync(filePath, 'utf-8');
+    const content = fs.readFileSync(filePath, "utf-8");
     // Replace NaN with null in the JSON string
-    const sanitizedContent = content.replace(/:\s*NaN/g, ': null');
+    const sanitizedContent = content.replace(/:\s*NaN/g, ": null");
     const filterData = JSON.parse(sanitizedContent);
 
     return {
+      __class__: "FFMpegFilter",
+      id: filterData.id,
       name: filterData.name,
-      label: filterData.name.charAt(0).toUpperCase() + filterData.name.slice(1),
       description: filterData.description,
-      parameters: filterData.options?.map(mapOptionToParameter) || [],
+      ref: filterData.ref,
+      is_support_slice_threading: filterData.is_support_slice_threading,
+      is_support_timeline: filterData.is_support_timeline,
+      is_support_framesync: filterData.is_support_framesync,
+      is_support_command: filterData.is_support_command,
+      is_filter_sink: filterData.is_filter_sink,
+      is_filter_source: filterData.is_filter_source,
+      is_dynamic_input: filterData.is_dynamic_input,
+      is_dynamic_output: filterData.is_dynamic_output,
+      stream_typings_input: filterData.stream_typings_input,
+      stream_typings_output: filterData.stream_typings_output,
+      formula_typings_input: filterData.formula_typings_input,
+      formula_typings_output: filterData.formula_typings_output,
+      pre: filterData.pre,
+      options: filterData.options,
     };
   } catch (error) {
     console.error(`Error parsing filter file ${filePath}:`, error);
@@ -65,7 +62,7 @@ function generateFiltersJson(): void {
     filters,
   };
 
-  const outputPath = path.join(__dirname, '../config/filters.json');
+  const outputPath = path.join(__dirname, "../config/filters.json");
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
 
   console.log(`Generated ${filters.length} filters in ${outputPath}`);

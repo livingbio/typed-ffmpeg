@@ -1,7 +1,7 @@
 import { memo, useState, useEffect } from "react";
 import { Handle, Position, NodeProps, useEdges } from "reactflow";
 import { Paper, Typography, TextField, Box, Tooltip } from "@mui/material";
-import { FilterParameter, predefinedFilters } from "../types/ffmpeg";
+import { FFmpegFilterOption, predefinedFilters } from "../types/ffmpeg";
 
 interface FilterNodeData {
   label: string;
@@ -33,37 +33,34 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const isOutputConnected = edges.some((edge) => edge.source === id);
 
   const validateParameter = (
-    param: FilterParameter,
+    param: FFmpegFilterOption,
     value: string
   ): string | null => {
     if (!value) {
       return null;
     }
 
-    if (param.type === "number") {
+    if (
+      param.type.value === "int" ||
+      param.type.value === "float" ||
+      param.type.value === "double"
+    ) {
       const numValue = parseFloat(value);
       if (isNaN(numValue)) {
         return "Must be a number";
       }
-      if (
-        param.validation?.min !== undefined &&
-        numValue < param.validation.min
-      ) {
-        return `Must be at least ${param.validation.min}`;
+      if (param.min !== null) {
+        const min = parseFloat(param.min);
+        if (!isNaN(min) && numValue < min) {
+          return `Must be at least ${min}`;
+        }
       }
-      if (
-        param.validation?.max !== undefined &&
-        numValue > param.validation.max
-      ) {
-        return `Must be at most ${param.validation.max}`;
+      if (param.max !== null) {
+        const max = parseFloat(param.max);
+        if (!isNaN(max) && numValue > max) {
+          return `Must be at most ${max}`;
+        }
       }
-    }
-
-    if (
-      param.validation?.pattern &&
-      !new RegExp(param.validation.pattern).test(value)
-    ) {
-      return "Invalid format";
     }
 
     return null;
@@ -73,7 +70,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     const filter = predefinedFilters.find((f) => f.name === data.filterName);
     if (!filter) return;
 
-    const param = filter.parameters.find((p) => p.name === paramName);
+    const param = filter.options.find((p) => p.name === paramName);
     if (!param) return;
 
     const error = validateParameter(param, value);
@@ -114,6 +111,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   };
 
   const hasErrors = Object.values(errors).some((error) => error !== "");
+  const filter = predefinedFilters.find((f) => f.name === data.filterName);
 
   return (
     <Paper
@@ -130,7 +128,6 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
         <Handle
           type="target"
           position={Position.Left}
-          maxConnections={1}
           style={{
             backgroundColor: "#555",
             width: "8px",
@@ -144,12 +141,18 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       </Typography>
       {data.filterType === "filter" && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="body2" color="text.secondary" gutterBottom>
-            {data.filterName}
-          </Typography>
+          {filter?.description && (
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ display: "block", mb: 1 }}
+            >
+              {filter.description}
+            </Typography>
+          )}
           {predefinedFilters
             .find((f) => f.name === data.filterName)
-            ?.parameters.map((param) => (
+            ?.options.map((param) => (
               <Box key={param.name} sx={{ mt: 1 }}>
                 <TextField
                   fullWidth
@@ -194,7 +197,6 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
         <Handle
           type="source"
           position={Position.Right}
-          maxConnections={1}
           style={{
             backgroundColor: "#555",
             width: "8px",
