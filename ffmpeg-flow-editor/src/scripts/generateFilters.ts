@@ -9,7 +9,8 @@ const __dirname = path.dirname(__filename);
 const CACHE_DIR = path.join(__dirname, '../../../src/scripts/cache/FFMpegFilter');
 
 function readCacheFiles(): string[] {
-  return fs.readdirSync(CACHE_DIR)
+  return fs
+    .readdirSync(CACHE_DIR)
     .filter((file: string) => file.endsWith('.json'))
     .map((file: string) => path.join(CACHE_DIR, file));
 }
@@ -24,15 +25,23 @@ function mapOptionToParameter(option: any): FilterParameter {
 
   return {
     name: option.name,
-    type: option.type.value === 'int' || option.type.value === 'float' ? 'number' :
-          option.type.value === 'boolean' ? 'boolean' : 'string',
+    type:
+      option.type.value === 'int' || option.type.value === 'float'
+        ? 'number'
+        : option.type.value === 'boolean'
+          ? 'boolean'
+          : 'string',
     description: option.description,
     required: option.required,
-    default: option.default === 'auto' || option.default === null ? undefined :
-            option.type.value === 'int' ? parseInt(option.default) :
-            option.type.value === 'float' ? parseFloat(option.default) :
-            option.default,
-    validation: Object.keys(validation).length > 0 ? validation : undefined
+    default:
+      option.default === 'auto' || option.default === null
+        ? undefined
+        : option.type.value === 'int'
+          ? parseInt(option.default)
+          : option.type.value === 'float'
+            ? parseFloat(option.default)
+            : option.default,
+    validation: Object.keys(validation).length > 0 ? validation : undefined,
   };
 }
 

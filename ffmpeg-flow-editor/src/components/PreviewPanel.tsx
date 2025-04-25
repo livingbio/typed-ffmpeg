@@ -1,6 +1,6 @@
-import { Box, Typography, Button } from "@mui/material";
-import { Node, Edge } from "reactflow";
-import { useState, useEffect } from "react";
+import { Box, Typography, Button } from '@mui/material';
+import { Node, Edge } from 'reactflow';
+import { useState, useEffect } from 'react';
 
 // Add type declarations for Pyodide
 declare global {
@@ -17,16 +17,13 @@ interface PreviewPanelProps {
   edges: Edge[];
 }
 
-function generateFFmpegCommand(
-  nodes: Node[],
-  edges: Edge[]
-): { python: string } {
-  const inputNode = nodes.find((n) => n.data.filterType === "input");
-  const outputNode = nodes.find((n) => n.data.filterType === "output");
+function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: string } {
+  const inputNode = nodes.find((n) => n.data.filterType === 'input');
+  const outputNode = nodes.find((n) => n.data.filterType === 'output');
 
   if (!inputNode || !outputNode) {
     return {
-      python: "",
+      python: '',
     };
   }
 
@@ -36,13 +33,13 @@ function generateFFmpegCommand(
 
   // Assign pad names to each node
   nodes.forEach((node) => {
-    if (node.data.filterType === "filter") {
+    if (node.data.filterType === 'filter') {
       padNames[node.id] = `[${padCounter++}]`;
     }
   });
 
   // Generate Python code
-  let pythonCode = "import ffmpeg\n\n";
+  let pythonCode = 'import ffmpeg\n\n';
   pythonCode += '(ffmpeg.input("input.mp4")\n';
 
   // Sort filter nodes based on edges to maintain correct order
@@ -54,7 +51,7 @@ function generateFFmpegCommand(
     if (!edge) break;
 
     const nextNode = nodes.find((n) => n.id === edge.target);
-    if (!nextNode || nextNode.data.filterType !== "filter") break;
+    if (!nextNode || nextNode.data.filterType !== 'filter') break;
 
     sortedFilterNodes.push(nextNode);
     currentId = nextNode.id;
@@ -62,29 +59,26 @@ function generateFFmpegCommand(
 
   // Add filters in order
   sortedFilterNodes.forEach((node) => {
-    if (node.data.filterType === "filter" && node.data.filterName) {
+    if (node.data.filterType === 'filter' && node.data.filterName) {
       const filterName = node.data.filterName;
       const parameters = (node.data.parameters as Record<string, string>) || {};
 
       // Convert parameters to Python kwargs
       const kwargs = Object.entries(parameters)
-        .filter(([, value]) => value !== "")
+        .filter(([, value]) => value !== '')
         .map(([key, value]) => {
           // Handle numeric values without quotes
           if (!isNaN(Number(value))) {
             return `${key}=${value}`;
           }
           // Handle boolean values
-          if (
-            value.toLowerCase() === "true" ||
-            value.toLowerCase() === "false"
-          ) {
+          if (value.toLowerCase() === 'true' || value.toLowerCase() === 'false') {
             return `${key}=${value.toLowerCase()}`;
           }
           // Handle string values with quotes
           return `${key}="${value}"`;
         })
-        .join(", ");
+        .join(', ');
 
       pythonCode += `    .${filterName}(${kwargs})\n`;
     }
@@ -92,7 +86,7 @@ function generateFFmpegCommand(
 
   // Add output
   pythonCode += '    .output(filename="output.mp4")\n';
-  pythonCode += "    .compile_line())";
+  pythonCode += '    .compile_line())';
 
   return {
     python: pythonCode,
@@ -103,13 +97,13 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
   const [previewData, setPreviewData] = useState<{
     python: string;
   }>({
-    python: "",
+    python: '',
   });
 
-  const [pyodide, setPyodide] = useState<Awaited<
-    ReturnType<typeof window.loadPyodide>
-  > | null>(null);
-  const [result, setResult] = useState<string>("");
+  const [pyodide, setPyodide] = useState<Awaited<ReturnType<typeof window.loadPyodide>> | null>(
+    null
+  );
+  const [result, setResult] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -117,17 +111,17 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
       try {
         setIsLoading(true);
         const pyodide = await window.loadPyodide({
-          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.1/full/",
+          indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
         });
-        await pyodide.loadPackage("micropip");
+        await pyodide.loadPackage('micropip');
         await pyodide.runPythonAsync(`
           import micropip
           await micropip.install('typed-ffmpeg')
         `);
         setPyodide(pyodide);
       } catch (error) {
-        console.error("Failed to load Pyodide:", error);
-        setResult("Failed to load Python environment");
+        console.error('Failed to load Pyodide:', error);
+        setResult('Failed to load Python environment');
       } finally {
         setIsLoading(false);
       }
@@ -152,10 +146,8 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
         const output = await pyodide.runPythonAsync(previewData.python);
         setResult(output.toString());
       } catch (error) {
-        console.error("Python execution error:", error);
-        setResult(
-          `Error: ${error instanceof Error ? error.message : String(error)}`
-        );
+        console.error('Python execution error:', error);
+        setResult(`Error: ${error instanceof Error ? error.message : String(error)}`);
       } finally {
         setIsLoading(false);
       }
@@ -174,9 +166,9 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
       <Box sx={{ mb: 3 }}>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             mb: 1,
           }}
         >
@@ -188,7 +180,7 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
         <Box
           sx={{
             p: 1.5,
-            backgroundColor: "#f5f5f5",
+            backgroundColor: '#f5f5f5',
             borderRadius: 1,
           }}
         >
@@ -196,11 +188,11 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
             style={{
               margin: 0,
               padding: 0,
-              fontFamily: "monospace",
-              fontSize: "0.875rem",
+              fontFamily: 'monospace',
+              fontSize: '0.875rem',
               lineHeight: 1.5,
-              whiteSpace: "pre-wrap",
-              wordBreak: "break-word",
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
             }}
           >
             {previewData.python}
@@ -211,12 +203,12 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
       {/* Result */}
       <Box>
         <Typography variant="subtitle2" sx={{ mb: 1 }}>
-          Result {isLoading && "(Loading...)"}
+          Result {isLoading && '(Loading...)'}
         </Typography>
         <Box
           sx={{
             p: 1.5,
-            backgroundColor: "#f5f5f5",
+            backgroundColor: '#f5f5f5',
             borderRadius: 1,
           }}
         >
@@ -224,14 +216,14 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
             style={{
               margin: 0,
               padding: 0,
-              fontFamily: "monospace",
-              fontSize: "0.875rem",
+              fontFamily: 'monospace',
+              fontSize: '0.875rem',
               lineHeight: 1.5,
-              whiteSpace: "pre-wrap",
-              wordBreak: "break-word",
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
             }}
           >
-            {result || "No result yet"}
+            {result || 'No result yet'}
           </pre>
         </Box>
       </Box>

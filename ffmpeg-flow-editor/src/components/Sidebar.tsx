@@ -17,9 +17,9 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
   const filteredFilters = useMemo(() => {
     if (!searchQuery) return predefinedFilters;
     const query = searchQuery.toLowerCase();
-    return predefinedFilters.filter(filter =>
-      filter.name.toLowerCase().includes(query) ||
-      filter.label.toLowerCase().includes(query)
+    return predefinedFilters.filter(
+      (filter) =>
+        filter.name.toLowerCase().includes(query) || filter.label.toLowerCase().includes(query)
     );
   }, [searchQuery]);
 
@@ -38,33 +38,37 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
         flexDirection: 'column',
       }}
     >
-      <Box sx={{
-        p: 2,
-        borderBottom: 1,
-        borderColor: 'divider',
-        backgroundColor: '#f5f5f5'
-      }}>
+      <Box
+        sx={{
+          p: 2,
+          borderBottom: 1,
+          borderColor: 'divider',
+          backgroundColor: '#f5f5f5',
+        }}
+      >
         <Typography variant="h6">FFmpeg Flow Editor</Typography>
       </Box>
 
-      <Box sx={{
-        flex: 1,
-        overflow: 'auto',
-        p: 2,
-        '&::-webkit-scrollbar': {
-          width: '8px',
-        },
-        '&::-webkit-scrollbar-track': {
-          background: '#f1f1f1',
-        },
-        '&::-webkit-scrollbar-thumb': {
-          background: '#888',
-          borderRadius: '4px',
-        },
-        '&::-webkit-scrollbar-thumb:hover': {
-          background: '#555',
-        },
-      }}>
+      <Box
+        sx={{
+          flex: 1,
+          overflow: 'auto',
+          p: 2,
+          '&::-webkit-scrollbar': {
+            width: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: '#f1f1f1',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#888',
+            borderRadius: '4px',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: '#555',
+          },
+        }}
+      >
         {/* Filters Section */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1" gutterBottom>
@@ -85,13 +89,15 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
               ),
             }}
           />
-          <Box sx={{
-            maxHeight: '200px',
-            overflow: 'auto',
-            border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 1,
-          }}>
+          <Box
+            sx={{
+              maxHeight: '200px',
+              overflow: 'auto',
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 1,
+            }}
+          >
             {filteredFilters.map((filter) => (
               <Paper
                 key={filter.name}
