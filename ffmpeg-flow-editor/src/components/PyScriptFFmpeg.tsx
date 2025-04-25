@@ -140,18 +140,12 @@ const PyScriptFFmpeg: React.FC<PyScriptFFmpegProps> = ({ nodes, edges }) => {
         {isLoading ? 'Generating...' : 'Generate Python Code'}
       </button>
 
-      {error && (
-        <div className="mt-4 p-2 bg-red-100 text-red-700 rounded">
-          {error}
-        </div>
-      )}
+      {error && <div className="mt-4 p-2 bg-red-100 text-red-700 rounded">{error}</div>}
 
       {command && (
         <div className="mt-4">
           <h3 className="font-semibold mb-2">Generated Python Code:</h3>
-          <pre className="bg-gray-100 p-2 rounded overflow-x-auto">
-            {command}
-          </pre>
+          <pre className="bg-gray-100 p-2 rounded overflow-x-auto">{command}</pre>
         </div>
       )}
     </div>

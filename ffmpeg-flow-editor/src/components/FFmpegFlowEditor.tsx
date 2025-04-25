@@ -75,13 +75,23 @@ export default function FFmpegFlowEditor() {
   }, [setNodes]);
 
   const onConnect = useCallback(
-    (params: Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    (params: Connection) => {
+      // Find the target node
+      const targetNode = nodes.find((n) => n.id === params.target);
+
+      // Prevent connections to input nodes
+      if (targetNode?.data.filterType === 'input') {
+        return;
+      }
+
+      setEdges((eds) => addEdge(params, eds));
+    },
+    [setEdges, nodes]
   );
 
   const onAddFilter = useCallback(
     (filterType: string, parameters?: Record<string, string>) => {
-      const filter = predefinedFilters.find(f => f.name === filterType);
+      const filter = predefinedFilters.find((f) => f.name === filterType);
       if (!filter) return;
 
       const newNode: Node = {
@@ -105,14 +115,16 @@ export default function FFmpegFlowEditor() {
   );
 
   return (
-    <Box sx={{
-      position: 'fixed',
-      width: '100vw',
-      height: '100vh',
-      top: 0,
-      left: 0,
-      overflow: 'hidden'
-    }}>
+    <Box
+      sx={{
+        position: 'fixed',
+        width: '100vw',
+        height: '100vh',
+        top: 0,
+        left: 0,
+        overflow: 'hidden',
+      }}
+    >
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -124,7 +136,7 @@ export default function FFmpegFlowEditor() {
         style={{
           width: '100%',
           height: '100%',
-          background: '#f5f5f5'
+          background: '#f5f5f5',
         }}
       >
         <Background />

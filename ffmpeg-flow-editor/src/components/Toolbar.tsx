@@ -41,24 +41,21 @@ export default function Toolbar({ onAddFilter }: ToolbarProps) {
     };
   }, []);
 
-  const handleAddFilter = (filter: typeof predefinedFilters[0]) => {
+  const handleAddFilter = (filter: (typeof predefinedFilters)[0]) => {
     onAddFilter(filter.name);
     handleClose();
   };
 
-  const filteredFilters = predefinedFilters.filter(filter =>
-    filter.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    filter.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    filter.description.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredFilters = predefinedFilters.filter(
+    (filter) =>
+      filter.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      filter.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      filter.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <Box sx={{ position: 'absolute', top: 10, left: 10, zIndex: 5 }}>
-      <Button
-        variant="contained"
-        onClick={handleClick}
-        sx={{ mr: 1 }}
-      >
+      <Button variant="contained" onClick={handleClick} sx={{ mr: 1 }}>
         Add Filter
       </Button>
       {isOpen && (
