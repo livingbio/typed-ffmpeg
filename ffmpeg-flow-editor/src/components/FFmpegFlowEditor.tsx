@@ -48,7 +48,7 @@ export default function FFmpegFlowEditor() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  // Add event listener for node data updates
+  // Add event listener for node data update
   useEffect(() => {
     const handleNodeDataUpdate = (event: CustomEvent) => {
       const { id, data } = event.detail;
@@ -75,13 +75,34 @@ export default function FFmpegFlowEditor() {
   }, [setNodes]);
 
   const isValidConnection = (connection: Connection) => {
-    // Check if target already has a connection
-    const targetHasConnection = edges.some((edge) => edge.target === connection.target);
+    if (
+      !connection.source ||
+      !connection.target ||
+      !connection.sourceHandle ||
+      !connection.targetHandle
+    ) {
+      return false;
+    }
 
-    // Check if source already has a connection
-    const sourceHasConnection = edges.some((edge) => edge.source === connection.source);
+    // Get the source and target nodes
+    const sourceNode = nodes.find((node) => node.id === connection.source);
+    const targetNode = nodes.find((node) => node.id === connection.target);
 
-    // Don't allow connection if either source or target already has a connection
+    if (!sourceNode || !targetNode) {
+      return false;
+    }
+
+    // Check if target handle is already connected
+    const targetHasConnection = edges.some(
+      (edge) => edge.target === connection.target && edge.targetHandle === connection.targetHandle
+    );
+
+    // Check if source handle is already connected
+    const sourceHasConnection = edges.some(
+      (edge) => edge.source === connection.source && edge.sourceHandle === connection.sourceHandle
+    );
+
+    // Don't allow connection if either source or target handle is already connected
     return !targetHasConnection && !sourceHasConnection;
   };
 
@@ -91,7 +112,7 @@ export default function FFmpegFlowEditor() {
         setEdges((eds) => addEdge(params, eds));
       }
     },
-    [isValidConnection]
+    [isValidConnection, setEdges]
   );
 
   const onAddFilter = useCallback(

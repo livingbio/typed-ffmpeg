@@ -1,5 +1,5 @@
 import { memo, useState, useEffect } from 'react';
-import { Handle, Position, NodeProps, useEdges } from 'reactflow';
+import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
 import { FFmpegFilterOption, predefinedFilters } from '../types/ffmpeg';
 
@@ -17,18 +17,18 @@ interface ValidationError {
 function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
-  const edges = useEdges();
 
   // Update local state when data changes
   useEffect(() => {
     setParameters(data.parameters || {});
   }, [data.parameters]);
 
-  // Check if input is connected
-  const isInputConnected = edges.some((edge) => edge.target === id);
+  // Get the filter definition
+  const filter = predefinedFilters.find((f) => f.name === data.filterName);
 
-  // Check if output is connected
-  const isOutputConnected = edges.some((edge) => edge.source === id);
+  // Get number of inputs and outputs from filter definition
+  const numInputs = filter?.stream_typings_input?.length || 1;
+  const numOutputs = filter?.stream_typings_output?.length || 1;
 
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
@@ -106,7 +106,6 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   };
 
   const hasErrors = Object.values(errors).some((error) => error !== '');
-  const filter = predefinedFilters.find((f) => f.name === data.filterName);
 
   return (
     <Paper
@@ -118,17 +117,24 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
         border: '1px solid #ccc',
       }}
     >
-      {/* Input handle - only show if not an input node and not already connected */}
-      {data.filterType !== 'input' && !isInputConnected && (
-        <Handle
-          type="target"
-          position={Position.Left}
-          style={{
-            backgroundColor: '#555',
-            width: '8px',
-            height: '8px',
-          }}
-        />
+      {/* Input handles */}
+      {data.filterType !== 'input' && (
+        <>
+          {Array.from({ length: numInputs }).map((_, index) => (
+            <Handle
+              key={`input-${index}`}
+              id={`input-${index}`}
+              type="target"
+              position={Position.Left}
+              style={{
+                backgroundColor: '#555',
+                width: '8px',
+                height: '8px',
+                top: `${(index + 1) * (100 / (numInputs + 1))}%`,
+              }}
+            />
+          ))}
+        </>
       )}
 
       <Typography variant="h6" gutterBottom>
@@ -181,17 +187,24 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
         </Box>
       )}
 
-      {/* Output handle - only show if not an output node and not already connected */}
-      {data.filterType !== 'output' && !isOutputConnected && (
-        <Handle
-          type="source"
-          position={Position.Right}
-          style={{
-            backgroundColor: '#555',
-            width: '8px',
-            height: '8px',
-          }}
-        />
+      {/* Output handles */}
+      {data.filterType !== 'output' && (
+        <>
+          {Array.from({ length: numOutputs }).map((_, index) => (
+            <Handle
+              key={`output-${index}`}
+              id={`output-${index}`}
+              type="source"
+              position={Position.Right}
+              style={{
+                backgroundColor: '#555',
+                width: '8px',
+                height: '8px',
+                top: `${(index + 1) * (100 / (numOutputs + 1))}%`,
+              }}
+            />
+          ))}
+        </>
       )}
     </Paper>
   );
