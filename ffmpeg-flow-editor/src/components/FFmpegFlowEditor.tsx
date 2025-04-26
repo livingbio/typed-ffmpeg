@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import ReactFlow, {
   Node,
   Edge,
@@ -48,7 +48,7 @@ export default function FFmpegFlowEditor() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  // Add event listener for node data updates
+  // Add event listener for node data update
   useEffect(() => {
     const handleNodeDataUpdate = (event: CustomEvent) => {
       const { id, data } = event.detail;
@@ -74,19 +74,45 @@ export default function FFmpegFlowEditor() {
     };
   }, [setNodes]);
 
+  const isValidConnection = (connection: Connection) => {
+    if (
+      !connection.source ||
+      !connection.target ||
+      !connection.sourceHandle ||
+      !connection.targetHandle
+    ) {
+      return false;
+    }
+
+    // Get the source and target nodes
+    const sourceNode = nodes.find((node) => node.id === connection.source);
+    const targetNode = nodes.find((node) => node.id === connection.target);
+
+    if (!sourceNode || !targetNode) {
+      return false;
+    }
+
+    // Check if target handle is already connected
+    const targetHasConnection = edges.some(
+      (edge) => edge.target === connection.target && edge.targetHandle === connection.targetHandle
+    );
+
+    // Check if source handle is already connected
+    const sourceHasConnection = edges.some(
+      (edge) => edge.source === connection.source && edge.sourceHandle === connection.sourceHandle
+    );
+
+    // Don't allow connection if either source or target handle is already connected
+    return !targetHasConnection && !sourceHasConnection;
+  };
+
   const onConnect = useCallback(
     (params: Connection) => {
-      // Find the target node
-      const targetNode = nodes.find((n) => n.id === params.target);
-
-      // Prevent connections to input nodes
-      if (targetNode?.data.filterType === 'input') {
-        return;
+      if (isValidConnection(params)) {
+        setEdges((eds) => addEdge(params, eds));
       }
-
-      setEdges((eds) => addEdge(params, eds));
     },
-    [setEdges, nodes]
+    [isValidConnection, setEdges]
   );
 
   const onAddFilter = useCallback(
@@ -102,7 +128,7 @@ export default function FFmpegFlowEditor() {
           y: Math.random() * 300 + 100,
         },
         data: {
-          label: filter.label,
+          label: filter.name,
           filterType: 'filter',
           filterName: filter.name,
           parameters: parameters || {},
@@ -131,6 +157,7 @@ export default function FFmpegFlowEditor() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        isValidConnection={isValidConnection}
         nodeTypes={nodeTypes}
         fitView
         style={{

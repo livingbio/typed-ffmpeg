@@ -15,12 +15,15 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredFilters = useMemo(() => {
-    if (!searchQuery) return predefinedFilters;
+    if (!searchQuery) return [...predefinedFilters].sort((a, b) => a.name.localeCompare(b.name));
     const query = searchQuery.toLowerCase();
-    return predefinedFilters.filter(
-      (filter) =>
-        filter.name.toLowerCase().includes(query) || filter.label.toLowerCase().includes(query)
-    );
+    return predefinedFilters
+      .filter(
+        (filter) =>
+          filter.name.toLowerCase().includes(query) ||
+          filter.description.toLowerCase().includes(query)
+      )
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [searchQuery]);
 
   return (
@@ -117,14 +120,10 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
                 onClick={() => onAddFilter(filter.name)}
               >
                 <Typography variant="body2" fontWeight={500}>
-                  {filter.label}
+                  {filter.name}
                 </Typography>
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  sx={{ display: 'block', mt: 0.5 }}
-                >
-                  {filter.description ?? 'No description available'}
+                <Typography variant="caption" color="text.secondary">
+                  {filter.description}
                 </Typography>
               </Paper>
             ))}

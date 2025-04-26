@@ -49,7 +49,6 @@ export default function Toolbar({ onAddFilter }: ToolbarProps) {
   const filteredFilters = predefinedFilters.filter(
     (filter) =>
       filter.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      filter.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
       filter.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 

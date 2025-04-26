@@ -8,8 +8,11 @@ interface PyScriptFFmpegProps {
 
 declare global {
   interface Window {
-    pyodide: any;
-    runFFmpegCommand: (nodes: any[], edges: any[]) => Promise<string>;
+    pyodide: {
+      runPython: (code: string) => void;
+      runPythonAsync: (code: string) => Promise<void>;
+    };
+    runFFmpegCommand: (nodes: Node[], edges: Edge[]) => Promise<string>;
   }
 }
 
