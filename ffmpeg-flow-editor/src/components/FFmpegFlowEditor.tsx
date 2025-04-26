@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ReactFlow, {
   Node,
   Edge,
@@ -8,6 +8,7 @@ import ReactFlow, {
   useEdgesState,
   addEdge,
   Connection,
+  ReactFlowInstance,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Box } from '@mui/material';
@@ -47,6 +48,7 @@ const initialEdges: Edge[] = [];
 export default function FFmpegFlowEditor() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
   // Add event listener for node data update
   useEffect(() => {
@@ -116,14 +118,18 @@ export default function FFmpegFlowEditor() {
   );
 
   const onAddFilter = useCallback(
-    (filterType: string, parameters?: Record<string, string>) => {
+    (
+      filterType: string,
+      parameters?: Record<string, string>,
+      position?: { x: number; y: number }
+    ) => {
       const filter = predefinedFilters.find((f) => f.name === filterType);
       if (!filter) return;
 
       const newNode: Node = {
         id: `${filterType}-${Date.now()}`,
         type: 'filter',
-        position: {
+        position: position || {
           x: Math.random() * 500 + 200,
           y: Math.random() * 300 + 100,
         },
@@ -138,6 +144,33 @@ export default function FFmpegFlowEditor() {
       setNodes((nds) => [...nds, newNode]);
     },
     [setNodes]
+  );
+
+  const onDragOver = useCallback((event: React.DragEvent) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  }, []);
+
+  const onDrop = useCallback(
+    (event: React.DragEvent) => {
+      event.preventDefault();
+
+      const type = event.dataTransfer.getData('application/reactflow');
+      if (typeof type === 'undefined' || !type) {
+        return;
+      }
+
+      // Get the position where the node was dropped
+      const position = reactFlowInstance?.screenToFlowPosition({
+        x: event.clientX,
+        y: event.clientY,
+      });
+
+      if (position) {
+        onAddFilter(type, undefined, position);
+      }
+    },
+    [reactFlowInstance, onAddFilter]
   );
 
   return (
@@ -159,6 +192,9 @@ export default function FFmpegFlowEditor() {
         onConnect={onConnect}
         isValidConnection={isValidConnection}
         nodeTypes={nodeTypes}
+        onInit={setReactFlowInstance}
+        onDragOver={onDragOver}
+        onDrop={onDrop}
         fitView
         style={{
           width: '100%',
