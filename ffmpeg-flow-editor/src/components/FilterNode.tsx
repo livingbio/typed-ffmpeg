@@ -111,8 +111,10 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       </Typography>
       {data.filterType === 'filter' && (
         <Box sx={{ mt: 1 }}>
-          <Typography variant="body2" color="text.secondary" gutterBottom>
-            {data.filterName}
+          <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
+            {predefinedFilters.find((f) => f.name === data.filterName)?.description ??
+              data.filterName ??
+              'No description available'}
           </Typography>
           {predefinedFilters
             .find((f) => f.name === data.filterName)

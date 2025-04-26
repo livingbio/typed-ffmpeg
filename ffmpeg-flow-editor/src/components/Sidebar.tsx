@@ -1,6 +1,6 @@
 import { Box, Paper, Typography, Divider, TextField, InputAdornment } from '@mui/material';
 import { Node, Edge } from 'reactflow';
-import { FFmpegFilter, predefinedFilters } from '../types/ffmpeg';
+import { predefinedFilters } from '../types/ffmpeg';
 import PreviewPanel from './PreviewPanel';
 import { useState, useMemo } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
@@ -119,8 +119,12 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
                 <Typography variant="body2" fontWeight={500}>
                   {filter.label}
                 </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  {filter.name}
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{ display: 'block', mt: 0.5 }}
+                >
+                  {filter.description ?? 'No description available'}
                 </Typography>
               </Paper>
             ))}
