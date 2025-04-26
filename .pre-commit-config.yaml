@@ -77,7 +77,7 @@ repos:
 
       - id: check-staged-tsx
         name: Check staged TypeScript files
-        entry: bash -c 'git diff --cached --name-only --diff-filter=ACMR | grep "\.tsx$" | xargs -r eslint'
+        entry: bash -c 'cd ffmpeg-flow-editor && git diff --cached --name-only --diff-filter=ACMR | grep "\.tsx$" | sed "s|^ffmpeg-flow-editor/||" | xargs -r npx eslint'
         language: system
         types: [file]
         pass_filenames: false
