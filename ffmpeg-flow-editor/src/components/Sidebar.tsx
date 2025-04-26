@@ -124,7 +124,7 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
                   color="text.secondary"
                   sx={{ display: 'block', mt: 0.5 }}
                 >
-                  {filter.description}
+                  {filter.description ?? "No description available"}
                 </Typography>
               </Paper>
             ))}
