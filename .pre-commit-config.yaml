@@ -64,6 +64,8 @@ repos:
           - '@typescript-eslint/eslint-plugin@6.21.0'
           - '@typescript-eslint/parser@6.21.0'
           - 'eslint-plugin-react@7.37.5'
+          - 'react@19.0.0'
+          - 'react-dom@19.0.0'
 
   - repo: local
     hooks:
