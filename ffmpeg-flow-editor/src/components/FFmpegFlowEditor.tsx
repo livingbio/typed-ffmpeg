@@ -120,12 +120,26 @@ export default function FFmpegFlowEditor() {
     }
 
     // Get the types from the node data using handle IDs
-    const sourceType =
-      sourceNode.data.handles.outputs.find((h) => h.id === sourceHandle)?.type || 'av';
-    const targetType =
-      targetNode.data.handles.inputs.find((h) => h.id === targetHandle)?.type || 'av';
+    interface HandleInfo {
+      id: string;
+      type: EdgeType;
+    }
 
-    console.log('Connection types:', { sourceType, targetType, sourceHandle, targetHandle });
+    const sourceType =
+      (sourceNode.data.handles.outputs as HandleInfo[]).find((h) => h.id === sourceHandle)?.type ||
+      'av';
+    const targetType =
+      (targetNode.data.handles.inputs as HandleInfo[]).find((h) => h.id === targetHandle)?.type ||
+      'av';
+
+    console.log('Connection types:', {
+      sourceType,
+      targetType,
+      sourceHandle,
+      targetHandle,
+      sourceNode: sourceNode.data,
+      targetNode: targetNode.data,
+    });
 
     // Rule 3: FilterNode output handles mark the edge type
     // Rule 2: FilterNode input handles must match the type or accept 'av'
@@ -158,12 +172,36 @@ export default function FFmpegFlowEditor() {
         // Determine the edge type
         let edgeType: EdgeType = 'av';
         if (sourceNode?.data.filterType === 'filter' && params.sourceHandle) {
-          edgeType =
-            sourceNode.data.handles.outputs.find((h) => h.id === params.sourceHandle)?.type || 'av';
-          console.log('Setting edge type from filter:', {
+          interface HandleInfo {
+            id: string;
+            type: EdgeType;
+          }
+
+          // Debug log the handles and source handle
+          console.log('Finding handle type:', {
+            sourceHandle: params.sourceHandle,
+            allOutputs: sourceNode.data.handles.outputs,
             filterName: sourceNode.data.filterName,
-            edgeType,
           });
+
+          const handle = (sourceNode.data.handles.outputs as HandleInfo[]).find(
+            (h) => h.id === params.sourceHandle
+          );
+          console.log('Found handle:', handle);
+
+          if (handle) {
+            edgeType = handle.type;
+            console.log('Setting edge type from handle:', {
+              filterName: sourceNode.data.filterName,
+              edgeType,
+              handle,
+            });
+          } else {
+            console.error('Could not find handle:', {
+              sourceHandle: params.sourceHandle,
+              availableHandles: sourceNode.data.handles.outputs,
+            });
+          }
         } else if (sourceNode?.data.filterType === 'input') {
           // Rule 1: Input nodes mark edges as "av"
           edgeType = 'av';
@@ -226,8 +264,8 @@ export default function FFmpegFlowEditor() {
             filterString: filterType === 'input' ? '[0:v]' : '[outv]',
             parameters: {},
             handles: {
-              inputs: filterType === 'output' ? [{ id: `${nodeId}-input-0`, type: 'av' }] : [],
-              outputs: filterType === 'input' ? [{ id: `${nodeId}-output-0`, type: 'av' }] : [],
+              inputs: filterType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
+              outputs: filterType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
             },
           },
         };
@@ -238,6 +276,13 @@ export default function FFmpegFlowEditor() {
       // Handle regular filter nodes
       const filter = predefinedFilters.find((f) => f.name === filterType);
       if (!filter) return;
+
+      // Debug log for filter type determination
+      console.log('Creating filter node:', {
+        filterType,
+        inputTypes: filter.stream_typings_input.map((t) => t.type.value),
+        outputTypes: filter.stream_typings_output.map((t) => t.type.value),
+      });
 
       const newNode: Node = {
         id: nodeId,
@@ -252,24 +297,26 @@ export default function FFmpegFlowEditor() {
           filterName: filter.name,
           parameters: parameters || {},
           handles: {
-            inputs: filter.stream_typings_input.map((ioType, index) => ({
-              id: `${nodeId}-input-${index}`,
-              type:
-                ioType.type.value.toLowerCase() === 'audio'
-                  ? 'audio'
-                  : ioType.type.value.toLowerCase() === 'video'
-                    ? 'video'
-                    : 'av',
-            })),
-            outputs: filter.stream_typings_output.map((ioType, index) => ({
-              id: `${nodeId}-output-${index}`,
-              type:
-                ioType.type.value.toLowerCase() === 'audio'
-                  ? 'audio'
-                  : ioType.type.value.toLowerCase() === 'video'
-                    ? 'video'
-                    : 'av',
-            })),
+            inputs: filter.stream_typings_input.map((ioType, index) => {
+              const typeValue = ioType.type.value.toLowerCase();
+              const type: EdgeType =
+                typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
+              console.log('Input handle type:', { index, typeValue, type });
+              return {
+                id: `input-${index}`,
+                type,
+              };
+            }),
+            outputs: filter.stream_typings_output.map((ioType, index) => {
+              const typeValue = ioType.type.value.toLowerCase();
+              const type: EdgeType =
+                typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
+              console.log('Output handle type:', { index, typeValue, type });
+              return {
+                id: `output-${index}`,
+                type,
+              };
+            }),
           },
         },
       };
