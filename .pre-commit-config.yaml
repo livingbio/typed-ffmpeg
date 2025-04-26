@@ -61,11 +61,16 @@ repos:
         args: [--fix]
         additional_dependencies:
           - 'eslint@8.56.0'
-          - '@typescript-eslint/eslint-plugin@6.21.0'
-          - '@typescript-eslint/parser@6.21.0'
+          - '@typescript-eslint/eslint-plugin@7.0.0'
+          - '@typescript-eslint/parser@7.0.0'
           - 'eslint-plugin-react@7.37.5'
           - 'react@19.0.0'
           - 'react-dom@19.0.0'
+          - '@emotion/react@11.14.0'
+          - '@emotion/styled@11.14.0'
+          - '@mui/material@7.0.2'
+          - '@mui/icons-material@7.0.2'
+          - 'typescript@5.3.3'
 
   - repo: local
     hooks:
@@ -76,6 +81,8 @@ repos:
         types: [file]
         files: ^ffmpeg-flow-editor/.*\.(js|jsx|ts|tsx|json|md)$
         args: [--write]
+        additional_dependencies:
+          - 'prettier@3.5.3'
 
       - id: check-staged-tsx
         name: Check staged TypeScript files
