@@ -61,8 +61,8 @@ repos:
         args: [--fix]
         additional_dependencies:
           - 'eslint@8.56.0'
-          - '@typescript-eslint/eslint-plugin@8.31.0'
-          - '@typescript-eslint/parser@8.31.0'
+          - '@typescript-eslint/eslint-plugin@6.21.0'
+          - '@typescript-eslint/parser@6.21.0'
           - 'eslint-plugin-react@7.37.5'
 
   - repo: local
