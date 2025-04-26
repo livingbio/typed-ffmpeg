@@ -4,6 +4,8 @@ import { predefinedFilters } from '../types/ffmpeg';
 import PreviewPanel from './PreviewPanel';
 import { useState, useMemo } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import InputIcon from '@mui/icons-material/Input';
+import OutputIcon from '@mui/icons-material/Output';
 
 interface SidebarProps {
   nodes: Node[];
@@ -81,6 +83,79 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
           },
         }}
       >
+        {/* I/O Nodes Section */}
+        <Box sx={{ mb: 3 }}>
+          <Typography variant="subtitle1" gutterBottom>
+            I/O Nodes
+          </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              gap: 1,
+              mb: 2,
+            }}
+          >
+            <Paper
+              elevation={0}
+              draggable
+              onDragStart={(e) => handleDragStart(e, 'input')}
+              onClick={() => onAddFilter('input')}
+              sx={{
+                p: 1.5,
+                cursor: 'grab',
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 1,
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                '&:hover': {
+                  backgroundColor: '#f5f5f5',
+                },
+                '&:active': {
+                  cursor: 'grabbing',
+                },
+              }}
+            >
+              <InputIcon fontSize="small" />
+              <Typography variant="body2" fontWeight={500}>
+                Input Node
+              </Typography>
+            </Paper>
+            <Paper
+              elevation={0}
+              draggable
+              onDragStart={(e) => handleDragStart(e, 'output')}
+              onClick={() => onAddFilter('output')}
+              sx={{
+                p: 1.5,
+                cursor: 'grab',
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 1,
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                '&:hover': {
+                  backgroundColor: '#f5f5f5',
+                },
+                '&:active': {
+                  cursor: 'grabbing',
+                },
+              }}
+            >
+              <OutputIcon fontSize="small" />
+              <Typography variant="body2" fontWeight={500}>
+                Output Node
+              </Typography>
+            </Paper>
+          </Box>
+        </Box>
+
+        <Divider sx={{ my: 2 }} />
+
         {/* Filters Section */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1" gutterBottom>

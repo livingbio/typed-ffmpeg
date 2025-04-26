@@ -94,12 +94,22 @@ export default function FFmpegFlowEditor() {
       return false;
     }
 
-    // Check if target handle is already connected
+    // For Input nodes (source), allow multiple outgoing connections
+    if (sourceNode.data.filterType === 'input') {
+      return true;
+    }
+
+    // For Output nodes (target), allow multiple incoming connections
+    if (targetNode.data.filterType === 'output') {
+      return true;
+    }
+
+    // For regular FilterNodes, check if target handle is already connected
     const targetHasConnection = edges.some(
       (edge) => edge.target === connection.target && edge.targetHandle === connection.targetHandle
     );
 
-    // Check if source handle is already connected
+    // For regular FilterNodes, check if source handle is already connected
     const sourceHasConnection = edges.some(
       (edge) => edge.source === connection.source && edge.sourceHandle === connection.sourceHandle
     );
@@ -123,6 +133,26 @@ export default function FFmpegFlowEditor() {
       parameters?: Record<string, string>,
       position?: { x: number; y: number }
     ) => {
+      // Handle input and output nodes
+      if (filterType === 'input' || filterType === 'output') {
+        const newNode: Node = {
+          id: `${filterType}-${Date.now()}`,
+          type: 'filter',
+          position: position || {
+            x: Math.random() * 500 + 200,
+            y: Math.random() * 300 + 100,
+          },
+          data: {
+            label: filterType === 'input' ? 'Input' : 'Output',
+            filterType: filterType,
+            filterString: filterType === 'input' ? '[0:v]' : '[outv]',
+          },
+        };
+        setNodes((nds) => [...nds, newNode]);
+        return;
+      }
+
+      // Handle regular filter nodes
       const filter = predefinedFilters.find((f) => f.name === filterType);
       if (!filter) return;
 
