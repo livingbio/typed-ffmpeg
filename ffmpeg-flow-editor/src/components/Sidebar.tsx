@@ -8,7 +8,11 @@ import SearchIcon from '@mui/icons-material/Search';
 interface SidebarProps {
   nodes: Node[];
   edges: Edge[];
-  onAddFilter: (filterType: string, parameters?: Record<string, string>) => void;
+  onAddFilter: (
+    filterType: string,
+    parameters?: Record<string, string>,
+    position?: { x: number; y: number }
+  ) => void;
 }
 
 export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
@@ -25,6 +29,11 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
       )
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [searchQuery]);
+
+  const handleDragStart = (e: React.DragEvent, filterName: string) => {
+    e.dataTransfer.setData('application/reactflow', filterName);
+    e.dataTransfer.effectAllowed = 'move';
+  };
 
   return (
     <Paper
@@ -105,9 +114,12 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
               <Paper
                 key={filter.name}
                 elevation={0}
+                draggable
+                onDragStart={(e) => handleDragStart(e, filter.name)}
+                onClick={() => onAddFilter(filter.name)}
                 sx={{
                   p: 1.5,
-                  cursor: 'pointer',
+                  cursor: 'grab',
                   borderBottom: '1px solid',
                   borderColor: 'divider',
                   '&:last-child': {
@@ -116,8 +128,10 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
                   '&:hover': {
                     backgroundColor: '#f5f5f5',
                   },
+                  '&:active': {
+                    cursor: 'grabbing',
+                  },
                 }}
-                onClick={() => onAddFilter(filter.name)}
               >
                 <Typography variant="body2" fontWeight={500}>
                   {filter.name}
