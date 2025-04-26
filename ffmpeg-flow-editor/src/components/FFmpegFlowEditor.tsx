@@ -15,6 +15,7 @@ import { Box } from '@mui/material';
 import FilterNode from './FilterNode';
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
+import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 
 const nodeTypes = {
   filter: FilterNode,
@@ -29,6 +30,7 @@ const initialNodes: Node[] = [
       label: 'Input',
       filterType: 'input',
       filterString: '[0:v]',
+      parameters: {},
     },
   },
   {
@@ -39,6 +41,7 @@ const initialNodes: Node[] = [
       label: 'Output',
       filterType: 'output',
       filterString: '[outv]',
+      parameters: {},
     },
   },
 ];
@@ -94,6 +97,10 @@ export default function FFmpegFlowEditor() {
       return false;
     }
 
+    // Get the source and target handle types
+    const sourceHandle = sourceNode.data.filterType === 'input' ? 'av' : connection.sourceHandle;
+    const targetHandle = targetNode.data.filterType === 'output' ? 'av' : connection.targetHandle;
+
     // For Input nodes (source), allow multiple outgoing connections
     if (sourceNode.data.filterType === 'input') {
       return true;
@@ -115,16 +122,45 @@ export default function FFmpegFlowEditor() {
     );
 
     // Don't allow connection if either source or target handle is already connected
-    return !targetHasConnection && !sourceHasConnection;
+    if (targetHasConnection || sourceHasConnection) {
+      return false;
+    }
+
+    // Check if the edge types are compatible
+    if (sourceHandle === 'av' || targetHandle === 'av') {
+      return true;
+    }
+    return sourceHandle === targetHandle;
   };
 
   const onConnect = useCallback(
     (params: Connection) => {
-      if (isValidConnection(params)) {
-        setEdges((eds) => addEdge(params, eds));
+      if (isValidConnection(params) && params.source && params.target) {
+        // Determine the edge type based on the handles
+        let edgeType: EdgeType = 'av';
+        if (params.sourceHandle && params.targetHandle) {
+          const sourceNode = nodes.find((node) => node.id === params.source);
+          const targetNode = nodes.find((node) => node.id === params.target);
+
+          if (sourceNode?.data.filterType === 'filter' && params.sourceHandle) {
+            edgeType = params.sourceHandle as EdgeType;
+          } else if (targetNode?.data.filterType === 'filter' && params.targetHandle) {
+            edgeType = params.targetHandle as EdgeType;
+          }
+        }
+
+        const newEdge: Edge<EdgeData> = {
+          ...params,
+          id: `edge-${params.source}-${params.sourceHandle}-${params.target}-${params.targetHandle}`,
+          style: { stroke: EDGE_COLORS[edgeType] },
+          data: { type: edgeType },
+          source: params.source,
+          target: params.target,
+        };
+        setEdges((eds) => addEdge(newEdge, eds));
       }
     },
-    [isValidConnection, setEdges]
+    [isValidConnection, setEdges, nodes]
   );
 
   const onAddFilter = useCallback(
@@ -146,6 +182,7 @@ export default function FFmpegFlowEditor() {
             label: filterType === 'input' ? 'Input' : 'Output',
             filterType: filterType,
             filterString: filterType === 'input' ? '[0:v]' : '[outv]',
+            parameters: {},
           },
         };
         setNodes((nds) => [...nds, newNode]);

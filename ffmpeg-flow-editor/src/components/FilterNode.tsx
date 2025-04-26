@@ -1,7 +1,8 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
-import { FFmpegFilterOption, predefinedFilters } from '../types/ffmpeg';
+import { FFmpegFilterOption, predefinedFilters, FFmpegIOType } from '../types/ffmpeg';
+import { EdgeType, EDGE_COLORS } from '../types/edge';
 
 interface FilterNodeData {
   label: string;
@@ -13,6 +14,11 @@ interface FilterNodeData {
 interface ValidationError {
   [key: string]: string | null;
 }
+
+// Helper function to check IO type
+const isIOType = (ioType: FFmpegIOType, type: string): boolean => {
+  return ioType.type.value === type;
+};
 
 function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
@@ -26,9 +32,9 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   // Get the filter definition
   const filter = predefinedFilters.find((f) => f.name === data.filterName);
 
-  // Get number of inputs and outputs from filter definition
-  const numInputs = filter?.stream_typings_input?.length || 1;
-  const numOutputs = filter?.stream_typings_output?.length || 1;
+  // Get input and output types from filter definition
+  const inputTypes = filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
+  const outputTypes = filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
 
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
@@ -107,6 +113,16 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
 
   const hasErrors = Object.values(errors).some((error) => error !== '');
 
+  const getHandleType = (ioType: FFmpegIOType): EdgeType => {
+    if (isIOType(ioType, 'audio')) {
+      return 'audio';
+    }
+    if (isIOType(ioType, 'video')) {
+      return 'video';
+    }
+    return 'av';
+  };
+
   return (
     <Paper
       elevation={3}
@@ -120,18 +136,19 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       {/* Input handles */}
       {data.filterType !== 'input' && (
         <>
-          {Array.from({ length: numInputs }).map((_, index) => (
+          {inputTypes.map((type, index) => (
             <Handle
               key={`input-${index}`}
               id={`input-${index}`}
               type="target"
               position={Position.Left}
               style={{
-                backgroundColor: '#555',
+                backgroundColor: EDGE_COLORS[getHandleType(type)],
                 width: '8px',
                 height: '8px',
-                top: `${(index + 1) * (100 / (numInputs + 1))}%`,
+                top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
               }}
+              data-type={getHandleType(type)}
             />
           ))}
         </>
@@ -190,18 +207,19 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       {/* Output handles */}
       {data.filterType !== 'output' && (
         <>
-          {Array.from({ length: numOutputs }).map((_, index) => (
+          {outputTypes.map((type, index) => (
             <Handle
               key={`output-${index}`}
               id={`output-${index}`}
               type="source"
               position={Position.Right}
               style={{
-                backgroundColor: '#555',
+                backgroundColor: EDGE_COLORS[getHandleType(type)],
                 width: '8px',
                 height: '8px',
-                top: `${(index + 1) * (100 / (numOutputs + 1))}%`,
+                top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
               }}
+              data-type={getHandleType(type)}
             />
           ))}
         </>
