@@ -46,49 +46,55 @@ function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: string }
     nodeStreams[node.id] = `input${index}`;
   });
 
-  // Build filter chains for each input
+  // Process each input node's filter chain
   inputNodes.forEach((inputNode) => {
-    let currentId = inputNode.id;
-    let currentStream = nodeStreams[currentId];
+    // Find all edges starting from this input
+    const inputEdges = edges.filter((e) => e.source === inputNode.id);
 
-    while (true) {
-      const edge = edges.find((e) => e.source === currentId);
-      if (!edge) break;
+    // Process each branch from the input
+    inputEdges.forEach((edge) => {
+      let currentId = edge.target;
+      let currentStream = nodeStreams[inputNode.id];
 
-      const nextNode = nodes.find((n) => n.id === edge.target);
-      if (!nextNode || nextNode.data.filterType !== 'filter') break;
+      while (true) {
+        const nextNode = nodes.find((n) => n.id === currentId);
+        if (!nextNode || nextNode.data.filterType !== 'filter') break;
 
-      if (nextNode.data.filterType === 'filter' && nextNode.data.filterName) {
-        const filterName = nextNode.data.filterName;
-        const parameters = (nextNode.data.parameters as Record<string, string>) || {};
+        if (nextNode.data.filterType === 'filter' && nextNode.data.filterName) {
+          const filterName = nextNode.data.filterName;
+          const parameters = (nextNode.data.parameters as Record<string, string>) || {};
 
-        // Convert parameters to Python kwargs
-        const kwargs = Object.entries(parameters)
-          .filter(([, value]) => value !== '')
-          .map(([key, value]) => {
-            // Handle numeric values without quotes
-            if (!isNaN(Number(value))) {
-              return `${key}=${value}`;
-            }
-            // Handle boolean values
-            if (value.toLowerCase() === 'true' || value.toLowerCase() === 'false') {
-              return `${key}=${value.toLowerCase()}`;
-            }
-            // Handle string values with quotes
-            return `${key}="${value}"`;
-          })
-          .join(', ');
+          // Convert parameters to Python kwargs
+          const kwargs = Object.entries(parameters)
+            .filter(([, value]) => value !== '')
+            .map(([key, value]) => {
+              // Handle numeric values without quotes
+              if (!isNaN(Number(value))) {
+                return `${key}=${value}`;
+              }
+              // Handle boolean values
+              if (value.toLowerCase() === 'true' || value.toLowerCase() === 'false') {
+                return `${key}=${value.toLowerCase()}`;
+              }
+              // Handle string values with quotes
+              return `${key}="${value}"`;
+            })
+            .join(', ');
 
-        // Create a new variable for the processed stream with valid Python identifier
-        const nodeId = nextNode.id.replace(/-/g, '_');
-        const newStreamName = `stream_${nodeId}`;
-        pythonCode += `${newStreamName} = ${currentStream}.${filterName}(${kwargs})\n`;
-        nodeStreams[nextNode.id] = newStreamName;
-        currentStream = newStreamName;
+          // Create a new variable for the processed stream with valid Python identifier
+          const nodeId = nextNode.id.replace(/-/g, '_');
+          const newStreamName = `stream_${nodeId}`;
+          pythonCode += `${newStreamName} = ${currentStream}.${filterName}(${kwargs})\n`;
+          nodeStreams[nextNode.id] = newStreamName;
+          currentStream = newStreamName;
+        }
+
+        // Find the next edge in this branch
+        const nextEdge = edges.find((e) => e.source === currentId);
+        if (!nextEdge) break;
+        currentId = nextEdge.target;
       }
-
-      currentId = nextNode.id;
-    }
+    });
   });
 
   pythonCode += '\n';
@@ -108,7 +114,6 @@ function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: string }
     if (connectedStreams.length > 0) {
       pythonCode += `output${index} = ffmpeg.output(${connectedStreams.join(', ')}, filename="output${index}.mp4")\n`;
     }
-    // Skip output nodes with no connected streams
   });
 
   pythonCode += '\n';
