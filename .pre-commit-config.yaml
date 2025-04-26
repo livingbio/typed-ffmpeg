@@ -39,11 +39,42 @@ repos:
         types: [python]
         exclude: migrations/|commands/|sandbox/|samples|sdk
         additional_dependencies:
-          [pytest, syrupy, types-Pillow, typer, jinja2, types-beautifulsoup4, devtools, html2text]
+          - pytest
+          - syrupy
+          - types-Pillow
+          - typer
+          - jinja2
+          - types-beautifulsoup4
+          - devtools
+          - html2text
         args: ['--config-file=pyproject.toml']
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.56.0
+    hooks:
+      - id: eslint
+        name: ESLint
+        entry: eslint
+        language: node
+        types: [file]
+        files: ^ffmpeg-flow-editor/.*\.(js|jsx|ts|tsx)$
+        args: [--fix]
+        additional_dependencies:
+          - 'eslint@8.56.0'
+          - '@typescript-eslint/eslint-plugin@6.21.0'
+          - '@typescript-eslint/parser@6.21.0'
+          - 'eslint-plugin-react@7.37.5'
 
   - repo: local
     hooks:
+      - id: prettier
+        name: Prettier
+        entry: npx prettier
+        language: node
+        types: [file]
+        files: ^ffmpeg-flow-editor/.*\.(js|jsx|ts|tsx|json|md)$
+        args: [--write]
+
       - id: check-staged-tsx
         name: Check staged TypeScript files
         entry: bash -c 'git diff --cached --name-only --diff-filter=ACMR | grep "\.tsx$" | xargs -r eslint'
