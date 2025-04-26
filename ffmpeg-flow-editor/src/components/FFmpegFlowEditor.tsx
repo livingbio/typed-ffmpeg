@@ -79,74 +79,129 @@ export default function FFmpegFlowEditor() {
     };
   }, [setNodes]);
 
-  const isValidConnection = (connection: Connection) => {
-    if (
-      !connection.source ||
-      !connection.target ||
-      !connection.sourceHandle ||
-      !connection.targetHandle
-    ) {
-      return false;
-    }
+  const isValidConnection = (connection: Connection): boolean => {
+    const sourceNode = nodes.find((n) => n.id === connection.source);
+    const targetNode = nodes.find((n) => n.id === connection.target);
 
-    // Get the source and target nodes
-    const sourceNode = nodes.find((node) => node.id === connection.source);
-    const targetNode = nodes.find((node) => node.id === connection.target);
-
-    if (!sourceNode || !targetNode) {
+    if (!sourceNode || !targetNode || !connection.sourceHandle || !connection.targetHandle) {
+      console.error('Invalid connection: missing node or handle', {
+        connection,
+        sourceNode,
+        targetNode,
+      });
       return false;
     }
 
     // Get the source and target handle types
-    const sourceHandle = sourceNode.data.filterType === 'input' ? 'av' : connection.sourceHandle;
-    const targetHandle = targetNode.data.filterType === 'output' ? 'av' : connection.targetHandle;
+    const sourceHandle = connection.sourceHandle;
+    const targetHandle = connection.targetHandle;
 
-    // For Input nodes (source), allow multiple outgoing connections
+    // Rule 1: Input nodes can have multiple outgoing edges marked as "av"
     if (sourceNode.data.filterType === 'input') {
+      console.log('Input node connection allowed');
       return true;
     }
 
-    // For Output nodes (target), allow multiple incoming connections
+    // Rule 4: Output nodes can accept all types and multiple connections
     if (targetNode.data.filterType === 'output') {
+      console.log('Output node connection allowed');
       return true;
     }
 
-    // For regular FilterNodes, check if target handle is already connected
-    const targetHasConnection = edges.some(
-      (edge) => edge.target === connection.target && edge.targetHandle === connection.targetHandle
-    );
+    // Rule 2: FilterNode input handles can only connect to one edge
+    if (targetNode.data.filterType === 'filter') {
+      const targetHasConnection = edges.some(
+        (edge) => edge.target === connection.target && edge.targetHandle === connection.targetHandle
+      );
+      if (targetHasConnection) {
+        console.error('Target handle already has a connection');
+        return false;
+      }
+    }
 
-    // For regular FilterNodes, check if source handle is already connected
-    const sourceHasConnection = edges.some(
-      (edge) => edge.source === connection.source && edge.sourceHandle === connection.sourceHandle
-    );
+    // Get the types from the data-type attribute
+    const sourceHandleElement = document.querySelector(`[data-handle-id="${sourceHandle}"]`);
+    const targetHandleElement = document.querySelector(`[data-handle-id="${targetHandle}"]`);
 
-    // Don't allow connection if either source or target handle is already connected
-    if (targetHasConnection || sourceHasConnection) {
+    if (!sourceHandleElement || !targetHandleElement) {
+      console.error('Could not find handle elements', { sourceHandle, targetHandle });
       return false;
     }
 
-    // Check if the edge types are compatible
-    if (sourceHandle === 'av' || targetHandle === 'av') {
-      return true;
+    const sourceType = sourceHandleElement.getAttribute('data-type') as EdgeType;
+    const targetType = targetHandleElement.getAttribute('data-type') as EdgeType;
+
+    console.log('Connection types:', { sourceType, targetType, sourceHandle, targetHandle });
+
+    // Rule 3: FilterNode output handles mark the edge type
+    // Rule 2: FilterNode input handles must match the type or accept 'av'
+    if (sourceNode.data.filterType === 'filter' && targetNode.data.filterType === 'filter') {
+      // If source is 'av', it can connect to anything
+      if (sourceType === 'av') {
+        console.log('Source is AV, connection allowed');
+        return true;
+      }
+      // If target is 'av', it can accept anything
+      if (targetType === 'av') {
+        console.log('Target is AV, connection allowed');
+        return true;
+      }
+      // Otherwise, types must match exactly
+      const isValid = sourceType === targetType;
+      console.log('Filter to filter connection:', { isValid, sourceType, targetType });
+      return isValid;
     }
-    return sourceHandle === targetHandle;
+
+    console.error('Invalid connection type');
+    return false;
   };
 
   const onConnect = useCallback(
     (params: Connection) => {
-      if (isValidConnection(params) && params.source && params.target) {
-        // Determine the edge type based on the handles
-        let edgeType: EdgeType = 'av';
-        if (params.sourceHandle && params.targetHandle) {
-          const sourceNode = nodes.find((node) => node.id === params.source);
-          const targetNode = nodes.find((node) => node.id === params.target);
+      console.log('Connection attempt:', params);
 
-          if (sourceNode?.data.filterType === 'filter' && params.sourceHandle) {
-            edgeType = params.sourceHandle as EdgeType;
-          } else if (targetNode?.data.filterType === 'filter' && params.targetHandle) {
-            edgeType = params.targetHandle as EdgeType;
+      if (isValidConnection(params) && params.source && params.target) {
+        const sourceNode = nodes.find((node) => node.id === params.source);
+        console.log('Source node:', sourceNode);
+
+        // Determine the edge type
+        let edgeType: EdgeType = 'av';
+        if (sourceNode?.data.filterType === 'filter' && params.sourceHandle) {
+          // Get the filter definition
+          const filter = predefinedFilters.find((f) => f.name === sourceNode.data.filterName);
+          if (filter) {
+            // Get the output type from the filter definition
+            const outputIndex = parseInt(params.sourceHandle.split('-')[1] || '0');
+            const outputType = filter.stream_typings_output[outputIndex];
+            if (outputType) {
+              const typeValue = outputType.type.value.toLowerCase();
+              if (typeValue === 'audio') {
+                edgeType = 'audio';
+              } else if (typeValue === 'video') {
+                edgeType = 'video';
+              }
+            }
           }
+          console.log('Setting edge type from filter:', {
+            filterName: sourceNode.data.filterName,
+            outputType: filter?.stream_typings_output,
+            edgeType,
+          });
+        } else if (sourceNode?.data.filterType === 'input') {
+          // Rule 1: Input nodes mark edges as "av"
+          edgeType = 'av';
+          console.log('Setting edge type from input node');
+        }
+
+        console.log('Final edge type:', {
+          type: edgeType,
+          color: EDGE_COLORS[edgeType],
+          isValid: !!EDGE_COLORS[edgeType],
+        });
+
+        if (!EDGE_COLORS[edgeType]) {
+          console.error('Invalid edge type:', edgeType);
+          throw new Error(`Invalid edge type: ${edgeType}`);
         }
 
         const newEdge: Edge<EdgeData> = {
@@ -156,11 +211,19 @@ export default function FFmpegFlowEditor() {
           data: { type: edgeType },
           source: params.source,
           target: params.target,
+          type: 'smoothstep',
+          animated: false,
         };
+
+        console.log('Creating new edge:', {
+          newEdge,
+          color: EDGE_COLORS[edgeType],
+          style: newEdge.style,
+        });
         setEdges((eds) => addEdge(newEdge, eds));
       }
     },
-    [isValidConnection, setEdges, nodes]
+    [isValidConnection, setEdges, nodes, edges]
   );
 
   const onAddFilter = useCallback(

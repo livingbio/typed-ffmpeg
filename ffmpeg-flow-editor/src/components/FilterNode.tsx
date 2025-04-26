@@ -15,11 +15,6 @@ interface ValidationError {
   [key: string]: string | null;
 }
 
-// Helper function to check IO type
-const isIOType = (ioType: FFmpegIOType, type: string): boolean => {
-  return ioType.type.value === type;
-};
-
 function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
@@ -31,10 +26,6 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
 
   // Get the filter definition
   const filter = predefinedFilters.find((f) => f.name === data.filterName);
-
-  // Get input and output types from filter definition
-  const inputTypes = filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
-  const outputTypes = filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
 
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
@@ -114,14 +105,47 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const hasErrors = Object.values(errors).some((error) => error !== '');
 
   const getHandleType = (ioType: FFmpegIOType): EdgeType => {
-    if (isIOType(ioType, 'audio')) {
+    const typeValue = ioType.type.value.toLowerCase();
+    console.log('Getting handle type:', {
+      typeValue,
+      ioType,
+      fullType: ioType.type,
+      filterName: data.filterName,
+      isAudio: typeValue === 'audio',
+      isVideo: typeValue === 'video',
+      isAV: typeValue === 'av',
+      rawValue: ioType.type.value,
+    });
+
+    if (typeValue === 'audio') {
+      console.log('Returning audio type');
       return 'audio';
     }
-    if (isIOType(ioType, 'video')) {
+    if (typeValue === 'video') {
+      console.log('Returning video type');
       return 'video';
     }
+    console.log('Returning av type (fallback)');
     return 'av';
   };
+
+  // Get input and output types from filter definition
+  const inputTypes = filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
+  const outputTypes = filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
+
+  console.log('Filter node types:', {
+    filterName: data.filterName,
+    inputTypes: inputTypes.map((t) => ({
+      value: t.type.value,
+      type: getHandleType(t),
+      rawType: t.type,
+    })),
+    outputTypes: outputTypes.map((t) => ({
+      value: t.type.value,
+      type: getHandleType(t),
+      rawType: t.type,
+    })),
+  });
 
   return (
     <Paper
@@ -136,21 +160,35 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       {/* Input handles */}
       {data.filterType !== 'input' && (
         <>
-          {inputTypes.map((type, index) => (
-            <Handle
-              key={`input-${index}`}
-              id={`input-${index}`}
-              type="target"
-              position={Position.Left}
-              style={{
-                backgroundColor: EDGE_COLORS[getHandleType(type)],
-                width: '8px',
-                height: '8px',
-                top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
-              }}
-              data-type={getHandleType(type)}
-            />
-          ))}
+          {inputTypes.map((type, index) => {
+            const handleType = getHandleType(type);
+            const handleId = `input-${index}`;
+            console.log('Creating input handle:', {
+              index,
+              handleType,
+              type: type.type.value,
+              handleId,
+              color: EDGE_COLORS[handleType],
+            });
+            return (
+              <Handle
+                key={handleId}
+                id={handleId}
+                data-handle-id={handleId}
+                type="target"
+                position={Position.Left}
+                style={{
+                  backgroundColor: EDGE_COLORS[handleType],
+                  width: '10px',
+                  height: '10px',
+                  top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
+                  border: '2px solid #fff',
+                }}
+                data-type={handleType}
+                data-handle-type="input"
+              />
+            );
+          })}
         </>
       )}
 
@@ -207,21 +245,35 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       {/* Output handles */}
       {data.filterType !== 'output' && (
         <>
-          {outputTypes.map((type, index) => (
-            <Handle
-              key={`output-${index}`}
-              id={`output-${index}`}
-              type="source"
-              position={Position.Right}
-              style={{
-                backgroundColor: EDGE_COLORS[getHandleType(type)],
-                width: '8px',
-                height: '8px',
-                top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
-              }}
-              data-type={getHandleType(type)}
-            />
-          ))}
+          {outputTypes.map((type, index) => {
+            const handleType = getHandleType(type);
+            const handleId = `output-${index}`;
+            console.log('Creating output handle:', {
+              index,
+              handleType,
+              type: type.type.value,
+              handleId,
+              color: EDGE_COLORS[handleType],
+            });
+            return (
+              <Handle
+                key={handleId}
+                id={handleId}
+                data-handle-id={handleId}
+                type="source"
+                position={Position.Right}
+                style={{
+                  backgroundColor: EDGE_COLORS[handleType],
+                  width: '10px',
+                  height: '10px',
+                  top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
+                  border: '2px solid #fff',
+                }}
+                data-type={handleType}
+                data-handle-type="output"
+              />
+            );
+          })}
         </>
       )}
     </Paper>
