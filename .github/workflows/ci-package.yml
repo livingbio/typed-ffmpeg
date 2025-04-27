@@ -65,9 +65,11 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           file: ./coverage.xml
-          flags: ${{ matrix.python-version }}
-          token: ${{ secrets.CODECOV_TOKEN }} # required
-          verbose: true # optional (default = false)
+          flags: backend,python,${{ matrix.python-version }}
+          name: backend-coverage-py${{ matrix.python-version }}
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
 
       # Build Mkdocs
       - name: Build Mkdocs
