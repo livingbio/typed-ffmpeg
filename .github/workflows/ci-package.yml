@@ -1,7 +1,7 @@
-name: "unittest for package"
+name: 'unittest for package'
 on:
   push:
-    branches: ["**"]
+    branches: ['**']
 
 permissions:
   contents: read
@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ['3.10', '3.11', '3.12', '3.13']
 
     steps:
       - name: Checkout Repository
@@ -65,9 +65,11 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           file: ./coverage.xml
-          flags: ${{ matrix.python-version }}
-          token: ${{ secrets.CODECOV_TOKEN }} # required
-          verbose: true # optional (default = false)
+          flags: backend,python,${{ matrix.python-version }}
+          name: backend-coverage-py${{ matrix.python-version }}
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
 
       # Build Mkdocs
       - name: Build Mkdocs

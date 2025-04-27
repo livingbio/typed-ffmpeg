@@ -1,0 +1,62 @@
+name: 'React Component Tests'
+# This is a separate workflow from ci-package.yml because:
+# 1. It has different triggering conditions (only runs when React code changes)
+# 2. It uses a completely different environment setup (Node.js vs Python)
+# 3. It has different testing and reporting frameworks (Vitest vs pytest)
+# 4. Separating concerns makes each workflow simpler and more maintainable
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'ffmpeg-flow-editor/**'
+  pull_request:
+    paths:
+      - 'ffmpeg-flow-editor/**'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: React Component Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: ffmpeg-flow-editor/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ffmpeg-flow-editor
+
+      # Run the React component tests with coverage using Vitest
+      - name: Run React component tests with coverage
+        run: npm run test:coverage
+        working-directory: ffmpeg-flow-editor
+
+      # Upload coverage report to Codecov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          directory: ./ffmpeg-flow-editor/coverage
+          flags: frontend,typescript,react
+          name: frontend-coverage
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
+
+      # Upload coverage reports as artifacts
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage-report
+          path: ffmpeg-flow-editor/coverage
