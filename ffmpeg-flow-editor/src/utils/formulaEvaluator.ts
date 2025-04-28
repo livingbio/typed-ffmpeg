@@ -42,15 +42,18 @@ export async function evaluateFormula(
 from ffmpeg.dag.factory import eval_formula
 import json
 
-result = [str(k) for k in eval_formula("${formula}", ${JSON.stringify(pythonParameters)})]
+parameters = json.loads('${JSON.stringify(pythonParameters)}')
+
+result = [k.value for k in eval_formula("""${formula}""", **parameters)]
 print(json.dumps(result))
+result
 `;
 
     // Execute the Python code
     const result = await pyodide.runPythonAsync(pythonCode);
 
     // Parse the JSON result
-    const parsedResult = JSON.parse(result) as PythonResultType[];
+    const parsedResult = JSON.parse(result) as string[];
 
     // Convert the result to FFmpegIOType[]
     if (Array.isArray(parsedResult)) {
@@ -59,12 +62,12 @@ print(json.dumps(result))
         name: '',
         type: {
           __class__: 'StreamType',
-          value: type.value,
+          value: type,
         },
       }));
     }
-
-    return [];
+    console.error('Invalid result:', result);
+    throw new Error('Invalid result', { cause: result });
   } catch (error) {
     console.error('Error evaluating formula:', error);
     return [];

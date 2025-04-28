@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "generate-filters": "tsx src/scripts/generateFilters.ts",
     "test": "vitest run",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
