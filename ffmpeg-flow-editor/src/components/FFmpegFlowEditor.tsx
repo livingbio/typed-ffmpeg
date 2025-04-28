@@ -14,9 +14,10 @@ import 'reactflow/dist/style.css';
 import { Box } from '@mui/material';
 import FilterNode from './FilterNode';
 import Sidebar from './Sidebar';
-import { predefinedFilters } from '../types/ffmpeg';
+import { predefinedFilters, FFmpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import { validateConnection } from '../utils/connectionValidation';
+import { evaluateFormula, parseStringParameter } from '../utils/formulaEvaluator';
 
 const nodeTypes = {
   filter: FilterNode,
@@ -169,41 +170,37 @@ export default function FFmpegFlowEditor() {
       position?: { x: number; y: number }
     ) => {
       const nodeId = `${filterType}-${Date.now()}`;
+      const filter = predefinedFilters.find((f) => f.name === filterType);
 
-      // Handle input and output nodes
-      if (filterType === 'input' || filterType === 'output') {
-        const newNode: Node = {
-          id: nodeId,
-          type: 'filter',
-          position: position || {
-            x: Math.random() * 500 + 200,
-            y: Math.random() * 300 + 100,
-          },
-          data: {
-            label: filterType === 'input' ? 'Input' : 'Output',
-            filterType: filterType,
-            filterString: filterType === 'input' ? '[0:v]' : '[outv]',
-            parameters: {},
-            handles: {
-              inputs: filterType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
-              outputs: filterType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
-            },
-          },
-        };
-        setNodes((nds) => [...nds, newNode]);
+      if (!filter) {
+        console.error('Filter not found:', filterType);
         return;
       }
 
-      // Handle regular filter nodes
-      const filter = predefinedFilters.find((f) => f.name === filterType);
-      if (!filter) return;
+      // Parse parameters to their correct types
+      const parsedParameters = Object.entries(parameters || {}).reduce(
+        (acc, [key, value]) => {
+          acc[key] = parseStringParameter(value);
+          return acc;
+        },
+        {} as Record<string, string | number | boolean>
+      );
 
-      // Debug log for filter type determination
-      console.log('Creating filter node:', {
-        filterType,
-        inputTypes: filter.stream_typings_input.map((t) => t.type.value),
-        outputTypes: filter.stream_typings_output.map((t) => t.type.value),
-      });
+      // Evaluate formulas if they exist
+      let inputTypes: FFmpegIOType[] = [];
+      let outputTypes: FFmpegIOType[] = [];
+
+      if (filter.is_dynamic_input && filter.formula_typings_input) {
+        inputTypes = evaluateFormula(filter.formula_typings_input, parsedParameters);
+      } else {
+        inputTypes = filter.stream_typings_input;
+      }
+
+      if (filter.is_dynamic_output && filter.formula_typings_output) {
+        outputTypes = evaluateFormula(filter.formula_typings_output, parsedParameters);
+      } else {
+        outputTypes = filter.stream_typings_output;
+      }
 
       const newNode: Node = {
         id: nodeId,
@@ -218,21 +215,19 @@ export default function FFmpegFlowEditor() {
           filterName: filter.name,
           parameters: parameters || {},
           handles: {
-            inputs: filter.stream_typings_input.map((ioType, index) => {
+            inputs: inputTypes.map((ioType, index) => {
               const typeValue = ioType.type.value.toLowerCase();
               const type: EdgeType =
                 typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
-              console.log('Input handle type:', { index, typeValue, type });
               return {
                 id: `input-${index}`,
                 type,
               };
             }),
-            outputs: filter.stream_typings_output.map((ioType, index) => {
+            outputs: outputTypes.map((ioType, index) => {
               const typeValue = ioType.type.value.toLowerCase();
               const type: EdgeType =
                 typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
-              console.log('Output handle type:', { index, typeValue, type });
               return {
                 id: `output-${index}`,
                 type,

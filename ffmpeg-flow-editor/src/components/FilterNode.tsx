@@ -3,6 +3,7 @@ import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
 import { FFmpegFilterOption, predefinedFilters, FFmpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
+import { evaluateFormula, parseStringParameter } from '../utils/formulaEvaluator';
 
 interface FilterNodeData {
   label: string;
@@ -15,17 +16,41 @@ interface ValidationError {
   [key: string]: string | null;
 }
 
-function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
+const FilterNode = ({ id, data }: NodeProps<FilterNodeData>) => {
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
+  const [inputTypes, setInputTypes] = useState<FFmpegIOType[]>([]);
+  const [outputTypes, setOutputTypes] = useState<FFmpegIOType[]>([]);
 
-  // Update local state when data changes
-  useEffect(() => {
-    setParameters(data.parameters || {});
-  }, [data.parameters]);
-
-  // Get the filter definition
   const filter = predefinedFilters.find((f) => f.name === data.filterName);
+
+  useEffect(() => {
+    if (filter) {
+      // Parse parameters to their correct types
+      const parsedParameters = Object.entries(parameters).reduce(
+        (acc, [key, value]) => {
+          acc[key] = parseStringParameter(value);
+          return acc;
+        },
+        {} as Record<string, string | number | boolean>
+      );
+
+      // Evaluate formulas if they exist
+      if (filter.is_dynamic_input && filter.formula_typings_input) {
+        const evaluatedInputs = evaluateFormula(filter.formula_typings_input, parsedParameters);
+        setInputTypes(evaluatedInputs);
+      } else {
+        setInputTypes(filter.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType]);
+      }
+
+      if (filter.is_dynamic_output && filter.formula_typings_output) {
+        const evaluatedOutputs = evaluateFormula(filter.formula_typings_output, parsedParameters);
+        setOutputTypes(evaluatedOutputs);
+      } else {
+        setOutputTypes(filter.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType]);
+      }
+    }
+  }, [filter, parameters]);
 
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
@@ -128,10 +153,6 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     console.log('Returning av type (fallback)');
     return 'av';
   };
-
-  // Get input and output types from filter definition
-  const inputTypes = filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
-  const outputTypes = filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
 
   console.log('Filter node types:', {
     filterName: data.filterName,
@@ -278,6 +299,6 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       )}
     </Paper>
   );
-}
+};
 
 export default memo(FilterNode);
