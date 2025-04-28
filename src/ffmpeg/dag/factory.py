@@ -15,7 +15,7 @@ from ..utils.run import ignore_default
 from .nodes import FilterableStream, FilterNode
 
 
-def eval_formula(formula: str, **kwargs: Any) -> tuple[StreamType, ...]:
+def eval_formula(formula: str, **kwargs: Any) -> list[StreamType]:
     """
     Evaluate a formula string with the given parameters.
 
