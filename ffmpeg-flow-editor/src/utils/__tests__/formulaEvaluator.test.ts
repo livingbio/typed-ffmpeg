@@ -1,27 +1,47 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { evaluateFormula, parseStringParameter } from '../formulaEvaluator';
-import { PyodideMock } from '../pyodideMock';
+import { loadPyodide } from 'pyodide';
+import path from 'path';
 
-// Mock Pyodide
-vi.mock('../pyodideMock', () => ({
-  PyodideMock: vi.fn().mockImplementation(() => ({
-    runPythonAsync: vi.fn().mockImplementation(() => {
-      // Mock the Python evaluation result
-      return Promise.resolve(JSON.stringify([{ value: 'video' }, { value: 'audio' }]));
-    }),
-    loadPackage: vi.fn().mockResolvedValue(undefined),
-  })),
-}));
+// Create a singleton instance of Pyodide
+let pyodide: Awaited<ReturnType<typeof loadPyodide>> | null = null;
+
+async function getPyodide() {
+  if (!pyodide) {
+    // Get the path to the pyodide files in node_modules
+    const pyodidePath = path.resolve(process.cwd(), 'node_modules', 'pyodide');
+
+    pyodide = await loadPyodide({
+      indexURL: pyodidePath,
+    });
+    await pyodide.loadPackage('micropip');
+    await pyodide.runPythonAsync(`
+      import micropip
+      await micropip.install('typed-ffmpeg')
+    `);
+  }
+  return pyodide;
+}
 
 describe('formulaEvaluator', () => {
+  beforeEach(async () => {
+    // Reset the Pyodide instance
+    pyodide = null;
+
+    // Setup window mock with the actual Pyodide
+    global.window = {
+      loadPyodide: getPyodide,
+    } as unknown as Window & typeof globalThis;
+  });
+
   describe('evaluateFormula', () => {
     it('should return empty array for empty formula', async () => {
       const result = await evaluateFormula('', {});
       expect(result).toEqual([]);
     });
 
-    it('should evaluate formula using Python', async () => {
-      const result = await evaluateFormula('test_formula', { param1: 'value1' });
+    it('should evaluate simple formula with video and audio', async () => {
+      const result = await evaluateFormula('[StreamType.video] + [StreamType.audio]', {});
       expect(result).toEqual([
         {
           __class__: 'FFMpegIOType',
@@ -42,15 +62,184 @@ describe('formulaEvaluator', () => {
       ]);
     });
 
+    it('should evaluate formula with numeric multiplication', async () => {
+      const result = await evaluateFormula('[StreamType.video] * int(inputs)', { inputs: 2 });
+      expect(result).toEqual([
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+      ]);
+    });
+
+    it('should evaluate formula with string splitting', async () => {
+      const result = await evaluateFormula('[StreamType.video] * len("1+2+3".split("+"))', {});
+      expect(result).toEqual([
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+      ]);
+    });
+
+    it('should evaluate formula with hex conversion', async () => {
+      const result = await evaluateFormula(
+        '[StreamType.video] * int(max(hex(int(mapping))[2::2]))',
+        { mapping: 0x123 }
+      );
+      expect(result).toEqual([
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+      ]);
+    });
+
+    it('should evaluate formula with conditional reference', async () => {
+      const result = await evaluateFormula(
+        '[StreamType.video, StreamType.video] + ([StreamType.video] if reference else [])',
+        { reference: 'True' }
+      );
+      expect(result).toEqual([
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+      ]);
+    });
+
+    it('should evaluate formula with conditional inplace', async () => {
+      const result = await evaluateFormula(
+        '[StreamType.video] + ([StreamType.video] if inplace else [])',
+        { inplace: 'True' }
+      );
+      expect(result).toEqual([
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+      ]);
+    });
+
+    it('should evaluate formula with mixed audio and video', async () => {
+      const result = await evaluateFormula(
+        '[StreamType.video]*int(v) + [StreamType.audio]*int(a)',
+        { v: 2, a: 1 }
+      );
+      expect(result).toEqual([
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'video',
+          },
+        },
+        {
+          __class__: 'FFMpegIOType',
+          name: '',
+          type: {
+            __class__: 'StreamType',
+            value: 'audio',
+          },
+        },
+      ]);
+    });
+
     it('should handle Python evaluation errors', async () => {
-      // Override the mock for this specific test
-      const mockPyodide = new PyodideMock();
-      vi.mocked(mockPyodide.runPythonAsync).mockRejectedValueOnce(new Error('Python error'));
-
-      // Clear the singleton instance to force a new one
-      vi.mocked(PyodideMock).mockImplementationOnce(() => mockPyodide);
-
-      const result = await evaluateFormula('invalid_formula', {});
+      const result = await evaluateFormula('[StreamType.invalid]', {});
       expect(result).toEqual([]);
     });
   });
