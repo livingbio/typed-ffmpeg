@@ -15,6 +15,27 @@ from ..utils.run import ignore_default
 from .nodes import FilterableStream, FilterNode
 
 
+def eval_formula(formula: str, **kwargs: Any) -> list[StreamType]:
+    """
+    Evaluate a formula string with the given parameters.
+
+    This function evaluates a formula string using the provided parameters.
+    It supports basic arithmetic operations and conditional logic.
+
+    Args:
+        formula: The formula string to evaluate
+        **kwargs: Additional keyword arguments to pass to the formula
+
+    Returns:
+        The result of the formula evaluation
+    """
+    # Convert formula to Python code
+    return eval(
+        formula,
+        {"StreamType": StreamType, "re": re, **kwargs},
+    )
+
+
 def filter_node_factory(
     ffmpeg_filter_def: FFMpegFilterDef, *inputs: FilterableStream, **kwargs: Any
 ) -> FilterNode:
@@ -45,9 +66,9 @@ def filter_node_factory(
 
     if isinstance(ffmpeg_filter_def.typings_input, str):
         input_typings = tuple(
-            eval(
+            eval_formula(
                 ffmpeg_filter_def.typings_input,
-                {"StreamType": StreamType, "re": re, **kwargs},
+                **kwargs,
             )
         )
     else:
@@ -58,9 +79,9 @@ def filter_node_factory(
 
     if isinstance(ffmpeg_filter_def.typings_output, str):
         output_typings = tuple(
-            eval(
+            eval_formula(
                 ffmpeg_filter_def.typings_output,
-                {"StreamType": StreamType, "re": re, **kwargs},
+                **kwargs,
             )
         )
     else:
