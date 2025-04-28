@@ -1,19 +1,28 @@
 import { FFmpegIOType } from '../types/ffmpeg';
-import { PyodideMock } from './pyodideMock';
 
-// Type for the Python result
-interface PythonResultType {
-  value: string;
+// Add type declarations for Pyodide
+declare global {
+  interface Window {
+    loadPyodide: (options: { indexURL: string }) => Promise<{
+      runPythonAsync: (code: string) => Promise<string>;
+      loadPackage: (packageName: string) => Promise<void>;
+    }>;
+  }
 }
 
-// Create a singleton instance of PyodideMock
-let pyodide: PyodideMock | null = null;
+// Create a singleton instance of Pyodide
+let pyodide: Awaited<ReturnType<typeof window.loadPyodide>> | null = null;
 
-async function getPyodide(): Promise<PyodideMock> {
+async function getPyodide(): Promise<Awaited<ReturnType<typeof window.loadPyodide>>> {
   if (!pyodide) {
-    pyodide = new PyodideMock();
-    // Load the required Python packages
-    await pyodide.loadPackage('ffmpeg');
+    pyodide = await window.loadPyodide({
+      indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
+    });
+    await pyodide.loadPackage('micropip');
+    await pyodide.runPythonAsync(`
+      import micropip
+      await micropip.install('typed-ffmpeg')
+    `);
   }
   return pyodide;
 }
@@ -45,8 +54,7 @@ import json
 parameters = json.loads('${JSON.stringify(pythonParameters)}')
 
 result = [k.value for k in eval_formula("""${formula}""", **parameters)]
-print(json.dumps(result))
-result
+json.dumps(result)
 `;
 
     // Execute the Python code

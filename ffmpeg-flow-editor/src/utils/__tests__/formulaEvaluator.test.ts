@@ -1,7 +1,39 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { evaluateFormula, parseStringParameter } from '../formulaEvaluator';
+import { loadPyodide } from 'pyodide';
+import path from 'path';
+
+// Create a singleton instance of Pyodide
+let pyodide: Awaited<ReturnType<typeof loadPyodide>> | null = null;
+
+async function getPyodide() {
+  if (!pyodide) {
+    // Get the path to the pyodide files in node_modules
+    const pyodidePath = path.resolve(process.cwd(), 'node_modules', 'pyodide');
+
+    pyodide = await loadPyodide({
+      indexURL: pyodidePath,
+    });
+    await pyodide.loadPackage('micropip');
+    await pyodide.runPythonAsync(`
+      import micropip
+      await micropip.install('typed-ffmpeg')
+    `);
+  }
+  return pyodide;
+}
 
 describe('formulaEvaluator', () => {
+  beforeEach(async () => {
+    // Reset the Pyodide instance
+    pyodide = null;
+
+    // Setup window mock with the actual Pyodide
+    global.window = {
+      loadPyodide: getPyodide,
+    } as unknown as Window & typeof globalThis;
+  });
+
   describe('evaluateFormula', () => {
     it('should return empty array for empty formula', async () => {
       const result = await evaluateFormula('', {});
