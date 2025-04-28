@@ -1,45 +1,60 @@
 import { FFmpegIOType } from '../types/ffmpeg';
+import { PyodideMock } from './pyodideMock';
+
+// Type for the Python result
+interface PythonResultType {
+  value: string;
+}
+
+// Create a singleton instance of PyodideMock
+let pyodide: PyodideMock | null = null;
+
+async function getPyodide(): Promise<PyodideMock> {
+  if (!pyodide) {
+    pyodide = new PyodideMock();
+    // Load the required Python packages
+    await pyodide.loadPackage('ffmpeg');
+  }
+  return pyodide;
+}
 
 // Helper function to evaluate a formula expression
-export function evaluateFormula(
+export async function evaluateFormula(
   formula: string,
   parameters: Record<string, string | number | boolean>
-): FFmpegIOType[] {
+): Promise<FFmpegIOType[]> {
   if (!formula) return [];
 
-  // Create a safe evaluation context with only the parameters we need
-  const context = {
-    ...parameters,
-    StreamType: {
-      video: { value: 'video' },
-      audio: { value: 'audio' },
-      av: { value: 'av' },
-    },
-    CHANNEL_LAYOUT: {
-      mono: 1,
-      stereo: 2,
-      '2.1': 3,
-      '3.0': 3,
-      '3.1': 4,
-      '4.0': 4,
-      quad: 4,
-      '5.0': 5,
-      '5.1': 6,
-      '6.1': 7,
-      '7.1': 8,
-    },
-  };
-
   try {
-    // Create a function that evaluates the formula
-    const evalFn = new Function('params', `with(params) { return ${formula}; }`);
+    const pyodide = await getPyodide();
 
-    // Evaluate the formula
-    const result = evalFn(context);
+    // Convert parameters to a format that can be passed to Python
+    const pythonParameters = Object.entries(parameters).reduce(
+      (acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      },
+      {} as Record<string, string | number | boolean>
+    );
+
+    // Create Python code to evaluate the formula
+    const pythonCode = `
+from ffmpeg.dag.factory import eval_formula
+import json
+
+result = [str(k) for k in eval_formula("${formula}", ${JSON.stringify(pythonParameters)})]
+print(json.dumps(result))
+`;
+
+    // Execute the Python code
+    const result = await pyodide.runPythonAsync(pythonCode);
+
+    // Parse the JSON result
+    const parsedResult = JSON.parse(result) as PythonResultType[];
 
     // Convert the result to FFmpegIOType[]
-    if (Array.isArray(result)) {
-      return result.map((type) => ({
+    if (Array.isArray(parsedResult)) {
+      return parsedResult.map((type) => ({
         __class__: 'FFMpegIOType',
         name: '',
         type: {
