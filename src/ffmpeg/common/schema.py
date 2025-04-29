@@ -603,3 +603,8 @@ class FFMpegOption:
             True if this option can be used with stream specifiers
         """
         return bool(self.flags & FFMpegOptionFlag.OPT_SPEC)
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegOptionList:
+    options: tuple[FFMpegOption, ...]
