@@ -3,6 +3,7 @@ import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
 import { FFmpegFilterOption, predefinedFilters, FFmpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
+import { evaluateFormula, parseStringParameter } from '../utils/formulaEvaluator';
 
 interface FilterNodeData {
   label: string;
@@ -18,6 +19,9 @@ interface ValidationError {
 function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
+  const [dynamicInputTypes, setDynamicInputTypes] = useState<FFmpegIOType[]>([]);
+  const [dynamicOutputTypes, setDynamicOutputTypes] = useState<FFmpegIOType[]>([]);
+  const [formulaError, setFormulaError] = useState<string | null>(null);
 
   // Update local state when data changes
   useEffect(() => {
@@ -26,6 +30,41 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
 
   // Get the filter definition
   const filter = predefinedFilters.find((f) => f.name === data.filterName);
+
+  // Evaluate dynamic formulas when parameters change
+  useEffect(() => {
+    const evaluateDynamicTypes = async () => {
+      if (!filter) return;
+
+      try {
+        setFormulaError(null);
+
+        // Convert string parameters to appropriate types
+        const parsedParams = Object.entries(parameters).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [key]: parseStringParameter(value),
+          }),
+          {} as Record<string, string | number | boolean>
+        );
+
+        if (filter.is_dynamic_input && filter.formula_typings_input) {
+          const inputTypes = await evaluateFormula(filter.formula_typings_input, parsedParams);
+          setDynamicInputTypes(inputTypes);
+        }
+
+        if (filter.is_dynamic_output && filter.formula_typings_output) {
+          const outputTypes = await evaluateFormula(filter.formula_typings_output, parsedParams);
+          setDynamicOutputTypes(outputTypes);
+        }
+      } catch (error) {
+        console.error('Error evaluating formula:', error);
+        setFormulaError(error instanceof Error ? error.message : 'Error evaluating formula');
+      }
+    };
+
+    evaluateDynamicTypes();
+  }, [filter, parameters]);
 
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
@@ -129,9 +168,13 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     return 'av';
   };
 
-  // Get input and output types from filter definition
-  const inputTypes = filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
-  const outputTypes = filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
+  // Get input and output types from filter definition or dynamic evaluation
+  const inputTypes = filter?.is_dynamic_input
+    ? dynamicInputTypes
+    : filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
+  const outputTypes = filter?.is_dynamic_output
+    ? dynamicOutputTypes
+    : filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
 
   console.log('Filter node types:', {
     filterName: data.filterName,
@@ -153,53 +196,70 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       sx={{
         padding: 2,
         minWidth: 200,
-        backgroundColor: '#fff',
-        border: '1px solid #ccc',
+        maxWidth: 300,
+        border: '1px solid',
+        borderColor: hasErrors || formulaError ? 'error.main' : 'divider',
       }}
     >
-      {/* Input handles */}
-      {data.filterType !== 'input' && (
-        <>
-          {inputTypes.map((type, index) => {
-            const handleType = getHandleType(type);
-            const handleId = `input-${index}`;
-            console.log('Creating input handle:', {
-              index,
-              handleType,
-              type: type.type.value,
-              handleId,
-              color: EDGE_COLORS[handleType],
-            });
-            return (
-              <Handle
-                key={handleId}
-                id={handleId}
-                data-handle-id={handleId}
-                type="target"
-                position={Position.Left}
-                style={{
-                  backgroundColor: EDGE_COLORS[handleType],
-                  width: '10px',
-                  height: '10px',
-                  top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
-                  border: '2px solid #fff',
-                }}
-                data-type={handleType}
-                data-handle-type="input"
-              />
-            );
-          })}
-        </>
-      )}
-
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="subtitle1" gutterBottom>
         {data.label}
       </Typography>
+
+      {formulaError && (
+        <Typography variant="caption" color="error" sx={{ display: 'block', mb: 1 }}>
+          {formulaError}
+        </Typography>
+      )}
+
+      {/* Input handles */}
+      {data.filterType !== 'input' &&
+        inputTypes.map((type, index) => (
+          <Handle
+            key={`input-${index}`}
+            type="target"
+            position={Position.Left}
+            id={`input-${index}`}
+            style={{
+              background: EDGE_COLORS[getHandleType(type)],
+              width: 10,
+              height: 10,
+              top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
+            }}
+          />
+        ))}
+
+      {/* Output handles */}
+      {data.filterType !== 'output' &&
+        outputTypes.map((type, index) => (
+          <Handle
+            key={`output-${index}`}
+            type="source"
+            position={Position.Right}
+            id={`output-${index}`}
+            style={{
+              background: EDGE_COLORS[getHandleType(type)],
+              width: 10,
+              height: 10,
+              top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
+            }}
+          />
+        ))}
+
       {data.filterType === 'filter' && (
         <Box sx={{ mt: 1 }}>
           {filter?.description && (
             <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
               {filter.description}
+            </Typography>
+          )}
+          {filter?.is_dynamic_input && filter.formula_typings_input && (
+            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
+              Dynamic inputs: {filter.formula_typings_input}
+            </Typography>
+          )}
+          {filter?.is_dynamic_output && filter.formula_typings_output && (
+            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
+              Dynamic outputs: {filter.formula_typings_output}
             </Typography>
           )}
           {predefinedFilters
@@ -233,48 +293,13 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
               sx={{
                 mt: 1,
                 display: 'block',
-                color: hasErrors ? 'error.main' : 'text.secondary',
+                color: hasErrors || formulaError ? 'error.main' : 'text.secondary',
               }}
             >
               {getFilterString()}
             </Typography>
           </Tooltip>
         </Box>
-      )}
-
-      {/* Output handles */}
-      {data.filterType !== 'output' && (
-        <>
-          {outputTypes.map((type, index) => {
-            const handleType = getHandleType(type);
-            const handleId = `output-${index}`;
-            console.log('Creating output handle:', {
-              index,
-              handleType,
-              type: type.type.value,
-              handleId,
-              color: EDGE_COLORS[handleType],
-            });
-            return (
-              <Handle
-                key={handleId}
-                id={handleId}
-                data-handle-id={handleId}
-                type="source"
-                position={Position.Right}
-                style={{
-                  backgroundColor: EDGE_COLORS[handleType],
-                  width: '10px',
-                  height: '10px',
-                  top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
-                  border: '2px solid #fff',
-                }}
-                data-type={handleType}
-                data-handle-type="output"
-              />
-            );
-          })}
-        </>
       )}
     </Paper>
   );
