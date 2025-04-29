@@ -1,5 +1,5 @@
 import { memo, useState, useEffect } from 'react';
-import { Handle, Position, NodeProps } from 'reactflow';
+import { Handle, Position, NodeProps, useUpdateNodeInternals } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
 import { FFmpegFilterOption, predefinedFilters, FFmpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
@@ -22,6 +22,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   const [dynamicInputTypes, setDynamicInputTypes] = useState<FFmpegIOType[]>([]);
   const [dynamicOutputTypes, setDynamicOutputTypes] = useState<FFmpegIOType[]>([]);
   const [formulaError, setFormulaError] = useState<string | null>(null);
+  const updateNodeInternals = useUpdateNodeInternals();
 
   // Update local state when data changes
   useEffect(() => {
@@ -30,6 +31,14 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
 
   // Get the filter definition
   const filter = predefinedFilters.find((f) => f.name === data.filterName);
+
+  // Convert FFmpegIOType to EdgeType
+  const getHandleType = (ioType: FFmpegIOType): EdgeType => {
+    const typeValue = ioType.type.value.toLowerCase();
+    if (typeValue === 'audio') return 'audio';
+    if (typeValue === 'video') return 'video';
+    return 'av';
+  };
 
   // Evaluate dynamic formulas when parameters change
   useEffect(() => {
@@ -57,6 +66,9 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
           const outputTypes = await evaluateFormula(filter.formula_typings_output, parsedParams);
           setDynamicOutputTypes(outputTypes);
         }
+
+        // Update node internals after handle changes
+        updateNodeInternals(id);
       } catch (error) {
         console.error('Error evaluating formula:', error);
         setFormulaError(error instanceof Error ? error.message : 'Error evaluating formula');
@@ -64,7 +76,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     };
 
     evaluateDynamicTypes();
-  }, [filter, parameters]);
+  }, [filter, parameters, id, updateNodeInternals]);
 
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
@@ -142,31 +154,6 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   };
 
   const hasErrors = Object.values(errors).some((error) => error !== '');
-
-  const getHandleType = (ioType: FFmpegIOType): EdgeType => {
-    const typeValue = ioType.type.value.toLowerCase();
-    console.log('Getting handle type:', {
-      typeValue,
-      ioType,
-      fullType: ioType.type,
-      filterName: data.filterName,
-      isAudio: typeValue === 'audio',
-      isVideo: typeValue === 'video',
-      isAV: typeValue === 'av',
-      rawValue: ioType.type.value,
-    });
-
-    if (typeValue === 'audio') {
-      console.log('Returning audio type');
-      return 'audio';
-    }
-    if (typeValue === 'video') {
-      console.log('Returning video type');
-      return 'video';
-    }
-    console.log('Returning av type (fallback)');
-    return 'av';
-  };
 
   // Get input and output types from filter definition or dynamic evaluation
   const inputTypes = filter?.is_dynamic_input
