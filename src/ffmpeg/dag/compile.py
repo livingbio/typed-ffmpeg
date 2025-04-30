@@ -9,6 +9,10 @@ handling global options, inputs, complex filtergraphs, and outputs.
 
 from __future__ import annotations
 
+from inspect import signature
+from typing import Any, Callable
+
+from ..base import input
 from .context import DAGContext
 from .nodes import FilterNode, GlobalNode, InputNode, OutputNode
 from .schema import Stream
@@ -84,3 +88,78 @@ def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
         commands += node.get_args(context)
 
     return commands
+
+
+def compile_kwargs(func: Callable, **kwargs: Any) -> dict[str, str]:
+    """
+    Compile a function's keyword arguments into a dictionary of strings.
+
+    This function takes a function and its keyword arguments and converts them
+    into a dictionary of strings that can be used to create a function call.
+
+    Args:
+        func: The function to compile
+        **kwargs: The keyword arguments to compile
+
+    Returns:
+        A dictionary of strings representing the function call
+    """
+    # get the signature of the function
+    sig = signature(func)
+    # get the arguments of the function
+    # get the keyword arguments of the function
+    args = sig.parameters
+    # return the arguments and keyword arguments
+    return {arg: repr(kwargs[arg]) for arg in args if arg in kwargs}
+
+
+def compile_to_python(stream: Stream, auto_fix: bool = True) -> str:
+    """
+    Compile a stream into a Python code string.
+
+    This function takes a Stream object representing an FFmpeg filter graph
+    and converts it into a Python code string that can be used to create
+    the same filter graph.
+
+    Args:
+        stream: The Stream object to compile into a Python code string
+        auto_fix: Whether to automatically fix issues in the stream
+
+    Returns:
+        A string representing the Python code that can be used to create
+        the same filter graph.
+
+    Example:
+        ```python
+        # Create a simple video scaling filter graph
+        input_stream = ffmpeg.input("input.mp4")
+        scaled = input_stream.scale(1280, 720)
+        output_stream = scaled.output(filename="output.mp4")"""
+    stream = validate(stream, auto_fix=auto_fix)
+    node = stream.node
+    context = DAGContext.build(node)
+
+    code = []
+    output_nodes = [node for node in context.all_nodes if isinstance(node, OutputNode)]
+    if len(output_nodes) > 1:
+        # it needs to merge the outputs than apply global args
+
+        code += [
+            f"merged = merge_outputs({', '.join(f'output_{context.get_node_label(node)}' for node in output_nodes)})"
+        ]
+
+        code += ["from ffmpeg.dag import merge_outputs"]
+
+    # compile the input nodes
+    input_nodes = [node for node in context.all_nodes if isinstance(node, InputNode)]
+    for node in input_nodes:
+        if kwargs := compile_kwargs(input, **node.kwargs):
+            code += [
+                f"input_{context.get_node_label(node)} = ffmpeg.input('{node.filename}', {', '.join(f'{k}={v}' for k, v in kwargs.items())})"
+            ]
+        else:
+            code += [
+                f"input_{context.get_node_label(node)} = ffmpeg.input('{node.filename}')"
+            ]
+
+    return "\n".join(code)

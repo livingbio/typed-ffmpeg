@@ -242,3 +242,53 @@
 # name: test_load_and_dump_on_duplicate_input[cmd_1]
   'ffmpeg -i input.mp4 -map 0 -map 0 out.mp4'
 # ---
+# name: test_load_and_dump_on_duplicate_input_with_stream_type[cmd_1]
+  '''
+  {
+    "__class__": "OutputStream",
+    "node": {
+      "__class__": "OutputNode",
+      "kwargs": {},
+      "inputs": [
+        {
+          "__class__": "AVStream",
+          "node": {
+            "__class__": "InputNode",
+            "kwargs": {},
+            "inputs": [],
+            "filename": "input.mp4"
+          },
+          "index": null
+        }
+      ],
+      "filename": "out.mp4"
+    },
+    "index": null
+  }
+  '''
+# ---
+# name: test_load_and_dump_on_duplicate_input_with_stream_type[cmd_2]
+  '''
+  {
+    "__class__": "OutputStream",
+    "node": {
+      "__class__": "OutputNode",
+      "kwargs": {},
+      "inputs": [
+        {
+          "__class__": "VideoStream",
+          "node": {
+            "__class__": "InputNode",
+            "kwargs": {},
+            "inputs": [],
+            "filename": "input.mp4"
+          },
+          "index": null
+        }
+      ],
+      "filename": "out.mp4"
+    },
+    "index": null
+  }
+  '''
+# ---

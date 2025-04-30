@@ -67,6 +67,18 @@ def test_load_and_dump_on_duplicate_input(snapshot: SnapshotAssertion) -> None:
     )
 
 
+def test_load_and_dump_on_duplicate_input_with_stream_type(
+    snapshot: SnapshotAssertion,
+) -> None:
+    in_file = input("input.mp4")
+
+    out_file_1 = output(in_file, filename="out.mp4")
+    out_file_2 = output(in_file.video, filename="out.mp4")
+
+    assert snapshot(name="cmd_1") == dumps(out_file_1)
+    assert snapshot(name="cmd_2") == dumps(out_file_2)
+
+
 def test_load_and_dump_on_complex_filter(snapshot: SnapshotAssertion) -> None:
     in_file = input("input.mp4")
     overlay_file = input("overlay.png")

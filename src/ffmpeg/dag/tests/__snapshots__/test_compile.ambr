@@ -1,0 +1,89 @@
+# serializer version: 1
+# name: test_compile[stream0][compile]
+  list([
+    '-i',
+    'input.mp4',
+    '-map',
+    '0',
+    'output.mp4',
+  ])
+# ---
+# name: test_compile[stream0][compile_to_python]
+  "input_0 = ffmpeg.input('input.mp4')"
+# ---
+# name: test_compile[stream1][compile]
+  list([
+    '-i',
+    'input.mp4',
+    '-map',
+    '0:v',
+    'output.mp4',
+  ])
+# ---
+# name: test_compile[stream1][compile_to_python]
+  "input_0 = ffmpeg.input('input.mp4')"
+# ---
+# name: test_compile[stream2][compile]
+  list([
+    '-i',
+    'input.mp4',
+    '-map',
+    '0:a',
+    'output.mp4',
+  ])
+# ---
+# name: test_compile[stream2][compile_to_python]
+  "input_0 = ffmpeg.input('input.mp4')"
+# ---
+# name: test_compile[stream3][compile]
+  list([
+    '-f',
+    'mp4',
+    '-ss',
+    '1',
+    '-i',
+    'input.mp4',
+    '-map',
+    '0',
+    'output.mp4',
+  ])
+# ---
+# name: test_compile[stream3][compile_to_python]
+  "input_0 = ffmpeg.input('input.mp4', f='mp4', ss=1)"
+# ---
+# name: test_compile[stream4][compile]
+  list([
+    '-y',
+    '-i',
+    'input.mp4',
+    '-map',
+    '0',
+    'output.mp4',
+  ])
+# ---
+# name: test_compile[stream4][compile_to_python]
+  "input_0 = ffmpeg.input('input.mp4')"
+# ---
+# name: test_compile[stream5][compile]
+  list([
+    '-y',
+    '-i',
+    'input.mp4',
+    '-i',
+    'input2.mp4',
+    '-map',
+    '0',
+    'output.mp4',
+    '-map',
+    '1',
+    'output2.mp4',
+  ])
+# ---
+# name: test_compile[stream5][compile_to_python]
+  '''
+  merged = merge_outputs(output_{0}, output_{1})
+  from ffmpeg.dag import merge_outputs
+  input_0 = ffmpeg.input('input.mp4')
+  input_1 = ffmpeg.input('input2.mp4')
+  '''
+# ---

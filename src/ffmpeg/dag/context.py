@@ -15,7 +15,7 @@ from functools import cached_property
 from typing import Any, TypeVar
 
 from ..utils.typing import override
-from .nodes import FilterNode, InputNode
+from .nodes import FilterNode, InputNode, OutputNode
 from .schema import Node, Stream
 
 T = TypeVar("T")
@@ -222,6 +222,7 @@ class DAGContext:
         """
 
         input_node_index = 0
+        output_node_index = 0
         filter_node_index = 0
         node_labels: dict[Node, str] = {}
 
@@ -232,8 +233,9 @@ class DAGContext:
             elif isinstance(node, FilterNode):
                 node_labels[node] = f"s{filter_node_index}"
                 filter_node_index += 1
-            else:
-                node_labels[node] = "out"
+            elif isinstance(node, OutputNode):
+                node_labels[node] = str({output_node_index})
+                output_node_index += 1
 
         return node_labels
 
@@ -274,7 +276,7 @@ class DAGContext:
             AssertionError: If the node is not an InputNode or FilterNode
         """
 
-        assert isinstance(node, (InputNode, FilterNode)), (
+        assert isinstance(node, (InputNode, FilterNode, OutputNode)), (
             "Only input and filter nodes have labels"
         )
         return self.node_labels[node]
