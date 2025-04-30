@@ -239,3 +239,6 @@
   }
   '''
 # ---
+# name: test_load_and_dump_on_duplicate_input[cmd_1]
+  'ffmpeg -i input.mp4 -map 0 -map 0 out.mp4'
+# ---

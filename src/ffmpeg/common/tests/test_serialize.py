@@ -3,7 +3,7 @@ from enum import Enum
 
 from syrupy.assertion import SnapshotAssertion
 
-from ...base import input
+from ...base import input, output
 from ...filters import concat
 from ..serialize import Serializable, dumps, load_class, loads, serializable
 
@@ -52,6 +52,19 @@ def test_load_and_dump(snapshot: SnapshotAssertion) -> None:
     assert isinstance(deserialized, Person)
     assert snapshot(name="deserialized") == deserialized
     assert person == deserialized
+
+
+def test_load_and_dump_on_duplicate_input(snapshot: SnapshotAssertion) -> None:
+    in_file = input("input.mp4")
+    in_file2 = input("input.mp4")
+
+    out_file_1 = output(in_file, in_file2, filename="out.mp4")
+    out_file_2 = output(in_file, in_file, filename="out.mp4")
+
+    assert snapshot(name="cmd_1") == out_file_1.compile_line()
+    assert out_file_1 == out_file_2, (
+        "typed-ffmpeg will automatically deduplicate inputs and Nodes"
+    )
 
 
 def test_load_and_dump_on_complex_filter(snapshot: SnapshotAssertion) -> None:
