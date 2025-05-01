@@ -113,6 +113,25 @@ def compile_kwargs(func: Callable, **kwargs: Any) -> dict[str, str]:
     return {arg: repr(kwargs[arg]) for arg in args if arg in kwargs}
 
 
+def is_simple_graph(stream: Stream, context: DAGContext | None = None) -> bool:
+    """
+    Check if a stream is a simple graph. Simple Graph is a graph that every node has only one input and one output.
+    """
+    if context is None:
+        context = DAGContext.build(stream.node)
+
+    current_node = stream.node
+    while current_node.inputs:
+        if len(current_node.inputs) != 1:
+            return False
+
+        if len(context.get_outgoing_streams(current_node)) > 1:
+            return False
+        current_node = current_node.inputs[0].node
+
+    return True
+
+
 def compile_to_python(stream: Stream, auto_fix: bool = True) -> str:
     """
     Compile a stream into a Python code string.

@@ -2,7 +2,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
-from ..compile import compile, compile_to_python
+from ..compile import compile, compile_to_python, is_simple_graph
 from ..schema import Stream
 
 
@@ -23,3 +23,4 @@ from ..schema import Stream
 def test_compile(stream: Stream, snapshot: SnapshotAssertion) -> None:
     assert snapshot(name="compile") == compile(stream)
     assert snapshot(name="compile_to_python") == compile_to_python(stream)
+    assert snapshot(name="is_simple_graph") == is_simple_graph(stream)

@@ -11,6 +11,9 @@
 # name: test_compile[stream0][compile_to_python]
   "input_0 = ffmpeg.input('input.mp4')"
 # ---
+# name: test_compile[stream0][is_simple_graph]
+  True
+# ---
 # name: test_compile[stream1][compile]
   list([
     '-i',
@@ -23,6 +26,9 @@
 # name: test_compile[stream1][compile_to_python]
   "input_0 = ffmpeg.input('input.mp4')"
 # ---
+# name: test_compile[stream1][is_simple_graph]
+  True
+# ---
 # name: test_compile[stream2][compile]
   list([
     '-i',
@@ -34,6 +40,9 @@
 # ---
 # name: test_compile[stream2][compile_to_python]
   "input_0 = ffmpeg.input('input.mp4')"
+# ---
+# name: test_compile[stream2][is_simple_graph]
+  True
 # ---
 # name: test_compile[stream3][compile]
   list([
@@ -51,6 +60,9 @@
 # name: test_compile[stream3][compile_to_python]
   "input_0 = ffmpeg.input('input.mp4', f='mp4', ss=1)"
 # ---
+# name: test_compile[stream3][is_simple_graph]
+  True
+# ---
 # name: test_compile[stream4][compile]
   list([
     '-y',
@@ -63,6 +75,9 @@
 # ---
 # name: test_compile[stream4][compile_to_python]
   "input_0 = ffmpeg.input('input.mp4')"
+# ---
+# name: test_compile[stream4][is_simple_graph]
+  True
 # ---
 # name: test_compile[stream5][compile]
   list([
@@ -86,4 +101,7 @@
   input_0 = ffmpeg.input('input.mp4')
   input_1 = ffmpeg.input('input2.mp4')
   '''
+# ---
+# name: test_compile[stream5][is_simple_graph]
+  False
 # ---
