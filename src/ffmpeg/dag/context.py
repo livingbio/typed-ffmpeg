@@ -21,7 +21,7 @@ from .schema import Node, Stream
 T = TypeVar("T")
 
 
-def _remove_duplicates(seq: list[T]) -> list[T]:
+def _remove_duplicates(seq: tuple[T, ...]) -> tuple[T, ...]:
     """
     Remove duplicates from a list while preserving the original order.
 
@@ -36,17 +36,17 @@ def _remove_duplicates(seq: list[T]) -> list[T]:
         A new list with duplicates removed, preserving the original order
     """
     seen = set()
-    output = []
+    output: tuple[T, ...] = ()
 
     for x in seq:
         if x not in seen:
-            output.append(x)
+            output += (x,)
             seen.add(x)
 
     return output
 
 
-def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
+def _collect(node: Node) -> tuple[tuple[Node, ...], tuple[Stream, ...]]:
     """
     Recursively collect all nodes and streams in the upstream path of a given node.
 
@@ -62,7 +62,8 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
         - A list of all nodes in the upstream path (including the starting node)
         - A list of all streams connecting these nodes
     """
-    nodes, streams = [node], [*node.inputs]
+    nodes: tuple[Node, ...] = (node,)
+    streams: tuple[Stream, ...] = node.inputs
 
     for stream in node.inputs:
         _nodes, _streams = _collect(stream.node)
@@ -127,8 +128,8 @@ class DAGContext:
 
         return cls(
             node=node,
-            nodes=tuple(_remove_duplicates(nodes)),
-            streams=tuple(_remove_duplicates(streams)),
+            nodes=_remove_duplicates(nodes),
+            streams=_remove_duplicates(streams),
         )
 
     @cached_property
