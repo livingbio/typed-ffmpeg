@@ -2,15 +2,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from functools import cached_property
-from typing import TYPE_CHECKING, Literal
+from typing import Literal
 
 from ..common.serialize import Serializable
 from ..utils.forzendict import FrozenDict
 from ..utils.lazy_eval.schema import LazyValue
 from .utils import is_dag
-
-if TYPE_CHECKING:
-    pass
 
 
 @dataclass(frozen=True, kw_only=True)

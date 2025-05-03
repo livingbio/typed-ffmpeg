@@ -345,9 +345,6 @@ def get_node_label(context: DAGContext, node: Node) -> str:
         AssertionError: If the node is not an InputNode or FilterNode
     """
 
-    assert isinstance(node, (InputNode, FilterNode)), (
-        "Only input and filter nodes have labels"
-    )
     node_id = context.node_ids[node]
     match node:
         case InputNode():
