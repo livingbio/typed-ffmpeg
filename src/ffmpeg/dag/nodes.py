@@ -18,7 +18,6 @@ if TYPE_CHECKING:
     from ..streams.audio import AudioStream
     from ..streams.av import AVStream
     from ..streams.video import VideoStream
-    from .context import DAGContext
 
 
 logger = logging.getLogger(__name__)
@@ -336,60 +335,6 @@ class FilterableStream(Stream, OutputArgs):
             input_typings=input_typings,
             output_typings=output_typings,
         )
-
-    def label(self, context: DAGContext | None = None) -> str:
-        """
-        Generate the FFmpeg label for this stream in filter graphs.
-
-        This method creates the label string used to identify this stream in
-        FFmpeg filter graphs. The format of the label depends on the stream's
-        source (input file or filter) and type (video or audio).
-
-        For input streams, labels follow FFmpeg's stream specifier syntax:
-        - Video streams: "0:v" (first input, video stream)
-        - Audio streams: "0:a" (first input, audio stream)
-        - AV streams: "0" (first input, all streams)
-
-        For filter outputs, labels use the filter's label:
-        - Single output filters: "filterlabel"
-        - Multi-output filters: "filterlabel#index"
-
-        Args:
-            context: Optional DAG context for resolving node labels.
-                    If not provided, a new context will be built.
-
-        Returns:
-            A string label for this stream in FFmpeg filter syntax
-
-        Raises:
-            FFMpegValueError: If the stream has an unknown type or node type
-        """
-        from ..streams.audio import AudioStream
-        from ..streams.av import AVStream
-        from ..streams.video import VideoStream
-        from .context import DAGContext
-
-        if not context:
-            context = DAGContext.build(self.node)
-
-        if isinstance(self.node, InputNode):
-            if isinstance(self, AVStream):
-                return f"{context.get_node_label(self.node)}"
-            elif isinstance(self, VideoStream):
-                return f"{context.get_node_label(self.node)}:v"
-            elif isinstance(self, AudioStream):
-                return f"{context.get_node_label(self.node)}:a"
-            raise FFMpegValueError(
-                f"Unknown stream type: {self.__class__.__name__}"
-            )  # pragma: no cover
-
-        if isinstance(self.node, FilterNode):
-            if len(self.node.output_typings) > 1:
-                return f"{context.get_node_label(self.node)}#{self.index}"
-            return f"{context.get_node_label(self.node)}"
-        raise FFMpegValueError(
-            f"Unknown node type: {self.node.__class__.__name__}"
-        )  # pragma: no cover
 
     def __post_init__(self) -> None:
         if isinstance(self.node, InputNode):

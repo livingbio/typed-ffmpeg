@@ -260,9 +260,9 @@ def get_args_output_node(
     if context:
         for input in node.inputs:
             if isinstance(input.node, InputNode):
-                commands += ["-map", input.label(context)]
+                commands += ["-map", label(input, context)]
             else:
-                commands += ["-map", f"[{input.label(context)}]"]
+                commands += ["-map", f"[{label(input, context)}]"]
 
     for key, value in node.kwargs.items():
         if isinstance(value, bool):

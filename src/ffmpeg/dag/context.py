@@ -206,6 +206,17 @@ class DAGContext:
         return outgoing_streams
 
     @cached_property
+    def node_ids(self) -> dict[Node, int]:
+        node_index: dict[type[Node], int] = defaultdict(int)
+        node_ids: dict[Node, int] = {}
+
+        for node in sorted(self.nodes, key=lambda node: node.max_depth):
+            node_index[node.__class__] += 1
+            node_ids[node] = node_index[node.__class__]
+
+        return node_ids
+
+    @cached_property
     def node_labels(self) -> dict[Node, str]:
         """
         Get a mapping of nodes to their string labels used in FFmpeg filter graphs.
