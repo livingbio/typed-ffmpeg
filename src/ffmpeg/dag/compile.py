@@ -127,19 +127,19 @@ def label(stream: Stream, context: DAGContext | None = None) -> str:
 
     if isinstance(stream.node, InputNode):
         if isinstance(stream, AVStream):
-            return f"{context.get_node_label(stream.node)}"
+            return f"{get_node_label(context, stream.node)}"
         elif isinstance(stream, VideoStream):
-            return f"{context.get_node_label(stream.node)}:v"
+            return f"{get_node_label(context, stream.node)}:v"
         elif isinstance(stream, AudioStream):
-            return f"{context.get_node_label(stream.node)}:a"
+            return f"{get_node_label(context, stream.node)}:a"
         raise FFMpegValueError(
             f"Unknown stream type: {stream.__class__.__name__}"
         )  # pragma: no cover
 
     if isinstance(stream.node, FilterNode):
         if len(stream.node.output_typings) > 1:
-            return f"{context.get_node_label(stream.node)}#{stream.index}"
-        return f"{context.get_node_label(stream.node)}"
+            return f"{get_node_label(context, stream.node)}#{stream.index}"
+        return f"{get_node_label(context, stream.node)}"
     raise FFMpegValueError(
         f"Unknown node type: {stream.node.__class__.__name__}"
     )  # pragma: no cover
@@ -324,3 +324,35 @@ def get_args(node: Node, context: DAGContext | None = None) -> list[str]:
             return get_args_global_node(node, context)
         case _:
             raise FFMpegValueError(f"Unknown node type: {node.__class__.__name__}")
+
+
+def get_node_label(context: DAGContext, node: Node) -> str:
+    """
+    Get the string label for a specific node in the filter graph.
+
+    This method returns the label assigned to the node, which is used in FFmpeg
+    filter graph notation. The label format depends on the node type:
+    - Input nodes: sequential numbers (0, 1, 2...)
+    - Filter nodes: 's' prefix followed by a number (s0, s1, s2...)
+
+    Args:
+        node: The node to get the label for (must be an InputNode or FilterNode)
+
+    Returns:
+        The string label for the node
+
+    Raises:
+        AssertionError: If the node is not an InputNode or FilterNode
+    """
+
+    assert isinstance(node, (InputNode, FilterNode)), (
+        "Only input and filter nodes have labels"
+    )
+    node_id = context.node_ids[node]
+    match node:
+        case InputNode():
+            return str(node_id)
+        case FilterNode():
+            return f"s{node_id}"
+        case _:
+            return "out"

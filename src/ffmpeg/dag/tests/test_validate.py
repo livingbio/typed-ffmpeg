@@ -103,7 +103,6 @@ def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
     context = DAGContext.build(graph.node)
     assert snapshot(name="all_nodes") == context.all_nodes
     assert snapshot(name="all_streams") == context.all_streams
-    assert snapshot(name="node_labels") == context.node_labels
     assert snapshot(name="outgoing_streams") == context.outgoing_streams
     assert snapshot(name="outgoing_nodes") == context.outgoing_nodes
 
