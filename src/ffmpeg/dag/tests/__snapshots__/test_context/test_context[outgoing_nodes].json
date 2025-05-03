@@ -1,0 +1,30 @@
+{
+  "Stream(Node(concat#s2)#0)": [
+    [
+      "Node(tmp.mp4#out)",
+      0
+    ]
+  ],
+  "Stream(Node(input1.mp4#0)#None)": [
+    [
+      "Node(reverse#s0)",
+      0
+    ]
+  ],
+  "Stream(Node(reverse#s0)#0)": [
+    [
+      "Node(trim#s1)",
+      0
+    ]
+  ],
+  "Stream(Node(trim#s1)#0)": [
+    [
+      "Node(concat#s2)",
+      0
+    ],
+    [
+      "Node(concat#s2)",
+      1
+    ]
+  ]
+}

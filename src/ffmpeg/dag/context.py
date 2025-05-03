@@ -322,7 +322,7 @@ class DAGContext:
         """
 
         if isinstance(obj, (list, tuple)):
-            return [self.render(o) for o in obj]
+            return tuple(self.render(o) for o in obj)
         elif isinstance(obj, dict):
             return {self.render(k): self.render(v) for k, v in obj.items()}
 

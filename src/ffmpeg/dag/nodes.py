@@ -7,10 +7,8 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from ..exceptions import FFMpegTypeError, FFMpegValueError
-from ..schema import Default, StreamType
-from ..utils.escaping import escape
+from ..schema import StreamType
 from ..utils.forzendict import FrozenDict
-from ..utils.lazy_eval.schema import LazyValue
 from ..utils.typing import override
 from .global_runnable.runnable import GlobalRunable
 from .io.output_args import OutputArgs
@@ -166,64 +164,6 @@ class FilterNode(Node):
                     raise FFMpegTypeError(
                         f"Expected input {i} to have audio component, got {stream.__class__.__name__}"
                     )
-
-    @override
-    def get_args(self, context: DAGContext | None = None) -> list[str]:
-        """
-        Generate the FFmpeg filter string for this filter node.
-
-        This method creates the filter string that will be used in the
-        filter_complex argument of the FFmpeg command. The format follows
-        FFmpeg's syntax where input labels are followed by the filter name
-        and parameters, and then output labels.
-
-        Args:
-            context: Optional DAG context for resolving stream labels.
-                    If not provided, a new context will be built.
-
-        Returns:
-            A list of strings that, when joined, form the filter string
-            for this node in the filter_complex argument
-
-        Example:
-            For a scale filter with width=1280 and height=720, this might return:
-            ['[0:v]', 'scale=', 'width=1280:height=720', '[s0]']
-        """
-        from .context import DAGContext
-
-        if not context:
-            context = DAGContext.build(self)
-
-        incoming_labels = "".join(f"[{k.label(context)}]" for k in self.inputs)
-        outputs = context.get_outgoing_streams(self)
-
-        outgoing_labels = ""
-        for output in sorted(outputs, key=lambda stream: stream.index or 0):
-            # NOTE: all outgoing streams must be filterable
-            assert isinstance(output, FilterableStream)
-            outgoing_labels += f"[{output.label(context)}]"
-
-        commands = []
-        for key, value in self.kwargs.items():
-            assert not isinstance(value, LazyValue), (
-                f"LazyValue should have been evaluated: {key}={value}"
-            )
-
-            # Note: the -nooption syntax cannot be used for boolean AVOptions, use -option 0/-option 1.
-            if isinstance(value, bool):
-                value = str(int(value))
-
-            if not isinstance(value, Default):
-                commands += [f"{key}={escape(value)}"]
-
-        if commands:
-            return (
-                [incoming_labels]
-                + [f"{self.name}="]
-                + [escape(":".join(commands), "\\'[],;")]
-                + [outgoing_labels]
-            )
-        return [incoming_labels] + [f"{self.name}"] + [outgoing_labels]
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -560,36 +500,6 @@ class InputNode(Node):
 
         return AVStream(node=self)
 
-    @override
-    def get_args(self, context: DAGContext | None = None) -> list[str]:
-        """
-        Generate the FFmpeg command-line arguments for this input file.
-
-        This method creates the command-line arguments needed to specify
-        this input file to FFmpeg, including any input-specific options.
-
-        Args:
-            context: Optional DAG context (not used for input nodes)
-
-        Returns:
-            A list of strings representing FFmpeg command-line arguments
-
-        Example:
-            For an input file "input.mp4" with options like seeking to 10 seconds:
-            ['-ss', '10', '-i', 'input.mp4']
-        """
-        commands = []
-        for key, value in self.kwargs.items():
-            if isinstance(value, bool):
-                if value is True:
-                    commands += [f"-{key}"]
-                elif value is False:
-                    commands += [f"-no{key}"]
-            else:
-                commands += [f"-{key}", str(value)]
-        commands += ["-i", self.filename]
-        return commands
-
 
 @dataclass(frozen=True, kw_only=True)
 class OutputNode(Node):
@@ -641,47 +551,6 @@ class OutputNode(Node):
             ```
         """
         return OutputStream(node=self)
-
-    @override
-    def get_args(self, context: DAGContext | None = None) -> list[str]:
-        """
-        Generate the FFmpeg command-line arguments for this output file.
-
-        This method creates the command-line arguments needed to specify
-        this output file to FFmpeg, including stream mapping and output-specific
-        options like codecs and formats.
-
-        Args:
-            context: Optional DAG context for resolving stream labels.
-                    If not provided, a new context will be built.
-
-        Returns:
-            A list of strings representing FFmpeg command-line arguments
-
-        Example:
-            For an output file "output.mp4" with H.264 video codec:
-            ['-map', '[v0]', '-c:v', 'libx264', 'output.mp4']
-        """
-        # !handle mapping
-        commands = []
-
-        if context:
-            for input in self.inputs:
-                if isinstance(input.node, InputNode):
-                    commands += ["-map", input.label(context)]
-                else:
-                    commands += ["-map", f"[{input.label(context)}]"]
-
-        for key, value in self.kwargs.items():
-            if isinstance(value, bool):
-                if value is True:
-                    commands += [f"-{key}"]
-                elif value is False:
-                    commands += [f"-no{key}"]
-            else:
-                commands += [f"-{key}", str(value)]
-        commands += [self.filename]
-        return commands
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -736,15 +605,15 @@ class GlobalNode(Node):
     inputs: tuple[OutputStream, ...]
     """The output streams this node applies to"""
 
-    @override
-    def repr(self) -> str:
-        """
-        Get a string representation of this global node.
+    # @override
+    # def repr(self) -> str:
+    #     """
+    #     Get a string representation of this global node.
 
-        Returns:
-            A space-separated string of the global options
-        """
-        return " ".join(self.get_args())
+    #     Returns:
+    #         A space-separated string of the global options
+    #     """
+    #     return " ".join(self.get_args())
 
     def stream(self) -> GlobalStream:
         """
@@ -767,36 +636,6 @@ class GlobalNode(Node):
             ```
         """
         return GlobalStream(node=self)
-
-    @override
-    def get_args(self, context: DAGContext | None = None) -> list[str]:
-        """
-        Generate the FFmpeg command-line arguments for these global options.
-
-        This method creates the command-line arguments needed to specify
-        global options to FFmpeg, such as -y for overwrite or -loglevel for
-        controlling log output.
-
-        Args:
-            context: Optional DAG context (not used for global options)
-
-        Returns:
-            A list of strings representing FFmpeg command-line arguments
-
-        Example:
-            For global options like overwrite and quiet logging:
-            ['-y', '-loglevel', 'quiet']
-        """
-        commands = []
-        for key, value in self.kwargs.items():
-            if isinstance(value, bool):
-                if value is True:
-                    commands += [f"-{key}"]
-                elif value is False:
-                    commands += [f"-no{key}"]
-            else:
-                commands += [f"-{key}", str(value)]
-        return commands
 
 
 @dataclass(frozen=True, kw_only=True)

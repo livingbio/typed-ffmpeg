@@ -29,6 +29,16 @@ def serializable(
 ) -> type[Serializable] | type[Enum]:
     """
     Register a class with the serialization system.
+
+    This function is used to register classes with the serialization system.
+    It's used by the `serializable` decorator to register classes with the
+    serialization system.
+
+    Args:
+        cls: The class to register
+
+    Returns:
+        The class itself
     """
     assert cls.__name__ not in CLASS_REGISTRY, (
         f"Class {cls.__name__} already registered"

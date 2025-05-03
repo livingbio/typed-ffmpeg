@@ -1,4 +1,5 @@
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...base import input
 from ...filters import concat
@@ -12,12 +13,22 @@ def test_context(snapshot: SnapshotAssertion) -> None:
 
     context = DAGContext.build(stream.node)
 
-    assert snapshot(name="all_nodes") == context.render(context.all_nodes)
-    assert snapshot(name="all_streams") == context.render(context.all_streams)
+    assert snapshot(
+        name="all_nodes", extension_class=JSONSnapshotExtension
+    ) == context.render(context.all_nodes)
+    assert snapshot(
+        name="all_streams", extension_class=JSONSnapshotExtension
+    ) == context.render(context.all_streams)
 
-    assert snapshot(name="outgoing_nodes") == context.render(context.outgoing_nodes)
-    assert snapshot(name="outgoing_streams") == context.render(context.outgoing_streams)
-    assert snapshot(name="node_labels") == context.render(context.node_labels)
+    assert snapshot(
+        name="outgoing_nodes", extension_class=JSONSnapshotExtension
+    ) == context.render(context.outgoing_nodes)
+    assert snapshot(
+        name="outgoing_streams", extension_class=JSONSnapshotExtension
+    ) == context.render(context.outgoing_streams)
+    assert snapshot(
+        name="node_labels", extension_class=JSONSnapshotExtension
+    ) == context.render(context.node_labels)
 
     assert context.get_node_label(input1.node) == "0"
     assert context.get_outgoing_streams(input1.node) == [input1]

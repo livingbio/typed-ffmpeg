@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
 from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import TYPE_CHECKING, Literal
@@ -11,7 +10,7 @@ from ..utils.lazy_eval.schema import LazyValue
 from .utils import is_dag
 
 if TYPE_CHECKING:
-    from .context import DAGContext
+    pass
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -77,7 +76,7 @@ class Stream(HashableBaseModel):
 
 
 @dataclass(frozen=True, kw_only=True)
-class Node(HashableBaseModel, ABC):
+class Node(HashableBaseModel):
     """
     A 'Node' represents a single operation in the Directed Acyclic Graph (DAG).
 
@@ -116,18 +115,6 @@ class Node(HashableBaseModel, ABC):
 
         if not is_dag(output):
             raise ValueError(f"Graph is not a DAG: {output}")  # pragma: no cover
-
-    @abstractmethod
-    def get_args(self, context: DAGContext | None = None) -> list[str]:
-        """
-        Get the arguments of the node.
-
-        Args:
-            context: The DAG context.
-
-        Returns:
-            The arguments of the node.
-        """
 
     def repr(self) -> str:
         """
