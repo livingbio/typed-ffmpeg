@@ -10,7 +10,7 @@ from ...filters import concat
 from ...schema import StreamType
 from ...utils.forzendict import FrozenDict
 from ...utils.snapshot import DAGSnapshotExtenstion
-from ..compile import get_args, label
+from ..compile import get_args, get_stream_label
 from ..context import DAGContext
 from ..nodes import (
     FilterNode,
@@ -274,7 +274,7 @@ def test_filterable_stream(snapshot: SnapshotAssertion) -> None:
 
     out = concat(input1, input2).video(0).output(filename="output.mp4")
 
-    assert snapshot == label(input2, DAGContext.build(out.node))
-    assert snapshot == label(input2)
+    assert snapshot == get_stream_label(input2, DAGContext.build(out.node))
+    assert snapshot == get_stream_label(input2)
 
-    assert snapshot == label(input1.split().video(0))
+    assert snapshot == get_stream_label(input1.split().video(0))

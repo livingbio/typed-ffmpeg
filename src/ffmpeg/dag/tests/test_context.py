@@ -34,7 +34,7 @@ def render(context: DAGContext, obj: Any) -> Any:
         return {render(context, k): render(context, v) for k, v in obj.items()}
 
     if isinstance(obj, Node):
-        return f"Node({obj.repr()}#{get_node_label(context, obj)})"
+        return f"Node({obj.repr()}#{get_node_label(obj, context)})"
 
     if isinstance(obj, Stream):
         return f"Stream({render(context, obj.node)}#{obj.index})"

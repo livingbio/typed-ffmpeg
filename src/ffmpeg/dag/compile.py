@@ -90,7 +90,7 @@ def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
     return commands
 
 
-def label(stream: Stream, context: DAGContext | None = None) -> str:
+def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
     """
     Generate the FFmpeg label for this stream in filter graphs.
 
@@ -120,26 +120,25 @@ def label(stream: Stream, context: DAGContext | None = None) -> str:
     from ..streams.audio import AudioStream
     from ..streams.av import AVStream
     from ..streams.video import VideoStream
-    from .context import DAGContext
 
     if not context:
         context = DAGContext.build(stream.node)
 
     if isinstance(stream.node, InputNode):
         if isinstance(stream, AVStream):
-            return f"{get_node_label(context, stream.node)}"
+            return f"{get_node_label(stream.node, context)}"
         elif isinstance(stream, VideoStream):
-            return f"{get_node_label(context, stream.node)}:v"
+            return f"{get_node_label(stream.node, context)}:v"
         elif isinstance(stream, AudioStream):
-            return f"{get_node_label(context, stream.node)}:a"
+            return f"{get_node_label(stream.node, context)}:a"
         raise FFMpegValueError(
             f"Unknown stream type: {stream.__class__.__name__}"
         )  # pragma: no cover
 
     if isinstance(stream.node, FilterNode):
         if len(stream.node.output_typings) > 1:
-            return f"{get_node_label(context, stream.node)}#{stream.index}"
-        return f"{get_node_label(context, stream.node)}"
+            return f"{get_node_label(stream.node, context)}#{stream.index}"
+        return f"{get_node_label(stream.node, context)}"
     raise FFMpegValueError(
         f"Unknown node type: {stream.node.__class__.__name__}"
     )  # pragma: no cover
@@ -169,14 +168,14 @@ def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
     if not context:
         context = DAGContext.build(node)
 
-    incoming_labels = "".join(f"[{label(k, context)}]" for k in node.inputs)
+    incoming_labels = "".join(f"[{get_stream_label(k, context)}]" for k in node.inputs)
     outputs = context.get_outgoing_streams(node)
 
     outgoing_labels = ""
     for output in sorted(outputs, key=lambda stream: stream.index or 0):
         # NOTE: all outgoing streams must be filterable
         assert isinstance(output, FilterableStream)
-        outgoing_labels += f"[{label(output, context)}]"
+        outgoing_labels += f"[{get_stream_label(output, context)}]"
 
     commands = []
     for key, value in node.kwargs.items():
@@ -260,9 +259,9 @@ def get_args_output_node(
     if context:
         for input in node.inputs:
             if isinstance(input.node, InputNode):
-                commands += ["-map", label(input, context)]
+                commands += ["-map", get_stream_label(input, context)]
             else:
-                commands += ["-map", f"[{label(input, context)}]"]
+                commands += ["-map", f"[{get_stream_label(input, context)}]"]
 
     for key, value in node.kwargs.items():
         if isinstance(value, bool):
@@ -326,7 +325,7 @@ def get_args(node: Node, context: DAGContext | None = None) -> list[str]:
             raise FFMpegValueError(f"Unknown node type: {node.__class__.__name__}")
 
 
-def get_node_label(context: DAGContext, node: Node) -> str:
+def get_node_label(node: Node, context: DAGContext) -> str:
     """
     Get the string label for a specific node in the filter graph.
 
