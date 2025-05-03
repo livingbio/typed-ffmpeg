@@ -10,6 +10,7 @@ from ...filters import concat
 from ...schema import StreamType
 from ...utils.forzendict import FrozenDict
 from ...utils.snapshot import DAGSnapshotExtenstion
+from ..compile import get_args
 from ..context import DAGContext
 from ..nodes import (
     FilterNode,
@@ -79,7 +80,7 @@ def test_node_prop(
 ) -> None:
     assert snapshot(name="f.repr") == node.repr()
     assert snapshot(name="__repr__") == repr(node)
-    assert snapshot(name="get_args") == node.get_args()
+    assert snapshot(name="get_args") == get_args(node)
     assert type(node) is expected_type
     assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == node
 
@@ -135,9 +136,9 @@ def test_global_node_with_args_overwrite(
         assert "-y" not in stream.compile()
         assert "-n" not in stream.compile()
 
-    assert snapshot(
-        name="get-args", extension_class=JSONSnapshotExtension
-    ) == stream.node.get_args(context)
+    assert snapshot(name="get-args", extension_class=JSONSnapshotExtension) == get_args(
+        stream.node, context
+    )
     assert (
         snapshot(name="compile", extension_class=JSONSnapshotExtension)
         == stream.compile()
@@ -168,7 +169,7 @@ def test_filter_node_with_outputs(snapshot: SnapshotAssertion) -> None:
     f = concat(input1.video, input2.video)
     stream = f.video(0).output(filename="output.mp4")
     context = DAGContext.build(stream.node)
-    assert snapshot(extension_class=JSONSnapshotExtension) == f.get_args(context)
+    assert snapshot(extension_class=JSONSnapshotExtension) == get_args(f, context)
 
 
 def test_output_run(datadir: Path) -> None:
@@ -250,25 +251,20 @@ def test_filter_node_with_inputs(snapshot: SnapshotAssertion) -> None:
 def test_custom_filter(snapshot: SnapshotAssertion) -> None:
     in_file = input("test.mp4")
 
-    assert (
-        snapshot == in_file.audio.afilter(name="volume", v=0.5, a=0.3).node.get_args()
-    )
-    assert (
-        snapshot
-        == in_file.video.vfilter(name="rotate", angle=90, xx=30).node.get_args()
+    assert snapshot == get_args(in_file.audio.afilter(name="volume", v=0.5, a=0.3).node)
+    assert snapshot == get_args(
+        in_file.video.vfilter(name="rotate", angle=90, xx=30).node
     )
 
 
 def test_input_selector(snapshot: SnapshotAssertion) -> None:
     node = InputNode(filename="test.mp4", kwargs=FrozenDict({"f": "mp4"}))
 
-    assert (
-        snapshot(extension_class=JSONSnapshotExtension)
-        == node.audio.areverse().node.get_args()
+    assert snapshot(extension_class=JSONSnapshotExtension) == get_args(
+        node.audio.areverse().node
     )
-    assert (
-        snapshot(extension_class=JSONSnapshotExtension)
-        == node.video.reverse().node.get_args()
+    assert snapshot(extension_class=JSONSnapshotExtension) == get_args(
+        node.video.reverse().node
     )
 
 

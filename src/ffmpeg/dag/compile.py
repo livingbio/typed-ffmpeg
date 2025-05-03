@@ -306,16 +306,21 @@ def get_args_global_node(node: GlobalNode, context: DAGContext) -> list[str]:
     return commands
 
 
-def get_args(node: Node, context: DAGContext) -> list[str]:
+def get_args(node: Node, context: DAGContext | None = None) -> list[str]:
     """
     Get the arguments for a node.
     """
-    if isinstance(node, FilterNode):
-        return get_args_filter_node(node, context)
-    elif isinstance(node, InputNode):
-        return get_args_input_node(node, context)
-    elif isinstance(node, OutputNode):
-        return get_args_output_node(node, context)
-    elif isinstance(node, GlobalNode):
-        return get_args_global_node(node, context)
-    raise FFMpegValueError(f"Unknown node type: {node.__class__.__name__}")
+
+    context = context or DAGContext.build(node)
+
+    match node:
+        case FilterNode():
+            return get_args_filter_node(node, context)
+        case InputNode():
+            return get_args_input_node(node, context)
+        case OutputNode():
+            return get_args_output_node(node, context)
+        case GlobalNode():
+            return get_args_global_node(node, context)
+        case _:
+            raise FFMpegValueError(f"Unknown node type: {node.__class__.__name__}")

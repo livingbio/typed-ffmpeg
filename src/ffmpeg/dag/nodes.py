@@ -605,16 +605,6 @@ class GlobalNode(Node):
     inputs: tuple[OutputStream, ...]
     """The output streams this node applies to"""
 
-    # @override
-    # def repr(self) -> str:
-    #     """
-    #     Get a string representation of this global node.
-
-    #     Returns:
-    #         A space-separated string of the global options
-    #     """
-    #     return " ".join(self.get_args())
-
     def stream(self) -> GlobalStream:
         """
         Get a global stream representing this global node.
