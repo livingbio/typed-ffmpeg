@@ -124,24 +124,27 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
     if not context:
         context = DAGContext.build(stream.node)
 
-    if isinstance(stream.node, InputNode):
-        if isinstance(stream, AVStream):
+    match stream.node:
+        case InputNode():
+            match stream:
+                case AVStream():
+                    return f"{get_node_label(stream.node, context)}"
+                case VideoStream():
+                    return f"{get_node_label(stream.node, context)}:v"
+                case AudioStream():
+                    return f"{get_node_label(stream.node, context)}:a"
+                case _:
+                    raise FFMpegValueError(
+                        f"Unknown stream type: {stream.__class__.__name__}"
+                    )  # pragma: no cover
+        case FilterNode():
+            if len(stream.node.output_typings) > 1:
+                return f"{get_node_label(stream.node, context)}#{stream.index}"
             return f"{get_node_label(stream.node, context)}"
-        elif isinstance(stream, VideoStream):
-            return f"{get_node_label(stream.node, context)}:v"
-        elif isinstance(stream, AudioStream):
-            return f"{get_node_label(stream.node, context)}:a"
-        raise FFMpegValueError(
-            f"Unknown stream type: {stream.__class__.__name__}"
-        )  # pragma: no cover
-
-    if isinstance(stream.node, FilterNode):
-        if len(stream.node.output_typings) > 1:
-            return f"{get_node_label(stream.node, context)}#{stream.index}"
-        return f"{get_node_label(stream.node, context)}"
-    raise FFMpegValueError(
-        f"Unknown node type: {stream.node.__class__.__name__}"
-    )  # pragma: no cover
+        case _:
+            raise FFMpegValueError(
+                f"Unknown node type: {stream.node.__class__.__name__}"
+            )  # pragma: no cover
 
 
 def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
@@ -165,8 +168,6 @@ def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
         For a scale filter with width=1280 and height=720, this might return:
         ['[0:v]', 'scale=', 'width=1280:height=720', '[s0]']
     """
-    if not context:
-        context = DAGContext.build(node)
 
     incoming_labels = "".join(f"[{get_stream_label(k, context)}]" for k in node.inputs)
     outputs = context.get_outgoing_streams(node)
@@ -200,9 +201,7 @@ def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
     return [incoming_labels] + [f"{node.name}"] + [outgoing_labels]
 
 
-def get_args_input_node(
-    node: InputNode, context: DAGContext | None = None
-) -> list[str]:
+def get_args_input_node(node: InputNode, context: DAGContext) -> list[str]:
     """
     Generate the FFmpeg command-line arguments for this input file.
 
@@ -232,9 +231,7 @@ def get_args_input_node(
     return commands
 
 
-def get_args_output_node(
-    node: OutputNode, context: DAGContext | None = None
-) -> list[str]:
+def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
     """
     Generate the FFmpeg command-line arguments for this output file.
 
