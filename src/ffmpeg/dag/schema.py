@@ -118,7 +118,7 @@ class Node(HashableBaseModel, ABC):
             raise ValueError(f"Graph is not a DAG: {output}")  # pragma: no cover
 
     @abstractmethod
-    def get_args(self, context: DAGContext = None) -> list[str]:
+    def get_args(self, context: DAGContext | None = None) -> list[str]:
         """
         Get the arguments of the node.
 

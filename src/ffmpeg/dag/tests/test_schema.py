@@ -14,7 +14,7 @@ from ..schema import Node, Stream
 class SimpleNode(Node):
     name: str
 
-    def get_args(self, context: DAGContext = None) -> list[str]:
+    def get_args(self, context: DAGContext | None = None) -> list[str]:
         return []
 
     def __repr__(self) -> str:

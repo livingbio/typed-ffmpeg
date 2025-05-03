@@ -93,7 +93,7 @@ def add_split(
     current_stream: Stream,
     down_node: Node = None,
     down_index: int = None,
-    context: DAGContext = None,
+    context: DAGContext | None = None,
     mapping: dict[tuple[Stream, Node | None, int | None], Stream] = None,
 ) -> tuple[Stream, dict[tuple[Stream, Node | None, int | None], Stream]]:
     """

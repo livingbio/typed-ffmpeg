@@ -168,7 +168,7 @@ class FilterNode(Node):
                     )
 
     @override
-    def get_args(self, context: DAGContext = None) -> list[str]:
+    def get_args(self, context: DAGContext | None = None) -> list[str]:
         """
         Generate the FFmpeg filter string for this filter node.
 
@@ -397,7 +397,7 @@ class FilterableStream(Stream, OutputArgs):
             output_typings=output_typings,
         )
 
-    def label(self, context: DAGContext = None) -> str:
+    def label(self, context: DAGContext | None = None) -> str:
         """
         Generate the FFmpeg label for this stream in filter graphs.
 
@@ -561,7 +561,7 @@ class InputNode(Node):
         return AVStream(node=self)
 
     @override
-    def get_args(self, context: DAGContext = None) -> list[str]:
+    def get_args(self, context: DAGContext | None = None) -> list[str]:
         """
         Generate the FFmpeg command-line arguments for this input file.
 
@@ -643,7 +643,7 @@ class OutputNode(Node):
         return OutputStream(node=self)
 
     @override
-    def get_args(self, context: DAGContext = None) -> list[str]:
+    def get_args(self, context: DAGContext | None = None) -> list[str]:
         """
         Generate the FFmpeg command-line arguments for this output file.
 
@@ -769,7 +769,7 @@ class GlobalNode(Node):
         return GlobalStream(node=self)
 
     @override
-    def get_args(self, context: DAGContext = None) -> list[str]:
+    def get_args(self, context: DAGContext | None = None) -> list[str]:
         """
         Generate the FFmpeg command-line arguments for these global options.
 
