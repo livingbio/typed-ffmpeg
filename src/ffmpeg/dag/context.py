@@ -15,7 +15,6 @@ from functools import cached_property
 from typing import TypeVar
 
 from ..utils.typing import override
-from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
 
 T = TypeVar("T")
@@ -207,6 +206,15 @@ class DAGContext:
 
     @cached_property
     def node_ids(self) -> dict[Node, int]:
+        """
+        Get a mapping of nodes to their unique integer IDs.
+
+        This property assigns a unique integer ID to each node in the graph,
+        based on the node type and its position in the processing chain.
+
+        Returns:
+            A dictionary mapping nodes to their unique integer IDs
+        """
         node_index: dict[type[Node], int] = defaultdict(int)
         node_ids: dict[Node, int] = {}
 
@@ -215,39 +223,6 @@ class DAGContext:
             node_index[node.__class__] += 1
 
         return node_ids
-
-    @cached_property
-    def node_labels(self) -> dict[Node, str]:
-        """
-        Get a mapping of nodes to their string labels used in FFmpeg filter graphs.
-
-        This property assigns a unique label to each node in the graph, following
-        the FFmpeg filter graph labeling conventions:
-        - Input nodes are labeled with sequential numbers (0, 1, 2...)
-        - Filter nodes are labeled with 's' followed by a number (s0, s1, s2...)
-        - Output nodes are labeled as 'out'
-
-        These labels are used when generating the filter_complex argument for FFmpeg.
-
-        Returns:
-            A dictionary mapping nodes to their string labels
-        """
-
-        input_node_index = 0
-        filter_node_index = 0
-        node_labels: dict[Node, str] = {}
-
-        for node in sorted(self.nodes, key=lambda node: node.max_depth):
-            if isinstance(node, InputNode):
-                node_labels[node] = str(input_node_index)
-                input_node_index += 1
-            elif isinstance(node, FilterNode):
-                node_labels[node] = f"s{filter_node_index}"
-                filter_node_index += 1
-            else:
-                node_labels[node] = "out"
-
-        return node_labels
 
     @override
     def get_outgoing_nodes(self, stream: Stream) -> list[tuple[Node, int]]:
