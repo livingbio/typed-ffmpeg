@@ -211,8 +211,8 @@ class DAGContext:
         node_ids: dict[Node, int] = {}
 
         for node in sorted(self.nodes, key=lambda node: node.max_depth):
-            node_index[node.__class__] += 1
             node_ids[node] = node_index[node.__class__]
+            node_index[node.__class__] += 1
 
         return node_ids
 

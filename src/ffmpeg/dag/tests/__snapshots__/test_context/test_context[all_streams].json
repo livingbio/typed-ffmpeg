@@ -1,6 +1,0 @@
-[
-  "Stream(Node(input1.mp4#0)#None)",
-  "Stream(Node(reverse#s0)#0)",
-  "Stream(Node(trim#s1)#0)",
-  "Stream(Node(concat#s2)#0)"
-]

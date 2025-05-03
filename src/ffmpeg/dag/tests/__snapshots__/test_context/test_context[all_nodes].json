@@ -1,7 +1,0 @@
-[
-  "Node(input1.mp4#0)",
-  "Node(reverse#s0)",
-  "Node(trim#s1)",
-  "Node(concat#s2)",
-  "Node(tmp.mp4#out)"
-]
