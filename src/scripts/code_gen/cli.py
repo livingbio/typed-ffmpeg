@@ -5,9 +5,8 @@ from pathlib import Path
 import typer
 
 from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
-from ffmpeg.common.serialize import dumps, loads
 
-from ..cache import save
+from ..cache import load, save
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
@@ -48,15 +47,12 @@ def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
     """
     Load filters from the output path
     """
-    filter_json = outpath / "filters.json"
 
     if not rebuild:
-        if filter_json.exists():
-            with filter_json.open() as ofile:
-                try:
-                    return loads(ofile.read())
-                except Exception as e:
-                    print(f"Failed to load filters from {filter_json}: {e}")
+        try:
+            return load(list[FFMpegFilter], "filters")
+        except Exception as e:
+            print(f"Failed to load filters from cache: {e}")
 
     ffmpeg_filters = []
     for f in sorted(all_filters(), key=lambda i: i.name):
@@ -74,8 +70,7 @@ def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
         except ValueError:
             print(f"Failed to generate filter info for {f.name}")
 
-    with filter_json.open("w") as ofile:
-        ofile.write(dumps(ffmpeg_filters))
+    save(ffmpeg_filters, "filters")
 
     return ffmpeg_filters
 
