@@ -4,9 +4,9 @@ from pathlib import Path
 
 import typer
 
+from ffmpeg.common.cache import load, save
 from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
 
-from ..cache import load, save
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
