@@ -12,7 +12,6 @@ from __future__ import annotations
 import json
 from dataclasses import fields, is_dataclass
 from enum import Enum
-from functools import partial
 from pathlib import Path
 from typing import Any
 
@@ -119,7 +118,7 @@ def frozen(v: Any) -> Any:
     return v
 
 
-def object_hook(obj: Any, strict: bool = True) -> Any:
+def object_hook(obj: Any) -> Any:
     """
     Custom JSON object hook for deserializing FFmpeg objects.
 
@@ -129,7 +128,6 @@ def object_hook(obj: Any, strict: bool = True) -> Any:
 
     Args:
         obj: A dictionary from the JSON parser
-        strict: If True, only allow loading classes from the ffmpeg package
 
     Returns:
         Either the original dictionary or an instance of the specified class
@@ -158,7 +156,7 @@ def object_hook(obj: Any, strict: bool = True) -> Any:
     return obj
 
 
-def loads(raw: str, strict: bool = True) -> Any:
+def loads(raw: str) -> Any:
     """
     Deserialize a JSON string into Python objects with proper class types.
 
@@ -168,7 +166,6 @@ def loads(raw: str, strict: bool = True) -> Any:
 
     Args:
         raw: The JSON string to deserialize
-        strict: If True, only allow loading classes from the ffmpeg package
 
     Returns:
         The deserialized Python object with proper types
@@ -181,9 +178,7 @@ def loads(raw: str, strict: bool = True) -> Any:
         # filter_node is now a FilterNode instance
         ```
     """
-    object_hook_strict = partial(object_hook, strict=strict)
-
-    return json.loads(raw, object_hook=object_hook_strict)
+    return json.loads(raw, object_hook=object_hook)
 
 
 def to_dict_with_class_info(instance: Any) -> Any:

@@ -5,6 +5,7 @@ from pathlib import Path
 import typer
 
 from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
+from ffmpeg.common.serialize import dumps, loads
 
 from ..cache import save
 from ..manual.cli import load_config
@@ -43,19 +44,21 @@ def gen_option_info() -> list[FFMpegOption]:
     return parse_ffmpeg_options()
 
 
-@app.command()
-def generate(outpath: Path = None) -> None:
+def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
     """
-    Generate filter and option documents
+    Load filters from the output path
+    """
+    filter_json = outpath / "filters.json"
 
-    Args:
-        outpath: The output path
-    """
-    if not outpath:
-        outpath = Path(__file__).parent.parent.parent / "ffmpeg"
+    if not rebuild:
+        if filter_json.exists():
+            with filter_json.open() as ofile:
+                try:
+                    return loads(ofile.read())
+                except Exception as e:
+                    print(f"Failed to load filters from {filter_json}: {e}")
 
     ffmpeg_filters = []
-
     for f in sorted(all_filters(), key=lambda i: i.name):
         if f.name == "afir":
             continue
@@ -70,6 +73,25 @@ def generate(outpath: Path = None) -> None:
             ffmpeg_filters.append(filter_info)
         except ValueError:
             print(f"Failed to generate filter info for {f.name}")
+
+    with filter_json.open("w") as ofile:
+        ofile.write(dumps(ffmpeg_filters))
+
+    return ffmpeg_filters
+
+
+@app.command()
+def generate(outpath: Path = None, rebuild: bool = False) -> None:
+    """
+    Generate filter and option documents
+
+    Args:
+        outpath: The output path
+    """
+    if not outpath:
+        outpath = Path(__file__).parent.parent.parent / "ffmpeg"
+
+    ffmpeg_filters = load_filters(outpath, rebuild)
     ffmpeg_options = gen_option_info()
 
     render(ffmpeg_filters, ffmpeg_options, outpath)
