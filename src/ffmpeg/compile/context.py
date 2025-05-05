@@ -13,7 +13,7 @@ from collections import defaultdict
 from collections.abc import Iterable
 from dataclasses import dataclass
 from functools import cached_property
-from typing import Any, TypeVar
+from typing import TypeVar
 
 from ..dag.nodes import FilterNode, InputNode
 from ..dag.schema import Node, Stream
@@ -294,9 +294,6 @@ class DAGContext:
             AssertionError: If the node is not an InputNode or FilterNode
         """
 
-        assert isinstance(node, (InputNode, FilterNode)), (
-            "Only input and filter nodes have labels"
-        )
         return self.node_labels[node]
 
     @override
@@ -316,39 +313,3 @@ class DAGContext:
             A list of streams that originate from this node
         """
         return self.outgoing_streams[node]
-
-    def render(self, obj: Any) -> Any:
-        """
-        Recursively convert graph objects to a human-readable representation.
-
-        This method processes arbitrary objects, with special handling for graph
-        elements like nodes and streams. It converts them to a readable string format
-        that includes node labels. It recursively handles nested structures like
-        lists, tuples, and dictionaries.
-
-        This is primarily used for debugging, logging, and visualization purposes.
-
-        Args:
-            obj: The object to render, which may be a Node, Stream, or a container
-                 with these objects nested inside
-
-        Returns:
-            The rendered representation of the object:
-            - For nodes: "Node(repr#label)"
-            - For streams: "Stream(node_repr#label#index)"
-            - For containers: recursively rendered contents
-            - For other objects: the original object unchanged
-        """
-
-        if isinstance(obj, (list, tuple)):
-            return [self.render(o) for o in obj]
-        elif isinstance(obj, dict):
-            return {self.render(k): self.render(v) for k, v in obj.items()}
-
-        if isinstance(obj, Node):
-            return f"Node({obj.repr()}#{self.node_labels[obj]})"
-
-        if isinstance(obj, Stream):
-            return f"Stream({self.render(obj.node)}#{obj.index})"
-
-        return obj
