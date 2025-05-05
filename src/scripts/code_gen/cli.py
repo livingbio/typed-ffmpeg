@@ -89,6 +89,7 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
 
     Args:
         outpath: The output path
+        rebuild: Whether to rebuild the filters and options from scratch, ignoring the cache
     """
     if not outpath:
         outpath = Path(__file__).parent.parent.parent / "ffmpeg"
