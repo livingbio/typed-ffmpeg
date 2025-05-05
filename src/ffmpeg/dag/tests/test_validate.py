@@ -4,9 +4,9 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
+from ...compile.context import DAGContext
 from ...filters import amix, concat
 from ...utils.snapshot import DAGSnapshotExtenstion
-from ..context import DAGContext
 from ..schema import Stream
 from ..validate import add_split, remove_split
 

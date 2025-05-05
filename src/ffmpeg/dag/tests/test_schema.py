@@ -5,8 +5,8 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ...compile.context import DAGContext
 from ...utils.snapshot import DAGSnapshotExtenstion
-from ..context import DAGContext
 from ..schema import Node, Stream
 
 

@@ -9,7 +9,7 @@ handling global options, inputs, complex filtergraphs, and outputs.
 
 from __future__ import annotations
 
-from .context import DAGContext
+from ..compile.context import DAGContext
 from .nodes import FilterNode, GlobalNode, InputNode, OutputNode
 from .schema import Stream
 from .validate import validate

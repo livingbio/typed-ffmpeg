@@ -11,7 +11,7 @@ from ..utils.lazy_eval.schema import LazyValue
 from .utils import is_dag
 
 if TYPE_CHECKING:
-    from .context import DAGContext
+    from ..compile.context import DAGContext
 
 
 @dataclass(frozen=True, kw_only=True)
