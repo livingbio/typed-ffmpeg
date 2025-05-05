@@ -92,5 +92,7 @@ shared_cases = [
     pytest.param(reuse_input(), id="reuse-input"),
     pytest.param(reuse_stream(), id="reuse-stream"),
     pytest.param(complex_stream(), id="complex-stream"),
+    pytest.param(amix_stream(), id="amix-stream"),
+    pytest.param(amix_stream_2(), id="amix-stream-2"),
     pytest.param(merged_output_1(), id="merged-output-1"),
 ]
