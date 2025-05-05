@@ -27,9 +27,9 @@
 
 
 {%- macro return_stream_typings(f) -%}
-{%- if f.filter_type.value in ["vf", "avf"] -%}
+{%- if f.filter_type.value in ["vf", "avf", "vsrc"] -%}
     {% set return_type = "VideoStream" %}
-{%- elif f.filter_type.value in ["af", "vaf"] -%}
+{%- elif f.filter_type.value in ["af", "vaf", "asrc"] -%}
     {% set return_type = "AudioStream" %}
 {%- endif -%}
 {%- if f.is_dynamic_output -%}
@@ -100,9 +100,9 @@ References:
 
 
 {% macro process(f, type) %}
-{%- if f.filter_type.value in ["vf", "avf"] -%}
+{%- if f.filter_type.value in ["vf", "avf", "vsrc"] -%}
     {% set return_type = "video" %}
-{%- elif f.filter_type.value in ["af", "vaf"] -%}
+{%- elif f.filter_type.value in ["af", "vaf", "asrc"] -%}
     {% set return_type = "audio" %}
 {%- endif -%}
 filter_node = filter_node_factory(
