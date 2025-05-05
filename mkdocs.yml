@@ -62,11 +62,11 @@ nav:
       - Compile:
           - compile_cli: src/compile/compile_cli.md
           - context: src/compile/context.md
+          - validate: src/compile/validate.md
       - DAG:
           - nodes: src/dag/nodes.md
           - schema: src/dag/schema.md
           - utils: src/dag/utils.md
-          - validate: src/dag/validate.md
           - global_runnable:
               - runnable: src/dag/global_runnable/runnable.md
               - global_args: src/dag/global_runnable/global_args.md

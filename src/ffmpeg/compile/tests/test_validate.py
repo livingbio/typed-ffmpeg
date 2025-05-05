@@ -1,13 +1,13 @@
-from typing import Any, Protocol
+from typing import Any
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
-from ...compile.context import DAGContext
+from ...dag.schema import Stream
 from ...filters import amix, concat
 from ...utils.snapshot import DAGSnapshotExtenstion
-from ..schema import Stream
+from ..context import DAGContext
 from ..validate import add_split, remove_split
 
 
@@ -119,9 +119,3 @@ def test_rebuild_graph(graph: Stream, snapshot: SnapshotAssertion) -> None:
         snapshot(name="add-split", extension_class=DAGSnapshotExtenstion)
         == added_split[0].node
     )
-
-
-class Validator(Protocol):
-    def __call__(
-        self, context: DAGContext = ..., auto_fix: bool = False
-    ) -> DAGContext: ...
