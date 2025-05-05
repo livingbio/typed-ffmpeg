@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from ..dag.nodes import FilterNode, GlobalNode, InputNode, OutputNode
 from ..dag.schema import Stream
-from ..dag.validate import validate
 from .context import DAGContext
+from .validate import validate
 
 
 def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
