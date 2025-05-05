@@ -9,7 +9,8 @@ from pathlib import Path
 
 import typer
 
-from ..cache import cache_path, save
+from ffmpeg.common.cache import cache_path, save
+
 from .helpers import parse_filter_document
 from .schema import FilterDocument
 
