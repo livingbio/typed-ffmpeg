@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import TypeVar
 
-from ffmpeg.common.serialize import dumps, loads
+from .serialize import dumps, loads
 
 T = TypeVar("T")
 
