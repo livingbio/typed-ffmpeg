@@ -1,3 +1,4 @@
+import logging
 import os
 from dataclasses import asdict, replace
 from pathlib import Path
@@ -46,13 +47,20 @@ def gen_option_info() -> list[FFMpegOption]:
 def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
     """
     Load filters from the output path
+
+    Args:
+        outpath: The output path
+        rebuild: Whether to use the cache
+
+    Returns:
+        The filters
     """
 
     if not rebuild:
         try:
             return load(list[FFMpegFilter], "filters")
         except Exception as e:
-            print(f"Failed to load filters from cache: {e}")
+            logging.error(f"Failed to load filters from cache: {e}")
 
     ffmpeg_filters = []
     for f in sorted(all_filters(), key=lambda i: i.name):
@@ -76,12 +84,13 @@ def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
 
 
 @app.command()
-def generate(outpath: Path = None, rebuild: bool = False) -> None:
+def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
     """
     Generate filter and option documents
 
     Args:
         outpath: The output path
+        rebuild: Whether to rebuild the filters and options from scratch, ignoring the cache
     """
     if not outpath:
         outpath = Path(__file__).parent.parent.parent / "ffmpeg"

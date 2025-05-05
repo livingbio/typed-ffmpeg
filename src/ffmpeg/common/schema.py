@@ -61,6 +61,7 @@ class FFMpegFilterOptionType(str, Enum):
     binary = "binary"
 
 
+@serializable
 class FFMpegFilterType(str, Enum):
     """
     Enumeration of FFmpeg filter types based on input/output stream types.
@@ -177,7 +178,7 @@ class FFMpegIOType(Serializable):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFilterDef:
+class FFMpegFilterDef(Serializable):
     """
     Defines the basic structure of an FFmpeg filter.
 
@@ -420,6 +421,7 @@ class FFMpegFilter(Serializable):
         raise ValueError(f"Unknown filter type for {self.name}")
 
 
+@serializable
 class FFMpegOptionFlag(int, Enum):
     OPT_FUNC_ARG = 1 << 0
     """
@@ -495,6 +497,7 @@ class FFMpegOptionFlag(int, Enum):
     """
 
 
+@serializable
 class FFMpegOptionType(str, Enum):
     """
     Enumeration of FFmpeg option data types.
@@ -530,7 +533,7 @@ class FFMpegOptionType(str, Enum):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOption:
+class FFMpegOption(Serializable):
     """
     Represents a command-line option for FFmpeg.
 
