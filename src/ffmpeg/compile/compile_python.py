@@ -85,7 +85,33 @@ def compile_kwargs(kwargs: Mapping[str, Any]) -> str:
     return ", ".join(f"{k}={v}" for k, v in kwargs.items())
 
 
-def compile_python(stream: Stream, auto_fix: bool = True) -> str:
+def compile_fluent(code: list[str]) -> list[str]:
+    buffer = [k.split("=", 1)[:2] for k in code]
+
+    # if the var used in the following expr only once, we can remove the assignment and replace the var with the expr, otherwise, we keep it
+    processed_index = 0
+    while processed_index < len(buffer):
+        var, expr = buffer[processed_index]
+        var = var.strip()
+        expr = expr.strip()
+
+        matched_times = sum(
+            _expr.count(var) for _var, _expr in buffer[processed_index + 1 :]
+        )
+        if matched_times != 1:
+            processed_index += 1
+            continue
+
+        for i, (_var, _expr) in enumerate(buffer[processed_index + 1 :]):
+            if var in _expr:
+                buffer[processed_index + 1 + i] = [_var, _expr.replace(var, expr)]
+
+        del buffer[processed_index]
+
+    return [f"{k.strip()} = {v.strip()}" for k, v in buffer]
+
+
+def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> str:
     stream = validate(stream, auto_fix=auto_fix)
     node = stream.node
     context = DAGContext.build(node)
@@ -100,7 +126,7 @@ def compile_python(stream: Stream, auto_fix: bool = True) -> str:
     for node in input_nodes:
         # NOTE: technically, the expression returns a stream, but since input node can reuse the same stream multiple times, we need to assign the stream to the node
         code.append(
-            f"{get_output_var_name(node, context)} = input('{node.filename}', {compile_kwargs(node.kwargs)})"
+            f"{get_output_var_name(node, context)} = ffmpeg.input('{node.filename}', {compile_kwargs(node.kwargs)})"
         )
 
     filter_data = load(list[FFMpegFilter], "filters")
@@ -142,14 +168,8 @@ def compile_python(stream: Stream, auto_fix: bool = True) -> str:
             )
         else:
             code.append(
-                f"{get_output_var_name(node, context)} = ffmpeg.output(filename='{node.filename}', {in_streams_names}, {compile_kwargs(node.kwargs)})"
+                f"{get_output_var_name(node, context)} = ffmpeg.output({in_streams_names}, filename='{node.filename}', {compile_kwargs(node.kwargs)})"
             )
-
-    if len(output_nodes) > 1:
-        in_streams_names = ", ".join(
-            get_output_var_name(node, context) for node in output_nodes
-        )
-        code.append(f"ffmpeg.merge_outputs({in_streams_names})")
 
     global_nodes = sorted(
         (node for node in context.nodes if isinstance(node, GlobalNode)),
@@ -157,8 +177,21 @@ def compile_python(stream: Stream, auto_fix: bool = True) -> str:
     )
 
     for node in global_nodes:
-        code.append(
-            f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context)}.gloabl_args({compile_kwargs(node.kwargs)})"
-        )
+        if len(node.inputs) > 1:
+            in_streams_names = ", ".join(
+                get_input_var_name(s, context) for s in node.inputs
+            )
+            code.append(
+                f"{get_output_var_name(node, context)} = ffmpeg.merge_outputs({in_streams_names}, {compile_kwargs(node.kwargs)})"
+            )
+        else:
+            code.append(
+                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context)}.gloabl_args({compile_kwargs(node.kwargs)})"
+            )
+
+    code = [k.replace(", )", ")") for k in code]
+
+    if fluent:
+        code = compile_fluent(code)
 
     return "\n".join(code)

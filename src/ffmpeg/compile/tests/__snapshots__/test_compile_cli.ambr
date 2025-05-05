@@ -14,6 +14,20 @@
     'tmp.mp4',
   ])
 # ---
+# name: test_compile_cli[merged-output-1][compile-cli]
+  list([
+    '-i',
+    'input1.mp4',
+    '-i',
+    'input2.mp4',
+    '-map',
+    '0',
+    'output1.mp4',
+    '-map',
+    '1',
+    'output2.mp4',
+  ])
+# ---
 # name: test_compile_cli[not-utilize-split][compile-cli]
   list([
     '-i',

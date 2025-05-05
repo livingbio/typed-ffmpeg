@@ -87,6 +87,67 @@
     ]),
   })
 # ---
+# name: test_rebuild_graph[merged-output-1][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'),
+    GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
+  ])
+# ---
+# name: test_rebuild_graph[merged-output-1][all_streams]
+  list([
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None),
+  ])
+# ---
+# name: test_rebuild_graph[merged-output-1][outgoing_nodes]
+  defaultdict({
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'),
+        0,
+      ),
+    ]),
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'),
+        0,
+      ),
+    ]),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None): list([
+      tuple(
+        GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
+        0,
+      ),
+    ]),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None): list([
+      tuple(
+        GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
+        1,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[merged-output-1][outgoing_streams]
+  defaultdict({
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    ]),
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'): list([
+      AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),
+    ]),
+    OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'): list([
+      OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None),
+    ]),
+    OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'): list([
+      OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None),
+    ]),
+  })
+# ---
 # name: test_rebuild_graph[not-utilize-split][all_nodes]
   list([
     InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),

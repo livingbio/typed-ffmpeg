@@ -1,6 +1,6 @@
 import pytest
 
-from ...base import input
+from ...base import input, merge_outputs
 from ...dag.schema import Stream
 from ...filters import amix, concat
 
@@ -76,6 +76,15 @@ def amix_stream_2() -> Stream:
     return graph
 
 
+def merged_output_1() -> Stream:
+    input1 = input("input1.mp4")
+    input2 = input("input2.mp4")
+    graph = merge_outputs(
+        input1.output(filename="output1.mp4"), input2.output(filename="output2.mp4")
+    )
+    return graph
+
+
 shared_cases = [
     pytest.param(not_utilize_split(), id="not-utilize-split"),
     pytest.param(redundant_split_outputs_1(), id="reduntant-split-outputs-1"),
@@ -83,4 +92,5 @@ shared_cases = [
     pytest.param(reuse_input(), id="reuse-input"),
     pytest.param(reuse_stream(), id="reuse-stream"),
     pytest.param(complex_stream(), id="complex-stream"),
+    pytest.param(merged_output_1(), id="merged-output-1"),
 ]
