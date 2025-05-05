@@ -23,7 +23,7 @@ def load(cls: type[T], id: str) -> T:
     path = cache_path / f"{cls.__name__}/{id}.json"
 
     with path.open() as ifile:
-        obj = loads(ifile.read(), strict=False)
+        obj = loads(ifile.read())
         return obj
 
 
