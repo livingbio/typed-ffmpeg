@@ -5,6 +5,7 @@ from syrupy.assertion import SnapshotAssertion
 from ...base import input
 from ...dag.schema import Node, Stream
 from ...filters import concat
+from ..compile_cli import get_node_label
 from ..context import DAGContext
 
 
@@ -35,7 +36,7 @@ def render(context: DAGContext, obj: Any) -> Any:
         return {render(context, k): render(context, v) for k, v in obj.items()}
 
     if isinstance(obj, Node):
-        return f"Node({obj.repr()}#{context.get_node_label(obj)})"
+        return f"Node({obj.repr()}#{get_node_label(obj, context)})"
 
     if isinstance(obj, Stream):
         return f"Stream({render(context, obj.node)}#{obj.index})"
@@ -60,6 +61,6 @@ def test_context(snapshot: SnapshotAssertion) -> None:
     assert snapshot(name="node_labels") == render(context, context.node_labels)
     assert snapshot(name="node_ids") == render(context, context.node_ids)
 
-    assert context.get_node_label(input1.node) == "0"
+    assert get_node_label(input1.node, context) == "0"
     assert context.get_outgoing_streams(input1.node) == [input1]
     assert context.get_outgoing_nodes(input1) == [(rev.node, 0)]

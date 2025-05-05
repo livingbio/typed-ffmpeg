@@ -48,7 +48,7 @@
   "GlobalNode(kwargs=FrozenDict({'y': True, 'no': False, 'speed': 1}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
 # ---
 # name: test_node_prop[global-node][f.repr]
-  '-y -nono -speed 1'
+  "GlobalNode(kwargs=FrozenDict({'y': True, 'no': False, 'speed': 1}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
 # ---
 # name: test_node_prop[global-node][get_args]
   list([
@@ -76,7 +76,7 @@
   "GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
 # ---
 # name: test_node_prop[merge-output-node][f.repr]
-  ''
+  "GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
 # ---
 # name: test_node_prop[merge-output-node][get_args]
   list([

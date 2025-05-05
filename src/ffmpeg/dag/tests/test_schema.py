@@ -5,7 +5,6 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ...compile.context import DAGContext
 from ...utils.snapshot import DAGSnapshotExtenstion
 from ..schema import Node, Stream
 
@@ -13,9 +12,6 @@ from ..schema import Node, Stream
 @dataclass(frozen=True, kw_only=True, repr=False)
 class SimpleNode(Node):
     name: str
-
-    def get_args(self, context: DAGContext = None) -> list[str]:
-        return []
 
     def __repr__(self) -> str:
         return self.name
