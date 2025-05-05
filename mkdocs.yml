@@ -4,22 +4,22 @@ strict: true
 site_url: https://livingbio.github.io/typed-ffmpeg/
 
 theme:
-  name: "material"
+  name: 'material'
   palette:
-    - media: "(prefers-color-scheme: light)"
+    - media: '(prefers-color-scheme: light)'
       scheme: default
       primary: pink
       accent: pink
       toggle:
         icon: material/lightbulb-outline
-        name: "Switch to dark mode"
-    - media: "(prefers-color-scheme: dark)"
+        name: 'Switch to dark mode'
+    - media: '(prefers-color-scheme: dark)'
       scheme: slate
       primary: pink
       accent: pink
       toggle:
         icon: material/lightbulb
-        name: "Switch to light mode"
+        name: 'Switch to light mode'
   features:
     - content.tabs.link
     - content.code.annotate
@@ -61,7 +61,7 @@ nav:
           - av stream: src/streams/av_stream.md
       - DAG:
           - compile: src/dag/compile.md
-          - context: src/dag/context.md
+          - context: src/compile/context.md
           - nodes: src/dag/nodes.md
           - schema: src/dag/schema.md
           - utils: src/dag/utils.md
@@ -79,9 +79,9 @@ nav:
               - schema: src/utils/lazy_eval/schema.md
               - operator: src/utils/lazy_eval/operator.md
 watch:
-  - "src"
-  - "docs"
-  - "README.md"
+  - 'src'
+  - 'docs'
+  - 'README.md'
 
 # https://www.mkdocs.org/user-guide/configuration/#validation
 # validation:
@@ -125,7 +125,7 @@ plugins:
           options:
             docstring_options:
               ignore_init_summary: true
-            filters: ["!^_"]
+            filters: ['!^_']
             heading_level: 1
             inherited_members: true
             merge_init_into_class: true

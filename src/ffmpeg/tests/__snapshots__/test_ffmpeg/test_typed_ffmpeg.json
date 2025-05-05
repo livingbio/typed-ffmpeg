@@ -19,6 +19,7 @@
   "afilter",
   "base",
   "common",
+  "compile",
   "dag",
   "exceptions",
   "filter_multi_output",

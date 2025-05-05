@@ -5,12 +5,12 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...base import input
+from ...compile.context import DAGContext
 from ...exceptions import FFMpegExecuteError
 from ...filters import concat
 from ...schema import StreamType
 from ...utils.forzendict import FrozenDict
 from ...utils.snapshot import DAGSnapshotExtenstion
-from ..context import DAGContext
 from ..nodes import (
     FilterNode,
     GlobalNode,

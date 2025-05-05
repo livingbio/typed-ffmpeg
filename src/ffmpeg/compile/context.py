@@ -14,9 +14,9 @@ from dataclasses import dataclass
 from functools import cached_property
 from typing import Any, TypeVar
 
+from ..dag.nodes import FilterNode, InputNode
+from ..dag.schema import Node, Stream
 from ..utils.typing import override
-from .nodes import FilterNode, InputNode
-from .schema import Node, Stream
 
 T = TypeVar("T")
 

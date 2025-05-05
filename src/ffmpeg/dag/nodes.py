@@ -17,10 +17,10 @@ from .io.output_args import OutputArgs
 from .schema import Node, Stream
 
 if TYPE_CHECKING:
+    from ..compile.context import DAGContext
     from ..streams.audio import AudioStream
     from ..streams.av import AVStream
     from ..streams.video import VideoStream
-    from .context import DAGContext
 
 
 logger = logging.getLogger(__name__)
@@ -189,7 +189,7 @@ class FilterNode(Node):
             For a scale filter with width=1280 and height=720, this might return:
             ['[0:v]', 'scale=', 'width=1280:height=720', '[s0]']
         """
-        from .context import DAGContext
+        from ..compile.context import DAGContext
 
         if not context:
             context = DAGContext.build(self)
@@ -424,10 +424,10 @@ class FilterableStream(Stream, OutputArgs):
         Raises:
             FFMpegValueError: If the stream has an unknown type or node type
         """
+        from ..compile.context import DAGContext
         from ..streams.audio import AudioStream
         from ..streams.av import AVStream
         from ..streams.video import VideoStream
-        from .context import DAGContext
 
         if not context:
             context = DAGContext.build(self.node)

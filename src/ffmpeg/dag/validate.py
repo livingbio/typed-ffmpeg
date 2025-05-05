@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from dataclasses import replace
 
+from ..compile.context import DAGContext
 from ..exceptions import FFMpegValueError
 from ..streams.audio import AudioStream
 from ..streams.video import VideoStream
-from .context import DAGContext
 from .nodes import FilterNode, InputNode
 from .schema import Node, Stream
 
