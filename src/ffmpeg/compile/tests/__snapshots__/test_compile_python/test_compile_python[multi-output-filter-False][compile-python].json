@@ -1,0 +1,12 @@
+[
+  "import ffmpeg",
+  "input_0 = ffmpeg.input('input1.mp4')",
+  "input_1 = ffmpeg.input('input2.mp4')",
+  "node_0 = ffmpeg.filters.feedback(input_0, input_1)",
+  "node_1 = node_0[0].drawtext(text='Hello World', fontsize=12, x=10, y=10)",
+  "node_2 = node_0[1].drawtext(text='Hello World', fontsize=12, x=10, y=10)",
+  "output_0 = node_1[0].output(filename='output1.mp4')",
+  "output_1 = node_2[0].output(filename='output2.mp4')",
+  "global_0 = ffmpeg.merge_outputs(output_0, output_1).glabal_args()",
+  "result = global_0"
+]

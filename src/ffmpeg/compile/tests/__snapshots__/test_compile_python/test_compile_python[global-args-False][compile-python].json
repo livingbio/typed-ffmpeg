@@ -1,0 +1,7 @@
+[
+  "import ffmpeg",
+  "input_0 = ffmpeg.input('input1.mp4')",
+  "output_0 = input_0.video.output(filename='tmp.mp4')",
+  "global_0 = output_0.global_args(hide_banner=True)",
+  "result = global_0"
+]

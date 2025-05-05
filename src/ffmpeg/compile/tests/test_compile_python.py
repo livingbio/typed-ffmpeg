@@ -1,5 +1,6 @@
 import pytest
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...dag.schema import Stream
 from ..compile_python import compile_python
@@ -11,4 +12,8 @@ from .cases import shared_cases
 def test_compile_python(
     graph: Stream, fluent: bool, snapshot: SnapshotAssertion
 ) -> None:
-    assert snapshot(name="compile-python") == compile_python(graph, fluent=fluent)
+    r = compile_python(graph, fluent=fluent)
+    assert snapshot(name="compile-python", extension_class=JSONSnapshotExtension) == r
+
+    # exec(r)
+    # assert result == graph

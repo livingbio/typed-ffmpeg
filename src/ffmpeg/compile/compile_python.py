@@ -181,7 +181,9 @@ def compile_fluent(code: list[str]) -> list[str]:
     return [f"{k.strip()} = {v.strip()}" for k, v in buffer]
 
 
-def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> str:
+def compile_python(
+    stream: Stream, auto_fix: bool = True, fluent: bool = True
+) -> list[str]:
     """
     Compile the python code.
 
@@ -285,4 +287,4 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
     if fluent:
         code = compile_fluent(code)
 
-    return "\n".join(["import ffmpeg", *code])
+    return ["import ffmpeg", *code]
