@@ -10,6 +10,7 @@ during graph validation and command-line compilation.
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Iterable
 from dataclasses import dataclass
 from functools import cached_property
 from typing import Any, TypeVar
@@ -21,7 +22,7 @@ from ..utils.typing import override
 T = TypeVar("T")
 
 
-def _remove_duplicates(seq: list[T]) -> list[T]:
+def _remove_duplicates(seq: Iterable[T]) -> list[T]:
     """
     Remove duplicates from a list while preserving the original order.
 
@@ -36,7 +37,7 @@ def _remove_duplicates(seq: list[T]) -> list[T]:
         A new list with duplicates removed, preserving the original order
     """
     seen = set()
-    output = []
+    output: list[T] = []
 
     for x in seq:
         if x not in seen:
@@ -62,7 +63,8 @@ def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
         - A list of all nodes in the upstream path (including the starting node)
         - A list of all streams connecting these nodes
     """
-    nodes, streams = [node], [*node.inputs]
+    nodes: list[Node] = [node]
+    streams: list[Stream] = list(node.inputs)
 
     for stream in node.inputs:
         _nodes, _streams = _collect(stream.node)
@@ -203,6 +205,24 @@ class DAGContext:
             outgoing_streams[stream.node].append(stream)
 
         return outgoing_streams
+
+    @cached_property
+    def node_ids(self) -> dict[Node, int]:
+        """
+        Get a mapping of nodes to their unique integer IDs.
+        This property assigns a unique integer ID to each node in the graph,
+        based on the node type and its position in the processing chain.
+        Returns:
+            A dictionary mapping nodes to their unique integer IDs
+        """
+        node_index: dict[type[Node], int] = defaultdict(int)
+        node_ids: dict[Node, int] = {}
+
+        for node in sorted(self.nodes, key=lambda node: node.max_depth):
+            node_ids[node] = node_index[node.__class__]
+            node_index[node.__class__] += 1
+
+        return node_ids
 
     @cached_property
     def node_labels(self) -> dict[Node, str]:

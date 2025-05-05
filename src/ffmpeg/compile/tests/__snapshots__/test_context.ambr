@@ -16,6 +16,15 @@
     'Stream(Node(concat#s2)#0)',
   ])
 # ---
+# name: test_context[node_ids]
+  dict({
+    'Node(concat#s2)': 2,
+    'Node(input1.mp4#0)': 0,
+    'Node(reverse#s0)': 0,
+    'Node(tmp.mp4#out)': 0,
+    'Node(trim#s1)': 1,
+  })
+# ---
 # name: test_context[node_labels]
   dict({
     'Node(concat#s2)': 's2',
