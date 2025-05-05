@@ -136,10 +136,14 @@ def compile_python(stream: Stream, auto_fix: bool = True) -> str:
             get_input_var_name(stream, context) for stream in node.inputs
         )
 
-        # NOTE: techically, the expression returns a stream, but since output node has only one outgoing stream, we can just assign the stream to the node
-        code.append(
-            f"{get_output_var_name(node, context)} = output('{node.filename}', {in_streams_names}, {compile_kwargs(node.kwargs)})"
-        )
+        if len(node.inputs) == 1:
+            code.append(
+                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context)}.output(filename='{node.filename}', {compile_kwargs(node.kwargs)})"
+            )
+        else:
+            code.append(
+                f"{get_output_var_name(node, context)} = ffmpeg.output(filename='{node.filename}', {in_streams_names}, {compile_kwargs(node.kwargs)})"
+            )
 
     if len(output_nodes) > 1:
         in_streams_names = ", ".join(
