@@ -39,7 +39,7 @@
     'tmp.mp4',
   ])
 # ---
-# name: test_compile_cli[reduntant-split-duplicate][compile-cli]
+# name: test_compile_cli[redundant-split-duplicate][compile-cli]
   list([
     '-i',
     'input1.mp4',
@@ -50,7 +50,7 @@
     'tmp.mp4',
   ])
 # ---
-# name: test_compile_cli[reduntant-split-outputs-1][compile-cli]
+# name: test_compile_cli[redundant-split-outputs-1][compile-cli]
   list([
     '-i',
     'input1.mp4',

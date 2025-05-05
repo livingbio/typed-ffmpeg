@@ -198,7 +198,7 @@
     ]),
   })
 # ---
-# name: test_rebuild_graph[reduntant-split-duplicate][all_nodes]
+# name: test_rebuild_graph[redundant-split-duplicate][all_nodes]
   list([
     InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
     FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
@@ -208,7 +208,7 @@
     OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'n': 3}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='tmp.mp4'),
   ])
 # ---
-# name: test_rebuild_graph[reduntant-split-duplicate][all_streams]
+# name: test_rebuild_graph[redundant-split-duplicate][all_streams]
   list([
     AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
     VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
@@ -219,7 +219,7 @@
     VideoStream(node=FilterNode(kwargs=FrozenDict({'n': 3}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)), index=0),
   ])
 # ---
-# name: test_rebuild_graph[reduntant-split-duplicate][outgoing_nodes]
+# name: test_rebuild_graph[redundant-split-duplicate][outgoing_nodes]
   defaultdict({
     AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None): list([
       tuple(
@@ -265,7 +265,7 @@
     ]),
   })
 # ---
-# name: test_rebuild_graph[reduntant-split-duplicate][outgoing_streams]
+# name: test_rebuild_graph[redundant-split-duplicate][outgoing_streams]
   defaultdict({
     FilterNode(kwargs=FrozenDict({'n': 3}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)): list([
       VideoStream(node=FilterNode(kwargs=FrozenDict({'n': 3}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1), VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 2}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1)), name='concat', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>,)), index=0),
@@ -286,7 +286,7 @@
     ]),
   })
 # ---
-# name: test_rebuild_graph[reduntant-split-outputs-1][all_nodes]
+# name: test_rebuild_graph[redundant-split-outputs-1][all_nodes]
   list([
     InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
     FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
@@ -294,14 +294,14 @@
     OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 1}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='tmp.mp4'),
   ])
 # ---
-# name: test_rebuild_graph[reduntant-split-outputs-1][all_streams]
+# name: test_rebuild_graph[redundant-split-outputs-1][all_streams]
   list([
     AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
     VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
     VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 1}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
   ])
 # ---
-# name: test_rebuild_graph[reduntant-split-outputs-1][outgoing_nodes]
+# name: test_rebuild_graph[redundant-split-outputs-1][outgoing_nodes]
   defaultdict({
     AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None): list([
       tuple(
@@ -323,7 +323,7 @@
     ]),
   })
 # ---
-# name: test_rebuild_graph[reduntant-split-outputs-1][outgoing_streams]
+# name: test_rebuild_graph[redundant-split-outputs-1][outgoing_streams]
   defaultdict({
     FilterNode(kwargs=FrozenDict({'outputs': 1}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)): list([
       VideoStream(node=FilterNode(kwargs=FrozenDict({'outputs': 1}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), name='reverse', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), name='split', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
