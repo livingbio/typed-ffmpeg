@@ -4,6 +4,6 @@
   "input_1 = ffmpeg.input('input2.mp4')",
   "output_0 = input_0.output(filename='output1.mp4')",
   "output_1 = input_1.output(filename='output2.mp4')",
-  "global_0 = ffmpeg.merge_outputs(output_0, output_1).glabal_args(dump=True)",
+  "global_0 = ffmpeg.merge_outputs(output_0, output_1).global_args(dump=True)",
   "result = global_0"
 ]

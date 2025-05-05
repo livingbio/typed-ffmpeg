@@ -81,8 +81,13 @@ def get_input_var_name(
                 case FilterNode():
                     if filter_data_dict[stream.node.name].is_dynamic_output:
                         return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
-                    else:
+                    elif (
+                        len(filter_data_dict[stream.node.name].stream_typings_output)
+                        > 1
+                    ):
                         return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
+                    else:
+                        return f"{get_output_var_name(stream.node, context)}"
         case AudioStream():
             match stream.node:
                 case InputNode():
@@ -90,8 +95,13 @@ def get_input_var_name(
                 case FilterNode():
                     if filter_data_dict[stream.node.name].is_dynamic_output:
                         return f"{get_output_var_name(stream.node, context)}.audio({filter_stream_typed_index(stream, context)})"
-                    else:
+                    elif (
+                        len(filter_data_dict[stream.node.name].stream_typings_output)
+                        > 1
+                    ):
                         return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
+                    else:
+                        return f"{get_output_var_name(stream.node, context)}"
         case OutputStream():
             return f"{get_output_var_name(stream.node, context)}"
         case GlobalStream():
@@ -272,7 +282,7 @@ def compile(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> list[
                 get_input_var_name(s, context, filter_data_dict) for s in node.inputs
             )
             code.append(
-                f"{get_output_var_name(node, context)} = ffmpeg.merge_outputs({in_streams_names}).glabal_args({compile_kwargs(node.kwargs)})"
+                f"{get_output_var_name(node, context)} = ffmpeg.merge_outputs({in_streams_names}).global_args({compile_kwargs(node.kwargs)})"
             )
         else:
             code.append(
@@ -286,3 +296,24 @@ def compile(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> list[
         code = compile_fluent(code)
 
     return ["import ffmpeg", *code]
+
+
+def parse(code: list[str]) -> Stream:
+    """
+    Parse the python code.
+
+    This is used to parse the python code.
+    For example, if the code is ["import ffmpeg", "input_0 = ffmpeg.input('input1.mp4')", "result = input_0"], the parsed stream will be the stream created by the input node.
+
+    Args:
+        code: The code to parse.
+
+    Returns:
+        The parsed stream.
+    """
+    local_vars: dict[str, Any] = {}
+    exec("\n".join(code), {}, local_vars)
+    result = local_vars["result"]
+
+    assert isinstance(result, Stream)
+    return validate(result, auto_fix=True)

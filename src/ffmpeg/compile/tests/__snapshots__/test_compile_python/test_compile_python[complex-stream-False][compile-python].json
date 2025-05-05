@@ -4,8 +4,8 @@
   "input_1 = ffmpeg.input('input2.mp4')",
   "node_0 = input_0.video.reverse()",
   "node_1 = input_1.audio.areverse()",
-  "node_2 = node_0[0].split(outputs=2)",
-  "node_3 = node_1[0].asplit(outputs=2)",
+  "node_2 = node_0.split(outputs=2)",
+  "node_3 = node_1.asplit(outputs=2)",
   "node_4 = ffmpeg.filters.concat(node_2.video(1), node_3.audio(1), node_2.video(0), node_3.audio(0), n=2, v=1, a=1)",
   "output_0 = ffmpeg.output(node_4.video(0), node_4.audio(0), filename='tmp.mp4')",
   "result = output_0"

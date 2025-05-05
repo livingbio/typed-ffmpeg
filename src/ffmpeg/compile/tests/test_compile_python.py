@@ -3,7 +3,8 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...dag.schema import Stream
-from ..compile_python import compile
+from ..compile_python import compile, parse
+from ..validate import validate
 from .cases import shared_cases
 
 
@@ -15,5 +16,6 @@ def test_compile_python(
     r = compile(graph, fluent=fluent)
     assert snapshot(name="compile-python", extension_class=JSONSnapshotExtension) == r
 
-    # exec(r)
-    # assert result == graph
+    assert parse(r) == validate(graph, auto_fix=True), (
+        "parse result should be equal to the original graph"
+    )

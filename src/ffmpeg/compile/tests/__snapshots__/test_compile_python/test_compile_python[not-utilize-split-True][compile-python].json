@@ -1,4 +1,4 @@
 [
   "import ffmpeg",
-  "result = ffmpeg.input('input1.mp4').reverse()[0].output(filename='tmp.mp4')"
+  "result = ffmpeg.input('input1.mp4').reverse().output(filename='tmp.mp4')"
 ]
