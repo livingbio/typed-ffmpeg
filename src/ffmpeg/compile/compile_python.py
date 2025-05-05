@@ -75,25 +75,23 @@ def get_input_var_name(
             assert stream.index is None
             return get_output_var_name(stream.node, context)
         case VideoStream():
-            if isinstance(stream.node, InputNode):
-                return f"{get_output_var_name(stream.node, context)}.video"
-            elif isinstance(stream.node, FilterNode):
-                if filter_data_dict[stream.node.name].is_dynamic_output:
-                    return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
-                else:
-                    return (
-                        f"{get_output_var_name(stream.node, context)}[{stream.index}]"
-                    )
+            match stream.node:
+                case InputNode():
+                    return f"{get_output_var_name(stream.node, context)}.video"
+                case FilterNode():
+                    if filter_data_dict[stream.node.name].is_dynamic_output:
+                        return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
+                    else:
+                        return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
         case AudioStream():
-            if isinstance(stream.node, InputNode):
-                return f"{get_output_var_name(stream.node, context)}.audio"
-            elif isinstance(stream.node, FilterNode):
-                if filter_data_dict[stream.node.name].is_dynamic_output:
-                    return f"{get_output_var_name(stream.node, context)}.audio({filter_stream_typed_index(stream, context)})"
-                else:
-                    return (
-                        f"{get_output_var_name(stream.node, context)}[{stream.index}]"
-                    )
+            match stream.node:
+                case InputNode():
+                    return f"{get_output_var_name(stream.node, context)}.audio"
+                case FilterNode():
+                    if filter_data_dict[stream.node.name].is_dynamic_output:
+                        return f"{get_output_var_name(stream.node, context)}.audio({filter_stream_typed_index(stream, context)})"
+                    else:
+                        return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
         case OutputStream():
             return f"{get_output_var_name(stream.node, context)}"
         case GlobalStream():
