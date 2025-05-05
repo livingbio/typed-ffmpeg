@@ -111,7 +111,7 @@ class GlobalRunable(GlobalArgs):
             # Result: ['ffmpeg', '-i', 'input.mp4', 'output.mp4']
             ```
         """
-        from ..compile import compile
+        from ...compile.compile_cli import compile
 
         if isinstance(cmd, str):
             cmd = [cmd]

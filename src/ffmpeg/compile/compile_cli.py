@@ -9,10 +9,10 @@ handling global options, inputs, complex filtergraphs, and outputs.
 
 from __future__ import annotations
 
-from ..compile.context import DAGContext
-from .nodes import FilterNode, GlobalNode, InputNode, OutputNode
-from .schema import Stream
-from .validate import validate
+from ..dag.nodes import FilterNode, GlobalNode, InputNode, OutputNode
+from ..dag.schema import Stream
+from ..dag.validate import validate
+from .context import DAGContext
 
 
 def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
