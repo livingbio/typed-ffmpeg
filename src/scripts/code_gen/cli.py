@@ -59,7 +59,7 @@ def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
         try:
             return load(list[FFMpegFilter], "filters")
         except Exception as e:
-            print(f"Failed to load filters from cache: {e}")
+            logging.error(f"Failed to load filters from cache: {e}")
 
     ffmpeg_filters = []
     for f in sorted(all_filters(), key=lambda i: i.name):
