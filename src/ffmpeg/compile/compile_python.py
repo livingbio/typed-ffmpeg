@@ -186,7 +186,7 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
             )
         else:
             code.append(
-                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context)}.gloabl_args({compile_kwargs(node.kwargs)})"
+                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context)}.global_args({compile_kwargs(node.kwargs)})"
             )
 
     code = [k.replace(", )", ")") for k in code]
