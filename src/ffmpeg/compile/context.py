@@ -10,6 +10,7 @@ during graph validation and command-line compilation.
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Iterable
 from dataclasses import dataclass
 from functools import cached_property
 from typing import Any, TypeVar
@@ -21,7 +22,7 @@ from ..utils.typing import override
 T = TypeVar("T")
 
 
-def _remove_duplicates(seq: tuple[T, ...]) -> tuple[T, ...]:
+def _remove_duplicates(seq: Iterable[T]) -> list[T]:
     """
     Remove duplicates from a list while preserving the original order.
 
@@ -36,17 +37,17 @@ def _remove_duplicates(seq: tuple[T, ...]) -> tuple[T, ...]:
         A new list with duplicates removed, preserving the original order
     """
     seen = set()
-    output: tuple[T, ...] = ()
+    output: list[T] = []
 
     for x in seq:
         if x not in seen:
-            output += (x,)
+            output.append(x)
             seen.add(x)
 
     return output
 
 
-def _collect(node: Node) -> tuple[tuple[Node, ...], tuple[Stream, ...]]:
+def _collect(node: Node) -> tuple[list[Node], list[Stream]]:
     """
     Recursively collect all nodes and streams in the upstream path of a given node.
 
@@ -62,8 +63,8 @@ def _collect(node: Node) -> tuple[tuple[Node, ...], tuple[Stream, ...]]:
         - A list of all nodes in the upstream path (including the starting node)
         - A list of all streams connecting these nodes
     """
-    nodes: tuple[Node, ...] = (node,)
-    streams: tuple[Stream, ...] = node.inputs
+    nodes: list[Node] = [node]
+    streams: list[Stream] = list(node.inputs)
 
     for stream in node.inputs:
         _nodes, _streams = _collect(stream.node)
@@ -128,8 +129,8 @@ class DAGContext:
 
         return cls(
             node=node,
-            nodes=_remove_duplicates(nodes),
-            streams=_remove_duplicates(streams),
+            nodes=tuple(_remove_duplicates(nodes)),
+            streams=tuple(_remove_duplicates(streams)),
         )
 
     @cached_property
