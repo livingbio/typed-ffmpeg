@@ -36,6 +36,27 @@
     'tmp.mp4',
   ])
 # ---
+# name: test_compile_cli[global-args-2][compile-cli]
+  list([
+    '-hide_banner',
+    '-dump',
+    '-i',
+    'input1.mp4',
+    '-map',
+    '0:v',
+    'tmp.mp4',
+  ])
+# ---
+# name: test_compile_cli[global-args][compile-cli]
+  list([
+    '-hide_banner',
+    '-i',
+    'input1.mp4',
+    '-map',
+    '0:v',
+    'tmp.mp4',
+  ])
+# ---
 # name: test_compile_cli[merged-output-1][compile-cli]
   list([
     '-i',
@@ -47,6 +68,22 @@
     'output1.mp4',
     '-map',
     '1',
+    'output2.mp4',
+  ])
+# ---
+# name: test_compile_cli[multi-output-filter][compile-cli]
+  list([
+    '-i',
+    'input1.mp4',
+    '-i',
+    'input2.mp4',
+    '-filter_complex',
+    '[0][1]feedback[s0#0][s0#1];[s0#0]drawtext=text=Hello World:fontsize=12:x=10:y=10[s1];[s0#1]drawtext=text=Hello World:fontsize=12:x=10:y=10[s2]',
+    '-map',
+    '[s1]',
+    'output1.mp4',
+    '-map',
+    '[s2]',
     'output2.mp4',
   ])
 # ---

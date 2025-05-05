@@ -217,6 +217,84 @@
     ]),
   })
 # ---
+# name: test_rebuild_graph[global-args-2][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'),
+    GlobalNode(kwargs=FrozenDict({'hide_banner': True, 'dump': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),)),
+  ])
+# ---
+# name: test_rebuild_graph[global-args-2][all_streams]
+  list([
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),
+  ])
+# ---
+# name: test_rebuild_graph[global-args-2][outgoing_nodes]
+  defaultdict({
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None): list([
+      tuple(
+        GlobalNode(kwargs=FrozenDict({'hide_banner': True, 'dump': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),)),
+        0,
+      ),
+    ]),
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'),
+        0,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[global-args-2][outgoing_streams]
+  defaultdict({
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    ]),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'): list([
+      OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[global-args][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'),
+    GlobalNode(kwargs=FrozenDict({'hide_banner': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),)),
+  ])
+# ---
+# name: test_rebuild_graph[global-args][all_streams]
+  list([
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),
+  ])
+# ---
+# name: test_rebuild_graph[global-args][outgoing_nodes]
+  defaultdict({
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None): list([
+      tuple(
+        GlobalNode(kwargs=FrozenDict({'hide_banner': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),)),
+        0,
+      ),
+    ]),
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'),
+        0,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[global-args][outgoing_streams]
+  defaultdict({
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    ]),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'): list([
+      OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),
+    ]),
+  })
+# ---
 # name: test_rebuild_graph[merged-output-1][all_nodes]
   list([
     InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
@@ -275,6 +353,108 @@
     ]),
     OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'): list([
       OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[multi-output-filter][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'),
+    FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)),
+    FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
+    FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'),
+    GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'), index=None))),
+  ])
+# ---
+# name: test_rebuild_graph[multi-output-filter][all_streams]
+  list([
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'), index=None),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'), index=None),
+  ])
+# ---
+# name: test_rebuild_graph[multi-output-filter][outgoing_nodes]
+  defaultdict({
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None): list([
+      tuple(
+        FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)),
+        0,
+      ),
+    ]),
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None): list([
+      tuple(
+        FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)),
+        1,
+      ),
+    ]),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'), index=None): list([
+      tuple(
+        GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'), index=None))),
+        0,
+      ),
+    ]),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'), index=None): list([
+      tuple(
+        GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'), index=None))),
+        1,
+      ),
+    ]),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'),
+        0,
+      ),
+    ]),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'),
+        0,
+      ),
+    ]),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0): list([
+      tuple(
+        FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
+        0,
+      ),
+    ]),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1): list([
+      tuple(
+        FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
+        0,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[multi-output-filter][outgoing_streams]
+  defaultdict({
+    FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)): list([
+      VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
+    ]),
+    FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)): list([
+      VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
+    ]),
+    FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)): list([
+      VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),
+      VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),
+    ]),
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    ]),
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'): list([
+      AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),
+    ]),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'): list([
+      OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output1.mp4'), index=None),
+    ]),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'): list([
+      OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None), AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None)), name='feedback', input_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>), output_typings=(<StreamType.video: 'video'>, <StreamType.video: 'video'>)), index=1),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='output2.mp4'), index=None),
     ]),
   })
 # ---

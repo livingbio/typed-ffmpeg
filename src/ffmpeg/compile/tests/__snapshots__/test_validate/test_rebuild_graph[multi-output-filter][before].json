@@ -1,0 +1,122 @@
+{
+  "index": null,
+  "node": {
+    "inputs": [
+      {
+        "index": null,
+        "node": {
+          "filename": "output1.mp4",
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video",
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": "FrozenDict({})"
+                          }
+                        },
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input2.mp4",
+                            "inputs": [],
+                            "kwargs": "FrozenDict({})"
+                          }
+                        }
+                      ],
+                      "kwargs": "FrozenDict({})",
+                      "name": "feedback",
+                      "output_typings": [
+                        "video",
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": "FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10})",
+                "name": "drawtext",
+                "output_typings": [
+                  "video"
+                ]
+              }
+            }
+          ],
+          "kwargs": "FrozenDict({})"
+        }
+      },
+      {
+        "index": null,
+        "node": {
+          "filename": "output2.mp4",
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 1,
+                    "node": {
+                      "input_typings": [
+                        "video",
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": "FrozenDict({})"
+                          }
+                        },
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input2.mp4",
+                            "inputs": [],
+                            "kwargs": "FrozenDict({})"
+                          }
+                        }
+                      ],
+                      "kwargs": "FrozenDict({})",
+                      "name": "feedback",
+                      "output_typings": [
+                        "video",
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": "FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10})",
+                "name": "drawtext",
+                "output_typings": [
+                  "video"
+                ]
+              }
+            }
+          ],
+          "kwargs": "FrozenDict({})"
+        }
+      }
+    ],
+    "kwargs": "FrozenDict({})"
+  }
+}

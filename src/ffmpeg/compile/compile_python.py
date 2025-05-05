@@ -54,7 +54,9 @@ def filter_stream_typed_index(
     return matched_outgoing_streams.index(matched_stream)
 
 
-def get_input_var_name(stream: Stream, context: DAGContext) -> str:
+def get_input_var_name(
+    stream: Stream, context: DAGContext, filter_data_dict: dict[str, FFMpegFilter]
+) -> str:
     """
     Get the input variable name for the stream.
 
@@ -76,16 +78,22 @@ def get_input_var_name(stream: Stream, context: DAGContext) -> str:
             if isinstance(stream.node, InputNode):
                 return f"{get_output_var_name(stream.node, context)}.video"
             elif isinstance(stream.node, FilterNode):
-                return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
-            else:
-                return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
+                if filter_data_dict[stream.node.name].is_dynamic_output:
+                    return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
+                else:
+                    return (
+                        f"{get_output_var_name(stream.node, context)}[{stream.index}]"
+                    )
         case AudioStream():
             if isinstance(stream.node, InputNode):
                 return f"{get_output_var_name(stream.node, context)}.audio"
             elif isinstance(stream.node, FilterNode):
-                return f"{get_output_var_name(stream.node, context)}.audio({filter_stream_typed_index(stream, context)})"
-            else:
-                return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
+                if filter_data_dict[stream.node.name].is_dynamic_output:
+                    return f"{get_output_var_name(stream.node, context)}.audio({filter_stream_typed_index(stream, context)})"
+                else:
+                    return (
+                        f"{get_output_var_name(stream.node, context)}[{stream.index}]"
+                    )
         case OutputStream():
             return f"{get_output_var_name(stream.node, context)}"
         case GlobalStream():
@@ -134,7 +142,7 @@ def compile_kwargs(kwargs: Mapping[str, Any]) -> str:
     Returns:
         The compiled kwargs.
     """
-    return ", ".join(f"{k}={v}" for k, v in kwargs.items())
+    return ", ".join(f"{k}={repr(v)}" for k, v in kwargs.items())
 
 
 def compile_fluent(code: list[str]) -> list[str]:
@@ -221,10 +229,11 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
             not filter_def.is_dynamic_input
             and len(filter_def.stream_typings_input) == 1
         ):
-            expression = f"{get_input_var_name(node.inputs[0], context)}.{node.name}({compile_kwargs(node.kwargs)})"
+            expression = f"{get_input_var_name(node.inputs[0], context, filter_data_dict)}.{node.name}({compile_kwargs(node.kwargs)})"
         else:
             in_streams_names = ", ".join(
-                get_input_var_name(stream, context) for stream in node.inputs
+                get_input_var_name(stream, context, filter_data_dict)
+                for stream in node.inputs
             )
             expression = f"ffmpeg.filters.{node.name}({in_streams_names}, {compile_kwargs(node.kwargs)})"
 
@@ -237,12 +246,13 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
 
     for node in output_nodes:
         in_streams_names = ", ".join(
-            get_input_var_name(stream, context) for stream in node.inputs
+            get_input_var_name(stream, context, filter_data_dict)
+            for stream in node.inputs
         )
 
         if len(node.inputs) == 1:
             code.append(
-                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context)}.output(filename='{node.filename}', {compile_kwargs(node.kwargs)})"
+                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context, filter_data_dict)}.output(filename='{node.filename}', {compile_kwargs(node.kwargs)})"
             )
         else:
             code.append(
@@ -257,14 +267,14 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
     for node in global_nodes:
         if len(node.inputs) > 1:
             in_streams_names = ", ".join(
-                get_input_var_name(s, context) for s in node.inputs
+                get_input_var_name(s, context, filter_data_dict) for s in node.inputs
             )
             code.append(
                 f"{get_output_var_name(node, context)} = ffmpeg.merge_outputs({in_streams_names}, {compile_kwargs(node.kwargs)})"
             )
         else:
             code.append(
-                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context)}.global_args({compile_kwargs(node.kwargs)})"
+                f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context, filter_data_dict)}.global_args({compile_kwargs(node.kwargs)})"
             )
 
     code = [k.replace(", )", ")") for k in code]

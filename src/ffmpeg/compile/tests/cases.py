@@ -85,6 +85,40 @@ def merged_output_1() -> Stream:
     return graph
 
 
+def global_args() -> Stream:
+    input1 = input("input1.mp4")
+    graph = input1.video.output(filename="tmp.mp4").global_args(hide_banner=True)
+    return graph
+
+
+def global_args_2() -> Stream:
+    input1 = input("input1.mp4")
+    graph = (
+        input1.video.output(filename="tmp.mp4")
+        .global_args(hide_banner=True)
+        .global_args(dump=True)
+    )
+    return graph
+
+
+def multi_output_filter() -> Stream:
+    input1 = input("input1.mp4")
+    input2 = input("input2.mp4")
+    # Apply a filter that generates multiple outputs
+    video, feedout = input1.feedback(input2)  # Generates two output streams
+
+    # Process and output each stream separately
+    o1 = video.drawtext(text="Hello World", fontsize=12, x=10, y=10).output(
+        filename="output1.mp4"
+    )
+    o2 = feedout.drawtext(text="Hello World", fontsize=12, x=10, y=10).output(
+        filename="output2.mp4"
+    )
+
+    # Merge the outputs
+    return merge_outputs(o1, o2)
+
+
 shared_cases = [
     pytest.param(not_utilize_split(), id="not-utilize-split"),
     pytest.param(redundant_split_outputs_1(), id="redundant-split-outputs-1"),
@@ -95,4 +129,7 @@ shared_cases = [
     pytest.param(amix_stream(), id="amix-stream"),
     pytest.param(amix_stream_2(), id="amix-stream-2"),
     pytest.param(merged_output_1(), id="merged-output-1"),
+    pytest.param(global_args(), id="global-args"),
+    pytest.param(global_args_2(), id="global-args-2"),
+    pytest.param(multi_output_filter(), id="multi-output-filter"),
 ]
