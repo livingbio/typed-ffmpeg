@@ -60,7 +60,7 @@ nav:
           - audio stream: src/streams/audio_stream.md
           - av stream: src/streams/av_stream.md
       - Compile:
-          - compile: src/compile/compile.md
+          - compile_cli: src/compile/compile_cli.md
           - context: src/compile/context.md
       - DAG:
           - nodes: src/dag/nodes.md
