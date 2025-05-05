@@ -1,0 +1,11 @@
+# serializer version: 1
+# name: test_compile_python
+  '''
+  input_0 = input('input.mp4', )
+  input_1 = input('input2.mp4', )
+  node_0 = input_0.trim(start=10, end=20)
+  node_1 = input_1.trim(start=50, end=60)
+  node_2 = node_0.video(0).trim(start=30, end=40)
+  node_3 = ffmpeg.filters.concat(node_2.video(0), node_1.video(0), n=2)
+  '''
+# ---

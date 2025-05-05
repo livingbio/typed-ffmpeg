@@ -33,6 +33,7 @@ class StreamType(str, Enum):
     """Represents a video stream containing visual frame data"""
 
 
+@serializable
 class FFMpegFilterOptionType(str, Enum):
     """
     Enumeration of possible data types for FFmpeg filter options.
@@ -98,7 +99,7 @@ class FFMpegFilterType(str, Enum):
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFilterOptionChoice:
+class FFMpegFilterOptionChoice(Serializable):
     """
     Represents a single choice for an FFmpeg filter option with enumerated values.
 
@@ -120,7 +121,7 @@ class FFMpegFilterOptionChoice:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegFilterOption:
+class FFMpegFilterOption(Serializable):
     """
     Represents a configurable option for an FFmpeg filter.
 
@@ -160,7 +161,7 @@ class FFMpegFilterOption:
 
 
 @dataclass(frozen=True, kw_only=True)
-class FFMpegIOType:
+class FFMpegIOType(Serializable):
     """
     Defines the type information for a filter's input or output stream.
 
