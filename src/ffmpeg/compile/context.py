@@ -14,8 +14,8 @@ from dataclasses import dataclass
 from functools import cached_property
 from typing import TypeVar
 
+from ..dag.schema import Node, Stream
 from ..utils.typing import override
-from .schema import Node, Stream
 
 T = TypeVar("T")
 

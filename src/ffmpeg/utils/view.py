@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from ..dag.context import DAGContext
+from ..compile.context import DAGContext
 from ..dag.nodes import FilterNode, InputNode, OutputNode
 from ..dag.schema import Node
 

@@ -1,0 +1,175 @@
+{
+  "index": null,
+  "node": {
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "index": 0,
+        "node": {
+          "input_typings": [
+            "video",
+            "video",
+            "video"
+          ],
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": 0,
+                          "node": {
+                            "input_typings": [
+                              "video"
+                            ],
+                            "inputs": [
+                              {
+                                "index": null,
+                                "node": {
+                                  "filename": "input1.mp4",
+                                  "inputs": [],
+                                  "kwargs": "FrozenDict({})"
+                                }
+                              }
+                            ],
+                            "kwargs": "FrozenDict({})",
+                            "name": "reverse",
+                            "output_typings": [
+                              "video"
+                            ]
+                          }
+                        }
+                      ],
+                      "kwargs": "FrozenDict({'outputs': 2})",
+                      "name": "split",
+                      "output_typings": [
+                        "video",
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": "FrozenDict({'outputs': 2})",
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": 0,
+                          "node": {
+                            "input_typings": [
+                              "video"
+                            ],
+                            "inputs": [
+                              {
+                                "index": null,
+                                "node": {
+                                  "filename": "input1.mp4",
+                                  "inputs": [],
+                                  "kwargs": "FrozenDict({})"
+                                }
+                              }
+                            ],
+                            "kwargs": "FrozenDict({})",
+                            "name": "reverse",
+                            "output_typings": [
+                              "video"
+                            ]
+                          }
+                        }
+                      ],
+                      "kwargs": "FrozenDict({'outputs': 2})",
+                      "name": "split",
+                      "output_typings": [
+                        "video",
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": "FrozenDict({'outputs': 2})",
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            },
+            {
+              "index": 1,
+              "node": {
+                "input_typings": [
+                  "video"
+                ],
+                "inputs": [
+                  {
+                    "index": 0,
+                    "node": {
+                      "input_typings": [
+                        "video"
+                      ],
+                      "inputs": [
+                        {
+                          "index": null,
+                          "node": {
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": "FrozenDict({})"
+                          }
+                        }
+                      ],
+                      "kwargs": "FrozenDict({})",
+                      "name": "reverse",
+                      "output_typings": [
+                        "video"
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": "FrozenDict({'outputs': 2})",
+                "name": "split",
+                "output_typings": [
+                  "video",
+                  "video"
+                ]
+              }
+            }
+          ],
+          "kwargs": "FrozenDict({'n': 3})",
+          "name": "concat",
+          "output_typings": [
+            "video"
+          ]
+        }
+      }
+    ],
+    "kwargs": "FrozenDict({})"
+  }
+}

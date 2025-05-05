@@ -3,10 +3,10 @@ from typing import Any
 from syrupy.assertion import SnapshotAssertion
 
 from ...base import input
+from ...compile.compile_cli import get_node_label
+from ...compile.context import DAGContext
+from ...dag.schema import Node, Stream
 from ...filters import concat
-from ..compile import get_node_label
-from ..context import DAGContext
-from ..schema import Node, Stream
 
 
 def render(context: DAGContext, obj: Any) -> Any:

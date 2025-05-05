@@ -9,8 +9,7 @@ from ffmpeg.streams.video import VideoStream
 
 from ..common.cache import load
 from ..common.schema import FFMpegFilter
-from .context import DAGContext
-from .nodes import (
+from ..dag.nodes import (
     FilterableStream,
     FilterNode,
     GlobalNode,
@@ -19,7 +18,8 @@ from .nodes import (
     OutputNode,
     OutputStream,
 )
-from .schema import Node, Stream
+from ..dag.schema import Node, Stream
+from .context import DAGContext
 from .validate import validate
 
 

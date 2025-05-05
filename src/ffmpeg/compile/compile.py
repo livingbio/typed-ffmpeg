@@ -9,13 +9,13 @@ handling global options, inputs, complex filtergraphs, and outputs.
 
 from __future__ import annotations
 
+from ..dag.nodes import FilterableStream, FilterNode, GlobalNode, InputNode, OutputNode
+from ..dag.schema import Node, Stream
 from ..exceptions import FFMpegValueError
 from ..schema import Default
 from ..utils.escaping import escape
 from ..utils.lazy_eval.schema import LazyValue
 from .context import DAGContext
-from .nodes import FilterableStream, FilterNode, GlobalNode, InputNode, OutputNode
-from .schema import Node, Stream
 from .validate import validate
 
 
