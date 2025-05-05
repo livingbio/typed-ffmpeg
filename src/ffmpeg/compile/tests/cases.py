@@ -16,7 +16,7 @@ def redundant_split_outputs_1() -> Stream:
     return graph
 
 
-def reduntant_split_duplicate() -> Stream:
+def redundant_split_duplicate() -> Stream:
     input1 = input("input1.mp4")
     s = input1.reverse().split(outputs=2)
     s0 = s.video(0)
