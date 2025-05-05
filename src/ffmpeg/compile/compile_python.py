@@ -262,7 +262,11 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
         key=lambda k: context.node_ids[k],
     )
 
-    for node in global_nodes:
+    assert len(global_nodes) <= 1, "Only one global node is supported"
+
+    if global_nodes:
+        node = global_nodes[0]
+
         if len(node.inputs) > 1:
             in_streams_names = ", ".join(
                 get_input_var_name(s, context, filter_data_dict) for s in node.inputs
