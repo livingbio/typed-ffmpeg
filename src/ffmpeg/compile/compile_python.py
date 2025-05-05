@@ -181,9 +181,7 @@ def compile_fluent(code: list[str]) -> list[str]:
     return [f"{k.strip()} = {v.strip()}" for k, v in buffer]
 
 
-def compile_python(
-    stream: Stream, auto_fix: bool = True, fluent: bool = True
-) -> list[str]:
+def compile(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> list[str]:
     """
     Compile the python code.
 
