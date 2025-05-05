@@ -87,8 +87,8 @@ def merged_output_1() -> Stream:
 
 shared_cases = [
     pytest.param(not_utilize_split(), id="not-utilize-split"),
-    pytest.param(redundant_split_outputs_1(), id="reduntant-split-outputs-1"),
-    pytest.param(reduntant_split_duplicate(), id="reduntant-split-duplicate"),
+    pytest.param(redundant_split_outputs_1(), id="redundant-split-outputs-1"),
+    pytest.param(redundant_split_duplicate(), id="redundant-split-duplicate"),
     pytest.param(reuse_input(), id="reuse-input"),
     pytest.param(reuse_stream(), id="reuse-stream"),
     pytest.param(complex_stream(), id="complex-stream"),
