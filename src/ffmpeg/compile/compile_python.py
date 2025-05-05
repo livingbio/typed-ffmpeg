@@ -194,4 +194,4 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
     if fluent:
         code = compile_fluent(code)
 
-    return "\n".join(code)
+    return "\n".join(["import ffmpeg", *code])

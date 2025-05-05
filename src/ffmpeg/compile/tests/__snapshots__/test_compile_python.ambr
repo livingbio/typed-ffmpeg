@@ -1,6 +1,7 @@
 # serializer version: 1
 # name: test_compile_python[complex-stream-False][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input1.mp4')
   input_1 = ffmpeg.input('input2.mp4')
   node_0 = input_0.video.reverse()
@@ -13,6 +14,7 @@
 # ---
 # name: test_compile_python[complex-stream-True][compile-python]
   '''
+  import ffmpeg
   node_2 = ffmpeg.input('input1.mp4').video.reverse().video(0).split(outputs=2)
   node_3 = ffmpeg.input('input2.mp4').audio.areverse().audio(0).asplit(outputs=2)
   node_4 = ffmpeg.filters.concat(node_2.video(1), node_3.audio(1), node_2.video(0), node_3.audio(0), n=2, v=1, a=1)
@@ -21,6 +23,7 @@
 # ---
 # name: test_compile_python[merged-output-1-False][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input1.mp4')
   input_1 = ffmpeg.input('input2.mp4')
   output_0 = input_0.output(filename='output1.mp4')
@@ -29,20 +32,28 @@
   '''
 # ---
 # name: test_compile_python[merged-output-1-True][compile-python]
-  "global_0 = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4'))"
+  '''
+  import ffmpeg
+  global_0 = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4'))
+  '''
 # ---
 # name: test_compile_python[not-utilize-split-False][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input1.mp4')
   node_0 = input_0.reverse()
   output_0 = node_0.video(0).output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[not-utilize-split-True][compile-python]
-  "output_0 = ffmpeg.input('input1.mp4').reverse().video(0).output(filename='tmp.mp4')"
+  '''
+  import ffmpeg
+  output_0 = ffmpeg.input('input1.mp4').reverse().video(0).output(filename='tmp.mp4')
+  '''
 # ---
 # name: test_compile_python[reduntant-split-duplicate-False][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input1.mp4')
   node_0 = input_0.reverse()
   node_1 = node_0.video(0).split(outputs=3)
@@ -52,22 +63,28 @@
 # ---
 # name: test_compile_python[reduntant-split-duplicate-True][compile-python]
   '''
+  import ffmpeg
   node_1 = ffmpeg.input('input1.mp4').reverse().video(0).split(outputs=3)
   output_0 = ffmpeg.filters.concat(node_1.video(2), node_1.video(0), node_1.video(1), n=3).video(0).output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[reduntant-split-outputs-1-False][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input1.mp4')
   node_0 = input_0.reverse()
   output_0 = node_0.video(0).output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[reduntant-split-outputs-1-True][compile-python]
-  "output_0 = ffmpeg.input('input1.mp4').reverse().video(0).output(filename='tmp.mp4')"
+  '''
+  import ffmpeg
+  output_0 = ffmpeg.input('input1.mp4').reverse().video(0).output(filename='tmp.mp4')
+  '''
 # ---
 # name: test_compile_python[reuse-input-False][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input.mp4')
   node_0 = ffmpeg.filters.concat(input_0.video, input_0.video, n=2)
   output_0 = node_0.video(0).output(filename='tmp.mp4')
@@ -75,12 +92,14 @@
 # ---
 # name: test_compile_python[reuse-input-True][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input.mp4')
   output_0 = ffmpeg.filters.concat(input_0.video, input_0.video, n=2).video(0).output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[reuse-stream-False][compile-python]
   '''
+  import ffmpeg
   input_0 = ffmpeg.input('input.mp4')
   node_0 = input_0.reverse()
   node_1 = node_0.video(0).split(outputs=2)
@@ -90,6 +109,7 @@
 # ---
 # name: test_compile_python[reuse-stream-True][compile-python]
   '''
+  import ffmpeg
   node_1 = ffmpeg.input('input.mp4').reverse().video(0).split(outputs=2)
   output_0 = ffmpeg.filters.concat(node_1.video(1), node_1.video(0), n=2).video(0).output(filename='tmp.mp4')
   '''
