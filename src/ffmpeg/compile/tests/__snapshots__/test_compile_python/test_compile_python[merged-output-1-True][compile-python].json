@@ -1,0 +1,4 @@
+[
+  "import ffmpeg",
+  "result = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4')).global_args(dump=True)"
+]

@@ -37,6 +37,6 @@
         }
       }
     ],
-    "kwargs": "FrozenDict({})"
+    "kwargs": "FrozenDict({'dump': True})"
   }
 }

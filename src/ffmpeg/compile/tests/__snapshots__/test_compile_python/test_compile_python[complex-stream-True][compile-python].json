@@ -1,0 +1,7 @@
+[
+  "import ffmpeg",
+  "node_2 = ffmpeg.input('input1.mp4').video.reverse().split(outputs=2)",
+  "node_3 = ffmpeg.input('input2.mp4').audio.areverse().asplit(outputs=2)",
+  "node_4 = ffmpeg.filters.concat(node_2.video(1), node_3.audio(1), node_2.video(0), node_3.audio(0), n=2, v=1, a=1)",
+  "result = ffmpeg.output(node_4.video(0), node_4.audio(0), filename='tmp.mp4')"
+]
