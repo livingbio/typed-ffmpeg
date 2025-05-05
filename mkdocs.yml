@@ -59,9 +59,10 @@ nav:
           - video stream: src/streams/video_stream.md
           - audio stream: src/streams/audio_stream.md
           - av stream: src/streams/av_stream.md
-      - DAG:
-          - compile: src/dag/compile.md
+      - Compile:
+          - compile: src/compile/compile.md
           - context: src/compile/context.md
+      - DAG:
           - nodes: src/dag/nodes.md
           - schema: src/dag/schema.md
           - utils: src/dag/utils.md
