@@ -301,7 +301,7 @@
     InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'),
     OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'),
     OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'),
-    GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
+    GlobalNode(kwargs=FrozenDict({'dump': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
   ])
 # ---
 # name: test_rebuild_graph[merged-output-1][all_streams]
@@ -328,13 +328,13 @@
     ]),
     OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None): list([
       tuple(
-        GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
+        GlobalNode(kwargs=FrozenDict({'dump': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
         0,
       ),
     ]),
     OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None): list([
       tuple(
-        GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
+        GlobalNode(kwargs=FrozenDict({'dump': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None))),
         1,
       ),
     ]),

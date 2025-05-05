@@ -59,6 +59,7 @@
 # ---
 # name: test_compile_cli[merged-output-1][compile-cli]
   list([
+    '-dump',
     '-i',
     'input1.mp4',
     '-i',

@@ -92,13 +92,13 @@
   input_1 = ffmpeg.input('input2.mp4')
   output_0 = input_0.output(filename='output1.mp4')
   output_1 = input_1.output(filename='output2.mp4')
-  global_0 = ffmpeg.merge_outputs(output_0, output_1)
+  global_0 = ffmpeg.merge_outputs(output_0, output_1).glabal_args(dump=True)
   '''
 # ---
 # name: test_compile_python[merged-output-1-True][compile-python]
   '''
   import ffmpeg
-  global_0 = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4'))
+  global_0 = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4')).glabal_args(dump=True)
   '''
 # ---
 # name: test_compile_python[multi-output-filter-False][compile-python]
@@ -111,14 +111,14 @@
   node_2 = node_0[1].drawtext(text='Hello World', fontsize=12, x=10, y=10)
   output_0 = node_1[0].output(filename='output1.mp4')
   output_1 = node_2[0].output(filename='output2.mp4')
-  global_0 = ffmpeg.merge_outputs(output_0, output_1)
+  global_0 = ffmpeg.merge_outputs(output_0, output_1).glabal_args()
   '''
 # ---
 # name: test_compile_python[multi-output-filter-True][compile-python]
   '''
   import ffmpeg
   node_0 = ffmpeg.filters.feedback(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'))
-  global_0 = ffmpeg.merge_outputs(node_0[0].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output1.mp4'), node_0[1].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output2.mp4'))
+  global_0 = ffmpeg.merge_outputs(node_0[0].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output1.mp4'), node_0[1].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output2.mp4')).glabal_args()
   '''
 # ---
 # name: test_compile_python[not-utilize-split-False][compile-python]

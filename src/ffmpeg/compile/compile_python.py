@@ -268,7 +268,7 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
                 get_input_var_name(s, context, filter_data_dict) for s in node.inputs
             )
             code.append(
-                f"{get_output_var_name(node, context)} = ffmpeg.merge_outputs({in_streams_names}, {compile_kwargs(node.kwargs)})"
+                f"{get_output_var_name(node, context)} = ffmpeg.merge_outputs({in_streams_names}).glabal_args({compile_kwargs(node.kwargs)})"
             )
         else:
             code.append(

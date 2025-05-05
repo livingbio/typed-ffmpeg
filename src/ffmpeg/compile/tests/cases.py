@@ -82,7 +82,8 @@ def merged_output_1() -> Stream:
     graph = merge_outputs(
         input1.output(filename="output1.mp4"), input2.output(filename="output2.mp4")
     )
-    return graph
+
+    return graph.global_args(dump=True)
 
 
 def global_args() -> Stream:
