@@ -26,6 +26,20 @@ from .validate import validate
 def filter_stream_typed_index(
     matched_stream: FilterableStream, context: DAGContext
 ) -> int:
+    """
+    Get the index of the matched stream in the outgoing streams of the node.
+
+    This is used to get the index of the stream in the outgoing streams of the node.
+    For example, if the node has 2 outgoing streams, and the first one is a video stream, and the second one is an audio stream,
+    and the matched stream is the first video stream, the index will be 0.
+
+    Args:
+        matched_stream: The stream to get the index of.
+        context: The context of the node.
+
+    Returns:
+        The index of the matched stream in the outgoing streams of the node.
+    """
     matched_outgoing_streams = [
         k
         for k in context.get_outgoing_streams(matched_stream.node)
@@ -41,6 +55,19 @@ def filter_stream_typed_index(
 
 
 def get_input_var_name(stream: Stream, context: DAGContext) -> str:
+    """
+    Get the input variable name for the stream.
+
+    This is used to get the input variable name for the stream.
+    For example, if the stream is a video stream, the input variable name will be "video_stream_0".
+
+    Args:
+        stream: The stream to get the input variable name for.
+        context: The context of the node.
+
+    Returns:
+        The input variable name for the stream.
+    """
     match stream:
         case AVStream():
             assert stream.index is None
@@ -68,6 +95,19 @@ def get_input_var_name(stream: Stream, context: DAGContext) -> str:
 
 
 def get_output_var_name(node: Node, context: DAGContext) -> str:
+    """
+    Get the output variable name for the node.
+
+    This is used to get the output variable name for the node.
+    For example, if the node is an input node, the output variable name will be "input_0".
+
+    Args:
+        node: The node to get the output variable name for.
+        context: The context of the node.
+
+    Returns:
+        The output variable name for the node.
+    """
     match node:
         case InputNode():
             return f"input_{context.node_ids[node]}"
@@ -82,10 +122,34 @@ def get_output_var_name(node: Node, context: DAGContext) -> str:
 
 
 def compile_kwargs(kwargs: Mapping[str, Any]) -> str:
+    """
+    Compile the kwargs for the node.
+
+    This is used to compile the kwargs for the node.
+    For example, if the kwargs is {"a": 1, "b": 2}, the compiled kwargs will be "a=1, b=2".
+
+    Args:
+        kwargs: The kwargs to compile.
+
+    Returns:
+        The compiled kwargs.
+    """
     return ", ".join(f"{k}={v}" for k, v in kwargs.items())
 
 
 def compile_fluent(code: list[str]) -> list[str]:
+    """
+    Compile the fluent code.
+
+    This is used to compile the fluent code.
+    For example, if the code is ["a=1", "b=2"], the compiled code will be ["a=1", "b=2"].
+
+    Args:
+        code: The code to compile.
+
+    Returns:
+        The compiled code.
+    """
     buffer = [k.split("=", 1)[:2] for k in code]
 
     # if the var used in the following expr only once, we can remove the assignment and replace the var with the expr, otherwise, we keep it
@@ -112,6 +176,20 @@ def compile_fluent(code: list[str]) -> list[str]:
 
 
 def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> str:
+    """
+    Compile the python code.
+
+    This is used to compile the python code.
+    For example, if the stream is a video stream, the compiled code will be the python code to create the video stream.
+
+    Args:
+        stream: The stream to compile.
+        auto_fix: Whether to auto fix the stream.
+        fluent: Whether to use fluent syntax.
+
+    Returns:
+        The compiled python code.
+    """
     stream = validate(stream, auto_fix=auto_fix)
     node = stream.node
     context = DAGContext.build(node)
