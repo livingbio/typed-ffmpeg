@@ -18,6 +18,7 @@ def test_context(snapshot: SnapshotAssertion) -> None:
     assert snapshot(name="outgoing_nodes") == context.render(context.outgoing_nodes)
     assert snapshot(name="outgoing_streams") == context.render(context.outgoing_streams)
     assert snapshot(name="node_labels") == context.render(context.node_labels)
+    assert snapshot(name="node_ids") == context.render(context.node_ids)
 
     assert context.get_node_label(input1.node) == "0"
     assert context.get_outgoing_streams(input1.node) == [input1]
