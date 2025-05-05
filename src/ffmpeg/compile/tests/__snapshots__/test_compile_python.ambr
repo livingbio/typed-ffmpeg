@@ -8,13 +8,14 @@
   node_2 = node_1.audio(0).areverse()
   node_3 = ffmpeg.filters.amix(node_1.audio(1), node_2[0], inputs=2, duration='first')
   output_0 = node_3[0].output(filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[amix-stream-2-True][compile-python]
   '''
   import ffmpeg
   node_1 = ffmpeg.input('input1.mp4').audio.areverse()[0].asplit(outputs=2)
-  output_0 = ffmpeg.filters.amix(node_1.audio(1), node_1.audio(0).areverse()[0], inputs=2, duration='first')[0].output(filename='tmp.mp4')
+  result = ffmpeg.filters.amix(node_1.audio(1), node_1.audio(0).areverse()[0], inputs=2, duration='first')[0].output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[amix-stream-False][compile-python]
@@ -26,13 +27,14 @@
   node_2 = node_1.audio(0).areverse()
   node_3 = ffmpeg.filters.amix(node_2[0], node_1.audio(1), inputs=2, duration='first')
   output_0 = node_3[0].output(filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[amix-stream-True][compile-python]
   '''
   import ffmpeg
   node_1 = ffmpeg.input('input1.mp4').audio.areverse()[0].asplit(outputs=2)
-  output_0 = ffmpeg.filters.amix(node_1.audio(0).areverse()[0], node_1.audio(1), inputs=2, duration='first')[0].output(filename='tmp.mp4')
+  result = ffmpeg.filters.amix(node_1.audio(0).areverse()[0], node_1.audio(1), inputs=2, duration='first')[0].output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[complex-stream-False][compile-python]
@@ -46,6 +48,7 @@
   node_3 = node_1[0].asplit(outputs=2)
   node_4 = ffmpeg.filters.concat(node_2.video(1), node_3.audio(1), node_2.video(0), node_3.audio(0), n=2, v=1, a=1)
   output_0 = ffmpeg.output(node_4.video(0), node_4.audio(0), filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[complex-stream-True][compile-python]
@@ -54,7 +57,7 @@
   node_2 = ffmpeg.input('input1.mp4').video.reverse()[0].split(outputs=2)
   node_3 = ffmpeg.input('input2.mp4').audio.areverse()[0].asplit(outputs=2)
   node_4 = ffmpeg.filters.concat(node_2.video(1), node_3.audio(1), node_2.video(0), node_3.audio(0), n=2, v=1, a=1)
-  output_0 = ffmpeg.output(node_4.video(0), node_4.audio(0), filename='tmp.mp4')
+  result = ffmpeg.output(node_4.video(0), node_4.audio(0), filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[global-args-2-False][compile-python]
@@ -63,12 +66,13 @@
   input_0 = ffmpeg.input('input1.mp4')
   output_0 = input_0.video.output(filename='tmp.mp4')
   global_0 = output_0.global_args(hide_banner=True, dump=True)
+  result = global_0
   '''
 # ---
 # name: test_compile_python[global-args-2-True][compile-python]
   '''
   import ffmpeg
-  global_0 = ffmpeg.input('input1.mp4').video.output(filename='tmp.mp4').global_args(hide_banner=True, dump=True)
+  result = ffmpeg.input('input1.mp4').video.output(filename='tmp.mp4').global_args(hide_banner=True, dump=True)
   '''
 # ---
 # name: test_compile_python[global-args-False][compile-python]
@@ -77,12 +81,13 @@
   input_0 = ffmpeg.input('input1.mp4')
   output_0 = input_0.video.output(filename='tmp.mp4')
   global_0 = output_0.global_args(hide_banner=True)
+  result = global_0
   '''
 # ---
 # name: test_compile_python[global-args-True][compile-python]
   '''
   import ffmpeg
-  global_0 = ffmpeg.input('input1.mp4').video.output(filename='tmp.mp4').global_args(hide_banner=True)
+  result = ffmpeg.input('input1.mp4').video.output(filename='tmp.mp4').global_args(hide_banner=True)
   '''
 # ---
 # name: test_compile_python[merged-output-1-False][compile-python]
@@ -93,12 +98,13 @@
   output_0 = input_0.output(filename='output1.mp4')
   output_1 = input_1.output(filename='output2.mp4')
   global_0 = ffmpeg.merge_outputs(output_0, output_1).glabal_args(dump=True)
+  result = global_0
   '''
 # ---
 # name: test_compile_python[merged-output-1-True][compile-python]
   '''
   import ffmpeg
-  global_0 = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4')).glabal_args(dump=True)
+  result = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4')).glabal_args(dump=True)
   '''
 # ---
 # name: test_compile_python[multi-output-filter-False][compile-python]
@@ -112,13 +118,14 @@
   output_0 = node_1[0].output(filename='output1.mp4')
   output_1 = node_2[0].output(filename='output2.mp4')
   global_0 = ffmpeg.merge_outputs(output_0, output_1).glabal_args()
+  result = global_0
   '''
 # ---
 # name: test_compile_python[multi-output-filter-True][compile-python]
   '''
   import ffmpeg
   node_0 = ffmpeg.filters.feedback(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'))
-  global_0 = ffmpeg.merge_outputs(node_0[0].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output1.mp4'), node_0[1].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output2.mp4')).glabal_args()
+  result = ffmpeg.merge_outputs(node_0[0].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output1.mp4'), node_0[1].drawtext(text='Hello World', fontsize=12, x=10, y=10)[0].output(filename='output2.mp4')).glabal_args()
   '''
 # ---
 # name: test_compile_python[not-utilize-split-False][compile-python]
@@ -127,12 +134,13 @@
   input_0 = ffmpeg.input('input1.mp4')
   node_0 = input_0.reverse()
   output_0 = node_0[0].output(filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[not-utilize-split-True][compile-python]
   '''
   import ffmpeg
-  output_0 = ffmpeg.input('input1.mp4').reverse()[0].output(filename='tmp.mp4')
+  result = ffmpeg.input('input1.mp4').reverse()[0].output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[redundant-split-duplicate-False][compile-python]
@@ -143,13 +151,14 @@
   node_1 = node_0[0].split(outputs=3)
   node_2 = ffmpeg.filters.concat(node_1.video(2), node_1.video(0), node_1.video(1), n=3)
   output_0 = node_2.video(0).output(filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[redundant-split-duplicate-True][compile-python]
   '''
   import ffmpeg
   node_1 = ffmpeg.input('input1.mp4').reverse()[0].split(outputs=3)
-  output_0 = ffmpeg.filters.concat(node_1.video(2), node_1.video(0), node_1.video(1), n=3).video(0).output(filename='tmp.mp4')
+  result = ffmpeg.filters.concat(node_1.video(2), node_1.video(0), node_1.video(1), n=3).video(0).output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[redundant-split-outputs-1-False][compile-python]
@@ -158,12 +167,13 @@
   input_0 = ffmpeg.input('input1.mp4')
   node_0 = input_0.reverse()
   output_0 = node_0[0].output(filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[redundant-split-outputs-1-True][compile-python]
   '''
   import ffmpeg
-  output_0 = ffmpeg.input('input1.mp4').reverse()[0].output(filename='tmp.mp4')
+  result = ffmpeg.input('input1.mp4').reverse()[0].output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[reuse-input-False][compile-python]
@@ -172,13 +182,14 @@
   input_0 = ffmpeg.input('input.mp4')
   node_0 = ffmpeg.filters.concat(input_0.video, input_0.video, n=2)
   output_0 = node_0.video(0).output(filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[reuse-input-True][compile-python]
   '''
   import ffmpeg
   input_0 = ffmpeg.input('input.mp4')
-  output_0 = ffmpeg.filters.concat(input_0.video, input_0.video, n=2).video(0).output(filename='tmp.mp4')
+  result = ffmpeg.filters.concat(input_0.video, input_0.video, n=2).video(0).output(filename='tmp.mp4')
   '''
 # ---
 # name: test_compile_python[reuse-stream-False][compile-python]
@@ -189,12 +200,13 @@
   node_1 = node_0[0].split(outputs=2)
   node_2 = ffmpeg.filters.concat(node_1.video(1), node_1.video(0), n=2)
   output_0 = node_2.video(0).output(filename='tmp.mp4')
+  result = output_0
   '''
 # ---
 # name: test_compile_python[reuse-stream-True][compile-python]
   '''
   import ffmpeg
   node_1 = ffmpeg.input('input.mp4').reverse()[0].split(outputs=2)
-  output_0 = ffmpeg.filters.concat(node_1.video(1), node_1.video(0), n=2).video(0).output(filename='tmp.mp4')
+  result = ffmpeg.filters.concat(node_1.video(1), node_1.video(0), n=2).video(0).output(filename='tmp.mp4')
   '''
 # ---

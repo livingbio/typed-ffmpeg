@@ -279,6 +279,7 @@ def compile_python(stream: Stream, auto_fix: bool = True, fluent: bool = True) -
                 f"{get_output_var_name(node, context)} = {get_input_var_name(node.inputs[0], context, filter_data_dict)}.global_args({compile_kwargs(node.kwargs)})"
             )
 
+    code.append(f"result = {get_output_var_name(node, context)}")
     code = [k.replace(", )", ")") for k in code]
 
     if fluent:
