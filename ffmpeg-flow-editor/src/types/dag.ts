@@ -1,10 +1,11 @@
 import { FFmpegFilter } from './ffmpeg';
-import { Serializable, serializable } from '../utils/serialize';
+import { Serializable } from '../utils/serialize';
 
 // Core types
-export enum StreamType {
-  audio = 'audio',
-  video = 'video',
+export class StreamType extends Serializable {
+  constructor(public value: string) {
+    super();
+  }
 }
 
 // Base interfaces
@@ -19,7 +20,6 @@ export interface Stream {
 }
 
 // Node types
-@serializable
 export class FilterNode extends Serializable implements Node {
   constructor(
     public name: string,
@@ -33,7 +33,6 @@ export class FilterNode extends Serializable implements Node {
   }
 }
 
-@serializable
 export class InputNode extends Serializable implements Node {
   constructor(
     public filename: string,
@@ -44,7 +43,6 @@ export class InputNode extends Serializable implements Node {
   }
 }
 
-@serializable
 export class OutputNode extends Serializable implements Node {
   constructor(
     public filename: string,
@@ -55,7 +53,6 @@ export class OutputNode extends Serializable implements Node {
   }
 }
 
-@serializable
 export class GlobalNode extends Serializable implements Node {
   constructor(
     public inputs: OutputStream[],
@@ -66,7 +63,6 @@ export class GlobalNode extends Serializable implements Node {
 }
 
 // Stream types
-@serializable
 export class FilterableStream extends Serializable implements Stream {
   constructor(
     public node: FilterNode | InputNode,
@@ -76,28 +72,24 @@ export class FilterableStream extends Serializable implements Stream {
   }
 }
 
-@serializable
 export class VideoStream extends FilterableStream {
   constructor(node: FilterNode | InputNode, index: number | null = null) {
     super(node, index);
   }
 }
 
-@serializable
 export class AudioStream extends FilterableStream {
   constructor(node: FilterNode | InputNode, index: number | null = null) {
     super(node, index);
   }
 }
 
-@serializable
 export class AVStream extends FilterableStream {
   constructor(node: FilterNode | InputNode, index: number | null = null) {
     super(node, index);
   }
 }
 
-@serializable
 export class OutputStream extends Serializable implements Stream {
   constructor(
     public node: OutputNode,
@@ -107,7 +99,6 @@ export class OutputStream extends Serializable implements Stream {
   }
 }
 
-@serializable
 export class GlobalStream extends Serializable implements Stream {
   constructor(
     public node: GlobalNode,
