@@ -61,11 +61,11 @@ repos:
 
       - id: prettier
         name: Prettier
-        entry: bash -c 'cd ffmpeg-flow-editor && npx prettier'
+        entry: bash -c 'cd ffmpeg-flow-editor && npx prettier --write'
         language: system
         types: [file]
         files: ^ffmpeg-flow-editor/.*\.(js|jsx|ts|tsx|json|md)$
-        args: [--write]
+        pass_filenames: true
 
       - id: check-staged-tsx
         name: Check staged TypeScript files
