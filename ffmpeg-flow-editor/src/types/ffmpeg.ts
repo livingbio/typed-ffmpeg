@@ -1,4 +1,5 @@
 import filtersConfig from '../config/filters.json';
+import { StreamType } from './dag';
 
 export interface FFmpegFilter {
   __class__: 'FFMpegFilter';
@@ -27,7 +28,7 @@ export interface FFmpegIOType {
   name: string;
   type: {
     __class__: 'StreamType';
-    value: string;
+    value: StreamType;
   };
 }
 
