@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Serialization System > Basic Serialization > should serialize a complex node with nested data 1`] = `
+"{
+  "__class__": "ComplexNode",
+  "name": "complex",
+  "data": {
+    "numbers": [
+      1,
+      2,
+      3
+    ],
+    "strings": [
+      "a",
+      "b",
+      "c"
+    ],
+    "nested": {
+      "key": "test",
+      "value": 42
+    }
+  },
+  "type": "video"
+}"
+`;
+
+exports[`Serialization System > Basic Serialization > should serialize a node with children 1`] = `
+"{
+  "__class__": "TestNode",
+  "name": "parent",
+  "value": 1,
+  "children": [
+    {
+      "__class__": "TestNode",
+      "name": "child1",
+      "value": 2,
+      "children": []
+    },
+    {
+      "__class__": "TestNode",
+      "name": "child2",
+      "value": 3,
+      "children": []
+    }
+  ]
+}"
+`;
+
+exports[`Serialization System > Basic Serialization > should serialize a simple node 1`] = `
+"{
+  "__class__": "TestNode",
+  "name": "test",
+  "value": 42,
+  "children": []
+}"
+`;

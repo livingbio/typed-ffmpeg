@@ -1,4 +1,5 @@
 import { FFmpegFilter } from './ffmpeg';
+import { Serializable, serializable } from '../utils/serialize';
 
 // Core types
 export enum StreamType {
@@ -18,49 +19,100 @@ export interface Stream {
 }
 
 // Node types
-export interface FilterNode extends Node {
-  name: string;
-  inputs: FilterableStream[];
-  input_typings: StreamType[];
-  output_typings: StreamType[];
-  filter: FFmpegFilter;
+@serializable
+export class FilterNode extends Serializable implements Node {
+  constructor(
+    public name: string,
+    public inputs: FilterableStream[],
+    public input_typings: StreamType[],
+    public output_typings: StreamType[],
+    public filter: FFmpegFilter,
+    public kwargs: Record<string, string | number | boolean> = {}
+  ) {
+    super();
+  }
 }
 
-export interface InputNode extends Node {
-  filename: string;
-  inputs: [];
+@serializable
+export class InputNode extends Serializable implements Node {
+  constructor(
+    public filename: string,
+    public inputs: [] = [],
+    public kwargs: Record<string, string | number | boolean> = {}
+  ) {
+    super();
+  }
 }
 
-export interface OutputNode extends Node {
-  filename: string;
-  inputs: FilterableStream[];
+@serializable
+export class OutputNode extends Serializable implements Node {
+  constructor(
+    public filename: string,
+    public inputs: FilterableStream[],
+    public kwargs: Record<string, string | number | boolean> = {}
+  ) {
+    super();
+  }
 }
 
-export interface GlobalNode extends Node {
-  inputs: OutputStream[];
+@serializable
+export class GlobalNode extends Serializable implements Node {
+  constructor(
+    public inputs: OutputStream[],
+    public kwargs: Record<string, string | number | boolean> = {}
+  ) {
+    super();
+  }
 }
 
 // Stream types
-export interface FilterableStream extends Stream {
-  node: FilterNode | InputNode;
+@serializable
+export class FilterableStream extends Serializable implements Stream {
+  constructor(
+    public node: FilterNode | InputNode,
+    public index: number | null = null
+  ) {
+    super();
+  }
 }
 
-export interface VideoStream extends FilterableStream {
-  node: FilterNode | InputNode;
+@serializable
+export class VideoStream extends FilterableStream {
+  constructor(node: FilterNode | InputNode, index: number | null = null) {
+    super(node, index);
+  }
 }
 
-export interface AudioStream extends FilterableStream {
-  node: FilterNode | InputNode;
+@serializable
+export class AudioStream extends FilterableStream {
+  constructor(node: FilterNode | InputNode, index: number | null = null) {
+    super(node, index);
+  }
 }
 
-export interface AVStream extends FilterableStream {
-  node: FilterNode | InputNode;
+@serializable
+export class AVStream extends FilterableStream {
+  constructor(node: FilterNode | InputNode, index: number | null = null) {
+    super(node, index);
+  }
 }
 
-export interface OutputStream extends Stream {
-  node: OutputNode;
+@serializable
+export class OutputStream extends Serializable implements Stream {
+  constructor(
+    public node: OutputNode,
+    public index: number | null = null
+  ) {
+    super();
+  }
 }
 
-export interface GlobalStream extends Stream {
-  node: GlobalNode;
+@serializable
+export class GlobalStream extends Serializable implements Stream {
+  constructor(
+    public node: GlobalNode,
+    public index: number | null = null
+  ) {
+    super();
+  }
 }
