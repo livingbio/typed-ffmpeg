@@ -191,7 +191,7 @@ def compile_fluent(code: list[str]) -> list[str]:
     return [f"{k.strip()} = {v.strip()}" for k, v in buffer]
 
 
-def compile(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> list[str]:
+def compile(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> str:
     """
     Compile the python code.
 
@@ -295,10 +295,10 @@ def compile(stream: Stream, auto_fix: bool = True, fluent: bool = True) -> list[
     if fluent:
         code = compile_fluent(code)
 
-    return ["import ffmpeg", *code]
+    return "\n".join(["import ffmpeg", *code])
 
 
-def parse(code: list[str]) -> Stream:
+def parse(code: str) -> Stream:
     """
     Parse the python code.
 
@@ -312,7 +312,7 @@ def parse(code: list[str]) -> Stream:
         The parsed stream.
     """
     local_vars: dict[str, Any] = {}
-    exec("\n".join(code), {}, local_vars)
+    exec(code, {}, local_vars)
     result = local_vars["result"]
 
     assert isinstance(result, Stream)

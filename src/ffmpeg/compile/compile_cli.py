@@ -3,8 +3,15 @@ Compiles FFmpeg filter graphs into command-line arguments.
 
 This module provides functionality to convert the internal DAG (Directed Acyclic Graph)
 representation of an FFmpeg filter chain into the actual command-line arguments
-that would be passed to FFmpeg. It traverses the graph in the correct order,
-handling global options, inputs, complex filtergraphs, and outputs.
+that would be passed to FFmpeg. It handles the following components:
+
+1. Global Options: General FFmpeg settings like log level, overwrite flags
+2. Input Files: Source media files with their specific options
+3. Filter Graphs: Complex filter chains with proper stream labeling
+4. Output Files: Destination files with codec and format settings
+
+The module ensures proper ordering of arguments and handles stream mapping,
+filter graph syntax, and escaping of special characters in FFmpeg commands.
 """
 
 from __future__ import annotations
@@ -15,11 +22,29 @@ from ..exceptions import FFMpegValueError
 from ..schema import Default
 from ..utils.escaping import escape
 from ..utils.lazy_eval.schema import LazyValue
+from ..utils.run import command_line
 from .context import DAGContext
 from .validate import validate
 
 
-def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
+def compile(stream: Stream, auto_fix: bool = True) -> str:
+    """
+    Compile a stream into a command-line string.
+
+    This function takes a Stream object representing an FFmpeg filter graph
+    and converts it into a command-line string that can be passed to FFmpeg.
+
+    Args:
+        stream: The Stream object to compile into a command-line string
+        auto_fix: Whether to automatically fix issues in the stream
+
+    Returns:
+        A command-line string that can be passed to FFmpeg
+    """
+    return command_line(compile_as_list(stream, auto_fix))
+
+
+def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
     """
     Compile a stream into a list of FFmpeg command-line arguments.
 
@@ -32,7 +57,8 @@ def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
     4. Output nodes (output files and their options)
 
     The function validates the graph before compilation to ensure it's properly
-    formed. If auto_fix is enabled, it will attempt to fix common issues.
+    formed. If auto_fix is enabled, it will attempt to fix common issues like
+    disconnected nodes or invalid stream mappings.
 
     Args:
         stream: The Stream object to compile into arguments
@@ -41,6 +67,9 @@ def compile(stream: Stream, auto_fix: bool = True) -> list[str]:
 
     Returns:
         A list of strings representing FFmpeg command-line arguments
+
+    Raises:
+        FFMpegValueError: If the stream contains invalid configurations that cannot be fixed
 
     Example:
         ```python
@@ -108,6 +137,7 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
     - Multi-output filters: "filterlabel#index"
 
     Args:
+        stream: The stream to generate a label for
         context: Optional DAG context for resolving node labels.
                 If not provided, a new context will be built.
 
@@ -156,9 +186,12 @@ def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
     FFmpeg's syntax where input labels are followed by the filter name
     and parameters, and then output labels.
 
+    The filter string format is:
+    [input_label]filter_name=param1=value1:param2=value2[output_label]
+
     Args:
-        context: Optional DAG context for resolving stream labels.
-                If not provided, a new context will be built.
+        node: The FilterNode to generate arguments for
+        context: DAG context for resolving stream labels
 
     Returns:
         A list of strings that, when joined, form the filter string
@@ -207,9 +240,12 @@ def get_args_input_node(node: InputNode, context: DAGContext) -> list[str]:
 
     This method creates the command-line arguments needed to specify
     this input file to FFmpeg, including any input-specific options.
+    Options are converted to FFmpeg's command-line format, with boolean
+    options using -option or -nooption syntax.
 
     Args:
-        context: Optional DAG context (not used for input nodes)
+        node: The InputNode to generate arguments for
+        context: DAG context (not used for input nodes)
 
     Returns:
         A list of strings representing FFmpeg command-line arguments
@@ -237,11 +273,12 @@ def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
 
     This method creates the command-line arguments needed to specify
     this output file to FFmpeg, including stream mapping and output-specific
-    options like codecs and formats.
+    options like codecs and formats. It handles both direct input streams
+    and filter output streams appropriately.
 
     Args:
-        context: Optional DAG context for resolving stream labels.
-                If not provided, a new context will be built.
+        node: The OutputNode to generate arguments for
+        context: DAG context for resolving stream labels
 
     Returns:
         A list of strings representing FFmpeg command-line arguments
@@ -278,10 +315,12 @@ def get_args_global_node(node: GlobalNode, context: DAGContext) -> list[str]:
 
     This method creates the command-line arguments needed to specify
     global options to FFmpeg, such as -y for overwrite or -loglevel for
-    controlling log output.
+    controlling log output. Boolean options are converted to -option or
+    -nooption syntax.
 
     Args:
-        context: Optional DAG context (not used for global options)
+        node: The GlobalNode to generate arguments for
+        context: DAG context (not used for global options)
 
     Returns:
         A list of strings representing FFmpeg command-line arguments
@@ -304,7 +343,22 @@ def get_args_global_node(node: GlobalNode, context: DAGContext) -> list[str]:
 
 def get_args(node: Node, context: DAGContext | None = None) -> list[str]:
     """
-    Get the arguments for a node.
+    Get the FFmpeg command-line arguments for a specific node.
+
+    This function dispatches to the appropriate argument generation function
+    based on the node type. It handles all node types in the FFmpeg DAG:
+    FilterNode, InputNode, OutputNode, and GlobalNode.
+
+    Args:
+        node: The node to generate arguments for
+        context: Optional DAG context for resolving stream labels.
+                If not provided, a new context will be built.
+
+    Returns:
+        A list of strings representing FFmpeg command-line arguments
+
+    Raises:
+        FFMpegValueError: If the node type is not recognized
     """
 
     context = context or DAGContext.build(node)
@@ -330,9 +384,11 @@ def get_node_label(node: Node, context: DAGContext) -> str:
     filter graph notation. The label format depends on the node type:
     - Input nodes: sequential numbers (0, 1, 2...)
     - Filter nodes: 's' prefix followed by a number (s0, s1, s2...)
+    - Output nodes: 'out'
 
     Args:
-        node: The node to get the label for (must be an InputNode or FilterNode)
+        node: The node to get the label for
+        context: DAG context containing node ID mappings
 
     Returns:
         The string label for the node
