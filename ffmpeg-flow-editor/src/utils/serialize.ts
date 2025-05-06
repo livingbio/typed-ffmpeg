@@ -1,20 +1,40 @@
-import { StreamType } from '../types/dag';
-
 // Type definitions
 type Constructor<T> = new (...args: unknown[]) => T;
+
+// Define base types first to avoid circular references
+type SerializablePrimitive = string | number | boolean | null | undefined;
+type SerializableArray = SerializableValue[];
+type SerializableMap = Map<SerializableValue, SerializableValue>;
+type SerializableSet = Set<SerializableValue>;
+type SerializableObject = { [key: string]: SerializableValue };
 type SerializableValue =
-  | string
-  | number
-  | boolean
-  | null
-  | undefined
+  | SerializablePrimitive
   | Date
-  | Map<unknown, unknown>
-  | Set<unknown>
-  | SerializableValue[]
-  | Record<string, SerializableValue>;
-type SerializedObject = { [key: string]: SerializedValue };
-type SerializedValue = string | number | boolean | null | undefined | SerializedObject;
+  | SerializableMap
+  | SerializableSet
+  | SerializableArray
+  | SerializableObject;
+
+// Special types for serialized form
+interface SerializedSpecial {
+  __type__: string;
+  value: unknown;
+}
+
+interface SerializedClass {
+  __class__: string;
+  [key: string]: SerializedValue;
+}
+
+interface SerializedCircular {
+  __circular__: true;
+}
+
+type SerializedValue =
+  | SerializablePrimitive
+  | SerializedSpecial
+  | SerializedClass
+  | SerializedCircular;
 
 // Class registry for deserialization
 const CLASS_REGISTRY: Record<string, Constructor<unknown>> = {};
@@ -83,75 +103,95 @@ function toDictWithClassInfo(obj: SerializableValue, seen = new WeakSet()): Seri
   seen.add(obj);
 
   if (obj instanceof Map) {
+    const entries = Array.from(obj.entries()).map(([k, v]) => [
+      toDictWithClassInfo(k as SerializableValue, seen),
+      toDictWithClassInfo(v as SerializableValue, seen),
+    ]);
     return {
       __type__: 'Map',
-      value: Array.from(obj.entries()),
-    };
+      value: entries,
+    } as SerializedSpecial;
   }
 
   if (obj instanceof Set) {
+    const values = Array.from(obj).map((v) => toDictWithClassInfo(v as SerializableValue, seen));
     return {
       __type__: 'Set',
-      value: Array.from(obj),
-    };
+      value: values,
+    } as SerializedSpecial;
   }
 
   if (obj instanceof Date) {
     return {
       __type__: 'Date',
       value: obj.toISOString(),
-    };
+    } as SerializedSpecial;
   }
 
   if (Array.isArray(obj)) {
-    return obj.map((item) => toDictWithClassInfo(item as SerializableValue, seen));
+    return obj.map((item) =>
+      toDictWithClassInfo(item as SerializableValue, seen)
+    ) as unknown as SerializedValue;
   }
 
   if (obj instanceof Object && obj.constructor !== Object) {
-    const result: SerializedObject = {
+    const result: SerializedClass = {
       __class__: obj.constructor.name,
     };
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        result[key] = toDictWithClassInfo(
-          (obj as Record<string, unknown>)[key] as SerializableValue,
-          seen
-        );
+        const value = (obj as Record<string, unknown>)[key];
+        if (value !== undefined) {
+          result[key] = toDictWithClassInfo(value as SerializableValue, seen);
+        }
       }
     }
     return result;
   }
 
-  const result: SerializedObject = {};
+  const result: SerializedClass = {
+    __class__: 'Object',
+  };
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      result[key] = toDictWithClassInfo(
-        (obj as Record<string, unknown>)[key] as SerializableValue,
-        seen
-      );
+      const value = (obj as Record<string, unknown>)[key];
+      if (value !== undefined) {
+        result[key] = toDictWithClassInfo(value as SerializableValue, seen);
+      }
     }
   }
   return result;
 }
 
 // Custom JSON deserialization
-function objectHook(_key: string, value: SerializedValue): unknown {
-  if (value && typeof value === 'object' && '__class__' in value) {
+function objectHook(_key: string, value: unknown): unknown {
+  if (
+    value &&
+    typeof value === 'object' &&
+    '__class__' in value &&
+    typeof value.__class__ === 'string'
+  ) {
     const cls = loadClass(value.__class__);
     const instance = new cls();
-    const { __class__, ...rest } = value;
-    Object.assign(instance, rest);
+    const { __class__: ignored, ...rest } = value as SerializedClass;
+    Object.assign(instance as Record<string, unknown>, rest);
     return instance;
   }
 
-  if (value && typeof value === 'object' && '__type__' in value) {
-    switch (value.__type__) {
+  if (
+    value &&
+    typeof value === 'object' &&
+    '__type__' in value &&
+    typeof value.__type__ === 'string'
+  ) {
+    const typed = value as SerializedSpecial;
+    switch (typed.__type__) {
       case 'Map':
-        return new Map(value.value as [unknown, unknown][]);
+        return new Map(typed.value as [unknown, unknown][]);
       case 'Set':
-        return new Set(value.value as unknown[]);
+        return new Set(typed.value as unknown[]);
       case 'Date':
-        return new Date(value.value as string);
+        return new Date(typed.value as string);
       default:
         return value;
     }
@@ -180,8 +220,8 @@ export abstract class Serializable {
     }
   }
 
-  toJSON(): string {
-    return dumps(this);
+  toJSON(): SerializedValue {
+    return toDictWithClassInfo(this as unknown as SerializableValue);
   }
 
   static fromJSON<T extends Serializable>(this: Constructor<T>, json: string): T {
