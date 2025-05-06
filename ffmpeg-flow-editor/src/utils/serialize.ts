@@ -15,12 +15,6 @@ export class Serializable {
   }
 }
 
-// Register a class for serialization
-export function registerClass(name: string, constructor: new (...args: any[]) => any) {
-  console.log(`Registering class: ${name}`);
-  classRegistry.set(name, constructor);
-}
-
 // Register multiple classes at once
 export function registerClasses(classes: Record<string, new (...args: any[]) => any>) {
   console.log('Registering classes:', Object.keys(classes));
