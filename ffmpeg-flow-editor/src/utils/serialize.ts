@@ -1,13 +1,15 @@
 // Class registry for serialization
-const classRegistry = new Map<string, new (...args: any[]) => any>();
+type Constructor = new (...args: any[]) => any;
+const classRegistry = new Map<string, Constructor>();
 
 // Base class for serializable objects
 export class Serializable {
-  toJSON(): any {
-    const obj: any = {};
+  toJSON(): Record<string, unknown> {
+    const obj: Record<string, unknown> = {};
     for (const key in this) {
       if (Object.prototype.hasOwnProperty.call(this, key)) {
-        obj[key] = this[key];
+        const value = this[key];
+        obj[key] = value instanceof Serializable ? value.toJSON() : value;
       }
     }
     obj.__class__ = this.constructor.name;
@@ -16,7 +18,7 @@ export class Serializable {
 }
 
 // Register multiple classes at once
-export function registerClasses(classes: Record<string, new (...args: any[]) => any>) {
+export function registerClasses(classes: Record<string, Constructor>) {
   console.log('Registering classes:', Object.keys(classes));
   for (const [name, constructor] of Object.entries(classes)) {
     classRegistry.set(name, constructor);
@@ -35,18 +37,32 @@ export function getRegisteredClassNames(): string[] {
 }
 
 // Serialize an object to JSON string
-export function dumps(obj: any): string {
-  return JSON.stringify(obj);
+export function dumps(obj: unknown): string {
+  return JSON.stringify(obj, (key, value) => {
+    if (value instanceof Map) {
+      return {
+        __type__: 'Map',
+        value: Array.from(value.entries()),
+      };
+    }
+    if (value instanceof Set) {
+      return {
+        __type__: 'Set',
+        value: Array.from(value),
+      };
+    }
+    return value;
+  });
 }
 
 // Deserialize a JSON string to an object
-export function loads(json: string): any {
+export function loads(json: string): unknown {
   const obj = JSON.parse(json);
   return deserializeObject(obj);
 }
 
 // Helper function to deserialize an object
-function deserializeObject(obj: any): any {
+function deserializeObject(obj: unknown): unknown {
   if (obj === null || typeof obj !== 'object') {
     return obj;
   }
@@ -57,34 +73,35 @@ function deserializeObject(obj: any): any {
   }
 
   // Handle special types
-  if (obj instanceof Date) {
-    return new Date(obj);
-  }
-
-  if (obj instanceof Map) {
-    return new Map(Array.from(obj.entries()).map(([k, v]) => [k, deserializeObject(v)]));
-  }
-
-  if (obj instanceof Set) {
-    return new Set(Array.from(obj).map(deserializeObject));
+  if (obj && typeof obj === 'object' && '__type__' in obj) {
+    const typedObj = obj as { __type__: string; value: unknown };
+    if (typedObj.__type__ === 'Map') {
+      return new Map(
+        (typedObj.value as [unknown, unknown][]).map(([k, v]) => [k, deserializeObject(v)])
+      );
+    }
+    if (typedObj.__type__ === 'Set') {
+      return new Set((typedObj.value as unknown[]).map(deserializeObject));
+    }
   }
 
   // Handle class instances
-  if (obj.__class__) {
-    console.log('Looking for class:', obj.__class__);
+  if (obj && typeof obj === 'object' && '__class__' in obj) {
+    const classObj = obj as { __class__: string; [key: string]: unknown };
+    console.log('Looking for class:', classObj.__class__);
     console.log('Registered classes:', getRegisteredClassNames());
-    const Constructor = classRegistry.get(obj.__class__);
+    const Constructor = classRegistry.get(classObj.__class__);
     if (!Constructor) {
-      throw new Error(`Class ${obj.__class__} not registered`);
+      throw new Error(`Class ${classObj.__class__} not registered`);
     }
 
     // Create a new instance without calling constructor
     const instance = Object.create(Constructor.prototype);
 
     // Deserialize all properties
-    for (const key in obj) {
+    for (const key in classObj) {
       if (key !== '__class__') {
-        instance[key] = deserializeObject(obj[key]);
+        instance[key] = deserializeObject(classObj[key]);
       }
     }
 
@@ -92,9 +109,9 @@ function deserializeObject(obj: any): any {
   }
 
   // Handle plain objects
-  const result: any = {};
+  const result: Record<string, unknown> = {};
   for (const key in obj) {
-    result[key] = deserializeObject(obj[key]);
+    result[key] = deserializeObject((obj as Record<string, unknown>)[key]);
   }
   return result;
 }
