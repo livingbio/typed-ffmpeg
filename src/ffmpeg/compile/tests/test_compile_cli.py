@@ -3,7 +3,7 @@ from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
 from ...dag.schema import Stream
-from ..compile_cli import compile
+from ..compile_cli import compile_as_list
 from .cases import shared_cases
 
 
@@ -11,4 +11,4 @@ from .cases import shared_cases
 def test_compile_cli(snapshot: SnapshotAssertion, graph: Stream) -> None:
     assert snapshot(
         name="compile-cli", extension_class=JSONSnapshotExtension
-    ) == compile(graph)
+    ) == compile_as_list(graph)

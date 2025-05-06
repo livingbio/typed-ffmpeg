@@ -1,0 +1,188 @@
+{
+  "__class__": "OutputStream",
+  "index": null,
+  "node": {
+    "__class__": "OutputNode",
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "__class__": "AudioStream",
+        "index": 0,
+        "node": {
+          "__class__": "FilterNode",
+          "input_typings": [
+            {
+              "__class__": "StreamType",
+              "value": "audio"
+            },
+            {
+              "__class__": "StreamType",
+              "value": "audio"
+            }
+          ],
+          "inputs": [
+            {
+              "__class__": "AudioStream",
+              "index": 0,
+              "node": {
+                "__class__": "FilterNode",
+                "input_typings": [
+                  {
+                    "__class__": "StreamType",
+                    "value": "audio"
+                  }
+                ],
+                "inputs": [
+                  {
+                    "__class__": "AudioStream",
+                    "index": 0,
+                    "node": {
+                      "__class__": "FilterNode",
+                      "input_typings": [
+                        {
+                          "__class__": "StreamType",
+                          "value": "audio"
+                        }
+                      ],
+                      "inputs": [
+                        {
+                          "__class__": "AudioStream",
+                          "index": null,
+                          "node": {
+                            "__class__": "InputNode",
+                            "filename": "input1.mp4",
+                            "inputs": [],
+                            "kwargs": {}
+                          }
+                        }
+                      ],
+                      "kwargs": {},
+                      "name": "areverse",
+                      "output_typings": [
+                        {
+                          "__class__": "StreamType",
+                          "value": "audio"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": {
+                  "outputs": 2
+                },
+                "name": "asplit",
+                "output_typings": [
+                  {
+                    "__class__": "StreamType",
+                    "value": "audio"
+                  },
+                  {
+                    "__class__": "StreamType",
+                    "value": "audio"
+                  }
+                ]
+              }
+            },
+            {
+              "__class__": "AudioStream",
+              "index": 0,
+              "node": {
+                "__class__": "FilterNode",
+                "input_typings": [
+                  {
+                    "__class__": "StreamType",
+                    "value": "audio"
+                  }
+                ],
+                "inputs": [
+                  {
+                    "__class__": "AudioStream",
+                    "index": 1,
+                    "node": {
+                      "__class__": "FilterNode",
+                      "input_typings": [
+                        {
+                          "__class__": "StreamType",
+                          "value": "audio"
+                        }
+                      ],
+                      "inputs": [
+                        {
+                          "__class__": "AudioStream",
+                          "index": 0,
+                          "node": {
+                            "__class__": "FilterNode",
+                            "input_typings": [
+                              {
+                                "__class__": "StreamType",
+                                "value": "audio"
+                              }
+                            ],
+                            "inputs": [
+                              {
+                                "__class__": "AudioStream",
+                                "index": null,
+                                "node": {
+                                  "__class__": "InputNode",
+                                  "filename": "input1.mp4",
+                                  "inputs": [],
+                                  "kwargs": {}
+                                }
+                              }
+                            ],
+                            "kwargs": {},
+                            "name": "areverse",
+                            "output_typings": [
+                              {
+                                "__class__": "StreamType",
+                                "value": "audio"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "kwargs": {
+                        "outputs": 2
+                      },
+                      "name": "asplit",
+                      "output_typings": [
+                        {
+                          "__class__": "StreamType",
+                          "value": "audio"
+                        },
+                        {
+                          "__class__": "StreamType",
+                          "value": "audio"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "kwargs": {},
+                "name": "areverse",
+                "output_typings": [
+                  {
+                    "__class__": "StreamType",
+                    "value": "audio"
+                  }
+                ]
+              }
+            }
+          ],
+          "kwargs": {
+            "duration": "first",
+            "inputs": 2
+          },
+          "name": "amix",
+          "output_typings": [
+            {
+              "__class__": "StreamType",
+              "value": "audio"
+            }
+          ]
+        }
+      }
+    ],
+    "kwargs": {}
+  }
+}

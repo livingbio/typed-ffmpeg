@@ -81,7 +81,7 @@ class GlobalRunable(GlobalArgs):
     def compile(
         self,
         cmd: str | list[str] = "ffmpeg",
-        overwrite_output: bool = None,
+        overwrite_output: bool | None = None,
         auto_fix: bool = True,
     ) -> list[str]:
         """
@@ -111,7 +111,7 @@ class GlobalRunable(GlobalArgs):
             # Result: ['ffmpeg', '-i', 'input.mp4', 'output.mp4']
             ```
         """
-        from ...compile.compile_cli import compile
+        from ...compile.compile_cli import compile_as_list
 
         if isinstance(cmd, str):
             cmd = [cmd]
@@ -121,12 +121,12 @@ class GlobalRunable(GlobalArgs):
         elif overwrite_output is False:
             return self.global_args(n=True).compile(cmd, auto_fix=auto_fix)
 
-        return cmd + compile(self._global_node().stream(), auto_fix=auto_fix)
+        return cmd + compile_as_list(self._global_node().stream(), auto_fix=auto_fix)
 
     def compile_line(
         self,
         cmd: str | list[str] = "ffmpeg",
-        overwrite_output: bool = None,
+        overwrite_output: bool | None = None,
         auto_fix: bool = True,
     ) -> str:
         """
@@ -165,7 +165,7 @@ class GlobalRunable(GlobalArgs):
         pipe_stdout: bool = False,
         pipe_stderr: bool = False,
         quiet: bool = False,
-        overwrite_output: bool = None,
+        overwrite_output: bool | None = None,
         auto_fix: bool = True,
     ) -> subprocess.Popen[bytes]:
         """
@@ -222,7 +222,7 @@ class GlobalRunable(GlobalArgs):
         capture_stderr: bool = False,
         input: bytes | None = None,
         quiet: bool = False,
-        overwrite_output: bool = None,
+        overwrite_output: bool | None = None,
         auto_fix: bool = True,
     ) -> tuple[bytes, bytes]:
         """
