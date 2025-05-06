@@ -1,0 +1,33 @@
+{
+  "__class__": "GlobalStream",
+  "index": null,
+  "node": {
+    "__class__": "GlobalNode",
+    "inputs": [
+      {
+        "__class__": "OutputStream",
+        "index": null,
+        "node": {
+          "__class__": "OutputNode",
+          "filename": "tmp.mp4",
+          "inputs": [
+            {
+              "__class__": "VideoStream",
+              "index": null,
+              "node": {
+                "__class__": "InputNode",
+                "filename": "input1.mp4",
+                "inputs": [],
+                "kwargs": {}
+              }
+            }
+          ],
+          "kwargs": {}
+        }
+      }
+    ],
+    "kwargs": {
+      "hide_banner": true
+    }
+  }
+}
