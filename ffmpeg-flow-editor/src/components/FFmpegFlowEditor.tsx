@@ -274,6 +274,14 @@ export default function FFmpegFlowEditor() {
     [reactFlowInstance, onAddFilter]
   );
 
+  const handleImportFlow = useCallback(
+    (newNodes: Node[], newEdges: Edge[]) => {
+      setNodes(newNodes);
+      setEdges(newEdges);
+    },
+    [setNodes, setEdges]
+  );
+
   return (
     <Box
       sx={{
@@ -306,7 +314,12 @@ export default function FFmpegFlowEditor() {
         <Background />
         <Controls />
       </ReactFlow>
-      <Sidebar nodes={nodes} edges={edges} onAddFilter={onAddFilter} />
+      <Sidebar
+        nodes={nodes}
+        edges={edges}
+        onAddFilter={onAddFilter}
+        onImportFlow={handleImportFlow}
+      />
     </Box>
   );
 }

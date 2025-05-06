@@ -1,11 +1,15 @@
-import { Box, Paper, Typography, Divider, TextField, InputAdornment } from '@mui/material';
+import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import { Node, Edge } from 'reactflow';
 import { predefinedFilters } from '../types/ffmpeg';
 import PreviewPanel from './PreviewPanel';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import InputIcon from '@mui/icons-material/Input';
 import OutputIcon from '@mui/icons-material/Output';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
+import { serializeFlow } from '../utils/serializeFlow';
+import { deserializeFlow } from '../utils/deserializeFlow';
 
 interface SidebarProps {
   nodes: Node[];
@@ -15,10 +19,13 @@ interface SidebarProps {
     parameters?: Record<string, string>,
     position?: { x: number; y: number }
   ) => void;
+  onImportFlow?: (nodes: Node[], edges: Edge[]) => void;
 }
 
-export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
+export default function Sidebar({ nodes, edges, onAddFilter, onImportFlow }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isExporting, setIsExporting] = useState(false);
 
   const filteredFilters = useMemo(() => {
     if (!searchQuery) return [...predefinedFilters].sort((a, b) => a.name.localeCompare(b.name));
@@ -35,6 +42,54 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
   const handleDragStart = (e: React.DragEvent, filterName: string) => {
     e.dataTransfer.setData('application/reactflow', filterName);
     e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleExport = async () => {
+    try {
+      setIsExporting(true);
+      const serializedFlow = await serializeFlow(nodes, edges);
+      const jsonString = JSON.stringify(serializedFlow, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ffmpeg-flow.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error exporting flow:', error);
+      alert('Error exporting flow: ' + (error as Error).message);
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleImport = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const content = e.target?.result as string;
+        const serializedFlow = JSON.parse(content);
+        const { nodes: newNodes, edges: newEdges } = deserializeFlow(serializedFlow);
+
+        if (onImportFlow) {
+          onImportFlow(newNodes, newEdges);
+        }
+      } catch (error) {
+        console.error('Error importing flow:', error);
+        alert('Error importing flow: ' + (error as Error).message);
+      }
+    };
+    reader.readAsText(file);
   };
 
   return (
@@ -83,6 +138,29 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
           },
         }}
       >
+        {/* Import/Export Buttons */}
+        <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+          <Button variant="outlined" startIcon={<UploadIcon />} onClick={handleImport} fullWidth>
+            Import Flow
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<DownloadIcon />}
+            onClick={handleExport}
+            disabled={isExporting}
+            fullWidth
+          >
+            {isExporting ? 'Exporting...' : 'Export Flow'}
+          </Button>
+        </Box>
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept=".json"
+          style={{ display: 'none' }}
+        />
+
         {/* I/O Nodes Section */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1" gutterBottom>

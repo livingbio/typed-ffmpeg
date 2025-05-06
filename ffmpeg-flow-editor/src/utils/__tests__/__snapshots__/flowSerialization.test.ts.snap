@@ -1,0 +1,275 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Flow Serialization and Deserialization > Round-trip serialization > should preserve node and edge structure after round-trip 1`] = `
+{
+  "__class__": "OutputStream",
+  "index": null,
+  "node": {
+    "__class__": "OutputNode",
+    "filename": "output.mp4",
+    "inputs": [
+      {
+        "__class__": "AVStream",
+        "node": {
+          "__class__": "InputNode",
+          "filename": "input.mp4",
+          "inputs": [],
+          "kwargs": {},
+        },
+      },
+    ],
+    "kwargs": {},
+  },
+}
+`;
+
+exports[`Flow Serialization and Deserialization > deserializeFlow > should deserialize a simple input-output flow 1`] = `
+{
+  "edges": [
+    {
+      "id": "input-1-output-0",
+      "source": "input-1",
+      "sourceHandle": "output-0",
+      "target": "output-0",
+      "targetHandle": "input-0",
+    },
+  ],
+  "nodes": [
+    {
+      "data": {
+        "__class__": "OutputStream",
+        "filename": "output.mp4",
+        "filterName": "output",
+        "filterType": "output",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "av",
+            },
+          ],
+          "outputs": [],
+        },
+        "input_typings": undefined,
+        "kwargs": {},
+        "label": "Output",
+        "name": undefined,
+        "output_typings": undefined,
+        "parameters": {},
+      },
+      "id": "output-0",
+      "position": {
+        "x": 0,
+        "y": 0,
+      },
+      "type": "filter",
+    },
+    {
+      "data": {
+        "__class__": "AVStream",
+        "filename": "input.mp4",
+        "filterName": "input",
+        "filterType": "input",
+        "handles": {
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "output-0",
+              "type": "av",
+            },
+          ],
+        },
+        "input_typings": undefined,
+        "kwargs": {},
+        "label": "Input",
+        "name": undefined,
+        "output_typings": undefined,
+        "parameters": {},
+      },
+      "id": "input-1",
+      "position": {
+        "x": 200,
+        "y": 0,
+      },
+      "type": "filter",
+    },
+  ],
+}
+`;
+
+exports[`Flow Serialization and Deserialization > deserializeFlow > should handle complex filter nodes 1`] = `
+{
+  "edges": [
+    {
+      "id": "input-2-filter-1",
+      "source": "input-2",
+      "sourceHandle": "output-0",
+      "target": "filter-1",
+      "targetHandle": "input-0",
+    },
+    {
+      "id": "filter-1-output-0",
+      "source": "filter-1",
+      "sourceHandle": "output-0",
+      "target": "output-0",
+      "targetHandle": "input-0",
+    },
+  ],
+  "nodes": [
+    {
+      "data": {
+        "__class__": "OutputStream",
+        "filename": "output.mp4",
+        "filterName": "output",
+        "filterType": "output",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "av",
+            },
+          ],
+          "outputs": [],
+        },
+        "input_typings": undefined,
+        "kwargs": {},
+        "label": "Output",
+        "name": undefined,
+        "output_typings": undefined,
+        "parameters": {},
+      },
+      "id": "output-0",
+      "position": {
+        "x": 0,
+        "y": 0,
+      },
+      "type": "filter",
+    },
+    {
+      "data": {
+        "__class__": "VideoStream",
+        "filename": undefined,
+        "filterName": "scale",
+        "filterType": "filter",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "video",
+            },
+          ],
+          "outputs": [
+            {
+              "id": "output-0",
+              "type": "video",
+            },
+          ],
+        },
+        "input_typings": [
+          {
+            "__class__": "StreamType",
+            "value": "video",
+          },
+        ],
+        "kwargs": {
+          "height": "720",
+          "width": "1280",
+        },
+        "label": "scale",
+        "name": "scale",
+        "output_typings": [
+          {
+            "__class__": "StreamType",
+            "value": "video",
+          },
+        ],
+        "parameters": {
+          "height": "720",
+          "width": "1280",
+        },
+      },
+      "id": "filter-1",
+      "position": {
+        "x": 200,
+        "y": 0,
+      },
+      "type": "filter",
+    },
+    {
+      "data": {
+        "__class__": "AVStream",
+        "filename": "input.mp4",
+        "filterName": "input",
+        "filterType": "input",
+        "handles": {
+          "inputs": [],
+          "outputs": [
+            {
+              "id": "output-0",
+              "type": "av",
+            },
+          ],
+        },
+        "input_typings": undefined,
+        "kwargs": {},
+        "label": "Input",
+        "name": undefined,
+        "output_typings": undefined,
+        "parameters": {},
+      },
+      "id": "input-2",
+      "position": {
+        "x": 400,
+        "y": 0,
+      },
+      "type": "filter",
+    },
+  ],
+}
+`;
+
+exports[`Flow Serialization and Deserialization > serializeFlow > should handle missing filenames 1`] = `
+{
+  "__class__": "OutputStream",
+  "index": null,
+  "node": {
+    "__class__": "OutputNode",
+    "filename": "out.mp4",
+    "inputs": [
+      {
+        "__class__": "AVStream",
+        "node": {
+          "__class__": "InputNode",
+          "filename": "input.mp4",
+          "inputs": [],
+          "kwargs": {},
+        },
+      },
+    ],
+    "kwargs": {},
+  },
+}
+`;
+
+exports[`Flow Serialization and Deserialization > serializeFlow > should serialize a simple input-output flow 1`] = `
+{
+  "__class__": "OutputStream",
+  "index": null,
+  "node": {
+    "__class__": "OutputNode",
+    "filename": "output.mp4",
+    "inputs": [
+      {
+        "__class__": "AVStream",
+        "node": {
+          "__class__": "InputNode",
+          "filename": "input.mp4",
+          "inputs": [],
+          "kwargs": {},
+        },
+      },
+    ],
+    "kwargs": {},
+  },
+}
+`;
