@@ -39,7 +39,8 @@ export function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: s
       let currentId = edge.target;
       let currentStream = nodeStreams[inputNode.id];
 
-      while (true) {
+      // Process nodes until we reach an output or a node without outgoing edges
+      while (currentId) {
         const nextNode = nodes.find((n) => n.id === currentId);
         if (!nextNode || nextNode.data.filterType !== 'filter') break;
 

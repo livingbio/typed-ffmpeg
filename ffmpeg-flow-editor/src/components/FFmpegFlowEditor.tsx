@@ -80,10 +80,19 @@ export default function FFmpegFlowEditor() {
     };
   }, [setNodes]);
 
-  // Use the imported validation function
-  const isValidConnection = (connection: Connection): boolean => {
-    return validateConnection(connection, nodes, edges);
-  };
+  const isValidConnection = useCallback(
+    (connection: Connection): boolean => {
+      const sourceNode = nodes.find((n) => n.id === connection.source);
+      const targetNode = nodes.find((n) => n.id === connection.target);
+
+      if (!sourceNode || !targetNode) {
+        return false;
+      }
+
+      return validateConnection(connection, nodes, edges);
+    },
+    [nodes, edges]
+  ); // Depends on both nodes and edges for validation
 
   const onConnect = useCallback(
     (params: Connection) => {
@@ -159,7 +168,7 @@ export default function FFmpegFlowEditor() {
         setEdges((eds) => addEdge(newEdge, eds));
       }
     },
-    [isValidConnection, setEdges, nodes, edges]
+    [isValidConnection, setEdges, nodes]
   );
 
   const onAddFilter = useCallback(
