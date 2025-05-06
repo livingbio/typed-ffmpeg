@@ -59,37 +59,6 @@ function loadClass(className: string): Constructor<unknown> {
   return cls;
 }
 
-// Function to convert mutable data structures to immutable equivalents
-function freeze<T extends SerializableValue>(obj: T): T {
-  if (obj === null || typeof obj !== 'object') {
-    return obj;
-  }
-
-  if (obj instanceof Map) {
-    return new Map(Array.from(obj.entries()).map(([k, v]) => [k, freeze(v)])) as T;
-  }
-
-  if (obj instanceof Set) {
-    return new Set(Array.from(obj).map(freeze)) as T;
-  }
-
-  if (obj instanceof Date) {
-    return new Date(obj.getTime()) as T;
-  }
-
-  if (Array.isArray(obj)) {
-    return obj.map(freeze) as T;
-  }
-
-  const result = {} as T;
-  for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      result[key] = freeze(obj[key]);
-    }
-  }
-  return result;
-}
-
 // Convert object to dictionary with embedded class information
 function toDictWithClassInfo(obj: SerializableValue, seen = new WeakSet()): SerializedValue {
   if (obj === null || typeof obj !== 'object') {
@@ -149,9 +118,8 @@ function toDictWithClassInfo(obj: SerializableValue, seen = new WeakSet()): Seri
     return result;
   }
 
-  const result: SerializedClass = {
-    __class__: 'Object',
-  };
+  // For plain objects, don't add __class__ information
+  const result: Record<string, SerializedValue> = {};
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       const value = (obj as Record<string, unknown>)[key];
@@ -160,7 +128,7 @@ function toDictWithClassInfo(obj: SerializableValue, seen = new WeakSet()): Seri
       }
     }
   }
-  return result;
+  return result as unknown as SerializedValue;
 }
 
 // Custom JSON deserialization
@@ -173,7 +141,8 @@ function objectHook(_key: string, value: unknown): unknown {
   ) {
     const cls = loadClass(value.__class__);
     const instance = new cls();
-    const { __class__: ignored, ...rest } = value as SerializedClass;
+    const rest = { ...value } as Record<string, unknown>;
+    delete rest.__class__;
     Object.assign(instance as Record<string, unknown>, rest);
     return instance;
   }
