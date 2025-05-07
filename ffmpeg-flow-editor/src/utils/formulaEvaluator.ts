@@ -55,6 +55,9 @@ json.dumps(result)
 
 // Helper function to parse string parameters
 export function parseStringParameter(value: string): string | number | boolean {
+  if (value === '') {
+    return '';
+  }
   if (!isNaN(Number(value))) {
     return Number(value);
   }
