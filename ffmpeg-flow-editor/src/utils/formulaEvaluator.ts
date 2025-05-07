@@ -1,33 +1,6 @@
 import { FFmpegIOType } from '../types/ffmpeg';
+import { runPython } from './pyodide';
 
-// Add type declarations for Pyodide
-declare global {
-  interface Window {
-    loadPyodide: (options: { indexURL: string }) => Promise<{
-      runPythonAsync: (code: string) => Promise<string>;
-      loadPackage: (packageName: string) => Promise<void>;
-    }>;
-  }
-}
-
-// Create a singleton instance of Pyodide
-let pyodide: Awaited<ReturnType<typeof window.loadPyodide>> | null = null;
-
-async function getPyodide(): Promise<Awaited<ReturnType<typeof window.loadPyodide>>> {
-  if (!pyodide) {
-    pyodide = await window.loadPyodide({
-      indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
-    });
-    await pyodide.loadPackage('micropip');
-    await pyodide.runPythonAsync(`
-      import micropip
-      await micropip.install('typed-ffmpeg')
-    `);
-  }
-  return pyodide;
-}
-
-// Helper function to evaluate a formula expression
 export async function evaluateFormula(
   formula: string,
   parameters: Record<string, string | number | boolean>
@@ -35,8 +8,6 @@ export async function evaluateFormula(
   if (!formula) return [];
 
   try {
-    const pyodide = await getPyodide();
-
     // Convert parameters to a format that can be passed to Python
     const pythonParameters = Object.entries(parameters).reduce(
       (acc, [key, value]) => {
@@ -58,7 +29,7 @@ json.dumps(result)
 `;
 
     // Execute the Python code
-    const result = await pyodide.runPythonAsync(pythonCode);
+    const result = await runPython(pythonCode);
 
     // Parse the JSON result
     const parsedResult = JSON.parse(result) as string[];
@@ -70,9 +41,9 @@ json.dumps(result)
         name: '',
         type: {
           __class__: 'StreamType',
-          value: type,
+          value: type as unknown as FFmpegIOType['type']['value'],
         },
-      }));
+      })) as FFmpegIOType[];
     }
     console.error('Invalid result:', result);
     throw new Error('Invalid result', { cause: result });
@@ -84,6 +55,9 @@ json.dumps(result)
 
 // Helper function to parse string parameters
 export function parseStringParameter(value: string): string | number | boolean {
+  if (value === '') {
+    return '';
+  }
   if (!isNaN(Number(value))) {
     return Number(value);
   }
