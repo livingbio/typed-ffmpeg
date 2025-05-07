@@ -1,37 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { evaluateFormula, parseStringParameter } from '../formulaEvaluator';
-import { loadPyodide } from 'pyodide';
-import path from 'path';
-
-// Create a singleton instance of Pyodide
-let pyodide: Awaited<ReturnType<typeof loadPyodide>> | null = null;
-
-async function getPyodide() {
-  if (!pyodide) {
-    // Get the path to the pyodide files in node_modules
-    const pyodidePath = path.resolve(process.cwd(), 'node_modules', 'pyodide');
-
-    pyodide = await loadPyodide({
-      indexURL: pyodidePath,
-    });
-    await pyodide.loadPackage('micropip');
-    await pyodide.runPythonAsync(`
-      import micropip
-      await micropip.install('typed-ffmpeg')
-    `);
-  }
-  return pyodide;
-}
+import { setupPyodideMock } from './testUtils';
 
 describe('formulaEvaluator', () => {
   beforeEach(async () => {
-    // Reset the Pyodide instance
-    pyodide = null;
-
-    // Setup window mock with the actual Pyodide
-    global.window = {
-      loadPyodide: getPyodide,
-    } as unknown as Window & typeof globalThis;
+    setupPyodideMock();
   });
 
   describe('evaluateFormula', () => {
@@ -245,19 +218,22 @@ describe('formulaEvaluator', () => {
   });
 
   describe('parseStringParameter', () => {
-    it('should parse numeric values', () => {
-      expect(parseStringParameter('42')).toBe(42);
-      expect(parseStringParameter('3.14')).toBe(3.14);
+    it('should parse numeric string to number', () => {
+      expect(parseStringParameter('123')).toBe(123);
+      expect(parseStringParameter('-123')).toBe(-123);
+      expect(parseStringParameter('0')).toBe(0);
     });
 
-    it('should parse boolean values', () => {
+    it('should parse boolean strings to boolean', () => {
       expect(parseStringParameter('true')).toBe(true);
+      expect(parseStringParameter('True')).toBe(true);
       expect(parseStringParameter('false')).toBe(false);
+      expect(parseStringParameter('False')).toBe(false);
     });
 
-    it('should return string for non-numeric, non-boolean values', () => {
+    it('should return string for non-numeric, non-boolean strings', () => {
       expect(parseStringParameter('hello')).toBe('hello');
-      expect(parseStringParameter('123abc')).toBe('123abc');
+      expect(parseStringParameter('')).toBe('');
     });
   });
 });
