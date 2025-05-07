@@ -1,5 +1,61 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`convertToDag > should convert filter chain with multiple nodes 1`] = `
+{
+  "__class__": "GlobalNode",
+  "inputs": [
+    {
+      "__class__": "OutputStream",
+      "index": null,
+      "node": {
+        "__class__": "OutputNode",
+        "filename": "output.mp4",
+        "inputs": [
+          {
+            "__class__": "VideoStream",
+            "index": 1,
+            "node": {
+              "__class__": "FilterNode",
+              "input_typings": [
+                {
+                  "__class__": "StreamType",
+                  "value": "video",
+                },
+              ],
+              "inputs": [
+                {
+                  "__class__": "VideoStream",
+                  "index": null,
+                  "node": {
+                    "__class__": "InputNode",
+                    "filename": "input.mp4",
+                    "inputs": [],
+                    "kwargs": {},
+                  },
+                },
+              ],
+              "kwargs": {
+                "h": 480,
+                "w": 640,
+              },
+              "name": "scale",
+              "output_typings": [
+                {
+                  "__class__": "StreamType",
+                  "value": "video",
+                },
+              ],
+            },
+          },
+        ],
+        "kwargs": {},
+      },
+    },
+  ],
+  "kwargs": {},
+}
+`;
+
 exports[`convertToDag > should convert simple input-output chain 1`] = `
 {
   "__class__": "GlobalNode",

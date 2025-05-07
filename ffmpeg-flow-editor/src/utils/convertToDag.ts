@@ -39,7 +39,7 @@ export function convertToDag(nodes: Node[], edges: Edge[]) {
   });
 
   // Second pass: Connect nodes based on edges
-  edges.forEach((edge) => {
+  edges.forEach((edge, index) => {
     const sourceNode = nodeMap.get(edge.source);
     const targetNode = nodeMap.get(edge.target);
 
@@ -47,14 +47,26 @@ export function convertToDag(nodes: Node[], edges: Edge[]) {
       if (targetNode instanceof OutputNode) {
         const stream =
           edge.data.type === 'video'
-            ? new VideoStream(sourceNode as FilterNode | InputNode)
-            : new AudioStream(sourceNode as FilterNode | InputNode);
+            ? new VideoStream(
+                sourceNode as FilterNode | InputNode,
+                sourceNode instanceof FilterNode ? index : null
+              )
+            : new AudioStream(
+                sourceNode as FilterNode | InputNode,
+                sourceNode instanceof FilterNode ? index : null
+              );
         targetNode.inputs = [...targetNode.inputs, stream];
       } else if (targetNode instanceof FilterNode) {
         const stream =
           edge.data.type === 'video'
-            ? new VideoStream(sourceNode as FilterNode | InputNode)
-            : new AudioStream(sourceNode as FilterNode | InputNode);
+            ? new VideoStream(
+                sourceNode as FilterNode | InputNode,
+                sourceNode instanceof FilterNode ? index : null
+              )
+            : new AudioStream(
+                sourceNode as FilterNode | InputNode,
+                sourceNode instanceof FilterNode ? index : null
+              );
         targetNode.inputs = [...targetNode.inputs, stream];
       }
     }

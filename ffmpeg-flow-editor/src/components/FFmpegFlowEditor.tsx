@@ -16,7 +16,6 @@ import FilterNode from './FilterNode';
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
-import { validateConnection } from '../utils/connectionValidation';
 
 const nodeTypes = {
   filter: FilterNode,
@@ -80,36 +79,44 @@ export default function FFmpegFlowEditor() {
     };
   }, [setNodes]);
 
-  // Use the imported validation function
-  const isValidConnection = (connection: Connection): boolean => {
-    return validateConnection(connection, nodes, edges);
-  };
+  const isValidConnection = useCallback(
+    (connection: Connection): boolean => {
+      // Rule 1: Can't connect to input nodes
+      const targetNode = nodes.find((node) => node.id === connection.target);
+      if (targetNode?.data.filterType === 'input') {
+        console.log('Invalid connection: Cannot connect to input nodes');
+        return false;
+      }
+
+      // Rule 2: Can't connect from output nodes
+      const sourceNode = nodes.find((node) => node.id === connection.source);
+      if (sourceNode?.data.filterType === 'output') {
+        console.log('Invalid connection: Cannot connect from output nodes');
+        return false;
+      }
+
+      return true;
+    },
+    [nodes]
+  );
 
   const onConnect = useCallback(
     (params: Connection) => {
       if (isValidConnection(params) && params.source && params.target) {
-        const sourceNode = nodes.find((node) => node.id === params.source);
-
-        // Determine the edge type
         let edgeType: EdgeType = 'av';
-        if (sourceNode?.data.filterType === 'filter' && params.sourceHandle) {
-          interface HandleInfo {
-            id: string;
-            type: EdgeType;
-          }
 
-          // Debug log the handles and source handle
-          console.log('Finding handle type:', {
-            sourceHandle: params.sourceHandle,
-            allOutputs: sourceNode.data.handles.outputs,
-            filterName: sourceNode.data.filterName,
-          });
+        interface HandleInfo {
+          id: string;
+          type: EdgeType;
+        }
 
-          const handle = (sourceNode.data.handles.outputs as HandleInfo[]).find(
-            (h) => h.id === params.sourceHandle
+        // Determine edge type from source node
+        const sourceNode = nodes.find((node) => node.id === params.source);
+        if (sourceNode?.data.filterType === 'filter') {
+          // Rule 2: Filter nodes mark edges based on their output handle type
+          const handle = sourceNode.data.handles.outputs.find(
+            (h: HandleInfo) => h.id === params.sourceHandle
           );
-          console.log('Found handle:', handle);
-
           if (handle) {
             edgeType = handle.type;
             console.log('Setting edge type from handle:', {
@@ -159,7 +166,7 @@ export default function FFmpegFlowEditor() {
         setEdges((eds) => addEdge(newEdge, eds));
       }
     },
-    [isValidConnection, setEdges, nodes, edges]
+    [isValidConnection, setEdges, nodes]
   );
 
   const onAddFilter = useCallback(
