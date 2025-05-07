@@ -1,5 +1,6 @@
 import { FFmpegIOType } from '../types/ffmpeg';
 import { runPython } from './pyodide';
+import { dumps } from './serialize';
 
 export async function evaluateFormula(
   formula: string,
@@ -22,7 +23,7 @@ export async function evaluateFormula(
 from ffmpeg.dag.factory import eval_formula
 import json
 
-parameters = json.loads('${JSON.stringify(pythonParameters)}')
+parameters = json.loads('${dumps(pythonParameters)}')
 
 result = [k.value for k in eval_formula("""${formula}""", **parameters)]
 json.dumps(result)

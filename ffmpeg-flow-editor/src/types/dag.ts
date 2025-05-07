@@ -1,4 +1,3 @@
-import { FFmpegFilter } from './ffmpeg';
 import { Serializable } from '../utils/serialize';
 
 // Core types
@@ -26,7 +25,6 @@ export class FilterNode extends Serializable implements Node {
     public inputs: FilterableStream[],
     public input_typings: StreamType[],
     public output_typings: StreamType[],
-    public filter: FFmpegFilter,
     public kwargs: Record<string, string | number | boolean> = {}
   ) {
     super();
