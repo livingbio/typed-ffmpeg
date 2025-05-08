@@ -1,0 +1,46 @@
+{
+  "inputs": [
+    {
+      "node": {
+        "filename": "output.mp4",
+        "inputs": [
+          {
+            "node": {
+              "name": "reverse",
+              "inputs": [
+                {
+                  "node": {
+                    "filename": "input.mp4"
+                  },
+                  "index": 0
+                }
+              ],
+              "input_typings": [{"value": "video"}],
+              "output_typings": [{"value": "video"}],
+              "kwargs": {}
+            },
+            "index": 0
+          },
+          {
+            "node": {
+              "name": "areverse",
+              "inputs": [
+                {
+                  "node": {
+                    "filename": "input.mp4"
+                  },
+                  "index": 0
+                }
+              ],
+              "input_typings": [{"value": "audio"}],
+              "output_typings": [{"value": "audio"}],
+              "kwargs": {}
+            },
+            "index": 0
+          }
+        ]
+      },
+      "index": 0
+    }
+  ]
+} 

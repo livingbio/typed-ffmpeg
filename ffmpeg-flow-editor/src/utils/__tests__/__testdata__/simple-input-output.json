@@ -1,0 +1,18 @@
+{
+  "inputs": [
+    {
+      "node": {
+        "filename": "output.mp4",
+        "inputs": [
+          {
+            "node": {
+              "filename": "input.mp4"
+            },
+            "index": 0
+          }
+        ]
+      },
+      "index": 0
+    }
+  ]
+} 

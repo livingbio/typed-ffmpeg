@@ -18,9 +18,16 @@ export function convertFromDag(dag: GlobalNode): { nodes: Node[]; edges: Edge[] 
 
   // Helper function to create a unique ID for a node
   const createNodeId = (node: FilterNode | InputNode | OutputNode) => {
-    if (node instanceof InputNode) return 'input';
-    if (node instanceof OutputNode) return 'output';
-    return `${node.name}-${Date.now()}`;
+    if (nodeMap.has(node.toString())) {
+      return nodeMap.get(node.toString())!;
+    }
+    if (node instanceof InputNode) return 'input-0';
+    if (node instanceof OutputNode) {
+      const index = nodes.filter(n => n.data.filterType === 'output').length;
+      return `output-${index}`;
+    }
+    // For filter nodes, use a consistent ID format
+    return `${node.name}-${nodes.filter(n => n.data.filterName === node.name).length}`;
   };
 
   // Helper function to get edge type from stream
@@ -40,8 +47,8 @@ export function convertFromDag(dag: GlobalNode): { nodes: Node[]; edges: Edge[] 
     if (node instanceof InputNode) {
       nodes.push({
         id: nodeId,
-        type: 'filter',
-        position: { x: 100, y: 100 },
+        type: 'input',
+        position: { x: 100, y: 100 }, // React-specific property
         data: {
           label: 'Input',
           filterType: 'input',
@@ -56,17 +63,18 @@ export function convertFromDag(dag: GlobalNode): { nodes: Node[]; edges: Edge[] 
     } else if (node instanceof OutputNode) {
       nodes.push({
         id: nodeId,
-        type: 'filter',
-        position: { x: 800, y: 100 },
+        type: 'output',
+        position: { x: 800, y: 100 }, // React-specific property
         data: {
           label: 'Output',
           filterType: 'output',
           filterString: '[outv]',
           parameters: {},
           handles: {
-            inputs: [{ id: 'input-0', type: 'av' }],
+            inputs: node.inputs.map((_, i) => ({ id: `input-${i}`, type: 'av' })),
             outputs: [],
           },
+          filename: node.filename,
         },
       });
     } else if (node instanceof FilterNode) {
@@ -76,7 +84,7 @@ export function convertFromDag(dag: GlobalNode): { nodes: Node[]; edges: Edge[] 
       nodes.push({
         id: nodeId,
         type: 'filter',
-        position: { x: Math.random() * 500 + 200, y: Math.random() * 300 + 100 },
+        position: { x: Math.random() * 500 + 200, y: Math.random() * 300 + 100 }, // React-specific property
         data: {
           label: node.name,
           filterType: 'filter',
