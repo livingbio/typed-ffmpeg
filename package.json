@@ -1,20 +1,18 @@
 {
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.31.0",
-    "@typescript-eslint/parser": "^8.31.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.37.5",
+    "@biomejs/biome": "1.5.3",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
     "vitest": "^3.1.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+      "biome check --apply"
     ],
     "*.{json,md}": [
-      "prettier --write"
+      "biome format --write"
+    ],
+    "tsconfig.json": [
+      "biome check --apply"
     ]
   }
 }

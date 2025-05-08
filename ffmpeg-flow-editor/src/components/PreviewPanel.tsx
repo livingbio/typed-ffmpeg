@@ -1,7 +1,7 @@
-import { Box, Typography, Button } from '@mui/material';
-import { Node, Edge } from 'reactflow';
-import { useState, useEffect } from 'react';
-import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
+import { Box, Button, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import type { Edge, Node } from "reactflow";
+import { generateFFmpegCommand } from "../utils/generateFFmpegCommand";
 
 // Add type declarations for Pyodide
 declare global {
@@ -22,13 +22,13 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
   const [previewData, setPreviewData] = useState<{
     python: string;
   }>({
-    python: '',
+    python: "",
   });
 
   const [pyodide, setPyodide] = useState<Awaited<ReturnType<typeof window.loadPyodide>> | null>(
-    null
+    null,
   );
-  const [result, setResult] = useState<string>('');
+  const [result, setResult] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -36,17 +36,17 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
       try {
         setIsLoading(true);
         const pyodide = await window.loadPyodide({
-          indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.1/full/",
         });
-        await pyodide.loadPackage('micropip');
+        await pyodide.loadPackage("micropip");
         await pyodide.runPythonAsync(`
           import micropip
           await micropip.install('typed-ffmpeg')
         `);
         setPyodide(pyodide);
       } catch (error) {
-        console.error('Failed to load Pyodide:', error);
-        setResult('Failed to load Python environment');
+        console.error("Failed to load Pyodide:", error);
+        setResult("Failed to load Python environment");
       } finally {
         setIsLoading(false);
       }
@@ -71,7 +71,7 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
         const output = await pyodide.runPythonAsync(previewData.python);
         setResult(output.toString());
       } catch (error) {
-        console.error('Python execution error:', error);
+        console.error("Python execution error:", error);
         setResult(`Error: ${error instanceof Error ? error.message : String(error)}`);
       } finally {
         setIsLoading(false);
@@ -91,9 +91,9 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
       <Box sx={{ mb: 3 }}>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
             mb: 1,
           }}
         >
@@ -105,7 +105,7 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
         <Box
           sx={{
             p: 1.5,
-            backgroundColor: '#f5f5f5',
+            backgroundColor: "#f5f5f5",
             borderRadius: 1,
           }}
         >
@@ -113,11 +113,11 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
             style={{
               margin: 0,
               padding: 0,
-              fontFamily: 'monospace',
-              fontSize: '0.875rem',
+              fontFamily: "monospace",
+              fontSize: "0.875rem",
               lineHeight: 1.5,
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
             }}
           >
             {previewData.python}
@@ -128,12 +128,12 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
       {/* Result */}
       <Box>
         <Typography variant="subtitle2" sx={{ mb: 1 }}>
-          Result {isLoading && '(Loading...)'}
+          Result {isLoading && "(Loading...)"}
         </Typography>
         <Box
           sx={{
             p: 1.5,
-            backgroundColor: '#f5f5f5',
+            backgroundColor: "#f5f5f5",
             borderRadius: 1,
           }}
         >
@@ -141,14 +141,14 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
             style={{
               margin: 0,
               padding: 0,
-              fontFamily: 'monospace',
-              fontSize: '0.875rem',
+              fontFamily: "monospace",
+              fontSize: "0.875rem",
               lineHeight: 1.5,
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
             }}
           >
-            {result || 'No result yet'}
+            {result || "No result yet"}
           </pre>
         </Box>
       </Box>

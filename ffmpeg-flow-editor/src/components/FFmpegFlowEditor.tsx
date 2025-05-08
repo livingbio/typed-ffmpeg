@@ -1,22 +1,22 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 import ReactFlow, {
-  Node,
-  Edge,
+  type Node,
+  type Edge,
   Controls,
   Background,
   useNodesState,
   useEdgesState,
   addEdge,
-  Connection,
-  ReactFlowInstance,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
-import { Box } from '@mui/material';
-import FilterNode from './FilterNode';
-import Sidebar from './Sidebar';
-import { predefinedFilters } from '../types/ffmpeg';
-import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
-import { validateConnection } from '../utils/connectionValidation';
+  type Connection,
+  type ReactFlowInstance,
+} from "reactflow";
+import "reactflow/dist/style.css";
+import { Box } from "@mui/material";
+import { EDGE_COLORS, type EdgeData, type EdgeType } from "../types/edge";
+import { predefinedFilters } from "../types/ffmpeg";
+import { validateConnection } from "../utils/connectionValidation";
+import FilterNode from "./FilterNode";
+import Sidebar from "./Sidebar";
 
 const nodeTypes = {
   filter: FilterNode,
@@ -24,24 +24,24 @@ const nodeTypes = {
 
 const initialNodes: Node[] = [
   {
-    id: 'input',
-    type: 'filter',
+    id: "input",
+    type: "filter",
     position: { x: 100, y: 100 },
     data: {
-      label: 'Input',
-      filterType: 'input',
-      filterString: '[0:v]',
+      label: "Input",
+      filterType: "input",
+      filterString: "[0:v]",
       parameters: {},
     },
   },
   {
-    id: 'output',
-    type: 'filter',
+    id: "output",
+    type: "filter",
     position: { x: 800, y: 100 },
     data: {
-      label: 'Output',
-      filterType: 'output',
-      filterString: '[outv]',
+      label: "Output",
+      filterType: "output",
+      filterString: "[outv]",
       parameters: {},
     },
   },
@@ -70,13 +70,13 @@ export default function FFmpegFlowEditor() {
             };
           }
           return node;
-        })
+        }),
       );
     };
 
-    window.addEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+    window.addEventListener("updateNodeData", handleNodeDataUpdate as EventListener);
     return () => {
-      window.removeEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+      window.removeEventListener("updateNodeData", handleNodeDataUpdate as EventListener);
     };
   }, [setNodes]);
 
@@ -91,52 +91,32 @@ export default function FFmpegFlowEditor() {
         const sourceNode = nodes.find((node) => node.id === params.source);
 
         // Determine the edge type
-        let edgeType: EdgeType = 'av';
-        if (sourceNode?.data.filterType === 'filter' && params.sourceHandle) {
+        let edgeType: EdgeType = "av";
+        if (sourceNode?.data.filterType === "filter" && params.sourceHandle) {
           interface HandleInfo {
             id: string;
             type: EdgeType;
           }
 
-          // Debug log the handles and source handle
-          console.log('Finding handle type:', {
-            sourceHandle: params.sourceHandle,
-            allOutputs: sourceNode.data.handles.outputs,
-            filterName: sourceNode.data.filterName,
-          });
-
           const handle = (sourceNode.data.handles.outputs as HandleInfo[]).find(
-            (h) => h.id === params.sourceHandle
+            (h) => h.id === params.sourceHandle,
           );
-          console.log('Found handle:', handle);
 
           if (handle) {
             edgeType = handle.type;
-            console.log('Setting edge type from handle:', {
-              filterName: sourceNode.data.filterName,
-              edgeType,
-              handle,
-            });
           } else {
-            console.error('Could not find handle:', {
+            console.error("Could not find handle:", {
               sourceHandle: params.sourceHandle,
               availableHandles: sourceNode.data.handles.outputs,
             });
           }
-        } else if (sourceNode?.data.filterType === 'input') {
+        } else if (sourceNode?.data.filterType === "input") {
           // Rule 1: Input nodes mark edges as "av"
-          edgeType = 'av';
-          console.log('Setting edge type from input node');
+          edgeType = "av";
         }
 
-        console.log('Final edge type:', {
-          type: edgeType,
-          color: EDGE_COLORS[edgeType],
-          isValid: !!EDGE_COLORS[edgeType],
-        });
-
         if (!EDGE_COLORS[edgeType]) {
-          console.error('Invalid edge type:', edgeType);
+          console.error("Invalid edge type:", edgeType);
           throw new Error(`Invalid edge type: ${edgeType}`);
         }
 
@@ -147,46 +127,40 @@ export default function FFmpegFlowEditor() {
           data: { type: edgeType },
           source: params.source,
           target: params.target,
-          type: 'smoothstep',
+          type: "smoothstep",
           animated: false,
         };
-
-        console.log('Creating new edge:', {
-          newEdge,
-          color: EDGE_COLORS[edgeType],
-          style: newEdge.style,
-        });
         setEdges((eds) => addEdge(newEdge, eds));
       }
     },
-    [isValidConnection, setEdges, nodes, edges]
+    [isValidConnection, setEdges, nodes, edges],
   );
 
   const onAddFilter = useCallback(
     (
       filterType: string,
       parameters?: Record<string, string>,
-      position?: { x: number; y: number }
+      position?: { x: number; y: number },
     ) => {
       const nodeId = `${filterType}-${Date.now()}`;
 
       // Handle input and output nodes
-      if (filterType === 'input' || filterType === 'output') {
+      if (filterType === "input" || filterType === "output") {
         const newNode: Node = {
           id: nodeId,
-          type: 'filter',
+          type: "filter",
           position: position || {
             x: Math.random() * 500 + 200,
             y: Math.random() * 300 + 100,
           },
           data: {
-            label: filterType === 'input' ? 'Input' : 'Output',
+            label: filterType === "input" ? "Input" : "Output",
             filterType: filterType,
-            filterString: filterType === 'input' ? '[0:v]' : '[outv]',
+            filterString: filterType === "input" ? "[0:v]" : "[outv]",
             parameters: {},
             handles: {
-              inputs: filterType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
-              outputs: filterType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
+              inputs: filterType === "output" ? [{ id: "input-0", type: "av" }] : [],
+              outputs: filterType === "input" ? [{ id: "output-0", type: "av" }] : [],
             },
           },
         };
@@ -198,31 +172,23 @@ export default function FFmpegFlowEditor() {
       const filter = predefinedFilters.find((f) => f.name === filterType);
       if (!filter) return;
 
-      // Debug log for filter type determination
-      console.log('Creating filter node:', {
-        filterType,
-        inputTypes: filter.stream_typings_input.map((t) => t.type.value),
-        outputTypes: filter.stream_typings_output.map((t) => t.type.value),
-      });
-
       const newNode: Node = {
         id: nodeId,
-        type: 'filter',
+        type: "filter",
         position: position || {
           x: Math.random() * 500 + 200,
           y: Math.random() * 300 + 100,
         },
         data: {
           label: filter.name,
-          filterType: 'filter',
+          filterType: "filter",
           filterName: filter.name,
           parameters: parameters || {},
           handles: {
             inputs: filter.stream_typings_input.map((ioType, index) => {
               const typeValue = ioType.type.value.toLowerCase();
               const type: EdgeType =
-                typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
-              console.log('Input handle type:', { index, typeValue, type });
+                typeValue === "audio" ? "audio" : typeValue === "video" ? "video" : "av";
               return {
                 id: `input-${index}`,
                 type,
@@ -231,8 +197,7 @@ export default function FFmpegFlowEditor() {
             outputs: filter.stream_typings_output.map((ioType, index) => {
               const typeValue = ioType.type.value.toLowerCase();
               const type: EdgeType =
-                typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
-              console.log('Output handle type:', { index, typeValue, type });
+                typeValue === "audio" ? "audio" : typeValue === "video" ? "video" : "av";
               return {
                 id: `output-${index}`,
                 type,
@@ -244,20 +209,20 @@ export default function FFmpegFlowEditor() {
 
       setNodes((nds) => [...nds, newNode]);
     },
-    [setNodes]
+    [setNodes],
   );
 
   const onDragOver = useCallback((event: React.DragEvent) => {
     event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
+    event.dataTransfer.dropEffect = "move";
   }, []);
 
   const onDrop = useCallback(
     (event: React.DragEvent) => {
       event.preventDefault();
 
-      const type = event.dataTransfer.getData('application/reactflow');
-      if (typeof type === 'undefined' || !type) {
+      const type = event.dataTransfer.getData("application/reactflow");
+      if (typeof type === "undefined" || !type) {
         return;
       }
 
@@ -271,18 +236,18 @@ export default function FFmpegFlowEditor() {
         onAddFilter(type, undefined, position);
       }
     },
-    [reactFlowInstance, onAddFilter]
+    [reactFlowInstance, onAddFilter],
   );
 
   return (
     <Box
       sx={{
-        position: 'fixed',
-        width: '100vw',
-        height: '100vh',
+        position: "fixed",
+        width: "100vw",
+        height: "100vh",
         top: 0,
         left: 0,
-        overflow: 'hidden',
+        overflow: "hidden",
       }}
     >
       <ReactFlow
@@ -298,9 +263,9 @@ export default function FFmpegFlowEditor() {
         onDrop={onDrop}
         fitView
         style={{
-          width: '100%',
-          height: '100%',
-          background: '#f5f5f5',
+          width: "100%",
+          height: "100%",
+          background: "#f5f5f5",
         }}
       >
         <Background />

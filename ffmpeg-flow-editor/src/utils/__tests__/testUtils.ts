@@ -1,5 +1,5 @@
-import { loadPyodide } from 'pyodide';
-import path from 'path';
+import path from "node:path";
+import { loadPyodide } from "pyodide";
 
 // Create a singleton instance of Pyodide
 let pyodide: Awaited<ReturnType<typeof loadPyodide>> | null = null;
@@ -11,12 +11,12 @@ let pyodide: Awaited<ReturnType<typeof loadPyodide>> | null = null;
 export async function getTestPyodide() {
   if (!pyodide) {
     // Get the path to the pyodide files in node_modules
-    const pyodidePath = path.resolve(process.cwd(), 'node_modules', 'pyodide');
+    const pyodidePath = path.resolve(process.cwd(), "node_modules", "pyodide");
 
     pyodide = await loadPyodide({
       indexURL: pyodidePath,
     });
-    await pyodide.loadPackage('micropip');
+    await pyodide.loadPackage("micropip");
     await pyodide.runPythonAsync(`
       import micropip
       await micropip.install('typed-ffmpeg')

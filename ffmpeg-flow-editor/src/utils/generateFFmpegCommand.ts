@@ -1,25 +1,25 @@
-import { Node, Edge } from 'reactflow';
+import type { Edge, Node } from "reactflow";
 
 export function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: string } {
   // Find all input and output nodes
-  const inputNodes = nodes.filter((n) => n.data.filterType === 'input');
-  const outputNodes = nodes.filter((n) => n.data.filterType === 'output');
+  const inputNodes = nodes.filter((n) => n.data.filterType === "input");
+  const outputNodes = nodes.filter((n) => n.data.filterType === "output");
 
   if (inputNodes.length === 0 || outputNodes.length === 0) {
     return {
-      python: '',
+      python: "",
     };
   }
 
   // Generate Python code
-  let pythonCode = 'import ffmpeg\n\n';
+  let pythonCode = "import ffmpeg\n\n";
 
   // Create input streams
-  const inputStreams = inputNodes.map((node, index) => {
+  const inputStreams = inputNodes.map((_node, index) => {
     return `input${index} = ffmpeg.input("input${index}.mp4")`;
   });
 
-  pythonCode += inputStreams.join('\n') + '\n\n';
+  pythonCode += `${inputStreams.join("\n")}\n\n`;
 
   // Track processed streams by node ID
   const nodeStreams: Record<string, string> = {};
@@ -41,31 +41,31 @@ export function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: s
 
       while (true) {
         const nextNode = nodes.find((n) => n.id === currentId);
-        if (!nextNode || nextNode.data.filterType !== 'filter') break;
+        if (!nextNode || nextNode.data.filterType !== "filter") break;
 
-        if (nextNode.data.filterType === 'filter' && nextNode.data.filterName) {
+        if (nextNode.data.filterType === "filter" && nextNode.data.filterName) {
           const filterName = nextNode.data.filterName;
           const parameters = (nextNode.data.parameters as Record<string, string>) || {};
 
           // Convert parameters to Python kwargs
           const kwargs = Object.entries(parameters)
-            .filter(([, value]) => value !== '')
+            .filter(([, value]) => value !== "")
             .map(([key, value]) => {
               // Handle numeric values without quotes
-              if (!isNaN(Number(value))) {
+              if (!Number.isNaN(Number(value))) {
                 return `${key}=${value}`;
               }
               // Handle boolean values
-              if (value.toLowerCase() === 'true' || value.toLowerCase() === 'false') {
+              if (value.toLowerCase() === "true" || value.toLowerCase() === "false") {
                 return `${key}=${value.toLowerCase()}`;
               }
               // Handle string values with quotes
               return `${key}="${value}"`;
             })
-            .join(', ');
+            .join(", ");
 
           // Create a new variable for the processed stream with valid Python identifier
-          const nodeId = nextNode.id.replace(/-/g, '_');
+          const nodeId = nextNode.id.replace(/-/g, "_");
           const newStreamName = `stream_${nodeId}`;
           pythonCode += `${newStreamName} = ${currentStream}.${filterName}(${kwargs})\n`;
           nodeStreams[nextNode.id] = newStreamName;
@@ -80,7 +80,7 @@ export function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: s
     });
   });
 
-  pythonCode += '\n';
+  pythonCode += "\n";
 
   // Create output streams
   outputNodes.forEach((node, index) => {
@@ -95,14 +95,14 @@ export function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: s
       .filter((stream): stream is string => stream !== null);
 
     if (connectedStreams.length > 0) {
-      pythonCode += `output${index} = ffmpeg.output(${connectedStreams.join(', ')}, filename="output${index}.mp4")\n`;
+      pythonCode += `output${index} = ffmpeg.output(${connectedStreams.join(", ")}, filename="output${index}.mp4")\n`;
     }
   });
 
-  pythonCode += '\n';
+  pythonCode += "\n";
 
   // Add compile line
-  pythonCode += '# Compile the command\n';
+  pythonCode += "# Compile the command\n";
   const validOutputs = outputNodes
     .map((node, index) => {
       const hasConnections = edges.some((edge) => edge.target === node.id);
@@ -111,11 +111,11 @@ export function generateFFmpegCommand(nodes: Node[], edges: Edge[]): { python: s
     .filter((output): output is string => output !== null);
 
   if (validOutputs.length > 1) {
-    pythonCode += `ffmpeg.merge_outputs(${validOutputs.join(', ')}).compile_line()`;
+    pythonCode += `ffmpeg.merge_outputs(${validOutputs.join(", ")}).compile_line()`;
   } else if (validOutputs.length === 1) {
     pythonCode += `${validOutputs[0]}.compile_line()`;
   } else {
-    pythonCode += '# No valid outputs to compile';
+    pythonCode += "# No valid outputs to compile";
   }
 
   return {

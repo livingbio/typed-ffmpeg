@@ -1,0 +1,69 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "error",
+        "noUnusedPrivateClassMembers": "error",
+        "useExhaustiveDependencies": "warn"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn",
+        "noGlobalIsNan": "error",
+        "noConsoleLog": "warn",
+        "noShadowRestrictedNames": "warn"
+      },
+      "style": {
+        "useTemplate": "error",
+        "useNodejsImportProtocol": "error",
+        "useConst": "error",
+        "useDefaultParameterLast": "error",
+        "noNonNullAssertion": "warn"
+      },
+      "a11y": {
+        "useGenericFontNames": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useOptionalChain": "error"
+      }
+    },
+    "ignore": [
+      "coverage/**/*",
+      "src/config/filters.json",
+      "**/node_modules/**",
+      "**/tsconfig*.json",
+      "src/utils/serialize.ts"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "ignore": [
+      "coverage/**/*",
+      "src/config/filters.json",
+      "**/node_modules/**",
+      "**/tsconfig*.json",
+      "src/utils/serialize.ts"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "trailingCommas": "all",
+      "semicolons": "always"
+    }
+  },
+  "files": {
+    "maxSize": 5000000,
+    "ignore": ["**/node_modules/**"]
+  }
+}

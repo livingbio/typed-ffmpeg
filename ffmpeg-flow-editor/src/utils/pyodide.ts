@@ -21,9 +21,9 @@ export async function getPyodide(options?: {
 }): Promise<Awaited<ReturnType<typeof window.loadPyodide>>> {
   if (!pyodide) {
     pyodide = await window.loadPyodide({
-      indexURL: options?.indexURL || 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
+      indexURL: options?.indexURL || "https://cdn.jsdelivr.net/pyodide/v0.25.1/full/",
     });
-    await pyodide.loadPackage('micropip');
+    await pyodide.loadPackage("micropip");
     await pyodide.runPythonAsync(`
       import micropip
       await micropip.install('typed-ffmpeg')

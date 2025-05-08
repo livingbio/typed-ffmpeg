@@ -1,23 +1,23 @@
-import { describe, it, expect, beforeAll } from 'vitest';
-import { loads, clearClassRegistry, registerClasses } from '../../utils/serialize';
-import { Serializable } from '../../utils/serialize';
-import { readdirSync, readFileSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { beforeAll, describe, expect, it } from "vitest";
+import { clearClassRegistry, loads, registerClasses } from "../../utils/serialize";
+import { Serializable } from "../../utils/serialize";
 
 // Import all DAG classes to register them
 import {
-  StreamType,
+  AVStream,
+  AudioStream,
   FilterNode,
+  FilterableStream,
+  GlobalNode,
+  GlobalStream,
   InputNode,
   OutputNode,
-  GlobalNode,
-  FilterableStream,
-  VideoStream,
-  AudioStream,
-  AVStream,
   OutputStream,
-  GlobalStream,
-} from '../dag';
+  StreamType,
+  VideoStream,
+} from "../dag";
 
 // Clear and register classes before tests
 beforeAll(() => {
@@ -40,16 +40,16 @@ beforeAll(() => {
 });
 
 // Get all JSON files from the test data directory
-const testDataDir = join(__dirname, '__testdata__');
+const testDataDir = join(__dirname, "__testdata__");
 const testFiles = readdirSync(testDataDir)
-  .filter((file) => file.endsWith('.json'))
+  .filter((file) => file.endsWith(".json"))
   .map((file) => ({
-    name: file.replace('.json', ''),
-    data: JSON.parse(readFileSync(join(testDataDir, file), 'utf-8')),
+    name: file.replace(".json", ""),
+    data: JSON.parse(readFileSync(join(testDataDir, file), "utf-8")),
   }));
 
-describe('DAG Serialization', () => {
-  it.each(testFiles)('should handle $name case', ({ data }) => {
+describe("DAG Serialization", () => {
+  it.each(testFiles)("should handle $name case", ({ data }) => {
     // Convert to string for deserialization
     const jsonString = JSON.stringify(data);
 

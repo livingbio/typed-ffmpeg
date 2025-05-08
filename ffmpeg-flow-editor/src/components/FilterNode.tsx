@@ -1,12 +1,12 @@
-import { memo, useState, useEffect } from 'react';
-import { Handle, Position, NodeProps } from 'reactflow';
-import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
-import { FFmpegFilterOption, predefinedFilters, FFmpegIOType } from '../types/ffmpeg';
-import { EdgeType, EDGE_COLORS } from '../types/edge';
+import { Box, Paper, TextField, Tooltip, Typography } from "@mui/material";
+import { memo, useEffect, useState } from "react";
+import { Handle, type NodeProps, Position } from "reactflow";
+import { EDGE_COLORS, type EdgeType } from "../types/edge";
+import { type FFmpegFilterOption, type FFmpegIOType, predefinedFilters } from "../types/ffmpeg";
 
 interface FilterNodeData {
   label: string;
-  filterType: 'input' | 'filter' | 'output';
+  filterType: "input" | "filter" | "output";
   filterName?: string;
   parameters?: Record<string, string>;
 }
@@ -33,23 +33,23 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     }
 
     if (
-      param.type.value === 'int' ||
-      param.type.value === 'float' ||
-      param.type.value === 'double'
+      param.type.value === "int" ||
+      param.type.value === "float" ||
+      param.type.value === "double"
     ) {
-      const numValue = parseFloat(value);
-      if (isNaN(numValue)) {
-        return 'Must be a number';
+      const numValue = Number.parseFloat(value);
+      if (Number.isNaN(numValue)) {
+        return "Must be a number";
       }
       if (param.min !== null) {
-        const min = parseFloat(param.min);
-        if (!isNaN(min) && numValue < min) {
+        const min = Number.parseFloat(param.min);
+        if (!Number.isNaN(min) && numValue < min) {
           return `Must be at least ${min}`;
         }
       }
       if (param.max !== null) {
-        const max = parseFloat(param.max);
-        if (!isNaN(max) && numValue > max) {
+        const max = Number.parseFloat(param.max);
+        if (!Number.isNaN(max) && numValue > max) {
           return `Must be at most ${max}`;
         }
       }
@@ -68,7 +68,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     const error = validateParameter(param, value);
     setErrors((prev) => ({
       ...prev,
-      [paramName]: error || '',
+      [paramName]: error || "",
     }));
 
     const newParameters = {
@@ -78,7 +78,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
     setParameters(newParameters);
 
     // Update the node data
-    const event = new CustomEvent('updateNodeData', {
+    const event = new CustomEvent("updateNodeData", {
       detail: {
         id,
         data: {
@@ -91,61 +91,34 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   };
 
   const getFilterString = () => {
-    if (data.filterType === 'filter' && data.filterName) {
+    if (data.filterType === "filter" && data.filterName) {
       const paramString = Object.entries(parameters)
-        .filter(([, value]) => value !== '')
+        .filter(([, value]) => value !== "")
         .map(([key, value]) => `${key}=${value}`)
-        .join(':');
+        .join(":");
 
-      return `${data.filterName}${paramString ? '=' + paramString : ''}`;
+      return `${data.filterName}${paramString ? `=${paramString}` : ""}`;
     }
-    return '';
+    return "";
   };
 
-  const hasErrors = Object.values(errors).some((error) => error !== '');
+  const hasErrors = Object.values(errors).some((error) => error !== "");
 
   const getHandleType = (ioType: FFmpegIOType): EdgeType => {
     const typeValue = ioType.type.value.toLowerCase();
-    console.log('Getting handle type:', {
-      typeValue,
-      ioType,
-      fullType: ioType.type,
-      filterName: data.filterName,
-      isAudio: typeValue === 'audio',
-      isVideo: typeValue === 'video',
-      isAV: typeValue === 'av',
-      rawValue: ioType.type.value,
-    });
 
-    if (typeValue === 'audio') {
-      console.log('Returning audio type');
-      return 'audio';
+    if (typeValue === "audio") {
+      return "audio";
     }
-    if (typeValue === 'video') {
-      console.log('Returning video type');
-      return 'video';
+    if (typeValue === "video") {
+      return "video";
     }
-    console.log('Returning av type (fallback)');
-    return 'av';
+    return "av";
   };
 
   // Get input and output types from filter definition
-  const inputTypes = filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
-  const outputTypes = filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
-
-  console.log('Filter node types:', {
-    filterName: data.filterName,
-    inputTypes: inputTypes.map((t) => ({
-      value: t.type.value,
-      type: getHandleType(t),
-      rawType: t.type,
-    })),
-    outputTypes: outputTypes.map((t) => ({
-      value: t.type.value,
-      type: getHandleType(t),
-      rawType: t.type,
-    })),
-  });
+  const inputTypes = filter?.stream_typings_input || [{ type: { value: "av" } } as FFmpegIOType];
+  const outputTypes = filter?.stream_typings_output || [{ type: { value: "av" } } as FFmpegIOType];
 
   return (
     <Paper
@@ -153,52 +126,42 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       sx={{
         padding: 2,
         minWidth: 200,
-        backgroundColor: '#fff',
-        border: '1px solid #ccc',
+        backgroundColor: "#fff",
+        border: "1px solid #ccc",
       }}
     >
       {/* Input handles */}
-      {data.filterType !== 'input' && (
-        <>
-          {inputTypes.map((type, index) => {
-            const handleType = getHandleType(type);
-            const handleId = `input-${index}`;
-            console.log('Creating input handle:', {
-              index,
-              handleType,
-              type: type.type.value,
-              handleId,
-              color: EDGE_COLORS[handleType],
-            });
-            return (
-              <Handle
-                key={handleId}
-                id={handleId}
-                data-handle-id={handleId}
-                type="target"
-                position={Position.Left}
-                style={{
-                  backgroundColor: EDGE_COLORS[handleType],
-                  width: '10px',
-                  height: '10px',
-                  top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
-                  border: '2px solid #fff',
-                }}
-                data-type={handleType}
-                data-handle-type="input"
-              />
-            );
-          })}
-        </>
-      )}
+      {data.filterType !== "input" &&
+        inputTypes.map((type, index) => {
+          const handleType = getHandleType(type);
+          const handleId = `input-${index}`;
+          return (
+            <Handle
+              key={handleId}
+              id={handleId}
+              data-handle-id={handleId}
+              type="target"
+              position={Position.Left}
+              style={{
+                backgroundColor: EDGE_COLORS[handleType],
+                width: "10px",
+                height: "10px",
+                top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
+                border: "2px solid #fff",
+              }}
+              data-type={handleType}
+              data-handle-type="input"
+            />
+          );
+        })}
 
       <Typography variant="h6" gutterBottom>
         {data.label}
       </Typography>
-      {data.filterType === 'filter' && (
+      {data.filterType === "filter" && (
         <Box sx={{ mt: 1 }}>
           {filter?.description && (
-            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
+            <Typography variant="caption" color="text.secondary" sx={{ display: "block", mb: 1 }}>
               {filter.description}
             </Typography>
           )}
@@ -211,15 +174,15 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
                   size="small"
                   label={param.name}
                   placeholder={param.default?.toString()}
-                  value={parameters[param.name] ?? ''}
+                  value={parameters[param.name] ?? ""}
                   onChange={(e) => handleParameterChange(param.name, e.target.value)}
                   variant="outlined"
                   error={!!errors[param.name]}
                   helperText={errors[param.name] || param.description}
                   InputProps={{
                     sx: {
-                      '& input::placeholder': {
-                        color: 'text.disabled',
+                      "& input::placeholder": {
+                        color: "text.disabled",
                         opacity: 1,
                       },
                     },
@@ -232,8 +195,8 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
               variant="caption"
               sx={{
                 mt: 1,
-                display: 'block',
-                color: hasErrors ? 'error.main' : 'text.secondary',
+                display: "block",
+                color: hasErrors ? "error.main" : "text.secondary",
               }}
             >
               {getFilterString()}
@@ -243,39 +206,29 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       )}
 
       {/* Output handles */}
-      {data.filterType !== 'output' && (
-        <>
-          {outputTypes.map((type, index) => {
-            const handleType = getHandleType(type);
-            const handleId = `output-${index}`;
-            console.log('Creating output handle:', {
-              index,
-              handleType,
-              type: type.type.value,
-              handleId,
-              color: EDGE_COLORS[handleType],
-            });
-            return (
-              <Handle
-                key={handleId}
-                id={handleId}
-                data-handle-id={handleId}
-                type="source"
-                position={Position.Right}
-                style={{
-                  backgroundColor: EDGE_COLORS[handleType],
-                  width: '10px',
-                  height: '10px',
-                  top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
-                  border: '2px solid #fff',
-                }}
-                data-type={handleType}
-                data-handle-type="output"
-              />
-            );
-          })}
-        </>
-      )}
+      {data.filterType !== "output" &&
+        outputTypes.map((type, index) => {
+          const handleType = getHandleType(type);
+          const handleId = `output-${index}`;
+          return (
+            <Handle
+              key={handleId}
+              id={handleId}
+              data-handle-id={handleId}
+              type="source"
+              position={Position.Right}
+              style={{
+                backgroundColor: EDGE_COLORS[handleType],
+                width: "10px",
+                height: "10px",
+                top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
+                border: "2px solid #fff",
+              }}
+              data-type={handleType}
+              data-handle-type="output"
+            />
+          );
+        })}
     </Paper>
   );
 }

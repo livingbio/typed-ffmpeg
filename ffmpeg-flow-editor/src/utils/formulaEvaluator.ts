@@ -1,9 +1,9 @@
-import { FFmpegIOType } from '../types/ffmpeg';
-import { runPython } from './pyodide';
+import type { FFmpegIOType } from "../types/ffmpeg";
+import { runPython } from "./pyodide";
 
 export async function evaluateFormula(
   formula: string,
-  parameters: Record<string, string | number | boolean>
+  parameters: Record<string, string | number | boolean>,
 ): Promise<FFmpegIOType[]> {
   if (!formula) return [];
 
@@ -14,7 +14,7 @@ export async function evaluateFormula(
         acc[key] = value;
         return acc;
       },
-      {} as Record<string, string | number | boolean>
+      {} as Record<string, string | number | boolean>,
     );
 
     // Create Python code to evaluate the formula
@@ -37,34 +37,34 @@ json.dumps(result)
     // Convert the result to FFmpegIOType[]
     if (Array.isArray(parsedResult)) {
       return parsedResult.map((type) => ({
-        __class__: 'FFMpegIOType',
-        name: '',
+        __class__: "FFMpegIOType",
+        name: "",
         type: {
-          __class__: 'StreamType',
-          value: type as unknown as FFmpegIOType['type']['value'],
+          __class__: "StreamType",
+          value: type as unknown as FFmpegIOType["type"]["value"],
         },
       })) as FFmpegIOType[];
     }
-    console.error('Invalid result:', result);
-    throw new Error('Invalid result', { cause: result });
+    console.error("Invalid result:", result);
+    throw new Error("Invalid result", { cause: result });
   } catch (error) {
-    console.error('Error evaluating formula:', error);
+    console.error("Error evaluating formula:", error);
     return [];
   }
 }
 
 // Helper function to parse string parameters
 export function parseStringParameter(value: string): string | number | boolean {
-  if (value === '') {
-    return '';
+  if (value === "") {
+    return "";
   }
-  if (!isNaN(Number(value))) {
+  if (!Number.isNaN(Number(value))) {
     return Number(value);
   }
-  if (value.toLowerCase() === 'true') {
+  if (value.toLowerCase() === "true") {
     return true;
   }
-  if (value.toLowerCase() === 'false') {
+  if (value.toLowerCase() === "false") {
     return false;
   }
   return value;

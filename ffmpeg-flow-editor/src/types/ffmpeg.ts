@@ -1,8 +1,8 @@
-import filtersConfig from '../config/filters.json';
-import { StreamType } from './dag';
+import filtersConfig from "../config/filters.json";
+import type { StreamType } from "./dag";
 
 export interface FFmpegFilter {
-  __class__: 'FFMpegFilter';
+  __class__: "FFMpegFilter";
   id: string | null;
   name: string;
   description: string;
@@ -24,21 +24,21 @@ export interface FFmpegFilter {
 }
 
 export interface FFmpegIOType {
-  __class__: 'FFMpegIOType';
+  __class__: "FFMpegIOType";
   name: string;
   type: {
-    __class__: 'StreamType';
+    __class__: "StreamType";
     value: StreamType;
   };
 }
 
 export interface FFmpegFilterOption {
-  __class__: 'FFMpegFilterOption';
+  __class__: "FFMpegFilterOption";
   name: string;
   alias: string[];
   description: string;
   type: {
-    __class__: 'FFMpegFilterOptionType';
+    __class__: "FFMpegFilterOptionType";
     value: string;
   };
   min: string | null;
@@ -50,7 +50,7 @@ export interface FFmpegFilterOption {
 }
 
 export interface FFmpegFilterOptionChoice {
-  __class__: 'FFMpegFilterOptionChoice';
+  __class__: "FFMpegFilterOptionChoice";
   name: string;
   help: string;
   value: string;

@@ -1,11 +1,11 @@
-import { Box, Paper, Typography, Divider, TextField, InputAdornment } from '@mui/material';
-import { Node, Edge } from 'reactflow';
-import { predefinedFilters } from '../types/ffmpeg';
-import PreviewPanel from './PreviewPanel';
-import { useState, useMemo } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import InputIcon from '@mui/icons-material/Input';
-import OutputIcon from '@mui/icons-material/Output';
+import InputIcon from "@mui/icons-material/Input";
+import OutputIcon from "@mui/icons-material/Output";
+import SearchIcon from "@mui/icons-material/Search";
+import { Box, Divider, InputAdornment, Paper, TextField, Typography } from "@mui/material";
+import { useMemo, useState } from "react";
+import type { Edge, Node } from "reactflow";
+import { predefinedFilters } from "../types/ffmpeg";
+import PreviewPanel from "./PreviewPanel";
 
 interface SidebarProps {
   nodes: Node[];
@@ -13,12 +13,12 @@ interface SidebarProps {
   onAddFilter: (
     filterType: string,
     parameters?: Record<string, string>,
-    position?: { x: number; y: number }
+    position?: { x: number; y: number },
   ) => void;
 }
 
 export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filteredFilters = useMemo(() => {
     if (!searchQuery) return [...predefinedFilters].sort((a, b) => a.name.localeCompare(b.name));
@@ -27,37 +27,37 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
       .filter(
         (filter) =>
           filter.name.toLowerCase().includes(query) ||
-          filter.description.toLowerCase().includes(query)
+          filter.description.toLowerCase().includes(query),
       )
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [searchQuery]);
 
   const handleDragStart = (e: React.DragEvent, filterName: string) => {
-    e.dataTransfer.setData('application/reactflow', filterName);
-    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData("application/reactflow", filterName);
+    e.dataTransfer.effectAllowed = "move";
   };
 
   return (
     <Paper
       elevation={3}
       sx={{
-        position: 'fixed',
+        position: "fixed",
         right: 0,
         top: 0,
-        height: '100vh',
+        height: "100vh",
         width: 350,
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         zIndex: 1000,
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Box
         sx={{
           p: 2,
           borderBottom: 1,
-          borderColor: 'divider',
-          backgroundColor: '#f5f5f5',
+          borderColor: "divider",
+          backgroundColor: "#f5f5f5",
         }}
       >
         <Typography variant="h6">FFmpeg Flow Editor</Typography>
@@ -66,20 +66,20 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
       <Box
         sx={{
           flex: 1,
-          overflow: 'auto',
+          overflow: "auto",
           p: 2,
-          '&::-webkit-scrollbar': {
-            width: '8px',
+          "&::-webkit-scrollbar": {
+            width: "8px",
           },
-          '&::-webkit-scrollbar-track': {
-            background: '#f1f1f1',
+          "&::-webkit-scrollbar-track": {
+            background: "#f1f1f1",
           },
-          '&::-webkit-scrollbar-thumb': {
-            background: '#888',
-            borderRadius: '4px',
+          "&::-webkit-scrollbar-thumb": {
+            background: "#888",
+            borderRadius: "4px",
           },
-          '&::-webkit-scrollbar-thumb:hover': {
-            background: '#555',
+          "&::-webkit-scrollbar-thumb:hover": {
+            background: "#555",
           },
         }}
       >
@@ -90,7 +90,7 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
           </Typography>
           <Box
             sx={{
-              display: 'flex',
+              display: "flex",
               gap: 1,
               mb: 2,
             }}
@@ -98,23 +98,23 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
             <Paper
               elevation={0}
               draggable
-              onDragStart={(e) => handleDragStart(e, 'input')}
-              onClick={() => onAddFilter('input')}
+              onDragStart={(e) => handleDragStart(e, "input")}
+              onClick={() => onAddFilter("input")}
               sx={{
                 p: 1.5,
-                cursor: 'grab',
-                border: '1px solid',
-                borderColor: 'divider',
+                cursor: "grab",
+                border: "1px solid",
+                borderColor: "divider",
                 borderRadius: 1,
                 flex: 1,
-                display: 'flex',
-                alignItems: 'center',
+                display: "flex",
+                alignItems: "center",
                 gap: 1,
-                '&:hover': {
-                  backgroundColor: '#f5f5f5',
+                "&:hover": {
+                  backgroundColor: "#f5f5f5",
                 },
-                '&:active': {
-                  cursor: 'grabbing',
+                "&:active": {
+                  cursor: "grabbing",
                 },
               }}
             >
@@ -126,23 +126,23 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
             <Paper
               elevation={0}
               draggable
-              onDragStart={(e) => handleDragStart(e, 'output')}
-              onClick={() => onAddFilter('output')}
+              onDragStart={(e) => handleDragStart(e, "output")}
+              onClick={() => onAddFilter("output")}
               sx={{
                 p: 1.5,
-                cursor: 'grab',
-                border: '1px solid',
-                borderColor: 'divider',
+                cursor: "grab",
+                border: "1px solid",
+                borderColor: "divider",
                 borderRadius: 1,
                 flex: 1,
-                display: 'flex',
-                alignItems: 'center',
+                display: "flex",
+                alignItems: "center",
                 gap: 1,
-                '&:hover': {
-                  backgroundColor: '#f5f5f5',
+                "&:hover": {
+                  backgroundColor: "#f5f5f5",
                 },
-                '&:active': {
-                  cursor: 'grabbing',
+                "&:active": {
+                  cursor: "grabbing",
                 },
               }}
             >
@@ -178,10 +178,10 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
           />
           <Box
             sx={{
-              maxHeight: '200px',
-              overflow: 'auto',
-              border: '1px solid',
-              borderColor: 'divider',
+              maxHeight: "200px",
+              overflow: "auto",
+              border: "1px solid",
+              borderColor: "divider",
               borderRadius: 1,
             }}
           >
@@ -194,17 +194,17 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
                 onClick={() => onAddFilter(filter.name)}
                 sx={{
                   p: 1.5,
-                  cursor: 'grab',
-                  borderBottom: '1px solid',
-                  borderColor: 'divider',
-                  '&:last-child': {
-                    borderBottom: 'none',
+                  cursor: "grab",
+                  borderBottom: "1px solid",
+                  borderColor: "divider",
+                  "&:last-child": {
+                    borderBottom: "none",
                   },
-                  '&:hover': {
-                    backgroundColor: '#f5f5f5',
+                  "&:hover": {
+                    backgroundColor: "#f5f5f5",
                   },
-                  '&:active': {
-                    cursor: 'grabbing',
+                  "&:active": {
+                    cursor: "grabbing",
                   },
                 }}
               >

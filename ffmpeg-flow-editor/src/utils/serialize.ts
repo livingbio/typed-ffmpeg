@@ -1,9 +1,11 @@
 // Class registry for serialization
-type Constructor = new (...args: any[]) => any;
+type Constructor = new (...args: unknown[]) => unknown;
 const classRegistry = new Map<string, Constructor>();
 
 // Base class for serializable objects
 export class Serializable {
+  [key: string]: unknown;
+
   toJSON(): Record<string, unknown> {
     const obj: Record<string, unknown> = {};
     for (const key in this) {
@@ -19,15 +21,13 @@ export class Serializable {
 
 // Register multiple classes at once
 export function registerClasses(classes: Record<string, Constructor>) {
-  console.log('Registering classes:', Object.keys(classes));
-  for (const [name, constructor] of Object.entries(classes)) {
-    classRegistry.set(name, constructor);
+  for (const [name, classConstructor] of Object.entries(classes)) {
+    classRegistry.set(name, classConstructor);
   }
 }
 
 // Clear the class registry
 export function clearClassRegistry() {
-  console.log('Clearing class registry');
   classRegistry.clear();
 }
 
@@ -38,7 +38,7 @@ export function getRegisteredClassNames(): string[] {
 
 // Serialize an object to JSON string
 export function dumps(obj: unknown): string {
-  return JSON.stringify(obj, (key, value) => {
+  return JSON.stringify(obj, (_key: string, value: unknown) => {
     if (value instanceof Map) {
       return {
         __type__: 'Map',
@@ -88,8 +88,6 @@ function deserializeObject(obj: unknown): unknown {
   // Handle class instances
   if (obj && typeof obj === 'object' && '__class__' in obj) {
     const classObj = obj as { __class__: string; [key: string]: unknown };
-    console.log('Looking for class:', classObj.__class__);
-    console.log('Registered classes:', getRegisteredClassNames());
     const Constructor = classRegistry.get(classObj.__class__);
     if (!Constructor) {
       throw new Error(`Class ${classObj.__class__} not registered`);

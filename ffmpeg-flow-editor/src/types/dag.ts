@@ -1,5 +1,5 @@
-import { FFmpegFilter } from './ffmpeg';
-import { Serializable } from '../utils/serialize';
+import { Serializable } from "../utils/serialize";
+import type { FFmpegFilter } from "./ffmpeg";
 
 // Core types
 export class StreamType extends Serializable {
@@ -27,7 +27,7 @@ export class FilterNode extends Serializable implements Node {
     public input_typings: StreamType[],
     public output_typings: StreamType[],
     public filter: FFmpegFilter,
-    public kwargs: Record<string, string | number | boolean> = {}
+    public kwargs: Record<string, string | number | boolean> = {},
   ) {
     super();
   }
@@ -37,7 +37,7 @@ export class InputNode extends Serializable implements Node {
   constructor(
     public filename: string,
     public inputs: [] = [],
-    public kwargs: Record<string, string | number | boolean> = {}
+    public kwargs: Record<string, string | number | boolean> = {},
   ) {
     super();
   }
@@ -47,7 +47,7 @@ export class OutputNode extends Serializable implements Node {
   constructor(
     public filename: string,
     public inputs: FilterableStream[],
-    public kwargs: Record<string, string | number | boolean> = {}
+    public kwargs: Record<string, string | number | boolean> = {},
   ) {
     super();
   }
@@ -56,7 +56,7 @@ export class OutputNode extends Serializable implements Node {
 export class GlobalNode extends Serializable implements Node {
   constructor(
     public inputs: OutputStream[],
-    public kwargs: Record<string, string | number | boolean> = {}
+    public kwargs: Record<string, string | number | boolean> = {},
   ) {
     super();
   }
@@ -66,7 +66,7 @@ export class GlobalNode extends Serializable implements Node {
 export class FilterableStream extends Serializable implements Stream {
   constructor(
     public node: FilterNode | InputNode,
-    public index: number | null = null
+    public index: number | null = null,
   ) {
     super();
   }
@@ -93,7 +93,7 @@ export class AVStream extends FilterableStream {
 export class OutputStream extends Serializable implements Stream {
   constructor(
     public node: OutputNode,
-    public index: number | null = null
+    public index: number | null = null,
   ) {
     super();
   }
@@ -102,7 +102,7 @@ export class OutputStream extends Serializable implements Stream {
 export class GlobalStream extends Serializable implements Stream {
   constructor(
     public node: GlobalNode,
-    public index: number | null = null
+    public index: number | null = null,
   ) {
     super();
   }

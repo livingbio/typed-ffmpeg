@@ -1,6 +1,6 @@
-import React from 'react';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import FFmpegFlowEditor from './components/FFmpegFlowEditor';
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import React from "react";
+import FFmpegFlowEditor from "./components/FFmpegFlowEditor";
 
 const theme = createTheme();
 
