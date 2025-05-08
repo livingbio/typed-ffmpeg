@@ -15,21 +15,18 @@ export interface FFmpegFilter {
   is_filter_source: boolean;
   is_dynamic_input: boolean;
   is_dynamic_output: boolean;
-  stream_typings_input: FFmpegIOType[];
-  stream_typings_output: FFmpegIOType[];
+  stream_typings_input: FFMpegIOType[];
+  stream_typings_output: FFMpegIOType[];
   formula_typings_input: string | null;
   formula_typings_output: string | null;
   pre: unknown[];
   options: FFmpegFilterOption[];
 }
 
-export interface FFmpegIOType {
+export interface FFMpegIOType {
   __class__: 'FFMpegIOType';
   name: string;
-  type: {
-    __class__: 'StreamType';
-    value: StreamType;
-  };
+  type: StreamType;
 }
 
 export interface FFmpegFilterOption {

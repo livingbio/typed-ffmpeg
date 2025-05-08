@@ -1,4 +1,4 @@
-import { Box, Paper, Typography, Divider, TextField, InputAdornment } from '@mui/material';
+import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import { Node, Edge } from 'reactflow';
 import { predefinedFilters } from '../types/ffmpeg';
 import PreviewPanel from './PreviewPanel';
@@ -6,6 +6,9 @@ import { useState, useMemo } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import InputIcon from '@mui/icons-material/Input';
 import OutputIcon from '@mui/icons-material/Output';
+import DownloadIcon from '@mui/icons-material/Download';
+import { convertToDag } from '../utils/convertToDag';
+import { dumps } from '../utils/serialize';
 
 interface SidebarProps {
   nodes: Node[];
@@ -37,6 +40,28 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
     e.dataTransfer.effectAllowed = 'move';
   };
 
+  const handleExport = () => {
+    try {
+      const dag = convertToDag(nodes, edges);
+      if (!dag) {
+        throw new Error('No valid DAG structure found');
+      }
+      const json = dumps(dag);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ffmpeg-flow.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error exporting flow:', error);
+      alert('Error exporting flow: ' + (error instanceof Error ? error.message : String(error)));
+    }
+  };
+
   return (
     <Paper
       elevation={3}
@@ -58,9 +83,20 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
           borderBottom: 1,
           borderColor: 'divider',
           backgroundColor: '#f5f5f5',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <Typography variant="h6">FFmpeg Flow Editor</Typography>
+        <Button
+          variant="contained"
+          startIcon={<DownloadIcon />}
+          onClick={handleExport}
+          size="small"
+        >
+          Export
+        </Button>
       </Box>
 
       <Box

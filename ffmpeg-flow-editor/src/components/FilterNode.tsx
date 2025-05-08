@@ -1,8 +1,9 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
-import { FFmpegFilterOption, predefinedFilters, FFmpegIOType } from '../types/ffmpeg';
+import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
+import { StreamType } from '../types/dag';
 
 interface FilterNodeData {
   label: string;
@@ -104,8 +105,8 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
 
   const hasErrors = Object.values(errors).some((error) => error !== '');
 
-  const getHandleType = (ioType: FFmpegIOType): EdgeType => {
-    const typeValue = ioType.type.value.toLowerCase();
+  const getHandleType = (ioType: FFMpegIOType): EdgeType => {
+    const typeValue = ioType.type.value;
     console.log('Getting handle type:', {
       typeValue,
       ioType,
@@ -130,8 +131,20 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   };
 
   // Get input and output types from filter definition
-  const inputTypes = filter?.stream_typings_input || [{ type: { value: 'av' } } as FFmpegIOType];
-  const outputTypes = filter?.stream_typings_output || [{ type: { value: 'av' } } as FFmpegIOType];
+  const inputTypes = filter?.stream_typings_input || [
+    {
+      __class__: 'FFMpegIOType',
+      name: '',
+      type: new StreamType('av'),
+    },
+  ];
+  const outputTypes = filter?.stream_typings_output || [
+    {
+      __class__: 'FFMpegIOType',
+      name: '',
+      type: new StreamType('av'),
+    },
+  ];
 
   console.log('Filter node types:', {
     filterName: data.filterName,
