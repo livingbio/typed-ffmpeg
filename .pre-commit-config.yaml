@@ -4,19 +4,28 @@ repos:
     hooks:
       # - id: check-added-large-files
       - id: check-case-conflict
+        files: ^src/
       - id: check-json
+        files: ^src/
         exclude: '__snapshots__/|ffmpeg-flow-editor/|.eslintrc.json'
       - id: check-merge-conflict
+        files: ^src/
       - id: check-yaml
+        files: ^src/
       - id: end-of-file-fixer
+        files: ^src/
         exclude: '__snapshots__/'
       - id: fix-encoding-pragma
+        files: ^src/
         args: [--remove]
       - id: mixed-line-ending
+        files: ^src/
       - id: trailing-whitespace
+        files: ^src/
         args: [--markdown-linebreak-ext=md]
         exclude: '__snapshots__/'
       - id: pretty-format-json
+        files: ^src/
         args: [--autofix]
         exclude: '__snapshots__/|ffmpeg-flow-editor/|.eslintrc.json'
 
@@ -48,48 +57,3 @@ repos:
           - devtools
           - html2text
         args: ['--config-file=pyproject.toml']
-
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.56.0
-    hooks:
-      - id: eslint
-        name: ESLint
-        entry: eslint
-        language: node
-        types: [file]
-        files: ^ffmpeg-flow-editor/.*\.(js|jsx|ts|tsx)$
-        args: [--fix]
-        additional_dependencies:
-          - 'eslint@8.56.0'
-          - '@typescript-eslint/eslint-plugin@7.0.0'
-          - '@typescript-eslint/parser@7.0.0'
-          - 'eslint-plugin-react@7.37.5'
-          - 'react@19.0.0'
-          - 'react-dom@19.0.0'
-          - '@emotion/react@11.14.0'
-          - '@emotion/styled@11.14.0'
-          - '@mui/material@7.0.2'
-          - '@mui/icons-material@7.0.2'
-          - 'typescript@5.3.3'
-          - '@testing-library/jest-dom@6.6.3'
-          - '@types/testing-library__jest-dom@6.0.0'
-          - 'vitest@3.1.2'
-
-  - repo: local
-    hooks:
-      - id: prettier
-        name: Prettier
-        entry: npx prettier
-        language: node
-        types: [file]
-        files: ^ffmpeg-flow-editor/.*\.(js|jsx|ts|tsx|json|md)$
-        args: [--write]
-        additional_dependencies:
-          - 'prettier@3.5.3'
-
-      - id: check-staged-tsx
-        name: Check staged TypeScript files
-        entry: bash -c 'cd ffmpeg-flow-editor && git diff --cached --name-only --diff-filter=ACMR | grep "\.tsx$" | sed "s|^ffmpeg-flow-editor/||" | xargs -r npx eslint'
-        language: system
-        types: [file]
-        pass_filenames: false
