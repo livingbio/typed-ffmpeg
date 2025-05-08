@@ -1,0 +1,54 @@
+{
+  "inputs": [
+    {
+      "node": {
+        "filename": "output1.mp4",
+        "inputs": [
+          {
+            "node": {
+              "name": "split",
+              "inputs": [
+                {
+                  "node": {
+                    "filename": "input.mp4"
+                  },
+                  "index": 0
+                }
+              ],
+              "input_typings": [{"value": "video"}],
+              "output_typings": [{"value": "video"}, {"value": "video"}],
+              "kwargs": {}
+            },
+            "index": 0
+          }
+        ]
+      },
+      "index": 0
+    },
+    {
+      "node": {
+        "filename": "output2.mp4",
+        "inputs": [
+          {
+            "node": {
+              "name": "split",
+              "inputs": [
+                {
+                  "node": {
+                    "filename": "input.mp4"
+                  },
+                  "index": 0
+                }
+              ],
+              "input_typings": [{"value": "video"}],
+              "output_typings": [{"value": "video"}, {"value": "video"}],
+              "kwargs": {}
+            },
+            "index": 1
+          }
+        ]
+      },
+      "index": 0
+    }
+  ]
+} 

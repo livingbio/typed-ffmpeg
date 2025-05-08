@@ -1,0 +1,268 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`convertFromDag > should convert a DAG with filter nodes to React Flow nodes and edges 1`] = `
+{
+  "edges": [
+    {
+      "data": {
+        "type": "video",
+      },
+      "id": "edge-output-0-output-0-output-0-input-0",
+      "source": "output-0",
+      "sourceHandle": "output-0",
+      "style": {
+        "stroke": "#f44336",
+      },
+      "target": "output-0",
+      "targetHandle": "input-0",
+      "type": "smoothstep",
+    },
+  ],
+  "nodes": [
+    {
+      "data": {
+        "filename": "output.mp4",
+        "filterString": "[outv]",
+        "filterType": "output",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "av",
+            },
+          ],
+          "outputs": [],
+        },
+        "label": "Output",
+        "parameters": {},
+      },
+      "id": "output-0",
+      "position": {
+        "x": 800,
+        "y": 100,
+      },
+      "type": "output",
+    },
+  ],
+}
+`;
+
+exports[`convertFromDag > should convert a simple input-output DAG to React Flow nodes and edges 1`] = `
+{
+  "edges": [
+    {
+      "data": {
+        "type": "video",
+      },
+      "id": "edge-output-0-output-0-output-0-input-0",
+      "source": "output-0",
+      "sourceHandle": "output-0",
+      "style": {
+        "stroke": "#f44336",
+      },
+      "target": "output-0",
+      "targetHandle": "input-0",
+      "type": "smoothstep",
+    },
+  ],
+  "nodes": [
+    {
+      "data": {
+        "filename": "output.mp4",
+        "filterString": "[outv]",
+        "filterType": "output",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "av",
+            },
+          ],
+          "outputs": [],
+        },
+        "label": "Output",
+        "parameters": {},
+      },
+      "id": "output-0",
+      "position": {
+        "x": 800,
+        "y": 100,
+      },
+      "type": "output",
+    },
+  ],
+}
+`;
+
+exports[`convertFromDag > should handle audio and video streams correctly 1`] = `
+{
+  "edges": [
+    {
+      "data": {
+        "type": "video",
+      },
+      "id": "edge-output-0-output-0-output-0-input-0",
+      "source": "output-0",
+      "sourceHandle": "output-0",
+      "style": {
+        "stroke": "#f44336",
+      },
+      "target": "output-0",
+      "targetHandle": "input-0",
+      "type": "smoothstep",
+    },
+    {
+      "data": {
+        "type": "audio",
+      },
+      "id": "edge-output-0-output-0-output-0-input-1",
+      "source": "output-0",
+      "sourceHandle": "output-0",
+      "style": {
+        "stroke": "#2196f3",
+      },
+      "target": "output-0",
+      "targetHandle": "input-1",
+      "type": "smoothstep",
+    },
+  ],
+  "nodes": [
+    {
+      "data": {
+        "filename": "output.mp4",
+        "filterString": "[outv]",
+        "filterType": "output",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "av",
+            },
+            {
+              "id": "input-1",
+              "type": "av",
+            },
+          ],
+          "outputs": [],
+        },
+        "label": "Output",
+        "parameters": {},
+      },
+      "id": "output-0",
+      "position": {
+        "x": 800,
+        "y": 100,
+      },
+      "type": "output",
+    },
+  ],
+}
+`;
+
+exports[`convertFromDag > should handle multiple output nodes 1`] = `
+{
+  "edges": [
+    {
+      "data": {
+        "type": "video",
+      },
+      "id": "edge-output-0-output-0-output-0-input-0",
+      "source": "output-0",
+      "sourceHandle": "output-0",
+      "style": {
+        "stroke": "#f44336",
+      },
+      "target": "output-0",
+      "targetHandle": "input-0",
+      "type": "smoothstep",
+    },
+    {
+      "data": {
+        "type": "video",
+      },
+      "id": "edge-output-0-output-1-output-0-input-0",
+      "source": "output-0",
+      "sourceHandle": "output-1",
+      "style": {
+        "stroke": "#f44336",
+      },
+      "target": "output-0",
+      "targetHandle": "input-0",
+      "type": "smoothstep",
+    },
+  ],
+  "nodes": [
+    {
+      "data": {
+        "filename": "output1.mp4",
+        "filterString": "[outv]",
+        "filterType": "output",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "av",
+            },
+          ],
+          "outputs": [],
+        },
+        "label": "Output",
+        "parameters": {},
+      },
+      "id": "output-0",
+      "position": {
+        "x": 800,
+        "y": 100,
+      },
+      "type": "output",
+    },
+  ],
+}
+`;
+
+exports[`convertFromDag > should preserve filter parameters 1`] = `
+{
+  "edges": [
+    {
+      "data": {
+        "type": "video",
+      },
+      "id": "edge-output-0-output-0-output-0-input-0",
+      "source": "output-0",
+      "sourceHandle": "output-0",
+      "style": {
+        "stroke": "#f44336",
+      },
+      "target": "output-0",
+      "targetHandle": "input-0",
+      "type": "smoothstep",
+    },
+  ],
+  "nodes": [
+    {
+      "data": {
+        "filename": "output.mp4",
+        "filterString": "[outv]",
+        "filterType": "output",
+        "handles": {
+          "inputs": [
+            {
+              "id": "input-0",
+              "type": "av",
+            },
+          ],
+          "outputs": [],
+        },
+        "label": "Output",
+        "parameters": {},
+      },
+      "id": "output-0",
+      "position": {
+        "x": 800,
+        "y": 100,
+      },
+      "type": "output",
+    },
+  ],
+}
+`;

@@ -1,0 +1,57 @@
+{
+  "inputs": [
+    {
+      "node": {
+        "filename": "output.mp4",
+        "inputs": [
+          {
+            "node": {
+              "name": "concat",
+              "inputs": [
+                {
+                  "node": {
+                    "name": "split",
+                    "inputs": [
+                      {
+                        "node": {
+                          "filename": "input.mp4"
+                        },
+                        "index": 0
+                      }
+                    ],
+                    "input_typings": [{"value": "video"}],
+                    "output_typings": [{"value": "video"}, {"value": "video"}],
+                    "kwargs": {}
+                  },
+                  "index": 0
+                },
+                {
+                  "node": {
+                    "name": "split",
+                    "inputs": [
+                      {
+                        "node": {
+                          "filename": "input.mp4"
+                        },
+                        "index": 0
+                      }
+                    ],
+                    "input_typings": [{"value": "video"}],
+                    "output_typings": [{"value": "video"}, {"value": "video"}],
+                    "kwargs": {}
+                  },
+                  "index": 1
+                }
+              ],
+              "input_typings": [{"value": "video"}, {"value": "video"}],
+              "output_typings": [{"value": "video"}],
+              "kwargs": {}
+            },
+            "index": 0
+          }
+        ]
+      },
+      "index": 0
+    }
+  ]
+} 

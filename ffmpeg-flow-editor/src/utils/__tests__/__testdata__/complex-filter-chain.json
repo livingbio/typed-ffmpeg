@@ -1,0 +1,43 @@
+{
+  "inputs": [
+    {
+      "node": {
+        "filename": "output.mp4",
+        "inputs": [
+          {
+            "node": {
+              "name": "scale",
+              "inputs": [
+                {
+                  "node": {
+                    "name": "reverse",
+                    "inputs": [
+                      {
+                        "node": {
+                          "filename": "input.mp4"
+                        },
+                        "index": 0
+                      }
+                    ],
+                    "input_typings": [{"value": "video"}],
+                    "output_typings": [{"value": "video"}],
+                    "kwargs": {}
+                  },
+                  "index": 0
+                }
+              ],
+              "input_typings": [{"value": "video"}],
+              "output_typings": [{"value": "video"}],
+              "kwargs": {
+                "width": 1920,
+                "height": 1080
+              }
+            },
+            "index": 0
+          }
+        ]
+      },
+      "index": 0
+    }
+  ]
+} 
