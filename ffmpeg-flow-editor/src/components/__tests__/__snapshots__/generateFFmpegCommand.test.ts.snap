@@ -1,0 +1,83 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateFFmpegCommand > generates basic input-output chain 1`] = `
+{
+  "python": "import ffmpeg
+
+input0 = ffmpeg.input("input0.mp4")
+
+
+output0 = ffmpeg.output(input0, filename="output0.mp4")
+
+# Compile the command
+output0.compile_line()",
+}
+`;
+
+exports[`generateFFmpegCommand > generates code with filter nodes 1`] = `
+{
+  "python": "import ffmpeg
+
+input0 = ffmpeg.input("input0.mp4")
+
+stream_filter1 = input0.scale(width=1280, height=720)
+
+output0 = ffmpeg.output(stream_filter1, filename="output0.mp4")
+
+# Compile the command
+output0.compile_line()",
+}
+`;
+
+exports[`generateFFmpegCommand > handles complex filter chains 1`] = `
+{
+  "python": "import ffmpeg
+
+input0 = ffmpeg.input("input0.mp4")
+
+stream_filter1 = input0.scale(width=1280, height=720)
+stream_filter2 = stream_filter1.crop(x=0, y=0, width=640, height=480)
+
+output0 = ffmpeg.output(stream_filter2, filename="output0.mp4")
+
+# Compile the command
+output0.compile_line()",
+}
+`;
+
+exports[`generateFFmpegCommand > handles multiple input and output nodes 1`] = `
+{
+  "python": "import ffmpeg
+
+input0 = ffmpeg.input("input0.mp4")
+input1 = ffmpeg.input("input1.mp4")
+
+
+output0 = ffmpeg.output(input0, filename="output0.mp4")
+output1 = ffmpeg.output(input1, filename="output1.mp4")
+
+# Compile the command
+ffmpeg.merge_outputs(output0, output1).compile_line()",
+}
+`;
+
+exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly 1`] = `
+{
+  "python": "import ffmpeg
+
+input0 = ffmpeg.input("input0.mp4")
+
+stream_filter1 = input0.filter(number=42, boolean=true, string="test")
+
+output0 = ffmpeg.output(stream_filter1, filename="output0.mp4")
+
+# Compile the command
+output0.compile_line()",
+}
+`;
+
+exports[`generateFFmpegCommand > returns empty python string if no input or output nodes 1`] = `
+{
+  "python": "",
+}
+`;
