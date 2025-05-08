@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateFFmpegCommand > generates basic input-output chain 1`] = `
+{
+  "python": [
+    "import ffmpeg",
+    "result = ffmpeg.input('input.mp4').video.output(filename='output.mp4').global_args()",
+  ],
+}
+`;
+
+exports[`generateFFmpegCommand > generates code with filter nodes 1`] = `
+{
+  "python": [
+    "import ffmpeg",
+    "result = ffmpeg.input('input.mp4').video.scale(width='1280', height='720').output(filename='output.mp4').global_args()",
+  ],
+}
+`;
+
+exports[`generateFFmpegCommand > handles complex filter chains 1`] = `
+{
+  "python": [
+    "import ffmpeg",
+    "result = ffmpeg.input('input.mp4').video.scale(width='1280', height='720').crop(x='0', y='0', width='640', height='480').output(filename='output.mp4').global_args()",
+  ],
+}
+`;
+
+exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly 1`] = `
+{
+  "python": [
+    "import ffmpeg",
+    "result = ffmpeg.output(, filename='output.mp4').global_args()",
+  ],
+}
+`;
+
+exports[`generateFFmpegCommand > returns empty python string if no input or output nodes 1`] = `
+{
+  "python": "",
+}
+`;
