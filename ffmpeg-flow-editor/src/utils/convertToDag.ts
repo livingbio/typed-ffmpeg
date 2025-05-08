@@ -7,6 +7,7 @@ import {
   VideoStream,
   AudioStream,
   OutputStream,
+  GlobalStream,
   StreamType,
 } from '../types/dag';
 import { predefinedFilters } from '../types/ffmpeg';
@@ -87,5 +88,5 @@ export function convertToDag(nodes: Node[], edges: Edge[]) {
     return null;
   }
 
-  return new GlobalNode(outputNodes.map((node) => new OutputStream(node)));
+  return new GlobalStream(new GlobalNode(outputNodes.map((node) => new OutputStream(node))));
 }

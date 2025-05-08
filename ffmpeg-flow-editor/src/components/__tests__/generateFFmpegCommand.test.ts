@@ -1,6 +1,7 @@
 import { generateFFmpegCommand } from '../../utils/generateFFmpegCommand';
 import { Node, Edge } from 'reactflow';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { setupPyodideMock } from '../../utils/__tests__/testUtils';
 
 interface FilterData {
   filterType: 'input' | 'output' | 'filter';
@@ -15,7 +16,7 @@ interface FilterNode extends Node {
 
 describe('generateFFmpegCommand', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    setupPyodideMock();
   });
 
   it('returns empty python string if no input or output nodes', async () => {
