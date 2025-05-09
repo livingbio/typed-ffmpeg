@@ -41,26 +41,10 @@ export class NodeMappingManager {
     targetMap: new Map(),
   };
 
-  private isTestMode = false;
-  private testIdCounter = 0;
   private nodeIdCounter = 0;
 
   // Helper function to generate unique ID for a node
   private generateNodeId(node: FilterNode | InputNode | OutputNode | GlobalNode): string {
-    if (this.isTestMode) {
-      const id = this.testIdCounter++;
-      if (node instanceof InputNode) {
-        return `input-${id}`;
-      } else if (node instanceof OutputNode) {
-        return `output-${id}`;
-      } else if (node instanceof FilterNode) {
-        return `filter-${node.name}-${id}`;
-      } else if (node instanceof GlobalNode) {
-        return `global-${id}`;
-      }
-      return `node-${id}`;
-    }
-
     const id = this.nodeIdCounter++;
     if (node instanceof InputNode) {
       return `input-${id}`;
@@ -81,21 +65,7 @@ export class NodeMappingManager {
     sourceIndex: number,
     targetIndex: number
   ): string {
-    if (this.isTestMode) {
-      return `edge-${sourceId}-${sourceIndex}-${targetId}-${targetIndex}`;
-    }
     return `edge-${sourceId}-${sourceIndex}-${targetId}-${targetIndex}`;
-  }
-
-  // Enable test mode for deterministic IDs
-  enableTestMode() {
-    this.isTestMode = true;
-    this.testIdCounter = 0;
-  }
-
-  // Disable test mode
-  disableTestMode() {
-    this.isTestMode = false;
   }
 
   // Add a node to the mapping
@@ -242,9 +212,6 @@ export class NodeMappingManager {
       reverseMap: new Map(),
       targetMap: new Map(),
     };
-    if (this.isTestMode) {
-      this.testIdCounter = 0;
-    }
     this.nodeIdCounter = 0;
   }
 

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, beforeAll, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, beforeAll } from 'vitest';
 import {
   FilterNode,
   InputNode,
@@ -42,11 +42,6 @@ describe('nodeMapping', () => {
 
   beforeEach(() => {
     nodeMappingManager = new NodeMappingManager();
-    nodeMappingManager.enableTestMode();
-  });
-
-  afterEach(() => {
-    nodeMappingManager.disableTestMode();
   });
 
   describe('addNodeToMapping', () => {
@@ -327,11 +322,6 @@ describe('Node Mapping', () => {
 
   beforeEach(() => {
     nodeMappingManager = new NodeMappingManager();
-    nodeMappingManager.enableTestMode();
-  });
-
-  afterEach(() => {
-    nodeMappingManager.disableTestMode();
   });
 
   it.each(testFiles)('should handle $name case', ({ data }) => {
