@@ -18,11 +18,13 @@ import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import InputNode from './InputNode';
 import OutputNode from './OutputNode';
+import GlobalNode from './GlobalNode';
 
 const nodeTypes = {
   filter: FilterNode,
   input: InputNode,
   output: OutputNode,
+  global: GlobalNode,
 };
 
 const initialNodes: Node[] = [
@@ -114,6 +116,11 @@ export default function FFmpegFlowEditor() {
     [nodes]
   );
 
+  const getIndexFromHandleId = (handleId: string): number | null => {
+    const match = handleId.match(/(?:input|output)-(\d+)/);
+    return match ? parseInt(match[1], 10) : null;
+  };
+
   const onConnect = useCallback(
     (params: Connection) => {
       if (isValidConnection(params) && params.source && params.target) {
@@ -161,11 +168,19 @@ export default function FFmpegFlowEditor() {
           throw new Error(`Invalid edge type: ${edgeType}`);
         }
 
+        // Get indices from handle IDs
+        const sourceIndex = getIndexFromHandleId(params.sourceHandle || '');
+        const targetIndex = getIndexFromHandleId(params.targetHandle || '');
+
         const newEdge: Edge<EdgeData> = {
           ...params,
           id: `edge-${params.source}-${params.sourceHandle}-${params.target}-${params.targetHandle}`,
           style: { stroke: EDGE_COLORS[edgeType] },
-          data: { type: edgeType },
+          data: { 
+            type: edgeType,
+            sourceIndex,
+            targetIndex
+          },
           source: params.source,
           target: params.target,
           type: 'smoothstep',
@@ -176,6 +191,7 @@ export default function FFmpegFlowEditor() {
           newEdge,
           color: EDGE_COLORS[edgeType],
           style: newEdge.style,
+          indices: { sourceIndex, targetIndex }
         });
         setEdges((eds) => addEdge(newEdge, eds));
       }

@@ -33,4 +33,12 @@ export interface FilterNodeData extends BaseNodeData {
   };
 }
 
-export type NodeData = InputNodeData | OutputNodeData | FilterNodeData; 
+export interface GlobalNodeData extends BaseNodeData {
+  filterType: 'global';
+  handles: {
+    inputs: { id: string; type: EdgeType }[];
+    outputs: [];
+  };
+}
+
+export type NodeData = InputNodeData | OutputNodeData | FilterNodeData | GlobalNodeData; 

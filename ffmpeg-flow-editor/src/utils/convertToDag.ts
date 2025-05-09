@@ -10,8 +10,9 @@ import {
   StreamType,
 } from '../types/dag';
 import { predefinedFilters } from '../types/ffmpeg';
+import { EdgeData } from '../types/edge';
 
-export function convertToDag(nodes: Node[], edges: Edge[]) {
+export function convertToDag(nodes: Node[], edges: Edge<EdgeData>[]) {
   // Create a map to store node instances
   const nodeMap = new Map<string, FilterNode | InputNode | OutputNode>();
 
@@ -38,54 +39,38 @@ export function convertToDag(nodes: Node[], edges: Edge[]) {
     }
   });
 
-  // Second pass: Connect nodes based on edges
-  edges.forEach((edge, index) => {
+  // Second pass: Create streams and connect nodes
+  edges.forEach((edge) => {
     const sourceNode = nodeMap.get(edge.source);
     const targetNode = nodeMap.get(edge.target);
 
-    if (sourceNode && targetNode) {
-      if (targetNode instanceof OutputNode) {
-        const stream =
-          edge.data.type === 'video'
-            ? new VideoStream(
-                sourceNode as FilterNode | InputNode,
-                sourceNode instanceof FilterNode ? index : null
-              )
-            : new AudioStream(
-                sourceNode as FilterNode | InputNode,
-                sourceNode instanceof FilterNode ? index : null
-              );
-        targetNode.inputs = [...targetNode.inputs, stream];
-      } else if (targetNode instanceof FilterNode) {
-        const stream =
-          edge.data.type === 'video'
-            ? new VideoStream(
-                sourceNode as FilterNode | InputNode,
-                sourceNode instanceof FilterNode ? index : null
-              )
-            : new AudioStream(
-                sourceNode as FilterNode | InputNode,
-                sourceNode instanceof FilterNode ? index : null
-              );
-        targetNode.inputs = [...targetNode.inputs, stream];
+    if (sourceNode && targetNode && edge.data) {
+      // Create appropriate stream type based on edge data
+      let stream;
+      if (edge.data.type === 'video') {
+        stream = new VideoStream(sourceNode as FilterNode | InputNode, edge.data.sourceIndex ?? null);
+      } else if (edge.data.type === 'audio') {
+        stream = new AudioStream(sourceNode as FilterNode | InputNode, edge.data.sourceIndex ?? null);
+      } else {
+        stream = new VideoStream(sourceNode as FilterNode | InputNode, edge.data.sourceIndex ?? null); // Default to video for 'av' type
+      }
+
+      // Add stream to target node's inputs
+      if (targetNode instanceof FilterNode) {
+        targetNode.inputs[edge.data.targetIndex ?? 0] = stream;
+      } else if (targetNode instanceof OutputNode) {
+        targetNode.inputs[edge.data.targetIndex ?? 0] = stream;
       }
     }
   });
 
-  // If there are no nodes, return null
-  if (nodes.length === 0) {
-    return null;
-  }
+  // Create global node with all output nodes
+  const outputNodes = Array.from(nodeMap.values()).filter(
+    (node): node is OutputNode => node instanceof OutputNode
+  );
 
-  // Create a GlobalNode with all output nodes
-  const outputNodes = nodes
-    .filter((node) => node.data.filterType === 'output')
-    .map((node) => nodeMap.get(node.id))
-    .filter((node): node is OutputNode => node instanceof OutputNode);
-
-  if (outputNodes.length === 0) {
-    return null;
-  }
-
-  return new GlobalNode(outputNodes.map((node) => new OutputStream(node)));
+  return new GlobalNode(
+    outputNodes.map((node) => new OutputStream(node)),
+    {}
+  );
 }
