@@ -69,11 +69,60 @@ export class NodeMappingManager {
   }
 
   // Add a node to the mapping
-  addNodeToMapping(dagNode: FilterNode | InputNode | OutputNode | GlobalNode): string {
-    const nodeId = this.generateNodeId(dagNode);
+  addNodeToMapping(params: {
+    type: 'filter' | 'input' | 'output' | 'global';
+    name?: string;
+    filename?: string;
+    inputs?: (FilterableStream | null)[] | OutputStream[];
+    input_typings?: StreamType[];
+    output_typings?: StreamType[];
+    kwargs?: Record<string, string | number | boolean>;
+  }): string {
+    let node: FilterNode | InputNode | OutputNode | GlobalNode;
 
-    this.nodeMapping.nodeMap.set(nodeId, dagNode);
-    this.nodeMapping.reverseMap.set(dagNode, nodeId);
+    switch (params.type) {
+      case 'filter':
+        if (!params.name || !params.input_typings || !params.output_typings) {
+          throw new Error('FilterNode requires name, input_typings, and output_typings');
+        }
+        node = new FilterNode(
+          params.name,
+          (params.inputs as (FilterableStream | null)[]) || [],
+          params.input_typings,
+          params.output_typings,
+          params.kwargs
+        );
+        break;
+
+      case 'input':
+        if (!params.filename) {
+          throw new Error('InputNode requires filename');
+        }
+        node = new InputNode(params.filename, [], params.kwargs);
+        break;
+
+      case 'output':
+        if (!params.filename) {
+          throw new Error('OutputNode requires filename');
+        }
+        node = new OutputNode(
+          params.filename,
+          (params.inputs as (FilterableStream | null)[]) || [],
+          params.kwargs
+        );
+        break;
+
+      case 'global':
+        node = new GlobalNode((params.inputs as OutputStream[]) || [], params.kwargs);
+        break;
+
+      default:
+        throw new Error('Invalid node type');
+    }
+
+    const nodeId = this.generateNodeId(node);
+    this.nodeMapping.nodeMap.set(nodeId, node);
+    this.nodeMapping.reverseMap.set(node, nodeId);
     return nodeId;
   }
 
@@ -289,7 +338,49 @@ export class NodeMappingManager {
     }
 
     // If the item is a node, add it to the mapping
-    const nodeId = this.addNodeToMapping(item);
+    let params: {
+      type: 'filter' | 'input' | 'output' | 'global';
+      name?: string;
+      filename?: string;
+      inputs?: (FilterableStream | null)[] | OutputStream[];
+      input_typings?: StreamType[];
+      output_typings?: StreamType[];
+      kwargs?: Record<string, string | number | boolean>;
+    };
+
+    if (item instanceof FilterNode) {
+      params = {
+        type: 'filter',
+        name: item.name,
+        inputs: item.inputs,
+        input_typings: item.input_typings,
+        output_typings: item.output_typings,
+        kwargs: item.kwargs,
+      };
+    } else if (item instanceof InputNode) {
+      params = {
+        type: 'input',
+        filename: item.filename,
+        kwargs: item.kwargs,
+      };
+    } else if (item instanceof OutputNode) {
+      params = {
+        type: 'output',
+        filename: item.filename,
+        inputs: item.inputs,
+        kwargs: item.kwargs,
+      };
+    } else if (item instanceof GlobalNode) {
+      params = {
+        type: 'global',
+        inputs: item.inputs,
+        kwargs: item.kwargs,
+      };
+    } else {
+      throw new Error('Unsupported node type');
+    }
+
+    const nodeId = this.addNodeToMapping(params);
 
     // If it's a FilterNode or OutputNode, process its inputs recursively
     if (item instanceof FilterNode || item instanceof OutputNode) {
