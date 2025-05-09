@@ -1,6 +1,6 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
-import { Paper, Typography, TextField, Box, Tooltip } from '@mui/material';
+import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/material';
 import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
 import { StreamType } from '../types/dag';
@@ -17,6 +17,7 @@ interface ValidationError {
 }
 
 function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
+  const theme = useTheme();
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
 
@@ -166,8 +167,9 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       sx={{
         padding: 2,
         minWidth: 200,
-        backgroundColor: '#fff',
-        border: '1px solid #ccc',
+        backgroundColor: theme.palette.background.paper,
+        border: `1px solid ${theme.palette.divider}`,
+        color: theme.palette.text.primary,
       }}
     >
       {/* Input handles */}

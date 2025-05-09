@@ -1,16 +1,21 @@
 import React from 'react';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import FFmpegFlowEditor from './components/FFmpegFlowEditor';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import MinimalFlowEditor from './components/MinimalFlowEditor';
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
-function App() {
+const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <FFmpegFlowEditor />
+      <MinimalFlowEditor />
     </ThemeProvider>
   );
-}
+};
 
 export default App;
