@@ -12,7 +12,7 @@ import {
   OutputStream,
   GlobalStream,
 } from '../../types/dag';
-import { nodeMappingManager } from '../nodeMapping';
+import { NodeMappingManager } from '../nodeMapping';
 import { loads, clearClassRegistry, registerClasses } from '../../utils/serialize';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
@@ -38,8 +38,10 @@ beforeAll(() => {
 });
 
 describe('nodeMapping', () => {
+  let nodeMappingManager: NodeMappingManager;
+
   beforeEach(() => {
-    nodeMappingManager.resetNodeMapping();
+    nodeMappingManager = new NodeMappingManager();
     nodeMappingManager.enableTestMode();
   });
 
@@ -321,6 +323,17 @@ const testFiles = readdirSync(testDataDir)
   }));
 
 describe('Node Mapping', () => {
+  let nodeMappingManager: NodeMappingManager;
+
+  beforeEach(() => {
+    nodeMappingManager = new NodeMappingManager();
+    nodeMappingManager.enableTestMode();
+  });
+
+  afterEach(() => {
+    nodeMappingManager.disableTestMode();
+  });
+
   it.each(testFiles)('should handle $name case', ({ data }) => {
     const jsonString = JSON.stringify(data);
 

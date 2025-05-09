@@ -340,6 +340,3 @@ export class NodeMappingManager {
     return nodeId;
   }
 }
-
-// Create a singleton instance
-export const nodeMappingManager = new NodeMappingManager();

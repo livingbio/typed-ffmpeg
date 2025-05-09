@@ -1,6 +1,6 @@
 // Class registry for serialization
-type Constructor<T extends Serializable = Serializable> = new (...args: unknown[]) => T;
-const classRegistry = new Map<string, Constructor>();
+type Constructor<T extends Serializable = Serializable> = new (...args: any[]) => T;
+const classRegistry = new Map<string, Constructor<Serializable>>();
 
 // Base class for serializable objects
 export class Serializable {
@@ -18,7 +18,7 @@ export class Serializable {
 }
 
 // Register multiple classes at once
-export function registerClasses(classes: Record<string, Constructor>) {
+export function registerClasses(classes: Record<string, Constructor<Serializable>>) {
   console.log('Registering classes:', Object.keys(classes));
   for (const [name, constructor] of Object.entries(classes)) {
     classRegistry.set(name, constructor);
