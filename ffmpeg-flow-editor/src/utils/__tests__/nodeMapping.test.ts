@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, beforeAll } from 'vitest';
+import { describe, it, expect, beforeEach, beforeAll, afterEach } from 'vitest';
 import {
   FilterNode,
   InputNode,
@@ -12,19 +12,8 @@ import {
   OutputStream,
   GlobalStream,
 } from '../../types/dag';
-import {
-  addNodeToMapping,
-  removeNodeFromMapping,
-  addEdgeToMapping,
-  removeEdgeFromMapping,
-  updateNode,
-  getNodeMapping,
-  getEdgeMapping,
-  resetNodeMapping,
-  recursiveAddToMapping,
-} from '../nodeMapping';
+import { nodeMappingManager } from '../nodeMapping';
 import { loads, clearClassRegistry, registerClasses } from '../../utils/serialize';
-import { Serializable } from '../../utils/serialize';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 
@@ -50,50 +39,55 @@ beforeAll(() => {
 
 describe('nodeMapping', () => {
   beforeEach(() => {
-    resetNodeMapping();
+    nodeMappingManager.resetNodeMapping();
+    nodeMappingManager.enableTestMode();
+  });
+
+  afterEach(() => {
+    nodeMappingManager.disableTestMode();
   });
 
   describe('addNodeToMapping', () => {
     it('should add a FilterNode to mapping', () => {
       const node = new FilterNode('test', [], [new StreamType('video')], [new StreamType('video')]);
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
       expect(id).toMatch(/^filter-test-/);
-      expect(getNodeMapping().nodeMap.get(id)).toBe(node);
-      expect(getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(nodeMappingManager.getNodeMapping().nodeMap.get(id)).toBe(node);
+      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
     });
 
     it('should add an InputNode to mapping', () => {
       const node = new InputNode('test.mp4');
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
       expect(id).toMatch(/^input-/);
-      expect(getNodeMapping().nodeMap.get(id)).toBe(node);
-      expect(getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(nodeMappingManager.getNodeMapping().nodeMap.get(id)).toBe(node);
+      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
     });
 
     it('should add an OutputNode to mapping', () => {
       const node = new OutputNode('test.mp4', []);
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
       expect(id).toMatch(/^output-/);
-      expect(getNodeMapping().nodeMap.get(id)).toBe(node);
-      expect(getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(nodeMappingManager.getNodeMapping().nodeMap.get(id)).toBe(node);
+      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
     });
 
     it('should add a GlobalNode to mapping', () => {
       const node = new GlobalNode([]);
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
       expect(id).toMatch(/^global-/);
-      expect(getNodeMapping().nodeMap.get(id)).toBe(node);
-      expect(getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(nodeMappingManager.getNodeMapping().nodeMap.get(id)).toBe(node);
+      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
     });
   });
 
   describe('removeNodeFromMapping', () => {
     it('should remove a node from mapping', () => {
       const node = new FilterNode('test', [], [new StreamType('video')], [new StreamType('video')]);
-      const id = addNodeToMapping(node);
-      removeNodeFromMapping(id);
-      expect(getNodeMapping().nodeMap.get(id)).toBeUndefined();
-      expect(getNodeMapping().reverseMap.get(node)).toBeUndefined();
+      const id = nodeMappingManager.addNodeToMapping(node);
+      nodeMappingManager.removeNodeFromMapping(id);
+      expect(nodeMappingManager.getNodeMapping().nodeMap.get(id)).toBeUndefined();
+      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBeUndefined();
     });
   });
 
@@ -111,12 +105,12 @@ describe('nodeMapping', () => {
         [new StreamType('video')],
         [new StreamType('video')]
       );
-      const sourceId = addNodeToMapping(sourceNode);
-      const targetId = addNodeToMapping(targetNode);
+      const sourceId = nodeMappingManager.addNodeToMapping(sourceNode);
+      const targetId = nodeMappingManager.addNodeToMapping(targetNode);
 
-      const edgeId = addEdgeToMapping(sourceId, targetId, 0, 0);
+      const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
       expect(edgeId).toMatch(/^edge-/);
-      expect(getEdgeMapping().edgeMap.get(edgeId)).toBeInstanceOf(VideoStream);
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId)).toBeInstanceOf(VideoStream);
       expect(targetNode.inputs[0]).toBeInstanceOf(VideoStream);
     });
 
@@ -133,12 +127,12 @@ describe('nodeMapping', () => {
         [new StreamType('audio')],
         [new StreamType('audio')]
       );
-      const sourceId = addNodeToMapping(sourceNode);
-      const targetId = addNodeToMapping(targetNode);
+      const sourceId = nodeMappingManager.addNodeToMapping(sourceNode);
+      const targetId = nodeMappingManager.addNodeToMapping(targetNode);
 
-      const edgeId = addEdgeToMapping(sourceId, targetId, 0, 0);
+      const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
       expect(edgeId).toMatch(/^edge-/);
-      expect(getEdgeMapping().edgeMap.get(edgeId)).toBeInstanceOf(AudioStream);
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId)).toBeInstanceOf(AudioStream);
       expect(targetNode.inputs[0]).toBeInstanceOf(AudioStream);
     });
 
@@ -150,12 +144,12 @@ describe('nodeMapping', () => {
         [new StreamType('av')],
         [new StreamType('av')]
       );
-      const sourceId = addNodeToMapping(sourceNode);
-      const targetId = addNodeToMapping(targetNode);
+      const sourceId = nodeMappingManager.addNodeToMapping(sourceNode);
+      const targetId = nodeMappingManager.addNodeToMapping(targetNode);
 
-      const edgeId = addEdgeToMapping(sourceId, targetId, 0, 0);
+      const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
       expect(edgeId).toMatch(/^edge-/);
-      expect(getEdgeMapping().edgeMap.get(edgeId)).toBeInstanceOf(AVStream);
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId)).toBeInstanceOf(AVStream);
       expect(targetNode.inputs[0]).toBeInstanceOf(AVStream);
     });
 
@@ -172,10 +166,10 @@ describe('nodeMapping', () => {
         [new StreamType('audio')],
         [new StreamType('audio')]
       );
-      const sourceId = addNodeToMapping(sourceNode);
-      const targetId = addNodeToMapping(targetNode);
+      const sourceId = nodeMappingManager.addNodeToMapping(sourceNode);
+      const targetId = nodeMappingManager.addNodeToMapping(targetNode);
 
-      expect(() => addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
+      expect(() => nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
         'Video stream cannot be connected to audio input'
       );
     });
@@ -193,10 +187,10 @@ describe('nodeMapping', () => {
         [new StreamType('video')],
         [new StreamType('video')]
       );
-      const sourceId = addNodeToMapping(sourceNode);
-      const targetId = addNodeToMapping(targetNode);
+      const sourceId = nodeMappingManager.addNodeToMapping(sourceNode);
+      const targetId = nodeMappingManager.addNodeToMapping(targetNode);
 
-      expect(() => addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
+      expect(() => nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
         'Audio stream cannot be connected to video input'
       );
     });
@@ -216,13 +210,13 @@ describe('nodeMapping', () => {
         [new StreamType('video')],
         [new StreamType('video')]
       );
-      const sourceId = addNodeToMapping(sourceNode);
-      const targetId = addNodeToMapping(targetNode);
+      const sourceId = nodeMappingManager.addNodeToMapping(sourceNode);
+      const targetId = nodeMappingManager.addNodeToMapping(targetNode);
 
-      const edgeId = addEdgeToMapping(sourceId, targetId, 0, 0);
-      removeEdgeFromMapping(edgeId);
+      const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
+      nodeMappingManager.removeEdgeFromMapping(edgeId);
 
-      expect(getEdgeMapping().edgeMap.get(edgeId)).toBeUndefined();
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId)).toBeUndefined();
       expect(targetNode.inputs[0]).toBeNull();
     });
   });
@@ -230,13 +224,13 @@ describe('nodeMapping', () => {
   describe('updateNode', () => {
     it('should update FilterNode properties', () => {
       const node = new FilterNode('test', [], [new StreamType('video')], [new StreamType('video')]);
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
 
       const newInputTypings = [new StreamType('audio'), new StreamType('video')];
       const newOutputTypings = [new StreamType('av')];
       const newKwargs = { quality: 'high' };
 
-      updateNode(id, {
+      nodeMappingManager.updateNode(id, {
         input_typings: newInputTypings,
         output_typings: newOutputTypings,
         kwargs: newKwargs,
@@ -252,12 +246,12 @@ describe('nodeMapping', () => {
 
     it('should update InputNode properties', () => {
       const node = new InputNode('test.mp4');
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
 
       const newFilename = 'new.mp4';
       const newKwargs = { format: 'mp4' };
 
-      updateNode(id, {
+      nodeMappingManager.updateNode(id, {
         filename: newFilename,
         kwargs: newKwargs,
       });
@@ -268,12 +262,12 @@ describe('nodeMapping', () => {
 
     it('should update OutputNode properties', () => {
       const node = new OutputNode('test.mp4', []);
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
 
       const newFilename = 'new.mp4';
       const newKwargs = { format: 'mp4' };
 
-      updateNode(id, {
+      nodeMappingManager.updateNode(id, {
         filename: newFilename,
         kwargs: newKwargs,
       });
@@ -284,11 +278,11 @@ describe('nodeMapping', () => {
 
     it('should update GlobalNode properties', () => {
       const node = new GlobalNode([]);
-      const id = addNodeToMapping(node);
+      const id = nodeMappingManager.addNodeToMapping(node);
 
       const newKwargs = { global: true };
 
-      updateNode(id, {
+      nodeMappingManager.updateNode(id, {
         kwargs: newKwargs,
       });
 
@@ -296,22 +290,24 @@ describe('nodeMapping', () => {
     });
 
     it('should throw error when node not found', () => {
-      expect(() => updateNode('non-existent', {})).toThrow('Node not found in mapping');
+      expect(() => nodeMappingManager.updateNode('non-existent', {})).toThrow(
+        'Node not found in mapping'
+      );
     });
   });
 
   describe('resetNodeMapping', () => {
     it('should reset both node and edge mappings', () => {
       const node = new FilterNode('test', [], [new StreamType('video')], [new StreamType('video')]);
-      const id = addNodeToMapping(node);
-      addEdgeToMapping(id, id, 0, 0);
+      const id = nodeMappingManager.addNodeToMapping(node);
+      nodeMappingManager.addEdgeToMapping(id, id, 0, 0);
 
-      resetNodeMapping();
+      nodeMappingManager.resetNodeMapping();
 
-      expect(getNodeMapping().nodeMap.size).toBe(0);
-      expect(getNodeMapping().reverseMap.size).toBe(0);
-      expect(getEdgeMapping().edgeMap.size).toBe(0);
-      expect(getEdgeMapping().reverseMap.size).toBe(0);
+      expect(nodeMappingManager.getNodeMapping().nodeMap.size).toBe(0);
+      expect(nodeMappingManager.getNodeMapping().reverseMap.size).toBe(0);
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.size).toBe(0);
+      expect(nodeMappingManager.getEdgeMapping().reverseMap.size).toBe(0);
     });
   });
 });
@@ -330,7 +326,7 @@ describe('Node Mapping', () => {
 
     // Deserialize
     const deserialized = loads(jsonString);
-    recursiveAddToMapping(
+    nodeMappingManager.recursiveAddToMapping(
       deserialized as
         | FilterNode
         | InputNode
@@ -344,8 +340,8 @@ describe('Node Mapping', () => {
         | GlobalStream
     );
     // check node mapping's snapshot
-    expect(getNodeMapping()).toMatchSnapshot();
+    expect(nodeMappingManager.getNodeMapping()).toMatchSnapshot();
     // check edge mapping's snapshot
-    expect(getEdgeMapping()).toMatchSnapshot();
+    expect(nodeMappingManager.getEdgeMapping()).toMatchSnapshot();
   });
 });
