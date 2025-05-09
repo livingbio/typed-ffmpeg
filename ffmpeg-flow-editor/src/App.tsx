@@ -1,11 +1,11 @@
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import MinimalFlowEditor from './components/MinimalFlowEditor';
+import FFmpegFlowEditor from './components/FFmpegFlowEditor';
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
   },
 });
 
@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <MinimalFlowEditor />
+      <FFmpegFlowEditor />
     </ThemeProvider>
   );
 };

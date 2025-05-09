@@ -16,32 +16,46 @@ import FilterNode from './FilterNode';
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
+import InputNode from './InputNode';
+import OutputNode from './OutputNode';
 
 const nodeTypes = {
   filter: FilterNode,
+  input: InputNode,
+  output: OutputNode,
 };
 
 const initialNodes: Node[] = [
   {
     id: 'input',
-    type: 'filter',
+    type: 'input',
     position: { x: 100, y: 100 },
     data: {
       label: 'Input',
       filterType: 'input',
       filterString: '[0:v]',
       parameters: {},
+      filename: 'input.mp4',
+      handles: {
+        inputs: [],
+        outputs: [{ id: 'output', type: 'av' }],
+      },
     },
   },
   {
     id: 'output',
-    type: 'filter',
+    type: 'output',
     position: { x: 800, y: 100 },
     data: {
       label: 'Output',
       filterType: 'output',
       filterString: '[outv]',
       parameters: {},
+      filename: 'output.mp4',
+      handles: {
+        inputs: [{ id: 'input', type: 'av' }],
+        outputs: [],
+      },
     },
   },
 ];
@@ -181,7 +195,7 @@ export default function FFmpegFlowEditor() {
       if (filterType === 'input' || filterType === 'output') {
         const newNode: Node = {
           id: nodeId,
-          type: 'filter',
+          type: filterType,
           position: position || {
             x: Math.random() * 500 + 200,
             y: Math.random() * 300 + 100,
@@ -191,9 +205,10 @@ export default function FFmpegFlowEditor() {
             filterType: filterType,
             filterString: filterType === 'input' ? '[0:v]' : '[outv]',
             parameters: {},
+            filename: filterType === 'input' ? 'input.mp4' : 'output.mp4',
             handles: {
-              inputs: filterType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
-              outputs: filterType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
+              inputs: filterType === 'output' ? [{ id: 'input', type: 'av' }] : [],
+              outputs: filterType === 'input' ? [{ id: 'output', type: 'av' }] : [],
             },
           },
         };
