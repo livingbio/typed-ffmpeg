@@ -16,47 +16,28 @@ import FilterNode from './FilterNode';
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
+import { NodeMappingManager } from '../utils/nodeMapping';
 
 const nodeTypes = {
   filter: FilterNode,
 };
 
-const initialNodes: Node[] = [
-  {
-    id: 'input',
-    type: 'filter',
-    position: { x: 100, y: 100 },
-    data: {
-      label: 'Input',
-      filterType: 'input',
-      filterString: '[0:v]',
-      parameters: {},
-    },
-  },
-  {
-    id: 'output',
-    type: 'filter',
-    position: { x: 800, y: 100 },
-    data: {
-      label: 'Output',
-      filterType: 'output',
-      filterString: '[outv]',
-      parameters: {},
-    },
-  },
-];
-
-const initialEdges: Edge[] = [];
-
 export default function FFmpegFlowEditor() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodeMappingManager] = useState(() => new NodeMappingManager());
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
   // Add event listener for node data update
   useEffect(() => {
     const handleNodeDataUpdate = (event: CustomEvent) => {
       const { id, data } = event.detail;
+      const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
+      if (node) {
+        nodeMappingManager.updateNode(id, {
+          kwargs: data.parameters,
+        });
+      }
       setNodes((nds) =>
         nds.map((node) => {
           if (node.id === id) {
@@ -77,7 +58,7 @@ export default function FFmpegFlowEditor() {
     return () => {
       window.removeEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
     };
-  }, [setNodes]);
+  }, [setNodes, nodeMappingManager]);
 
   const isValidConnection = useCallback(
     (connection: Connection): boolean => {
@@ -103,70 +84,50 @@ export default function FFmpegFlowEditor() {
   const onConnect = useCallback(
     (params: Connection) => {
       if (isValidConnection(params) && params.source && params.target) {
-        let edgeType: EdgeType = 'av';
+        const sourceIndex = parseInt(params.sourceHandle?.split('-')[1] || '0');
+        const targetIndex = parseInt(params.targetHandle?.split('-')[1] || '0');
 
-        interface HandleInfo {
-          id: string;
-          type: EdgeType;
-        }
-
-        // Determine edge type from source node
-        const sourceNode = nodes.find((node) => node.id === params.source);
-        if (sourceNode?.data.filterType === 'filter') {
-          // Rule 2: Filter nodes mark edges based on their output handle type
-          const handle = sourceNode.data.handles.outputs.find(
-            (h: HandleInfo) => h.id === params.sourceHandle
+        try {
+          const edgeId = nodeMappingManager.addEdgeToMapping(
+            params.source,
+            params.target,
+            sourceIndex,
+            targetIndex
           );
-          if (handle) {
-            edgeType = handle.type;
-            console.log('Setting edge type from handle:', {
-              filterName: sourceNode.data.filterName,
-              edgeType,
-              handle,
-            });
-          } else {
-            console.error('Could not find handle:', {
-              sourceHandle: params.sourceHandle,
-              availableHandles: sourceNode.data.handles.outputs,
-            });
+
+          let edgeType: EdgeType = 'av';
+
+          // Determine edge type from source node
+          const sourceNode = nodes.find((node) => node.id === params.source);
+          if (sourceNode?.data.filterType === 'filter') {
+            const handle = sourceNode.data.handles.outputs.find(
+              (h: { id: string; type: EdgeType }) => h.id === params.sourceHandle
+            );
+            if (handle) {
+              edgeType = handle.type;
+            }
+          } else if (sourceNode?.data.filterType === 'input') {
+            edgeType = 'av';
           }
-        } else if (sourceNode?.data.filterType === 'input') {
-          // Rule 1: Input nodes mark edges as "av"
-          edgeType = 'av';
-          console.log('Setting edge type from input node');
+
+          const newEdge: Edge<EdgeData> = {
+            ...params,
+            id: edgeId,
+            style: { stroke: EDGE_COLORS[edgeType] },
+            data: { type: edgeType },
+            source: params.source,
+            target: params.target,
+            type: 'smoothstep',
+            animated: false,
+          };
+
+          setEdges((eds) => addEdge(newEdge, eds));
+        } catch (error) {
+          console.error('Failed to add edge:', error);
         }
-
-        console.log('Final edge type:', {
-          type: edgeType,
-          color: EDGE_COLORS[edgeType],
-          isValid: !!EDGE_COLORS[edgeType],
-        });
-
-        if (!EDGE_COLORS[edgeType]) {
-          console.error('Invalid edge type:', edgeType);
-          throw new Error(`Invalid edge type: ${edgeType}`);
-        }
-
-        const newEdge: Edge<EdgeData> = {
-          ...params,
-          id: `edge-${params.source}-${params.sourceHandle}-${params.target}-${params.targetHandle}`,
-          style: { stroke: EDGE_COLORS[edgeType] },
-          data: { type: edgeType },
-          source: params.source,
-          target: params.target,
-          type: 'smoothstep',
-          animated: false,
-        };
-
-        console.log('Creating new edge:', {
-          newEdge,
-          color: EDGE_COLORS[edgeType],
-          style: newEdge.style,
-        });
-        setEdges((eds) => addEdge(newEdge, eds));
       }
     },
-    [isValidConnection, setEdges, nodes]
+    [isValidConnection, setEdges, nodes, nodeMappingManager]
   );
 
   const onAddFilter = useCallback(
@@ -175,10 +136,52 @@ export default function FFmpegFlowEditor() {
       parameters?: Record<string, string>,
       position?: { x: number; y: number }
     ) => {
-      const nodeId = `${filterType}-${Date.now()}`;
+      try {
+        let nodeId: string;
 
-      // Handle input and output nodes
-      if (filterType === 'input' || filterType === 'output') {
+        // Handle input and output nodes
+        if (filterType === 'input' || filterType === 'output') {
+          nodeId = nodeMappingManager.addNodeToMapping({
+            type: filterType,
+            filename: filterType === 'input' ? 'input.mp4' : 'output.mp4',
+            inputs: [],
+            kwargs: parameters,
+          });
+
+          const newNode: Node = {
+            id: nodeId,
+            type: 'filter',
+            position: position || {
+              x: Math.random() * 500 + 200,
+              y: Math.random() * 300 + 100,
+            },
+            data: {
+              label: filterType === 'input' ? 'Input' : 'Output',
+              filterType: filterType,
+              filterString: filterType === 'input' ? '[0:v]' : '[outv]',
+              parameters: parameters || {},
+              handles: {
+                inputs: filterType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
+                outputs: filterType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
+              },
+            },
+          };
+          setNodes((nds) => [...nds, newNode]);
+          return;
+        }
+
+        // Handle regular filter nodes
+        const filter = predefinedFilters.find((f) => f.name === filterType);
+        if (!filter) return;
+
+        nodeId = nodeMappingManager.addNodeToMapping({
+          type: 'filter',
+          name: filter.name,
+          input_typings: filter.stream_typings_input.map((t) => t.type),
+          output_typings: filter.stream_typings_output.map((t) => t.type),
+          kwargs: parameters,
+        });
+
         const newNode: Node = {
           id: nodeId,
           type: 'filter',
@@ -187,71 +190,39 @@ export default function FFmpegFlowEditor() {
             y: Math.random() * 300 + 100,
           },
           data: {
-            label: filterType === 'input' ? 'Input' : 'Output',
-            filterType: filterType,
-            filterString: filterType === 'input' ? '[0:v]' : '[outv]',
-            parameters: {},
+            label: filter.name,
+            filterType: 'filter',
+            filterName: filter.name,
+            parameters: parameters || {},
             handles: {
-              inputs: filterType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
-              outputs: filterType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
+              inputs: filter.stream_typings_input.map((ioType, index) => {
+                const typeValue = ioType.type.value.toLowerCase();
+                const type: EdgeType =
+                  typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
+                return {
+                  id: `input-${index}`,
+                  type,
+                };
+              }),
+              outputs: filter.stream_typings_output.map((ioType, index) => {
+                const typeValue = ioType.type.value.toLowerCase();
+                const type: EdgeType =
+                  typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
+                return {
+                  id: `output-${index}`,
+                  type,
+                };
+              }),
             },
           },
         };
+
         setNodes((nds) => [...nds, newNode]);
-        return;
+      } catch (error) {
+        console.error('Failed to add node:', error);
       }
-
-      // Handle regular filter nodes
-      const filter = predefinedFilters.find((f) => f.name === filterType);
-      if (!filter) return;
-
-      // Debug log for filter type determination
-      console.log('Creating filter node:', {
-        filterType,
-        inputTypes: filter.stream_typings_input.map((t) => t.type.value),
-        outputTypes: filter.stream_typings_output.map((t) => t.type.value),
-      });
-
-      const newNode: Node = {
-        id: nodeId,
-        type: 'filter',
-        position: position || {
-          x: Math.random() * 500 + 200,
-          y: Math.random() * 300 + 100,
-        },
-        data: {
-          label: filter.name,
-          filterType: 'filter',
-          filterName: filter.name,
-          parameters: parameters || {},
-          handles: {
-            inputs: filter.stream_typings_input.map((ioType, index) => {
-              const typeValue = ioType.type.value.toLowerCase();
-              const type: EdgeType =
-                typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
-              console.log('Input handle type:', { index, typeValue, type });
-              return {
-                id: `input-${index}`,
-                type,
-              };
-            }),
-            outputs: filter.stream_typings_output.map((ioType, index) => {
-              const typeValue = ioType.type.value.toLowerCase();
-              const type: EdgeType =
-                typeValue === 'audio' ? 'audio' : typeValue === 'video' ? 'video' : 'av';
-              console.log('Output handle type:', { index, typeValue, type });
-              return {
-                id: `output-${index}`,
-                type,
-              };
-            }),
-          },
-        },
-      };
-
-      setNodes((nds) => [...nds, newNode]);
     },
-    [setNodes]
+    [setNodes, nodeMappingManager]
   );
 
   const onDragOver = useCallback((event: React.DragEvent) => {

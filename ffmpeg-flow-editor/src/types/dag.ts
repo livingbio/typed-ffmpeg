@@ -10,7 +10,7 @@ export class StreamType extends Serializable {
 // Base interfaces
 export interface Node {
   kwargs: Record<string, string | number | boolean>;
-  inputs: Stream[];
+  inputs: (Stream | null)[];
 }
 
 export interface Stream {
@@ -22,7 +22,7 @@ export interface Stream {
 export class FilterNode extends Serializable implements Node {
   constructor(
     public name: string,
-    public inputs: FilterableStream[],
+    public inputs: (FilterableStream | null)[],
     public input_typings: StreamType[],
     public output_typings: StreamType[],
     public kwargs: Record<string, string | number | boolean> = {}
@@ -44,7 +44,7 @@ export class InputNode extends Serializable implements Node {
 export class OutputNode extends Serializable implements Node {
   constructor(
     public filename: string,
-    public inputs: FilterableStream[],
+    public inputs: (FilterableStream | null)[],
     public kwargs: Record<string, string | number | boolean> = {}
   ) {
     super();
