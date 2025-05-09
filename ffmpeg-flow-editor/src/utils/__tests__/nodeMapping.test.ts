@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, beforeAll } from 'vitest';
 import {
   FilterNode,
   InputNode,
@@ -8,6 +8,9 @@ import {
   AudioStream,
   AVStream,
   StreamType,
+  FilterableStream,
+  OutputStream,
+  GlobalStream,
 } from '../../types/dag';
 import {
   addNodeToMapping,
@@ -18,7 +21,32 @@ import {
   getNodeMapping,
   getEdgeMapping,
   resetNodeMapping,
+  recursiveAddToMapping,
 } from '../nodeMapping';
+import { loads, clearClassRegistry, registerClasses } from '../../utils/serialize';
+import { Serializable } from '../../utils/serialize';
+import { readdirSync, readFileSync } from 'fs';
+import { join } from 'path';
+
+// Clear and register classes before tests
+beforeAll(() => {
+  clearClassRegistry();
+
+  // Register all classes explicitly
+  registerClasses({
+    StreamType,
+    FilterNode,
+    InputNode,
+    OutputNode,
+    GlobalNode,
+    FilterableStream,
+    VideoStream,
+    AudioStream,
+    AVStream,
+    OutputStream,
+    GlobalStream,
+  });
+});
 
 describe('nodeMapping', () => {
   beforeEach(() => {
@@ -285,5 +313,39 @@ describe('nodeMapping', () => {
       expect(getEdgeMapping().edgeMap.size).toBe(0);
       expect(getEdgeMapping().reverseMap.size).toBe(0);
     });
+  });
+});
+
+const testDataDir = join(__dirname, '__testdata__');
+const testFiles = readdirSync(testDataDir)
+  .filter((file) => file.endsWith('.json'))
+  .map((file) => ({
+    name: file.replace('.json', ''),
+    data: JSON.parse(readFileSync(join(testDataDir, file), 'utf-8')),
+  }));
+
+describe('Node Mapping', () => {
+  it.each(testFiles)('should handle $name case', ({ data }) => {
+    const jsonString = JSON.stringify(data);
+
+    // Deserialize
+    const deserialized = loads(jsonString);
+    recursiveAddToMapping(
+      deserialized as
+        | FilterNode
+        | InputNode
+        | OutputNode
+        | GlobalNode
+        | FilterableStream
+        | VideoStream
+        | AudioStream
+        | AVStream
+        | OutputStream
+        | GlobalStream
+    );
+    // check node mapping's snapshot
+    expect(getNodeMapping()).toMatchSnapshot();
+    // check edge mapping's snapshot
+    expect(getEdgeMapping()).toMatchSnapshot();
   });
 });

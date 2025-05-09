@@ -1,5 +1,5 @@
 // Class registry for serialization
-type Constructor = new (...args: unknown[]) => Serializable;
+type Constructor<T extends Serializable = Serializable> = new (...args: unknown[]) => T;
 const classRegistry = new Map<string, Constructor>();
 
 // Base class for serializable objects

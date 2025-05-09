@@ -256,3 +256,48 @@ export const updateNode = (
     }
   }
 };
+
+// Helper function to recursively add nodes and their connected streams to the mapping
+export const recursiveAddToMapping = (
+  item:
+    | FilterNode
+    | InputNode
+    | OutputNode
+    | GlobalNode
+    | FilterableStream
+    | VideoStream
+    | AudioStream
+    | AVStream
+    | OutputStream
+    | GlobalStream
+): string => {
+  // If the item is a stream, get its source node and process that
+  if (
+    item instanceof FilterableStream ||
+    item instanceof VideoStream ||
+    item instanceof AudioStream ||
+    item instanceof AVStream ||
+    item instanceof OutputStream ||
+    item instanceof GlobalStream
+  ) {
+    return recursiveAddToMapping(item.node);
+  }
+
+  // If the item is a node, add it to the mapping
+  const nodeId = addNodeToMapping(item);
+
+  // If it's a FilterNode or OutputNode, process its inputs recursively
+  if (item instanceof FilterNode || item instanceof OutputNode) {
+    item.inputs.forEach((inputStream, index) => {
+      if (inputStream) {
+        // Recursively process the input stream
+        const sourceNodeId = recursiveAddToMapping(inputStream.node);
+
+        // Add the edge to the mapping
+        addEdgeToMapping(sourceNodeId, nodeId, inputStream.index ?? 0, index);
+      }
+    });
+  }
+
+  return nodeId;
+};
