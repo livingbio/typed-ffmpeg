@@ -42,6 +42,16 @@ export class NodeMappingManager {
   };
 
   private nodeIdCounter = 0;
+  private globalNode: GlobalNode;
+  private globalNodeId: string;
+
+  constructor() {
+    // Initialize the global node
+    this.globalNode = new GlobalNode([], {});
+    this.globalNodeId = this.generateNodeId(this.globalNode);
+    this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
+    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
+  }
 
   // Helper function to generate unique ID for a node
   private generateNodeId(node: FilterNode | InputNode | OutputNode | GlobalNode): string {
@@ -78,7 +88,19 @@ export class NodeMappingManager {
     output_typings?: StreamType[];
     kwargs?: Record<string, string | number | boolean>;
   }): string {
-    let node: FilterNode | InputNode | OutputNode | GlobalNode;
+    // Special handling for GlobalNode
+    if (params.type === 'global') {
+      // Update the existing GlobalNode's properties
+      if (params.inputs) {
+        this.globalNode.inputs = params.inputs as OutputStream[];
+      }
+      if (params.kwargs) {
+        this.globalNode.kwargs = { ...this.globalNode.kwargs, ...params.kwargs };
+      }
+      return this.globalNodeId;
+    }
+
+    let node: FilterNode | InputNode | OutputNode;
 
     switch (params.type) {
       case 'filter':
@@ -112,10 +134,6 @@ export class NodeMappingManager {
         );
         break;
 
-      case 'global':
-        node = new GlobalNode((params.inputs as OutputStream[]) || [], params.kwargs);
-        break;
-
       default:
         throw new Error('Invalid node type');
     }
@@ -128,11 +146,46 @@ export class NodeMappingManager {
 
   // Remove a node from the mapping
   removeNodeFromMapping(nodeId: string) {
+    // Prevent removal of the global node
+    if (nodeId === this.globalNodeId) {
+      throw new Error('Cannot remove the global node');
+    }
+
     const dagNode = this.nodeMapping.nodeMap.get(nodeId);
     if (dagNode) {
       this.nodeMapping.reverseMap.delete(dagNode);
     }
     this.nodeMapping.nodeMap.delete(nodeId);
+  }
+
+  // Get the global node ID
+  getGlobalNodeId(): string {
+    return this.globalNodeId;
+  }
+
+  // Get the global node instance
+  getGlobalNode(): GlobalNode {
+    return this.globalNode;
+  }
+
+  // Reset mapping state
+  resetNodeMapping() {
+    this.nodeMapping = {
+      nodeMap: new Map(),
+      reverseMap: new Map(),
+    };
+    this.edgeMapping = {
+      edgeMap: new Map(),
+      reverseMap: new Map(),
+      targetMap: new Map(),
+    };
+    this.nodeIdCounter = 0;
+
+    // Create a new global node
+    this.globalNode = new GlobalNode([], {});
+    this.globalNodeId = this.generateNodeId(this.globalNode);
+    this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
+    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
   }
 
   // Add an edge to the mapping
@@ -248,20 +301,6 @@ export class NodeMappingManager {
   // Get current edge mapping state
   getEdgeMapping(): EdgeMapping {
     return this.edgeMapping;
-  }
-
-  // Reset mapping state
-  resetNodeMapping() {
-    this.nodeMapping = {
-      nodeMap: new Map(),
-      reverseMap: new Map(),
-    };
-    this.edgeMapping = {
-      edgeMap: new Map(),
-      reverseMap: new Map(),
-      targetMap: new Map(),
-    };
-    this.nodeIdCounter = 0;
   }
 
   // Update a node's properties
