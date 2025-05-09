@@ -8,4 +8,6 @@ export const EDGE_COLORS = {
 
 export interface EdgeData {
   type: EdgeType;
+  sourceIndex?: number | null;
+  targetIndex?: number | null;
 }

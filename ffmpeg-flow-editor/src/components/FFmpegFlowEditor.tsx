@@ -16,42 +16,83 @@ import FilterNode from './FilterNode';
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
+import InputNode from './InputNode';
+import OutputNode from './OutputNode';
+import GlobalNode from './GlobalNode';
+import { NodeMapping } from '../types/node';
+import { GlobalNode as DagGlobalNode, InputNode as DagInputNode, OutputNode as DagOutputNode } from '../types/dag';
+import { addNodeToMapping, resetNodeMapping } from '../utils/nodeMapping';
 
 const nodeTypes = {
   filter: FilterNode,
+  input: InputNode,
+  output: OutputNode,
+  global: GlobalNode,
 };
 
 const initialNodes: Node[] = [
   {
     id: 'input',
-    type: 'filter',
+    type: 'input',
     position: { x: 100, y: 100 },
     data: {
       label: 'Input',
       filterType: 'input',
       filterString: '[0:v]',
       parameters: {},
+      filename: 'input.mp4',
+      handles: {
+        inputs: [],
+        outputs: [{ id: 'output', type: 'av' }],
+      },
     },
   },
   {
     id: 'output',
-    type: 'filter',
+    type: 'output',
     position: { x: 800, y: 100 },
     data: {
       label: 'Output',
       filterType: 'output',
       filterString: '[outv]',
       parameters: {},
+      filename: 'output.mp4',
+      handles: {
+        inputs: [{ id: 'input', type: 'av' }],
+        outputs: [],
+      },
     },
   },
 ];
 
 const initialEdges: Edge[] = [];
 
-export default function FFmpegFlowEditor() {
+const FFmpegFlowEditor: React.FC = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const [dag, setDag] = useState<DagGlobalNode | null>(null);
+
+  // Initialize DAG and node mapping
+  useEffect(() => {
+    // Create initial DAG structure
+    const initialDag = new DagGlobalNode([], {});
+    setDag(initialDag);
+
+    // Reset node mapping
+    resetNodeMapping();
+
+    // Map initial nodes
+    nodes.forEach(node => {
+      if (node.data.filterType === 'input') {
+        const dagNode = new DagInputNode(node.data.filename);
+        addNodeToMapping(dagNode);
+      } else if (node.data.filterType === 'output') {
+        const dagNode = new DagOutputNode(node.data.filename);
+        addNodeToMapping(dagNode);
+      }
+    });
+  }, []); // Empty dependency array means this runs once on mount
 
   // Add event listener for node data update
   useEffect(() => {
@@ -100,6 +141,11 @@ export default function FFmpegFlowEditor() {
     [nodes]
   );
 
+  const getIndexFromHandleId = (handleId: string): number | null => {
+    const match = handleId.match(/(?:input|output)-(\d+)/);
+    return match ? parseInt(match[1], 10) : null;
+  };
+
   const onConnect = useCallback(
     (params: Connection) => {
       if (isValidConnection(params) && params.source && params.target) {
@@ -147,11 +193,19 @@ export default function FFmpegFlowEditor() {
           throw new Error(`Invalid edge type: ${edgeType}`);
         }
 
+        // Get indices from handle IDs
+        const sourceIndex = getIndexFromHandleId(params.sourceHandle || '');
+        const targetIndex = getIndexFromHandleId(params.targetHandle || '');
+
         const newEdge: Edge<EdgeData> = {
           ...params,
           id: `edge-${params.source}-${params.sourceHandle}-${params.target}-${params.targetHandle}`,
           style: { stroke: EDGE_COLORS[edgeType] },
-          data: { type: edgeType },
+          data: { 
+            type: edgeType,
+            sourceIndex,
+            targetIndex
+          },
           source: params.source,
           target: params.target,
           type: 'smoothstep',
@@ -162,6 +216,7 @@ export default function FFmpegFlowEditor() {
           newEdge,
           color: EDGE_COLORS[edgeType],
           style: newEdge.style,
+          indices: { sourceIndex, targetIndex }
         });
         setEdges((eds) => addEdge(newEdge, eds));
       }
@@ -181,7 +236,7 @@ export default function FFmpegFlowEditor() {
       if (filterType === 'input' || filterType === 'output') {
         const newNode: Node = {
           id: nodeId,
-          type: 'filter',
+          type: filterType,
           position: position || {
             x: Math.random() * 500 + 200,
             y: Math.random() * 300 + 100,
@@ -191,9 +246,10 @@ export default function FFmpegFlowEditor() {
             filterType: filterType,
             filterString: filterType === 'input' ? '[0:v]' : '[outv]',
             parameters: {},
+            filename: filterType === 'input' ? 'input.mp4' : 'output.mp4',
             handles: {
-              inputs: filterType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
-              outputs: filterType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
+              inputs: filterType === 'output' ? [{ id: 'input', type: 'av' }] : [],
+              outputs: filterType === 'input' ? [{ id: 'output', type: 'av' }] : [],
             },
           },
         };
@@ -317,3 +373,5 @@ export default function FFmpegFlowEditor() {
     </Box>
   );
 }
+
+export default FFmpegFlowEditor;
