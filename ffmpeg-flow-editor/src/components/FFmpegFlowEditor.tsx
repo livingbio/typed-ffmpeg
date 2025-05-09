@@ -19,6 +19,9 @@ import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import InputNode from './InputNode';
 import OutputNode from './OutputNode';
 import GlobalNode from './GlobalNode';
+import { NodeMapping } from '../types/node';
+import { GlobalNode as DagGlobalNode, InputNode as DagInputNode, OutputNode as DagOutputNode } from '../types/dag';
+import { addNodeToMapping, resetNodeMapping } from '../utils/nodeMapping';
 
 const nodeTypes = {
   filter: FilterNode,
@@ -64,10 +67,32 @@ const initialNodes: Node[] = [
 
 const initialEdges: Edge[] = [];
 
-export default function FFmpegFlowEditor() {
+const FFmpegFlowEditor: React.FC = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const [dag, setDag] = useState<DagGlobalNode | null>(null);
+
+  // Initialize DAG and node mapping
+  useEffect(() => {
+    // Create initial DAG structure
+    const initialDag = new DagGlobalNode([], {});
+    setDag(initialDag);
+
+    // Reset node mapping
+    resetNodeMapping();
+
+    // Map initial nodes
+    nodes.forEach(node => {
+      if (node.data.filterType === 'input') {
+        const dagNode = new DagInputNode(node.data.filename);
+        addNodeToMapping(dagNode);
+      } else if (node.data.filterType === 'output') {
+        const dagNode = new DagOutputNode(node.data.filename);
+        addNodeToMapping(dagNode);
+      }
+    });
+  }, []); // Empty dependency array means this runs once on mount
 
   // Add event listener for node data update
   useEffect(() => {
@@ -348,3 +373,5 @@ export default function FFmpegFlowEditor() {
     </Box>
   );
 }
+
+export default FFmpegFlowEditor;

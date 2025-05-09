@@ -55,11 +55,10 @@ export function convertToDag(nodes: Node[], edges: Edge<EdgeData>[]) {
         stream = new VideoStream(sourceNode as FilterNode | InputNode, edge.data.sourceIndex ?? null); // Default to video for 'av' type
       }
 
-      // Add stream to target node's inputs
-      if (targetNode instanceof FilterNode) {
-        targetNode.inputs[edge.data.targetIndex ?? 0] = stream;
-      } else if (targetNode instanceof OutputNode) {
-        targetNode.inputs[edge.data.targetIndex ?? 0] = stream;
+      // Add stream to target node's inputs with correct index
+      if (targetNode instanceof FilterNode || targetNode instanceof OutputNode) {
+        const targetIndex = edge.data.targetIndex ?? 0;
+        targetNode.inputs[targetIndex] = stream;
       }
     }
   });

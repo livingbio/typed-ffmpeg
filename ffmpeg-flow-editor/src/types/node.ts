@@ -1,4 +1,5 @@
 import { EdgeType } from './edge';
+import { FilterNode, InputNode, OutputNode, GlobalNode } from './dag';
 
 export interface BaseNodeData {
   label: string;
@@ -19,7 +20,7 @@ export interface OutputNodeData extends BaseNodeData {
   filterType: 'output';
   filename: string;
   handles: {
-    inputs: [{ id: string; type: EdgeType }];
+    inputs: { id: string; type: EdgeType }[];
     outputs: [];
   };
 }
@@ -41,4 +42,11 @@ export interface GlobalNodeData extends BaseNodeData {
   };
 }
 
-export type NodeData = InputNodeData | OutputNodeData | FilterNodeData | GlobalNodeData; 
+export type NodeData = InputNodeData | OutputNodeData | FilterNodeData | GlobalNodeData;
+
+export interface NodeMapping {
+  // Maps ReactFlow node ID to DAG node
+  nodeMap: Map<string, FilterNode | InputNode | OutputNode | GlobalNode>;
+  // Maps DAG node to ReactFlow node ID (for reverse lookup)
+  reverseMap: Map<FilterNode | InputNode | OutputNode | GlobalNode, string>;
+} 

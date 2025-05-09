@@ -145,7 +145,10 @@ export function convertFromDag(dag: GlobalNode): { nodes: Node<NodeData>[]; edge
               target: node.id,
               sourceHandle: 'output',
               targetHandle: `input-${index}`,
-              data: { type: 'video' }
+              data: { 
+                type: 'video',
+                targetIndex: index  // Preserve the index
+              }
             });
           }
         });

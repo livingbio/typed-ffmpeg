@@ -38,18 +38,22 @@ function OutputNode({ data }: NodeProps<OutputNodeData>) {
         size="small"
       />
 
-      {/* Input handle */}
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={data.handles.inputs[0].id}
-        style={{
-          backgroundColor: EDGE_COLORS[data.handles.inputs[0].type],
-          width: '10px',
-          height: '10px',
-          border: '2px solid #fff',
-        }}
-      />
+      {/* Input handles */}
+      {data.handles.inputs.map((handle, index) => (
+        <Handle
+          key={handle.id}
+          type="target"
+          position={Position.Left}
+          id={`input-${index}`}
+          style={{
+            backgroundColor: EDGE_COLORS[handle.type],
+            width: '10px',
+            height: '10px',
+            border: '2px solid #fff',
+            top: `${(index + 1) * (100 / (data.handles.inputs.length + 1))}%`,
+          }}
+        />
+      ))}
     </Paper>
   );
 }
