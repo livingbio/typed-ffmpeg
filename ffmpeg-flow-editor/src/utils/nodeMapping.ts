@@ -43,6 +43,7 @@ export class NodeMappingManager {
 
   private isTestMode = false;
   private testIdCounter = 0;
+  private nodeIdCounter = 0;
 
   // Helper function to generate unique ID for a node
   private generateNodeId(node: FilterNode | InputNode | OutputNode | GlobalNode): string {
@@ -60,18 +61,17 @@ export class NodeMappingManager {
       return `node-${id}`;
     }
 
-    const randomSuffix = Math.random().toString(36).substr(2, 9);
-
+    const id = this.nodeIdCounter++;
     if (node instanceof InputNode) {
-      return `input-${randomSuffix}`;
+      return `input-${id}`;
     } else if (node instanceof OutputNode) {
-      return `output-${randomSuffix}`;
+      return `output-${id}`;
     } else if (node instanceof FilterNode) {
-      return `filter-${node.name}-${randomSuffix}`;
+      return `filter-${node.name}-${id}`;
     } else if (node instanceof GlobalNode) {
-      return `global-${randomSuffix}`;
+      return `global-${id}`;
     }
-    return `node-${randomSuffix}`;
+    return `node-${id}`;
   }
 
   // Helper function to generate unique ID for an edge
@@ -245,6 +245,7 @@ export class NodeMappingManager {
     if (this.isTestMode) {
       this.testIdCounter = 0;
     }
+    this.nodeIdCounter = 0;
   }
 
   // Update a node's properties

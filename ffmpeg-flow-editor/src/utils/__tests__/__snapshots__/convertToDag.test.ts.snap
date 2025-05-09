@@ -56,36 +56,6 @@ exports[`convertToDag > should convert filter chain with multiple nodes 1`] = `
 }
 `;
 
-exports[`convertToDag > should convert simple input-output chain 1`] = `
-{
-  "__class__": "GlobalNode",
-  "inputs": [
-    {
-      "__class__": "OutputStream",
-      "index": null,
-      "node": {
-        "__class__": "OutputNode",
-        "filename": "output.mp4",
-        "inputs": [
-          {
-            "__class__": "VideoStream",
-            "index": null,
-            "node": {
-              "__class__": "InputNode",
-              "filename": "input.mp4",
-              "inputs": [],
-              "kwargs": {},
-            },
-          },
-        ],
-        "kwargs": {},
-      },
-    },
-  ],
-  "kwargs": {},
-}
-`;
-
 exports[`convertToDag > should handle audio and video streams 1`] = `
 {
   "__class__": "GlobalNode",
