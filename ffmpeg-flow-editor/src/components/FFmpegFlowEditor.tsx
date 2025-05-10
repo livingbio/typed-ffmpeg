@@ -48,37 +48,32 @@ const createNode = (
     y: Math.random() * 300 + 100,
   };
 
-  if (nodeType === 'input' || nodeType === 'output') {
-    return {
-      id: nodeId,
-      type: 'filter',
-      position: position || defaultPosition,
-      data: {
-        label: nodeType === 'input' ? 'Input' : 'Output',
-        filterType: nodeType,
-        parameters: parameters || {},
-        handles: {
-          inputs: nodeType === 'output' ? [{ id: 'input-0', type: 'av' }] : [],
-          outputs: nodeType === 'input' ? [{ id: 'output-0', type: 'av' }] : [],
-        },
-      },
-    };
-  }
+  let handles: { inputs: { id: string; type: string }[]; outputs: { id: string; type: string }[] };
 
-  if (!filter) {
-    throw new Error(`Filter ${nodeType} not found`);
-  }
-
-  return {
-    id: nodeId,
-    type: 'filter',
-    position: position || defaultPosition,
-    data: {
-      label: filter.name,
-      filterType: 'filter',
-      filterName: filter.name,
-      parameters: parameters || {},
-      handles: {
+  switch (nodeType) {
+    case 'global':
+      handles = {
+        inputs: [{id: 'input-0', type: 'av'}],
+        outputs: [],
+      };
+      break;
+    case 'input':
+      handles = {
+        inputs: [],
+        outputs: [{id: 'output-0', type: 'av'}],
+      };
+      break;
+    case 'output':
+      handles = {
+        inputs: [{id: 'input-0', type: 'av'}],
+        outputs: [{id: 'output-0', type: 'av'}],
+      };
+      break;
+    case 'filter':
+      if (!filter) {
+        throw new Error(`Filter ${nodeType} not found`);
+      }
+      handles = {
         inputs: filter.stream_typings_input.map((ioType, index) => {
           const typeValue = ioType.type.value;
           if (typeValue === 'audio' || typeValue === 'video') {
@@ -99,9 +94,24 @@ const createNode = (
           }
           throw new Error(`Invalid stream type: ${typeValue}`);
         }),
-      },
+      };
+      break;
+    default:
+      throw new Error(`Invalid node type: ${nodeType}`);
+  }
+
+  return {
+    id: nodeId,
+    type: nodeType,
+    position: position || defaultPosition,
+    data: {
+      label: nodeType,
+      filterType: nodeType,
+      filterName: nodeType === 'filter' ? filter?.name : undefined,
+      parameters: parameters || {},
+      handles,
     },
-  };
+  }
 };
 
 export default function FFmpegFlowEditor() {
@@ -109,6 +119,41 @@ export default function FFmpegFlowEditor() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+
+  // Initialize nodes
+  useEffect(() => {
+    // Add input node
+    const inputNodeId = nodeMappingManager.addNodeToMapping({
+      type: 'input',
+      filename: 'input.mp4',
+      inputs: [],
+      kwargs: {},
+    });
+
+    // Add output node
+    const outputNodeId = nodeMappingManager.addNodeToMapping({
+      type: 'output',
+      filename: 'output.mp4',
+      inputs: [],
+      kwargs: {},
+    });
+
+    // Add global node
+    const globalNodeId = nodeMappingManager.addNodeToMapping({
+      type: 'global',
+      inputs: [],
+      kwargs: {},
+    });
+
+    // Create React Flow nodes
+    const initialNodes = [
+      createNode(inputNodeId, 'input', {}, { x: 100, y: 300 }),
+      createNode(outputNodeId, 'output', {}, { x: 450, y: 300 }),
+      createNode(globalNodeId, 'global', {}, { x: 800, y: 300 }),
+    ];
+
+    setNodes(initialNodes);
+  }, [nodeMappingManager, setNodes]);
 
   // Add event listener for node data update
   useEffect(() => {
