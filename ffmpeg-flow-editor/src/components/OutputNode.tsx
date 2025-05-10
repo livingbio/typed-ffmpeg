@@ -54,6 +54,18 @@ function OutputNode({ data }: NodeProps<OutputNodeData>) {
           }}
         />
       ))}
+      {/* Output handle */}
+      <Handle
+        type="source"
+        position={Position.Right}
+        id={data.handles.outputs[0].id}
+        style={{
+          backgroundColor: EDGE_COLORS[data.handles.outputs[0].type],
+          width: '10px',
+          height: '10px',
+          border: '2px solid #fff',
+        }}
+      />
     </Paper>
   );
 }

@@ -80,7 +80,7 @@ export class NodeMappingManager {
 
   // Add a node to the mapping
   addNodeToMapping(params: {
-    type: 'filter' | 'input' | 'output' | 'global';
+    type: 'ffmpeg_filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
     inputs?: (FilterableStream | null)[] | OutputStream[];
@@ -103,7 +103,7 @@ export class NodeMappingManager {
     let node: FilterNode | InputNode | OutputNode;
 
     switch (params.type) {
-      case 'filter':
+      case 'ffmpeg_filter':
         if (!params.name || !params.input_typings || !params.output_typings) {
           throw new Error('FilterNode requires name, input_typings, and output_typings');
         }

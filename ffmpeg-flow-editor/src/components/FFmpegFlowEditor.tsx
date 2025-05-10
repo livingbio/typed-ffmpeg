@@ -13,6 +13,10 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { Box } from '@mui/material';
 import FilterNode from './FilterNode';
+import GlobalNode from './GlobalNode';
+import InputNode from './InputNode';
+import OutputNode from './OutputNode';
+
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
@@ -20,7 +24,10 @@ import { NodeMappingManager } from '../utils/nodeMapping';
 import { VideoStream, AudioStream, AVStream, Stream } from '../types/dag';
 
 const nodeTypes = {
-  filter: FilterNode,
+  ffmpeg_filter: FilterNode,
+  global: GlobalNode,
+  input: InputNode,
+  output: OutputNode,
 };
 
 // Helper function to determine edge type from stream
@@ -69,7 +76,7 @@ const createNode = (
         outputs: [{id: 'output-0', type: 'av'}],
       };
       break;
-    case 'filter':
+    case 'ffmpeg_filter':
       if (!filter) {
         throw new Error(`Filter ${nodeType} not found`);
       }
@@ -201,7 +208,7 @@ export default function FFmpegFlowEditor() {
 
       // Rule 2: Can't connect from output nodes
       const sourceNode = nodes.find((node) => node.id === connection.source);
-      if (sourceNode?.data.filterType === 'output') {
+      if (sourceNode?.data.filterType === 'global') {
         console.log('Invalid connection: Cannot connect from output nodes');
         return false;
       }
@@ -279,7 +286,7 @@ export default function FFmpegFlowEditor() {
           }
 
           nodeId = nodeMappingManager.addNodeToMapping({
-            type: 'filter',
+            type: 'ffmpeg_filter',
             name: filter.name,
             input_typings: filter.stream_typings_input.map((t) => t.type),
             output_typings: filter.stream_typings_output.map((t) => t.type),
