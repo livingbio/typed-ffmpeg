@@ -224,11 +224,11 @@ export class NodeMappingManager {
           throw new Error('Invalid stream type');
       }
     } else if (sourceNode instanceof InputNode) {
-      stream = new AVStream(sourceNode, sourceIndex);
+      stream = new AVStream(sourceNode, null);
     } else if (sourceNode instanceof OutputNode) {
-      stream = new OutputStream(sourceNode, sourceIndex);
+      stream = new OutputStream(sourceNode, null);
     } else if (sourceNode instanceof GlobalNode) {
-      stream = new GlobalStream(sourceNode, sourceIndex);
+      stream = new GlobalStream(sourceNode, null);
     } else {
       throw new Error('Unsupported source node type');
     }

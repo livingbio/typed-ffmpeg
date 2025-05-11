@@ -5,6 +5,11 @@ from ...dag.schema import Stream
 from ...filters import amix, concat
 
 
+def simple_global_args() -> Stream:
+    input1 = input("input1.mp4")
+    return input1.output(filename="tmp.mp4").global_args(hide_banner=True)
+
+
 def not_utilize_split() -> Stream:
     input1 = input("input1.mp4")
     return input1.reverse().split(outputs=2).video(0).output(filename="tmp.mp4")
@@ -121,6 +126,7 @@ def multi_output_filter() -> Stream:
 
 
 shared_cases = [
+    pytest.param(simple_global_args(), id="simple-global-args"),
     pytest.param(not_utilize_split(), id="not-utilize-split"),
     pytest.param(redundant_split_outputs_1(), id="redundant-split-outputs-1"),
     pytest.param(redundant_split_duplicate(), id="redundant-split-duplicate"),
