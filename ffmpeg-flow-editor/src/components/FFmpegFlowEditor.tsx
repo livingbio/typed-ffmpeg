@@ -169,46 +169,41 @@ const createEdge = (
   sourceHandle: string | null,
   targetHandle: string | null,
   nodeMappingManager: NodeMappingManager
-): Edge<EdgeData> | null => {
+): Edge<EdgeData> => {
   if (!sourceHandle || !targetHandle) {
-    return null;
+    throw new Error('Source or target handle not found');
   }
 
   const sourceIndex = parseInt(sourceHandle.split('-')[1] || '0');
   const targetIndex = parseInt(targetHandle.split('-')[1] || '0');
 
-  try {
-    const edgeId = nodeMappingManager.addEdgeToMapping(
-      source,
-      target,
-      sourceIndex,
-      targetIndex
-    );
+  const edgeId = nodeMappingManager.addEdgeToMapping(
+    source,
+    target,
+    sourceIndex,
+    targetIndex
+  );
 
-    // Get the stream from the edge mapping
-    const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
-    if (!stream) {
-      throw new Error('Stream not found in mapping');
-    }
-
-    // Determine edge type using helper function
-    const edgeType = getEdgeTypeFromStream(stream);
-
-    return {
-      id: edgeId,
-      source,
-      target,
-      sourceHandle,
-      targetHandle,
-      style: { stroke: EDGE_COLORS[edgeType] },
-      data: { type: edgeType, sourceIndex, targetIndex },
-      type: 'smoothstep',
-      animated: false,
-    };
-  } catch (error) {
-    console.error('Failed to create edge:', error);
-    return null;
+  // Get the stream from the edge mapping
+  const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
+  if (!stream) {
+    throw new Error('Stream not found in mapping');
   }
+
+  // Determine edge type using helper function
+  const edgeType = getEdgeTypeFromStream(stream);
+
+  return {
+    id: edgeId,
+    source,
+    target,
+    sourceHandle,
+    targetHandle,
+    style: { stroke: EDGE_COLORS[edgeType] },
+    data: { type: edgeType, sourceIndex, targetIndex },
+    type: 'smoothstep',
+    animated: false,
+  };
 };
 
 export default function FFmpegFlowEditor() {
@@ -239,9 +234,7 @@ export default function FFmpegFlowEditor() {
       nodeMappingManager
     );
 
-    if (initialEdge) {
-      setEdges([initialEdge]);
-    }
+    setEdges([initialEdge]);
   }, [nodeMappingManager, setNodes, setEdges]);
 
   // Add event listener for node data update
@@ -325,9 +318,7 @@ export default function FFmpegFlowEditor() {
           nodeMappingManager
         );
 
-        if (newEdge) {
-          setEdges((eds) => addEdge(newEdge, eds));
-        }
+        setEdges((eds) => addEdge(newEdge, eds));
       }
     },
     [isValidConnection, setEdges, nodeMappingManager]
