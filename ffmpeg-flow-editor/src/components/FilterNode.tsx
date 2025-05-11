@@ -4,7 +4,6 @@ import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/mater
 import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
-import { StreamType } from '../types/dag';
 
 interface ValidationError {
   [key: string]: string | null;

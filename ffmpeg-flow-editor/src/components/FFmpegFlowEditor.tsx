@@ -56,7 +56,7 @@ const createNode = (
     y: Math.random() * 300 + 100,
   };
 
-  let handles: { inputs: { id: string; type: string }[]; outputs: { id: string; type: string }[] };
+  let handles: { inputs: { id: string; type: EdgeType }[]; outputs: { id: string; type: EdgeType }[] };
   let label: string;
   let mappingData: {
     type: 'global' | 'input' | 'output' | 'filter';
@@ -82,7 +82,7 @@ const createNode = (
     case 'global':
       label = 'global';
       handles = {
-        inputs: [{id: 'input-0', type: 'av'}],
+        inputs: [{id: 'input-0', type: "av"}],
         outputs: [],
       };
       mappingData = {

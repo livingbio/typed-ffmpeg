@@ -2,9 +2,8 @@ import { memo } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, useTheme } from '@mui/material';
 import { EDGE_COLORS } from '../types/edge';
-import { GlobalNodeData } from '../types/node';
-
-function GlobalNode({ data }: NodeProps<GlobalNodeData>) {
+import { NodeData } from '../types/node';
+function GlobalNode({ data }: NodeProps<NodeData>) {
   const theme = useTheme();
 
   return (

@@ -1,12 +1,12 @@
 import { memo, useState } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, useTheme } from '@mui/material';
-import { EdgeType, EDGE_COLORS } from '../types/edge';
-import { InputNodeData } from '../types/node';
+import { EDGE_COLORS } from '../types/edge';
+import { NodeData } from '../types/node';
 
-function InputNode({ data }: NodeProps<InputNodeData>) {
+function InputNode({ data }: NodeProps<NodeData>) {
   const theme = useTheme();
-  const [filename, setFilename] = useState<string>(data.filename);
+  const [filename, setFilename] = useState<string>(data.filename || '');
 
   return (
     <Paper 
