@@ -66,7 +66,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                               "inputs": [
                                 {
                                   "__class__": "AVStream",
-                                  "index": 0,
+                                  "index": null,
                                   "node": {
                                     "__class__": "InputNode",
                                     "filename": "input1.mp4",
@@ -139,7 +139,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -243,7 +243,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -316,7 +316,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -400,7 +400,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -469,7 +469,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -515,7 +515,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -562,7 +562,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -608,7 +608,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -697,7 +697,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                               "inputs": [
                                 {
                                   "__class__": "AVStream",
-                                  "index": 0,
+                                  "index": null,
                                   "node": {
                                     "__class__": "InputNode",
                                     "filename": "input1.mp4",
@@ -770,7 +770,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -874,7 +874,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -947,7 +947,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -1031,7 +1031,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -1100,7 +1100,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -1146,7 +1146,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -1193,7 +1193,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -1239,7 +1239,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -1272,7 +1272,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
   "edgeMap": Map {
     "edge-input-6-0-filter-areverse-5-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -1294,7 +1294,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -1339,7 +1339,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -1413,7 +1413,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -1462,7 +1462,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
     },
     "edge-input-9-0-filter-areverse-8-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -1484,7 +1484,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -1529,7 +1529,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -1619,7 +1619,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                           "inputs": [
                             {
                               "__class__": "AVStream",
-                              "index": 0,
+                              "index": null,
                               "node": {
                                 "__class__": "InputNode",
                                 "filename": "input1.mp4",
@@ -1692,7 +1692,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -1746,7 +1746,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -1768,7 +1768,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -1813,7 +1813,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -1887,7 +1887,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -1936,7 +1936,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
     } => "edge-filter-areverse-3-0-filter-amix-2-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -1958,7 +1958,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -2003,7 +2003,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -2093,7 +2093,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                           "inputs": [
                             {
                               "__class__": "AVStream",
-                              "index": 0,
+                              "index": null,
                               "node": {
                                 "__class__": "InputNode",
                                 "filename": "input1.mp4",
@@ -2166,7 +2166,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -2220,7 +2220,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -2245,7 +2245,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -2293,7 +2293,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -2370,7 +2370,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -2422,7 +2422,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -2447,7 +2447,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -2495,7 +2495,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -2588,7 +2588,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                           "inputs": [
                             {
                               "__class__": "AVStream",
-                              "index": 0,
+                              "index": null,
                               "node": {
                                 "__class__": "InputNode",
                                 "filename": "input1.mp4",
@@ -2661,7 +2661,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -2774,7 +2774,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -2848,7 +2848,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                               "inputs": [
                                 {
                                   "__class__": "AVStream",
-                                  "index": 0,
+                                  "index": null,
                                   "node": {
                                     "__class__": "InputNode",
                                     "filename": "input1.mp4",
@@ -2951,7 +2951,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -3025,7 +3025,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -3108,7 +3108,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -3154,7 +3154,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -3213,7 +3213,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -3282,7 +3282,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -3328,7 +3328,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -3405,7 +3405,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -3479,7 +3479,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                               "inputs": [
                                 {
                                   "__class__": "AVStream",
-                                  "index": 0,
+                                  "index": null,
                                   "node": {
                                     "__class__": "InputNode",
                                     "filename": "input1.mp4",
@@ -3582,7 +3582,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -3656,7 +3656,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -3739,7 +3739,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -3785,7 +3785,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -3844,7 +3844,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -3913,7 +3913,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -3959,7 +3959,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -3992,7 +3992,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
   "edgeMap": Map {
     "edge-input-5-0-filter-areverse-4-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -4014,7 +4014,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -4059,7 +4059,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -4097,7 +4097,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
     },
     "edge-input-9-0-filter-areverse-8-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -4119,7 +4119,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -4164,7 +4164,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -4238,7 +4238,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -4327,7 +4327,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -4401,7 +4401,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                           "inputs": [
                             {
                               "__class__": "AVStream",
-                              "index": 0,
+                              "index": null,
                               "node": {
                                 "__class__": "InputNode",
                                 "filename": "input1.mp4",
@@ -4466,7 +4466,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -4488,7 +4488,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -4533,7 +4533,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -4571,7 +4571,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
     } => "edge-filter-asplit-3-0-filter-amix-2-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -4593,7 +4593,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -4638,7 +4638,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -4712,7 +4712,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -4801,7 +4801,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -4875,7 +4875,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                           "inputs": [
                             {
                               "__class__": "AVStream",
-                              "index": 0,
+                              "index": null,
                               "node": {
                                 "__class__": "InputNode",
                                 "filename": "input1.mp4",
@@ -4940,7 +4940,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -4965,7 +4965,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -5013,7 +5013,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -5054,7 +5054,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -5079,7 +5079,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -5127,7 +5127,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -5204,7 +5204,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -5296,7 +5296,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -5370,7 +5370,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                           "inputs": [
                             {
                               "__class__": "AVStream",
-                              "index": 0,
+                              "index": null,
                               "node": {
                                 "__class__": "InputNode",
                                 "filename": "input1.mp4",
@@ -5502,7 +5502,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -5564,7 +5564,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -5626,7 +5626,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -5688,7 +5688,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -5793,7 +5793,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -5855,7 +5855,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -5917,7 +5917,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -5979,7 +5979,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -6084,7 +6084,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -6146,7 +6146,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -6208,7 +6208,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -6270,7 +6270,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -6347,7 +6347,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -6393,7 +6393,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -6440,7 +6440,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -6486,7 +6486,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -6533,7 +6533,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -6579,7 +6579,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -6626,7 +6626,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -6672,7 +6672,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -6743,7 +6743,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -6805,7 +6805,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -6867,7 +6867,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -6929,7 +6929,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -7006,7 +7006,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -7052,7 +7052,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -7099,7 +7099,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -7145,7 +7145,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -7192,7 +7192,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -7238,7 +7238,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -7285,7 +7285,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -7331,7 +7331,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -7416,7 +7416,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -7478,7 +7478,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -7540,7 +7540,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -7602,7 +7602,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -7707,7 +7707,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -7769,7 +7769,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -7831,7 +7831,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -7893,7 +7893,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input2.mp4",
@@ -7998,7 +7998,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -8060,7 +8060,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -8122,7 +8122,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -8184,7 +8184,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -8261,7 +8261,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -8307,7 +8307,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -8354,7 +8354,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -8400,7 +8400,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -8447,7 +8447,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -8493,7 +8493,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -8540,7 +8540,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -8586,7 +8586,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -8657,7 +8657,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -8719,7 +8719,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -8781,7 +8781,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -8843,7 +8843,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input2.mp4",
@@ -8920,7 +8920,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -8966,7 +8966,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -9013,7 +9013,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -9059,7 +9059,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -9106,7 +9106,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -9152,7 +9152,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -9199,7 +9199,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input2.mp4",
@@ -9245,7 +9245,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input2.mp4",
@@ -9278,7 +9278,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
   "edgeMap": Map {
     "edge-input-5-0-filter-reverse-4-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -9300,7 +9300,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -9345,7 +9345,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -9383,7 +9383,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     "edge-input-8-0-filter-areverse-7-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -9405,7 +9405,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -9450,7 +9450,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -9488,7 +9488,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     "edge-input-11-0-filter-reverse-10-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -9510,7 +9510,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -9555,7 +9555,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -9593,7 +9593,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     "edge-input-14-0-filter-areverse-13-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -9615,7 +9615,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -9660,7 +9660,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -9746,7 +9746,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -9808,7 +9808,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -9870,7 +9870,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -9932,7 +9932,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -9989,7 +9989,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     "edge-input-18-0-filter-reverse-17-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -10011,7 +10011,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -10056,7 +10056,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -10094,7 +10094,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     "edge-input-21-0-filter-areverse-20-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -10116,7 +10116,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -10161,7 +10161,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -10199,7 +10199,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     "edge-input-24-0-filter-reverse-23-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -10221,7 +10221,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -10266,7 +10266,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -10304,7 +10304,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     "edge-input-27-0-filter-areverse-26-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -10326,7 +10326,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -10371,7 +10371,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -10457,7 +10457,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -10519,7 +10519,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -10581,7 +10581,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -10643,7 +10643,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -10702,7 +10702,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -10724,7 +10724,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -10769,7 +10769,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -10807,7 +10807,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     } => "edge-filter-split-3-0-filter-concat-2-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -10829,7 +10829,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -10874,7 +10874,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -10912,7 +10912,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     } => "edge-filter-asplit-6-0-filter-concat-2-1",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -10934,7 +10934,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -10979,7 +10979,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -11017,7 +11017,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     } => "edge-filter-split-9-1-filter-concat-2-2",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -11039,7 +11039,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -11084,7 +11084,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -11170,7 +11170,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -11232,7 +11232,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -11294,7 +11294,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -11356,7 +11356,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -11413,7 +11413,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     } => "edge-filter-concat-2-0-output-1-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -11435,7 +11435,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -11480,7 +11480,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -11518,7 +11518,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     } => "edge-filter-split-16-0-filter-concat-15-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -11540,7 +11540,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -11585,7 +11585,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -11623,7 +11623,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     } => "edge-filter-asplit-19-0-filter-concat-15-1",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -11645,7 +11645,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -11690,7 +11690,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -11728,7 +11728,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     } => "edge-filter-split-22-1-filter-concat-15-2",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -11750,7 +11750,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -11795,7 +11795,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -11881,7 +11881,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -11943,7 +11943,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -12005,7 +12005,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -12067,7 +12067,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -12126,7 +12126,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -12151,7 +12151,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -12199,7 +12199,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -12240,7 +12240,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -12265,7 +12265,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -12313,7 +12313,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -12354,7 +12354,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -12379,7 +12379,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -12427,7 +12427,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -12468,7 +12468,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -12493,7 +12493,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -12541,7 +12541,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -12630,7 +12630,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -12692,7 +12692,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -12754,7 +12754,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -12816,7 +12816,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -12876,7 +12876,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -12901,7 +12901,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -12949,7 +12949,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -12990,7 +12990,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -13015,7 +13015,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -13063,7 +13063,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -13104,7 +13104,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -13129,7 +13129,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -13177,7 +13177,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -13218,7 +13218,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input2.mp4",
@@ -13243,7 +13243,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input2.mp4",
@@ -13291,7 +13291,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input2.mp4",
@@ -13380,7 +13380,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -13442,7 +13442,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -13504,7 +13504,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -13566,7 +13566,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input2.mp4",
@@ -14322,7 +14322,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -14355,7 +14355,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -14404,7 +14404,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -14437,7 +14437,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -14470,7 +14470,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
   "edgeMap": Map {
     "edge-input-3-0-filter-reverse-2-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -14492,7 +14492,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -14515,7 +14515,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -14537,7 +14537,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -14560,7 +14560,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -14585,7 +14585,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -14671,7 +14671,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -14737,7 +14737,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -14803,7 +14803,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -14902,7 +14902,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -14968,7 +14968,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -15034,7 +15034,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -15109,7 +15109,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -15159,7 +15159,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -15206,7 +15206,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -15256,7 +15256,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -15303,7 +15303,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -15353,7 +15353,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -15434,7 +15434,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -15500,7 +15500,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -15566,7 +15566,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input1.mp4",
@@ -15665,7 +15665,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -15731,7 +15731,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -15797,7 +15797,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input1.mp4",
@@ -15872,7 +15872,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -15922,7 +15922,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -15969,7 +15969,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -16019,7 +16019,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -16066,7 +16066,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -16116,7 +16116,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -16149,7 +16149,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
   "edgeMap": Map {
     "edge-input-5-0-filter-reverse-4-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -16171,7 +16171,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -16216,7 +16216,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -16258,7 +16258,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
     },
     "edge-input-8-0-filter-reverse-7-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -16280,7 +16280,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -16325,7 +16325,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -16367,7 +16367,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
     },
     "edge-input-11-0-filter-reverse-10-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -16389,7 +16389,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -16434,7 +16434,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -16520,7 +16520,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -16586,7 +16586,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -16652,7 +16652,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -16709,7 +16709,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -16731,7 +16731,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -16776,7 +16776,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -16818,7 +16818,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
     } => "edge-filter-split-3-0-filter-concat-2-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -16840,7 +16840,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -16885,7 +16885,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -16927,7 +16927,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
     } => "edge-filter-split-6-1-filter-concat-2-1",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -16949,7 +16949,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -16994,7 +16994,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -17080,7 +17080,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -17146,7 +17146,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -17212,7 +17212,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -17269,7 +17269,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -17294,7 +17294,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -17342,7 +17342,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -17387,7 +17387,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -17412,7 +17412,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -17460,7 +17460,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -17505,7 +17505,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -17530,7 +17530,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -17578,7 +17578,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input1.mp4",
@@ -17667,7 +17667,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -17733,7 +17733,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -17799,7 +17799,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input1.mp4",
@@ -17887,7 +17887,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -17920,7 +17920,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -17969,7 +17969,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input1.mp4",
@@ -18002,7 +18002,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input1.mp4",
@@ -18035,7 +18035,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
   "edgeMap": Map {
     "edge-input-3-0-filter-reverse-2-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -18057,7 +18057,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -18080,7 +18080,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -18102,7 +18102,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -18125,7 +18125,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input1.mp4",
@@ -18150,7 +18150,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input1.mp4",
@@ -18208,7 +18208,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -18218,7 +18218,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
               },
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -18257,7 +18257,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -18267,7 +18267,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         },
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -18328,7 +18328,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -18338,7 +18338,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
               },
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -18377,7 +18377,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -18387,7 +18387,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         },
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -18428,7 +18428,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
   "edgeMap": Map {
     "edge-input-3-0-filter-concat-2-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -18438,7 +18438,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
     },
     "edge-input-4-0-filter-concat-2-1" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -18464,7 +18464,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -18474,7 +18474,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
           },
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -18499,7 +18499,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -18509,7 +18509,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
     } => "edge-input-3-0-filter-concat-2-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -18535,7 +18535,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -18545,7 +18545,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
           },
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -18570,7 +18570,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -18583,7 +18583,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -18612,7 +18612,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -18622,7 +18622,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
           },
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -18706,7 +18706,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input.mp4",
@@ -18768,7 +18768,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input.mp4",
@@ -18859,7 +18859,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input.mp4",
@@ -18921,7 +18921,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input.mp4",
@@ -18992,7 +18992,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -19038,7 +19038,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -19085,7 +19085,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -19131,7 +19131,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -19208,7 +19208,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input.mp4",
@@ -19270,7 +19270,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                         "inputs": [
                           {
                             "__class__": "AVStream",
-                            "index": 0,
+                            "index": null,
                             "node": {
                               "__class__": "InputNode",
                               "filename": "input.mp4",
@@ -19361,7 +19361,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input.mp4",
@@ -19423,7 +19423,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                   "inputs": [
                     {
                       "__class__": "AVStream",
-                      "index": 0,
+                      "index": null,
                       "node": {
                         "__class__": "InputNode",
                         "filename": "input.mp4",
@@ -19494,7 +19494,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -19540,7 +19540,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -19587,7 +19587,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
             "inputs": [
               {
                 "__class__": "AVStream",
-                "index": 0,
+                "index": null,
                 "node": {
                   "__class__": "InputNode",
                   "filename": "input.mp4",
@@ -19633,7 +19633,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "inputs": [
         {
           "__class__": "AVStream",
-          "index": 0,
+          "index": null,
           "node": {
             "__class__": "InputNode",
             "filename": "input.mp4",
@@ -19666,7 +19666,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
   "edgeMap": Map {
     "edge-input-5-0-filter-reverse-4-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -19688,7 +19688,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -19733,7 +19733,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input.mp4",
@@ -19771,7 +19771,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
     },
     "edge-input-8-0-filter-reverse-7-0" => {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -19793,7 +19793,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -19838,7 +19838,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input.mp4",
@@ -19916,7 +19916,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input.mp4",
@@ -19978,7 +19978,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input.mp4",
@@ -20031,7 +20031,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
   "reverseMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -20053,7 +20053,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -20098,7 +20098,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input.mp4",
@@ -20136,7 +20136,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
     } => "edge-filter-split-3-0-filter-concat-2-0",
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -20158,7 +20158,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -20203,7 +20203,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input.mp4",
@@ -20281,7 +20281,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input.mp4",
@@ -20343,7 +20343,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input.mp4",
@@ -20396,7 +20396,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
   "targetMap": Map {
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -20421,7 +20421,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -20469,7 +20469,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input.mp4",
@@ -20510,7 +20510,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
     },
     {
       "__class__": "AVStream",
-      "index": 0,
+      "index": null,
       "node": {
         "__class__": "InputNode",
         "filename": "input.mp4",
@@ -20535,7 +20535,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [
           {
             "__class__": "AVStream",
-            "index": 0,
+            "index": null,
             "node": {
               "__class__": "InputNode",
               "filename": "input.mp4",
@@ -20583,7 +20583,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
               "inputs": [
                 {
                   "__class__": "AVStream",
-                  "index": 0,
+                  "index": null,
                   "node": {
                     "__class__": "InputNode",
                     "filename": "input.mp4",
@@ -20664,7 +20664,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input.mp4",
@@ -20726,7 +20726,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
                     "inputs": [
                       {
                         "__class__": "AVStream",
-                        "index": 0,
+                        "index": null,
                         "node": {
                           "__class__": "InputNode",
                           "filename": "input.mp4",
