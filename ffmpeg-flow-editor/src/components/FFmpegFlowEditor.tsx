@@ -299,6 +299,7 @@ export default function FFmpegFlowEditor() {
         case 'output':
           return targetNode?.data.nodeType === 'global';
         case 'filter':
+          // if there is already an edge connected to the source node, return false
           return true;
       }
           
@@ -386,6 +387,26 @@ export default function FFmpegFlowEditor() {
     [reactFlowInstance, onAddNode]
   );
 
+  const onNodesDelete = useCallback(
+    (nodesToDelete: Node[]) => {
+      nodesToDelete.forEach((node) => {
+        // Remove node from mapping
+        nodeMappingManager.removeNodeFromMapping(node.id);
+      });
+    },
+    [nodeMappingManager]
+  );
+
+  const onEdgesDelete = useCallback(
+    (edgesToDelete: Edge[]) => {
+      edgesToDelete.forEach((edge) => {
+        // Remove edge from mapping
+        nodeMappingManager.removeEdgeFromMapping(edge.id);
+      });
+    },
+    [nodeMappingManager]
+  );
+
   return (
     <Box
       sx={{
@@ -403,6 +424,8 @@ export default function FFmpegFlowEditor() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onNodesDelete={onNodesDelete}
+        onEdgesDelete={onEdgesDelete}
         isValidConnection={isValidConnection}
         nodeTypes={nodeTypes}
         onInit={setReactFlowInstance}

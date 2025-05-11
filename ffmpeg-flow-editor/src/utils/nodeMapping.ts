@@ -145,17 +145,22 @@ export class NodeMappingManager {
   }
 
   // Remove a node from the mapping
-  removeNodeFromMapping(nodeId: string) {
-    // Prevent removal of the global node
-    if (nodeId === this.globalNodeId) {
-      throw new Error('Cannot remove the global node');
-    }
-
-    const dagNode = this.nodeMapping.nodeMap.get(nodeId);
-    if (dagNode) {
-      this.nodeMapping.reverseMap.delete(dagNode);
+  removeNodeFromMapping(nodeId: string): void {
+    // Remove the node from the mapping
+    const node = this.nodeMapping.nodeMap.get(nodeId);
+    if (node) {
+      this.nodeMapping.reverseMap.delete(node);
     }
     this.nodeMapping.nodeMap.delete(nodeId);
+
+    // Remove any edges connected to this node
+    const edgesToRemove = Object.entries(this.edgeMapping)
+      .filter(([, edge]) => edge.source === nodeId || edge.target === nodeId)
+      .map(([edgeId]) => edgeId);
+
+    edgesToRemove.forEach((edgeId) => {
+      this.removeEdgeFromMapping(edgeId);
+    });
   }
 
   // Get the global node ID
@@ -273,26 +278,14 @@ export class NodeMappingManager {
   }
 
   // Remove an edge from the mapping
-  removeEdgeFromMapping(edgeId: string) {
+  removeEdgeFromMapping(edgeId: string): void {
+    // Remove the edge from the mapping
     const stream = this.edgeMapping.edgeMap.get(edgeId);
     if (stream) {
-      const targetInfo = this.edgeMapping.targetMap.get(stream);
-      if (!targetInfo) {
-        throw new Error('Target information not found in mapping');
-      }
-
-      const targetNode = this.nodeMapping.nodeMap.get(targetInfo.nodeId);
-      if (!targetNode) {
-        throw new Error('Target node not found in mapping');
-      }
-
-      targetNode.inputs[targetInfo.index] = null;
       this.edgeMapping.reverseMap.delete(stream);
-      this.edgeMapping.edgeMap.delete(edgeId);
       this.edgeMapping.targetMap.delete(stream);
-    } else {
-      throw new Error('Stream not found in mapping');
     }
+    this.edgeMapping.edgeMap.delete(edgeId);
   }
 
   // Get current mapping state
