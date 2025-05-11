@@ -29,7 +29,7 @@ const nodeTypes = {
   global: GlobalNode,
   input: InputNode,
   output: OutputNode,
-};
+} as const;
 
 // Helper function to determine edge type from stream
 const getEdgeTypeFromStream = (stream: Stream): EdgeType => {
