@@ -185,7 +185,7 @@ describe('nodeMapping', () => {
       });
 
       expect(() => nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
-        'Video stream cannot be connected to audio input'
+        'Stream type mismatch'
       );
     });
 
@@ -204,7 +204,7 @@ describe('nodeMapping', () => {
       });
 
       expect(() => nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
-        'Audio stream cannot be connected to video input'
+        'Stream type mismatch'
       );
     });
   });
@@ -380,5 +380,7 @@ describe('Node Mapping', () => {
     expect(nodeMappingManager.getNodeMapping()).toMatchSnapshot();
     // check edge mapping's snapshot
     expect(nodeMappingManager.getEdgeMapping()).toMatchSnapshot();
+    // check node mapping's json
+    expect(nodeMappingManager.toJson()).toMatchSnapshot();
   });
 });

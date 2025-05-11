@@ -12,6 +12,7 @@ import {
   GlobalStream,
   StreamType,
 } from '../types/dag';
+import { dumps } from './serialize';
 
 export interface NodeMapping {
   // Maps ReactFlow node ID to DAG node
@@ -83,7 +84,7 @@ export class NodeMappingManager {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
-    inputs?: (FilterableStream | null)[] | OutputStream[];
+    inputs?: (FilterableStream | null | OutputStream)[];
     input_typings?: StreamType[];
     output_typings?: StreamType[];
     kwargs?: Record<string, string | number | boolean>;
@@ -148,9 +149,10 @@ export class NodeMappingManager {
   removeNodeFromMapping(nodeId: string): void {
     // Remove the node from the mapping
     const node = this.nodeMapping.nodeMap.get(nodeId);
-    if (node) {
-      this.nodeMapping.reverseMap.delete(node);
+    if (!node) {
+      throw new Error('Node not found in mapping');
     }
+    this.nodeMapping.reverseMap.delete(node);
     this.nodeMapping.nodeMap.delete(nodeId);
 
     // Remove any edges connected to this node
@@ -281,10 +283,21 @@ export class NodeMappingManager {
   removeEdgeFromMapping(edgeId: string): void {
     // Remove the edge from the mapping
     const stream = this.edgeMapping.edgeMap.get(edgeId);
-    if (stream) {
-      this.edgeMapping.reverseMap.delete(stream);
-      this.edgeMapping.targetMap.delete(stream);
+    if (!stream) {
+      throw new Error('Edge not found in mapping');
     }
+
+    // remove the edge from target's input
+    const targetNode = this.edgeMapping.targetMap.get(stream)?.nodeId;
+    if (!targetNode) {
+      throw new Error('Target node not found in mapping');
+    }
+    const targetNodeInstance = this.nodeMapping.nodeMap.get(targetNode);
+    if (!targetNodeInstance) {
+      throw new Error('Target node not found in mapping');
+    }
+    targetNodeInstance.inputs[this.edgeMapping.targetMap.get(stream)?.index ?? 0] = null;
+    this.edgeMapping.targetMap.delete(stream);
     this.edgeMapping.edgeMap.delete(edgeId);
   }
 
@@ -376,7 +389,7 @@ export class NodeMappingManager {
       type: 'filter' | 'input' | 'output' | 'global';
       name?: string;
       filename?: string;
-      inputs?: (FilterableStream | null)[] | OutputStream[];
+      inputs?: (FilterableStream | null | OutputStream)[];
       input_typings?: StreamType[];
       output_typings?: StreamType[];
       kwargs?: Record<string, string | number | boolean>;
@@ -430,5 +443,10 @@ export class NodeMappingManager {
     }
 
     return nodeId;
+  }
+
+  // Convert the global node to JSON
+  toJson(): string {
+    return dumps(this.globalNode);
   }
 }
