@@ -21,10 +21,11 @@ import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import { NodeMappingManager } from '../utils/nodeMapping';
-import { VideoStream, AudioStream, AVStream, Stream } from '../types/dag';
+import { VideoStream, AudioStream, AVStream, Stream, FilterableStream, OutputStream, StreamType } from '../types/dag';
+import { NodeData } from '../types/node';
 
 const nodeTypes = {
-  ffmpeg_filter: FilterNode,
+  filter: FilterNode,
   global: GlobalNode,
   input: InputNode,
   output: OutputNode,
@@ -44,10 +45,10 @@ const getEdgeTypeFromStream = (stream: Stream): EdgeType => {
 
 // Helper function to create a node
 const createNode = (
-  nodeId: string,
   nodeType: string,
   parameters: Record<string, string> | undefined,
   position: { x: number; y: number } | undefined,
+  nodeMappingManager: NodeMappingManager,
   filter?: typeof predefinedFilters[0]
 ): Node => {
   const defaultPosition = {
@@ -56,30 +57,61 @@ const createNode = (
   };
 
   let handles: { inputs: { id: string; type: string }[]; outputs: { id: string; type: string }[] };
+  let label: string;
+  let mappingData: {
+    type: 'global' | 'input' | 'output' | 'filter';
+    name?: string;
+    filename?: string;
+    inputs: (FilterableStream | null)[] | OutputStream[];
+    input_typings?: StreamType[];
+    output_typings?: StreamType[];
+    kwargs: Record<string, string>;
+  };
 
   switch (nodeType) {
     case 'global':
+      label = 'global';
       handles = {
         inputs: [{id: 'input-0', type: 'av'}],
         outputs: [],
       };
+      mappingData = {
+        type: 'global',
+        inputs: [],
+        kwargs: parameters || {},
+      };
       break;
     case 'input':
+      label = 'input';
       handles = {
         inputs: [],
         outputs: [{id: 'output-0', type: 'av'}],
       };
+      mappingData = {
+        type: 'input',
+        filename: 'input.mp4',
+        inputs: [],
+        kwargs: parameters || {},
+      };
       break;
     case 'output':
+      label = 'output';
       handles = {
         inputs: [{id: 'input-0', type: 'av'}],
         outputs: [{id: 'output-0', type: 'av'}],
       };
+      mappingData = {
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+        kwargs: parameters || {},
+      };
       break;
-    case 'ffmpeg_filter':
+    case 'filter':
       if (!filter) {
         throw new Error(`Filter ${nodeType} not found`);
       }
+      label = filter.name;
       handles = {
         inputs: filter.stream_typings_input.map((ioType, index) => {
           const typeValue = ioType.type.value;
@@ -102,22 +134,80 @@ const createNode = (
           throw new Error(`Invalid stream type: ${typeValue}`);
         }),
       };
+      mappingData = {
+        type: 'filter',
+        name: filter.name,
+        input_typings: filter.stream_typings_input.map((t) => t.type),
+        output_typings: filter.stream_typings_output.map((t) => t.type),
+        inputs: [],
+        kwargs: parameters || {},
+      };
       break;
     default:
       throw new Error(`Invalid node type: ${nodeType}`);
   }
+
+  const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
 
   return {
     id: nodeId,
     type: nodeType,
     position: position || defaultPosition,
     data: {
-      label: nodeType,
+      label: label,
       filterType: nodeType,
-      filterName: nodeType === 'filter' ? filter?.name : undefined,
       parameters: parameters || {},
       handles,
     },
+  }
+};
+
+// Helper function to create an edge
+const createEdge = (
+  source: string,
+  target: string,
+  sourceHandle: string | null,
+  targetHandle: string | null,
+  nodeMappingManager: NodeMappingManager
+): Edge<EdgeData> | null => {
+  if (!sourceHandle || !targetHandle) {
+    return null;
+  }
+
+  const sourceIndex = parseInt(sourceHandle.split('-')[1] || '0');
+  const targetIndex = parseInt(targetHandle.split('-')[1] || '0');
+
+  try {
+    const edgeId = nodeMappingManager.addEdgeToMapping(
+      source,
+      target,
+      sourceIndex,
+      targetIndex
+    );
+
+    // Get the stream from the edge mapping
+    const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
+    if (!stream) {
+      throw new Error('Stream not found in mapping');
+    }
+
+    // Determine edge type using helper function
+    const edgeType = getEdgeTypeFromStream(stream);
+
+    return {
+      id: edgeId,
+      source,
+      target,
+      sourceHandle,
+      targetHandle,
+      style: { stroke: EDGE_COLORS[edgeType] },
+      data: { type: edgeType, sourceIndex, targetIndex },
+      type: 'smoothstep',
+      animated: false,
+    };
+  } catch (error) {
+    console.error('Failed to create edge:', error);
+    return null;
   }
 };
 
@@ -129,38 +219,30 @@ export default function FFmpegFlowEditor() {
 
   // Initialize nodes
   useEffect(() => {
-    // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'input',
-      filename: 'input.mp4',
-      inputs: [],
-      kwargs: {},
-    });
-
-    // Add output node
-    const outputNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'output',
-      filename: 'output.mp4',
-      inputs: [],
-      kwargs: {},
-    });
-
-    // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'global',
-      inputs: [],
-      kwargs: {},
-    });
-
     // Create React Flow nodes
     const initialNodes = [
-      createNode(inputNodeId, 'input', {}, { x: 100, y: 300 }),
-      createNode(outputNodeId, 'output', {}, { x: 450, y: 300 }),
-      createNode(globalNodeId, 'global', {}, { x: 800, y: 300 }),
+      createNode('input', {}, { x: 100, y: 300 }, nodeMappingManager),
+      createNode('output', {}, { x: 450, y: 300 }, nodeMappingManager),
+      createNode('global', {}, { x: 800, y: 300 }, nodeMappingManager),
     ];
 
     setNodes(initialNodes);
-  }, [nodeMappingManager, setNodes]);
+
+    // Create initial edge between output and global nodes
+    const outputNode = initialNodes[1]; // output node
+    const globalNode = initialNodes[2]; // global node
+    const initialEdge = createEdge(
+      outputNode.id,
+      globalNode.id,
+      'output-0',
+      'input-0',
+      nodeMappingManager
+    );
+
+    if (initialEdge) {
+      setEdges([initialEdge]);
+    }
+  }, [nodeMappingManager, setNodes, setEdges]);
 
   // Add event listener for node data update
   useEffect(() => {
@@ -200,20 +282,34 @@ export default function FFmpegFlowEditor() {
   const isValidConnection = useCallback(
     (connection: Connection): boolean => {
       // Rule 1: Can't connect to input nodes
-      const targetNode = nodes.find((node) => node.id === connection.target);
-      if (targetNode?.data.filterType === 'input') {
-        console.log('Invalid connection: Cannot connect to input nodes');
-        return false;
-      }
+      const targetNode = nodes.find((node) => node.id === connection.target) as Node<NodeData> | undefined;
+      const sourceNode = nodes.find((node) => node.id === connection.source) as Node<NodeData> | undefined;
+      const sourceIndex = parseInt(connection.sourceHandle?.split('-')[1] || '0');
+      const targetIndex = parseInt(connection.targetHandle?.split('-')[1] || '0');
 
-      // Rule 2: Can't connect from output nodes
-      const sourceNode = nodes.find((node) => node.id === connection.source);
-      if (sourceNode?.data.filterType === 'global') {
-        console.log('Invalid connection: Cannot connect from output nodes');
-        return false;
+      switch (sourceNode?.data.nodeType) {
+        case 'global':
+          return false;
+        case 'input':
+          return true;
+        case 'output':
+          return targetNode?.data.nodeType === 'global';
+        case 'filter':
+          return true;
       }
-
-      return true;
+          
+      switch (targetNode?.data.nodeType) {
+        case 'global':
+          return sourceNode?.data.nodeType === 'output';
+        case 'input':
+          return false;
+        case 'output':
+          return true;
+        case 'filter':
+          return sourceNode?.data.handles.outputs[sourceIndex].type === targetNode?.data.handles.inputs[targetIndex].type;
+      }
+     
+      return false;
     },
     [nodes]
   );
@@ -221,40 +317,16 @@ export default function FFmpegFlowEditor() {
   const onConnect = useCallback(
     (params: Connection) => {
       if (isValidConnection(params) && params.source && params.target) {
-        const sourceIndex = parseInt(params.sourceHandle?.split('-')[1] || '0');
-        const targetIndex = parseInt(params.targetHandle?.split('-')[1] || '0');
+        const newEdge = createEdge(
+          params.source,
+          params.target,
+          params.sourceHandle,
+          params.targetHandle,
+          nodeMappingManager
+        );
 
-        try {
-          const edgeId = nodeMappingManager.addEdgeToMapping(
-            params.source,
-            params.target,
-            sourceIndex,
-            targetIndex
-          );
-
-          // Get the stream from the edge mapping
-          const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
-          if (!stream) {
-            throw new Error('Stream not found in mapping');
-          }
-
-          // Determine edge type using helper function
-          const edgeType = getEdgeTypeFromStream(stream);
-
-          const newEdge: Edge<EdgeData> = {
-            ...params,
-            id: edgeId,
-            style: { stroke: EDGE_COLORS[edgeType] },
-            data: { type: edgeType },
-            source: params.source,
-            target: params.target,
-            type: 'smoothstep',
-            animated: false,
-          };
-
+        if (newEdge) {
           setEdges((eds) => addEdge(newEdge, eds));
-        } catch (error) {
-          console.error('Failed to add edge:', error);
         }
       }
     },
@@ -263,43 +335,17 @@ export default function FFmpegFlowEditor() {
 
   const onAddNode = useCallback(
     (
-      nodeType: string,
+      filterType: string,
       parameters?: Record<string, string>,
       position?: { x: number; y: number }
     ) => {
       try {
-        let nodeId: string;
-
-        // Handle input and output nodes
-        if (nodeType === 'input' || nodeType === 'output') {
-          nodeId = nodeMappingManager.addNodeToMapping({
-            type: nodeType,
-            filename: nodeType === 'input' ? 'input.mp4' : 'output.mp4',
-            inputs: [],
-            kwargs: parameters,
-          });
-        } else {
-          // Handle regular filter nodes
-          const filter = predefinedFilters.find((f) => f.name === nodeType);
-          if (!filter) {
-            throw new Error(`Filter ${nodeType} not found`);
-          }
-
-          nodeId = nodeMappingManager.addNodeToMapping({
-            type: 'ffmpeg_filter',
-            name: filter.name,
-            input_typings: filter.stream_typings_input.map((t) => t.type),
-            output_typings: filter.stream_typings_output.map((t) => t.type),
-            kwargs: parameters,
-          });
-        }
-
         const newNode = createNode(
-          nodeId,
-          nodeType,
+          filterType,
           parameters,
           position,
-          predefinedFilters.find((f) => f.name === nodeType)
+          nodeMappingManager,
+          predefinedFilters.find((f) => f.name === filterType)
         );
 
         setNodes((nds) => [...nds, newNode]);

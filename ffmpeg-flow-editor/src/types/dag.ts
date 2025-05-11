@@ -53,7 +53,7 @@ export class OutputNode extends Serializable implements Node {
 
 export class GlobalNode extends Serializable implements Node {
   constructor(
-    public inputs: OutputStream[],
+    public inputs: (OutputStream | null)[],
     public kwargs: Record<string, string | number | boolean> = {}
   ) {
     super();

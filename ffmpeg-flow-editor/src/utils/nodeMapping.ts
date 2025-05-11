@@ -80,7 +80,7 @@ export class NodeMappingManager {
 
   // Add a node to the mapping
   addNodeToMapping(params: {
-    type: 'ffmpeg_filter' | 'input' | 'output' | 'global';
+    type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
     inputs?: (FilterableStream | null)[] | OutputStream[];
@@ -103,7 +103,7 @@ export class NodeMappingManager {
     let node: FilterNode | InputNode | OutputNode;
 
     switch (params.type) {
-      case 'ffmpeg_filter':
+      case 'filter':
         if (!params.name || !params.input_typings || !params.output_typings) {
           throw new Error('FilterNode requires name, input_typings, and output_typings');
         }
@@ -203,7 +203,7 @@ export class NodeMappingManager {
     }
 
     // Create the appropriate stream type based on source node type
-    let stream: Stream;
+    let stream: VideoStream | AudioStream | AVStream | OutputStream | GlobalStream;
     if (sourceNode instanceof FilterNode) {
       const streamType = sourceNode.output_typings[sourceIndex];
       switch (streamType.value) {
@@ -213,11 +213,8 @@ export class NodeMappingManager {
         case 'audio':
           stream = new AudioStream(sourceNode, sourceIndex);
           break;
-        case 'av':
-          stream = new AVStream(sourceNode, sourceIndex);
-          break;
         default:
-          stream = new FilterableStream(sourceNode, sourceIndex);
+          throw new Error('Invalid stream type');
       }
     } else if (sourceNode instanceof InputNode) {
       stream = new AVStream(sourceNode, sourceIndex);
@@ -232,20 +229,15 @@ export class NodeMappingManager {
     // Update target node's inputs array
     if (targetNode instanceof FilterNode) {
       // Set the input at the specified index
-      if (
-        stream instanceof VideoStream &&
-        targetNode.input_typings[targetIndex].value === 'audio'
-      ) {
-        throw new Error('Video stream cannot be connected to audio input');
+      if (stream instanceof GlobalStream || stream instanceof OutputStream) {
+        throw new Error('Stream type mismatch');
       }
+
       if (
-        stream instanceof AudioStream &&
-        targetNode.input_typings[targetIndex].value === 'video'
+        (targetNode.input_typings[targetIndex].value == 'video' && stream instanceof AudioStream) ||
+        (targetNode.input_typings[targetIndex].value == 'audio' && stream instanceof VideoStream)
       ) {
-        throw new Error('Audio stream cannot be connected to video input');
-      }
-      if (!(stream instanceof FilterableStream)) {
-        throw new Error('Stream is not a FilterableStream');
+        throw new Error('Stream type mismatch');
       }
       targetNode.inputs[targetIndex] = stream;
     } else if (targetNode instanceof OutputNode) {
@@ -256,6 +248,16 @@ export class NodeMappingManager {
       // Set the input at the specified index
       if (!(stream instanceof FilterableStream)) {
         throw new Error('Stream is not a FilterableStream');
+      }
+      targetNode.inputs[targetIndex] = stream;
+    } else if (targetNode instanceof GlobalNode) {
+      // Ensure inputs array is long enough
+      while (targetNode.inputs.length <= targetIndex) {
+        targetNode.inputs.push(null);
+      }
+      // Set the input at the specified index
+      if (!(stream instanceof OutputStream)) {
+        throw new Error('Stream type mismatch');
       }
       targetNode.inputs[targetIndex] = stream;
     } else {
