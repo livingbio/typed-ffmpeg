@@ -45,12 +45,12 @@ const getEdgeTypeFromStream = (stream: Stream): EdgeType => {
 
 // Helper function to create a node
 const createNode = (
-  nodeType: string,
+  filterType: string,
   parameters: Record<string, string> | undefined,
   position: { x: number; y: number } | undefined,
   nodeMappingManager: NodeMappingManager,
   filter?: typeof predefinedFilters[0]
-): Node => {
+): Node<NodeData> => {
   const defaultPosition = {
     x: Math.random() * 500 + 200,
     y: Math.random() * 300 + 100,
@@ -67,7 +67,17 @@ const createNode = (
     output_typings?: StreamType[];
     kwargs: Record<string, string>;
   };
-
+  let nodeType: string;
+  
+  if (filterType == 'global') {
+    nodeType = 'global';
+  } else if (filterType == 'input') {
+    nodeType = 'input';
+  } else if (filterType == 'output') {
+    nodeType = 'output';
+  } else {
+    nodeType = 'filter';
+  }
   switch (nodeType) {
     case 'global':
       label = 'global';
@@ -155,11 +165,12 @@ const createNode = (
     position: position || defaultPosition,
     data: {
       label: label,
-      filterType: nodeType,
+      filterName: filterType,
+      nodeType: nodeType,
       parameters: parameters || {},
       handles,
     },
-  }
+  };
 };
 
 // Helper function to create an edge
@@ -330,6 +341,7 @@ export default function FFmpegFlowEditor() {
       parameters?: Record<string, string>,
       position?: { x: number; y: number }
     ) => {
+      // filterType can be 'input', 'output', 'global', or a filter name
       try {
         const newNode = createNode(
           filterType,

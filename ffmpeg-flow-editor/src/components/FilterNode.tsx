@@ -3,20 +3,16 @@ import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/material';
 import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
+import { NodeData } from '../types/node';
 import { StreamType } from '../types/dag';
 
-interface FilterNodeData {
-  label: string;
-  filterType: 'input' | 'filter' | 'output';
-  filterName?: string;
-  parameters?: Record<string, string>;
-}
+
 
 interface ValidationError {
   [key: string]: string | null;
 }
 
-function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
+function FilterNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
@@ -93,7 +89,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
   };
 
   const getFilterString = () => {
-    if (data.filterType === 'filter' && data.filterName) {
+    if (data.filterName === 'filter' && data.filterName) {
       const paramString = Object.entries(parameters)
         .filter(([, value]) => value !== '')
         .map(([key, value]) => `${key}=${value}`)
@@ -173,7 +169,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       }}
     >
       {/* Input handles */}
-      {data.filterType !== 'input' && (
+      {data.filterName !== 'input' && (
         <>
           {inputTypes.map((type, index) => {
             const handleType = getHandleType(type);
@@ -210,7 +206,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       <Typography variant="h6" gutterBottom>
         {data.label}
       </Typography>
-      {data.filterType === 'filter' && (
+      {data.filterName === 'filter' && (
         <Box sx={{ mt: 1 }}>
           {filter?.description && (
             <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
@@ -258,7 +254,7 @@ function FilterNode({ data, id }: NodeProps<FilterNodeData>) {
       )}
 
       {/* Output handles */}
-      {data.filterType !== 'output' && (
+      {data.filterName !== 'output' && (
         <>
           {outputTypes.map((type, index) => {
             const handleType = getHandleType(type);
