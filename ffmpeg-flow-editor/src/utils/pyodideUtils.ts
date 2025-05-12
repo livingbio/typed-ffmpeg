@@ -2,8 +2,13 @@
 declare global {
   interface Window {
     loadPyodide: (options: { indexURL: string }) => Promise<{
-      runPythonAsync: (code: string) => Promise<string>;
+      runPythonAsync: (code: string) => Promise<unknown>;
       loadPackage: (packageName: string) => Promise<void>;
+      globals: {
+        get: (name: string) => unknown;
+        set: (name: string, value: unknown) => void;
+      };
+      stdout: string;
     }>;
   }
 }
@@ -41,9 +46,50 @@ export async function getPyodide(options?: {
  * @param options Optional configuration for Pyodide initialization
  * @returns Promise resolving to the result of the Python code execution
  */
-export async function runPython(code: string, options?: { indexURL?: string }): Promise<string> {
+export async function runPython(code: string, options?: { indexURL?: string }): Promise<unknown> {
   const pyodide = await getPyodide(options);
-  return await pyodide.runPythonAsync(code);
+
+  // Wrap the code in a function to capture both stdout and return value
+  const wrappedCode = `
+def __run_code():
+${code
+  .split('\n')
+  .map((line) => '    ' + line)
+  .join('\n')}
+
+__run_code_result = __run_code()
+`;
+
+  try {
+    // Run the wrapped code
+    await pyodide.runPythonAsync(wrappedCode);
+
+    // Get the result
+    const result = pyodide.globals.get('__run_code_result');
+
+    // Get stdout if available (for print statements)
+    let stdout = '';
+    if ('stdout' in pyodide) {
+      stdout = pyodide.stdout;
+    }
+
+    // Clean up
+    try {
+      await pyodide.runPythonAsync('del __run_code, __run_code_result');
+    } catch (error) {
+      console.warn('Error during cleanup:', error);
+    }
+
+    // If result is undefined/None but we have stdout, return stdout instead
+    if (result === undefined && stdout.trim() !== '') {
+      return stdout.trim();
+    }
+
+    return result;
+  } catch (error) {
+    console.error('Error executing Python code:', error);
+    throw error;
+  }
 }
 
 /**

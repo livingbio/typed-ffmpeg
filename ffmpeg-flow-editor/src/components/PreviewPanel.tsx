@@ -2,6 +2,7 @@ import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material'
 import { Node, Edge } from 'reactflow';
 import { NodeData } from '../types/node';
 import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
+import { generateFFmpegCommandSimple } from '../utils/generateFFmpegCommandSimple';
 import { NodeMappingManager } from '../utils/nodeMapping';
 import { useEffect, useState } from 'react';
 import { runPython } from '../utils/pyodideUtils';
@@ -18,14 +19,19 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
   const [error, setError] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [useSimpleMode, setUseSimpleMode] = useState<boolean>(false);
 
   useEffect(() => {
     const updatePythonCode = async () => {
       try {
         setIsLoading(true);
-        const { python, error } = await generateFFmpegCommand(nodeMappingManager);
-        setPythonCode(python);
-        setError(error);
+        
+          // Use the simple version for testing
+        const commandResult = await generateFFmpegCommandSimple(nodeMappingManager);
+
+        
+        setPythonCode(commandResult.python);
+        setError(commandResult.error);
       } catch (e) {
         console.error('Error updating Python code:', e);
         setError(e instanceof Error ? e.message : String(e));
@@ -35,7 +41,7 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
     };
 
     updatePythonCode();
-  }, [nodes, edges, nodeMappingManager]);
+  }, [nodes, edges, nodeMappingManager, useSimpleMode]);
 
   const handleRunPython = async () => {
     if (!pythonCode) return;
@@ -45,7 +51,8 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
     
     try {
       const output = await runPython(pythonCode);
-      setResult(output.toString());
+      // Use String() to safely convert any output type to a string
+      setResult(String(output));
     } catch (err) {
       const errMessage = err instanceof Error ? err.message : String(err);
       console.error('Python execution error:', err);
@@ -57,6 +64,10 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
 
   const handleCopy = () => {
     navigator.clipboard.writeText(pythonCode);
+  };
+
+  const toggleMode = () => {
+    setUseSimpleMode(!useSimpleMode);
   };
 
   return (
@@ -71,7 +82,17 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
             mb: 1,
           }}
         >
-          <Typography variant="subtitle2">Python Code</Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography variant="subtitle2">Python Code</Typography>
+            <Button 
+              variant="outlined" 
+              size="small" 
+              onClick={toggleMode}
+              sx={{ fontSize: '0.7rem' }}
+            >
+              {useSimpleMode ? 'Using Simple Mode' : 'Using Standard Mode'}
+            </Button>
+          </Box>
           <Box sx={{ display: 'flex', gap: 1 }}>
             <Button 
               variant="outlined" 
