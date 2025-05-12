@@ -106,6 +106,57 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getNodeMapping().nodeMap.get(id)).toBeUndefined();
       expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBeUndefined();
     });
+
+    it('should remove a node and all its connected edges', () => {
+      // Create source node
+      const sourceId = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'source',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video'), new StreamType('video')],
+      });
+
+      // Create two target nodes
+      const target1Id = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'target1',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+      });
+
+      const target2Id = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'target2',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+      });
+
+      // Connect source to both targets
+      const edge1Id = nodeMappingManager.addEdgeToMapping(sourceId, target1Id, 0, 0);
+      const edge2Id = nodeMappingManager.addEdgeToMapping(sourceId, target2Id, 1, 0);
+
+      // Remove source node
+      nodeMappingManager.removeNodeFromMapping(sourceId);
+
+      // Check that source node is removed
+      expect(nodeMappingManager.getNodeMapping().nodeMap.get(sourceId)).toBeUndefined();
+
+      // Check that edges are removed
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edge1Id)).toBeUndefined();
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edge2Id)).toBeUndefined();
+
+      // Check that target nodes' inputs are cleared
+      const target1Node = nodeMappingManager.getNodeMapping().nodeMap.get(target1Id)! as FilterNode;
+      const target2Node = nodeMappingManager.getNodeMapping().nodeMap.get(target2Id)! as FilterNode;
+      expect(target1Node.inputs[0]).toBeNull();
+      expect(target2Node.inputs[0]).toBeNull();
+    });
+
+    it('should throw error when removing non-existent node', () => {
+      expect(() => nodeMappingManager.removeNodeFromMapping('non-existent')).toThrow(
+        'Node not found in mapping'
+      );
+    });
   });
 
   describe('addEdgeToMapping', () => {
@@ -207,6 +258,67 @@ describe('nodeMapping', () => {
         'Stream type mismatch'
       );
     });
+
+    it('should add multiple edges from one source to different targets', () => {
+      const sourceId = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'source',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video'), new StreamType('video')],
+      });
+
+      const target1Id = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'target1',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+      });
+
+      const target2Id = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'target2',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+      });
+
+      const edge1Id = nodeMappingManager.addEdgeToMapping(sourceId, target1Id, 0, 0);
+      const edge2Id = nodeMappingManager.addEdgeToMapping(sourceId, target2Id, 1, 0);
+
+      expect(edge1Id).not.toBe(edge2Id);
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edge1Id)).toBeInstanceOf(VideoStream);
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edge2Id)).toBeInstanceOf(VideoStream);
+    });
+
+    it('should add edge from InputNode to OutputNode', () => {
+      const inputId = nodeMappingManager.addNodeToMapping({
+        type: 'input',
+        filename: 'input.mp4',
+      });
+
+      const outputId = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+      });
+
+      const edgeId = nodeMappingManager.addEdgeToMapping(inputId, outputId, 0, 0);
+      expect(edgeId).toMatch(/^edge-/);
+      const outputNode = nodeMappingManager.getNodeMapping().nodeMap.get(outputId)! as OutputNode;
+      expect(outputNode.inputs[0]).toBeInstanceOf(AVStream);
+    });
+
+    it('should throw error when connecting to non-existent node', () => {
+      const sourceId = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'source',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+      });
+
+      expect(() => nodeMappingManager.addEdgeToMapping(sourceId, 'non-existent', 0, 0)).toThrow(
+        'Source or target node not found in mapping'
+      );
+    });
   });
 
   describe('removeEdgeFromMapping', () => {
@@ -230,6 +342,48 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId)).toBeUndefined();
       const targetNode = nodeMappingManager.getNodeMapping().nodeMap.get(targetId)! as FilterNode;
       expect(targetNode.inputs[0]).toBeNull();
+    });
+
+    it('should throw error when removing non-existent edge', () => {
+      expect(() => nodeMappingManager.removeEdgeFromMapping('non-existent')).toThrow(
+        'Edge not found in mapping'
+      );
+    });
+
+    it('should handle removing edge from OutputNode', () => {
+      const inputId = nodeMappingManager.addNodeToMapping({
+        type: 'input',
+        filename: 'input.mp4',
+      });
+
+      const outputId = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+      });
+
+      const edgeId = nodeMappingManager.addEdgeToMapping(inputId, outputId, 0, 0);
+      nodeMappingManager.removeEdgeFromMapping(edgeId);
+
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId)).toBeUndefined();
+      const outputNode = nodeMappingManager.getNodeMapping().nodeMap.get(outputId)! as OutputNode;
+      expect(outputNode.inputs[0]).toBeNull();
+    });
+
+    it('should handle removing edge from GlobalNode', () => {
+      const outputId = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+      });
+
+      const globalId = nodeMappingManager.getGlobalNodeId();
+      const edgeId = nodeMappingManager.addEdgeToMapping(outputId, globalId, 0, 0);
+      nodeMappingManager.removeEdgeFromMapping(edgeId);
+
+      expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId)).toBeUndefined();
+      const globalNode = nodeMappingManager.getGlobalNode();
+      expect(globalNode.inputs[0]).toBeNull();
     });
   });
 
@@ -339,6 +493,124 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getNodeMapping().reverseMap.size).toBe(1);
       expect(nodeMappingManager.getEdgeMapping().edgeMap.size).toBe(0);
       expect(nodeMappingManager.getEdgeMapping().reverseMap.size).toBe(0);
+    });
+  });
+
+  describe('JSON serialization with global node', () => {
+    it('should include input node connected to global node in JSON', () => {
+      // Create an input node
+      const inputId = nodeMappingManager.addNodeToMapping({
+        type: 'input',
+        filename: 'input.mp4',
+      });
+
+      // Connect input node to global node
+      const globalId = nodeMappingManager.getGlobalNodeId();
+      nodeMappingManager.addEdgeToMapping(inputId, globalId, 0, 0);
+
+      // Get JSON representation
+      const json = nodeMappingManager.toJson();
+      const parsed = JSON.parse(json);
+
+      // Verify global node has the input connection
+      expect(parsed.inputs).toHaveLength(1);
+      expect(parsed.inputs[0]).toBeDefined();
+      expect(parsed.inputs[0].node.filename).toBe('input.mp4');
+    });
+
+    it('should include filter node connected to global node in JSON', () => {
+      // Create a filter node
+      const filterId = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'test_filter',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+      });
+
+      // Connect filter node to global node
+      const globalId = nodeMappingManager.getGlobalNodeId();
+      nodeMappingManager.addEdgeToMapping(filterId, globalId, 0, 0);
+
+      // Get JSON representation
+      const json = nodeMappingManager.toJson();
+      const parsed = JSON.parse(json);
+
+      // Verify global node has the filter connection
+      expect(parsed.inputs).toHaveLength(1);
+      expect(parsed.inputs[0]).toBeDefined();
+      expect(parsed.inputs[0].node.name).toBe('test_filter');
+    });
+
+    it('should include multiple nodes connected to global node in JSON', () => {
+      // Create input and filter nodes
+      const inputId = nodeMappingManager.addNodeToMapping({
+        type: 'input',
+        filename: 'input.mp4',
+      });
+
+      const filterId = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'test_filter',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+      });
+
+      // Connect both nodes to global node
+      const globalId = nodeMappingManager.getGlobalNodeId();
+      nodeMappingManager.addEdgeToMapping(inputId, globalId, 0, 0);
+      nodeMappingManager.addEdgeToMapping(filterId, globalId, 0, 1);
+
+      // Get JSON representation
+      const json = nodeMappingManager.toJson();
+      const parsed = JSON.parse(json);
+
+      // Verify global node has both connections
+      expect(parsed.inputs).toHaveLength(2);
+      expect(parsed.inputs[0].node.filename).toBe('input.mp4');
+      expect(parsed.inputs[1].node.name).toBe('test_filter');
+    });
+
+    it('should maintain node properties in JSON when connected to global node', () => {
+      // Create a filter node with kwargs
+      const filterId = nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'test_filter',
+        input_typings: [new StreamType('video')],
+        output_typings: [new StreamType('video')],
+        kwargs: { quality: 'high', format: 'mp4' },
+      });
+
+      // Connect filter node to global node
+      const globalId = nodeMappingManager.getGlobalNodeId();
+      nodeMappingManager.addEdgeToMapping(filterId, globalId, 0, 0);
+
+      // Get JSON representation
+      const json = nodeMappingManager.toJson();
+      const parsed = JSON.parse(json);
+
+      // Verify node properties are preserved
+      expect(parsed.inputs[0].node.kwargs).toEqual({ quality: 'high', format: 'mp4' });
+    });
+
+    it('should handle removing node from global node in JSON', () => {
+      // Create and connect a node to global node
+      const inputId = nodeMappingManager.addNodeToMapping({
+        type: 'input',
+        filename: 'input.mp4',
+      });
+
+      const globalId = nodeMappingManager.getGlobalNodeId();
+      const edgeId = nodeMappingManager.addEdgeToMapping(inputId, globalId, 0, 0);
+
+      // Remove the edge
+      nodeMappingManager.removeEdgeFromMapping(edgeId);
+
+      // Get JSON representation
+      const json = nodeMappingManager.toJson();
+      const parsed = JSON.parse(json);
+
+      // Verify global node has no inputs
+      expect(parsed.inputs).toHaveLength(0);
     });
   });
 });

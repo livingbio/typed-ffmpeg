@@ -147,22 +147,43 @@ export class NodeMappingManager {
 
   // Remove a node from the mapping
   removeNodeFromMapping(nodeId: string): void {
-    // Remove the node from the mapping
     const node = this.nodeMapping.nodeMap.get(nodeId);
     if (!node) {
-      throw new Error('Node not found in mapping');
+      throw new Error(`Node ${nodeId} not found in mapping`);
     }
-    this.nodeMapping.reverseMap.delete(node);
+
+    // Find all edges connected to this node (both as source and target)
+    const edgesToRemove: string[] = [];
+    for (const [edgeId, stream] of this.edgeMapping.edgeMap) {
+      const targetInfo = this.edgeMapping.targetMap.get(stream);
+      const sourceNode = stream.node;
+      const sourceNodeId = this.nodeMapping.reverseMap.get(sourceNode);
+
+      if ((targetInfo && targetInfo.nodeId === nodeId) || sourceNodeId === nodeId) {
+        edgesToRemove.push(edgeId);
+      }
+    }
+
+    // Remove all connected edges
+    for (const edgeId of edgesToRemove) {
+      const stream = this.edgeMapping.edgeMap.get(edgeId);
+      if (stream) {
+        const targetInfo = this.edgeMapping.targetMap.get(stream);
+        if (targetInfo) {
+          const targetNode = this.nodeMapping.nodeMap.get(targetInfo.nodeId);
+          if (targetNode && targetNode.inputs) {
+            targetNode.inputs[targetInfo.index] = null;
+          }
+        }
+        this.edgeMapping.edgeMap.delete(edgeId);
+        this.edgeMapping.targetMap.delete(stream);
+        this.edgeMapping.reverseMap.delete(stream);
+      }
+    }
+
+    // Remove the node
     this.nodeMapping.nodeMap.delete(nodeId);
-
-    // Remove any edges connected to this node
-    const edgesToRemove = Object.entries(this.edgeMapping)
-      .filter(([, edge]) => edge.source === nodeId || edge.target === nodeId)
-      .map(([edgeId]) => edgeId);
-
-    edgesToRemove.forEach((edgeId) => {
-      this.removeEdgeFromMapping(edgeId);
-    });
+    this.nodeMapping.reverseMap.delete(node);
   }
 
   // Get the global node ID
@@ -263,10 +284,10 @@ export class NodeMappingManager {
         targetNode.inputs.push(null);
       }
       // Set the input at the specified index
-      if (!(stream instanceof OutputStream)) {
+      if (!(stream instanceof FilterableStream || stream instanceof OutputStream)) {
         throw new Error('Stream type mismatch');
       }
-      targetNode.inputs[targetIndex] = stream;
+      targetNode.inputs[targetIndex] = stream as OutputStream;
     } else {
       throw new Error('Target node type does not support inputs');
     }
