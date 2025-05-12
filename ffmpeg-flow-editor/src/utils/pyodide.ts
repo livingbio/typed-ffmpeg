@@ -23,12 +23,13 @@ export async function getPyodide(options?: {
     pyodide = await window.loadPyodide({
       indexURL: options?.indexURL || 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
     });
-    await pyodide.loadPackage('micropip');
-    await pyodide.runPythonAsync(`
-      import micropip
-      await micropip.install('typed-ffmpeg==3.0.0a0')
-    `);
   }
+  await pyodide.loadPackage('micropip');
+  await pyodide.runPythonAsync(`
+    import micropip
+    await micropip.install('typed-ffmpeg==3.0.0a0')
+  `);
+
   return pyodide;
 }
 
