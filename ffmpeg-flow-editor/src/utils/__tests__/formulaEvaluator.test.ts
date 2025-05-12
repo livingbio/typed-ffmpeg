@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { evaluateFormula, parseStringParameter } from '../formulaEvaluator';
-import { setupPyodideMock } from './testUtils';
+// import { setupPyodideMock } from './testUtils';
 
 describe('formulaEvaluator', () => {
   beforeEach(async () => {
-    setupPyodideMock();
+    // setupPyodideMock();
   });
 
   describe('evaluateFormula', () => {

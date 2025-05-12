@@ -1,14 +1,14 @@
 import { generateFFmpegCommand } from '../generateFFmpegCommand';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { NodeMappingManager } from '../nodeMapping';
-import { setupPyodideMock } from './testUtils';
+// import { setupPyodideMock } from './testUtils';
 import * as pyodideModule from '../pyodideUtils';
 
 describe('generateFFmpegCommand', () => {
   let consoleSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
-    setupPyodideMock();
+    // setupPyodideMock();
     consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
   });
 

@@ -10,8 +10,7 @@ declare global {
   interface Window {
     loadPyodide: (options: { indexURL: string }) => Promise<{
       runPythonAsync: (code: string) => Promise<string>;
-      loadPackage: (packageName: string | string[]) => Promise<void>;
-      runPython: (code: string) => unknown;
+      loadPackage: (packageName: string) => Promise<void>;
     }>;
   }
 }

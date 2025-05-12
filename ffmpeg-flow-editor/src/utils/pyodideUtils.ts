@@ -1,61 +1,39 @@
-// Add type declarations for Pyodide
-declare global {
-  interface Window {
-    loadPyodide: (options: { indexURL: string }) => Promise<{
-      runPythonAsync: (code: string) => Promise<string>;
-      loadPackage: (packageName: string) => Promise<void>;
-    }>;
-  }
+// File: src/utils/pydideUtil.ts
+
+import { loadPyodide as loadPyodideNode, PyodideInterface } from 'pyodide';
+import path from 'path';
+import { pathToFileURL } from 'url';
+
+let pyodide: PyodideInterface | null = null;
+
+function isNode(): boolean {
+  return (
+    typeof process !== 'undefined' && process.versions != null && process.versions.node != null
+  );
 }
 
-// Create a singleton instance of Pyodide
-let pyodide: Awaited<ReturnType<typeof window.loadPyodide>> | null = null;
+export async function loadPyodideWrapper(): Promise<void> {
+  if (pyodide) return;
 
-/**
- * Get or initialize the Pyodide instance
- * @param options Optional configuration for Pyodide initialization
- * @returns Promise resolving to the Pyodide instance
- */
-export async function getPyodide(options?: {
-  indexURL?: string;
-}): Promise<Awaited<ReturnType<typeof window.loadPyodide>>> {
+  if (isNode()) {
+    const pyodidePath = path.resolve(__dirname, '../../pyodide-dist');
+    const indexURL = pathToFileURL(pyodidePath);
+    console.log('[Pyodide] Node environment. Using indexURL:', indexURL);
+
+    pyodide = await loadPyodideNode({ indexURL: pyodidePath });
+  } else {
+    const { loadPyodide: loadPyodideBrowser } = await import(
+      'https://cdn.jsdelivr.net/pyodide/v0.27.5/full/pyodide.mjs'
+    );
+    pyodide = await loadPyodideBrowser();
+  }
+  await pyodide.loadPackage('micropip');
+  await pyodide.runPythonAsync('import micropip; await micropip.install("typed-ffmpeg==3.0.0a0")');
+}
+
+export async function runPython(code: string): Promise<any> {
   if (!pyodide) {
-    console.log('Loading Pyodide...');
-    pyodide = await window.loadPyodide({
-      indexURL: options?.indexURL || 'https://cdn.jsdelivr.net/pyodide/v0.27.5/full/',
-    });
-    await pyodide.loadPackage('micropip');
-
-    await pyodide.runPythonAsync(`
-      import micropip
-      await micropip.install('typed-ffmpeg')
-    `);
-    console.log('typed-ffmpeg installed successfully.');
+    throw new Error('Pyodide is not initialized. Call loadPyodideWrapper() first.');
   }
-  return pyodide;
-}
-
-/**
- * Run Python code using Pyodide
- * @param code Python code to execute
- * @param options Optional configuration for Pyodide initialization
- * @returns Promise resolving to the result of the Python code execution
- */
-export async function runPython(code: string, options?: { indexURL?: string }): Promise<string> {
-  const pyodide = await getPyodide(options);
   return await pyodide.runPythonAsync(code);
 }
-
-/**
- * Reset the Pyodide instance
- * This is useful for testing or when you need to reinitialize Pyodide
- */
-export function resetPyodide(): void {
-  pyodide = null;
-}
-
-export default {
-  getPyodide,
-  runPython,
-  resetPyodide,
-};

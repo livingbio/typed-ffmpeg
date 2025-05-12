@@ -1,9 +1,10 @@
 import { NodeMappingManager } from './nodeMapping';
-import { runPython } from './pyodideUtils';
+import { runPython, loadPyodideWrapper } from './pyodideUtils';
 
 export async function generateFFmpegCommand(
   nodeMappingManager: NodeMappingManager
 ): Promise<{ python: string; error?: string }> {
+  await loadPyodideWrapper();
   const json = nodeMappingManager.toJson();
 
   // Python code to load and compile the JSON
