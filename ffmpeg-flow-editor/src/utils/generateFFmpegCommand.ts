@@ -5,6 +5,7 @@ export async function generateFFmpegCommand(
   nodeMappingManager: NodeMappingManager
 ): Promise<{ python: string; error?: string }> {
   const json = nodeMappingManager.toJson();
+  console.log('JSON:', json);
 
   // Python code to load and compile the JSON
   const pythonCode = `
@@ -21,7 +22,7 @@ stream = GlobalStream(node=node)
 
 # Compile to Python code
 python_code = compile(stream)
-print(python_code)
+python_code
 `;
 
   try {
