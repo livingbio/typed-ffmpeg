@@ -88,8 +88,6 @@ function deserializeObject(obj: unknown): unknown {
   // Handle class instances
   if (obj && typeof obj === 'object' && '__class__' in obj) {
     const classObj = obj as { __class__: string; [key: string]: unknown };
-    console.log('Looking for class:', classObj.__class__);
-    console.log('Registered classes:', getRegisteredClassNames());
     const Constructor = classRegistry.get(classObj.__class__);
     if (!Constructor) {
       throw new Error(`Class ${classObj.__class__} not registered`);

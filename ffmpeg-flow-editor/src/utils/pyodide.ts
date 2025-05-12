@@ -26,7 +26,7 @@ export async function getPyodide(options?: {
     await pyodide.loadPackage('micropip');
     await pyodide.runPythonAsync(`
       import micropip
-      await micropip.install('typed-ffmpeg')
+      await micropip.install('typed-ffmpeg==3.0.0a0')
     `);
   }
   return pyodide;
