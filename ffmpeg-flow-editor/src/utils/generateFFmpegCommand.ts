@@ -1,5 +1,5 @@
 import { NodeMappingManager } from './nodeMapping';
-import { runPython } from './pyodide';
+import { runPython } from './pyodideUtils';
 
 export async function generateFFmpegCommand(
   nodeMappingManager: NodeMappingManager

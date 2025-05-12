@@ -2,7 +2,7 @@ import { generateFFmpegCommand } from '../generateFFmpegCommand';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { NodeMappingManager } from '../nodeMapping';
 import { setupPyodideMock } from './testUtils';
-import * as pyodideModule from '../pyodide';
+import * as pyodideModule from '../pyodideUtils';
 
 describe('generateFFmpegCommand', () => {
   let consoleSpy: ReturnType<typeof vi.spyOn>;
