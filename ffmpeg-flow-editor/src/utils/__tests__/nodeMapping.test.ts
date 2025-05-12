@@ -154,7 +154,7 @@ describe('nodeMapping', () => {
 
     it('should throw error when removing non-existent node', () => {
       expect(() => nodeMappingManager.removeNodeFromMapping('non-existent')).toThrow(
-        'Node not found in mapping'
+        'Node non-existent not found in mapping'
       );
     });
   });
@@ -504,18 +504,27 @@ describe('nodeMapping', () => {
         filename: 'input.mp4',
       });
 
-      // Connect input node to global node
+      // Add output node
+      const outputId = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+      });
+
+      // Connect input -> output -> global
+      nodeMappingManager.addEdgeToMapping(inputId, outputId, 0, 0);
       const globalId = nodeMappingManager.getGlobalNodeId();
-      nodeMappingManager.addEdgeToMapping(inputId, globalId, 0, 0);
+      nodeMappingManager.addEdgeToMapping(outputId, globalId, 0, 0);
 
       // Get JSON representation
       const json = nodeMappingManager.toJson();
       const parsed = JSON.parse(json);
 
-      // Verify global node has the input connection
+      // Verify global node has the connection chain
       expect(parsed.inputs).toHaveLength(1);
       expect(parsed.inputs[0]).toBeDefined();
-      expect(parsed.inputs[0].node.filename).toBe('input.mp4');
+      expect(parsed.inputs[0].node.filename).toBe('output.mp4');
+      expect(parsed.inputs[0].node.inputs[0].node.filename).toBe('input.mp4');
     });
 
     it('should include filter node connected to global node in JSON', () => {
@@ -527,18 +536,27 @@ describe('nodeMapping', () => {
         output_typings: [new StreamType('video')],
       });
 
-      // Connect filter node to global node
+      // Add output node
+      const outputId = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+      });
+
+      // Connect filter -> output -> global
+      nodeMappingManager.addEdgeToMapping(filterId, outputId, 0, 0);
       const globalId = nodeMappingManager.getGlobalNodeId();
-      nodeMappingManager.addEdgeToMapping(filterId, globalId, 0, 0);
+      nodeMappingManager.addEdgeToMapping(outputId, globalId, 0, 0);
 
       // Get JSON representation
       const json = nodeMappingManager.toJson();
       const parsed = JSON.parse(json);
 
-      // Verify global node has the filter connection
+      // Verify global node has the connection chain
       expect(parsed.inputs).toHaveLength(1);
       expect(parsed.inputs[0]).toBeDefined();
-      expect(parsed.inputs[0].node.name).toBe('test_filter');
+      expect(parsed.inputs[0].node.filename).toBe('output.mp4');
+      expect(parsed.inputs[0].node.inputs[0].node.name).toBe('test_filter');
     });
 
     it('should include multiple nodes connected to global node in JSON', () => {
@@ -555,10 +573,28 @@ describe('nodeMapping', () => {
         output_typings: [new StreamType('video')],
       });
 
-      // Connect both nodes to global node
+      // Add output nodes
+      const output1Id = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output1.mp4',
+        inputs: [],
+      });
+
+      const output2Id = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output2.mp4',
+        inputs: [],
+      });
+
+      // Connect input -> output1 -> global
+      nodeMappingManager.addEdgeToMapping(inputId, output1Id, 0, 0);
+
+      // Connect filter -> output2 -> global
+      nodeMappingManager.addEdgeToMapping(filterId, output2Id, 0, 0);
+
       const globalId = nodeMappingManager.getGlobalNodeId();
-      nodeMappingManager.addEdgeToMapping(inputId, globalId, 0, 0);
-      nodeMappingManager.addEdgeToMapping(filterId, globalId, 0, 1);
+      nodeMappingManager.addEdgeToMapping(output1Id, globalId, 0, 0);
+      nodeMappingManager.addEdgeToMapping(output2Id, globalId, 0, 1);
 
       // Get JSON representation
       const json = nodeMappingManager.toJson();
@@ -566,8 +602,10 @@ describe('nodeMapping', () => {
 
       // Verify global node has both connections
       expect(parsed.inputs).toHaveLength(2);
-      expect(parsed.inputs[0].node.filename).toBe('input.mp4');
-      expect(parsed.inputs[1].node.name).toBe('test_filter');
+      expect(parsed.inputs[0].node.filename).toBe('output1.mp4');
+      expect(parsed.inputs[1].node.filename).toBe('output2.mp4');
+      expect(parsed.inputs[0].node.inputs[0].node.filename).toBe('input.mp4');
+      expect(parsed.inputs[1].node.inputs[0].node.name).toBe('test_filter');
     });
 
     it('should maintain node properties in JSON when connected to global node', () => {
@@ -580,16 +618,27 @@ describe('nodeMapping', () => {
         kwargs: { quality: 'high', format: 'mp4' },
       });
 
-      // Connect filter node to global node
+      // Add output node
+      const outputId = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+      });
+
+      // Connect filter -> output -> global
+      nodeMappingManager.addEdgeToMapping(filterId, outputId, 0, 0);
       const globalId = nodeMappingManager.getGlobalNodeId();
-      nodeMappingManager.addEdgeToMapping(filterId, globalId, 0, 0);
+      nodeMappingManager.addEdgeToMapping(outputId, globalId, 0, 0);
 
       // Get JSON representation
       const json = nodeMappingManager.toJson();
       const parsed = JSON.parse(json);
 
       // Verify node properties are preserved
-      expect(parsed.inputs[0].node.kwargs).toEqual({ quality: 'high', format: 'mp4' });
+      expect(parsed.inputs[0].node.inputs[0].node.kwargs).toEqual({
+        quality: 'high',
+        format: 'mp4',
+      });
     });
 
     it('should handle removing node from global node in JSON', () => {
@@ -599,18 +648,24 @@ describe('nodeMapping', () => {
         filename: 'input.mp4',
       });
 
+      const outputId = nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+        inputs: [],
+      });
       const globalId = nodeMappingManager.getGlobalNodeId();
-      const edgeId = nodeMappingManager.addEdgeToMapping(inputId, globalId, 0, 0);
+      nodeMappingManager.addEdgeToMapping(inputId, outputId, 0, 0);
+      const edgeId = nodeMappingManager.addEdgeToMapping(outputId, globalId, 0, 1);
 
-      // Remove the edge
+      // Remove the edge between output and global
       nodeMappingManager.removeEdgeFromMapping(edgeId);
 
       // Get JSON representation
       const json = nodeMappingManager.toJson();
       const parsed = JSON.parse(json);
 
-      // Verify global node has no inputs
-      expect(parsed.inputs).toHaveLength(0);
+      // Verify global node has no non-null inputs
+      expect(parsed.inputs.filter((i: unknown) => i !== null)).toHaveLength(0);
     });
   });
 });

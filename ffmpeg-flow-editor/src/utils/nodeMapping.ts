@@ -284,7 +284,7 @@ export class NodeMappingManager {
         targetNode.inputs.push(null);
       }
       // Set the input at the specified index
-      if (!(stream instanceof FilterableStream || stream instanceof OutputStream)) {
+      if (!(stream instanceof OutputStream)) {
         throw new Error('Stream type mismatch');
       }
       targetNode.inputs[targetIndex] = stream as OutputStream;
