@@ -1,11 +1,9 @@
 import { NodeMappingManager } from './nodeMapping';
 import { runPython } from './pyodide';
-import * as fs from 'fs';
-import * as path from 'path';
 
 export async function generateFFmpegCommand(
   nodeMappingManager: NodeMappingManager
-): Promise<{ python: string }> {
+): Promise<{ python: string; error?: string }> {
   const json = nodeMappingManager.toJson();
 
   // Python code to load and compile the JSON
@@ -28,13 +26,27 @@ print(python_code)
 
   try {
     // Execute the Python code using the runPython utility
+    console.log('Executing FFmpeg command generation...');
     const result = await runPython(pythonCode);
+
+    // Check if the result is empty or undefined
+    if (!result || result.trim() === '') {
+      console.warn('Generated FFmpeg command is empty');
+      return {
+        python: '',
+        error: 'No command was generated. Ensure there are proper connections between nodes.',
+      };
+    }
+
     return { python: result };
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     console.error('Error generating FFmpeg command:', error);
 
+    // More detailed error for user
     return {
-      python: `# Error: ${error instanceof Error ? error.message : String(error)}\n`,
+      python: `# Error: ${errorMessage}`,
+      error: `Failed to generate FFmpeg command: ${errorMessage}`,
     };
   }
 }

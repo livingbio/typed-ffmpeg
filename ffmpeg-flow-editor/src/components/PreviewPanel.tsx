@@ -1,4 +1,4 @@
-import { Paper, Typography } from '@mui/material';
+import { Paper, Typography, Box } from '@mui/material';
 import { Node, Edge } from 'reactflow';
 import { NodeData } from '../types/node';
 import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
@@ -10,7 +10,8 @@ declare global {
   interface Window {
     loadPyodide: (options: { indexURL: string }) => Promise<{
       runPythonAsync: (code: string) => Promise<string>;
-      loadPackage: (packageName: string) => Promise<void>;
+      loadPackage: (packageName: string | string[]) => Promise<void>;
+      runPython: (code: string) => unknown;
     }>;
   }
 }
@@ -23,11 +24,22 @@ interface PreviewPanelProps {
 
 export default function PreviewPanel({ nodes, edges, nodeMappingManager }: PreviewPanelProps) {
   const [pythonCode, setPythonCode] = useState<string>('');
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const updatePythonCode = async () => {
-      const { python } = await generateFFmpegCommand(nodeMappingManager);
-      setPythonCode(python);
+      try {
+        setIsLoading(true);
+        const { python, error } = await generateFFmpegCommand(nodeMappingManager);
+        setPythonCode(python);
+        setError(error);
+      } catch (e) {
+        console.error('Error updating Python code:', e);
+        setError(e instanceof Error ? e.message : String(e));
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     updatePythonCode();
@@ -47,9 +59,22 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
         maxHeight: '300px',
       }}
     >
-      <Typography variant="body2" component="pre">
-        {pythonCode || '# No valid FFmpeg command generated'}
-      </Typography>
+      {isLoading ? (
+        <Typography variant="body2">Loading FFmpeg command...</Typography>
+      ) : error ? (
+        <Box>
+          <Typography variant="body2" color="error" fontWeight="bold" gutterBottom>
+            Error generating FFmpeg command:
+          </Typography>
+          <Typography variant="body2" color="error" component="pre">
+            {error}
+          </Typography>
+        </Box>
+      ) : (
+        <Typography variant="body2" component="pre">
+          {pythonCode || '# No valid FFmpeg command generated'}
+        </Typography>
+      )}
     </Paper>
   );
 }

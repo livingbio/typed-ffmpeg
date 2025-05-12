@@ -25,6 +25,8 @@ describe('generateFFmpegCommand', () => {
     // Check that error was logged
     expect(consoleSpy).toHaveBeenCalled();
     expect(result.python).toContain('IndexError: tuple index out of range');
+    expect(result.error).toBeDefined();
+    expect(result.error).toContain('Failed to generate FFmpeg command');
   });
 
   it('generates basic input-output-global chain', async () => {
@@ -65,6 +67,7 @@ describe('generateFFmpegCommand', () => {
     // Check that we got the mocked response
     expect(result.python).toContain('import ffmpeg');
     expect(result.python).toContain('input.mp4');
+    expect(result.error).toBeUndefined();
     expect(runPythonSpy).toHaveBeenCalled();
 
     runPythonSpy.mockRestore();
@@ -118,6 +121,7 @@ describe('generateFFmpegCommand', () => {
     expect(result.python).toContain('import ffmpeg');
     expect(result.python).toContain('input.mp4');
     expect(result.python).toContain('scale');
+    expect(result.error).toBeUndefined();
     expect(runPythonSpy).toHaveBeenCalled();
 
     runPythonSpy.mockRestore();
@@ -173,6 +177,7 @@ describe('generateFFmpegCommand', () => {
     expect(result.python).toContain('import ffmpeg');
     expect(result.python).toContain('input1.mp4');
     expect(result.python).toContain('input2.mp4');
+    expect(result.error).toBeUndefined();
     expect(runPythonSpy).toHaveBeenCalled();
 
     runPythonSpy.mockRestore();
@@ -241,6 +246,7 @@ describe('generateFFmpegCommand', () => {
     expect(result.python).toContain('input.mp4');
     expect(result.python).toContain('scale');
     expect(result.python).toContain('volume');
+    expect(result.error).toBeUndefined();
     expect(runPythonSpy).toHaveBeenCalled();
 
     runPythonSpy.mockRestore();
@@ -300,6 +306,7 @@ describe('generateFFmpegCommand', () => {
     expect(result.python).toContain('width=640');
     expect(result.python).toContain('height=480');
     expect(result.python).toContain('force_original_aspect_ratio=True');
+    expect(result.error).toBeUndefined();
     expect(runPythonSpy).toHaveBeenCalled();
 
     runPythonSpy.mockRestore();
@@ -334,5 +341,29 @@ describe('generateFFmpegCommand', () => {
     // Check that error was logged
     expect(consoleSpy).toHaveBeenCalled();
     expect(result.python).toContain('IndexError: tuple index out of range');
+    expect(result.error).toBeDefined();
+    expect(result.error).toContain('Failed to generate FFmpeg command');
+  });
+
+  it('handles empty result from Python execution', async () => {
+    // Mock empty response from runPython
+    const runPythonSpy = vi.spyOn(pyodideModule, 'runPython').mockResolvedValue('');
+    const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const nodeMappingManager = new NodeMappingManager();
+
+    // Add a global node with no inputs
+    nodeMappingManager.addNodeToMapping({ type: 'global', inputs: [] });
+
+    const result = await generateFFmpegCommand(nodeMappingManager);
+
+    // Check that a warning was logged
+    expect(consoleWarnSpy).toHaveBeenCalled();
+    expect(result.python).toBe('');
+    expect(result.error).toBeDefined();
+    expect(result.error).toContain('No command was generated');
+
+    runPythonSpy.mockRestore();
+    consoleWarnSpy.mockRestore();
   });
 });
