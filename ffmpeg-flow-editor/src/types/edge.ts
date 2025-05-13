@@ -6,7 +6,7 @@ export const EDGE_COLORS = {
   video: '#f44336', // Red
   global: '#000000', // Black
   input: '#000000', // Black
-  output: '#000000', // Blacks
+  output: '#000000', // Black
 } as const;
 
 export interface EdgeData {
