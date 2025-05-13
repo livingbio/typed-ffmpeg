@@ -445,8 +445,6 @@ export default function FFmpegFlowEditor() {
         <Controls />
       </ReactFlow>
       <Sidebar 
-        nodes={nodes} 
-        edges={edges} 
         onAddFilter={onAddNode} 
         nodeMappingManager={nodeMappingManager}
       />
