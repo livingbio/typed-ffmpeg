@@ -1,5 +1,5 @@
 import { FFmpegIOType } from '../types/ffmpeg';
-import { runPython } from './pyodide';
+import { runPython } from './pyodideUtils';
 import { dumps } from './serialize';
 
 export async function evaluateFormula(

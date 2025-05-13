@@ -1,88 +1,71 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material';
 import { Node, Edge } from 'reactflow';
-import { useState, useEffect } from 'react';
+import { NodeData } from '../types/node';
 import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
-
-// Add type declarations for Pyodide
-declare global {
-  interface Window {
-    loadPyodide: (options: { indexURL: string }) => Promise<{
-      runPythonAsync: (code: string) => Promise<string>;
-      loadPackage: (packageName: string) => Promise<void>;
-    }>;
-  }
-}
+import { NodeMappingManager } from '../utils/nodeMapping';
+import { useEffect, useState } from 'react';
+import { runPython } from '../utils/pyodideUtils';
 
 interface PreviewPanelProps {
-  nodes: Node[];
+  nodes: Node<NodeData>[];
   edges: Edge[];
+  nodeMappingManager: NodeMappingManager;
 }
 
-export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
-  const [previewData, setPreviewData] = useState<{
-    python: string;
-  }>({
-    python: '',
-  });
-
-  const [pyodide, setPyodide] = useState<Awaited<ReturnType<typeof window.loadPyodide>> | null>(
-    null
-  );
+export default function PreviewPanel({ nodes, edges, nodeMappingManager }: PreviewPanelProps) {
+  const [pythonCode, setPythonCode] = useState<string>('');
+  const [ffmpegCmd, setFfmpegCmd] = useState<string>('');
   const [result, setResult] = useState<string>('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
 
   useEffect(() => {
-    async function loadPyodide() {
+    const updatePythonCode = async () => {
       try {
         setIsLoading(true);
-        const pyodide = await window.loadPyodide({
-          indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.25.1/full/',
-        });
-        await pyodide.loadPackage('micropip');
-        await pyodide.runPythonAsync(`
-          import micropip
-          await micropip.install('typed-ffmpeg')
-        `);
-        setPyodide(pyodide);
-      } catch (error) {
-        console.error('Failed to load Pyodide:', error);
-        setResult('Failed to load Python environment');
+
+        const commandResult = await generateFFmpegCommand(nodeMappingManager);
+
+        setPythonCode(commandResult.python);
+        setFfmpegCmd(commandResult.ffmpeg_cmd || '');
+        setError(commandResult.error);
+      } catch (e) {
+        console.error('Error updating Python code:', e);
+        setError(e instanceof Error ? e.message : String(e));
       } finally {
         setIsLoading(false);
       }
+    };
+
+    updatePythonCode();
+  }, [nodes, edges, nodeMappingManager]);
+
+  const handleRunPython = async () => {
+    if (!pythonCode) return;
+
+    setIsRunning(true);
+    setError(undefined);
+
+    try {
+      const output = await runPython(pythonCode);
+      // Use String() to safely convert any output type to a string
+      setResult(String(output));
+    } catch (err) {
+      const errMessage = err instanceof Error ? err.message : String(err);
+      console.error('Python execution error:', err);
+      setError(errMessage);
+    } finally {
+      setIsRunning(false);
     }
-    loadPyodide();
-  }, []);
-
-  useEffect(() => {
-    const newData = generateFFmpegCommand(nodes, edges);
-    setPreviewData(newData);
-  }, [nodes, edges]);
-
-  // Add new useEffect to automatically run Python when code changes
-  useEffect(() => {
-    async function runPython() {
-      if (!pyodide || !previewData.python) {
-        return;
-      }
-
-      try {
-        setIsLoading(true);
-        const output = await pyodide.runPythonAsync(previewData.python);
-        setResult(output.toString());
-      } catch (error) {
-        console.error('Python execution error:', error);
-        setResult(`Error: ${error instanceof Error ? error.message : String(error)}`);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    runPython();
-  }, [pyodide, previewData.python]);
+  };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(previewData.python);
+    navigator.clipboard.writeText(pythonCode);
+  };
+
+  const handleCopyFFmpeg = () => {
+    navigator.clipboard.writeText(ffmpegCmd);
   };
 
   return (
@@ -98,60 +81,152 @@ export default function PreviewPanel({ nodes, edges }: PreviewPanelProps) {
           }}
         >
           <Typography variant="subtitle2">Python Code</Typography>
-          <Button variant="outlined" size="small" onClick={handleCopy}>
-            Copy
-          </Button>
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={handleRunPython}
+              disabled={isLoading || isRunning || !pythonCode}
+              startIcon={isRunning ? <CircularProgress size={16} /> : null}
+            >
+              {isRunning ? 'Running...' : 'Run'}
+            </Button>
+            <Button variant="outlined" size="small" onClick={handleCopy} disabled={!pythonCode}>
+              Copy
+            </Button>
+          </Box>
         </Box>
-        <Box
+        <Paper
+          elevation={0}
           sx={{
-            p: 1.5,
+            p: 2,
             backgroundColor: '#f5f5f5',
             borderRadius: 1,
+            overflow: 'auto',
+            maxHeight: '200px',
           }}
         >
-          <pre
-            style={{
-              margin: 0,
-              padding: 0,
-              fontFamily: 'monospace',
-              fontSize: '0.875rem',
-              lineHeight: 1.5,
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}
-          >
-            {previewData.python}
-          </pre>
-        </Box>
+          {isLoading ? (
+            <Typography variant="body2">Loading FFmpeg command...</Typography>
+          ) : error ? (
+            <Box>
+              <Typography variant="body2" color="error" fontWeight="bold" gutterBottom>
+                Error generating FFmpeg command:
+              </Typography>
+              <Typography
+                variant="body2"
+                color="error"
+                component="pre"
+                sx={{
+                  margin: 0,
+                  fontFamily: 'monospace',
+                  fontSize: '0.875rem',
+                  whiteSpace: 'pre-wrap',
+                }}
+              >
+                {error}
+              </Typography>
+            </Box>
+          ) : (
+            <pre
+              style={{
+                margin: 0,
+                padding: 0,
+                fontFamily: 'monospace',
+                fontSize: '0.875rem',
+                lineHeight: 1.5,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+              }}
+            >
+              {pythonCode || '# No valid FFmpeg command generated'}
+            </pre>
+          )}
+        </Paper>
       </Box>
 
-      {/* Result */}
-      <Box>
-        <Typography variant="subtitle2" sx={{ mb: 1 }}>
-          Result {isLoading && '(Loading...)'}
-        </Typography>
-        <Box
-          sx={{
-            p: 1.5,
-            backgroundColor: '#f5f5f5',
-            borderRadius: 1,
-          }}
-        >
-          <pre
-            style={{
-              margin: 0,
-              padding: 0,
-              fontFamily: 'monospace',
-              fontSize: '0.875rem',
-              lineHeight: 1.5,
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
+      {/* FFmpeg Command */}
+      {ffmpegCmd && (
+        <Box sx={{ mb: 3 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              mb: 1,
             }}
           >
-            {result || 'No result yet'}
-          </pre>
+            <Typography variant="subtitle2">FFmpeg Command</Typography>
+            <Button variant="outlined" size="small" onClick={handleCopyFFmpeg}>
+              Copy
+            </Button>
+          </Box>
+          <Paper
+            elevation={0}
+            sx={{
+              p: 2,
+              backgroundColor: '#f5f5f5',
+              borderRadius: 1,
+              overflow: 'auto',
+              maxHeight: '200px',
+            }}
+          >
+            <pre
+              style={{
+                margin: 0,
+                padding: 0,
+                fontFamily: 'monospace',
+                fontSize: '0.875rem',
+                lineHeight: 1.5,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+              }}
+            >
+              {ffmpegCmd}
+            </pre>
+          </Paper>
         </Box>
-      </Box>
+      )}
+
+      {/* Results Section (only shown when there are results) */}
+      {(result || isRunning) && (
+        <Box>
+          <Typography variant="subtitle2" sx={{ mb: 1 }}>
+            Result {isRunning && '(Running...)'}
+          </Typography>
+          <Paper
+            elevation={0}
+            sx={{
+              p: 2,
+              backgroundColor: '#f5f5f5',
+              borderRadius: 1,
+              overflow: 'auto',
+              maxHeight: '200px',
+            }}
+          >
+            {isRunning ? (
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <CircularProgress size={20} />
+                <Typography variant="body2">Executing Python code...</Typography>
+              </Box>
+            ) : (
+              <pre
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  fontFamily: 'monospace',
+                  fontSize: '0.875rem',
+                  lineHeight: 1.5,
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                }}
+              >
+                {result || 'No result'}
+              </pre>
+            )}
+          </Paper>
+        </Box>
+      )}
     </Box>
   );
 }

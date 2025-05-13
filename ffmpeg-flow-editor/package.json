@@ -11,7 +11,9 @@
     "generate-filters": "tsx src/scripts/generateFilters.ts",
     "test": "vitest run",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:pyodide": "vitest run --config vitest.pyodide.config.ts",
+    "dev:test": "vite --config vite.test.config.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

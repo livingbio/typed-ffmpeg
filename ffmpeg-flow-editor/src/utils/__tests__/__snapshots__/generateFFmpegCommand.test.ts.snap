@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateFFmpegCommand > generates basic input-output chain 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;
+
+exports[`generateFFmpegCommand > generates code with filter nodes 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;
+
+exports[`generateFFmpegCommand > handles complex filter chains 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;
+
+exports[`generateFFmpegCommand > handles disconnected nodes 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;
+
+exports[`generateFFmpegCommand > handles empty result from Python execution 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;
+
+exports[`generateFFmpegCommand > handles multiple input nodes 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;
+
+exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;
+
+exports[`generateFFmpegCommand > returns error message if no input or output nodes 1`] = `
+{
+  "python": "# Error: tuple index out of range",
+}
+`;

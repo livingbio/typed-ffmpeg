@@ -1,0 +1,25 @@
+{
+  "index": null,
+  "node": {
+    "inputs": [
+      {
+        "index": null,
+        "node": {
+          "filename": "tmp.mp4",
+          "inputs": [
+            {
+              "index": null,
+              "node": {
+                "filename": "input1.mp4",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              }
+            }
+          ],
+          "kwargs": "FrozenDict({})"
+        }
+      }
+    ],
+    "kwargs": "FrozenDict({'hide_banner': True})"
+  }
+}

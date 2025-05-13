@@ -1,5 +1,6 @@
 import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import { Node, Edge } from 'reactflow';
+import { NodeData } from '../types/node';
 import { predefinedFilters } from '../types/ffmpeg';
 import PreviewPanel from './PreviewPanel';
 import { useState, useMemo } from 'react';
@@ -7,20 +8,21 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputIcon from '@mui/icons-material/Input';
 import OutputIcon from '@mui/icons-material/Output';
 import DownloadIcon from '@mui/icons-material/Download';
-import { convertToDag } from '../utils/convertToDag';
-import { dumps } from '../utils/serialize';
+
+import { NodeMappingManager } from '../utils/nodeMapping';
 
 interface SidebarProps {
-  nodes: Node[];
+  nodes: Node<NodeData>[];
   edges: Edge[];
   onAddFilter: (
     filterType: string,
     parameters?: Record<string, string>,
     position?: { x: number; y: number }
   ) => void;
+  nodeMappingManager: NodeMappingManager;
 }
 
-export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
+export default function Sidebar({ nodes, edges, onAddFilter, nodeMappingManager }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredFilters = useMemo(() => {
@@ -42,11 +44,7 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
 
   const handleExport = () => {
     try {
-      const dag = convertToDag(nodes, edges);
-      if (!dag) {
-        throw new Error('No valid DAG structure found');
-      }
-      const json = dumps(dag);
+      const json = nodeMappingManager.toJson();
       const blob = new Blob([json], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -262,7 +260,11 @@ export default function Sidebar({ nodes, edges, onAddFilter }: SidebarProps) {
           <Typography variant="subtitle1" gutterBottom>
             Preview
           </Typography>
-          <PreviewPanel nodes={nodes} edges={edges} />
+          <PreviewPanel 
+            nodes={nodes} 
+            edges={edges} 
+            nodeMappingManager={nodeMappingManager}
+          />
         </Box>
       </Box>
     </Paper>

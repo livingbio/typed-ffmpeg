@@ -743,3 +743,42 @@
     ]),
   })
 # ---
+# name: test_rebuild_graph[simple-global-args][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'),
+    GlobalNode(kwargs=FrozenDict({'hide_banner': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),)),
+  ])
+# ---
+# name: test_rebuild_graph[simple-global-args][all_streams]
+  list([
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),
+  ])
+# ---
+# name: test_rebuild_graph[simple-global-args][outgoing_nodes]
+  defaultdict({
+    AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'),
+        0,
+      ),
+    ]),
+    OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None): list([
+      tuple(
+        GlobalNode(kwargs=FrozenDict({'hide_banner': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),)),
+        0,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[simple-global-args][outgoing_streams]
+  defaultdict({
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),
+    ]),
+    OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'): list([
+      OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),
+    ]),
+  })
+# ---
