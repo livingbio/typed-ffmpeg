@@ -2,7 +2,6 @@ import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material'
 import { Node, Edge } from 'reactflow';
 import { NodeData } from '../types/node';
 import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
-import { generateFFmpegCommandSimple } from '../utils/generateFFmpegCommandSimple';
 import { NodeMappingManager } from '../utils/nodeMapping';
 import { useEffect, useState } from 'react';
 import { runPython } from '../utils/pyodideUtils';
@@ -25,11 +24,10 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
     const updatePythonCode = async () => {
       try {
         setIsLoading(true);
-        
-          // Use the simple version for testing
-        const commandResult = await generateFFmpegCommandSimple(nodeMappingManager);
 
-        
+        // Use the simple version for testing
+        const commandResult = await generateFFmpegCommand(nodeMappingManager);
+
         setPythonCode(commandResult.python);
         setError(commandResult.error);
       } catch (e) {
@@ -48,7 +46,7 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
 
     setIsRunning(true);
     setError(undefined);
-    
+
     try {
       const output = await runPython(pythonCode);
       // Use String() to safely convert any output type to a string
@@ -84,9 +82,9 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Typography variant="subtitle2">Python Code</Typography>
-            <Button 
-              variant="outlined" 
-              size="small" 
+            <Button
+              variant="outlined"
+              size="small"
               onClick={toggleMode}
               sx={{ fontSize: '0.7rem' }}
             >
@@ -94,21 +92,16 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
             </Button>
           </Box>
           <Box sx={{ display: 'flex', gap: 1 }}>
-            <Button 
-              variant="outlined" 
-              size="small" 
+            <Button
+              variant="outlined"
+              size="small"
               onClick={handleRunPython}
               disabled={isLoading || isRunning || !pythonCode}
               startIcon={isRunning ? <CircularProgress size={16} /> : null}
             >
               {isRunning ? 'Running...' : 'Run'}
             </Button>
-            <Button 
-              variant="outlined" 
-              size="small" 
-              onClick={handleCopy}
-              disabled={!pythonCode}
-            >
+            <Button variant="outlined" size="small" onClick={handleCopy} disabled={!pythonCode}>
               Copy
             </Button>
           </Box>
@@ -130,25 +123,32 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
               <Typography variant="body2" color="error" fontWeight="bold" gutterBottom>
                 Error generating FFmpeg command:
               </Typography>
-              <Typography variant="body2" color="error" component="pre" sx={{ 
-                margin: 0, 
-                fontFamily: 'monospace',
-                fontSize: '0.875rem',
-                whiteSpace: 'pre-wrap',
-              }}>
+              <Typography
+                variant="body2"
+                color="error"
+                component="pre"
+                sx={{
+                  margin: 0,
+                  fontFamily: 'monospace',
+                  fontSize: '0.875rem',
+                  whiteSpace: 'pre-wrap',
+                }}
+              >
                 {error}
               </Typography>
             </Box>
           ) : (
-            <pre style={{ 
-              margin: 0, 
-              padding: 0, 
-              fontFamily: 'monospace',
-              fontSize: '0.875rem',
-              lineHeight: 1.5,
-              whiteSpace: 'pre-wrap',
-              wordBreak: 'break-word',
-            }}>
+            <pre
+              style={{
+                margin: 0,
+                padding: 0,
+                fontFamily: 'monospace',
+                fontSize: '0.875rem',
+                lineHeight: 1.5,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+              }}
+            >
               {pythonCode || '# No valid FFmpeg command generated'}
             </pre>
           )}
@@ -177,15 +177,17 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
                 <Typography variant="body2">Executing Python code...</Typography>
               </Box>
             ) : (
-              <pre style={{ 
-                margin: 0, 
-                padding: 0, 
-                fontFamily: 'monospace',
-                fontSize: '0.875rem',
-                lineHeight: 1.5,
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-              }}>
+              <pre
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  fontFamily: 'monospace',
+                  fontSize: '0.875rem',
+                  lineHeight: 1.5,
+                  whiteSpace: 'pre-wrap',
+                  wordBreak: 'break-word',
+                }}
+              >
                 {result || 'No result'}
               </pre>
             )}

@@ -157,7 +157,9 @@ export class NodeMappingManager {
     for (const [edgeId, stream] of this.edgeMapping.edgeMap) {
       const targetInfo = this.edgeMapping.targetMap.get(stream);
       const sourceNode = stream.node;
-      const sourceNodeId = this.nodeMapping.reverseMap.get(sourceNode);
+      const sourceNodeId = this.nodeMapping.reverseMap.get(
+        sourceNode as FilterNode | InputNode | OutputNode | GlobalNode
+      );
 
       if ((targetInfo && targetInfo.nodeId === nodeId) || sourceNodeId === nodeId) {
         edgesToRemove.push(edgeId);

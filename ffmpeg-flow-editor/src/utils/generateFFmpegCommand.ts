@@ -6,8 +6,21 @@ export async function generateFFmpegCommand(
 ): Promise<{ python: string; error?: string }> {
   const json = nodeMappingManager.toJson();
 
-  // Python code to load and compile the JSON
-  const pythonCode = `
+  // First, let's try a very simple Python code to test if the return value works
+  const testCode = `
+# This is a simple test to see if return values work
+test_value = "This is a test return value"
+return test_value
+`;
+
+  try {
+    console.log('Running test Python code...');
+    const testResult = await runPython(testCode);
+    console.log('Test result type:', typeof testResult);
+    console.log('Test result value:', testResult);
+
+    // Now run the actual FFmpeg command generation
+    const pythonCode = `
 from ffmpeg.common.serialize import loads
 from ffmpeg.compile.compile_python import compile
 from ffmpeg.dag.nodes import GlobalStream
@@ -23,20 +36,24 @@ try:
     # Compile to Python code
     result = compile(stream)
     
-    # Return the value explicitly - this is crucial for Pyodide to properly capture the return value
+    # Return the value explicitly
     return result
 except Exception as e:
     print(f"ERROR: {str(e)}")
     return f"# Error: {str(e)}"
 `;
 
-  try {
-    // Execute the Python code using the runPython utility
+    console.log('Executing FFmpeg command generation...');
     const result = await runPython(pythonCode);
+    console.log('Raw result type:', typeof result);
+    console.log('Raw result value:', result);
 
     // Convert result to string and check if it's empty
     const resultStr = String(result);
+    console.log('Result as string:', resultStr);
+
     if (!resultStr || resultStr.trim() === '') {
+      console.warn('Generated FFmpeg command is empty');
       return {
         python: '',
         error: 'No command was generated. Ensure there are proper connections between nodes.',
