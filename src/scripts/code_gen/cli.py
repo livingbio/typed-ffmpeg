@@ -41,7 +41,14 @@ def gen_option_info() -> list[FFMpegOption]:
     Returns:
         The option info
     """
-    return parse_ffmpeg_options()
+    try:
+        return load(list[FFMpegOption], "options")
+    except Exception as e:
+        logging.error(f"Failed to load options from cache: {e}")
+
+    options = parse_ffmpeg_options()
+    save(options, "options")
+    return options
 
 
 def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:

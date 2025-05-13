@@ -27,8 +27,8 @@ import { NodeData } from '../types/node';
 const nodeTypes = {
   filter: FilterNode,
   global: GlobalNode,
-  input: InputNode,
-  output: OutputNode,
+  input_: InputNode,
+  output_: OutputNode,
 } as const;
 
 // Helper function to determine edge type from stream
@@ -159,9 +159,18 @@ const createNode = (
 
   const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
 
+  // if nodeType is input or output add a `_` to the end of the nodeType
+  let nodeType_: string;
+  if (nodeType === 'input' || nodeType === 'output') {
+    nodeType_ = nodeType + '_';
+  }
+  else {
+    nodeType_ = nodeType;
+  }
+
   return {
     id: nodeId,
-    type: nodeType,
+    type: nodeType_,
     position: position || defaultPosition,
     data: {
       label: label,
