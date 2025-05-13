@@ -18,14 +18,12 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
   const [error, setError] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  const [useSimpleMode, setUseSimpleMode] = useState<boolean>(false);
 
   useEffect(() => {
     const updatePythonCode = async () => {
       try {
         setIsLoading(true);
 
-        // Use the simple version for testing
         const commandResult = await generateFFmpegCommand(nodeMappingManager);
 
         setPythonCode(commandResult.python);
@@ -39,7 +37,7 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
     };
 
     updatePythonCode();
-  }, [nodes, edges, nodeMappingManager, useSimpleMode]);
+  }, [nodes, edges, nodeMappingManager]);
 
   const handleRunPython = async () => {
     if (!pythonCode) return;
@@ -64,10 +62,6 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
     navigator.clipboard.writeText(pythonCode);
   };
 
-  const toggleMode = () => {
-    setUseSimpleMode(!useSimpleMode);
-  };
-
   return (
     <Box>
       {/* Python Code */}
@@ -80,17 +74,7 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
             mb: 1,
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="subtitle2">Python Code</Typography>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={toggleMode}
-              sx={{ fontSize: '0.7rem' }}
-            >
-              {useSimpleMode ? 'Using Simple Mode' : 'Using Standard Mode'}
-            </Button>
-          </Box>
+          <Typography variant="subtitle2">Python Code</Typography>
           <Box sx={{ display: 'flex', gap: 1 }}>
             <Button
               variant="outlined"
