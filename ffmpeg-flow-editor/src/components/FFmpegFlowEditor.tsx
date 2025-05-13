@@ -228,8 +228,8 @@ export default function FFmpegFlowEditor() {
     // Create React Flow nodes
     const initialNodes = [
       createNode('input', {}, { x: 100, y: 300 }, nodeMappingManager),
-      createNode('output', {}, { x: 450, y: 300 }, nodeMappingManager),
-      createNode('global', {}, { x: 800, y: 300 }, nodeMappingManager),
+      createNode('output', {}, { x: 1600, y: 300 }, nodeMappingManager),
+      createNode('global', {}, { x: 2000, y: 300 }, nodeMappingManager),
     ];
 
     setNodes(initialNodes);
@@ -431,7 +431,10 @@ export default function FFmpegFlowEditor() {
         onInit={setReactFlowInstance}
         onDragOver={onDragOver}
         onDrop={onDrop}
-        fitView
+        defaultViewport={{ x: 0, y: 0, zoom: 0.75 }}
+        fitView={false}
+        minZoom={0.1}
+        maxZoom={2}
         style={{
           width: '100%',
           height: '100%',
