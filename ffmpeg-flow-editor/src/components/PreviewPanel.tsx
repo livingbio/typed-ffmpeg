@@ -1,25 +1,28 @@
 import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material';
-import { Node, Edge } from 'reactflow';
-import { NodeData } from '../types/node';
-import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
-import { NodeMappingManager } from '../utils/nodeMapping';
-import { useEffect, useState } from 'react';
+import { NodeMappingManager, NODE_MAPPING_EVENTS } from '../utils/nodeMapping';
+import { useEffect, useState, useRef } from 'react';
 import { runPython } from '../utils/pyodideUtils';
+import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
 
 interface PreviewPanelProps {
-  nodes: Node<NodeData>[];
-  edges: Edge[];
   nodeMappingManager: NodeMappingManager;
 }
 
-export default function PreviewPanel({ nodes, edges, nodeMappingManager }: PreviewPanelProps) {
+// Debounce time in ms - adjust as needed
+const DEBOUNCE_TIME = 800;
+
+export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) {
   const [pythonCode, setPythonCode] = useState<string>('');
   const [ffmpegCmd, setFfmpegCmd] = useState<string>('');
   const [result, setResult] = useState<string>('');
   const [error, setError] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  
+  // Debounce timer reference
+  const debounceTimerRef = useRef<number | null>(null);
 
+  // Update code when the mapping changes
   useEffect(() => {
     const updatePythonCode = async () => {
       try {
@@ -38,8 +41,35 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
       }
     };
 
-    updatePythonCode();
-  }, [nodes, edges, nodeMappingManager]);
+    // Debounced update function to prevent frequent updates
+    const debouncedUpdate = () => {
+      // Clear any existing timer
+      if (debounceTimerRef.current !== null) {
+        window.clearTimeout(debounceTimerRef.current);
+      }
+      
+      // Set a new timer
+      debounceTimerRef.current = window.setTimeout(() => {
+        updatePythonCode();
+        debounceTimerRef.current = null;
+      }, DEBOUNCE_TIME);
+    };
+
+    // Subscribe to node mapping update events
+    // Now we only need to listen for a single UPDATE event
+    const unsubscribe = nodeMappingManager.on(NODE_MAPPING_EVENTS.UPDATE, debouncedUpdate);
+    
+    // Initial update
+    debouncedUpdate();
+    
+    // Cleanup
+    return () => {
+      unsubscribe();
+      if (debounceTimerRef.current !== null) {
+        window.clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [nodeMappingManager]);
 
   const handleRunPython = async () => {
     if (!pythonCode) return;
