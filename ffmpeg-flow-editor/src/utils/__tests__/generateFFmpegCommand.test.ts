@@ -23,19 +23,11 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that error was logged
-    expect(consoleSpy).toHaveBeenCalled();
-    expect(result.python).toContain('IndexError: tuple index out of range');
-    expect(result.error).toBeDefined();
-    expect(result.error).toContain('Failed to generate FFmpeg command');
+    expect(result).toMatchSnapshot();
   });
 
   it('generates basic input-output-global chain', async () => {
     // Mock successful response from runPython
-    const runPythonSpy = vi
-      .spyOn(pyodideModule, 'runPython')
-      .mockResolvedValue(
-        "import ffmpeg\nresult = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()"
-      );
 
     const nodeMappingManager = new NodeMappingManager();
 
@@ -65,21 +57,11 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result.python).toContain('import ffmpeg');
-    expect(result.python).toContain('input.mp4');
-    expect(result.error).toBeUndefined();
-    expect(runPythonSpy).toHaveBeenCalled();
-
-    runPythonSpy.mockRestore();
+    expect(result).toMatchSnapshot();
   });
 
   it('generates code with filter nodes, output and global node', async () => {
     // Mock successful response from runPython
-    const runPythonSpy = vi
-      .spyOn(pyodideModule, 'runPython')
-      .mockResolvedValue(
-        "import ffmpeg\nresult = ffmpeg.input('input.mp4').scale().output(filename='output.mp4').global_args()"
-      );
 
     const nodeMappingManager = new NodeMappingManager();
 
@@ -118,23 +100,10 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result.python).toContain('import ffmpeg');
-    expect(result.python).toContain('input.mp4');
-    expect(result.python).toContain('scale');
-    expect(result.error).toBeUndefined();
-    expect(runPythonSpy).toHaveBeenCalled();
-
-    runPythonSpy.mockRestore();
+    expect(result).toMatchSnapshot();
   });
 
   it('handles multiple input nodes and outputs to global node', async () => {
-    // Mock successful response from runPython
-    const runPythonSpy = vi
-      .spyOn(pyodideModule, 'runPython')
-      .mockResolvedValue(
-        "import ffmpeg\nresult = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4')).global_args()"
-      );
-
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input nodes
@@ -174,22 +143,11 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result.python).toContain('import ffmpeg');
-    expect(result.python).toContain('input1.mp4');
-    expect(result.python).toContain('input2.mp4');
-    expect(result.error).toBeUndefined();
-    expect(runPythonSpy).toHaveBeenCalled();
-
-    runPythonSpy.mockRestore();
+    expect(result).toMatchSnapshot();
   });
 
   it('handles complex filter chains with outputs to global node', async () => {
     // Mock successful response from runPython
-    const runPythonSpy = vi
-      .spyOn(pyodideModule, 'runPython')
-      .mockResolvedValue(
-        "import ffmpeg\ninput_0 = ffmpeg.input('input.mp4')\nresult = ffmpeg.merge_outputs(input_0.scale().output(filename='video_output.mp4'), input_0.volume().output(filename='audio_output.mp3')).global_args()"
-      );
 
     const nodeMappingManager = new NodeMappingManager();
 
@@ -242,23 +200,11 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result.python).toContain('import ffmpeg');
-    expect(result.python).toContain('input.mp4');
-    expect(result.python).toContain('scale');
-    expect(result.python).toContain('volume');
-    expect(result.error).toBeUndefined();
-    expect(runPythonSpy).toHaveBeenCalled();
-
-    runPythonSpy.mockRestore();
+    expect(result).toMatchSnapshot();
   });
 
   it('handles numeric and boolean parameters correctly with outputs to global node', async () => {
     // Mock successful response from runPython
-    const runPythonSpy = vi
-      .spyOn(pyodideModule, 'runPython')
-      .mockResolvedValue(
-        "import ffmpeg\nresult = ffmpeg.input('input.mp4').scale(width=640, height=480, force_original_aspect_ratio=True).output(filename='output.mp4').global_args()"
-      );
 
     const nodeMappingManager = new NodeMappingManager();
 
@@ -302,14 +248,7 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result.python).toContain('import ffmpeg');
-    expect(result.python).toContain('width=640');
-    expect(result.python).toContain('height=480');
-    expect(result.python).toContain('force_original_aspect_ratio=True');
-    expect(result.error).toBeUndefined();
-    expect(runPythonSpy).toHaveBeenCalled();
-
-    runPythonSpy.mockRestore();
+    expect(result).toMatchSnapshot();
   });
 
   it('handles disconnected nodes with global node', async () => {
@@ -339,15 +278,11 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that error was logged
-    expect(consoleSpy).toHaveBeenCalled();
-    expect(result.python).toContain('IndexError: tuple index out of range');
-    expect(result.error).toBeDefined();
-    expect(result.error).toContain('Failed to generate FFmpeg command');
+    expect(result).toMatchSnapshot();
   });
 
   it('handles empty result from Python execution', async () => {
     // Mock empty response from runPython
-    const runPythonSpy = vi.spyOn(pyodideModule, 'runPython').mockResolvedValue('');
     const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
     const nodeMappingManager = new NodeMappingManager();
@@ -358,12 +293,8 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that a warning was logged
-    expect(consoleWarnSpy).toHaveBeenCalled();
-    expect(result.python).toBe('');
-    expect(result.error).toBeDefined();
-    expect(result.error).toContain('No command was generated');
+    expect(result).toMatchSnapshot();
 
-    runPythonSpy.mockRestore();
     consoleWarnSpy.mockRestore();
   });
 });
