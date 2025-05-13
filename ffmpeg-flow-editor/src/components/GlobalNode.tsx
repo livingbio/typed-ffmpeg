@@ -1,6 +1,6 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
-import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/material';
+import { Paper, Typography, TextField, Box, Tooltip, Button, useTheme } from '@mui/material';
 import { EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
 import options from '../config/options.json';
@@ -19,6 +19,7 @@ const globalOptions = options.filter((option) =>
 function GlobalNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   // Update local state when data changes
   useEffect(() => {
@@ -55,6 +56,9 @@ function GlobalNode({ data, id }: NodeProps<NodeData>) {
     return paramString;
   };
 
+  // Calculate which options to show
+  const visibleOptions = expanded ? globalOptions : globalOptions.slice(0, 3);
+
   return (
     <Paper 
       elevation={3} 
@@ -64,14 +68,36 @@ function GlobalNode({ data, id }: NodeProps<NodeData>) {
         backgroundColor: '#f3e5f5',
         border: `2px solid #9c27b0`,
         color: theme.palette.text.primary,
+        position: 'relative',
       }}
     >
-      <Typography variant="h6" gutterBottom>
-        {data.label}
-      </Typography>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'flex-start',
+        mb: 1
+      }}>
+        <Typography variant="h6">
+          {data.label}
+        </Typography>
+        
+        {globalOptions.length > 3 && (
+          <Button 
+            size="small" 
+            onClick={() => setExpanded(!expanded)}
+            sx={{ 
+              minWidth: 'auto', 
+              fontSize: '0.75rem',
+              padding: '2px 8px',
+            }}
+          >
+            {expanded ? 'Less' : 'More'}
+          </Button>
+        )}
+      </Box>
 
       <Box sx={{ mt: 1 }}>
-        {globalOptions.map((option) => (
+        {visibleOptions.map((option) => (
           <Box key={option.name} sx={{ mt: 1 }}>
             <TextField
               fullWidth
