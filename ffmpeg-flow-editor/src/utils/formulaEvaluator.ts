@@ -26,7 +26,7 @@ import json
 parameters = json.loads('${dumps(pythonParameters)}')
 
 result = [k.value for k in eval_formula("""${formula}""", **parameters)]
-json.dumps(result)
+return json.dumps(result)
 `;
 
     // Execute the Python code
