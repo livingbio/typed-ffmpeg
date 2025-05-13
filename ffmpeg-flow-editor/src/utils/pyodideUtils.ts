@@ -51,17 +51,19 @@ export async function runPython(code: string, options?: { indexURL?: string }): 
 
   // Wrap the code in a function to capture both stdout and return value
   const wrappedCode = `
+import json
 def __run_code():
 ${code
   .split('\n')
   .map((line) => '    ' + line)
   .join('\n')}
 
-__run_code_result = __run_code()
+__run_code_result = json.dumps(__run_code())
 `;
 
   try {
     // Run the wrapped code
+    console.log('Running wrapped code:', wrappedCode);
     await pyodide.runPythonAsync(wrappedCode);
 
     // Get the result
@@ -73,19 +75,13 @@ __run_code_result = __run_code()
       stdout = pyodide.stdout;
     }
 
-    // Clean up
-    try {
-      await pyodide.runPythonAsync('del __run_code, __run_code_result');
-    } catch (error) {
-      console.warn('Error during cleanup:', error);
-    }
-
+    console.log('Result:', result);
     // If result is undefined/None but we have stdout, return stdout instead
     if (result === undefined && stdout.trim() !== '') {
-      return stdout.trim();
+      result = stdout.trim();
     }
 
-    return result;
+    return JSON.parse(result);
   } catch (error) {
     console.error('Error executing Python code:', error);
     throw error;

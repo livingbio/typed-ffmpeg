@@ -14,6 +14,7 @@ interface PreviewPanelProps {
 
 export default function PreviewPanel({ nodes, edges, nodeMappingManager }: PreviewPanelProps) {
   const [pythonCode, setPythonCode] = useState<string>('');
+  const [ffmpegCmd, setFfmpegCmd] = useState<string>('');
   const [result, setResult] = useState<string>('');
   const [error, setError] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,6 +28,7 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
         const commandResult = await generateFFmpegCommand(nodeMappingManager);
 
         setPythonCode(commandResult.python);
+        setFfmpegCmd(commandResult.ffmpeg_cmd || '');
         setError(commandResult.error);
       } catch (e) {
         console.error('Error updating Python code:', e);
@@ -60,6 +62,10 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
 
   const handleCopy = () => {
     navigator.clipboard.writeText(pythonCode);
+  };
+
+  const handleCopyFFmpeg = () => {
+    navigator.clipboard.writeText(ffmpegCmd);
   };
 
   return (
@@ -138,6 +144,49 @@ export default function PreviewPanel({ nodes, edges, nodeMappingManager }: Previ
           )}
         </Paper>
       </Box>
+
+      {/* FFmpeg Command */}
+      {ffmpegCmd && (
+        <Box sx={{ mb: 3 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              mb: 1,
+            }}
+          >
+            <Typography variant="subtitle2">FFmpeg Command</Typography>
+            <Button variant="outlined" size="small" onClick={handleCopyFFmpeg}>
+              Copy
+            </Button>
+          </Box>
+          <Paper
+            elevation={0}
+            sx={{
+              p: 2,
+              backgroundColor: '#f5f5f5',
+              borderRadius: 1,
+              overflow: 'auto',
+              maxHeight: '200px',
+            }}
+          >
+            <pre
+              style={{
+                margin: 0,
+                padding: 0,
+                fontFamily: 'monospace',
+                fontSize: '0.875rem',
+                lineHeight: 1.5,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+              }}
+            >
+              {ffmpegCmd}
+            </pre>
+          </Paper>
+        </Box>
+      )}
 
       {/* Results Section (only shown when there are results) */}
       {(result || isRunning) && (

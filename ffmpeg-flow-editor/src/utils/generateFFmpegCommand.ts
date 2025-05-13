@@ -1,9 +1,14 @@
 import { NodeMappingManager } from './nodeMapping';
 import { runPython } from './pyodideUtils';
 
+interface PythonResult {
+  python: string;
+  ffmpeg_cmd: string | null;
+}
+
 export async function generateFFmpegCommand(
   nodeMappingManager: NodeMappingManager
-): Promise<{ python: string; error?: string }> {
+): Promise<{ python: string; ffmpeg_cmd?: string; error?: string }> {
   const json = nodeMappingManager.toJson();
 
   // First, let's try a very simple Python code to test if the return value works
@@ -36,20 +41,26 @@ try:
     # Compile to Python code
     result = compile(stream)
     
-    # Return the value explicitly
-    return result
+    # Return both the Python code and the FFmpeg command
+    return {
+        'python': result,
+        'ffmpeg_cmd': stream.compile_line()
+    }
 except Exception as e:
     print(f"ERROR: {str(e)}")
-    return f"# Error: {str(e)}"
+    return {
+        'python': f"# Error: {str(e)}",
+        'ffmpeg_cmd': None
+    }
 `;
 
     console.log('Executing FFmpeg command generation...');
-    const result = await runPython(pythonCode);
+    const result = (await runPython(pythonCode)) as PythonResult;
     console.log('Raw result type:', typeof result);
     console.log('Raw result value:', result);
 
     // Convert result to string and check if it's empty
-    const resultStr = String(result);
+    const resultStr = String(result.python);
     console.log('Result as string:', resultStr);
 
     if (!resultStr || resultStr.trim() === '') {
@@ -60,7 +71,10 @@ except Exception as e:
       };
     }
 
-    return { python: resultStr };
+    return {
+      python: resultStr,
+      ffmpeg_cmd: result.ffmpeg_cmd || undefined,
+    };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     console.error('Error generating FFmpeg command:', error);
