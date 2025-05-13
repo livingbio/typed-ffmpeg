@@ -1,42 +1,149 @@
-import { memo, useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
-import { Paper, Typography, TextField, useTheme } from '@mui/material';
+import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/material';
 import { EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
+import options from '../config/options.json';
 
-function OutputNode({ data }: NodeProps<NodeData>) {
+// Output options are those with flags & (1 << 12)
+const OUTPUT_FLAG = 1 << 12;
+const outputOptions = options.filter((option) => 
+  (option.flags & OUTPUT_FLAG) !== 0 && 
+  option.type !== "OPT_TYPE_FUNC" // Skip function type options that can't be set through text input
+);
+
+function OutputNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [filename, setFilename] = useState<string>(data.filename || '');
+  const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
+
+  // Update local state when data changes
+  useEffect(() => {
+    setFilename(data.filename || '');
+    setParameters(data.parameters || {});
+  }, [data.filename, data.parameters]);
+
+  const handleParameterChange = (paramName: string, value: string) => {
+    const newParameters = {
+      ...parameters,
+      [paramName]: value,
+    };
+    setParameters(newParameters);
+
+    // Update the node data
+    const event = new CustomEvent('updateNodeData', {
+      detail: {
+        id,
+        data: {
+          ...data,
+          filename,
+          parameters: newParameters,
+        },
+      },
+    });
+    window.dispatchEvent(event);
+  };
+
+  const handleFilenameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newFilename = e.target.value;
+    setFilename(newFilename);
+    
+    // Update the node data
+    const event = new CustomEvent('updateNodeData', {
+      detail: {
+        id,
+        data: {
+          ...data,
+          filename: newFilename,
+          parameters,
+        },
+      },
+    });
+    window.dispatchEvent(event);
+  };
+
+  // Get command line representation
+  const getCommandString = () => {
+    const paramString = Object.entries(parameters)
+      .filter(([, value]) => value !== '')
+      .map(([key, value]) => `-${key} ${value}`)
+      .join(' ');
+
+    return `${paramString} ${filename}`;
+  };
 
   return (
     <Paper 
       elevation={3} 
       sx={{ 
-        width: '100%',
-        height: '100%',
-        boxSizing: 'border-box',
-        padding: 2, 
+        padding: 2,
+        minWidth: 200,
         backgroundColor: '#e3f2fd',
         border: `2px solid #2196f3`,
         color: theme.palette.text.primary,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'stretch',
       }}
     >
       <Typography variant="h6" gutterBottom>
         {data.label}
       </Typography>
       
-      <TextField
-        label="Filename"
-        value={filename}
-        onChange={(e) => setFilename(e.target.value)}
-        fullWidth
-        margin="normal"
-        size="small"
-      />
+      <Box sx={{ mt: 1 }}>
+        <TextField
+          fullWidth
+          size="small"
+          label="Filename"
+          value={filename}
+          onChange={handleFilenameChange}
+          variant="outlined"
+          margin="dense"
+          helperText="Output file path"
+          InputProps={{
+            sx: {
+              '& input::placeholder': {
+                color: 'text.disabled',
+                opacity: 1,
+              },
+            },
+          }}
+        />
+
+        {outputOptions.map((option) => (
+          <Box key={option.name} sx={{ mt: 1 }}>
+            <TextField
+              fullWidth
+              size="small"
+              label={option.name}
+              placeholder={option.argname || ''}
+              value={parameters[option.name] || ''}
+              onChange={(e) => handleParameterChange(option.name, e.target.value)}
+              variant="outlined"
+              margin="dense"
+              helperText={option.help}
+              InputProps={{
+                sx: {
+                  '& input::placeholder': {
+                    color: 'text.disabled',
+                    opacity: 0.7,
+                  },
+                },
+              }}
+            />
+          </Box>
+        ))}
+
+        <Tooltip title={getCommandString()}>
+          <Typography
+            variant="caption"
+            sx={{
+              mt: 1,
+              display: 'block',
+              color: 'text.secondary',
+            }}
+          >
+            {getCommandString()}
+          </Typography>
+        </Tooltip>
+      </Box>
 
       {/* Input handles */}
       {data.handles.inputs.map((handle, index) => (
