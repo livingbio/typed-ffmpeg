@@ -1,6 +1,4 @@
 import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
-import { Node, Edge } from 'reactflow';
-import { NodeData } from '../types/node';
 import { predefinedFilters } from '../types/ffmpeg';
 import PreviewPanel from './PreviewPanel';
 import { useState, useMemo } from 'react';
@@ -8,12 +6,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputIcon from '@mui/icons-material/Input';
 import OutputIcon from '@mui/icons-material/Output';
 import DownloadIcon from '@mui/icons-material/Download';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { Link as MuiLink } from '@mui/material';
 
 import { NodeMappingManager } from '../utils/nodeMapping';
 
 interface SidebarProps {
-  nodes: Node<NodeData>[];
-  edges: Edge[];
   onAddFilter: (
     filterType: string,
     parameters?: Record<string, string>,
@@ -22,7 +20,7 @@ interface SidebarProps {
   nodeMappingManager: NodeMappingManager;
 }
 
-export default function Sidebar({ nodes, edges, onAddFilter, nodeMappingManager }: SidebarProps) {
+export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredFilters = useMemo(() => {
@@ -68,7 +66,7 @@ export default function Sidebar({ nodes, edges, onAddFilter, nodeMappingManager 
         right: 0,
         top: 0,
         height: '100vh',
-        width: 350,
+        width: 500,
         backgroundColor: '#fff',
         zIndex: 1000,
         display: 'flex',
@@ -95,6 +93,29 @@ export default function Sidebar({ nodes, edges, onAddFilter, nodeMappingManager 
         >
           Export
         </Button>
+      </Box>
+
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          p: 1,
+          borderBottom: 1,
+          borderColor: 'divider',
+          backgroundColor: '#f0f0f0',
+        }}
+      >
+        <GitHubIcon sx={{ fontSize: 16, mr: 0.5 }} />
+        <MuiLink 
+          href="https://github.com/livingbio/typed-ffmpeg" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          underline="hover"
+          sx={{ fontSize: '0.875rem' }}
+        >
+          github.com/livingbio/typed-ffmpeg
+        </MuiLink>
       </Box>
 
       <Box
@@ -261,8 +282,6 @@ export default function Sidebar({ nodes, edges, onAddFilter, nodeMappingManager 
             Preview
           </Typography>
           <PreviewPanel 
-            nodes={nodes} 
-            edges={edges} 
             nodeMappingManager={nodeMappingManager}
           />
         </Box>
