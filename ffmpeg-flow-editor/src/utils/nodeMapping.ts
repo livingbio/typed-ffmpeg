@@ -13,6 +13,7 @@ import {
   StreamType,
 } from '../types/dag';
 import { dumps } from './serialize';
+import { EventEmitter } from 'events';
 
 export interface NodeMapping {
   // Maps ReactFlow node ID to DAG node
@@ -30,6 +31,18 @@ export interface EdgeMapping {
   targetMap: Map<Stream, { nodeId: string; index: number }>;
 }
 
+// Define update event types - simplify to just UPDATE
+export const NODE_MAPPING_EVENTS = {
+  UPDATE: 'update',
+} as const;
+
+export type NodeMappingEventType = (typeof NODE_MAPPING_EVENTS)[keyof typeof NODE_MAPPING_EVENTS];
+
+/**
+ * NodeMappingManager manages the mapping between the ReactFlow graph and the DAG model
+ * It provides methods to add/remove nodes and edges, and to convert the mapping to a JSON string
+ * It emits an update event when the mapping changes
+ */
 export class NodeMappingManager {
   private nodeMapping: NodeMapping = {
     nodeMap: new Map(),
@@ -45,6 +58,7 @@ export class NodeMappingManager {
   private nodeIdCounter = 0;
   private globalNode: GlobalNode;
   private globalNodeId: string;
+  private eventEmitter = new EventEmitter();
 
   constructor() {
     // Initialize the global node
@@ -52,6 +66,27 @@ export class NodeMappingManager {
     this.globalNodeId = this.generateNodeId(this.globalNode);
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
     this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
+  }
+
+  // Event handling methods
+  /**
+   * Subscribe to mapping update events
+   * @param eventType The event type to listen for (always 'update')
+   * @param listener The callback function to be called when the event is emitted
+   * @returns A function to unsubscribe the listener
+   */
+  public on(eventType: NodeMappingEventType, listener: () => void): () => void {
+    this.eventEmitter.on(eventType, listener);
+    return () => {
+      this.eventEmitter.off(eventType, listener);
+    };
+  }
+
+  /**
+   * Emit an update event
+   */
+  private emitUpdate(): void {
+    this.eventEmitter.emit(NODE_MAPPING_EVENTS.UPDATE);
   }
 
   // Helper function to generate unique ID for a node
@@ -79,6 +114,18 @@ export class NodeMappingManager {
     return `edge-${sourceId}-${sourceIndex}-${targetId}-${targetIndex}`;
   }
 
+  // Helper function to ensure node inputs are initialized
+  private ensureNodeInputs(node: FilterNode | OutputNode | GlobalNode, count: number): void {
+    if (!node.inputs) {
+      node.inputs = [];
+    }
+
+    // Extend the array if needed
+    while (node.inputs.length < count) {
+      node.inputs.push(null);
+    }
+  }
+
   // Add a node to the mapping
   addNodeToMapping(params: {
     type: 'filter' | 'input' | 'output' | 'global';
@@ -93,24 +140,35 @@ export class NodeMappingManager {
     if (params.type === 'global') {
       // Update the existing GlobalNode's properties
       if (params.inputs) {
-        this.globalNode.inputs = params.inputs as OutputStream[];
+        this.globalNode.inputs = params.inputs as unknown as OutputStream[];
+      } else {
+        // Ensure the global node has empty inputs array
+        this.globalNode.inputs = [];
       }
+
       if (params.kwargs) {
         this.globalNode.kwargs = { ...this.globalNode.kwargs, ...params.kwargs };
       }
+      this.emitUpdate();
       return this.globalNodeId;
     }
 
     let node: FilterNode | InputNode | OutputNode;
+    let filterInputs: (FilterableStream | null)[] | undefined;
+    let outputInputs: (FilterableStream | null)[] | undefined;
 
     switch (params.type) {
       case 'filter':
         if (!params.name || !params.input_typings || !params.output_typings) {
           throw new Error('FilterNode requires name, input_typings, and output_typings');
         }
+
+        // Initialize with proper input array length based on input_typings
+        filterInputs = params.inputs || Array(params.input_typings.length).fill(null);
+
         node = new FilterNode(
           params.name,
-          (params.inputs as (FilterableStream | null)[]) || [],
+          filterInputs as (FilterableStream | null)[],
           params.input_typings,
           params.output_typings,
           params.kwargs
@@ -128,9 +186,13 @@ export class NodeMappingManager {
         if (!params.filename) {
           throw new Error('OutputNode requires filename');
         }
+
+        // Initialize with a single null input if none provided
+        outputInputs = params.inputs || [null];
+
         node = new OutputNode(
           params.filename,
-          (params.inputs as (FilterableStream | null)[]) || [],
+          outputInputs as (FilterableStream | null)[],
           params.kwargs
         );
         break;
@@ -142,6 +204,7 @@ export class NodeMappingManager {
     const nodeId = this.generateNodeId(node);
     this.nodeMapping.nodeMap.set(nodeId, node);
     this.nodeMapping.reverseMap.set(node, nodeId);
+    this.emitUpdate();
     return nodeId;
   }
 
@@ -186,6 +249,7 @@ export class NodeMappingManager {
     // Remove the node
     this.nodeMapping.nodeMap.delete(nodeId);
     this.nodeMapping.reverseMap.delete(node);
+    this.emitUpdate();
   }
 
   // Get the global node ID
@@ -216,6 +280,7 @@ export class NodeMappingManager {
     this.globalNodeId = this.generateNodeId(this.globalNode);
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
     this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
+    this.emitUpdate();
   }
 
   // Add an edge to the mapping
@@ -234,7 +299,15 @@ export class NodeMappingManager {
 
     // Create the appropriate stream type based on source node type
     let stream: VideoStream | AudioStream | AVStream | OutputStream | GlobalStream;
+
     if (sourceNode instanceof FilterNode) {
+      // Check if the sourceIndex is valid
+      if (sourceIndex >= sourceNode.output_typings.length) {
+        throw new Error(
+          `Source node ${sourceNodeId} does not have an output at index ${sourceIndex}`
+        );
+      }
+
       const streamType = sourceNode.output_typings[sourceIndex];
       switch (streamType.value) {
         case 'video':
@@ -244,97 +317,102 @@ export class NodeMappingManager {
           stream = new AudioStream(sourceNode, sourceIndex);
           break;
         default:
-          throw new Error('Invalid stream type');
+          throw new Error(`Invalid stream type: ${streamType.value}`);
       }
     } else if (sourceNode instanceof InputNode) {
       stream = new AVStream(sourceNode, null);
     } else if (sourceNode instanceof OutputNode) {
-      stream = new OutputStream(sourceNode, null);
+      stream = new OutputStream(sourceNode, targetIndex);
     } else if (sourceNode instanceof GlobalNode) {
-      stream = new GlobalStream(sourceNode, null);
+      stream = new GlobalStream(sourceNode);
     } else {
-      throw new Error('Unsupported source node type');
+      throw new Error('Invalid source node type');
     }
 
-    // Update target node's inputs array
+    // Ensure the target node has enough input slots
+    if (
+      targetNode instanceof FilterNode ||
+      targetNode instanceof OutputNode ||
+      targetNode instanceof GlobalNode
+    ) {
+      this.ensureNodeInputs(targetNode, targetIndex + 1);
+    } else {
+      throw new Error(`Cannot add input to node of type ${targetNode.constructor.name}`);
+    }
+
+    // Check stream type compatibility for FilterNode targets
     if (targetNode instanceof FilterNode) {
-      // Set the input at the specified index
-      if (stream instanceof GlobalStream || stream instanceof OutputStream) {
-        throw new Error('Stream type mismatch');
+      // Check if the targetIndex is valid
+      if (targetIndex >= targetNode.input_typings.length) {
+        throw new Error(
+          `Target node ${targetNodeId} does not have an input at index ${targetIndex}`
+        );
       }
 
-      if (
-        (targetNode.input_typings[targetIndex].value == 'video' && stream instanceof AudioStream) ||
-        (targetNode.input_typings[targetIndex].value == 'audio' && stream instanceof VideoStream)
-      ) {
-        throw new Error('Stream type mismatch');
+      const expectedType = targetNode.input_typings[targetIndex]?.value;
+      let actualType: string | undefined;
+
+      if (stream instanceof VideoStream) {
+        actualType = 'video';
+      } else if (stream instanceof AudioStream) {
+        actualType = 'audio';
       }
-      targetNode.inputs[targetIndex] = stream;
-    } else if (targetNode instanceof OutputNode) {
-      // Ensure inputs array is long enough
-      while (targetNode.inputs.length <= targetIndex) {
-        targetNode.inputs.push(null);
+
+      if (expectedType && actualType && expectedType !== actualType) {
+        throw new Error(`Stream type mismatch: expected ${expectedType}, got ${actualType}`);
       }
-      // Set the input at the specified index
-      if (!(stream instanceof FilterableStream)) {
-        throw new Error('Stream is not a FilterableStream');
-      }
-      targetNode.inputs[targetIndex] = stream;
-    } else if (targetNode instanceof GlobalNode) {
-      // Ensure inputs array is long enough
-      while (targetNode.inputs.length <= targetIndex) {
-        targetNode.inputs.push(null);
-      }
-      // Set the input at the specified index
-      if (!(stream instanceof OutputStream)) {
-        throw new Error('Stream type mismatch');
-      }
-      targetNode.inputs[targetIndex] = stream as OutputStream;
-    } else {
-      throw new Error('Target node type does not support inputs');
     }
 
+    // Set input on target node
+    if (targetNode.inputs && targetIndex < targetNode.inputs.length) {
+      targetNode.inputs[targetIndex] = stream as FilterableStream;
+    } else {
+      throw new Error(`Target node ${targetNodeId} does not have an input at index ${targetIndex}`);
+    }
+
+    // Create edge ID and add to mapping
     const edgeId = this.generateEdgeId(sourceNodeId, targetNodeId, sourceIndex, targetIndex);
     this.edgeMapping.edgeMap.set(edgeId, stream);
     this.edgeMapping.reverseMap.set(stream, edgeId);
     this.edgeMapping.targetMap.set(stream, { nodeId: targetNodeId, index: targetIndex });
-
+    this.emitUpdate();
     return edgeId;
   }
 
   // Remove an edge from the mapping
   removeEdgeFromMapping(edgeId: string): void {
-    // Remove the edge from the mapping
     const stream = this.edgeMapping.edgeMap.get(edgeId);
     if (!stream) {
-      throw new Error('Edge not found in mapping');
+      throw new Error(`Edge ${edgeId} not found in mapping`);
     }
 
-    // remove the edge from target's input
-    const targetNode = this.edgeMapping.targetMap.get(stream)?.nodeId;
-    if (!targetNode) {
-      throw new Error('Target node not found in mapping');
+    // Remove the stream from the target node's inputs
+    const targetInfo = this.edgeMapping.targetMap.get(stream);
+    if (targetInfo) {
+      const targetNode = this.nodeMapping.nodeMap.get(targetInfo.nodeId);
+      if (targetNode && targetNode.inputs) {
+        targetNode.inputs[targetInfo.index] = null;
+      }
     }
-    const targetNodeInstance = this.nodeMapping.nodeMap.get(targetNode);
-    if (!targetNodeInstance) {
-      throw new Error('Target node not found in mapping');
-    }
-    targetNodeInstance.inputs[this.edgeMapping.targetMap.get(stream)?.index ?? 0] = null;
-    this.edgeMapping.targetMap.delete(stream);
+
+    // Remove from mapping
     this.edgeMapping.edgeMap.delete(edgeId);
+    this.edgeMapping.targetMap.delete(stream);
+    this.edgeMapping.reverseMap.delete(stream);
+    this.emitUpdate();
   }
 
-  // Get current mapping state
+  // Get the node mapping
   getNodeMapping(): NodeMapping {
     return this.nodeMapping;
   }
 
-  // Get current edge mapping state
+  // Get the edge mapping
   getEdgeMapping(): EdgeMapping {
     return this.edgeMapping;
   }
 
-  // Update a node's properties
+  // Update a node in the mapping
   updateNode(
     nodeId: string,
     updates: {
@@ -346,42 +424,95 @@ export class NodeMappingManager {
   ): void {
     const node = this.nodeMapping.nodeMap.get(nodeId);
     if (!node) {
-      throw new Error('Node not found in mapping');
+      throw new Error(`Node ${nodeId} not found in mapping`);
     }
 
-    if (node instanceof FilterNode) {
-      // Update input_typings and reinitialize inputs array if needed
-      if (updates.input_typings) {
-        node.input_typings = updates.input_typings;
-        // Reinitialize inputs array with null values
-        node.inputs = new Array(node.input_typings.length).fill(null);
-      }
-      // Update output_typings
-      if (updates.output_typings) {
-        node.output_typings = updates.output_typings;
-      }
-      // Update kwargs
-      if (updates.kwargs) {
-        node.kwargs = { ...node.kwargs, ...updates.kwargs };
-      }
-    } else if (node instanceof InputNode || node instanceof OutputNode) {
-      // Update filename
-      if (updates.filename) {
+    if (updates.input_typings && node instanceof FilterNode) {
+      node.input_typings = updates.input_typings;
+      // Ensure inputs array matches the length of input_typings
+      this.ensureNodeInputs(node, updates.input_typings.length);
+    }
+
+    if (updates.output_typings && node instanceof FilterNode) {
+      node.output_typings = updates.output_typings;
+    }
+
+    if (updates.kwargs) {
+      node.kwargs = { ...node.kwargs, ...updates.kwargs };
+    }
+
+    if (updates.filename) {
+      if (node instanceof InputNode || node instanceof OutputNode) {
         node.filename = updates.filename;
+      } else {
+        throw new Error(`Cannot update filename on node type ${node.constructor.name}`);
       }
-      // Update kwargs
-      if (updates.kwargs) {
-        node.kwargs = { ...node.kwargs, ...updates.kwargs };
+    }
+    this.emitUpdate();
+  }
+
+  /**
+   * Update multiple nodes at once
+   * @param updates Map of nodeId to update object
+   */
+  updateMultipleNodes(
+    updates: Map<
+      string,
+      {
+        input_typings?: StreamType[];
+        output_typings?: StreamType[];
+        kwargs?: Record<string, string | number | boolean>;
+        filename?: string;
       }
-    } else if (node instanceof GlobalNode) {
-      // Update kwargs
-      if (updates.kwargs) {
-        node.kwargs = { ...node.kwargs, ...updates.kwargs };
+    >
+  ): void {
+    if (updates.size === 0) return;
+
+    let anyUpdates = false;
+
+    for (const [nodeId, updateData] of updates) {
+      try {
+        const node = this.nodeMapping.nodeMap.get(nodeId);
+        if (!node) {
+          console.error(`Node ${nodeId} not found in mapping`);
+          continue;
+        }
+
+        // Apply updates without emitting events
+        if (updateData.input_typings && node instanceof FilterNode) {
+          node.input_typings = updateData.input_typings;
+          this.ensureNodeInputs(node, updateData.input_typings.length);
+          anyUpdates = true;
+        }
+
+        if (updateData.output_typings && node instanceof FilterNode) {
+          node.output_typings = updateData.output_typings;
+          anyUpdates = true;
+        }
+
+        if (updateData.kwargs) {
+          node.kwargs = { ...node.kwargs, ...updateData.kwargs };
+          anyUpdates = true;
+        }
+
+        if (updateData.filename) {
+          if (node instanceof InputNode || node instanceof OutputNode) {
+            node.filename = updateData.filename;
+            anyUpdates = true;
+          }
+        }
+      } catch (error) {
+        console.error(`Error updating node ${nodeId}:`, error);
       }
+    }
+
+    // Emit a single update event if any updates were made
+    if (anyUpdates) {
+      this.emitUpdate();
     }
   }
 
-  // Recursively add nodes and their connected streams to the mapping
+  // Recursively add a node and all connected nodes/streams to the mapping
   recursiveAddToMapping(
     item:
       | FilterNode
@@ -395,81 +526,105 @@ export class NodeMappingManager {
       | OutputStream
       | GlobalStream
   ): string {
-    // If the item is a stream, get its source node and process that
-    if (
-      item instanceof FilterableStream ||
-      item instanceof VideoStream ||
-      item instanceof AudioStream ||
-      item instanceof AVStream ||
-      item instanceof OutputStream ||
-      item instanceof GlobalStream
-    ) {
-      return this.recursiveAddToMapping(item.node);
-    }
+    // Suppress events during the recursive operation
+    // We'll emit a single event at the end
+    const emitUpdate = this.emitUpdate;
+    this.emitUpdate = () => {}; // No-op
 
-    // If the item is a node, add it to the mapping
-    let params: {
-      type: 'filter' | 'input' | 'output' | 'global';
-      name?: string;
-      filename?: string;
-      inputs?: (FilterableStream | null | OutputStream)[];
-      input_typings?: StreamType[];
-      output_typings?: StreamType[];
-      kwargs?: Record<string, string | number | boolean>;
-    };
+    let result: string;
 
-    if (item instanceof FilterNode) {
-      params = {
-        type: 'filter',
-        name: item.name,
-        inputs: item.inputs,
-        input_typings: item.input_typings,
-        output_typings: item.output_typings,
-        kwargs: item.kwargs,
-      };
-    } else if (item instanceof InputNode) {
-      params = {
-        type: 'input',
-        filename: item.filename,
-        kwargs: item.kwargs,
-      };
-    } else if (item instanceof OutputNode) {
-      params = {
-        type: 'output',
-        filename: item.filename,
-        inputs: item.inputs,
-        kwargs: item.kwargs,
-      };
-    } else if (item instanceof GlobalNode) {
-      params = {
-        type: 'global',
-        inputs: item.inputs,
-        kwargs: item.kwargs,
-      };
-    } else {
-      throw new Error('Unsupported node type');
-    }
+    try {
+      // If it's a node, add it to the mapping
+      if (
+        item instanceof FilterNode ||
+        item instanceof InputNode ||
+        item instanceof OutputNode ||
+        item instanceof GlobalNode
+      ) {
+        // Check if node is already in the mapping
+        const existingNodeId = this.nodeMapping.reverseMap.get(item);
+        if (existingNodeId) {
+          result = existingNodeId;
+        } else {
+          // Add node to mapping
+          let nodeId: string;
+          if (item instanceof FilterNode) {
+            nodeId = this.addNodeToMapping({
+              type: 'filter',
+              name: item.name,
+              inputs: item.inputs,
+              input_typings: item.input_typings,
+              output_typings: item.output_typings,
+              kwargs: item.kwargs,
+            });
+          } else if (item instanceof InputNode) {
+            nodeId = this.addNodeToMapping({
+              type: 'input',
+              filename: item.filename,
+              kwargs: item.kwargs,
+            });
+          } else if (item instanceof OutputNode) {
+            nodeId = this.addNodeToMapping({
+              type: 'output',
+              filename: item.filename,
+              inputs: item.inputs,
+              kwargs: item.kwargs,
+            });
+          } else if (item instanceof GlobalNode) {
+            // For GlobalNode, we update the existing one
+            if (item.inputs && item.inputs.length > 0) {
+              this.globalNode.inputs = item.inputs;
+            }
+            if (item.kwargs) {
+              this.globalNode.kwargs = { ...this.globalNode.kwargs, ...item.kwargs };
+            }
+            nodeId = this.globalNodeId;
+          } else {
+            throw new Error('Invalid node type');
+          }
 
-    const nodeId = this.addNodeToMapping(params);
+          // Recursively add all input streams to the mapping
+          if (item.inputs) {
+            for (let i = 0; i < item.inputs.length; i++) {
+              const input = item.inputs[i];
+              if (input) {
+                // Recursively add the input stream's node
+                const sourceNodeId = this.recursiveAddToMapping(input.node);
+                // Add the edge - using the stream's index property
+                const sourceIndex = input.index !== null ? input.index : 0;
+                this.addEdgeToMapping(sourceNodeId, nodeId, sourceIndex, i);
+              }
+            }
+          }
 
-    // If it's a FilterNode or OutputNode, process its inputs recursively
-    if (item instanceof FilterNode || item instanceof OutputNode) {
-      item.inputs.forEach((inputStream, index) => {
-        if (inputStream) {
-          // Recursively process the input stream
-          const sourceNodeId = this.recursiveAddToMapping(inputStream.node);
-
-          // Add the edge to the mapping
-          this.addEdgeToMapping(sourceNodeId, nodeId, inputStream.index ?? 0, index);
+          result = nodeId;
         }
-      });
+      }
+      // If it's a stream, recursively add its node and return the node ID
+      else if (
+        item instanceof VideoStream ||
+        item instanceof AudioStream ||
+        item instanceof AVStream ||
+        item instanceof OutputStream ||
+        item instanceof GlobalStream
+      ) {
+        result = this.recursiveAddToMapping(item.node);
+      } else {
+        throw new Error('Invalid item type');
+      }
+    } finally {
+      // Restore the original emitUpdate function
+      this.emitUpdate = emitUpdate;
+      // Emit a single update event at the end
+      this.emitUpdate();
     }
 
-    return nodeId;
+    return result;
   }
 
-  // Convert the global node to JSON
+  // Convert the mapping to a JSON string
   toJson(): string {
+    // If we have a global node, use that as the entry point
     return dumps(this.globalNode);
   }
 }

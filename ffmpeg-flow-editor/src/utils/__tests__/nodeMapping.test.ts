@@ -346,7 +346,7 @@ describe('nodeMapping', () => {
 
     it('should throw error when removing non-existent edge', () => {
       expect(() => nodeMappingManager.removeEdgeFromMapping('non-existent')).toThrow(
-        'Edge not found in mapping'
+        'Edge non-existent not found in mapping'
       );
     });
 
@@ -472,7 +472,7 @@ describe('nodeMapping', () => {
 
     it('should throw error when node not found', () => {
       expect(() => nodeMappingManager.updateNode('non-existent', {})).toThrow(
-        'Node not found in mapping'
+        'Node non-existent not found in mapping'
       );
     });
   });
