@@ -1,6 +1,6 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
-import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/material';
+import { Paper, Typography, TextField, Box, Tooltip, Button, useTheme } from '@mui/material';
 import { EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
 import options from '../config/options.json';
@@ -16,6 +16,7 @@ function OutputNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [filename, setFilename] = useState<string>(data.filename || '');
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   // Update local state when data changes
   useEffect(() => {
@@ -72,6 +73,9 @@ function OutputNode({ data, id }: NodeProps<NodeData>) {
     return `${paramString} ${filename}`;
   };
 
+  // Calculate which options to show
+  const visibleOptions = expanded ? outputOptions : outputOptions.slice(0, 3);
+
   return (
     <Paper 
       elevation={3} 
@@ -81,11 +85,33 @@ function OutputNode({ data, id }: NodeProps<NodeData>) {
         backgroundColor: '#e3f2fd',
         border: `2px solid #2196f3`,
         color: theme.palette.text.primary,
+        position: 'relative',
       }}
     >
-      <Typography variant="h6" gutterBottom>
-        {data.label}
-      </Typography>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'flex-start',
+        mb: 1
+      }}>
+        <Typography variant="h6">
+          {data.label}
+        </Typography>
+        
+        {outputOptions.length > 3 && (
+          <Button 
+            size="small" 
+            onClick={() => setExpanded(!expanded)}
+            sx={{ 
+              minWidth: 'auto', 
+              fontSize: '0.75rem',
+              padding: '2px 8px',
+            }}
+          >
+            {expanded ? 'Less' : 'More'}
+          </Button>
+        )}
+      </Box>
       
       <Box sx={{ mt: 1 }}>
         <TextField
@@ -107,7 +133,7 @@ function OutputNode({ data, id }: NodeProps<NodeData>) {
           }}
         />
 
-        {outputOptions.map((option) => (
+        {visibleOptions.map((option) => (
           <Box key={option.name} sx={{ mt: 1 }}>
             <TextField
               fullWidth
