@@ -60,6 +60,12 @@ export class NodeMappingManager {
   private globalNodeId: string;
   private eventEmitter = new EventEmitter();
 
+  // Helper function to generate random filename
+  private generateRandomFilename(type: 'input' | 'output'): string {
+    const randomId = Math.random().toString(36).substring(2, 8);
+    return `${type}-${randomId}.mp4`;
+  }
+
   constructor() {
     // Initialize the global node
     this.globalNode = new GlobalNode([], {});
@@ -156,6 +162,8 @@ export class NodeMappingManager {
     let node: FilterNode | InputNode | OutputNode;
     let filterInputs: (FilterableStream | null)[] | undefined;
     let outputInputs: (FilterableStream | null)[] | undefined;
+    let inputFilename: string;
+    let outputFilename: string;
 
     switch (params.type) {
       case 'filter':
@@ -176,25 +184,18 @@ export class NodeMappingManager {
         break;
 
       case 'input':
-        if (!params.filename) {
-          throw new Error('InputNode requires filename');
-        }
-        node = new InputNode(params.filename, [], params.kwargs);
+        // Generate random filename if not provided
+        inputFilename = params.filename || this.generateRandomFilename('input');
+        node = new InputNode(inputFilename, [], params.kwargs);
         break;
 
       case 'output':
-        if (!params.filename) {
-          throw new Error('OutputNode requires filename');
-        }
-
+        // Generate random filename if not provided
+        outputFilename = params.filename || this.generateRandomFilename('output');
         // Initialize with a single null input if none provided
-        outputInputs = params.inputs || [null];
+        outputInputs = params.inputs ? (params.inputs as (FilterableStream | null)[]) : [null];
 
-        node = new OutputNode(
-          params.filename,
-          outputInputs as (FilterableStream | null)[],
-          params.kwargs
-        );
+        node = new OutputNode(outputFilename, outputInputs, params.kwargs);
         break;
 
       default:
