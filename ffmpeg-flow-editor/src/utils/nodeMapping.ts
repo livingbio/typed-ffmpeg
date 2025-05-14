@@ -162,7 +162,7 @@ export class NodeMappingManager {
     let node: FilterNode | InputNode | OutputNode;
     let filterInputs: (FilterableStream | null)[] | undefined;
     let outputInputs: (FilterableStream | null)[] | undefined;
-    const inputFilename: string;
+    let inputFilename: string;
     let outputFilename: string;
 
     switch (params.type) {
