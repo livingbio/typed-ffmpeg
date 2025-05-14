@@ -4,6 +4,7 @@ import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/mater
 import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
+import { evaluateFormula } from '../utils/formulaEvaluator';
 
 interface ValidationError {
   [key: string]: string | null;
@@ -13,17 +14,40 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
+  const [inputTypes, setInputTypes] = useState<FFMpegIOType[]>([]);
+  const [outputTypes, setOutputTypes] = useState<FFMpegIOType[]>([]);
+
+  // Get the filter definition
+  const filter = predefinedFilters.find((f) => f.name === data.filterName);
+  if (!filter) {
+    throw new Error(`Filter ${data.filterName} not found`);
+  }
+
+  // Update input/output types when parameters change
+  useEffect(() => {
+    const updateTypes = async () => {
+      if (filter.formula_typings_input) {
+        const newInputTypes = await evaluateFormula(filter.formula_typings_input, parameters);
+        setInputTypes(newInputTypes);
+      } else {
+        setInputTypes(filter.stream_typings_input);
+      }
+
+      if (filter.formula_typings_output) {
+        const newOutputTypes = await evaluateFormula(filter.formula_typings_output, parameters);
+        setOutputTypes(newOutputTypes);
+      } else {
+        setOutputTypes(filter.stream_typings_output);
+      }
+    };
+
+    updateTypes();
+  }, [filter, parameters]);
 
   // Update local state when data changes
   useEffect(() => {
     setParameters(data.parameters || {});
   }, [data.parameters]);
-
-  // Get the filter definition
-  const filter = predefinedFilters.find((f) => f.name === data.filterName);
-  if(!filter) {
-    throw new Error(`Filter ${data.filterName} not found`);
-  }
 
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
@@ -102,10 +126,6 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
     if (typeValue === 'video') return 'video';
     return 'av';
   };
-
-  // Get input and output types from filter definition
-  const inputTypes = filter.stream_typings_input;
-  const outputTypes = filter.stream_typings_output;
 
   return (
     <Paper
