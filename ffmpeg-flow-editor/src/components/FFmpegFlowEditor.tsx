@@ -21,14 +21,22 @@ import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import { NodeMappingManager } from '../utils/nodeMapping';
-import { VideoStream, AudioStream, AVStream, Stream, FilterableStream, OutputStream, StreamType } from '../types/dag';
+import {
+  VideoStream,
+  AudioStream,
+  AVStream,
+  Stream,
+  FilterableStream,
+  OutputStream,
+  StreamType,
+} from '../types/dag';
 import { NodeData } from '../types/node';
 
 const nodeTypes = {
   filter: FilterNode,
   global: GlobalNode,
-  input: InputNode,
-  output: OutputNode,
+  input_: InputNode,
+  output_: OutputNode,
 } as const;
 
 // Helper function to determine edge type from stream
@@ -43,20 +51,29 @@ const getEdgeTypeFromStream = (stream: Stream): EdgeType => {
   return 'av'; // Default fallback
 };
 
+// Helper to generate random filename
+function generateRandomFilename(type: 'input' | 'output'): string {
+  const randomId = Math.random().toString(36).substring(2, 8);
+  return `${type}-${randomId}.mp4`;
+}
+
 // Helper function to create a node
 const createNode = (
   filterType: string,
   parameters: Record<string, string> | undefined,
   position: { x: number; y: number } | undefined,
   nodeMappingManager: NodeMappingManager,
-  filter?: typeof predefinedFilters[0]
+  filter?: (typeof predefinedFilters)[0]
 ): Node<NodeData> => {
   const defaultPosition = {
     x: Math.random() * 500 + 200,
     y: Math.random() * 300 + 100,
   };
 
-  let handles: { inputs: { id: string; type: EdgeType }[]; outputs: { id: string; type: EdgeType }[] };
+  let handles: {
+    inputs: { id: string; type: EdgeType }[];
+    outputs: { id: string; type: EdgeType }[];
+  };
   let label: string;
   let mappingData: {
     type: 'global' | 'input' | 'output' | 'filter';
@@ -68,7 +85,8 @@ const createNode = (
     kwargs: Record<string, string>;
   };
   let nodeType: string;
-  
+  let filename: string | undefined;
+
   if (filterType == 'global') {
     nodeType = 'global';
   } else if (filterType == 'input') {
@@ -82,7 +100,7 @@ const createNode = (
     case 'global':
       label = 'global';
       handles = {
-        inputs: [{id: 'input-0', type: "av"}],
+        inputs: [{ id: 'input-0', type: 'av' }],
         outputs: [],
       };
       mappingData = {
@@ -95,26 +113,28 @@ const createNode = (
       label = 'input';
       handles = {
         inputs: [],
-        outputs: [{id: 'output-0', type: 'av'}],
+        outputs: [{ id: 'output-0', type: 'av' }],
       };
+      filename = parameters?.filename || generateRandomFilename('input');
       mappingData = {
         type: 'input',
-        filename: 'input.mp4',
         inputs: [],
         kwargs: parameters || {},
+        filename: filename,
       };
       break;
     case 'output':
       label = 'output';
       handles = {
-        inputs: [{id: 'input-0', type: 'av'}],
-        outputs: [{id: 'output-0', type: 'av'}],
+        inputs: [{ id: 'input-0', type: 'av' }],
+        outputs: [{ id: 'output-0', type: 'av' }],
       };
+      filename = parameters?.filename || generateRandomFilename('output');
       mappingData = {
         type: 'output',
-        filename: 'output.mp4',
         inputs: [],
         kwargs: parameters || {},
+        filename: filename,
       };
       break;
     case 'filter':
@@ -158,10 +178,17 @@ const createNode = (
   }
 
   const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
+  // if nodeType is input or output add a `_` to the end of the nodeType
+  let nodeType_: string;
+  if (nodeType === 'input' || nodeType === 'output') {
+    nodeType_ = nodeType + '_';
+  } else {
+    nodeType_ = nodeType;
+  }
 
   return {
     id: nodeId,
-    type: nodeType,
+    type: nodeType_,
     position: position || defaultPosition,
     data: {
       label: label,
@@ -169,6 +196,7 @@ const createNode = (
       nodeType: nodeType,
       parameters: parameters || {},
       handles,
+      filename,
     },
   };
 };
@@ -188,12 +216,7 @@ const createEdge = (
   const sourceIndex = parseInt(sourceHandle.split('-')[1] || '0');
   const targetIndex = parseInt(targetHandle.split('-')[1] || '0');
 
-  const edgeId = nodeMappingManager.addEdgeToMapping(
-    source,
-    target,
-    sourceIndex,
-    targetIndex
-  );
+  const edgeId = nodeMappingManager.addEdgeToMapping(source, target, sourceIndex, targetIndex);
 
   // Get the stream from the edge mapping
   const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
@@ -256,9 +279,9 @@ export default function FFmpegFlowEditor() {
       if (node) {
         nodeMappingManager.updateNode(id, {
           kwargs: data.parameters,
+          filename: data.filename,
         });
-      }
-      else {
+      } else {
         throw new Error(`Node ${id} not found`);
       }
       setNodes((nds) =>
@@ -286,8 +309,12 @@ export default function FFmpegFlowEditor() {
   const isValidConnection = useCallback(
     (connection: Connection): boolean => {
       // Rule 1: Can't connect to input nodes
-      const targetNode = nodes.find((node) => node.id === connection.target) as Node<NodeData> | undefined;
-      const sourceNode = nodes.find((node) => node.id === connection.source) as Node<NodeData> | undefined;
+      const targetNode = nodes.find((node) => node.id === connection.target) as
+        | Node<NodeData>
+        | undefined;
+      const sourceNode = nodes.find((node) => node.id === connection.source) as
+        | Node<NodeData>
+        | undefined;
       const sourceIndex = parseInt(connection.sourceHandle?.split('-')[1] || '0');
       const targetIndex = parseInt(connection.targetHandle?.split('-')[1] || '0');
 
@@ -302,7 +329,7 @@ export default function FFmpegFlowEditor() {
           // if there is already an edge connected to the source node, return false
           return true;
       }
-          
+
       switch (targetNode?.data.nodeType) {
         case 'global':
           return sourceNode?.data.nodeType === 'output';
@@ -311,9 +338,12 @@ export default function FFmpegFlowEditor() {
         case 'output':
           return true;
         case 'filter':
-          return sourceNode?.data.handles.outputs[sourceIndex].type === targetNode?.data.handles.inputs[targetIndex].type;
+          return (
+            sourceNode?.data.handles.outputs[sourceIndex].type ===
+            targetNode?.data.handles.inputs[targetIndex].type
+          );
       }
-     
+
       return false;
     },
     [nodes]
@@ -444,10 +474,7 @@ export default function FFmpegFlowEditor() {
         <Background />
         <Controls />
       </ReactFlow>
-      <Sidebar 
-        onAddFilter={onAddNode} 
-        nodeMappingManager={nodeMappingManager}
-      />
+      <Sidebar onAddFilter={onAddNode} nodeMappingManager={nodeMappingManager} />
     </Box>
   );
 }
