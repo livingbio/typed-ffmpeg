@@ -51,6 +51,12 @@ const getEdgeTypeFromStream = (stream: Stream): EdgeType => {
   return 'av'; // Default fallback
 };
 
+// Helper to generate random filename
+function generateRandomFilename(type: 'input' | 'output'): string {
+  const randomId = Math.random().toString(36).substring(2, 8);
+  return `${type}-${randomId}.mp4`;
+}
+
 // Helper function to create a node
 const createNode = (
   filterType: string,
@@ -79,6 +85,7 @@ const createNode = (
     kwargs: Record<string, string>;
   };
   let nodeType: string;
+  let filename: string | undefined;
 
   if (filterType == 'global') {
     nodeType = 'global';
@@ -108,10 +115,12 @@ const createNode = (
         inputs: [],
         outputs: [{ id: 'output-0', type: 'av' }],
       };
+      filename = parameters?.filename || generateRandomFilename('input');
       mappingData = {
         type: 'input',
         inputs: [],
         kwargs: parameters || {},
+        filename: filename,
       };
       break;
     case 'output':
@@ -120,10 +129,12 @@ const createNode = (
         inputs: [{ id: 'input-0', type: 'av' }],
         outputs: [{ id: 'output-0', type: 'av' }],
       };
+      filename = parameters?.filename || generateRandomFilename('output');
       mappingData = {
         type: 'output',
         inputs: [],
         kwargs: parameters || {},
+        filename: filename,
       };
       break;
     case 'filter':
@@ -167,11 +178,6 @@ const createNode = (
   }
 
   const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
-  let filename: string | undefined;
-  if (nodeType == 'input' || nodeType == 'output') {
-    filename = node.filename;
-  }
-
   // if nodeType is input or output add a `_` to the end of the nodeType
   let nodeType_: string;
   if (nodeType === 'input' || nodeType === 'output') {
