@@ -183,11 +183,6 @@ const createNode = async (
   }
 
   const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
-  let filename: string | undefined;
-
-  if (nodeType == 'input' || nodeType == 'output') {
-    filename = node.filename;
-  }
 
   // if nodeType is input or output add a `_` to the end of the nodeType
   let nodeType_: string;
@@ -207,7 +202,6 @@ const createNode = async (
       nodeType: nodeType,
       parameters: parameters || {},
       handles,
-      filename,
     },
   };
 };
