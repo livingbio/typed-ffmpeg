@@ -1,6 +1,6 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
-import { Paper, Typography, TextField, Box, Tooltip, useTheme } from '@mui/material';
+import { Paper, Typography, TextField, Box, Tooltip, useTheme, Button } from '@mui/material';
 import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
@@ -13,6 +13,7 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   // Update local state when data changes
   useEffect(() => {
@@ -107,6 +108,9 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   const inputTypes = filter.stream_typings_input;
   const outputTypes = filter.stream_typings_output;
 
+  // Calculate which options to show
+  const visibleOptions = expanded ? filter.options : filter.options.slice(0, 3);
+
   return (
     <Paper
       elevation={3}
@@ -116,6 +120,7 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
         backgroundColor: theme.palette.background.paper,
         border: `1px solid ${theme.palette.divider}`,
         color: theme.palette.text.primary,
+        position: 'relative',
       }}
     >
       {/* Input handles */}
@@ -142,16 +147,38 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
         );
       })}
 
-      <Typography variant="h6" gutterBottom>
-        {data.label}
-      </Typography>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'flex-start',
+        mb: 1
+      }}>
+        <Typography variant="h6">
+          {data.label}
+        </Typography>
+        
+        {filter.options.length > 3 && (
+          <Button 
+            size="small" 
+            onClick={() => setExpanded(!expanded)}
+            sx={{ 
+              minWidth: 'auto', 
+              fontSize: '0.75rem',
+              padding: '2px 8px',
+            }}
+          >
+            {expanded ? 'Less' : 'More'}
+          </Button>
+        )}
+      </Box>
+
       <Box sx={{ mt: 1 }}>
         {filter.description && (
           <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
             {filter.description}
           </Typography>
         )}
-        {filter.options.map((param) => (
+        {visibleOptions.map((param) => (
           <Box key={param.name} sx={{ mt: 1 }}>
             <TextField
               fullWidth
