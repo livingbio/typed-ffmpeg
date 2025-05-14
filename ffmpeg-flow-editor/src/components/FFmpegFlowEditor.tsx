@@ -29,8 +29,6 @@ import {
   FilterableStream,
   OutputStream,
   StreamType,
-  InputNode as DAGInputNode,
-  OutputNode as DAGOutputNode,
 } from '../types/dag';
 import { NodeData } from '../types/node';
 
@@ -169,9 +167,8 @@ const createNode = (
   }
 
   const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
-  const node = nodeMappingManager.getNodeMapping().nodeMap.get(nodeId);
   let filename: string | undefined;
-  if (node && (node instanceof DAGInputNode || node instanceof DAGOutputNode)) {
+  if (nodeType == 'input' || nodeType == 'output') {
     filename = node.filename;
   }
 
