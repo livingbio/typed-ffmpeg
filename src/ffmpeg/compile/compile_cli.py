@@ -15,16 +15,85 @@ filter graph syntax, and escaping of special characters in FFmpeg commands.
 """
 
 from __future__ import annotations
+import shlex
 
+from ..base import input
+from ..common.cache import load
+from ..common.schema import FFMpegOption
 from ..dag.nodes import FilterableStream, FilterNode, GlobalNode, InputNode, OutputNode
 from ..dag.schema import Node, Stream
 from ..exceptions import FFMpegValueError
 from ..schema import Default
+from ..streams.av import AVStream
 from ..utils.escaping import escape
 from ..utils.lazy_eval.schema import LazyValue
 from ..utils.run import command_line
 from .context import DAGContext
 from .validate import validate
+
+
+def get_options_dict() -> dict[str, FFMpegOption]:
+    options = load(list[FFMpegOption], "options")
+    return {option.name: option for option in options}
+
+
+def parse_options(tokens: list[str]) -> dict[str, str | None | bool]:
+    options: dict[str, str | None | bool] = {}
+
+    while tokens:
+        assert tokens[0][0] == "-", f"Expected option, got {tokens[0]}"
+        if len(tokens) == 1 or tokens[1][0] == "-":
+            if tokens[0].startswith("-no"):
+                # handle boolean options
+                options[tokens[0][3:]] = False
+            else:
+                options[tokens[0][1:]] = None
+            tokens = tokens[1:]
+        else:
+            options[tokens[0][1:]] = tokens[1]
+            tokens = tokens[2:]
+
+    return options
+
+
+def parse_input(
+    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+) -> list[AVStream]:
+    output: list[AVStream] = []
+
+    while "-i" in tokens:
+        index = tokens.index("-i")
+        filename = tokens[index + 1]
+        kwargs = tokens[:index]
+
+        options = parse_options(kwargs)
+        parameters: dict[str, str | bool] = {}
+        for key, value in options.items():
+            assert key in ffmpeg_options, f"Unknown option: {key}"
+            option = ffmpeg_options[key]
+
+            if option.is_input_option:
+                if value is None:
+                    value = True
+                parameters[key] = value
+
+        output.append(input(filename=filename, extra_options=parameters))
+
+        tokens = tokens[index + 2 :]
+
+    return output
+
+
+def parse(cli: str) -> Stream:
+    # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
+    ffmpeg_options = get_options_dict()
+
+    tokens = shlex.split(cli)
+    assert tokens[0] == "ffmpeg"
+    tokens = tokens[1:]
+
+    index =  len(tokens) - 1 - list(reversed(tokens)).index("-i")
+    input_streams = parse_input(tokens[:index+2], ffmpeg_options)
 
 
 def compile(stream: Stream, auto_fix: bool = True) -> str:
