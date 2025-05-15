@@ -32,7 +32,7 @@ class AVStream(AudioStream, VideoStream):
 
     def video_stream(self, index: int) -> VideoStream:
         """
-        Get the video stream from the input node. with a specific index.
+        Get the video stream from the input node with a specified index.
 
         Args:
             index: The index of the video stream.
@@ -44,7 +44,7 @@ class AVStream(AudioStream, VideoStream):
 
     def audio_stream(self, index: int) -> AudioStream:
         """
-        Get the audio stream from the input node. with a specific index.
+        Get the audio stream from the input node with a specified index.
 
         Args:
             index: The index of the audio stream.
