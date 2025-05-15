@@ -337,9 +337,7 @@ class FilterableStream(Stream, OutputArgs):
         )
 
     def __post_init__(self) -> None:
-        if isinstance(self.node, InputNode):
-            assert self.index is None, "Input streams cannot have an index"
-        else:
+        if not isinstance(self.node, InputNode):
             assert self.index is not None, "Filter streams must have an index"
 
 
