@@ -1,0 +1,4 @@
+[
+  "import ffmpeg",
+  "result = ffmpeg.input('input1.mp4').video_stream(0).output(filename='tmp.mp4')"
+]

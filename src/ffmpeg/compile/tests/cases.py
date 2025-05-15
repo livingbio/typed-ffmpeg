@@ -125,6 +125,19 @@ def multi_output_filter() -> Stream:
     return merge_outputs(o1, o2)
 
 
+def stream_selector() -> Stream:
+    return input("input1.mp4").video_stream(0).output(filename="tmp.mp4")
+
+
+def stream_selector_with_filter() -> Stream:
+    return (
+        input("input1.mp4")
+        .video_stream(0)
+        .drawtext(text="Hello World", fontsize=12, x=10, y=10)
+        .output(filename="tmp.mp4")
+    )
+
+
 shared_cases = [
     pytest.param(simple_global_args(), id="simple-global-args"),
     pytest.param(not_utilize_split(), id="not-utilize-split"),
@@ -139,4 +152,6 @@ shared_cases = [
     pytest.param(global_args(), id="global-args"),
     pytest.param(global_args_2(), id="global-args-2"),
     pytest.param(multi_output_filter(), id="multi-output-filter"),
+    pytest.param(stream_selector(), id="stream-selector"),
+    pytest.param(stream_selector_with_filter(), id="stream-selector-with-filter"),
 ]

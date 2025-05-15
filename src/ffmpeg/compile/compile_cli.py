@@ -160,8 +160,16 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
                 case AVStream():
                     return f"{get_node_label(stream.node, context)}"
                 case VideoStream():
+                    if stream.index is not None:
+                        return (
+                            f"{get_node_label(stream.node, context)}:v:{stream.index}"
+                        )
                     return f"{get_node_label(stream.node, context)}:v"
                 case AudioStream():
+                    if stream.index is not None:
+                        return (
+                            f"{get_node_label(stream.node, context)}:a:{stream.index}"
+                        )
                     return f"{get_node_label(stream.node, context)}:a"
                 case _:
                     raise FFMpegValueError(
