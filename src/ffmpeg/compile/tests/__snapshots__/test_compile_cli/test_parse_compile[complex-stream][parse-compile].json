@@ -1,0 +1,4 @@
+[
+  "ffmpeg -i input1.mp4 -i input2.mp4 -filter_complex '[0:v]reverse[s0];[1:a]areverse[s1];[s0]split=outputs=2[s2#0][s2#1];[s1]asplit=outputs=2[s3#0][s3#1];[s2#0][s3#0][s2#1][s3#1]concat=n=2:v=1:a=1[s4#0][s4#1]' -map '[s4#0]' -map '[s4#1]' tmp.mp4",
+  "ffmpeg -i input1.mp4 -i input2.mp4 -filter_complex '[0:v]reverse[s0];[1:a]areverse[s1];[s0]split=outputs=2[s2#0][s2#1];[s1]asplit=outputs=2[s3#0][s3#1];[s2#0][s3#0][s2#1][s3#1]concat=n=2:v=1:a=1[s4#0][s4#1]' -map '[s4#0]' -map '[s4#1]' tmp.mp4"
+]
