@@ -1,0 +1,4 @@
+[
+  "ffmpeg -i input.mp4 -filter_complex '[0:v][0:v]concat=n=2[s0]' -map '[s0]' tmp.mp4",
+  "ffmpeg tmp.mp4"
+]

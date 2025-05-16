@@ -1,0 +1,4 @@
+[
+  "ffmpeg -i input1.mp4 -filter_complex '[0]reverse[s0]' -map '[s0]' tmp.mp4",
+  "ffmpeg tmp.mp4"
+]

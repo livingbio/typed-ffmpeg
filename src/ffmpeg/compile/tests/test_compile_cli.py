@@ -16,4 +16,10 @@ def test_compile_cli(snapshot: SnapshotAssertion, graph: Stream) -> None:
 
 @pytest.mark.parametrize("graph", shared_cases)
 def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
-    assert snapshot(name=compile(graph)) == parse(compile(graph))
+    compiled = compile(graph)
+    parsed = parse(compiled)
+    compiled_again = compile(parsed)
+    assert snapshot(name="parse-compile", extension_class=JSONSnapshotExtension) == (
+        compiled,
+        compiled_again,
+    )
