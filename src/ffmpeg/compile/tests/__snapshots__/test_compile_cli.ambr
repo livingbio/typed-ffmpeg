@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_compile_cli[simple-global-args][parse]
+  GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='tmp.mp4'), index=None),)), index=None)
+# ---

@@ -15,12 +15,21 @@ filter graph syntax, and escaping of special characters in FFmpeg commands.
 """
 
 from __future__ import annotations
-import shlex
 
-from ..base import input
+import shlex
+from collections import defaultdict
+
+from ..base import input, merge_outputs, output
 from ..common.cache import load
 from ..common.schema import FFMpegOption
-from ..dag.nodes import FilterableStream, FilterNode, GlobalNode, InputNode, OutputNode
+from ..dag.nodes import (
+    FilterableStream,
+    FilterNode,
+    GlobalNode,
+    InputNode,
+    OutputNode,
+    OutputStream,
+)
 from ..dag.schema import Node, Stream
 from ..exceptions import FFMpegValueError
 from ..schema import Default
@@ -37,23 +46,55 @@ def get_options_dict() -> dict[str, FFMpegOption]:
     return {option.name: option for option in options}
 
 
-def parse_options(tokens: list[str]) -> dict[str, str | None | bool]:
-    options: dict[str, str | None | bool] = {}
+def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
+    options: dict[str, list[str | None | bool]] = defaultdict(list)
 
     while tokens:
         assert tokens[0][0] == "-", f"Expected option, got {tokens[0]}"
         if len(tokens) == 1 or tokens[1][0] == "-":
             if tokens[0].startswith("-no"):
                 # handle boolean options
-                options[tokens[0][3:]] = False
+                options[tokens[0][3:]] = [False]
             else:
-                options[tokens[0][1:]] = None
+                options[tokens[0][1:]] = [None]
             tokens = tokens[1:]
         else:
-            options[tokens[0][1:]] = tokens[1]
+            key = tokens[0][1:]
+            options[key].append(tokens[1])
+
             tokens = tokens[2:]
 
     return options
+
+
+def parse_output(
+    tokens: list[str],
+    in_streams: dict[str, FilterableStream],
+    ffmpeg_options: dict[str, FFMpegOption],
+) -> list[OutputStream]:
+    export: list[OutputStream] = []
+
+    buffer: list[str] = []
+    while tokens:
+        token = tokens.pop(0)
+        if token.startswith("-") or len(tokens) % 2 == 1:
+            buffer.append(token)
+            continue
+
+        filename = token
+        options = parse_options(buffer)
+
+        map_options = options.pop("map", [])
+        inputs = []
+        for map_option in map_options:
+            assert isinstance(map_option, str), f"Expected map option, got {map_option}"
+            stream_label = map_option.strip("[]")
+            assert stream_label in in_streams, f"Unknown stream label: {stream_label}"
+            inputs.append(in_streams[stream_label])
+
+        export.append(output(*inputs, filename=filename, extra_options=options))
+
+    return export
 
 
 def parse_input(
@@ -64,18 +105,23 @@ def parse_input(
     while "-i" in tokens:
         index = tokens.index("-i")
         filename = tokens[index + 1]
-        kwargs = tokens[:index]
+        assert filename[0] != "-", f"Expected filename, got {filename}"
 
-        options = parse_options(kwargs)
+        input_options_args = tokens[:index]
+
+        options = parse_options(input_options_args)
         parameters: dict[str, str | bool] = {}
+
         for key, value in options.items():
             assert key in ffmpeg_options, f"Unknown option: {key}"
             option = ffmpeg_options[key]
 
             if option.is_input_option:
-                if value is None:
-                    value = True
-                parameters[key] = value
+                # just ignore not input options
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
 
         output.append(input(filename=filename, extra_options=parameters))
 
@@ -92,8 +138,15 @@ def parse(cli: str) -> Stream:
     assert tokens[0] == "ffmpeg"
     tokens = tokens[1:]
 
-    index =  len(tokens) - 1 - list(reversed(tokens)).index("-i")
-    input_streams = parse_input(tokens[:index+2], ffmpeg_options)
+    # find the index of the last -i option
+    index = len(tokens) - 1 - list(reversed(tokens)).index("-i")
+    input_streams = parse_input(tokens[: index + 2], ffmpeg_options)
+    output_streams = parse_output(
+        tokens[index + 2 :],
+        {str(idx): stream for idx, stream in enumerate(input_streams)},
+        ffmpeg_options,
+    )
+    return merge_outputs(*output_streams).global_args()
 
 
 def compile(stream: Stream, auto_fix: bool = True) -> str:
@@ -110,7 +163,7 @@ def compile(stream: Stream, auto_fix: bool = True) -> str:
     Returns:
         A command-line string that can be passed to FFmpeg
     """
-    return command_line(compile_as_list(stream, auto_fix))
+    return "ffmpeg " + command_line(compile_as_list(stream, auto_fix))
 
 
 def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
@@ -283,10 +336,10 @@ def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
     outputs = context.get_outgoing_streams(node)
 
     outgoing_labels = ""
-    for output in sorted(outputs, key=lambda stream: stream.index or 0):
+    for _output in sorted(outputs, key=lambda stream: stream.index or 0):
         # NOTE: all outgoing streams must be filterable
-        assert isinstance(output, FilterableStream)
-        outgoing_labels += f"[{get_stream_label(output, context)}]"
+        assert isinstance(_output, FilterableStream)
+        outgoing_labels += f"[{get_stream_label(_output, context)}]"
 
     commands = []
     for key, value in node.kwargs.items():
