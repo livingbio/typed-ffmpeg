@@ -16,15 +16,370 @@ filter graph syntax, and escaping of special characters in FFmpeg commands.
 
 from __future__ import annotations
 
-from ..dag.nodes import FilterableStream, FilterNode, GlobalNode, InputNode, OutputNode
+import re
+import shlex
+from collections import defaultdict
+from collections.abc import Mapping
+
+from ffmpeg.dag.factory import filter_node_factory
+from ffmpeg.streams.audio import AudioStream
+from ffmpeg.streams.video import VideoStream
+
+from ..base import input, merge_outputs, output
+from ..common.cache import load
+from ..common.schema import FFMpegFilter, FFMpegFilterDef, FFMpegOption, StreamType
+from ..dag.nodes import (
+    FilterableStream,
+    FilterNode,
+    GlobalNode,
+    InputNode,
+    OutputNode,
+    OutputStream,
+)
 from ..dag.schema import Node, Stream
 from ..exceptions import FFMpegValueError
 from ..schema import Default
+from ..streams.av import AVStream
 from ..utils.escaping import escape
 from ..utils.lazy_eval.schema import LazyValue
 from ..utils.run import command_line
 from .context import DAGContext
 from .validate import validate
+
+
+def get_options_dict() -> dict[str, FFMpegOption]:
+    options = load(list[FFMpegOption], "options")
+    return {option.name: option for option in options}
+
+
+def get_filter_dict() -> dict[str, FFMpegFilter]:
+    filters = load(list[FFMpegFilter], "filters")
+    return {filter.name: filter for filter in filters}
+
+
+def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
+    """
+    Parse FFmpeg command-line options into a structured dictionary.
+
+    This function processes a list of command-line tokens and converts them into
+    a dictionary where keys are option names (without the leading '-') and values
+    are lists of their corresponding values. Boolean options are handled specially:
+    - '-option' becomes {'option': [None]}
+    - '-nooption' becomes {'option': [False]}
+
+    Args:
+        tokens: List of command-line tokens to parse
+
+    Returns:
+        Dictionary mapping option names to lists of their values
+    """
+    parsed_options: dict[str, list[str | None | bool]] = defaultdict(list)
+
+    while tokens:
+        assert tokens[0][0] == "-", f"Expected option, got {tokens[0]}"
+        if len(tokens) == 1 or tokens[1][0] == "-":
+            if tokens[0].startswith("-no"):
+                # Handle boolean options with -no prefix
+                option_name = tokens[0][3:]
+                parsed_options[option_name] = [False]
+            else:
+                # Handle boolean options without value
+                option_name = tokens[0][1:]
+                parsed_options[option_name] = [None]
+            tokens = tokens[1:]
+        else:
+            # Handle options with values
+            option_name = tokens[0][1:]
+            option_value = tokens[1]
+            parsed_options[option_name].append(option_value)
+            tokens = tokens[2:]
+
+    return parsed_options
+
+
+def parse_stream_selector(
+    selector: str, mapping: Mapping[str, FilterableStream]
+) -> FilterableStream:
+    selector = selector.strip("[]")
+
+    if ":" in selector:
+        stream_label, _ = selector.split(":", 1)
+    else:
+        stream_label = selector
+
+    assert stream_label in mapping, f"Unknown stream label: {stream_label}"
+    stream = mapping[stream_label]
+
+    if isinstance(stream, AVStream):
+        if selector.count(":") == 1:
+            stream_label, stream_type = selector.split(":", 1)
+            return stream.video if stream_type == "v" else stream.audio
+        elif selector.count(":") == 2:
+            stream_label, stream_type, stream_index = selector.split(":", 2)
+            return (
+                stream.video_stream(int(stream_index))
+                if stream_type == "v"
+                else stream.audio_stream(int(stream_index))
+            )
+        else:
+            return stream
+    else:
+        return stream
+
+
+def parse_output(
+    source: list[str],
+    in_streams: Mapping[str, FilterableStream],
+    ffmpeg_options: dict[str, FFMpegOption],
+) -> list[OutputStream]:
+    tokens = source.copy()
+
+    export: list[OutputStream] = []
+
+    buffer: list[str] = []
+    while tokens:
+        token = tokens.pop(0)
+        if token.startswith("-") or len(buffer) % 2 == 1:
+            buffer.append(token)
+            continue
+
+        filename = token
+        options = parse_options(buffer)
+
+        map_options = options.pop("map", [])
+        inputs: list[FilterableStream] = []
+        for map_option in map_options:
+            assert isinstance(map_option, str), f"Expected map option, got {map_option}"
+            stream = parse_stream_selector(map_option, in_streams)
+            inputs.append(stream)
+
+        assert inputs, f"No inputs found for output {filename}"
+        export.append(output(*inputs, filename=filename, extra_options=options))
+        buffer = []
+
+    return export
+
+
+def parse_input(
+    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+) -> dict[str, FilterableStream]:
+    output: list[AVStream] = []
+
+    while "-i" in tokens:
+        index = tokens.index("-i")
+        filename = tokens[index + 1]
+        assert filename[0] != "-", f"Expected filename, got {filename}"
+
+        input_options_args = tokens[:index]
+
+        options = parse_options(input_options_args)
+        parameters: dict[str, str | bool] = {}
+
+        for key, value in options.items():
+            assert key in ffmpeg_options, f"Unknown option: {key}"
+            option = ffmpeg_options[key]
+
+            if option.is_input_option:
+                # just ignore not input options
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
+
+        output.append(input(filename=filename, extra_options=parameters))
+
+        tokens = tokens[index + 2 :]
+
+    return {str(idx): stream for idx, stream in enumerate(output)}
+
+
+def parse_filter_complex(
+    filter_complex: str,
+    stream_mapping: dict[str, FilterableStream],
+    ffmpeg_filters: dict[str, FFMpegFilter],
+) -> dict[str, FilterableStream]:
+    """
+    Parse an FFmpeg filter_complex string into a stream mapping.
+
+    This function processes a filter_complex string (e.g. "[0:v]scale=1280:720[v0]")
+    and converts it into a mapping of stream labels to their corresponding
+    FilterableStream objects. It handles:
+    - Input stream references (e.g. [0:v])
+    - Filter definitions with parameters
+    - Output stream labels (e.g. [v0])
+
+    Args:
+        filter_complex: The filter_complex string to parse
+        stream_mapping: Existing mapping of stream labels to streams
+        ffmpeg_filters: Dictionary of available FFmpeg filters
+
+    Returns:
+        Updated stream mapping with new filter outputs added
+    """
+    filter_units = filter_complex.split(";")
+
+    for filter_unit in filter_units:
+        pattern = re.compile(
+            r"""
+            (?P<inputs>(\[[^\[\]]+\])*)          # inputs: zero or more [label]
+            (?P<filter>[a-zA-Z0-9_]+)            # filter name
+            (=?(?P<params>[^[]+?))?              # optional =params (until next [ or end)
+            (?P<outputs>(\[[^\[\]]+\])*)$        # outputs: zero or more [label] at end
+            """,
+            re.VERBOSE,
+        )
+
+        match = pattern.match(filter_unit)
+        assert match, f"Invalid filter unit: {filter_unit}"
+
+        def extract_labels(label_str: str) -> list[str]:
+            return re.findall(r"\[([^\[\]]+)\]", label_str)
+
+        input_labels = extract_labels(match.group("inputs") or "")
+        output_labels = extract_labels(match.group("outputs") or "")
+        filter_name = match.group("filter")
+        param_str = match.group("params")
+
+        # Parse filter parameters into key-value pairs
+        filter_params = {}
+        if param_str:
+            param_parts = param_str.strip().split(":")
+            for part in param_parts:
+                if "=" in part:
+                    key, value = part.split("=", 1)
+                    filter_params[key.strip()] = value.strip()
+
+        assert isinstance(filter_name, str), f"Expected filter name, got {filter_name}"
+        ffmpeg_filter = ffmpeg_filters[filter_name]
+        filter_def = FFMpegFilterDef(
+            name=ffmpeg_filter.name,
+            typings_input=ffmpeg_filter.formula_typings_input
+            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_input),
+            typings_output=ffmpeg_filter.formula_typings_output
+            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_output),
+        )
+        input_streams = [
+            parse_stream_selector(label, stream_mapping) for label in input_labels
+        ]
+
+        # Create the filter node with default options and parsed parameters
+        filter_node = filter_node_factory(
+            filter_def,
+            *input_streams,
+            **(
+                {k.name: Default(k.default) for k in ffmpeg_filter.options}
+                | filter_params
+            ),
+        )
+
+        # Map output streams to their labels
+        for idx, (output_label, output_typing) in enumerate(
+            zip(output_labels, filter_node.output_typings)
+        ):
+            if output_typing == StreamType.video:
+                stream_mapping[output_label] = VideoStream(node=filter_node, index=idx)
+            elif output_typing == StreamType.audio:
+                stream_mapping[output_label] = AudioStream(node=filter_node, index=idx)
+            else:
+                raise FFMpegValueError(f"Unknown stream type: {output_typing}")
+
+    return stream_mapping
+
+
+def parse_global(
+    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+) -> tuple[dict[str, str | bool], list[str]]:
+    """
+    Parse global FFmpeg options from command-line tokens.
+
+    This function processes the global options that appear before any input files
+    in the FFmpeg command line. These options affect the entire FFmpeg process,
+    such as log level, overwrite flags, etc.
+
+    Args:
+        tokens: List of command-line tokens to parse
+        ffmpeg_options: Dictionary of valid FFmpeg options
+
+    Returns:
+        A tuple containing:
+        - Dictionary of parsed global options and their values
+        - Remaining tokens after global options are consumed
+
+    Example:
+        For tokens like ['-y', '-loglevel', 'quiet', '-i', 'input.mp4']:
+        Returns ({'y': True, 'loglevel': 'quiet'}, ['-i', 'input.mp4'])
+    """
+    global_params: dict[str, str | bool] = {}
+    remaining_tokens = tokens.copy()
+
+    # Process tokens until we hit an input file marker (-i)
+    while remaining_tokens and remaining_tokens[0] != "-i":
+        if remaining_tokens[0].startswith("-"):
+            option_name = remaining_tokens[0][1:]
+            assert option_name in ffmpeg_options, (
+                f"Unknown global option: {option_name}"
+            )
+            option = ffmpeg_options[option_name]
+
+            if not option.is_global_option:
+                continue
+
+            if len(remaining_tokens) > 1 and not remaining_tokens[1].startswith("-"):
+                # Option with value
+                global_params[option_name] = remaining_tokens[1]
+                remaining_tokens = remaining_tokens[2:]
+            else:
+                # Boolean option
+                if option_name.startswith("no"):
+                    global_params[option_name[2:]] = False
+                else:
+                    global_params[option_name] = True
+                remaining_tokens = remaining_tokens[1:]
+        else:
+            # Skip non-option tokens
+            remaining_tokens = remaining_tokens[1:]
+
+    return global_params, remaining_tokens
+
+
+def parse(cli: str) -> Stream:
+    # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
+    ffmpeg_options = get_options_dict()
+    ffmpeg_filters = get_filter_dict()
+
+    tokens = shlex.split(cli)
+    assert tokens[0] == "ffmpeg"
+    tokens = tokens[1:]
+
+    # Parse global options first
+    global_params, remaining_tokens = parse_global(tokens, ffmpeg_options)
+
+    # find the index of the last -i option
+    index = len(remaining_tokens) - 1 - list(reversed(remaining_tokens)).index("-i")
+    input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
+    remaining_tokens = remaining_tokens[index + 2 :]
+
+    if "-filter_complex" in remaining_tokens:
+        index = remaining_tokens.index("-filter_complex")
+        filter_complex = remaining_tokens[index + 1]
+        filterable_streams = parse_filter_complex(
+            filter_complex, input_streams, ffmpeg_filters
+        )
+        remaining_tokens = remaining_tokens[index + 2 :]
+    else:
+        filterable_streams = {}
+
+    output_streams = parse_output(
+        remaining_tokens,
+        input_streams | filterable_streams,
+        ffmpeg_options,
+    )
+
+    # Create a stream with global options
+    result = merge_outputs(*output_streams)
+    if global_params:
+        result = result.global_args(extra_options=global_params)
+    return result
 
 
 def compile(stream: Stream, auto_fix: bool = True) -> str:
@@ -41,7 +396,7 @@ def compile(stream: Stream, auto_fix: bool = True) -> str:
     Returns:
         A command-line string that can be passed to FFmpeg
     """
-    return command_line(compile_as_list(stream, auto_fix))
+    return "ffmpeg " + command_line(compile_as_list(stream, auto_fix))
 
 
 def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
@@ -50,15 +405,36 @@ def compile_as_list(stream: Stream, auto_fix: bool = True) -> list[str]:
 
     This function takes a Stream object representing an FFmpeg filter graph
     and converts it into a list of command-line arguments that can be passed
-    to FFmpeg. It processes the graph in the correct order:
-    1. Global nodes (general FFmpeg options)
-    2. Input nodes (input files and their options)
-    3. Filter nodes (combined into a -filter_complex argument)
-    4. Output nodes (output files and their options)
+    to FFmpeg. The compilation process follows these steps:
 
-    The function validates the graph before compilation to ensure it's properly
-    formed. If auto_fix is enabled, it will attempt to fix common issues like
-    disconnected nodes or invalid stream mappings.
+    1. Validation: The graph is validated to ensure it's properly formed
+       - Checks for cycles in the graph
+       - Verifies stream types match filter requirements
+       - Ensures all streams are properly connected
+
+    2. Global Options: Processes global FFmpeg settings
+       - Log level, overwrite flags, etc.
+       - These affect the entire FFmpeg process
+
+    3. Input Files: Handles source media files
+       - File paths and input-specific options
+       - Stream selection and format options
+       - Timestamp and duration settings
+
+    4. Filter Graph: Combines all filters into a -filter_complex argument
+       - Properly labels all streams
+       - Maintains correct filter chain order
+       - Handles stream splitting and merging
+
+    5. Output Files: Processes destination files
+       - File paths and output options
+       - Codec and format settings
+       - Stream mapping and selection
+
+    If auto_fix is enabled, the function will attempt to fix common issues:
+    - Reconnecting disconnected nodes
+    - Adding missing split filters
+    - Fixing stream type mismatches
 
     Args:
         stream: The Stream object to compile into arguments
@@ -160,8 +536,16 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
                 case AVStream():
                     return f"{get_node_label(stream.node, context)}"
                 case VideoStream():
+                    if stream.index is not None:
+                        return (
+                            f"{get_node_label(stream.node, context)}:v:{stream.index}"
+                        )
                     return f"{get_node_label(stream.node, context)}:v"
                 case AudioStream():
+                    if stream.index is not None:
+                        return (
+                            f"{get_node_label(stream.node, context)}:a:{stream.index}"
+                        )
                     return f"{get_node_label(stream.node, context)}:a"
                 case _:
                     raise FFMpegValueError(
@@ -206,10 +590,10 @@ def get_args_filter_node(node: FilterNode, context: DAGContext) -> list[str]:
     outputs = context.get_outgoing_streams(node)
 
     outgoing_labels = ""
-    for output in sorted(outputs, key=lambda stream: stream.index or 0):
+    for _output in sorted(outputs, key=lambda stream: stream.index or 0):
         # NOTE: all outgoing streams must be filterable
-        assert isinstance(output, FilterableStream)
-        outgoing_labels += f"[{get_stream_label(output, context)}]"
+        assert isinstance(_output, FilterableStream)
+        outgoing_labels += f"[{get_stream_label(_output, context)}]"
 
     commands = []
     for key, value in node.kwargs.items():

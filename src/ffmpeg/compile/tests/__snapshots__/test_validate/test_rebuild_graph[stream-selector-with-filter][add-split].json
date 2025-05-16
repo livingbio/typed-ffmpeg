@@ -1,0 +1,32 @@
+{
+  "index": null,
+  "node": {
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "index": 0,
+        "node": {
+          "input_typings": [
+            "video"
+          ],
+          "inputs": [
+            {
+              "index": 0,
+              "node": {
+                "filename": "input1.mp4",
+                "inputs": [],
+                "kwargs": "FrozenDict({})"
+              }
+            }
+          ],
+          "kwargs": "FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10})",
+          "name": "drawtext",
+          "output_typings": [
+            "video"
+          ]
+        }
+      }
+    ],
+    "kwargs": "FrozenDict({})"
+  }
+}

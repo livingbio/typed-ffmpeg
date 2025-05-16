@@ -782,3 +782,70 @@
     ]),
   })
 # ---
+# name: test_rebuild_graph[stream-selector-with-filter][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='tmp.mp4'),
+  ])
+# ---
+# name: test_rebuild_graph[stream-selector-with-filter][all_streams]
+  list([
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),
+    VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
+  ])
+# ---
+# name: test_rebuild_graph[stream-selector-with-filter][outgoing_nodes]
+  defaultdict({
+    VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),), filename='tmp.mp4'),
+        0,
+      ),
+    ]),
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0): list([
+      tuple(
+        FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)),
+        0,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[stream-selector-with-filter][outgoing_streams]
+  defaultdict({
+    FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)): list([
+      VideoStream(node=FilterNode(kwargs=FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), name='drawtext', input_typings=(<StreamType.video: 'video'>,), output_typings=(<StreamType.video: 'video'>,)), index=0),
+    ]),
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[stream-selector][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), filename='tmp.mp4'),
+  ])
+# ---
+# name: test_rebuild_graph[stream-selector][all_streams]
+  list([
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),
+  ])
+# ---
+# name: test_rebuild_graph[stream-selector][outgoing_nodes]
+  defaultdict({
+    VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),), filename='tmp.mp4'),
+        0,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[stream-selector][outgoing_streams]
+  defaultdict({
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0),
+    ]),
+  })
+# ---
