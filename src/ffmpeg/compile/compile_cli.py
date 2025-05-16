@@ -16,12 +16,18 @@ filter graph syntax, and escaping of special characters in FFmpeg commands.
 
 from __future__ import annotations
 
+import re
 import shlex
 from collections import defaultdict
+from collections.abc import Mapping
+
+from ffmpeg.dag.factory import filter_node_factory
+from ffmpeg.streams.audio import AudioStream
+from ffmpeg.streams.video import VideoStream
 
 from ..base import input, merge_outputs, output
 from ..common.cache import load
-from ..common.schema import FFMpegOption
+from ..common.schema import FFMpegFilter, FFMpegFilterDef, FFMpegOption, StreamType
 from ..dag.nodes import (
     FilterableStream,
     FilterNode,
@@ -46,6 +52,11 @@ def get_options_dict() -> dict[str, FFMpegOption]:
     return {option.name: option for option in options}
 
 
+def get_filter_dict() -> dict[str, FFMpegFilter]:
+    filters = load(list[FFMpegFilter], "filters")
+    return {filter.name: filter for filter in filters}
+
+
 def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
     options: dict[str, list[str | None | bool]] = defaultdict(list)
 
@@ -67,9 +78,39 @@ def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
     return options
 
 
+def parse_stream_selector(
+    selector: str, mapping: Mapping[str, FilterableStream]
+) -> FilterableStream:
+    selector = selector.strip("[]")
+
+    if ":" in selector:
+        stream_label, _ = selector.split(":", 1)
+    else:
+        stream_label = selector
+
+    assert stream_label in mapping, f"Unknown stream label: {stream_label}"
+    stream = mapping[stream_label]
+
+    if isinstance(stream, AVStream):
+        if selector.count(":") == 1:
+            stream_label, stream_type = selector.split(":", 1)
+            return stream.video if stream_type == "v" else stream.audio
+        elif selector.count(":") == 2:
+            stream_label, stream_type, stream_index = selector.split(":", 2)
+            return (
+                stream.video_stream(int(stream_index))
+                if stream_type == "v"
+                else stream.audio_stream(int(stream_index))
+            )
+        else:
+            return stream
+    else:
+        return stream
+
+
 def parse_output(
     tokens: list[str],
-    in_streams: dict[str, FilterableStream],
+    in_streams: Mapping[str, FilterableStream],
     ffmpeg_options: dict[str, FFMpegOption],
 ) -> list[OutputStream]:
     export: list[OutputStream] = []
@@ -77,7 +118,7 @@ def parse_output(
     buffer: list[str] = []
     while tokens:
         token = tokens.pop(0)
-        if token.startswith("-") or len(tokens) % 2 == 1:
+        if token.startswith("-") or len(buffer) % 2 == 1:
             buffer.append(token)
             continue
 
@@ -85,12 +126,11 @@ def parse_output(
         options = parse_options(buffer)
 
         map_options = options.pop("map", [])
-        inputs = []
+        inputs: list[FilterableStream] = []
         for map_option in map_options:
             assert isinstance(map_option, str), f"Expected map option, got {map_option}"
-            stream_label = map_option.strip("[]")
-            assert stream_label in in_streams, f"Unknown stream label: {stream_label}"
-            inputs.append(in_streams[stream_label])
+            stream = parse_stream_selector(map_option, in_streams)
+            inputs.append(stream)
 
         export.append(output(*inputs, filename=filename, extra_options=options))
 
@@ -99,7 +139,7 @@ def parse_output(
 
 def parse_input(
     tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
-) -> list[AVStream]:
+) -> dict[str, FilterableStream]:
     output: list[AVStream] = []
 
     while "-i" in tokens:
@@ -127,12 +167,82 @@ def parse_input(
 
         tokens = tokens[index + 2 :]
 
-    return output
+    return {str(idx): stream for idx, stream in enumerate(output)}
+
+
+def parse_filter_complex(
+    filter_complex: str,
+    stream_mapping: dict[str, FilterableStream],
+    ffmpeg_filters: dict[str, FFMpegFilter],
+) -> dict[str, FilterableStream]:
+    filters = filter_complex.split(";")
+
+    for unit in filters:
+        pattern = re.compile(
+            r"""
+            (?P<inputs>(\[[^\[\]]+\])*)          # inputs: zero or more [label]
+            (?P<filter>[a-zA-Z0-9_]+)            # filter name
+            (=?(?P<params>[^[]+?))?              # optional =params (until next [ or end)
+            (?P<outputs>(\[[^\[\]]+\])*)$        # outputs: zero or more [label] at end
+            """,
+            re.VERBOSE,
+        )
+
+        match = pattern.match(unit)
+        assert match, f"Invalid filter unit: {unit}"
+
+        def extract_labels(s: str) -> list[str]:
+            return re.findall(r"\[([^\[\]]+)\]", s)
+
+        input_labels = extract_labels(match.group("inputs") or "")
+        output_labels = extract_labels(match.group("outputs") or "")
+        filter_name = match.group("filter")
+        param_str = match.group("params")
+
+        params = {}
+        if param_str:
+            parts = param_str.strip().split(":")
+            for part in parts:
+                if "=" in part:
+                    k, v = part.split("=", 1)
+                    params[k.strip()] = v.strip()
+
+        assert isinstance(filter_name, str), f"Expected filter name, got {filter_name}"
+        ffmpeg_filter = ffmpeg_filters[filter_name]
+        filter_def = FFMpegFilterDef(
+            name=ffmpeg_filter.name,
+            typings_input=ffmpeg_filter.formula_typings_input
+            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_input),
+            typings_output=ffmpeg_filter.formula_typings_output
+            or tuple(k.type.value for k in ffmpeg_filter.stream_typings_output),
+        )
+        inputs = [
+            parse_stream_selector(label, stream_mapping) for label in input_labels
+        ]
+
+        node = filter_node_factory(
+            filter_def,
+            *inputs,
+            **({k.name: k.default for k in ffmpeg_filter.options} | params),
+        )
+
+        for idx, (output_label, output_typing) in enumerate(
+            zip(output_labels, node.output_typings)
+        ):
+            if output_typing == StreamType.video:
+                stream_mapping[output_label] = VideoStream(node=node, index=idx)
+            elif output_typing == StreamType.audio:
+                stream_mapping[output_label] = AudioStream(node=node, index=idx)
+            else:
+                raise FFMpegValueError(f"Unknown stream type: {output_typing}")
+
+    return stream_mapping
 
 
 def parse(cli: str) -> Stream:
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
     ffmpeg_options = get_options_dict()
+    ffmpeg_filters = get_filter_dict()
 
     tokens = shlex.split(cli)
     assert tokens[0] == "ffmpeg"
@@ -141,9 +251,20 @@ def parse(cli: str) -> Stream:
     # find the index of the last -i option
     index = len(tokens) - 1 - list(reversed(tokens)).index("-i")
     input_streams = parse_input(tokens[: index + 2], ffmpeg_options)
+
+    if "-filter_complex" in tokens:
+        index = tokens.index("-filter_complex")
+        filter_complex = tokens[index + 1]
+        filterable_streams = parse_filter_complex(
+            filter_complex, input_streams, ffmpeg_filters
+        )
+        index += 2
+    else:
+        filterable_streams = {}
+
     output_streams = parse_output(
         tokens[index + 2 :],
-        {str(idx): stream for idx, stream in enumerate(input_streams)},
+        input_streams | filterable_streams,
         ffmpeg_options,
     )
     return merge_outputs(*output_streams).global_args()
