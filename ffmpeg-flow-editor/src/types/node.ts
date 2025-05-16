@@ -1,4 +1,5 @@
 import { EdgeType } from './edge';
+import { FFmpegFilter } from './ffmpeg';
 
 /**
  * Represents the data associated with a node in the FFmpeg filter graph
@@ -11,6 +12,8 @@ export interface NodeData {
   nodeType: 'input' | 'filter' | 'output' | 'global';
   /** Name of the FFmpeg filter (for filter nodes) */
   filterName?: string;
+  /** The full filter object (for filter nodes) */
+  filter?: FFmpegFilter;
   /** Filename for input/output nodes */
   filename?: string;
   /** Key-value pairs of parameters for the node */

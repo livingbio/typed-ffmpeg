@@ -213,6 +213,7 @@ const createNode = async (
       parameters: parameters || {},
       handles,
       filename,
+      filter,
     },
   };
 };
