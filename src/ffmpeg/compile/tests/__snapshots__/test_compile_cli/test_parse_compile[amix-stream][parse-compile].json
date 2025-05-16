@@ -1,4 +1,4 @@
 [
   "ffmpeg -i input1.mp4 -filter_complex '[0:a]areverse[s0];[s0]asplit=outputs=2[s1#0][s1#1];[s1#1]areverse[s2];[s2][s1#0]amix=inputs=2:duration=first[s3]' -map '[s3]' tmp.mp4",
-  "ffmpeg tmp.mp4"
+  "ffmpeg -i input1.mp4 -filter_complex '[0:a]areverse[s0];[s0]asplit=outputs=2[s1#0][s1#1];[s1#1]areverse[s2];[s2][s1#0]amix=inputs=2:duration=first[s3]' -map '[s3]' tmp.mp4"
 ]

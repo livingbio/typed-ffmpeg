@@ -128,10 +128,12 @@ def parse_stream_selector(
 
 
 def parse_output(
-    tokens: list[str],
+    source: list[str],
     in_streams: Mapping[str, FilterableStream],
     ffmpeg_options: dict[str, FFMpegOption],
 ) -> list[OutputStream]:
+    tokens = source.copy()
+
     export: list[OutputStream] = []
 
     buffer: list[str] = []
@@ -151,7 +153,9 @@ def parse_output(
             stream = parse_stream_selector(map_option, in_streams)
             inputs.append(stream)
 
+        assert inputs, f"No inputs found for output {filename}"
         export.append(output(*inputs, filename=filename, extra_options=options))
+        buffer = []
 
     return export
 
@@ -262,7 +266,10 @@ def parse_filter_complex(
         filter_node = filter_node_factory(
             filter_def,
             *input_streams,
-            **({k.name: k.default for k in ffmpeg_filter.options} | filter_params),
+            **(
+                {k.name: Default(k.default) for k in ffmpeg_filter.options}
+                | filter_params
+            ),
         )
 
         # Map output streams to their labels
@@ -350,6 +357,7 @@ def parse(cli: str) -> Stream:
     # find the index of the last -i option
     index = len(remaining_tokens) - 1 - list(reversed(remaining_tokens)).index("-i")
     input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
+    remaining_tokens = remaining_tokens[index + 2 :]
 
     if "-filter_complex" in remaining_tokens:
         index = remaining_tokens.index("-filter_complex")
@@ -357,12 +365,12 @@ def parse(cli: str) -> Stream:
         filterable_streams = parse_filter_complex(
             filter_complex, input_streams, ffmpeg_filters
         )
-        index += 2
+        remaining_tokens = remaining_tokens[index + 2 :]
     else:
         filterable_streams = {}
 
     output_streams = parse_output(
-        remaining_tokens[index + 2 :],
+        remaining_tokens,
         input_streams | filterable_streams,
         ffmpeg_options,
     )

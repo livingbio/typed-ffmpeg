@@ -1,4 +1,4 @@
 [
   "ffmpeg -i input1.mp4 -i input2.mp4 -filter_complex '[0][1]feedback[s0#0][s0#1];[s0#0]drawtext=text=Hello World:fontsize=12:x=10:y=10[s1];[s0#1]drawtext=text=Hello World:fontsize=12:x=10:y=10[s2]' -map '[s1]' output1.mp4 -map '[s2]' output2.mp4",
-  "ffmpeg -i input1.mp4 -i input2.mp4 -filter_complex '[0][1]feedback=x=0:w=0[s0#1];[s0#1]drawtext=fontfile=None:text=Hello World:textfile=None:fontcolor=black:fontcolor_expr=:boxcolor=white:bordercolor=black:shadowcolor=black:box=0:boxborderw=0:line_spacing=0:fontsize=12:x=10:y=10:shadowx=0:shadowy=0:borderw=0:tabsize=4:basetime=I64_MIN:font=Sans:expansion=normal:timecode=None:tc24hmax=0:timecode_rate=0/1:reload=0:alpha=1:fix_bounds=0:start_number=0:text_source=None:text_shaping=1:ft_load_flags=0:enable=None[s1]' output1.mp4 -map '[s1]' output2.mp4"
+  "ffmpeg -i input1.mp4 -i input2.mp4 -filter_complex '[0][1]feedback[s0#0][s0#1];[s0#0]drawtext=text=Hello World:fontsize=12:x=10:y=10[s1];[s0#1]drawtext=text=Hello World:fontsize=12:x=10:y=10[s2]' -map '[s1]' output1.mp4 -map '[s2]' output2.mp4"
 ]
