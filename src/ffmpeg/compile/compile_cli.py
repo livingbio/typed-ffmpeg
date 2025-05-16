@@ -279,6 +279,62 @@ def parse_filter_complex(
     return stream_mapping
 
 
+def parse_global(
+    tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
+) -> tuple[dict[str, str | bool], list[str]]:
+    """
+    Parse global FFmpeg options from command-line tokens.
+
+    This function processes the global options that appear before any input files
+    in the FFmpeg command line. These options affect the entire FFmpeg process,
+    such as log level, overwrite flags, etc.
+
+    Args:
+        tokens: List of command-line tokens to parse
+        ffmpeg_options: Dictionary of valid FFmpeg options
+
+    Returns:
+        A tuple containing:
+        - Dictionary of parsed global options and their values
+        - Remaining tokens after global options are consumed
+
+    Example:
+        For tokens like ['-y', '-loglevel', 'quiet', '-i', 'input.mp4']:
+        Returns ({'y': True, 'loglevel': 'quiet'}, ['-i', 'input.mp4'])
+    """
+    global_params: dict[str, str | bool] = {}
+    remaining_tokens = tokens.copy()
+
+    # Process tokens until we hit an input file marker (-i)
+    while remaining_tokens and remaining_tokens[0] != "-i":
+        if remaining_tokens[0].startswith("-"):
+            option_name = remaining_tokens[0][1:]
+            assert option_name in ffmpeg_options, (
+                f"Unknown global option: {option_name}"
+            )
+            option = ffmpeg_options[option_name]
+
+            if not option.is_global_option:
+                continue
+
+            if len(remaining_tokens) > 1 and not remaining_tokens[1].startswith("-"):
+                # Option with value
+                global_params[option_name] = remaining_tokens[1]
+                remaining_tokens = remaining_tokens[2:]
+            else:
+                # Boolean option
+                if option_name.startswith("no"):
+                    global_params[option_name[2:]] = False
+                else:
+                    global_params[option_name] = True
+                remaining_tokens = remaining_tokens[1:]
+        else:
+            # Skip non-option tokens
+            remaining_tokens = remaining_tokens[1:]
+
+    return global_params, remaining_tokens
+
+
 def parse(cli: str) -> Stream:
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
     ffmpeg_options = get_options_dict()
@@ -288,13 +344,16 @@ def parse(cli: str) -> Stream:
     assert tokens[0] == "ffmpeg"
     tokens = tokens[1:]
 
-    # find the index of the last -i option
-    index = len(tokens) - 1 - list(reversed(tokens)).index("-i")
-    input_streams = parse_input(tokens[: index + 2], ffmpeg_options)
+    # Parse global options first
+    global_params, remaining_tokens = parse_global(tokens, ffmpeg_options)
 
-    if "-filter_complex" in tokens:
-        index = tokens.index("-filter_complex")
-        filter_complex = tokens[index + 1]
+    # find the index of the last -i option
+    index = len(remaining_tokens) - 1 - list(reversed(remaining_tokens)).index("-i")
+    input_streams = parse_input(remaining_tokens[: index + 2], ffmpeg_options)
+
+    if "-filter_complex" in remaining_tokens:
+        index = remaining_tokens.index("-filter_complex")
+        filter_complex = remaining_tokens[index + 1]
         filterable_streams = parse_filter_complex(
             filter_complex, input_streams, ffmpeg_filters
         )
@@ -303,11 +362,16 @@ def parse(cli: str) -> Stream:
         filterable_streams = {}
 
     output_streams = parse_output(
-        tokens[index + 2 :],
+        remaining_tokens[index + 2 :],
         input_streams | filterable_streams,
         ffmpeg_options,
     )
-    return merge_outputs(*output_streams).global_args()
+
+    # Create a stream with global options
+    result = merge_outputs(*output_streams)
+    if global_params:
+        result = result.global_args(extra_options=global_params)
+    return result
 
 
 def compile(stream: Stream, auto_fix: bool = True) -> str:
