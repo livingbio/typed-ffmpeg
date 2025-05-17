@@ -1,14 +1,24 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip, useTheme, Button } from '@mui/material';
-import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
+import { FFmpegFilterOption, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
 
+/**
+ * Interface for validation errors in filter parameters
+ */
 interface ValidationError {
   [key: string]: string | null;
 }
 
+/**
+ * FilterNode component renders an FFmpeg filter as a node in the flow editor
+ * Displays filter parameters, handles input/output connections, and validates user input
+ * 
+ * @param {NodeProps<NodeData>} props - The props for the node
+ * @returns {JSX.Element} Rendered filter node
+ */
 function FilterNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
@@ -21,11 +31,18 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   }, [data.parameters]);
 
   // Get the filter definition
-  const filter = predefinedFilters.find((f) => f.name === data.filterName);
+  const filter = data.filter;
   if(!filter) {
     throw new Error(`Filter ${data.filterName} not found`);
   }
 
+  /**
+   * Validates a parameter value against its defined constraints
+   * 
+   * @param {FFmpegFilterOption} param - The parameter definition
+   * @param {string} value - The parameter value to validate
+   * @returns {string | null} Error message or null if valid
+   */
   const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
     if (!value) {
       return null;
@@ -57,6 +74,12 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
     return null;
   };
 
+  /**
+   * Handles parameter value changes, validates input, and updates node data
+   * 
+   * @param {string} paramName - The name of the parameter being changed
+   * @param {string} value - The new parameter value
+   */
   const handleParameterChange = (paramName: string, value: string) => {
     const param = filter.options.find((p) => p.name === paramName);
     if (!param) return;
@@ -86,6 +109,11 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
     window.dispatchEvent(event);
   };
 
+  /**
+   * Generates the FFmpeg filter string based on current parameters
+   * 
+   * @returns {string} Formatted FFmpeg filter string
+   */
   const getFilterString = () => {
     const paramString = Object.entries(parameters)
       .filter(([, value]) => value !== '')
@@ -97,6 +125,12 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
 
   const hasErrors = Object.values(errors).some((error) => error !== '');
 
+  /**
+   * Determines the edge type based on FFmpeg IO type
+   * 
+   * @param {FFMpegIOType} ioType - The input/output type
+   * @returns {EdgeType} Edge type (audio, video, or av)
+   */
   const getHandleType = (ioType: FFMpegIOType): EdgeType => {
     const typeValue = ioType.type.value;
     if (typeValue === 'audio') return 'audio';
@@ -105,8 +139,8 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   };
 
   // Get input and output types from filter definition
-  const inputTypes = filter.stream_typings_input;
-  const outputTypes = filter.stream_typings_output;
+  const inputTypes = data.handles.inputs.map((input) => input.type);
+  const outputTypes = data.handles.outputs.map((output) => output.type);
 
   // Calculate which options to show
   const visibleOptions = expanded ? filter.options : filter.options.slice(0, 3);

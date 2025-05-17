@@ -7,11 +7,22 @@ import options from '../config/options.json';
 
 // Input options are those with flags & (1 << 11)
 const INPUT_FLAG = 1 << 11;
+/**
+ * Filters FFmpeg input options from the complete options list
+ * Excludes function-type options that can't be set through text input
+ */
 const inputOptions = options.filter((option) => 
   (option.flags & INPUT_FLAG) !== 0 && 
   option.type !== "OPT_TYPE_FUNC" // Skip function type options that can't be set through text input
 );
 
+/**
+ * InputNode component represents an input file in the FFmpeg processing chain
+ * Allows setting input filename and various FFmpeg input parameters
+ * 
+ * @param {NodeProps<NodeData>} props - The props for the node
+ * @returns {JSX.Element} Rendered input node
+ */
 function InputNode({ data, id }: NodeProps<NodeData>) {
   const theme = useTheme();
   const [filename, setFilename] = useState<string>(data.filename || '');
@@ -24,6 +35,12 @@ function InputNode({ data, id }: NodeProps<NodeData>) {
     setParameters(data.parameters || {});
   }, [data.filename, data.parameters]);
 
+  /**
+   * Handles parameter value changes and updates node data
+   * 
+   * @param {string} paramName - The name of the parameter being changed
+   * @param {string} value - The new parameter value
+   */
   const handleParameterChange = (paramName: string, value: string) => {
     const newParameters = {
       ...parameters,
@@ -45,6 +62,11 @@ function InputNode({ data, id }: NodeProps<NodeData>) {
     window.dispatchEvent(event);
   };
 
+  /**
+   * Handles filename changes and updates node data
+   * 
+   * @param {React.ChangeEvent<HTMLInputElement>} e - The change event
+   */
   const handleFilenameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newFilename = e.target.value;
     setFilename(newFilename);
@@ -63,7 +85,11 @@ function InputNode({ data, id }: NodeProps<NodeData>) {
     window.dispatchEvent(event);
   };
 
-  // Get command line representation
+  /**
+   * Generates the FFmpeg command string for this input node
+   * 
+   * @returns {string} Formatted FFmpeg command string with input options and filename
+   */
   const getCommandString = () => {
     const paramString = Object.entries(parameters)
       .filter(([, value]) => value !== '')
