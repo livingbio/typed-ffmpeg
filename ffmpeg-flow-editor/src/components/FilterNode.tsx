@@ -139,8 +139,8 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   };
 
   // Get input and output types from filter definition
-  const inputTypes = filter.stream_typings_input;
-  const outputTypes = filter.stream_typings_output;
+  const inputTypes = data.handles.inputs.map((input) => input.type);
+  const outputTypes = data.handles.outputs.map((output) => output.type);
 
   // Calculate which options to show
   const visibleOptions = expanded ? filter.options : filter.options.slice(0, 3);

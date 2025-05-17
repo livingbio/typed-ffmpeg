@@ -18,7 +18,7 @@ import InputNode from './InputNode';
 import OutputNode from './OutputNode';
 
 import Sidebar from './Sidebar';
-import { FFMpegIOType, predefinedFilters } from '../types/ffmpeg';
+import { FFmpegFilter, FFMpegIOType, predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import { NodeMappingManager } from '../utils/nodeMapping';
 import {
@@ -64,7 +64,7 @@ const createNode = async (
   parameters: Record<string, string> | undefined,
   position: { x: number; y: number } | undefined,
   nodeMappingManager: NodeMappingManager,
-  filter?: (typeof predefinedFilters)[0]
+  filter?: FFmpegFilter
 ): Promise<Node<NodeData>> => {
   const defaultPosition = {
     x: Math.random() * 500 + 200,
@@ -88,14 +88,19 @@ const createNode = async (
   let nodeType: string;
   let filename: string | undefined;
 
-  if (filterType == 'global') {
-    nodeType = 'global';
-  } else if (filterType == 'input') {
-    nodeType = 'input';
-  } else if (filterType == 'output') {
-    nodeType = 'output';
-  } else {
-    nodeType = 'filter';
+  switch (filterType) {
+    case 'global':
+      nodeType = 'global';
+      break;
+    case 'input':
+      nodeType = 'input';
+      break;
+    case 'output':
+      nodeType = 'output';
+      break;
+    default:
+      nodeType = 'filter';
+      break;
   }
 
   // Move variable declarations outside of switch

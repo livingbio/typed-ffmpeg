@@ -78,7 +78,7 @@ export interface FFmpegFilterOption {
   /** Maximum allowed value (for numeric types) */
   max: string | null;
   /** Default value if not specified */
-  default: string | number | boolean | null;
+  default: string | number | boolean;
   /** Whether the option must be specified */
   required: boolean;
   /** Predefined choices for enumerated option types */
