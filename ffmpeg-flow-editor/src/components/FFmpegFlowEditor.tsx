@@ -198,7 +198,7 @@ const createNode = async (
       throw new Error(`Invalid node type: ${nodeType}`);
   }
 
-  const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
+  const nodeId = nodeMappingManager.addNodeMapping(mappingData);
   // if nodeType is input or output add a `_` to the end of the nodeType
   let nodeType_: string;
   if (nodeType === 'input' || nodeType === 'output') {
@@ -238,7 +238,7 @@ const createEdge = (
   const sourceIndex = parseInt(sourceHandle.split('-')[1] || '0');
   const targetIndex = parseInt(targetHandle.split('-')[1] || '0');
 
-  const edgeId = nodeMappingManager.addEdgeToMapping(source, target, sourceIndex, targetIndex);
+  const edgeId = nodeMappingManager.addEdgeMapping(source, target, sourceIndex, targetIndex);
 
   // Get the stream from the edge mapping
   const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
@@ -448,7 +448,7 @@ export default function FFmpegFlowEditor() {
     (nodesToDelete: Node[]) => {
       nodesToDelete.forEach((node) => {
         // Remove node from mapping
-        nodeMappingManager.removeNodeFromMapping(node.id);
+        nodeMappingManager.removeNodeMapping(node.id);
       });
     },
     [nodeMappingManager]
@@ -458,7 +458,7 @@ export default function FFmpegFlowEditor() {
     (edgesToDelete: Edge[]) => {
       edgesToDelete.forEach((edge) => {
         // Remove edge from mapping
-        nodeMappingManager.removeEdgeFromMapping(edge.id);
+        nodeMappingManager.removeEdgeMapping(edge.id);
       });
     },
     [nodeMappingManager]

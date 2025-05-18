@@ -11,27 +11,12 @@ import {
   OutputStream,
   GlobalStream,
   StreamType,
+  Node,
 } from '../types/dag';
 import { dumps } from './serialize';
 import { EventEmitter } from 'events';
-import { generateFFmpegCommand } from './generateFFmpegCommand';
 import { FFmpegFilter, FFMpegIOType, predefinedFilters } from '../types/ffmpeg';
-import { evaluateFormula } from './evaluateFormula';
-export interface NodeMapping {
-  // Maps ReactFlow node ID to DAG node
-  nodeMap: Map<string, FilterNode | InputNode | OutputNode | GlobalNode>;
-  // Maps DAG node to ReactFlow node ID (for reverse lookup)
-  reverseMap: Map<FilterNode | InputNode | OutputNode | GlobalNode, string>;
-}
-
-export interface EdgeMapping {
-  // Maps ReactFlow edge ID to Stream
-  edgeMap: Map<string, Stream>;
-  // Maps Stream to ReactFlow edge ID (for reverse lookup)
-  reverseMap: Map<Stream, string>;
-  // Maps Stream to target node ID and index
-  targetMap: Map<Stream, { nodeId: string; index: number }>;
-}
+import { evaluateFormula } from './formulaEvaluator';
 
 // Define update event types - simplify to just UPDATE
 export const NODE_MAPPING_EVENTS = {
@@ -46,16 +31,8 @@ export type NodeMappingEventType = (typeof NODE_MAPPING_EVENTS)[keyof typeof NOD
  * It emits an update event when the mapping changes
  */
 export class NodeMappingManager {
-  private nodeMapping: NodeMapping = {
-    nodeMap: new Map(),
-    reverseMap: new Map(),
-  };
-
-  private edgeMapping: EdgeMapping = {
-    edgeMap: new Map(),
-    reverseMap: new Map(),
-    targetMap: new Map(),
-  };
+  private nodeMap: Map<string, Node> = new Map();
+  private edgeMap: Map<string, Stream> = new Map();
 
   private nodeIdCounter = 0;
   private globalNode: GlobalNode;
@@ -66,10 +43,83 @@ export class NodeMappingManager {
     // Initialize the global node
     this.globalNode = new GlobalNode([], {});
     this.globalNodeId = this.generateNodeId(this.globalNode);
-    this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
-    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
+    this.nodeMap.set(this.globalNodeId, this.globalNode);
   }
 
+  private getNodeId(node: Node): string {
+    /*
+    This function is used to get the node ID from the node.
+    */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const nodeId = this.nodeMap.entries().find(([_, n]) => n === node)?.[0];
+    if (!nodeId) {
+      throw new Error('Node not found in mapping');
+    }
+    return nodeId;
+  }
+
+  private getEdgeId(stream: Stream): string {
+    /*
+    This function is used to get the edge ID from the stream.
+    */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const edgeId = this.edgeMap.entries().find(([_, s]) => s === stream)?.[0];
+    if (!edgeId) {
+      throw new Error('Edge not found in mapping');
+    }
+    return edgeId;
+  }
+
+  private getEdgesByTarget(target: Node): (Stream | null)[] {
+    /*
+    This function is used to get the edges by the node input.
+    */
+    return target.inputs;
+  }
+
+  private getEdgesBySource(source: Node): (Stream | null)[] {
+    /*
+    This function is used to get the edges by the node output.
+    */
+    if (!(source instanceof FilterNode)) {
+      return Array.from(this.edgeMap.values()).filter((s) => s.node === source);
+    }
+
+    const output: (Stream | null)[] = Array(source.output_typings.length).fill(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    for (const [_, edge] of this.edgeMap) {
+      if (edge.node === source) {
+        if (edge.index === null) {
+          throw new Error('Edge index is null');
+        }
+        if (output[edge.index] === null) {
+          output[edge.index] = edge;
+        } else {
+          throw new Error('Multiple edges found for the same output');
+        }
+      }
+    }
+    return output;
+  }
+
+  private getTargetNodeByEdge(edge: Stream): Node {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const target = this.nodeMap.entries().find(([_, n]) => n.inputs.includes(edge))?.[1];
+    if (!target) {
+      throw new Error('Target node not found in mapping');
+    }
+    return target;
+  }
+
+  // Get the global node ID
+  getGlobalNodeId(): string {
+    return this.globalNodeId;
+  }
+
+  // Get the global node instance
+  getGlobalNode(): GlobalNode {
+    return this.globalNode;
+  }
   // Event handling methods
   /**
    * Subscribe to mapping update events
@@ -121,7 +171,6 @@ export class NodeMappingManager {
     if (!node.inputs) {
       node.inputs = [];
     }
-
     // Extend the array if needed
     while (node.inputs.length < count) {
       node.inputs.push(null);
@@ -172,10 +221,10 @@ export class NodeMappingManager {
     return new OutputNode(filename, outputInputs, kwargs);
   }
 
-  private evaluate_io_typings(
+  private async evaluateIOtypings(
     filter: FFmpegFilter,
     kwargs: Record<string, string | number | boolean>
-  ): { input_typings: StreamType[]; output_typings: StreamType[] } {
+  ): Promise<{ input_typings: StreamType[]; output_typings: StreamType[] }> {
     // merge parameters with kwargs
     // extract default value from filter.options and convert to a Dict
     let parameters: Record<string, string | number | boolean> = {};
@@ -186,16 +235,16 @@ export class NodeMappingManager {
     // merge parameters with kwargs
     parameters = { ...parameters, ...kwargs };
     let input_typings: FFMpegIOType[] = [];
-    if (filter.is_dynamic_input) {
+    if (!filter.formula_typings_input) {
       input_typings = filter.stream_typings_input;
     } else {
-      input_typings = evaluateFormula(filter.formula_typings_input, parameters);
+      input_typings = await evaluateFormula(filter.formula_typings_input, parameters);
     }
     let output_typings: FFMpegIOType[] = [];
-    if (filter.is_dynamic_output) {
+    if (!filter.formula_typings_output) {
       output_typings = filter.stream_typings_output;
     } else {
-      output_typings = evaluateFormula(filter.formula_typings_output, parameters);
+      output_typings = await evaluateFormula(filter.formula_typings_output, parameters);
     }
     return {
       input_typings: input_typings.map((t) => t.type),
@@ -203,11 +252,11 @@ export class NodeMappingManager {
     };
   }
 
-  private addFilterNode(
+  private async addFilterNode(
     name: string,
     inputs?: (null | FilterableStream)[],
     kwargs?: Record<string, string | number | boolean>
-  ): FilterNode {
+  ): Promise<FilterNode> {
     if (!name) {
       throw new Error('FilterNode requires name');
     }
@@ -216,7 +265,7 @@ export class NodeMappingManager {
       throw new Error(`Filter ${name} not found`);
     }
 
-    const { input_typings, output_typings } = this.evaluate_io_typings(filter, kwargs || {});
+    const { input_typings, output_typings } = await this.evaluateIOtypings(filter, kwargs || {});
 
     // Initialize with proper input array length based on input_typings
     const filterInputs = inputs || [];
@@ -224,15 +273,13 @@ export class NodeMappingManager {
     return new FilterNode(name, filterInputs, input_typings, output_typings, kwargs);
   }
 
-  // Add a node to the mapping
-  addNodeToMapping(params: {
+  private async addNode(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
     inputs?: (FilterableStream | null | OutputStream)[];
     kwargs?: Record<string, string | number | boolean>;
-  }): string {
-    // Special handling for GlobalNode
+  }): Promise<string> {
     let node: FilterNode | InputNode | OutputNode | GlobalNode;
     switch (params.type) {
       case 'global':
@@ -261,7 +308,7 @@ export class NodeMappingManager {
         if (!params.name) {
           throw new Error('FilterNode requires name');
         }
-        node = this.addFilterNode(
+        node = await this.addFilterNode(
           params.name,
           params.inputs as (null | FilterableStream)[],
           params.kwargs
@@ -272,101 +319,85 @@ export class NodeMappingManager {
     }
 
     const nodeId = this.generateNodeId(node);
-    this.nodeMapping.nodeMap.set(nodeId, node);
-    this.nodeMapping.reverseMap.set(node, nodeId);
+    this.nodeMap.set(nodeId, node);
+    return nodeId;
+  }
+  // Add a node to the mapping
+  async addNodeMapping(params: {
+    type: 'filter' | 'input' | 'output' | 'global';
+    name?: string;
+    filename?: string;
+    inputs?: (FilterableStream | null | OutputStream)[];
+    kwargs?: Record<string, string | number | boolean>;
+  }): Promise<string> {
+    // Special handling for GlobalNode
+    const nodeId = await this.addNode(params);
     this.emitUpdate();
     return nodeId;
   }
 
+  private removeEdge(edgeId: string): void {
+    const edge = this.edgeMap.get(edgeId);
+    if (!edge) {
+      throw new Error(`Edge ${edgeId} not found in mapping`);
+    }
+    const target = this.getTargetNodeByEdge(edge);
+    const targetIndex = target.inputs.findIndex((s) => s === edge);
+
+    target.inputs[targetIndex] = null;
+    this.edgeMap.delete(edgeId);
+  }
+
   // Remove a node from the mapping
-  removeNodeFromMapping(nodeId: string): void {
-    const node = this.nodeMapping.nodeMap.get(nodeId);
+  removeNodeMapping(nodeId: string): void {
+    const node = this.nodeMap.get(nodeId);
     if (!node) {
       throw new Error(`Node ${nodeId} not found in mapping`);
     }
 
-    // Find all edges connected to this node (both as source and target)
-    const edgesToRemove: string[] = [];
-    for (const [edgeId, stream] of this.edgeMapping.edgeMap) {
-      const targetInfo = this.edgeMapping.targetMap.get(stream);
-      const sourceNode = stream.node;
-      const sourceNodeId = this.nodeMapping.reverseMap.get(
-        sourceNode as FilterNode | InputNode | OutputNode | GlobalNode
-      );
-
-      if ((targetInfo && targetInfo.nodeId === nodeId) || sourceNodeId === nodeId) {
-        edgesToRemove.push(edgeId);
+    let edges = this.getEdgesBySource(node);
+    for (const edge of edges) {
+      if (edge) {
+        this.removeEdge(this.getEdgeId(edge));
       }
     }
 
-    // Remove all connected edges
-    for (const edgeId of edgesToRemove) {
-      const stream = this.edgeMapping.edgeMap.get(edgeId);
-      if (stream) {
-        const targetInfo = this.edgeMapping.targetMap.get(stream);
-        if (targetInfo) {
-          const targetNode = this.nodeMapping.nodeMap.get(targetInfo.nodeId);
-          if (targetNode && targetNode.inputs) {
-            targetNode.inputs[targetInfo.index] = null;
-          }
-        }
-        this.edgeMapping.edgeMap.delete(edgeId);
-        this.edgeMapping.targetMap.delete(stream);
-        this.edgeMapping.reverseMap.delete(stream);
+    edges = this.getEdgesByTarget(node);
+    for (const edge of edges) {
+      if (edge) {
+        this.removeEdge(this.getEdgeId(edge));
       }
     }
 
-    // Remove the node
-    this.nodeMapping.nodeMap.delete(nodeId);
-    this.nodeMapping.reverseMap.delete(node);
+    this.nodeMap.delete(nodeId);
     this.emitUpdate();
-  }
-
-  // Get the global node ID
-  getGlobalNodeId(): string {
-    return this.globalNodeId;
-  }
-
-  // Get the global node instance
-  getGlobalNode(): GlobalNode {
-    return this.globalNode;
   }
 
   // Reset mapping state
   resetNodeMapping() {
-    this.nodeMapping = {
-      nodeMap: new Map(),
-      reverseMap: new Map(),
-    };
-    this.edgeMapping = {
-      edgeMap: new Map(),
-      reverseMap: new Map(),
-      targetMap: new Map(),
-    };
+    this.nodeMap.clear();
+    this.edgeMap.clear();
     this.nodeIdCounter = 0;
 
     // Create a new global node
     this.globalNode = new GlobalNode([], {});
     this.globalNodeId = this.generateNodeId(this.globalNode);
-    this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
-    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
+    this.nodeMap.set(this.globalNodeId, this.globalNode);
     this.emitUpdate();
   }
 
-  // Add an edge to the mapping
-  addEdgeToMapping(
+  private async addEdge(
     sourceNodeId: string,
     targetNodeId: string,
     sourceIndex: number,
     targetIndex: number
-  ): string {
-    const sourceNode = this.nodeMapping.nodeMap.get(sourceNodeId);
-    const targetNode = this.nodeMapping.nodeMap.get(targetNodeId);
+  ): Promise<string> {
+    const sourceNode = this.nodeMap.get(sourceNodeId);
+    const targetNode = this.nodeMap.get(targetNodeId);
 
     if (!sourceNode || !targetNode) {
       throw new Error('Source or target node not found in mapping');
     }
-
     // Create the appropriate stream type based on source node type
     let stream: VideoStream | AudioStream | AVStream | OutputStream | GlobalStream;
 
@@ -390,7 +421,7 @@ export class NodeMappingManager {
           throw new Error(`Invalid stream type: ${streamType.value}`);
       }
     } else if (sourceNode instanceof InputNode) {
-      stream = new AVStream(sourceNode, null);
+      stream = new AVStream(sourceNode);
     } else if (sourceNode instanceof OutputNode) {
       stream = new OutputStream(sourceNode, targetIndex);
     } else if (sourceNode instanceof GlobalNode) {
@@ -442,55 +473,37 @@ export class NodeMappingManager {
 
     // Create edge ID and add to mapping
     const edgeId = this.generateEdgeId(sourceNodeId, targetNodeId, sourceIndex, targetIndex);
-    this.edgeMapping.edgeMap.set(edgeId, stream);
-    this.edgeMapping.reverseMap.set(stream, edgeId);
-    this.edgeMapping.targetMap.set(stream, { nodeId: targetNodeId, index: targetIndex });
+    this.edgeMap.set(edgeId, stream);
+    return edgeId;
+  }
+  // Add an edge to the mapping
+  async addEdgeMapping(
+    sourceNodeId: string,
+    targetNodeId: string,
+    sourceIndex: number,
+    targetIndex: number
+  ): Promise<string> {
+    const edgeId = await this.addEdge(sourceNodeId, targetNodeId, sourceIndex, targetIndex);
     this.emitUpdate();
     return edgeId;
   }
 
   // Remove an edge from the mapping
-  removeEdgeFromMapping(edgeId: string): void {
-    const stream = this.edgeMapping.edgeMap.get(edgeId);
-    if (!stream) {
-      throw new Error(`Edge ${edgeId} not found in mapping`);
-    }
-
-    // Remove the stream from the target node's inputs
-    const targetInfo = this.edgeMapping.targetMap.get(stream);
-    if (targetInfo) {
-      const targetNode = this.nodeMapping.nodeMap.get(targetInfo.nodeId);
-      if (targetNode && targetNode.inputs) {
-        targetNode.inputs[targetInfo.index] = null;
-      }
-    }
-
+  removeEdgeMapping(edgeId: string): void {
+    this.removeEdge(edgeId);
     // Remove from mapping
-    this.edgeMapping.edgeMap.delete(edgeId);
-    this.edgeMapping.targetMap.delete(stream);
-    this.edgeMapping.reverseMap.delete(stream);
     this.emitUpdate();
   }
 
-  // Get the node mapping
-  getNodeMapping(): NodeMapping {
-    return this.nodeMapping;
-  }
-
-  // Get the edge mapping
-  getEdgeMapping(): EdgeMapping {
-    return this.edgeMapping;
-  }
-
   // Update a node in the mapping
-  updateNode(
+  private async updateNode(
     nodeId: string,
     updates: {
       kwargs?: Record<string, string | number | boolean>;
       filename?: string;
     }
-  ): void {
-    const node = this.nodeMapping.nodeMap.get(nodeId);
+  ): Promise<void> {
+    const node = this.nodeMap.get(nodeId);
     if (!node) {
       throw new Error(`Node ${nodeId} not found in mapping`);
     }
@@ -500,12 +513,38 @@ export class NodeMappingManager {
       if (!filter) {
         throw new Error(`Filter ${node.name} not found`);
       }
-      const { input_typings, output_typings } = this.evaluate_io_typings(
+      const { input_typings, output_typings } = await this.evaluateIOtypings(
         filter,
         updates.kwargs || {}
       );
+      if (input_typings.length <= node.input_typings.length) {
+        // should remove the extra edges
+        for (let i = input_typings.length; i < node.input_typings.length; i++) {
+          const stream = node.inputs[i];
+          if (stream) {
+            this.removeEdge(this.getEdgeId(stream));
+          }
+        }
+        node.inputs = node.inputs.slice(0, input_typings.length);
+      } else {
+        this.ensureNodeInputs(node, input_typings.length);
+      }
+      if (output_typings.length <= node.output_typings.length) {
+        // should remove the extra edges
+        this.getEdgesBySource(node).forEach((stream) => {
+          if (stream) {
+            if (!stream.index) {
+              throw new Error('Edge index is null');
+            }
+            if (stream.index >= output_typings.length) {
+              this.removeEdge(this.getEdgeId(stream));
+            }
+          }
+        });
+      }
       node.input_typings = input_typings;
       node.output_typings = output_typings;
+
       if (updates.kwargs) {
         node.kwargs = updates.kwargs;
       }
@@ -519,11 +558,20 @@ export class NodeMappingManager {
         throw new Error(`Cannot update filename on node type ${node.constructor.name}`);
       }
     }
+  }
+
+  public async updateNodeMapping(
+    nodeId: string,
+    updates: {
+      kwargs?: Record<string, string | number | boolean>;
+      filename?: string;
+    }
+  ): Promise<void> {
+    await this.updateNode(nodeId, updates);
     this.emitUpdate();
   }
 
-  // Recursively add a node and all connected nodes/streams to the mapping
-  recursiveAddToMapping(
+  private async recursiveCreateNode(
     item:
       | FilterNode
       | InputNode
@@ -535,100 +583,105 @@ export class NodeMappingManager {
       | AVStream
       | OutputStream
       | GlobalStream
-  ): string {
+  ): Promise<string> {
     // Suppress events during the recursive operation
     // We'll emit a single event at the end
-    const emitUpdate = this.emitUpdate;
-    this.emitUpdate = () => {}; // No-op
-
     let result: string;
 
-    try {
-      // If it's a node, add it to the mapping
-      if (
-        item instanceof FilterNode ||
-        item instanceof InputNode ||
-        item instanceof OutputNode ||
-        item instanceof GlobalNode
-      ) {
-        // Check if node is already in the mapping
-        const existingNodeId = this.nodeMapping.reverseMap.get(item);
-        if (existingNodeId) {
-          result = existingNodeId;
-        } else {
-          // Add node to mapping
-          let nodeId: string;
-          if (item instanceof FilterNode) {
-            nodeId = this.addNodeToMapping({
-              type: 'filter',
-              name: item.name,
-              inputs: item.inputs,
-              input_typings: item.input_typings,
-              output_typings: item.output_typings,
-              kwargs: item.kwargs,
-            });
-          } else if (item instanceof InputNode) {
-            nodeId = this.addNodeToMapping({
-              type: 'input',
-              filename: item.filename,
-              kwargs: item.kwargs,
-            });
-          } else if (item instanceof OutputNode) {
-            nodeId = this.addNodeToMapping({
-              type: 'output',
-              filename: item.filename,
-              inputs: item.inputs,
-              kwargs: item.kwargs,
-            });
-          } else if (item instanceof GlobalNode) {
-            // For GlobalNode, we update the existing one
-            if (item.inputs && item.inputs.length > 0) {
-              this.globalNode.inputs = item.inputs;
-            }
-            if (item.kwargs) {
-              this.globalNode.kwargs = { ...this.globalNode.kwargs, ...item.kwargs };
-            }
-            nodeId = this.globalNodeId;
-          } else {
-            throw new Error('Invalid node type');
-          }
-
-          // Recursively add all input streams to the mapping
-          if (item.inputs) {
-            for (let i = 0; i < item.inputs.length; i++) {
-              const input = item.inputs[i];
-              if (input) {
-                // Recursively add the input stream's node
-                const sourceNodeId = this.recursiveAddToMapping(input.node);
-                // Add the edge - using the stream's index property
-                const sourceIndex = input.index !== null ? input.index : 0;
-                this.addEdgeToMapping(sourceNodeId, nodeId, sourceIndex, i);
-              }
-            }
-          }
-
-          result = nodeId;
-        }
-      }
-      // If it's a stream, recursively add its node and return the node ID
-      else if (
-        item instanceof VideoStream ||
-        item instanceof AudioStream ||
-        item instanceof AVStream ||
-        item instanceof OutputStream ||
-        item instanceof GlobalStream
-      ) {
-        result = this.recursiveAddToMapping(item.node);
+    // If it's a node, add it to the mapping
+    if (
+      item instanceof FilterNode ||
+      item instanceof InputNode ||
+      item instanceof OutputNode ||
+      item instanceof GlobalNode
+    ) {
+      // Check if node is already in the mapping
+      const existingNodeId = this.getNodeId(item);
+      if (existingNodeId) {
+        result = existingNodeId;
       } else {
-        throw new Error('Invalid item type');
-      }
-    } finally {
-      // Restore the original emitUpdate function
-      this.emitUpdate = emitUpdate;
-      // Emit a single update event at the end
-      this.emitUpdate();
-    }
+        // Add node to mapping
+        let nodeId: string;
+        if (item instanceof FilterNode) {
+          nodeId = await this.addNodeMapping({
+            type: 'filter',
+            name: item.name,
+            inputs: item.inputs,
+            kwargs: item.kwargs,
+          });
+        } else if (item instanceof InputNode) {
+          nodeId = await this.addNodeMapping({
+            type: 'input',
+            filename: item.filename,
+            kwargs: item.kwargs,
+          });
+        } else if (item instanceof OutputNode) {
+          nodeId = await this.addNodeMapping({
+            type: 'output',
+            filename: item.filename,
+            inputs: item.inputs,
+            kwargs: item.kwargs,
+          });
+        } else if (item instanceof GlobalNode) {
+          // For GlobalNode, we update the existing one
+          if (item.inputs && item.inputs.length > 0) {
+            this.globalNode.inputs = item.inputs;
+          }
+          if (item.kwargs) {
+            this.globalNode.kwargs = { ...this.globalNode.kwargs, ...item.kwargs };
+          }
+          nodeId = this.globalNodeId;
+        } else {
+          throw new Error('Invalid node type');
+        }
 
+        // Recursively add all input streams to the mapping
+        if (item.inputs) {
+          for (let i = 0; i < item.inputs.length; i++) {
+            const input = item.inputs[i];
+            if (input) {
+              // Recursively add the input stream's node
+              const sourceNodeId = await this.recursiveCreateMapping(input.node);
+              // Add the edge - using the stream's index property
+              const sourceIndex = input.index !== null ? input.index : 0;
+              this.addEdgeMapping(sourceNodeId, nodeId, sourceIndex, i);
+            }
+          }
+        }
+
+        result = nodeId;
+      }
+    }
+    // If it's a stream, recursively add its node and return the node ID
+    else if (
+      item instanceof VideoStream ||
+      item instanceof AudioStream ||
+      item instanceof AVStream ||
+      item instanceof OutputStream ||
+      item instanceof GlobalStream
+    ) {
+      result = await this.recursiveCreateMapping(item.node);
+    } else {
+      throw new Error('Invalid item type');
+    }
+    return result;
+  }
+  // Recursively add a node and all connected nodes/streams to the mapping
+  async recursiveCreateMapping(
+    item:
+      | FilterNode
+      | InputNode
+      | OutputNode
+      | GlobalNode
+      | FilterableStream
+      | VideoStream
+      | AudioStream
+      | AVStream
+      | OutputStream
+      | GlobalStream
+  ): Promise<string> {
+    const result = await this.recursiveCreateNode(item);
+    this.emitUpdate();
     return result;
   }
 
