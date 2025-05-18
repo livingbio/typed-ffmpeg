@@ -51,7 +51,7 @@ export class NodeMappingManager {
     This function is used to get the node ID from the node.
     */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const nodeId = this.nodeMap.entries().find(([_, n]) => n === node)?.[0];
+    const nodeId = Array.from(this.nodeMap.entries()).find(([_, n]) => n === node)?.[0];
     if (!nodeId) {
       throw new Error('Node not found in mapping');
     }
@@ -63,7 +63,7 @@ export class NodeMappingManager {
     This function is used to get the edge ID from the stream.
     */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const edgeId = this.edgeMap.entries().find(([_, s]) => s === stream)?.[0];
+    const edgeId = Array.from(this.edgeMap.entries()).find(([_, s]) => s === stream)?.[0];
     if (!edgeId) {
       throw new Error('Edge not found in mapping');
     }
@@ -104,7 +104,9 @@ export class NodeMappingManager {
 
   private getTargetNodeByEdge(edge: Stream): Node {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const target = this.nodeMap.entries().find(([_, n]) => n.inputs.includes(edge))?.[1];
+    const target = Array.from(this.nodeMap.entries()).find(([_, n]) =>
+      n.inputs.includes(edge)
+    )?.[1];
     if (!target) {
       throw new Error('Target node not found in mapping');
     }
@@ -268,7 +270,7 @@ export class NodeMappingManager {
     const { input_typings, output_typings } = await this.evaluateIOtypings(filter, kwargs || {});
 
     // Initialize with proper input array length based on input_typings
-    const filterInputs = inputs || [];
+    const filterInputs = inputs || Array(input_typings.length).fill(null);
 
     return new FilterNode(name, filterInputs, input_typings, output_typings, kwargs);
   }
@@ -596,10 +598,10 @@ export class NodeMappingManager {
       item instanceof GlobalNode
     ) {
       // Check if node is already in the mapping
-      const existingNodeId = this.getNodeId(item);
-      if (existingNodeId) {
+      try {
+        const existingNodeId = this.getNodeId(item);
         result = existingNodeId;
-      } else {
+      } catch {
         // Add node to mapping
         let nodeId: string;
         if (item instanceof FilterNode) {
