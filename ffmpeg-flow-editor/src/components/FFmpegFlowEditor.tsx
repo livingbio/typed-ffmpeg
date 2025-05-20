@@ -192,6 +192,7 @@ const createNode = (
     position: position || defaultPosition,
     data: {
       label: label,
+      filter: filter,
       filterName: filterType,
       nodeType: nodeType,
       parameters: parameters || {},

@@ -1,7 +1,7 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip, useTheme, Button } from '@mui/material';
-import { FFMpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
+import { FFMpegFilterOption, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
 
@@ -21,7 +21,7 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   }, [data.parameters]);
 
   // Get the filter definition
-  const filter = predefinedFilters.find((f) => f.name === data.filterName);
+  const filter = data.filter;
   if (!filter) {
     throw new Error(`Filter ${data.filterName} not found`);
   }
