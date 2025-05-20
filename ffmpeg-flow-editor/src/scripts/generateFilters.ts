@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { FFmpegFilter } from '../types/ffmpeg';
+import { FFMpegFilter } from '../types/ffmpeg';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,7 +15,7 @@ function readCacheFiles(): string[] {
     .map((file: string) => path.join(CACHE_DIR, file));
 }
 
-function parseFilterFile(filePath: string): FFmpegFilter | null {
+function parseFilterFile(filePath: string): FFMpegFilter | null {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
     // Replace NaN with null in the JSON string
@@ -53,7 +53,7 @@ function generateFiltersJson(): void {
   const files = readCacheFiles();
   const filters = files
     .map(parseFilterFile)
-    .filter((filter): filter is FFmpegFilter => filter !== null);
+    .filter((filter): filter is FFMpegFilter => filter !== null);
 
   const output = {
     filters,

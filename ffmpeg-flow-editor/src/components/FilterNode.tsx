@@ -1,7 +1,7 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip, useTheme, Button } from '@mui/material';
-import { FFmpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
+import { FFMpegFilterOption, predefinedFilters, FFMpegIOType } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
 
@@ -22,11 +22,11 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
 
   // Get the filter definition
   const filter = predefinedFilters.find((f) => f.name === data.filterName);
-  if(!filter) {
+  if (!filter) {
     throw new Error(`Filter ${data.filterName} not found`);
   }
 
-  const validateParameter = (param: FFmpegFilterOption, value: string): string | null => {
+  const validateParameter = (param: FFMpegFilterOption, value: string): string | null => {
     if (!value) {
       return null;
     }
@@ -147,22 +147,22 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
         );
       })}
 
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'flex-start',
-        mb: 1
-      }}>
-        <Typography variant="h6">
-          {data.label}
-        </Typography>
-        
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          mb: 1,
+        }}
+      >
+        <Typography variant="h6">{data.label}</Typography>
+
         {filter.options.length > 3 && (
-          <Button 
-            size="small" 
+          <Button
+            size="small"
             onClick={() => setExpanded(!expanded)}
-            sx={{ 
-              minWidth: 'auto', 
+            sx={{
+              minWidth: 'auto',
               fontSize: '0.75rem',
               padding: '2px 8px',
             }}

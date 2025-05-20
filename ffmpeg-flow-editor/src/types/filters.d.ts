@@ -1,8 +1,8 @@
-import { FFmpegFilter } from './ffmpeg';
+import { FFMpegFilter } from './ffmpeg';
 
 declare module '../config/filters.json' {
   const value: {
-    filters: FFmpegFilter[];
+    filters: FFMpegFilter[];
   };
   export default value;
 }
