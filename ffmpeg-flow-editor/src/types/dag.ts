@@ -1,8 +1,11 @@
 import { Serializable } from '../utils/serialize';
 
 // Core types
+
+export type StreamTypeEnum = 'av' | 'video' | 'audio';
+
 export class StreamType extends Serializable {
-  constructor(public value: string) {
+  constructor(public value: StreamTypeEnum) {
     super();
   }
 }
