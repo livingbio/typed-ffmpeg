@@ -141,6 +141,56 @@ describe('nodeMapping', () => {
         })
       ).rejects.toThrow('Invalid node type');
     });
+
+    it('should add a filter node to the mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
+        type: 'filter',
+        name: 'scale',
+        input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
+        output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
+      });
+      expect(id).toBeDefined();
+      const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
+      expect(node).toBeDefined();
+    });
+
+    it('should add an input node to the mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
+        type: 'input',
+        filename: 'input.mp4',
+      });
+      expect(id).toBeDefined();
+      const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
+      expect(node).toBeDefined();
+    });
+
+    it('should add an output node to the mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
+        type: 'output',
+        filename: 'output.mp4',
+      });
+      expect(id).toBeDefined();
+      const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
+      expect(node).toBeDefined();
+    });
+
+    it('should add a global node to the mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
+        type: 'global',
+        inputs: [],
+      });
+      expect(id).toBeDefined();
+      const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
+      expect(node).toBeDefined();
+    });
+
+    it('should throw an error for invalid node type', async () => {
+      await expect(
+        nodeMappingManager.addNodeToMapping({
+          type: 'invalid' as 'filter' | 'input' | 'output' | 'global',
+        })
+      ).rejects.toThrow('Invalid node type');
+    });
   });
 
   describe('removeNodeFromMapping', () => {
