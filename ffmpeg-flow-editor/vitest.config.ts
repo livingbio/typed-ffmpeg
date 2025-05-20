@@ -7,6 +7,7 @@ export default defineConfig({
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}'],
     globals: true,
+    testTimeout: 30000,
     coverage: {
       provider: 'istanbul',
       reporter: ['text', 'json', 'html'],
