@@ -1,7 +1,7 @@
 import filtersConfig from '../config/filters.json';
 import { StreamType } from './dag';
 
-export interface FFmpegFilter {
+export interface FFMpegFilter {
   __class__: 'FFMpegFilter';
   id: string | null;
   name: string;
@@ -20,7 +20,7 @@ export interface FFmpegFilter {
   formula_typings_input: string | null;
   formula_typings_output: string | null;
   pre: unknown[];
-  options: FFmpegFilterOption[];
+  options: FFMpegFilterOption[];
 }
 
 export interface FFMpegIOType {
@@ -29,7 +29,7 @@ export interface FFMpegIOType {
   type: StreamType;
 }
 
-export interface FFmpegFilterOption {
+export interface FFMpegFilterOption {
   __class__: 'FFMpegFilterOption';
   name: string;
   alias: string[];
@@ -42,11 +42,11 @@ export interface FFmpegFilterOption {
   max: string | null;
   default: string | number | boolean | null;
   required: boolean;
-  choices: FFmpegFilterOptionChoice[];
+  choices: FFMpegFilterOptionChoice[];
   flags: string;
 }
 
-export interface FFmpegFilterOptionChoice {
+export interface FFMpegFilterOptionChoice {
   __class__: 'FFMpegFilterOptionChoice';
   name: string;
   help: string;
@@ -54,12 +54,5 @@ export interface FFmpegFilterOptionChoice {
   flags: string;
 }
 
-export interface FFmpegCommand {
-  input: string;
-  output: string;
-  filters: string;
-  options: string[];
-}
-
 // Type assertion to ensure the imported filters match our interface
-export const predefinedFilters: FFmpegFilter[] = filtersConfig.filters as FFmpegFilter[];
+export const predefinedFilters: FFMpegFilter[] = filtersConfig.filters as FFMpegFilter[];

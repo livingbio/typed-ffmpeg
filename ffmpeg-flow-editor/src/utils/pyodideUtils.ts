@@ -67,7 +67,7 @@ __run_code_result = json.dumps(__run_code())
     await pyodide.runPythonAsync(wrappedCode);
 
     // Get the result
-    const result = pyodide.globals.get('__run_code_result');
+    let result = pyodide.globals.get('__run_code_result') as string;
 
     // Get stdout if available (for print statements)
     let stdout = '';
@@ -83,7 +83,7 @@ __run_code_result = json.dumps(__run_code())
 
     return JSON.parse(result);
   } catch (error) {
-    console.error('Error executing Python code:', error);
+    console.error(`Error executing Python code: ${wrappedCode}`, error);
     throw error;
   }
 }

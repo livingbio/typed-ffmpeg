@@ -1,0 +1,108 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`formulaEvaluator > evaluateFormula > should evaluate formula with conditional inplace 1`] = `
+[
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+]
+`;
+
+exports[`formulaEvaluator > evaluateFormula > should evaluate formula with conditional reference 1`] = `
+[
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+]
+`;
+
+exports[`formulaEvaluator > evaluateFormula > should evaluate formula with hex conversion 1`] = `
+[
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+]
+`;
+
+exports[`formulaEvaluator > evaluateFormula > should evaluate formula with mixed audio and video 1`] = `
+[
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "audio",
+  },
+]
+`;
+
+exports[`formulaEvaluator > evaluateFormula > should evaluate formula with numeric multiplication 1`] = `
+[
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+]
+`;
+
+exports[`formulaEvaluator > evaluateFormula > should evaluate formula with string splitting 1`] = `
+[
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+]
+`;
+
+exports[`formulaEvaluator > evaluateFormula > should evaluate simple formula with video and audio 1`] = `
+[
+  {
+    "__class__": "StreamType",
+    "value": "video",
+  },
+  {
+    "__class__": "StreamType",
+    "value": "audio",
+  },
+]
+`;
