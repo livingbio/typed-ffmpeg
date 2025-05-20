@@ -1,12 +1,16 @@
-import { FFMpegIOType } from '../types/ffmpeg';
 import { runPython } from './pyodideUtils';
 import { dumps } from './serialize';
-import { StreamType, StreamTypeEnum } from '../types/dag';
+import { StreamTypeEnum } from '../types/dag';
 
 export async function evaluateFormula(
   formula: string,
   parameters: Record<string, string | number | boolean>
-): Promise<FFMpegIOType[]> {
+): Promise<
+  {
+    __class__: 'FFMpegIOType';
+    value: StreamTypeEnum;
+  }[]
+> {
   // Convert parameters to a format that can be passed to Python
   const pythonParameters = Object.entries(parameters).reduce(
     (acc, [key, value]) => {
@@ -36,9 +40,8 @@ return json.dumps(result)
   // Convert the result to FFmpegIOType[]
   if (Array.isArray(parsedResult)) {
     return parsedResult.map((type) => ({
-      __class__: 'FFMpegIOType',
-      name: '',
-      type: new StreamType(type as StreamTypeEnum),
+      __class__: 'StreamType',
+      value: type as StreamTypeEnum,
     }));
   }
   console.error('Invalid result:', result);
