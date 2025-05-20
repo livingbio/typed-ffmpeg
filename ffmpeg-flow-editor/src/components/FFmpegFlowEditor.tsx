@@ -58,7 +58,7 @@ function generateRandomFilename(type: 'input' | 'output'): string {
 }
 
 // Helper function to create a node
-const createNode = (
+const createNode = async (
   filterType: string,
   parameters: Record<string, string> | undefined,
   position: { x: number; y: number } | undefined,
@@ -177,7 +177,7 @@ const createNode = (
       throw new Error(`Invalid node type: ${nodeType}`);
   }
 
-  const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
+  const nodeId = await nodeMappingManager.addNodeToMapping(mappingData);
   // if nodeType is input or output add a `_` to the end of the nodeType
   let nodeType_: string;
   if (nodeType === 'input' || nodeType === 'output') {

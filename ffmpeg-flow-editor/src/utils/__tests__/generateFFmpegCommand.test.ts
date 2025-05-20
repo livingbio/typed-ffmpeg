@@ -19,7 +19,7 @@ describe('generateFFmpegCommand', () => {
   it('returns error message if no input or output nodes', async () => {
     const nodeMappingManager = new NodeMappingManager();
     // Add a global node with no inputs
-    nodeMappingManager.addNodeToMapping({ type: 'global', inputs: [] });
+    await nodeMappingManager.addNodeToMapping({ type: 'global', inputs: [] });
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that error was logged
@@ -32,20 +32,20 @@ describe('generateFFmpegCommand', () => {
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
+    const inputNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'input',
       filename: 'input.mp4',
     });
 
     // Add output node
-    const outputNodeId = nodeMappingManager.addNodeToMapping({
+    const outputNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'output.mp4',
       inputs: [],
     });
 
     // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
+    const globalNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'global',
       inputs: [],
     });
@@ -66,13 +66,13 @@ describe('generateFFmpegCommand', () => {
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
+    const inputNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'input',
       filename: 'input.mp4',
     });
 
     // Add filter node
-    const filterNodeId = nodeMappingManager.addNodeToMapping({
+    const filterNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'filter',
       name: 'scale',
       input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
@@ -80,14 +80,14 @@ describe('generateFFmpegCommand', () => {
     });
 
     // Add output node
-    const outputNodeId = nodeMappingManager.addNodeToMapping({
+    const outputNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'output.mp4',
       inputs: [],
     });
 
     // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
+    const globalNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'global',
       inputs: [],
     });
@@ -107,29 +107,29 @@ describe('generateFFmpegCommand', () => {
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input nodes
-    const input1NodeId = nodeMappingManager.addNodeToMapping({
+    const input1NodeId = await nodeMappingManager.addNodeToMapping({
       type: 'input',
       filename: 'input1.mp4',
     });
-    const input2NodeId = nodeMappingManager.addNodeToMapping({
+    const input2NodeId = await nodeMappingManager.addNodeToMapping({
       type: 'input',
       filename: 'input2.mp4',
     });
 
     // Add output nodes
-    const output1NodeId = nodeMappingManager.addNodeToMapping({
+    const output1NodeId = await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'output1.mp4',
       inputs: [],
     });
-    const output2NodeId = nodeMappingManager.addNodeToMapping({
+    const output2NodeId = await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'output2.mp4',
       inputs: [],
     });
 
     // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
+    const globalNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'global',
       inputs: [],
     });
@@ -152,19 +152,19 @@ describe('generateFFmpegCommand', () => {
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
+    const inputNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'input',
       filename: 'input.mp4',
     });
 
     // Add filter nodes
-    const scaleNodeId = nodeMappingManager.addNodeToMapping({
+    const scaleNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'filter',
       name: 'scale',
       input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
       output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
     });
-    const volumeNodeId = nodeMappingManager.addNodeToMapping({
+    const volumeNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'filter',
       name: 'volume',
       input_typings: [{ value: 'audio', toJSON: () => ({ value: 'audio' }) }],
@@ -172,19 +172,19 @@ describe('generateFFmpegCommand', () => {
     });
 
     // Add output nodes
-    const videoOutputId = nodeMappingManager.addNodeToMapping({
+    const videoOutputId = await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'video_output.mp4',
       inputs: [],
     });
-    const audioOutputId = nodeMappingManager.addNodeToMapping({
+    const audioOutputId = await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'audio_output.mp3',
       inputs: [],
     });
 
     // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
+    const globalNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'global',
       inputs: [],
     });
@@ -209,13 +209,13 @@ describe('generateFFmpegCommand', () => {
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
+    const inputNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'input',
       filename: 'input.mp4',
     });
 
     // Add filter node with parameters
-    const filterNodeId = nodeMappingManager.addNodeToMapping({
+    const filterNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'filter',
       name: 'scale',
       input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
@@ -228,14 +228,14 @@ describe('generateFFmpegCommand', () => {
     });
 
     // Add output node
-    const outputNodeId = nodeMappingManager.addNodeToMapping({
+    const outputNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'output.mp4',
       inputs: [],
     });
 
     // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
+    const globalNodeId = await nodeMappingManager.addNodeToMapping({
       type: 'global',
       inputs: [],
     });
@@ -255,20 +255,20 @@ describe('generateFFmpegCommand', () => {
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
-    nodeMappingManager.addNodeToMapping({
+    await nodeMappingManager.addNodeToMapping({
       type: 'input',
       filename: 'input.mp4',
     });
 
     // Add output node
-    nodeMappingManager.addNodeToMapping({
+    await nodeMappingManager.addNodeToMapping({
       type: 'output',
       filename: 'output.mp4',
       inputs: [],
     });
 
     // Add global node (no connections)
-    nodeMappingManager.addNodeToMapping({
+    await nodeMappingManager.addNodeToMapping({
       type: 'global',
       inputs: [],
     });
@@ -288,7 +288,7 @@ describe('generateFFmpegCommand', () => {
     const nodeMappingManager = new NodeMappingManager();
 
     // Add a global node with no inputs
-    nodeMappingManager.addNodeToMapping({ type: 'global', inputs: [] });
+    await nodeMappingManager.addNodeToMapping({ type: 'global', inputs: [] });
 
     const result = await generateFFmpegCommand(nodeMappingManager);
 

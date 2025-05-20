@@ -1,3 +1,4 @@
+import { FFMpegFilter } from '@/types/ffmpeg';
 import {
   FilterNode,
   InputNode,
@@ -11,9 +12,12 @@ import {
   OutputStream,
   GlobalStream,
   StreamType,
+  StreamTypeEnum,
 } from '../types/dag';
 import { dumps } from './serialize';
 import { EventEmitter } from 'events';
+import { evaluateFormula } from './formulaEvaluator';
+import { FFmpegFilter, FFMpegIOType, predefinedFilters } from '../types/ffmpeg';
 
 export interface NodeMapping {
   // Maps ReactFlow node ID to DAG node
@@ -125,9 +129,38 @@ export class NodeMappingManager {
       node.inputs.push(null);
     }
   }
+  private async evaluateIOtypings(
+    filter: FFMpegFilter,
+    kwargs: Record<string, string | number | boolean>
+  ): Promise<{ input_typings: StreamTypeEnum[]; output_typings: StreamTypeEnum[] }> {
+    // merge parameters with kwargs
+    // extract default value from filter.options and convert to a Dict
+    let parameters: Record<string, string | number | boolean> = {};
+    filter.options.map((option) => {
+      parameters[option.name] = option.default;
+    });
 
+    // merge parameters with kwargs
+    parameters = { ...parameters, ...kwargs };
+    let input_typings: StreamTypeEnum[] = [];
+    if (!filter.formula_typings_input) {
+      input_typings = filter.stream_typings_input.map((t) => t.type.value);
+    } else {
+      input_typings = await evaluateFormula(filter.formula_typings_input, parameters);
+    }
+    let output_typings: StreamTypeEnum[] = [];
+    if (!filter.formula_typings_output) {
+      output_typings = filter.stream_typings_output.map((t) => t.type.value);
+    } else {
+      output_typings = await evaluateFormula(filter.formula_typings_output, parameters);
+    }
+    return {
+      input_typings,
+      output_typings,
+    };
+  }
   // Add a node to the mapping
-  addNodeToMapping(params: {
+  async addNodeToMapping(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
@@ -135,7 +168,7 @@ export class NodeMappingManager {
     input_typings?: StreamType[];
     output_typings?: StreamType[];
     kwargs?: Record<string, string | number | boolean>;
-  }): string {
+  }): Promise<string> {
     // Special handling for GlobalNode
     if (params.type === 'global') {
       // Update the existing GlobalNode's properties
@@ -158,12 +191,23 @@ export class NodeMappingManager {
     let outputInputs: (FilterableStream | null)[] | undefined;
     let inputFilename: string;
     let outputFilename: string;
+    let filter: FFMpegFilter | undefined;
+    let input_typings: StreamTypeEnum[] | undefined;
+    let output_typings: StreamTypeEnum[] | undefined;
 
     switch (params.type) {
       case 'filter':
-        if (!params.name || !params.input_typings || !params.output_typings) {
+        if (!params.name) {
           throw new Error('FilterNode requires name, input_typings, and output_typings');
         }
+        filter = predefinedFilters.find((f) => f.name === params.name);
+        if (!filter) {
+          throw new Error(`Filter ${params.name} not found`);
+        }
+        { input_typings, output_typings } = await this.evaluateIOtypings(
+          filter,
+          params.kwargs || {}
+        );
 
         // Initialize with proper input array length based on input_typings
         filterInputs = params.inputs || Array(params.input_typings.length).fill(null);
@@ -514,7 +558,7 @@ export class NodeMappingManager {
   }
 
   // Recursively add a node and all connected nodes/streams to the mapping
-  recursiveAddToMapping(
+  async recursiveAddToMapping(
     item:
       | FilterNode
       | InputNode
@@ -550,7 +594,7 @@ export class NodeMappingManager {
           // Add node to mapping
           let nodeId: string;
           if (item instanceof FilterNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'filter',
               name: item.name,
               inputs: item.inputs,
@@ -559,13 +603,13 @@ export class NodeMappingManager {
               kwargs: item.kwargs,
             });
           } else if (item instanceof InputNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'input',
               filename: item.filename,
               kwargs: item.kwargs,
             });
           } else if (item instanceof OutputNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'output',
               filename: item.filename,
               inputs: item.inputs,

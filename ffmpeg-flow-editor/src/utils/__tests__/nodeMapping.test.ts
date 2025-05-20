@@ -45,8 +45,8 @@ describe('nodeMapping', () => {
   });
 
   describe('addNodeToMapping', () => {
-    it('should add a FilterNode to mapping', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should add a FilterNode to mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test',
         input_typings: [new StreamType('video')],
@@ -58,8 +58,8 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
     });
 
-    it('should add an InputNode to mapping', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should add an InputNode to mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'test.mp4',
       });
@@ -69,8 +69,8 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
     });
 
-    it('should add an OutputNode to mapping', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should add an OutputNode to mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'test.mp4',
         inputs: [],
@@ -81,8 +81,8 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
     });
 
-    it('should add a GlobalNode to mapping', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should add a GlobalNode to mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'global',
         inputs: [],
       });
@@ -94,8 +94,8 @@ describe('nodeMapping', () => {
   });
 
   describe('removeNodeFromMapping', () => {
-    it('should remove a node from mapping', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should remove a node from mapping', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test',
         input_typings: [new StreamType('video')],
@@ -107,9 +107,9 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBeUndefined();
     });
 
-    it('should remove a node and all its connected edges', () => {
+    it('should remove a node and all its connected edges', async () => {
       // Create source node
-      const sourceId = nodeMappingManager.addNodeToMapping({
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('video')],
@@ -117,14 +117,14 @@ describe('nodeMapping', () => {
       });
 
       // Create two target nodes
-      const target1Id = nodeMappingManager.addNodeToMapping({
+      const target1Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target1',
         input_typings: [new StreamType('video')],
         output_typings: [new StreamType('video')],
       });
 
-      const target2Id = nodeMappingManager.addNodeToMapping({
+      const target2Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target2',
         input_typings: [new StreamType('video')],
@@ -160,14 +160,14 @@ describe('nodeMapping', () => {
   });
 
   describe('addEdgeToMapping', () => {
-    it('should add a video stream edge between FilterNodes', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should add a video stream edge between FilterNodes', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('video')],
         output_typings: [new StreamType('video')],
       });
-      const targetId = nodeMappingManager.addNodeToMapping({
+      const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
         input_typings: [new StreamType('video')],
@@ -181,14 +181,14 @@ describe('nodeMapping', () => {
       expect(targetNode.inputs[0]).toBeInstanceOf(VideoStream);
     });
 
-    it('should add an audio stream edge between FilterNodes', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should add an audio stream edge between FilterNodes', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('audio')],
         output_typings: [new StreamType('audio')],
       });
-      const targetId = nodeMappingManager.addNodeToMapping({
+      const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
         input_typings: [new StreamType('audio')],
@@ -202,12 +202,12 @@ describe('nodeMapping', () => {
       expect(targetNode.inputs[0]).toBeInstanceOf(AudioStream);
     });
 
-    it('should add an AV stream edge from InputNode to FilterNode', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should add an AV stream edge from InputNode to FilterNode', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'test.mp4',
       });
-      const targetId = nodeMappingManager.addNodeToMapping({
+      const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
         input_typings: [new StreamType('av')],
@@ -221,14 +221,14 @@ describe('nodeMapping', () => {
       expect(targetNode.inputs[0]).toBeInstanceOf(AVStream);
     });
 
-    it('should throw error when connecting video to audio input', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should throw error when connecting video to audio input', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('video')],
         output_typings: [new StreamType('video')],
       });
-      const targetId = nodeMappingManager.addNodeToMapping({
+      const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
         input_typings: [new StreamType('audio')],
@@ -240,14 +240,14 @@ describe('nodeMapping', () => {
       );
     });
 
-    it('should throw error when connecting audio to video input', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should throw error when connecting audio to video input', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('audio')],
         output_typings: [new StreamType('audio')],
       });
-      const targetId = nodeMappingManager.addNodeToMapping({
+      const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
         input_typings: [new StreamType('video')],
@@ -259,22 +259,22 @@ describe('nodeMapping', () => {
       );
     });
 
-    it('should add multiple edges from one source to different targets', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should add multiple edges from one source to different targets', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('video')],
         output_typings: [new StreamType('video'), new StreamType('video')],
       });
 
-      const target1Id = nodeMappingManager.addNodeToMapping({
+      const target1Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target1',
         input_typings: [new StreamType('video')],
         output_typings: [new StreamType('video')],
       });
 
-      const target2Id = nodeMappingManager.addNodeToMapping({
+      const target2Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target2',
         input_typings: [new StreamType('video')],
@@ -289,13 +289,13 @@ describe('nodeMapping', () => {
       expect(nodeMappingManager.getEdgeMapping().edgeMap.get(edge2Id)).toBeInstanceOf(VideoStream);
     });
 
-    it('should add edge from InputNode to OutputNode', () => {
-      const inputId = nodeMappingManager.addNodeToMapping({
+    it('should add edge from InputNode to OutputNode', async () => {
+      const inputId = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'input.mp4',
       });
 
-      const outputId = nodeMappingManager.addNodeToMapping({
+      const outputId = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output.mp4',
         inputs: [],
@@ -307,8 +307,8 @@ describe('nodeMapping', () => {
       expect(outputNode.inputs[0]).toBeInstanceOf(AVStream);
     });
 
-    it('should throw error when connecting to non-existent node', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should throw error when connecting to non-existent node', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('video')],
@@ -322,14 +322,14 @@ describe('nodeMapping', () => {
   });
 
   describe('removeEdgeFromMapping', () => {
-    it('should remove an edge and clear the input', () => {
-      const sourceId = nodeMappingManager.addNodeToMapping({
+    it('should remove an edge and clear the input', async () => {
+      const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
         input_typings: [new StreamType('video')],
         output_typings: [new StreamType('video')],
       });
-      const targetId = nodeMappingManager.addNodeToMapping({
+      const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
         input_typings: [new StreamType('video')],
@@ -350,13 +350,13 @@ describe('nodeMapping', () => {
       );
     });
 
-    it('should handle removing edge from OutputNode', () => {
-      const inputId = nodeMappingManager.addNodeToMapping({
+    it('should handle removing edge from OutputNode', async () => {
+      const inputId = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'input.mp4',
       });
 
-      const outputId = nodeMappingManager.addNodeToMapping({
+      const outputId = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output.mp4',
         inputs: [],
@@ -370,8 +370,8 @@ describe('nodeMapping', () => {
       expect(outputNode.inputs[0]).toBeNull();
     });
 
-    it('should handle removing edge from GlobalNode', () => {
-      const outputId = nodeMappingManager.addNodeToMapping({
+    it('should handle removing edge from GlobalNode', async () => {
+      const outputId = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output.mp4',
         inputs: [],
@@ -388,8 +388,8 @@ describe('nodeMapping', () => {
   });
 
   describe('updateNode', () => {
-    it('should update FilterNode properties', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should update FilterNode properties', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test',
         input_typings: [new StreamType('video')],
@@ -415,8 +415,8 @@ describe('nodeMapping', () => {
       expect(node.inputs[1]).toBeNull();
     });
 
-    it('should update InputNode properties', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should update InputNode properties', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'test.mp4',
       });
@@ -434,8 +434,8 @@ describe('nodeMapping', () => {
       expect(node.kwargs).toEqual(newKwargs);
     });
 
-    it('should update OutputNode properties', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should update OutputNode properties', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'test.mp4',
         inputs: [],
@@ -454,8 +454,8 @@ describe('nodeMapping', () => {
       expect(node.kwargs).toEqual(newKwargs);
     });
 
-    it('should update GlobalNode properties', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should update GlobalNode properties', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'global',
         inputs: [],
       });
@@ -478,8 +478,8 @@ describe('nodeMapping', () => {
   });
 
   describe('resetNodeMapping', () => {
-    it('should reset both node and edge mappings', () => {
-      const id = nodeMappingManager.addNodeToMapping({
+    it('should reset both node and edge mappings', async () => {
+      const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test',
         input_typings: [new StreamType('video')],
@@ -497,15 +497,15 @@ describe('nodeMapping', () => {
   });
 
   describe('JSON serialization with global node', () => {
-    it('should include input node connected to global node in JSON', () => {
+    it('should include input node connected to global node in JSON', async () => {
       // Create an input node
-      const inputId = nodeMappingManager.addNodeToMapping({
+      const inputId = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'input.mp4',
       });
 
       // Add output node
-      const outputId = nodeMappingManager.addNodeToMapping({
+      const outputId = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output.mp4',
         inputs: [],
@@ -527,9 +527,9 @@ describe('nodeMapping', () => {
       expect(parsed.inputs[0].node.inputs[0].node.filename).toBe('input.mp4');
     });
 
-    it('should include filter node connected to global node in JSON', () => {
+    it('should include filter node connected to global node in JSON', async () => {
       // Create a filter node
-      const filterId = nodeMappingManager.addNodeToMapping({
+      const filterId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test_filter',
         input_typings: [new StreamType('video')],
@@ -537,7 +537,7 @@ describe('nodeMapping', () => {
       });
 
       // Add output node
-      const outputId = nodeMappingManager.addNodeToMapping({
+      const outputId = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output.mp4',
         inputs: [],
@@ -559,14 +559,14 @@ describe('nodeMapping', () => {
       expect(parsed.inputs[0].node.inputs[0].node.name).toBe('test_filter');
     });
 
-    it('should include multiple nodes connected to global node in JSON', () => {
+    it('should include multiple nodes connected to global node in JSON', async () => {
       // Create input and filter nodes
-      const inputId = nodeMappingManager.addNodeToMapping({
+      const inputId = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'input.mp4',
       });
 
-      const filterId = nodeMappingManager.addNodeToMapping({
+      const filterId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test_filter',
         input_typings: [new StreamType('video')],
@@ -574,13 +574,13 @@ describe('nodeMapping', () => {
       });
 
       // Add output nodes
-      const output1Id = nodeMappingManager.addNodeToMapping({
+      const output1Id = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output1.mp4',
         inputs: [],
       });
 
-      const output2Id = nodeMappingManager.addNodeToMapping({
+      const output2Id = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output2.mp4',
         inputs: [],
@@ -608,9 +608,9 @@ describe('nodeMapping', () => {
       expect(parsed.inputs[1].node.inputs[0].node.name).toBe('test_filter');
     });
 
-    it('should maintain node properties in JSON when connected to global node', () => {
+    it('should maintain node properties in JSON when connected to global node', async () => {
       // Create a filter node with kwargs
-      const filterId = nodeMappingManager.addNodeToMapping({
+      const filterId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test_filter',
         input_typings: [new StreamType('video')],
@@ -619,7 +619,7 @@ describe('nodeMapping', () => {
       });
 
       // Add output node
-      const outputId = nodeMappingManager.addNodeToMapping({
+      const outputId = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output.mp4',
         inputs: [],
@@ -641,14 +641,14 @@ describe('nodeMapping', () => {
       });
     });
 
-    it('should handle removing node from global node in JSON', () => {
+    it('should handle removing node from global node in JSON', async () => {
       // Create and connect a node to global node
-      const inputId = nodeMappingManager.addNodeToMapping({
+      const inputId = await nodeMappingManager.addNodeToMapping({
         type: 'input',
         filename: 'input.mp4',
       });
 
-      const outputId = nodeMappingManager.addNodeToMapping({
+      const outputId = await nodeMappingManager.addNodeToMapping({
         type: 'output',
         filename: 'output.mp4',
         inputs: [],
