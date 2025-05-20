@@ -23,12 +23,13 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that error was logged
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: '# Error: tuple index out of range',
+      ffmpeg_cmd: undefined,
+    });
   });
 
   it('generates basic input-output-global chain', async () => {
-    // Mock successful response from runPython
-
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
@@ -57,12 +58,14 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: `import ffmpeg
+result = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()`,
+      ffmpeg_cmd: 'ffmpeg -i input.mp4 -map 0 output.mp4',
+    });
   });
 
   it('generates code with filter nodes, output and global node', async () => {
-    // Mock successful response from runPython
-
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
@@ -100,7 +103,11 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: `import ffmpeg
+result = ffmpeg.input('input.mp4').scale().output(filename='output.mp4').global_args()`,
+      ffmpeg_cmd: "ffmpeg -i input.mp4 -filter_complex '[0]scale[s0]' -map '[s0]' output.mp4",
+    });
   });
 
   it('handles multiple input nodes and outputs to global node', async () => {
@@ -143,12 +150,14 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: `import ffmpeg
+result = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4')).global_args()`,
+      ffmpeg_cmd: 'ffmpeg -i input1.mp4 -i input2.mp4 -map 0 output1.mp4 -map 1 output2.mp4',
+    });
   });
 
   it('handles complex filter chains with outputs to global node', async () => {
-    // Mock successful response from runPython
-
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
@@ -200,12 +209,16 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: `import ffmpeg
+input_0 = ffmpeg.input('input.mp4')
+result = ffmpeg.merge_outputs(input_0.scale().output(filename='video_output.mp4'), input_0.volume().output(filename='audio_output.mp3')).global_args()`,
+      ffmpeg_cmd:
+        "ffmpeg -i input.mp4 -filter_complex '[0]scale[s0];[0]volume[s1]' -map '[s0]' video_output.mp4 -map '[s1]' audio_output.mp3",
+    });
   });
 
   it('handles numeric and boolean parameters correctly with outputs to global node', async () => {
-    // Mock successful response from runPython
-
     const nodeMappingManager = new NodeMappingManager();
 
     // Add input node
@@ -248,7 +261,12 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that we got the mocked response
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: `import ffmpeg
+result = ffmpeg.input('input.mp4').scale(width=640, height=480, force_original_aspect_ratio=True).output(filename='output.mp4').global_args()`,
+      ffmpeg_cmd:
+        "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480:force_original_aspect_ratio=1[s0]' -map '[s0]' output.mp4",
+    });
   });
 
   it('handles disconnected nodes with global node', async () => {
@@ -278,7 +296,10 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that error was logged
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: '# Error: tuple index out of range',
+      ffmpeg_cmd: undefined,
+    });
   });
 
   it('handles empty result from Python execution', async () => {
@@ -293,7 +314,10 @@ describe('generateFFmpegCommand', () => {
     const result = await generateFFmpegCommand(nodeMappingManager);
 
     // Check that a warning was logged
-    expect(result).toMatchSnapshot();
+    expect(result).toEqual({
+      python: '# Error: tuple index out of range',
+      ffmpeg_cmd: undefined,
+    });
 
     consoleWarnSpy.mockRestore();
   });
