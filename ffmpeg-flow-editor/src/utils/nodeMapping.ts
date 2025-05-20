@@ -127,7 +127,7 @@ export class NodeMappingManager {
   }
 
   // Add a node to the mapping
-  addNodeToMapping(params: {
+  async addNodeToMapping(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
@@ -135,7 +135,7 @@ export class NodeMappingManager {
     input_typings?: StreamType[];
     output_typings?: StreamType[];
     kwargs?: Record<string, string | number | boolean>;
-  }): string {
+  }): Promise<string> {
     // Special handling for GlobalNode
     if (params.type === 'global') {
       // Update the existing GlobalNode's properties
@@ -514,7 +514,7 @@ export class NodeMappingManager {
   }
 
   // Recursively add a node and all connected nodes/streams to the mapping
-  recursiveAddToMapping(
+  async recursiveAddToMapping(
     item:
       | FilterNode
       | InputNode
@@ -526,7 +526,7 @@ export class NodeMappingManager {
       | AVStream
       | OutputStream
       | GlobalStream
-  ): string {
+  ): Promise<string> {
     // Suppress events during the recursive operation
     // We'll emit a single event at the end
     const emitUpdate = this.emitUpdate;
@@ -550,7 +550,7 @@ export class NodeMappingManager {
           // Add node to mapping
           let nodeId: string;
           if (item instanceof FilterNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'filter',
               name: item.name,
               inputs: item.inputs,
@@ -559,13 +559,13 @@ export class NodeMappingManager {
               kwargs: item.kwargs,
             });
           } else if (item instanceof InputNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'input',
               filename: item.filename,
               kwargs: item.kwargs,
             });
           } else if (item instanceof OutputNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'output',
               filename: item.filename,
               inputs: item.inputs,
@@ -590,7 +590,7 @@ export class NodeMappingManager {
               const input = item.inputs[i];
               if (input) {
                 // Recursively add the input stream's node
-                const sourceNodeId = this.recursiveAddToMapping(input.node);
+                const sourceNodeId = await this.recursiveAddToMapping(input.node);
                 // Add the edge - using the stream's index property
                 const sourceIndex = input.index !== null ? input.index : 0;
                 this.addEdgeToMapping(sourceNodeId, nodeId, sourceIndex, i);
@@ -609,7 +609,7 @@ export class NodeMappingManager {
         item instanceof OutputStream ||
         item instanceof GlobalStream
       ) {
-        result = this.recursiveAddToMapping(item.node);
+        result = await this.recursiveAddToMapping(item.node);
       } else {
         throw new Error('Invalid item type');
       }

@@ -10,18 +10,18 @@ result = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()",
 
 exports[`generateFFmpegCommand > generates code with filter nodes, output and global node 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input.mp4 -filter_complex '[0]scale[s0]' -map '[s0]' output.mp4",
+  "ffmpeg_cmd": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480[s0]' -map '[s0]' output.mp4",
   "python": "import ffmpeg
-result = ffmpeg.input('input.mp4').scale().output(filename='output.mp4').global_args()",
+result = ffmpeg.input('input.mp4').scale(width=640, height=480).output(filename='output.mp4').global_args()",
 }
 `;
 
 exports[`generateFFmpegCommand > handles complex filter chains with outputs to global node 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input.mp4 -filter_complex '[0]scale[s0];[0]volume[s1]' -map '[s0]' video_output.mp4 -map '[s1]' audio_output.mp3",
+  "ffmpeg_cmd": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480[s0];[0]volume=volume=2[s1]' -map '[s0]' -map '[s1]' output.mp4",
   "python": "import ffmpeg
 input_0 = ffmpeg.input('input.mp4')
-result = ffmpeg.merge_outputs(input_0.scale().output(filename='video_output.mp4'), input_0.volume().output(filename='audio_output.mp3')).global_args()",
+result = ffmpeg.output(input_0.scale(width=640, height=480), input_0.volume(volume=2), filename='output.mp4').global_args()",
 }
 `;
 
@@ -41,9 +41,9 @@ exports[`generateFFmpegCommand > handles empty result from Python execution 1`] 
 
 exports[`generateFFmpegCommand > handles multiple input nodes and outputs to global node 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input1.mp4 -i input2.mp4 -map 0 output1.mp4 -map 1 output2.mp4",
+  "ffmpeg_cmd": "ffmpeg -i input1.mp4 -i input2.mp4 -map 0 -map 1 output.mp4",
   "python": "import ffmpeg
-result = ffmpeg.merge_outputs(ffmpeg.input('input1.mp4').output(filename='output1.mp4'), ffmpeg.input('input2.mp4').output(filename='output2.mp4')).global_args()",
+result = ffmpeg.output(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'), filename='output.mp4').global_args()",
 }
 `;
 
