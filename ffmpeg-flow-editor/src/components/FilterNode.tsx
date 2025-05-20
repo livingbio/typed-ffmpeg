@@ -1,8 +1,8 @@
 import { memo, useState, useEffect } from 'react';
 import { Handle, Position, NodeProps } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip, useTheme, Button } from '@mui/material';
-import { FFMpegFilterOption, FFMpegIOType } from '../types/ffmpeg';
-import { EdgeType, EDGE_COLORS } from '../types/edge';
+import { FFMpegFilterOption } from '../types/ffmpeg';
+import { EDGE_COLORS } from '../types/edge';
 import { NodeData } from '../types/node';
 
 interface ValidationError {
@@ -97,17 +97,6 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
 
   const hasErrors = Object.values(errors).some((error) => error !== '');
 
-  const getHandleType = (ioType: FFMpegIOType): EdgeType => {
-    const typeValue = ioType.type.value;
-    if (typeValue === 'audio') return 'audio';
-    if (typeValue === 'video') return 'video';
-    return 'av';
-  };
-
-  // Get input and output types from filter definition
-  const inputTypes = filter.stream_typings_input;
-  const outputTypes = filter.stream_typings_output;
-
   // Calculate which options to show
   const visibleOptions = expanded ? filter.options : filter.options.slice(0, 3);
 
@@ -124,28 +113,24 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
       }}
     >
       {/* Input handles */}
-      {inputTypes.map((type, index) => {
-        const handleType = getHandleType(type);
-        const handleId = `input-${index}`;
-        return (
-          <Handle
-            key={handleId}
-            id={handleId}
-            data-handle-id={handleId}
-            type="target"
-            position={Position.Left}
-            style={{
-              backgroundColor: EDGE_COLORS[handleType],
-              width: '10px',
-              height: '10px',
-              top: `${(index + 1) * (100 / (inputTypes.length + 1))}%`,
-              border: '2px solid #fff',
-            }}
-            data-type={handleType}
-            data-handle-type="input"
-          />
-        );
-      })}
+      {data.handles.inputs.map((handle, index) => (
+        <Handle
+          key={handle.id}
+          id={handle.id}
+          data-handle-id={handle.id}
+          type="target"
+          position={Position.Left}
+          style={{
+            backgroundColor: EDGE_COLORS[handle.type],
+            width: '10px',
+            height: '10px',
+            top: `${(index + 1) * (100 / (data.handles.inputs.length + 1))}%`,
+            border: '2px solid #fff',
+          }}
+          data-type={handle.type}
+          data-handle-type="input"
+        />
+      ))}
 
       <Box
         sx={{
@@ -216,28 +201,24 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
       </Box>
 
       {/* Output handles */}
-      {outputTypes.map((type, index) => {
-        const handleType = getHandleType(type);
-        const handleId = `output-${index}`;
-        return (
-          <Handle
-            key={handleId}
-            id={handleId}
-            data-handle-id={handleId}
-            type="source"
-            position={Position.Right}
-            style={{
-              backgroundColor: EDGE_COLORS[handleType],
-              width: '10px',
-              height: '10px',
-              top: `${(index + 1) * (100 / (outputTypes.length + 1))}%`,
-              border: '2px solid #fff',
-            }}
-            data-type={handleType}
-            data-handle-type="output"
-          />
-        );
-      })}
+      {data.handles.outputs.map((handle, index) => (
+        <Handle
+          key={handle.id}
+          id={handle.id}
+          data-handle-id={handle.id}
+          type="source"
+          position={Position.Right}
+          style={{
+            backgroundColor: EDGE_COLORS[handle.type],
+            width: '10px',
+            height: '10px',
+            top: `${(index + 1) * (100 / (data.handles.outputs.length + 1))}%`,
+            border: '2px solid #fff',
+          }}
+          data-type={handle.type}
+          data-handle-type="output"
+        />
+      ))}
     </Paper>
   );
 }
