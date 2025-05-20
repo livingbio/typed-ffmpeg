@@ -5,12 +5,7 @@ import { StreamTypeEnum } from '../types/dag';
 export async function evaluateFormula(
   formula: string,
   parameters: Record<string, string | number | boolean>
-): Promise<
-  {
-    __class__: 'FFMpegIOType';
-    value: StreamTypeEnum;
-  }[]
-> {
+): Promise<StreamTypeEnum[]> {
   // Convert parameters to a format that can be passed to Python
   const pythonParameters = Object.entries(parameters).reduce(
     (acc, [key, value]) => {
@@ -39,10 +34,7 @@ return json.dumps(result)
 
   // Convert the result to FFmpegIOType[]
   if (Array.isArray(parsedResult)) {
-    return parsedResult.map((type) => ({
-      __class__: 'StreamType',
-      value: type as StreamTypeEnum,
-    }));
+    return parsedResult.map((type) => type as StreamTypeEnum);
   }
   console.error('Invalid result:', result);
   throw new Error('Invalid result', { cause: result });

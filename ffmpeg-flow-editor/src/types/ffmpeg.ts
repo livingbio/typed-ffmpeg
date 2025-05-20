@@ -40,7 +40,7 @@ export interface FFMpegFilterOption {
   };
   min: string | null;
   max: string | null;
-  default: string | number | boolean | null;
+  default: string | number | boolean;
   required: boolean;
   choices: FFMpegFilterOptionChoice[];
   flags: string;

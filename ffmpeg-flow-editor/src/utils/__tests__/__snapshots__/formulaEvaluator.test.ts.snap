@@ -2,107 +2,53 @@
 
 exports[`formulaEvaluator > evaluateFormula > should evaluate formula with conditional inplace 1`] = `
 [
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
+  "video",
+  "video",
 ]
 `;
 
 exports[`formulaEvaluator > evaluateFormula > should evaluate formula with conditional reference 1`] = `
 [
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
+  "video",
+  "video",
+  "video",
 ]
 `;
 
 exports[`formulaEvaluator > evaluateFormula > should evaluate formula with hex conversion 1`] = `
 [
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
+  "video",
+  "video",
+  "video",
 ]
 `;
 
 exports[`formulaEvaluator > evaluateFormula > should evaluate formula with mixed audio and video 1`] = `
 [
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "audio",
-  },
+  "video",
+  "video",
+  "audio",
 ]
 `;
 
 exports[`formulaEvaluator > evaluateFormula > should evaluate formula with numeric multiplication 1`] = `
 [
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
+  "video",
+  "video",
 ]
 `;
 
 exports[`formulaEvaluator > evaluateFormula > should evaluate formula with string splitting 1`] = `
 [
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
+  "video",
+  "video",
+  "video",
 ]
 `;
 
 exports[`formulaEvaluator > evaluateFormula > should evaluate simple formula with video and audio 1`] = `
 [
-  {
-    "__class__": "StreamType",
-    "value": "video",
-  },
-  {
-    "__class__": "StreamType",
-    "value": "audio",
-  },
+  "video",
+  "audio",
 ]
 `;
