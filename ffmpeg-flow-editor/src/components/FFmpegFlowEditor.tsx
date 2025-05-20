@@ -64,7 +64,7 @@ const createNode = async (
   position: { x: number; y: number } | undefined,
   nodeMappingManager: NodeMappingManager,
   filter?: (typeof predefinedFilters)[0]
-): Node<NodeData> => {
+): Promise<Node<NodeData>> => {
   const defaultPosition = {
     x: Math.random() * 500 + 200,
     y: Math.random() * 300 + 100,
@@ -249,26 +249,29 @@ export default function FFmpegFlowEditor() {
   // Initialize nodes
   useEffect(() => {
     // Create React Flow nodes
-    const initialNodes = [
-      createNode('input', {}, { x: 100, y: 300 }, nodeMappingManager),
-      createNode('output', {}, { x: 1600, y: 300 }, nodeMappingManager),
-      createNode('global', {}, { x: 2000, y: 300 }, nodeMappingManager),
-    ];
+    const init = async () => {
+      const initialNodes = [
+        await createNode('input', {}, { x: 100, y: 300 }, nodeMappingManager),
+        await createNode('output', {}, { x: 1600, y: 300 }, nodeMappingManager),
+        await createNode('global', {}, { x: 2000, y: 300 }, nodeMappingManager),
+      ];
 
-    setNodes(initialNodes);
+      setNodes(initialNodes);
 
-    // Create initial edge between output and global nodes
-    const outputNode = initialNodes[1]; // output node
-    const globalNode = initialNodes[2]; // global node
-    const initialEdge = createEdge(
-      outputNode.id,
-      globalNode.id,
-      'output-0',
-      'input-0',
-      nodeMappingManager
-    );
+      // Create initial edge between output and global nodes
+      const outputNode = initialNodes[1]; // output node
+      const globalNode = initialNodes[2]; // global node
+      const initialEdge = createEdge(
+        outputNode.id,
+        globalNode.id,
+        'output-0',
+        'input-0',
+        nodeMappingManager
+      );
 
-    setEdges([initialEdge]);
+      setEdges([initialEdge]);
+    };
+    init();
   }, [nodeMappingManager, setNodes, setEdges]);
 
   // Add event listener for node data update
@@ -367,14 +370,14 @@ export default function FFmpegFlowEditor() {
   );
 
   const onAddNode = useCallback(
-    (
+    async (
       filterType: string,
       parameters?: Record<string, string>,
       position?: { x: number; y: number }
     ) => {
       // filterType can be 'input', 'output', 'global', or a filter name
       try {
-        const newNode = createNode(
+        const newNode = await createNode(
           filterType,
           parameters,
           position,

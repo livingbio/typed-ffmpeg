@@ -192,11 +192,9 @@ export class NodeMappingManager {
     let inputFilename: string;
     let outputFilename: string;
     let filter: FFMpegFilter | undefined;
-    let input_typings: StreamTypeEnum[] | undefined;
-    let output_typings: StreamTypeEnum[] | undefined;
 
     switch (params.type) {
-      case 'filter':
+      case 'filter': {
         if (!params.name) {
           throw new Error('FilterNode requires name, input_typings, and output_typings');
         }
@@ -204,22 +202,23 @@ export class NodeMappingManager {
         if (!filter) {
           throw new Error(`Filter ${params.name} not found`);
         }
-        { input_typings, output_typings } = await this.evaluateIOtypings(
+        const { input_typings, output_typings } = await this.evaluateIOtypings(
           filter,
           params.kwargs || {}
         );
 
         // Initialize with proper input array length based on input_typings
-        filterInputs = params.inputs || Array(params.input_typings.length).fill(null);
+        filterInputs = params.inputs || Array(input_typings.length).fill(null);
 
         node = new FilterNode(
           params.name,
           filterInputs as (FilterableStream | null)[],
-          params.input_typings,
-          params.output_typings,
+          input_typings,
+          output_typings,
           params.kwargs
         );
         break;
+      }
 
       case 'input':
         // Generate random filename if not provided
