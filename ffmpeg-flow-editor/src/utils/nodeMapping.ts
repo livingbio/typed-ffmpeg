@@ -100,6 +100,24 @@ export class NodeMappingManager {
   ): string {
     return `edge-${sourceId}-${sourceIndex}-${targetId}-${targetIndex}`;
   }
+  // Get the node mapping
+  getNodeMapping(): NodeMapping {
+    return this.nodeMapping;
+  }
+
+  // Get the edge mapping
+  getEdgeMapping(): EdgeMapping {
+    return this.edgeMapping;
+  }
+  // Get the global node ID
+  getGlobalNodeId(): string {
+    return this.globalNodeId;
+  }
+
+  // Get the global node instance
+  getGlobalNode(): GlobalNode {
+    return this.globalNode;
+  }
 
   // Helper function to ensure node inputs are initialized
   private ensureNodeInputs(node: FilterNode | OutputNode | GlobalNode, count: number): void {
@@ -300,16 +318,6 @@ export class NodeMappingManager {
     this.emitUpdate();
   }
 
-  // Get the global node ID
-  getGlobalNodeId(): string {
-    return this.globalNodeId;
-  }
-
-  // Get the global node instance
-  getGlobalNode(): GlobalNode {
-    return this.globalNode;
-  }
-
   // Reset mapping state
   resetNode() {
     this.nodeMapping = {
@@ -367,7 +375,7 @@ export class NodeMappingManager {
     } else if (sourceNode instanceof InputNode) {
       stream = new AVStream(sourceNode, null);
     } else if (sourceNode instanceof OutputNode) {
-      stream = new OutputStream(sourceNode, targetIndex);
+      stream = new OutputStream(sourceNode, sourceIndex);
     } else if (sourceNode instanceof GlobalNode) {
       stream = new GlobalStream(sourceNode);
     } else {
@@ -424,7 +432,7 @@ export class NodeMappingManager {
   }
 
   // Remove an edge from the mapping
-  removeEdgeFromMapping(edgeId: string): void {
+  removeEdge(edgeId: string): void {
     const stream = this.edgeMapping.edgeMap.get(edgeId);
     if (!stream) {
       throw new Error(`Edge ${edgeId} not found in mapping`);
@@ -443,16 +451,6 @@ export class NodeMappingManager {
     this.edgeMapping.edgeMap.delete(edgeId);
     this.edgeMapping.targetMap.delete(stream);
     this.emitUpdate();
-  }
-
-  // Get the node mapping
-  getNodeMapping(): NodeMapping {
-    return this.nodeMapping;
-  }
-
-  // Get the edge mapping
-  getEdgeMapping(): EdgeMapping {
-    return this.edgeMapping;
   }
 
   // Update a node in the mapping
@@ -591,7 +589,7 @@ export class NodeMappingManager {
     return result;
   }
 
-  public async recursiveAddToMapping(
+  public async recursiveAdd(
     item:
       | FilterNode
       | InputNode

@@ -434,7 +434,7 @@ export default function FFmpegFlowEditor() {
     (edgesToDelete: Edge[]) => {
       edgesToDelete.forEach((edge) => {
         // Remove edge from mapping
-        nodeMappingManager.removeEdgeFromMapping(edge.id);
+        nodeMappingManager.removeEdge(edge.id);
       });
     },
     [nodeMappingManager]

@@ -8388,7 +8388,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         },
         {
           "__class__": "OutputStream",
-          "index": 1,
+          "index": 0,
           "node": {
             "__class__": "OutputNode",
             "filename": "output2.mp4",
@@ -8508,7 +8508,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
     },
     "edge-node-3-0-node-0-1" => {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -8581,7 +8581,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
     },
     {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -8607,7 +8607,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 3`] = `"{"kwargs":{"dump":true},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 3`] = `"{"kwargs":{"dump":true},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 1`] = `
 {
@@ -8707,7 +8707,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         },
         {
           "__class__": "OutputStream",
-          "index": 1,
+          "index": 0,
           "node": {
             "__class__": "OutputNode",
             "filename": "output2.mp4",
@@ -9637,7 +9637,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
     },
     "edge-node-6-0-node-0-1" => {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -10146,7 +10146,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
     },
     {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -10241,7 +10241,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 3`] = `"{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":1,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 3`] = `"{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":1,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 1`] = `
 {
