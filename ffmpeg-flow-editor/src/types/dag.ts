@@ -14,9 +14,10 @@ export class StreamType extends Serializable {
 export abstract class Node extends Serializable {
   constructor(
     public kwargs: Record<string, string | number | boolean>,
-    public inputs: (Stream | null)[]
+    public inputs: (Stream | null)[],
+    id?: string
   ) {
-    super();
+    super(id);
   }
 }
 
@@ -36,9 +37,10 @@ export class FilterNode extends Node {
     inputs: (FilterableStream | null)[],
     public input_typings: StreamType[],
     public output_typings: StreamType[],
-    kwargs: Record<string, string | number | boolean> = {}
+    kwargs: Record<string, string | number | boolean> = {},
+    id?: string
   ) {
-    super(kwargs, inputs);
+    super(kwargs, inputs, id);
   }
 }
 
@@ -46,9 +48,10 @@ export class InputNode extends Node {
   constructor(
     public filename: string,
     inputs: [] = [],
-    kwargs: Record<string, string | number | boolean> = {}
+    kwargs: Record<string, string | number | boolean> = {},
+    id?: string
   ) {
-    super(kwargs, inputs);
+    super(kwargs, inputs, id);
   }
 }
 
@@ -56,18 +59,20 @@ export class OutputNode extends Node {
   constructor(
     public filename: string,
     inputs: (FilterableStream | null)[],
-    kwargs: Record<string, string | number | boolean> = {}
+    kwargs: Record<string, string | number | boolean> = {},
+    id?: string
   ) {
-    super(kwargs, inputs);
+    super(kwargs, inputs, id);
   }
 }
 
 export class GlobalNode extends Node {
   constructor(
     inputs: (OutputStream | null)[],
-    kwargs: Record<string, string | number | boolean> = {}
+    kwargs: Record<string, string | number | boolean> = {},
+    id?: string
   ) {
-    super(kwargs, inputs);
+    super(kwargs, inputs, id);
   }
 }
 
