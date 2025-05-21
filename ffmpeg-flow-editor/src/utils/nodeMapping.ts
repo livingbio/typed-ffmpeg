@@ -142,7 +142,7 @@ export class NodeMappingManager {
       output_typings,
     };
   }
-  private _addGlobalNodeInternal(
+  private _addGlobalNode(
     inputs: (OutputStream | null)[],
     kwargs: Record<string, string | number | boolean>
   ): string {
@@ -151,7 +151,7 @@ export class NodeMappingManager {
     return this.globalNodeId;
   }
 
-  private _addOutputNodeInternal(
+  private _addOutputNode(
     filename: string,
     inputs: (FilterableStream | null)[],
     kwargs: Record<string, string | number | boolean>
@@ -162,7 +162,7 @@ export class NodeMappingManager {
     return id;
   }
 
-  private _addInputNodeInternal(
+  private _addInputNode(
     filename: string,
     kwargs: Record<string, string | number | boolean>
   ): string {
@@ -172,7 +172,7 @@ export class NodeMappingManager {
     return id;
   }
 
-  private _addFilterNodeInternal(
+  private _addFilterNode(
     name: string,
     inputs: (FilterableStream | null)[],
     input_typings: StreamType[],
@@ -186,7 +186,7 @@ export class NodeMappingManager {
   }
 
   // Add a node to the mapping
-  private async _addNodeToMappingInternal(params: {
+  private async _addNode(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
@@ -198,16 +198,13 @@ export class NodeMappingManager {
     let nodeId: string;
     switch (params.type) {
       case 'global':
-        nodeId = this._addGlobalNodeInternal(
-          params.inputs as (OutputStream | null)[],
-          params.kwargs || {}
-        );
+        nodeId = this._addGlobalNode(params.inputs as (OutputStream | null)[], params.kwargs || {});
         break;
       case 'output':
         if (!params.filename) {
           throw new Error('OutputNode requires filename');
         }
-        nodeId = this._addOutputNodeInternal(
+        nodeId = this._addOutputNode(
           params.filename,
           params.inputs as (FilterableStream | null)[],
           params.kwargs || {}
@@ -217,7 +214,7 @@ export class NodeMappingManager {
         if (!params.filename) {
           throw new Error('InputNode requires filename');
         }
-        nodeId = this._addInputNodeInternal(params.filename, params.kwargs || {});
+        nodeId = this._addInputNode(params.filename, params.kwargs || {});
         break;
 
       case 'filter': {
@@ -234,7 +231,7 @@ export class NodeMappingManager {
           params.filter,
           params.kwargs || {}
         );
-        nodeId = this._addFilterNodeInternal(
+        nodeId = this._addFilterNode(
           params.name,
           params.inputs as (FilterableStream | null)[],
           input_typings.map((t) => new StreamType(t)),
@@ -247,7 +244,7 @@ export class NodeMappingManager {
     return nodeId;
   }
 
-  async addNodeToMapping(params: {
+  async addNode(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
@@ -255,13 +252,13 @@ export class NodeMappingManager {
     filter?: FFMpegFilter;
     kwargs?: Record<string, string | number | boolean>;
   }): Promise<string> {
-    const nodeId = await this._addNodeToMappingInternal(params);
+    const nodeId = await this._addNode(params);
     this.emitUpdate();
     return nodeId;
   }
 
   // Remove a node from the mapping
-  removeNodeFromMapping(nodeId: string): void {
+  removeNode(nodeId: string): void {
     const node = this.nodeMapping.nodeMap.get(nodeId);
     if (!node) {
       throw new Error(`Node ${nodeId} not found in mapping`);
@@ -314,7 +311,7 @@ export class NodeMappingManager {
   }
 
   // Reset mapping state
-  resetNodeMapping() {
+  resetNode() {
     this.nodeMapping = {
       nodeMap: new Map(),
     };
@@ -332,7 +329,7 @@ export class NodeMappingManager {
   }
 
   // Add an edge to the mapping
-  addEdgeToMapping(
+  addEdge(
     sourceNodeId: string,
     targetNodeId: string,
     sourceIndex: number,
@@ -527,20 +524,20 @@ export class NodeMappingManager {
         // Add node to mapping
         let nodeId: string;
         if (item instanceof FilterNode) {
-          nodeId = await this._addNodeToMappingInternal({
+          nodeId = await this._addNode({
             type: 'filter',
             name: item.name,
             inputs: item.inputs,
             kwargs: item.kwargs,
           });
         } else if (item instanceof InputNode) {
-          nodeId = await this._addNodeToMappingInternal({
+          nodeId = await this._addNode({
             type: 'input',
             filename: item.filename,
             kwargs: item.kwargs,
           });
         } else if (item instanceof OutputNode) {
-          nodeId = await this._addNodeToMappingInternal({
+          nodeId = await this._addNode({
             type: 'output',
             filename: item.filename,
             inputs: item.inputs,
@@ -568,7 +565,7 @@ export class NodeMappingManager {
               const sourceNodeId = await this._recursiveAddInternal(input.node);
               // Add the edge - using the stream's index property
               const sourceIndex = input.index !== null ? input.index : 0;
-              this.addEdgeToMapping(sourceNodeId, nodeId, sourceIndex, i);
+              this.addEdge(sourceNodeId, nodeId, sourceIndex, i);
             }
           }
         }

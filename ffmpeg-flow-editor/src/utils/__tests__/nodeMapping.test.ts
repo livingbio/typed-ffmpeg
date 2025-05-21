@@ -88,26 +88,26 @@ describe('Node Mapping', () => {
 describe('recursiveAddToMapping', () => {
   it('should recursively add nodes and streams to the mapping', async () => {
     const nodeMapping = new NodeMappingManager();
-    const sourceId = await nodeMapping.addNodeToMapping({
+    const sourceId = await nodeMapping.addNode({
       type: 'input',
       filename: 'input.mp4',
     });
 
-    const target1Id = await nodeMapping.addNodeToMapping({
+    const target1Id = await nodeMapping.addNode({
       type: 'filter',
       name: 'scale',
       inputs: [null],
       kwargs: { width: 640, height: 480 },
     });
 
-    const target2Id = await nodeMapping.addNodeToMapping({
+    const target2Id = await nodeMapping.addNode({
       type: 'output',
       filename: 'output.mp4',
     });
 
     // Add edges to mapping
-    const edge1 = nodeMapping.addEdgeToMapping(sourceId, target1Id, 0, 0);
-    const edge2 = nodeMapping.addEdgeToMapping(target1Id, target2Id, 0, 0);
+    const edge1 = nodeMapping.addEdge(sourceId, target1Id, 0, 0);
+    const edge2 = nodeMapping.addEdge(target1Id, target2Id, 0, 0);
 
     // Verify nodes are in mapping
     expect(nodeMapping.getNodeMapping().nodeMap.get(sourceId)).toBeInstanceOf(InputNode);
@@ -123,26 +123,26 @@ describe('recursiveAddToMapping', () => {
     const nodeMapping = new NodeMappingManager();
 
     // Add nodes to mapping
-    const inputId = await nodeMapping.addNodeToMapping({
+    const inputId = await nodeMapping.addNode({
       type: 'input',
       filename: 'input.mp4',
       kwargs: {},
     });
-    const filterId = await nodeMapping.addNodeToMapping({
+    const filterId = await nodeMapping.addNode({
       type: 'filter',
       name: 'scale',
       inputs: [null],
       kwargs: { width: 640, height: 480 },
     });
-    const outputId = await nodeMapping.addNodeToMapping({
+    const outputId = await nodeMapping.addNode({
       type: 'output',
       filename: 'output.mp4',
       kwargs: {},
     });
 
     // Add edges to mapping
-    const edge1 = nodeMapping.addEdgeToMapping(inputId, filterId, 0, 0);
-    const edge2 = nodeMapping.addEdgeToMapping(filterId, outputId, 0, 0);
+    const edge1 = nodeMapping.addEdge(inputId, filterId, 0, 0);
+    const edge2 = nodeMapping.addEdge(filterId, outputId, 0, 0);
 
     // Verify nodes are in mapping
     expect(nodeMapping.getNodeMapping().nodeMap.get(inputId)).toBeInstanceOf(InputNode);
