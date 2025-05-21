@@ -215,7 +215,7 @@ const createEdge = (
   const sourceIndex = parseInt(sourceHandle.split('-')[1] || '0');
   const targetIndex = parseInt(targetHandle.split('-')[1] || '0');
 
-  const edgeId = nodeMappingManager.addEdgeToMapping(source, target, sourceIndex, targetIndex);
+  const edgeId = nodeMappingManager.addEdge(source, target, sourceIndex, targetIndex);
 
   // Get the stream from the edge mapping
   const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
