@@ -186,7 +186,7 @@ export class NodeMappingManager {
   }
 
   // Add a node to the mapping
-  async addNodeToMapping(params: {
+  private async _addNodeToMappingInternal(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
@@ -244,6 +244,18 @@ export class NodeMappingManager {
         break;
       }
     }
+    return nodeId;
+  }
+
+  async addNodeToMapping(params: {
+    type: 'filter' | 'input' | 'output' | 'global';
+    name?: string;
+    filename?: string;
+    inputs?: (FilterableStream | null | OutputStream)[];
+    filter?: FFMpegFilter;
+    kwargs?: Record<string, string | number | boolean>;
+  }): Promise<string> {
+    const nodeId = await this._addNodeToMappingInternal(params);
     this.emitUpdate();
     return nodeId;
   }
@@ -547,7 +559,7 @@ export class NodeMappingManager {
   }
 
   // Recursively add a node and all connected nodes/streams to the mapping
-  async recursiveAddToMapping(
+  private async _recursiveAddInternal(
     item:
       | FilterNode
       | InputNode
@@ -560,96 +572,102 @@ export class NodeMappingManager {
       | OutputStream
       | GlobalStream
   ): Promise<string> {
-    // Suppress events during the recursive operation
-    // We'll emit a single event at the end
-    const emitUpdate = this.emitUpdate;
-    this.emitUpdate = () => {}; // No-op
-
     let result: string;
 
-    try {
-      // If it's a node, add it to the mapping
-      if (
-        item instanceof FilterNode ||
-        item instanceof InputNode ||
-        item instanceof OutputNode ||
-        item instanceof GlobalNode
-      ) {
-        // Check if node is already in the mapping
-        if (item.id && this.nodeMapping.nodeMap.has(item.id)) {
-          result = item.id;
-        } else {
-          // Add node to mapping
-          let nodeId: string;
-          if (item instanceof FilterNode) {
-            nodeId = await this.addNodeToMapping({
-              type: 'filter',
-              name: item.name,
-              inputs: item.inputs,
-              kwargs: item.kwargs,
-            });
-          } else if (item instanceof InputNode) {
-            nodeId = await this.addNodeToMapping({
-              type: 'input',
-              filename: item.filename,
-              kwargs: item.kwargs,
-            });
-          } else if (item instanceof OutputNode) {
-            nodeId = await this.addNodeToMapping({
-              type: 'output',
-              filename: item.filename,
-              inputs: item.inputs,
-              kwargs: item.kwargs,
-            });
-          } else if (item instanceof GlobalNode) {
-            // For GlobalNode, we update the existing one
-            if (item.inputs && item.inputs.length > 0) {
-              this.globalNode.inputs = item.inputs;
-            }
-            if (item.kwargs) {
-              this.globalNode.kwargs = { ...this.globalNode.kwargs, ...item.kwargs };
-            }
-            nodeId = this.globalNodeId;
-          } else {
-            throw new Error('Invalid node type');
-          }
-
-          // Recursively add all input streams to the mapping
-          if (item.inputs) {
-            for (let i = 0; i < item.inputs.length; i++) {
-              const input = item.inputs[i];
-              if (input) {
-                // Recursively add the input stream's node
-                const sourceNodeId = await this.recursiveAddToMapping(input.node);
-                // Add the edge - using the stream's index property
-                const sourceIndex = input.index !== null ? input.index : 0;
-                this.addEdgeToMapping(sourceNodeId, nodeId, sourceIndex, i);
-              }
-            }
-          }
-
-          result = nodeId;
-        }
-      }
-      // If it's a stream, recursively add its node and return the node ID
-      else if (
-        item instanceof VideoStream ||
-        item instanceof AudioStream ||
-        item instanceof AVStream ||
-        item instanceof OutputStream ||
-        item instanceof GlobalStream
-      ) {
-        result = await this.recursiveAddToMapping(item.node);
+    // If it's a node, add it to the mapping
+    if (
+      item instanceof FilterNode ||
+      item instanceof InputNode ||
+      item instanceof OutputNode ||
+      item instanceof GlobalNode
+    ) {
+      // Check if node is already in the mapping
+      if (item.id && this.nodeMapping.nodeMap.has(item.id)) {
+        result = item.id;
       } else {
-        throw new Error('Invalid item type');
+        // Add node to mapping
+        let nodeId: string;
+        if (item instanceof FilterNode) {
+          nodeId = await this._addNodeToMappingInternal({
+            type: 'filter',
+            name: item.name,
+            inputs: item.inputs,
+            kwargs: item.kwargs,
+          });
+        } else if (item instanceof InputNode) {
+          nodeId = await this._addNodeToMappingInternal({
+            type: 'input',
+            filename: item.filename,
+            kwargs: item.kwargs,
+          });
+        } else if (item instanceof OutputNode) {
+          nodeId = await this._addNodeToMappingInternal({
+            type: 'output',
+            filename: item.filename,
+            inputs: item.inputs,
+            kwargs: item.kwargs,
+          });
+        } else if (item instanceof GlobalNode) {
+          // For GlobalNode, we update the existing one
+          if (item.inputs && item.inputs.length > 0) {
+            this.globalNode.inputs = item.inputs;
+          }
+          if (item.kwargs) {
+            this.globalNode.kwargs = { ...this.globalNode.kwargs, ...item.kwargs };
+          }
+          nodeId = this.globalNodeId;
+        } else {
+          throw new Error('Invalid node type');
+        }
+
+        // Recursively add all input streams to the mapping
+        if (item.inputs) {
+          for (let i = 0; i < item.inputs.length; i++) {
+            const input = item.inputs[i];
+            if (input) {
+              // Recursively add the input stream's node
+              const sourceNodeId = await this._recursiveAddInternal(input.node);
+              // Add the edge - using the stream's index property
+              const sourceIndex = input.index !== null ? input.index : 0;
+              this.addEdgeToMapping(sourceNodeId, nodeId, sourceIndex, i);
+            }
+          }
+        }
+
+        result = nodeId;
       }
-    } finally {
-      // Restore the original emitUpdate function
-      this.emitUpdate = emitUpdate;
-      // Emit a single update event at the end
-      this.emitUpdate();
+    }
+    // If it's a stream, recursively add its node and return the node ID
+    else if (
+      item instanceof VideoStream ||
+      item instanceof AudioStream ||
+      item instanceof AVStream ||
+      item instanceof OutputStream ||
+      item instanceof GlobalStream
+    ) {
+      result = await this._recursiveAddInternal(item.node);
+    } else {
+      throw new Error('Invalid item type');
     }
 
+    return result;
+  }
+
+  public async recursiveAddToMapping(
+    item:
+      | FilterNode
+      | InputNode
+      | OutputNode
+      | GlobalNode
+      | FilterableStream
+      | VideoStream
+      | AudioStream
+      | AVStream
+      | OutputStream
+      | GlobalStream
+  ): Promise<string> {
+    const result = await this._recursiveAddInternal(item);
+    this.emitUpdate();
     return result;
   }
 

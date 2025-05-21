@@ -743,7 +743,7 @@ describe('Node Mapping', () => {
 
     // Deserialize
     const deserialized = loads(jsonString);
-    await nodeMappingManager.recursiveAddToMapping(
+    await nodeMappingManager._recursiveAddInternal(
       deserialized as
         | FilterNode
         | InputNode
