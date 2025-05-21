@@ -258,7 +258,8 @@ export class NodeMappingManager {
     this.nodeIdCounter = 0;
 
     // Create a new global node
-    this.globalNode = new GlobalNode([], {}, this.generateNodeId());
+    this.globalNodeId = this.generateNodeId();
+    this.globalNode = new GlobalNode([], {}, this.globalNodeId);
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
     this.emitUpdate();
   }
