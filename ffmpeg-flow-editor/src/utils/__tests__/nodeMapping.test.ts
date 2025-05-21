@@ -16,10 +16,15 @@ import { NodeMappingManager } from '../nodeMapping';
 import { loads, clearClassRegistry, registerClasses } from '../../utils/serialize';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
+import { setupPyodideMock } from './testUtils';
 
 // Clear and register classes before tests
 beforeAll(() => {
   clearClassRegistry();
+
+  beforeEach(() => {
+    setupPyodideMock();
+  });
 
   // Register all classes explicitly
   registerClasses({
@@ -730,6 +735,7 @@ describe('Node Mapping', () => {
 
   beforeEach(() => {
     nodeMappingManager = new NodeMappingManager();
+    setupPyodideMock();
   });
 
   it.each(testFiles)('should handle $name case', async ({ data }) => {

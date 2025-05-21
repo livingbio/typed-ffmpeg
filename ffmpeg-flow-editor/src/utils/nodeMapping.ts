@@ -1,4 +1,4 @@
-import { FFMpegFilter } from '@/types/ffmpeg';
+import { FFMpegFilter, predefinedFilters } from '../types/ffmpeg';
 import {
   FilterNode,
   InputNode,
@@ -142,6 +142,49 @@ export class NodeMappingManager {
       output_typings,
     };
   }
+  private _addGlobalNodeInternal(
+    inputs: (OutputStream | null)[],
+    kwargs: Record<string, string | number | boolean>
+  ): string {
+    this.globalNode.inputs = inputs;
+    this.globalNode.kwargs = kwargs;
+    return this.globalNodeId;
+  }
+
+  private _addOutputNodeInternal(
+    filename: string,
+    inputs: (FilterableStream | null)[],
+    kwargs: Record<string, string | number | boolean>
+  ): string {
+    const id = this.generateNodeId();
+    const node = new OutputNode(filename, inputs, kwargs, id);
+    this.nodeMapping.nodeMap.set(id, node);
+    return id;
+  }
+
+  private _addInputNodeInternal(
+    filename: string,
+    kwargs: Record<string, string | number | boolean>
+  ): string {
+    const id = this.generateNodeId();
+    const node = new InputNode(filename, [], kwargs, id);
+    this.nodeMapping.nodeMap.set(id, node);
+    return id;
+  }
+
+  private _addFilterNodeInternal(
+    name: string,
+    inputs: (FilterableStream | null)[],
+    input_typings: StreamType[],
+    output_typings: StreamType[],
+    kwargs: Record<string, string | number | boolean>
+  ): string {
+    const id = this.generateNodeId();
+    const node = new FilterNode(name, inputs, input_typings, output_typings, kwargs, id);
+    this.nodeMapping.nodeMap.set(id, node);
+    return id;
+  }
+
   // Add a node to the mapping
   async addNodeToMapping(params: {
     type: 'filter' | 'input' | 'output' | 'global';
@@ -152,82 +195,55 @@ export class NodeMappingManager {
     kwargs?: Record<string, string | number | boolean>;
   }): Promise<string> {
     // Special handling for GlobalNode
-    if (params.type === 'global') {
-      // Update the existing GlobalNode's properties
-      if (params.inputs) {
-        this.globalNode.inputs = params.inputs as unknown as OutputStream[];
-      } else {
-        // Ensure the global node has empty inputs array
-        this.globalNode.inputs = [];
-      }
-
-      if (params.kwargs) {
-        this.globalNode.kwargs = { ...this.globalNode.kwargs, ...params.kwargs };
-      }
-      this.emitUpdate();
-      return this.globalNodeId;
-    }
-
-    let node: FilterNode | InputNode | OutputNode;
-    let filterInputs: (FilterableStream | null)[] | undefined;
-    let outputInputs: (FilterableStream | null)[] | undefined;
-    let inputFilename: string;
-    let outputFilename: string;
-
+    let nodeId: string;
     switch (params.type) {
+      case 'global':
+        nodeId = this._addGlobalNodeInternal(
+          params.inputs as (OutputStream | null)[],
+          params.kwargs || {}
+        );
+        break;
+      case 'output':
+        if (!params.filename) {
+          throw new Error('OutputNode requires filename');
+        }
+        nodeId = this._addOutputNodeInternal(
+          params.filename,
+          params.inputs as (FilterableStream | null)[],
+          params.kwargs || {}
+        );
+        break;
+      case 'input':
+        if (!params.filename) {
+          throw new Error('InputNode requires filename');
+        }
+        nodeId = this._addInputNodeInternal(params.filename, params.kwargs || {});
+        break;
+
       case 'filter': {
         if (!params.name) {
-          throw new Error('FilterNode requires name, input_typings, and output_typings');
+          throw new Error('FilterNode requires name');
         }
         if (!params.filter) {
-          throw new Error('FilterNode requires filter');
+          params.filter = predefinedFilters.find((f) => f.name === params.name);
         }
-
-        // Initialize with proper input array length based on input_typings
+        if (!params.filter) {
+          throw new Error(`Filter ${params.name} not found`);
+        }
         const { input_typings, output_typings } = await this.evaluateIOtypings(
           params.filter,
           params.kwargs || {}
         );
-        filterInputs = params.inputs || Array(input_typings.length).fill(null);
-
-        node = new FilterNode(
+        nodeId = this._addFilterNodeInternal(
           params.name,
-          filterInputs as (FilterableStream | null)[],
+          params.inputs as (FilterableStream | null)[],
           input_typings.map((t) => new StreamType(t)),
           output_typings.map((t) => new StreamType(t)),
-          params.kwargs
+          params.kwargs || {}
         );
         break;
       }
-
-      case 'input':
-        // Generate random filename if not provided
-        if (!params.filename) {
-          throw new Error('InputNode requires filename');
-        }
-        inputFilename = params.filename;
-        node = new InputNode(inputFilename, [], params.kwargs);
-        break;
-
-      case 'output':
-        // Generate random filename if not provided
-        if (!params.filename) {
-          throw new Error('OutputNode requires filename');
-        }
-        outputFilename = params.filename;
-        // Initialize with a single null input if none provided
-        outputInputs = params.inputs ? (params.inputs as (FilterableStream | null)[]) : [null];
-
-        node = new OutputNode(outputFilename, outputInputs, params.kwargs);
-        break;
-
-      default:
-        throw new Error('Invalid node type');
     }
-
-    const nodeId = this.generateNodeId();
-    node.id = nodeId;
-    this.nodeMapping.nodeMap.set(nodeId, node);
     this.emitUpdate();
     return nodeId;
   }
