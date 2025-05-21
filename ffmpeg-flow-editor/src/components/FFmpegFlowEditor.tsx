@@ -290,7 +290,8 @@ export default function FFmpegFlowEditor() {
         setNodes((nds) =>
           nds.map((node) => {
             if (node.id === id) {
-              return {
+              // Create a new node with updated data
+              const updatedNode = {
                 ...node,
                 data: {
                   ...node.data,
@@ -298,6 +299,7 @@ export default function FFmpegFlowEditor() {
                   handles: updatedNodeData.handles,
                 },
               };
+              return updatedNode;
             }
             return node;
           })

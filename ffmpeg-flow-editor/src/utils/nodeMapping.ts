@@ -526,12 +526,11 @@ export class NodeMappingManager {
       if (!filter) {
         throw new Error(`Filter ${node.name} not found`);
       }
-      const { input_typings, output_typings } = await this.evaluateIOtypings(filter, {
-        ...node.kwargs,
-        ...updates.kwargs,
-      });
+      const merge_kwargs = { ...node.kwargs, ...updates.kwargs };
+      const { input_typings, output_typings } = await this.evaluateIOtypings(filter, merge_kwargs);
       node.input_typings = input_typings.map((t) => new StreamType(t));
       node.output_typings = output_typings.map((t) => new StreamType(t));
+      node.kwargs = merge_kwargs;
       this.ensureNodeInputs(node, node.input_typings.length);
 
       // Update node data handles
