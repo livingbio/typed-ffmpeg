@@ -533,6 +533,21 @@ export class NodeMappingManager {
       node.input_typings = input_typings.map((t) => new StreamType(t));
       node.output_typings = output_typings.map((t) => new StreamType(t));
       this.ensureNodeInputs(node, node.input_typings.length);
+
+      // Update node data handles
+      const nodeData = this.nodeMapping.nodeData.get(nodeId);
+      if (nodeData) {
+        nodeData.handles = {
+          inputs: node.input_typings.map((t, index) => ({
+            id: `input-${index}`,
+            type: t.value,
+          })),
+          outputs: node.output_typings.map((t, index) => ({
+            id: `output-${index}`,
+            type: t.value,
+          })),
+        };
+      }
     }
 
     if (updates.kwargs) {
