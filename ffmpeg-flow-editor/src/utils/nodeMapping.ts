@@ -462,7 +462,7 @@ export class NodeMappingManager {
       kwargs?: Record<string, string | number | boolean>;
       filename?: string;
     }
-  ): void {
+  ): Promise<void> {
     const node = this.nodeMapping.nodeMap.get(nodeId);
     if (!node) {
       throw new Error(`Node ${nodeId} not found in mapping`);
