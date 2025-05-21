@@ -24,9 +24,10 @@ export abstract class Node extends Serializable {
 export abstract class Stream extends Serializable {
   constructor(
     public node: Node,
-    public index: number | null
+    public index: number | null,
+    id?: string
   ) {
-    super();
+    super(id);
   }
 }
 
@@ -78,37 +79,37 @@ export class GlobalNode extends Node {
 
 // Stream types
 export class FilterableStream extends Stream {
-  constructor(node: FilterNode | InputNode, index: number | null = null) {
-    super(node, index);
+  constructor(node: FilterNode | InputNode, index: number | null = null, id?: string) {
+    super(node, index, id);
   }
 }
 
 export class VideoStream extends FilterableStream {
-  constructor(node: FilterNode | InputNode, index: number | null = null) {
-    super(node, index);
+  constructor(node: FilterNode | InputNode, index: number | null = null, id?: string) {
+    super(node, index, id);
   }
 }
 
 export class AudioStream extends FilterableStream {
-  constructor(node: FilterNode | InputNode, index: number | null = null) {
-    super(node, index);
+  constructor(node: FilterNode | InputNode, index: number | null = null, id?: string) {
+    super(node, index, id);
   }
 }
 
 export class AVStream extends FilterableStream {
-  constructor(node: FilterNode | InputNode, index: number | null = null) {
-    super(node, index);
+  constructor(node: FilterNode | InputNode, index: number | null = null, id?: string) {
+    super(node, index, id);
   }
 }
 
 export class OutputStream extends Stream {
-  constructor(node: OutputNode, index: number | null = null) {
-    super(node, index);
+  constructor(node: OutputNode, index: number | null = null, id?: string) {
+    super(node, index, id);
   }
 }
 
 export class GlobalStream extends Stream {
-  constructor(node: GlobalNode, index: number | null = null) {
-    super(node, index);
+  constructor(node: GlobalNode, index: number | null = null, id?: string) {
+    super(node, index, id);
   }
 }

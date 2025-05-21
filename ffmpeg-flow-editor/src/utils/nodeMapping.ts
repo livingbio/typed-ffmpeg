@@ -23,8 +23,6 @@ export interface NodeMapping {
 export interface EdgeMapping {
   // Maps ReactFlow edge ID to Stream
   edgeMap: Map<string, Stream>;
-  // Maps Stream to ReactFlow edge ID (for reverse lookup)
-  reverseMap: Map<Stream, string>;
   // Maps Stream to target node ID and index
   targetMap: Map<Stream, { nodeId: string; index: number }>;
 }
@@ -48,7 +46,6 @@ export class NodeMappingManager {
 
   private edgeMapping: EdgeMapping = {
     edgeMap: new Map(),
-    reverseMap: new Map(),
     targetMap: new Map(),
   };
 
@@ -228,7 +225,6 @@ export class NodeMappingManager {
         }
         this.edgeMapping.edgeMap.delete(edgeId);
         this.edgeMapping.targetMap.delete(stream);
-        this.edgeMapping.reverseMap.delete(stream);
       }
     }
 
@@ -257,7 +253,6 @@ export class NodeMappingManager {
     };
     this.edgeMapping = {
       edgeMap: new Map(),
-      reverseMap: new Map(),
       targetMap: new Map(),
     };
     this.nodeIdCounter = 0;
@@ -358,7 +353,6 @@ export class NodeMappingManager {
     // Create edge ID and add to mapping
     const edgeId = this.generateEdgeId(sourceNodeId, targetNodeId, sourceIndex, targetIndex);
     this.edgeMapping.edgeMap.set(edgeId, stream);
-    this.edgeMapping.reverseMap.set(stream, edgeId);
     this.edgeMapping.targetMap.set(stream, { nodeId: targetNodeId, index: targetIndex });
     this.emitUpdate();
     return edgeId;
@@ -383,7 +377,6 @@ export class NodeMappingManager {
     // Remove from mapping
     this.edgeMapping.edgeMap.delete(edgeId);
     this.edgeMapping.targetMap.delete(stream);
-    this.edgeMapping.reverseMap.delete(stream);
     this.emitUpdate();
   }
 

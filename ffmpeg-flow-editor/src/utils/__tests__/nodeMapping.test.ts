@@ -541,7 +541,7 @@ describe('nodeMapping', () => {
 
       expect(nodeMappingManager.getNodeMapping().nodeMap.size).toBe(1);
       expect(nodeMappingManager.getEdgeMapping().edgeMap.size).toBe(0);
-      expect(nodeMappingManager.getEdgeMapping().reverseMap.size).toBe(0);
+      expect(nodeMappingManager.getEdgeMapping().targetMap.size).toBe(0);
     });
   });
 
