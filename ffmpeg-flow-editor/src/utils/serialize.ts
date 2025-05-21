@@ -4,7 +4,7 @@ const classRegistry = new Map<string, Constructor<Serializable>>();
 
 // Base class for serializable objects
 export class Serializable {
-  id?: string; // Optional id field
+  constructor(public id?: string) {}
 
   // toJSON will be called by JSON.stringify
   toJSON(): Record<string, unknown> {

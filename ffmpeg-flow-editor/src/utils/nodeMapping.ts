@@ -23,8 +23,6 @@ export interface NodeMapping {
 export interface EdgeMapping {
   // Maps ReactFlow edge ID to Stream
   edgeMap: Map<string, Stream>;
-  // Maps Stream to ReactFlow edge ID (for reverse lookup)
-  reverseMap: Map<Stream, string>;
   // Maps Stream to target node ID and index
   targetMap: Map<Stream, { nodeId: string; index: number }>;
 }
@@ -48,7 +46,6 @@ export class NodeMappingManager {
 
   private edgeMapping: EdgeMapping = {
     edgeMap: new Map(),
-    reverseMap: new Map(),
     targetMap: new Map(),
   };
 
@@ -59,9 +56,8 @@ export class NodeMappingManager {
 
   constructor() {
     // Initialize the global node
-    this.globalNode = new GlobalNode([], {});
-    this.globalNodeId = this.generateNodeId(this.globalNode);
-    this.globalNode.id = this.globalNodeId;
+    this.globalNodeId = this.generateNodeId();
+    this.globalNode = new GlobalNode([], {}, this.globalNodeId);
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
   }
 
@@ -87,17 +83,8 @@ export class NodeMappingManager {
   }
 
   // Helper function to generate unique ID for a node
-  private generateNodeId(node: FilterNode | InputNode | OutputNode | GlobalNode): string {
+  private generateNodeId(): string {
     const id = this.nodeIdCounter++;
-    if (node instanceof InputNode) {
-      return `input-${id}`;
-    } else if (node instanceof OutputNode) {
-      return `output-${id}`;
-    } else if (node instanceof FilterNode) {
-      return `filter-${node.name}-${id}`;
-    } else if (node instanceof GlobalNode) {
-      return `global-${id}`;
-    }
     return `node-${id}`;
   }
 
@@ -199,7 +186,7 @@ export class NodeMappingManager {
         throw new Error('Invalid node type');
     }
 
-    const nodeId = this.generateNodeId(node);
+    const nodeId = this.generateNodeId();
     node.id = nodeId;
     this.nodeMapping.nodeMap.set(nodeId, node);
     this.emitUpdate();
@@ -238,7 +225,6 @@ export class NodeMappingManager {
         }
         this.edgeMapping.edgeMap.delete(edgeId);
         this.edgeMapping.targetMap.delete(stream);
-        this.edgeMapping.reverseMap.delete(stream);
       }
     }
 
@@ -267,15 +253,13 @@ export class NodeMappingManager {
     };
     this.edgeMapping = {
       edgeMap: new Map(),
-      reverseMap: new Map(),
       targetMap: new Map(),
     };
     this.nodeIdCounter = 0;
 
     // Create a new global node
-    this.globalNode = new GlobalNode([], {});
-    this.globalNodeId = this.generateNodeId(this.globalNode);
-    this.globalNode.id = this.globalNodeId;
+    this.globalNodeId = this.generateNodeId();
+    this.globalNode = new GlobalNode([], {}, this.globalNodeId);
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
     this.emitUpdate();
   }
@@ -370,7 +354,6 @@ export class NodeMappingManager {
     // Create edge ID and add to mapping
     const edgeId = this.generateEdgeId(sourceNodeId, targetNodeId, sourceIndex, targetIndex);
     this.edgeMapping.edgeMap.set(edgeId, stream);
-    this.edgeMapping.reverseMap.set(stream, edgeId);
     this.edgeMapping.targetMap.set(stream, { nodeId: targetNodeId, index: targetIndex });
     this.emitUpdate();
     return edgeId;
@@ -395,7 +378,6 @@ export class NodeMappingManager {
     // Remove from mapping
     this.edgeMapping.edgeMap.delete(edgeId);
     this.edgeMapping.targetMap.delete(stream);
-    this.edgeMapping.reverseMap.delete(stream);
     this.emitUpdate();
   }
 
