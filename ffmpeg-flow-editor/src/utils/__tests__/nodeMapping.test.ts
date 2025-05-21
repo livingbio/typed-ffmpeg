@@ -55,7 +55,7 @@ describe('nodeMapping', () => {
       expect(id).toMatch(/^filter-test-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(FilterNode);
-      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(node.id).toBe(id);
     });
 
     it('should add an InputNode to mapping', async () => {
@@ -66,7 +66,7 @@ describe('nodeMapping', () => {
       expect(id).toMatch(/^input-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(InputNode);
-      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(node.id).toBe(id);
     });
 
     it('should add an OutputNode to mapping', async () => {
@@ -78,7 +78,7 @@ describe('nodeMapping', () => {
       expect(id).toMatch(/^output-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(OutputNode);
-      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(node.id).toBe(id);
     });
 
     it('should add a GlobalNode to mapping', async () => {
@@ -89,7 +89,7 @@ describe('nodeMapping', () => {
       expect(id).toMatch(/^global-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(GlobalNode);
-      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBe(id);
+      expect(node.id).toBe(id);
     });
 
     it('should add a filter node to the mapping', async () => {
@@ -154,7 +154,7 @@ describe('nodeMapping', () => {
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       nodeMappingManager.removeNodeFromMapping(id);
       expect(nodeMappingManager.getNodeMapping().nodeMap.get(id)).toBeUndefined();
-      expect(nodeMappingManager.getNodeMapping().reverseMap.get(node)).toBeUndefined();
+      expect(node.id).toBeUndefined();
     });
 
     it('should remove a node and all its connected edges', async () => {
@@ -540,7 +540,6 @@ describe('nodeMapping', () => {
       nodeMappingManager.resetNodeMapping();
 
       expect(nodeMappingManager.getNodeMapping().nodeMap.size).toBe(1);
-      expect(nodeMappingManager.getNodeMapping().reverseMap.size).toBe(1);
       expect(nodeMappingManager.getEdgeMapping().edgeMap.size).toBe(0);
       expect(nodeMappingManager.getEdgeMapping().reverseMap.size).toBe(0);
     });

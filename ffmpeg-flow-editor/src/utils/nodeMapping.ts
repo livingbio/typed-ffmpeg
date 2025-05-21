@@ -18,8 +18,6 @@ import { EventEmitter } from 'events';
 export interface NodeMapping {
   // Maps ReactFlow node ID to DAG node
   nodeMap: Map<string, FilterNode | InputNode | OutputNode | GlobalNode>;
-  // Maps DAG node to ReactFlow node ID (for reverse lookup)
-  reverseMap: Map<FilterNode | InputNode | OutputNode | GlobalNode, string>;
 }
 
 export interface EdgeMapping {
@@ -46,7 +44,6 @@ export type NodeMappingEventType = (typeof NODE_MAPPING_EVENTS)[keyof typeof NOD
 export class NodeMappingManager {
   private nodeMapping: NodeMapping = {
     nodeMap: new Map(),
-    reverseMap: new Map(),
   };
 
   private edgeMapping: EdgeMapping = {
@@ -64,8 +61,8 @@ export class NodeMappingManager {
     // Initialize the global node
     this.globalNode = new GlobalNode([], {});
     this.globalNodeId = this.generateNodeId(this.globalNode);
+    this.globalNode.id = this.globalNodeId;
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
-    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
   }
 
   // Event handling methods
@@ -203,8 +200,8 @@ export class NodeMappingManager {
     }
 
     const nodeId = this.generateNodeId(node);
+    node.id = nodeId;
     this.nodeMapping.nodeMap.set(nodeId, node);
-    this.nodeMapping.reverseMap.set(node, nodeId);
     this.emitUpdate();
     return nodeId;
   }
@@ -221,9 +218,7 @@ export class NodeMappingManager {
     for (const [edgeId, stream] of this.edgeMapping.edgeMap) {
       const targetInfo = this.edgeMapping.targetMap.get(stream);
       const sourceNode = stream.node;
-      const sourceNodeId = this.nodeMapping.reverseMap.get(
-        sourceNode as FilterNode | InputNode | OutputNode | GlobalNode
-      );
+      const sourceNodeId = sourceNode.id;
 
       if ((targetInfo && targetInfo.nodeId === nodeId) || sourceNodeId === nodeId) {
         edgesToRemove.push(edgeId);
@@ -247,9 +242,11 @@ export class NodeMappingManager {
       }
     }
 
+    // Clear the node's id before removing it
+    node.id = undefined;
+
     // Remove the node
     this.nodeMapping.nodeMap.delete(nodeId);
-    this.nodeMapping.reverseMap.delete(node);
     this.emitUpdate();
   }
 
@@ -267,7 +264,6 @@ export class NodeMappingManager {
   resetNodeMapping() {
     this.nodeMapping = {
       nodeMap: new Map(),
-      reverseMap: new Map(),
     };
     this.edgeMapping = {
       edgeMap: new Map(),
@@ -279,8 +275,8 @@ export class NodeMappingManager {
     // Create a new global node
     this.globalNode = new GlobalNode([], {});
     this.globalNodeId = this.generateNodeId(this.globalNode);
+    this.globalNode.id = this.globalNodeId;
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
-    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
     this.emitUpdate();
   }
 
@@ -543,9 +539,8 @@ export class NodeMappingManager {
         item instanceof GlobalNode
       ) {
         // Check if node is already in the mapping
-        const existingNodeId = this.nodeMapping.reverseMap.get(item);
-        if (existingNodeId) {
-          result = existingNodeId;
+        if (item.id && this.nodeMapping.nodeMap.has(item.id)) {
+          result = item.id;
         } else {
           // Add node to mapping
           let nodeId: string;
