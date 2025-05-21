@@ -2718,7 +2718,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 1`] = `
 {
@@ -5438,7 +5438,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 1`] = `
 {
@@ -13628,7 +13628,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 1`] = `
 {
@@ -13853,7 +13853,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 3`] = `"{"inputs":[{"node":{"filename":"tmp.mp4","inputs":[{"node":{"filename":"input1.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"kwargs":{},"__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"kwargs":{"hide_banner":true},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 3`] = `"{"kwargs":{"hide_banner":true},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"tmp.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 1`] = `
 {
@@ -14080,7 +14080,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 3`] = `"{"inputs":[{"node":{"filename":"tmp.mp4","inputs":[{"node":{"filename":"input1.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"kwargs":{},"__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"kwargs":{"dump":true,"hide_banner":true},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 3`] = `"{"kwargs":{"dump":true,"hide_banner":true},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"tmp.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 1`] = `
 {
@@ -14492,7 +14492,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 3`] = `"{"inputs":[{"node":{"filename":"output1.mp4","inputs":[{"node":{"filename":"input1.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"kwargs":{},"__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"filename":"output2.mp4","inputs":[{"node":{"filename":"input2.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"kwargs":{},"__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"kwargs":{"dump":true},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 3`] = `"{"kwargs":{"dump":true},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 1`] = `
 {
@@ -17236,7 +17236,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 3`] = `"{"inputs":[{"node":{"filename":"output1.mp4","inputs":[{"node":{"name":"drawtext","inputs":[{"node":{"name":"feedback","inputs":[{"node":{"filename":"input1.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"filename":"input2.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"kwargs":{},"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"kwargs":{},"__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"filename":"output2.mp4","inputs":[{"node":{"name":"drawtext","inputs":[{"node":{"name":"feedback","inputs":[{"node":{"filename":"input1.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"filename":"input2.mp4","inputs":[],"kwargs":{},"__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"kwargs":{},"__class__":"FilterNode"},"index":1,"__class__":"VideoStream"}],"input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"kwargs":{},"__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 3`] = `"{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":1,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 1`] = `
 {
@@ -17553,7 +17553,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 1`] = `
 {
@@ -20801,7 +20801,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 1`] = `
 {
@@ -21118,7 +21118,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 1`] = `
 {
@@ -21592,7 +21592,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 1`] = `
 {
@@ -23724,4 +23724,4 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 3`] = `"{"inputs":[],"kwargs":{},"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 3`] = `"{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}"`;
