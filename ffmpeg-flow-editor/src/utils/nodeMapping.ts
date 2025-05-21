@@ -497,67 +497,6 @@ export class NodeMappingManager {
     this.emitUpdate();
   }
 
-  /**
-   * Update multiple nodes at once
-   * @param updates Map of nodeId to update object
-   */
-  updateMultipleNodes(
-    updates: Map<
-      string,
-      {
-        input_typings?: StreamType[];
-        output_typings?: StreamType[];
-        kwargs?: Record<string, string | number | boolean>;
-        filename?: string;
-      }
-    >
-  ): void {
-    if (updates.size === 0) return;
-
-    let anyUpdates = false;
-
-    for (const [nodeId, updateData] of updates) {
-      try {
-        const node = this.nodeMapping.nodeMap.get(nodeId);
-        if (!node) {
-          console.error(`Node ${nodeId} not found in mapping`);
-          continue;
-        }
-
-        // Apply updates without emitting events
-        if (updateData.input_typings && node instanceof FilterNode) {
-          node.input_typings = updateData.input_typings;
-          this.ensureNodeInputs(node, updateData.input_typings.length);
-          anyUpdates = true;
-        }
-
-        if (updateData.output_typings && node instanceof FilterNode) {
-          node.output_typings = updateData.output_typings;
-          anyUpdates = true;
-        }
-
-        if (updateData.kwargs) {
-          node.kwargs = { ...node.kwargs, ...updateData.kwargs };
-          anyUpdates = true;
-        }
-
-        if (updateData.filename) {
-          if (node instanceof InputNode || node instanceof OutputNode) {
-            node.filename = updateData.filename;
-            anyUpdates = true;
-          }
-        }
-      } catch (error) {
-        console.error(`Error updating node ${nodeId}:`, error);
-      }
-    }
-
-    // Emit a single update event if any updates were made
-    if (anyUpdates) {
-      this.emitUpdate();
-    }
-  }
-
   // Recursively add a node and all connected nodes/streams to the mapping
   private async _recursiveAddInternal(
     item:
