@@ -1,5 +1,6 @@
 import { FFMpegFilter, predefinedFilters } from '../types/ffmpeg';
 import {
+  Node,
   FilterNode,
   InputNode,
   OutputNode,
@@ -17,10 +18,12 @@ import {
 import { dumps } from './serialize';
 import { EventEmitter } from 'events';
 import { evaluateFormula } from './formulaEvaluator';
+import { NodeData } from '@/types/node';
 
 export interface NodeMapping {
   // Maps ReactFlow node ID to DAG node
   nodeMap: Map<string, FilterNode | InputNode | OutputNode | GlobalNode>;
+  nodeData: Map<string, NodeData>;
 }
 
 export interface EdgeMapping {
@@ -45,6 +48,7 @@ export type NodeMappingEventType = (typeof NODE_MAPPING_EVENTS)[keyof typeof NOD
 export class NodeMappingManager {
   private nodeMapping: NodeMapping = {
     nodeMap: new Map(),
+    nodeData: new Map(),
   };
 
   private edgeMapping: EdgeMapping = {
@@ -61,7 +65,7 @@ export class NodeMappingManager {
     // Initialize the global node
     this.globalNodeId = this.generateNodeId();
     this.globalNode = new GlobalNode([], {}, this.globalNodeId);
-    this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
+    this._addGlobalNode([], {});
   }
 
   // Event handling methods
@@ -166,6 +170,15 @@ export class NodeMappingManager {
   ): string {
     this.globalNode.inputs = inputs;
     this.globalNode.kwargs = kwargs;
+    this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
+    this.nodeMapping.nodeData.set(this.globalNodeId, {
+      label: 'global',
+      nodeType: 'global',
+      handles: {
+        inputs: [{ id: 'input-0', type: 'av' }],
+        outputs: [{ id: 'output-0', type: 'av' }],
+      },
+    });
     return this.globalNodeId;
   }
 
@@ -177,6 +190,15 @@ export class NodeMappingManager {
     const id = this.generateNodeId();
     const node = new OutputNode(filename, inputs, kwargs, id);
     this.nodeMapping.nodeMap.set(id, node);
+    this.nodeMapping.nodeData.set(id, {
+      label: 'output',
+      nodeType: 'output',
+      filename,
+      handles: {
+        inputs: [{ id: 'input-0', type: 'av' }],
+        outputs: [{ id: 'output-0', type: 'av' }],
+      },
+    });
     return id;
   }
 
@@ -187,6 +209,15 @@ export class NodeMappingManager {
     const id = this.generateNodeId();
     const node = new InputNode(filename, [], kwargs, id);
     this.nodeMapping.nodeMap.set(id, node);
+    this.nodeMapping.nodeData.set(id, {
+      label: 'input',
+      nodeType: 'input',
+      filename,
+      handles: {
+        inputs: [],
+        outputs: [{ id: 'output-0', type: 'av' }],
+      },
+    });
     return id;
   }
 
@@ -200,6 +231,14 @@ export class NodeMappingManager {
     const id = this.generateNodeId();
     const node = new FilterNode(name, inputs, input_typings, output_typings, kwargs, id);
     this.nodeMapping.nodeMap.set(id, node);
+    this.nodeMapping.nodeData.set(id, {
+      label: name,
+      nodeType: 'filter',
+      handles: {
+        inputs: input_typings.map((t) => ({ id: `input-${t.value}`, type: t.value })),
+        outputs: output_typings.map((t) => ({ id: `output-${t.value}`, type: t.value })),
+      },
+    });
     return id;
   }
 
@@ -315,6 +354,7 @@ export class NodeMappingManager {
 
     // Remove the node
     this.nodeMapping.nodeMap.delete(nodeId);
+    this.nodeMapping.nodeData.delete(nodeId);
     this.emitUpdate();
   }
 
@@ -332,7 +372,7 @@ export class NodeMappingManager {
     // Create a new global node
     this.globalNodeId = this.generateNodeId();
     this.globalNode = new GlobalNode([], {}, this.globalNodeId);
-    this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
+    this._addGlobalNode([], {});
     this.emitUpdate();
   }
 
@@ -621,6 +661,13 @@ export class NodeMappingManager {
     return result;
   }
 
+  public getNodeData(nodeId: string): NodeData {
+    const node = this.nodeMapping.nodeData.get(nodeId);
+    if (!node) {
+      throw new Error(`Node ${nodeId} not found in mapping`);
+    }
+    return node;
+  }
   // Convert the mapping to a JSON string
   toJson(): string {
     // If we have a global node, use that as the entry point

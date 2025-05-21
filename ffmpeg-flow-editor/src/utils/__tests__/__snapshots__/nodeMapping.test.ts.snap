@@ -2,6 +2,193 @@
 
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "amix",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-4" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-5" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-6" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-7" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-8" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-9" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -1617,6 +1804,193 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
 
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "amix",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-4" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-5" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-7" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-8" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-9" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -3232,6 +3606,545 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
 
 exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-4" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-5" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-7" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-8" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-9" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-10" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-11" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-12" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-13" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-14" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-15" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+    },
+    "node-16" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-17" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-18" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-19" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-20" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-21" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-22" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-23" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-24" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-25" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+    },
+    "node-26" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-audio",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-audio",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+    },
+    "node-27" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8084,6 +8997,59 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
 
 exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8222,6 +9188,59 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
 
 exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8361,6 +9380,92 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
 
 exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "output1.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-3" => {
+      "filename": "output2.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-4" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8611,6 +9716,208 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 
 exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "output1.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "drawtext",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "feedback",
+      "nodeType": "filter",
+    },
+    "node-4" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-5" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "filename": "output2.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-7" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "drawtext",
+      "nodeType": "filter",
+    },
+    "node-8" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "feedback",
+      "nodeType": "filter",
+    },
+    "node-9" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-10" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -10245,6 +11552,77 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 
 exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -10435,6 +11813,245 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
 
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-4" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-5" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-7" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-8" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-9" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-10" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-11" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -12360,6 +13977,77 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
 
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -12550,6 +14238,95 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
 
 exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-4" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -12833,6 +14610,175 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
 
 exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+    },
+    "node-3" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-4" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-5" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+    },
+    "node-7" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-video",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-video",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+    },
+    "node-8" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
