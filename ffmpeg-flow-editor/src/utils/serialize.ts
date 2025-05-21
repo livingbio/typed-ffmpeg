@@ -4,10 +4,16 @@ const classRegistry = new Map<string, Constructor<Serializable>>();
 
 // Base class for serializable objects
 export class Serializable {
+  id?: string; // Optional id field
+
+  // toJSON will be called by JSON.stringify
   toJSON(): Record<string, unknown> {
     const obj: Record<string, unknown> = {};
     for (const key in this) {
       if (Object.prototype.hasOwnProperty.call(this, key)) {
+        // Skip the id property
+        if (key === 'id') continue;
+
         const value = this[key];
         obj[key] = value instanceof Serializable ? value.toJSON() : value;
       }
