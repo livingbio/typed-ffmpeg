@@ -1,3 +1,4 @@
+import { FFMpegFilter } from '@/types/ffmpeg';
 import {
   FilterNode,
   InputNode,
@@ -11,9 +12,11 @@ import {
   OutputStream,
   GlobalStream,
   StreamType,
+  StreamTypeEnum,
 } from '../types/dag';
 import { dumps } from './serialize';
 import { EventEmitter } from 'events';
+import { evaluateFormula } from './formulaEvaluator';
 
 export interface NodeMapping {
   // Maps ReactFlow node ID to DAG node
@@ -109,15 +112,43 @@ export class NodeMappingManager {
       node.inputs.push(null);
     }
   }
+  private async evaluateIOtypings(
+    filter: FFMpegFilter,
+    kwargs: Record<string, string | number | boolean>
+  ): Promise<{ input_typings: StreamTypeEnum[]; output_typings: StreamTypeEnum[] }> {
+    // merge parameters with kwargs
+    // extract default value from filter.options and convert to a Dict
+    let parameters: Record<string, string | number | boolean> = {};
+    filter.options.map((option) => {
+      parameters[option.name] = option.default;
+    });
 
+    // merge parameters with kwargs
+    parameters = { ...parameters, ...kwargs };
+    let input_typings: StreamTypeEnum[] = [];
+    if (!filter.formula_typings_input) {
+      input_typings = filter.stream_typings_input.map((t) => t.type.value);
+    } else {
+      input_typings = await evaluateFormula(filter.formula_typings_input, parameters);
+    }
+    let output_typings: StreamTypeEnum[] = [];
+    if (!filter.formula_typings_output) {
+      output_typings = filter.stream_typings_output.map((t) => t.type.value);
+    } else {
+      output_typings = await evaluateFormula(filter.formula_typings_output, parameters);
+    }
+    return {
+      input_typings,
+      output_typings,
+    };
+  }
   // Add a node to the mapping
   async addNodeToMapping(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
     inputs?: (FilterableStream | null | OutputStream)[];
-    input_typings?: StreamType[];
-    output_typings?: StreamType[];
+    filter?: FFMpegFilter;
     kwargs?: Record<string, string | number | boolean>;
   }): Promise<string> {
     // Special handling for GlobalNode
@@ -144,22 +175,30 @@ export class NodeMappingManager {
     let outputFilename: string;
 
     switch (params.type) {
-      case 'filter':
-        if (!params.name || !params.input_typings || !params.output_typings) {
+      case 'filter': {
+        if (!params.name) {
           throw new Error('FilterNode requires name, input_typings, and output_typings');
+        }
+        if (!params.filter) {
+          throw new Error('FilterNode requires filter');
         }
 
         // Initialize with proper input array length based on input_typings
-        filterInputs = params.inputs || Array(params.input_typings.length).fill(null);
+        const { input_typings, output_typings } = await this.evaluateIOtypings(
+          params.filter,
+          params.kwargs || {}
+        );
+        filterInputs = params.inputs || Array(input_typings.length).fill(null);
 
         node = new FilterNode(
           params.name,
           filterInputs as (FilterableStream | null)[],
-          params.input_typings,
-          params.output_typings,
+          input_typings.map((t) => new StreamType(t)),
+          output_typings.map((t) => new StreamType(t)),
           params.kwargs
         );
         break;
+      }
 
       case 'input':
         // Generate random filename if not provided
@@ -531,8 +570,6 @@ export class NodeMappingManager {
               type: 'filter',
               name: item.name,
               inputs: item.inputs,
-              input_typings: item.input_typings,
-              output_typings: item.output_typings,
               kwargs: item.kwargs,
             });
           } else if (item instanceof InputNode) {

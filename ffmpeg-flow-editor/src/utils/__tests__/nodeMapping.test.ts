@@ -96,8 +96,6 @@ describe('nodeMapping', () => {
       const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'scale',
-        input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-        output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
       });
       expect(id).toBeDefined();
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
@@ -146,8 +144,6 @@ describe('nodeMapping', () => {
       const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'scale',
-        input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-        output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
       });
       expect(id).toBeDefined();
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
@@ -198,8 +194,6 @@ describe('nodeMapping', () => {
       const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       nodeMappingManager.removeNodeFromMapping(id);
@@ -212,23 +206,17 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video'), new StreamType('video')],
       });
 
       // Create two target nodes
       const target1Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target1',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       const target2Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target2',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       // Connect source to both targets
@@ -264,14 +252,10 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
       const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
@@ -285,14 +269,10 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('audio')],
-        output_typings: [new StreamType('audio')],
       });
       const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
-        input_typings: [new StreamType('audio')],
-        output_typings: [new StreamType('audio')],
       });
 
       const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
@@ -310,8 +290,6 @@ describe('nodeMapping', () => {
       const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
-        input_typings: [new StreamType('av')],
-        output_typings: [new StreamType('av')],
       });
 
       const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
@@ -325,14 +303,10 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
       const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
-        input_typings: [new StreamType('audio')],
-        output_typings: [new StreamType('audio')],
       });
 
       expect(() => nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
@@ -344,14 +318,10 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('audio')],
-        output_typings: [new StreamType('audio')],
       });
       const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       expect(() => nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0)).toThrow(
@@ -363,22 +333,16 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video'), new StreamType('video')],
       });
 
       const target1Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target1',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       const target2Id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target2',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       const edge1Id = nodeMappingManager.addEdgeToMapping(sourceId, target1Id, 0, 0);
@@ -411,8 +375,6 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       expect(() => nodeMappingManager.addEdgeToMapping(sourceId, 'non-existent', 0, 0)).toThrow(
@@ -426,14 +388,10 @@ describe('nodeMapping', () => {
       const sourceId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'source',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
       const targetId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'target',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       const edgeId = nodeMappingManager.addEdgeToMapping(sourceId, targetId, 0, 0);
@@ -492,8 +450,6 @@ describe('nodeMapping', () => {
       const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       const newInputTypings = [new StreamType('audio'), new StreamType('video')];
@@ -582,8 +538,6 @@ describe('nodeMapping', () => {
       const id = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
       nodeMappingManager.addEdgeToMapping(id, id, 0, 0);
 
@@ -631,8 +585,6 @@ describe('nodeMapping', () => {
       const filterId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test_filter',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       // Add output node
@@ -668,8 +620,6 @@ describe('nodeMapping', () => {
       const filterId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test_filter',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
       });
 
       // Add output nodes
@@ -712,8 +662,6 @@ describe('nodeMapping', () => {
       const filterId = await nodeMappingManager.addNodeToMapping({
         type: 'filter',
         name: 'test_filter',
-        input_typings: [new StreamType('video')],
-        output_typings: [new StreamType('video')],
         kwargs: { quality: 'high', format: 'mp4' },
       });
 
@@ -823,8 +771,6 @@ describe('recursiveAddToMapping', () => {
       type: 'filter',
       name: 'scale',
       inputs: [null],
-      input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-      output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
       kwargs: { width: 640, height: 480 },
     });
 
@@ -860,8 +806,6 @@ describe('recursiveAddToMapping', () => {
       type: 'filter',
       name: 'scale',
       inputs: [null],
-      input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-      output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
       kwargs: { width: 640, height: 480 },
     });
     const outputId = await nodeMapping.addNodeToMapping({

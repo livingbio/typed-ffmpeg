@@ -2,7 +2,6 @@ import { generateFFmpegCommand } from '../generateFFmpegCommand';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { NodeMappingManager } from '../nodeMapping';
 import { setupPyodideMock } from './testUtils';
-import { StreamType } from '../../types/dag';
 
 describe('generateFFmpegCommand', () => {
   let consoleSpy: ReturnType<typeof vi.spyOn>;
@@ -61,8 +60,6 @@ describe('generateFFmpegCommand', () => {
     const filterId = await nodeMapping.addNodeToMapping({
       type: 'filter',
       name: 'scale',
-      input_typings: [new StreamType('video')],
-      output_typings: [new StreamType('video')],
       kwargs: { width: 640, height: 480 },
     });
     const outputId = await nodeMapping.addNodeToMapping({
@@ -122,15 +119,11 @@ describe('generateFFmpegCommand', () => {
     const filter1Id = await nodeMapping.addNodeToMapping({
       type: 'filter',
       name: 'scale',
-      input_typings: [new StreamType('video')],
-      output_typings: [new StreamType('video')],
       kwargs: { width: 640, height: 480 },
     });
     const filter2Id = await nodeMapping.addNodeToMapping({
       type: 'filter',
       name: 'volume',
-      input_typings: [new StreamType('audio')],
-      output_typings: [new StreamType('audio')],
       kwargs: { volume: 2.0 },
     });
     const outputId = await nodeMapping.addNodeToMapping({
@@ -163,8 +156,6 @@ describe('generateFFmpegCommand', () => {
     const filterId = await nodeMapping.addNodeToMapping({
       type: 'filter',
       name: 'scale',
-      input_typings: [new StreamType('video')],
-      output_typings: [new StreamType('video')],
       kwargs: { width: 640, height: 480, force_original_aspect_ratio: true },
     });
     const outputId = await nodeMapping.addNodeToMapping({

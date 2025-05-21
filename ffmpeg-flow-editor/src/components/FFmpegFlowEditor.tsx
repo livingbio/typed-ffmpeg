@@ -167,8 +167,6 @@ const createNode = async (
       mappingData = {
         type: 'filter',
         name: filter.name,
-        input_typings: filter.stream_typings_input.map((t) => t.type),
-        output_typings: filter.stream_typings_output.map((t) => t.type),
         inputs: [],
         kwargs: parameters || {},
       };
@@ -382,7 +380,13 @@ export default function FFmpegFlowEditor() {
         throw new Error(`Filter ${filterType} not found`);
       }
 
-      const newNode = await createNode(filterType, parameters, position, nodeMappingManager, filter);
+      const newNode = await createNode(
+        filterType,
+        parameters,
+        position,
+        nodeMappingManager,
+        filter
+      );
       setNodes((nds) => [...nds, newNode]);
     },
     [setNodes, nodeMappingManager]
