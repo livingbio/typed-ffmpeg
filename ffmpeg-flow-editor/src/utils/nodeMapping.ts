@@ -59,9 +59,8 @@ export class NodeMappingManager {
 
   constructor() {
     // Initialize the global node
-    this.globalNode = new GlobalNode([], {});
-    this.globalNodeId = this.generateNodeId(this.globalNode);
-    this.globalNode.id = this.globalNodeId;
+    this.globalNodeId = this.generateNodeId();
+    this.globalNode = new GlobalNode([], {}, this.globalNodeId);
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
   }
 
@@ -87,17 +86,8 @@ export class NodeMappingManager {
   }
 
   // Helper function to generate unique ID for a node
-  private generateNodeId(node: FilterNode | InputNode | OutputNode | GlobalNode): string {
+  private generateNodeId(): string {
     const id = this.nodeIdCounter++;
-    if (node instanceof InputNode) {
-      return `input-${id}`;
-    } else if (node instanceof OutputNode) {
-      return `output-${id}`;
-    } else if (node instanceof FilterNode) {
-      return `filter-${node.name}-${id}`;
-    } else if (node instanceof GlobalNode) {
-      return `global-${id}`;
-    }
     return `node-${id}`;
   }
 
@@ -199,7 +189,7 @@ export class NodeMappingManager {
         throw new Error('Invalid node type');
     }
 
-    const nodeId = this.generateNodeId(node);
+    const nodeId = this.generateNodeId();
     node.id = nodeId;
     this.nodeMapping.nodeMap.set(nodeId, node);
     this.emitUpdate();
@@ -273,9 +263,7 @@ export class NodeMappingManager {
     this.nodeIdCounter = 0;
 
     // Create a new global node
-    this.globalNode = new GlobalNode([], {});
-    this.globalNodeId = this.generateNodeId(this.globalNode);
-    this.globalNode.id = this.globalNodeId;
+    this.globalNode = new GlobalNode([], {}, this.generateNodeId());
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
     this.emitUpdate();
   }

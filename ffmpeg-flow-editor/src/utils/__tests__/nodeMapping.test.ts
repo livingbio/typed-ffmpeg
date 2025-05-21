@@ -52,7 +52,7 @@ describe('nodeMapping', () => {
         input_typings: [new StreamType('video')],
         output_typings: [new StreamType('video')],
       });
-      expect(id).toMatch(/^filter-test-/);
+      expect(id).toMatch(/^node-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(FilterNode);
       expect(node.id).toBe(id);
@@ -63,7 +63,7 @@ describe('nodeMapping', () => {
         type: 'input',
         filename: 'test.mp4',
       });
-      expect(id).toMatch(/^input-/);
+      expect(id).toMatch(/^node-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(InputNode);
       expect(node.id).toBe(id);
@@ -75,7 +75,7 @@ describe('nodeMapping', () => {
         filename: 'test.mp4',
         inputs: [],
       });
-      expect(id).toMatch(/^output-/);
+      expect(id).toMatch(/^node-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(OutputNode);
       expect(node.id).toBe(id);
@@ -86,7 +86,7 @@ describe('nodeMapping', () => {
         type: 'global',
         inputs: [],
       });
-      expect(id).toMatch(/^global-/);
+      expect(id).toMatch(/^node-/);
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id)!;
       expect(node).toBeInstanceOf(GlobalNode);
       expect(node.id).toBe(id);

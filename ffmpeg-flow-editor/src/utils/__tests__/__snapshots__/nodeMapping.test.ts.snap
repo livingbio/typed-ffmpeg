@@ -3,12 +3,12 @@
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -192,7 +192,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       ],
       "kwargs": {},
     },
-    "filter-amix-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -365,7 +365,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         },
       ],
     },
-    "filter-areverse-3" => {
+    "node-3" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -446,7 +446,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         },
       ],
     },
-    "filter-asplit-4" => {
+    "node-4" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -504,7 +504,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         },
       ],
     },
-    "filter-areverse-5" => {
+    "node-5" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -533,13 +533,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         },
       ],
     },
-    "input-6" => {
+    "node-6" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-asplit-7" => {
+    "node-7" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -597,7 +597,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         },
       ],
     },
-    "filter-areverse-8" => {
+    "node-8" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -626,7 +626,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         },
       ],
     },
-    "input-9" => {
+    "node-9" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
@@ -639,7 +639,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-6-0-filter-areverse-5-0" => {
+    "edge-node-6-0-node-5-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -649,7 +649,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-5-0-filter-asplit-4-0" => {
+    "edge-node-5-0-node-4-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -682,7 +682,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         ],
       },
     },
-    "edge-filter-asplit-4-1-filter-areverse-3-0" => {
+    "edge-node-4-1-node-3-0" => {
       "__class__": "AudioStream",
       "index": 1,
       "node": {
@@ -744,7 +744,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         ],
       },
     },
-    "edge-filter-areverse-3-0-filter-amix-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -829,7 +829,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         ],
       },
     },
-    "edge-input-9-0-filter-areverse-8-0" => {
+    "edge-node-9-0-node-8-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -839,7 +839,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-8-0-filter-asplit-7-0" => {
+    "edge-node-8-0-node-7-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -872,7 +872,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         ],
       },
     },
-    "edge-filter-asplit-7-0-filter-amix-2-1" => {
+    "edge-node-7-0-node-2-1" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -934,7 +934,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         ],
       },
     },
-    "edge-filter-amix-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -1122,7 +1122,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-6-0-filter-areverse-5-0",
+    } => "edge-node-6-0-node-5-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -1155,7 +1155,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
           },
         ],
       },
-    } => "edge-filter-areverse-5-0-filter-asplit-4-0",
+    } => "edge-node-5-0-node-4-0",
     {
       "__class__": "AudioStream",
       "index": 1,
@@ -1217,7 +1217,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
           },
         ],
       },
-    } => "edge-filter-asplit-4-1-filter-areverse-3-0",
+    } => "edge-node-4-1-node-3-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -1302,7 +1302,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
           },
         ],
       },
-    } => "edge-filter-areverse-3-0-filter-amix-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -1312,7 +1312,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-9-0-filter-areverse-8-0",
+    } => "edge-node-9-0-node-8-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -1345,7 +1345,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
           },
         ],
       },
-    } => "edge-filter-areverse-8-0-filter-asplit-7-0",
+    } => "edge-node-8-0-node-7-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -1407,7 +1407,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
           },
         ],
       },
-    } => "edge-filter-asplit-7-0-filter-amix-2-1",
+    } => "edge-node-7-0-node-2-1",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -1584,7 +1584,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
           },
         ],
       },
-    } => "edge-filter-amix-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
   },
   "targetMap": Map {
     {
@@ -1598,7 +1598,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-5",
+      "nodeId": "node-5",
     },
     {
       "__class__": "AudioStream",
@@ -1634,7 +1634,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-4",
+      "nodeId": "node-4",
     },
     {
       "__class__": "AudioStream",
@@ -1699,7 +1699,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "AudioStream",
@@ -1787,7 +1787,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-amix-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -1800,7 +1800,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-8",
+      "nodeId": "node-8",
     },
     {
       "__class__": "AudioStream",
@@ -1836,7 +1836,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-7",
+      "nodeId": "node-7",
     },
     {
       "__class__": "AudioStream",
@@ -1901,7 +1901,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-amix-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AudioStream",
@@ -2081,7 +2081,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
@@ -2092,12 +2092,12 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -2281,7 +2281,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       ],
       "kwargs": {},
     },
-    "filter-amix-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -2454,7 +2454,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         },
       ],
     },
-    "filter-asplit-3" => {
+    "node-3" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -2512,7 +2512,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         },
       ],
     },
-    "filter-areverse-4" => {
+    "node-4" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -2541,13 +2541,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         },
       ],
     },
-    "input-5" => {
+    "node-5" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-areverse-6" => {
+    "node-6" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -2628,7 +2628,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         },
       ],
     },
-    "filter-asplit-7" => {
+    "node-7" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -2686,7 +2686,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         },
       ],
     },
-    "filter-areverse-8" => {
+    "node-8" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -2715,7 +2715,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         },
       ],
     },
-    "input-9" => {
+    "node-9" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
@@ -2728,7 +2728,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-5-0-filter-areverse-4-0" => {
+    "edge-node-5-0-node-4-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -2738,7 +2738,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-4-0-filter-asplit-3-0" => {
+    "edge-node-4-0-node-3-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -2771,7 +2771,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         ],
       },
     },
-    "edge-filter-asplit-3-0-filter-amix-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -2833,7 +2833,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         ],
       },
     },
-    "edge-input-9-0-filter-areverse-8-0" => {
+    "edge-node-9-0-node-8-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -2843,7 +2843,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-8-0-filter-asplit-7-0" => {
+    "edge-node-8-0-node-7-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -2876,7 +2876,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         ],
       },
     },
-    "edge-filter-asplit-7-1-filter-areverse-6-0" => {
+    "edge-node-7-1-node-6-0" => {
       "__class__": "AudioStream",
       "index": 1,
       "node": {
@@ -2938,7 +2938,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         ],
       },
     },
-    "edge-filter-areverse-6-0-filter-amix-2-1" => {
+    "edge-node-6-0-node-2-1" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -3023,7 +3023,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         ],
       },
     },
-    "edge-filter-amix-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -3211,7 +3211,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-5-0-filter-areverse-4-0",
+    } => "edge-node-5-0-node-4-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -3244,7 +3244,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
           },
         ],
       },
-    } => "edge-filter-areverse-4-0-filter-asplit-3-0",
+    } => "edge-node-4-0-node-3-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -3306,7 +3306,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
           },
         ],
       },
-    } => "edge-filter-asplit-3-0-filter-amix-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -3316,7 +3316,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-9-0-filter-areverse-8-0",
+    } => "edge-node-9-0-node-8-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -3349,7 +3349,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
           },
         ],
       },
-    } => "edge-filter-areverse-8-0-filter-asplit-7-0",
+    } => "edge-node-8-0-node-7-0",
     {
       "__class__": "AudioStream",
       "index": 1,
@@ -3411,7 +3411,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
           },
         ],
       },
-    } => "edge-filter-asplit-7-1-filter-areverse-6-0",
+    } => "edge-node-7-1-node-6-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -3496,7 +3496,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
           },
         ],
       },
-    } => "edge-filter-areverse-6-0-filter-amix-2-1",
+    } => "edge-node-6-0-node-2-1",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -3673,7 +3673,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
           },
         ],
       },
-    } => "edge-filter-amix-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
   },
   "targetMap": Map {
     {
@@ -3687,7 +3687,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-4",
+      "nodeId": "node-4",
     },
     {
       "__class__": "AudioStream",
@@ -3723,7 +3723,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "AudioStream",
@@ -3788,7 +3788,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-amix-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -3801,7 +3801,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-8",
+      "nodeId": "node-8",
     },
     {
       "__class__": "AudioStream",
@@ -3837,7 +3837,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-7",
+      "nodeId": "node-7",
     },
     {
       "__class__": "AudioStream",
@@ -3902,7 +3902,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-6",
+      "nodeId": "node-6",
     },
     {
       "__class__": "AudioStream",
@@ -3990,7 +3990,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-amix-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AudioStream",
@@ -4170,7 +4170,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
@@ -4181,12 +4181,12 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
 exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -4775,7 +4775,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       ],
       "kwargs": {},
     },
-    "filter-concat-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5062,7 +5062,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-split-3" => {
+    "node-3" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5120,7 +5120,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-reverse-4" => {
+    "node-4" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5149,13 +5149,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-5" => {
+    "node-5" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-asplit-6" => {
+    "node-6" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5213,7 +5213,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-areverse-7" => {
+    "node-7" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5242,13 +5242,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-8" => {
+    "node-8" => {
       "__class__": "InputNode",
       "filename": "input2.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-split-9" => {
+    "node-9" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5306,7 +5306,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-reverse-10" => {
+    "node-10" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5335,13 +5335,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-11" => {
+    "node-11" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-asplit-12" => {
+    "node-12" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5399,7 +5399,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-areverse-13" => {
+    "node-13" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5428,13 +5428,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-14" => {
+    "node-14" => {
       "__class__": "InputNode",
       "filename": "input2.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-concat-15" => {
+    "node-15" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5721,7 +5721,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-split-16" => {
+    "node-16" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5779,7 +5779,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-reverse-17" => {
+    "node-17" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5808,13 +5808,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-18" => {
+    "node-18" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-asplit-19" => {
+    "node-19" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5872,7 +5872,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-areverse-20" => {
+    "node-20" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5901,13 +5901,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-21" => {
+    "node-21" => {
       "__class__": "InputNode",
       "filename": "input2.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-split-22" => {
+    "node-22" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5965,7 +5965,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-reverse-23" => {
+    "node-23" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -5994,13 +5994,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-24" => {
+    "node-24" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-asplit-25" => {
+    "node-25" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -6058,7 +6058,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "filter-areverse-26" => {
+    "node-26" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -6087,7 +6087,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         },
       ],
     },
-    "input-27" => {
+    "node-27" => {
       "__class__": "InputNode",
       "filename": "input2.mp4",
       "inputs": [],
@@ -6100,7 +6100,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
 exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-5-0-filter-reverse-4-0" => {
+    "edge-node-5-0-node-4-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -6110,7 +6110,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-4-0-filter-split-3-0" => {
+    "edge-node-4-0-node-3-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -6143,7 +6143,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-split-3-0-filter-concat-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -6205,7 +6205,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-input-8-0-filter-areverse-7-0" => {
+    "edge-node-8-0-node-7-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -6215,7 +6215,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-7-0-filter-asplit-6-0" => {
+    "edge-node-7-0-node-6-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -6248,7 +6248,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-asplit-6-0-filter-concat-2-1" => {
+    "edge-node-6-0-node-2-1" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -6310,7 +6310,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-input-11-0-filter-reverse-10-0" => {
+    "edge-node-11-0-node-10-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -6320,7 +6320,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-10-0-filter-split-9-0" => {
+    "edge-node-10-0-node-9-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -6353,7 +6353,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-split-9-1-filter-concat-2-2" => {
+    "edge-node-9-1-node-2-2" => {
       "__class__": "VideoStream",
       "index": 1,
       "node": {
@@ -6415,7 +6415,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-input-14-0-filter-areverse-13-0" => {
+    "edge-node-14-0-node-13-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -6425,7 +6425,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-13-0-filter-asplit-12-0" => {
+    "edge-node-13-0-node-12-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -6458,7 +6458,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-asplit-12-1-filter-concat-2-3" => {
+    "edge-node-12-1-node-2-3" => {
       "__class__": "AudioStream",
       "index": 1,
       "node": {
@@ -6520,7 +6520,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-concat-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -6811,7 +6811,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-input-18-0-filter-reverse-17-0" => {
+    "edge-node-18-0-node-17-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -6821,7 +6821,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-17-0-filter-split-16-0" => {
+    "edge-node-17-0-node-16-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -6854,7 +6854,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-split-16-0-filter-concat-15-0" => {
+    "edge-node-16-0-node-15-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -6916,7 +6916,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-input-21-0-filter-areverse-20-0" => {
+    "edge-node-21-0-node-20-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -6926,7 +6926,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-20-0-filter-asplit-19-0" => {
+    "edge-node-20-0-node-19-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -6959,7 +6959,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-asplit-19-0-filter-concat-15-1" => {
+    "edge-node-19-0-node-15-1" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -7021,7 +7021,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-input-24-0-filter-reverse-23-0" => {
+    "edge-node-24-0-node-23-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -7031,7 +7031,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-23-0-filter-split-22-0" => {
+    "edge-node-23-0-node-22-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -7064,7 +7064,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-split-22-1-filter-concat-15-2" => {
+    "edge-node-22-1-node-15-2" => {
       "__class__": "VideoStream",
       "index": 1,
       "node": {
@@ -7126,7 +7126,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-input-27-0-filter-areverse-26-0" => {
+    "edge-node-27-0-node-26-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -7136,7 +7136,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "kwargs": {},
       },
     },
-    "edge-filter-areverse-26-0-filter-asplit-25-0" => {
+    "edge-node-26-0-node-25-0" => {
       "__class__": "AudioStream",
       "index": 0,
       "node": {
@@ -7169,7 +7169,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-asplit-25-1-filter-concat-15-3" => {
+    "edge-node-25-1-node-15-3" => {
       "__class__": "AudioStream",
       "index": 1,
       "node": {
@@ -7231,7 +7231,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         ],
       },
     },
-    "edge-filter-concat-15-1-output-1-1" => {
+    "edge-node-15-1-node-1-1" => {
       "__class__": "AudioStream",
       "index": 1,
       "node": {
@@ -7533,7 +7533,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-5-0-filter-reverse-4-0",
+    } => "edge-node-5-0-node-4-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -7566,7 +7566,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-reverse-4-0-filter-split-3-0",
+    } => "edge-node-4-0-node-3-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -7628,7 +7628,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-split-3-0-filter-concat-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -7638,7 +7638,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-8-0-filter-areverse-7-0",
+    } => "edge-node-8-0-node-7-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -7671,7 +7671,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-areverse-7-0-filter-asplit-6-0",
+    } => "edge-node-7-0-node-6-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -7733,7 +7733,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-asplit-6-0-filter-concat-2-1",
+    } => "edge-node-6-0-node-2-1",
     {
       "__class__": "AVStream",
       "index": null,
@@ -7743,7 +7743,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-11-0-filter-reverse-10-0",
+    } => "edge-node-11-0-node-10-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -7776,7 +7776,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-reverse-10-0-filter-split-9-0",
+    } => "edge-node-10-0-node-9-0",
     {
       "__class__": "VideoStream",
       "index": 1,
@@ -7838,7 +7838,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-split-9-1-filter-concat-2-2",
+    } => "edge-node-9-1-node-2-2",
     {
       "__class__": "AVStream",
       "index": null,
@@ -7848,7 +7848,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-14-0-filter-areverse-13-0",
+    } => "edge-node-14-0-node-13-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -7881,7 +7881,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-areverse-13-0-filter-asplit-12-0",
+    } => "edge-node-13-0-node-12-0",
     {
       "__class__": "AudioStream",
       "index": 1,
@@ -7943,7 +7943,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-asplit-12-1-filter-concat-2-3",
+    } => "edge-node-12-1-node-2-3",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -8234,7 +8234,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-concat-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -8244,7 +8244,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-18-0-filter-reverse-17-0",
+    } => "edge-node-18-0-node-17-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -8277,7 +8277,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-reverse-17-0-filter-split-16-0",
+    } => "edge-node-17-0-node-16-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -8339,7 +8339,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-split-16-0-filter-concat-15-0",
+    } => "edge-node-16-0-node-15-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -8349,7 +8349,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-21-0-filter-areverse-20-0",
+    } => "edge-node-21-0-node-20-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -8382,7 +8382,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-areverse-20-0-filter-asplit-19-0",
+    } => "edge-node-20-0-node-19-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -8444,7 +8444,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-asplit-19-0-filter-concat-15-1",
+    } => "edge-node-19-0-node-15-1",
     {
       "__class__": "AVStream",
       "index": null,
@@ -8454,7 +8454,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-24-0-filter-reverse-23-0",
+    } => "edge-node-24-0-node-23-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -8487,7 +8487,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-reverse-23-0-filter-split-22-0",
+    } => "edge-node-23-0-node-22-0",
     {
       "__class__": "VideoStream",
       "index": 1,
@@ -8549,7 +8549,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-split-22-1-filter-concat-15-2",
+    } => "edge-node-22-1-node-15-2",
     {
       "__class__": "AVStream",
       "index": null,
@@ -8559,7 +8559,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-27-0-filter-areverse-26-0",
+    } => "edge-node-27-0-node-26-0",
     {
       "__class__": "AudioStream",
       "index": 0,
@@ -8592,7 +8592,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-areverse-26-0-filter-asplit-25-0",
+    } => "edge-node-26-0-node-25-0",
     {
       "__class__": "AudioStream",
       "index": 1,
@@ -8654,7 +8654,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-asplit-25-1-filter-concat-15-3",
+    } => "edge-node-25-1-node-15-3",
     {
       "__class__": "AudioStream",
       "index": 1,
@@ -8945,7 +8945,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
           },
         ],
       },
-    } => "edge-filter-concat-15-1-output-1-1",
+    } => "edge-node-15-1-node-1-1",
   },
   "targetMap": Map {
     {
@@ -8959,7 +8959,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-4",
+      "nodeId": "node-4",
     },
     {
       "__class__": "VideoStream",
@@ -8995,7 +8995,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "VideoStream",
@@ -9060,7 +9060,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -9073,7 +9073,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-7",
+      "nodeId": "node-7",
     },
     {
       "__class__": "AudioStream",
@@ -9109,7 +9109,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-6",
+      "nodeId": "node-6",
     },
     {
       "__class__": "AudioStream",
@@ -9174,7 +9174,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -9187,7 +9187,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-10",
+      "nodeId": "node-10",
     },
     {
       "__class__": "VideoStream",
@@ -9223,7 +9223,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-9",
+      "nodeId": "node-9",
     },
     {
       "__class__": "VideoStream",
@@ -9288,7 +9288,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 2,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -9301,7 +9301,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-13",
+      "nodeId": "node-13",
     },
     {
       "__class__": "AudioStream",
@@ -9337,7 +9337,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-12",
+      "nodeId": "node-12",
     },
     {
       "__class__": "AudioStream",
@@ -9402,7 +9402,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 3,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "VideoStream",
@@ -9696,7 +9696,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
     {
       "__class__": "AVStream",
@@ -9709,7 +9709,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-17",
+      "nodeId": "node-17",
     },
     {
       "__class__": "VideoStream",
@@ -9745,7 +9745,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-16",
+      "nodeId": "node-16",
     },
     {
       "__class__": "VideoStream",
@@ -9810,7 +9810,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-concat-15",
+      "nodeId": "node-15",
     },
     {
       "__class__": "AVStream",
@@ -9823,7 +9823,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-20",
+      "nodeId": "node-20",
     },
     {
       "__class__": "AudioStream",
@@ -9859,7 +9859,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-19",
+      "nodeId": "node-19",
     },
     {
       "__class__": "AudioStream",
@@ -9924,7 +9924,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-concat-15",
+      "nodeId": "node-15",
     },
     {
       "__class__": "AVStream",
@@ -9937,7 +9937,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-23",
+      "nodeId": "node-23",
     },
     {
       "__class__": "VideoStream",
@@ -9973,7 +9973,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-22",
+      "nodeId": "node-22",
     },
     {
       "__class__": "VideoStream",
@@ -10038,7 +10038,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 2,
-      "nodeId": "filter-concat-15",
+      "nodeId": "node-15",
     },
     {
       "__class__": "AVStream",
@@ -10051,7 +10051,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-areverse-26",
+      "nodeId": "node-26",
     },
     {
       "__class__": "AudioStream",
@@ -10087,7 +10087,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-asplit-25",
+      "nodeId": "node-25",
     },
     {
       "__class__": "AudioStream",
@@ -10152,7 +10152,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 3,
-      "nodeId": "filter-concat-15",
+      "nodeId": "node-15",
     },
     {
       "__class__": "AudioStream",
@@ -10446,7 +10446,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       },
     } => {
       "index": 1,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
@@ -10457,7 +10457,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
 exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [
         {
@@ -10486,7 +10486,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
         "hide_banner": true,
       },
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -10503,7 +10503,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
       ],
       "kwargs": {},
     },
-    "input-2" => {
+    "node-2" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
@@ -10516,7 +10516,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
 exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -10526,7 +10526,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
         "kwargs": {},
       },
     },
-    "edge-output-1-0-global-0-0" => {
+    "edge-node-1-0-node-0-0" => {
       "__class__": "OutputStream",
       "index": 0,
       "node": {
@@ -10558,7 +10558,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
     {
       "__class__": "OutputStream",
       "index": 0,
@@ -10579,7 +10579,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
         ],
         "kwargs": {},
       },
-    } => "edge-output-1-0-global-0-0",
+    } => "edge-node-1-0-node-0-0",
   },
   "targetMap": Map {
     {
@@ -10593,7 +10593,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
     {
       "__class__": "OutputStream",
@@ -10617,7 +10617,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "global-0",
+      "nodeId": "node-0",
     },
   },
 }
@@ -10628,7 +10628,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
 exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [
         {
@@ -10658,7 +10658,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
         "hide_banner": true,
       },
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -10675,7 +10675,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
       ],
       "kwargs": {},
     },
-    "input-2" => {
+    "node-2" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
@@ -10688,7 +10688,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
 exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -10698,7 +10698,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
         "kwargs": {},
       },
     },
-    "edge-output-1-0-global-0-0" => {
+    "edge-node-1-0-node-0-0" => {
       "__class__": "OutputStream",
       "index": 0,
       "node": {
@@ -10730,7 +10730,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
     {
       "__class__": "OutputStream",
       "index": 0,
@@ -10751,7 +10751,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
         ],
         "kwargs": {},
       },
-    } => "edge-output-1-0-global-0-0",
+    } => "edge-node-1-0-node-0-0",
   },
   "targetMap": Map {
     {
@@ -10765,7 +10765,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
     {
       "__class__": "OutputStream",
@@ -10789,7 +10789,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
       },
     } => {
       "index": 0,
-      "nodeId": "global-0",
+      "nodeId": "node-0",
     },
   },
 }
@@ -10800,7 +10800,7 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
 exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [
         {
@@ -10850,7 +10850,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         "dump": true,
       },
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "output1.mp4",
       "inputs": [
@@ -10867,13 +10867,13 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
       ],
       "kwargs": {},
     },
-    "input-2" => {
+    "node-2" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "output-3" => {
+    "node-3" => {
       "__class__": "OutputNode",
       "filename": "output2.mp4",
       "inputs": [
@@ -10890,7 +10890,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
       ],
       "kwargs": {},
     },
-    "input-4" => {
+    "node-4" => {
       "__class__": "InputNode",
       "filename": "input2.mp4",
       "inputs": [],
@@ -10903,7 +10903,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -10913,7 +10913,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         "kwargs": {},
       },
     },
-    "edge-output-1-0-global-0-0" => {
+    "edge-node-1-0-node-0-0" => {
       "__class__": "OutputStream",
       "index": 0,
       "node": {
@@ -10934,7 +10934,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         "kwargs": {},
       },
     },
-    "edge-input-4-0-output-3-0" => {
+    "edge-node-4-0-node-3-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -10944,7 +10944,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         "kwargs": {},
       },
     },
-    "edge-output-3-0-global-0-1" => {
+    "edge-node-3-0-node-0-1" => {
       "__class__": "OutputStream",
       "index": 1,
       "node": {
@@ -10976,7 +10976,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
     {
       "__class__": "OutputStream",
       "index": 0,
@@ -10997,7 +10997,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         ],
         "kwargs": {},
       },
-    } => "edge-output-1-0-global-0-0",
+    } => "edge-node-1-0-node-0-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -11007,7 +11007,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-4-0-output-3-0",
+    } => "edge-node-4-0-node-3-0",
     {
       "__class__": "OutputStream",
       "index": 1,
@@ -11028,7 +11028,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         ],
         "kwargs": {},
       },
-    } => "edge-output-3-0-global-0-1",
+    } => "edge-node-3-0-node-0-1",
   },
   "targetMap": Map {
     {
@@ -11042,7 +11042,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
     {
       "__class__": "OutputStream",
@@ -11066,7 +11066,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
       },
     } => {
       "index": 0,
-      "nodeId": "global-0",
+      "nodeId": "node-0",
     },
     {
       "__class__": "AVStream",
@@ -11079,7 +11079,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "OutputStream",
@@ -11103,7 +11103,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
       },
     } => {
       "index": 1,
-      "nodeId": "global-0",
+      "nodeId": "node-0",
     },
   },
 }
@@ -11114,7 +11114,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [
         {
@@ -11300,7 +11300,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       ],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "output1.mp4",
       "inputs": [
@@ -11386,7 +11386,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       ],
       "kwargs": {},
     },
-    "filter-drawtext-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -11461,7 +11461,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         },
       ],
     },
-    "filter-feedback-3" => {
+    "node-3" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -11508,19 +11508,19 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         },
       ],
     },
-    "input-4" => {
+    "node-4" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "input-5" => {
+    "node-5" => {
       "__class__": "InputNode",
       "filename": "input2.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "output-6" => {
+    "node-6" => {
       "__class__": "OutputNode",
       "filename": "output2.mp4",
       "inputs": [
@@ -11606,7 +11606,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       ],
       "kwargs": {},
     },
-    "filter-drawtext-7" => {
+    "node-7" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -11681,7 +11681,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         },
       ],
     },
-    "filter-feedback-8" => {
+    "node-8" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -11728,13 +11728,13 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         },
       ],
     },
-    "input-9" => {
+    "node-9" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "input-10" => {
+    "node-10" => {
       "__class__": "InputNode",
       "filename": "input2.mp4",
       "inputs": [],
@@ -11747,7 +11747,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-4-0-filter-feedback-3-0" => {
+    "edge-node-4-0-node-3-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -11757,7 +11757,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "kwargs": {},
       },
     },
-    "edge-input-5-0-filter-feedback-3-1" => {
+    "edge-node-5-0-node-3-1" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -11767,7 +11767,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "kwargs": {},
       },
     },
-    "edge-filter-feedback-3-0-filter-drawtext-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -11818,7 +11818,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         ],
       },
     },
-    "edge-filter-drawtext-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -11897,7 +11897,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         ],
       },
     },
-    "edge-output-1-0-global-0-0" => {
+    "edge-node-1-0-node-0-0" => {
       "__class__": "OutputStream",
       "index": 0,
       "node": {
@@ -11987,7 +11987,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "kwargs": {},
       },
     },
-    "edge-input-9-0-filter-feedback-8-0" => {
+    "edge-node-9-0-node-8-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -11997,7 +11997,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "kwargs": {},
       },
     },
-    "edge-input-10-0-filter-feedback-8-1" => {
+    "edge-node-10-0-node-8-1" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -12007,7 +12007,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "kwargs": {},
       },
     },
-    "edge-filter-feedback-8-1-filter-drawtext-7-0" => {
+    "edge-node-8-1-node-7-0" => {
       "__class__": "VideoStream",
       "index": 1,
       "node": {
@@ -12058,7 +12058,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         ],
       },
     },
-    "edge-filter-drawtext-7-0-output-6-0" => {
+    "edge-node-7-0-node-6-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -12137,7 +12137,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         ],
       },
     },
-    "edge-output-6-0-global-0-1" => {
+    "edge-node-6-0-node-0-1" => {
       "__class__": "OutputStream",
       "index": 1,
       "node": {
@@ -12238,7 +12238,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-4-0-filter-feedback-3-0",
+    } => "edge-node-4-0-node-3-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -12248,7 +12248,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-5-0-filter-feedback-3-1",
+    } => "edge-node-5-0-node-3-1",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -12299,7 +12299,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
           },
         ],
       },
-    } => "edge-filter-feedback-3-0-filter-drawtext-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -12378,7 +12378,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
           },
         ],
       },
-    } => "edge-filter-drawtext-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
     {
       "__class__": "OutputStream",
       "index": 0,
@@ -12468,7 +12468,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         ],
         "kwargs": {},
       },
-    } => "edge-output-1-0-global-0-0",
+    } => "edge-node-1-0-node-0-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -12478,7 +12478,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-9-0-filter-feedback-8-0",
+    } => "edge-node-9-0-node-8-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -12488,7 +12488,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-10-0-filter-feedback-8-1",
+    } => "edge-node-10-0-node-8-1",
     {
       "__class__": "VideoStream",
       "index": 1,
@@ -12539,7 +12539,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
           },
         ],
       },
-    } => "edge-filter-feedback-8-1-filter-drawtext-7-0",
+    } => "edge-node-8-1-node-7-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -12618,7 +12618,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
           },
         ],
       },
-    } => "edge-filter-drawtext-7-0-output-6-0",
+    } => "edge-node-7-0-node-6-0",
     {
       "__class__": "OutputStream",
       "index": 1,
@@ -12708,7 +12708,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         ],
         "kwargs": {},
       },
-    } => "edge-output-6-0-global-0-1",
+    } => "edge-node-6-0-node-0-1",
   },
   "targetMap": Map {
     {
@@ -12722,7 +12722,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-feedback-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "AVStream",
@@ -12735,7 +12735,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-feedback-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "VideoStream",
@@ -12789,7 +12789,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-drawtext-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "VideoStream",
@@ -12871,7 +12871,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
     {
       "__class__": "OutputStream",
@@ -12964,7 +12964,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 0,
-      "nodeId": "global-0",
+      "nodeId": "node-0",
     },
     {
       "__class__": "AVStream",
@@ -12977,7 +12977,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-feedback-8",
+      "nodeId": "node-8",
     },
     {
       "__class__": "AVStream",
@@ -12990,7 +12990,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-feedback-8",
+      "nodeId": "node-8",
     },
     {
       "__class__": "VideoStream",
@@ -13044,7 +13044,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-drawtext-7",
+      "nodeId": "node-7",
     },
     {
       "__class__": "VideoStream",
@@ -13126,7 +13126,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-6",
+      "nodeId": "node-6",
     },
     {
       "__class__": "OutputStream",
@@ -13219,7 +13219,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       },
     } => {
       "index": 1,
-      "nodeId": "global-0",
+      "nodeId": "node-0",
     },
   },
 }
@@ -13230,12 +13230,12 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -13275,7 +13275,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
       ],
       "kwargs": {},
     },
-    "filter-reverse-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -13304,7 +13304,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
         },
       ],
     },
-    "input-3" => {
+    "node-3" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
@@ -13317,7 +13317,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
 exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-3-0-filter-reverse-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -13327,7 +13327,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -13371,7 +13371,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-3-0-filter-reverse-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -13404,7 +13404,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
           },
         ],
       },
-    } => "edge-filter-reverse-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
   },
   "targetMap": Map {
     {
@@ -13418,7 +13418,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "VideoStream",
@@ -13454,7 +13454,7 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
@@ -13465,12 +13465,12 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -13708,7 +13708,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       ],
       "kwargs": {},
     },
-    "filter-concat-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -13935,7 +13935,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         },
       ],
     },
-    "filter-split-3" => {
+    "node-3" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -13997,7 +13997,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         },
       ],
     },
-    "filter-reverse-4" => {
+    "node-4" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -14026,13 +14026,13 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         },
       ],
     },
-    "input-5" => {
+    "node-5" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-split-6" => {
+    "node-6" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -14094,7 +14094,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         },
       ],
     },
-    "filter-reverse-7" => {
+    "node-7" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -14123,13 +14123,13 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         },
       ],
     },
-    "input-8" => {
+    "node-8" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-split-9" => {
+    "node-9" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -14191,7 +14191,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         },
       ],
     },
-    "filter-reverse-10" => {
+    "node-10" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -14220,7 +14220,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         },
       ],
     },
-    "input-11" => {
+    "node-11" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
@@ -14233,7 +14233,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-5-0-filter-reverse-4-0" => {
+    "edge-node-5-0-node-4-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -14243,7 +14243,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-4-0-filter-split-3-0" => {
+    "edge-node-4-0-node-3-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -14276,7 +14276,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         ],
       },
     },
-    "edge-filter-split-3-0-filter-concat-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -14342,7 +14342,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         ],
       },
     },
-    "edge-input-8-0-filter-reverse-7-0" => {
+    "edge-node-8-0-node-7-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -14352,7 +14352,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-7-0-filter-split-6-0" => {
+    "edge-node-7-0-node-6-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -14385,7 +14385,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         ],
       },
     },
-    "edge-filter-split-6-1-filter-concat-2-1" => {
+    "edge-node-6-1-node-2-1" => {
       "__class__": "VideoStream",
       "index": 1,
       "node": {
@@ -14451,7 +14451,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         ],
       },
     },
-    "edge-input-11-0-filter-reverse-10-0" => {
+    "edge-node-11-0-node-10-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -14461,7 +14461,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-10-0-filter-split-9-0" => {
+    "edge-node-10-0-node-9-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -14494,7 +14494,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         ],
       },
     },
-    "edge-filter-split-9-2-filter-concat-2-2" => {
+    "edge-node-9-2-node-2-2" => {
       "__class__": "VideoStream",
       "index": 2,
       "node": {
@@ -14560,7 +14560,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         ],
       },
     },
-    "edge-filter-concat-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -14802,7 +14802,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-5-0-filter-reverse-4-0",
+    } => "edge-node-5-0-node-4-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -14835,7 +14835,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
           },
         ],
       },
-    } => "edge-filter-reverse-4-0-filter-split-3-0",
+    } => "edge-node-4-0-node-3-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -14901,7 +14901,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
           },
         ],
       },
-    } => "edge-filter-split-3-0-filter-concat-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -14911,7 +14911,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-8-0-filter-reverse-7-0",
+    } => "edge-node-8-0-node-7-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -14944,7 +14944,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
           },
         ],
       },
-    } => "edge-filter-reverse-7-0-filter-split-6-0",
+    } => "edge-node-7-0-node-6-0",
     {
       "__class__": "VideoStream",
       "index": 1,
@@ -15010,7 +15010,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
           },
         ],
       },
-    } => "edge-filter-split-6-1-filter-concat-2-1",
+    } => "edge-node-6-1-node-2-1",
     {
       "__class__": "AVStream",
       "index": null,
@@ -15020,7 +15020,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-11-0-filter-reverse-10-0",
+    } => "edge-node-11-0-node-10-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -15053,7 +15053,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
           },
         ],
       },
-    } => "edge-filter-reverse-10-0-filter-split-9-0",
+    } => "edge-node-10-0-node-9-0",
     {
       "__class__": "VideoStream",
       "index": 2,
@@ -15119,7 +15119,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
           },
         ],
       },
-    } => "edge-filter-split-9-2-filter-concat-2-2",
+    } => "edge-node-9-2-node-2-2",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -15350,7 +15350,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
           },
         ],
       },
-    } => "edge-filter-concat-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
   },
   "targetMap": Map {
     {
@@ -15364,7 +15364,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-4",
+      "nodeId": "node-4",
     },
     {
       "__class__": "VideoStream",
@@ -15400,7 +15400,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "VideoStream",
@@ -15469,7 +15469,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -15482,7 +15482,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-7",
+      "nodeId": "node-7",
     },
     {
       "__class__": "VideoStream",
@@ -15518,7 +15518,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-6",
+      "nodeId": "node-6",
     },
     {
       "__class__": "VideoStream",
@@ -15587,7 +15587,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -15600,7 +15600,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-10",
+      "nodeId": "node-10",
     },
     {
       "__class__": "VideoStream",
@@ -15636,7 +15636,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-9",
+      "nodeId": "node-9",
     },
     {
       "__class__": "VideoStream",
@@ -15705,7 +15705,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 2,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "VideoStream",
@@ -15939,7 +15939,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
@@ -15950,12 +15950,12 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -15995,7 +15995,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
       ],
       "kwargs": {},
     },
-    "filter-reverse-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -16024,7 +16024,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
         },
       ],
     },
-    "input-3" => {
+    "node-3" => {
       "__class__": "InputNode",
       "filename": "input1.mp4",
       "inputs": [],
@@ -16037,7 +16037,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-3-0-filter-reverse-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -16047,7 +16047,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -16091,7 +16091,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-3-0-filter-reverse-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -16124,7 +16124,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
           },
         ],
       },
-    } => "edge-filter-reverse-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
   },
   "targetMap": Map {
     {
@@ -16138,7 +16138,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "VideoStream",
@@ -16174,7 +16174,7 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
@@ -16185,12 +16185,12 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
 exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -16246,7 +16246,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
       ],
       "kwargs": {},
     },
-    "filter-concat-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -16291,13 +16291,13 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         },
       ],
     },
-    "input-3" => {
+    "node-3" => {
       "__class__": "InputNode",
       "filename": "input.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "input-4" => {
+    "node-4" => {
       "__class__": "InputNode",
       "filename": "input.mp4",
       "inputs": [],
@@ -16310,7 +16310,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
 exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-3-0-filter-concat-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -16320,7 +16320,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         "kwargs": {},
       },
     },
-    "edge-input-4-0-filter-concat-2-1" => {
+    "edge-node-4-0-node-2-1" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -16330,7 +16330,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         "kwargs": {},
       },
     },
-    "edge-filter-concat-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -16390,7 +16390,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-3-0-filter-concat-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -16400,7 +16400,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-4-0-filter-concat-2-1",
+    } => "edge-node-4-0-node-2-1",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -16449,7 +16449,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
           },
         ],
       },
-    } => "edge-filter-concat-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
   },
   "targetMap": Map {
     {
@@ -16463,7 +16463,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -16476,7 +16476,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "VideoStream",
@@ -16528,7 +16528,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
@@ -16539,12 +16539,12 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
 exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 1`] = `
 {
   "nodeMap": Map {
-    "global-0" => {
+    "node-0" => {
       "__class__": "GlobalNode",
       "inputs": [],
       "kwargs": {},
     },
-    "output-1" => {
+    "node-1" => {
       "__class__": "OutputNode",
       "filename": "tmp.mp4",
       "inputs": [
@@ -16704,7 +16704,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       ],
       "kwargs": {},
     },
-    "filter-concat-2" => {
+    "node-2" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -16853,7 +16853,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         },
       ],
     },
-    "filter-split-3" => {
+    "node-3" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -16911,7 +16911,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         },
       ],
     },
-    "filter-reverse-4" => {
+    "node-4" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -16940,13 +16940,13 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         },
       ],
     },
-    "input-5" => {
+    "node-5" => {
       "__class__": "InputNode",
       "filename": "input.mp4",
       "inputs": [],
       "kwargs": {},
     },
-    "filter-split-6" => {
+    "node-6" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -17004,7 +17004,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         },
       ],
     },
-    "filter-reverse-7" => {
+    "node-7" => {
       "__class__": "FilterNode",
       "input_typings": [
         {
@@ -17033,7 +17033,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         },
       ],
     },
-    "input-8" => {
+    "node-8" => {
       "__class__": "InputNode",
       "filename": "input.mp4",
       "inputs": [],
@@ -17046,7 +17046,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
 exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 2`] = `
 {
   "edgeMap": Map {
-    "edge-input-5-0-filter-reverse-4-0" => {
+    "edge-node-5-0-node-4-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -17056,7 +17056,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-4-0-filter-split-3-0" => {
+    "edge-node-4-0-node-3-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -17089,7 +17089,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         ],
       },
     },
-    "edge-filter-split-3-0-filter-concat-2-0" => {
+    "edge-node-3-0-node-2-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -17151,7 +17151,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         ],
       },
     },
-    "edge-input-8-0-filter-reverse-7-0" => {
+    "edge-node-8-0-node-7-0" => {
       "__class__": "AVStream",
       "index": null,
       "node": {
@@ -17161,7 +17161,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "kwargs": {},
       },
     },
-    "edge-filter-reverse-7-0-filter-split-6-0" => {
+    "edge-node-7-0-node-6-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -17194,7 +17194,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         ],
       },
     },
-    "edge-filter-split-6-1-filter-concat-2-1" => {
+    "edge-node-6-1-node-2-1" => {
       "__class__": "VideoStream",
       "index": 1,
       "node": {
@@ -17256,7 +17256,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         ],
       },
     },
-    "edge-filter-concat-2-0-output-1-0" => {
+    "edge-node-2-0-node-1-0" => {
       "__class__": "VideoStream",
       "index": 0,
       "node": {
@@ -17420,7 +17420,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-5-0-filter-reverse-4-0",
+    } => "edge-node-5-0-node-4-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -17453,7 +17453,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
           },
         ],
       },
-    } => "edge-filter-reverse-4-0-filter-split-3-0",
+    } => "edge-node-4-0-node-3-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -17515,7 +17515,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
           },
         ],
       },
-    } => "edge-filter-split-3-0-filter-concat-2-0",
+    } => "edge-node-3-0-node-2-0",
     {
       "__class__": "AVStream",
       "index": null,
@@ -17525,7 +17525,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
         "inputs": [],
         "kwargs": {},
       },
-    } => "edge-input-8-0-filter-reverse-7-0",
+    } => "edge-node-8-0-node-7-0",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -17558,7 +17558,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
           },
         ],
       },
-    } => "edge-filter-reverse-7-0-filter-split-6-0",
+    } => "edge-node-7-0-node-6-0",
     {
       "__class__": "VideoStream",
       "index": 1,
@@ -17620,7 +17620,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
           },
         ],
       },
-    } => "edge-filter-split-6-1-filter-concat-2-1",
+    } => "edge-node-6-1-node-2-1",
     {
       "__class__": "VideoStream",
       "index": 0,
@@ -17773,7 +17773,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
           },
         ],
       },
-    } => "edge-filter-concat-2-0-output-1-0",
+    } => "edge-node-2-0-node-1-0",
   },
   "targetMap": Map {
     {
@@ -17787,7 +17787,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-4",
+      "nodeId": "node-4",
     },
     {
       "__class__": "VideoStream",
@@ -17823,7 +17823,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-3",
+      "nodeId": "node-3",
     },
     {
       "__class__": "VideoStream",
@@ -17888,7 +17888,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "AVStream",
@@ -17901,7 +17901,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-reverse-7",
+      "nodeId": "node-7",
     },
     {
       "__class__": "VideoStream",
@@ -17937,7 +17937,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       },
     } => {
       "index": 0,
-      "nodeId": "filter-split-6",
+      "nodeId": "node-6",
     },
     {
       "__class__": "VideoStream",
@@ -18002,7 +18002,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       },
     } => {
       "index": 1,
-      "nodeId": "filter-concat-2",
+      "nodeId": "node-2",
     },
     {
       "__class__": "VideoStream",
@@ -18158,7 +18158,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       },
     } => {
       "index": 0,
-      "nodeId": "output-1",
+      "nodeId": "node-1",
     },
   },
 }
