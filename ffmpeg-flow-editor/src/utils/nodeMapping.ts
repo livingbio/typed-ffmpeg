@@ -337,7 +337,7 @@ export class NodeMappingManager {
   }
 
   // Add an edge to the mapping
-  addEdge(
+  private _addEdge(
     sourceNodeId: string,
     targetNodeId: string,
     sourceIndex: number,
@@ -351,7 +351,7 @@ export class NodeMappingManager {
     }
 
     // Create the appropriate stream type based on source node type
-    let stream: VideoStream | AudioStream | AVStream | OutputStream | GlobalStream;
+    let stream: Stream;
 
     if (sourceNode instanceof FilterNode) {
       // Check if the sourceIndex is valid
@@ -402,16 +402,20 @@ export class NodeMappingManager {
         );
       }
 
-      const expectedType = targetNode.input_typings[targetIndex]?.value;
+      const expectedType = targetNode.input_typings[targetIndex].value;
       let actualType: string | undefined;
 
       if (stream instanceof VideoStream) {
         actualType = 'video';
       } else if (stream instanceof AudioStream) {
         actualType = 'audio';
+      } else if (stream instanceof AVStream) {
+        actualType = 'av';
+      } else {
+        throw new Error(`Invalid stream type ${stream.constructor.name}`);
       }
 
-      if (expectedType && actualType && expectedType !== actualType) {
+      if (expectedType && actualType != 'av' && expectedType !== actualType) {
         throw new Error(`Stream type mismatch: expected ${expectedType}, got ${actualType}`);
       }
     }
@@ -427,6 +431,16 @@ export class NodeMappingManager {
     const edgeId = this.generateEdgeId(sourceNodeId, targetNodeId, sourceIndex, targetIndex);
     this.edgeMapping.edgeMap.set(edgeId, stream);
     this.edgeMapping.targetMap.set(stream, { nodeId: targetNodeId, index: targetIndex });
+    return edgeId;
+  }
+
+  addEdge(
+    sourceNodeId: string,
+    targetNodeId: string,
+    sourceIndex: number,
+    targetIndex: number
+  ): string {
+    const edgeId = this._addEdge(sourceNodeId, targetNodeId, sourceIndex, targetIndex);
     this.emitUpdate();
     return edgeId;
   }
@@ -565,7 +579,7 @@ export class NodeMappingManager {
               const sourceNodeId = await this._recursiveAddInternal(input.node);
               // Add the edge - using the stream's index property
               const sourceIndex = input.index !== null ? input.index : 0;
-              this.addEdge(sourceNodeId, nodeId, sourceIndex, i);
+              this._addEdge(sourceNodeId, nodeId, sourceIndex, i);
             }
           }
         }
