@@ -2,7 +2,7 @@ import { generateFFmpegCommand } from '../generateFFmpegCommand';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { NodeMappingManager } from '../nodeMapping';
 import { setupPyodideMock } from './testUtils';
-import * as pyodideModule from '../pyodideUtils';
+import { StreamType } from '../../types/dag';
 
 describe('generateFFmpegCommand', () => {
   let consoleSpy: ReturnType<typeof vi.spyOn>;
@@ -27,227 +27,160 @@ describe('generateFFmpegCommand', () => {
   });
 
   it('generates basic input-output-global chain', async () => {
-    // Mock successful response from runPython
+    const nodeMapping = new NodeMappingManager();
 
-    const nodeMappingManager = new NodeMappingManager();
-
-    // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
+    // Add nodes to mapping
+    const inputId = await nodeMapping.addNodeToMapping({
       type: 'input',
       filename: 'input.mp4',
     });
-
-    // Add output node
-    const outputNodeId = nodeMappingManager.addNodeToMapping({
+    const outputId = await nodeMapping.addNodeToMapping({
       type: 'output',
       filename: 'output.mp4',
       inputs: [],
     });
 
-    // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'global',
-      inputs: [],
-    });
-
     // Connect input -> output -> global
-    nodeMappingManager.addEdgeToMapping(inputNodeId, outputNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(outputNodeId, globalNodeId, 0, 0);
+    nodeMapping.addEdgeToMapping(inputId, outputId, 0, 0);
+    const globalId = nodeMapping.getGlobalNodeId();
+    nodeMapping.addEdgeToMapping(outputId, globalId, 0, 0);
 
-    const result = await generateFFmpegCommand(nodeMappingManager);
+    const result = await generateFFmpegCommand(nodeMapping);
 
-    // Check that we got the mocked response
     expect(result).toMatchSnapshot();
   });
 
   it('generates code with filter nodes, output and global node', async () => {
-    // Mock successful response from runPython
+    const nodeMapping = new NodeMappingManager();
 
-    const nodeMappingManager = new NodeMappingManager();
-
-    // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
+    // Add nodes to mapping
+    const inputId = await nodeMapping.addNodeToMapping({
       type: 'input',
       filename: 'input.mp4',
     });
-
-    // Add filter node
-    const filterNodeId = nodeMappingManager.addNodeToMapping({
+    const filterId = await nodeMapping.addNodeToMapping({
       type: 'filter',
       name: 'scale',
-      input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-      output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
+      input_typings: [new StreamType('video')],
+      output_typings: [new StreamType('video')],
+      kwargs: { width: 640, height: 480 },
     });
-
-    // Add output node
-    const outputNodeId = nodeMappingManager.addNodeToMapping({
+    const outputId = await nodeMapping.addNodeToMapping({
       type: 'output',
       filename: 'output.mp4',
       inputs: [],
     });
 
-    // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'global',
-      inputs: [],
-    });
+    // Connect input -> filter -> output -> global
+    nodeMapping.addEdgeToMapping(inputId, filterId, 0, 0);
+    nodeMapping.addEdgeToMapping(filterId, outputId, 0, 0);
+    const globalId = nodeMapping.getGlobalNodeId();
+    nodeMapping.addEdgeToMapping(outputId, globalId, 0, 0);
 
-    // Connect nodes
-    nodeMappingManager.addEdgeToMapping(inputNodeId, filterNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(filterNodeId, outputNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(outputNodeId, globalNodeId, 0, 0);
+    const result = await generateFFmpegCommand(nodeMapping);
 
-    const result = await generateFFmpegCommand(nodeMappingManager);
-
-    // Check that we got the mocked response
     expect(result).toMatchSnapshot();
   });
 
   it('handles multiple input nodes and outputs to global node', async () => {
-    const nodeMappingManager = new NodeMappingManager();
+    const nodeMapping = new NodeMappingManager();
 
-    // Add input nodes
-    const input1NodeId = nodeMappingManager.addNodeToMapping({
+    // Add nodes to mapping
+    const input1Id = await nodeMapping.addNodeToMapping({
       type: 'input',
       filename: 'input1.mp4',
     });
-    const input2NodeId = nodeMappingManager.addNodeToMapping({
+    const input2Id = await nodeMapping.addNodeToMapping({
       type: 'input',
       filename: 'input2.mp4',
     });
-
-    // Add output nodes
-    const output1NodeId = nodeMappingManager.addNodeToMapping({
-      type: 'output',
-      filename: 'output1.mp4',
-      inputs: [],
-    });
-    const output2NodeId = nodeMappingManager.addNodeToMapping({
-      type: 'output',
-      filename: 'output2.mp4',
-      inputs: [],
-    });
-
-    // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'global',
-      inputs: [],
-    });
-
-    // Connect input -> output -> global
-    nodeMappingManager.addEdgeToMapping(input1NodeId, output1NodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(input2NodeId, output2NodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(output1NodeId, globalNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(output2NodeId, globalNodeId, 0, 1);
-
-    const result = await generateFFmpegCommand(nodeMappingManager);
-
-    // Check that we got the mocked response
-    expect(result).toMatchSnapshot();
-  });
-
-  it('handles complex filter chains with outputs to global node', async () => {
-    // Mock successful response from runPython
-
-    const nodeMappingManager = new NodeMappingManager();
-
-    // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'input',
-      filename: 'input.mp4',
-    });
-
-    // Add filter nodes
-    const scaleNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'filter',
-      name: 'scale',
-      input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-      output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-    });
-    const volumeNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'filter',
-      name: 'volume',
-      input_typings: [{ value: 'audio', toJSON: () => ({ value: 'audio' }) }],
-      output_typings: [{ value: 'audio', toJSON: () => ({ value: 'audio' }) }],
-    });
-
-    // Add output nodes
-    const videoOutputId = nodeMappingManager.addNodeToMapping({
-      type: 'output',
-      filename: 'video_output.mp4',
-      inputs: [],
-    });
-    const audioOutputId = nodeMappingManager.addNodeToMapping({
-      type: 'output',
-      filename: 'audio_output.mp3',
-      inputs: [],
-    });
-
-    // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'global',
-      inputs: [],
-    });
-
-    // Connect nodes: input -> filters -> outputs -> global
-    nodeMappingManager.addEdgeToMapping(inputNodeId, scaleNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(inputNodeId, volumeNodeId, 1, 0);
-    nodeMappingManager.addEdgeToMapping(scaleNodeId, videoOutputId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(volumeNodeId, audioOutputId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(videoOutputId, globalNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(audioOutputId, globalNodeId, 0, 1);
-
-    const result = await generateFFmpegCommand(nodeMappingManager);
-
-    // Check that we got the mocked response
-    expect(result).toMatchSnapshot();
-  });
-
-  it('handles numeric and boolean parameters correctly with outputs to global node', async () => {
-    // Mock successful response from runPython
-
-    const nodeMappingManager = new NodeMappingManager();
-
-    // Add input node
-    const inputNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'input',
-      filename: 'input.mp4',
-    });
-
-    // Add filter node with parameters
-    const filterNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'filter',
-      name: 'scale',
-      input_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-      output_typings: [{ value: 'video', toJSON: () => ({ value: 'video' }) }],
-      kwargs: {
-        width: 640,
-        height: 480,
-        force_original_aspect_ratio: true,
-      },
-    });
-
-    // Add output node
-    const outputNodeId = nodeMappingManager.addNodeToMapping({
+    const outputId = await nodeMapping.addNodeToMapping({
       type: 'output',
       filename: 'output.mp4',
       inputs: [],
     });
 
-    // Add global node
-    const globalNodeId = nodeMappingManager.addNodeToMapping({
-      type: 'global',
+    // Connect inputs -> output -> global
+    nodeMapping.addEdgeToMapping(input1Id, outputId, 0, 0);
+    nodeMapping.addEdgeToMapping(input2Id, outputId, 0, 1);
+    const globalId = nodeMapping.getGlobalNodeId();
+    nodeMapping.addEdgeToMapping(outputId, globalId, 0, 0);
+
+    const result = await generateFFmpegCommand(nodeMapping);
+
+    expect(result).toMatchSnapshot();
+  });
+
+  it('handles complex filter chains with outputs to global node', async () => {
+    const nodeMapping = new NodeMappingManager();
+
+    // Add nodes to mapping
+    const inputId = await nodeMapping.addNodeToMapping({
+      type: 'input',
+      filename: 'input.mp4',
+    });
+    const filter1Id = await nodeMapping.addNodeToMapping({
+      type: 'filter',
+      name: 'scale',
+      input_typings: [new StreamType('video')],
+      output_typings: [new StreamType('video')],
+      kwargs: { width: 640, height: 480 },
+    });
+    const filter2Id = await nodeMapping.addNodeToMapping({
+      type: 'filter',
+      name: 'volume',
+      input_typings: [new StreamType('audio')],
+      output_typings: [new StreamType('audio')],
+      kwargs: { volume: 2.0 },
+    });
+    const outputId = await nodeMapping.addNodeToMapping({
+      type: 'output',
+      filename: 'output.mp4',
       inputs: [],
     });
 
-    // Connect nodes: input -> filter -> output -> global
-    nodeMappingManager.addEdgeToMapping(inputNodeId, filterNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(filterNodeId, outputNodeId, 0, 0);
-    nodeMappingManager.addEdgeToMapping(outputNodeId, globalNodeId, 0, 0);
+    // Connect input -> filters -> output -> global
+    nodeMapping.addEdgeToMapping(inputId, filter1Id, 0, 0);
+    nodeMapping.addEdgeToMapping(inputId, filter2Id, 1, 0);
+    nodeMapping.addEdgeToMapping(filter1Id, outputId, 0, 0);
+    nodeMapping.addEdgeToMapping(filter2Id, outputId, 0, 1);
+    const globalId = nodeMapping.getGlobalNodeId();
+    nodeMapping.addEdgeToMapping(outputId, globalId, 0, 0);
 
-    const result = await generateFFmpegCommand(nodeMappingManager);
+    const result = await generateFFmpegCommand(nodeMapping);
 
-    // Check that we got the mocked response
+    expect(result).toMatchSnapshot();
+  });
+
+  it('handles numeric and boolean parameters correctly with outputs to global node', async () => {
+    const nodeMapping = new NodeMappingManager();
+
+    // Add nodes to mapping
+    const inputId = await nodeMapping.addNodeToMapping({
+      type: 'input',
+      filename: 'input.mp4',
+    });
+    const filterId = await nodeMapping.addNodeToMapping({
+      type: 'filter',
+      name: 'scale',
+      input_typings: [new StreamType('video')],
+      output_typings: [new StreamType('video')],
+      kwargs: { width: 640, height: 480, force_original_aspect_ratio: true },
+    });
+    const outputId = await nodeMapping.addNodeToMapping({
+      type: 'output',
+      filename: 'output.mp4',
+      inputs: [],
+    });
+
+    // Connect input -> filter -> output -> global
+    nodeMapping.addEdgeToMapping(inputId, filterId, 0, 0);
+    nodeMapping.addEdgeToMapping(filterId, outputId, 0, 0);
+    const globalId = nodeMapping.getGlobalNodeId();
+    nodeMapping.addEdgeToMapping(outputId, globalId, 0, 0);
+
+    const result = await generateFFmpegCommand(nodeMapping);
+
     expect(result).toMatchSnapshot();
   });
 

@@ -10,66 +10,71 @@ export class StreamType extends Serializable {
   }
 }
 
-// Base interfaces
-export interface Node {
-  kwargs: Record<string, string | number | boolean>;
-  inputs: (Stream | null)[];
+// Base abstract classes
+export abstract class Node extends Serializable {
+  constructor(
+    public kwargs: Record<string, string | number | boolean>,
+    public inputs: (Stream | null)[]
+  ) {
+    super();
+  }
 }
 
-export interface Stream {
-  node: Node;
-  index: number | null;
+export abstract class Stream extends Serializable {
+  constructor(
+    public node: Node,
+    public index: number | null
+  ) {
+    super();
+  }
 }
 
 // Node types
-export class FilterNode extends Serializable implements Node {
+export class FilterNode extends Node {
   constructor(
     public name: string,
-    public inputs: (FilterableStream | null)[],
+    inputs: (FilterableStream | null)[],
     public input_typings: StreamType[],
     public output_typings: StreamType[],
-    public kwargs: Record<string, string | number | boolean> = {}
+    kwargs: Record<string, string | number | boolean> = {}
   ) {
-    super();
+    super(kwargs, inputs);
   }
 }
 
-export class InputNode extends Serializable implements Node {
+export class InputNode extends Node {
   constructor(
     public filename: string,
-    public inputs: [] = [],
-    public kwargs: Record<string, string | number | boolean> = {}
+    inputs: [] = [],
+    kwargs: Record<string, string | number | boolean> = {}
   ) {
-    super();
+    super(kwargs, inputs);
   }
 }
 
-export class OutputNode extends Serializable implements Node {
+export class OutputNode extends Node {
   constructor(
     public filename: string,
-    public inputs: (FilterableStream | null)[],
-    public kwargs: Record<string, string | number | boolean> = {}
+    inputs: (FilterableStream | null)[],
+    kwargs: Record<string, string | number | boolean> = {}
   ) {
-    super();
+    super(kwargs, inputs);
   }
 }
 
-export class GlobalNode extends Serializable implements Node {
+export class GlobalNode extends Node {
   constructor(
-    public inputs: (OutputStream | null)[],
-    public kwargs: Record<string, string | number | boolean> = {}
+    inputs: (OutputStream | null)[],
+    kwargs: Record<string, string | number | boolean> = {}
   ) {
-    super();
+    super(kwargs, inputs);
   }
 }
 
 // Stream types
-export class FilterableStream extends Serializable implements Stream {
-  constructor(
-    public node: FilterNode | InputNode,
-    public index: number | null = null
-  ) {
-    super();
+export class FilterableStream extends Stream {
+  constructor(node: FilterNode | InputNode, index: number | null = null) {
+    super(node, index);
   }
 }
 
@@ -91,20 +96,14 @@ export class AVStream extends FilterableStream {
   }
 }
 
-export class OutputStream extends Serializable implements Stream {
-  constructor(
-    public node: OutputNode,
-    public index: number | null = null
-  ) {
-    super();
+export class OutputStream extends Stream {
+  constructor(node: OutputNode, index: number | null = null) {
+    super(node, index);
   }
 }
 
-export class GlobalStream extends Serializable implements Stream {
-  constructor(
-    public node: GlobalNode,
-    public index: number | null = null
-  ) {
-    super();
+export class GlobalStream extends Stream {
+  constructor(node: GlobalNode, index: number | null = null) {
+    super(node, index);
   }
 }

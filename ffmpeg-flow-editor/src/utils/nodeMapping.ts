@@ -18,8 +18,6 @@ import { EventEmitter } from 'events';
 export interface NodeMapping {
   // Maps ReactFlow node ID to DAG node
   nodeMap: Map<string, FilterNode | InputNode | OutputNode | GlobalNode>;
-  // Maps DAG node to ReactFlow node ID (for reverse lookup)
-  reverseMap: Map<FilterNode | InputNode | OutputNode | GlobalNode, string>;
 }
 
 export interface EdgeMapping {
@@ -46,7 +44,6 @@ export type NodeMappingEventType = (typeof NODE_MAPPING_EVENTS)[keyof typeof NOD
 export class NodeMappingManager {
   private nodeMapping: NodeMapping = {
     nodeMap: new Map(),
-    reverseMap: new Map(),
   };
 
   private edgeMapping: EdgeMapping = {
@@ -64,8 +61,8 @@ export class NodeMappingManager {
     // Initialize the global node
     this.globalNode = new GlobalNode([], {});
     this.globalNodeId = this.generateNodeId(this.globalNode);
+    this.globalNode.id = this.globalNodeId;
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
-    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
   }
 
   // Event handling methods
@@ -127,7 +124,7 @@ export class NodeMappingManager {
   }
 
   // Add a node to the mapping
-  addNodeToMapping(params: {
+  async addNodeToMapping(params: {
     type: 'filter' | 'input' | 'output' | 'global';
     name?: string;
     filename?: string;
@@ -135,7 +132,7 @@ export class NodeMappingManager {
     input_typings?: StreamType[];
     output_typings?: StreamType[];
     kwargs?: Record<string, string | number | boolean>;
-  }): string {
+  }): Promise<string> {
     // Special handling for GlobalNode
     if (params.type === 'global') {
       // Update the existing GlobalNode's properties
@@ -203,8 +200,8 @@ export class NodeMappingManager {
     }
 
     const nodeId = this.generateNodeId(node);
+    node.id = nodeId;
     this.nodeMapping.nodeMap.set(nodeId, node);
-    this.nodeMapping.reverseMap.set(node, nodeId);
     this.emitUpdate();
     return nodeId;
   }
@@ -221,9 +218,7 @@ export class NodeMappingManager {
     for (const [edgeId, stream] of this.edgeMapping.edgeMap) {
       const targetInfo = this.edgeMapping.targetMap.get(stream);
       const sourceNode = stream.node;
-      const sourceNodeId = this.nodeMapping.reverseMap.get(
-        sourceNode as FilterNode | InputNode | OutputNode | GlobalNode
-      );
+      const sourceNodeId = sourceNode.id;
 
       if ((targetInfo && targetInfo.nodeId === nodeId) || sourceNodeId === nodeId) {
         edgesToRemove.push(edgeId);
@@ -247,9 +242,11 @@ export class NodeMappingManager {
       }
     }
 
+    // Clear the node's id before removing it
+    node.id = undefined;
+
     // Remove the node
     this.nodeMapping.nodeMap.delete(nodeId);
-    this.nodeMapping.reverseMap.delete(node);
     this.emitUpdate();
   }
 
@@ -267,7 +264,6 @@ export class NodeMappingManager {
   resetNodeMapping() {
     this.nodeMapping = {
       nodeMap: new Map(),
-      reverseMap: new Map(),
     };
     this.edgeMapping = {
       edgeMap: new Map(),
@@ -279,8 +275,8 @@ export class NodeMappingManager {
     // Create a new global node
     this.globalNode = new GlobalNode([], {});
     this.globalNodeId = this.generateNodeId(this.globalNode);
+    this.globalNode.id = this.globalNodeId;
     this.nodeMapping.nodeMap.set(this.globalNodeId, this.globalNode);
-    this.nodeMapping.reverseMap.set(this.globalNode, this.globalNodeId);
     this.emitUpdate();
   }
 
@@ -514,7 +510,7 @@ export class NodeMappingManager {
   }
 
   // Recursively add a node and all connected nodes/streams to the mapping
-  recursiveAddToMapping(
+  async recursiveAddToMapping(
     item:
       | FilterNode
       | InputNode
@@ -526,7 +522,7 @@ export class NodeMappingManager {
       | AVStream
       | OutputStream
       | GlobalStream
-  ): string {
+  ): Promise<string> {
     // Suppress events during the recursive operation
     // We'll emit a single event at the end
     const emitUpdate = this.emitUpdate;
@@ -543,14 +539,13 @@ export class NodeMappingManager {
         item instanceof GlobalNode
       ) {
         // Check if node is already in the mapping
-        const existingNodeId = this.nodeMapping.reverseMap.get(item);
-        if (existingNodeId) {
-          result = existingNodeId;
+        if (item.id && this.nodeMapping.nodeMap.has(item.id)) {
+          result = item.id;
         } else {
           // Add node to mapping
           let nodeId: string;
           if (item instanceof FilterNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'filter',
               name: item.name,
               inputs: item.inputs,
@@ -559,13 +554,13 @@ export class NodeMappingManager {
               kwargs: item.kwargs,
             });
           } else if (item instanceof InputNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'input',
               filename: item.filename,
               kwargs: item.kwargs,
             });
           } else if (item instanceof OutputNode) {
-            nodeId = this.addNodeToMapping({
+            nodeId = await this.addNodeToMapping({
               type: 'output',
               filename: item.filename,
               inputs: item.inputs,
@@ -590,7 +585,7 @@ export class NodeMappingManager {
               const input = item.inputs[i];
               if (input) {
                 // Recursively add the input stream's node
-                const sourceNodeId = this.recursiveAddToMapping(input.node);
+                const sourceNodeId = await this.recursiveAddToMapping(input.node);
                 // Add the edge - using the stream's index property
                 const sourceIndex = input.index !== null ? input.index : 0;
                 this.addEdgeToMapping(sourceNodeId, nodeId, sourceIndex, i);
@@ -609,7 +604,7 @@ export class NodeMappingManager {
         item instanceof OutputStream ||
         item instanceof GlobalStream
       ) {
-        result = this.recursiveAddToMapping(item.node);
+        result = await this.recursiveAddToMapping(item.node);
       } else {
         throw new Error('Invalid item type');
       }

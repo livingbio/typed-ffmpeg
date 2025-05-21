@@ -1,4 +1,5 @@
 import { EdgeType } from './edge';
+import { FFMpegFilter } from './ffmpeg';
 
 export type NodeType = 'input' | 'filter' | 'output' | 'global';
 
@@ -7,6 +8,7 @@ export interface NodeData {
   nodeType: NodeType;
   filterName?: string;
   filename?: string;
+  filter?: FFMpegFilter;
   parameters?: Record<string, string>;
   handles: {
     inputs: { id: string; type: EdgeType }[];

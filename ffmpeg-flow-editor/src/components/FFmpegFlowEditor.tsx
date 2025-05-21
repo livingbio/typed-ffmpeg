@@ -58,13 +58,13 @@ function generateRandomFilename(type: 'input' | 'output'): string {
 }
 
 // Helper function to create a node
-const createNode = (
+const createNode = async (
   filterType: string,
   parameters: Record<string, string> | undefined,
   position: { x: number; y: number } | undefined,
   nodeMappingManager: NodeMappingManager,
   filter?: (typeof predefinedFilters)[0]
-): Node<NodeData> => {
+): Promise<Node<NodeData>> => {
   const defaultPosition = {
     x: Math.random() * 500 + 200,
     y: Math.random() * 300 + 100,
@@ -177,7 +177,7 @@ const createNode = (
       throw new Error(`Invalid node type: ${nodeType}`);
   }
 
-  const nodeId = nodeMappingManager.addNodeToMapping(mappingData);
+  const nodeId = await nodeMappingManager.addNodeToMapping(mappingData);
   // if nodeType is input or output add a `_` to the end of the nodeType
   let nodeType_: string;
   if (nodeType === 'input' || nodeType === 'output') {
@@ -192,6 +192,7 @@ const createNode = (
     position: position || defaultPosition,
     data: {
       label: label,
+      filter: filter,
       filterName: filterType,
       nodeType: nodeType,
       parameters: parameters || {},
@@ -249,26 +250,30 @@ export default function FFmpegFlowEditor() {
   // Initialize nodes
   useEffect(() => {
     // Create React Flow nodes
-    const initialNodes = [
-      createNode('input', {}, { x: 100, y: 300 }, nodeMappingManager),
-      createNode('output', {}, { x: 1600, y: 300 }, nodeMappingManager),
-      createNode('global', {}, { x: 2000, y: 300 }, nodeMappingManager),
-    ];
+    const initializeNodes = async () => {
+      const initialNodes = [
+        await createNode('input', {}, { x: 100, y: 300 }, nodeMappingManager),
+        await createNode('output', {}, { x: 1600, y: 300 }, nodeMappingManager),
+        await createNode('global', {}, { x: 2000, y: 300 }, nodeMappingManager),
+      ];
 
-    setNodes(initialNodes);
+      setNodes(initialNodes);
 
-    // Create initial edge between output and global nodes
-    const outputNode = initialNodes[1]; // output node
-    const globalNode = initialNodes[2]; // global node
-    const initialEdge = createEdge(
-      outputNode.id,
-      globalNode.id,
-      'output-0',
-      'input-0',
-      nodeMappingManager
-    );
+      // Create initial edge between output and global nodes
+      const outputNode = initialNodes[1]; // output node
+      const globalNode = initialNodes[2]; // global node
+      const initialEdge = createEdge(
+        outputNode.id,
+        globalNode.id,
+        'output-0',
+        'input-0',
+        nodeMappingManager
+      );
 
-    setEdges([initialEdge]);
+      setEdges([initialEdge]);
+    };
+
+    initializeNodes();
   }, [nodeMappingManager, setNodes, setEdges]);
 
   // Add event listener for node data update
@@ -367,25 +372,18 @@ export default function FFmpegFlowEditor() {
   );
 
   const onAddNode = useCallback(
-    (
+    async (
       filterType: string,
       parameters?: Record<string, string>,
       position?: { x: number; y: number }
     ) => {
-      // filterType can be 'input', 'output', 'global', or a filter name
-      try {
-        const newNode = createNode(
-          filterType,
-          parameters,
-          position,
-          nodeMappingManager,
-          predefinedFilters.find((f) => f.name === filterType)
-        );
-
-        setNodes((nds) => [...nds, newNode]);
-      } catch (error) {
-        console.error('Failed to add node:', error);
+      const filter = predefinedFilters.find((f) => f.name === filterType);
+      if (!filter) {
+        throw new Error(`Filter ${filterType} not found`);
       }
+
+      const newNode = await createNode(filterType, parameters, position, nodeMappingManager, filter);
+      setNodes((nds) => [...nds, newNode]);
     },
     [setNodes, nodeMappingManager]
   );
