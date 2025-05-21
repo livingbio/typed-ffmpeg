@@ -215,7 +215,7 @@ const createEdge = (
   const sourceIndex = parseInt(sourceHandle.split('-')[1] || '0');
   const targetIndex = parseInt(targetHandle.split('-')[1] || '0');
 
-  const edgeId = nodeMappingManager.addEdge(source, target, sourceIndex, targetIndex);
+  const edgeId = nodeMappingManager.addEdgeToMapping(source, target, sourceIndex, targetIndex);
 
   // Get the stream from the edge mapping
   const stream = nodeMappingManager.getEdgeMapping().edgeMap.get(edgeId);
@@ -276,11 +276,12 @@ export default function FFmpegFlowEditor() {
 
   // Add event listener for node data update
   useEffect(() => {
-    const handleNodeDataUpdate = (event: CustomEvent) => {
-      const { id, data } = event.detail;
+    const handleNodeDataUpdate = async (event: Event) => {
+      const customEvent = event as CustomEvent;
+      const { id, data } = customEvent.detail;
       const node = nodeMappingManager.getNodeMapping().nodeMap.get(id);
       if (node) {
-        nodeMappingManager.updateNode(id, {
+        await nodeMappingManager.updateNode(id, {
           kwargs: data.parameters,
           filename: data.filename,
         });
@@ -303,9 +304,9 @@ export default function FFmpegFlowEditor() {
       );
     };
 
-    window.addEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+    window.addEventListener('updateNodeData', handleNodeDataUpdate);
     return () => {
-      window.removeEventListener('updateNodeData', handleNodeDataUpdate as EventListener);
+      window.removeEventListener('updateNodeData', handleNodeDataUpdate);
     };
   }, [setNodes, nodeMappingManager]);
 

@@ -456,11 +456,9 @@ export class NodeMappingManager {
   }
 
   // Update a node in the mapping
-  updateNode(
+  async updateNode(
     nodeId: string,
     updates: {
-      input_typings?: StreamType[];
-      output_typings?: StreamType[];
       kwargs?: Record<string, string | number | boolean>;
       filename?: string;
     }
@@ -470,14 +468,18 @@ export class NodeMappingManager {
       throw new Error(`Node ${nodeId} not found in mapping`);
     }
 
-    if (updates.input_typings && node instanceof FilterNode) {
-      node.input_typings = updates.input_typings;
-      // Ensure inputs array matches the length of input_typings
-      this.ensureNodeInputs(node, updates.input_typings.length);
-    }
-
-    if (updates.output_typings && node instanceof FilterNode) {
-      node.output_typings = updates.output_typings;
+    if (node instanceof FilterNode) {
+      const filter = predefinedFilters.find((f) => f.name === node.name);
+      if (!filter) {
+        throw new Error(`Filter ${node.name} not found`);
+      }
+      const { input_typings, output_typings } = await this.evaluateIOtypings(filter, {
+        ...node.kwargs,
+        ...updates.kwargs,
+      });
+      node.input_typings = input_typings.map((t) => new StreamType(t));
+      node.output_typings = output_typings.map((t) => new StreamType(t));
+      this.ensureNodeInputs(node, node.input_typings.length);
     }
 
     if (updates.kwargs) {
