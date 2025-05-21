@@ -285,23 +285,26 @@ export default function FFmpegFlowEditor() {
           kwargs: data.parameters,
           filename: data.filename,
         });
+        // Get updated node data with new handles
+        const updatedNodeData = nodeMappingManager.getNodeData(id);
+        setNodes((nds) =>
+          nds.map((node) => {
+            if (node.id === id) {
+              return {
+                ...node,
+                data: {
+                  ...node.data,
+                  ...data,
+                  handles: updatedNodeData.handles,
+                },
+              };
+            }
+            return node;
+          })
+        );
       } else {
         throw new Error(`Node ${id} not found`);
       }
-      setNodes((nds) =>
-        nds.map((node) => {
-          if (node.id === id) {
-            return {
-              ...node,
-              data: {
-                ...node.data,
-                ...data,
-              },
-            };
-          }
-          return node;
-        })
-      );
     };
 
     window.addEventListener('updateNodeData', handleNodeDataUpdate);

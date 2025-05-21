@@ -235,8 +235,8 @@ export class NodeMappingManager {
       label: name,
       nodeType: 'filter',
       handles: {
-        inputs: input_typings.map((t) => ({ id: `input-${t.value}`, type: t.value })),
-        outputs: output_typings.map((t) => ({ id: `output-${t.value}`, type: t.value })),
+        inputs: input_typings.map((t, index) => ({ id: `input-${index}`, type: t.value })),
+        outputs: output_typings.map((t, index) => ({ id: `output-${index}`, type: t.value })),
       },
     });
     return id;
@@ -362,6 +362,7 @@ export class NodeMappingManager {
   resetNode() {
     this.nodeMapping = {
       nodeMap: new Map(),
+      nodeData: new Map(),
     };
     this.edgeMapping = {
       edgeMap: new Map(),
