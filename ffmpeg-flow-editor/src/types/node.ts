@@ -9,7 +9,7 @@ export interface NodeData {
   filterName?: string;
   filename?: string;
   filter?: FFMpegFilter;
-  parameters?: Record<string, string>;
+  parameters?: Record<string, string | number | boolean>;
   handles: {
     inputs: { id: string; type: EdgeType }[];
     outputs: { id: string; type: EdgeType }[];

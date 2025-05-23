@@ -9,7 +9,6 @@ import ReactFlow, {
   addEdge,
   Connection,
   ReactFlowInstance,
-  useReactFlow,
   ReactFlowProvider,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
@@ -71,134 +70,46 @@ const createNode = async (
     x: Math.random() * 500 + 200,
     y: Math.random() * 300 + 100,
   };
-
-  let handles: {
-    inputs: { id: string; type: EdgeType }[];
-    outputs: { id: string; type: EdgeType }[];
-  };
-  let label: string;
-  let mappingData: {
-    type: 'global' | 'input' | 'output' | 'filter';
-    name?: string;
-    filename?: string;
-    inputs: (FilterableStream | null)[] | OutputStream[];
-    input_typings?: StreamType[];
-    output_typings?: StreamType[];
-    kwargs: Record<string, string>;
-  };
-  let nodeType: string;
+  let type: 'global' | 'input' | 'output' | 'filter';
   let filename: string | undefined;
+  let name: string;
+  let nodeType_: 'global' | 'input_' | 'output_' | 'filter';
 
   if (filterType == 'global') {
-    nodeType = 'global';
+    type = 'global';
+    name = 'global';
+    nodeType_ = 'global';
   } else if (filterType == 'input') {
-    nodeType = 'input';
+    type = 'input';
+    name = 'input';
+    nodeType_ = 'input_';
+    filename = parameters?.filename || generateRandomFilename('input');
   } else if (filterType == 'output') {
-    nodeType = 'output';
+    type = 'output';
+    name = 'output';
+    nodeType_ = 'output_';
+    filename = parameters?.filename || generateRandomFilename('output');
   } else {
-    nodeType = 'filter';
-  }
-  switch (nodeType) {
-    case 'global':
-      label = 'global';
-      handles = {
-        inputs: [{ id: 'input-0', type: 'av' }],
-        outputs: [],
-      };
-      mappingData = {
-        type: 'global',
-        inputs: [],
-        kwargs: parameters || {},
-      };
-      break;
-    case 'input':
-      label = 'input';
-      handles = {
-        inputs: [],
-        outputs: [{ id: 'output-0', type: 'av' }],
-      };
-      filename = parameters?.filename || generateRandomFilename('input');
-      mappingData = {
-        type: 'input',
-        inputs: [],
-        kwargs: parameters || {},
-        filename: filename,
-      };
-      break;
-    case 'output':
-      label = 'output';
-      handles = {
-        inputs: [{ id: 'input-0', type: 'av' }],
-        outputs: [{ id: 'output-0', type: 'av' }],
-      };
-      filename = parameters?.filename || generateRandomFilename('output');
-      mappingData = {
-        type: 'output',
-        inputs: [],
-        kwargs: parameters || {},
-        filename: filename,
-      };
-      break;
-    case 'filter':
-      if (!filter) {
-        throw new Error(`Filter ${nodeType} not found`);
-      }
-      label = filter.name;
-      handles = {
-        inputs: filter.stream_typings_input.map((ioType, index) => {
-          const typeValue = ioType.type.value;
-          if (typeValue === 'audio' || typeValue === 'video') {
-            return {
-              id: `input-${index}`,
-              type: typeValue,
-            };
-          }
-          throw new Error(`Invalid stream type: ${typeValue}`);
-        }),
-        outputs: filter.stream_typings_output.map((ioType, index) => {
-          const typeValue = ioType.type.value;
-          if (typeValue === 'audio' || typeValue === 'video') {
-            return {
-              id: `output-${index}`,
-              type: typeValue,
-            };
-          }
-          throw new Error(`Invalid stream type: ${typeValue}`);
-        }),
-      };
-      mappingData = {
-        type: 'filter',
-        name: filter.name,
-        inputs: [],
-        kwargs: parameters || {},
-      };
-      break;
-    default:
-      throw new Error(`Invalid node type: ${nodeType}`);
+    type = 'filter';
+    name = filterType;
+    nodeType_ = 'filter';
   }
 
-  const nodeId = await nodeMappingManager.addNode(mappingData);
-  // if nodeType is input or output add a `_` to the end of the nodeType
-  let nodeType_: string;
-  if (nodeType === 'input' || nodeType === 'output') {
-    nodeType_ = nodeType + '_';
-  } else {
-    nodeType_ = nodeType;
-  }
+  const nodeId = await nodeMappingManager.addNode({
+    type,
+    name,
+    filename,
+    inputs: [],
+    filter,
+    kwargs: parameters || {},
+  });
+  const nodeData = nodeMappingManager.getNodeData(nodeId);
 
   return {
     id: nodeId,
     type: nodeType_,
     position: position || defaultPosition,
-    data: {
-      label: label,
-      filter: filter,
-      filterName: filterType,
-      nodeType: nodeType,
-      parameters: parameters || {},
-      handles,
-      filename,
-    },
+    data: nodeData,
   };
 };
 
@@ -246,7 +157,6 @@ function FFmpegFlowEditorInner() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
-  const reactFlow = useReactFlow();
 
   // Initialize nodes
   useEffect(() => {
@@ -291,25 +201,8 @@ function FFmpegFlowEditorInner() {
         // Get updated node data with new handles
         const updatedNodeData = nodeMappingManager.getNodeData(id);
 
-        // Update both local state and React Flow state
+        // Update node state
         setNodes((nds) =>
-          nds.map((node) => {
-            if (node.id === id) {
-              return {
-                ...node,
-                data: {
-                  ...node.data,
-                  ...data,
-                  handles: updatedNodeData.handles,
-                },
-              };
-            }
-            return node;
-          })
-        );
-
-        // Update React Flow's internal state
-        reactFlow.setNodes((nds) =>
           nds.map((node) => {
             if (node.id === id) {
               return {
@@ -333,7 +226,7 @@ function FFmpegFlowEditorInner() {
     return () => {
       window.removeEventListener('updateNodeData', handleNodeDataUpdate);
     };
-  }, [setNodes, nodeMappingManager, reactFlow]);
+  }, [setNodes, nodeMappingManager]);
 
   const isValidConnection = useCallback(
     (connection: Connection): boolean => {
@@ -401,18 +294,7 @@ function FFmpegFlowEditorInner() {
       parameters?: Record<string, string>,
       position?: { x: number; y: number }
     ) => {
-      const filter = predefinedFilters.find((f) => f.name === filterType);
-      if (!filter) {
-        throw new Error(`Filter ${filterType} not found`);
-      }
-
-      const newNode = await createNode(
-        filterType,
-        parameters,
-        position,
-        nodeMappingManager,
-        filter
-      );
+      const newNode = await createNode(filterType, parameters, position, nodeMappingManager);
       setNodes((nds) => [...nds, newNode]);
     },
     [setNodes, nodeMappingManager]

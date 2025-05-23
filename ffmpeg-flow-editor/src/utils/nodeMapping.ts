@@ -146,6 +146,12 @@ export class NodeMappingManager {
     });
 
     // merge parameters with kwargs
+    // kwargs should ignore kwargs value is empty string
+    Object.keys(kwargs).forEach((key) => {
+      if (kwargs[key] === '') {
+        delete kwargs[key];
+      }
+    });
     parameters = { ...parameters, ...kwargs };
     let input_typings: StreamTypeEnum[] = [];
     if (!filter.formula_typings_input) {
@@ -224,6 +230,7 @@ export class NodeMappingManager {
   private _addFilterNode(
     name: string,
     inputs: (FilterableStream | null)[],
+    filter: FFMpegFilter,
     input_typings: StreamType[],
     output_typings: StreamType[],
     kwargs: Record<string, string | number | boolean>
@@ -234,6 +241,9 @@ export class NodeMappingManager {
     this.nodeMapping.nodeData.set(id, {
       label: name,
       nodeType: 'filter',
+      filterName: name,
+      filter,
+      parameters: kwargs,
       handles: {
         inputs: input_typings.map((t, index) => ({ id: `input-${index}`, type: t.value })),
         outputs: output_typings.map((t, index) => ({ id: `output-${index}`, type: t.value })),
@@ -291,6 +301,7 @@ export class NodeMappingManager {
         nodeId = this._addFilterNode(
           params.name,
           params.inputs as (FilterableStream | null)[],
+          params.filter,
           input_typings.map((t) => new StreamType(t)),
           output_typings.map((t) => new StreamType(t)),
           params.kwargs || {}
