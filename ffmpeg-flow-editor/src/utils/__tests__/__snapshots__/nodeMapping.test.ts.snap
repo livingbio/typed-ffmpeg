@@ -2,6 +2,572 @@
 
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Audio mixing.",
+        "formula_typings_input": "[StreamType.audio] * int(inputs)",
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": true,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "amix",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "inputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "Number of inputs. (from 1 to 32767) (default 2)",
+            "flags": "..F.A......",
+            "max": "32767",
+            "min": "1",
+            "name": "inputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "duration",
+            ],
+            "choices": [
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..F.A......",
+                "help": "Duration of longest input.",
+                "name": "longest",
+                "value": "0",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..F.A......",
+                "help": "Duration of shortest input.",
+                "name": "shortest",
+                "value": "1",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..F.A......",
+                "help": "Duration of first input.",
+                "name": "first",
+                "value": "2",
+              },
+            ],
+            "default": "longest",
+            "description": "How to determine the end-of-stream. (from 0 to 2) (default longest)",
+            "flags": "..F.A......",
+            "max": "2",
+            "min": "0",
+            "name": "duration",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "dropout_transition",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)",
+            "flags": "..F.A......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "dropout_transition",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "float",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "weights",
+            ],
+            "choices": [],
+            "default": "1 1",
+            "description": "Set weight for each input. (default "1 1")",
+            "flags": "..F.A....T.",
+            "max": null,
+            "min": null,
+            "name": "weights",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "normalize",
+            ],
+            "choices": [],
+            "default": true,
+            "description": "Scale inputs (default true)",
+            "flags": "..F.A....T.",
+            "max": null,
+            "min": null,
+            "name": "normalize",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+        ],
+        "pre": {
+          "inputs": "len(streams)",
+        },
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#amix",
+        "stream_typings_input": [],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "amix",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+          {
+            "id": "input-1",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "amix",
+      "nodeType": "filter",
+      "parameters": {
+        "duration": "first",
+        "inputs": 2,
+      },
+    },
+    "node-3" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-4" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-5" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-6" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-7" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-8" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-9" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -1617,6 +2183,572 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
 
 exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Audio mixing.",
+        "formula_typings_input": "[StreamType.audio] * int(inputs)",
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": true,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "amix",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "inputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "Number of inputs. (from 1 to 32767) (default 2)",
+            "flags": "..F.A......",
+            "max": "32767",
+            "min": "1",
+            "name": "inputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "duration",
+            ],
+            "choices": [
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..F.A......",
+                "help": "Duration of longest input.",
+                "name": "longest",
+                "value": "0",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..F.A......",
+                "help": "Duration of shortest input.",
+                "name": "shortest",
+                "value": "1",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..F.A......",
+                "help": "Duration of first input.",
+                "name": "first",
+                "value": "2",
+              },
+            ],
+            "default": "longest",
+            "description": "How to determine the end-of-stream. (from 0 to 2) (default longest)",
+            "flags": "..F.A......",
+            "max": "2",
+            "min": "0",
+            "name": "duration",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "dropout_transition",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "Transition time, in seconds, for volume renormalization when an input stream ends. (from 0 to INT_MAX) (default 2)",
+            "flags": "..F.A......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "dropout_transition",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "float",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "weights",
+            ],
+            "choices": [],
+            "default": "1 1",
+            "description": "Set weight for each input. (default "1 1")",
+            "flags": "..F.A....T.",
+            "max": null,
+            "min": null,
+            "name": "weights",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "normalize",
+            ],
+            "choices": [],
+            "default": true,
+            "description": "Scale inputs (default true)",
+            "flags": "..F.A....T.",
+            "max": null,
+            "min": null,
+            "name": "normalize",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+        ],
+        "pre": {
+          "inputs": "len(streams)",
+        },
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#amix",
+        "stream_typings_input": [],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "amix",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+          {
+            "id": "input-1",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "amix",
+      "nodeType": "filter",
+      "parameters": {
+        "duration": "first",
+        "inputs": 2,
+      },
+    },
+    "node-3" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-4" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-5" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-7" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-8" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-9" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -3232,6 +4364,1501 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
 
 exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Concatenate audio and video streams.",
+        "formula_typings_input": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
+        "formula_typings_output": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
+        "id": null,
+        "is_dynamic_input": true,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "concat",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "n",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "n",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "v",
+            ],
+            "choices": [],
+            "default": 1,
+            "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "v",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "a",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
+            "flags": "..F.A......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "a",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "unsafe",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "enable unsafe mode (default false)",
+            "flags": "..FVA......",
+            "max": null,
+            "min": null,
+            "name": "unsafe",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+        ],
+        "pre": {
+          "n": "len(streams) // (int(v) + int(a))",
+        },
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat",
+        "stream_typings_input": [],
+        "stream_typings_output": [],
+      },
+      "filterName": "concat",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+          {
+            "id": "input-1",
+            "type": "audio",
+          },
+          {
+            "id": "input-2",
+            "type": "video",
+          },
+          {
+            "id": "input-3",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+      "parameters": {
+        "a": 1,
+        "n": 2,
+        "v": 1,
+      },
+    },
+    "node-3" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-4" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-5" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-7" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-8" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-9" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-10" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-11" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-12" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-13" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-14" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-15" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Concatenate audio and video streams.",
+        "formula_typings_input": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
+        "formula_typings_output": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
+        "id": null,
+        "is_dynamic_input": true,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "concat",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "n",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "n",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "v",
+            ],
+            "choices": [],
+            "default": 1,
+            "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "v",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "a",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
+            "flags": "..F.A......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "a",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "unsafe",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "enable unsafe mode (default false)",
+            "flags": "..FVA......",
+            "max": null,
+            "min": null,
+            "name": "unsafe",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+        ],
+        "pre": {
+          "n": "len(streams) // (int(v) + int(a))",
+        },
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat",
+        "stream_typings_input": [],
+        "stream_typings_output": [],
+      },
+      "filterName": "concat",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+          {
+            "id": "input-1",
+            "type": "audio",
+          },
+          {
+            "id": "input-2",
+            "type": "video",
+          },
+          {
+            "id": "input-3",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+      "parameters": {
+        "a": 1,
+        "n": 2,
+        "v": 1,
+      },
+    },
+    "node-16" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-17" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-18" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-19" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-20" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-21" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-22" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-23" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-24" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-25" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the audio input to N audio outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.audio] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "asplit",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "asplit",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+          {
+            "id": "output-1",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "asplit",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-26" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse an audio clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "areverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#areverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "audio",
+            },
+          },
+        ],
+      },
+      "filterName": "areverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "audio",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "audio",
+          },
+        ],
+      },
+      "label": "areverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-27" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8084,6 +10711,59 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
 
 exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8222,6 +10902,59 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args][compil…'
 
 exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8361,6 +11094,92 @@ exports[`Node Mapping > should handle 'test_compile_json[global-args-2][comp…'
 
 exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "output1.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-3" => {
+      "filename": "output2.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-4" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8388,7 +11207,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
         },
         {
           "__class__": "OutputStream",
-          "index": 1,
+          "index": 0,
           "node": {
             "__class__": "OutputNode",
             "filename": "output2.mp4",
@@ -8508,7 +11327,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
     },
     "edge-node-3-0-node-0-1" => {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -8581,7 +11400,7 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
     },
     {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -8607,10 +11426,1906 @@ exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 3`] = `"{"kwargs":{"dump":true},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[merged-output-1][co…' case 3`] = `"{"kwargs":{"dump":true},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "output1.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Draw text on top of video frames using libfreetype library.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": true,
+        "name": "drawtext",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontfile",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set font file",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontfile",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "text",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set text",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "text",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "textfile",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set text file",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "textfile",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontcolor",
+            ],
+            "choices": [],
+            "default": "black",
+            "description": "set foreground color (default "black")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontcolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontcolor_expr",
+            ],
+            "choices": [],
+            "default": "",
+            "description": "set foreground color expression (default "")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontcolor_expr",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "boxcolor",
+            ],
+            "choices": [],
+            "default": "white",
+            "description": "set box color (default "white")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "boxcolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "bordercolor",
+            ],
+            "choices": [],
+            "default": "black",
+            "description": "set border color (default "black")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "bordercolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "shadowcolor",
+            ],
+            "choices": [],
+            "default": "black",
+            "description": "set shadow color (default "black")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "shadowcolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "box",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "set box (default false)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "box",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "boxborderw",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "boxborderw",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "line_spacing",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "line_spacing",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontsize",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set font size",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontsize",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "x",
+            ],
+            "choices": [],
+            "default": "0",
+            "description": "set x expression (default "0")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "x",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "y",
+            ],
+            "choices": [],
+            "default": "0",
+            "description": "set y expression (default "0")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "y",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "shadowx",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set shadow x offset (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "shadowx",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "shadowy",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set shadow y offset (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "shadowy",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "borderw",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set border width (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "borderw",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "tabsize",
+            ],
+            "choices": [],
+            "default": 4,
+            "description": "set tab size (from 0 to INT_MAX) (default 4)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "tabsize",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "basetime",
+            ],
+            "choices": [],
+            "default": "I64_MIN",
+            "description": "set base time (from I64_MIN to I64_MAX) (default I64_MIN)",
+            "flags": "..FV.......",
+            "max": "I64_MAX",
+            "min": "I64_MIN",
+            "name": "basetime",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int64",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "font",
+            ],
+            "choices": [],
+            "default": "Sans",
+            "description": "Font name (default "Sans")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "font",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "expansion",
+            ],
+            "choices": [
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "set no expansion",
+                "name": "none",
+                "value": "0",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "set normal expansion",
+                "name": "normal",
+                "value": "1",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "set strftime expansion (deprecated)",
+                "name": "strftime",
+                "value": "2",
+              },
+            ],
+            "default": "normal",
+            "description": "set the expansion mode (from 0 to 2) (default normal)",
+            "flags": "..FV.......",
+            "max": "2",
+            "min": "0",
+            "name": "expansion",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "timecode",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set initial timecode",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "timecode",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "tc24hmax",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "set 24 hours max (timecode only) (default false)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "tc24hmax",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "timecode_rate",
+              "r",
+              "rate",
+            ],
+            "choices": [],
+            "default": "0/1",
+            "description": "set rate (timecode only) (from 0 to INT_MAX) (default 0/1)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "timecode_rate",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "rational",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "reload",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "reload text file at specified frame interval (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "reload",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "alpha",
+            ],
+            "choices": [],
+            "default": "1",
+            "description": "apply alpha while rendering (default "1")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "alpha",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fix_bounds",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "check and fix text coords to avoid clipping (default false)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fix_bounds",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "start_number",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "start_number",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "text_source",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "the source of text",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "text_source",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "text_shaping",
+            ],
+            "choices": [],
+            "default": true,
+            "description": "attempt to shape text before drawing (default true)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "text_shaping",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "ft_load_flags",
+            ],
+            "choices": [
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "default",
+                "value": "default",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_scale",
+                "value": "no_scale",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_hinting",
+                "value": "no_hinting",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "render",
+                "value": "render",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_bitmap",
+                "value": "no_bitmap",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "vertical_layout",
+                "value": "vertical_layout",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "force_autohint",
+                "value": "force_autohint",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "crop_bitmap",
+                "value": "crop_bitmap",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "pedantic",
+                "value": "pedantic",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "ignore_global_advance_width",
+                "value": "ignore_global_advance_width",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_recurse",
+                "value": "no_recurse",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "ignore_transform",
+                "value": "ignore_transform",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "monochrome",
+                "value": "monochrome",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "linear_design",
+                "value": "linear_design",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_autohint",
+                "value": "no_autohint",
+              },
+            ],
+            "default": "0",
+            "description": "set font loading flags for libfreetype (default 0)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "ft_load_flags",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "flags",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [],
+            "choices": [],
+            "default": null,
+            "description": "timeline editing",
+            "flags": null,
+            "max": null,
+            "min": null,
+            "name": "enable",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawtext",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "drawtext",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "drawtext",
+      "nodeType": "filter",
+      "parameters": {
+        "fontsize": 12,
+        "text": "Hello World",
+        "x": 10,
+        "y": 10,
+      },
+    },
+    "node-3" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Apply feedback video filter.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "feedback",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "x",
+              "y",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set top left crop position (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.....T.",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "x",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "w",
+              "h",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set crop size (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "w",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#feedback",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+          {
+            "__class__": "FFMpegIOType",
+            "name": "feedin",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+          {
+            "__class__": "FFMpegIOType",
+            "name": "feedout",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "feedback",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+          {
+            "id": "input-1",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "feedback",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-4" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-5" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "filename": "output2.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-7" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Draw text on top of video frames using libfreetype library.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": true,
+        "name": "drawtext",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontfile",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set font file",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontfile",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "text",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set text",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "text",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "textfile",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set text file",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "textfile",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontcolor",
+            ],
+            "choices": [],
+            "default": "black",
+            "description": "set foreground color (default "black")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontcolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontcolor_expr",
+            ],
+            "choices": [],
+            "default": "",
+            "description": "set foreground color expression (default "")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontcolor_expr",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "boxcolor",
+            ],
+            "choices": [],
+            "default": "white",
+            "description": "set box color (default "white")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "boxcolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "bordercolor",
+            ],
+            "choices": [],
+            "default": "black",
+            "description": "set border color (default "black")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "bordercolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "shadowcolor",
+            ],
+            "choices": [],
+            "default": "black",
+            "description": "set shadow color (default "black")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "shadowcolor",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "color",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "box",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "set box (default false)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "box",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "boxborderw",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set box border width (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "boxborderw",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "line_spacing",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "line_spacing",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fontsize",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set font size",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fontsize",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "x",
+            ],
+            "choices": [],
+            "default": "0",
+            "description": "set x expression (default "0")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "x",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "y",
+            ],
+            "choices": [],
+            "default": "0",
+            "description": "set y expression (default "0")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "y",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "shadowx",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set shadow x offset (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "shadowx",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "shadowy",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set shadow y offset (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "shadowy",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "borderw",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set border width (from INT_MIN to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "INT_MIN",
+            "name": "borderw",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "tabsize",
+            ],
+            "choices": [],
+            "default": 4,
+            "description": "set tab size (from 0 to INT_MAX) (default 4)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "tabsize",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "basetime",
+            ],
+            "choices": [],
+            "default": "I64_MIN",
+            "description": "set base time (from I64_MIN to I64_MAX) (default I64_MIN)",
+            "flags": "..FV.......",
+            "max": "I64_MAX",
+            "min": "I64_MIN",
+            "name": "basetime",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int64",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "font",
+            ],
+            "choices": [],
+            "default": "Sans",
+            "description": "Font name (default "Sans")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "font",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "expansion",
+            ],
+            "choices": [
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "set no expansion",
+                "name": "none",
+                "value": "0",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "set normal expansion",
+                "name": "normal",
+                "value": "1",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "set strftime expansion (deprecated)",
+                "name": "strftime",
+                "value": "2",
+              },
+            ],
+            "default": "normal",
+            "description": "set the expansion mode (from 0 to 2) (default normal)",
+            "flags": "..FV.......",
+            "max": "2",
+            "min": "0",
+            "name": "expansion",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "timecode",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "set initial timecode",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "timecode",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "tc24hmax",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "set 24 hours max (timecode only) (default false)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "tc24hmax",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "timecode_rate",
+              "r",
+              "rate",
+            ],
+            "choices": [],
+            "default": "0/1",
+            "description": "set rate (timecode only) (from 0 to INT_MAX) (default 0/1)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "timecode_rate",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "rational",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "reload",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "reload text file at specified frame interval (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "reload",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "alpha",
+            ],
+            "choices": [],
+            "default": "1",
+            "description": "apply alpha while rendering (default "1")",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "alpha",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "fix_bounds",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "check and fix text coords to avoid clipping (default false)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "fix_bounds",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "start_number",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "start_number",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "text_source",
+            ],
+            "choices": [],
+            "default": null,
+            "description": "the source of text",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "text_source",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "text_shaping",
+            ],
+            "choices": [],
+            "default": true,
+            "description": "attempt to shape text before drawing (default true)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "text_shaping",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "ft_load_flags",
+            ],
+            "choices": [
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "default",
+                "value": "default",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_scale",
+                "value": "no_scale",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_hinting",
+                "value": "no_hinting",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "render",
+                "value": "render",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_bitmap",
+                "value": "no_bitmap",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "vertical_layout",
+                "value": "vertical_layout",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "force_autohint",
+                "value": "force_autohint",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "crop_bitmap",
+                "value": "crop_bitmap",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "pedantic",
+                "value": "pedantic",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "ignore_global_advance_width",
+                "value": "ignore_global_advance_width",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_recurse",
+                "value": "no_recurse",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "ignore_transform",
+                "value": "ignore_transform",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "monochrome",
+                "value": "monochrome",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "linear_design",
+                "value": "linear_design",
+              },
+              {
+                "__class__": "FFMpegFilterOptionChoice",
+                "flags": "..FV.......",
+                "help": "",
+                "name": "no_autohint",
+                "value": "no_autohint",
+              },
+            ],
+            "default": "0",
+            "description": "set font loading flags for libfreetype (default 0)",
+            "flags": "..FV.......",
+            "max": null,
+            "min": null,
+            "name": "ft_load_flags",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "flags",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [],
+            "choices": [],
+            "default": null,
+            "description": "timeline editing",
+            "flags": null,
+            "max": null,
+            "min": null,
+            "name": "enable",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "string",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#drawtext",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "drawtext",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "drawtext",
+      "nodeType": "filter",
+      "parameters": {
+        "fontsize": 12,
+        "text": "Hello World",
+        "x": 10,
+        "y": 10,
+      },
+    },
+    "node-8" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Apply feedback video filter.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "feedback",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "x",
+              "y",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set top left crop position (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.....T.",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "x",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "w",
+              "h",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "set crop size (from 0 to INT_MAX) (default 0)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "w",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#feedback",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+          {
+            "__class__": "FFMpegIOType",
+            "name": "feedin",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+          {
+            "__class__": "FFMpegIOType",
+            "name": "feedout",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "feedback",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+          {
+            "id": "input-1",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "feedback",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-9" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-10" => {
+      "filename": "input2.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -8707,7 +13422,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
         },
         {
           "__class__": "OutputStream",
-          "index": 1,
+          "index": 0,
           "node": {
             "__class__": "OutputNode",
             "filename": "output2.mp4",
@@ -9637,7 +14352,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
     },
     "edge-node-6-0-node-0-1" => {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -10146,7 +14861,7 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
     },
     {
       "__class__": "OutputStream",
-      "index": 1,
+      "index": 0,
       "node": {
         "__class__": "OutputNode",
         "filename": "output2.mp4",
@@ -10241,10 +14956,122 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
 }
 `;
 
-exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 3`] = `"{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":1,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":1,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
+exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…' case 3`] = `"{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output1.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"},{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"fontsize":12,"text":"Hello World","x":10,"y":10},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[],"filename":"input1.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"},{"node":{"kwargs":{},"inputs":[],"filename":"input2.mp4","__class__":"InputNode"},"index":null,"__class__":"AVStream"}],"name":"feedback","input_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"},{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":1,"__class__":"VideoStream"}],"name":"drawtext","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output2.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}"`;
 
 exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-3" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -10435,6 +15262,627 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
 
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Concatenate audio and video streams.",
+        "formula_typings_input": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
+        "formula_typings_output": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
+        "id": null,
+        "is_dynamic_input": true,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "concat",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "n",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "n",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "v",
+            ],
+            "choices": [],
+            "default": 1,
+            "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "v",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "a",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
+            "flags": "..F.A......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "a",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "unsafe",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "enable unsafe mode (default false)",
+            "flags": "..FVA......",
+            "max": null,
+            "min": null,
+            "name": "unsafe",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+        ],
+        "pre": {
+          "n": "len(streams) // (int(v) + int(a))",
+        },
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat",
+        "stream_typings_input": [],
+        "stream_typings_output": [],
+      },
+      "filterName": "concat",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+          {
+            "id": "input-1",
+            "type": "video",
+          },
+          {
+            "id": "input-2",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+      "parameters": {
+        "n": 3,
+      },
+    },
+    "node-3" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+          {
+            "id": "output-2",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 3,
+      },
+    },
+    "node-4" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-5" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+          {
+            "id": "output-2",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 3,
+      },
+    },
+    "node-7" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-8" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-9" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+          {
+            "id": "output-2",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 3,
+      },
+    },
+    "node-10" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-11" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -12360,6 +17808,118 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
 
 exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-3" => {
+      "filename": "input1.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -12550,6 +18110,195 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
 
 exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Concatenate audio and video streams.",
+        "formula_typings_input": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
+        "formula_typings_output": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
+        "id": null,
+        "is_dynamic_input": true,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "concat",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "n",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "n",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "v",
+            ],
+            "choices": [],
+            "default": 1,
+            "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "v",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "a",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
+            "flags": "..F.A......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "a",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "unsafe",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "enable unsafe mode (default false)",
+            "flags": "..FVA......",
+            "max": null,
+            "min": null,
+            "name": "unsafe",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+        ],
+        "pre": {
+          "n": "len(streams) // (int(v) + int(a))",
+        },
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat",
+        "stream_typings_input": [],
+        "stream_typings_output": [],
+      },
+      "filterName": "concat",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+          {
+            "id": "input-1",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+      "parameters": {
+        "n": 2,
+      },
+    },
+    "node-3" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-4" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
@@ -12833,6 +18582,463 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
 
 exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…' case 1`] = `
 {
+  "nodeData": Map {
+    "node-0" => {
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "global",
+      "nodeType": "global",
+    },
+    "node-1" => {
+      "filename": "tmp.mp4",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "av",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "output",
+      "nodeType": "output",
+    },
+    "node-2" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Concatenate audio and video streams.",
+        "formula_typings_input": "([StreamType.video]*int(v) + [StreamType.audio]*int(a))*int(n)",
+        "formula_typings_output": "[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
+        "id": null,
+        "is_dynamic_input": true,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": true,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "concat",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "n",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "specify the number of segments (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "n",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "v",
+            ],
+            "choices": [],
+            "default": 1,
+            "description": "specify the number of video streams (from 0 to INT_MAX) (default 1)",
+            "flags": "..FV.......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "v",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "a",
+            ],
+            "choices": [],
+            "default": 0,
+            "description": "specify the number of audio streams (from 0 to INT_MAX) (default 0)",
+            "flags": "..F.A......",
+            "max": "INT_MAX",
+            "min": "0",
+            "name": "a",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "unsafe",
+            ],
+            "choices": [],
+            "default": false,
+            "description": "enable unsafe mode (default false)",
+            "flags": "..FVA......",
+            "max": null,
+            "min": null,
+            "name": "unsafe",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "boolean",
+            },
+          },
+        ],
+        "pre": {
+          "n": "len(streams) // (int(v) + int(a))",
+        },
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#concat",
+        "stream_typings_input": [],
+        "stream_typings_output": [],
+      },
+      "filterName": "concat",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+          {
+            "id": "input-1",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "concat",
+      "nodeType": "filter",
+      "parameters": {
+        "n": 2,
+      },
+    },
+    "node-3" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-4" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-5" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+    "node-6" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Pass on the input to N video outputs.",
+        "formula_typings_input": null,
+        "formula_typings_output": "[StreamType.video] * int(outputs)",
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": true,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "split",
+        "options": [
+          {
+            "__class__": "FFMpegFilterOption",
+            "alias": [
+              "outputs",
+            ],
+            "choices": [],
+            "default": 2,
+            "description": "set number of outputs (from 1 to INT_MAX) (default 2)",
+            "flags": "..FVA......",
+            "max": "INT_MAX",
+            "min": "1",
+            "name": "outputs",
+            "required": false,
+            "type": {
+              "__class__": "FFMpegFilterOptionType",
+              "value": "int",
+            },
+          },
+        ],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#split_002c-asplit",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [],
+      },
+      "filterName": "split",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+          {
+            "id": "output-1",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "split",
+      "nodeType": "filter",
+      "parameters": {
+        "outputs": 2,
+      },
+    },
+    "node-7" => {
+      "filter": {
+        "__class__": "FFMpegFilter",
+        "description": "Reverse a clip.",
+        "formula_typings_input": null,
+        "formula_typings_output": null,
+        "id": null,
+        "is_dynamic_input": false,
+        "is_dynamic_output": false,
+        "is_filter_sink": false,
+        "is_filter_source": false,
+        "is_support_command": false,
+        "is_support_framesync": false,
+        "is_support_slice_threading": false,
+        "is_support_timeline": false,
+        "name": "reverse",
+        "options": [],
+        "pre": [],
+        "ref": "https://ffmpeg.org/ffmpeg-filters.html#reverse",
+        "stream_typings_input": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+        "stream_typings_output": [
+          {
+            "__class__": "FFMpegIOType",
+            "name": "default",
+            "type": {
+              "__class__": "StreamType",
+              "value": "video",
+            },
+          },
+        ],
+      },
+      "filterName": "reverse",
+      "handles": {
+        "inputs": [
+          {
+            "id": "input-0",
+            "type": "video",
+          },
+        ],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "video",
+          },
+        ],
+      },
+      "label": "reverse",
+      "nodeType": "filter",
+      "parameters": {},
+    },
+    "node-8" => {
+      "filename": "input.mp4",
+      "handles": {
+        "inputs": [],
+        "outputs": [
+          {
+            "id": "output-0",
+            "type": "av",
+          },
+        ],
+      },
+      "label": "input",
+      "nodeType": "input",
+    },
+  },
   "nodeMap": Map {
     "node-0" => {
       "__class__": "GlobalNode",
