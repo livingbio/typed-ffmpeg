@@ -83,6 +83,41 @@ describe('Node Mapping', () => {
     // check node mapping's json
     expect(nodeMappingManager.toJson()).toMatchSnapshot();
   });
+
+  it('should import from JSON string', async () => {
+    // Create a test graph
+    const sourceId = await nodeMappingManager.addNode({
+      type: 'input',
+      filename: 'input.mp4',
+    });
+
+    const filterId = await nodeMappingManager.addNode({
+      type: 'filter',
+      name: 'scale',
+      inputs: [null],
+      kwargs: { width: 640, height: 480 },
+    });
+
+    const outputId = await nodeMappingManager.addNode({
+      type: 'output',
+      filename: 'output.mp4',
+    });
+
+    // Add edges
+    nodeMappingManager.addEdge(sourceId, filterId, 0, 0);
+    nodeMappingManager.addEdge(filterId, outputId, 0, 0);
+
+    // Export to JSON
+    const jsonString = nodeMappingManager.toJson();
+
+    // Create a new manager and import from JSON
+    const newManager = new NodeMappingManager();
+    await newManager.fromJson(jsonString);
+
+    // Verify the imported graph matches the original
+    expect(newManager.getNodeMapping()).toEqual(nodeMappingManager.getNodeMapping());
+    expect(newManager.getEdgeMapping()).toEqual(nodeMappingManager.getEdgeMapping());
+  });
 });
 
 describe('recursiveAddToMapping', () => {

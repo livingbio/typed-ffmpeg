@@ -15,7 +15,7 @@ import {
   StreamType,
   StreamTypeEnum,
 } from '../types/dag';
-import { dumps } from './serialize';
+import { dumps, loads } from './serialize';
 import { EventEmitter } from 'events';
 import { evaluateFormula } from './formulaEvaluator';
 import { NodeData } from '@/types/node';
@@ -368,9 +368,7 @@ export class NodeMappingManager {
     this.nodeMapping.nodeData.delete(nodeId);
     this.emitUpdate();
   }
-
-  // Reset mapping state
-  resetNode() {
+  private _resetNode() {
     this.nodeMapping = {
       nodeMap: new Map(),
       nodeData: new Map(),
@@ -385,6 +383,11 @@ export class NodeMappingManager {
     this.globalNodeId = this.generateNodeId();
     this.globalNode = new GlobalNode([], {}, this.globalNodeId);
     this._addGlobalNode([], {});
+  }
+
+  // Reset mapping state
+  resetNode() {
+    this._resetNode();
     this.emitUpdate();
   }
 
@@ -698,5 +701,32 @@ export class NodeMappingManager {
   toJson(): string {
     // If we have a global node, use that as the entry point
     return dumps(this.globalNode);
+  }
+
+  // Import from a JSON string
+  async fromJson(jsonString: string): Promise<void> {
+    // Reset the current state
+    this._resetNode();
+
+    // Deserialize the JSON string
+    const deserialized = loads(jsonString);
+
+    // Recursively add the deserialized node and all its connections
+    await this._recursiveAddInternal(
+      deserialized as
+        | FilterNode
+        | InputNode
+        | OutputNode
+        | GlobalNode
+        | FilterableStream
+        | VideoStream
+        | AudioStream
+        | AVStream
+        | OutputStream
+        | GlobalStream
+    );
+
+    // Emit update event
+    this.emitUpdate();
   }
 }

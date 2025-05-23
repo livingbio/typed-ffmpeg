@@ -5,6 +5,9 @@ interface PythonResult {
   python: string;
   ffmpeg_cmd: string | null;
 }
+export async function parseFFmpegCommand(cmd: string): Promise<string> {
+  return '';
+}
 
 export async function generateFFmpegCommand(
   nodeMappingManager: NodeMappingManager
