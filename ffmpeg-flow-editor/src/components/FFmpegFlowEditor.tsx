@@ -9,6 +9,8 @@ import ReactFlow, {
   addEdge,
   Connection,
   ReactFlowInstance,
+  useReactFlow,
+  ReactFlowProvider,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Box } from '@mui/material';
@@ -239,11 +241,12 @@ const createEdge = (
   };
 };
 
-export default function FFmpegFlowEditor() {
+function FFmpegFlowEditorInner() {
   const [nodeMappingManager] = useState(() => new NodeMappingManager());
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const reactFlow = useReactFlow();
 
   // Initialize nodes
   useEffect(() => {
@@ -287,11 +290,12 @@ export default function FFmpegFlowEditor() {
         });
         // Get updated node data with new handles
         const updatedNodeData = nodeMappingManager.getNodeData(id);
+
+        // Update both local state and React Flow state
         setNodes((nds) =>
           nds.map((node) => {
             if (node.id === id) {
-              // Create a new node with updated data
-              const updatedNode = {
+              return {
                 ...node,
                 data: {
                   ...node.data,
@@ -299,7 +303,23 @@ export default function FFmpegFlowEditor() {
                   handles: updatedNodeData.handles,
                 },
               };
-              return updatedNode;
+            }
+            return node;
+          })
+        );
+
+        // Update React Flow's internal state
+        reactFlow.setNodes((nds) =>
+          nds.map((node) => {
+            if (node.id === id) {
+              return {
+                ...node,
+                data: {
+                  ...node.data,
+                  ...data,
+                  handles: updatedNodeData.handles,
+                },
+              };
             }
             return node;
           })
@@ -313,7 +333,7 @@ export default function FFmpegFlowEditor() {
     return () => {
       window.removeEventListener('updateNodeData', handleNodeDataUpdate);
     };
-  }, [setNodes, nodeMappingManager]);
+  }, [setNodes, nodeMappingManager, reactFlow]);
 
   const isValidConnection = useCallback(
     (connection: Connection): boolean => {
@@ -484,5 +504,13 @@ export default function FFmpegFlowEditor() {
       </ReactFlow>
       <Sidebar onAddFilter={onAddNode} nodeMappingManager={nodeMappingManager} />
     </Box>
+  );
+}
+
+export default function FFmpegFlowEditor() {
+  return (
+    <ReactFlowProvider>
+      <FFmpegFlowEditorInner />
+    </ReactFlowProvider>
   );
 }

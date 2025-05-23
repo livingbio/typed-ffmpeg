@@ -1,5 +1,5 @@
 import { memo, useState, useEffect } from 'react';
-import { Handle, Position, NodeProps } from 'reactflow';
+import { Handle, Position, NodeProps, useUpdateNodeInternals } from 'reactflow';
 import { Paper, Typography, TextField, Box, Tooltip, useTheme, Button } from '@mui/material';
 import { FFMpegFilterOption } from '../types/ffmpeg';
 import { EDGE_COLORS } from '../types/edge';
@@ -14,11 +14,14 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
   const [parameters, setParameters] = useState<Record<string, string>>(data.parameters || {});
   const [errors, setErrors] = useState<ValidationError>({});
   const [expanded, setExpanded] = useState<boolean>(false);
+  const updateNodeInternals = useUpdateNodeInternals();
 
   // Update local state when data changes
   useEffect(() => {
     setParameters(data.parameters || {});
-  }, [data.parameters]);
+    // Update node internals when handles change
+    updateNodeInternals(id);
+  }, [data.parameters, data.handles, id, updateNodeInternals]);
 
   // Get the filter definition
   const filter = data.filter;
