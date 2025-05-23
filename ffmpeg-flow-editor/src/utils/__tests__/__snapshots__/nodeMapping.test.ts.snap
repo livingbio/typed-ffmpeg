@@ -44,17 +44,17 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
           {
-            "id": "input-audio",
+            "id": "input-1",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -66,13 +66,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -84,17 +84,17 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -106,13 +106,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -138,17 +138,17 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -160,13 +160,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -1846,17 +1846,17 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
           {
-            "id": "input-audio",
+            "id": "input-1",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -1868,17 +1868,17 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -1890,13 +1890,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -1922,13 +1922,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -1940,17 +1940,17 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -1962,13 +1962,13 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -3648,29 +3648,29 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
           {
-            "id": "input-audio",
+            "id": "input-1",
             "type": "audio",
           },
           {
-            "id": "input-video",
+            "id": "input-2",
             "type": "video",
           },
           {
-            "id": "input-audio",
+            "id": "input-3",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -3682,17 +3682,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -3704,13 +3704,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -3736,17 +3736,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -3758,13 +3758,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -3790,17 +3790,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -3812,13 +3812,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -3844,17 +3844,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -3866,13 +3866,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -3898,29 +3898,29 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
           {
-            "id": "input-audio",
+            "id": "input-1",
             "type": "audio",
           },
           {
-            "id": "input-video",
+            "id": "input-2",
             "type": "video",
           },
           {
-            "id": "input-audio",
+            "id": "input-3",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -3932,17 +3932,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -3954,13 +3954,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -3986,17 +3986,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -4008,13 +4008,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -4040,17 +4040,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -4062,13 +4062,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -4094,17 +4094,17 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
           {
-            "id": "output-audio",
+            "id": "output-1",
             "type": "audio",
           },
         ],
@@ -4116,13 +4116,13 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
       "handles": {
         "inputs": [
           {
-            "id": "input-audio",
+            "id": "input-0",
             "type": "audio",
           },
         ],
         "outputs": [
           {
-            "id": "output-audio",
+            "id": "output-0",
             "type": "audio",
           },
         ],
@@ -9758,13 +9758,13 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -9776,21 +9776,21 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
           {
-            "id": "input-video",
+            "id": "input-1",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -9849,13 +9849,13 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -9867,21 +9867,21 @@ exports[`Node Mapping > should handle 'test_compile_json[multi-output-filter…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
           {
-            "id": "input-video",
+            "id": "input-1",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -11594,13 +11594,13 @@ exports[`Node Mapping > should handle 'test_compile_json[not-utilize-split][…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -11855,21 +11855,21 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
           {
-            "id": "input-video",
+            "id": "input-1",
             "type": "video",
           },
           {
-            "id": "input-video",
+            "id": "input-2",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -11881,21 +11881,21 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-2",
             "type": "video",
           },
         ],
@@ -11907,13 +11907,13 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -11939,21 +11939,21 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-2",
             "type": "video",
           },
         ],
@@ -11965,13 +11965,13 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -11997,21 +11997,21 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-2",
             "type": "video",
           },
         ],
@@ -12023,13 +12023,13 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-dup…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -14019,13 +14019,13 @@ exports[`Node Mapping > should handle 'test_compile_json[redundant-split-out…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -14280,17 +14280,17 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
           {
-            "id": "input-video",
+            "id": "input-1",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -14652,17 +14652,17 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
           {
-            "id": "input-video",
+            "id": "input-1",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -14674,17 +14674,17 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -14696,13 +14696,13 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
@@ -14728,17 +14728,17 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
           {
-            "id": "output-video",
+            "id": "output-1",
             "type": "video",
           },
         ],
@@ -14750,13 +14750,13 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-stream][compi…'
       "handles": {
         "inputs": [
           {
-            "id": "input-video",
+            "id": "input-0",
             "type": "video",
           },
         ],
         "outputs": [
           {
-            "id": "output-video",
+            "id": "output-0",
             "type": "video",
           },
         ],
