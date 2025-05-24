@@ -477,12 +477,24 @@ export class NodeMappingManager {
         targetNode.input_typings[targetIndex] = stream;
       }
     }
-
-    // Set input on target node
-    if (targetNode.inputs && targetIndex < targetNode.inputs.length) {
-      targetNode.inputs[targetIndex] = stream as FilterableStream;
-    } else {
-      throw new Error(`Target node ${targetNodeId} does not have an input at index ${targetIndex}`);
+    if (targetNode instanceof OutputNode) {
+      if (!(stream instanceof FilterableStream)) {
+        throw new Error(
+          `Stream type mismatch: expected FilterableStream, got ${stream.constructor.name}`
+        );
+      }
+      targetNode.inputs[targetIndex] = stream;
+    }
+    if (targetNode instanceof GlobalNode) {
+      if (!(stream instanceof OutputStream)) {
+        throw new Error(
+          `Stream type mismatch: expected OutputStream, got ${stream.constructor.name}`
+        );
+      }
+      targetNode.inputs[targetIndex] = stream;
+    }
+    if (targetNode instanceof InputNode) {
+      throw new Error(`Cannot add input to InputNode`);
     }
 
     // Create edge ID and add to mapping

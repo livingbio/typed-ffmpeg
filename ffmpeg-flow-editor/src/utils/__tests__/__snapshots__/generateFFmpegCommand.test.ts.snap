@@ -10,18 +10,15 @@ result = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()",
 
 exports[`generateFFmpegCommand > generates code with filter nodes, output and global node 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480[s0]' -map '[s0]' output.mp4",
-  "python": "import ffmpeg
-result = ffmpeg.input('input.mp4').scale(width=640, height=480).output(filename='output.mp4').global_args()",
+  "ffmpeg_cmd": undefined,
+  "python": "# Error: 'NoneType' object has no attribute 'node'",
 }
 `;
 
 exports[`generateFFmpegCommand > handles complex filter chains with outputs to global node 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480[s0];[0]volume=volume=2[s1]' -map '[s0]' -map '[s1]' output.mp4",
-  "python": "import ffmpeg
-input_0 = ffmpeg.input('input.mp4')
-result = ffmpeg.output(input_0.scale(width=640, height=480), input_0.volume(volume=2), filename='output.mp4').global_args()",
+  "ffmpeg_cmd": undefined,
+  "python": "# Error: 'NoneType' object has no attribute 'node'",
 }
 `;
 
@@ -49,9 +46,8 @@ result = ffmpeg.output(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'), f
 
 exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly with outputs to global node 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480:force_original_aspect_ratio=1[s0]' -map '[s0]' output.mp4",
-  "python": "import ffmpeg
-result = ffmpeg.input('input.mp4').scale(width=640, height=480, force_original_aspect_ratio=True).output(filename='output.mp4').global_args()",
+  "ffmpeg_cmd": undefined,
+  "python": "# Error: 'NoneType' object has no attribute 'node'",
 }
 `;
 

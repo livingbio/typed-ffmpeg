@@ -11,6 +11,7 @@ import {
   FilterableStream,
   OutputStream,
   GlobalStream,
+  Stream,
 } from '../../types/dag';
 import { NodeMappingManager } from '../nodeMapping';
 import { loads, clearClassRegistry, registerClasses } from '../../utils/serialize';
@@ -63,19 +64,7 @@ describe('Node Mapping', () => {
 
     // Deserialize
     const deserialized = loads(jsonString);
-    await nodeMappingManager._recursiveAddInternal(
-      deserialized as
-        | FilterNode
-        | InputNode
-        | OutputNode
-        | GlobalNode
-        | FilterableStream
-        | VideoStream
-        | AudioStream
-        | AVStream
-        | OutputStream
-        | GlobalStream
-    );
+    await nodeMappingManager._recursiveAddInternal(deserialized as Node | Stream);
     // check node mapping's snapshot
     expect(nodeMappingManager.getNodeMapping()).toMatchSnapshot();
     // check edge mapping's snapshot
@@ -110,7 +99,7 @@ describe('Node Mapping', () => {
     // Add edges
     nodeMappingManager.addEdge(sourceId, filterId, 0, 0);
     nodeMappingManager.addEdge(filterId, outputId, 0, 0);
-    nodeMappingManager.addEdge(globalId, outputId, 0, 0);
+    nodeMappingManager.addEdge(outputId, globalId, 0, 0);
 
     // Export to JSON
     const jsonString = nodeMappingManager.toJson();
@@ -120,13 +109,7 @@ describe('Node Mapping', () => {
     await newManager.fromJson(jsonString);
 
     // Verify the imported graph matches the original
-    expect(newManager.getNodeMapping()).toMatchSnapshot();
-    expect(nodeMappingManager.getNodeMapping()).toMatchSnapshot();
-    expect(newManager.getEdgeMapping()).toMatchSnapshot();
-    expect(nodeMappingManager.getEdgeMapping()).toMatchSnapshot();
-
-    expect(newManager.getNodeMapping()).toEqual(nodeMappingManager.getNodeMapping());
-    expect(newManager.getEdgeMapping()).toEqual(nodeMappingManager.getEdgeMapping());
+    expect(newManager.toJson()).toEqual(jsonString);
   });
 });
 
