@@ -25,7 +25,7 @@ try:
     # Return both the Python code and the FFmpeg command
     return {
         'python': result,
-        'ffmpeg_cmd': stream.compile_line()
+        'ffmpeg_cmd': stream.node.compile_line()
     }
 except Exception as e:
     print(f"ERROR: {str(e)}")
