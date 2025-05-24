@@ -1,4 +1,4 @@
-import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import { predefinedFilters } from '../types/ffmpeg';
 import PreviewPanel from './PreviewPanel';
 import { useState, useMemo } from 'react';
@@ -28,7 +28,6 @@ interface SidebarProps {
 
 export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, onLayout, onPasteCommand }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [isPasteDialogOpen, setIsPasteDialogOpen] = useState(false);
   const [ffmpegCommand, setFfmpegCommand] = useState('');
 
   const filteredFilters = useMemo(() => {
@@ -83,8 +82,6 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
   const handlePasteCommand = () => {
     if (onPasteCommand && ffmpegCommand.trim()) {
       onPasteCommand(ffmpegCommand.trim());
-      setFfmpegCommand('');
-      setIsPasteDialogOpen(false);
     }
   };
 
@@ -116,19 +113,6 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
       >
         <Typography variant="h6">FFmpeg Flow Editor</Typography>
         <Box sx={{ display: 'flex', gap: 1 }}>
-          <Button
-            variant="contained"
-            onClick={() => setIsPasteDialogOpen(true)}
-            sx={{ 
-              mb: 2,
-              minWidth: '40px',
-              width: '40px',
-              height: '40px',
-              padding: 0
-            }}
-          >
-            <ContentPasteIcon />
-          </Button>
           <Button
             variant="contained"
             onClick={onLayout}
@@ -171,37 +155,6 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
           </Button>
         </Box>
       </Box>
-
-      {/* Paste FFmpeg Command Dialog */}
-      <Dialog 
-        open={isPasteDialogOpen} 
-        onClose={() => setIsPasteDialogOpen(false)}
-        maxWidth="md"
-        fullWidth
-      >
-        <DialogTitle>Paste FFmpeg Command</DialogTitle>
-        <DialogContent>
-          <TextField
-            fullWidth
-            multiline
-            rows={4}
-            value={ffmpegCommand}
-            onChange={(e) => setFfmpegCommand(e.target.value)}
-            placeholder="Paste your FFmpeg command here..."
-            sx={{ mt: 2 }}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setIsPasteDialogOpen(false)}>Cancel</Button>
-          <Button 
-            onClick={handlePasteCommand}
-            variant="contained"
-            disabled={!ffmpegCommand.trim()}
-          >
-            Convert
-          </Button>
-        </DialogActions>
-      </Dialog>
 
       <Box
         sx={{
@@ -246,6 +199,39 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
           },
         }}
       >
+        {/* FFmpeg Command Section */}
+        <Box sx={{ mb: 3 }}>
+          <Typography variant="subtitle1" gutterBottom>
+            FFmpeg Command
+          </Typography>
+          <TextField
+            fullWidth
+            multiline
+            rows={4}
+            value={ffmpegCommand}
+            onChange={(e) => setFfmpegCommand(e.target.value)}
+            placeholder="Paste your FFmpeg command here..."
+            sx={{ mb: 1 }}
+            inputProps={{
+              autocorrect: "off",
+              autocomplete: "off",
+              autocapitalize: "off",
+              spellcheck: "false"
+            }}
+          />
+          <Button
+            variant="contained"
+            onClick={handlePasteCommand}
+            disabled={!ffmpegCommand.trim()}
+            startIcon={<ContentPasteIcon />}
+            fullWidth
+          >
+            Parse Command
+          </Button>
+        </Box>
+
+        <Divider sx={{ my: 2 }} />
+
         {/* I/O Nodes Section */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1" gutterBottom>
