@@ -106,7 +106,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson }:
             variant="contained"
             startIcon={<DownloadIcon />}
             onClick={handleExport}
-            size="small"
+            sx={{ mb: 2, width: '100%' }}
           >
             Export
           </Button>
@@ -116,7 +116,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson }:
             startIcon={<UploadIcon />}
             sx={{ mb: 2, width: '100%' }}
           >
-            Load JSON
+            Load
             <input type="file" hidden accept=".json" onChange={handleLoadJson} />
           </Button>
         </Box>
