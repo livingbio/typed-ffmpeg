@@ -9,6 +9,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link as MuiLink } from '@mui/material';
 import UploadIcon from '@mui/icons-material/Upload';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 
 import { NodeMappingManager } from '../utils/nodeMapping';
 
@@ -20,9 +21,10 @@ interface SidebarProps {
   ) => void;
   nodeMappingManager: NodeMappingManager;
   onLoadJson: (jsonString: string) => Promise<void>;
+  onLayout: () => void;
 }
 
-export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson }: SidebarProps) {
+export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, onLayout }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredFilters = useMemo(() => {
@@ -104,19 +106,42 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson }:
         <Box sx={{ display: 'flex', gap: 1 }}>
           <Button
             variant="contained"
-            startIcon={<DownloadIcon />}
-            onClick={handleExport}
-            sx={{ mb: 2, width: '100%' }}
+            onClick={onLayout}
+            sx={{ 
+              mb: 2,
+              minWidth: '40px',
+              width: '40px',
+              height: '40px',
+              padding: 0
+            }}
           >
-            Export
+            <AutoGraphIcon />
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleExport}
+            sx={{ 
+              mb: 2,
+              minWidth: '40px',
+              width: '40px',
+              height: '40px',
+              padding: 0
+            }}
+          >
+            <DownloadIcon />
           </Button>
           <Button
             variant="contained"
             component="label"
-            startIcon={<UploadIcon />}
-            sx={{ mb: 2, width: '100%' }}
+            sx={{ 
+              mb: 2,
+              minWidth: '40px',
+              width: '40px',
+              height: '40px',
+              padding: 0
+            }}
           >
-            Load
+            <UploadIcon />
             <input type="file" hidden accept=".json" onChange={handleLoadJson} />
           </Button>
         </Box>

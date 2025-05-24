@@ -13,6 +13,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Box } from '@mui/material';
+import dagre from 'dagre';
 import FilterNodeUI from './FilterNode';
 import GlobalNodeUI from './GlobalNode';
 import InputNodeUI from './InputNode';
@@ -144,6 +145,52 @@ const createEdge = (
   };
 };
 
+// Helper function for auto layout
+const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'LR') => {
+  const dagreGraph = new dagre.graphlib.Graph();
+  dagreGraph.setDefaultEdgeLabel(() => ({}));
+
+  // Increase node dimensions to match actual size
+  const nodeWidth = 400;  // Increased from 250
+  const nodeHeight = 200; // Increased from 100
+
+  // Configure the graph with LR direction and increased spacing
+  dagreGraph.setGraph({
+    rankdir: direction,
+    nodesep: 200,  // Increased from 100
+    ranksep: 200,  // Increased from 100
+    marginx: 100,  // Increased from 50
+    marginy: 100,  // Increased from 50
+  });
+
+  // Add nodes to the graph
+  nodes.forEach((node) => {
+    dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+  });
+
+  // Add edges to the graph
+  edges.forEach((edge) => {
+    dagreGraph.setEdge(edge.source, edge.target);
+  });
+
+  // Calculate the layout
+  dagre.layout(dagreGraph);
+
+  // Get the layouted nodes
+  const layoutedNodes = nodes.map((node) => {
+    const nodeWithPosition = dagreGraph.node(node.id);
+    return {
+      ...node,
+      position: {
+        x: nodeWithPosition.x - nodeWidth / 2,
+        y: nodeWithPosition.y - nodeHeight / 2,
+      },
+    };
+  });
+
+  return { nodes: layoutedNodes, edges };
+};
+
 function FFmpegFlowEditorInner() {
   const [nodeMappingManager] = useState(() => new NodeMappingManager());
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
@@ -242,6 +289,18 @@ function FFmpegFlowEditorInner() {
     },
     [nodeMappingManager, setNodes, setEdges, reactFlowInstance]
   );
+
+  // Add onLayout callback
+  const onLayout = useCallback(() => {
+    const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(nodes, edges, 'LR');
+    setNodes([...layoutedNodes]);
+    setEdges([...layoutedEdges]);
+    
+    // Fit view after layout
+    if (reactFlowInstance) {
+      reactFlowInstance.fitView();
+    }
+  }, [nodes, edges, setNodes, setEdges, reactFlowInstance]);
 
   // Initialize nodes
   useEffect(() => {
@@ -473,6 +532,7 @@ function FFmpegFlowEditorInner() {
         onAddFilter={onAddNode}
         nodeMappingManager={nodeMappingManager}
         onLoadJson={loadJson}
+        onLayout={onLayout}
       />
     </Box>
   );
