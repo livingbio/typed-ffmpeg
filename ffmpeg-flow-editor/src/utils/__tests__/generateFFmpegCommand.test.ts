@@ -1,18 +1,11 @@
 import { generateFFmpegCommand } from '../generateFFmpegCommand';
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { NodeMappingManager } from '../nodeMapping';
 import { setupPyodideMock } from './testUtils';
 
 describe('generateFFmpegCommand', () => {
-  let consoleSpy: ReturnType<typeof vi.spyOn>;
-
   beforeEach(() => {
     setupPyodideMock();
-    consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-  });
-
-  afterEach(() => {
-    consoleSpy.mockRestore();
   });
 
   it('returns error message if no input or output nodes', async () => {
@@ -206,9 +199,6 @@ describe('generateFFmpegCommand', () => {
   });
 
   it('handles empty result from Python execution', async () => {
-    // Mock empty response from runPython
-    const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-
     const nodeMappingManager = new NodeMappingManager();
 
     // Add a global node with no inputs
@@ -218,7 +208,5 @@ describe('generateFFmpegCommand', () => {
 
     // Check that a warning was logged
     expect(result).toMatchSnapshot();
-
-    consoleWarnSpy.mockRestore();
   });
 });
