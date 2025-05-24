@@ -8,6 +8,7 @@ import OutputIcon from '@mui/icons-material/Output';
 import DownloadIcon from '@mui/icons-material/Download';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link as MuiLink } from '@mui/material';
+import UploadIcon from '@mui/icons-material/Upload';
 
 import { NodeMappingManager } from '../utils/nodeMapping';
 
@@ -18,9 +19,10 @@ interface SidebarProps {
     position?: { x: number; y: number }
   ) => void;
   nodeMappingManager: NodeMappingManager;
+  onLoadJson: (jsonString: string) => Promise<void>;
 }
 
-export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProps) {
+export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredFilters = useMemo(() => {
@@ -55,6 +57,20 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
     } catch (error) {
       console.error('Error exporting flow:', error);
       alert('Error exporting flow: ' + (error instanceof Error ? error.message : String(error)));
+    }
+  };
+
+  const handleLoadJson = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const jsonString = e.target?.result as string;
+        if (jsonString) {
+          await onLoadJson(jsonString);
+        }
+      };
+      reader.readAsText(file);
     }
   };
 
@@ -94,31 +110,14 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
           >
             Export
           </Button>
-          <input
-            type="file"
-            accept=".json"
-            style={{ display: 'none' }}
-            id="load-json-input"
-            onChange={async (e) => {
-              const file = e.target.files?.[0];
-              if (file) {
-                try {
-                  const text = await file.text();
-                  await nodeMappingManager.fromJson(text);
-                } catch (error) {
-                  console.error('Error loading JSON:', error);
-                  alert(
-                    'Error loading JSON: ' +
-                      (error instanceof Error ? error.message : String(error))
-                  );
-                }
-                // Reset the input value so the same file can be selected again
-                e.target.value = '';
-              }
-            }}
-          />
-          <Button variant="contained" component="label" htmlFor="load-json-input" size="small">
+          <Button
+            variant="contained"
+            component="label"
+            startIcon={<UploadIcon />}
+            sx={{ mb: 2, width: '100%' }}
+          >
             Load JSON
+            <input type="file" hidden accept=".json" onChange={handleLoadJson} />
           </Button>
         </Box>
       </Box>

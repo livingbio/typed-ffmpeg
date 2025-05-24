@@ -13,31 +13,23 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Box } from '@mui/material';
-import FilterNode from './FilterNode';
-import GlobalNode from './GlobalNode';
-import InputNode from './InputNode';
-import OutputNode from './OutputNode';
+import FilterNodeUI from './FilterNode';
+import GlobalNodeUI from './GlobalNode';
+import InputNodeUI from './InputNode';
+import OutputNodeUI from './OutputNode';
 
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import { NodeMappingManager } from '../utils/nodeMapping';
-import {
-  VideoStream,
-  AudioStream,
-  AVStream,
-  Stream,
-  FilterableStream,
-  OutputStream,
-  StreamType,
-} from '../types/dag';
+import { VideoStream, AudioStream, AVStream, Stream } from '../types/dag';
 import { NodeData } from '../types/node';
 
 const nodeTypes = {
-  filter: FilterNode,
-  global: GlobalNode,
-  input_: InputNode,
-  output_: OutputNode,
+  filter: FilterNodeUI,
+  global: GlobalNodeUI,
+  input_: InputNodeUI,
+  output_: OutputNodeUI,
 } as const;
 
 // Helper function to determine edge type from stream
@@ -157,6 +149,99 @@ function FFmpegFlowEditorInner() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+
+  // Add loadJson function
+  const loadJson = useCallback(
+    async (jsonString: string) => {
+      try {
+        // Clear ReactFlow state first
+        setNodes([]);
+        setEdges([]);
+
+        // Load the JSON into nodeMapping
+        await nodeMappingManager.fromJson(jsonString);
+
+        // After loading, update ReactFlow with the new nodes/edges
+        const { nodeMap, nodeData } = nodeMappingManager.getNodeMapping();
+        const { edgeMap } = nodeMappingManager.getEdgeMapping();
+
+        // Create new nodes array
+        const newNodes = Array.from(nodeMap.entries()).map(([id]) => {
+          const data = nodeData.get(id);
+          if (!data) {
+            throw new Error(`Node data not found for node ${id}`);
+          }
+
+          let type: 'input_' | 'output_' | 'global' | 'filter';
+          // if type is input or output, add a post _ to the type
+          if (data.nodeType === 'input' || data.nodeType === 'output') {
+            type = data.nodeType + '_';
+          } else {
+            type = data.nodeType;
+          }
+
+          return {
+            id,
+            type: type,
+            // position should be random
+            position: { x: Math.random() * 500 + 200, y: Math.random() * 300 + 100 },
+            data,
+          };
+        });
+
+        // Create new edges array
+        const newEdges = Array.from(edgeMap.entries()).map(([id, stream]) => {
+          const sourceNodeId = stream.node.id;
+          if (!sourceNodeId) {
+            throw new Error(`Source node ID not found for edge ${id}`);
+          }
+
+          const targetInfo = nodeMappingManager.getEdgeMapping().targetMap.get(stream);
+          if (!targetInfo) {
+            throw new Error(`Target info not found for edge ${id}`);
+          }
+
+          const sourceHandle = `output-${stream.index}`;
+          const targetHandle = `input-${targetInfo.index}`;
+
+          // Determine edge type based on stream instance
+          let edgeType: EdgeType = 'av';
+          if (stream instanceof VideoStream) {
+            edgeType = 'video';
+          } else if (stream instanceof AudioStream) {
+            edgeType = 'audio';
+          } else if (stream instanceof AVStream) {
+            edgeType = 'av';
+          }
+
+          return {
+            id,
+            source: sourceNodeId,
+            target: targetInfo.nodeId,
+            sourceHandle,
+            targetHandle,
+            style: { stroke: EDGE_COLORS[edgeType] },
+            data: { type: edgeType, sourceIndex: stream.index, targetIndex: targetInfo.index },
+            type: 'smoothstep',
+            animated: false,
+          };
+        });
+
+        // Update ReactFlow state
+        setNodes(newNodes);
+        setEdges(newEdges);
+
+        // Fit view to show all nodes
+        if (reactFlowInstance) {
+          reactFlowInstance.fitView();
+        }
+      } catch (error) {
+        console.error('Error loading JSON:', error);
+        // Handle error appropriately
+      }
+    },
+    [nodeMappingManager, setNodes, setEdges, reactFlowInstance]
+  );
 
   // Initialize nodes
   useEffect(() => {
@@ -384,7 +469,11 @@ function FFmpegFlowEditorInner() {
         <Background />
         <Controls />
       </ReactFlow>
-      <Sidebar onAddFilter={onAddNode} nodeMappingManager={nodeMappingManager} />
+      <Sidebar
+        onAddFilter={onAddNode}
+        nodeMappingManager={nodeMappingManager}
+        onLoadJson={loadJson}
+      />
     </Box>
   );
 }
