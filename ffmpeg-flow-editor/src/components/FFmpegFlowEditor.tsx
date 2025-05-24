@@ -25,6 +25,7 @@ import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import { NodeMappingManager } from '../utils/nodeMapping';
 import { VideoStream, AudioStream, AVStream, Stream } from '../types/dag';
 import { NodeData } from '../types/node';
+import { parseFFmpegCommandToJson } from '../utils/generateFFmpegCommand';
 
 const nodeTypes = {
   filter: FilterNodeUI,
@@ -491,6 +492,26 @@ function FFmpegFlowEditorInner() {
     [nodeMappingManager]
   );
 
+  const handlePasteCommand = useCallback(async (command: string) => {
+    try {
+      // Convert FFmpeg command to JSON using the existing utility
+      const result = await parseFFmpegCommandToJson(command);
+      
+      if (result.python.startsWith('# Error:')) {
+        throw new Error(result.python.slice(8)); // Remove '# Error: ' prefix
+      }
+      
+      // Use the existing loadJson function to load the converted JSON
+      await loadJson(result.python);
+      
+      // Apply layout after loading
+      onLayout();
+    } catch (error) {
+      console.error('Error parsing FFmpeg command:', error);
+      alert('Error parsing FFmpeg command: ' + (error instanceof Error ? error.message : String(error)));
+    }
+  }, [loadJson, onLayout]);
+
   return (
     <Box
       sx={{
@@ -533,6 +554,7 @@ function FFmpegFlowEditorInner() {
         nodeMappingManager={nodeMappingManager}
         onLoadJson={loadJson}
         onLayout={onLayout}
+        onPasteCommand={handlePasteCommand}
       />
     </Box>
   );

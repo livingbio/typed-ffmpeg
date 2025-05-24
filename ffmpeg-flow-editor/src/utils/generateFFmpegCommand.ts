@@ -5,8 +5,41 @@ interface PythonResult {
   python: string;
   ffmpeg_cmd: string | null;
 }
-export async function parseFFmpegCommand(cmd: string): Promise<string> {
-  return '';
+export async function parseFFmpegCommandToJson(cmd: string): Promise<PythonResult> {
+  const pythonCode = `
+from ffmpeg.common.serialize import dumps
+from ffmpeg.compile.compile_cli import parse
+from ffmpeg.dag.nodes import GlobalStream
+
+# Load the JSON string
+cli_str = '''${cmd}'''
+
+try:
+    # Load the stream from JSON
+    node = parse(cli_str)
+    stream = GlobalStream(node=node)
+
+    # Compile to Python code
+    result = dumps(stream)
+    
+    # Return both the Python code and the FFmpeg command
+    return {
+        'python': result,
+        'ffmpeg_cmd': stream.compile_line()
+    }
+except Exception as e:
+    print(f"ERROR: {str(e)}")
+    return {
+        'python': f"# Error: {str(e)}",
+        'ffmpeg_cmd': None
+    }
+  `;
+  console.log('Executing FFmpeg command generation...');
+  const result = (await runPython(pythonCode)) as PythonResult;
+  console.log('Raw result type:', typeof result);
+  console.log('Raw result value:', result);
+
+  return result;
 }
 
 export async function generateFFmpegCommand(
