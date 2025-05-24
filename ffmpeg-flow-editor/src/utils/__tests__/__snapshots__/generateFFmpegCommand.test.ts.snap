@@ -2,58 +2,58 @@
 
 exports[`generateFFmpegCommand > generates basic input-output-global chain 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input.mp4 -map 0 output.mp4",
-  "python": "import ffmpeg
+  "error": null,
+  "result": "import ffmpeg
 result = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()",
 }
 `;
 
 exports[`generateFFmpegCommand > generates code with filter nodes, output and global node 1`] = `
 {
-  "ffmpeg_cmd": undefined,
-  "python": "# Error: 'NoneType' object has no attribute 'node'",
+  "error": "'NoneType' object has no attribute 'node'",
+  "result": "# Error: 'NoneType' object has no attribute 'node'",
 }
 `;
 
 exports[`generateFFmpegCommand > handles complex filter chains with outputs to global node 1`] = `
 {
-  "ffmpeg_cmd": undefined,
-  "python": "# Error: 'NoneType' object has no attribute 'node'",
+  "error": "'NoneType' object has no attribute 'node'",
+  "result": "# Error: 'NoneType' object has no attribute 'node'",
 }
 `;
 
 exports[`generateFFmpegCommand > handles disconnected nodes with global node 1`] = `
 {
-  "ffmpeg_cmd": undefined,
-  "python": "# Error: tuple index out of range",
+  "error": "tuple index out of range",
+  "result": "# Error: tuple index out of range",
 }
 `;
 
 exports[`generateFFmpegCommand > handles empty result from Python execution 1`] = `
 {
-  "ffmpeg_cmd": undefined,
-  "python": "# Error: tuple index out of range",
+  "error": "tuple index out of range",
+  "result": "# Error: tuple index out of range",
 }
 `;
 
 exports[`generateFFmpegCommand > handles multiple input nodes and outputs to global node 1`] = `
 {
-  "ffmpeg_cmd": "ffmpeg -i input1.mp4 -i input2.mp4 -map 0 -map 1 output.mp4",
-  "python": "import ffmpeg
+  "error": null,
+  "result": "import ffmpeg
 result = ffmpeg.output(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'), filename='output.mp4').global_args()",
 }
 `;
 
 exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly with outputs to global node 1`] = `
 {
-  "ffmpeg_cmd": undefined,
-  "python": "# Error: 'NoneType' object has no attribute 'node'",
+  "error": "'NoneType' object has no attribute 'node'",
+  "result": "# Error: 'NoneType' object has no attribute 'node'",
 }
 `;
 
 exports[`generateFFmpegCommand > returns error message if no input or output nodes 1`] = `
 {
-  "ffmpeg_cmd": undefined,
-  "python": "# Error: tuple index out of range",
+  "error": "tuple index out of range",
+  "result": "# Error: tuple index out of range",
 }
 `;

@@ -497,12 +497,12 @@ function FFmpegFlowEditorInner() {
       // Convert FFmpeg command to JSON using the existing utility
       const result = await parseFFmpegCommandToJson(command);
       
-      if (result.python.startsWith('# Error:')) {
-        throw new Error(result.python.slice(8)); // Remove '# Error: ' prefix
+      if (result.result.startsWith('# Error:')) {
+        throw new Error(result.result.slice(8)); // Remove '# Error: ' prefix
       }
       
       // Use the existing loadJson function to load the converted JSON
-      await loadJson(result.python);
+      await loadJson(result.result);
       
       // Apply layout after loading
       onLayout();

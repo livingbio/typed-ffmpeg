@@ -624,6 +624,8 @@ export class NodeMappingManager {
             inputs: item.inputs,
             kwargs: item.kwargs,
           });
+          // All output node should connect to global node
+          this._addEdge(nodeId, this.globalNodeId, 0, 0);
         } else if (item instanceof GlobalNode) {
           // For GlobalNode, we update the existing one
           if (item.inputs && item.inputs.length > 0) {
