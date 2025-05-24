@@ -16,5 +16,9 @@
     "*.{json,md}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@types/dagre": "^0.7.52",
+    "dagre": "^0.8.5"
   }
 }

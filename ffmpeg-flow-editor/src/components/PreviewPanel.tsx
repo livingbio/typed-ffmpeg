@@ -28,7 +28,7 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
       try {
         setIsLoading(true);
 
-        const commandResult = await generateFFmpegCommand(nodeMappingManager);
+        const commandResult = await generateFFmpegCommand(nodeMappingManager.toJson());
 
         setPythonCode(commandResult.python);
         setFfmpegCmd(commandResult.ffmpeg_cmd || '');

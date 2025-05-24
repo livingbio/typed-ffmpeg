@@ -8,6 +8,9 @@ import OutputIcon from '@mui/icons-material/Output';
 import DownloadIcon from '@mui/icons-material/Download';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link as MuiLink } from '@mui/material';
+import UploadIcon from '@mui/icons-material/Upload';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 
 import { NodeMappingManager } from '../utils/nodeMapping';
 
@@ -18,10 +21,14 @@ interface SidebarProps {
     position?: { x: number; y: number }
   ) => void;
   nodeMappingManager: NodeMappingManager;
+  onLoadJson: (jsonString: string) => Promise<void>;
+  onLayout: () => void;
+  onPasteCommand?: (command: string) => void;
 }
 
-export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProps) {
+export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, onLayout, onPasteCommand }: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [ffmpegCommand, setFfmpegCommand] = useState('');
 
   const filteredFilters = useMemo(() => {
     if (!searchQuery) return [...predefinedFilters].sort((a, b) => a.name.localeCompare(b.name));
@@ -58,6 +65,26 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
     }
   };
 
+  const handleLoadJson = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const jsonString = e.target?.result as string;
+        if (jsonString) {
+          await onLoadJson(jsonString);
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const handlePasteCommand = () => {
+    if (onPasteCommand && ffmpegCommand.trim()) {
+      onPasteCommand(ffmpegCommand.trim());
+    }
+  };
+
   return (
     <Paper
       elevation={3}
@@ -85,14 +112,48 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
         }}
       >
         <Typography variant="h6">FFmpeg Flow Editor</Typography>
-        <Button
-          variant="contained"
-          startIcon={<DownloadIcon />}
-          onClick={handleExport}
-          size="small"
-        >
-          Export
-        </Button>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <Button
+            variant="contained"
+            onClick={onLayout}
+            sx={{ 
+              mb: 2,
+              minWidth: '40px',
+              width: '40px',
+              height: '40px',
+              padding: 0
+            }}
+          >
+            <AutoGraphIcon />
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleExport}
+            sx={{ 
+              mb: 2,
+              minWidth: '40px',
+              width: '40px',
+              height: '40px',
+              padding: 0
+            }}
+          >
+            <DownloadIcon />
+          </Button>
+          <Button
+            variant="contained"
+            component="label"
+            sx={{ 
+              mb: 2,
+              minWidth: '40px',
+              width: '40px',
+              height: '40px',
+              padding: 0
+            }}
+          >
+            <UploadIcon />
+            <input type="file" hidden accept=".json" onChange={handleLoadJson} />
+          </Button>
+        </Box>
       </Box>
 
       <Box
@@ -107,9 +168,9 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
         }}
       >
         <GitHubIcon sx={{ fontSize: 16, mr: 0.5 }} />
-        <MuiLink 
-          href="https://github.com/livingbio/typed-ffmpeg" 
-          target="_blank" 
+        <MuiLink
+          href="https://github.com/livingbio/typed-ffmpeg"
+          target="_blank"
           rel="noopener noreferrer"
           underline="hover"
           sx={{ fontSize: '0.875rem' }}
@@ -138,6 +199,39 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
           },
         }}
       >
+        {/* FFmpeg Command Section */}
+        <Box sx={{ mb: 3 }}>
+          <Typography variant="subtitle1" gutterBottom>
+            FFmpeg Command
+          </Typography>
+          <TextField
+            fullWidth
+            multiline
+            rows={4}
+            value={ffmpegCommand}
+            onChange={(e) => setFfmpegCommand(e.target.value)}
+            placeholder="Paste your FFmpeg command here..."
+            sx={{ mb: 1 }}
+            inputProps={{
+              autocorrect: "off",
+              autocomplete: "off",
+              autocapitalize: "off",
+              spellcheck: "false"
+            }}
+          />
+          <Button
+            variant="contained"
+            onClick={handlePasteCommand}
+            disabled={!ffmpegCommand.trim()}
+            startIcon={<ContentPasteIcon />}
+            fullWidth
+          >
+            Parse Command
+          </Button>
+        </Box>
+
+        <Divider sx={{ my: 2 }} />
+
         {/* I/O Nodes Section */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="subtitle1" gutterBottom>
@@ -281,9 +375,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
           <Typography variant="subtitle1" gutterBottom>
             Preview
           </Typography>
-          <PreviewPanel 
-            nodeMappingManager={nodeMappingManager}
-          />
+          <PreviewPanel nodeMappingManager={nodeMappingManager} />
         </Box>
       </Box>
     </Paper>
