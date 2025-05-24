@@ -15,7 +15,7 @@ import {
   StreamType,
   StreamTypeEnum,
 } from '../types/dag';
-import { dumps, loads } from './serialize';
+import { dumps, loads, registerClasses } from './serialize';
 import { EventEmitter } from 'events';
 import { evaluateFormula } from './formulaEvaluator';
 import { NodeData } from '@/types/node';
@@ -689,6 +689,19 @@ export class NodeMappingManager {
     this._resetNode();
 
     // Deserialize the JSON string
+    registerClasses({
+      StreamType,
+      FilterNode,
+      InputNode,
+      OutputNode,
+      GlobalNode,
+      FilterableStream,
+      VideoStream,
+      AudioStream,
+      AVStream,
+      OutputStream,
+      GlobalStream,
+    });
     const deserialized = loads(jsonString);
 
     // Recursively add the deserialized node and all its connections

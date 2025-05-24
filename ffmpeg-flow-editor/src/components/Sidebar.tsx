@@ -85,14 +85,42 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
         }}
       >
         <Typography variant="h6">FFmpeg Flow Editor</Typography>
-        <Button
-          variant="contained"
-          startIcon={<DownloadIcon />}
-          onClick={handleExport}
-          size="small"
-        >
-          Export
-        </Button>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <Button
+            variant="contained"
+            startIcon={<DownloadIcon />}
+            onClick={handleExport}
+            size="small"
+          >
+            Export
+          </Button>
+          <input
+            type="file"
+            accept=".json"
+            style={{ display: 'none' }}
+            id="load-json-input"
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                try {
+                  const text = await file.text();
+                  await nodeMappingManager.fromJson(text);
+                } catch (error) {
+                  console.error('Error loading JSON:', error);
+                  alert(
+                    'Error loading JSON: ' +
+                      (error instanceof Error ? error.message : String(error))
+                  );
+                }
+                // Reset the input value so the same file can be selected again
+                e.target.value = '';
+              }
+            }}
+          />
+          <Button variant="contained" component="label" htmlFor="load-json-input" size="small">
+            Load JSON
+          </Button>
+        </Box>
       </Box>
 
       <Box
@@ -107,9 +135,9 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
         }}
       >
         <GitHubIcon sx={{ fontSize: 16, mr: 0.5 }} />
-        <MuiLink 
-          href="https://github.com/livingbio/typed-ffmpeg" 
-          target="_blank" 
+        <MuiLink
+          href="https://github.com/livingbio/typed-ffmpeg"
+          target="_blank"
           rel="noopener noreferrer"
           underline="hover"
           sx={{ fontSize: '0.875rem' }}
@@ -281,9 +309,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
           <Typography variant="subtitle1" gutterBottom>
             Preview
           </Typography>
-          <PreviewPanel 
-            nodeMappingManager={nodeMappingManager}
-          />
+          <PreviewPanel nodeMappingManager={nodeMappingManager} />
         </Box>
       </Box>
     </Paper>
