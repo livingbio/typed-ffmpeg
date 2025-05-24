@@ -103,9 +103,14 @@ describe('Node Mapping', () => {
       filename: 'output.mp4',
     });
 
+    const globalId = await nodeMappingManager.addNode({
+      type: 'global',
+    });
+
     // Add edges
     nodeMappingManager.addEdge(sourceId, filterId, 0, 0);
     nodeMappingManager.addEdge(filterId, outputId, 0, 0);
+    nodeMappingManager.addEdge(globalId, outputId, 0, 0);
 
     // Export to JSON
     const jsonString = nodeMappingManager.toJson();
@@ -115,6 +120,11 @@ describe('Node Mapping', () => {
     await newManager.fromJson(jsonString);
 
     // Verify the imported graph matches the original
+    expect(newManager.getNodeMapping()).toMatchSnapshot();
+    expect(nodeMappingManager.getNodeMapping()).toMatchSnapshot();
+    expect(newManager.getEdgeMapping()).toMatchSnapshot();
+    expect(nodeMappingManager.getEdgeMapping()).toMatchSnapshot();
+
     expect(newManager.getNodeMapping()).toEqual(nodeMappingManager.getNodeMapping());
     expect(newManager.getEdgeMapping()).toEqual(nodeMappingManager.getEdgeMapping());
   });

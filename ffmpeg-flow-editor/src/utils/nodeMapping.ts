@@ -473,6 +473,9 @@ export class NodeMappingManager {
       if (expectedType && actualType != 'av' && expectedType !== actualType) {
         throw new Error(`Stream type mismatch: expected ${expectedType}, got ${actualType}`);
       }
+      if (!(stream instanceof FilterableStream)) {
+        targetNode.input_typings[targetIndex] = stream;
+      }
     }
 
     // Set input on target node
@@ -578,28 +581,11 @@ export class NodeMappingManager {
   }
 
   // Recursively add a node and all connected nodes/streams to the mapping
-  private async _recursiveAddInternal(
-    item:
-      | FilterNode
-      | InputNode
-      | OutputNode
-      | GlobalNode
-      | FilterableStream
-      | VideoStream
-      | AudioStream
-      | AVStream
-      | OutputStream
-      | GlobalStream
-  ): Promise<string> {
+  private async _recursiveAddInternal(item: Node | Stream): Promise<string> {
     let result: string;
 
     // If it's a node, add it to the mapping
-    if (
-      item instanceof FilterNode ||
-      item instanceof InputNode ||
-      item instanceof OutputNode ||
-      item instanceof GlobalNode
-    ) {
+    if (item instanceof Node) {
       // Check if node is already in the mapping
       if (item.id && this.nodeMapping.nodeMap.has(item.id)) {
         result = item.id;
@@ -657,13 +643,7 @@ export class NodeMappingManager {
       }
     }
     // If it's a stream, recursively add its node and return the node ID
-    else if (
-      item instanceof VideoStream ||
-      item instanceof AudioStream ||
-      item instanceof AVStream ||
-      item instanceof OutputStream ||
-      item instanceof GlobalStream
-    ) {
+    else if (item instanceof Stream) {
       result = await this._recursiveAddInternal(item.node);
     } else {
       throw new Error('Invalid item type');
@@ -672,19 +652,7 @@ export class NodeMappingManager {
     return result;
   }
 
-  public async recursiveAdd(
-    item:
-      | FilterNode
-      | InputNode
-      | OutputNode
-      | GlobalNode
-      | FilterableStream
-      | VideoStream
-      | AudioStream
-      | AVStream
-      | OutputStream
-      | GlobalStream
-  ): Promise<string> {
+  public async recursiveAdd(item: Node | Stream): Promise<string> {
     const result = await this._recursiveAddInternal(item);
     this.emitUpdate();
     return result;
@@ -712,19 +680,7 @@ export class NodeMappingManager {
     const deserialized = loads(jsonString);
 
     // Recursively add the deserialized node and all its connections
-    await this._recursiveAddInternal(
-      deserialized as
-        | FilterNode
-        | InputNode
-        | OutputNode
-        | GlobalNode
-        | FilterableStream
-        | VideoStream
-        | AudioStream
-        | AVStream
-        | OutputStream
-        | GlobalStream
-    );
+    await this._recursiveAddInternal(deserialized as Node | Stream);
 
     // Emit update event
     this.emitUpdate();
