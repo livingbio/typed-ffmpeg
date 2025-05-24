@@ -1,4 +1,3 @@
-import { NodeMappingManager } from './nodeMapping';
 import { runPython } from './pyodideUtils';
 
 interface PythonResult {
