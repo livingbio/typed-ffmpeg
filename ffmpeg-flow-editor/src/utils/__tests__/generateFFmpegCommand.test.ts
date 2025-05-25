@@ -16,6 +16,7 @@ describe('generateFFmpegCommand', () => {
 
     // Check that error was logged
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeDefined();
   });
 
   it('generates basic input-output-global chain', async () => {
@@ -38,8 +39,8 @@ describe('generateFFmpegCommand', () => {
     nodeMapping.addEdge(outputId, globalId, 0, 0);
 
     const result = await generateFFmpegCommand(nodeMapping.toJson());
-
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeNull();
   });
 
   it('generates code with filter nodes, output and global node', async () => {
@@ -68,8 +69,8 @@ describe('generateFFmpegCommand', () => {
     nodeMapping.addEdge(outputId, globalId, 0, 0);
 
     const result = await generateFFmpegCommand(nodeMapping.toJson());
-
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeNull();
   });
 
   it('handles multiple input nodes and outputs to global node', async () => {
@@ -97,8 +98,8 @@ describe('generateFFmpegCommand', () => {
     nodeMapping.addEdge(outputId, globalId, 0, 0);
 
     const result = await generateFFmpegCommand(nodeMapping.toJson());
-
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeNull();
   });
 
   it('handles complex filter chains with outputs to global node', async () => {
@@ -134,8 +135,8 @@ describe('generateFFmpegCommand', () => {
     nodeMapping.addEdge(outputId, globalId, 0, 0);
 
     const result = await generateFFmpegCommand(nodeMapping.toJson());
-
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeNull();
   });
 
   it('handles numeric and boolean parameters correctly with outputs to global node', async () => {
@@ -164,8 +165,8 @@ describe('generateFFmpegCommand', () => {
     nodeMapping.addEdge(outputId, globalId, 0, 0);
 
     const result = await generateFFmpegCommand(nodeMapping.toJson());
-
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeNull();
   });
 
   it('handles disconnected nodes with global node', async () => {
@@ -193,9 +194,8 @@ describe('generateFFmpegCommand', () => {
     // Don't connect the nodes
 
     const result = await generateFFmpegCommand(nodeMappingManager.toJson());
-
-    // Check that error was logged
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeNull();
   });
 
   it('handles empty result from Python execution', async () => {
@@ -205,8 +205,7 @@ describe('generateFFmpegCommand', () => {
     nodeMappingManager.addNode({ type: 'global', inputs: [] });
 
     const result = await generateFFmpegCommand(nodeMappingManager.toJson());
-
-    // Check that a warning was logged
     expect(result).toMatchSnapshot();
+    expect(result.error).toBeNull();
   });
 });

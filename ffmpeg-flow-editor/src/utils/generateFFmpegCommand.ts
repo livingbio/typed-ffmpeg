@@ -37,6 +37,10 @@ except Exception as e:
   const result = (await runPython(pythonCode)) as PythonResult;
   console.log('Raw result value:', result);
 
+  if (result.error) {
+    result.error += `\n${pythonCode}`;
+  }
+
   return result;
 }
 
@@ -74,5 +78,9 @@ except Exception as e:
   console.log('Executing FFmpeg command generation...');
   const result = (await runPython(pythonCode)) as PythonResult;
   console.log('Raw result value:', result);
+
+  if (result.error) {
+    result.error += `\n${pythonCode}`;
+  }
   return result;
 }
