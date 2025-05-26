@@ -12,32 +12,32 @@ import ReactFlow, {
   ReactFlowProvider,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { Box } from '@mui/material';
-import FilterNode from './FilterNode';
-import GlobalNode from './GlobalNode';
-import InputNode from './InputNode';
-import OutputNode from './OutputNode';
+import { Box, Paper, Typography, IconButton, Button } from '@mui/material';
+import dagre from 'dagre';
+import FilterNodeUI from './FilterNode';
+import GlobalNodeUI from './GlobalNode';
+import InputNodeUI from './InputNode';
+import OutputNodeUI from './OutputNode';
 
 import Sidebar from './Sidebar';
 import { predefinedFilters } from '../types/ffmpeg';
 import { EdgeType, EDGE_COLORS, EdgeData } from '../types/edge';
 import { NodeMappingManager } from '../utils/nodeMapping';
-import {
-  VideoStream,
-  AudioStream,
-  AVStream,
-  Stream,
-  FilterableStream,
-  OutputStream,
-  StreamType,
-} from '../types/dag';
+import { VideoStream, AudioStream, AVStream, Stream } from '../types/dag';
 import { NodeData } from '../types/node';
+import { parseFFmpegCommandToJson } from '../utils/generateFFmpegCommand';
+import PreviewPanel from './PreviewPanel';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import DownloadIcon from '@mui/icons-material/Download';
+import UploadIcon from '@mui/icons-material/Upload';
 
 const nodeTypes = {
-  filter: FilterNode,
-  global: GlobalNode,
-  input_: InputNode,
-  output_: OutputNode,
+  filter: FilterNodeUI,
+  global: GlobalNodeUI,
+  input_: InputNodeUI,
+  output_: OutputNodeUI,
 } as const;
 
 // Helper function to determine edge type from stream
@@ -152,11 +152,177 @@ const createEdge = (
   };
 };
 
+// Helper function for auto layout
+const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'LR') => {
+  const dagreGraph = new dagre.graphlib.Graph();
+  dagreGraph.setDefaultEdgeLabel(() => ({}));
+
+  // Increase node dimensions to match actual size
+  const nodeWidth = 400; // Increased from 250
+  const nodeHeight = 450; // Increased from 100
+
+  // Configure the graph with LR direction and increased spacing
+  dagreGraph.setGraph({
+    rankdir: direction,
+    nodesep: 200, // Increased from 100
+    ranksep: 200, // Increased from 100
+    marginx: 100, // Increased from 50
+    marginy: 100, // Increased from 50
+  });
+
+  // Add nodes to the graph
+  nodes.forEach((node) => {
+    dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+  });
+
+  // Add edges to the graph
+  edges.forEach((edge) => {
+    dagreGraph.setEdge(edge.source, edge.target);
+  });
+
+  // Calculate the layout
+  dagre.layout(dagreGraph);
+
+  // Get the layouted nodes
+  const layoutedNodes = nodes.map((node) => {
+    const nodeWithPosition = dagreGraph.node(node.id);
+    return {
+      ...node,
+      position: {
+        x: nodeWithPosition.x - nodeWidth / 2,
+        y: nodeWithPosition.y - nodeHeight / 2,
+      },
+    };
+  });
+
+  return { nodes: layoutedNodes, edges };
+};
+
 function FFmpegFlowEditorInner() {
   const [nodeMappingManager] = useState(() => new NodeMappingManager());
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
+  const [isPreviewVisible, setIsPreviewVisible] = useState(true);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+
+  // Add loadJson function
+  const loadJson = useCallback(
+    async (jsonString: string) => {
+      try {
+        console.log('Starting loadJson with:', jsonString);
+
+        // Clear ReactFlow state first
+        console.log('Clearing ReactFlow state...');
+        setNodes([]);
+        setEdges([]);
+
+        // Load the JSON into nodeMapping
+        console.log('Loading JSON into nodeMapping...');
+        await nodeMappingManager.fromJson(jsonString);
+
+        // After loading, update ReactFlow with the new nodes/edges
+        const { nodeMap, nodeData } = nodeMappingManager.getNodeMapping();
+        const { edgeMap } = nodeMappingManager.getEdgeMapping();
+        console.log('Node mapping after loading:', {
+          nodeMapSize: nodeMap.size,
+          nodeDataSize: nodeData.size,
+          edgeMapSize: edgeMap.size,
+        });
+
+        // Create new nodes array
+        console.log('Creating new nodes array...');
+        const newNodes = Array.from(nodeMap.entries()).map(([id]) => {
+          const data = nodeData.get(id);
+          if (!data) {
+            throw new Error(`Node data not found for node ${id}`);
+          }
+
+          let type: 'input_' | 'output_' | 'global' | 'filter';
+          if (data.nodeType === 'input' || data.nodeType === 'output') {
+            type = data.nodeType + '_';
+          } else {
+            type = data.nodeType;
+          }
+
+          return {
+            id,
+            type: type,
+            position: { x: Math.random() * 500 + 200, y: Math.random() * 300 + 100 },
+            data,
+          };
+        });
+        console.log('Created new nodes:', newNodes);
+
+        // Create new edges array
+        console.log('Creating new edges array...');
+        const newEdges = Array.from(edgeMap.entries()).map(([id, stream]) => {
+          const sourceNodeId = stream.node.id;
+          if (!sourceNodeId) {
+            throw new Error(`Source node ID not found for edge ${id}`);
+          }
+
+          const targetInfo = nodeMappingManager.getEdgeMapping().targetMap.get(stream);
+          if (!targetInfo) {
+            throw new Error(`Target info not found for edge ${id}`);
+          }
+
+          const sourceHandle = `output-${stream.index}`;
+          const targetHandle = `input-${targetInfo.index}`;
+
+          let edgeType: EdgeType = 'av';
+          if (stream instanceof VideoStream) {
+            edgeType = 'video';
+          } else if (stream instanceof AudioStream) {
+            edgeType = 'audio';
+          } else if (stream instanceof AVStream) {
+            edgeType = 'av';
+          }
+
+          return {
+            id,
+            source: sourceNodeId,
+            target: targetInfo.nodeId,
+            sourceHandle,
+            targetHandle,
+            style: { stroke: EDGE_COLORS[edgeType] },
+            data: { type: edgeType, sourceIndex: stream.index, targetIndex: targetInfo.index },
+            type: 'smoothstep',
+            animated: false,
+          };
+        });
+        console.log('Created new edges:', newEdges);
+
+        // Update ReactFlow state
+        console.log('Updating ReactFlow state...');
+        setNodes(newNodes);
+        setEdges(newEdges);
+
+        // Fit view to show all nodes
+        if (reactFlowInstance) {
+          console.log('Fitting view...');
+          reactFlowInstance.fitView();
+        }
+        console.log('loadJson completed successfully');
+      } catch (error) {
+        console.error('Error in loadJson:', error);
+        throw error; // Re-throw to be caught by handlePasteCommand
+      }
+    },
+    [nodeMappingManager, setNodes, setEdges, reactFlowInstance]
+  );
+
+  // Add onLayout callback
+  const onLayout = useCallback(() => {
+    const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(nodes, edges, 'LR');
+    setNodes([...layoutedNodes]);
+    setEdges([...layoutedEdges]);
+
+    // Fit view after layout
+    if (reactFlowInstance) {
+      reactFlowInstance.fitView();
+    }
+  }, [nodes, edges, setNodes, setEdges, reactFlowInstance]);
 
   // Initialize nodes
   useEffect(() => {
@@ -347,6 +513,73 @@ function FFmpegFlowEditorInner() {
     [nodeMappingManager]
   );
 
+  const handlePasteCommand = useCallback(
+    async (command: string) => {
+      try {
+        console.log('Starting handlePasteCommand with command:', command);
+
+        // Convert FFmpeg command to JSON using the existing utility
+        console.log('Calling parseFFmpegCommandToJson...');
+        const result = await parseFFmpegCommandToJson(command);
+        console.log('Parse result:', result);
+
+        if (result.error) {
+          console.error('Error from parseFFmpegCommandToJson:', result.error);
+          throw new Error(result.error);
+        }
+
+        console.log('Successfully parsed command to JSON:', result.result);
+        // Use the existing loadJson function to load the converted JSON
+        await loadJson(result.result);
+
+        // Apply layout after loading
+        console.log('Applying layout...');
+        // onLayout();
+        console.log('Layout applied successfully');
+      } catch (error) {
+        console.error('Error in handlePasteCommand:', error);
+        alert(
+          'Error parsing FFmpeg command: ' +
+            (error instanceof Error ? error.message : String(error))
+        );
+      }
+    },
+    [loadJson]
+  );
+
+  // Add handleExport function
+  const handleExport = useCallback(() => {
+    const json = nodeMappingManager.toJson();
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'ffmpeg-flow.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, [nodeMappingManager]);
+
+  // Add handleLoadJson function
+  const handleLoadJson = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      try {
+        const text = await file.text();
+        await loadJson(text);
+      } catch (error) {
+        console.error('Error loading JSON:', error);
+        alert(
+          'Error loading JSON file: ' + (error instanceof Error ? error.message : String(error))
+        );
+      }
+    },
+    [loadJson]
+  );
+
   return (
     <Box
       sx={{
@@ -376,15 +609,168 @@ function FFmpegFlowEditorInner() {
         minZoom={0.1}
         maxZoom={2}
         style={{
-          width: '100%',
+          width: isSidebarVisible ? 'calc(100% - 350px)' : '100%',
           height: '100%',
           background: '#f5f5f5',
+          transition: 'width 0.3s ease-in-out',
         }}
       >
         <Background />
         <Controls />
       </ReactFlow>
-      <Sidebar onAddFilter={onAddNode} nodeMappingManager={nodeMappingManager} />
+      {isPreviewVisible && (
+        <Paper
+          elevation={3}
+          sx={{
+            position: 'fixed',
+            right: isSidebarVisible ? 370 : 20,
+            bottom: 20,
+            width: 400,
+            maxHeight: 'calc(100vh - 40px)',
+            backgroundColor: '#fff',
+            zIndex: 1000,
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'auto',
+            transition: 'all 0.3s ease-in-out',
+            borderRadius: 2,
+          }}
+        >
+          <Box sx={{ p: 2 }}>
+            <Box
+              sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}
+            >
+              <Typography variant="h6" sx={{ fontSize: '0.875rem' }}>
+                Preview
+              </Typography>
+              <IconButton size="small" onClick={() => setIsPreviewVisible(false)} sx={{ p: 0.5 }}>
+                <VisibilityOffIcon fontSize="small" />
+              </IconButton>
+            </Box>
+            <PreviewPanel nodeMappingManager={nodeMappingManager} />
+          </Box>
+        </Paper>
+      )}
+      {!isPreviewVisible && (
+        <IconButton
+          size="small"
+          onClick={() => setIsPreviewVisible(true)}
+          sx={{
+            position: 'fixed',
+            right: isSidebarVisible ? 370 : 20,
+            bottom: 20,
+            backgroundColor: '#fff',
+            boxShadow: 1,
+            zIndex: 1000,
+            '&:hover': {
+              backgroundColor: '#f5f5f5',
+            },
+          }}
+        >
+          <VisibilityIcon fontSize="small" />
+        </IconButton>
+      )}
+      {isSidebarVisible && (
+        <Paper
+          elevation={3}
+          sx={{
+            position: 'fixed',
+            right: 0,
+            top: 0,
+            height: '100vh',
+            width: 350,
+            backgroundColor: '#fff',
+            zIndex: 1000,
+            display: 'flex',
+            flexDirection: 'column',
+            transition: 'transform 0.3s ease-in-out',
+          }}
+        >
+          <Box
+            sx={{
+              p: 1.5,
+              borderBottom: 1,
+              borderColor: 'divider',
+              backgroundColor: '#f5f5f5',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <Typography variant="h6" sx={{ fontSize: '0.875rem' }}>
+              FFmpeg Flow Editor
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 0.5 }}>
+              <IconButton size="small" onClick={() => setIsSidebarVisible(false)} sx={{ p: 0.5 }}>
+                <VisibilityOffIcon fontSize="small" />
+              </IconButton>
+              <Button
+                variant="contained"
+                onClick={onLayout}
+                sx={{
+                  minWidth: '32px',
+                  width: '32px',
+                  height: '32px',
+                  padding: 0,
+                }}
+              >
+                <AutoGraphIcon fontSize="small" />
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleExport}
+                sx={{
+                  minWidth: '32px',
+                  width: '32px',
+                  height: '32px',
+                  padding: 0,
+                }}
+              >
+                <DownloadIcon fontSize="small" />
+              </Button>
+              <Button
+                variant="contained"
+                component="label"
+                sx={{
+                  minWidth: '32px',
+                  width: '32px',
+                  height: '32px',
+                  padding: 0,
+                }}
+              >
+                <UploadIcon fontSize="small" />
+                <input type="file" hidden accept=".json" onChange={handleLoadJson} />
+              </Button>
+            </Box>
+          </Box>
+          <Sidebar
+            onAddFilter={onAddNode}
+            nodeMappingManager={nodeMappingManager}
+            onLoadJson={loadJson}
+            onLayout={onLayout}
+            onPasteCommand={handlePasteCommand}
+          />
+        </Paper>
+      )}
+      {!isSidebarVisible && (
+        <IconButton
+          size="small"
+          onClick={() => setIsSidebarVisible(true)}
+          sx={{
+            position: 'fixed',
+            right: 20,
+            top: 20,
+            backgroundColor: '#fff',
+            boxShadow: 1,
+            zIndex: 1000,
+            '&:hover': {
+              backgroundColor: '#f5f5f5',
+            },
+          }}
+        >
+          <VisibilityIcon fontSize="small" />
+        </IconButton>
+      )}
     </Box>
   );
 }

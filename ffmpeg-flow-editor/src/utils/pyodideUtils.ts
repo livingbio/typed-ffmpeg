@@ -33,7 +33,7 @@ export async function getPyodide(options?: {
 
     await pyodide.runPythonAsync(`
       import micropip
-      await micropip.install('typed-ffmpeg==3.0.0a0')
+      await micropip.install('typed-ffmpeg==3.0.2a0')
     `);
     console.log('typed-ffmpeg installed successfully.');
   }

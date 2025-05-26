@@ -1,6 +1,5 @@
 import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import { predefinedFilters } from '../types/ffmpeg';
-import PreviewPanel from './PreviewPanel';
 import { useState, useMemo } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import InputIcon from '@mui/icons-material/Input';
@@ -8,6 +7,9 @@ import OutputIcon from '@mui/icons-material/Output';
 import DownloadIcon from '@mui/icons-material/Download';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link as MuiLink } from '@mui/material';
+import UploadIcon from '@mui/icons-material/Upload';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 
 import { NodeMappingManager } from '../utils/nodeMapping';
 
@@ -18,10 +20,20 @@ interface SidebarProps {
     position?: { x: number; y: number }
   ) => void;
   nodeMappingManager: NodeMappingManager;
+  onLoadJson: (jsonString: string) => Promise<void>;
+  onLayout: () => void;
+  onPasteCommand?: (command: string) => void;
 }
 
-export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProps) {
+export default function Sidebar({
+  onAddFilter,
+  nodeMappingManager,
+  onLoadJson,
+  onLayout,
+  onPasteCommand,
+}: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [ffmpegCommand, setFfmpegCommand] = useState('');
 
   const filteredFilters = useMemo(() => {
     if (!searchQuery) return [...predefinedFilters].sort((a, b) => a.name.localeCompare(b.name));
@@ -58,6 +70,26 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
     }
   };
 
+  const handleLoadJson = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const jsonString = e.target?.result as string;
+        if (jsonString) {
+          await onLoadJson(jsonString);
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const handlePasteCommand = () => {
+    if (onPasteCommand && ffmpegCommand.trim()) {
+      onPasteCommand(ffmpegCommand.trim());
+    }
+  };
+
   return (
     <Paper
       elevation={3}
@@ -66,7 +98,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
         right: 0,
         top: 0,
         height: '100vh',
-        width: 500,
+        width: 350,
         backgroundColor: '#fff',
         zIndex: 1000,
         display: 'flex',
@@ -75,7 +107,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
     >
       <Box
         sx={{
-          p: 2,
+          p: 1.5,
           borderBottom: 1,
           borderColor: 'divider',
           backgroundColor: '#f5f5f5',
@@ -84,15 +116,51 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
           alignItems: 'center',
         }}
       >
-        <Typography variant="h6">FFmpeg Flow Editor</Typography>
-        <Button
-          variant="contained"
-          startIcon={<DownloadIcon />}
-          onClick={handleExport}
-          size="small"
-        >
-          Export
-        </Button>
+        <Typography variant="h6" sx={{ fontSize: '0.875rem' }}>
+          FFmpeg Flow Editor
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 0.5 }}>
+          <Button
+            variant="contained"
+            onClick={onLayout}
+            sx={{
+              mb: 1,
+              minWidth: '32px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
+            }}
+          >
+            <AutoGraphIcon fontSize="small" />
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleExport}
+            sx={{
+              mb: 1,
+              minWidth: '32px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
+            }}
+          >
+            <DownloadIcon fontSize="small" />
+          </Button>
+          <Button
+            variant="contained"
+            component="label"
+            sx={{
+              mb: 1,
+              minWidth: '32px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
+            }}
+          >
+            <UploadIcon fontSize="small" />
+            <input type="file" hidden accept=".json" onChange={handleLoadJson} />
+          </Button>
+        </Box>
       </Box>
 
       <Box
@@ -107,47 +175,57 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
         }}
       >
         <GitHubIcon sx={{ fontSize: 16, mr: 0.5 }} />
-        <MuiLink 
-          href="https://github.com/livingbio/typed-ffmpeg" 
-          target="_blank" 
+        <MuiLink
+          href="https://github.com/livingbio/typed-ffmpeg"
+          target="_blank"
           rel="noopener noreferrer"
           underline="hover"
-          sx={{ fontSize: '0.875rem' }}
+          sx={{ fontSize: '0.75rem' }}
         >
           github.com/livingbio/typed-ffmpeg
         </MuiLink>
       </Box>
 
-      <Box
-        sx={{
-          flex: 1,
-          overflow: 'auto',
-          p: 2,
-          '&::-webkit-scrollbar': {
-            width: '8px',
-          },
-          '&::-webkit-scrollbar-track': {
-            background: '#f1f1f1',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: '#888',
-            borderRadius: '4px',
-          },
-          '&::-webkit-scrollbar-thumb:hover': {
-            background: '#555',
-          },
-        }}
-      >
+      <Box sx={{ p: 1.5, overflow: 'auto' }}>
+        {/* Command Input Section */}
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }} gutterBottom>
+            FFmpeg Command
+          </Typography>
+          <TextField
+            fullWidth
+            multiline
+            rows={3}
+            value={ffmpegCommand}
+            onChange={(e) => setFfmpegCommand(e.target.value)}
+            placeholder="Paste FFmpeg command here..."
+            variant="outlined"
+            size="small"
+            sx={{ mb: 1 }}
+          />
+          <Button
+            variant="contained"
+            onClick={handlePasteCommand}
+            startIcon={<ContentPasteIcon />}
+            fullWidth
+            size="small"
+          >
+            Parse Command
+          </Button>
+        </Box>
+
+        <Divider sx={{ my: 1.5 }} />
+
         {/* I/O Nodes Section */}
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" gutterBottom>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" gutterBottom>
             I/O Nodes
           </Typography>
           <Box
             sx={{
               display: 'flex',
-              gap: 1,
-              mb: 2,
+              gap: 0.5,
+              mb: 1.5,
             }}
           >
             <Paper
@@ -156,7 +234,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
               onDragStart={(e) => handleDragStart(e, 'input')}
               onClick={() => onAddFilter('input')}
               sx={{
-                p: 1.5,
+                p: 1,
                 cursor: 'grab',
                 border: '1px solid',
                 borderColor: 'divider',
@@ -164,7 +242,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1,
+                gap: 0.5,
                 '&:hover': {
                   backgroundColor: '#f5f5f5',
                 },
@@ -174,7 +252,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
               }}
             >
               <InputIcon fontSize="small" />
-              <Typography variant="body2" fontWeight={500}>
+              <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
                 Input Node
               </Typography>
             </Paper>
@@ -184,7 +262,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
               onDragStart={(e) => handleDragStart(e, 'output')}
               onClick={() => onAddFilter('output')}
               sx={{
-                p: 1.5,
+                p: 1,
                 cursor: 'grab',
                 border: '1px solid',
                 borderColor: 'divider',
@@ -192,7 +270,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1,
+                gap: 0.5,
                 '&:hover': {
                   backgroundColor: '#f5f5f5',
                 },
@@ -202,18 +280,18 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
               }}
             >
               <OutputIcon fontSize="small" />
-              <Typography variant="body2" fontWeight={500}>
+              <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
                 Output Node
               </Typography>
             </Paper>
           </Box>
         </Box>
 
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: 1.5 }} />
 
         {/* Filters Section */}
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" gutterBottom>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }} gutterBottom>
             Available Filters
           </Typography>
           <TextField
@@ -222,7 +300,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
             placeholder="Search filters..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            sx={{ mb: 2 }}
+            sx={{ mb: 1.5 }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -233,7 +311,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
           />
           <Box
             sx={{
-              maxHeight: '200px',
+              // maxHeight: '180px',
               overflow: 'auto',
               border: '1px solid',
               borderColor: 'divider',
@@ -248,7 +326,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
                 onDragStart={(e) => handleDragStart(e, filter.name)}
                 onClick={() => onAddFilter(filter.name)}
                 sx={{
-                  p: 1.5,
+                  p: 1,
                   cursor: 'grab',
                   borderBottom: '1px solid',
                   borderColor: 'divider',
@@ -263,27 +341,15 @@ export default function Sidebar({ onAddFilter, nodeMappingManager }: SidebarProp
                   },
                 }}
               >
-                <Typography variant="body2" fontWeight={500}>
+                <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
                   {filter.name}
                 </Typography>
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{ fontSize: '0.7rem' }} color="text.secondary">
                   {filter.description}
                 </Typography>
               </Paper>
             ))}
           </Box>
-        </Box>
-
-        <Divider sx={{ my: 2 }} />
-
-        {/* Preview Section */}
-        <Box>
-          <Typography variant="subtitle1" gutterBottom>
-            Preview
-          </Typography>
-          <PreviewPanel 
-            nodeMappingManager={nodeMappingManager}
-          />
         </Box>
       </Box>
     </Paper>

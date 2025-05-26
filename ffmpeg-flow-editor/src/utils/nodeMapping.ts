@@ -15,7 +15,7 @@ import {
   StreamType,
   StreamTypeEnum,
 } from '../types/dag';
-import { dumps } from './serialize';
+import { dumps, loads, registerClasses } from './serialize';
 import { EventEmitter } from 'events';
 import { evaluateFormula } from './formulaEvaluator';
 import { NodeData } from '@/types/node';
@@ -368,9 +368,7 @@ export class NodeMappingManager {
     this.nodeMapping.nodeData.delete(nodeId);
     this.emitUpdate();
   }
-
-  // Reset mapping state
-  resetNode() {
+  private _resetNode() {
     this.nodeMapping = {
       nodeMap: new Map(),
       nodeData: new Map(),
@@ -385,6 +383,11 @@ export class NodeMappingManager {
     this.globalNodeId = this.generateNodeId();
     this.globalNode = new GlobalNode([], {}, this.globalNodeId);
     this._addGlobalNode([], {});
+  }
+
+  // Reset mapping state
+  resetNode() {
+    this._resetNode();
     this.emitUpdate();
   }
 
@@ -427,7 +430,7 @@ export class NodeMappingManager {
     } else if (sourceNode instanceof InputNode) {
       stream = new AVStream(sourceNode, null);
     } else if (sourceNode instanceof OutputNode) {
-      stream = new OutputStream(sourceNode, sourceIndex);
+      stream = new OutputStream(sourceNode, null);
     } else if (sourceNode instanceof GlobalNode) {
       stream = new GlobalStream(sourceNode);
     } else {
@@ -470,13 +473,29 @@ export class NodeMappingManager {
       if (expectedType && actualType != 'av' && expectedType !== actualType) {
         throw new Error(`Stream type mismatch: expected ${expectedType}, got ${actualType}`);
       }
+      if (!(stream instanceof FilterableStream)) {
+        throw new Error(`Stream type mismatch: expected FilterableStream, got ${stream}`);
+      }
+      targetNode.inputs[targetIndex] = stream;
     }
-
-    // Set input on target node
-    if (targetNode.inputs && targetIndex < targetNode.inputs.length) {
-      targetNode.inputs[targetIndex] = stream as FilterableStream;
-    } else {
-      throw new Error(`Target node ${targetNodeId} does not have an input at index ${targetIndex}`);
+    if (targetNode instanceof OutputNode) {
+      if (!(stream instanceof FilterableStream)) {
+        throw new Error(
+          `Stream type mismatch: expected FilterableStream, got ${stream.constructor.name}`
+        );
+      }
+      targetNode.inputs[targetIndex] = stream;
+    }
+    if (targetNode instanceof GlobalNode) {
+      if (!(stream instanceof OutputStream)) {
+        throw new Error(
+          `Stream type mismatch: expected OutputStream, got ${stream.constructor.name}`
+        );
+      }
+      targetNode.inputs[targetIndex] = stream;
+    }
+    if (targetNode instanceof InputNode) {
+      throw new Error(`Cannot add input to InputNode`);
     }
 
     // Create edge ID and add to mapping
@@ -575,28 +594,11 @@ export class NodeMappingManager {
   }
 
   // Recursively add a node and all connected nodes/streams to the mapping
-  private async _recursiveAddInternal(
-    item:
-      | FilterNode
-      | InputNode
-      | OutputNode
-      | GlobalNode
-      | FilterableStream
-      | VideoStream
-      | AudioStream
-      | AVStream
-      | OutputStream
-      | GlobalStream
-  ): Promise<string> {
+  private async _recursiveAddInternal(item: Node | Stream): Promise<string> {
     let result: string;
 
     // If it's a node, add it to the mapping
-    if (
-      item instanceof FilterNode ||
-      item instanceof InputNode ||
-      item instanceof OutputNode ||
-      item instanceof GlobalNode
-    ) {
+    if (item instanceof Node) {
       // Check if node is already in the mapping
       if (item.id && this.nodeMapping.nodeMap.has(item.id)) {
         result = item.id;
@@ -623,6 +625,9 @@ export class NodeMappingManager {
             inputs: item.inputs,
             kwargs: item.kwargs,
           });
+
+          // NOTE: all output node should connect to global node
+          this._addEdge(nodeId, this.globalNodeId, 0, 0);
         } else if (item instanceof GlobalNode) {
           // For GlobalNode, we update the existing one
           if (item.inputs && item.inputs.length > 0) {
@@ -654,13 +659,7 @@ export class NodeMappingManager {
       }
     }
     // If it's a stream, recursively add its node and return the node ID
-    else if (
-      item instanceof VideoStream ||
-      item instanceof AudioStream ||
-      item instanceof AVStream ||
-      item instanceof OutputStream ||
-      item instanceof GlobalStream
-    ) {
+    else if (item instanceof Stream) {
       result = await this._recursiveAddInternal(item.node);
     } else {
       throw new Error('Invalid item type');
@@ -669,19 +668,7 @@ export class NodeMappingManager {
     return result;
   }
 
-  public async recursiveAdd(
-    item:
-      | FilterNode
-      | InputNode
-      | OutputNode
-      | GlobalNode
-      | FilterableStream
-      | VideoStream
-      | AudioStream
-      | AVStream
-      | OutputStream
-      | GlobalStream
-  ): Promise<string> {
+  public async recursiveAdd(item: Node | Stream): Promise<string> {
     const result = await this._recursiveAddInternal(item);
     this.emitUpdate();
     return result;
@@ -697,6 +684,34 @@ export class NodeMappingManager {
   // Convert the mapping to a JSON string
   toJson(): string {
     // If we have a global node, use that as the entry point
-    return dumps(this.globalNode);
+    return dumps(new GlobalStream(this.globalNode, null, 'final'));
+  }
+
+  // Import from a JSON string
+  async fromJson(jsonString: string): Promise<void> {
+    // Reset the current state
+    this._resetNode();
+
+    // Deserialize the JSON string
+    registerClasses({
+      StreamType,
+      FilterNode,
+      InputNode,
+      OutputNode,
+      GlobalNode,
+      FilterableStream,
+      VideoStream,
+      AudioStream,
+      AVStream,
+      OutputStream,
+      GlobalStream,
+    });
+    const deserialized = loads(jsonString);
+
+    // Recursively add the deserialized node and all its connections
+    await this._recursiveAddInternal(deserialized as Node | Stream);
+
+    // Emit update event
+    this.emitUpdate();
   }
 }

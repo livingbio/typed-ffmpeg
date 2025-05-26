@@ -11,6 +11,7 @@ import {
   FilterableStream,
   OutputStream,
   GlobalStream,
+  Stream,
 } from '../../types/dag';
 import { NodeMappingManager } from '../nodeMapping';
 import { loads, clearClassRegistry, registerClasses } from '../../utils/serialize';
@@ -63,25 +64,49 @@ describe('Node Mapping', () => {
 
     // Deserialize
     const deserialized = loads(jsonString);
-    await nodeMappingManager._recursiveAddInternal(
-      deserialized as
-        | FilterNode
-        | InputNode
-        | OutputNode
-        | GlobalNode
-        | FilterableStream
-        | VideoStream
-        | AudioStream
-        | AVStream
-        | OutputStream
-        | GlobalStream
-    );
+    await nodeMappingManager._recursiveAddInternal(deserialized as Node | Stream);
     // check node mapping's snapshot
-    expect(nodeMappingManager.getNodeMapping()).toMatchSnapshot();
-    // check edge mapping's snapshot
-    expect(nodeMappingManager.getEdgeMapping()).toMatchSnapshot();
-    // check node mapping's json
-    expect(nodeMappingManager.toJson()).toMatchSnapshot();
+    expect(deserialized).toMatchSnapshot();
+    expect(loads(nodeMappingManager.toJson())).toMatchSnapshot();
+  });
+
+  it('should import from JSON string', async () => {
+    // Create a test graph
+    const sourceId = await nodeMappingManager.addNode({
+      type: 'input',
+      filename: 'input.mp4',
+    });
+
+    const filterId = await nodeMappingManager.addNode({
+      type: 'filter',
+      name: 'scale',
+      inputs: [],
+      kwargs: { width: 640, height: 480 },
+    });
+
+    const outputId = await nodeMappingManager.addNode({
+      type: 'output',
+      filename: 'output.mp4',
+    });
+
+    const globalId = await nodeMappingManager.addNode({
+      type: 'global',
+    });
+
+    // Add edges
+    nodeMappingManager.addEdge(sourceId, filterId, 0, 0);
+    nodeMappingManager.addEdge(filterId, outputId, 0, 0);
+    nodeMappingManager.addEdge(outputId, globalId, 0, 0);
+
+    // Export to JSON
+    const jsonString = nodeMappingManager.toJson();
+
+    // Create a new manager and import from JSON
+    const newManager = new NodeMappingManager();
+    await newManager.fromJson(jsonString);
+
+    // Verify the imported graph matches the original
+    expect(newManager.toJson()).toEqual(jsonString);
   });
 });
 
@@ -96,7 +121,7 @@ describe('recursiveAddToMapping', () => {
     const target1Id = await nodeMapping.addNode({
       type: 'filter',
       name: 'scale',
-      inputs: [null],
+      inputs: [],
       kwargs: { width: 640, height: 480 },
     });
 
@@ -131,7 +156,7 @@ describe('recursiveAddToMapping', () => {
     const filterId = await nodeMapping.addNode({
       type: 'filter',
       name: 'scale',
-      inputs: [null],
+      inputs: [],
       kwargs: { width: 640, height: 480 },
     });
     const outputId = await nodeMapping.addNode({
