@@ -474,8 +474,9 @@ export class NodeMappingManager {
         throw new Error(`Stream type mismatch: expected ${expectedType}, got ${actualType}`);
       }
       if (!(stream instanceof FilterableStream)) {
-        targetNode.input_typings[targetIndex] = stream;
+        throw new Error(`Stream type mismatch: expected FilterableStream, got ${stream}`);
       }
+      targetNode.inputs[targetIndex] = stream;
     }
     if (targetNode instanceof OutputNode) {
       if (!(stream instanceof FilterableStream)) {

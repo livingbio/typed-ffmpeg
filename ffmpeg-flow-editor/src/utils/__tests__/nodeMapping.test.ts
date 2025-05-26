@@ -80,7 +80,7 @@ describe('Node Mapping', () => {
     const filterId = await nodeMappingManager.addNode({
       type: 'filter',
       name: 'scale',
-      inputs: [null],
+      inputs: [],
       kwargs: { width: 640, height: 480 },
     });
 
@@ -121,7 +121,7 @@ describe('recursiveAddToMapping', () => {
     const target1Id = await nodeMapping.addNode({
       type: 'filter',
       name: 'scale',
-      inputs: [null],
+      inputs: [],
       kwargs: { width: 640, height: 480 },
     });
 
@@ -156,7 +156,7 @@ describe('recursiveAddToMapping', () => {
     const filterId = await nodeMapping.addNode({
       type: 'filter',
       name: 'scale',
-      inputs: [null],
+      inputs: [],
       kwargs: { width: 640, height: 480 },
     });
     const outputId = await nodeMapping.addNode({

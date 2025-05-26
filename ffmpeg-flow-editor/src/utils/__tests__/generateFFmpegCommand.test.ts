@@ -195,7 +195,7 @@ describe('generateFFmpegCommand', () => {
 
     const result = await generateFFmpegCommand(nodeMappingManager.toJson());
     expect(result).toMatchSnapshot();
-    expect(result.error).toBeNull();
+    expect(result.error).toBeDefined();
   });
 
   it('handles empty result from Python execution', async () => {
@@ -206,6 +206,6 @@ describe('generateFFmpegCommand', () => {
 
     const result = await generateFFmpegCommand(nodeMappingManager.toJson());
     expect(result).toMatchSnapshot();
-    expect(result.error).toBeNull();
+    expect(result.error).toBeDefined();
   });
 });

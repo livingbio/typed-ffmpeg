@@ -61,7 +61,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -134,7 +134,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "AudioStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -258,7 +258,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                                   ],
                                   "inputs": [
                                     {
-                                      "__class__": "AudioStream",
+                                      "__class__": "AVStream",
                                       "index": null,
                                       "node": {
                                         "__class__": "InputNode",
@@ -331,7 +331,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream][compil…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -441,7 +441,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "AudioStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -515,7 +515,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -638,7 +638,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -712,7 +712,7 @@ exports[`Node Mapping > should handle 'test_compile_json[amix-stream-2][comp…'
                                   ],
                                   "inputs": [
                                     {
-                                      "__class__": "AudioStream",
+                                      "__class__": "AVStream",
                                       "index": null,
                                       "node": {
                                         "__class__": "InputNode",
@@ -841,7 +841,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "VideoStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -903,7 +903,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "AudioStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -965,7 +965,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "VideoStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -1027,7 +1027,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "AudioStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -1132,7 +1132,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "VideoStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -1194,7 +1194,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "AudioStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -1256,7 +1256,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "VideoStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -1318,7 +1318,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                       ],
                       "inputs": [
                         {
-                          "__class__": "AudioStream",
+                          "__class__": "AVStream",
                           "index": null,
                           "node": {
                             "__class__": "InputNode",
@@ -1443,7 +1443,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "VideoStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -1505,7 +1505,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -1567,7 +1567,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "VideoStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -1629,7 +1629,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -1734,7 +1734,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "VideoStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -1796,7 +1796,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -1858,7 +1858,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "VideoStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -1920,7 +1920,7 @@ exports[`Node Mapping > should handle 'test_compile_json[complex-stream][com…'
                             ],
                             "inputs": [
                               {
-                                "__class__": "AudioStream",
+                                "__class__": "AVStream",
                                 "index": null,
                                 "node": {
                                   "__class__": "InputNode",
@@ -3365,7 +3365,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
           ],
           "inputs": [
             {
-              "__class__": "VideoStream",
+              "__class__": "AVStream",
               "index": null,
               "node": {
                 "__class__": "InputNode",
@@ -3375,7 +3375,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
               },
             },
             {
-              "__class__": "VideoStream",
+              "__class__": "AVStream",
               "index": null,
               "node": {
                 "__class__": "InputNode",
@@ -3434,7 +3434,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
                 ],
                 "inputs": [
                   {
-                    "__class__": "VideoStream",
+                    "__class__": "AVStream",
                     "index": null,
                     "node": {
                       "__class__": "InputNode",
@@ -3444,7 +3444,7 @@ exports[`Node Mapping > should handle 'test_compile_json[reuse-input][compil…'
                     },
                   },
                   {
-                    "__class__": "VideoStream",
+                    "__class__": "AVStream",
                     "index": null,
                     "node": {
                       "__class__": "InputNode",

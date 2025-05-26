@@ -10,75 +10,25 @@ result = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()",
 
 exports[`generateFFmpegCommand > generates code with filter nodes, output and global node 1`] = `
 {
-  "error": "'NoneType' object has no attribute 'node'
-
-from ffmpeg.common.serialize import loads
-from ffmpeg.compile.compile_python import compile
-from ffmpeg.dag.nodes import GlobalStream
-
-# Load the JSON string
-json_str = '''{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":null,"__class__":"OutputStream"}],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
-
-try:
-  # Load the stream from JSON
-  stream = loads(json_str)
-
-  # Compile to Python code
-  result = compile(stream)
-  
-  # Return both the Python code and the FFmpeg command
-  return {
-      'result': result,
-      'error': None
-  }
-except Exception as e:
-  print(f"ERROR: {str(e)}")
-  return {
-      'result': f"# Error: {str(e)}",
-      'error': str(e)
-  }
-",
-  "result": "# Error: 'NoneType' object has no attribute 'node'",
+  "error": null,
+  "result": "import ffmpeg
+result = ffmpeg.input('input.mp4').scale(width=640, height=480).output(filename='output.mp4').global_args()",
 }
 `;
 
 exports[`generateFFmpegCommand > handles complex filter chains with outputs to global node 1`] = `
 {
-  "error": "'NoneType' object has no attribute 'node'
-
-from ffmpeg.common.serialize import loads
-from ffmpeg.compile.compile_python import compile
-from ffmpeg.dag.nodes import GlobalStream
-
-# Load the JSON string
-json_str = '''{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"},{"node":{"kwargs":{"volume":2},"inputs":[null],"name":"volume","input_typings":[{"value":"audio","__class__":"StreamType"}],"output_typings":[{"value":"audio","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"AudioStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":null,"__class__":"OutputStream"}],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
-
-try:
-  # Load the stream from JSON
-  stream = loads(json_str)
-
-  # Compile to Python code
-  result = compile(stream)
-  
-  # Return both the Python code and the FFmpeg command
-  return {
-      'result': result,
-      'error': None
-  }
-except Exception as e:
-  print(f"ERROR: {str(e)}")
-  return {
-      'result': f"# Error: {str(e)}",
-      'error': str(e)
-  }
-",
-  "result": "# Error: 'NoneType' object has no attribute 'node'",
+  "error": null,
+  "result": "import ffmpeg
+input_0 = ffmpeg.input('input.mp4')
+result = ffmpeg.output(input_0.scale(width=640, height=480), input_0.volume(volume=2), filename='output.mp4').global_args()",
 }
 `;
 
 exports[`generateFFmpegCommand > handles disconnected nodes with global node 1`] = `
 {
-  "error": "tuple index out of range
+  "error": "tuple index out of range",
+  "result": "# Error: tuple index out of range
 
 from ffmpeg.common.serialize import loads
 from ffmpeg.compile.compile_python import compile
@@ -106,13 +56,13 @@ except Exception as e:
       'error': str(e)
   }
 ",
-  "result": "# Error: tuple index out of range",
 }
 `;
 
 exports[`generateFFmpegCommand > handles empty result from Python execution 1`] = `
 {
-  "error": "tuple index out of range
+  "error": "tuple index out of range",
+  "result": "# Error: tuple index out of range
 
 from ffmpeg.common.serialize import loads
 from ffmpeg.compile.compile_python import compile
@@ -140,7 +90,6 @@ except Exception as e:
       'error': str(e)
   }
 ",
-  "result": "# Error: tuple index out of range",
 }
 `;
 
@@ -154,41 +103,16 @@ result = ffmpeg.output(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'), f
 
 exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly with outputs to global node 1`] = `
 {
-  "error": "'NoneType' object has no attribute 'node'
-
-from ffmpeg.common.serialize import loads
-from ffmpeg.compile.compile_python import compile
-from ffmpeg.dag.nodes import GlobalStream
-
-# Load the JSON string
-json_str = '''{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480,"force_original_aspect_ratio":true},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":null,"__class__":"OutputStream"}],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
-
-try:
-  # Load the stream from JSON
-  stream = loads(json_str)
-
-  # Compile to Python code
-  result = compile(stream)
-  
-  # Return both the Python code and the FFmpeg command
-  return {
-      'result': result,
-      'error': None
-  }
-except Exception as e:
-  print(f"ERROR: {str(e)}")
-  return {
-      'result': f"# Error: {str(e)}",
-      'error': str(e)
-  }
-",
-  "result": "# Error: 'NoneType' object has no attribute 'node'",
+  "error": null,
+  "result": "import ffmpeg
+result = ffmpeg.input('input.mp4').scale(width=640, height=480, force_original_aspect_ratio=True).output(filename='output.mp4').global_args()",
 }
 `;
 
 exports[`generateFFmpegCommand > returns error message if no input or output nodes 1`] = `
 {
-  "error": "tuple index out of range
+  "error": "tuple index out of range",
+  "result": "# Error: tuple index out of range
 
 from ffmpeg.common.serialize import loads
 from ffmpeg.compile.compile_python import compile
@@ -216,6 +140,5 @@ except Exception as e:
       'error': str(e)
   }
 ",
-  "result": "# Error: tuple index out of range",
 }
 `;

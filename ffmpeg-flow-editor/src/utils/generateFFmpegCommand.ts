@@ -79,7 +79,7 @@ except Exception as e:
   console.log('Raw result value:', result);
 
   if (result.error) {
-    result.error += `\n${pythonCode}`;
+    result.result += `\n${pythonCode}`;
   }
   return result;
 }
