@@ -1,80 +1,48 @@
-name: 'unittest for package'
+name: CI Package
+
 on:
   push:
-    branches: ['**']
-
-permissions:
-  contents: read
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  ci:
+  build:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
-        python-version: ['3.10', '3.11', '3.12', '3.13']
+        python-version: ["3.10", "3.11", "3.12"]
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 0  # Required for setuptools-scm to work properly
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install uv
-        run: pip install uv
-
-      - name: Install dependencies
-        run: |
-          uv pip install -r requirements.txt
-          uv pip install -e .
-
-      # Install FFmpeg
-      - name: Install FFmpeg
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y wget -q
-          wget https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.0-amd64-static.tar.xz -q
-          tar -xf ffmpeg-6.0-amd64-static.tar.xz
-          sudo mv ffmpeg-*-amd64-static/ffmpeg /usr/local/bin/
-          sudo mv ffmpeg-*-amd64-static/ffprobe /usr/local/bin/
-          ffmpeg -version
-
-      # Install Graphviz
-      - name: Install Graphviz
-        run: sudo apt-get update && sudo apt-get install -y graphviz
-
-      - name: Check Graphviz version
-        run: dot -V
-
-      - name: Install GCC
-        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
-
-      # Run linting
-      - name: Linting
-        run: pre-commit run --all-files
-        working-directory: src
-
-      # Run unittests
-      - name: Run Unittest
-        run: pytest src/ --cov=./src --cov-report xml
-
-      # Upload coverage to Codecov
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          file: ./coverage.xml
-          flags: backend,python,${{ matrix.python-version }}
-          name: backend-coverage-py${{ matrix.python-version }}
-          fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
-
-      # Build Mkdocs
-      - name: Build Mkdocs
-        run: mkdocs build
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Required for setuptools-scm to work properly
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install uv
+      run: pip install uv
+    - name: Create virtual environment
+      run: uv venv
+    - name: Install dependencies
+      run: |
+        source .venv/bin/activate
+        uv pip install -r requirements.txt
+    - name: Build package
+      run: |
+        source .venv/bin/activate
+        python -m build
+    - name: Install package
+      run: |
+        source .venv/bin/activate
+        pip install dist/*.whl
+    - name: Run tests
+      run: |
+        source .venv/bin/activate
+        pytest tests/ --cov=ffmpeg --cov-report=xml
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: true

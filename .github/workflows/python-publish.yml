@@ -33,10 +33,16 @@ jobs:
           python-version: "3.x"
       - name: Install uv
         run: pip install uv
+      - name: Create virtual environment
+        run: uv venv
       - name: Install dependencies
-        run: uv pip install -r requirements.txt
+        run: |
+          source .venv/bin/activate
+          uv pip install -r requirements.txt
       - name: Build package
-        run: python -m build
+        run: |
+          source .venv/bin/activate
+          python -m build
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:

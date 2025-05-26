@@ -33,8 +33,12 @@ jobs:
           python-version: "3.x"
       - name: Install uv
         run: pip install uv
+      - name: Create virtual environment
+        run: uv venv
       - name: Install dependencies
-        run: uv pip install -r requirements.txt
+        run: |
+          source .venv/bin/activate
+          uv pip install -r requirements.txt
       - name: Prepare compatible version
         run: |
           # Backup original files
@@ -44,7 +48,9 @@ jobs:
           mv pyproject-compatible.toml pyproject.toml
           mv src/ffmpeg src/typed_ffmpeg
       - name: Build package
-        run: python -m build
+        run: |
+          source .venv/bin/activate
+          python -m build
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
