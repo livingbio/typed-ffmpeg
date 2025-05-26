@@ -21,10 +21,15 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install FFmpeg
+    - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y ffmpeg
+        sudo apt-get install -y ffmpeg git
+    - name: Configure git
+      run: |
+        git config --global --add safe.directory /home/runner/work/typed-ffmpeg/typed-ffmpeg
+        git config --global user.email "github-actions@github.com"
+        git config --global user.name "GitHub Actions"
     - name: Install uv
       run: pip install uv
     - name: Create virtual environment
