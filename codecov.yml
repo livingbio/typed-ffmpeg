@@ -19,10 +19,6 @@ flags:
   backend:
     paths:
       - src/ # Python backend code
-  frontend:
-    paths:
-      - ffmpeg-flow-editor/src/ # React frontend code
-    carryforward: true # Keep frontend coverage history but don't use it for status
 
 comment:
   layout: 'reach, diff, flags, files'

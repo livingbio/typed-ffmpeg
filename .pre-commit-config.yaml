@@ -7,7 +7,7 @@ repos:
         files: ^src/
       - id: check-json
         files: ^src/
-        exclude: '__snapshots__/|ffmpeg-flow-editor/|.eslintrc.json'
+        exclude: '__snapshots__/|.eslintrc.json'
       - id: check-merge-conflict
         files: ^src/
       - id: check-yaml
@@ -27,7 +27,7 @@ repos:
       - id: pretty-format-json
         files: ^src/
         args: [--autofix]
-        exclude: '__snapshots__/|ffmpeg-flow-editor/|.eslintrc.json'
+        exclude: '__snapshots__/|.eslintrc.json'
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.

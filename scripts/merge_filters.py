@@ -17,12 +17,6 @@ def merge_filter_files() -> None:
     # Source directory containing individual filter JSON files
     source_dir = Path("src/scripts/cache/FFMpegFilter")
 
-    # Destination file path
-    dest_file = Path("ffmpeg-flow-editor/src/config/filters.json")
-
-    # Create destination directory if it doesn't exist
-    dest_file.parent.mkdir(parents=True, exist_ok=True)
-
     # List to store all filter data
     filters: list[dict[str, Any]] = []
 
@@ -53,7 +47,8 @@ def merge_filter_files() -> None:
     # Create the final structure
     output_data = {"filters": filters}
 
-    # Write to destination file
+    # Write to a local file for reference
+    dest_file = Path("src/scripts/cache/merged_filters.json")
     try:
         with open(dest_file, "w") as f:
             json.dump(output_data, f, indent=2)
