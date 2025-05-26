@@ -1,0 +1,7 @@
+global-exclude **/tests/**
+global-exclude **/scripts/**
+global-exclude **/__snapshots__/**
+global-exclude **/test_*
+global-exclude **/*_test.py
+global-exclude **/*.test.py
+global-exclude **/conftest.py 

@@ -45,6 +45,34 @@ graph = ["graphviz"]
 requires = ["setuptools>=61.0", "setuptools-scm>=6.2"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ffmpeg"]
+exclude = [
+    "**/tests/**",
+    "**/scripts/**",
+    "**/__snapshots__/**",
+    "**/test_*",
+    "**/*_test.py",
+    "**/*.test.py",
+    "**/conftest.py"
+]
+
+[tool.setuptools.package-data]
+"ffmpeg" = ["py.typed"]
+exclude = [
+    "**/tests/**",
+    "**/scripts/**",
+    "**/__snapshots__/**",
+    "**/test_*",
+    "**/*_test.py",
+    "**/*.test.py",
+    "**/conftest.py"
+]
+
 [tool.setuptools_scm]
 version_scheme = "post-release"
 local_scheme = "node-and-timestamp"
