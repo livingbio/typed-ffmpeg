@@ -17,12 +17,11 @@ from ffmpeg.compile.compile_python import compile
 from ffmpeg.dag.nodes import GlobalStream
 
 # Load the JSON string
-json_str = '''{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}'''
+json_str = '''{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":null,"__class__":"OutputStream"}],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
 
 try:
   # Load the stream from JSON
-  node = loads(json_str)
-  stream = GlobalStream(node=node)
+  stream = loads(json_str)
 
   # Compile to Python code
   result = compile(stream)
@@ -52,12 +51,11 @@ from ffmpeg.compile.compile_python import compile
 from ffmpeg.dag.nodes import GlobalStream
 
 # Load the JSON string
-json_str = '''{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"},{"node":{"kwargs":{"volume":2},"inputs":[null],"name":"volume","input_typings":[{"value":"audio","__class__":"StreamType"}],"output_typings":[{"value":"audio","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"AudioStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}'''
+json_str = '''{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"},{"node":{"kwargs":{"volume":2},"inputs":[null],"name":"volume","input_typings":[{"value":"audio","__class__":"StreamType"}],"output_typings":[{"value":"audio","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"AudioStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":null,"__class__":"OutputStream"}],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
 
 try:
   # Load the stream from JSON
-  node = loads(json_str)
-  stream = GlobalStream(node=node)
+  stream = loads(json_str)
 
   # Compile to Python code
   result = compile(stream)
@@ -87,12 +85,11 @@ from ffmpeg.compile.compile_python import compile
 from ffmpeg.dag.nodes import GlobalStream
 
 # Load the JSON string
-json_str = '''{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}'''
+json_str = '''{"node":{"kwargs":{},"inputs":[],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
 
 try:
   # Load the stream from JSON
-  node = loads(json_str)
-  stream = GlobalStream(node=node)
+  stream = loads(json_str)
 
   # Compile to Python code
   result = compile(stream)
@@ -122,12 +119,11 @@ from ffmpeg.compile.compile_python import compile
 from ffmpeg.dag.nodes import GlobalStream
 
 # Load the JSON string
-json_str = '''{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}'''
+json_str = '''{"node":{"kwargs":{},"inputs":[],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
 
 try:
   # Load the stream from JSON
-  node = loads(json_str)
-  stream = GlobalStream(node=node)
+  stream = loads(json_str)
 
   # Compile to Python code
   result = compile(stream)
@@ -165,12 +161,11 @@ from ffmpeg.compile.compile_python import compile
 from ffmpeg.dag.nodes import GlobalStream
 
 # Load the JSON string
-json_str = '''{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480,"force_original_aspect_ratio":true},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":0,"__class__":"OutputStream"}],"__class__":"GlobalNode"}'''
+json_str = '''{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{},"inputs":[{"node":{"kwargs":{"width":640,"height":480,"force_original_aspect_ratio":true},"inputs":[null],"name":"scale","input_typings":[{"value":"video","__class__":"StreamType"}],"output_typings":[{"value":"video","__class__":"StreamType"}],"__class__":"FilterNode"},"index":0,"__class__":"VideoStream"}],"filename":"output.mp4","__class__":"OutputNode"},"index":null,"__class__":"OutputStream"}],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
 
 try:
   # Load the stream from JSON
-  node = loads(json_str)
-  stream = GlobalStream(node=node)
+  stream = loads(json_str)
 
   # Compile to Python code
   result = compile(stream)
@@ -200,12 +195,11 @@ from ffmpeg.compile.compile_python import compile
 from ffmpeg.dag.nodes import GlobalStream
 
 # Load the JSON string
-json_str = '''{"kwargs":{},"inputs":[],"__class__":"GlobalNode"}'''
+json_str = '''{"node":{"kwargs":{},"inputs":[],"__class__":"GlobalNode"},"index":null,"__class__":"GlobalStream"}'''
 
 try:
   # Load the stream from JSON
-  node = loads(json_str)
-  stream = GlobalStream(node=node)
+  stream = loads(json_str)
 
   # Compile to Python code
   result = compile(stream)

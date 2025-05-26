@@ -56,8 +56,7 @@ json_str = '''${json}'''
 
 try:
   # Load the stream from JSON
-  node = loads(json_str)
-  stream = GlobalStream(node=node)
+  stream = loads(json_str)
 
   # Compile to Python code
   result = compile(stream)

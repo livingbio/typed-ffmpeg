@@ -430,7 +430,7 @@ export class NodeMappingManager {
     } else if (sourceNode instanceof InputNode) {
       stream = new AVStream(sourceNode, null);
     } else if (sourceNode instanceof OutputNode) {
-      stream = new OutputStream(sourceNode, sourceIndex);
+      stream = new OutputStream(sourceNode, null);
     } else if (sourceNode instanceof GlobalNode) {
       stream = new GlobalStream(sourceNode);
     } else {
@@ -624,7 +624,8 @@ export class NodeMappingManager {
             inputs: item.inputs,
             kwargs: item.kwargs,
           });
-          // All output node should connect to global node
+
+          // NOTE: all output node should connect to global node
           this._addEdge(nodeId, this.globalNodeId, 0, 0);
         } else if (item instanceof GlobalNode) {
           // For GlobalNode, we update the existing one
@@ -682,7 +683,7 @@ export class NodeMappingManager {
   // Convert the mapping to a JSON string
   toJson(): string {
     // If we have a global node, use that as the entry point
-    return dumps(this.globalNode);
+    return dumps(new GlobalStream(this.globalNode, null, 'final'));
   }
 
   // Import from a JSON string
