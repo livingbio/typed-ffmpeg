@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
-license = {text = "MIT"}
+license = "MIT"
 keywords = [
     "ffmpeg",
     "video",
@@ -17,7 +17,6 @@ keywords = [
 ]
 classifiers = [
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
