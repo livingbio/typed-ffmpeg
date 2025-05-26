@@ -1,8 +1,8 @@
-import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material';
+import { Paper, Typography, Box, Button, CircularProgress, useForkRef } from '@mui/material';
 import { NodeMappingManager, NODE_MAPPING_EVENTS } from '../utils/nodeMapping';
 import { useEffect, useState, useRef } from 'react';
 import { runPython } from '../utils/pyodideUtils';
-import { generateFFmpegPythonCode } from '../utils/generateFFmpegCommand';
+import { generateFFmpegPythonCode, generateFFmpegCommand } from '../utils/generateFFmpegCommand';
 
 interface PreviewPanelProps {
   nodeMappingManager: NodeMappingManager;
@@ -28,11 +28,15 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
       try {
         setIsLoading(true);
 
-        const commandResult = await generateFFmpegPythonCode(nodeMappingManager.toJson());
+        const codeResult = await generateFFmpegPythonCode(nodeMappingManager.toJson());
+        const commandResult = await generateFFmpegCommand(nodeMappingManager.toJson());
 
-        setPythonCode(commandResult.python);
-        setFfmpegCmd(commandResult.ffmpeg_cmd || '');
-        setError(commandResult.error);
+        if (codeResult.error || commandResult.error) {
+          setError(codeResult.error || commandResult.error || '');
+        } else {
+          setPythonCode(codeResult.result);
+          setFfmpegCmd(commandResult.result || '');
+        }
       } catch (e) {
         console.error('Error updating Python code:', e);
         setError(e instanceof Error ? e.message : String(e));
