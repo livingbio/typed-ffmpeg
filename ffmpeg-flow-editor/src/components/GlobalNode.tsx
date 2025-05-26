@@ -10,10 +10,11 @@ const INPUT_FLAG = 1 << 11;
 const OUTPUT_FLAG = 1 << 12;
 
 // Global options are those which are neither input nor output options
-const globalOptions = options.filter((option) => 
-  (option.flags & INPUT_FLAG) === 0 && 
-  (option.flags & OUTPUT_FLAG) === 0 &&
-  option.type !== "OPT_TYPE_FUNC" // Skip function type options that can't be set through text input
+const globalOptions = options.filter(
+  (option) =>
+    (option.flags & INPUT_FLAG) === 0 &&
+    (option.flags & OUTPUT_FLAG) === 0 &&
+    option.type !== 'OPT_TYPE_FUNC' // Skip function type options that can't be set through text input
 );
 
 function GlobalNode({ data, id }: NodeProps<NodeData>) {
@@ -60,33 +61,38 @@ function GlobalNode({ data, id }: NodeProps<NodeData>) {
   const visibleOptions = expanded ? globalOptions : globalOptions.slice(0, 3);
 
   return (
-    <Paper 
-      elevation={3} 
-      sx={{ 
+    <Paper
+      elevation={3}
+      sx={{
         padding: 2,
         minWidth: 200,
+        maxWidth: 400,
         backgroundColor: '#f3e5f5',
         border: `2px solid #9c27b0`,
         color: theme.palette.text.primary,
         position: 'relative',
+        '& .MuiTypography-root': {
+          wordBreak: 'break-word',
+          overflowWrap: 'break-word',
+        },
       }}
     >
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'flex-start',
-        mb: 1
-      }}>
-        <Typography variant="h6">
-          {data.label}
-        </Typography>
-        
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          mb: 1,
+        }}
+      >
+        <Typography variant="h6">{data.label}</Typography>
+
         {globalOptions.length > 3 && (
-          <Button 
-            size="small" 
+          <Button
+            size="small"
             onClick={() => setExpanded(!expanded)}
-            sx={{ 
-              minWidth: 'auto', 
+            sx={{
+              minWidth: 'auto',
               fontSize: '0.75rem',
               padding: '2px 8px',
             }}
@@ -120,7 +126,7 @@ function GlobalNode({ data, id }: NodeProps<NodeData>) {
             />
           </Box>
         ))}
-        
+
         <Tooltip title={getCommandString()}>
           <Typography
             variant="caption"
@@ -155,4 +161,4 @@ function GlobalNode({ data, id }: NodeProps<NodeData>) {
   );
 }
 
-export default memo(GlobalNode); 
+export default memo(GlobalNode);

@@ -153,7 +153,7 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'LR') => 
 
   // Increase node dimensions to match actual size
   const nodeWidth = 400; // Increased from 250
-  const nodeHeight = 200; // Increased from 100
+  const nodeHeight = 450; // Increased from 100
 
   // Configure the graph with LR direction and increased spacing
   dagreGraph.setGraph({

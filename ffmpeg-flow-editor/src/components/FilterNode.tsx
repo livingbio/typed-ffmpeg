@@ -109,10 +109,15 @@ function FilterNode({ data, id }: NodeProps<NodeData>) {
       sx={{
         padding: 2,
         minWidth: 200,
+        maxWidth: 400,
         backgroundColor: theme.palette.background.paper,
         border: `1px solid ${theme.palette.divider}`,
         color: theme.palette.text.primary,
         position: 'relative',
+        '& .MuiTypography-root': {
+          wordBreak: 'break-word',
+          overflowWrap: 'break-word',
+        },
       }}
     >
       {/* Input handles */}
