@@ -1,4 +1,4 @@
-import { Paper, Typography, Box, Button, CircularProgress, useForkRef } from '@mui/material';
+import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material';
 import { NodeMappingManager, NODE_MAPPING_EVENTS } from '../utils/nodeMapping';
 import { useEffect, useState, useRef } from 'react';
 import { runPython } from '../utils/pyodideUtils';
@@ -114,18 +114,27 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
             mb: 1,
           }}
         >
-          <Typography variant="subtitle2">Python Code</Typography>
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }}>
+            Python Code
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 0.5 }}>
             <Button
               variant="outlined"
               size="small"
               onClick={handleRunPython}
               disabled={isLoading || isRunning || !pythonCode}
-              startIcon={isRunning ? <CircularProgress size={16} /> : null}
+              startIcon={isRunning ? <CircularProgress size={14} /> : null}
+              sx={{ fontSize: '0.75rem', py: 0.5 }}
             >
               {isRunning ? 'Running...' : 'Run'}
             </Button>
-            <Button variant="outlined" size="small" onClick={handleCopy} disabled={!pythonCode}>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={handleCopy}
+              disabled={!pythonCode}
+              sx={{ fontSize: '0.75rem', py: 0.5 }}
+            >
               Copy
             </Button>
           </Box>
@@ -133,7 +142,7 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
         <Paper
           elevation={0}
           sx={{
-            p: 2,
+            p: 1.5,
             backgroundColor: '#f5f5f5',
             borderRadius: 1,
             overflow: 'auto',
@@ -141,10 +150,18 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
           }}
         >
           {isLoading ? (
-            <Typography variant="body2">Loading FFmpeg command...</Typography>
+            <Typography variant="body2" sx={{ fontSize: '0.75rem' }}>
+              Loading FFmpeg command...
+            </Typography>
           ) : error ? (
             <Box>
-              <Typography variant="body2" color="error" fontWeight="bold" gutterBottom>
+              <Typography
+                variant="body2"
+                color="error"
+                fontWeight="bold"
+                gutterBottom
+                sx={{ fontSize: '0.75rem' }}
+              >
                 Error generating FFmpeg command:
               </Typography>
               <Typography
@@ -154,7 +171,7 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
                 sx={{
                   margin: 0,
                   fontFamily: 'monospace',
-                  fontSize: '0.875rem',
+                  fontSize: '0.7rem',
                   whiteSpace: 'pre-wrap',
                 }}
               >
@@ -167,8 +184,8 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
                 margin: 0,
                 padding: 0,
                 fontFamily: 'monospace',
-                fontSize: '0.875rem',
-                lineHeight: 1.5,
+                fontSize: '0.7rem',
+                lineHeight: 1.4,
                 whiteSpace: 'pre-wrap',
                 wordBreak: 'break-word',
               }}
@@ -190,15 +207,22 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
               mb: 1,
             }}
           >
-            <Typography variant="subtitle2">FFmpeg Command</Typography>
-            <Button variant="outlined" size="small" onClick={handleCopyFFmpeg}>
+            <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }}>
+              FFmpeg Command
+            </Typography>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={handleCopyFFmpeg}
+              sx={{ fontSize: '0.75rem', py: 0.5 }}
+            >
               Copy
             </Button>
           </Box>
           <Paper
             elevation={0}
             sx={{
-              p: 2,
+              p: 1.5,
               backgroundColor: '#f5f5f5',
               borderRadius: 1,
               overflow: 'auto',
@@ -210,8 +234,8 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
                 margin: 0,
                 padding: 0,
                 fontFamily: 'monospace',
-                fontSize: '0.875rem',
-                lineHeight: 1.5,
+                fontSize: '0.7rem',
+                lineHeight: 1.4,
                 whiteSpace: 'pre-wrap',
                 wordBreak: 'break-word',
               }}
@@ -225,13 +249,13 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
       {/* Results Section (only shown when there are results) */}
       {(result || isRunning) && (
         <Box>
-          <Typography variant="subtitle2" sx={{ mb: 1 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem', mb: 1 }}>
             Result {isRunning && '(Running...)'}
           </Typography>
           <Paper
             elevation={0}
             sx={{
-              p: 2,
+              p: 1.5,
               backgroundColor: '#f5f5f5',
               borderRadius: 1,
               overflow: 'auto',
@@ -240,8 +264,10 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
           >
             {isRunning ? (
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <CircularProgress size={20} />
-                <Typography variant="body2">Executing Python code...</Typography>
+                <CircularProgress size={16} />
+                <Typography variant="body2" sx={{ fontSize: '0.75rem' }}>
+                  Executing Python code...
+                </Typography>
               </Box>
             ) : (
               <pre
@@ -249,8 +275,8 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
                   margin: 0,
                   padding: 0,
                   fontFamily: 'monospace',
-                  fontSize: '0.875rem',
-                  lineHeight: 1.5,
+                  fontSize: '0.7rem',
+                  lineHeight: 1.4,
                   whiteSpace: 'pre-wrap',
                   wordBreak: 'break-word',
                 }}

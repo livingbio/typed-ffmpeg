@@ -1,6 +1,5 @@
 import { Box, Paper, Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import { predefinedFilters } from '../types/ffmpeg';
-import PreviewPanel from './PreviewPanel';
 import { useState, useMemo } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import InputIcon from '@mui/icons-material/Input';
@@ -26,7 +25,13 @@ interface SidebarProps {
   onPasteCommand?: (command: string) => void;
 }
 
-export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, onLayout, onPasteCommand }: SidebarProps) {
+export default function Sidebar({
+  onAddFilter,
+  nodeMappingManager,
+  onLoadJson,
+  onLayout,
+  onPasteCommand,
+}: SidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [ffmpegCommand, setFfmpegCommand] = useState('');
 
@@ -93,7 +98,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
         right: 0,
         top: 0,
         height: '100vh',
-        width: 500,
+        width: 350,
         backgroundColor: '#fff',
         zIndex: 1000,
         display: 'flex',
@@ -102,7 +107,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
     >
       <Box
         sx={{
-          p: 2,
+          p: 1.5,
           borderBottom: 1,
           borderColor: 'divider',
           backgroundColor: '#f5f5f5',
@@ -111,46 +116,48 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
           alignItems: 'center',
         }}
       >
-        <Typography variant="h6">FFmpeg Flow Editor</Typography>
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        <Typography variant="h6" sx={{ fontSize: '0.875rem' }}>
+          FFmpeg Flow Editor
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 0.5 }}>
           <Button
             variant="contained"
             onClick={onLayout}
-            sx={{ 
-              mb: 2,
-              minWidth: '40px',
-              width: '40px',
-              height: '40px',
-              padding: 0
+            sx={{
+              mb: 1,
+              minWidth: '32px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
             }}
           >
-            <AutoGraphIcon />
+            <AutoGraphIcon fontSize="small" />
           </Button>
           <Button
             variant="contained"
             onClick={handleExport}
-            sx={{ 
-              mb: 2,
-              minWidth: '40px',
-              width: '40px',
-              height: '40px',
-              padding: 0
+            sx={{
+              mb: 1,
+              minWidth: '32px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
             }}
           >
-            <DownloadIcon />
+            <DownloadIcon fontSize="small" />
           </Button>
           <Button
             variant="contained"
             component="label"
-            sx={{ 
-              mb: 2,
-              minWidth: '40px',
-              width: '40px',
-              height: '40px',
-              padding: 0
+            sx={{
+              mb: 1,
+              minWidth: '32px',
+              width: '32px',
+              height: '32px',
+              padding: 0,
             }}
           >
-            <UploadIcon />
+            <UploadIcon fontSize="small" />
             <input type="file" hidden accept=".json" onChange={handleLoadJson} />
           </Button>
         </Box>
@@ -173,75 +180,52 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
           target="_blank"
           rel="noopener noreferrer"
           underline="hover"
-          sx={{ fontSize: '0.875rem' }}
+          sx={{ fontSize: '0.75rem' }}
         >
           github.com/livingbio/typed-ffmpeg
         </MuiLink>
       </Box>
 
-      <Box
-        sx={{
-          flex: 1,
-          overflow: 'auto',
-          p: 2,
-          '&::-webkit-scrollbar': {
-            width: '8px',
-          },
-          '&::-webkit-scrollbar-track': {
-            background: '#f1f1f1',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: '#888',
-            borderRadius: '4px',
-          },
-          '&::-webkit-scrollbar-thumb:hover': {
-            background: '#555',
-          },
-        }}
-      >
-        {/* FFmpeg Command Section */}
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" gutterBottom>
+      <Box sx={{ p: 1.5, overflow: 'auto' }}>
+        {/* Command Input Section */}
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }} gutterBottom>
             FFmpeg Command
           </Typography>
           <TextField
             fullWidth
             multiline
-            rows={4}
+            rows={3}
             value={ffmpegCommand}
             onChange={(e) => setFfmpegCommand(e.target.value)}
-            placeholder="Paste your FFmpeg command here..."
+            placeholder="Paste FFmpeg command here..."
+            variant="outlined"
+            size="small"
             sx={{ mb: 1 }}
-            inputProps={{
-              autocorrect: "off",
-              autocomplete: "off",
-              autocapitalize: "off",
-              spellcheck: "false"
-            }}
           />
           <Button
             variant="contained"
             onClick={handlePasteCommand}
-            disabled={!ffmpegCommand.trim()}
             startIcon={<ContentPasteIcon />}
             fullWidth
+            size="small"
           >
             Parse Command
           </Button>
         </Box>
 
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: 1.5 }} />
 
         {/* I/O Nodes Section */}
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" gutterBottom>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" gutterBottom>
             I/O Nodes
           </Typography>
           <Box
             sx={{
               display: 'flex',
-              gap: 1,
-              mb: 2,
+              gap: 0.5,
+              mb: 1.5,
             }}
           >
             <Paper
@@ -250,7 +234,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
               onDragStart={(e) => handleDragStart(e, 'input')}
               onClick={() => onAddFilter('input')}
               sx={{
-                p: 1.5,
+                p: 1,
                 cursor: 'grab',
                 border: '1px solid',
                 borderColor: 'divider',
@@ -258,7 +242,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1,
+                gap: 0.5,
                 '&:hover': {
                   backgroundColor: '#f5f5f5',
                 },
@@ -268,7 +252,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
               }}
             >
               <InputIcon fontSize="small" />
-              <Typography variant="body2" fontWeight={500}>
+              <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
                 Input Node
               </Typography>
             </Paper>
@@ -278,7 +262,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
               onDragStart={(e) => handleDragStart(e, 'output')}
               onClick={() => onAddFilter('output')}
               sx={{
-                p: 1.5,
+                p: 1,
                 cursor: 'grab',
                 border: '1px solid',
                 borderColor: 'divider',
@@ -286,7 +270,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1,
+                gap: 0.5,
                 '&:hover': {
                   backgroundColor: '#f5f5f5',
                 },
@@ -296,18 +280,18 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
               }}
             >
               <OutputIcon fontSize="small" />
-              <Typography variant="body2" fontWeight={500}>
+              <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
                 Output Node
               </Typography>
             </Paper>
           </Box>
         </Box>
 
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: 1.5 }} />
 
         {/* Filters Section */}
-        <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" gutterBottom>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '0.75rem' }} gutterBottom>
             Available Filters
           </Typography>
           <TextField
@@ -316,7 +300,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
             placeholder="Search filters..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            sx={{ mb: 2 }}
+            sx={{ mb: 1.5 }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -327,7 +311,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
           />
           <Box
             sx={{
-              maxHeight: '200px',
+              // maxHeight: '180px',
               overflow: 'auto',
               border: '1px solid',
               borderColor: 'divider',
@@ -342,7 +326,7 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
                 onDragStart={(e) => handleDragStart(e, filter.name)}
                 onClick={() => onAddFilter(filter.name)}
                 sx={{
-                  p: 1.5,
+                  p: 1,
                   cursor: 'grab',
                   borderBottom: '1px solid',
                   borderColor: 'divider',
@@ -357,25 +341,15 @@ export default function Sidebar({ onAddFilter, nodeMappingManager, onLoadJson, o
                   },
                 }}
               >
-                <Typography variant="body2" fontWeight={500}>
+                <Typography variant="body2" sx={{ fontSize: '0.75rem' }} fontWeight={500}>
                   {filter.name}
                 </Typography>
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{ fontSize: '0.7rem' }} color="text.secondary">
                   {filter.description}
                 </Typography>
               </Paper>
             ))}
           </Box>
-        </Box>
-
-        <Divider sx={{ my: 2 }} />
-
-        {/* Preview Section */}
-        <Box>
-          <Typography variant="subtitle1" gutterBottom>
-            Preview
-          </Typography>
-          <PreviewPanel nodeMappingManager={nodeMappingManager} />
         </Box>
       </Box>
     </Paper>
