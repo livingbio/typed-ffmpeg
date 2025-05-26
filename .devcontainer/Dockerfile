@@ -20,4 +20,4 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-RUN pip install poetry
+RUN pip install uv

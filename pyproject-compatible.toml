@@ -1,15 +1,13 @@
-[tool.poetry]
+[project]
 name = "typed-ffmpeg-compatible"
-version = "0.0.0"
+dynamic = ["version"]
 description = "Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
-authors = ["lucemia <lucemia@gmail.com>"]
+authors = [
+    {name = "lucemia", email = "lucemia@gmail.com"}
+]
 readme = "README.md"
-packages = [{ include = "typed_ffmpeg", from = "src" }]
-include = ["typed_ffmpeg/py.typed"]
-exclude = ["**/tests", "**/scripts"]
-license = "MIT"
-homepage = "https://livingbio.github.io/typed-ffmpeg/"
-repository = "https://github.com/livingbio/typed-ffmpeg"
+requires-python = ">=3.10,<4.0"
+license = {text = "MIT"}
 keywords = [
     "ffmpeg",
     "video",
@@ -18,85 +16,75 @@ keywords = [
     "filter",
 ]
 classifiers = [
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
-        'Programming Language :: Python :: 3.12',
-        'Topic :: Multimedia :: Video',
-        'Topic :: Multimedia :: Sound/Audio',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-        'Topic :: Software Development :: Libraries',
-        'Topic :: Software Development :: Libraries :: Application Frameworks',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-    ]
-
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0"
-
-# graph
-graphviz = {"version" = "*", optional=true}
-
-[tool.poetry.extras]
-graph = [
-    "graphviz",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
-[tool.poetry.group.dev]
-optional = true
+[project.urls]
+Homepage = "https://livingbio.github.io/typed-ffmpeg/"
+Repository = "https://github.com/livingbio/typed-ffmpeg"
 
-[tool.poetry.group.dev.dependencies]
-# test
-pytest-cov = ">=4.1,<6.0"
-pytest-datadir = "^1.5.0"
-pytest-recording = "^0.13.1"
-syrupy = "^4.6.0"
-pre-commit = "*"
-mypy = "*"
-graphviz = "*"
+[project.optional-dependencies]
+graph = ["graphviz"]
 
-# codegen
-typer = "*"
-jinja2 = "*"
-devtools = "*"
-beautifulsoup4 = "*"
-html2text = "*"
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-scm>=6.2"]
+build-backend = "setuptools.build_meta"
 
-# Doc
-mkdocs = "*"
-markdown-callouts = "^0.4.0"
-mkdocs-material = "^9.5.9"
-mkdocstrings = ">=0.24,<0.27"
-mkdocstrings-python = "^1.8.0"
-pymdown-extensions = "^10.7"
-griffe_inherited_docstrings = "*"
-black = "*"
-ipykernel = "^6.29.4"
-mknotebooks = "*"
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "node-and-timestamp"
+write_to = "src/typed_ffmpeg/_version.py"
 
 [tool.mypy]
 exclude = "^(migrations|commands|sandbox|samples|sdk)/"
-show_error_codes = true       # Enables showing error codes in messages for easier issue identification.
-implicit_optional = true      # Assumes arguments with a default `None` value are `Optional`.
-follow_imports = "silent"     # Ignores import errors for a cleaner output on external libraries.
-warn_redundant_casts = true   # Issues warnings for unnecessary type casts.
-warn_unused_ignores = true    # Alerts on unnecessary '# type: ignore' comments.
-disallow_any_generics = true  # Forces specifying types for generics, like `List[int]` instead of just `List`.
-check_untyped_defs = true     # Would type-check functions without type annotations, but it's commented out.
-no_implicit_reexport = true   # Requires explicit re-export of imported names.
-disallow_untyped_defs = true  # Forces all functions to have type annotations.
+show_error_codes = true
+implicit_optional = true
+follow_imports = "silent"
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+disallow_untyped_defs = true
 
-[tool.poetry.scripts]
-scripts = "scripts.main:app"
+[tool.ruff]
+line-length = 88
+exclude = ["**/cassettes/", "**/__snapshots__/"]
+src = ["src"]
 
-[tool.poetry-dynamic-versioning]
-enable = true
-pattern = "default-unprefixed"
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B006",   # flake8-bugbear: Do not use mutable data structures for argument defaults
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E741",  # Ambiguous variable name: `I`
+    "E501",  # Line too long
+    "E402",  # Module level import not at top of file
+    "E712",  # not work for pandas
+    "F811",  # FIXME: we relay on it to share fixture across app
+]
 
-[build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
-build-backend = "poetry_dynamic_versioning.backend"
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
