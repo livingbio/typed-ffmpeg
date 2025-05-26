@@ -1,6 +1,55 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`generateFFmpegCommand > generates basic input-output-global chain 1`] = `
+exports[`generateFFmpegCommand > generates basic input-output-global chain command 1`] = `
+{
+  "error": null,
+  "result": "ffmpeg -i input.mp4 -map 0 output.mp4",
+}
+`;
+
+exports[`generateFFmpegCommand > generates command with filter nodes, output and global node 1`] = `
+{
+  "error": null,
+  "result": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480[s0]' -map '[s0]' output.mp4",
+}
+`;
+
+exports[`generateFFmpegCommand > handles complex filter chains with outputs to global node 1`] = `
+{
+  "error": null,
+  "result": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480[s0];[0]volume=volume=2[s1]' -map '[s0]' -map '[s1]' output.mp4",
+}
+`;
+
+exports[`generateFFmpegCommand > handles disconnected nodes with global node 1`] = `
+{
+  "error": null,
+  "result": "ffmpeg",
+}
+`;
+
+exports[`generateFFmpegCommand > handles multiple input nodes and outputs to global node 1`] = `
+{
+  "error": null,
+  "result": "ffmpeg -i input1.mp4 -i input2.mp4 -map 0 -map 1 output.mp4",
+}
+`;
+
+exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly with outputs to global node 1`] = `
+{
+  "error": null,
+  "result": "ffmpeg -i input.mp4 -filter_complex '[0]scale=width=640:height=480:force_original_aspect_ratio=1[s0]' -map '[s0]' output.mp4",
+}
+`;
+
+exports[`generateFFmpegCommand > returns error message if no input or output nodes 1`] = `
+{
+  "error": null,
+  "result": "ffmpeg",
+}
+`;
+
+exports[`generateFFmpegPythonCode > generates basic input-output-global chain 1`] = `
 {
   "error": null,
   "result": "import ffmpeg
@@ -8,7 +57,7 @@ result = ffmpeg.input('input.mp4').output(filename='output.mp4').global_args()",
 }
 `;
 
-exports[`generateFFmpegCommand > generates code with filter nodes, output and global node 1`] = `
+exports[`generateFFmpegPythonCode > generates code with filter nodes, output and global node 1`] = `
 {
   "error": null,
   "result": "import ffmpeg
@@ -16,7 +65,7 @@ result = ffmpeg.input('input.mp4').scale(width=640, height=480).output(filename=
 }
 `;
 
-exports[`generateFFmpegCommand > handles complex filter chains with outputs to global node 1`] = `
+exports[`generateFFmpegPythonCode > handles complex filter chains with outputs to global node 1`] = `
 {
   "error": null,
   "result": "import ffmpeg
@@ -25,7 +74,7 @@ result = ffmpeg.output(input_0.scale(width=640, height=480), input_0.volume(volu
 }
 `;
 
-exports[`generateFFmpegCommand > handles disconnected nodes with global node 1`] = `
+exports[`generateFFmpegPythonCode > handles disconnected nodes with global node 1`] = `
 {
   "error": "tuple index out of range",
   "result": "# Error: tuple index out of range
@@ -59,7 +108,7 @@ except Exception as e:
 }
 `;
 
-exports[`generateFFmpegCommand > handles empty result from Python execution 1`] = `
+exports[`generateFFmpegPythonCode > handles empty result from Python execution 1`] = `
 {
   "error": "tuple index out of range",
   "result": "# Error: tuple index out of range
@@ -93,7 +142,7 @@ except Exception as e:
 }
 `;
 
-exports[`generateFFmpegCommand > handles multiple input nodes and outputs to global node 1`] = `
+exports[`generateFFmpegPythonCode > handles multiple input nodes and outputs to global node 1`] = `
 {
   "error": null,
   "result": "import ffmpeg
@@ -101,7 +150,7 @@ result = ffmpeg.output(ffmpeg.input('input1.mp4'), ffmpeg.input('input2.mp4'), f
 }
 `;
 
-exports[`generateFFmpegCommand > handles numeric and boolean parameters correctly with outputs to global node 1`] = `
+exports[`generateFFmpegPythonCode > handles numeric and boolean parameters correctly with outputs to global node 1`] = `
 {
   "error": null,
   "result": "import ffmpeg
@@ -109,7 +158,7 @@ result = ffmpeg.input('input.mp4').scale(width=640, height=480, force_original_a
 }
 `;
 
-exports[`generateFFmpegCommand > returns error message if no input or output nodes 1`] = `
+exports[`generateFFmpegPythonCode > returns error message if no input or output nodes 1`] = `
 {
   "error": "tuple index out of range",
   "result": "# Error: tuple index out of range

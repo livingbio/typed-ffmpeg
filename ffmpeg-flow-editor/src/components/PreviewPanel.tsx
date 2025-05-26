@@ -2,7 +2,7 @@ import { Paper, Typography, Box, Button, CircularProgress } from '@mui/material'
 import { NodeMappingManager, NODE_MAPPING_EVENTS } from '../utils/nodeMapping';
 import { useEffect, useState, useRef } from 'react';
 import { runPython } from '../utils/pyodideUtils';
-import { generateFFmpegCommand } from '../utils/generateFFmpegCommand';
+import { generateFFmpegPythonCode } from '../utils/generateFFmpegCommand';
 
 interface PreviewPanelProps {
   nodeMappingManager: NodeMappingManager;
@@ -18,7 +18,7 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
   const [error, setError] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  
+
   // Debounce timer reference
   const debounceTimerRef = useRef<number | null>(null);
 
@@ -28,7 +28,7 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
       try {
         setIsLoading(true);
 
-        const commandResult = await generateFFmpegCommand(nodeMappingManager.toJson());
+        const commandResult = await generateFFmpegPythonCode(nodeMappingManager.toJson());
 
         setPythonCode(commandResult.python);
         setFfmpegCmd(commandResult.ffmpeg_cmd || '');
@@ -47,7 +47,7 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
       if (debounceTimerRef.current !== null) {
         window.clearTimeout(debounceTimerRef.current);
       }
-      
+
       // Set a new timer
       debounceTimerRef.current = window.setTimeout(() => {
         updatePythonCode();
@@ -58,10 +58,10 @@ export default function PreviewPanel({ nodeMappingManager }: PreviewPanelProps) 
     // Subscribe to node mapping update events
     // Now we only need to listen for a single UPDATE event
     const unsubscribe = nodeMappingManager.on(NODE_MAPPING_EVENTS.UPDATE, debouncedUpdate);
-    
+
     // Initial update
     debouncedUpdate();
-    
+
     // Cleanup
     return () => {
       unsubscribe();

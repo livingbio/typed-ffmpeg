@@ -152,16 +152,16 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'LR') => 
   dagreGraph.setDefaultEdgeLabel(() => ({}));
 
   // Increase node dimensions to match actual size
-  const nodeWidth = 400;  // Increased from 250
+  const nodeWidth = 400; // Increased from 250
   const nodeHeight = 200; // Increased from 100
 
   // Configure the graph with LR direction and increased spacing
   dagreGraph.setGraph({
     rankdir: direction,
-    nodesep: 200,  // Increased from 100
-    ranksep: 200,  // Increased from 100
-    marginx: 100,  // Increased from 50
-    marginy: 100,  // Increased from 50
+    nodesep: 200, // Increased from 100
+    ranksep: 200, // Increased from 100
+    marginx: 100, // Increased from 50
+    marginy: 100, // Increased from 50
   });
 
   // Add nodes to the graph
@@ -202,18 +202,28 @@ function FFmpegFlowEditorInner() {
   const loadJson = useCallback(
     async (jsonString: string) => {
       try {
+        console.log('Starting loadJson with:', jsonString);
+
         // Clear ReactFlow state first
+        console.log('Clearing ReactFlow state...');
         setNodes([]);
         setEdges([]);
 
         // Load the JSON into nodeMapping
+        console.log('Loading JSON into nodeMapping...');
         await nodeMappingManager.fromJson(jsonString);
 
         // After loading, update ReactFlow with the new nodes/edges
         const { nodeMap, nodeData } = nodeMappingManager.getNodeMapping();
         const { edgeMap } = nodeMappingManager.getEdgeMapping();
+        console.log('Node mapping after loading:', {
+          nodeMapSize: nodeMap.size,
+          nodeDataSize: nodeData.size,
+          edgeMapSize: edgeMap.size,
+        });
 
         // Create new nodes array
+        console.log('Creating new nodes array...');
         const newNodes = Array.from(nodeMap.entries()).map(([id]) => {
           const data = nodeData.get(id);
           if (!data) {
@@ -221,7 +231,6 @@ function FFmpegFlowEditorInner() {
           }
 
           let type: 'input_' | 'output_' | 'global' | 'filter';
-          // if type is input or output, add a post _ to the type
           if (data.nodeType === 'input' || data.nodeType === 'output') {
             type = data.nodeType + '_';
           } else {
@@ -231,13 +240,14 @@ function FFmpegFlowEditorInner() {
           return {
             id,
             type: type,
-            // position should be random
             position: { x: Math.random() * 500 + 200, y: Math.random() * 300 + 100 },
             data,
           };
         });
+        console.log('Created new nodes:', newNodes);
 
         // Create new edges array
+        console.log('Creating new edges array...');
         const newEdges = Array.from(edgeMap.entries()).map(([id, stream]) => {
           const sourceNodeId = stream.node.id;
           if (!sourceNodeId) {
@@ -252,7 +262,6 @@ function FFmpegFlowEditorInner() {
           const sourceHandle = `output-${stream.index}`;
           const targetHandle = `input-${targetInfo.index}`;
 
-          // Determine edge type based on stream instance
           let edgeType: EdgeType = 'av';
           if (stream instanceof VideoStream) {
             edgeType = 'video';
@@ -274,18 +283,22 @@ function FFmpegFlowEditorInner() {
             animated: false,
           };
         });
+        console.log('Created new edges:', newEdges);
 
         // Update ReactFlow state
+        console.log('Updating ReactFlow state...');
         setNodes(newNodes);
         setEdges(newEdges);
 
         // Fit view to show all nodes
         if (reactFlowInstance) {
+          console.log('Fitting view...');
           reactFlowInstance.fitView();
         }
+        console.log('loadJson completed successfully');
       } catch (error) {
-        console.error('Error loading JSON:', error);
-        // Handle error appropriately
+        console.error('Error in loadJson:', error);
+        throw error; // Re-throw to be caught by handlePasteCommand
       }
     },
     [nodeMappingManager, setNodes, setEdges, reactFlowInstance]
@@ -296,7 +309,7 @@ function FFmpegFlowEditorInner() {
     const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(nodes, edges, 'LR');
     setNodes([...layoutedNodes]);
     setEdges([...layoutedEdges]);
-    
+
     // Fit view after layout
     if (reactFlowInstance) {
       reactFlowInstance.fitView();
@@ -492,25 +505,39 @@ function FFmpegFlowEditorInner() {
     [nodeMappingManager]
   );
 
-  const handlePasteCommand = useCallback(async (command: string) => {
-    try {
-      // Convert FFmpeg command to JSON using the existing utility
-      const result = await parseFFmpegCommandToJson(command);
-      
-      if (result.result.startsWith('# Error:')) {
-        throw new Error(result.result.slice(8)); // Remove '# Error: ' prefix
+  const handlePasteCommand = useCallback(
+    async (command: string) => {
+      try {
+        console.log('Starting handlePasteCommand with command:', command);
+
+        // Convert FFmpeg command to JSON using the existing utility
+        console.log('Calling parseFFmpegCommandToJson...');
+        const result = await parseFFmpegCommandToJson(command);
+        console.log('Parse result:', result);
+
+        if (result.error) {
+          console.error('Error from parseFFmpegCommandToJson:', result.error);
+          throw new Error(result.error);
+        }
+
+        console.log('Successfully parsed command to JSON:', result.result);
+        // Use the existing loadJson function to load the converted JSON
+        await loadJson(result.result);
+
+        // Apply layout after loading
+        console.log('Applying layout...');
+        // onLayout();
+        console.log('Layout applied successfully');
+      } catch (error) {
+        console.error('Error in handlePasteCommand:', error);
+        alert(
+          'Error parsing FFmpeg command: ' +
+            (error instanceof Error ? error.message : String(error))
+        );
       }
-      
-      // Use the existing loadJson function to load the converted JSON
-      await loadJson(result.result);
-      
-      // Apply layout after loading
-      onLayout();
-    } catch (error) {
-      console.error('Error parsing FFmpeg command:', error);
-      alert('Error parsing FFmpeg command: ' + (error instanceof Error ? error.message : String(error)));
-    }
-  }, [loadJson, onLayout]);
+    },
+    [loadJson]
+  );
 
   return (
     <Box
