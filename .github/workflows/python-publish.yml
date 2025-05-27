@@ -21,8 +21,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Required for setuptools-scm to work properly
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
@@ -30,7 +28,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: '3.x'
       - name: Install uv
         run: pip install uv
       - name: Create virtual environment
@@ -51,4 +49,4 @@ jobs:
       - name: Install dev dependencies
         run: uv pip install -r requirements.txt
       - name: Deploy documentation
-        run: mkdocs gh-deploy --force
+        run: uv run mkdocs gh-deploy --force

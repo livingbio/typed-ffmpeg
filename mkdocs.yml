@@ -1,25 +1,25 @@
-site_name: gstudio
-site_description: AI Video Creation Solution
+site_name: typed-ffmpeg
+site_description: Data validation using Python type hints
 strict: true
-site_url: https://livingbio.github.io/gstudio/
+site_url: https://livingbio.github.io/typed-ffmpeg/
 
 theme:
-  name: "material"
+  name: 'material'
   palette:
-    - media: "(prefers-color-scheme: light)"
+    - media: '(prefers-color-scheme: light)'
       scheme: default
       primary: pink
       accent: pink
       toggle:
         icon: material/lightbulb-outline
-        name: "Switch to dark mode"
-    - media: "(prefers-color-scheme: dark)"
+        name: 'Switch to dark mode'
+    - media: '(prefers-color-scheme: dark)'
       scheme: slate
       primary: pink
       accent: pink
       toggle:
         icon: material/lightbulb
-        name: "Switch to light mode"
+        name: 'Switch to light mode'
   features:
     - content.tabs.link
     - content.code.annotate
@@ -27,14 +27,14 @@ theme:
     - announce.dismiss
     - navigation.tabs
 
-repo_name: livingbio/gstudio
-repo_url: https://github.com/livingbio/gstudio
+repo_name: livingbio/typed-ffmpeg
+repo_url: https://github.com/livingbio/typed-ffmpeg
 edit_uri: edit/main/docs/
 
 watch:
-  - "src"
-  - "docs"
-  - "README.md"
+  - 'src'
+  - 'docs'
+  - 'README.md'
 
 markdown_extensions:
   - attr_list
@@ -84,7 +84,7 @@ plugins:
             show_source: false
             docstring_options:
               ignore_init_summary: true
-            filters: ["!^_"]
+            filters: ['!^_']
             heading_level: 1
             inherited_members: true
             merge_init_into_class: true
