@@ -38,7 +38,10 @@ jobs:
           uv pip install -r requirements.txt
       - name: Prepare compatible version
         run: |
-          sed -i 's/name = "typed-ffmpeg"/name = "typed-ffmpeg-compatible"/' pyproject.toml
+          sed -i \
+            -e 's/^name = "typed-ffmpeg"$/name = "compatible-typed-ffmpeg"/' \
+            -e 's|^write_to = "src/ffmpeg/_version.py"$|write_to = "src/typed_ffmpeg/_version.py"|' \
+            pyproject.toml
           mv src/ffmpeg src/typed_ffmpeg
       - name: Build package
         run: |
