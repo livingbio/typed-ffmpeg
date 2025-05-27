@@ -22,6 +22,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm
+
       # Install FFmpeg
       - name: Install FFmpeg
         run: |
@@ -58,3 +62,12 @@ jobs:
         with:
           file: ./coverage.xml
           fail_ci_if_error: true
+      - name: Build Mkdocs
+        run: |
+          source .venv/bin/activate
+          mkdocs build
+
+      # Run linting
+      - name: Linting
+        run: poetry run pre-commit run --all-files
+        working-directory: src
