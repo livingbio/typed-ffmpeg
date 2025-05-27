@@ -73,5 +73,5 @@ jobs:
 
       # Run linting
       - name: Linting
-        run: poetry run pre-commit run --all-files
+        run: uv run pre-commit run --all-files
         working-directory: src
