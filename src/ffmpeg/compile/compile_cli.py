@@ -21,13 +21,10 @@ import shlex
 from collections import defaultdict
 from collections.abc import Mapping
 
-from ffmpeg.dag.factory import filter_node_factory
-from ffmpeg.streams.audio import AudioStream
-from ffmpeg.streams.video import VideoStream
-
 from ..base import input, merge_outputs, output
 from ..common.cache import load
 from ..common.schema import FFMpegFilter, FFMpegFilterDef, FFMpegOption, StreamType
+from ..dag.factory import filter_node_factory
 from ..dag.nodes import (
     FilterableStream,
     FilterNode,
@@ -39,7 +36,9 @@ from ..dag.nodes import (
 from ..dag.schema import Node, Stream
 from ..exceptions import FFMpegValueError
 from ..schema import Default
+from ..streams.audio import AudioStream
 from ..streams.av import AVStream
+from ..streams.video import VideoStream
 from ..utils.escaping import escape
 from ..utils.lazy_eval.schema import LazyValue
 from ..utils.run import command_line

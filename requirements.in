@@ -1,0 +1,33 @@
+# Main dependencies
+graphviz; platform_system != "Windows"  # Optional for graph visualization
+setuptools>=61.0
+setuptools-scm>=6.2
+build>=1.0.0
+twine>=4.0.0
+
+# Development dependencies
+pytest-cov>=4.1,<7.0
+pytest-datadir>=1.5.0
+pytest-recording>=0.13.1
+syrupy>=4.6.0
+pre-commit
+mypy
+typer
+jinja2
+devtools
+beautifulsoup4
+html2text
+mkdocs
+markdown-callouts>=0.4.0
+mkdocs-material>=9.5.9
+mkdocstrings>=0.24,<0.30
+mkdocstrings-python>=1.8.0
+pymdown-extensions>=10.7
+mkdocs-gen-files
+mkdocs-literate-nav
+mkdocs-section-index
+griffe_inherited_docstrings
+black
+ipykernel>=6.29.4
+mknotebooks
+ruff>=0.9.6,<0.12.0 

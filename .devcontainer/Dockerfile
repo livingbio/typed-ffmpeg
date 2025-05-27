@@ -1,7 +1,9 @@
-FROM python:3.10-slim
+FROM ubuntu:24.04
 
-# Install Node.js and npm
+# Install Python and other dependencies
 RUN apt-get update && apt-get install -y \
+    python3.12 \
+    python3-pip \
     wget \
     graphviz \
     git \
@@ -9,15 +11,10 @@ RUN apt-get update && apt-get install -y \
     xz-utils \
     build-essential \
     curl \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g npm@9.8.1 \
-    && wget https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.0-arm64-static.tar.xz \
-    && tar -xf ffmpeg-6.0-arm64-static.tar.xz \
-    && mv ffmpeg-*-arm64-static/ffmpeg /usr/local/bin/ \
-    && mv ffmpeg-*-arm64-static/ffprobe /usr/local/bin/ \
-    && rm -rf ffmpeg-release-arm64-static.tar.xz ffmpeg-*-arm64-static \
-    && apt-get clean
+    software-properties-common \
+    ffmpeg \
+    && apt-get clean \ 
+    && ffmpeg -version
 
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-RUN pip install poetry
+RUN pip3 install --break-system-packages uv

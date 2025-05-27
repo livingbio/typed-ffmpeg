@@ -3,10 +3,6 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Any
 
-from ffmpeg.streams.audio import AudioStream
-from ffmpeg.streams.av import AVStream
-from ffmpeg.streams.video import VideoStream
-
 from ..common.cache import load
 from ..common.schema import FFMpegFilter
 from ..dag.nodes import (
@@ -19,6 +15,9 @@ from ..dag.nodes import (
     OutputStream,
 )
 from ..dag.schema import Node, Stream
+from ..streams.audio import AudioStream
+from ..streams.av import AVStream
+from ..streams.video import VideoStream
 from .context import DAGContext
 from .validate import validate
 

@@ -270,12 +270,40 @@
           "help": "inverted sine cardinal function",
           "name": "isinc",
           "value": "18"
+        },
+        {
+          "__class__": "FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "quartic",
+          "name": "quat",
+          "value": "19"
+        },
+        {
+          "__class__": "FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "quartic root",
+          "name": "quatr",
+          "value": "20"
+        },
+        {
+          "__class__": "FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "squared quarter of sine wave",
+          "name": "qsin2",
+          "value": "21"
+        },
+        {
+          "__class__": "FFMpegFilterOptionChoice",
+          "flags": "..F.A....T.",
+          "help": "squared half of sine wave",
+          "name": "hsin2",
+          "value": "22"
         }
       ],
       "default": "tri",
-      "description": "set fade curve type (from -1 to 18) (default tri)",
+      "description": "set fade curve type (from -1 to 22) (default tri)",
       "flags": "..F.A....T.",
-      "max": "18",
+      "max": "22",
       "min": "-1",
       "name": "curve",
       "required": false,

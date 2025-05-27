@@ -28,19 +28,23 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
-      - name: Install Poetry & export Requirements
-        env:
-          POETRY_VERSION: "1.5.1"  # Specify the desired Poetry version here
+          python-version: '3.x'
+      - name: Install uv
+        run: pip install uv
+      - name: Create virtual environment
+        run: uv venv
+      - name: Install dependencies
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry self add poetry-dynamic-versioning[plugin]
+          uv pip install -r requirements.txt
       - name: Build package
-        run: poetry build
+        run: |
+          uv run python -m build
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-      - run: poetry install --with dev
-      - run: poetry run mkdocs gh-deploy --force
+      - name: Install dev dependencies
+        run: uv pip install -r requirements.txt
+      - name: Deploy documentation
+        run: uv run mkdocs gh-deploy --force

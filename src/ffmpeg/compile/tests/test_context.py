@@ -30,7 +30,7 @@ def render(context: DAGContext, obj: Any) -> Any:
         - For other objects: the original object unchanged
     """
 
-    if isinstance(obj, (list, tuple)):
+    if isinstance(obj, list | tuple):
         return [render(context, o) for o in obj]
     elif isinstance(obj, dict):
         return {render(context, k): render(context, v) for k, v in obj.items()}

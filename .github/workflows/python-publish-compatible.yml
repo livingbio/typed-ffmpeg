@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Upload Python Package
+name: Upload Compatible Python Package
 
 on:
   release:
@@ -28,19 +28,27 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
-      - name: Install Poetry & export Requirements
-        env:
-          POETRY_VERSION: "1.5.1"  # Specify the desired Poetry version here
+          python-version: '3.x'
+      - name: Install uv
+        run: pip install uv
+      - name: Create virtual environment
+        run: uv venv
+      - name: Install dependencies
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry self add poetry-dynamic-versioning[plugin]
-      - name: build compatible version
+          uv pip install -r requirements.txt
+      - name: Prepare compatible version
         run: |
-          mv pyproject-compatible.toml pyproject.toml
+          sed -i \
+            -e 's/^name = "typed-ffmpeg"$/name = "compatible-typed-ffmpeg"/' \
+            -e 's|^write_to = "src/ffmpeg/_version.py"$|write_to = "src/typed_ffmpeg/_version.py"|' \
+            -e 's|^include = \["ffmpeg\*"\]|include = ["typed_ffmpeg*"]|' \
+            pyproject.toml
           mv src/ffmpeg src/typed_ffmpeg
       - name: Build package
-        run: poetry build
+        run: |
+          uv run python -m build
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION: ${{ github.ref_name }}
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:

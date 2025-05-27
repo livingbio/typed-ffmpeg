@@ -2,9 +2,8 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ffmpeg.dag.nodes import GlobalStream
-
 from ...common.serialize import loads
+from ...dag.nodes import GlobalStream
 from ...dag.schema import Stream
 from ..compile_python import compile, parse
 from ..validate import validate

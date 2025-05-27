@@ -31,64 +31,10 @@ repo_name: livingbio/typed-ffmpeg
 repo_url: https://github.com/livingbio/typed-ffmpeg
 edit_uri: edit/main/docs/
 
-# https://www.mkdocs.org/user-guide/configuration/#validation
-# validation:
-#   omitted_files: warn
-#   absolute_links: warn
-#   unrecognized_links: warn
-
-nav:
-  - Get Started:
-      - Overview: index.md
-      - FaQ: faq.md
-  - Usage:
-      - Basic API Usage: usage/basic-api-usage.ipynb
-      - Complex Filtering: usage/complex-filtering.ipynb
-      - Customizing Filters: usage/customizing-filters.ipynb
-      - Execute: usage/execute.ipynb
-  - API Documentation:
-      - ffmpeg: src/base.md
-      - types: src/types.md
-      - schema: src/schema.md
-      - filters: src/filters.md
-      - probe: src/probe.md
-      - exceptions: src/exceptions.md
-      - Common:
-          - serialize: src/common/serialize.md
-      - Streams:
-          - video stream: src/streams/video_stream.md
-          - audio stream: src/streams/audio_stream.md
-          - av stream: src/streams/av_stream.md
-      - Compile:
-          - compile_cli: src/compile/compile_cli.md
-          - context: src/compile/context.md
-          - validate: src/compile/validate.md
-      - DAG:
-          - nodes: src/dag/nodes.md
-          - schema: src/dag/schema.md
-          - utils: src/dag/utils.md
-          - global_runnable:
-              - runnable: src/dag/global_runnable/runnable.md
-              - global_args: src/dag/global_runnable/global_args.md
-      - utils:
-          - escaping: src/utils/escaping.md
-          - run: src/utils/run.md
-          - snapshot: src/utils/snapshot.md
-          - typing: src/utils/typing.md
-          - view: src/utils/view.md
-          - lazy_eval:
-              - schema: src/utils/lazy_eval/schema.md
-              - operator: src/utils/lazy_eval/operator.md
 watch:
   - 'src'
   - 'docs'
   - 'README.md'
-
-# https://www.mkdocs.org/user-guide/configuration/#validation
-# validation:
-#   omitted_files: warn
-#   absolute_links: warn
-#   unrecognized_links: warn
 
 markdown_extensions:
   - attr_list
@@ -113,17 +59,35 @@ markdown_extensions:
       permalink: true
       title: Page contents
 
+nav:
+  - Get Started:
+      - Overview: index.md
+      - FAQ: faq.md
+  - Usage:
+      - Basic API Usage: usage/basic-api-usage.ipynb
+      - Complex Filtering: usage/complex-filtering.ipynb
+      - Customizing Filters: usage/customizing-filters.ipynb
+      - Execute: usage/execute.ipynb
+  - Code Reference: reference/
+
 plugins:
   - search
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
   - mknotebooks:
       execute: false
       timeout: 100
-      # preamble:  "<path/to/your/script>"
       allow_errors: true
   - mkdocstrings:
       handlers:
         python:
+          paths: [src]
           options:
+            show_source: false
             docstring_options:
               ignore_init_summary: true
             filters: ['!^_']

@@ -1,7 +1,6 @@
 {
   "containerEnv": {
-    "POETRY_VIRTUALENVS_CREATE": "true",
-    "POETRY_VIRTUALENVS_IN_PROJECT": "true"
+    "VIRTUAL_ENV": "/workspaces/typed-ffmpeg/.venv"
   },
   "customizations": {
     "vscode": {
@@ -40,8 +39,7 @@
   "mounts": [
     "source=${localEnv:HOME}/.config/gcloud,target=/root/.config/gcloud,type=bind,consistency=cached",
     "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
-    "source=typed-ffmpeg-zshhistory,target=/root/commandhistory,type=volume",
-    "source=poetry-virtualenvs,target=/root/.cache/pypoetry/virtualenvs,type=volume"
+    "source=typed-ffmpeg-zshhistory,target=/root/commandhistory,type=volume"
   ],
   "name": "Python Development",
   "postCreateCommand": "bash .devcontainer/setup.sh",
