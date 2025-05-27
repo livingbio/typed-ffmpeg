@@ -24,6 +24,7 @@ mkdocs-material>=9.5.9
 mkdocstrings>=0.24,<0.30
 mkdocstrings-python>=1.8.0
 pymdown-extensions>=10.7
+mkdocs-literate-nav
 griffe_inherited_docstrings
 black
 ipykernel>=6.29.4
