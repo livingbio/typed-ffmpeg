@@ -36,15 +36,16 @@
     "init            0            ..FV....... eval expressions once during initialization",
     "frame           1            ..FV....... eval expressions per-frame"
   ],
-  "format            <int>        ..FV....... set output format (from 0 to 7) (default yuv420)": [
+  "format            <int>        ..FV....... set output format (from 0 to 8) (default yuv420)": [
     "yuv420          0            ..FV.......",
     "yuv420p10       1            ..FV.......",
     "yuv422          2            ..FV.......",
     "yuv422p10       3            ..FV.......",
     "yuv444          4            ..FV.......",
-    "rgb             5            ..FV.......",
-    "gbrp            6            ..FV.......",
-    "auto            7            ..FV......."
+    "yuv444p10       5            ..FV.......",
+    "rgb             6            ..FV.......",
+    "gbrp            7            ..FV.......",
+    "auto            8            ..FV......."
   ],
   "framesync AVOptions:": [
     "eof_action        <int>        ..FV....... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
@@ -58,7 +59,7 @@
     "eof_action        <int>        ..FV....... Action to take when encountering EOF from secondary input  (from 0 to 2) (default repeat)",
     "eval              <int>        ..FV....... specify when to evaluate expressions (from 0 to 1) (default frame)",
     "shortest          <boolean>    ..FV....... force termination when the shortest input terminates (default false)",
-    "format            <int>        ..FV....... set output format (from 0 to 7) (default yuv420)",
+    "format            <int>        ..FV....... set output format (from 0 to 8) (default yuv420)",
     "repeatlast        <boolean>    ..FV....... repeat overlay of the last overlay frame (default true)",
     "alpha             <int>        ..FV....... alpha format (from 0 to 1) (default straight)"
   ],

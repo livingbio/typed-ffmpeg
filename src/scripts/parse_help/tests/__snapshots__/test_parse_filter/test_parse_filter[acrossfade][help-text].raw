@@ -12,7 +12,7 @@ acrossfade AVOptions:
    d                 <duration>   ..F.A...... set cross fade duration (default 0)
    overlap           <boolean>    ..F.A...... overlap 1st stream end with 2nd stream start (default true)
    o                 <boolean>    ..F.A...... overlap 1st stream end with 2nd stream start (default true)
-   curve1            <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 18) (default tri)
+   curve1            <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 22) (default tri)
      nofade          -1           ..F.A...... no fade; keep audio as-is
      tri             0            ..F.A...... linear slope
      qsin            1            ..F.A...... quarter of sine wave
@@ -33,7 +33,11 @@ acrossfade AVOptions:
      losi            16           ..F.A...... logistic sigmoid
      sinc            17           ..F.A...... sine cardinal function
      isinc           18           ..F.A...... inverted sine cardinal function
-   c1                <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 18) (default tri)
+     quat            19           ..F.A...... quartic
+     quatr           20           ..F.A...... quartic root
+     qsin2           21           ..F.A...... squared quarter of sine wave
+     hsin2           22           ..F.A...... squared half of sine wave
+   c1                <int>        ..F.A...... set fade curve type for 1st stream (from -1 to 22) (default tri)
      nofade          -1           ..F.A...... no fade; keep audio as-is
      tri             0            ..F.A...... linear slope
      qsin            1            ..F.A...... quarter of sine wave
@@ -54,7 +58,11 @@ acrossfade AVOptions:
      losi            16           ..F.A...... logistic sigmoid
      sinc            17           ..F.A...... sine cardinal function
      isinc           18           ..F.A...... inverted sine cardinal function
-   curve2            <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 18) (default tri)
+     quat            19           ..F.A...... quartic
+     quatr           20           ..F.A...... quartic root
+     qsin2           21           ..F.A...... squared quarter of sine wave
+     hsin2           22           ..F.A...... squared half of sine wave
+   curve2            <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 22) (default tri)
      nofade          -1           ..F.A...... no fade; keep audio as-is
      tri             0            ..F.A...... linear slope
      qsin            1            ..F.A...... quarter of sine wave
@@ -75,7 +83,11 @@ acrossfade AVOptions:
      losi            16           ..F.A...... logistic sigmoid
      sinc            17           ..F.A...... sine cardinal function
      isinc           18           ..F.A...... inverted sine cardinal function
-   c2                <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 18) (default tri)
+     quat            19           ..F.A...... quartic
+     quatr           20           ..F.A...... quartic root
+     qsin2           21           ..F.A...... squared quarter of sine wave
+     hsin2           22           ..F.A...... squared half of sine wave
+   c2                <int>        ..F.A...... set fade curve type for 2nd stream (from -1 to 22) (default tri)
      nofade          -1           ..F.A...... no fade; keep audio as-is
      tri             0            ..F.A...... linear slope
      qsin            1            ..F.A...... quarter of sine wave
@@ -96,4 +108,8 @@ acrossfade AVOptions:
      losi            16           ..F.A...... logistic sigmoid
      sinc            17           ..F.A...... sine cardinal function
      isinc           18           ..F.A...... inverted sine cardinal function
+     quat            19           ..F.A...... quartic
+     quatr           20           ..F.A...... quartic root
+     qsin2           21           ..F.A...... squared quarter of sine wave
+     hsin2           22           ..F.A...... squared half of sine wave
 
