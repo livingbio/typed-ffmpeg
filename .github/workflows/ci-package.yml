@@ -69,6 +69,7 @@ jobs:
       - name: Build Mkdocs
         run: |
           source .venv/bin/activate
+          pip install -e .
           mkdocs build
 
       # Run linting
