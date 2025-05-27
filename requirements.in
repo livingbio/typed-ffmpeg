@@ -12,7 +12,6 @@ pytest-recording>=0.13.1
 syrupy>=4.6.0
 pre-commit
 mypy
-graphviz
 typer
 jinja2
 devtools
