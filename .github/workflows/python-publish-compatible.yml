@@ -35,17 +35,16 @@ jobs:
         run: uv venv
       - name: Install dependencies
         run: |
-          source .venv/bin/activate
           uv pip install -r requirements.txt
       - name: Prepare compatible version
         run: |
-          # Backup original files
-          mv pyproject-compatible.toml pyproject.toml
+          sed -i 's/name = "typed-ffmpeg"/name = "typed-ffmpeg-compatible"/' pyproject.toml
           mv src/ffmpeg src/typed_ffmpeg
       - name: Build package
         run: |
-          source .venv/bin/activate
-          python -m build
+          uv run python -m build
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION: ${{ github.ref_name }}
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
