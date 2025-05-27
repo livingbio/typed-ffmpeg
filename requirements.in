@@ -26,6 +26,7 @@ mkdocstrings-python>=1.8.0
 pymdown-extensions>=10.7
 mkdocs-gen-files
 mkdocs-literate-nav
+mkdocs-section-index
 griffe_inherited_docstrings
 black
 ipykernel>=6.29.4
