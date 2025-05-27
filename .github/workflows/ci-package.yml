@@ -25,7 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install GCC and ffmpeg
-        run: sudo apt-get update && sudo apt-get install -y build-essential nasm ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y build-essential nasm ffmpeg && ffmpeg -version
       - name: Install uv
         run: pip install uv
       - name: Create virtual environment
