@@ -44,7 +44,3 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-      - name: Install dev dependencies
-        run: uv pip install -r requirements.txt
-      - name: Deploy documentation
-        run: uv run mkdocs gh-deploy --force
