@@ -1,0 +1,3812 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Data validation using Python type hints">
+      
+      
+      
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/usage/execute/">
+      
+      
+        <link rel="prev" href="../customizing-filters/">
+      
+      
+        <link rel="next" href="../../reference/ffmpeg/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Execute - typed-ffmpeg</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#execute" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            typed-ffmpeg
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Execute
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/livingbio/typed-ffmpeg" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    livingbio/typed-ffmpeg
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../basic-api-usage/" class="md-tabs__link">
+          
+  
+  
+  Usage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/ffmpeg/" class="md-tabs__link">
+          
+  
+  
+  Code Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    typed-ffmpeg
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/livingbio/typed-ffmpeg" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    livingbio/typed-ffmpeg
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Get Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Get Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-api-usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic API Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex-filtering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Complex Filtering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizing-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customizing Filters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Execute
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Execute
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execute
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Execute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieving the Command Line
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizing-the-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualizing the Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-auto-fix-with-typed-ffmpeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate &amp; Auto Fix with Typed-FFmpeg
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validate &amp; Auto Fix with Typed-FFmpeg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resolving-missing-split-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolving Missing Split Filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminating-redundant-split-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliminating Redundant Split Filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Code Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Code Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ffmpeg
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            ffmpeg
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/_version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    _version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    base
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/common/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    common
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/common/cache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cache
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/common/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/common/serialize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    serialize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/compile/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    compile
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            compile
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/compile/compile_cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    compile_cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/compile/compile_json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    compile_json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/compile/compile_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    compile_python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/compile/context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    context
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/compile/validate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    validate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/dag/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    dag
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            dag
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    factory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/dag/global_runnable/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    global_runnable
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_5_2" id="__nav_3_1_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_1_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            global_runnable
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/global_runnable/global_args/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    global_args
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/global_runnable/runnable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    runnable
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/dag/io/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    io
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_5_3" id="__nav_3_1_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_1_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            io
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/io/_input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    _input
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/io/_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    _output
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/io/output_args/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    output_args
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/dag/utils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    utils
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    exceptions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    filters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    info
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    probe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    sources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/streams/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    streams
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_12" id="__nav_3_1_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_12">
+            <span class="md-nav__icon md-icon"></span>
+            streams
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/streams/audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    audio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/streams/av/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    av
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/streams/channel_layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    channel_layout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/streams/video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    video
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/utils/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    utils
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_14" id="__nav_3_1_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_14">
+            <span class="md-nav__icon md-icon"></span>
+            utils
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/escaping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    escaping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/forzendict/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    forzendict
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_14_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/ffmpeg/utils/lazy_eval/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    lazy_eval
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_14_3" id="__nav_3_1_14_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_1_14_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_14_3">
+            <span class="md-nav__icon md-icon"></span>
+            lazy_eval
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/lazy_eval/operator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    operator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/lazy_eval/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    run
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/snapshot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    snapshot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    typing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/view/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    view
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/scripts/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    scripts
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            scripts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/scripts/code_gen/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    code_gen
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            code_gen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/code_gen/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/code_gen/gen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    gen
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/main/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    main
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/scripts/manual/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    manual
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            manual
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/manual/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/manual/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/scripts/parse_c/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    parse_c
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            parse_c
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_c/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_c/parse_c_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_c_structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_ffmpeg_opt_c
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_c/pre_compile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    pre_compile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/scripts/parse_docs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    parse_docs
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_5" id="__nav_3_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            parse_docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_docs/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_docs/helpers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    helpers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_docs/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/scripts/parse_help/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    parse_help
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            parse_help
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_help/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_help/parse_all_filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_all_filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/scripts/parse_help/parse_filter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse_filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execute
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Execute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieving the Command Line
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizing-the-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualizing the Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-auto-fix-with-typed-ffmpeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate &amp; Auto Fix with Typed-FFmpeg
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validate &amp; Auto Fix with Typed-FFmpeg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resolving-missing-split-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolving Missing Split Filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminating-redundant-split-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliminating Redundant Split Filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Execute</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="execute">Execute<a class="headerlink" href="#execute" title="Permanent link">&para;</a></h2>
+<p>Once you have defined your FFmpeg processing pipeline in Typed-FFmpeg, executing the command or inspecting the underlying FFmpeg command is straightforward. This section covers how to run your FFmpeg tasks programmatically and how to retrieve the command line equivalent for debugging or educational purposes.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
+
+<span class="c1"># Define the FFmpeg command with filters and output</span>
+<span class="n">input_stream</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">input_stream</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">drawtext</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">f</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_svg output_subarea output_execute_result">
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+
+
+
+<!-- Title: %3 Pages: 1 -->
+
+
+<svg height="44pt" viewbox="0.00 0.00 556.00 44.00" width="556pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-40 552,-40 552,4 -4,4" stroke="transparent"></polygon>
+
+<!-- e113d8a4702134a -->
+
+
+<g class="node" id="node1">
+<title>e113d8a4702134a</title>
+<polygon fill="#99cc00" points="77,-36 0,-36 0,0 77,0 77,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-14.9">input.mp4</text>
+</g>
+
+<!-- 6a228d8fa08b356b -->
+
+
+<g class="node" id="node2">
+<title>6a228d8fa08b356b</title>
+<polygon fill="#ffcc00" points="216,-36 162,-36 162,0 216,0 216,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="189" y="-14.9">trim</text>
+</g>
+
+<!-- e113d8a4702134a&#45;&gt;6a228d8fa08b356b -->
+
+
+<g class="edge" id="edge1">
+<title>e113d8a4702134a-&gt;6a228d8fa08b356b</title>
+<path d="M77.36,-18C100.21,-18 129.16,-18 151.72,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="151.91,-21.5 161.91,-18 151.91,-14.5 151.91,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="119.5" y="-21.8">* =&gt; 0</text>
+</g>
+
+<!-- 5acacff9608970e7 -->
+
+
+<g class="node" id="node3">
+<title>5acacff9608970e7</title>
+<polygon fill="#ffcc00" points="374,-36 304,-36 304,0 374,0 374,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="339" y="-14.9">drawtext</text>
+</g>
+
+<!-- 6a228d8fa08b356b&#45;&gt;5acacff9608970e7 -->
+
+
+<g class="edge" id="edge2">
+<title>6a228d8fa08b356b-&gt;5acacff9608970e7</title>
+<path d="M216.12,-18C237.56,-18 268.4,-18 293.7,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="293.8,-21.5 303.8,-18 293.8,-14.5 293.8,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="260" y="-21.8">0 =&gt; 0</text>
+</g>
+
+<!-- aa16dbf27b36977 -->
+
+
+<g class="node" id="node4">
+<title>aa16dbf27b36977</title>
+<polygon fill="#99ccff" points="548,-36 462,-36 462,0 548,0 548,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="505" y="-14.9">output.mp4</text>
+</g>
+
+<!-- 5acacff9608970e7&#45;&gt;aa16dbf27b36977 -->
+
+
+<g class="edge" id="edge3">
+<title>5acacff9608970e7-&gt;aa16dbf27b36977</title>
+<path d="M374.38,-18C396.75,-18 426.36,-18 451.63,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="451.8,-21.5 461.8,-18 451.8,-14.5 451.8,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="418" y="-21.8">0 =&gt; 0</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Execute the FFmpeg command</span>
+<span class="n">f</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="retrieving-the-command-line">Retrieving the Command Line<a class="headerlink" href="#retrieving-the-command-line" title="Permanent link">&para;</a></h3>
+<p>For debugging or verification purposes, you might want to inspect the exact command line that Typed-FFmpeg will execute. This can be done using the .compile() or .command_line() methods. These methods are especially useful for understanding how Typed-FFmpeg translates your Python code into FFmpeg command-line arguments.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Compile the FFmpeg command into a list format</span>
+<span class="n">command_list</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+<span class="n">command_list</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>['ffmpeg',
+ '-i',
+ 'input.mp4',
+ '-filter_complex',
+ '[0]trim=start=10:end=20[s0];[s0]drawtext=text=Hello World:fontsize=12:x=10:y=10[s1]',
+ '-map',
+ '[s1]',
+ 'output.mp4']</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Alternatively, get the command line as a single string</span>
+<span class="n">command_string</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compile_line</span><span class="p">()</span>
+<span class="n">command_string</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>"ffmpeg -i input.mp4 -filter_complex '[0]trim=start=10:end=20[s0];[s0]drawtext=text=Hello World:fontsize=12:x=10:y=10[s1]' -map '[s1]' output.mp4"</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These methods are primarily intended for debugging and ensuring that the Typed-FFmpeg commands align with your expectations.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="visualizing-the-command">Visualizing the Command<a class="headerlink" href="#visualizing-the-command" title="Permanent link">&para;</a></h3>
+<p>Typed-FFmpeg also offers a method to visualize your filter graph, which can help in understanding the flow and structure of your FFmpeg command. This is particularly helpful when dealing with complex filter chains or multi-stream workflows.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Visualize the FFmpeg filter graph</span>
+<span class="n">f</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>'Digraph.gv.png'</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Utilizing the .view() method renders a graphical representation of your command's filter graph, providing a clear and intuitive overview of how your streams and filters are interconnected.</p>
+<p>By following these steps, you can effectively execute, debug, and visualize your video and audio processing tasks within the Typed-FFmpeg framework.</p>
+<h3 id="validate-auto-fix-with-typed-ffmpeg">Validate &amp; Auto Fix with Typed-FFmpeg<a class="headerlink" href="#validate-auto-fix-with-typed-ffmpeg" title="Permanent link">&para;</a></h3>
+<p>Typed-FFmpeg introduces an advanced feature for validating and automatically correcting your FFmpeg commands. This functionality is invaluable for ensuring that your commands are not only syntactically correct but also adhere to FFmpeg's operational requirements, which can sometimes be non-intuitive and lead to user confusion.</p>
+<h4 id="resolving-missing-split-filters">Resolving Missing Split Filters<a class="headerlink" href="#resolving-missing-split-filters" title="Permanent link">&para;</a></h4>
+<p>A common issue in FFmpeg commands is the improper reuse of filtered streams without a split. FFmpeg requires distinct stream references when a stream is used in multiple contexts. Typed-FFmpeg can automatically insert necessary split filters to rectify this.</p>
+<p><strong>Example of a Missing Split Filter Issue:</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="nb">input</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">concat</span>
+
+<span class="c1"># Define a problematic FFmpeg graph without the required split</span>
+<span class="n">input_stream</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">input_stream</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">concat</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span><span class="o">.</span><span class="n">video</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;tmp.mp4&quot;</span><span class="p">)</span>
+<span class="n">graph</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_svg output_subarea output_execute_result">
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+
+
+
+<!-- Title: %3 Pages: 1 -->
+
+
+<svg height="48pt" viewbox="0.00 0.00 536.00 48.35" width="536pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 44.35)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-44.35 532,-44.35 532,4 -4,4" stroke="transparent"></polygon>
+
+<!-- e113d8a4702134a -->
+
+
+<g class="node" id="node1">
+<title>e113d8a4702134a</title>
+<polygon fill="#99cc00" points="77,-40.35 0,-40.35 0,-4.35 77,-4.35 77,-40.35" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-19.25">input.mp4</text>
+</g>
+
+<!-- 3aa8ecf782dd547d -->
+
+
+<g class="node" id="node2">
+<title>3aa8ecf782dd547d</title>
+<polygon fill="#ffcc00" points="224,-40.35 162,-40.35 162,-4.35 224,-4.35 224,-40.35" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="193" y="-19.25">reverse</text>
+</g>
+
+<!-- e113d8a4702134a&#45;&gt;3aa8ecf782dd547d -->
+
+
+<g class="edge" id="edge1">
+<title>e113d8a4702134a-&gt;3aa8ecf782dd547d</title>
+<path d="M77.2,-22.35C99.84,-22.35 128.63,-22.35 151.72,-22.35" fill="none" stroke="black"></path>
+<polygon fill="black" points="151.88,-25.85 161.88,-22.35 151.88,-18.85 151.88,-25.85" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="119.5" y="-26.15">* =&gt; 0</text>
+</g>
+
+<!-- 455e6a31fdf3b22 -->
+
+
+<g class="node" id="node3">
+<title>455e6a31fdf3b22</title>
+<polygon fill="#ffcc00" points="369,-40.35 312,-40.35 312,-4.35 369,-4.35 369,-40.35" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="340.5" y="-19.25">concat</text>
+</g>
+
+<!-- 3aa8ecf782dd547d&#45;&gt;455e6a31fdf3b22 -->
+
+
+<g class="edge" id="edge2">
+<title>3aa8ecf782dd547d-&gt;455e6a31fdf3b22</title>
+<path d="M224.15,-22.35C246.63,-22.35 277.48,-22.35 301.62,-22.35" fill="none" stroke="black"></path>
+<polygon fill="black" points="301.85,-25.85 311.85,-22.35 301.85,-18.85 301.85,-25.85" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="268" y="-26.15">0 =&gt; 0</text>
+</g>
+
+<!-- 3aa8ecf782dd547d&#45;&gt;455e6a31fdf3b22 -->
+
+
+<g class="edge" id="edge3">
+<title>3aa8ecf782dd547d-&gt;455e6a31fdf3b22</title>
+<path d="M224.21,-8.42C230,-6.32 236.1,-4.48 242,-3.35 264.7,0.98 271.34,1.19 294,-3.35 296.66,-3.89 299.36,-4.58 302.05,-5.38" fill="none" stroke="black"></path>
+<polygon fill="black" points="301.06,-8.74 311.65,-8.7 303.34,-2.13 301.06,-8.74" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="268" y="-7.15">0 =&gt; 1</text>
+</g>
+
+<!-- 5a6b2a4e7038196f -->
+
+
+<g class="node" id="node4">
+<title>5a6b2a4e7038196f</title>
+<polygon fill="#99ccff" points="528,-40.35 457,-40.35 457,-4.35 528,-4.35 528,-40.35" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="492.5" y="-19.25">tmp.mp4</text>
+</g>
+
+<!-- 455e6a31fdf3b22&#45;&gt;5a6b2a4e7038196f -->
+
+
+<g class="edge" id="edge4">
+<title>455e6a31fdf3b22-&gt;5a6b2a4e7038196f</title>
+<path d="M369.01,-22.35C390.72,-22.35 421.44,-22.35 446.68,-22.35" fill="none" stroke="black"></path>
+<polygon fill="black" points="446.77,-25.85 456.77,-22.35 446.77,-18.85 446.77,-25.85" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="413" y="-26.15">0 =&gt; 0</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Attempt to compile the command without auto-fixing</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">compile_line</span><span class="p">(</span><span class="n">auto_fix</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Incorrect command: ffmpeg -i input.mp4 -filter_complex &#39;[0:v]reverse[r];[r][r]concat[c]&#39; -map &#39;[c]&#39; tmp.mp4</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>"ffmpeg -i input.mp4 -filter_complex '[0]reverse[s0];[s0][s0]concat=n=2[s1]' -map '[s1]' tmp.mp4"</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># typed-ffmpeg&#39;s built-in validation will catch the issue and suggest a fix</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.dag.validate</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate</span>
+
+<span class="n">validate</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_svg output_subarea output_execute_result">
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+
+
+
+<!-- Title: %3 Pages: 1 -->
+
+
+<svg height="48pt" viewbox="0.00 0.00 678.00 48.47" width="678pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 44.47)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-44.47 674,-44.47 674,4 -4,4" stroke="transparent"></polygon>
+
+<!-- e113d8a4702134a -->
+
+
+<g class="node" id="node1">
+<title>e113d8a4702134a</title>
+<polygon fill="#99cc00" points="77,-40.47 0,-40.47 0,-4.47 77,-4.47 77,-40.47" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-19.37">input.mp4</text>
+</g>
+
+<!-- 3aa8ecf782dd547d -->
+
+
+<g class="node" id="node2">
+<title>3aa8ecf782dd547d</title>
+<polygon fill="#ffcc00" points="224,-40.47 162,-40.47 162,-4.47 224,-4.47 224,-40.47" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="193" y="-19.37">reverse</text>
+</g>
+
+<!-- e113d8a4702134a&#45;&gt;3aa8ecf782dd547d -->
+
+
+<g class="edge" id="edge1">
+<title>e113d8a4702134a-&gt;3aa8ecf782dd547d</title>
+<path d="M77.2,-22.47C99.84,-22.47 128.63,-22.47 151.72,-22.47" fill="none" stroke="black"></path>
+<polygon fill="black" points="151.88,-25.97 161.88,-22.47 151.88,-18.97 151.88,-25.97" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="119.5" y="-26.27">* =&gt; 0</text>
+</g>
+
+<!-- 62a8dc54feea27f2 -->
+
+
+<g class="node" id="node3">
+<title>62a8dc54feea27f2</title>
+<polygon fill="#ffcc00" points="366,-40.47 312,-40.47 312,-4.47 366,-4.47 366,-40.47" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="339" y="-19.37">split</text>
+</g>
+
+<!-- 3aa8ecf782dd547d&#45;&gt;62a8dc54feea27f2 -->
+
+
+<g class="edge" id="edge2">
+<title>3aa8ecf782dd547d-&gt;62a8dc54feea27f2</title>
+<path d="M224.19,-22.47C246.75,-22.47 277.68,-22.47 301.61,-22.47" fill="none" stroke="black"></path>
+<polygon fill="black" points="301.72,-25.97 311.72,-22.47 301.72,-18.97 301.72,-25.97" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="268" y="-26.27">0 =&gt; 0</text>
+</g>
+
+<!-- 36df2aadc13050d9 -->
+
+
+<g class="node" id="node4">
+<title>36df2aadc13050d9</title>
+<polygon fill="#ffcc00" points="511,-40.47 454,-40.47 454,-4.47 511,-4.47 511,-40.47" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="482.5" y="-19.37">concat</text>
+</g>
+
+<!-- 62a8dc54feea27f2&#45;&gt;36df2aadc13050d9 -->
+
+
+<g class="edge" id="edge3">
+<title>62a8dc54feea27f2-&gt;36df2aadc13050d9</title>
+<path d="M366.28,-22.47C388.1,-22.47 419.41,-22.47 443.88,-22.47" fill="none" stroke="black"></path>
+<polygon fill="black" points="443.91,-25.97 453.91,-22.47 443.91,-18.97 443.91,-25.97" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="410" y="-26.27">0 =&gt; 0</text>
+</g>
+
+<!-- 62a8dc54feea27f2&#45;&gt;36df2aadc13050d9 -->
+
+
+<g class="edge" id="edge4">
+<title>62a8dc54feea27f2-&gt;36df2aadc13050d9</title>
+<path d="M366.42,-9.02C372.09,-6.72 378.13,-4.69 384,-3.47 406.63,1.2 413.34,1.07 436,-3.47 438.66,-4.01 441.36,-4.7 444.05,-5.51" fill="none" stroke="black"></path>
+<polygon fill="black" points="443.06,-8.86 453.65,-8.82 445.34,-2.25 443.06,-8.86" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="410" y="-7.27">1 =&gt; 1</text>
+</g>
+
+<!-- 523a434f0dd098e7 -->
+
+
+<g class="node" id="node5">
+<title>523a434f0dd098e7</title>
+<polygon fill="#99ccff" points="670,-40.47 599,-40.47 599,-4.47 670,-4.47 670,-40.47" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="634.5" y="-19.37">tmp.mp4</text>
+</g>
+
+<!-- 36df2aadc13050d9&#45;&gt;523a434f0dd098e7 -->
+
+
+<g class="edge" id="edge5">
+<title>36df2aadc13050d9-&gt;523a434f0dd098e7</title>
+<path d="M511.01,-22.47C532.72,-22.47 563.44,-22.47 588.68,-22.47" fill="none" stroke="black"></path>
+<polygon fill="black" points="588.77,-25.97 598.77,-22.47 588.77,-18.97 588.77,-25.97" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="555" y="-26.27">0 =&gt; 0</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Automatically fix and compile the command</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">compile_line</span><span class="p">()</span>
+<span class="c1"># Corrected command: ffmpeg -i input.mp4 -filter_complex &#39;[0:v]reverse[r];[r]split=2[s1][s2];[s1][s2]concat[c]&#39; -map &#39;[c]&#39; tmp.mp4</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>"ffmpeg -i input.mp4 -filter_complex '[0]reverse[s0];[s0]split=outputs=2[s1#0][s1#1];[s1#0][s1#1]concat=n=2[s2]' -map '[s2]' tmp.mp4"</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this case, Typed-FFmpeg intelligently adds a split filter to meet FFmpeg's requirements for stream usage.</p>
+<h4 id="eliminating-redundant-split-filters">Eliminating Redundant Split Filters<a class="headerlink" href="#eliminating-redundant-split-filters" title="Permanent link">&para;</a></h4>
+<p>Conversely, unnecessary split filters can also introduce problems, such as unintended stream selections or inefficient processing. Typed-FFmpeg can identify and remove these redundant filters, streamlining your command.</p>
+<p><strong>Example of Redundant Split Filter Issue:</strong></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="nb">input</span>
+
+<span class="c1"># Set up an FFmpeg graph with a redundant split</span>
+<span class="n">input1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;input1.mp4&quot;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">input1</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">video</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">trim</span><span class="p">(</span><span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;tmp.mp4&quot;</span><span class="p">)</span>
+<span class="n">f</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_svg output_subarea output_execute_result">
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+
+
+
+<!-- Title: %3 Pages: 1 -->
+
+
+<svg height="44pt" viewbox="0.00 0.00 533.00 44.00" width="533pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-40 529,-40 529,4 -4,4" stroke="transparent"></polygon>
+
+<!-- 25cdd004dd9dfc4d -->
+
+
+<g class="node" id="node1">
+<title>25cdd004dd9dfc4d</title>
+<polygon fill="#99cc00" points="85,-36 0,-36 0,0 85,0 85,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-14.9">input1.mp4</text>
+</g>
+
+<!-- 1b2386ed9aa8a8b8 -->
+
+
+<g class="node" id="node2">
+<title>1b2386ed9aa8a8b8</title>
+<polygon fill="#ffcc00" points="224,-36 170,-36 170,0 224,0 224,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="197" y="-14.9">split</text>
+</g>
+
+<!-- 25cdd004dd9dfc4d&#45;&gt;1b2386ed9aa8a8b8 -->
+
+
+<g class="edge" id="edge1">
+<title>25cdd004dd9dfc4d-&gt;1b2386ed9aa8a8b8</title>
+<path d="M85.17,-18C108.47,-18 137.23,-18 159.61,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="159.72,-21.5 169.72,-18 159.72,-14.5 159.72,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-21.8">* =&gt; 0</text>
+</g>
+
+<!-- da99bfaad49a0 -->
+
+
+<g class="node" id="node3">
+<title>da99bfaad49a0</title>
+<polygon fill="#ffcc00" points="366,-36 312,-36 312,0 366,0 366,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="339" y="-14.9">trim</text>
+</g>
+
+<!-- 1b2386ed9aa8a8b8&#45;&gt;da99bfaad49a0 -->
+
+
+<g class="edge" id="edge2">
+<title>1b2386ed9aa8a8b8-&gt;da99bfaad49a0</title>
+<path d="M224,-18C245.77,-18 277.08,-18 301.38,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="301.66,-21.5 311.66,-18 301.66,-14.5 301.66,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="268" y="-21.8">0 =&gt; 0</text>
+</g>
+
+<!-- 7dad15d0fb5905fb -->
+
+
+<g class="node" id="node4">
+<title>7dad15d0fb5905fb</title>
+<polygon fill="#99ccff" points="525,-36 454,-36 454,0 525,0 525,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="489.5" y="-14.9">tmp.mp4</text>
+</g>
+
+<!-- da99bfaad49a0&#45;&gt;7dad15d0fb5905fb -->
+
+
+<g class="edge" id="edge3">
+<title>da99bfaad49a0-&gt;7dad15d0fb5905fb</title>
+<path d="M366.21,-18C387.65,-18 418.46,-18 443.79,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="443.91,-21.5 453.91,-18 443.91,-14.5 443.91,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="410" y="-21.8">0 =&gt; 0</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Compile the command with the redundant split, without auto-fixing</span>
+<span class="n">f</span><span class="o">.</span><span class="n">compile_line</span><span class="p">(</span><span class="n">auto_fix</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Inefficient command: ffmpeg -i input1.mp4 -filter_complex &#39;[0:v]split=2[s0][s1];[s0]trim=end=5[t]&#39; -map &#39;[t]&#39; tmp.mp4</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>"ffmpeg -i input1.mp4 -filter_complex '[0]split=outputs=2[s0#0];[s0#0]trim=end=5[s1]' -map '[s1]' tmp.mp4"</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># typed-ffmpeg&#39;s built-in validation will catch the issue and suggest a fix</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.dag.validate</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate</span>
+
+<span class="n">validate</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_svg output_subarea output_execute_result">
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+
+
+
+<!-- Title: %3 Pages: 1 -->
+
+
+<svg height="44pt" viewbox="0.00 0.00 391.00 44.00" width="391pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-40 387,-40 387,4 -4,4" stroke="transparent"></polygon>
+
+<!-- 25cdd004dd9dfc4d -->
+
+
+<g class="node" id="node1">
+<title>25cdd004dd9dfc4d</title>
+<polygon fill="#99cc00" points="85,-36 0,-36 0,0 85,0 85,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-14.9">input1.mp4</text>
+</g>
+
+<!-- 648a77af0522d341 -->
+
+
+<g class="node" id="node2">
+<title>648a77af0522d341</title>
+<polygon fill="#ffcc00" points="224,-36 170,-36 170,0 224,0 224,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="197" y="-14.9">trim</text>
+</g>
+
+<!-- 25cdd004dd9dfc4d&#45;&gt;648a77af0522d341 -->
+
+
+<g class="edge" id="edge1">
+<title>25cdd004dd9dfc4d-&gt;648a77af0522d341</title>
+<path d="M85.17,-18C108.47,-18 137.23,-18 159.61,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="159.72,-21.5 169.72,-18 159.72,-14.5 159.72,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-21.8">* =&gt; 0</text>
+</g>
+
+<!-- 421f73eb39448e25 -->
+
+
+<g class="node" id="node3">
+<title>421f73eb39448e25</title>
+<polygon fill="#99ccff" points="383,-36 312,-36 312,0 383,0 383,-36" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="347.5" y="-14.9">tmp.mp4</text>
+</g>
+
+<!-- 648a77af0522d341&#45;&gt;421f73eb39448e25 -->
+
+
+<g class="edge" id="edge2">
+<title>648a77af0522d341-&gt;421f73eb39448e25</title>
+<path d="M224.21,-18C245.65,-18 276.46,-18 301.79,-18" fill="none" stroke="black"></path>
+<polygon fill="black" points="301.91,-21.5 311.91,-18 301.91,-14.5 301.91,-21.5" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="268" y="-21.8">0 =&gt; 0</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="c1"># Auto-remove the redundant split and compile</span>
+<span class="n">f</span><span class="o">.</span><span class="n">compile_line</span><span class="p">()</span>
+<span class="c1"># Optimized command: ffmpeg -i input1.mp4 -filter_complex &#39;[0:v]trim=end=5[t]&#39; -map &#39;[t]&#39; tmp.mp4</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>"ffmpeg -i input1.mp4 -filter_complex '[0]trim=end=5[s0]' -map '[s0]' tmp.mp4"</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this example, Typed-FFmpeg eliminates the unnecessary split, thereby simplifying the command and potentially improving processing efficiency.</p>
+<h4 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h4>
+<p>Typed-FFmpeg's validation and auto-fixing capabilities greatly enhance the user experience by automating the resolution of common issues and optimizing command structure. This ensures that users can focus more on their creative and technical goals rather than on navigating the intricacies of FFmpeg's syntax and stream management rules.</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
