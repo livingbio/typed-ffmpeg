@@ -15,6 +15,7 @@
 - [Installation](#installation)
 - [Quick Usage](#quick-usage)
 - [Documentation](https://livingbio.github.io/typed-ffmpeg/)
+- [Interactive Playground](#interactive-playground)
 - [Acknowledgements](#acknowledgements)
 
 ---
@@ -134,6 +135,21 @@ f
 
 See the [Usage](https://livingbio.github.io/typed-ffmpeg/usage/typed/) section in our documentation for more examples and detailed guides.
 
+---
+
+## Interactive Playground
+
+Try out `typed-ffmpeg` directly in your browser with our [Interactive Playground](https://livingbio.github.io/typed-ffmpeg-playground/)! The playground provides a live environment where you can:
+
+![Interactive Playground](https://raw.githubusercontent.com/livingbio/typed-ffmpeg/main/docs/media/playground-screenshot.png)
+
+- Experiment with FFmpeg filters and commands
+- Visualize filter graphs in real-time
+- Test different input/output configurations
+- Learn through interactive examples
+- Share your filter graphs with others
+
+The playground is perfect for learning and prototyping FFmpeg filter chains without setting up a local environment.
 
 ---
 
