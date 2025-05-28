@@ -152,6 +152,15 @@ def parse_output(
             stream = parse_stream_selector(map_option, in_streams)
             inputs.append(stream)
 
+        if not inputs:
+            # NOTE: if there is no inputs, and there is only one input node
+            if len([k for k in in_streams if isinstance(in_streams[k], AVStream)]) == 1:
+                inputs = [
+                    in_streams[k]
+                    for k in in_streams
+                    if isinstance(in_streams[k], AVStream)
+                ]
+
         assert inputs, f"No inputs found for output {filename}"
         export.append(output(*inputs, filename=filename, extra_options=options))
         buffer = []
