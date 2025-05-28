@@ -8,7 +8,5 @@
   "file,http,https,tcp,tls",
   "-i",
   "files.txt",
-  "-map",
-  "0",
   "output.mp4"
 ]

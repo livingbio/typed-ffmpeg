@@ -6,7 +6,5 @@
   "10",
   "-i",
   "anullsrc",
-  "-map",
-  "0",
   "output.mp4"
 ]
