@@ -182,7 +182,17 @@ def probe(
         print(f"Library versions: {len(info.library_versions.library_version)}")
         ```
     """
-    args = [cmd, "-show_format", "-show_streams", "-show_chapters", "-show_programs", "-show_packets", "-show_frames", "-of", "xml"]
+    args = [
+        cmd,
+        "-show_format",
+        "-show_streams",
+        "-show_chapters",
+        "-show_programs",
+        "-show_packets",
+        "-show_frames",
+        "-of",
+        "xml",
+    ]
     args += convert_kwargs_to_cmd_line_args(kwargs)
     args += [str(filename)]
 
