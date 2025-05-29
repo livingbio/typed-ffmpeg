@@ -1,0 +1,71 @@
+{
+  "chapters": [],
+  "format": {
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/54/animated-webp.webp",
+    "format_long_name": "piped webp sequence",
+    "format_name": "webp_pipe",
+    "nb_programs": 0,
+    "nb_streams": 1,
+    "probe_score": 99,
+    "size": "380850"
+  },
+  "packets_and_frames": [
+    {
+      "codec_type": "video",
+      "dts": 0,
+      "dts_time": "0.000000",
+      "duration": 1,
+      "duration_time": "0.040000",
+      "flags": "K__",
+      "pos": "0",
+      "pts": 0,
+      "pts_time": "0.000000",
+      "size": "380850",
+      "stream_index": 0,
+      "type": "packet"
+    }
+  ],
+  "programs": [],
+  "streams": [
+    {
+      "avg_frame_rate": "25/1",
+      "closed_captions": 0,
+      "codec_long_name": "WebP",
+      "codec_name": "webp",
+      "codec_tag": "0x0000",
+      "codec_tag_string": "[0][0][0][0]",
+      "codec_type": "video",
+      "coded_height": 0,
+      "coded_width": 0,
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 0,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "film_grain": 0,
+      "has_b_frames": 0,
+      "height": 0,
+      "index": 0,
+      "level": -99,
+      "nb_read_packets": "1",
+      "r_frame_rate": "25/1",
+      "refs": 1,
+      "time_base": "1/25",
+      "width": 0
+    }
+  ]
+}

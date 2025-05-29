@@ -54,7 +54,17 @@ def probe(
         print(f"Streams: {len(info['streams'])}")
         ```
     """
-    args = [cmd, "-show_format", "-show_streams", "-of", "json"]
+    args = [
+        cmd,
+        "-show_format",
+        "-show_streams",
+        "-show_chapters",
+        "-show_programs",
+        "-show_packets",
+        "-show_frames",
+        "-of",
+        "json",
+    ]
     args += convert_kwargs_to_cmd_line_args(kwargs)
     args += [str(filename)]
 
