@@ -152,6 +152,15 @@ def parse_output(
             stream = parse_stream_selector(map_option, in_streams)
             inputs.append(stream)
 
+        if not inputs:
+            # NOTE: if there is no inputs, and there is only one input node
+            if len([k for k in in_streams if isinstance(in_streams[k], AVStream)]) == 1:
+                inputs = [
+                    in_streams[k]
+                    for k in in_streams
+                    if isinstance(in_streams[k], AVStream)
+                ]
+
         assert inputs, f"No inputs found for output {filename}"
         export.append(output(*inputs, filename=filename, extra_options=options))
         buffer = []
@@ -676,6 +685,22 @@ def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
     if context:
         for input in node.inputs:
             if isinstance(input.node, InputNode):
+                # NOTE: specially rules,
+                # if there is only one input node,
+                # only one output node,
+                # the output node has only one input,
+                # and the stream selector is not specified,
+                # then the map can be ignore.
+                if (
+                    input.index is None
+                    and isinstance(input, AVStream)
+                    and len([k for k in context.all_nodes if isinstance(k, InputNode)])
+                    == 1
+                    and len([k for k in context.all_nodes if isinstance(k, OutputNode)])
+                    == 1
+                    and len(node.inputs) == 1
+                ):
+                    continue
                 commands += ["-map", get_stream_label(input, context)]
             else:
                 commands += ["-map", f"[{get_stream_label(input, context)}]"]

@@ -101,8 +101,6 @@
     '-nostdin',
     '-i',
     'tmp1.mp4',
-    '-map',
-    '0',
     'output.mp4',
   ])
 # ---
