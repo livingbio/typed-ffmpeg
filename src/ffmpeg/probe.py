@@ -56,12 +56,17 @@ def probe(
     """
     args = [
         cmd,
-        "-show_format",
-        "-show_streams",
-        "-show_chapters",
-        "-show_programs",
+        "-show_program_version",
+        "-show_library_versions",
+        "-show_pixel_formats",
         "-show_packets",
         "-show_frames",
+        # "-show_packets_and_frames",
+        "-show_programs",
+        "-show_streams",
+        "-show_chapters",
+        "-show_format",
+        "-show_error",
         "-of",
         "json",
     ]
