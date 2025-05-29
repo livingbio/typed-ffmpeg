@@ -7,7 +7,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
@@ -24,6 +26,9 @@ jobs:
         run: uv venv
       - name: Install dependencies
         run: |
+          source .venv/bin/activate
           uv pip install -r requirements.txt
       - name: Deploy documentation
-        run: uv run mkdocs gh-deploy --force
+        run: |
+          source .venv/bin/activate
+          mkdocs gh-deploy --force

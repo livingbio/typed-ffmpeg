@@ -13,7 +13,8 @@ on:
     types: [published]
 
 permissions:
-  contents: write
+  contents: read
+  id-token: write
 
 jobs:
   deploy:
@@ -35,10 +36,12 @@ jobs:
         run: uv venv
       - name: Install dependencies
         run: |
+          source .venv/bin/activate
           uv pip install -r requirements.txt
       - name: Build package
         run: |
-          uv run python -m build
+          source .venv/bin/activate
+          python -m build
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
