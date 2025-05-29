@@ -1,38 +1,5 @@
-"""
-Module for analyzing media files with ffprobe.
-
-This module provides functionality to extract detailed metadata from media files
-using FFmpeg's ffprobe utility. It returns a structured representation of the
-file's format, streams, and other relevant information.
-"""
-
-import json
-import logging
-import subprocess
-from pathlib import Path
-from typing import (
-    Any,
-    Optional,
-    TypeVar,
-    Union,
-    get_args,
-    get_origin,
-    get_type_hints,
-)
-
-from .exceptions import FFMpegExecuteError
-from .utils.escaping import convert_kwargs_to_cmd_line_args
-from .utils.run import command_line
-
-logger = logging.getLogger(__name__)
-from dataclasses import dataclass, field
-
-T = TypeVar("T")
-from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Any, Optional, Union
-
-if TYPE_CHECKING:
-    pass
+from dataclasses import dataclass
+from typing import Optional
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -52,7 +19,7 @@ class ffprobeType:
 
 @dataclass(frozen=True, kw_only=True)
 class packetsType:
-    packet: tuple["packetType", ...] | None = field(default_factory=tuple)
+    packet: tuple["packetType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -70,7 +37,7 @@ class packetsAndFramesType:
 
 @dataclass(frozen=True, kw_only=True)
 class tagsType:
-    tag: tuple["tagType", ...] | None = field(default_factory=tuple)
+    tag: tuple["tagType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -94,13 +61,13 @@ class packetType:
 
 @dataclass(frozen=True, kw_only=True)
 class packetSideDataListType:
-    side_data: tuple["packetSideDataType", ...] | None = field(default_factory=tuple)
+    side_data: tuple["packetSideDataType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
 class packetSideDataType:
     type: str | None = None
-    side_datum: tuple["packetSideDatumType", ...] | None = field(default_factory=tuple)
+    side_datum: tuple["packetSideDatumType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -156,7 +123,7 @@ class frameType:
 
 @dataclass(frozen=True, kw_only=True)
 class logsType:
-    log: tuple["logType", ...] | None = field(default_factory=tuple)
+    log: tuple["logType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -171,7 +138,7 @@ class logType:
 
 @dataclass(frozen=True, kw_only=True)
 class frameSideDataListType:
-    side_data: tuple["frameSideDataType", ...] | None = field(default_factory=tuple)
+    side_data: tuple["frameSideDataType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -181,7 +148,7 @@ class frameSideDataType:
     timecode: str | None = None
     timecodes: Optional["frameSideDataTimecodeList"] = None
     components: Optional["frameSideDataComponentList"] = None
-    side_datum: tuple["frameSideDatumType", ...] | None = field(default_factory=tuple)
+    side_datum: tuple["frameSideDatumType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -192,9 +159,7 @@ class frameSideDatumType:
 
 @dataclass(frozen=True, kw_only=True)
 class frameSideDataTimecodeList:
-    timecode: tuple["frameSideDataTimecodeType", ...] | None = field(
-        default_factory=tuple
-    )
+    timecode: tuple["frameSideDataTimecodeType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -204,25 +169,23 @@ class frameSideDataTimecodeType:
 
 @dataclass(frozen=True, kw_only=True)
 class frameSideDataComponentList:
-    component: tuple["frameSideDataComponentType", ...] | None = field(
-        default_factory=tuple
-    )
+    component: tuple["frameSideDataComponentType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
 class frameSideDataComponentType:
     pieces: Optional["frameSideDataPieceList"] = None
-    side_datum: tuple["frameSideDatumType", ...] | None = field(default_factory=tuple)
+    side_datum: tuple["frameSideDatumType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
 class frameSideDataPieceList:
-    piece: tuple["frameSideDataPieceType", ...] | None = field(default_factory=tuple)
+    piece: tuple["frameSideDataPieceType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
 class frameSideDataPieceType:
-    side_datum: tuple["frameSideDatumType", ...] | None = field(default_factory=tuple)
+    side_datum: tuple["frameSideDatumType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -238,12 +201,12 @@ class subtitleType:
 
 @dataclass(frozen=True, kw_only=True)
 class streamsType:
-    stream: tuple["streamType", ...] | None = field(default_factory=tuple)
+    stream: tuple["streamType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
 class programsType:
-    program: tuple["programType", ...] | None = field(default_factory=tuple)
+    program: tuple["programType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -374,7 +337,7 @@ class programVersionType:
 
 @dataclass(frozen=True, kw_only=True)
 class chaptersType:
-    chapter: tuple["chapterType", ...] | None = field(default_factory=tuple)
+    chapter: tuple["chapterType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -385,7 +348,7 @@ class chapterType:
     start_time: float | None = None
     end: int | None = None
     end_time: float | None = None
-    tags: tuple["tagsType", ...] | None = field(default_factory=tuple)
+    tags: tuple["tagsType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -400,9 +363,7 @@ class libraryVersionType:
 
 @dataclass(frozen=True, kw_only=True)
 class libraryVersionsType:
-    library_version: tuple["libraryVersionType", ...] | None = field(
-        default_factory=tuple
-    )
+    library_version: tuple["libraryVersionType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -424,9 +385,7 @@ class pixelFormatComponentType:
 
 @dataclass(frozen=True, kw_only=True)
 class pixelFormatComponentsType:
-    component: tuple["pixelFormatComponentType", ...] | None = field(
-        default_factory=tuple
-    )
+    component: tuple["pixelFormatComponentType", ...] = ()
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -442,114 +401,4 @@ class pixelFormatType:
 
 @dataclass(frozen=True, kw_only=True)
 class pixelFormatsType:
-    pixel_format: tuple["pixelFormatType", ...] | None = field(default_factory=tuple)
-
-
-def _convert_to_dataclass(data: dict[str, Any], cls: type[T]) -> T:
-    """
-    Recursively convert a dictionary to a dataclass instance, handling nested dataclasses.
-
-    Args:
-        data: Dictionary containing the data to convert
-        cls: The dataclass type to convert to
-
-    Returns:
-        An instance of the specified dataclass with all nested structures converted
-    """
-    if data is None:
-        return None
-
-    type_hints = get_type_hints(cls)
-    kwargs: dict[str, Any] = {}
-
-    for field_name, field_type in type_hints.items():
-        if field_name not in data:
-            continue
-
-        value = data[field_name]
-
-        # Handle Optional types
-        if get_origin(field_type) is Union:
-            inner_type = next(t for t in get_args(field_type) if t is not type(None))
-            if value is None:
-                kwargs[field_name] = None
-                continue
-            field_type = inner_type
-
-        # Handle tuples of dataclasses
-        if get_origin(field_type) is tuple:
-            inner_type = get_args(field_type)[0]
-            if isinstance(value, list | tuple):
-                kwargs[field_name] = tuple(
-                    _convert_to_dataclass(item, inner_type) for item in value
-                )
-            else:
-                kwargs[field_name] = ()  # Empty tuple instead of None
-            continue
-
-        # Handle nested dataclasses
-        if hasattr(field_type, "__dataclass_fields__"):
-            kwargs[field_name] = _convert_to_dataclass(value, field_type)
-            continue
-
-        # Handle primitive types
-        kwargs[field_name] = value
-
-    return cls(**kwargs)
-
-
-def probe(
-    filename: str | Path,
-    cmd: str = "ffprobe",
-    timeout: int | None = None,
-    **kwargs: Any,
-) -> ffprobeType:
-    """
-    Analyze a media file using ffprobe and return its metadata as an FFProbe dataclass.
-
-    This function executes ffprobe to extract detailed information about a media file,
-    including format metadata (container format, duration, bitrate) and stream information
-    (codecs, resolution, sample rate, etc). The result is returned as an FFProbe dataclass
-    instance containing the parsed information.
-
-    Args:
-        filename: Path to the media file to analyze
-        cmd: Path or name of the ffprobe executable (default: "ffprobe")
-        timeout: Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)
-        **kwargs: Additional arguments to pass to ffprobe as command line parameters
-            (e.g., loglevel="quiet", skip_frame="nokey")
-
-    Returns:
-        An FFProbe dataclass instance containing the parsed information from ffprobe
-
-    Raises:
-        FFMpegExecuteError: If ffprobe returns a non-zero exit code
-        subprocess.TimeoutExpired: If the timeout is reached before ffprobe completes
-
-    Example:
-        ```python
-        info = probe("video.mp4")
-        print(f"Program version: {info.program_version.version}")
-        print(f"Library versions: {len(info.library_versions.library_version)}")
-        ```
-    """
-    args = [cmd, "-show_format", "-show_streams", "-of", "json"]
-    args += convert_kwargs_to_cmd_line_args(kwargs)
-    args += [str(filename)]
-
-    logger.info("Running ffprobe command: %s", command_line(args))
-    p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    if timeout is not None:
-        out, err = p.communicate(timeout=timeout)
-    else:
-        out, err = p.communicate()
-
-    retcode = p.poll()
-    if p.returncode != 0:
-        raise FFMpegExecuteError(
-            retcode=retcode, cmd=command_line(args), stdout=out, stderr=err
-        )
-
-    data = json.loads(out.decode("utf-8"))
-    return _convert_to_dataclass(data, ffprobeType)
+    pixel_format: tuple["pixelFormatType", ...] = ()
