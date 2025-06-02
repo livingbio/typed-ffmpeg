@@ -21,6 +21,17 @@ logger = logging.getLogger(__name__)
 
 def probe(
     filename: str | Path,
+    *,
+    show_program_version: bool = False,
+    show_library_versions: bool = False,
+    show_pixel_formats: bool = False,
+    show_packets: bool = False,
+    show_frames: bool = False,
+    show_programs: bool = False,
+    show_streams: bool = True,
+    show_chapters: bool = False,
+    show_format: bool = True,
+    show_error: bool = False,
     cmd: str = "ffprobe",
     timeout: int | None = None,
     **kwargs: Any,
@@ -35,8 +46,18 @@ def probe(
 
     Args:
         filename: Path to the media file to analyze
-        cmd: Path or name of the ffprobe executable (default: "ffprobe")
+        cmd: Path or name of the ffprobe executable
         timeout: Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)
+        show_program_version: Show the program version
+        show_library_versions: Show the library versions
+        show_pixel_formats: Show the pixel formats
+        show_packets: Show the packets
+        show_frames: Show the frames
+        show_programs: Show the programs
+        show_streams: Show the streams
+        show_chapters: Show the chapters
+        show_format: Show the format
+        show_error: Show the error
         **kwargs: Additional arguments to pass to ffprobe as command line parameters
             (e.g., loglevel="quiet", skip_frame="nokey")
 
@@ -56,17 +77,17 @@ def probe(
     """
     args = [
         cmd,
-        "-show_program_version",
-        "-show_library_versions",
-        "-show_pixel_formats",
-        "-show_packets",
-        "-show_frames",
+        *(["-show_program_version"] if show_program_version else []),
+        *(["-show_library_versions"] if show_library_versions else []),
+        *(["-show_pixel_formats"] if show_pixel_formats else []),
+        *(["-show_packets"] if show_packets else []),
+        *(["-show_frames"] if show_frames else []),
         # "-show_packets_and_frames",
-        "-show_programs",
-        "-show_streams",
-        "-show_chapters",
-        "-show_format",
-        "-show_error",
+        *(["-show_programs"] if show_programs else []),
+        *(["-show_streams"] if show_streams else []),
+        *(["-show_chapters"] if show_chapters else []),
+        *(["-show_format"] if show_format else []),
+        *(["-show_error"] if show_error else []),
         "-of",
         "json",
     ]
