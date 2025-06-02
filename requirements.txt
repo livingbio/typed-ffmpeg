@@ -101,7 +101,7 @@ iniconfig==2.1.0
     # via pytest
 ipykernel==6.29.5
     # via -r requirements.in
-ipython==8.36.0
+ipython==8.37.0
     # via ipykernel
 jaraco-classes==3.4.0
     # via keyring
