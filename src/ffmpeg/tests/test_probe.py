@@ -15,7 +15,7 @@ def is_static_image(format_name: str) -> bool:
 
 
 @pytest.mark.parametrize("path", test_data.glob("**/*.*"), ids=lambda x: x.name)
-def test_probe_default(path: Path) -> None:
+def test_probe_default(path: Path, snapshot: SnapshotAssertion) -> None:
     info = probe(path)
 
     # Check basic structure
@@ -48,6 +48,10 @@ def test_probe_default(path: Path) -> None:
         # codec_name is not available for data streams
         if stream["codec_type"] != "data":
             assert "codec_name" in stream
+
+    snapshot(
+        extension_class=JSONSnapshotExtension
+    ) == info  # NOTE: the result is not stable so, we just want to record the result
 
 
 @pytest.mark.parametrize("path", test_data.glob("**/*.*"), ids=lambda x: x.name)
@@ -108,4 +112,6 @@ def test_probe_complete(path: Path, snapshot: SnapshotAssertion) -> None:
                 assert "sample_rate" in stream
                 assert "channels" in stream
 
-    snapshot(extension_class=JSONSnapshotExtension) == info
+    snapshot(
+        extension_class=JSONSnapshotExtension
+    ) == info  # NOTE: the result is not stable so, we just want to record the result
