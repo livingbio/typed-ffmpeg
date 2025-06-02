@@ -1,6 +1,6 @@
 {
   "format": {
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/cd89b1bf161582d55161f5ba94d03cc7728825c2.jpe",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/cd89b1bf161582d55161f5ba94d03cc7728825c2.jpe",
     "format_long_name": "piped jpeg sequence",
     "format_name": "jpeg_pipe",
     "nb_programs": 0,

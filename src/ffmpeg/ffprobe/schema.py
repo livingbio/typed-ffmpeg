@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from dataclasses import dataclass
 from typing import Optional
 
@@ -404,3 +402,45 @@ class pixelFormatType:
 @dataclass(kw_only=True, frozen=True)
 class pixelFormatsType:
     pixel_format: tuple["pixelFormatType", ...] | None = None
+
+
+registered_types = {
+    "ffprobeType": ffprobeType,
+    "packetsType": packetsType,
+    "framesType": framesType,
+    "packetsAndFramesType": packetsAndFramesType,
+    "tagsType": tagsType,
+    "packetType": packetType,
+    "packetSideDataListType": packetSideDataListType,
+    "packetSideDataType": packetSideDataType,
+    "frameSideDataListType": frameSideDataListType,
+    "frameSideDataType": frameSideDataType,
+    "frameSideDataTimecodeList": frameSideDataTimecodeList,
+    "frameSideDataTimecodeType": frameSideDataTimecodeType,
+    "frameSideDataComponentList": frameSideDataComponentList,
+    "frameSideDataComponentType": frameSideDataComponentType,
+    "frameSideDataPieceList": frameSideDataPieceList,
+    "frameSideDataPieceType": frameSideDataPieceType,
+    "streamDispositionType": streamDispositionType,
+    "streamType": streamType,
+    "programType": programType,
+    "formatType": formatType,
+    "tagType": tagType,
+    "errorType": errorType,
+    "programVersionType": programVersionType,
+    "chaptersType": chaptersType,
+    "chapterType": chapterType,
+    "libraryVersionType": libraryVersionType,
+    "libraryVersionsType": libraryVersionsType,
+    "pixelFormatFlagsType": pixelFormatFlagsType,
+    "pixelFormatComponentType": pixelFormatComponentType,
+    "pixelFormatComponentsType": pixelFormatComponentsType,
+    "pixelFormatType": pixelFormatType,
+    "pixelFormatsType": pixelFormatsType,
+    # common types
+    "int": int,
+    "str": str,
+    "float": float,
+    "bool": bool,
+    "None": None,
+}

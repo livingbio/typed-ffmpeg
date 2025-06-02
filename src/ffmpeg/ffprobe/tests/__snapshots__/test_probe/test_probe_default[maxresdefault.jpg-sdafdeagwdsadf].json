@@ -1,6 +1,6 @@
 {
   "format": {
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/meda-file-without-ext/maxresdefault.jpg-sdafdeagwdsadf",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/meda-file-without-ext/maxresdefault.jpg-sdafdeagwdsadf",
     "format_long_name": "piped jpeg sequence",
     "format_name": "jpeg_pipe",
     "nb_programs": 0,

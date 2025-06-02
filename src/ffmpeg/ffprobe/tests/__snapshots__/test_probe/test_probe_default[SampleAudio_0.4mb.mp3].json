@@ -2,7 +2,7 @@
   "format": {
     "bit_rate": "128002",
     "duration": "27.744750",
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/SampleAudio_0.4mb.mp3",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/SampleAudio_0.4mb.mp3",
     "format_long_name": "MP2/3 (MPEG audio layer 2/3)",
     "format_name": "mp3",
     "nb_programs": 0,

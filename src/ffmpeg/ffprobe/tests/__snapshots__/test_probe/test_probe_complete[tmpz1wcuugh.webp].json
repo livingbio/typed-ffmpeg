@@ -3,7 +3,7 @@
   "format": {
     "bit_rate": "158000",
     "duration": "0.040000",
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/133-raise-exception/tmpz1wcuugh.webp",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/133-raise-exception/tmpz1wcuugh.webp",
     "format_long_name": "image2 sequence",
     "format_name": "image2",
     "nb_programs": 0,

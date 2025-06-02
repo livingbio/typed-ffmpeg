@@ -3,7 +3,7 @@
   "format": {
     "bit_rate": "249978400",
     "duration": "0.040000",
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/4ox1IBJxK3cVd0uJA6gOtceSP3g.jpg",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/4ox1IBJxK3cVd0uJA6gOtceSP3g.jpg",
     "format_long_name": "image2 sequence",
     "format_name": "image2",
     "nb_programs": 0,

@@ -2,7 +2,7 @@
   "format": {
     "bit_rate": "1479571",
     "duration": "38.740617",
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/9b5174019e8c9bec190903528ff6d0392a2d6a9b.mp4",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/9b5174019e8c9bec190903528ff6d0392a2d6a9b.mp4",
     "format_long_name": "QuickTime / MOV",
     "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
     "nb_programs": 0,

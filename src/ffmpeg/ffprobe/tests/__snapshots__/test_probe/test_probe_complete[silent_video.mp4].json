@@ -3,7 +3,7 @@
   "format": {
     "bit_rate": "16964712",
     "duration": "6.965292",
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/video-without-audio-stream/silent_video.mp4",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/video-without-audio-stream/silent_video.mp4",
     "format_long_name": "QuickTime / MOV",
     "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
     "nb_programs": 0,

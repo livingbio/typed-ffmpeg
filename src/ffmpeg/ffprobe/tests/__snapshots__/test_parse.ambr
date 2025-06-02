@@ -1,0 +1,48 @@
+# serializer version: 1
+# name: test_parse_ffprobe
+  dict({
+    'chapters': None,
+    'error': None,
+    'format': dict({
+      'bit_rate': 1826963,
+      'duration': 5.0,
+      'filename': 'src/ffmpeg/ffprobe/tests/test_probe/test-5sec.mp4',
+      'format_long_name': 'QuickTime / MOV',
+      'format_name': 'mov,mp4,m4a,3gp,3g2,mj2',
+      'nb_programs': 0,
+      'nb_stream_groups': None,
+      'nb_streams': 2,
+      'probe_score': 100,
+      'size': 1141852,
+      'start_time': 0.0,
+      'tags': dict({
+        'tag': tuple(
+          dict({
+            'key': 'major_brand',
+            'value': 'isom',
+          }),
+          dict({
+            'key': 'minor_version',
+            'value': '512',
+          }),
+          dict({
+            'key': 'compatible_brands',
+            'value': 'isomiso2avc1mp41',
+          }),
+          dict({
+            'key': 'encoder',
+            'value': 'Lavf58.76.100',
+          }),
+        ),
+      }),
+    }),
+    'frames': None,
+    'library_versions': None,
+    'packets': None,
+    'packets_and_frames': None,
+    'pixel_formats': None,
+    'program_version': None,
+    'programs': None,
+    'streams': None,
+  })
+# ---

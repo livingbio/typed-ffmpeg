@@ -3,7 +3,7 @@
   "format": {
     "bit_rate": "202220",
     "duration": "1.200000",
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/201432913186_fish.gif",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/201432913186_fish.gif",
     "format_long_name": "CompuServe Graphics Interchange Format (GIF)",
     "format_name": "gif",
     "nb_programs": 0,

@@ -1,7 +1,7 @@
 {
   "chapters": [],
   "format": {
-    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/tests/test_probe/test_data/54/9c7ee468-24a3-4930-9832-73f0f6001ab1.webp",
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/54/9c7ee468-24a3-4930-9832-73f0f6001ab1.webp",
     "format_long_name": "piped webp sequence",
     "format_name": "webp_pipe",
     "nb_programs": 0,
