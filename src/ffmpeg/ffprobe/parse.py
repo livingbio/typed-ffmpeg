@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
+import json
 import types
-import xml.etree.ElementTree as ET
 from typing import Any, TypeVar, Union, get_args, get_origin, get_type_hints
 
 from .schema import ffprobeType, registered_types, tagsType, tagType
+from .xml2json import xml_string_to_json
 
 T = TypeVar("T")
 
@@ -29,7 +30,7 @@ def _get_actual_type(type_hint: Any) -> type[Any]:
     return type_hint
 
 
-def _parse_optional_type(value: str, type_hint: type[Any]) -> Any:
+def _parse_optional_type(value: Any, type_hint: type[Any]) -> Any:
     """Parse a string value into the appropriate type based on type hint."""
     if value is None:
         return None
@@ -38,69 +39,82 @@ def _parse_optional_type(value: str, type_hint: type[Any]) -> Any:
     print(f"Parsing value: {value!r} as {actual_type!r}")
 
     if actual_type is str:
-        return value
+        return str(value)
     elif actual_type is int:
         return int(value)
     elif actual_type is float:
         return float(value)
     elif actual_type is bool:
-        return value.lower() == "true"
+        return str(value).lower() == "true"
     else:
         return value
 
 
-def _parse_tags(element: ET.Element) -> tagsType | None:
-    """Parse tags from an XML element."""
-    tags = []
-    for tag in element.findall(".//tag"):
+def _parse_tags_from_dict(tags: Any) -> tagsType | None:
+    """Parse tags from a dictionary."""
+    if not tags or "tag" not in tags:
+        return None
+    tag_list = tags["tag"]
+    if isinstance(tag_list, dict):
+        tag_list = [tag_list]
+    result = []
+    for tag in tag_list:
         key = tag.get("key")
         value = tag.get("value")
-        if key and value:
-            tags.append(tagType(key=key, value=value))
-    return tagsType(tag=tuple(tags)) if tags else None
+        if key is not None and value is not None:
+            result.append(tagType(key=key, value=value))
+    return tagsType(tag=tuple(result)) if result else None
 
 
-def _parse_dataclass(element: ET.Element, cls: type[T]) -> T:
-    """Parse an XML element into a dataclass instance."""
+def _parse_dataclass_from_dict(data: dict[str, Any], cls: type[T]) -> T:
+    """Parse a dictionary into a dataclass instance."""
     type_hints = get_type_hints(cls)
     kwargs: dict[str, Any] = {}
-
-    # Handle nested elements
     for field_name, field_type in type_hints.items():
         if field_name == "tags":
-            kwargs[field_name] = _parse_tags(element)
+            tags_data = data.get("tags") or data.get("tag")
+            kwargs[field_name] = _parse_tags_from_dict(
+                {"tag": tags_data} if tags_data else None
+            )
             continue
-
-        # Handle nested dataclass fields
         actual_type = _get_actual_type(field_type)
         if hasattr(actual_type, "__dataclass_fields__"):
-            nested_elem = element.find(field_name)
-            if nested_elem is not None:
-                kwargs[field_name] = _parse_dataclass(nested_elem, actual_type)
+            nested_data = data.get(field_name)
+            if nested_data is not None:
+                kwargs[field_name] = _parse_dataclass_from_dict(
+                    nested_data, actual_type
+                )
             continue
-
-        # Handle tuple fields (for lists of items)
         if get_origin(field_type) is tuple:
             item_type = get_args(field_type)[0]
             if hasattr(item_type, "__dataclass_fields__"):
-                items = []
-                for item_elem in element.findall(field_name):
-                    items.append(_parse_dataclass(item_elem, item_type))
-                kwargs[field_name] = tuple(items) if items else None
+                items_data = data.get(field_name)
+                if items_data is not None:
+                    # Handle both single dict and list of dicts
+                    if isinstance(items_data, dict):
+                        items_data = [items_data]
+                    elif not isinstance(items_data, list):
+                        items_data = []
+                    items = [
+                        _parse_dataclass_from_dict(item, item_type)
+                        if isinstance(item, dict)
+                        else item
+                        for item in items_data
+                    ]
+                    kwargs[field_name] = tuple(items) if items else None
+                else:
+                    kwargs[field_name] = None
                 continue
-
-        # Handle simple attributes
-        value = element.get(field_name)
+        value = data.get(field_name)
         if value is not None:
-            print(
-                f"_parse_dataclass: field={field_name}, value={value!r}, type_hint={field_type!r}"
-            )
             kwargs[field_name] = _parse_optional_type(value, field_type)
-
     return cls(**kwargs)
 
 
 def parse_ffprobe(xml_string: str) -> ffprobeType:
-    """Parse ffprobe XML output into ffprobeType dataclass."""
-    root = ET.fromstring(xml_string)
-    return _parse_dataclass(root, ffprobeType)
+    """Parse ffprobe XML output into ffprobeType dataclass using JSON dict."""
+    json_str = xml_string_to_json(xml_string)
+    json_dict = json.loads(json_str)
+    # The root key is 'ffprobe'
+    root_data = json_dict.get("ffprobe", json_dict)
+    return _parse_dataclass_from_dict(root_data, ffprobeType)

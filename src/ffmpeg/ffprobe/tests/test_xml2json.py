@@ -1,0 +1,64 @@
+import json
+import xml.etree.ElementTree as ET
+
+from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
+
+from ..xml2json import xml_string_to_json, xml_to_dict
+
+
+def test_xml_to_dict_simple() -> None:
+    xml = '<root><item id="1">foo</item><item id="2">bar</item></root>'
+    root = ET.fromstring(xml)
+    result = xml_to_dict(root)
+    expected = {"item": [{"id": "1", "text": "foo"}, {"id": "2", "text": "bar"}]}
+    assert result == expected
+
+
+def test_xml_to_dict_with_attributes_and_text() -> None:
+    xml = '<root a="b">hello</root>'
+    root = ET.fromstring(xml)
+    result = xml_to_dict(root)
+    expected = {"a": "b", "text": "hello"}
+    assert result == expected
+
+
+def test_xml_string_to_json() -> None:
+    xml = "<root><meta><author>John</author></meta></root>"
+    result_json = xml_string_to_json(xml)
+    expected_dict = {"root": {"meta": {"author": {"text": "John"}}}}
+    assert json.loads(result_json) == expected_dict
+
+
+def test_ffprobe_xml(snapshot: SnapshotAssertion) -> None:
+    xml = """<ffprobe>
+        <streams>
+            <stream index="0" codec_name="h264" codec_long_name="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" profile="High" codec_type="video" codec_tag_string="avc1" codec_tag="0x31637661" width="1280" height="720" coded_width="1280" coded_height="720" closed_captions="0" film_grain="0" has_b_frames="2" sample_aspect_ratio="1:1" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="31" chroma_location="left" field_order="progressive" refs="4" is_avc="true" nal_length_size="4" id="0x1" r_frame_rate="25/1" avg_frame_rate="25/1" time_base="1/12800" start_pts="0" start_time="0.000000" duration_ts="64000" duration="5.000000" bit_rate="1475520" bits_per_raw_sample="8" nb_frames="125" nb_read_frames="125" nb_read_packets="125" extradata_size="47">
+                <disposition default="1" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0" attached_pic="0" timed_thumbnails="0" captions="0" descriptions="0" metadata="0" dependent="0" still_image="0"/>
+                <tag key="language" value="und"/>
+                <tag key="handler_name" value="VideoHandler"/>
+                <tag key="vendor_id" value="[0][0][0][0]"/>
+            </stream>
+            <stream index="1" codec_name="aac" codec_long_name="AAC (Advanced Audio Coding)" profile="LC" codec_type="audio" codec_tag_string="mp4a" codec_tag="0x6134706d" sample_fmt="fltp" sample_rate="48000" channels="6" channel_layout="5.1" bits_per_sample="0" initial_padding="0" id="0x2" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/48000" start_pts="0" start_time="0.000000" duration_ts="240000" duration="5.000000" bit_rate="343115" nb_frames="236" nb_read_frames="235" nb_read_packets="236" extradata_size="5">
+                <disposition default="1" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0" attached_pic="0" timed_thumbnails="0" captions="0" descriptions="0" metadata="0" dependent="0" still_image="0"/>
+                <tag key="language" value="und"/>
+                <tag key="handler_name" value="SoundHandler"/>
+                <tag key="vendor_id" value="[0][0][0][0]"/>
+            </stream>
+        </streams>
+        <chapters>
+        </chapters>
+        <format filename="src/ffmpeg/ffprobe/tests/test_probe/test-5sec.mp4" nb_streams="2" nb_programs="0" format_name="mov,mp4,m4a,3gp,3g2,mj2" format_long_name="QuickTime / MOV" start_time="0.000000" duration="5.000000" size="1141852" bit_rate="1826963" probe_score="100">
+            <tag key="major_brand" value="isom"/>
+            <tag key="minor_version" value="512"/>
+            <tag key="compatible_brands" value="isomiso2avc1mp41"/>
+            <tag key="encoder" value="Lavf58.76.100"/>
+        </format>
+    </ffprobe>"""
+    result_json = xml_string_to_json(xml)
+    result_dict = json.loads(result_json)
+    assert "ffprobe" in result_dict
+    assert "streams" in result_dict["ffprobe"]
+    assert "format" in result_dict["ffprobe"]
+    assert "chapters" in result_dict["ffprobe"]
+    assert snapshot(extension_class=JSONSnapshotExtension) == result_dict
