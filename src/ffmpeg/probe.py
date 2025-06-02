@@ -51,8 +51,10 @@ def probe(
         show_program_version: Show the program version
         show_library_versions: Show the library versions
         show_pixel_formats: Show the pixel formats
-        show_packets: Show the packets
-        show_frames: Show the frames
+        show_packets: Show the packets. Note: When both show_packets and show_frames are True,
+            ffprobe will output a combined "packets_and_frames" section instead of separate sections.
+        show_frames: Show the frames. Note: When both show_packets and show_frames are True,
+            ffprobe will output a combined "packets_and_frames" section instead of separate sections.
         show_programs: Show the programs
         show_streams: Show the streams
         show_chapters: Show the chapters
@@ -82,7 +84,6 @@ def probe(
         *(["-show_pixel_formats"] if show_pixel_formats else []),
         *(["-show_packets"] if show_packets else []),
         *(["-show_frames"] if show_frames else []),
-        # "-show_packets_and_frames",
         *(["-show_programs"] if show_programs else []),
         *(["-show_streams"] if show_streams else []),
         *(["-show_chapters"] if show_chapters else []),
