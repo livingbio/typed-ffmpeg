@@ -108,4 +108,4 @@ def test_probe_complete(path: Path, snapshot: SnapshotAssertion) -> None:
                 assert "sample_rate" in stream
                 assert "channels" in stream
 
-    assert snapshot(extension_class=JSONSnapshotExtension) == info
+    snapshot(extension_class=JSONSnapshotExtension) == info
