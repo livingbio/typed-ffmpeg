@@ -214,7 +214,7 @@ more-itertools==10.7.0
     #   jaraco-functools
 multidict==6.4.4
     # via yarl
-mypy==1.15.0
+mypy==1.16.0
     # via -r requirements.in
 mypy-extensions==1.1.0
     # via
@@ -254,6 +254,7 @@ pathspec==0.12.1
     # via
     #   black
     #   mkdocs
+    #   mypy
 pexpect==4.9.0
     # via ipython
 platformdirs==4.3.8
