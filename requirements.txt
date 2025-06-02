@@ -433,3 +433,5 @@ yarl==1.20.0
     # via vcrpy
 zipp==3.22.0
     # via importlib-metadata
+lxml>=4.9.3
+types-lxml>=0.1.0
