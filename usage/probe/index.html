@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/utils/snapshot/">
+        <link rel="canonical" href="https://livingbio.github.io/typed-ffmpeg/usage/probe/">
       
       
-        <link rel="prev" href="../run/">
+        <link rel="prev" href="../basic-api-usage/">
       
       
-        <link rel="next" href="../typing/">
+        <link rel="next" href="../complex-filtering/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>snapshot - typed-ffmpeg</title>
+        <title>Probe - typed-ffmpeg</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,15 +50,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../css/ansi-colours.css">
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
     
-      <link rel="stylesheet" href="../../../../css/jupyter-cells.css">
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
     
-      <link rel="stylesheet" href="../../../../css/pandas-dataframe.css">
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ffmpeg.utils.snapshot" class="md-skip">
+        <a href="#media-file-analysis-with-ffprobe" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../.." title="typed-ffmpeg" class="md-header__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              snapshot
+              Probe
             
           </span>
         </div>
@@ -231,31 +231,11 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
   Get Started
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../../usage/basic-api-usage/" class="md-tabs__link">
-          
-  
-  
-  Usage
 
         </a>
       </li>
@@ -273,7 +253,27 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../basic-api-usage/" class="md-tabs__link">
+          
+  
+  
+  Usage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/ffmpeg/" class="md-tabs__link">
           
   
   
@@ -307,7 +307,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
+    <a href="../.." title="typed-ffmpeg" class="md-nav__button md-logo" aria-label="typed-ffmpeg" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -378,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -401,175 +401,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../faq/" class="md-nav__link">
+      <a href="../../faq/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     FAQ
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Usage
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Usage
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../usage/basic-api-usage/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Basic API Usage
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../usage/probe/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Probe
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../usage/complex-filtering/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Complex Filtering
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../usage/customizing-filters/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Customizing Filters
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../usage/execute/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Execute
     
   </span>
   
@@ -610,10 +447,271 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic-api-usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic API Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Probe
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Probe
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Information
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-detailed-stream-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Detailed Stream Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-probe_obj" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using probe_obj()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex-filtering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Complex Filtering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizing-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customizing Filters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../execute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Execute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -626,7 +724,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Code Reference
@@ -637,8 +735,6 @@
                 
   
   
-    
-  
   
   
     
@@ -649,15 +745,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/" class="md-nav__link ">
               
   
   
@@ -676,7 +772,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             ffmpeg
@@ -690,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/base/" class="md-nav__link">
         
   
   
@@ -728,7 +824,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../common/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/common/" class="md-nav__link ">
               
   
   
@@ -761,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/cache/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/common/cache/" class="md-nav__link">
         
   
   
@@ -784,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/schema/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/common/schema/" class="md-nav__link">
         
   
   
@@ -807,7 +903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/serialize/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/common/serialize/" class="md-nav__link">
         
   
   
@@ -853,7 +949,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../compile/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/compile/" class="md-nav__link ">
               
   
   
@@ -886,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/compile_cli/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/compile/compile_cli/" class="md-nav__link">
         
   
   
@@ -909,7 +1005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/compile_json/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/compile/compile_json/" class="md-nav__link">
         
   
   
@@ -932,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/compile_python/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/compile/compile_python/" class="md-nav__link">
         
   
   
@@ -955,7 +1051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/context/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/compile/context/" class="md-nav__link">
         
   
   
@@ -978,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compile/validate/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/compile/validate/" class="md-nav__link">
         
   
   
@@ -1024,7 +1120,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dag/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/dag/" class="md-nav__link ">
               
   
   
@@ -1057,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/factory/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/factory/" class="md-nav__link">
         
   
   
@@ -1095,7 +1191,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dag/global_runnable/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/dag/global_runnable/" class="md-nav__link ">
               
   
   
@@ -1128,7 +1224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/global_runnable/global_args/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/global_runnable/global_args/" class="md-nav__link">
         
   
   
@@ -1151,7 +1247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/global_runnable/runnable/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/global_runnable/runnable/" class="md-nav__link">
         
   
   
@@ -1197,7 +1293,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dag/io/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/dag/io/" class="md-nav__link ">
               
   
   
@@ -1230,7 +1326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/io/_input/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/io/_input/" class="md-nav__link">
         
   
   
@@ -1253,7 +1349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/io/_output/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/io/_output/" class="md-nav__link">
         
   
   
@@ -1276,7 +1372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/io/output_args/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/io/output_args/" class="md-nav__link">
         
   
   
@@ -1307,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/nodes/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/nodes/" class="md-nav__link">
         
   
   
@@ -1330,7 +1426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/schema/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/schema/" class="md-nav__link">
         
   
   
@@ -1353,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dag/utils/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/dag/utils/" class="md-nav__link">
         
   
   
@@ -1384,7 +1480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../exceptions/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/exceptions/" class="md-nav__link">
         
   
   
@@ -1422,7 +1518,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../ffprobe/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/ffprobe/" class="md-nav__link ">
               
   
   
@@ -1455,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ffprobe/parse/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/ffprobe/parse/" class="md-nav__link">
         
   
   
@@ -1478,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ffprobe/probe/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/ffprobe/probe/" class="md-nav__link">
         
   
   
@@ -1501,7 +1597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ffprobe/schema/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/ffprobe/schema/" class="md-nav__link">
         
   
   
@@ -1524,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ffprobe/xml2json/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/ffprobe/xml2json/" class="md-nav__link">
         
   
   
@@ -1555,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filters/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/filters/" class="md-nav__link">
         
   
   
@@ -1578,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../info/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/info/" class="md-nav__link">
         
   
   
@@ -1601,7 +1697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../schema/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/schema/" class="md-nav__link">
         
   
   
@@ -1624,7 +1720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sources/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/sources/" class="md-nav__link">
         
   
   
@@ -1662,7 +1758,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../streams/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/streams/" class="md-nav__link ">
               
   
   
@@ -1695,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/audio/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/streams/audio/" class="md-nav__link">
         
   
   
@@ -1718,7 +1814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/av/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/streams/av/" class="md-nav__link">
         
   
   
@@ -1741,7 +1837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/channel_layout/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/streams/channel_layout/" class="md-nav__link">
         
   
   
@@ -1764,7 +1860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streams/video/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/streams/video/" class="md-nav__link">
         
   
   
@@ -1795,7 +1891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../types/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/types/" class="md-nav__link">
         
   
   
@@ -1815,8 +1911,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1827,15 +1921,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_13" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_13" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/utils/" class="md-nav__link ">
               
   
   
@@ -1854,7 +1948,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_13_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_13_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1_13">
             <span class="md-nav__icon md-icon"></span>
             utils
@@ -1868,7 +1962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../escaping/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/utils/escaping/" class="md-nav__link">
         
   
   
@@ -1891,7 +1985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../forzendict/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/utils/forzendict/" class="md-nav__link">
         
   
   
@@ -1929,7 +2023,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../lazy_eval/" class="md-nav__link ">
+            <a href="../../reference/ffmpeg/utils/lazy_eval/" class="md-nav__link ">
               
   
   
@@ -1962,7 +2056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lazy_eval/operator/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/utils/lazy_eval/operator/" class="md-nav__link">
         
   
   
@@ -1985,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lazy_eval/schema/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/utils/lazy_eval/schema/" class="md-nav__link">
         
   
   
@@ -2016,7 +2110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../run/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/utils/run/" class="md-nav__link">
         
   
   
@@ -2036,32 +2130,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    snapshot
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/utils/snapshot/" class="md-nav__link">
         
   
   
@@ -2072,52 +2144,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="Page contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Page contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;DAGSnapshotExtenstion
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label=" DAGSnapshotExtenstion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion.serialize" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;serialize
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2130,7 +2156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../typing/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/utils/typing/" class="md-nav__link">
         
   
   
@@ -2153,7 +2179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../view/" class="md-nav__link">
+      <a href="../../reference/ffmpeg/utils/view/" class="md-nav__link">
         
   
   
@@ -2207,7 +2233,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/" class="md-nav__link ">
+            <a href="../../reference/scripts/" class="md-nav__link ">
               
   
   
@@ -2255,7 +2281,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/code_gen/" class="md-nav__link ">
+            <a href="../../reference/scripts/code_gen/" class="md-nav__link ">
               
   
   
@@ -2288,7 +2314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/code_gen/cli/" class="md-nav__link">
+      <a href="../../reference/scripts/code_gen/cli/" class="md-nav__link">
         
   
   
@@ -2311,7 +2337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/code_gen/gen/" class="md-nav__link">
+      <a href="../../reference/scripts/code_gen/gen/" class="md-nav__link">
         
   
   
@@ -2342,7 +2368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/main/" class="md-nav__link">
+      <a href="../../reference/scripts/main/" class="md-nav__link">
         
   
   
@@ -2380,7 +2406,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/manual/" class="md-nav__link ">
+            <a href="../../reference/scripts/manual/" class="md-nav__link ">
               
   
   
@@ -2413,7 +2439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/manual/cli/" class="md-nav__link">
+      <a href="../../reference/scripts/manual/cli/" class="md-nav__link">
         
   
   
@@ -2436,7 +2462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/manual/schema/" class="md-nav__link">
+      <a href="../../reference/scripts/manual/schema/" class="md-nav__link">
         
   
   
@@ -2482,7 +2508,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/parse_c/" class="md-nav__link ">
+            <a href="../../reference/scripts/parse_c/" class="md-nav__link ">
               
   
   
@@ -2515,7 +2541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/cli/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_c/cli/" class="md-nav__link">
         
   
   
@@ -2538,7 +2564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/parse_c_structure/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_c/parse_c_structure/" class="md-nav__link">
         
   
   
@@ -2561,7 +2587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_c/parse_ffmpeg_opt_c/" class="md-nav__link">
         
   
   
@@ -2584,7 +2610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_c/pre_compile/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_c/pre_compile/" class="md-nav__link">
         
   
   
@@ -2630,7 +2656,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/parse_docs/" class="md-nav__link ">
+            <a href="../../reference/scripts/parse_docs/" class="md-nav__link ">
               
   
   
@@ -2663,7 +2689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_docs/cli/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_docs/cli/" class="md-nav__link">
         
   
   
@@ -2686,7 +2712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_docs/helpers/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_docs/helpers/" class="md-nav__link">
         
   
   
@@ -2709,7 +2735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_docs/schema/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_docs/schema/" class="md-nav__link">
         
   
   
@@ -2755,7 +2781,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../scripts/parse_help/" class="md-nav__link ">
+            <a href="../../reference/scripts/parse_help/" class="md-nav__link ">
               
   
   
@@ -2788,7 +2814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/cli/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_help/cli/" class="md-nav__link">
         
   
   
@@ -2811,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_all_filter/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_help/parse_all_filter/" class="md-nav__link">
         
   
   
@@ -2834,7 +2860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../scripts/parse_help/parse_filter/" class="md-nav__link">
+      <a href="../../reference/scripts/parse_help/parse_filter/" class="md-nav__link">
         
   
   
@@ -2902,26 +2928,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion" class="md-nav__link">
+  <a href="#basic-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;DAGSnapshotExtenstion
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label=" DAGSnapshotExtenstion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion.serialize" class="md-nav__link">
-    <span class="md-ellipsis">
-      <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;serialize
+      Basic Usage
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#available-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Information
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-detailed-stream-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Detailed Stream Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-probe_obj" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using probe_obj()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
   
 </li>
       
@@ -2944,282 +3000,281 @@
   
 
 
-<div class="doc doc-object doc-module">
-
-
-
-<h1 id="ffmpeg.utils.snapshot" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">snapshot</span>
-
-
-<a href="#ffmpeg.utils.snapshot" class="headerlink" title="Permanent link">&para;</a></h1>
-
-    <div class="doc doc-contents first">
-
-        <p>Snapshot testing utilities for FFmpeg DAG structures.</p>
-<p>This module provides extensions for the syrupy snapshot testing library that
-enable serialization and testing of FFmpeg's Directed Acyclic Graph (DAG)
-structures. It helps in writing tests that verify the correct structure and
-behavior of filter graphs.</p>
-
-
-
-
-
-
-
-
-<p><span class="doc-section-title">Classes:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="            DAGSnapshotExtenstion (ffmpeg.utils.snapshot.DAGSnapshotExtenstion)" href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion">DAGSnapshotExtenstion</a></code></td>
-            <td>
-              <div class="doc-md-description">
-                <p>A snapshot extension for serializing and testing FFmpeg DAG structures.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="ffmpeg.utils.snapshot.DAGSnapshotExtenstion" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">DAGSnapshotExtenstion</span>
-
-
-<a href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="syrupy.extensions.json.JSONSnapshotExtension">JSONSnapshotExtension</span></code></p>
-
-
-        <p>A snapshot extension for serializing and testing FFmpeg DAG structures.</p>
-<p>This extension extends the JSON snapshot extension from syrupy to handle
-the special case of FFmpeg DAG nodes. It converts DAG nodes into a serializable
-form suitable for snapshot testing by wrapping them in a Stream object and
-converting to a dictionary.</p>
-<p>This allows for robust testing of filter graph structures and ensures that
-changes to the graph structure are intentional and documented through
-snapshot testing.</p>
-
-
-
-
-
-
-
-
-
-
-<p><span class="doc-section-title">Methods:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="            serialize (ffmpeg.utils.snapshot.DAGSnapshotExtenstion.serialize)" href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion.serialize">serialize</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Serialize a DAG node for snapshot testing.</p>
-                </div>
-              </td>
-            </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="ffmpeg.utils.snapshot.DAGSnapshotExtenstion.serialize" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">serialize</span>
-
-
-<a href="#ffmpeg.utils.snapshot.DAGSnapshotExtenstion.serialize" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">serialize</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">:</span> <span class="n"><span title="syrupy.types.SerializableData">SerializableData</span></span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span>
-    <span class="n">exclude</span><span class="p">:</span> <span class="n"><span title="typing.Optional">Optional</span></span><span class="p">[</span><span class="n"><span title="syrupy.types.PropertyFilter">PropertyFilter</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">include</span><span class="p">:</span> <span class="n"><span title="typing.Optional">Optional</span></span><span class="p">[</span><span class="n"><span title="syrupy.types.PropertyFilter">PropertyFilter</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">matcher</span><span class="p">:</span> <span class="n"><span title="typing.Optional">Optional</span></span><span class="p">[</span><span class="n"><span title="syrupy.types.PropertyMatcher">PropertyMatcher</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="syrupy.types.SerializedData">SerializedData</span></span>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="media-file-analysis-with-ffprobe">Media File Analysis with FFprobe<a class="headerlink" href="#media-file-analysis-with-ffprobe" title="Permanent link">&para;</a></h1>
+<p>The <code>typed-ffmpeg</code> library provides functionality to analyze media files using FFmpeg's ffprobe utility. This allows you to extract detailed metadata about media files, including format information, stream details, and other relevant data.</p>
+<h2 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
+<p>The main functions for media file analysis are:</p>
+<ul>
+<li><code>probe()</code>: Returns metadata as a Python dictionary</li>
+<li><code>probe_obj()</code>: Returns metadata as a Python dataclass</li>
+</ul>
+<p>Here's a basic example:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
+
+<span class="c1"># Get basic information about a media file</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="s2">&quot;Digraph.gv.png&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;streams&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;codec_type&quot;</span><span class="p">])</span>
+<span class="n">info</span>
 </code></pre></div>
 
-    <div class="doc doc-contents ">
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>{'streams': [{'index': 0,
+   'codec_name': 'png',
+   'codec_long_name': 'PNG (Portable Network Graphics) image',
+   'codec_type': 'video',
+   'codec_tag_string': '[0][0][0][0]',
+   'codec_tag': '0x0000',
+   'width': 548,
+   'height': 131,
+   'coded_width': 548,
+   'coded_height': 131,
+   'closed_captions': 0,
+   'film_grain': 0,
+   'has_b_frames': 0,
+   'pix_fmt': 'rgba',
+   'level': -99,
+   'color_range': 'pc',
+   'color_space': 'gbr',
+   'refs': 1,
+   'r_frame_rate': '25/1',
+   'avg_frame_rate': '25/1',
+   'time_base': '1/25',
+   'disposition': {'default': 0,
+    'dub': 0,
+    'original': 0,
+    'comment': 0,
+    'lyrics': 0,
+    'karaoke': 0,
+    'forced': 0,
+    'hearing_impaired': 0,
+    'visual_impaired': 0,
+    'clean_effects': 0,
+    'attached_pic': 0,
+    'timed_thumbnails': 0,
+    'non_diegetic': 0,
+    'captions': 0,
+    'descriptions': 0,
+    'metadata': 0,
+    'dependent': 0,
+    'still_image': 0}}],
+ 'format': {'filename': 'Digraph.gv.png',
+  'nb_streams': 1,
+  'nb_programs': 0,
+  'format_name': 'png_pipe',
+  'format_long_name': 'piped png sequence',
+  'size': '13680',
+  'probe_score': 99}}</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="available-information">Available Information<a class="headerlink" href="#available-information" title="Permanent link">&para;</a></h2>
+<p>The probe functions can extract various types of information from media files:</p>
+<ul>
+<li>Format information (container format, duration, bitrate)</li>
+<li>Stream information (codecs, resolution, sample rate)</li>
+<li>Program information</li>
+<li>Chapter information</li>
+<li>Frame and packet data</li>
+</ul>
+<p>You can control which information is extracted using the following parameters:</p>
+<ul>
+<li><code>show_format</code>: Show format/container info (default: True)</li>
+<li><code>show_streams</code>: Show streams info (default: True)</li>
+<li><code>show_programs</code>: Show programs info (default: False)</li>
+<li><code>show_chapters</code>: Show chapters info (default: False)</li>
+<li><code>show_frames</code>: Show frames info (default: False)</li>
+<li><code>show_packets</code>: Show packets info (default: False)</li>
+<li><code>show_program_version</code>: Show program version (default: False)</li>
+<li><code>show_library_versions</code>: Show library versions (default: False)</li>
+<li><code>show_pixel_formats</code>: Show pixel formats (default: False)</li>
+<li><code>show_error</code>: Show error information (default: False)</li>
+</ul>
+<h2 id="example-detailed-stream-analysis">Example: Detailed Stream Analysis<a class="headerlink" href="#example-detailed-stream-analysis" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
 
-        <p>Serialize a DAG node for snapshot testing.</p>
-<p>This method converts a DAG node into a serializable format by wrapping
-it in a Stream object and then converting that to a dictionary. This
-approach ensures that all relevant properties of the node are captured
-in the snapshot.</p>
+<span class="c1"># Get detailed information about streams</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span> <span class="n">show_streams</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_format</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
+<span class="c1"># Print format information</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Format Information:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Format: </span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">][</span><span class="s1">&#39;format_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bitrate: </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">][</span><span class="s1">&#39;bit_rate&#39;</span><span class="p">])</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kbps&quot;</span><span class="p">)</span>
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>data</code>
-            </td>
-            <td>
-                  <code><span title="syrupy.types.SerializableData">SerializableData</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The DAG node to serialize</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>exclude</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="syrupy.types.PropertyFilter">PropertyFilter</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional filter specifying properties to exclude</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>include</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="syrupy.types.PropertyFilter">PropertyFilter</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional filter specifying properties to include</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>matcher</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="syrupy.types.PropertyMatcher">PropertyMatcher</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Optional property matcher</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+<span class="c1"># Print stream information</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Stream Information:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">stream</span><span class="p">[</span><span class="s1">&#39;codec_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;video&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Video Stream:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Codec: </span><span class="si">{</span><span class="n">stream</span><span class="p">[</span><span class="s1">&#39;codec_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Resolution: </span><span class="si">{</span><span class="n">stream</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">stream</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Frame Rate: </span><span class="si">{</span><span class="nb">eval</span><span class="p">(</span><span class="n">stream</span><span class="p">[</span><span class="s1">&#39;r_frame_rate&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> fps&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">stream</span><span class="p">[</span><span class="s1">&#39;codec_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;audio&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Audio Stream:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Codec: </span><span class="si">{</span><span class="n">stream</span><span class="p">[</span><span class="s1">&#39;codec_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sample Rate: </span><span class="si">{</span><span class="n">stream</span><span class="p">[</span><span class="s1">&#39;sample_rate&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Channels: </span><span class="si">{</span><span class="n">stream</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="using-probe_obj">Using probe_obj()<a class="headerlink" href="#using-probe_obj" title="Permanent link">&para;</a></h2>
+<p>The <code>probe_obj()</code> function returns the same information as <code>probe()</code>, but as a Python dataclass instead of a dictionary. This provides better type safety and IDE support:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="syrupy.types.SerializedData">SerializedData</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The serialized representation of the DAG node</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+<span class="c1"># Get information as a dataclass</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">probe_obj</span><span class="p">(</span><span class="s2">&quot;Digraph.gv.png&quot;</span><span class="p">)</span>
 
+<span class="c1"># Access information using dot notation</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Streams: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">stream</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    </div>
+<span class="c1"># Access stream information</span>
+<span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">streams</span><span class="o">.</span><span class="n">stream</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">codec_type</span> <span class="o">==</span> <span class="s2">&quot;video&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Video Stream:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Codec: </span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">codec_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Resolution: </span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">info</span>
+</code></pre></div>
 
 </div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>Streams: 1
 
-
-
-  </div>
-
-    </div>
-
+Video Stream:
+  Codec: png
+  Resolution: 548x131
+</code>
+</pre>
 </div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>ffprobeType(program_version=None, library_versions=None, pixel_formats=None, packets=None, frames=None, packets_and_frames=None, programs=None, streams=streamsType(stream=(streamType(disposition=streamDispositionType(default=0, dub=0, original=0, comment=0, lyrics=0, karaoke=0, forced=0, hearing_impaired=0, visual_impaired=0, clean_effects=0, attached_pic=0, timed_thumbnails=0, non_diegetic=0, captions=0, descriptions=0, metadata=0, dependent=0, still_image=0), tags=None, side_data_list=None, index=0, codec_name='png', codec_long_name='PNG (Portable Network Graphics) image', profile=None, codec_type='video', codec_tag='0x0000', codec_tag_string='[0][0][0][0]', extradata=None, extradata_size=None, extradata_hash=None, width=548, height=131, coded_width=548, coded_height=131, closed_captions=True, film_grain=True, has_b_frames=0, sample_aspect_ratio=None, display_aspect_ratio=None, pix_fmt='rgba', level=-99, color_range='pc', color_space='gbr', color_transfer=None, color_primaries=None, chroma_location=None, field_order=None, refs=1, sample_fmt=None, sample_rate=None, channels=None, channel_layout=None, bits_per_sample=None, initial_padding=None, id=None, r_frame_rate='25/1', avg_frame_rate='25/1', time_base='1/25', start_pts=None, start_time=None, duration_ts=None, duration=None, bit_rate=None, max_bit_rate=None, bits_per_raw_sample=None, nb_frames=None, nb_read_frames=None, nb_read_packets=None),)), chapters=None, format=formatType(tags=None, filename='Digraph.gv.png', nb_streams=1, nb_programs=0, nb_stream_groups=None, format_name='png_pipe', format_long_name='piped png sequence', start_time=None, duration=None, size=13680, bit_rate=None, probe_score=99), error=None)</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="additional-options">Additional Options<a class="headerlink" href="#additional-options" title="Permanent link">&para;</a></h2>
+<p>Both <code>probe()</code> and <code>probe_obj()</code> support additional options:</p>
+<ul>
+<li><code>cmd</code>: Path or name of the ffprobe executable (default: "ffprobe")</li>
+<li><code>timeout</code>: Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)</li>
+<li>Additional ffprobe command line parameters can be passed as keyword arguments</li>
+</ul>
+<p>Example with additional options:</p>
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
 
+<span class="c1"># Get information with custom options</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span>
+    <span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span>
+    <span class="n">cmd</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin/ffprobe&quot;</span><span class="p">,</span>  <span class="c1"># Custom ffprobe path</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>  <span class="c1"># 30 second timeout</span>
+    <span class="n">loglevel</span><span class="o">=</span><span class="s2">&quot;quiet&quot;</span><span class="p">,</span>  <span class="c1"># Suppress ffprobe output</span>
+    <span class="n">show_frames</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Include frame information</span>
+    <span class="n">show_packets</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Include packet information</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<p>The probe functions will raise exceptions in case of errors:</p>
+<ul>
+<li><code>FFMpegExecuteError</code>: If ffprobe returns a non-zero exit code</li>
+<li><code>subprocess.TimeoutExpired</code>: If the timeout is reached before ffprobe completes</li>
+</ul>
+<p>Example of error handling:</p>
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFMpegExecuteError</span>
 
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="s2">&quot;nonexistent.mp4&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">FFMpegExecuteError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error executing ffprobe: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Command: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return code: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">retcode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error output: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFMpegExecuteError</span>
 
-
-  </div>
-
-    </div>
-
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="s2">&quot;nonexistent.mp4&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">FFMpegExecuteError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error executing ffprobe: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Command: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return code: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">retcode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error output: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
 </div>
 
 
@@ -3271,10 +3326,10 @@ in the snapshot.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "content.code.annotate", "content.code.copy", "announce.dismiss", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

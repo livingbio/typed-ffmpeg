@@ -637,6 +637,29 @@
   
   
     <li class="md-nav__item">
+      <a href="usage/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Probe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="usage/complex-filtering/" class="md-nav__link">
         
   
@@ -1518,6 +1541,154 @@
   
   
   
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="reference/ffmpeg/ffprobe/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ffprobe
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_6" id="__nav_3_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            ffprobe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/ffmpeg/ffprobe/parse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    parse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/ffmpeg/ffprobe/probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    probe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/ffmpeg/ffprobe/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/ffmpeg/ffprobe/xml2json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    xml2json
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="reference/ffmpeg/filters/" class="md-nav__link">
         
@@ -1548,29 +1719,6 @@
   
   <span class="md-ellipsis">
     info
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="reference/ffmpeg/probe/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    probe
     
   </span>
   
@@ -2966,6 +3114,7 @@
 <li><strong>Validation and Auto-correction:</strong> Assists in identifying and fixing errors within filter graphs.</li>
 <li><strong>Input and Output Options Support:</strong> Provide a more comprehensive interface for input and output options, including support for additional codecs and formats.</li>
 <li><strong>Partial Evaluation:</strong> Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.</li>
+<li><strong>Media File Analysis:</strong> Built-in support for analyzing media files using FFmpeg's ffprobe utility, providing detailed metadata extraction with both dictionary and dataclass interfaces.</li>
 </ul>
 <h3 id="planned-features">Planned Features<a class="headerlink" href="#planned-features" title="Permanent link">&para;</a></h3>
 <p>Please note that the following features are under consideration or development for future releases:</p>
@@ -2989,6 +3138,11 @@
 <h2 id="quick-usage">Quick Usage<a class="headerlink" href="#quick-usage" title="Permanent link">&para;</a></h2>
 <p>Here's how to quickly start using <code>typed-ffmpeg</code>:</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ffmpeg</span>
+
+<span class="c1"># Analyze a media file</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">][</span><span class="s1">&#39;duration&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Streams: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Flip video horizontally and output</span>
 <span class="n">f</span> <span class="o">=</span> <span class="p">(</span>
