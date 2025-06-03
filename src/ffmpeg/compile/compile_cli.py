@@ -136,6 +136,7 @@ def parse_output(
     export: list[OutputStream] = []
 
     buffer: list[str] = []
+    import pdb; pdb.set_trace()
     while tokens:
         token = tokens.pop(0)
         if token.startswith("-") or len(buffer) % 2 == 1:
@@ -161,8 +162,20 @@ def parse_output(
                     if isinstance(in_streams[k], AVStream)
                 ]
 
+        parameters: dict[str, str | bool] = {}
+        for key, value in options.items():
+            if key not in ffmpeg_options:
+                continue
+            
+            option = ffmpeg_options[key]
+            if option.is_output_option:
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
+
         assert inputs, f"No inputs found for output {filename}"
-        export.append(output(*inputs, filename=filename, extra_options=options))
+        export.append(output(*inputs, filename=filename, extra_options=parameters))
         buffer = []
 
     return export
