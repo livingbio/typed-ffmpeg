@@ -25,7 +25,25 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
     )
 
 
-def test_parse_filter_chain(snapshot: SnapshotAssertion) -> None:
-    parsed = parse(
+def test_parse_filter_chain() -> None:
+    parse(
         """ffmpeg.exe -nostdin -analyzeduration 100M -probesize 100M -i "input_video.mkv" -vf "scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles='subtitles.srt':stream_index=0:force_style='Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25'" -sn -map 0:a:0 -map 0:v:0 -c:a aac -b:a 192k -ac 2 -c:v libx264 -crf 18 -preset slow -tune film -aq-strength 1.8 -mbtree 0 -pix_fmt yuv420p -y -hide_banner -loglevel error -stats -map_metadata -1 -map_chapters -1 "output_video.mp4" """
+    )
+
+
+def test_parse_global_binary_option(snapshot: SnapshotAssertion) -> None:
+    parsed = parse("ffmpeg -nostdin -i input_video.mkv -y output_video.mp4")
+    assert (
+        snapshot(
+            name="parse-global-binary-option", extension_class=JSONSnapshotExtension
+        )
+        == parsed
+    )
+
+
+def test_parse_ffmpeg_exe(snapshot: SnapshotAssertion) -> None:
+    parsed = parse("ffmpeg.exe -i input_video.mkv output_video.mp4")
+    assert (
+        snapshot(name="parse-ffmpeg-exe", extension_class=JSONSnapshotExtension)
+        == parsed
     )
