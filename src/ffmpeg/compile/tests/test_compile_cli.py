@@ -25,6 +25,16 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
     )
 
 
+def test_parse_global_binary_option(snapshot: SnapshotAssertion) -> None:
+    parsed = parse("ffmpeg -nostdin -i input_video.mkv -y output_video.mp4")
+    assert (
+        snapshot(
+            name="parse-global-binary-option", extension_class=JSONSnapshotExtension
+        )
+        == parsed
+    )
+
+
 def test_parse_ffmpeg_exe(snapshot: SnapshotAssertion) -> None:
     parsed = parse("ffmpeg.exe -i input_video.mkv output_video.mp4")
     assert (
