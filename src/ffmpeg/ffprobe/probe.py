@@ -15,11 +15,13 @@ from typing import Any
 from ..exceptions import FFMpegExecuteError
 from ..utils.escaping import convert_kwargs_to_cmd_line_args
 from ..utils.run import command_line
+from .parse import parse_ffprobe
+from .schema import ffprobeType
 
 logger = logging.getLogger(__name__)
 
 
-def probe(
+def _probe(
     filename: str | Path,
     *,
     show_program_version: bool = False,
@@ -34,8 +36,9 @@ def probe(
     show_error: bool = False,
     cmd: str = "ffprobe",
     timeout: int | None = None,
+    format: str = "json",
     **kwargs: Any,
-) -> dict[str, Any]:
+) -> str:
     """
     Analyze a media file using ffprobe and return its metadata as a dictionary.
 
@@ -109,4 +112,119 @@ def probe(
             retcode=retcode, cmd=command_line(args), stdout=out, stderr=err
         )
 
-    return json.loads(out.decode("utf-8"))
+    return out.decode("utf-8")
+
+
+def probe(
+    filename: str | Path,
+    *,
+    show_program_version: bool = False,
+    show_library_versions: bool = False,
+    show_pixel_formats: bool = False,
+    show_packets: bool = False,
+    show_frames: bool = False,
+    show_programs: bool = False,
+    show_streams: bool = True,
+    show_chapters: bool = False,
+    show_format: bool = True,
+    show_error: bool = False,
+    cmd: str = "ffprobe",
+    timeout: int | None = None,
+    **kwargs: Any,
+) -> dict[str, Any]:
+    """
+    Analyze a media file using ffprobe and return its metadata as a dictionary.
+
+    This function executes ffprobe to extract detailed information about a media file,
+    including format metadata (container format, duration, bitrate) and stream information
+    (codecs, resolution, sample rate, etc). The result is returned as a Python dictionary
+    parsed from ffprobe's JSON output.
+
+    Args:
+        filename: Path to the media file to analyze
+        cmd: Path or name of the ffprobe executable
+        timeout: Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)
+        show_program_version: Show the program version
+        show_library_versions: Show the library versions
+        show_pixel_formats: Show the pixel formats
+        show_packets: Show the packets. Note: When both show_packets and show_frames are True,
+            ffprobe will output a combined "packets_and_frames" section instead of separate sections.
+        show_frames: Show the frames. Note: When both show_packets and show_frames are True,
+            ffprobe will output a combined "packets_and_frames" section instead of separate sections.
+        show_programs: Show the programs
+        show_streams: Show the streams
+        show_chapters: Show the chapters
+        show_format: Show the format
+        show_error: Show the error
+        **kwargs: Additional arguments to pass to ffprobe as command line parameters
+            (e.g., loglevel="quiet", skip_frame="nokey")
+
+    Returns:
+        A dictionary containing the parsed JSON output from ffprobe with format and stream information
+
+    Raises:
+        FFMpegExecuteError: If ffprobe returns a non-zero exit code
+        subprocess.TimeoutExpired: If the timeout is reached before ffprobe completes
+
+    Example:
+        ```python
+        info = probe("video.mp4")
+        print(f"Duration: {float(info['format']['duration']):.2f} seconds")
+        print(f"Streams: {len(info['streams'])}")
+        ```
+    """
+    return json.loads(
+        _probe(
+            filename,
+            show_program_version=show_program_version,
+            show_library_versions=show_library_versions,
+            show_pixel_formats=show_pixel_formats,
+            show_packets=show_packets,
+            show_frames=show_frames,
+            show_programs=show_programs,
+            show_streams=show_streams,
+            show_chapters=show_chapters,
+            show_format=show_format,
+            show_error=show_error,
+            cmd=cmd,
+            timeout=timeout,
+            **kwargs,
+        )
+    )
+
+
+def probe_obj(
+    filename: str | Path,
+    *,
+    show_program_version: bool = False,
+    show_library_versions: bool = False,
+    show_pixel_formats: bool = False,
+    show_packets: bool = False,
+    show_frames: bool = False,
+    show_programs: bool = False,
+    show_streams: bool = True,
+    show_chapters: bool = False,
+    show_format: bool = True,
+    show_error: bool = False,
+    cmd: str = "ffprobe",
+    timeout: int | None = None,
+    **kwargs: Any,
+) -> ffprobeType | None:
+    xml = _probe(
+        filename,
+        show_program_version=show_program_version,
+        show_library_versions=show_library_versions,
+        show_pixel_formats=show_pixel_formats,
+        show_packets=show_packets,
+        show_frames=show_frames,
+        show_programs=show_programs,
+        show_streams=show_streams,
+        show_chapters=show_chapters,
+        show_format=show_format,
+        show_error=show_error,
+        cmd=cmd,
+        timeout=timeout,
+        format="xml",
+        **kwargs,
+    )
+    return parse_ffprobe(xml)

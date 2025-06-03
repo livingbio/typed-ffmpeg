@@ -1,6 +1,8 @@
+from dataclasses import asdict
 from typing import Optional, Union
 
 from syrupy.assertion import SnapshotAssertion
+from syrupy.extensions.json import JSONSnapshotExtension
 
 from ..parse import _get_actual_type, parse_ffprobe
 from ..schema import programVersionType
@@ -18,6 +20,10 @@ def test_get_actual_type_optional() -> None:
     assert _get_actual_type(programVersionType | None) is programVersionType
     assert _get_actual_type(Union[programVersionType, None]) is programVersionType  # noqa
     assert _get_actual_type(Optional[programVersionType]) is programVersionType  # noqa
+    assert (
+        _get_actual_type(Optional[tuple[programVersionType, ...]])  # noqa
+        == tuple[programVersionType, ...]
+    )
 
 
 def test_get_actual_type_nested_union() -> None:
@@ -33,6 +39,33 @@ def test_get_actual_type_string_annotation() -> None:
     # Simulate string annotation as might be found in dataclasses
     assert _get_actual_type("int") is int
     assert _get_actual_type("str") is str
+
+
+def test_parse_ffprobe_with_not_defined_field_data(snapshot: SnapshotAssertion) -> None:
+    # because ffprobe xml may differ between versions, we need to test with a not defined field
+
+    xml = """
+    <ffprobe>
+        <format filename="src/ffmpeg/ffprobe/tests/test_probe/test-5sec.mp4" nb_streams="2" nb_programs="0" format_name="mov,mp4,m4a,3gp,3g2,mj2" format_long_name="QuickTime / MOV" start_time="0.000000" duration="5.000000" size="1141852" bit_rate="1826963" probe_score="100">
+            <tags>
+                <tag key="major_brand" value="isom"/>
+                <tag key="minor_version" value="512"/>
+                <tag key="compatible_brands" value="isomiso2avc1mp41"/>
+                <tag key="encoder" value="Lavf58.76.100"/>
+            </tags>
+        </format>
+        <not-exists-field></not-exists-field>
+        <streams>
+            <stream not-exists="true">
+            </stream>
+        </streams>
+    </ffprobe>
+    """
+
+    result = parse_ffprobe(xml)
+
+    assert snapshot == result
+    assert snapshot(extension_class=JSONSnapshotExtension) == asdict(result)
 
 
 def test_parse_ffprobe_simple(snapshot: SnapshotAssertion) -> None:
@@ -65,4 +98,5 @@ def test_parse_ffprobe_simple(snapshot: SnapshotAssertion) -> None:
 
     result = parse_ffprobe(xml)
 
-    assert snapshot() == result
+    assert snapshot == result
+    assert snapshot(extension_class=JSONSnapshotExtension) == asdict(result)

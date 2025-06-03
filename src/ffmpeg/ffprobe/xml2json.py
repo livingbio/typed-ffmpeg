@@ -11,10 +11,10 @@ def xml_to_dict(element: ET.Element) -> dict[str, Any]:
     is stored under the 'text' key when present.
 
     Args:
-        element (ET.Element): The XML Element to convert.
+        element: The XML Element to convert.
 
     Returns:
-        Dict[str, Any]: A dictionary representation of the XML Element.
+        A dictionary representation of the XML Element.
             - Attributes are stored as key-value pairs
             - Child elements are stored as nested dictionaries
             - Multiple elements with the same tag are stored as lists
@@ -49,10 +49,10 @@ def xml_string_to_json(xml_string: str) -> str:
     converts it to a dictionary using xml_to_dict, and then serializes it to a JSON string.
 
     Args:
-        xml_string (str): A string containing valid XML data.
+        xml_string: A string containing valid XML data.
 
     Returns:
-        str: A JSON string representation of the XML data, with the root element's
+        A JSON string representation of the XML data, with the root element's
              tag as the top-level key and the converted dictionary as its value.
 
     Example:
