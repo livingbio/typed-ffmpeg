@@ -317,37 +317,21 @@ def parse_global(
         For tokens like ['-y', '-loglevel', 'quiet', '-i', 'input.mp4']:
         Returns ({'y': True, 'loglevel': 'quiet'}, ['-i', 'input.mp4'])
     """
-    global_params: dict[str, str | bool] = {}
-    remaining_tokens = tokens.copy()
+    options = parse_options(tokens[: tokens.index("-i")])
+    remaining_tokens = tokens[tokens.index("-i") :]
+    parameters: dict[str, str | bool] = {}
 
-    # Process tokens until we hit an input file marker (-i)
-    while remaining_tokens and remaining_tokens[0] != "-i":
-        if remaining_tokens[0].startswith("-"):
-            option_name = remaining_tokens[0][1:]
-            assert option_name in ffmpeg_options, (
-                f"Unknown global option: {option_name}"
-            )
-            option = ffmpeg_options[option_name]
+    for key, value in options.items():
+        assert key in ffmpeg_options, f"Unknown option: {key}"
+        option = ffmpeg_options[key]
 
-            if not option.is_global_option:
-                continue
-
-            if len(remaining_tokens) > 1 and not remaining_tokens[1].startswith("-"):
-                # Option with value
-                global_params[option_name] = remaining_tokens[1]
-                remaining_tokens = remaining_tokens[2:]
+        if option.is_global_option:
+            # just ignore not input options
+            if value[-1] is None:
+                parameters[key] = True
             else:
-                # Boolean option
-                if option_name.startswith("no"):
-                    global_params[option_name[2:]] = False
-                else:
-                    global_params[option_name] = True
-                remaining_tokens = remaining_tokens[1:]
-        else:
-            # Skip non-option tokens
-            remaining_tokens = remaining_tokens[1:]
-
-    return global_params, remaining_tokens
+                parameters[key] = value[-1]
+    return parameters, remaining_tokens
 
 
 def parse(cli: str) -> Stream:
