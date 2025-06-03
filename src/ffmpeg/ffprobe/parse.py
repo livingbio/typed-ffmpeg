@@ -72,17 +72,19 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
     Returns:
         The parsed dataclass instance
     """
+
     if data is None:
         return None
 
-    if issubclass(cls, str):
-        return cast(T, cls(data))
-    if issubclass(cls, int):
-        return cast(T, cls(data))
-    if issubclass(cls, float):
-        return cast(T, cls(data))
-    if issubclass(cls, bool):
-        return cast(T, cls(data))
+    if isinstance(cls, type):
+        if cls is str:
+            return cast(T, str(data))
+        elif cls is int:
+            return cast(T, int(data))
+        elif cls is float:
+            return cast(T, float(data))
+        elif cls is bool:
+            return cast(T, bool(data))
 
     if not isinstance(data, dict):
         return cls()
@@ -94,7 +96,10 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
         actual_type = _get_actual_type(field_type)
 
         if get_origin(actual_type) is tuple:
-            item_type = get_args(actual_type)[0]  # get the type of the tuple items
+            tuple_args = get_args(actual_type)
+            if not tuple_args:
+                continue
+            item_type = tuple_args[0]
             value = data.get(field_name, [])
             if not isinstance(value, list):
                 value = [value]
