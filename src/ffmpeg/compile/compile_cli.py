@@ -323,7 +323,12 @@ def parse_global(
     # Process tokens until we hit an input file marker (-i)
     while remaining_tokens and remaining_tokens[0] != "-i":
         if remaining_tokens[0].startswith("-"):
-            option_name = remaining_tokens[0][1:]
+            if remaining_tokens[0].startswith("-no"):
+                # it is a boolean option with -no prefix
+                option_name = remaining_tokens[0][3:]
+            else:
+                option_name = remaining_tokens[0][1:]
+
             assert option_name in ffmpeg_options, (
                 f"Unknown global option: {option_name}"
             )
@@ -338,8 +343,8 @@ def parse_global(
                 remaining_tokens = remaining_tokens[2:]
             else:
                 # Boolean option
-                if option_name.startswith("no"):
-                    global_params[option_name[2:]] = False
+                if remaining_tokens[0].startswith("no"):
+                    global_params[option_name] = False
                 else:
                     global_params[option_name] = True
                 remaining_tokens = remaining_tokens[1:]
