@@ -39,7 +39,7 @@ jobs:
       - name: Prepare compatible version
         run: |
           sed -i \
-            -e 's/^name = "typed-ffmpeg"$/name = "compatible-typed-ffmpeg"/' \
+            -e 's/^name = "typed-ffmpeg"$/name = "typed-ffmpeg-compatible"/' \
             -e 's|^write_to = "src/ffmpeg/_version.py"$|write_to = "src/typed_ffmpeg/_version.py"|' \
             -e 's|^include = \["ffmpeg\*"\]|include = ["typed_ffmpeg*"]|' \
             pyproject.toml
