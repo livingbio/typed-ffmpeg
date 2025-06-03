@@ -89,6 +89,9 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
     if not isinstance(data, dict):
         return cls()
 
+    if isinstance(cls, str):  # NOTE: python 3.10
+        cls = registered_types[cls]
+
     type_hints = get_type_hints(cls)
     kwargs: dict[str, Any] = {}
 
