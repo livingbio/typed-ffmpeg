@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from dataclasses import dataclass
 from typing import Optional
 
@@ -24,15 +26,15 @@ class packetsType:
 
 @dataclass(kw_only=True, frozen=True)
 class framesType:
-    frame: tuple["frameType", ...] | None = None
-    subtitle: tuple["subtitleType", ...] | None = None
+    frame: Optional["frameType"] = None
+    subtitle: Optional["subtitleType"] = None
 
 
 @dataclass(kw_only=True, frozen=True)
 class packetsAndFramesType:
-    packet: tuple["packetType", ...] | None = None
-    frame: tuple["frameType", ...] | None = None
-    subtitle: tuple["subtitleType", ...] | None = None
+    packet: Optional["packetType"] = None
+    frame: Optional["frameType"] = None
+    subtitle: Optional["subtitleType"] = None
 
 
 @dataclass(kw_only=True, frozen=True)
@@ -405,42 +407,49 @@ class pixelFormatsType:
 
 
 registered_types = {
+    "None": None,
+    "bool": bool,
+    "chapterType": chapterType,
+    "chaptersType": chaptersType,
+    "errorType": errorType,
     "ffprobeType": ffprobeType,
-    "packetsType": packetsType,
-    "framesType": framesType,
-    "packetsAndFramesType": packetsAndFramesType,
-    "tagsType": tagsType,
-    "packetType": packetType,
-    "packetSideDataListType": packetSideDataListType,
-    "packetSideDataType": packetSideDataType,
-    "frameSideDataListType": frameSideDataListType,
-    "frameSideDataType": frameSideDataType,
-    "frameSideDataTimecodeList": frameSideDataTimecodeList,
-    "frameSideDataTimecodeType": frameSideDataTimecodeType,
+    "float": float,
+    "formatType": formatType,
     "frameSideDataComponentList": frameSideDataComponentList,
     "frameSideDataComponentType": frameSideDataComponentType,
+    "frameSideDataListType": frameSideDataListType,
     "frameSideDataPieceList": frameSideDataPieceList,
     "frameSideDataPieceType": frameSideDataPieceType,
-    "streamDispositionType": streamDispositionType,
-    "streamType": streamType,
-    "programType": programType,
-    "formatType": formatType,
-    "tagType": tagType,
-    "errorType": errorType,
-    "programVersionType": programVersionType,
-    "chaptersType": chaptersType,
-    "chapterType": chapterType,
+    "frameSideDataTimecodeList": frameSideDataTimecodeList,
+    "frameSideDataTimecodeType": frameSideDataTimecodeType,
+    "frameSideDataType": frameSideDataType,
+    "frameSideDatumType": frameSideDatumType,
+    "frameType": frameType,
+    "framesType": framesType,
+    "int": int,
     "libraryVersionType": libraryVersionType,
     "libraryVersionsType": libraryVersionsType,
-    "pixelFormatFlagsType": pixelFormatFlagsType,
+    "logType": logType,
+    "logsType": logsType,
+    "packetSideDataListType": packetSideDataListType,
+    "packetSideDataType": packetSideDataType,
+    "packetSideDatumType": packetSideDatumType,
+    "packetType": packetType,
+    "packetsAndFramesType": packetsAndFramesType,
+    "packetsType": packetsType,
     "pixelFormatComponentType": pixelFormatComponentType,
     "pixelFormatComponentsType": pixelFormatComponentsType,
+    "pixelFormatFlagsType": pixelFormatFlagsType,
     "pixelFormatType": pixelFormatType,
     "pixelFormatsType": pixelFormatsType,
-    # common types
-    "int": int,
+    "programType": programType,
+    "programVersionType": programVersionType,
+    "programsType": programsType,
     "str": str,
-    "float": float,
-    "bool": bool,
-    "None": None,
+    "streamDispositionType": streamDispositionType,
+    "streamType": streamType,
+    "streamsType": streamsType,
+    "subtitleType": subtitleType,
+    "tagType": tagType,
+    "tagsType": tagsType,
 }

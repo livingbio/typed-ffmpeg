@@ -20,6 +20,7 @@ Features:
     - Handles optional fields and unbounded sequences
     - Preserves type information from XSD
     - Generates frozen dataclasses with keyword-only arguments
+    - Generates a registered_types dictionary for type resolution
 """
 
 import sys
@@ -77,6 +78,20 @@ def generate_dataclass(
 
             fields.append(f"    {name}: {field_type} = None")
 
+    # Handle choice elements
+    for choice in complex_type.findall(".//xsd:choice", ns):
+        for element in choice.findall("./xsd:element", ns):
+            name = element.get("name") or ""
+            type_name = element.get("type", "").split(":")[-1]
+            max_occurs = element.get("maxOccurs", "1")
+
+            if max_occurs == "unbounded":
+                field_type = f'Optional[Tuple["{type_name}", ...]]'
+            else:
+                field_type = f'Optional["{type_name}"]'
+
+            fields.append(f"    {name}: {field_type} = None")
+
     # Handle attributes
     for attr in complex_type.findall("./xsd:attribute", ns):
         name = attr.get("name") or ""
@@ -93,6 +108,40 @@ def generate_dataclass(
 class {class_name}:
 {fields_str}
 """
+
+
+def generate_registered_types(class_names: list[str]) -> str:
+    """
+    Generate the registered_types dictionary.
+
+    Args:
+        class_names: List of all generated class names
+
+    Returns:
+        A string containing the registered_types dictionary definition
+    """
+    # Add common Python types
+    common_types = {
+        "int": "int",
+        "str": "str",
+        "float": "float",
+        "bool": "bool",
+        "None": "None",
+    }
+
+    # Create entries for all classes
+    class_entries = {name: name for name in class_names}
+
+    # Combine all entries
+    all_entries = {**class_entries, **common_types}
+
+    # Generate the dictionary string
+    entries = [f'    "{key}": {value},' for key, value in sorted(all_entries.items())]
+    entries_str = "\n".join(entries)
+
+    return f"""\nregistered_types = {{
+{entries_str}
+}}"""
 
 
 def main() -> None:
@@ -115,19 +164,24 @@ def main() -> None:
 
     # Find all complex types
     complex_types = root.findall(".//xsd:complexType", ns)
+    class_names = []
 
     # Generate dataclasses
     output = """#!/usr/bin/env python3
 
-from dataclasses import dataclass, field
-from typing import List, Optional, Dict, Any, Union, Tuple
+from dataclasses import dataclass
+from typing import Optional, Tuple
 
 """
 
     for complex_type in complex_types:
         name = complex_type.get("name")
         if name:
+            class_names.append(name)
             output += generate_dataclass(name, complex_type, ns) + "\n"
+
+    # Add registered_types dictionary
+    output += generate_registered_types(class_names)
 
     # Write to file
     with open("ffprobe_dataclasses.py", "w") as f:
