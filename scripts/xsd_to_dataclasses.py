@@ -1,4 +1,26 @@
 #!/usr/bin/env python3
+"""
+XSD to Python Dataclasses Generator
+
+This script converts XSD (XML Schema Definition) files to Python dataclasses.
+It's specifically designed to work with FFprobe's XSD schema but can be adapted for other XSD files.
+
+Requirements:
+    - Python 3.7+
+    - lxml
+    - types-lxml (for type checking)
+
+Usage:
+    python xsd_to_dataclasses.py ffprobe.xsd
+
+This will generate a new file called 'ffprobe_dataclasses.py' containing all the dataclass definitions.
+
+Features:
+    - Converts XSD complex types to Python dataclasses
+    - Handles optional fields and unbounded sequences
+    - Preserves type information from XSD
+    - Generates frozen dataclasses with keyword-only arguments
+"""
 
 import sys
 
@@ -6,7 +28,15 @@ from lxml import etree
 
 
 def get_python_type(xsd_type: str) -> str:
-    """Convert XSD type to Python type."""
+    """
+    Convert XSD type to Python type.
+
+    Args:
+        xsd_type: The XSD type to convert
+
+    Returns:
+        The corresponding Python type
+    """
     type_mapping = {
         "string": "str",
         "int": "int",
@@ -20,7 +50,17 @@ def get_python_type(xsd_type: str) -> str:
 def generate_dataclass(
     class_name: str, complex_type: etree._Element, ns: dict[str, str]
 ) -> str:
-    """Generate a dataclass definition from an XSD complex type."""
+    """
+    Generate a dataclass definition from an XSD complex type.
+
+    Args:
+        class_name: The name of the class to generate
+        complex_type: The XSD complex type element
+        ns: The XML namespace mapping
+
+    Returns:
+        A string containing the dataclass definition
+    """
     fields = []
 
     # Handle sequence elements
@@ -56,6 +96,12 @@ class {class_name}:
 
 
 def main() -> None:
+    """
+    Main function to convert XSD to Python dataclasses.
+
+    Usage:
+        python xsd_to_dataclasses.py <xsd_file>
+    """
     if len(sys.argv) != 2:
         print("Usage: python xsd_to_dataclasses.py <xsd_file>")
         sys.exit(1)
