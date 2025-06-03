@@ -33,3 +33,11 @@ def test_parse_global_binary_option(snapshot: SnapshotAssertion) -> None:
         )
         == parsed
     )
+
+
+def test_parse_ffmpeg_exe(snapshot: SnapshotAssertion) -> None:
+    parsed = parse("ffmpeg.exe -i input_video.mkv output_video.mp4")
+    assert (
+        snapshot(name="parse-ffmpeg-exe", extension_class=JSONSnapshotExtension)
+        == parsed
+    )
