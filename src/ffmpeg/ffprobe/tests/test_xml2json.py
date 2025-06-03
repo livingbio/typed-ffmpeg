@@ -1,6 +1,7 @@
 import json
 import xml.etree.ElementTree as ET
 
+import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
@@ -30,8 +31,11 @@ def test_xml_string_to_json() -> None:
     assert json.loads(result_json) == expected_dict
 
 
-def test_ffprobe_xml(snapshot: SnapshotAssertion) -> None:
-    xml = """<ffprobe>
+@pytest.mark.parametrize(
+    "xml",
+    [
+        pytest.param(
+            """<ffprobe>
         <streams>
             <stream index="0" codec_name="h264" codec_long_name="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" profile="High" codec_type="video" codec_tag_string="avc1" codec_tag="0x31637661" width="1280" height="720" coded_width="1280" coded_height="720" closed_captions="0" film_grain="0" has_b_frames="2" sample_aspect_ratio="1:1" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="31" chroma_location="left" field_order="progressive" refs="4" is_avc="true" nal_length_size="4" id="0x1" r_frame_rate="25/1" avg_frame_rate="25/1" time_base="1/12800" start_pts="0" start_time="0.000000" duration_ts="64000" duration="5.000000" bit_rate="1475520" bits_per_raw_sample="8" nb_frames="125" nb_read_frames="125" nb_read_packets="125" extradata_size="47">
                 <disposition default="1" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0" attached_pic="0" timed_thumbnails="0" captions="0" descriptions="0" metadata="0" dependent="0" still_image="0"/>
@@ -54,11 +58,41 @@ def test_ffprobe_xml(snapshot: SnapshotAssertion) -> None:
             <tag key="compatible_brands" value="isomiso2avc1mp41"/>
             <tag key="encoder" value="Lavf58.76.100"/>
         </format>
-    </ffprobe>"""
+    </ffprobe>""",
+            id="ffprobe-with-streams-chapters-format",
+        ),
+        pytest.param(
+            """
+<ffprobe>
+    <streams>
+        <stream index="0" codec_name="mjpeg" codec_long_name="Motion JPEG" profile="Baseline" codec_type="video" codec_tag_string="[0][0][0][0]" codec_tag="0x0000" width="1254" height="836" coded_width="1254" coded_height="836" closed_captions="0" film_grain="0" has_b_frames="0" sample_aspect_ratio="1:1" display_aspect_ratio="3:2" pix_fmt="yuvj444p" level="-99" color_range="pc" color_space="bt470bg" chroma_location="center" refs="1" r_frame_rate="25/1" avg_frame_rate="25/1" time_base="1/25" start_pts="0" start_time="0.000000" duration_ts="1" duration="0.040000" bits_per_raw_sample="8">
+            <disposition default="0" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0" attached_pic="0" timed_thumbnails="0" non_diegetic="0" captions="0" descriptions="0" metadata="0" dependent="0" still_image="0"/>
+        </stream>
+    </streams>
+</ffprobe>
+""",
+            id="ffprobe-with-streams",
+        ),
+        pytest.param(
+            """
+<ffprobe>
+    <streams>
+        <stream index="0" codec_name="mjpeg" codec_long_name="Motion JPEG" profile="Baseline" codec_type="video" codec_tag_string="[0][0][0][0]" codec_tag="0x0000" width="1254" height="836" coded_width="1254" coded_height="836" closed_captions="0" film_grain="0" has_b_frames="0" sample_aspect_ratio="1:1" display_aspect_ratio="3:2" pix_fmt="yuvj444p" level="-99" color_range="pc" color_space="bt470bg" chroma_location="center" refs="1" r_frame_rate="25/1" avg_frame_rate="25/1" time_base="1/25" start_pts="0" start_time="0.000000" duration_ts="1" duration="0.040000" bits_per_raw_sample="8">
+            <disposition default="0" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0" attached_pic="0" timed_thumbnails="0" non_diegetic="0" captions="0" descriptions="0" metadata="0" dependent="0" still_image="0"/>
+        </stream>
+                                                     <stream index="0" codec_name="mjpeg" codec_long_name="Motion JPEG" profile="Baseline" codec_type="video" codec_tag_string="[0][0][0][0]" codec_tag="0x0000" width="1254" height="836" coded_width="1254" coded_height="836" closed_captions="0" film_grain="0" has_b_frames="0" sample_aspect_ratio="1:1" display_aspect_ratio="3:2" pix_fmt="yuvj444p" level="-99" color_range="pc" color_space="bt470bg" chroma_location="center" refs="1" r_frame_rate="25/1" avg_frame_rate="25/1" time_base="1/25" start_pts="0" start_time="0.000000" duration_ts="1" duration="0.040000" bits_per_raw_sample="8">
+            <disposition default="0" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0" attached_pic="0" timed_thumbnails="0" non_diegetic="0" captions="0" descriptions="0" metadata="0" dependent="0" still_image="0"/>
+        </stream>
+
+    </streams>
+</ffprobe>
+""",
+            id="ffprobe-with-streams-multi",
+        ),
+    ],
+)
+def test_ffprobe_xml(snapshot: SnapshotAssertion, xml: str) -> None:
     result_json = xml_string_to_json(xml)
     result_dict = json.loads(result_json)
     assert "ffprobe" in result_dict
-    assert "streams" in result_dict["ffprobe"]
-    assert "format" in result_dict["ffprobe"]
-    assert "chapters" in result_dict["ffprobe"]
     assert snapshot(extension_class=JSONSnapshotExtension) == result_dict

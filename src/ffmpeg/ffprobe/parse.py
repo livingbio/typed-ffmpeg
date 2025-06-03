@@ -72,7 +72,6 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
     Returns:
         The parsed dataclass instance
     """
-
     if data is None:
         return None
 
@@ -96,9 +95,11 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
 
         if get_origin(actual_type) is tuple:
             item_type = get_args(actual_type)[0]  # get the type of the tuple items
+            value = data.get(field_name, [])
+            if not isinstance(value, list):
+                value = [value]
             kwargs[field_name] = tuple(
-                _parse_obj_from_dict(item, item_type)
-                for item in data.get(field_name, [])
+                _parse_obj_from_dict(item, item_type) for item in value
             )
             continue
 

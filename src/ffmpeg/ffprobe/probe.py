@@ -93,7 +93,7 @@ def _probe(
         *(["-show_format"] if show_format else []),
         *(["-show_error"] if show_error else []),
         "-of",
-        "json",
+        format,
     ]
     args += convert_kwargs_to_cmd_line_args(kwargs)
     args += [str(filename)]

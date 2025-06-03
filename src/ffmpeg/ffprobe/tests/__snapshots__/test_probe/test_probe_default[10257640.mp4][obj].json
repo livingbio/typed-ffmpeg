@@ -1,0 +1,230 @@
+{
+  "chapters": null,
+  "error": null,
+  "format": {
+    "bit_rate": 698369,
+    "duration": 6.803447,
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/10257640.mp4",
+    "format_long_name": "QuickTime / MOV",
+    "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+    "nb_programs": 0,
+    "nb_stream_groups": null,
+    "nb_streams": 2,
+    "probe_score": 100,
+    "size": 593915,
+    "start_time": 0.0,
+    "tags": {
+      "tag": [
+        {
+          "key": "major_brand",
+          "value": "isom"
+        },
+        {
+          "key": "minor_version",
+          "value": "1"
+        },
+        {
+          "key": "compatible_brands",
+          "value": "isomavc1"
+        },
+        {
+          "key": "creation_time",
+          "value": "2009-09-26T03:39:34.000000Z"
+        }
+      ]
+    }
+  },
+  "frames": null,
+  "library_versions": null,
+  "packets": null,
+  "packets_and_frames": null,
+  "pixel_formats": null,
+  "program_version": null,
+  "programs": null,
+  "streams": {
+    "stream": [
+      {
+        "avg_frame_rate": "30000/1001",
+        "bit_rate": 586903,
+        "bits_per_raw_sample": 8,
+        "bits_per_sample": null,
+        "channel_layout": null,
+        "channels": null,
+        "chroma_location": "left",
+        "closed_captions": true,
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "codec_name": "h264",
+        "codec_tag": "0x31637661",
+        "codec_tag_string": "avc1",
+        "codec_type": "video",
+        "coded_height": 480,
+        "coded_width": 640,
+        "color_primaries": null,
+        "color_range": null,
+        "color_space": null,
+        "color_transfer": null,
+        "display_aspect_ratio": "4:3",
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 1,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": 6.740067,
+        "duration_ts": 202202,
+        "extradata": null,
+        "extradata_hash": null,
+        "extradata_size": 41,
+        "field_order": "progressive",
+        "film_grain": true,
+        "has_b_frames": 1,
+        "height": 480,
+        "id": "0x1",
+        "index": 0,
+        "initial_padding": null,
+        "level": 31,
+        "max_bit_rate": null,
+        "nb_frames": 202,
+        "nb_read_frames": null,
+        "nb_read_packets": null,
+        "pix_fmt": "yuv420p",
+        "profile": "High",
+        "r_frame_rate": "30000/1001",
+        "refs": 1,
+        "sample_aspect_ratio": "1:1",
+        "sample_fmt": null,
+        "sample_rate": null,
+        "side_data_list": null,
+        "start_pts": 1001,
+        "start_time": 0.033367,
+        "tags": {
+          "tag": [
+            {
+              "key": "creation_time",
+              "value": "2009-09-26T03:39:34.000000Z"
+            },
+            {
+              "key": "language",
+              "value": "und"
+            },
+            {
+              "key": "handler_name",
+              "value": "GPAC ISO Video Handler"
+            },
+            {
+              "key": "vendor_id",
+              "value": "[0][0][0][0]"
+            }
+          ]
+        },
+        "time_base": "1/30000",
+        "width": 640
+      },
+      {
+        "avg_frame_rate": "0/0",
+        "bit_rate": 112319,
+        "bits_per_raw_sample": null,
+        "bits_per_sample": 0,
+        "channel_layout": "stereo",
+        "channels": 2,
+        "chroma_location": null,
+        "closed_captions": null,
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "codec_name": "aac",
+        "codec_tag": "0x6134706d",
+        "codec_tag_string": "mp4a",
+        "codec_type": "audio",
+        "coded_height": null,
+        "coded_width": null,
+        "color_primaries": null,
+        "color_range": null,
+        "color_space": null,
+        "color_transfer": null,
+        "display_aspect_ratio": null,
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 1,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": 6.803447,
+        "duration_ts": 300032,
+        "extradata": null,
+        "extradata_hash": null,
+        "extradata_size": 2,
+        "field_order": null,
+        "film_grain": null,
+        "has_b_frames": null,
+        "height": null,
+        "id": "0x2",
+        "index": 1,
+        "initial_padding": 0,
+        "level": null,
+        "max_bit_rate": null,
+        "nb_frames": 293,
+        "nb_read_frames": null,
+        "nb_read_packets": null,
+        "pix_fmt": null,
+        "profile": "LC",
+        "r_frame_rate": "0/0",
+        "refs": null,
+        "sample_aspect_ratio": null,
+        "sample_fmt": "fltp",
+        "sample_rate": 44100,
+        "side_data_list": null,
+        "start_pts": 0,
+        "start_time": 0.0,
+        "tags": {
+          "tag": [
+            {
+              "key": "creation_time",
+              "value": "2009-09-26T03:39:34.000000Z"
+            },
+            {
+              "key": "language",
+              "value": "und"
+            },
+            {
+              "key": "handler_name",
+              "value": "GPAC ISO Audio Handler"
+            },
+            {
+              "key": "vendor_id",
+              "value": "[0][0][0][0]"
+            }
+          ]
+        },
+        "time_base": "1/44100",
+        "width": null
+      }
+    ]
+  }
+}

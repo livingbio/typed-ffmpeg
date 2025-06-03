@@ -33,6 +33,7 @@
   "merge_outputs",
   "output",
   "probe",
+  "probe_obj",
   "schema",
   "sources",
   "streams",

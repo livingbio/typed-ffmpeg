@@ -19,68 +19,68 @@
   },
   "library_versions": [
     {
-      "ident": "Lavu58.2.100",
+      "ident": "Lavu58.29.100",
       "major": 58,
       "micro": 100,
-      "minor": 2,
+      "minor": 29,
       "name": "libavutil",
-      "version": 3801700
+      "version": 3808612
     },
     {
-      "ident": "Lavc60.3.100",
+      "ident": "Lavc60.31.102",
       "major": 60,
-      "micro": 100,
-      "minor": 3,
+      "micro": 102,
+      "minor": 31,
       "name": "libavcodec",
-      "version": 3933028
+      "version": 3940198
     },
     {
-      "ident": "Lavf60.3.100",
+      "ident": "Lavf60.16.100",
+      "major": 60,
+      "micro": 100,
+      "minor": 16,
+      "name": "libavformat",
+      "version": 3936356
+    },
+    {
+      "ident": "Lavd60.3.100",
       "major": 60,
       "micro": 100,
       "minor": 3,
-      "name": "libavformat",
+      "name": "libavdevice",
       "version": 3933028
     },
     {
-      "ident": "Lavd60.1.100",
-      "major": 60,
-      "micro": 100,
-      "minor": 1,
-      "name": "libavdevice",
-      "version": 3932516
-    },
-    {
-      "ident": "Lavfi9.3.100",
+      "ident": "Lavfi9.12.100",
       "major": 9,
       "micro": 100,
-      "minor": 3,
+      "minor": 12,
       "name": "libavfilter",
-      "version": 590692
+      "version": 592996
     },
     {
-      "ident": "SwS7.1.100",
+      "ident": "SwS7.5.100",
       "major": 7,
       "micro": 100,
-      "minor": 1,
+      "minor": 5,
       "name": "libswscale",
-      "version": 459108
+      "version": 460132
     },
     {
-      "ident": "SwR4.10.100",
+      "ident": "SwR4.12.100",
       "major": 4,
       "micro": 100,
-      "minor": 10,
+      "minor": 12,
       "name": "libswresample",
-      "version": 264804
+      "version": 265316
     },
     {
-      "ident": "postproc57.1.100",
+      "ident": "postproc57.3.100",
       "major": 57,
       "micro": 100,
-      "minor": 1,
+      "minor": 3,
       "name": "libpostproc",
-      "version": 3735908
+      "version": 3736420
     }
   ],
   "packets_and_frames": [
@@ -95,6 +95,10 @@
       "coded_picture_number": 0,
       "color_range": "pc",
       "color_space": "gbr",
+      "crop_bottom": 0,
+      "crop_left": 0,
+      "crop_right": 0,
+      "crop_top": 0,
       "display_picture_number": 0,
       "height": 500,
       "interlaced_frame": 0,
@@ -7849,13 +7853,197 @@
       },
       "name": "rgbaf32le",
       "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 24,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 1,
+      "name": "p212be",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 24,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 1,
+      "name": "p212le",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 36,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "p412be",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 36,
+      "components": [
+        {
+          "bit_depth": 12,
+          "index": 1
+        },
+        {
+          "bit_depth": 12,
+          "index": 2
+        },
+        {
+          "bit_depth": 12,
+          "index": 3
+        }
+      ],
+      "flags": {
+        "alpha": 0,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 0
+      },
+      "log2_chroma_h": 0,
+      "log2_chroma_w": 0,
+      "name": "p412le",
+      "nb_components": 3
+    },
+    {
+      "bits_per_pixel": 56,
+      "components": [
+        {
+          "bit_depth": 14,
+          "index": 1
+        },
+        {
+          "bit_depth": 14,
+          "index": 2
+        },
+        {
+          "bit_depth": 14,
+          "index": 3
+        },
+        {
+          "bit_depth": 14,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 1,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrap14be",
+      "nb_components": 4
+    },
+    {
+      "bits_per_pixel": 56,
+      "components": [
+        {
+          "bit_depth": 14,
+          "index": 1
+        },
+        {
+          "bit_depth": 14,
+          "index": 2
+        },
+        {
+          "bit_depth": 14,
+          "index": 3
+        },
+        {
+          "bit_depth": 14,
+          "index": 4
+        }
+      ],
+      "flags": {
+        "alpha": 1,
+        "big_endian": 0,
+        "bitstream": 0,
+        "hwaccel": 0,
+        "palette": 0,
+        "planar": 1,
+        "rgb": 1
+      },
+      "name": "gbrap14le",
+      "nb_components": 4
     }
   ],
   "program_version": {
-    "compiler_ident": "gcc 8 (Debian 8.3.0-6)",
-    "configuration": "--enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gmp --enable-libgme --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libdav1d --enable-libxvid --enable-libzimg",
+    "compiler_ident": "gcc 13 (Ubuntu 13.2.0-23ubuntu3)",
+    "configuration": "--prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/aarch64-linux-gnu --incdir=/usr/include/aarch64-linux-gnu --arch=arm64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared",
     "copyright": "Copyright (c) 2007-2023 the FFmpeg developers",
-    "version": "6.0-static https://johnvansickle.com/ffmpeg/ "
+    "version": "6.1.1-3ubuntu5"
   },
   "programs": [],
   "streams": [
@@ -7884,6 +8072,7 @@
         "karaoke": 0,
         "lyrics": 0,
         "metadata": 0,
+        "non_diegetic": 0,
         "original": 0,
         "still_image": 0,
         "timed_thumbnails": 0,
@@ -7916,6 +8105,7 @@
       "coded_height": 500,
       "coded_width": 888,
       "color_range": "pc",
+      "color_space": "gbr",
       "display_aspect_ratio": "222:125",
       "disposition": {
         "attached_pic": 1,
@@ -7931,6 +8121,7 @@
         "karaoke": 0,
         "lyrics": 0,
         "metadata": 0,
+        "non_diegetic": 0,
         "original": 0,
         "still_image": 0,
         "timed_thumbnails": 0,

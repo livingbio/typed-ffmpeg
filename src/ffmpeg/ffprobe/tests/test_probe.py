@@ -1,10 +1,11 @@
+from dataclasses import asdict
 from pathlib import Path
 
 import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ..probe import probe
+from ..probe import probe, probe_obj
 
 test_data = Path(__file__).parent / "test_probe"
 
@@ -50,8 +51,12 @@ def test_probe_default(path: Path, snapshot: SnapshotAssertion) -> None:
             assert "codec_name" in stream
 
     snapshot(
-        extension_class=JSONSnapshotExtension
+        name="json", extension_class=JSONSnapshotExtension
     ) == info  # NOTE: the result is not stable so, we just want to record the result
+
+    obj = probe_obj(path)
+    assert obj is not None
+    snapshot(name="obj", extension_class=JSONSnapshotExtension) == asdict(obj)
 
 
 @pytest.mark.parametrize("path", test_data.glob("**/*.*"), ids=lambda x: x.name)

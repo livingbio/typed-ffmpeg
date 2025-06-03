@@ -1,0 +1,317 @@
+{
+  "chapters": null,
+  "error": null,
+  "format": {
+    "bit_rate": 1346453,
+    "duration": 89.6,
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/3c289a15d14d8b6775ec0a2cd233da70b963de5a.mp4",
+    "format_long_name": "QuickTime / MOV",
+    "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+    "nb_programs": 0,
+    "nb_stream_groups": null,
+    "nb_streams": 3,
+    "probe_score": 100,
+    "size": 15080282,
+    "start_time": 0.0,
+    "tags": {
+      "tag": [
+        {
+          "key": "major_brand",
+          "value": "isom"
+        },
+        {
+          "key": "minor_version",
+          "value": "512"
+        },
+        {
+          "key": "compatible_brands",
+          "value": "isomiso2avc1mp41"
+        },
+        {
+          "key": "encoder",
+          "value": "Lavf59.27.100"
+        }
+      ]
+    }
+  },
+  "frames": null,
+  "library_versions": null,
+  "packets": null,
+  "packets_and_frames": null,
+  "pixel_formats": null,
+  "program_version": null,
+  "programs": null,
+  "streams": {
+    "stream": [
+      {
+        "avg_frame_rate": "30/1",
+        "bit_rate": 1208285,
+        "bits_per_raw_sample": 8,
+        "bits_per_sample": null,
+        "channel_layout": null,
+        "channels": null,
+        "chroma_location": "left",
+        "closed_captions": true,
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "codec_name": "h264",
+        "codec_tag": "0x31637661",
+        "codec_tag_string": "avc1",
+        "codec_type": "video",
+        "coded_height": 1080,
+        "coded_width": 1920,
+        "color_primaries": "bt709",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "display_aspect_ratio": "16:9",
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 1,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": 89.6,
+        "duration_ts": 1376256,
+        "extradata": null,
+        "extradata_hash": null,
+        "extradata_size": 35,
+        "field_order": "progressive",
+        "film_grain": true,
+        "has_b_frames": 0,
+        "height": 1080,
+        "id": "0x1",
+        "index": 0,
+        "initial_padding": null,
+        "level": 40,
+        "max_bit_rate": null,
+        "nb_frames": 2688,
+        "nb_read_frames": null,
+        "nb_read_packets": null,
+        "pix_fmt": "yuv420p",
+        "profile": "High",
+        "r_frame_rate": "30/1",
+        "refs": 1,
+        "sample_aspect_ratio": "1:1",
+        "sample_fmt": null,
+        "sample_rate": null,
+        "side_data_list": null,
+        "start_pts": 0,
+        "start_time": 0.0,
+        "tags": {
+          "tag": [
+            {
+              "key": "language",
+              "value": "eng"
+            },
+            {
+              "key": "handler_name",
+              "value": "Apple Video Media Handler"
+            },
+            {
+              "key": "vendor_id",
+              "value": "[0][0][0][0]"
+            },
+            {
+              "key": "encoder",
+              "value": "Lavc59.37.100 h264_videotoolbox"
+            },
+            {
+              "key": "timecode",
+              "value": "00:00:00:00"
+            }
+          ]
+        },
+        "time_base": "1/15360",
+        "width": 1920
+      },
+      {
+        "avg_frame_rate": "0/0",
+        "bit_rate": 130986,
+        "bits_per_raw_sample": null,
+        "bits_per_sample": 0,
+        "channel_layout": "stereo",
+        "channels": 2,
+        "chroma_location": null,
+        "closed_captions": null,
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "codec_name": "aac",
+        "codec_tag": "0x6134706d",
+        "codec_tag_string": "mp4a",
+        "codec_type": "audio",
+        "coded_height": null,
+        "coded_width": null,
+        "color_primaries": null,
+        "color_range": null,
+        "color_space": null,
+        "color_transfer": null,
+        "display_aspect_ratio": null,
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 1,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": 89.6,
+        "duration_ts": 4300800,
+        "extradata": null,
+        "extradata_hash": null,
+        "extradata_size": 5,
+        "field_order": null,
+        "film_grain": null,
+        "has_b_frames": null,
+        "height": null,
+        "id": "0x2",
+        "index": 1,
+        "initial_padding": 0,
+        "level": null,
+        "max_bit_rate": null,
+        "nb_frames": 4201,
+        "nb_read_frames": null,
+        "nb_read_packets": null,
+        "pix_fmt": null,
+        "profile": "LC",
+        "r_frame_rate": "0/0",
+        "refs": null,
+        "sample_aspect_ratio": null,
+        "sample_fmt": "fltp",
+        "sample_rate": 48000,
+        "side_data_list": null,
+        "start_pts": 0,
+        "start_time": 0.0,
+        "tags": {
+          "tag": [
+            {
+              "key": "language",
+              "value": "eng"
+            },
+            {
+              "key": "handler_name",
+              "value": "Apple Sound Media Handler"
+            },
+            {
+              "key": "vendor_id",
+              "value": "[0][0][0][0]"
+            }
+          ]
+        },
+        "time_base": "1/48000",
+        "width": null
+      },
+      {
+        "avg_frame_rate": "15360/512",
+        "bit_rate": null,
+        "bits_per_raw_sample": null,
+        "bits_per_sample": null,
+        "channel_layout": null,
+        "channels": null,
+        "chroma_location": null,
+        "closed_captions": null,
+        "codec_long_name": null,
+        "codec_name": null,
+        "codec_tag": "0x64636d74",
+        "codec_tag_string": "tmcd",
+        "codec_type": "data",
+        "coded_height": null,
+        "coded_width": null,
+        "color_primaries": null,
+        "color_range": null,
+        "color_space": null,
+        "color_transfer": null,
+        "display_aspect_ratio": null,
+        "disposition": {
+          "attached_pic": 0,
+          "captions": 0,
+          "clean_effects": 0,
+          "comment": 0,
+          "default": 0,
+          "dependent": 0,
+          "descriptions": 0,
+          "dub": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "karaoke": 0,
+          "lyrics": 0,
+          "metadata": 0,
+          "non_diegetic": 0,
+          "original": 0,
+          "still_image": 0,
+          "timed_thumbnails": 0,
+          "visual_impaired": 0
+        },
+        "duration": 89.6,
+        "duration_ts": 1376256,
+        "extradata": null,
+        "extradata_hash": null,
+        "extradata_size": 20,
+        "field_order": null,
+        "film_grain": null,
+        "has_b_frames": null,
+        "height": null,
+        "id": "0x3",
+        "index": 2,
+        "initial_padding": null,
+        "level": null,
+        "max_bit_rate": null,
+        "nb_frames": 1,
+        "nb_read_frames": null,
+        "nb_read_packets": null,
+        "pix_fmt": null,
+        "profile": null,
+        "r_frame_rate": "0/0",
+        "refs": null,
+        "sample_aspect_ratio": null,
+        "sample_fmt": null,
+        "sample_rate": null,
+        "side_data_list": null,
+        "start_pts": 0,
+        "start_time": 0.0,
+        "tags": {
+          "tag": [
+            {
+              "key": "language",
+              "value": "eng"
+            },
+            {
+              "key": "handler_name",
+              "value": "Apple Video Media Handler"
+            },
+            {
+              "key": "timecode",
+              "value": "00:00:00:00"
+            }
+          ]
+        },
+        "time_base": "1/15360",
+        "width": null
+      }
+    ]
+  }
+}
