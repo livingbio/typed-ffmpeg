@@ -326,7 +326,7 @@ def parse_global(
         option = ffmpeg_options[key]
 
         if option.is_global_option:
-            # just ignore not input options
+            # Process only recognized global options
             if value[-1] is None:
                 parameters[key] = True
             else:
