@@ -118,5 +118,21 @@ def test_probe_complete(path: Path, snapshot: SnapshotAssertion) -> None:
                 assert "channels" in stream
 
     snapshot(
-        extension_class=JSONSnapshotExtension
+        name="json", extension_class=JSONSnapshotExtension
     ) == info  # NOTE: the result is not stable so, we just want to record the result
+
+    obj = probe_obj(
+        path,
+        show_program_version=True,
+        show_library_versions=True,
+        show_pixel_formats=True,
+        show_packets=True,
+        show_frames=True,
+        show_programs=True,
+        show_streams=True,
+        show_chapters=True,
+        show_format=True,
+        show_error=True,
+    )
+    assert obj is not None
+    snapshot(name="obj", extension_class=JSONSnapshotExtension) == asdict(obj)
