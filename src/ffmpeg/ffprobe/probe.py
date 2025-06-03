@@ -210,6 +210,48 @@ def probe_obj(
     timeout: int | None = None,
     **kwargs: Any,
 ) -> ffprobeType | None:
+    """
+    Analyze a media file using ffprobe and return its metadata as a dataclass.
+
+    This function executes ffprobe to extract detailed information about a media file,
+    including format metadata (container format, duration, bitrate) and stream information
+    (codecs, resolution, sample rate, etc). The result is returned as a Python dataclass
+    parsed from ffprobe's output.
+
+    Args:
+        filename: Path to the media file to analyze
+        cmd: Path or name of the ffprobe executable
+        timeout: Maximum time in seconds to wait for ffprobe to complete (default: None, wait indefinitely)
+        show_program_version: Show the program version
+        show_library_versions: Show the library versions
+        show_pixel_formats: Show the pixel formats
+        show_packets: Show the packets. Note: When both show_packets and show_frames are True,
+            ffprobe will output a combined "packets_and_frames" section instead of separate sections.
+        show_frames: Show the frames. Note: When both show_packets and show_frames are True,
+            ffprobe will output a combined "packets_and_frames" section instead of separate sections.
+        show_programs: Show the programs
+        show_streams: Show the streams
+        show_chapters: Show the chapters
+        show_format: Show the format
+        show_error: Show the error
+        **kwargs: Additional arguments to pass to ffprobe as command line parameters
+            (e.g., loglevel="quiet", skip_frame="nokey")
+
+    Returns:
+        A dataclass containing the parsed ffprobe output
+
+    Raises:
+        FFMpegExecuteError: If ffprobe returns a non-zero exit code
+        subprocess.TimeoutExpired: If the timeout is reached before ffprobe completes
+
+    Example:
+        ```python
+        info = probe_obj("video.mp4")
+        print(f"Duration: {float(info.format.duration):.2f} seconds")
+        print(f"Streams: {len(info.streams)}")
+        ```
+    """
+
     xml = _probe(
         filename,
         show_program_version=show_program_version,
