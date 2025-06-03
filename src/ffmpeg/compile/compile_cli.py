@@ -356,7 +356,7 @@ def parse(cli: str) -> Stream:
     ffmpeg_filters = get_filter_dict()
 
     tokens = shlex.split(cli)
-    assert tokens[0] == "ffmpeg"
+    assert tokens[0].lower().split(".")[0] == "ffmpeg"
     tokens = tokens[1:]
 
     # Parse global options first
