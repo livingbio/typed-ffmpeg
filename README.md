@@ -35,6 +35,7 @@
 - **Validation and Auto-correction:** Assists in identifying and fixing errors within filter graphs.
 - **Input and Output Options Support:** Provide a more comprehensive interface for input and output options, including support for additional codecs and formats.
 - **Partial Evaluation:** Enhance the flexibility of filter graphs by enabling partial evaluation, allowing for modular construction and reuse.
+- **Media File Analysis:** Built-in support for analyzing media files using FFmpeg's ffprobe utility, providing detailed metadata extraction with both dictionary and dataclass interfaces.
 
 ### Planned Features
 
@@ -73,11 +74,13 @@ Note: This requires Graphviz to be installed on your system.
 
 Here's how to quickly start using `typed-ffmpeg`:
 
-
-
-
 ```python
 import ffmpeg
+
+# Analyze a media file
+info = ffmpeg.probe("video.mp4")
+print(f"Duration: {float(info['format']['duration']):.2f} seconds")
+print(f"Streams: {len(info['streams'])}")
 
 # Flip video horizontally and output
 f = (

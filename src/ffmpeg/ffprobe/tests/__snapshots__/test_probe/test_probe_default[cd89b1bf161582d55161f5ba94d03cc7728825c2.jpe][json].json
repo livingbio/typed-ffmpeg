@@ -1,0 +1,61 @@
+{
+  "format": {
+    "filename": "/workspaces/typed-ffmpeg/src/ffmpeg/ffprobe/tests/test_probe/test_data/cd89b1bf161582d55161f5ba94d03cc7728825c2.jpe",
+    "format_long_name": "piped jpeg sequence",
+    "format_name": "jpeg_pipe",
+    "nb_programs": 0,
+    "nb_streams": 1,
+    "probe_score": 26,
+    "size": "12642182"
+  },
+  "streams": [
+    {
+      "avg_frame_rate": "25/1",
+      "bits_per_raw_sample": "8",
+      "chroma_location": "center",
+      "closed_captions": 0,
+      "codec_long_name": "Motion JPEG",
+      "codec_name": "mjpeg",
+      "codec_tag": "0x0000",
+      "codec_tag_string": "[0][0][0][0]",
+      "codec_type": "video",
+      "coded_height": 3144,
+      "coded_width": 4716,
+      "color_range": "pc",
+      "color_space": "bt470bg",
+      "display_aspect_ratio": "3:2",
+      "disposition": {
+        "attached_pic": 0,
+        "captions": 0,
+        "clean_effects": 0,
+        "comment": 0,
+        "default": 0,
+        "dependent": 0,
+        "descriptions": 0,
+        "dub": 0,
+        "forced": 0,
+        "hearing_impaired": 0,
+        "karaoke": 0,
+        "lyrics": 0,
+        "metadata": 0,
+        "non_diegetic": 0,
+        "original": 0,
+        "still_image": 0,
+        "timed_thumbnails": 0,
+        "visual_impaired": 0
+      },
+      "film_grain": 0,
+      "has_b_frames": 0,
+      "height": 3144,
+      "index": 0,
+      "level": -99,
+      "pix_fmt": "yuvj444p",
+      "profile": "Baseline",
+      "r_frame_rate": "25/1",
+      "refs": 1,
+      "sample_aspect_ratio": "1:1",
+      "time_base": "1/25",
+      "width": 4716
+    }
+  ]
+}

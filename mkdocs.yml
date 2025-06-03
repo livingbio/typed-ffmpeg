@@ -65,6 +65,7 @@ nav:
       - FAQ: faq.md
   - Usage:
       - Basic API Usage: usage/basic-api-usage.ipynb
+      - Probe: usage/probe.ipynb
       - Complex Filtering: usage/complex-filtering.ipynb
       - Customizing Filters: usage/customizing-filters.ipynb
       - Execute: usage/execute.ipynb

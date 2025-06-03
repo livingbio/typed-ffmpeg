@@ -26,8 +26,8 @@ from . import compile, dag, filters, sources
 from .base import afilter, filter_multi_output, input, merge_outputs, output, vfilter
 from .dag import Stream
 from .exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
+from .ffprobe.probe import probe, probe_obj
 from .info import get_codecs, get_decoders, get_encoders
-from .probe import probe
 from .streams import AudioStream, AVStream, VideoStream
 
 __all__ = [
@@ -41,6 +41,7 @@ __all__ = [
     "FFMpegValueError",
     "Stream",
     "probe",
+    "probe_obj",
     "compile",
     "AudioStream",
     "VideoStream",

@@ -31,3 +31,4 @@ black
 ipykernel>=6.29.4
 mknotebooks
 ruff>=0.9.6,<0.12.0 
+lxml
