@@ -23,3 +23,11 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
         compiled,
         compiled_again,
     )
+
+
+def test_parse_ffmpeg_exe(snapshot: SnapshotAssertion) -> None:
+    parsed = parse("ffmpeg.exe -i input_video.mkv output_video.mp4")
+    assert (
+        snapshot(name="parse-ffmpeg-exe", extension_class=JSONSnapshotExtension)
+        == parsed
+    )
