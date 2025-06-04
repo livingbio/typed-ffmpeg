@@ -164,8 +164,8 @@ def parse_output(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            assert key in ffmpeg_options, f"Unknown option: {key}"
-            option = ffmpeg_options[key]
+            assert key.split(":")[0] in ffmpeg_options, f"Unknown option: {key}"
+            option = ffmpeg_options[key.split(":")[0]]
 
             if option.is_output_option:
                 # just ignore not input options
