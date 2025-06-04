@@ -15,4 +15,4 @@ query-filters:
   - include:
       tags contain: security
       tags contain: python
-      tags contain: github-actions 
+      tags contain: github-actions
