@@ -84,19 +84,34 @@
           "width": "1280"
         }
       ],
-      "packet": {
-        "codec_type": "audio",
-        "dts": "239616",
-        "dts_time": "4.992000",
-        "duration": "1008",
-        "duration_time": "0.021000",
-        "flags": "K__",
-        "pos": "1084636",
-        "pts": "239616",
-        "pts_time": "4.992000",
-        "size": "668",
-        "stream_index": "1"
-      }
+      "packet": [
+        {
+          "codec_type": "audio",
+          "dts": "239616",
+          "dts_time": "4.992000",
+          "duration": "1008",
+          "duration_time": "0.021000",
+          "flags": "K__",
+          "pos": "1084636",
+          "pts": "239616",
+          "pts_time": "4.992000",
+          "size": "668",
+          "stream_index": "1"
+        },
+        {
+          "codec_type": "audio",
+          "dts": "239616",
+          "dts_time": "4.992000",
+          "duration": "1008",
+          "duration_time": "0.021000",
+          "flags": "K__",
+          "pos": "1084636",
+          "pts": "239616",
+          "pts_time": "4.992000",
+          "size": "668",
+          "stream_index": "1"
+        }
+      ]
     }
   }
 }
