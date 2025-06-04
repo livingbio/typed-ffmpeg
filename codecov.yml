@@ -18,7 +18,7 @@ coverage:
 flags:
   backend:
     paths:
-      - src/ # Python backend code
+      - src/ffmpeg # Python backend code
 
 comment:
   layout: 'reach, diff, flags, files'

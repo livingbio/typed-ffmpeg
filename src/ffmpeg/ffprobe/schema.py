@@ -26,15 +26,15 @@ class packetsType:
 
 @dataclass(kw_only=True, frozen=True)
 class framesType:
-    frame: Optional["frameType"] = None
-    subtitle: Optional["subtitleType"] = None
+    frame: tuple["frameType", ...] | None = None
+    subtitle: tuple["subtitleType", ...] | None = None
 
 
 @dataclass(kw_only=True, frozen=True)
 class packetsAndFramesType:
-    packet: Optional["packetType"] = None
-    frame: Optional["frameType"] = None
-    subtitle: Optional["subtitleType"] = None
+    packet: tuple["packetType", ...] | None = None
+    frame: tuple["frameType", ...] | None = None
+    subtitle: tuple["subtitleType", ...] | None = None
 
 
 @dataclass(kw_only=True, frozen=True)

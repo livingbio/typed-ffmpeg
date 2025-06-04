@@ -72,7 +72,6 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
     Returns:
         The parsed dataclass instance
     """
-
     if data is None:
         return None
 
@@ -104,6 +103,7 @@ def _parse_obj_from_dict(data: Any, cls: type[T]) -> T | None:
                 continue
             item_type = tuple_args[0]
             value = data.get(field_name, [])
+            # NOTE: if the value is a single item, convert it to a list (xml's issue)
             if not isinstance(value, list):
                 value = [value]
             kwargs[field_name] = tuple(
