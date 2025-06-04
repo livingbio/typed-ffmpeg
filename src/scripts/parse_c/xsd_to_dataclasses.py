@@ -208,7 +208,7 @@ def generate_dataclass_fields(
             name = complex_type.get("name", "choice")
 
             # Create a Union type for the choice
-            union_type = " | ".join(f'"{t}"' for t in choice_types)
+            union_type = ", ".join(f'"{t}"' for t in choice_types)
             if choice.get("maxOccurs") == "unbounded":
                 field_type = f"Optional[tuple[Union[{union_type}], ...]]"
             else:

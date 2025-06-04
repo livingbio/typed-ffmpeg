@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Union
 
 
 @dataclass(kw_only=True, frozen=True)
@@ -26,13 +26,13 @@ class packetsType:
 
 @dataclass(kw_only=True, frozen=True)
 class framesType:
-    framesType: tuple["frameType" | "subtitleType", ...] | None = None
+    framesType: tuple[Union["frameType", "subtitleType"], ...] | None = None
 
 
 @dataclass(kw_only=True, frozen=True)
 class packetsAndFramesType:
     packetsAndFramesType: (
-        tuple["packetType" | "frameType" | "subtitleType", ...] | None
+        tuple[Union["packetType", "frameType", "subtitleType"], ...] | None
     ) = None
 
 
