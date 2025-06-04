@@ -10,6 +10,9 @@ on:
     paths:
       - 'src/ffmpeg/**'
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
