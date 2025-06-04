@@ -1,68 +1,65 @@
-name: CI Package
+name: CI Scripts
+
+permissions:
+  contents: read
 
 on:
   push:
     branches: [main]
     paths:
-      - 'src/ffmpeg/**'
+      - 'src/**'
   pull_request:
     branches: [main]
     paths:
-      - 'src/ffmpeg/**'
-
-permissions:
-  contents: read
+      - 'src/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ['3.10', '3.11', '3.12']
-
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.10'
 
       - name: Install GCC and ffmpeg
         run: sudo apt-get update && sudo apt-get install -y build-essential nasm ffmpeg && ffmpeg -version
+
       - name: Install uv
         run: pip install uv
+
       - name: Create virtual environment
         run: uv venv
+
       - name: Install dependencies
         run: |
           source .venv/bin/activate
           uv pip install -r requirements.txt
-      - name: Build package
-        run: |
-          source .venv/bin/activate
-          python -m build
-      - name: Install package
-        run: |
-          source .venv/bin/activate
-          pip install dist/*.whl
+
       - name: Run tests
         run: |
           source .venv/bin/activate
-          pytest src/ffmpeg --cov=./src/ffmpeg --cov-report=xml
+          pytest src/scripts --cov=./src/scripts --cov-report=xml
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
           file: ./coverage.xml
-          flags: backend,python,${{ matrix.python-version }}
-          name: backend-coverage-py${{ matrix.python-version }}
+          flags: scripts,python-3.10
+          name: scripts-coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
+
+      - name: Build Mkdocs
+        run: |
+          source .venv/bin/activate
+          mkdocs build
 
       # Run linting
       - name: Linting
         run: uv run pre-commit run --all-files
-        working-directory: src/ffmpeg
+        working-directory: src/scripts
