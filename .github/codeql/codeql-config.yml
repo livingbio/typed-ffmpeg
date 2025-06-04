@@ -1,0 +1,18 @@
+name: "CodeQL Config"
+
+queries:
+  - uses: security-extended
+
+paths:
+  - src
+  - tests
+  - .github/workflows
+
+paths-ignore:
+  - 'ffmpeg'
+
+query-filters:
+  - include:
+      tags contain: security
+      tags contain: python
+      tags contain: github-actions 
