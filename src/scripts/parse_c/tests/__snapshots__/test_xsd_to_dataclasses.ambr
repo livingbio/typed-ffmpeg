@@ -1,0 +1,420 @@
+# serializer version: 1
+# name: test_parse_ffprobe_xsd
+  '''
+  #!/usr/bin/env python3
+  
+  from dataclasses import dataclass
+  from typing import Optional, Tuple
+  
+  @dataclass(kw_only=True, frozen=True)
+  class ffprobeType:
+      program_version: Optional["programVersionType"] = None
+      library_versions: Optional["libraryVersionsType"] = None
+      pixel_formats: Optional["pixelFormatsType"] = None
+      packets: Optional["packetsType"] = None
+      frames: Optional["framesType"] = None
+      packets_and_frames: Optional["packetsAndFramesType"] = None
+      programs: Optional["programsType"] = None
+      streams: Optional["streamsType"] = None
+      chapters: Optional["chaptersType"] = None
+      format: Optional["formatType"] = None
+      error: Optional["errorType"] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class packetsType:
+      packet: Optional[Tuple["packetType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class framesType:
+      frame: Optional["frameType"] = None
+      subtitle: Optional["subtitleType"] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class packetsAndFramesType:
+      packet: Optional["packetType"] = None
+      frame: Optional["frameType"] = None
+      subtitle: Optional["subtitleType"] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class tagsType:
+      tag: Optional[Tuple["tagType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class packetType:
+      tags: Optional["tagsType"] = None
+      side_data_list: Optional["packetSideDataListType"] = None
+      codec_type: Optional[str] = None
+      stream_index: Optional[int] = None
+      pts: Optional[int] = None
+      pts_time: Optional[float] = None
+      dts: Optional[int] = None
+      dts_time: Optional[float] = None
+      duration: Optional[int] = None
+      duration_time: Optional[float] = None
+      size: Optional[int] = None
+      pos: Optional[int] = None
+      flags: Optional[str] = None
+      data: Optional[str] = None
+      data_hash: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class packetSideDataListType:
+      side_data: Optional[Tuple["packetSideDataType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class packetSideDataType:
+      side_datum: Optional[Tuple["packetSideDatumType", ...]] = None
+      type: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class packetSideDatumType:
+      key: Optional[str] = None
+      value: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameType:
+      tags: Optional["tagsType"] = None
+      logs: Optional["logsType"] = None
+      side_data_list: Optional["frameSideDataListType"] = None
+      media_type: Optional[str] = None
+      stream_index: Optional[int] = None
+      key_frame: Optional[int] = None
+      pts: Optional[int] = None
+      pts_time: Optional[float] = None
+      pkt_dts: Optional[int] = None
+      pkt_dts_time: Optional[float] = None
+      best_effort_timestamp: Optional[int] = None
+      best_effort_timestamp_time: Optional[float] = None
+      pkt_duration: Optional[int] = None
+      pkt_duration_time: Optional[float] = None
+      duration: Optional[int] = None
+      duration_time: Optional[float] = None
+      pkt_pos: Optional[int] = None
+      pkt_size: Optional[int] = None
+      sample_fmt: Optional[str] = None
+      nb_samples: Optional[int] = None
+      channels: Optional[int] = None
+      channel_layout: Optional[str] = None
+      width: Optional[int] = None
+      height: Optional[int] = None
+      crop_top: Optional[int] = None
+      crop_bottom: Optional[int] = None
+      crop_left: Optional[int] = None
+      crop_right: Optional[int] = None
+      pix_fmt: Optional[str] = None
+      sample_aspect_ratio: Optional[str] = None
+      pict_type: Optional[str] = None
+      coded_picture_number: Optional[int] = None
+      display_picture_number: Optional[int] = None
+      interlaced_frame: Optional[int] = None
+      top_field_first: Optional[int] = None
+      repeat_pict: Optional[int] = None
+      color_range: Optional[str] = None
+      color_space: Optional[str] = None
+      color_primaries: Optional[str] = None
+      color_transfer: Optional[str] = None
+      chroma_location: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class logsType:
+      log: Optional[Tuple["logType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class logType:
+      context: Optional[str] = None
+      level: Optional[int] = None
+      category: Optional[int] = None
+      parent_context: Optional[str] = None
+      parent_category: Optional[int] = None
+      message: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataListType:
+      side_data: Optional[Tuple["frameSideDataType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataType:
+      timecodes: Optional["frameSideDataTimecodeList"] = None
+      components: Optional["frameSideDataComponentList"] = None
+      side_datum: Optional[Tuple["frameSideDatumType", ...]] = None
+      side_data_type: Optional[str] = None
+      side_data_size: Optional[int] = None
+      timecode: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDatumType:
+      key: Optional[str] = None
+      value: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataTimecodeList:
+      timecode: Optional[Tuple["frameSideDataTimecodeType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataTimecodeType:
+      value: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataComponentList:
+      component: Optional[Tuple["frameSideDataComponentType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataComponentType:
+      pieces: Optional["frameSideDataPieceList"] = None
+      side_datum: Optional[Tuple["frameSideDatumType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataPieceList:
+      piece: Optional[Tuple["frameSideDataPieceType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class frameSideDataPieceType:
+      side_datum: Optional[Tuple["frameSideDatumType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class subtitleType:
+      media_type: Optional[str] = None
+      pts: Optional[int] = None
+      pts_time: Optional[float] = None
+      format: Optional[int] = None
+      start_display_time: Optional[int] = None
+      end_display_time: Optional[int] = None
+      num_rects: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class streamsType:
+      stream: Optional[Tuple["streamType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class programsType:
+      program: Optional[Tuple["programType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class streamDispositionType:
+      default: Optional[int] = None
+      dub: Optional[int] = None
+      original: Optional[int] = None
+      comment: Optional[int] = None
+      lyrics: Optional[int] = None
+      karaoke: Optional[int] = None
+      forced: Optional[int] = None
+      hearing_impaired: Optional[int] = None
+      visual_impaired: Optional[int] = None
+      clean_effects: Optional[int] = None
+      attached_pic: Optional[int] = None
+      timed_thumbnails: Optional[int] = None
+      non_diegetic: Optional[int] = None
+      captions: Optional[int] = None
+      descriptions: Optional[int] = None
+      metadata: Optional[int] = None
+      dependent: Optional[int] = None
+      still_image: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class streamType:
+      disposition: Optional["streamDispositionType"] = None
+      tags: Optional["tagsType"] = None
+      side_data_list: Optional["packetSideDataListType"] = None
+      index: Optional[int] = None
+      codec_name: Optional[str] = None
+      codec_long_name: Optional[str] = None
+      profile: Optional[str] = None
+      codec_type: Optional[str] = None
+      codec_tag: Optional[str] = None
+      codec_tag_string: Optional[str] = None
+      extradata: Optional[str] = None
+      extradata_size: Optional[int] = None
+      extradata_hash: Optional[str] = None
+      width: Optional[int] = None
+      height: Optional[int] = None
+      coded_width: Optional[int] = None
+      coded_height: Optional[int] = None
+      closed_captions: Optional[bool] = None
+      film_grain: Optional[bool] = None
+      has_b_frames: Optional[int] = None
+      sample_aspect_ratio: Optional[str] = None
+      display_aspect_ratio: Optional[str] = None
+      pix_fmt: Optional[str] = None
+      level: Optional[int] = None
+      color_range: Optional[str] = None
+      color_space: Optional[str] = None
+      color_transfer: Optional[str] = None
+      color_primaries: Optional[str] = None
+      chroma_location: Optional[str] = None
+      field_order: Optional[str] = None
+      refs: Optional[int] = None
+      sample_fmt: Optional[str] = None
+      sample_rate: Optional[int] = None
+      channels: Optional[int] = None
+      channel_layout: Optional[str] = None
+      bits_per_sample: Optional[int] = None
+      initial_padding: Optional[int] = None
+      id: Optional[str] = None
+      r_frame_rate: Optional[str] = None
+      avg_frame_rate: Optional[str] = None
+      time_base: Optional[str] = None
+      start_pts: Optional[int] = None
+      start_time: Optional[float] = None
+      duration_ts: Optional[int] = None
+      duration: Optional[float] = None
+      bit_rate: Optional[int] = None
+      max_bit_rate: Optional[int] = None
+      bits_per_raw_sample: Optional[int] = None
+      nb_frames: Optional[int] = None
+      nb_read_frames: Optional[int] = None
+      nb_read_packets: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class programType:
+      tags: Optional["tagsType"] = None
+      streams: Optional["streamsType"] = None
+      program_id: Optional[int] = None
+      program_num: Optional[int] = None
+      nb_streams: Optional[int] = None
+      pmt_pid: Optional[int] = None
+      pcr_pid: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class formatType:
+      tags: Optional["tagsType"] = None
+      filename: Optional[str] = None
+      nb_streams: Optional[int] = None
+      nb_programs: Optional[int] = None
+      nb_stream_groups: Optional[int] = None
+      format_name: Optional[str] = None
+      format_long_name: Optional[str] = None
+      start_time: Optional[float] = None
+      duration: Optional[float] = None
+      size: Optional[int] = None
+      bit_rate: Optional[int] = None
+      probe_score: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class tagType:
+      key: Optional[str] = None
+      value: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class errorType:
+      code: Optional[int] = None
+      string: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class programVersionType:
+      version: Optional[str] = None
+      copyright: Optional[str] = None
+      build_date: Optional[str] = None
+      build_time: Optional[str] = None
+      compiler_ident: Optional[str] = None
+      configuration: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class chaptersType:
+      chapter: Optional[Tuple["chapterType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class chapterType:
+      tags: Optional[Tuple["tagsType", ...]] = None
+      id: Optional[int] = None
+      time_base: Optional[str] = None
+      start: Optional[int] = None
+      start_time: Optional[float] = None
+      end: Optional[int] = None
+      end_time: Optional[float] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class libraryVersionType:
+      name: Optional[str] = None
+      major: Optional[int] = None
+      minor: Optional[int] = None
+      micro: Optional[int] = None
+      version: Optional[int] = None
+      ident: Optional[str] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class libraryVersionsType:
+      library_version: Optional[Tuple["libraryVersionType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class pixelFormatFlagsType:
+      big_endian: Optional[int] = None
+      palette: Optional[int] = None
+      bitstream: Optional[int] = None
+      hwaccel: Optional[int] = None
+      planar: Optional[int] = None
+      rgb: Optional[int] = None
+      alpha: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class pixelFormatComponentType:
+      index: Optional[int] = None
+      bit_depth: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class pixelFormatComponentsType:
+      component: Optional[Tuple["pixelFormatComponentType", ...]] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class pixelFormatType:
+      flags: Optional["pixelFormatFlagsType"] = None
+      components: Optional["pixelFormatComponentsType"] = None
+      name: Optional[str] = None
+      nb_components: Optional[int] = None
+      log2_chroma_w: Optional[int] = None
+      log2_chroma_h: Optional[int] = None
+      bits_per_pixel: Optional[int] = None
+  
+  @dataclass(kw_only=True, frozen=True)
+  class pixelFormatsType:
+      pixel_format: Optional[Tuple["pixelFormatType", ...]] = None
+  
+  
+  registered_types = {
+      "None": None,
+      "bool": bool,
+      "chapterType": chapterType,
+      "chaptersType": chaptersType,
+      "errorType": errorType,
+      "ffprobeType": ffprobeType,
+      "float": float,
+      "formatType": formatType,
+      "frameSideDataComponentList": frameSideDataComponentList,
+      "frameSideDataComponentType": frameSideDataComponentType,
+      "frameSideDataListType": frameSideDataListType,
+      "frameSideDataPieceList": frameSideDataPieceList,
+      "frameSideDataPieceType": frameSideDataPieceType,
+      "frameSideDataTimecodeList": frameSideDataTimecodeList,
+      "frameSideDataTimecodeType": frameSideDataTimecodeType,
+      "frameSideDataType": frameSideDataType,
+      "frameSideDatumType": frameSideDatumType,
+      "frameType": frameType,
+      "framesType": framesType,
+      "int": int,
+      "libraryVersionType": libraryVersionType,
+      "libraryVersionsType": libraryVersionsType,
+      "logType": logType,
+      "logsType": logsType,
+      "packetSideDataListType": packetSideDataListType,
+      "packetSideDataType": packetSideDataType,
+      "packetSideDatumType": packetSideDatumType,
+      "packetType": packetType,
+      "packetsAndFramesType": packetsAndFramesType,
+      "packetsType": packetsType,
+      "pixelFormatComponentType": pixelFormatComponentType,
+      "pixelFormatComponentsType": pixelFormatComponentsType,
+      "pixelFormatFlagsType": pixelFormatFlagsType,
+      "pixelFormatType": pixelFormatType,
+      "pixelFormatsType": pixelFormatsType,
+      "programType": programType,
+      "programVersionType": programVersionType,
+      "programsType": programsType,
+      "str": str,
+      "streamDispositionType": streamDispositionType,
+      "streamType": streamType,
+      "streamsType": streamsType,
+      "subtitleType": subtitleType,
+      "tagType": tagType,
+      "tagsType": tagsType,
+  }
+  '''
+# ---
