@@ -47,11 +47,23 @@ from .validate import validate
 
 
 def get_options_dict() -> dict[str, FFMpegOption]:
+    """
+    Load and index FFmpeg options from the cache.
+
+    Returns:
+        Dictionary mapping option names to their FFMpegOption definitions
+    """
     options = load(list[FFMpegOption], "options")
     return {option.name: option for option in options}
 
 
 def get_filter_dict() -> dict[str, FFMpegFilter]:
+    """
+    Load and index FFmpeg filters from the cache.
+
+    Returns:
+        Dictionary mapping filter names to their FFMpegFilter definitions
+    """
     filters = load(list[FFMpegFilter], "filters")
     return {filter.name: filter for filter in filters}
 
@@ -99,6 +111,24 @@ def parse_options(tokens: list[str]) -> dict[str, list[str | None | bool]]:
 def parse_stream_selector(
     selector: str, mapping: Mapping[str, FilterableStream]
 ) -> FilterableStream:
+    """
+    Parse a stream selector string and return the corresponding stream.
+
+    This function handles FFmpeg's stream selector syntax:
+    - Simple selectors: "[0]" (first input)
+    - Type selectors: "[0:v]" (first input, video stream)
+    - Index selectors: "[0:v:0]" (first input, first video stream)
+
+    Args:
+        selector: Stream selector string to parse
+        mapping: Dictionary of available streams
+
+    Returns:
+        The selected FilterableStream
+
+    Raises:
+        AssertionError: If the stream label is not found in the mapping
+    """
     selector = selector.strip("[]")
 
     if ":" in selector:
@@ -126,19 +156,48 @@ def parse_stream_selector(
         return stream
 
 
+def _is_filename(token: str) -> bool:
+    """
+    Check if a token is a filename.
+
+    Args:
+        token: The token to check
+
+    Returns:
+        True if the token is a filename, False otherwise
+    """
+    # not start with - and has ext
+    return not token.startswith("-") and len(token.split(".")) > 1
+
+
 def parse_output(
     source: list[str],
     in_streams: Mapping[str, FilterableStream],
     ffmpeg_options: dict[str, FFMpegOption],
 ) -> list[OutputStream]:
+    """
+    Parse output file specifications and their options.
+
+    This function processes the output portion of an FFmpeg command line,
+    handling output file paths, stream mapping, and output-specific options.
+
+    Args:
+        source: List of command-line tokens for output specifications
+        in_streams: Dictionary of available input streams
+        ffmpeg_options: Dictionary of valid FFmpeg options
+
+    Returns:
+        List of OutputStream objects representing the output specifications
+    """
     tokens = source.copy()
 
     export: list[OutputStream] = []
-
     buffer: list[str] = []
+
     while tokens:
         token = tokens.pop(0)
-        if token.startswith("-") or len(buffer) % 2 == 1:
+
+        if not _is_filename(token):
             buffer.append(token)
             continue
 
@@ -183,6 +242,19 @@ def parse_output(
 def parse_input(
     tokens: list[str], ffmpeg_options: dict[str, FFMpegOption]
 ) -> dict[str, FilterableStream]:
+    """
+    Parse input file specifications and their options.
+
+    This function processes the input portion of an FFmpeg command line,
+    handling input file paths and input-specific options.
+
+    Args:
+        tokens: List of command-line tokens for input specifications
+        ffmpeg_options: Dictionary of valid FFmpeg options
+
+    Returns:
+        Dictionary mapping input indices to their FilterableStream objects
+    """
     output: list[AVStream] = []
 
     while "-i" in tokens:
@@ -347,6 +419,29 @@ def parse_global(
 
 
 def parse(cli: str) -> Stream:
+    """
+    Parse a complete FFmpeg command line into a Stream object.
+
+    This function takes a full FFmpeg command line string and converts it into
+    a Stream object representing the filter graph. It handles all components:
+    - Global options
+    - Input files and their options
+    - Filter complex
+    - Output files and their options
+
+    Args:
+        cli: Complete FFmpeg command line string
+
+    Returns:
+        Stream object representing the parsed command line
+
+    Example:
+        ```python
+        stream = parse(
+            "ffmpeg -i input.mp4 -filter_complex '[0:v]scale=1280:720[v]' -map '[v]' output.mp4"
+        )
+        ```
+    """
     # ffmpeg [global_options] {[input_file_options] -i input_url} ... {[output_file_options] output_url} ...
     ffmpeg_options = get_options_dict()
     ffmpeg_filters = get_filter_dict()
