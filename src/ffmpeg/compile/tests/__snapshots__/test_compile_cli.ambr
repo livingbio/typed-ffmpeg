@@ -11,6 +11,12 @@
 # name: test_parse_ffmpeg_commands[global_binary_option][parse-ffmpeg-commands]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None),), filename='output_video.mp4'), index=None),)), index=None)
 # ---
+# name: test_parse_ffmpeg_commands[output_option_with_boolean_option][build-ffmpeg-commands]
+  'ffmpeg -y -nostdin -i input_video.mkv -shortest -b:v 1000k -b:a 128k output_video.mp4'
+# ---
+# name: test_parse_ffmpeg_commands[output_option_with_boolean_option][parse-ffmpeg-commands]
+  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'shortest': True, 'b:v': '1000k', 'b:a': '128k'}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None),), filename='output_video.mp4'), index=None),)), index=None)
+# ---
 # name: test_parse_ffmpeg_commands[output_option_with_stream_selector][build-ffmpeg-commands]
   'ffmpeg -y -nostdin -i input_video.mkv -b:v 1000k output_video.mp4'
 # ---
