@@ -161,8 +161,20 @@ def parse_output(
                     if isinstance(in_streams[k], AVStream)
                 ]
 
-        assert inputs, f"No inputs found for output {filename}"
-        export.append(output(*inputs, filename=filename, extra_options=options))
+        parameters: dict[str, str | bool] = {}
+
+        for key, value in options.items():
+            assert key.split(":")[0] in ffmpeg_options, f"Unknown option: {key}"
+            option = ffmpeg_options[key.split(":")[0]]
+
+            if option.is_output_option:
+                # just ignore not input options
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
+
+        export.append(output(*inputs, filename=filename, extra_options=parameters))
         buffer = []
 
     return export
