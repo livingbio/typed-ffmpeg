@@ -9,7 +9,7 @@ paths:
   - .github/workflows
 
 paths-ignore:
-  - 'ffmpeg'
+  - '/ffmpeg'
 
 query-filters:
   - include:
