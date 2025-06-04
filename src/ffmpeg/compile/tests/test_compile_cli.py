@@ -36,6 +36,10 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
             "ffmpeg.exe -i input_video.mkv output_video.mp4",
             id="ffmpeg_exe",
         ),
+        pytest.param(
+            "ffmpeg -y -nostdin -i input_video.mkv -b:v 1000k output_video.mp4",
+            id="output_option_with_stream_selector",
+        ),
     ],
 )
 def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:
