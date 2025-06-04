@@ -4,7 +4,7 @@
   #!/usr/bin/env python3
   
   from dataclasses import dataclass
-  from typing import Optional, Union, tuple
+  from typing import Optional, Union
   
   @dataclass(kw_only=True, frozen=True)
   class ffprobeType:
@@ -26,11 +26,14 @@
   
   @dataclass(kw_only=True, frozen=True)
   class framesType:
-      framesType: Optional[tuple[Union["frameType" | "subtitleType"], ...]] = None
+      frame: Optional[tuple["frameType", ...]] = None
+      subtitle: Optional[tuple["subtitleType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class packetsAndFramesType:
-      packetsAndFramesType: Optional[tuple[Union["packetType" | "frameType" | "subtitleType"], ...]] = None
+      packet: Optional[tuple["packetType", ...]] = None
+      frame: Optional[tuple["frameType", ...]] = None
+      subtitle: Optional[tuple["subtitleType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class tagsType:

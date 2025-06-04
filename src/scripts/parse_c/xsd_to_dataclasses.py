@@ -202,17 +202,15 @@ def generate_dataclass_fields(
 
     # Handle choice elements
     for choice in find_elements_with_namespace(complex_type, ".//xsd:choice", ns):
-        choice_types = get_choice_types(choice, ns)
-        if choice_types:
-            # Get the name from the parent element's name attribute
-            name = complex_type.get("name", "choice")
+        for element in choice.findall("./{*}element"):
+            name = element.get("name", "")
+            type_name = element.get("type", "").split(":")[-1]
+            max_occurs = choice.get("maxOccurs", "1")
 
-            # Create a Union type for the choice
-            union_type = ", ".join(f'"{t}"' for t in choice_types)
-            if choice.get("maxOccurs") == "unbounded":
-                field_type = f"Optional[tuple[Union[{union_type}], ...]]"
+            if max_occurs == "unbounded":
+                field_type = f'Optional[tuple["{type_name}", ...]]'
             else:
-                field_type = f"Optional[Union[{union_type}]]"
+                field_type = f'Optional["{type_name}"]'
             fields.append(f"    {name}: {field_type} = None")
 
     # Handle attributes
