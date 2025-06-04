@@ -25,19 +25,22 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
     )
 
 
-def test_parse_global_binary_option(snapshot: SnapshotAssertion) -> None:
-    parsed = parse("ffmpeg -nostdin -i input_video.mkv -y output_video.mp4")
+@pytest.mark.parametrize(
+    "command",
+    [
+        pytest.param(
+            "ffmpeg -nostdin -i input_video.mkv -y output_video.mp4",
+            id="global_binary_option",
+        ),
+        pytest.param(
+            "ffmpeg.exe -i input_video.mkv output_video.mp4",
+            id="ffmpeg_exe",
+        ),
+    ],
+)
+def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:
+    parsed = parse(command)
     assert (
-        snapshot(
-            name="parse-global-binary-option", extension_class=JSONSnapshotExtension
-        )
-        == parsed
-    )
-
-
-def test_parse_ffmpeg_exe(snapshot: SnapshotAssertion) -> None:
-    parsed = parse("ffmpeg.exe -i input_video.mkv output_video.mp4")
-    assert (
-        snapshot(name="parse-ffmpeg-exe", extension_class=JSONSnapshotExtension)
+        snapshot(name="parse-ffmpeg-commands", extension_class=JSONSnapshotExtension)
         == parsed
     )
