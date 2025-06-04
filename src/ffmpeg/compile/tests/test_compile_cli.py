@@ -29,7 +29,7 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
     "command",
     [
         pytest.param(
-            "ffmpeg -nostdin -i input_video.mkv -y output_video.mp4",
+            "ffmpeg -y -nostdin -i input_video.mkv output_video.mp4",
             id="global_binary_option",
         ),
         pytest.param(
@@ -40,7 +40,5 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
 )
 def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:
     parsed = parse(command)
-    assert (
-        snapshot(name="parse-ffmpeg-commands", extension_class=JSONSnapshotExtension)
-        == parsed
-    )
+    assert snapshot(name="parse-ffmpeg-commands") == parsed
+    assert snapshot(name="build-ffmpeg-commands") == compile(parsed)

@@ -1,0 +1,13 @@
+# serializer version: 1
+# name: test_parse_ffmpeg_commands[ffmpeg_exe][build-ffmpeg-commands]
+  'ffmpeg -i input_video.mkv output_video.mp4'
+# ---
+# name: test_parse_ffmpeg_commands[ffmpeg_exe][parse-ffmpeg-commands]
+  GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None),), filename='output_video.mp4'), index=None),)), index=None)
+# ---
+# name: test_parse_ffmpeg_commands[global_binary_option][build-ffmpeg-commands]
+  'ffmpeg -y -nostdin -i input_video.mkv output_video.mp4'
+# ---
+# name: test_parse_ffmpeg_commands[global_binary_option][parse-ffmpeg-commands]
+  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None),), filename='output_video.mp4'), index=None),)), index=None)
+# ---

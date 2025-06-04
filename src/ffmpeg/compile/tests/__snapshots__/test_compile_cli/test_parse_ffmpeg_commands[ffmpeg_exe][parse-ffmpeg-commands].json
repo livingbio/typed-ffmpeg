@@ -1,1 +1,0 @@
-"GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None),), filename='output_video.mp4'), index=None),)), index=None)"
