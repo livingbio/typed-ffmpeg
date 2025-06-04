@@ -4,7 +4,7 @@
   #!/usr/bin/env python3
   
   from dataclasses import dataclass
-  from typing import Optional, Tuple
+  from typing import Optional, Union, tuple
   
   @dataclass(kw_only=True, frozen=True)
   class ffprobeType:
@@ -22,22 +22,19 @@
   
   @dataclass(kw_only=True, frozen=True)
   class packetsType:
-      packet: Optional[Tuple["packetType", ...]] = None
+      packet: Optional[tuple["packetType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class framesType:
-      frame: Optional["frameType"] = None
-      subtitle: Optional["subtitleType"] = None
+      framesType: Optional[tuple[Union["frameType" | "subtitleType"], ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class packetsAndFramesType:
-      packet: Optional["packetType"] = None
-      frame: Optional["frameType"] = None
-      subtitle: Optional["subtitleType"] = None
+      packetsAndFramesType: Optional[tuple[Union["packetType" | "frameType" | "subtitleType"], ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class tagsType:
-      tag: Optional[Tuple["tagType", ...]] = None
+      tag: Optional[tuple["tagType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class packetType:
@@ -59,11 +56,11 @@
   
   @dataclass(kw_only=True, frozen=True)
   class packetSideDataListType:
-      side_data: Optional[Tuple["packetSideDataType", ...]] = None
+      side_data: Optional[tuple["packetSideDataType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class packetSideDataType:
-      side_datum: Optional[Tuple["packetSideDatumType", ...]] = None
+      side_datum: Optional[tuple["packetSideDatumType", ...]] = None
       type: Optional[str] = None
   
   @dataclass(kw_only=True, frozen=True)
@@ -117,7 +114,7 @@
   
   @dataclass(kw_only=True, frozen=True)
   class logsType:
-      log: Optional[Tuple["logType", ...]] = None
+      log: Optional[tuple["logType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class logType:
@@ -130,13 +127,13 @@
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataListType:
-      side_data: Optional[Tuple["frameSideDataType", ...]] = None
+      side_data: Optional[tuple["frameSideDataType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataType:
       timecodes: Optional["frameSideDataTimecodeList"] = None
       components: Optional["frameSideDataComponentList"] = None
-      side_datum: Optional[Tuple["frameSideDatumType", ...]] = None
+      side_datum: Optional[tuple["frameSideDatumType", ...]] = None
       side_data_type: Optional[str] = None
       side_data_size: Optional[int] = None
       timecode: Optional[str] = None
@@ -148,7 +145,7 @@
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataTimecodeList:
-      timecode: Optional[Tuple["frameSideDataTimecodeType", ...]] = None
+      timecode: Optional[tuple["frameSideDataTimecodeType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataTimecodeType:
@@ -156,20 +153,20 @@
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataComponentList:
-      component: Optional[Tuple["frameSideDataComponentType", ...]] = None
+      component: Optional[tuple["frameSideDataComponentType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataComponentType:
       pieces: Optional["frameSideDataPieceList"] = None
-      side_datum: Optional[Tuple["frameSideDatumType", ...]] = None
+      side_datum: Optional[tuple["frameSideDatumType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataPieceList:
-      piece: Optional[Tuple["frameSideDataPieceType", ...]] = None
+      piece: Optional[tuple["frameSideDataPieceType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class frameSideDataPieceType:
-      side_datum: Optional[Tuple["frameSideDatumType", ...]] = None
+      side_datum: Optional[tuple["frameSideDatumType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class subtitleType:
@@ -183,11 +180,11 @@
   
   @dataclass(kw_only=True, frozen=True)
   class streamsType:
-      stream: Optional[Tuple["streamType", ...]] = None
+      stream: Optional[tuple["streamType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class programsType:
-      program: Optional[Tuple["programType", ...]] = None
+      program: Optional[tuple["programType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class streamDispositionType:
@@ -310,11 +307,11 @@
   
   @dataclass(kw_only=True, frozen=True)
   class chaptersType:
-      chapter: Optional[Tuple["chapterType", ...]] = None
+      chapter: Optional[tuple["chapterType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class chapterType:
-      tags: Optional[Tuple["tagsType", ...]] = None
+      tags: Optional[tuple["tagsType", ...]] = None
       id: Optional[int] = None
       time_base: Optional[str] = None
       start: Optional[int] = None
@@ -333,7 +330,7 @@
   
   @dataclass(kw_only=True, frozen=True)
   class libraryVersionsType:
-      library_version: Optional[Tuple["libraryVersionType", ...]] = None
+      library_version: Optional[tuple["libraryVersionType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class pixelFormatFlagsType:
@@ -352,7 +349,7 @@
   
   @dataclass(kw_only=True, frozen=True)
   class pixelFormatComponentsType:
-      component: Optional[Tuple["pixelFormatComponentType", ...]] = None
+      component: Optional[tuple["pixelFormatComponentType", ...]] = None
   
   @dataclass(kw_only=True, frozen=True)
   class pixelFormatType:
@@ -366,7 +363,7 @@
   
   @dataclass(kw_only=True, frozen=True)
   class pixelFormatsType:
-      pixel_format: Optional[Tuple["pixelFormatType", ...]] = None
+      pixel_format: Optional[tuple["pixelFormatType", ...]] = None
   
   
   registered_types = {

@@ -32,6 +32,9 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Application Frameworks",
 ]
 
+[project.scripts]
+scripts = "scripts.main:app"
+
 [project.urls]
 Homepage = "https://livingbio.github.io/typed-ffmpeg/"
 Repository = "https://github.com/livingbio/typed-ffmpeg"

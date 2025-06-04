@@ -116,10 +116,10 @@ def get_field_type(element: XSDElement) -> str:
         >>> get_field_type(XSDElement("test", "string", "1"))
         'Optional["string"]'
         >>> get_field_type(XSDElement("test", "string", "unbounded"))
-        'Optional[Tuple["string", ...]]'
+        'Optional[tuple["string", ...]]'
     """
     if element.max_occurs == "unbounded":
-        return f'Optional[Tuple["{element.type_name}", ...]]'
+        return f'Optional[tuple["{element.type_name}", ...]]'
     return f'Optional["{element.type_name}"]'
 
 
@@ -154,6 +154,25 @@ def find_elements_with_namespace(
     return list(element.iter(tag))
 
 
+def get_choice_types(choice: ET.Element, ns: dict[str, str]) -> list[str]:
+    """
+    Get the types from a choice element.
+
+    Args:
+        choice: The choice element
+        ns: The namespace mapping
+
+    Returns:
+        A list of type names
+    """
+    types = []
+    for element in choice.findall("./{*}element"):
+        type_name = element.get("type", "").split(":")[-1]
+        if type_name:
+            types.append(type_name)
+    return types
+
+
 def generate_dataclass_fields(
     complex_type: ET.Element, ns: dict[str, str]
 ) -> list[str]:
@@ -173,15 +192,28 @@ def generate_dataclass_fields(
     for sequence in find_elements_with_namespace(complex_type, ".//xsd:sequence", ns):
         for element in sequence.findall("./{*}element"):
             xsd_element = parse_xsd_element(element)
-            field_type = get_field_type(xsd_element)
-            fields.append(f"    {xsd_element.name}: {field_type} = None")
+            if xsd_element.max_occurs == "unbounded":
+                # Inline the unbounded sequence directly
+                field_type = f'Optional[tuple["{xsd_element.type_name}", ...]]'
+                fields.append(f"    {xsd_element.name}: {field_type} = None")
+            else:
+                field_type = f'Optional["{xsd_element.type_name}"]'
+                fields.append(f"    {xsd_element.name}: {field_type} = None")
 
     # Handle choice elements
     for choice in find_elements_with_namespace(complex_type, ".//xsd:choice", ns):
-        for element in choice.findall("./{*}element"):
-            xsd_element = parse_xsd_element(element)
-            field_type = get_field_type(xsd_element)
-            fields.append(f"    {xsd_element.name}: {field_type} = None")
+        choice_types = get_choice_types(choice, ns)
+        if choice_types:
+            # Get the name from the parent element's name attribute
+            name = complex_type.get("name", "choice")
+
+            # Create a Union type for the choice
+            union_type = " | ".join(f'"{t}"' for t in choice_types)
+            if choice.get("maxOccurs") == "unbounded":
+                field_type = f"Optional[tuple[Union[{union_type}], ...]]"
+            else:
+                field_type = f"Optional[Union[{union_type}]]"
+            fields.append(f"    {name}: {field_type} = None")
 
     # Handle attributes
     for attr in complex_type.findall("./{*}attribute"):
@@ -293,7 +325,7 @@ def generate_dataclasses(root: ET.Element, ns: dict[str, str]) -> tuple[str, lis
     output = """#!/usr/bin/env python3
 
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import Optional, Union, tuple
 
 """
 
