@@ -325,7 +325,7 @@ def generate_dataclasses(root: ET.Element, ns: dict[str, str]) -> tuple[str, lis
     output = """#!/usr/bin/env python3
 
 from dataclasses import dataclass
-from typing import Optional, Union, tuple
+from typing import Optional, Union
 
 """
 
