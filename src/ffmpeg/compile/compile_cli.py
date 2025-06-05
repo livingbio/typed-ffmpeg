@@ -223,15 +223,16 @@ def parse_output(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            assert key.split(":")[0] in ffmpeg_options, f"Unknown option: {key}"
-            option = ffmpeg_options[key.split(":")[0]]
+            key_base = key.split(":")[0]
+            if key_base in ffmpeg_options:
+                option = ffmpeg_options[key_base]
 
-            if option.is_output_option:
-                # just ignore not input options
-                if value[-1] is None:
-                    parameters[key] = True
-                else:
-                    parameters[key] = value[-1]
+                if option.is_output_option:
+                    # just ignore not input options
+                    if value[-1] is None:
+                        parameters[key] = True
+                    else:
+                        parameters[key] = value[-1]
 
         export.append(output(*inputs, filename=filename, extra_options=parameters))
         buffer = []
@@ -268,15 +269,15 @@ def parse_input(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            assert key in ffmpeg_options, f"Unknown option: {key}"
-            option = ffmpeg_options[key]
+            if key in ffmpeg_options:
+                option = ffmpeg_options[key]
 
-            if option.is_input_option:
-                # just ignore not input options
-                if value[-1] is None:
-                    parameters[key] = True
-                else:
-                    parameters[key] = value[-1]
+                if option.is_input_option:
+                    # just ignore not input options
+                    if value[-1] is None:
+                        parameters[key] = True
+                    else:
+                        parameters[key] = value[-1]
 
         output.append(input(filename=filename, extra_options=parameters))
 
@@ -406,15 +407,15 @@ def parse_global(
     parameters: dict[str, str | bool] = {}
 
     for key, value in options.items():
-        assert key in ffmpeg_options, f"Unknown option: {key}"
-        option = ffmpeg_options[key]
+        if key in ffmpeg_options:
+            option = ffmpeg_options[key]
 
-        if option.is_global_option:
-            # Process only recognized global options
-            if value[-1] is None:
-                parameters[key] = True
-            else:
-                parameters[key] = value[-1]
+            if option.is_global_option:
+                # Process only recognized global options
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
     return parameters, remaining_tokens
 
 
