@@ -44,6 +44,10 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
             "ffmpeg -y -nostdin -i input_video.mkv -shortest -b:v 1000k -b:a 128k output_video.mp4",
             id="output_option_with_boolean_option",
         ),
+        pytest.param(
+            "ffmpeg -y -not-exist-global -nostdin -i input_video.mkv -not-exist-input -i input-2.mp4 -not-exist-output -b:v 1000k -b:a 128k output_video.mp4",
+            id="ignore_not_exist_option",
+        ),
     ],
 )
 def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:
