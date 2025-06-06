@@ -338,7 +338,7 @@ def parse_filter_complex(
         filter_params = {}
         param_str = param_str and param_str.strip()
         if param_str:
-            param_parts = re.split(r"(?<!\\)\:", param_str)
+            param_parts = re.split(r"(?<!\\):", param_str)
             for part in param_parts:
                 if "=" in part:
                     key, value = re.split(r"(?<!\\)=", part, 1)
