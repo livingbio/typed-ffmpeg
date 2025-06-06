@@ -309,7 +309,8 @@ def parse_filter_complex(
     Returns:
         Updated stream mapping with new filter outputs added
     """
-    filter_units = filter_complex.split(";")
+    # Use re.split with negative lookbehind to handle escaped semicolons
+    filter_units = re.split(r"(?<!\\);", filter_complex)
 
     for filter_unit in filter_units:
         pattern = re.compile(
@@ -335,11 +336,12 @@ def parse_filter_complex(
 
         # Parse filter parameters into key-value pairs
         filter_params = {}
+        param_str = param_str and param_str.strip()
         if param_str:
-            param_parts = param_str.strip().split(":")
+            param_parts = re.split(r"(?<!\\):", param_str)
             for part in param_parts:
                 if "=" in part:
-                    key, value = part.split("=", 1)
+                    key, value = re.split(r"(?<!\\)=", part, 1)
                     filter_params[key.strip()] = value.strip()
 
         assert isinstance(filter_name, str), f"Expected filter name, got {filter_name}"
