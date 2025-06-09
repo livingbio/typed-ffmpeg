@@ -433,5 +433,5 @@ wrapt==1.17.2
     # via vcrpy
 yarl==1.20.0
     # via vcrpy
-zipp==3.22.0
+zipp==3.23.0
     # via importlib-metadata
