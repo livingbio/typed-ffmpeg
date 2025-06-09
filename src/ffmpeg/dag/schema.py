@@ -49,6 +49,14 @@ class Stream(HashableBaseModel):
         See Also: [Stream specifiers](https://ffmpeg.org/ffmpeg.html#Stream-specifiers-1) `stream_index`
     """
 
+    optional: bool = False
+    """
+    Represents whether the stream is optional.
+
+    Note:
+        See Also: [Advanced options](https://ffmpeg.org/ffmpeg.html#Advanced-options)
+    """
+
     def view(self, format: Literal["png", "svg", "dot"] = "png") -> str:
         """
         Visualize the stream.

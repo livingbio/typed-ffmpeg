@@ -14,17 +14,20 @@
                     "inputs": [],
                     "kwargs": "FrozenDict({})",
                     "name": "A"
-                  }
+                  },
+                  "optional": false
                 }
               ],
               "kwargs": "FrozenDict({})",
               "name": "B"
-            }
+            },
+            "optional": false
           }
         ],
         "kwargs": "FrozenDict({})",
         "name": "C"
-      }
+      },
+      "optional": false
     }
   ],
   "kwargs": "FrozenDict({})",

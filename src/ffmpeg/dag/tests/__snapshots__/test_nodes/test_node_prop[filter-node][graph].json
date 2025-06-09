@@ -6,5 +6,6 @@
     "kwargs": "FrozenDict({'w': '1920', 'h': '1080', 'true': True, 'false': False})",
     "name": "scale",
     "output_typings": []
-  }
+  },
+  "optional": false
 }

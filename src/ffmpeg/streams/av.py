@@ -41,7 +41,9 @@ class AVStream(AudioStream, VideoStream):
         """
         return SubtitleStream(node=self.node, index=self.index)
 
-    def video_stream(self, index: int) -> VideoStream:
+    def video_stream(
+        self, index: int | None = None, optional: bool = False
+    ) -> VideoStream:
         """
         Get the video stream from the input node with a specified index.
 
@@ -51,9 +53,11 @@ class AVStream(AudioStream, VideoStream):
         Returns:
             VideoStream: The video stream from the input node.
         """
-        return VideoStream(node=self.node, index=index)
+        return VideoStream(node=self.node, index=index, optional=optional)
 
-    def audio_stream(self, index: int) -> AudioStream:
+    def audio_stream(
+        self, index: int | None = None, optional: bool = False
+    ) -> AudioStream:
         """
         Get the audio stream from the input node with a specified index.
 
@@ -63,9 +67,11 @@ class AVStream(AudioStream, VideoStream):
         Returns:
             AudioStream: The audio stream from the input node.
         """
-        return AudioStream(node=self.node, index=index)
+        return AudioStream(node=self.node, index=index, optional=optional)
 
-    def subtitle_stream(self, index: int) -> SubtitleStream:
+    def subtitle_stream(
+        self, index: int | None = None, optional: bool = False
+    ) -> SubtitleStream:
         """
         Get the subtitle stream from the input node with a specified index.
 
@@ -75,4 +81,4 @@ class AVStream(AudioStream, VideoStream):
         Returns:
             SubtitleStream: The subtitle stream from the input node.
         """
-        return SubtitleStream(node=self.node, index=index)
+        return SubtitleStream(node=self.node, index=index, optional=optional)

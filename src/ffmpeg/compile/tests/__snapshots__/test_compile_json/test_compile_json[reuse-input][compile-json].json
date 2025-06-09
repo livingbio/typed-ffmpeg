@@ -29,7 +29,8 @@
                 "filename": "input.mp4",
                 "inputs": [],
                 "kwargs": {}
-              }
+              },
+              "optional": false
             },
             {
               "__class__": "VideoStream",
@@ -39,7 +40,8 @@
                 "filename": "input.mp4",
                 "inputs": [],
                 "kwargs": {}
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {
@@ -52,9 +54,11 @@
               "value": "video"
             }
           ]
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": {}
-  }
+  },
+  "optional": false
 }
