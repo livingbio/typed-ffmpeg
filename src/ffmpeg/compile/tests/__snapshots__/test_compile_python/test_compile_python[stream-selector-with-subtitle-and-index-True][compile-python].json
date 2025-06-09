@@ -1,4 +1,4 @@
 [
   "import ffmpeg",
-  "result = ffmpeg.input('input1.mp4').subtitle_stream(0).output(filename='tmp.mp4')"
+  "result = ffmpeg.input('input1.mp4').subtitle_stream(0, optional=False).output(filename='tmp.mp4')"
 ]

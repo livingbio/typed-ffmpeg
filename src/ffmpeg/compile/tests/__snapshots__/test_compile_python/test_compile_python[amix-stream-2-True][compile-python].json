@@ -1,5 +1,5 @@
 [
   "import ffmpeg",
-  "node_1 = ffmpeg.input('input1.mp4').audio.areverse().asplit(outputs=2)",
+  "node_1 = ffmpeg.input('input1.mp4').audio_stream(None, optional=False).areverse().asplit(outputs=2)",
   "result = ffmpeg.filters.amix(node_1.audio(1), node_1.audio(0).areverse(), inputs=2, duration='first').output(filename='tmp.mp4')"
 ]

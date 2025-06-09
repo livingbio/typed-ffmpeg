@@ -782,6 +782,34 @@
     ]),
   })
 # ---
+# name: test_rebuild_graph[stream-select-with-optional][all_nodes]
+  list([
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
+    OutputNode(kwargs=FrozenDict({}), inputs=(SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0, optional=True),), filename='tmp.mp4'),
+  ])
+# ---
+# name: test_rebuild_graph[stream-select-with-optional][all_streams]
+  list([
+    SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0, optional=True),
+  ])
+# ---
+# name: test_rebuild_graph[stream-select-with-optional][outgoing_nodes]
+  defaultdict({
+    SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0, optional=True): list([
+      tuple(
+        OutputNode(kwargs=FrozenDict({}), inputs=(SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0, optional=True),), filename='tmp.mp4'),
+        0,
+      ),
+    ]),
+  })
+# ---
+# name: test_rebuild_graph[stream-select-with-optional][outgoing_streams]
+  defaultdict({
+    InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'): list([
+      SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=0, optional=True),
+    ]),
+  })
+# ---
 # name: test_rebuild_graph[stream-selector-with-filter][all_nodes]
   list([
     InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'),
