@@ -35,6 +35,9 @@ class AVStream(AudioStream, VideoStream):
     def subtitle(self) -> SubtitleStream:
         """
         Get the subtitle stream from the input node.
+
+        Returns:
+            SubtitleStream: The subtitle stream from the input node.
         """
         return SubtitleStream(node=self.node, index=self.index)
 
