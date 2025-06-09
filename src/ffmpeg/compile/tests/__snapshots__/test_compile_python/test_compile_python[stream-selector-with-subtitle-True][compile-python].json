@@ -1,0 +1,4 @@
+[
+  "import ffmpeg",
+  "result = ffmpeg.input('input1.mp4').subtitle.output(filename='tmp.mp4')"
+]

@@ -1,0 +1,21 @@
+{
+  "__class__": "OutputStream",
+  "index": null,
+  "node": {
+    "__class__": "OutputNode",
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "__class__": "SubtitleStream",
+        "index": null,
+        "node": {
+          "__class__": "InputNode",
+          "filename": "input1.mp4",
+          "inputs": [],
+          "kwargs": {}
+        }
+      }
+    ],
+    "kwargs": {}
+  }
+}
