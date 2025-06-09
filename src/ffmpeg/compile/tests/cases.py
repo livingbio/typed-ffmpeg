@@ -138,6 +138,14 @@ def stream_selector_with_filter() -> Stream:
     )
 
 
+def stream_selector_with_subtitle_and_index() -> Stream:
+    return input("input1.mp4").subtitle_stream(0).output(filename="tmp.mp4")
+
+
+def stream_selector_with_subtitle() -> Stream:
+    return input("input1.mp4").subtitle.output(filename="tmp.mp4")
+
+
 shared_cases = [
     pytest.param(simple_global_args(), id="simple-global-args"),
     pytest.param(not_utilize_split(), id="not-utilize-split"),
@@ -154,4 +162,9 @@ shared_cases = [
     pytest.param(multi_output_filter(), id="multi-output-filter"),
     pytest.param(stream_selector(), id="stream-selector"),
     pytest.param(stream_selector_with_filter(), id="stream-selector-with-filter"),
+    pytest.param(
+        stream_selector_with_subtitle_and_index(),
+        id="stream-selector-with-subtitle-and-index",
+    ),
+    pytest.param(stream_selector_with_subtitle(), id="stream-selector-with-subtitle"),
 ]

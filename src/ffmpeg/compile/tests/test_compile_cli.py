@@ -52,6 +52,10 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
             """ffmpeg -i input.mov -filter_complex "[0:v]drawtext=text='=\\\\;\\:':borderw=2:fontcolor=white:fontfile=resources/fonts/arial.ttf:fontsize=30:r=25/1:timecode=00\\:00\\:00\\:00:x=(W-tw)/2:y=text_h[out]" -map [out] output.mp4""",
             id="escaping",
         ),
+        pytest.param(
+            "ffmpeg -i input.mov -map 0:s output.mp4",
+            id="stream_selector_with_subtitle",
+        ),
     ],
 )
 def test_parse_ffmpeg_commands(snapshot: SnapshotAssertion, command: str) -> None:

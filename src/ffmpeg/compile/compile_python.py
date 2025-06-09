@@ -17,6 +17,7 @@ from ..dag.nodes import (
 from ..dag.schema import Node, Stream
 from ..streams.audio import AudioStream
 from ..streams.av import AVStream
+from ..streams.subtitle import SubtitleStream
 from ..streams.video import VideoStream
 from .context import DAGContext
 from .validate import validate
@@ -107,12 +108,19 @@ def get_input_var_name(
                         return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
                     else:
                         return f"{get_output_var_name(stream.node, context)}"
+        case SubtitleStream():
+            match stream.node:
+                case InputNode():
+                    if stream.index is not None:
+                        return f"{get_output_var_name(stream.node, context)}.subtitle_stream({stream.index})"
+                    else:
+                        return f"{get_output_var_name(stream.node, context)}.subtitle"
         case OutputStream():
             return f"{get_output_var_name(stream.node, context)}"
         case GlobalStream():
             return f"{get_output_var_name(stream.node, context)}"
-        case _:
-            raise ValueError(f"Unknown node type: {type(stream.node)}")
+
+    raise ValueError(f"Unknown stream type: {type(stream)}")  # pragma: no cover
 
 
 def get_output_var_name(node: Node, context: DAGContext) -> str:
