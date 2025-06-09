@@ -1914,6 +1914,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/ffmpeg/streams/subtitle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    subtitle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/ffmpeg/streams/video/" class="md-nav__link">
         
   
@@ -3209,11 +3232,11 @@
 <title>%3</title>
 <polygon fill="white" points="-4,4 -4,-40 81,-40 81,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 5bca3374c6c7a1fd -->
+<!-- 6b793227a2d15289 -->
 
 
 <g class="node" id="node1">
-<title>5bca3374c6c7a1fd</title>
+<title>6b793227a2d15289</title>
 <polygon fill="#99cc00" points="77,-36 0,-36 0,0 77,0 77,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-14.9">input.mp4</text>
 </g>
@@ -3270,11 +3293,11 @@
 <title>%3</title>
 <polygon fill="white" points="-4,4 -4,-40 81,-40 81,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 4864fe8ad7559a26 -->
+<!-- dcb2b2cf0cb2119 -->
 
 
 <g class="node" id="node1">
-<title>4864fe8ad7559a26</title>
+<title>dcb2b2cf0cb2119</title>
 <polygon fill="#99cc00" points="77,-36 0,-36 0,0 77,0 77,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-14.9">input.mp4</text>
 </g>
@@ -3340,29 +3363,29 @@
 <title>%3</title>
 <polygon fill="white" points="-4,4 -4,-40 255,-40 255,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 304314b96984aa66 -->
+<!-- 6b793227a2d15289 -->
 
 
 <g class="node" id="node1">
-<title>304314b96984aa66</title>
+<title>6b793227a2d15289</title>
 <polygon fill="#99cc00" points="77,-36 0,-36 0,0 77,0 77,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-14.9">input.mp4</text>
 </g>
 
-<!-- 7ff65c9ab3cb2810 -->
+<!-- 45eb39c5e9377010 -->
 
 
 <g class="node" id="node2">
-<title>7ff65c9ab3cb2810</title>
+<title>45eb39c5e9377010</title>
 <polygon fill="#99ccff" points="251,-36 165,-36 165,0 251,0 251,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="208" y="-14.9">output.mp4</text>
 </g>
 
-<!-- 304314b96984aa66&#45;&gt;7ff65c9ab3cb2810 -->
+<!-- 6b793227a2d15289&#45;&gt;45eb39c5e9377010 -->
 
 
 <g class="edge" id="edge1">
-<title>304314b96984aa66-&gt;7ff65c9ab3cb2810</title>
+<title>6b793227a2d15289-&gt;45eb39c5e9377010</title>
 <path d="M77.09,-18C99.98,-18 129.56,-18 154.71,-18" fill="none" stroke="black"></path>
 <polygon fill="black" points="154.82,-21.5 164.82,-18 154.82,-14.5 154.82,-21.5" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="121" y="-21.8">0 =&gt; 0</text>
@@ -3421,6 +3444,27 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
+<div class="language-python highlight"><pre><span></span><code><span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">subtitle</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;output.mp3&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">compile_line</span><span class="p">()</span>  <span class="c1"># select subtitle stream</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>'ffmpeg -i input.mp4 -map 0:s output.mp3'</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
 <div class="language-python highlight"><pre><span></span><code><span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">video_stream</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
     <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span>
 <span class="p">)</span><span class="o">.</span><span class="n">compile_line</span><span class="p">()</span>  <span class="c1"># select video stream with index 0</span>
@@ -3454,6 +3498,27 @@
 <div class="output_text output_subarea output_execute_result">
 <pre>
 <code>'ffmpeg -i input.mp4 -map 0:a:0 output.mp3'</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="language-python highlight"><pre><span></span><code><span class="n">ffmpeg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">subtitle_stream</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;output.mp3&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">compile_line</span><span class="p">()</span>  <span class="c1"># select subtitle stream with index 0</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>'ffmpeg -i input.mp4 -map 0:s:0 output.mp3'</code>
 </pre>
 </div>
 </div>
@@ -3520,29 +3585,29 @@
 <title>%3</title>
 <polygon fill="white" points="-4,4 -4,-40 252,-40 252,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 304314b96984aa66 -->
+<!-- 6b793227a2d15289 -->
 
 
 <g class="node" id="node1">
-<title>304314b96984aa66</title>
+<title>6b793227a2d15289</title>
 <polygon fill="#99cc00" points="77,-36 0,-36 0,0 77,0 77,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-14.9">input.mp4</text>
 </g>
 
-<!-- 5d799d67c3bb4add -->
+<!-- 1704bae08a1d1747 -->
 
 
 <g class="node" id="node2">
-<title>5d799d67c3bb4add</title>
+<title>1704bae08a1d1747</title>
 <polygon fill="#99ccff" points="248,-36 162,-36 162,0 248,0 248,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="205" y="-14.9">output.mp4</text>
 </g>
 
-<!-- 304314b96984aa66&#45;&gt;5d799d67c3bb4add -->
+<!-- 6b793227a2d15289&#45;&gt;1704bae08a1d1747 -->
 
 
 <g class="edge" id="edge1">
-<title>304314b96984aa66-&gt;5d799d67c3bb4add</title>
+<title>6b793227a2d15289-&gt;1704bae08a1d1747</title>
 <path d="M77.24,-18C99.32,-18 127.52,-18 151.71,-18" fill="none" stroke="black"></path>
 <polygon fill="black" points="151.81,-21.5 161.81,-18 151.81,-14.5 151.81,-21.5" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="119.5" y="-21.8">* =&gt; 0</text>
@@ -3602,29 +3667,29 @@
 <title>%3</title>
 <polygon fill="white" points="-4,4 -4,-40 252,-40 252,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 304314b96984aa66 -->
+<!-- 6b793227a2d15289 -->
 
 
 <g class="node" id="node1">
-<title>304314b96984aa66</title>
+<title>6b793227a2d15289</title>
 <polygon fill="#99cc00" points="77,-36 0,-36 0,0 77,0 77,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="38.5" y="-14.9">input.mp4</text>
 </g>
 
-<!-- 79c1b6cb9cb46990 -->
+<!-- 46a94c1a27e91a29 -->
 
 
 <g class="node" id="node2">
-<title>79c1b6cb9cb46990</title>
+<title>46a94c1a27e91a29</title>
 <polygon fill="#99ccff" points="248,-36 162,-36 162,0 248,0 248,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="205" y="-14.9">output.mp4</text>
 </g>
 
-<!-- 304314b96984aa66&#45;&gt;79c1b6cb9cb46990 -->
+<!-- 6b793227a2d15289&#45;&gt;46a94c1a27e91a29 -->
 
 
 <g class="edge" id="edge1">
-<title>304314b96984aa66-&gt;79c1b6cb9cb46990</title>
+<title>6b793227a2d15289-&gt;46a94c1a27e91a29</title>
 <path d="M77.24,-18C99.32,-18 127.52,-18 151.71,-18" fill="none" stroke="black"></path>
 <polygon fill="black" points="151.81,-21.5 161.81,-18 151.81,-14.5 151.81,-21.5" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="119.5" y="-21.8">* =&gt; 0</text>
@@ -3685,48 +3750,48 @@
 <title>%3</title>
 <polygon fill="white" points="-4,4 -4,-94 260,-94 260,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 3eeed28a3f74e554 -->
+<!-- 5a5a67e6040134cb -->
 
 
 <g class="node" id="node1">
-<title>3eeed28a3f74e554</title>
+<title>5a5a67e6040134cb</title>
 <polygon fill="#99cc00" points="85,-90 0,-90 0,-54 85,-54 85,-90" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-68.9">input1.mp4</text>
 </g>
 
-<!-- 53aea0d4233ab7a4 -->
+<!-- 43fd0c048d866383 -->
 
 
 <g class="node" id="node3">
-<title>53aea0d4233ab7a4</title>
+<title>43fd0c048d866383</title>
 <polygon fill="#99ccff" points="256,-63 170,-63 170,-27 256,-27 256,-63" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="213" y="-41.9">output.mp4</text>
 </g>
 
-<!-- 3eeed28a3f74e554&#45;&gt;53aea0d4233ab7a4 -->
+<!-- 5a5a67e6040134cb&#45;&gt;43fd0c048d866383 -->
 
 
 <g class="edge" id="edge1">
-<title>3eeed28a3f74e554-&gt;53aea0d4233ab7a4</title>
+<title>5a5a67e6040134cb-&gt;43fd0c048d866383</title>
 <path d="M85.15,-65.33C107.75,-61.7 135.9,-57.19 159.93,-53.34" fill="none" stroke="black"></path>
 <polygon fill="black" points="160.63,-56.78 169.95,-51.74 159.52,-49.86 160.63,-56.78" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-64.8">* =&gt; 0</text>
 </g>
 
-<!-- 10e6b04a01d97613 -->
+<!-- 44dedd64f34a9bb4 -->
 
 
 <g class="node" id="node2">
-<title>10e6b04a01d97613</title>
+<title>44dedd64f34a9bb4</title>
 <polygon fill="#99cc00" points="85,-36 0,-36 0,0 85,0 85,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-14.9">input2.mp3</text>
 </g>
 
-<!-- 10e6b04a01d97613&#45;&gt;53aea0d4233ab7a4 -->
+<!-- 44dedd64f34a9bb4&#45;&gt;43fd0c048d866383 -->
 
 
 <g class="edge" id="edge2">
-<title>10e6b04a01d97613-&gt;53aea0d4233ab7a4</title>
+<title>44dedd64f34a9bb4-&gt;43fd0c048d866383</title>
 <path d="M85.15,-24.67C107.75,-28.3 135.9,-32.81 159.93,-36.66" fill="none" stroke="black"></path>
 <polygon fill="black" points="159.52,-40.14 169.95,-38.26 160.63,-33.22 159.52,-40.14" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-37.8">* =&gt; 1</text>
@@ -3783,48 +3848,48 @@
 <title>%3</title>
 <polygon fill="white" points="-4,4 -4,-94 260,-94 260,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 3eeed28a3f74e554 -->
+<!-- 5a5a67e6040134cb -->
 
 
 <g class="node" id="node1">
-<title>3eeed28a3f74e554</title>
+<title>5a5a67e6040134cb</title>
 <polygon fill="#99cc00" points="85,-90 0,-90 0,-54 85,-54 85,-90" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-68.9">input1.mp4</text>
 </g>
 
-<!-- 53aea0d4233ab7a4 -->
+<!-- 43fd0c048d866383 -->
 
 
 <g class="node" id="node3">
-<title>53aea0d4233ab7a4</title>
+<title>43fd0c048d866383</title>
 <polygon fill="#99ccff" points="256,-63 170,-63 170,-27 256,-27 256,-63" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="213" y="-41.9">output.mp4</text>
 </g>
 
-<!-- 3eeed28a3f74e554&#45;&gt;53aea0d4233ab7a4 -->
+<!-- 5a5a67e6040134cb&#45;&gt;43fd0c048d866383 -->
 
 
 <g class="edge" id="edge1">
-<title>3eeed28a3f74e554-&gt;53aea0d4233ab7a4</title>
+<title>5a5a67e6040134cb-&gt;43fd0c048d866383</title>
 <path d="M85.15,-65.33C107.75,-61.7 135.9,-57.19 159.93,-53.34" fill="none" stroke="black"></path>
 <polygon fill="black" points="160.63,-56.78 169.95,-51.74 159.52,-49.86 160.63,-56.78" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-64.8">* =&gt; 0</text>
 </g>
 
-<!-- 10e6b04a01d97613 -->
+<!-- 44dedd64f34a9bb4 -->
 
 
 <g class="node" id="node2">
-<title>10e6b04a01d97613</title>
+<title>44dedd64f34a9bb4</title>
 <polygon fill="#99cc00" points="85,-36 0,-36 0,0 85,0 85,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-14.9">input2.mp3</text>
 </g>
 
-<!-- 10e6b04a01d97613&#45;&gt;53aea0d4233ab7a4 -->
+<!-- 44dedd64f34a9bb4&#45;&gt;43fd0c048d866383 -->
 
 
 <g class="edge" id="edge2">
-<title>10e6b04a01d97613-&gt;53aea0d4233ab7a4</title>
+<title>44dedd64f34a9bb4-&gt;43fd0c048d866383</title>
 <path d="M85.15,-24.67C107.75,-28.3 135.9,-32.81 159.93,-36.66" fill="none" stroke="black"></path>
 <polygon fill="black" points="159.52,-40.14 169.95,-38.26 160.63,-33.22 159.52,-40.14" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-37.8">* =&gt; 1</text>
@@ -3885,94 +3950,94 @@
 <!-- Title: %3 Pages: 1 -->
 
 
-<svg height="98pt" viewbox="0.00 0.00 411.00 98.00" width="411pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg height="98pt" viewbox="0.00 0.00 3221.00 98.00" width="3221pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 94)">
 <title>%3</title>
-<polygon fill="white" points="-4,4 -4,-94 407,-94 407,4 -4,4" stroke="transparent"></polygon>
+<polygon fill="white" points="-4,4 -4,-94 3217,-94 3217,4 -4,4" stroke="transparent"></polygon>
 
-<!-- 3eeed28a3f74e554 -->
+<!-- 5a5a67e6040134cb -->
 
 
 <g class="node" id="node1">
-<title>3eeed28a3f74e554</title>
+<title>5a5a67e6040134cb</title>
 <polygon fill="#99cc00" points="85,-90 0,-90 0,-54 85,-54 85,-90" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-68.9">input1.mp4</text>
 </g>
 
-<!-- 36304e0da688b87 -->
+<!-- 3732df4b39d4ef5 -->
 
 
 <g class="node" id="node3">
-<title>36304e0da688b87</title>
+<title>3732df4b39d4ef5</title>
 <polygon fill="#99ccff" points="264,-90 170,-90 170,-54 264,-54 264,-90" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="217" y="-68.9">output1.mp4</text>
 </g>
 
-<!-- 3eeed28a3f74e554&#45;&gt;36304e0da688b87 -->
+<!-- 5a5a67e6040134cb&#45;&gt;3732df4b39d4ef5 -->
 
 
 <g class="edge" id="edge1">
-<title>3eeed28a3f74e554-&gt;36304e0da688b87</title>
+<title>5a5a67e6040134cb-&gt;3732df4b39d4ef5</title>
 <path d="M85.26,-72C107.59,-72 135.41,-72 159.64,-72" fill="none" stroke="black"></path>
 <polygon fill="black" points="159.77,-75.5 169.77,-72 159.77,-68.5 159.77,-75.5" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-75.8">* =&gt; 0</text>
 </g>
 
-<!-- 582b34bd6506058b -->
+<!-- 1f9068427c0b4484 -->
 
 
 <g class="node" id="node2">
-<title>582b34bd6506058b</title>
+<title>1f9068427c0b4484</title>
 <polygon fill="#99cc00" points="85,-36 0,-36 0,0 85,0 85,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="42.5" y="-14.9">input2.mp4</text>
 </g>
 
-<!-- 5a8b1f37c9402ea6 -->
+<!-- 7e04b1e1039916f3 -->
 
 
 <g class="node" id="node4">
-<title>5a8b1f37c9402ea6</title>
+<title>7e04b1e1039916f3</title>
 <polygon fill="#99ccff" points="264,-36 170,-36 170,0 264,0 264,-36" stroke="black"></polygon>
 <text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="217" y="-14.9">output2.mp4</text>
 </g>
 
-<!-- 582b34bd6506058b&#45;&gt;5a8b1f37c9402ea6 -->
+<!-- 1f9068427c0b4484&#45;&gt;7e04b1e1039916f3 -->
 
 
 <g class="edge" id="edge2">
-<title>582b34bd6506058b-&gt;5a8b1f37c9402ea6</title>
+<title>1f9068427c0b4484-&gt;7e04b1e1039916f3</title>
 <path d="M85.26,-18C107.59,-18 135.41,-18 159.64,-18" fill="none" stroke="black"></path>
 <polygon fill="black" points="159.77,-21.5 169.77,-18 159.77,-14.5 159.77,-21.5" stroke="black"></polygon>
 <text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="127.5" y="-21.8">* =&gt; 0</text>
 </g>
 
-<!-- 197f502c15dece25 -->
+<!-- 227a5b8e5fb01287 -->
 
 
 <g class="node" id="node5">
-<title>197f502c15dece25</title>
-<polygon fill="lightgrey" points="403,-63 349,-63 349,-27 403,-27 403,-63" stroke="black"></polygon>
-<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="376" y="-41.9">-y</text>
+<title>227a5b8e5fb01287</title>
+<polygon fill="lightgrey" points="3213,-63 349,-63 349,-27 3213,-27 3213,-63" stroke="black"></polygon>
+<text font-family="Helvetica,sans-Serif" font-size="12.00" text-anchor="middle" x="1781" y="-41.9">GlobalNode(kwargs=FrozenDict({'y': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None)))</text>
 </g>
 
-<!-- 36304e0da688b87&#45;&gt;197f502c15dece25 -->
+<!-- 3732df4b39d4ef5&#45;&gt;227a5b8e5fb01287 -->
 
 
 <g class="edge" id="edge3">
-<title>36304e0da688b87-&gt;197f502c15dece25</title>
-<path d="M264.26,-64.05C287.99,-59.96 316.49,-55.06 338.64,-51.25" fill="none" stroke="black"></path>
-<polygon fill="black" points="339.37,-54.68 348.63,-49.53 338.18,-47.78 339.37,-54.68" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="306.5" y="-63.8">* =&gt; 0</text>
+<title>3732df4b39d4ef5-&gt;227a5b8e5fb01287</title>
+<path d="M264.32,-71.2C344.94,-69.81 522.25,-66.74 728.24,-63.18" fill="none" stroke="black"></path>
+<polygon fill="black" points="728.44,-66.68 738.38,-63 728.32,-59.68 728.44,-66.68" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="306.5" y="-73.8">* =&gt; 0</text>
 </g>
 
-<!-- 5a8b1f37c9402ea6&#45;&gt;197f502c15dece25 -->
+<!-- 7e04b1e1039916f3&#45;&gt;227a5b8e5fb01287 -->
 
 
 <g class="edge" id="edge4">
-<title>5a8b1f37c9402ea6-&gt;197f502c15dece25</title>
-<path d="M264.14,-22.7C284.71,-25.17 309.18,-28.6 331,-33 333.51,-33.51 336.09,-34.08 338.69,-34.69" fill="none" stroke="black"></path>
-<polygon fill="black" points="338.06,-38.14 348.61,-37.19 339.77,-31.35 338.06,-38.14" stroke="black"></polygon>
-<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="306.5" y="-36.8">* =&gt; 1</text>
+<title>7e04b1e1039916f3-&gt;227a5b8e5fb01287</title>
+<path d="M264.32,-18.8C344.94,-20.19 522.25,-23.26 728.24,-26.82" fill="none" stroke="black"></path>
+<polygon fill="black" points="728.32,-30.32 738.38,-27 728.44,-23.32 728.32,-30.32" stroke="black"></polygon>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="306.5" y="-22.8">* =&gt; 1</text>
 </g>
 </g>
 </svg>
