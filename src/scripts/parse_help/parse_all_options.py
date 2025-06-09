@@ -1,7 +1,7 @@
 import re
 import subprocess
 
-from .schema import FFMpegAVOption, FFMpegOptionChoice, FFMpegOptionValue
+from .schema import FFMpegAVOption, FFMpegOptionChoice
 
 
 def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
@@ -52,30 +52,37 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
             if last_option.type == "flags":
                 choice = re_choice_pattern.findall(line)
                 assert choice, f"No choice found in line: {line}"
+                name, flags, help = choice[0]
                 choices.append(
                     FFMpegOptionChoice(
-                        name=choice[0][0].strip(),
-                        help=choice[0][2],
+                        name=name.strip(),
+                        flags=flags,
+                        help=help,
+                        value=name.strip(),
                     )
                 )
             elif last_option.type == "string":
                 choice = re_choice_pattern.findall(line)
                 assert choice, f"No choice found in line: {line}"
+                name, flags, help = choice[0]
                 choices.append(
-                    FFMpegOptionValue(
-                        name=choice[0][0].strip(),
-                        value=choice[0][0],
-                        help=choice[0][2],
+                    FFMpegOptionChoice(
+                        name=name.strip(),
+                        flags=flags,
+                        help=help,
+                        value=name.strip(),
                     )
                 )
             else:
-                value = re_value_pattern.findall(line)
-                assert value, f"No value found in line: {line}"
+                v = re_value_pattern.findall(line)
+                assert v, f"No value found in line: {line}"
+                name, value, flags, help = v[0]
                 choices.append(
-                    FFMpegOptionValue(
-                        name=value[0][0].strip(),
-                        value=value[0][1],
-                        help=value[0][3],
+                    FFMpegOptionChoice(
+                        name=name.strip(),
+                        flags=flags,
+                        value=value,
+                        help=help,
                     )
                 )
 

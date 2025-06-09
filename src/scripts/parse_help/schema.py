@@ -5,10 +5,7 @@ from dataclasses import dataclass
 class FFMpegOptionChoice:
     name: str
     help: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class FFMpegOptionValue(FFMpegOptionChoice):
+    flags: str
     value: str
 
 
