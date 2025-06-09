@@ -1,5 +1,6 @@
 from ..dag.nodes import InputNode
 from .audio import AudioStream
+from .subtitle import SubtitleStream
 from .video import VideoStream
 
 
@@ -30,6 +31,13 @@ class AVStream(AudioStream, VideoStream):
         """
         return AudioStream(node=self.node, index=self.index)
 
+    @property
+    def subtitle(self) -> SubtitleStream:
+        """
+        Get the subtitle stream from the input node.
+        """
+        return SubtitleStream(node=self.node, index=self.index)
+
     def video_stream(self, index: int) -> VideoStream:
         """
         Get the video stream from the input node with a specified index.
@@ -53,3 +61,15 @@ class AVStream(AudioStream, VideoStream):
             AudioStream: The audio stream from the input node.
         """
         return AudioStream(node=self.node, index=index)
+
+    def subtitle_stream(self, index: int) -> SubtitleStream:
+        """
+        Get the subtitle stream from the input node with a specified index.
+
+        Args:
+            index: The index of the subtitle stream.
+
+        Returns:
+            SubtitleStream: The subtitle stream from the input node.
+        """
+        return SubtitleStream(node=self.node, index=index)

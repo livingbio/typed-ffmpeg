@@ -35,3 +35,9 @@
 # name: test_parse_ffmpeg_commands[output_option_with_stream_selector][parse-ffmpeg-commands]
   GlobalStream(node=GlobalNode(kwargs=FrozenDict({'y': True, 'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'b:v': '1000k'}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None),), filename='output_video.mp4'), index=None),)), index=None)
 # ---
+# name: test_parse_ffmpeg_commands[stream_selector_with_subtitle][build-ffmpeg-commands]
+  'ffmpeg -i input.mov -map 0:s output.mp4'
+# ---
+# name: test_parse_ffmpeg_commands[stream_selector_with_subtitle][parse-ffmpeg-commands]
+  GlobalStream(node=GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(SubtitleStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input.mov'), index=None),), filename='output.mp4'), index=None),)), index=None)
+# ---
