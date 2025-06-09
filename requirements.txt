@@ -304,7 +304,7 @@ pytest==8.3.5
     #   syrupy
 pytest-cov==6.1.1
     # via -r requirements.in
-pytest-datadir==1.7.0
+pytest-datadir==1.7.2
     # via -r requirements.in
 pytest-recording==0.13.4
     # via -r requirements.in
