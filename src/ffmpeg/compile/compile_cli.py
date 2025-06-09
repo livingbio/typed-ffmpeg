@@ -141,32 +141,24 @@ def parse_stream_selector(
     stream = mapping[stream_label]
 
     if isinstance(stream, AVStream):
-        if selector.count(":") == 1:
-            stream_label, stream_type = selector.split(":", 1)
+        if ":" in selector:
+            if selector.count(":") == 1:
+                stream_label, stream_type = selector.split(":", 1)
+                stream_index = None
+            elif selector.count(":") == 2:
+                stream_label, stream_type, _stream_index = selector.split(":", 2)
+                stream_index = int(_stream_index)
+
             match stream_type:
                 case "v":
-                    return stream.video
+                    return stream.video_stream(stream_index)
                 case "a":
-                    return stream.audio
+                    return stream.audio_stream(stream_index)
                 case "s":
-                    return stream.subtitle
+                    return stream.subtitle_stream(stream_index)
                 case _:
                     raise FFMpegValueError(f"Unknown stream type: {stream_type}")
-        elif selector.count(":") == 2:
-            stream_label, stream_type, stream_index = selector.split(":", 2)
-            match stream_type:
-                case "v":
-                    return stream.video_stream(int(stream_index))
-                case "a":
-                    return stream.audio_stream(int(stream_index))
-                case "s":
-                    return stream.subtitle_stream(int(stream_index))
-                case _:
-                    raise FFMpegValueError(f"Unknown stream type: {stream_type}")
-        else:
-            return stream
-    else:
-        return stream
+    return stream
 
 
 def _is_filename(token: str) -> bool:
