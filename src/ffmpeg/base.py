@@ -151,7 +151,7 @@ def filter_multi_output(
         *streams: One or more input streams to apply the filter to
         name: The FFmpeg filter name (e.g., 'split', 'channelsplit', etc.)
         input_typings: The expected types of the input streams
-        output_tyings: The expected types of each output stream
+        output_typings: The expected types of each output stream
         **kwargs: Filter-specific parameters as keyword arguments
 
     Returns:
@@ -162,7 +162,7 @@ def filter_multi_output(
         ```python
         # Split a video into two identical streams
         split_node = ffmpeg.filter_multi_output(
-            stream, name="split", output_tyings=(StreamType.video, StreamType.video)
+            stream, name="split", output_typings=(StreamType.video, StreamType.video)
         )
         stream1 = split_node.video(0)
         stream2 = split_node.video(1)
