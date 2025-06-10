@@ -5,6 +5,7 @@
   "FFMpegTypeError",
   "FFMpegValueError",
   "Stream",
+  "SubtitleStream",
   "VideoStream",
   "__all__",
   "__builtins__",
