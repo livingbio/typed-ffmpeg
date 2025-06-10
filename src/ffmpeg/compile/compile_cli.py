@@ -20,6 +20,7 @@ import re
 import shlex
 from collections import defaultdict
 from collections.abc import Mapping
+from dataclasses import replace
 
 from ..base import input, merge_outputs, output
 from ..common.cache import load
@@ -141,6 +142,12 @@ def parse_stream_selector(
     stream = mapping[stream_label]
 
     if isinstance(stream, AVStream):
+        if "?" in selector:
+            optional = True
+            selector = selector.strip("?")
+        else:
+            optional = False
+
         if ":" in selector:
             if selector.count(":") == 1:
                 stream_label, stream_type = selector.split(":", 1)
@@ -151,13 +158,14 @@ def parse_stream_selector(
 
             match stream_type:
                 case "v":
-                    return stream.video_stream(stream_index)
+                    return stream.video_stream(stream_index, optional)
                 case "a":
-                    return stream.audio_stream(stream_index)
+                    return stream.audio_stream(stream_index, optional)
                 case "s":
-                    return stream.subtitle_stream(stream_index)
+                    return stream.subtitle_stream(stream_index, optional)
                 case _:
                     raise FFMpegValueError(f"Unknown stream type: {stream_type}")
+        return replace(stream, optional=optional)
     return stream
 
 
@@ -812,7 +820,10 @@ def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
                     and len(node.inputs) == 1
                 ):
                     continue
-                commands += ["-map", get_stream_label(input, context)]
+                if not input.optional:
+                    commands += ["-map", get_stream_label(input, context)]
+                else:
+                    commands += ["-map", f"{get_stream_label(input, context)}?"]
             else:
                 commands += ["-map", f"[{get_stream_label(input, context)}]"]
 

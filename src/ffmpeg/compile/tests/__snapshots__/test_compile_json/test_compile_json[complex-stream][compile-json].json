@@ -61,7 +61,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -72,7 +73,8 @@
                           "value": "video"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -89,7 +91,8 @@
                     "value": "video"
                   }
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "__class__": "AudioStream",
@@ -123,7 +126,8 @@
                             "filename": "input2.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -134,7 +138,8 @@
                           "value": "audio"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -151,7 +156,8 @@
                     "value": "audio"
                   }
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "__class__": "VideoStream",
@@ -185,7 +191,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -196,7 +203,8 @@
                           "value": "video"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -213,7 +221,8 @@
                     "value": "video"
                   }
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "__class__": "AudioStream",
@@ -247,7 +256,8 @@
                             "filename": "input2.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -258,7 +268,8 @@
                           "value": "audio"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -275,7 +286,8 @@
                     "value": "audio"
                   }
                 ]
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {
@@ -294,7 +306,8 @@
               "value": "audio"
             }
           ]
-        }
+        },
+        "optional": false
       },
       {
         "__class__": "AudioStream",
@@ -352,7 +365,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -363,7 +377,8 @@
                           "value": "video"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -380,7 +395,8 @@
                     "value": "video"
                   }
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "__class__": "AudioStream",
@@ -414,7 +430,8 @@
                             "filename": "input2.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -425,7 +442,8 @@
                           "value": "audio"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -442,7 +460,8 @@
                     "value": "audio"
                   }
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "__class__": "VideoStream",
@@ -476,7 +495,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -487,7 +507,8 @@
                           "value": "video"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -504,7 +525,8 @@
                     "value": "video"
                   }
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "__class__": "AudioStream",
@@ -538,7 +560,8 @@
                             "filename": "input2.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -549,7 +572,8 @@
                           "value": "audio"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -566,7 +590,8 @@
                     "value": "audio"
                   }
                 ]
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {
@@ -585,9 +610,11 @@
               "value": "audio"
             }
           ]
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": {}
-  }
+  },
+  "optional": false
 }

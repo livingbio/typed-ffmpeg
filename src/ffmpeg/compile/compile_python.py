@@ -77,10 +77,7 @@ def get_input_var_name(
         case VideoStream():
             match stream.node:
                 case InputNode():
-                    if stream.index is not None:
-                        return f"{get_output_var_name(stream.node, context)}.video_stream({stream.index})"
-                    else:
-                        return f"{get_output_var_name(stream.node, context)}.video"
+                    return f"{get_output_var_name(stream.node, context)}.video_stream({stream.index}, optional={stream.optional})"
                 case FilterNode():
                     if filter_data_dict[stream.node.name].is_dynamic_output:
                         return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
@@ -94,10 +91,7 @@ def get_input_var_name(
         case AudioStream():
             match stream.node:
                 case InputNode():
-                    if stream.index is not None:
-                        return f"{get_output_var_name(stream.node, context)}.audio_stream({stream.index})"
-                    else:
-                        return f"{get_output_var_name(stream.node, context)}.audio"
+                    return f"{get_output_var_name(stream.node, context)}.audio_stream({stream.index}, optional={stream.optional})"
                 case FilterNode():
                     if filter_data_dict[stream.node.name].is_dynamic_output:
                         return f"{get_output_var_name(stream.node, context)}.audio({filter_stream_typed_index(stream, context)})"
@@ -111,10 +105,7 @@ def get_input_var_name(
         case SubtitleStream():
             match stream.node:
                 case InputNode():
-                    if stream.index is not None:
-                        return f"{get_output_var_name(stream.node, context)}.subtitle_stream({stream.index})"
-                    else:
-                        return f"{get_output_var_name(stream.node, context)}.subtitle"
+                    return f"{get_output_var_name(stream.node, context)}.subtitle_stream({stream.index}, optional={stream.optional})"
         case OutputStream():
             return f"{get_output_var_name(stream.node, context)}"
         case GlobalStream():

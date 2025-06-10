@@ -39,7 +39,8 @@
                                   "filename": "input1.mp4",
                                   "inputs": [],
                                   "kwargs": "FrozenDict({})"
-                                }
+                                },
+                                "optional": false
                               }
                             ],
                             "kwargs": "FrozenDict({})",
@@ -47,7 +48,8 @@
                             "output_typings": [
                               "video"
                             ]
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": "FrozenDict({'outputs': 2})",
@@ -56,7 +58,8 @@
                         "video",
                         "video"
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": "FrozenDict({'outputs': 2})",
@@ -65,7 +68,8 @@
                   "video",
                   "video"
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "index": 1,
@@ -94,7 +98,8 @@
                                   "filename": "input1.mp4",
                                   "inputs": [],
                                   "kwargs": "FrozenDict({})"
-                                }
+                                },
+                                "optional": false
                               }
                             ],
                             "kwargs": "FrozenDict({})",
@@ -102,7 +107,8 @@
                             "output_typings": [
                               "video"
                             ]
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": "FrozenDict({'outputs': 2})",
@@ -111,7 +117,8 @@
                         "video",
                         "video"
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": "FrozenDict({'outputs': 2})",
@@ -120,7 +127,8 @@
                   "video",
                   "video"
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "index": 1,
@@ -142,7 +150,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": "FrozenDict({})"
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": "FrozenDict({})",
@@ -150,7 +159,8 @@
                       "output_typings": [
                         "video"
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": "FrozenDict({'outputs': 2})",
@@ -159,7 +169,8 @@
                   "video",
                   "video"
                 ]
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": "FrozenDict({'n': 3})",
@@ -167,9 +178,11 @@
           "output_typings": [
             "video"
           ]
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": "FrozenDict({})"
-  }
+  },
+  "optional": false
 }

@@ -19,11 +19,13 @@
                 "filename": "input1.mp4",
                 "inputs": [],
                 "kwargs": {}
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {}
-        }
+        },
+        "optional": false
       },
       {
         "__class__": "OutputStream",
@@ -40,15 +42,18 @@
                 "filename": "input2.mp4",
                 "inputs": [],
                 "kwargs": {}
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {}
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": {
       "dump": true
     }
-  }
+  },
+  "optional": false
 }

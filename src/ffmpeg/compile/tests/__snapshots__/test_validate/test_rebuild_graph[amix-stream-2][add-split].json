@@ -31,7 +31,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": "FrozenDict({})"
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": "FrozenDict({})",
@@ -39,7 +40,8 @@
                       "output_typings": [
                         "audio"
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": "FrozenDict({'outputs': 2})",
@@ -48,7 +50,8 @@
                   "audio",
                   "audio"
                 ]
-              }
+              },
+              "optional": false
             },
             {
               "index": 0,
@@ -77,7 +80,8 @@
                                   "filename": "input1.mp4",
                                   "inputs": [],
                                   "kwargs": "FrozenDict({})"
-                                }
+                                },
+                                "optional": false
                               }
                             ],
                             "kwargs": "FrozenDict({})",
@@ -85,7 +89,8 @@
                             "output_typings": [
                               "audio"
                             ]
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": "FrozenDict({'outputs': 2})",
@@ -94,7 +99,8 @@
                         "audio",
                         "audio"
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": "FrozenDict({})",
@@ -102,7 +108,8 @@
                 "output_typings": [
                   "audio"
                 ]
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": "FrozenDict({'inputs': 2, 'duration': 'first'})",
@@ -110,9 +117,11 @@
           "output_typings": [
             "audio"
           ]
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": "FrozenDict({})"
-  }
+  },
+  "optional": false
 }

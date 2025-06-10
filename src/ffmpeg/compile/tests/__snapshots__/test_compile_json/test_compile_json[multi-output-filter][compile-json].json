@@ -47,7 +47,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         },
                         {
                           "__class__": "AVStream",
@@ -57,7 +58,8 @@
                             "filename": "input2.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -72,7 +74,8 @@
                           "value": "video"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -88,11 +91,13 @@
                     "value": "video"
                   }
                 ]
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {}
-        }
+        },
+        "optional": false
       },
       {
         "__class__": "OutputStream",
@@ -137,7 +142,8 @@
                             "filename": "input1.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         },
                         {
                           "__class__": "AVStream",
@@ -147,7 +153,8 @@
                             "filename": "input2.mp4",
                             "inputs": [],
                             "kwargs": {}
-                          }
+                          },
+                          "optional": false
                         }
                       ],
                       "kwargs": {},
@@ -162,7 +169,8 @@
                           "value": "video"
                         }
                       ]
-                    }
+                    },
+                    "optional": false
                   }
                 ],
                 "kwargs": {
@@ -178,13 +186,16 @@
                     "value": "video"
                   }
                 ]
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {}
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": {}
-  }
+  },
+  "optional": false
 }

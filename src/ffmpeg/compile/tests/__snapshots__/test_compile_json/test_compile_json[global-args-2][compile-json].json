@@ -19,16 +19,19 @@
                 "filename": "input1.mp4",
                 "inputs": [],
                 "kwargs": {}
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {}
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": {
       "dump": true,
       "hide_banner": true
     }
-  }
+  },
+  "optional": false
 }
