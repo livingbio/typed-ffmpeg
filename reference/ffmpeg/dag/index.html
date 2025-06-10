@@ -3049,6 +3049,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ffmpeg.dag.FilterableStream.optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;optional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ffmpeg.dag.FilterableStream.afilter" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;afilter
@@ -3547,6 +3556,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ffmpeg.dag.OutputStream.optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;optional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ffmpeg.dag.OutputStream.compile" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;compile
@@ -3655,6 +3673,15 @@
   <a href="#ffmpeg.dag.Stream.node" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ffmpeg.dag.Stream.optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;optional
     </span>
   </a>
   
@@ -4946,7 +4973,8 @@ accessing each one individually.</p>
   
       dataclass
    (ffmpeg.dag.nodes.InputNode)" href="nodes/#ffmpeg.dag.nodes.InputNode">InputNode</a></span><span class="p">,</span>
-    <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -5101,6 +5129,23 @@ and AudioStream, providing common functionality for filter operations.</p>
               </div>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            optional
+
+
+  
+      class-attribute
+      instance-attribute
+   (ffmpeg.dag.FilterableStream.optional)" href="#ffmpeg.dag.FilterableStream.optional">optional</a></code></td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents whether the stream is optional.</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -5204,6 +5249,36 @@ and AudioStream, providing common functionality for filter operations.</p>
 <details class="note" open>
   <summary>Note</summary>
   <p>In the context of a data stream, the 'upstream' refers to the source of the data, or where the data is coming from. Therefore, the 'upstream node' is the node that is providing the data to the current stream.</p>
+</details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ffmpeg.dag.FilterableStream.optional" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">optional</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#ffmpeg.dag.FilterableStream.optional" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Represents whether the stream is optional.</p>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>See Also: <a href="https://ffmpeg.org/ffmpeg.html#Advanced-options">Advanced options</a></p>
 </details>
     </div>
 
@@ -11514,12 +11589,17 @@ such as adding global options.</p>
   </span>
 
 <a href="#ffmpeg.dag.OutputStream" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">OutputStream</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            OutputNode
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">OutputStream</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">node</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            OutputNode
 
 
   
       dataclass
-   (ffmpeg.dag.nodes.OutputNode)" href="nodes/#ffmpeg.dag.nodes.OutputNode">OutputNode</a></span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+   (ffmpeg.dag.nodes.OutputNode)" href="nodes/#ffmpeg.dag.nodes.OutputNode">OutputNode</a></span><span class="p">,</span>
+    <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -11691,6 +11771,23 @@ the FFmpeg command.</p>
               </div>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            optional
+
+
+  
+      class-attribute
+      instance-attribute
+   (ffmpeg.dag.OutputStream.optional)" href="#ffmpeg.dag.OutputStream.optional">optional</a></code></td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents whether the stream is optional.</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -11785,6 +11882,36 @@ the FFmpeg command.</p>
 
         <p>The output node this stream represents</p>
 
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ffmpeg.dag.OutputStream.optional" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">optional</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#ffmpeg.dag.OutputStream.optional" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Represents whether the stream is optional.</p>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>See Also: <a href="https://ffmpeg.org/ffmpeg.html#Advanced-options">Advanced options</a></p>
+</details>
     </div>
 
 </div>
@@ -14033,12 +14160,17 @@ or when you need to interact with the process while it's running.</p>
   </span>
 
 <a href="#ffmpeg.dag.Stream" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">Stream</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Node
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="nf">Stream</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">node</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="            Node
 
 
   
       dataclass
-   (ffmpeg.dag.schema.Node)" href="schema/#ffmpeg.dag.schema.Node">Node</a></span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+   (ffmpeg.dag.schema.Node)" href="schema/#ffmpeg.dag.schema.Node">Node</a></span><span class="p">,</span>
+    <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -14155,6 +14287,23 @@ or when you need to interact with the process while it's running.</p>
               </div>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            optional
+
+
+  
+      class-attribute
+      instance-attribute
+   (ffmpeg.dag.Stream.optional)" href="#ffmpeg.dag.Stream.optional">optional</a></code></td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents whether the stream is optional.</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -14253,6 +14402,36 @@ or when you need to interact with the process while it's running.</p>
 <details class="note" open>
   <summary>Note</summary>
   <p>In the context of a data stream, the 'upstream' refers to the source of the data, or where the data is coming from. Therefore, the 'upstream node' is the node that is providing the data to the current stream.</p>
+</details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ffmpeg.dag.Stream.optional" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">optional</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#ffmpeg.dag.Stream.optional" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Represents whether the stream is optional.</p>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>See Also: <a href="https://ffmpeg.org/ffmpeg.html#Advanced-options">Advanced options</a></p>
 </details>
     </div>
 

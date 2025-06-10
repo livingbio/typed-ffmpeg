@@ -1855,6 +1855,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ffmpeg.streams.subtitle.SubtitleStream.optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;optional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ffmpeg.streams.subtitle.SubtitleStream.afilter" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;afilter
@@ -3048,6 +3057,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ffmpeg.streams.subtitle.SubtitleStream.optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;optional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ffmpeg.streams.subtitle.SubtitleStream.afilter" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;afilter
@@ -3201,7 +3219,8 @@
   
       dataclass
    (ffmpeg.dag.nodes.InputNode)" href="../../dag/nodes/#ffmpeg.dag.nodes.InputNode">InputNode</a></span><span class="p">,</span>
-    <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">index</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -3351,6 +3370,23 @@
               </div>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="            optional
+
+
+  
+      class-attribute
+      instance-attribute
+   (ffmpeg.streams.subtitle.SubtitleStream.optional)" href="#ffmpeg.streams.subtitle.SubtitleStream.optional">optional</a></code></td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents whether the stream is optional.</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -3454,6 +3490,36 @@
 <details class="note" open>
   <summary>Note</summary>
   <p>In the context of a data stream, the 'upstream' refers to the source of the data, or where the data is coming from. Therefore, the 'upstream node' is the node that is providing the data to the current stream.</p>
+</details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ffmpeg.streams.subtitle.SubtitleStream.optional" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">optional</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+<a href="#ffmpeg.streams.subtitle.SubtitleStream.optional" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span class="n">optional</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Represents whether the stream is optional.</p>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>See Also: <a href="https://ffmpeg.org/ffmpeg.html#Advanced-options">Advanced options</a></p>
 </details>
     </div>
 
