@@ -143,23 +143,19 @@ def parse_stream_selector(
     if isinstance(stream, AVStream):
         if ":" in selector:
             if selector.count(":") == 1:
-                stream_label, stream_type = selector.strip("?").split(":", 1)
+                stream_label, stream_type = selector.split(":", 1)
                 stream_index = None
-            else:
-                stream_label, stream_type, _stream_index = selector.strip("?").split(
-                    ":", 2
-                )
+            elif selector.count(":") == 2:
+                stream_label, stream_type, _stream_index = selector.split(":", 2)
                 stream_index = int(_stream_index)
-
-            optional = selector.endswith("?")
 
             match stream_type:
                 case "v":
-                    return stream.video_stream(stream_index, optional)
+                    return stream.video_stream(stream_index)
                 case "a":
-                    return stream.audio_stream(stream_index, optional)
+                    return stream.audio_stream(stream_index)
                 case "s":
-                    return stream.subtitle_stream(stream_index, optional)
+                    return stream.subtitle_stream(stream_index)
                 case _:
                     raise FFMpegValueError(f"Unknown stream type: {stream_type}")
     return stream
