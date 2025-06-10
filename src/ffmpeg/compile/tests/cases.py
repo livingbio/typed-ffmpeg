@@ -145,8 +145,11 @@ def stream_selector_with_subtitle_and_index() -> Stream:
 def stream_selector_with_subtitle() -> Stream:
     return input("input1.mp4").subtitle.output(filename="tmp.mp4")
 
+
 def stream_select_with_optional() -> Stream:
-    return input("input1.mp4").subtitle_stream(0, optional=True).output(filename="tmp.mp4")
+    return (
+        input("input1.mp4").subtitle_stream(0, optional=True).output(filename="tmp.mp4")
+    )
 
 
 shared_cases = [
