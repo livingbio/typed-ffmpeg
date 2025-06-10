@@ -3341,7 +3341,7 @@ Use the built-in filters from the filters module when available.</p>
    (ffmpeg.dag.nodes.FilterableStream)" href="../dag/nodes/#ffmpeg.dag.nodes.FilterableStream">FilterableStream</a></span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
     <span class="n">input_typings</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            StreamType (ffmpeg.schema.StreamType)" href="../schema/#ffmpeg.schema.StreamType">StreamType</a></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
-    <span class="n">output_tyings</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            StreamType (ffmpeg.schema.StreamType)" href="../schema/#ffmpeg.schema.StreamType">StreamType</a></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">output_typings</span><span class="p">:</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="            StreamType (ffmpeg.schema.StreamType)" href="../schema/#ffmpeg.schema.StreamType">StreamType</a></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n"><span title="typing.Any">Any</span></span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="            FilterNode
 
@@ -3425,7 +3425,7 @@ a single stream, this returns a FilterNode that you can extract specific outputs
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>output_tyings</code>
+                <code>output_typings</code>
             </td>
             <td>
                   <code><span title="tuple">tuple</span>[<a class="autorefs autorefs-internal" title="            StreamType (ffmpeg.schema.StreamType)" href="../schema/#ffmpeg.schema.StreamType">StreamType</a>, ...]</code>
@@ -3506,7 +3506,7 @@ a single stream, this returns a FilterNode that you can extract specific outputs
   <summary>Example</summary>
   <div class="language-python highlight"><pre><span></span><code><span class="c1"># Split a video into two identical streams</span>
 <span class="n">split_node</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">filter_multi_output</span><span class="p">(</span>
-    <span class="n">stream</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">output_tyings</span><span class="o">=</span><span class="p">(</span><span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">,</span> <span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
+    <span class="n">stream</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">output_typings</span><span class="o">=</span><span class="p">(</span><span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">,</span> <span class="n">StreamType</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">stream1</span> <span class="o">=</span> <span class="n">split_node</span><span class="o">.</span><span class="n">video</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">stream2</span> <span class="o">=</span> <span class="n">split_node</span><span class="o">.</span><span class="n">video</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
