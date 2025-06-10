@@ -2,13 +2,13 @@ digraph {
 	rankdir=LR
 	fontname=Helvetica
 	fontsize=12
-	"5a5a67e6040134cb" [label="input1.mp4" fillcolor="#99cc00" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"1f9068427c0b4484" [label="input2.mp4" fillcolor="#99cc00" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"3732df4b39d4ef5" [label="output1.mp4" fillcolor="#99ccff" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"7e04b1e1039916f3" [label="output2.mp4" fillcolor="#99ccff" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"227a5b8e5fb01287" [label="GlobalNode(kwargs=FrozenDict({'y': True}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input1.mp4'), index=None),), filename='output1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input2.mp4'), index=None),), filename='output2.mp4'), index=None)))" fontname=Helvetica fontsize=12 shape=box style=filled]
-	"5a5a67e6040134cb" -> "3732df4b39d4ef5" [label="* => 0"]
-	"1f9068427c0b4484" -> "7e04b1e1039916f3" [label="* => 0"]
-	"3732df4b39d4ef5" -> "227a5b8e5fb01287" [label="* => 0"]
-	"7e04b1e1039916f3" -> "227a5b8e5fb01287" [label="* => 1"]
+	"3eeed28a3f74e554" [label="input1.mp4" fillcolor="#99cc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"582b34bd6506058b" [label="input2.mp4" fillcolor="#99cc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"36304e0da688b87" [label="output1.mp4" fillcolor="#99ccff" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"5a8b1f37c9402ea6" [label="output2.mp4" fillcolor="#99ccff" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"197f502c15dece25" [label="-y" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"3eeed28a3f74e554" -> "36304e0da688b87" [label="* => 0"]
+	"582b34bd6506058b" -> "5a8b1f37c9402ea6" [label="* => 0"]
+	"36304e0da688b87" -> "197f502c15dece25" [label="* => 0"]
+	"5a8b1f37c9402ea6" -> "197f502c15dece25" [label="* => 1"]
 }
