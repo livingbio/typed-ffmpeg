@@ -1,7 +1,7 @@
 import pytest
 from syrupy.assertion import SnapshotAssertion
 
-from ..ffmpeg_option_parser import parse_ffmpeg_options
+from ..parse_all_options import parse_all_options
 
 
 @pytest.mark.parametrize(
@@ -20,7 +20,12 @@ from ..ffmpeg_option_parser import parse_ffmpeg_options
             id="option_with_description",
         ),
         pytest.param(
-            """  -b                 <int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)
+            """
+AVCodecContext AVOptions:
+  -b                 <int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)
+  -ab                <int64>      E...A...... set bitrate (in bits/s) (from 0 to INT_MAX) (default 128000)
+  -bt                <int>        E..VA...... Set video bitrate tolerance (in bits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate. Lowering tolerance too much has an adverse effect on quality. (from 0 to INT_MAX) (default 4000000)
+  -flags             <flags>      ED.VAS..... (default 0)
         """,
             id="option_with_type",
         ),
@@ -67,6 +72,6 @@ Global options (affect whole program instead of just one file):
         ),
     ],
 )
-def test_parse_ffmpeg_options(snapshot: SnapshotAssertion, help_text: str) -> None:
-    options = parse_ffmpeg_options(help_text)
+def test_parse_all_options(snapshot: SnapshotAssertion, help_text: str) -> None:
+    options = parse_all_options(help_text)
     assert snapshot == options

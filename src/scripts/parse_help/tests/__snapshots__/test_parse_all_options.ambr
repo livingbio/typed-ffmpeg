@@ -1,0 +1,29 @@
+# serializer version: 1
+# name: test_parse_all_options[global_options]
+  list([
+  ])
+# ---
+# name: test_parse_all_options[option_with_default_value]
+  list([
+    FFMpegAVOption(section='AVFormatContext AVOptions:', name='avioflags', type='flags', flags='ED.........', help='(default 0)', min=None, max=None, default=None, choices=(FFMpegOptionChoice(name='direct', help='reduce buffering', flags='ED.........', value='direct'),)),
+    FFMpegAVOption(section='AVFormatContext AVOptions:', name='probesize', type='int64', flags='.D.........', help='set probing size (from 32 to I64_MAX) (default 5000000)', min=None, max=None, default=None, choices=()),
+    FFMpegAVOption(section='AVFormatContext AVOptions:', name='formatprobesize', type='int', flags='.D.........', help='number of bytes to probe file format (from 0 to 2.14748e+09) (default 1048576)', min=None, max=None, default=None, choices=()),
+    FFMpegAVOption(section='AVFormatContext AVOptions:', name='packetsize', type='int', flags='E..........', help='set packet size (from 0 to INT_MAX) (default 0)', min=None, max=None, default=None, choices=()),
+  ])
+# ---
+# name: test_parse_all_options[option_with_description]
+  list([
+  ])
+# ---
+# name: test_parse_all_options[option_with_type]
+  list([
+    FFMpegAVOption(section='AVCodecContext AVOptions:', name='b', type='int64', flags='E..VA......', help='set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)', min=None, max=None, default=None, choices=()),
+    FFMpegAVOption(section='AVCodecContext AVOptions:', name='ab', type='int64', flags='E...A......', help='set bitrate (in bits/s) (from 0 to INT_MAX) (default 128000)', min=None, max=None, default=None, choices=()),
+    FFMpegAVOption(section='AVCodecContext AVOptions:', name='bt', type='int', flags='E..VA......', help='Set video bitrate tolerance (in bits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate. Lowering tolerance too much has an adverse effect on quality. (from 0 to INT_MAX) (default 4000000)', min=None, max=None, default=None, choices=()),
+    FFMpegAVOption(section='AVCodecContext AVOptions:', name='flags', type='flags', flags='ED.VAS.....', help='(default 0)', min=None, max=None, default=None, choices=()),
+  ])
+# ---
+# name: test_parse_all_options[simple_option]
+  list([
+  ])
+# ---
