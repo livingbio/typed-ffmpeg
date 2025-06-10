@@ -28,7 +28,7 @@ from .dag import Stream
 from .exceptions import FFMpegExecuteError, FFMpegTypeError, FFMpegValueError
 from .ffprobe.probe import probe, probe_obj
 from .info import get_codecs, get_decoders, get_encoders
-from .streams import AudioStream, AVStream, VideoStream
+from .streams import AudioStream, AVStream, SubtitleStream, VideoStream
 
 __all__ = [
     "sources",
@@ -46,6 +46,7 @@ __all__ = [
     "AudioStream",
     "VideoStream",
     "AVStream",
+    "SubtitleStream",
     "vfilter",
     "afilter",
     "filter_multi_output",
