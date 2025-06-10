@@ -2,8 +2,10 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
+from ...base import filter_multi_output, input
+from ...common.schema import StreamType
 from ...dag.schema import Stream
-from ..compile_cli import compile, compile_as_list, parse
+from ..compile_cli import compile, compile_as_list, get_args, parse
 from .cases import shared_cases
 
 
@@ -23,6 +25,16 @@ def test_parse_compile(snapshot: SnapshotAssertion, graph: Stream) -> None:
         compiled,
         compiled_again,
     )
+
+
+def test_get_args_custom_filter(snapshot: SnapshotAssertion) -> None:
+    graph = filter_multi_output(
+        input("input1.mp4"),
+        name="custom_split",
+        input_typings=(StreamType.video,),
+        output_typings=(StreamType.video, StreamType.video),
+    )
+    assert snapshot == get_args(graph)
 
 
 @pytest.mark.parametrize(

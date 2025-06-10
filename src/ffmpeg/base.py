@@ -137,7 +137,7 @@ def filter_multi_output(
     *streams: FilterableStream,
     name: str,
     input_typings: tuple[StreamType, ...] = (),
-    output_tyings: tuple[StreamType, ...] = (),
+    output_typings: tuple[StreamType, ...] = (),
     **kwargs: Any,
 ) -> FilterNode:
     """
@@ -172,12 +172,13 @@ def filter_multi_output(
         This function is for custom filters not implemented in typed-ffmpeg.
         Use the built-in filters from the filters module when available.
     """
+
     return FilterNode(
         name=name,
         kwargs=FrozenDict(kwargs),
         inputs=streams,
         input_typings=input_typings,
-        output_typings=output_tyings,
+        output_typings=output_typings,
     )
 
 

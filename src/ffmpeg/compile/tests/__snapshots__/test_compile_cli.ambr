@@ -1,4 +1,11 @@
 # serializer version: 1
+# name: test_get_args_custom_filter
+  list([
+    '[0]',
+    'custom_split',
+    '',
+  ])
+# ---
 # name: test_parse_ffmpeg_commands[escaping][build-ffmpeg-commands]
   'ffmpeg -i input.mov -filter_complex \'[0:v]drawtext=fontfile=resources/fonts/arial.ttf:text=\\\\\\\'"\'"\'\\\\=\\\\\\\\\\;\\\\\\\\\\\\:\\\\\\\'"\'"\':fontcolor=white:fontsize=30:x=(W-tw)/2:y=text_h:borderw=2:timecode=00\\\\\\\\\\\\:00\\\\\\\\\\\\:00\\\\\\\\\\\\:00:r=25/1[s0]\' -map \'[s0]\' output.mp4'
 # ---
