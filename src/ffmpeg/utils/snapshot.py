@@ -21,7 +21,7 @@ from syrupy.types import (
 from ..dag.schema import Stream
 
 
-class DAGSnapshotExtenstion(JSONSnapshotExtension):
+class DAGSnapshotExtension(JSONSnapshotExtension):
     """
     A snapshot extension for serializing and testing FFmpeg DAG structures.
 

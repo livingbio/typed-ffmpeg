@@ -20,6 +20,7 @@ import re
 import shlex
 from collections import defaultdict
 from collections.abc import Mapping
+from dataclasses import replace
 
 from ..base import input, merge_outputs, output
 from ..common.cache import load
@@ -38,6 +39,7 @@ from ..exceptions import FFMpegValueError
 from ..schema import Default
 from ..streams.audio import AudioStream
 from ..streams.av import AVStream
+from ..streams.subtitle import SubtitleStream
 from ..streams.video import VideoStream
 from ..utils.escaping import escape
 from ..utils.lazy_eval.schema import LazyValue
@@ -140,20 +142,31 @@ def parse_stream_selector(
     stream = mapping[stream_label]
 
     if isinstance(stream, AVStream):
-        if selector.count(":") == 1:
-            stream_label, stream_type = selector.split(":", 1)
-            return stream.video if stream_type == "v" else stream.audio
-        elif selector.count(":") == 2:
-            stream_label, stream_type, stream_index = selector.split(":", 2)
-            return (
-                stream.video_stream(int(stream_index))
-                if stream_type == "v"
-                else stream.audio_stream(int(stream_index))
-            )
+        if "?" in selector:
+            optional = True
+            selector = selector.strip("?")
         else:
-            return stream
-    else:
-        return stream
+            optional = False
+
+        if ":" in selector:
+            if selector.count(":") == 1:
+                stream_label, stream_type = selector.split(":", 1)
+                stream_index = None
+            elif selector.count(":") == 2:
+                stream_label, stream_type, _stream_index = selector.split(":", 2)
+                stream_index = int(_stream_index)
+
+            match stream_type:
+                case "v":
+                    return stream.video_stream(stream_index, optional)
+                case "a":
+                    return stream.audio_stream(stream_index, optional)
+                case "s":
+                    return stream.subtitle_stream(stream_index, optional)
+                case _:
+                    raise FFMpegValueError(f"Unknown stream type: {stream_type}")
+        return replace(stream, optional=optional)
+    return stream
 
 
 def _is_filename(token: str) -> bool:
@@ -223,15 +236,16 @@ def parse_output(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            assert key.split(":")[0] in ffmpeg_options, f"Unknown option: {key}"
-            option = ffmpeg_options[key.split(":")[0]]
+            key_base = key.split(":")[0]
+            if key_base in ffmpeg_options:
+                option = ffmpeg_options[key_base]
 
-            if option.is_output_option:
-                # just ignore not input options
-                if value[-1] is None:
-                    parameters[key] = True
-                else:
-                    parameters[key] = value[-1]
+                if option.is_output_option:
+                    # just ignore not input options
+                    if value[-1] is None:
+                        parameters[key] = True
+                    else:
+                        parameters[key] = value[-1]
 
         export.append(output(*inputs, filename=filename, extra_options=parameters))
         buffer = []
@@ -268,15 +282,15 @@ def parse_input(
         parameters: dict[str, str | bool] = {}
 
         for key, value in options.items():
-            assert key in ffmpeg_options, f"Unknown option: {key}"
-            option = ffmpeg_options[key]
+            if key in ffmpeg_options:
+                option = ffmpeg_options[key]
 
-            if option.is_input_option:
-                # just ignore not input options
-                if value[-1] is None:
-                    parameters[key] = True
-                else:
-                    parameters[key] = value[-1]
+                if option.is_input_option:
+                    # just ignore not input options
+                    if value[-1] is None:
+                        parameters[key] = True
+                    else:
+                        parameters[key] = value[-1]
 
         output.append(input(filename=filename, extra_options=parameters))
 
@@ -308,7 +322,8 @@ def parse_filter_complex(
     Returns:
         Updated stream mapping with new filter outputs added
     """
-    filter_units = filter_complex.split(";")
+    # Use re.split with negative lookbehind to handle escaped semicolons
+    filter_units = re.split(r"(?<!\\);", filter_complex)
 
     for filter_unit in filter_units:
         pattern = re.compile(
@@ -334,11 +349,12 @@ def parse_filter_complex(
 
         # Parse filter parameters into key-value pairs
         filter_params = {}
+        param_str = param_str and param_str.strip()
         if param_str:
-            param_parts = param_str.strip().split(":")
+            param_parts = re.split(r"(?<!\\):", param_str)
             for part in param_parts:
                 if "=" in part:
-                    key, value = part.split("=", 1)
+                    key, value = re.split(r"(?<!\\)=", part, 1)
                     filter_params[key.strip()] = value.strip()
 
         assert isinstance(filter_name, str), f"Expected filter name, got {filter_name}"
@@ -368,12 +384,17 @@ def parse_filter_complex(
         for idx, (output_label, output_typing) in enumerate(
             zip(output_labels, filter_node.output_typings)
         ):
-            if output_typing == StreamType.video:
-                stream_mapping[output_label] = VideoStream(node=filter_node, index=idx)
-            elif output_typing == StreamType.audio:
-                stream_mapping[output_label] = AudioStream(node=filter_node, index=idx)
-            else:
-                raise FFMpegValueError(f"Unknown stream type: {output_typing}")
+            match output_typing:
+                case StreamType.video:
+                    stream_mapping[output_label] = VideoStream(
+                        node=filter_node, index=idx
+                    )
+                case StreamType.audio:
+                    stream_mapping[output_label] = AudioStream(
+                        node=filter_node, index=idx
+                    )
+                case _:
+                    raise FFMpegValueError(f"Unknown stream type: {output_typing}")
 
     return stream_mapping
 
@@ -406,15 +427,15 @@ def parse_global(
     parameters: dict[str, str | bool] = {}
 
     for key, value in options.items():
-        assert key in ffmpeg_options, f"Unknown option: {key}"
-        option = ffmpeg_options[key]
+        if key in ffmpeg_options:
+            option = ffmpeg_options[key]
 
-        if option.is_global_option:
-            # Process only recognized global options
-            if value[-1] is None:
-                parameters[key] = True
-            else:
-                parameters[key] = value[-1]
+            if option.is_global_option:
+                # Process only recognized global options
+                if value[-1] is None:
+                    parameters[key] = True
+                else:
+                    parameters[key] = value[-1]
     return parameters, remaining_tokens
 
 
@@ -605,6 +626,7 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
     For input streams, labels follow FFmpeg's stream specifier syntax:
     - Video streams: "0:v" (first input, video stream)
     - Audio streams: "0:a" (first input, audio stream)
+    - Subtitle streams: "0:s" (first input, subtitle stream)
     - AV streams: "0" (first input, all streams)
 
     For filter outputs, labels use the filter's label:
@@ -646,6 +668,12 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
                             f"{get_node_label(stream.node, context)}:a:{stream.index}"
                         )
                     return f"{get_node_label(stream.node, context)}:a"
+                case SubtitleStream():
+                    if stream.index is not None:
+                        return (
+                            f"{get_node_label(stream.node, context)}:s:{stream.index}"
+                        )
+                    return f"{get_node_label(stream.node, context)}:s"
                 case _:
                     raise FFMpegValueError(
                         f"Unknown stream type: {stream.__class__.__name__}"
@@ -653,6 +681,8 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
         case FilterNode():
             if len(stream.node.output_typings) > 1:
                 return f"{get_node_label(stream.node, context)}#{stream.index}"
+            return f"{get_node_label(stream.node, context)}"
+        case OutputNode():
             return f"{get_node_label(stream.node, context)}"
         case _:
             raise FFMpegValueError(
@@ -792,7 +822,10 @@ def get_args_output_node(node: OutputNode, context: DAGContext) -> list[str]:
                     and len(node.inputs) == 1
                 ):
                     continue
-                commands += ["-map", get_stream_label(input, context)]
+                if not input.optional:
+                    commands += ["-map", get_stream_label(input, context)]
+                else:
+                    commands += ["-map", f"{get_stream_label(input, context)}?"]
             else:
                 commands += ["-map", f"[{get_stream_label(input, context)}]"]
 

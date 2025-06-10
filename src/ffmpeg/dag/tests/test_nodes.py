@@ -11,7 +11,7 @@ from ...exceptions import FFMpegExecuteError
 from ...filters import concat
 from ...schema import StreamType
 from ...utils.forzendict import FrozenDict
-from ...utils.snapshot import DAGSnapshotExtenstion
+from ...utils.snapshot import DAGSnapshotExtension
 from ..nodes import (
     FilterNode,
     GlobalNode,
@@ -82,7 +82,7 @@ def test_node_prop(
     assert snapshot(name="__repr__") == repr(node)
     assert snapshot(name="get_args") == get_args(node)
     assert type(node) is expected_type
-    assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == node
+    assert snapshot(extension_class=DAGSnapshotExtension, name="graph") == node
 
 
 def base_stream() -> OutputStream:
@@ -153,7 +153,7 @@ def test_global_node_with_args_overwrite(
         snapshot(name="compile-line", extension_class=JSONSnapshotExtension)
         == stream.compile_line()
     )
-    assert snapshot(extension_class=DAGSnapshotExtenstion, name="graph") == stream.node
+    assert snapshot(extension_class=DAGSnapshotExtension, name="graph") == stream.node
 
 
 def test_nostdin(snapshot: SnapshotAssertion) -> None:

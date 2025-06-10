@@ -137,7 +137,7 @@ def filter_multi_output(
     *streams: FilterableStream,
     name: str,
     input_typings: tuple[StreamType, ...] = (),
-    output_tyings: tuple[StreamType, ...] = (),
+    output_typings: tuple[StreamType, ...] = (),
     **kwargs: Any,
 ) -> FilterNode:
     """
@@ -151,7 +151,7 @@ def filter_multi_output(
         *streams: One or more input streams to apply the filter to
         name: The FFmpeg filter name (e.g., 'split', 'channelsplit', etc.)
         input_typings: The expected types of the input streams
-        output_tyings: The expected types of each output stream
+        output_typings: The expected types of each output stream
         **kwargs: Filter-specific parameters as keyword arguments
 
     Returns:
@@ -162,7 +162,7 @@ def filter_multi_output(
         ```python
         # Split a video into two identical streams
         split_node = ffmpeg.filter_multi_output(
-            stream, name="split", output_tyings=(StreamType.video, StreamType.video)
+            stream, name="split", output_typings=(StreamType.video, StreamType.video)
         )
         stream1 = split_node.video(0)
         stream2 = split_node.video(1)
@@ -172,12 +172,13 @@ def filter_multi_output(
         This function is for custom filters not implemented in typed-ffmpeg.
         Use the built-in filters from the filters module when available.
     """
+
     return FilterNode(
         name=name,
         kwargs=FrozenDict(kwargs),
         inputs=streams,
         input_typings=input_typings,
-        output_typings=output_tyings,
+        output_typings=output_typings,
     )
 
 

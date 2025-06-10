@@ -16,7 +16,8 @@
                 "filename": "input1.mp4",
                 "inputs": [],
                 "kwargs": "FrozenDict({})"
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": "FrozenDict({'text': 'Hello World', 'fontsize': 12, 'x': 10, 'y': 10})",
@@ -24,9 +25,11 @@
           "output_typings": [
             "video"
           ]
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": "FrozenDict({})"
-  }
+  },
+  "optional": false
 }

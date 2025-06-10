@@ -13,13 +13,16 @@
                 "filename": "input1.mp4",
                 "inputs": [],
                 "kwargs": "FrozenDict({})"
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": "FrozenDict({})"
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": "FrozenDict({'hide_banner': True, 'dump': True})"
-  }
+  },
+  "optional": false
 }

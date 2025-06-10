@@ -4,5 +4,6 @@
     "filename": "test.mp4",
     "inputs": [],
     "kwargs": "FrozenDict({'bufsize': '64k'})"
-  }
+  },
+  "optional": false
 }

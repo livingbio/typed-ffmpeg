@@ -25,7 +25,8 @@
                 "filename": "input1.mp4",
                 "inputs": [],
                 "kwargs": {}
-              }
+              },
+              "optional": false
             }
           ],
           "kwargs": {},
@@ -36,9 +37,11 @@
               "value": "video"
             }
           ]
-        }
+        },
+        "optional": false
       }
     ],
     "kwargs": {}
-  }
+  },
+  "optional": false
 }

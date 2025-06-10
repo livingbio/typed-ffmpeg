@@ -27,7 +27,8 @@
         "inputs": [],
         "filename": "input.mp4"
       },
-      "index": null
+      "index": null,
+      "optional": false
     },
     true
   ]
@@ -85,7 +86,8 @@
                                     "inputs": [],
                                     "filename": "input.mp4"
                                   },
-                                  "index": null
+                                  "index": null,
+                                  "optional": false
                                 }
                               ],
                               "name": "trim",
@@ -102,7 +104,8 @@
                                 }
                               ]
                             },
-                            "index": 0
+                            "index": 0,
+                            "optional": false
                           },
                           {
                             "__class__": "VideoStream",
@@ -121,7 +124,8 @@
                                     "inputs": [],
                                     "filename": "input.mp4"
                                   },
-                                  "index": null
+                                  "index": null,
+                                  "optional": false
                                 }
                               ],
                               "name": "trim",
@@ -138,7 +142,8 @@
                                 }
                               ]
                             },
-                            "index": 0
+                            "index": 0,
+                            "optional": false
                           }
                         ],
                         "name": "concat",
@@ -159,7 +164,8 @@
                           }
                         ]
                       },
-                      "index": 0
+                      "index": 0,
+                      "optional": false
                     },
                     {
                       "__class__": "VideoStream",
@@ -175,7 +181,8 @@
                               "inputs": [],
                               "filename": "overlay.png"
                             },
-                            "index": null
+                            "index": null,
+                            "optional": false
                           }
                         ],
                         "name": "hflip",
@@ -192,7 +199,8 @@
                           }
                         ]
                       },
-                      "index": 0
+                      "index": 0,
+                      "optional": false
                     }
                   ],
                   "name": "overlay",
@@ -213,7 +221,8 @@
                     }
                   ]
                 },
-                "index": 0
+                "index": 0,
+                "optional": false
               }
             ],
             "name": "drawbox",
@@ -230,12 +239,14 @@
               }
             ]
           },
-          "index": 0
+          "index": 0,
+          "optional": false
         }
       ],
       "filename": "out.mp4"
     },
-    "index": null
+    "index": null,
+    "optional": false
   }
   '''
 # ---

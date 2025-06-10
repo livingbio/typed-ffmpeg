@@ -17,6 +17,7 @@ from ..dag.nodes import (
 from ..dag.schema import Node, Stream
 from ..streams.audio import AudioStream
 from ..streams.av import AVStream
+from ..streams.subtitle import SubtitleStream
 from ..streams.video import VideoStream
 from .context import DAGContext
 from .validate import validate
@@ -76,10 +77,7 @@ def get_input_var_name(
         case VideoStream():
             match stream.node:
                 case InputNode():
-                    if stream.index is not None:
-                        return f"{get_output_var_name(stream.node, context)}.video_stream({stream.index})"
-                    else:
-                        return f"{get_output_var_name(stream.node, context)}.video"
+                    return f"{get_output_var_name(stream.node, context)}.video_stream({stream.index}, optional={stream.optional})"
                 case FilterNode():
                     if filter_data_dict[stream.node.name].is_dynamic_output:
                         return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
@@ -93,10 +91,7 @@ def get_input_var_name(
         case AudioStream():
             match stream.node:
                 case InputNode():
-                    if stream.index is not None:
-                        return f"{get_output_var_name(stream.node, context)}.audio_stream({stream.index})"
-                    else:
-                        return f"{get_output_var_name(stream.node, context)}.audio"
+                    return f"{get_output_var_name(stream.node, context)}.audio_stream({stream.index}, optional={stream.optional})"
                 case FilterNode():
                     if filter_data_dict[stream.node.name].is_dynamic_output:
                         return f"{get_output_var_name(stream.node, context)}.audio({filter_stream_typed_index(stream, context)})"
@@ -107,12 +102,16 @@ def get_input_var_name(
                         return f"{get_output_var_name(stream.node, context)}[{stream.index}]"
                     else:
                         return f"{get_output_var_name(stream.node, context)}"
+        case SubtitleStream():
+            match stream.node:
+                case InputNode():
+                    return f"{get_output_var_name(stream.node, context)}.subtitle_stream({stream.index}, optional={stream.optional})"
         case OutputStream():
             return f"{get_output_var_name(stream.node, context)}"
         case GlobalStream():
             return f"{get_output_var_name(stream.node, context)}"
-        case _:
-            raise ValueError(f"Unknown node type: {type(stream.node)}")
+
+    raise ValueError(f"Unknown stream type: {type(stream)}")  # pragma: no cover
 
 
 def get_output_var_name(node: Node, context: DAGContext) -> str:

@@ -1,7 +1,7 @@
 [
   "import ffmpeg",
   "input_0 = ffmpeg.input('input1.mp4')",
-  "node_0 = input_0.video_stream(0).drawtext(text='Hello World', fontsize=12, x=10, y=10)",
+  "node_0 = input_0.video_stream(0, optional=False).drawtext(text='Hello World', fontsize=12, x=10, y=10)",
   "output_0 = node_0.output(filename='tmp.mp4')",
   "result = output_0"
 ]

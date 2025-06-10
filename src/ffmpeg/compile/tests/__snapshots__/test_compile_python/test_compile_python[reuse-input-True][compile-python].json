@@ -1,5 +1,5 @@
 [
   "import ffmpeg",
   "input_0 = ffmpeg.input('input.mp4')",
-  "result = ffmpeg.filters.concat(input_0.video, input_0.video, n=2).video(0).output(filename='tmp.mp4')"
+  "result = ffmpeg.filters.concat(input_0.video_stream(None, optional=False), input_0.video_stream(None, optional=False), n=2).video(0).output(filename='tmp.mp4')"
 ]

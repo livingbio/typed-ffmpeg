@@ -45,10 +45,10 @@
   ])
 # ---
 # name: test_node_prop[global-node][__repr__]
-  "GlobalNode(kwargs=FrozenDict({'y': True, 'no': False, 'speed': 1}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
+  "GlobalNode(kwargs=FrozenDict({'y': True, 'no': False, 'speed': 1}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp.mp4'), index=None, optional=False),), filename='temp'), index=None, optional=False),))"
 # ---
 # name: test_node_prop[global-node][f.repr]
-  "GlobalNode(kwargs=FrozenDict({'y': True, 'no': False, 'speed': 1}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp.mp4'), index=None),), filename='temp'), index=None),))"
+  "GlobalNode(kwargs=FrozenDict({'y': True, 'no': False, 'speed': 1}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp.mp4'), index=None, optional=False),), filename='temp'), index=None, optional=False),))"
 # ---
 # name: test_node_prop[global-node][get_args]
   list([
@@ -73,10 +73,10 @@
   ])
 # ---
 # name: test_node_prop[merge-output-node][__repr__]
-  "GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
+  "GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp1.mp4'), index=None, optional=False),), filename='out1.mp4'), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp2.mp4'), index=None, optional=False),), filename='out2.mp4'), index=None, optional=False)))"
 # ---
 # name: test_node_prop[merge-output-node][f.repr]
-  "GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp1.mp4'), index=None),), filename='out1.mp4'), index=None), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp2.mp4'), index=None),), filename='out2.mp4'), index=None)))"
+  "GlobalNode(kwargs=FrozenDict({}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp1.mp4'), index=None, optional=False),), filename='out1.mp4'), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='tmp2.mp4'), index=None, optional=False),), filename='out2.mp4'), index=None, optional=False)))"
 # ---
 # name: test_node_prop[merge-output-node][get_args]
   list([
