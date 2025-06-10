@@ -5,7 +5,7 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 from syrupy.extensions.json import JSONSnapshotExtension
 
-from ...utils.snapshot import DAGSnapshotExtenstion
+from ...utils.snapshot import DAGSnapshotExtension
 from ..schema import Node, Stream
 
 
@@ -25,7 +25,7 @@ def test_dag(snapshot: SnapshotAssertion) -> None:
     d = SimpleNode(name="D", inputs=(Stream(node=c),))
 
     assert snapshot(extension_class=JSONSnapshotExtension) == asdict(d)
-    assert snapshot(extension_class=DAGSnapshotExtenstion, name="org") == d
+    assert snapshot(extension_class=DAGSnapshotExtension, name="org") == d
 
     # # Self-loop
     # a = SimpleNode(name="A")
@@ -91,14 +91,14 @@ def test_replace(
     replace_pattern: list[tuple[Node, Node]],
     snapshot: SnapshotAssertion,
 ) -> None:
-    assert snapshot(name="org", extension_class=DAGSnapshotExtenstion) == graph
+    assert snapshot(name="org", extension_class=DAGSnapshotExtension) == graph
 
     for node, replaced_node in replace_pattern:
         new_g = graph.replace(node, replaced_node)
         assert (
             snapshot(
                 name=f"replace {node} -> {replaced_node}",
-                extension_class=DAGSnapshotExtenstion,
+                extension_class=DAGSnapshotExtension,
             )
             == new_g
         )

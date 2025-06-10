@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from typing import Literal
 
+from ..compile.compile_cli import get_args, get_stream_label
 from ..compile.context import DAGContext
 from ..dag.nodes import FilterNode, InputNode, OutputNode
 from ..dag.schema import Node
@@ -92,7 +93,7 @@ def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
         color = _get_node_color(node)
         graph.node(
             name=node.hex,
-            label=node.repr(),
+            label=" ".join(get_args(node, context)),
             shape="box",
             style="filled",
             fillcolor=color,
@@ -105,7 +106,7 @@ def view(node: Node, format: Literal["png", "svg", "dot"]) -> str:
             graph.edge(
                 stream.node.hex,
                 node.hex,
-                label=f"{'*' if stream.index is None else stream.index} => {idx}",
+                label=f"{get_stream_label(stream, context)} -> {idx}",
             )
 
     return graph.render(engine="dot")

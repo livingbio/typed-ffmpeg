@@ -682,6 +682,8 @@ def get_stream_label(stream: Stream, context: DAGContext | None = None) -> str:
             if len(stream.node.output_typings) > 1:
                 return f"{get_node_label(stream.node, context)}#{stream.index}"
             return f"{get_node_label(stream.node, context)}"
+        case OutputNode():
+            return f"{get_node_label(stream.node, context)}"
         case _:
             raise FFMpegValueError(
                 f"Unknown node type: {stream.node.__class__.__name__}"
