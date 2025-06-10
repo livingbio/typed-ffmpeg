@@ -1,0 +1,40 @@
+# serializer version: 1
+# name: test_parse_ffmpeg_options[global_options]
+  list([
+    FFmpegOption(name='-loglevel', type='loglevel', description='loglevel  set logging level', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-v', type='loglevel', description='loglevel         set logging level', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-report', type='generate', description='generate a report', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-max_alloc', type='bytes', description='bytes    set maximum size of a single allocated block', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-y', type='overwrite', description='overwrite output files', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-n', type='never', description='never overwrite output files', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-ignore_unknown', type='Ignore', description='Ignore unknown stream types', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-filter_threads', type='number', description='number of non-complex filter threads', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-filter_complex_threads', type='number', description='number of threads for -filter_complex', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-stats', type='print', description='print progress report during encoding', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+    FFmpegOption(name='-max_error_rate', type='maximum', description='maximum error rate  ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.', is_global=True, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+  ])
+# ---
+# name: test_parse_ffmpeg_options[option_with_default_value]
+  list([
+    FFmpegOption(name='-avioflags', type='flags', description='<flags>      ED......... (default 0)', is_global=False, is_advanced=False, is_per_file=False, flags=['E', 'D'], default_value='0'),
+    FFmpegOption(name='-probesize', type='int64', description='<int64>      .D......... set probing size (from 32 to I64_MAX) (default 5000000)', is_global=False, is_advanced=False, is_per_file=False, flags=['D'], default_value='5000000'),
+    FFmpegOption(name='-formatprobesize', type='int', description='<int>        .D......... number of bytes to probe file format (from 0 to 2.14748e+09) (default 1048576)', is_global=False, is_advanced=False, is_per_file=False, flags=['D'], default_value='1048576'),
+    FFmpegOption(name='-packetsize', type='int', description='<int>        E.......... set packet size (from 0 to INT_MAX) (default 0)', is_global=False, is_advanced=False, is_per_file=False, flags=['E'], default_value='0'),
+    FFmpegOption(name='-fflags', type='flags', description='<flags>      ED......... (default autobsf)', is_global=False, is_advanced=False, is_per_file=False, flags=['E', 'D'], default_value='autobsf'),
+  ])
+# ---
+# name: test_parse_ffmpeg_options[option_with_description]
+  list([
+    FFmpegOption(name='-s', type='size', description='size             set frame size (WxH or abbreviation)', is_global=False, is_advanced=False, is_per_file=False, flags=['H'], default_value=None),
+  ])
+# ---
+# name: test_parse_ffmpeg_options[option_with_type]
+  list([
+    FFmpegOption(name='-b', type='int64', description='<int64>      E..VA...... set bitrate (in bits/s) (from 0 to I64_MAX) (default 200000)', is_global=False, is_advanced=False, is_per_file=False, flags=['E', 'V', 'A'], default_value='200000'),
+  ])
+# ---
+# name: test_parse_ffmpeg_options[simple_option]
+  list([
+    FFmpegOption(name='-i,', type='input', description='--input <input>', is_global=False, is_advanced=False, is_per_file=False, flags=[], default_value=None),
+  ])
+# ---

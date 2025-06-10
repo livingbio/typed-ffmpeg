@@ -6,6 +6,12 @@
     '',
   ])
 # ---
+# name: test_parse_ffmpeg_commands[complex_command][build-ffmpeg-commands]
+  'ffmpeg -nostdin -i input_video.mkv -map 0 -vf \'scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles=\'"\'"\'subtitles.srt\'"\'"\':stream_index=0:force_style=\'"\'"\'Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25\'"\'"\'\' -map 0:a:0 -map 0:v:0 -sn -c:a aac -b:a 192k -ac 2 -c:v libx264 1.8 -map 0 -pix_fmt yuv420p -map_metadata -map_chapters output_video.mp4'
+# ---
+# name: test_parse_ffmpeg_commands[complex_command][parse-ffmpeg-commands]
+  GlobalStream(node=GlobalNode(kwargs=FrozenDict({'stdin': False}), inputs=(OutputStream(node=OutputNode(kwargs=FrozenDict({'vf': True}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename="scale=-1:-1:flags=lanczos,pad=1920:1080:-1:-1,subtitles='subtitles.srt':stream_index=0:force_style='Fontname=Gotham Rounded Medium,Fontsize=17,Alignment=2,PrimaryColour=&Hffffff&,MarginV=25'"), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({'sn': True, 'c:a': 'aac', 'b:a': '192k', 'ac': '2', 'c:v': 'libx264'}), inputs=(AudioStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=0, optional=False), VideoStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=0, optional=False)), filename='1.8'), index=None, optional=False), OutputStream(node=OutputNode(kwargs=FrozenDict({'pix_fmt': 'yuv420p', 'map_metadata': True, 'map_chapters': True}), inputs=(AVStream(node=InputNode(kwargs=FrozenDict({}), inputs=(), filename='input_video.mkv'), index=None, optional=False),), filename='output_video.mp4'), index=None, optional=False))), index=None, optional=False)
+# ---
 # name: test_parse_ffmpeg_commands[escaping][build-ffmpeg-commands]
   'ffmpeg -i input.mov -filter_complex \'[0:v]drawtext=fontfile=resources/fonts/arial.ttf:text=\\\\\\\'"\'"\'\\\\=\\\\\\\\\\;\\\\\\\\\\\\:\\\\\\\'"\'"\':fontcolor=white:fontsize=30:x=(W-tw)/2:y=text_h:borderw=2:timecode=00\\\\\\\\\\\\:00\\\\\\\\\\\\:00\\\\\\\\\\\\:00:r=25/1[s0]\' -map \'[s0]\' output.mp4'
 # ---
