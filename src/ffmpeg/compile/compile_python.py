@@ -80,7 +80,7 @@ def get_input_var_name(
                     return f"{get_output_var_name(stream.node, context)}.video_stream({stream.index}, optional={stream.optional})"
                 case FilterNode():
                     if filter_data_dict[stream.node.name].is_dynamic_output:
-                        return f"{get_output_var_name(stream.node, context)}.video({(stream, context)})"
+                        return f"{get_output_var_name(stream.node, context)}.video({filter_stream_typed_index(stream, context)})"
                     elif (
                         len(filter_data_dict[stream.node.name].stream_typings_output)
                         > 1
