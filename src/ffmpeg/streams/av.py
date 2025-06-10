@@ -49,6 +49,7 @@ class AVStream(AudioStream, VideoStream):
 
         Args:
             index: The index of the video stream.
+            optional: Whether the video stream is optional.
 
         Returns:
             VideoStream: The video stream from the input node.
@@ -63,6 +64,7 @@ class AVStream(AudioStream, VideoStream):
 
         Args:
             index: The index of the audio stream.
+            optional: Whether the audio stream is optional.
 
         Returns:
             AudioStream: The audio stream from the input node.
@@ -77,6 +79,7 @@ class AVStream(AudioStream, VideoStream):
 
         Args:
             index: The index of the subtitle stream.
+            optional: Whether the subtitle stream is optional.
 
         Returns:
             SubtitleStream: The subtitle stream from the input node.
