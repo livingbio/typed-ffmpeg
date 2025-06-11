@@ -1,8 +1,9 @@
+{% import "_components.jinja" as _components %}
 from typing import Any, Literal
 
 from .dag.nodes import FilterNode, FilterableStream
 from .schema import Default, StreamType, Auto
-from .types import *
+{{ _components.import_types('.types') }}
 from .streams.video import VideoStream
 from .streams.audio import AudioStream
 from .streams.av import AVStream
@@ -11,8 +12,6 @@ from .common.schema import FFMpegFilterDef
 from .dag.factory import filter_node_factory
 
 import re
-
-{% import "_components.jinja" as _components %}
 
 {% for f in filters %}
     {% if f.stream_typings_input | length < 1 %}

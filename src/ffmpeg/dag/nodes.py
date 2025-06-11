@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Any
 
 from ..exceptions import FFMpegTypeError, FFMpegValueError
 from ..schema import StreamType
-from ..utils.forzendict import FrozenDict
+from ..utils.frozendict import FrozenDict
 from ..utils.typing import override
 from .global_runnable.runnable import GlobalRunable
 from .io.output_args import OutputArgs

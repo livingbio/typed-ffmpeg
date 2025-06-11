@@ -10,7 +10,7 @@ from collections.abc import Mapping
 
 from ..schema import Default
 from ..utils.lazy_eval.schema import LazyValue
-from .forzendict import FrozenDict
+from .frozendict import FrozenDict
 
 
 def command_line(args: list[str]) -> str:

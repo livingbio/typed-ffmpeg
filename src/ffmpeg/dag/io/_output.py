@@ -4,8 +4,16 @@
 from pathlib import Path
 from typing import Any
 
-from ...types import Boolean, Float, Func, Int, Int64, String, Time
-from ...utils.forzendict import FrozenDict
+from ...types import (
+    Boolean,
+    Float,
+    Func,
+    Int,
+    Int64,
+    String,
+    Time,
+)
+from ...utils.frozendict import FrozenDict
 from ..nodes import FilterableStream, OutputNode, OutputStream
 
 

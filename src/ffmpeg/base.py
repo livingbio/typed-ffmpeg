@@ -21,7 +21,7 @@ from .dag.nodes import (
 from .schema import StreamType
 from .streams.audio import AudioStream
 from .streams.video import VideoStream
-from .utils.forzendict import FrozenDict
+from .utils.frozendict import FrozenDict
 
 
 def merge_outputs(*streams: OutputStream) -> GlobalStream:

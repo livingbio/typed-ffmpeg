@@ -15,7 +15,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Any
 
-from ..utils.forzendict import FrozenDict
+from ..utils.frozendict import FrozenDict
 
 CLASS_REGISTRY: dict[str, type[Serializable | Enum]] = {}
 """
