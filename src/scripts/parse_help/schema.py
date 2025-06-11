@@ -1,17 +1,21 @@
 from dataclasses import dataclass
 from typing import Literal
 
+from ffmpeg.common.serialize import Serializable, serializable
 
+
+@serializable
 @dataclass(frozen=True, kw_only=True)
-class FFMpegOptionChoice:
+class FFMpegOptionChoice(Serializable):
     name: str
     help: str
     flags: str
     value: str
 
 
+@serializable
 @dataclass(frozen=True, kw_only=True)
-class FFMpegAVOption:
+class FFMpegAVOption(Serializable):
     section: str
     name: str
     type: str
@@ -21,6 +25,40 @@ class FFMpegAVOption:
     max: str | None = None
     default: str | None = None
     choices: tuple[FFMpegOptionChoice, ...] = ()
+
+    @property
+    def code_gen_type(self) -> str:
+        match self.type:
+            case "boolean":
+                return "bool | None"
+            case "int":
+                return "int | None"
+            case "int64":
+                return "int | None"
+            case "float":
+                return "float | None"
+            case "double":
+                return "float | None"
+            case "string":
+                return "str | None"
+            case "channel_layout":
+                return "str | None"
+            case "flags":
+                return "str | None"
+            case "duration":
+                return "str | None"
+            case "dictionary":
+                return "str | None"
+            case "image_size":
+                return "str | None"
+            case "pixel_format":
+                return "str | None"
+            case "sample_rate":
+                return "int | None"
+            case "sample_fmt":
+                return "str | None"
+            case _:
+                raise ValueError(f"Invalid option type: {self.type}")
 
 
 # NOTE: note the flags format for -encoders/-decoders vs -codecs are different
@@ -39,8 +77,9 @@ class FFMpegAVOption:
 #  V....D a64multi5            Multicolor charset for Commodore 64, extended with 5th color (colram) (codec a64_multi5)
 
 
+@serializable
 @dataclass(frozen=True, kw_only=True)
-class FFMpegCodec:
+class FFMpegCodec(Serializable):
     name: str
     flags: str
     description: str
@@ -58,12 +97,22 @@ class FFMpegCodec:
             case _:
                 raise ValueError(f"Invalid stream type: {self.flags[0]}")
 
+    @property
+    def is_encoder(self) -> bool:
+        return isinstance(self, FFMpegEncoder)
 
+    @property
+    def is_decoder(self) -> bool:
+        return isinstance(self, FFMpegDecoder)
+
+
+@serializable
 @dataclass(frozen=True, kw_only=True)
 class FFMpegEncoder(FFMpegCodec):
     pass
 
 
+@serializable
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDecoder(FFMpegCodec):
     pass

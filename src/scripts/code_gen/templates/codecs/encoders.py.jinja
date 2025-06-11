@@ -1,0 +1,15 @@
+from dataclasses import dataclass
+from typing import Literal
+from .schema import FFMpegEncoderOption
+
+{% for codec in codecs %}
+{% if codec.is_encoder %}
+@dataclass(frozen=True, kw_only=True)
+class {{codec.name | option_name_safe }}(FFMpegEncoderOption):
+    """{{codec.description}}"""
+    {% for option in codec.options %}
+    {{option.name| option_name_safe}}: {{option.code_gen_type}} = None
+    """{{option.help}}"""
+    {% endfor %}
+{% endif %}
+{% endfor %}

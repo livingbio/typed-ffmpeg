@@ -13,6 +13,8 @@ from ffmpeg.common.schema import (
     FFMpegOptionType,
 )
 
+from ..parse_help.schema import FFMpegCodec
+
 template_folder = Path(__file__).parent / "templates"
 
 loader = jinja2.FileSystemLoader(template_folder)
@@ -245,7 +247,10 @@ env.filters["filter_option_typings"] = filter_option_typings
 
 
 def render(
-    filters: list[FFMpegFilter], options: list[FFMpegOption], outpath: pathlib.Path
+    filters: list[FFMpegFilter],
+    options: list[FFMpegOption],
+    codecs: list[FFMpegCodec],
+    outpath: pathlib.Path,
 ) -> list[pathlib.Path]:
     """
     Render the filter and option documents
@@ -253,6 +258,7 @@ def render(
     Args:
         filters: The filters
         options: The options
+        codecs: The codecs
         outpath: The output path
 
     Returns:
@@ -264,7 +270,7 @@ def render(
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
-        code = template.render(filters=filters, options=options)
+        code = template.render(filters=filters, options=options, codecs=codecs)
 
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)

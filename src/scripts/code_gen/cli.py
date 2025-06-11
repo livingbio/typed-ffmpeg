@@ -11,7 +11,8 @@ from ffmpeg.common.schema import FFMpegFilter, FFMpegOption
 from ..manual.cli import load_config
 from ..parse_c.cli import parse_ffmpeg_options
 from ..parse_docs.cli import extract_docs
-from ..parse_help.cli import all_filters
+from ..parse_help.cli import all_codecs, all_filters
+from ..parse_help.schema import FFMpegCodec
 from .gen import render
 
 app = typer.Typer()
@@ -90,6 +91,28 @@ def load_filters(outpath: Path, rebuild: bool) -> list[FFMpegFilter]:
     return ffmpeg_filters
 
 
+def load_codecs(rebuild: bool) -> list[FFMpegCodec]:
+    """
+    Load codecs from the output path
+
+    Args:
+        rebuild: Whether to use the cache
+
+    Returns:
+        The codecs
+    """
+
+    if not rebuild:
+        try:
+            return load(list[FFMpegCodec], "codecs")
+        except Exception as e:
+            logging.error(f"Failed to load codecs from cache: {e}")
+
+    codecs = all_codecs()
+    save(codecs, "codecs")
+    return codecs
+
+
 @app.command()
 def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
     """
@@ -104,8 +127,9 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
 
     ffmpeg_filters = load_filters(outpath, rebuild)
     ffmpeg_options = gen_option_info()
+    ffmpeg_codecs = load_codecs(rebuild)
 
-    render(ffmpeg_filters, ffmpeg_options, outpath)
+    render(ffmpeg_filters, ffmpeg_options, ffmpeg_codecs, outpath)
     os.system("pre-commit run -a")
 
 
