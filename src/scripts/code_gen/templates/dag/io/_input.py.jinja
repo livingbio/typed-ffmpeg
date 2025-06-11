@@ -1,11 +1,12 @@
-
+{% import "_components.jinja" as _components %}
 
 from pathlib import Path
+from ffmpeg.utils.forzendict import FrozenDict
 
 from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
-from ...types import *
+{{ _components.import_types('...types') }}
 
 def input(
     filename: str | Path,
@@ -51,5 +52,5 @@ def input(
 
     return InputNode(
         filename=str(filename),
-        kwargs=tuple((options | (extra_options or {}) ).items())
+        kwargs=FrozenDict(options | (extra_options or {}) )
     ).stream()
