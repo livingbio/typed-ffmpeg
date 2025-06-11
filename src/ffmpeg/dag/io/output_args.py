@@ -1,11 +1,21 @@
 # NOTE: this file is auto-generated, do not modify
+
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
-from ...types import Boolean, Float, Func, Int, Int64, String, Time
+from ...types import (
+    Boolean,
+    Float,
+    Func,
+    Int,
+    Int64,
+    String,
+    Time,
+)
 
 if TYPE_CHECKING:
     from ..nodes import FilterableStream, OutputNode, OutputStream

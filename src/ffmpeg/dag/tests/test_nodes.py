@@ -10,7 +10,7 @@ from ...compile.context import DAGContext
 from ...exceptions import FFMpegExecuteError
 from ...filters import concat
 from ...schema import StreamType
-from ...utils.forzendict import FrozenDict
+from ...utils.frozendict import FrozenDict
 from ...utils.snapshot import DAGSnapshotExtension
 from ..nodes import (
     FilterNode,
