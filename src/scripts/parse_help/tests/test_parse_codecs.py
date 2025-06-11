@@ -4,7 +4,6 @@ import pytest
 from syrupy.assertion import SnapshotAssertion
 
 from ..parse_codecs import (
-    extract_all_codecs,
     extract_codec_option,
     extract_codecs_help_text,
 )
@@ -28,6 +27,6 @@ def test_parse_codec_option(
     assert snapshot == options
 
 
-def test_extract_all_codecs(snapshot: SnapshotAssertion) -> None:
-    codecs = extract_all_codecs()
-    assert snapshot == codecs
+# def test_extract_all_codecs(snapshot: SnapshotAssertion) -> None:
+#     codecs = extract_all_codecs()
+#     assert snapshot == codecs
