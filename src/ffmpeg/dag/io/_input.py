@@ -5,8 +5,15 @@ from pathlib import Path
 from typing import Any
 
 from ...streams.av import AVStream
-from ...types import Boolean, Double, Float, Int, String, Time
-from ...utils.forzendict import FrozenDict
+from ...types import (
+    Boolean,
+    Double,
+    Float,
+    Int,
+    String,
+    Time,
+)
+from ...utils.frozendict import FrozenDict
 from ..nodes import InputNode
 
 

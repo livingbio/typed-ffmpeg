@@ -5,7 +5,7 @@ from functools import cached_property
 from typing import Literal
 
 from ..common.serialize import Serializable
-from ..utils.forzendict import FrozenDict
+from ..utils.frozendict import FrozenDict
 from ..utils.lazy_eval.schema import LazyValue
 from .utils import is_dag
 

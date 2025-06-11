@@ -158,3 +158,7 @@ def {{f.name}}(
     """
 {{ process(f, "function") | indent(4, True) }}
 {% endmacro %}
+
+{% macro import_types(f) %}
+from {{f}} import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+{% endmacro %}
