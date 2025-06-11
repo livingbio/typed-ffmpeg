@@ -20,3 +20,17 @@ class FFMpegAVOption:
     max: str | None = None
     default: str | None = None
     choices: tuple[FFMpegOptionChoice, ...] = ()
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegEncoder:
+    name: str
+    flags: str
+    description: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class FFMpegDecoder:
+    name: str
+    flags: str
+    description: str
