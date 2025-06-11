@@ -2,11 +2,14 @@
 
 
 from pathlib import Path
+from ...utils.frozendict import FrozenDict
 
 from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
-from ...types import *
+
+from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 
 def input(
     filename: str | Path,
@@ -37,5 +40,5 @@ def input(
 
     return InputNode(
         filename=str(filename),
-        kwargs=tuple((options | (extra_options or {}) ).items())
+        kwargs=FrozenDict(options | (extra_options or {}) )
     ).stream()

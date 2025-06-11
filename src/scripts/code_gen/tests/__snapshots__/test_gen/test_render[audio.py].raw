@@ -8,7 +8,9 @@ from typing import TYPE_CHECKING, Any, Literal
 
 from ..dag.nodes import FilterableStream, FilterNode
 from ..schema import Default, StreamType, Auto
-from ..types import *
+
+from ..types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
+
 from ..utils.typing import override
 from .channel_layout import CHANNEL_LAYOUT
 from ..common.schema import FFMpegFilterDef
