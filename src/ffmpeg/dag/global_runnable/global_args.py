@@ -18,6 +18,17 @@ if TYPE_CHECKING:
 
 
 class GlobalArgs(ABC):
+    """
+    Abstract base class for providing global FFmpeg command-line arguments.
+
+    This class defines an interface for setting global options that apply to the entire
+    FFmpeg command. These options control the general behavior of FFmpeg such as
+    logging levels, overwrite behavior, thread usage, and hardware acceleration.
+
+    Implementers must define the _global_node abstract method to apply these arguments
+    to actual FFmpeg command execution.
+    """
+
     @abstractmethod
     def _global_node(self, *streams: OutputStream, **kwargs: Any) -> GlobalNode: ...
 
