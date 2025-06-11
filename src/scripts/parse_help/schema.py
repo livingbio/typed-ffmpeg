@@ -1,10 +1,9 @@
 from dataclasses import dataclass
 from typing import Literal
 
-from ffmpeg.common.serialize import Serializable, serializable
+from ffmpeg.common.serialize import Serializable
 
 
-@serializable
 @dataclass(frozen=True, kw_only=True)
 class FFMpegOptionChoice(Serializable):
     name: str
@@ -13,7 +12,6 @@ class FFMpegOptionChoice(Serializable):
     value: str
 
 
-@serializable
 @dataclass(frozen=True, kw_only=True)
 class FFMpegAVOption(Serializable):
     section: str
@@ -77,7 +75,6 @@ class FFMpegAVOption(Serializable):
 #  V....D a64multi5            Multicolor charset for Commodore 64, extended with 5th color (colram) (codec a64_multi5)
 
 
-@serializable
 @dataclass(frozen=True, kw_only=True)
 class FFMpegCodec(Serializable):
     name: str
@@ -106,13 +103,11 @@ class FFMpegCodec(Serializable):
         return isinstance(self, FFMpegDecoder)
 
 
-@serializable
 @dataclass(frozen=True, kw_only=True)
 class FFMpegEncoder(FFMpegCodec):
     pass
 
 
-@serializable
 @dataclass(frozen=True, kw_only=True)
 class FFMpegDecoder(FFMpegCodec):
     pass

@@ -74,7 +74,16 @@ def extract_codec_option(
     Returns:
         A list of codec options
     """
-    return parse_all_options(extract_help_text("-h", f"{type}={codec}"))
+    codec_options = parse_all_options(extract_help_text("-h", f"{type}={codec}"))
+    # NOTE: some filter help text contains duplicate options, so we need to remove them (e.g. encoder=h264_nvenc)
+    passed_options = set()
+    output = []
+    for option in codec_options:
+        if option.name in passed_options:
+            continue
+        passed_options.add(option.name)
+        output.append(option)
+    return output
 
 
 def extract_all_codecs() -> list[FFMpegCodec]:

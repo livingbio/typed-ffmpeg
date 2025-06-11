@@ -18,7 +18,7 @@ def test_parse_codecs_help_text(
 
 
 @pytest.mark.parametrize(
-    "codec, type", [("h263", "encoder"), ("h263", "decoder"), ("tiff", "decoder")]
+    "codec, type", [("h263", "encoder"), ("h263", "decoder"), ("tiff", "decoder"), ("h264_nvenc", "encoder")]
 )
 def test_parse_codec_option(
     snapshot: SnapshotAssertion, codec: str, type: Literal["encoder", "decoder"]
