@@ -39,7 +39,7 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
             continue
 
         # AVOptions section
-        if re.findall(r"^[\w]+[\s]+AVOptions:", line):
+        if re.findall(r"^[\w\.\s]+[\s]+AVOptions:", line):
             section = line
             continue
 
@@ -89,7 +89,7 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
             continue
 
         # Option line
-        if line.startswith("  "):
+        if line.startswith("  ") and not line.startswith("   "):
             if last_option:
                 output.append(
                     FFMpegAVOption(
