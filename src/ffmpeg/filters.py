@@ -1,4 +1,6 @@
 # NOTE: this file is auto-generated, do not modify
+
+
 from typing import Any, Literal
 
 from .common.schema import FFMpegFilterDef
@@ -51,10 +53,6 @@ def acrossfade(
         "losi",
         "sinc",
         "isinc",
-        "quat",
-        "quatr",
-        "qsin2",
-        "hsin2",
     ]
     | Default = Default("tri"),
     curve2: Int
@@ -79,10 +77,6 @@ def acrossfade(
         "losi",
         "sinc",
         "isinc",
-        "quat",
-        "quatr",
-        "qsin2",
-        "hsin2",
     ]
     | Default = Default("tri"),
     extra_options: dict[str, Any] = None,
@@ -95,8 +89,8 @@ def acrossfade(
         nb_samples: set number of samples for cross fade duration (from 1 to 2.14748e+08) (default 44100)
         duration: set cross fade duration (default 0)
         overlap: overlap 1st stream end with 2nd stream start (default true)
-        curve1: set fade curve type for 1st stream (from -1 to 22) (default tri)
-        curve2: set fade curve type for 2nd stream (from -1 to 22) (default tri)
+        curve1: set fade curve type for 1st stream (from -1 to 18) (default tri)
+        curve2: set fade curve type for 2nd stream (from -1 to 18) (default tri)
 
     Returns:
         default: the audio stream
@@ -332,7 +326,7 @@ def anlmf(
     mu: Float = Default(0.75),
     eps: Float = Default(1.0),
     leakage: Float = Default(0.0),
-    out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
     enable: String = Default(None),
     extra_options: dict[str, Any] = None,
 ) -> AudioStream:
@@ -345,7 +339,7 @@ def anlmf(
         mu: set the filter mu (from 0 to 2) (default 0.75)
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 4) (default o)
+        out_mode: set output mode (from 0 to 3) (default o)
         enable: timeline editing
 
     Returns:
@@ -382,7 +376,7 @@ def anlms(
     mu: Float = Default(0.75),
     eps: Float = Default(1.0),
     leakage: Float = Default(0.0),
-    out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
+    out_mode: Int | Literal["i", "d", "o", "n"] | Default = Default("o"),
     enable: String = Default(None),
     extra_options: dict[str, Any] = None,
 ) -> AudioStream:
@@ -395,7 +389,7 @@ def anlms(
         mu: set the filter mu (from 0 to 2) (default 0.75)
         eps: set the filter eps (from 0 to 1) (default 1)
         leakage: set the filter leakage (from 0 to 1) (default 0)
-        out_mode: set output mode (from 0 to 4) (default o)
+        out_mode: set output mode (from 0 to 3) (default o)
         enable: timeline editing
 
     Returns:
@@ -424,101 +418,14 @@ def anlms(
     return filter_node.audio(0)
 
 
-def apsnr(
-    _input0: AudioStream,
-    _input1: AudioStream,
-    *,
-    enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
-) -> AudioStream:
-    """
-
-    Measure Audio Peak Signal-to-Noise Ratio.
-
-    Args:
-        enable: timeline editing
-
-    Returns:
-        default: the audio stream
-
-    References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#apsnr)
-
-    """
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(
-            name="apsnr", typings_input=("audio", "audio"), typings_output=("audio",)
-        ),
-        _input0,
-        _input1,
-        **{
-            "enable": enable,
-        }
-        | (extra_options or {}),
-    )
-    return filter_node.audio(0)
-
-
-def arls(
-    _input: AudioStream,
-    _desired: AudioStream,
-    *,
-    order: Int = Default(16),
-    _lambda: Float = Default(1.0),
-    delta: Float = Default(2.0),
-    out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
-    enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
-) -> AudioStream:
-    """
-
-    Apply Recursive Least Squares algorithm to first audio stream.
-
-    Args:
-        order: set the filter order (from 1 to 32767) (default 16)
-        _lambda: set the filter lambda (from 0 to 1) (default 1)
-        delta: set the filter delta (from 0 to 32767) (default 2)
-        out_mode: set output mode (from 0 to 4) (default o)
-        enable: timeline editing
-
-    Returns:
-        default: the audio stream
-
-    References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#arls)
-
-    """
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(
-            name="arls", typings_input=("audio", "audio"), typings_output=("audio",)
-        ),
-        _input,
-        _desired,
-        **{
-            "order": order,
-            "lambda": _lambda,
-            "delta": delta,
-            "out_mode": out_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
-    )
-    return filter_node.audio(0)
-
-
 def asdr(
     _input0: AudioStream,
     _input1: AudioStream,
-    *,
-    enable: String = Default(None),
     extra_options: dict[str, Any] = None,
 ) -> AudioStream:
     """
 
     Measure Audio Signal-to-Distortion Ratio.
-
-    Args:
-        enable: timeline editing
 
     Returns:
         default: the audio stream
@@ -533,45 +440,7 @@ def asdr(
         ),
         _input0,
         _input1,
-        **{
-            "enable": enable,
-        }
-        | (extra_options or {}),
-    )
-    return filter_node.audio(0)
-
-
-def asisdr(
-    _input0: AudioStream,
-    _input1: AudioStream,
-    *,
-    enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
-) -> AudioStream:
-    """
-
-    Measure Audio Scale-Invariant Signal-to-Distortion Ratio.
-
-    Args:
-        enable: timeline editing
-
-    Returns:
-        default: the audio stream
-
-    References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asisdr)
-
-    """
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(
-            name="asisdr", typings_input=("audio", "audio"), typings_output=("audio",)
-        ),
-        _input0,
-        _input1,
-        **{
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **{} | (extra_options or {}),
     )
     return filter_node.audio(0)
 
@@ -620,7 +489,7 @@ def axcorrelate(
     _axcorrelate1: AudioStream,
     *,
     size: Int = Default(256),
-    algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
+    algo: Int | Literal["slow", "fast"] | Default = Default("slow"),
     extra_options: dict[str, Any] = None,
 ) -> AudioStream:
     """
@@ -628,8 +497,8 @@ def axcorrelate(
     Cross-correlate two audio streams.
 
     Args:
-        size: set the segment size (from 2 to 131072) (default 256)
-        algo: set the algorithm (from 0 to 2) (default best)
+        size: set segment size (from 2 to 131072) (default 256)
+        algo: set algorithm (from 0 to 1) (default slow)
 
     Returns:
         default: the audio stream
@@ -1973,71 +1842,6 @@ def join(
     return filter_node.audio(0)
 
 
-def libvmaf(
-    _main: VideoStream,
-    _reference: VideoStream,
-    *,
-    log_path: String = Default(None),
-    log_fmt: String = Default("xml"),
-    pool: String = Default(None),
-    n_threads: Int = Default(0),
-    n_subsample: Int = Default(1),
-    model: String = Default("version=vmaf_v0.6.1"),
-    feature: String = Default(None),
-    eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default("repeat"),
-    shortest: Boolean = Default(False),
-    repeatlast: Boolean = Default(True),
-    ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    extra_options: dict[str, Any] = None,
-) -> VideoStream:
-    """
-
-    Calculate the VMAF between two video streams.
-
-    Args:
-        log_path: Set the file path to be used to write log.
-        log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
-        pool: Set the pool method to be used for computing vmaf.
-        n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
-        n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
-        model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
-        feature: Set the feature to be used for computing vmaf.
-        eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-        shortest: force termination when the shortest input terminates (default false)
-        repeatlast: extend last frame of secondary streams beyond EOF (default true)
-        ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-
-    Returns:
-        default: the video stream
-
-    References:
-        [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
-
-    """
-    filter_node = filter_node_factory(
-        FFMpegFilterDef(
-            name="libvmaf", typings_input=("video", "video"), typings_output=("video",)
-        ),
-        _main,
-        _reference,
-        **{
-            "log_path": log_path,
-            "log_fmt": log_fmt,
-            "pool": pool,
-            "n_threads": n_threads,
-            "n_subsample": n_subsample,
-            "model": model,
-            "feature": feature,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-        }
-        | (extra_options or {}),
-    )
-    return filter_node.video(0)
-
-
 def limitdiff(
     *streams: VideoStream,
     threshold: Float = Default(0.00392157),
@@ -2680,15 +2484,7 @@ def overlay(
     shortest: Boolean = Default(False),
     format: Int
     | Literal[
-        "yuv420",
-        "yuv420p10",
-        "yuv422",
-        "yuv422p10",
-        "yuv444",
-        "yuv444p10",
-        "rgb",
-        "gbrp",
-        "auto",
+        "yuv420", "yuv420p10", "yuv422", "yuv422p10", "yuv444", "rgb", "gbrp", "auto"
     ]
     | Default = Default("yuv420"),
     repeatlast: Boolean = Default(True),
@@ -2707,7 +2503,7 @@ def overlay(
         eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
         eval: specify when to evaluate expressions (from 0 to 1) (default frame)
         shortest: force termination when the shortest input terminates (default false)
-        format: set output format (from 0 to 8) (default yuv420)
+        format: set output format (from 0 to 7) (default yuv420)
         repeatlast: repeat overlay of the last overlay frame (default true)
         alpha: alpha format (from 0 to 1) (default straight)
         ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
@@ -3650,18 +3446,6 @@ def xfade(
         "zoomin",
         "fadefast",
         "fadeslow",
-        "hlwind",
-        "hrwind",
-        "vuwind",
-        "vdwind",
-        "coverleft",
-        "coverright",
-        "coverup",
-        "coverdown",
-        "revealleft",
-        "revealright",
-        "revealup",
-        "revealdown",
     ]
     | Default = Default("fade"),
     duration: Duration = Default(1.0),
@@ -3674,7 +3458,7 @@ def xfade(
     Cross fade one video with another video.
 
     Args:
-        transition: set cross fade transition (from -1 to 57) (default fade)
+        transition: set cross fade transition (from -1 to 45) (default fade)
         duration: set cross fade duration (default 1)
         offset: set cross fade start relative to first input stream (default 0)
         expr: set expression for custom transition
