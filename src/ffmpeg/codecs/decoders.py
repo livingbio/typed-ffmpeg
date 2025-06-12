@@ -1,4 +1,6 @@
 # NOTE: this file is auto-generated, do not modify
+from typing import Literal
+
 from ..utils.frozendict import FrozenDict
 from .schema import FFMpegDecoderOption
 
@@ -231,7 +233,7 @@ def av1(
 
 
 def av1_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -699,7 +701,26 @@ def exr(
     layer: str | None = None,
     part: int | None = None,
     gamma: float | None = None,
-    apply_trc: int | None = None,
+    apply_trc: int
+    | None
+    | Literal[
+        "bt709",
+        "gamma",
+        "gamma22",
+        "gamma28",
+        "smpte170m",
+        "smpte240m",
+        "linear",
+        "log",
+        "log_sqrt",
+        "iec61966_2_4",
+        "bt1361",
+        "iec61966_2_1",
+        "bt2020_10bit",
+        "bt2020_12bit",
+        "smpte2084",
+        "smpte428_1",
+    ] = None,
 ) -> FFMpegDecoderOption:
     """
     OpenEXR image
@@ -997,7 +1018,7 @@ def h264_v4l2m2m(
 
 
 def h264_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -1078,7 +1099,7 @@ def hevc_v4l2m2m(
 
 
 def hevc_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -1463,7 +1484,7 @@ def mjpeg(
 
 
 def mjpeg_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -1560,7 +1581,7 @@ def mpeg1_v4l2m2m(
 
 
 def mpeg1_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -1624,7 +1645,7 @@ def mpeg2_v4l2m2m(
 
 
 def mpeg2_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -1677,7 +1698,7 @@ def mpeg4_v4l2m2m(
 
 
 def mpeg4_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -2895,7 +2916,7 @@ def vc1_v4l2m2m(
 
 
 def vc1_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -3113,7 +3134,7 @@ def libvpx() -> FFMpegDecoderOption:
 
 
 def vp8_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -3166,7 +3187,7 @@ def vp9_v4l2m2m(
 
 
 def vp9_cuvid(
-    deint: int | None = None,
+    deint: int | None | Literal["weave", "bob", "adaptive"] = None,
     gpu: str | None = None,
     surfaces: int | None = None,
     drop_second_field: bool | None = None,
@@ -3488,8 +3509,8 @@ def _8svx_fib() -> FFMpegDecoderOption:
 
 
 def aac(
-    dual_mono_mode: int | None = None,
-    channel_order: int | None = None,
+    dual_mono_mode: int | None | Literal["auto", "main", "sub", "both"] = None,
+    channel_order: int | None | Literal["default", "coded"] = None,
 ) -> FFMpegDecoderOption:
     """
     AAC (Advanced Audio Coding)
@@ -3505,8 +3526,8 @@ def aac(
 
 
 def aac_fixed(
-    dual_mono_mode: int | None = None,
-    channel_order: int | None = None,
+    dual_mono_mode: int | None | Literal["auto", "main", "sub", "both"] = None,
+    channel_order: int | None | Literal["default", "coded"] = None,
 ) -> FFMpegDecoderOption:
     """
     AAC (Advanced Audio Coding) (codec aac)
@@ -4190,7 +4211,7 @@ def apac() -> FFMpegDecoderOption:
 
 
 def ape(
-    max_samples: int | None = None,
+    max_samples: int | None | Literal["all"] = None,
 ) -> FFMpegDecoderOption:
     """
     Monkey's Audio
@@ -4414,7 +4435,7 @@ def dfpwm() -> FFMpegDecoderOption:
 
 
 def dolby_e(
-    channel_order: int | None = None,
+    channel_order: int | None | Literal["default", "coded"] = None,
 ) -> FFMpegDecoderOption:
     """
     Dolby E
@@ -4507,7 +4528,7 @@ def dst() -> FFMpegDecoderOption:
 
 def dca(
     core_only: bool | None = None,
-    channel_order: int | None = None,
+    channel_order: int | None | Literal["default", "coded"] = None,
     downmix: str | None = None,
 ) -> FFMpegDecoderOption:
     """
@@ -5506,7 +5527,9 @@ def roq_dpcm() -> FFMpegDecoderOption:
 
 
 def s302m(
-    non_pcm_mode: int | None = None,
+    non_pcm_mode: int
+    | None
+    | Literal["copy", "drop", "decode_copy", "decode_drop"] = None,
 ) -> FFMpegDecoderOption:
     """
     SMPTE 302M
@@ -5914,7 +5937,7 @@ def libzvbi_teletextdec(
     txt_page: str | None = None,
     txt_default_region: int | None = None,
     txt_chop_top: int | None = None,
-    txt_format: int | None = None,
+    txt_format: int | None | Literal["bitmap", "text", "ass"] = None,
     txt_left: int | None = None,
     txt_top: int | None = None,
     txt_chop_spaces: int | None = None,
@@ -5965,7 +5988,7 @@ def dvdsub(
 def cc_dec(
     real_time: bool | None = None,
     real_time_latency_msec: int | None = None,
-    data_field: int | None = None,
+    data_field: int | None | Literal["auto", "first", "second"] = None,
 ) -> FFMpegDecoderOption:
     """
     Closed Caption (EIA-608 / CEA-708) (codec eia_608)

@@ -27,37 +27,47 @@ class FFMpegAVOption(Serializable):
 
     @property
     def code_gen_type(self) -> str:
-        match self.type:
-            case "boolean":
-                return "bool | None"
-            case "int":
-                return "int | None"
-            case "int64":
-                return "int | None"
-            case "float":
-                return "float | None"
-            case "double":
-                return "float | None"
-            case "string":
-                return "str | None"
-            case "channel_layout":
-                return "str | None"
-            case "flags":
-                return "str | None"
-            case "duration":
-                return "str | None"
-            case "dictionary":
-                return "str | None"
-            case "image_size":
-                return "str | None"
-            case "pixel_format":
-                return "str | None"
-            case "sample_rate":
-                return "int | None"
-            case "sample_fmt":
-                return "str | None"
-            case _:
-                raise ValueError(f"Invalid option type: {self.type}")
+        def handle_choices() -> str:
+            if self.choices:
+                return "| Literal[{}]".format(
+                    ", ".join(f'"{choice.name}"' for choice in self.choices)
+                )
+            return ""
+
+        def handle_type() -> str:
+            match self.type:
+                case "boolean":
+                    return "bool | None"
+                case "int":
+                    return "int | None"
+                case "int64":
+                    return "int | None"
+                case "float":
+                    return "float | None"
+                case "double":
+                    return "float | None"
+                case "string":
+                    return "str | None"
+                case "channel_layout":
+                    return "str | None"
+                case "flags":
+                    return "str | None"
+                case "duration":
+                    return "str | None"
+                case "dictionary":
+                    return "str | None"
+                case "image_size":
+                    return "str | None"
+                case "pixel_format":
+                    return "str | None"
+                case "sample_rate":
+                    return "int | None"
+                case "sample_fmt":
+                    return "str | None"
+                case _:
+                    raise ValueError(f"Invalid option type: {self.type}")
+
+        return f"{handle_type()}{handle_choices()}"
 
 
 # NOTE: note the flags format for -encoders/-decoders vs -codecs are different

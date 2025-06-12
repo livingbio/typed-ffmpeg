@@ -45,24 +45,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -885,28 +885,28 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "2.0",
             "value": "0"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "2.1",
             "value": "1"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "2.2",
             "value": "2"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "2.3",
             "value": "3"
           },
           {
@@ -920,28 +920,28 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "3.0",
             "value": "4"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "3.1",
             "value": "5"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "3.2",
             "value": "6"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "3.3",
             "value": "7"
           },
           {
@@ -955,28 +955,28 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "4.0",
             "value": "8"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "4.1",
             "value": "9"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "4.2",
             "value": "10"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "4.3",
             "value": "11"
           },
           {
@@ -990,28 +990,28 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "5.0",
             "value": "12"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "5.1",
             "value": "13"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "5.2",
             "value": "14"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "5.3",
             "value": "15"
           },
           {
@@ -1025,28 +1025,28 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "6.0",
             "value": "16"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "6.1",
             "value": "17"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "6.2",
             "value": "18"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "6.3",
             "value": "19"
           },
           {
@@ -1060,28 +1060,28 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "7.0",
             "value": "20"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "7.1",
             "value": "21"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "7.2",
             "value": "22"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "7.3",
             "value": "23"
           }
         ],
@@ -1842,98 +1842,98 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "2.0",
             "value": "0"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "2.1",
             "value": "1"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "3.0",
             "value": "4"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "3.1",
             "value": "5"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "4.0",
             "value": "8"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "4.1",
             "value": "9"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "5.0",
             "value": "12"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "5.1",
             "value": "13"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "5.2",
             "value": "14"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "5.3",
             "value": "15"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "6.0",
             "value": "16"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "6.1",
             "value": "17"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "6.2",
             "value": "18"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "6.3",
             "value": "19"
           }
         ],
@@ -2020,7 +2020,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "",
+            "name": "film3+",
             "value": "0"
           },
           {
@@ -2034,7 +2034,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "",
+            "name": "film2+",
             "value": "2"
           },
           {
@@ -2048,14 +2048,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "5",
+            "name": "film1.5",
             "value": "4"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "",
+            "name": "film1+",
             "value": "5"
           },
           {
@@ -2069,7 +2069,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "",
+            "name": "high+",
             "value": "7"
           },
           {
@@ -2083,7 +2083,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "",
+            "name": "medium+",
             "value": "9"
           },
           {
@@ -2097,7 +2097,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "",
+            "name": "low+",
             "value": "11"
           },
           {
@@ -2601,24 +2601,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -3073,10 +3073,10 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "enable transparency detection between frames",
-            "name": "transdiff",
-            "value": "transdiff"
+            "flags": "transparenc",
+            "help": "y detection between frames",
+            "name": "transdiff                    E..V....... enable",
+            "value": "transdiff                    E..V....... enable"
           }
         ],
         "default": null,
@@ -3139,24 +3139,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -3642,24 +3642,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -4201,24 +4201,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -6542,7 +6542,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "1.0",
             "value": "10"
           },
           {
@@ -6556,28 +6556,28 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0b",
+            "name": "1.0b",
             "value": "9"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "1.1",
             "value": "11"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "1.2",
             "value": "12"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "1.3",
             "value": "13"
           },
           {
@@ -6591,21 +6591,21 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "2.0",
             "value": "20"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "2.1",
             "value": "21"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "2.2",
             "value": "22"
           },
           {
@@ -6619,21 +6619,21 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "3.0",
             "value": "30"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "3.1",
             "value": "31"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "3.2",
             "value": "32"
           },
           {
@@ -6647,21 +6647,21 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "4.0",
             "value": "40"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "4.1",
             "value": "41"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "4.2",
             "value": "42"
           },
           {
@@ -6675,42 +6675,42 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "5.0",
             "value": "50"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "5.1",
             "value": "51"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "5.2",
             "value": "52"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "6.0",
             "value": "60"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "6.1",
             "value": "61"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "6.2",
             "value": "62"
           }
         ],
@@ -7668,10 +7668,10 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Include recovery points where appropriate",
-            "name": "recovery_point",
-            "value": "recovery_point"
+            "flags": "appropriate",
+            "help": "",
+            "name": "recovery_point               E..V....... Include recovery points where",
+            "value": "recovery_point               E..V....... Include recovery points where"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -7745,21 +7745,21 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "1.1",
             "value": "11"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "1.2",
             "value": "12"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "3",
+            "name": "1.3",
             "value": "13"
           },
           {
@@ -7773,14 +7773,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "2.1",
             "value": "21"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "2.2",
             "value": "22"
           },
           {
@@ -7794,14 +7794,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "3.1",
             "value": "31"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "3.2",
             "value": "32"
           },
           {
@@ -7815,14 +7815,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "4.1",
             "value": "41"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "4.2",
             "value": "42"
           },
           {
@@ -7836,14 +7836,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "5.1",
             "value": "51"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "5.2",
             "value": "52"
           },
           {
@@ -7857,14 +7857,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "6.1",
             "value": "61"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "6.2",
             "value": "62"
           }
         ],
@@ -8331,7 +8331,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "1.0",
             "value": "30"
           },
           {
@@ -8345,14 +8345,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "2.0",
             "value": "60"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "2.1",
             "value": "63"
           },
           {
@@ -8366,14 +8366,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "3.0",
             "value": "90"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "3.1",
             "value": "93"
           },
           {
@@ -8387,14 +8387,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "4.0",
             "value": "120"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "4.1",
             "value": "123"
           },
           {
@@ -8408,21 +8408,21 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "5.0",
             "value": "150"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "5.1",
             "value": "153"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "5.2",
             "value": "156"
           },
           {
@@ -8436,21 +8436,21 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "0",
+            "name": "6.0",
             "value": "180"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "6.1",
             "value": "183"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "6.2",
             "value": "186"
           }
         ],
@@ -9390,7 +9390,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "2.1",
             "value": "63"
           },
           {
@@ -9404,7 +9404,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "3.1",
             "value": "93"
           },
           {
@@ -9418,7 +9418,7 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "4.1",
             "value": "123"
           },
           {
@@ -9432,14 +9432,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "5.1",
             "value": "153"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "5.2",
             "value": "156"
           },
           {
@@ -9453,14 +9453,14 @@
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "1",
+            "name": "6.1",
             "value": "183"
           },
           {
             "__class__": "FFMpegOptionChoice",
             "flags": "E..V.......",
             "help": "",
-            "name": "2",
+            "name": "6.2",
             "value": "186"
           }
         ],
@@ -9478,10 +9478,10 @@
         "choices": [
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Include HDR metadata for mastering display colour volume and content light level information",
-            "name": "hdr",
-            "value": "hdr"
+            "flags": "information",
+            "help": "",
+            "name": "hdr                          E..V....... Include HDR metadata for mastering display colour volume and content light level",
+            "value": "hdr                          E..V....... Include HDR metadata for mastering display colour volume and content light level"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -10139,24 +10139,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -10763,24 +10763,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -11463,24 +11463,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -12212,24 +12212,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -12837,24 +12837,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -13316,24 +13316,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -14196,24 +14196,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -14675,24 +14675,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -15329,24 +15329,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -16674,24 +16674,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",
@@ -17153,24 +17153,24 @@
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "Use rate distortion optimization for qp selection",
-            "name": "qp_rd",
-            "value": "qp_rd"
+            "flags": "optimizatio",
+            "help": "n for qp selection",
+            "name": "qp_rd                        E..V....... Use rate distortion",
+            "value": "qp_rd                        E..V....... Use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "use rate distortion optimization for CBP",
-            "name": "cbp_rd",
-            "value": "cbp_rd"
+            "flags": "optimizatio",
+            "help": "n for CBP",
+            "name": "cbp_rd                       E..V....... use rate distortion",
+            "value": "cbp_rd                       E..V....... use rate distortion"
           },
           {
             "__class__": "FFMpegOptionChoice",
-            "flags": "E..V.......",
-            "help": "normalize adaptive quantization",
-            "name": "naq",
-            "value": "naq"
+            "flags": "quantizatio",
+            "help": "n",
+            "name": "naq                          E..V....... normalize adaptive",
+            "value": "naq                          E..V....... normalize adaptive"
           },
           {
             "__class__": "FFMpegOptionChoice",

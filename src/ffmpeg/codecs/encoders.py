@@ -1,4 +1,6 @@
 # NOTE: this file is auto-generated, do not modify
+from typing import Literal
+
 from ..utils.frozendict import FrozenDict
 from .schema import FFMpegEncoderOption
 
@@ -37,7 +39,16 @@ def alias_pix() -> FFMpegEncoderOption:
 
 
 def amv(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -54,11 +65,29 @@ def amv(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    huffman: int | None = None,
+    huffman: int | None | Literal["default", "optimal"] = None,
     force_duplicated_matrix: bool | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -154,9 +183,9 @@ def librav1e(
 
 
 def libsvtav1(
-    hielevel: int | None = None,
+    hielevel: int | None | Literal["3level", "4level"] = None,
     la_depth: int | None = None,
-    tier: int | None = None,
+    tier: int | None | Literal["main", "high"] = None,
     preset: int | None = None,
     crf: int | None = None,
     qp: int | None = None,
@@ -187,18 +216,56 @@ def libsvtav1(
 
 
 def av1_nvenc(
-    preset: int | None = None,
-    tune: int | None = None,
-    level: int | None = None,
-    tier: int | None = None,
-    rc: int | None = None,
-    multipass: int | None = None,
+    preset: int
+    | None
+    | Literal[
+        "default", "slow", "medium", "fast", "p1", "p2", "p3", "p4", "p5", "p6", "p7"
+    ] = None,
+    tune: int | None | Literal["hq", "ll", "ull", "lossless"] = None,
+    level: int
+    | None
+    | Literal[
+        "auto",
+        "2",
+        "2.0",
+        "2.1",
+        "2.2",
+        "2.3",
+        "3",
+        "3.0",
+        "3.1",
+        "3.2",
+        "3.3",
+        "4",
+        "4.0",
+        "4.1",
+        "4.2",
+        "4.3",
+        "5",
+        "5.0",
+        "5.1",
+        "5.2",
+        "5.3",
+        "6",
+        "6.0",
+        "6.1",
+        "6.2",
+        "6.3",
+        "7",
+        "7.0",
+        "7.1",
+        "7.2",
+        "7.3",
+    ] = None,
+    tier: int | None | Literal["0", "1"] = None,
+    rc: int | None | Literal["constqp", "vbr", "cbr"] = None,
+    multipass: int | None | Literal["disabled", "qres", "fullres"] = None,
     highbitdepth: bool | None = None,
     tile_rows: int | None = None,
     tile_columns: int | None = None,
     surfaces: int | None = None,
-    gpu: int | None = None,
-    rgb_mode: int | None = None,
+    gpu: int | None | Literal["any", "list"] = None,
+    rgb_mode: int | None | Literal["yuv420", "yuv444", "disabled"] = None,
     delay: int | None = None,
     rc_lookahead: int | None = None,
     cq: float | None = None,
@@ -218,7 +285,7 @@ def av1_nvenc(
     strict_gop: bool | None = None,
     aq_strength: int | None = None,
     weighted_pred: bool | None = None,
-    b_ref_mode: int | None = None,
+    b_ref_mode: int | None | Literal["disabled", "each", "middle"] = None,
     dpb_size: int | None = None,
     ldkfs: int | None = None,
     intra_refresh: bool | None = None,
@@ -283,10 +350,29 @@ def av1_vaapi(
     b_depth: int | None = None,
     async_depth: int | None = None,
     max_frame_size: int | None = None,
-    rc_mode: int | None = None,
-    profile: int | None = None,
-    tier: int | None = None,
-    level: int | None = None,
+    rc_mode: int
+    | None
+    | Literal["auto", "CQP", "CBR", "VBR", "ICQ", "QVBR", "AVBR"] = None,
+    profile: int | None | Literal["main", "high", "professional"] = None,
+    tier: int | None | Literal["main", "high"] = None,
+    level: int
+    | None
+    | Literal[
+        "2.0",
+        "2.1",
+        "3.0",
+        "3.1",
+        "4.0",
+        "4.1",
+        "5.0",
+        "5.1",
+        "5.2",
+        "5.3",
+        "6.0",
+        "6.1",
+        "6.2",
+        "6.3",
+    ] = None,
     tiles: str | None = None,
     tile_groups: int | None = None,
 ) -> FFMpegEncoderOption:
@@ -368,7 +454,23 @@ def bmp() -> FFMpegEncoderOption:
 
 
 def cfhd(
-    quality: int | None = None,
+    quality: int
+    | None
+    | Literal[
+        "film3+",
+        "film3",
+        "film2+",
+        "film2",
+        "film1.5",
+        "film1+",
+        "film1",
+        "high+",
+        "high",
+        "medium+",
+        "medium",
+        "low+",
+        "low",
+    ] = None,
 ) -> FFMpegEncoderOption:
     """
     GoPro CineForm HD
@@ -434,7 +536,11 @@ def vc2() -> FFMpegEncoderOption:
 def dnxhd(
     nitris_compat: bool | None = None,
     ibias: int | None = None,
-    profile: int | None = None,
+    profile: int
+    | None
+    | Literal[
+        "dnxhd", "dnxhr_444", "dnxhr_hqx", "dnxhr_hq", "dnxhr_sq", "dnxhr_lb"
+    ] = None,
 ) -> FFMpegEncoderOption:
     """
     VC3/DNxHD
@@ -477,8 +583,8 @@ def dvvideo(
 
 
 def exr(
-    compression: int | None = None,
-    format: int | None = None,
+    compression: int | None | Literal["none", "rle", "zip1", "zip16"] = None,
+    format: int | None | Literal["half", "float"] = None,
     gamma: float | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -497,7 +603,7 @@ def exr(
 
 def ffv1(
     slicecrc: bool | None = None,
-    coder: int | None = None,
+    coder: int | None | Literal["rice", "range_def", "range_tab", "ac"] = None,
     context: int | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -516,7 +622,7 @@ def ffv1(
 
 def ffvhuff(
     non_deterministic: bool | None = None,
-    pred: int | None = None,
+    pred: int | None | Literal["left", "plane", "median"] = None,
     context: int | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -567,7 +673,16 @@ def flashsv2() -> FFMpegEncoderOption:
 
 
 def flv(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -584,11 +699,29 @@ def flv(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -630,7 +763,9 @@ def flv(
 
 
 def gif(
-    gifflags: str | None = None,
+    gifflags: str
+    | None
+    | Literal["offsetting", "transdiff                    E..V....... enable"] = None,
     gifimage: bool | None = None,
     global_palette: bool | None = None,
 ) -> FFMpegEncoderOption:
@@ -649,7 +784,16 @@ def gif(
 
 
 def h261(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -666,11 +810,29 @@ def h261(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -714,7 +876,16 @@ def h261(
 def h263(
     obmc: bool | None = None,
     mb_info: int | None = None,
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -731,11 +902,29 @@ def h263(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -800,7 +989,16 @@ def h263p(
     aiv: bool | None = None,
     obmc: bool | None = None,
     structured_slices: bool | None = None,
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -817,11 +1015,29 @@ def h263p(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -879,18 +1095,20 @@ def libx264(
     crf: float | None = None,
     crf_max: float | None = None,
     qp: int | None = None,
-    aq_mode: int | None = None,
+    aq_mode: int
+    | None
+    | Literal["none", "variance", "autovariance", "autovariance-biased"] = None,
     aq_strength: float | None = None,
     psy: bool | None = None,
     psy_rd: str | None = None,
     rc_lookahead: int | None = None,
     weightb: bool | None = None,
-    weightp: int | None = None,
+    weightp: int | None | Literal["none", "simple", "smart"] = None,
     ssim: bool | None = None,
     intra_refresh: bool | None = None,
     bluray_compat: bool | None = None,
     b_bias: int | None = None,
-    b_pyramid: int | None = None,
+    b_pyramid: int | None | Literal["none", "strict", "normal"] = None,
     mixed_refs: bool | None = None,
     _8x8dct: bool | None = None,
     fast_pskip: bool | None = None,
@@ -899,15 +1117,15 @@ def libx264(
     deblock: str | None = None,
     cplxblur: float | None = None,
     partitions: str | None = None,
-    direct_pred: int | None = None,
+    direct_pred: int | None | Literal["none", "spatial", "temporal", "auto"] = None,
     slice_max_size: int | None = None,
     stats: str | None = None,
-    nal_hrd: int | None = None,
+    nal_hrd: int | None | Literal["none", "vbr", "cbr"] = None,
     avcintra_class: int | None = None,
-    me_method: int | None = None,
-    motion_est: int | None = None,
+    me_method: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
+    motion_est: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
     forced_idr: bool | None = None,
-    coder: int | None = None,
+    coder: int | None | Literal["default", "cavlc", "cabac", "vlc", "ac"] = None,
     b_strategy: int | None = None,
     chromaoffset: int | None = None,
     sc_threshold: int | None = None,
@@ -988,18 +1206,20 @@ def libx264rgb(
     crf: float | None = None,
     crf_max: float | None = None,
     qp: int | None = None,
-    aq_mode: int | None = None,
+    aq_mode: int
+    | None
+    | Literal["none", "variance", "autovariance", "autovariance-biased"] = None,
     aq_strength: float | None = None,
     psy: bool | None = None,
     psy_rd: str | None = None,
     rc_lookahead: int | None = None,
     weightb: bool | None = None,
-    weightp: int | None = None,
+    weightp: int | None | Literal["none", "simple", "smart"] = None,
     ssim: bool | None = None,
     intra_refresh: bool | None = None,
     bluray_compat: bool | None = None,
     b_bias: int | None = None,
-    b_pyramid: int | None = None,
+    b_pyramid: int | None | Literal["none", "strict", "normal"] = None,
     mixed_refs: bool | None = None,
     _8x8dct: bool | None = None,
     fast_pskip: bool | None = None,
@@ -1008,15 +1228,15 @@ def libx264rgb(
     deblock: str | None = None,
     cplxblur: float | None = None,
     partitions: str | None = None,
-    direct_pred: int | None = None,
+    direct_pred: int | None | Literal["none", "spatial", "temporal", "auto"] = None,
     slice_max_size: int | None = None,
     stats: str | None = None,
-    nal_hrd: int | None = None,
+    nal_hrd: int | None | Literal["none", "vbr", "cbr"] = None,
     avcintra_class: int | None = None,
-    me_method: int | None = None,
-    motion_est: int | None = None,
+    me_method: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
+    motion_est: int | None | Literal["dia", "hex", "umh", "esa", "tesa"] = None,
     forced_idr: bool | None = None,
-    coder: int | None = None,
+    coder: int | None | Literal["default", "cavlc", "cabac", "vlc", "ac"] = None,
     b_strategy: int | None = None,
     chromaoffset: int | None = None,
     sc_threshold: int | None = None,
@@ -1085,17 +1305,82 @@ def libx264rgb(
 
 
 def h264_nvenc(
-    preset: int | None = None,
-    tune: int | None = None,
-    profile: int | None = None,
-    level: int | None = None,
-    rc: int | None = None,
+    preset: int
+    | None
+    | Literal[
+        "default",
+        "slow",
+        "medium",
+        "fast",
+        "hp",
+        "hq",
+        "bd",
+        "ll",
+        "llhq",
+        "llhp",
+        "lossless",
+        "losslesshp",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+    ] = None,
+    tune: int | None | Literal["hq", "ll", "ull", "lossless"] = None,
+    profile: int | None | Literal["baseline", "main", "high", "high444p"] = None,
+    level: int
+    | None
+    | Literal[
+        "auto",
+        "1",
+        "1.0",
+        "1b",
+        "1.0b",
+        "1.1",
+        "1.2",
+        "1.3",
+        "2",
+        "2.0",
+        "2.1",
+        "2.2",
+        "3",
+        "3.0",
+        "3.1",
+        "3.2",
+        "4",
+        "4.0",
+        "4.1",
+        "4.2",
+        "5",
+        "5.0",
+        "5.1",
+        "5.2",
+        "6.0",
+        "6.1",
+        "6.2",
+    ] = None,
+    rc: int
+    | None
+    | Literal[
+        "constqp",
+        "vbr",
+        "cbr",
+        "vbr_minqp",
+        "ll_2pass_quality",
+        "ll_2pass_size",
+        "vbr_2pass",
+        "cbr_ld_hq",
+        "cbr_hq",
+        "vbr_hq",
+    ] = None,
     rc_lookahead: int | None = None,
     surfaces: int | None = None,
     cbr: bool | None = None,
     _2pass: bool | None = None,
-    gpu: int | None = None,
-    rgb_mode: int | None = None,
+    gpu: int | None | Literal["any", "list"] = None,
+    rgb_mode: int | None | Literal["yuv420", "yuv444", "disabled"] = None,
     delay: int | None = None,
     no_scenecut: bool | None = None,
     forced_idr: bool | None = None,
@@ -1116,11 +1401,13 @@ def h264_nvenc(
     qp_cb_offset: int | None = None,
     qp_cr_offset: int | None = None,
     weighted_pred: int | None = None,
-    coder: int | None = None,
-    b_ref_mode: int | None = None,
+    coder: int
+    | None
+    | Literal["default", "auto", "cabac", "cavlc", "ac", "vlc"] = None,
+    b_ref_mode: int | None | Literal["disabled", "each", "middle"] = None,
     a53cc: bool | None = None,
     dpb_size: int | None = None,
-    multipass: int | None = None,
+    multipass: int | None | Literal["disabled", "qres", "fullres"] = None,
     ldkfs: int | None = None,
     extra_sei: bool | None = None,
     udu_sei: bool | None = None,
@@ -1206,14 +1493,47 @@ def h264_vaapi(
     b_depth: int | None = None,
     async_depth: int | None = None,
     max_frame_size: int | None = None,
-    rc_mode: int | None = None,
+    rc_mode: int
+    | None
+    | Literal["auto", "CQP", "CBR", "VBR", "ICQ", "QVBR", "AVBR"] = None,
     qp: int | None = None,
     quality: int | None = None,
-    coder: int | None = None,
+    coder: int | None | Literal["cavlc", "cabac", "vlc", "ac"] = None,
     aud: bool | None = None,
-    sei: str | None = None,
-    profile: int | None = None,
-    level: int | None = None,
+    sei: str
+    | None
+    | Literal[
+        "identifier",
+        "timing",
+        "recovery_point               E..V....... Include recovery points where",
+        "a53_cc",
+    ] = None,
+    profile: int
+    | None
+    | Literal["constrained_baseline", "main", "high", "high10"] = None,
+    level: int
+    | None
+    | Literal[
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "2",
+        "2.1",
+        "2.2",
+        "3",
+        "3.1",
+        "3.2",
+        "4",
+        "4.1",
+        "4.2",
+        "5",
+        "5.1",
+        "5.2",
+        "6",
+        "6.1",
+        "6.2",
+    ] = None,
 ) -> FFMpegEncoderOption:
     """
     H.264/AVC (VAAPI) (codec h264)
@@ -1240,9 +1560,9 @@ def h264_vaapi(
 
 
 def hap(
-    format: int | None = None,
+    format: int | None | Literal["hap", "hap_alpha", "hap_q"] = None,
     chunks: int | None = None,
-    compressor: int | None = None,
+    compressor: int | None | Literal["none", "snappy"] = None,
 ) -> FFMpegEncoderOption:
     """
     Vidvox Hap
@@ -1301,18 +1621,76 @@ def libx265(
 
 
 def hevc_nvenc(
-    preset: int | None = None,
-    tune: int | None = None,
-    profile: int | None = None,
-    level: int | None = None,
-    tier: int | None = None,
-    rc: int | None = None,
+    preset: int
+    | None
+    | Literal[
+        "default",
+        "slow",
+        "medium",
+        "fast",
+        "hp",
+        "hq",
+        "bd",
+        "ll",
+        "llhq",
+        "llhp",
+        "lossless",
+        "losslesshp",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+    ] = None,
+    tune: int | None | Literal["hq", "ll", "ull", "lossless"] = None,
+    profile: int | None | Literal["main", "main10", "rext"] = None,
+    level: int
+    | None
+    | Literal[
+        "auto",
+        "1",
+        "1.0",
+        "2",
+        "2.0",
+        "2.1",
+        "3",
+        "3.0",
+        "3.1",
+        "4",
+        "4.0",
+        "4.1",
+        "5",
+        "5.0",
+        "5.1",
+        "5.2",
+        "6",
+        "6.0",
+        "6.1",
+        "6.2",
+    ] = None,
+    tier: int | None | Literal["main", "high"] = None,
+    rc: int
+    | None
+    | Literal[
+        "constqp",
+        "vbr",
+        "cbr",
+        "vbr_minqp",
+        "ll_2pass_quality",
+        "ll_2pass_size",
+        "vbr_2pass",
+        "cbr_ld_hq",
+        "cbr_hq",
+        "vbr_hq",
+    ] = None,
     rc_lookahead: int | None = None,
     surfaces: int | None = None,
     cbr: bool | None = None,
     _2pass: bool | None = None,
-    gpu: int | None = None,
-    rgb_mode: int | None = None,
+    gpu: int | None | Literal["any", "list"] = None,
+    rgb_mode: int | None | Literal["yuv420", "yuv444", "disabled"] = None,
     delay: int | None = None,
     no_scenecut: bool | None = None,
     forced_idr: bool | None = None,
@@ -1332,11 +1710,11 @@ def hevc_nvenc(
     qp_cb_offset: int | None = None,
     qp_cr_offset: int | None = None,
     weighted_pred: int | None = None,
-    b_ref_mode: int | None = None,
+    b_ref_mode: int | None | Literal["disabled", "each", "middle"] = None,
     a53cc: bool | None = None,
     s12m_tc: bool | None = None,
     dpb_size: int | None = None,
-    multipass: int | None = None,
+    multipass: int | None | Literal["disabled", "qres", "fullres"] = None,
     ldkfs: int | None = None,
     extra_sei: bool | None = None,
     udu_sei: bool | None = None,
@@ -1422,13 +1800,24 @@ def hevc_vaapi(
     b_depth: int | None = None,
     async_depth: int | None = None,
     max_frame_size: int | None = None,
-    rc_mode: int | None = None,
+    rc_mode: int
+    | None
+    | Literal["auto", "CQP", "CBR", "VBR", "ICQ", "QVBR", "AVBR"] = None,
     qp: int | None = None,
     aud: bool | None = None,
-    profile: int | None = None,
-    tier: int | None = None,
-    level: int | None = None,
-    sei: str | None = None,
+    profile: int | None | Literal["main", "main10", "rext"] = None,
+    tier: int | None | Literal["main", "high"] = None,
+    level: int
+    | None
+    | Literal[
+        "1", "2", "2.1", "3", "3.1", "4", "4.1", "5", "5.1", "5.2", "6", "6.1", "6.2"
+    ] = None,
+    sei: str
+    | None
+    | Literal[
+        "hdr                          E..V....... Include HDR metadata for mastering display colour volume and content light level",
+        "a53_cc",
+    ] = None,
     tiles: str | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -1457,7 +1846,7 @@ def hevc_vaapi(
 
 def huffyuv(
     non_deterministic: bool | None = None,
-    pred: int | None = None,
+    pred: int | None | Literal["left", "plane", "median"] = None,
 ) -> FFMpegEncoderOption:
     """
     Huffyuv / HuffYUV
@@ -1473,13 +1862,13 @@ def huffyuv(
 
 
 def jpeg2000(
-    format: int | None = None,
+    format: int | None | Literal["j2k", "jp2"] = None,
     tile_width: int | None = None,
     tile_height: int | None = None,
-    pred: int | None = None,
+    pred: int | None | Literal["dwt97int", "dwt53"] = None,
     sop: int | None = None,
     eph: int | None = None,
-    prog: int | None = None,
+    prog: int | None | Literal["lrcp", "rlcp", "rpcl", "pcrl", "cprl"] = None,
     layer_rates: str | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -1502,10 +1891,10 @@ def jpeg2000(
 
 
 def libopenjpeg(
-    format: int | None = None,
-    profile: int | None = None,
-    cinema_mode: int | None = None,
-    prog_order: int | None = None,
+    format: int | None | Literal["j2k", "jp2"] = None,
+    profile: int | None | Literal["jpeg2000", "cinema2k", "cinema4k"] = None,
+    cinema_mode: int | None | Literal["off", "2k_24", "2k_48", "4k_24"] = None,
+    prog_order: int | None | Literal["lrcp", "rlcp", "rpcl", "pcrl", "cprl"] = None,
     numresolution: int | None = None,
     irreversible: int | None = None,
     disto_alloc: int | None = None,
@@ -1531,7 +1920,7 @@ def libopenjpeg(
 
 
 def jpegls(
-    pred: int | None = None,
+    pred: int | None | Literal["left", "plane", "median"] = None,
 ) -> FFMpegEncoderOption:
     """
     JPEG-LS
@@ -1565,7 +1954,7 @@ def libjxl(
 
 
 def ljpeg(
-    pred: int | None = None,
+    pred: int | None | Literal["left", "plane", "median"] = None,
 ) -> FFMpegEncoderOption:
     """
     Lossless JPEG
@@ -1580,7 +1969,7 @@ def ljpeg(
 
 
 def magicyuv(
-    pred: int | None = None,
+    pred: int | None | Literal["left", "gradient", "median"] = None,
 ) -> FFMpegEncoderOption:
     """
     MagicYUV video
@@ -1595,7 +1984,16 @@ def magicyuv(
 
 
 def mjpeg(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1612,11 +2010,29 @@ def mjpeg(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    huffman: int | None = None,
+    huffman: int | None | Literal["default", "optimal"] = None,
     force_duplicated_matrix: bool | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -1688,7 +2104,16 @@ def mpeg1video(
     b_strategy: int | None = None,
     b_sensitivity: int | None = None,
     brd_scale: int | None = None,
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1705,11 +2130,29 @@ def mpeg1video(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -1769,9 +2212,20 @@ def mpeg2video(
     non_linear_quant: bool | None = None,
     alternate_scan: bool | None = None,
     a53cc: bool | None = None,
-    seq_disp_ext: int | None = None,
-    video_format: int | None = None,
-    mpv_flags: str | None = None,
+    seq_disp_ext: int | None | Literal["auto", "never", "always"] = None,
+    video_format: int
+    | None
+    | Literal["component", "pal", "ntsc", "secam", "mac", "unspecified"] = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1788,11 +2242,29 @@ def mpeg2video(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -1852,9 +2324,11 @@ def mpeg2_vaapi(
     b_depth: int | None = None,
     async_depth: int | None = None,
     max_frame_size: int | None = None,
-    rc_mode: int | None = None,
-    profile: int | None = None,
-    level: int | None = None,
+    rc_mode: int
+    | None
+    | Literal["auto", "CQP", "CBR", "VBR", "ICQ", "QVBR", "AVBR"] = None,
+    profile: int | None | Literal["simple", "main"] = None,
+    level: int | None | Literal["low", "main", "high_1440", "high"] = None,
 ) -> FFMpegEncoderOption:
     """
     MPEG-2 (VAAPI) (codec mpeg2video)
@@ -1882,7 +2356,16 @@ def mpeg4(
     b_strategy: int | None = None,
     b_sensitivity: int | None = None,
     brd_scale: int | None = None,
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -1899,11 +2382,29 @@ def mpeg4(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -1953,7 +2454,7 @@ def mpeg4(
 def libxvid(
     lumi_aq: int | None = None,
     variance_aq: int | None = None,
-    ssim: int | None = None,
+    ssim: int | None | Literal["off", "avg", "frame"] = None,
     ssim_acc: int | None = None,
     gmc: int | None = None,
     me_quality: int | None = None,
@@ -1995,7 +2496,16 @@ def mpeg4_v4l2m2m(
 
 
 def msmpeg4v2(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2012,11 +2522,29 @@ def msmpeg4v2(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -2058,7 +2586,16 @@ def msmpeg4v2(
 
 
 def msmpeg4(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2075,11 +2612,29 @@ def msmpeg4(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -2273,10 +2828,14 @@ def prores_aw(
 
 def prores_ks(
     mbs_per_slice: int | None = None,
-    profile: int | None = None,
+    profile: int
+    | None
+    | Literal["auto", "proxy", "lt", "standard", "hq", "4444", "4444xq"] = None,
     vendor: str | None = None,
     bits_per_mb: int | None = None,
-    quant_mat: int | None = None,
+    quant_mat: int
+    | None
+    | Literal["auto", "proxy", "lt", "standard", "hq", "default"] = None,
     alpha_bits: int | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -2388,7 +2947,16 @@ def rpza(
 
 
 def rv10(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2405,11 +2973,29 @@ def rv10(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -2451,7 +3037,16 @@ def rv10(
 
 
 def rv20(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2468,11 +3063,29 @@ def rv20(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -2540,13 +3153,13 @@ def smc() -> FFMpegEncoderOption:
 
 
 def snow(
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone", "iter"] = None,
     memc_only: bool | None = None,
     no_bitstream: bool | None = None,
     intra_penalty: int | None = None,
     iterative_dia_size: int | None = None,
     sc_threshold: int | None = None,
-    pred: int | None = None,
+    pred: int | None | Literal["dwt97", "dwt53"] = None,
     rc_eq: str | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -2569,7 +3182,16 @@ def snow(
 
 
 def speedhq(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2586,11 +3208,29 @@ def speedhq(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -2647,7 +3287,7 @@ def sunrast(
 
 
 def svq1(
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
 ) -> FFMpegEncoderOption:
     """
     Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1
@@ -2689,7 +3329,7 @@ def libtheora() -> FFMpegEncoderOption:
 
 def tiff(
     dpi: int | None = None,
-    compression_algo: int | None = None,
+    compression_algo: int | None | Literal["packbits", "raw", "lzw", "deflate"] = None,
 ) -> FFMpegEncoderOption:
     """
     TIFF image
@@ -2705,7 +3345,7 @@ def tiff(
 
 
 def utvideo(
-    pred: int | None = None,
+    pred: int | None | Literal["none", "left", "gradient", "median"] = None,
 ) -> FFMpegEncoderOption:
     """
     Ut Video
@@ -2764,7 +3404,7 @@ def v410() -> FFMpegEncoderOption:
 
 
 def vbn(
-    format: int | None = None,
+    format: int | None | Literal["raw", "dxt1", "dxt5"] = None,
 ) -> FFMpegEncoderOption:
     """
     Vizrt Binary Image
@@ -2823,7 +3463,9 @@ def vp8_vaapi(
     b_depth: int | None = None,
     async_depth: int | None = None,
     max_frame_size: int | None = None,
-    rc_mode: int | None = None,
+    rc_mode: int
+    | None
+    | Literal["auto", "CQP", "CBR", "VBR", "ICQ", "QVBR", "AVBR"] = None,
     loop_filter_level: int | None = None,
     loop_filter_sharpness: int | None = None,
 ) -> FFMpegEncoderOption:
@@ -2852,7 +3494,9 @@ def vp9_vaapi(
     b_depth: int | None = None,
     async_depth: int | None = None,
     max_frame_size: int | None = None,
-    rc_mode: int | None = None,
+    rc_mode: int
+    | None
+    | Literal["auto", "CQP", "CBR", "VBR", "ICQ", "QVBR", "AVBR"] = None,
     loop_filter_level: int | None = None,
     loop_filter_sharpness: int | None = None,
 ) -> FFMpegEncoderOption:
@@ -2888,7 +3532,9 @@ def wbmp() -> FFMpegEncoderOption:
 
 def libwebp_anim(
     lossless: int | None = None,
-    preset: int | None = None,
+    preset: int
+    | None
+    | Literal["none", "default", "picture", "photo", "drawing", "icon", "text"] = None,
     cr_threshold: int | None = None,
     cr_size: int | None = None,
     quality: float | None = None,
@@ -2911,7 +3557,9 @@ def libwebp_anim(
 
 def libwebp(
     lossless: int | None = None,
-    preset: int | None = None,
+    preset: int
+    | None
+    | Literal["none", "default", "picture", "photo", "drawing", "icon", "text"] = None,
     cr_threshold: int | None = None,
     cr_size: int | None = None,
     quality: float | None = None,
@@ -2933,7 +3581,16 @@ def libwebp(
 
 
 def wmv1(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -2950,11 +3607,29 @@ def wmv1(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -2996,7 +3671,16 @@ def wmv1(
 
 
 def wmv2(
-    mpv_flags: str | None = None,
+    mpv_flags: str
+    | None
+    | Literal[
+        "skip_rd",
+        "strict_gop",
+        "qp_rd                        E..V....... Use rate distortion",
+        "cbp_rd                       E..V....... use rate distortion",
+        "naq                          E..V....... normalize adaptive",
+        "mv0",
+    ] = None,
     luma_elim_threshold: int | None = None,
     chroma_elim_threshold: int | None = None,
     quantizer_noise_shaping: int | None = None,
@@ -3013,11 +3697,29 @@ def wmv2(
     skip_threshold: int | None = None,
     skip_factor: int | None = None,
     skip_exp: int | None = None,
-    skip_cmp: int | None = None,
+    skip_cmp: int
+    | None
+    | Literal[
+        "sad",
+        "sse",
+        "satd",
+        "dct",
+        "psnr",
+        "bit",
+        "rd",
+        "zero",
+        "vsad",
+        "vsse",
+        "nsse",
+        "dct264",
+        "dctmax",
+        "chroma",
+        "msad",
+    ] = None,
     sc_threshold: int | None = None,
     noise_reduction: int | None = None,
     ps: int | None = None,
-    motion_est: int | None = None,
+    motion_est: int | None | Literal["zero", "epzs", "xone"] = None,
     mepc: int | None = None,
     mepre: int | None = None,
     intra_penalty: int | None = None,
@@ -3147,7 +3849,7 @@ def zmbv() -> FFMpegEncoderOption:
 
 
 def aac(
-    aac_coder: int | None = None,
+    aac_coder: int | None | Literal["anmr", "twoloop", "fast"] = None,
     aac_ms: bool | None = None,
     aac_is: bool | None = None,
     aac_pns: bool | None = None,
@@ -3465,7 +4167,11 @@ def aptx_hd() -> FFMpegEncoderOption:
 
 
 def libcodec2(
-    mode: int | None = None,
+    mode: int
+    | None
+    | Literal[
+        "3200", "2400", "1600", "1400", "1300", "1200", "700", "700B", "700C"
+    ] = None,
 ) -> FFMpegEncoderOption:
     """
     codec2 encoder using libcodec2 (codec codec2)
@@ -3525,12 +4231,16 @@ def eac3() -> FFMpegEncoderOption:
 
 def flac(
     lpc_coeff_precision: int | None = None,
-    lpc_type: int | None = None,
+    lpc_type: int | None | Literal["none", "fixed", "levinson", "cholesky"] = None,
     lpc_passes: int | None = None,
     min_partition_order: int | None = None,
     max_partition_order: int | None = None,
-    prediction_order_method: int | None = None,
-    ch_mode: int | None = None,
+    prediction_order_method: int
+    | None
+    | Literal["estimation", "2level", "4level", "8level", "search", "log"] = None,
+    ch_mode: int
+    | None
+    | Literal["auto", "indep", "left_side", "right_side", "mid_side"] = None,
     exact_rice_parameters: bool | None = None,
     multi_dim_quant: bool | None = None,
     min_prediction_order: int | None = None,
@@ -3594,10 +4304,10 @@ def libgsm_ms() -> FFMpegEncoderOption:
 def mlp(
     max_interval: int | None = None,
     lpc_coeff_precision: int | None = None,
-    lpc_type: int | None = None,
+    lpc_type: int | None | Literal["levinson", "cholesky"] = None,
     lpc_passes: int | None = None,
     codebook_search: int | None = None,
-    prediction_order: int | None = None,
+    prediction_order: int | None | Literal["estimation", "search"] = None,
     rematrix_precision: int | None = None,
 ) -> FFMpegEncoderOption:
     """
@@ -3641,7 +4351,9 @@ def mp2fixed() -> FFMpegEncoderOption:
 
 
 def libtwolame(
-    mode: int | None = None,
+    mode: int
+    | None
+    | Literal["auto", "stereo", "joint_stereo", "dual_channel", "mono"] = None,
     psymodel: int | None = None,
     energy_levels: int | None = None,
     error_protection: int | None = None,
@@ -3730,11 +4442,11 @@ def opus(
 
 
 def libopus(
-    application: int | None = None,
+    application: int | None | Literal["voip", "audio", "lowdelay"] = None,
     frame_duration: float | None = None,
     packet_loss: int | None = None,
     fec: bool | None = None,
-    vbr: int | None = None,
+    vbr: int | None | Literal["off", "on", "constrained"] = None,
     mapping_family: int | None = None,
     apply_phase_inv: bool | None = None,
 ) -> FFMpegEncoderOption:
@@ -4195,10 +4907,10 @@ def libspeex(
 def truehd(
     max_interval: int | None = None,
     lpc_coeff_precision: int | None = None,
-    lpc_type: int | None = None,
+    lpc_type: int | None | Literal["levinson", "cholesky"] = None,
     lpc_passes: int | None = None,
     codebook_search: int | None = None,
-    prediction_order: int | None = None,
+    prediction_order: int | None | Literal["estimation", "search"] = None,
     rematrix_precision: int | None = None,
 ) -> FFMpegEncoderOption:
     """
