@@ -4,6 +4,7 @@
 from pathlib import Path
 from typing import Any
 
+from ...codecs.schema import FFMpegDecoderOption
 from ...streams.av import AVStream
 from ...types import (
     Boolean,
@@ -72,7 +73,8 @@ def input(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
-    extra_options: dict[str, Any] = None,
+    decoder_options: FFMpegDecoderOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
@@ -131,6 +133,7 @@ def input(
         dcodec: alias for -c:d (select encoder/decoder for data streams)
         dn: disable data
         top: deprecated, use the setfield video filter
+        decoder_options: ffmpeg's decoder options
         extra_options: ffmpeg's input file options
 
     Returns:

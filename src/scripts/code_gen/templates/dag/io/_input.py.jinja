@@ -7,6 +7,7 @@ from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
 {{ _components.import_types('...types') }}
+from ...codecs.schema import FFMpegDecoderOption
 
 def input(
     filename: str | Path,
@@ -16,7 +17,8 @@ def input(
     {{ option.name }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
-    extra_options: dict[str, Any] = None,
+    decoder_options: FFMpegDecoderOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
@@ -28,6 +30,7 @@ def input(
         {{option.name | option_name_safe}}: {{option.help }}
         {% endif %}
         {%- endfor -%}
+        decoder_options: ffmpeg's decoder options
         extra_options: ffmpeg's input file options
 
     Returns:

@@ -4,6 +4,7 @@
 from pathlib import Path
 from typing import Any
 
+from ...codecs.schema import FFMpegEncoderOption
 from ...types import (
     Boolean,
     Float,
@@ -114,7 +115,8 @@ def output(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
-    extra_options: dict[str, Any] = None,
+    encoder_options: FFMpegEncoderOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
     Output file URL
@@ -217,6 +219,7 @@ def output(
         dcodec: alias for -c:d (select encoder/decoder for data streams)
         dn: disable data
         top: deprecated, use the setfield video filter
+        encoder_options: ffmpeg's encoder options
         extra_options: the arguments for the output
 
     Returns:
@@ -327,5 +330,9 @@ def output(
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {})),
+        kwargs=FrozenDict(
+            options
+            | (encoder_options.kwargs if encoder_options else {})
+            | (extra_options or {})
+        ),
     ).stream()
