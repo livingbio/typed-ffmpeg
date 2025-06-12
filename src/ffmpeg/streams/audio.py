@@ -3555,6 +3555,56 @@ class AudioStream(FilterableStream):
 
         return filter_node
 
+    def asr(
+        self,
+        *,
+        rate: Int = Default(16000),
+        hmm: String = Default(None),
+        dict: String = Default(None),
+        lm: String = Default(None),
+        lmctl: String = Default(None),
+        lmname: String = Default(None),
+        logfn: String = Default("/dev/null"),
+        extra_options: dict[str, Any] = None,
+    ) -> AudioStream:
+        """
+
+        Automatic Speech Recognition.
+
+        Args:
+            rate: set sampling rate (from 0 to INT_MAX) (default 16000)
+            hmm: set directory containing acoustic model files
+            dict: set pronunciation dictionary
+            lm: set language model file
+            lmctl: set language model set
+            lmname: set which language model to use
+            logfn: set output for log messages (default "/dev/null")
+
+        Returns:
+            default: the audio stream
+
+        References:
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#asr)
+
+        """
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="asr", typings_input=("audio",), typings_output=("audio",)
+            ),
+            self,
+            **{
+                "rate": rate,
+                "hmm": hmm,
+                "dict": dict,
+                "lm": lm,
+                "lmctl": lmctl,
+                "lmname": lmname,
+                "logfn": logfn,
+            }
+            | (extra_options or {}),
+        )
+        return filter_node.audio(0)
+
     def astats(
         self,
         *,
@@ -4426,6 +4476,46 @@ class AudioStream(FilterableStream):
                 "precision": precision,
                 "blocksize": blocksize,
                 "enable": enable,
+            }
+            | (extra_options or {}),
+        )
+        return filter_node.audio(0)
+
+    def bs2b(
+        self,
+        *,
+        profile: Int | Literal["default", "cmoy", "jmeier"] | Default = Default(
+            "default"
+        ),
+        fcut: Int = Default(0),
+        feed: Int = Default(0),
+        extra_options: dict[str, Any] = None,
+    ) -> AudioStream:
+        """
+
+        Bauer stereo-to-binaural filter.
+
+        Args:
+            profile: Apply a pre-defined crossfeed level (from 0 to INT_MAX) (default default)
+            fcut: Set cut frequency (in Hz) (from 0 to 2000) (default 0)
+            feed: Set feed level (in Hz) (from 0 to 150) (default 0)
+
+        Returns:
+            default: the audio stream
+
+        References:
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#bs2b)
+
+        """
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="bs2b", typings_input=("audio",), typings_output=("audio",)
+            ),
+            self,
+            **{
+                "profile": profile,
+                "fcut": fcut,
+                "feed": feed,
             }
             | (extra_options or {}),
         )
@@ -7012,6 +7102,77 @@ class AudioStream(FilterableStream):
                 "window": window,
                 "timestamp": timestamp,
                 "enable": enable,
+            }
+            | (extra_options or {}),
+        )
+        return filter_node.audio(0)
+
+    def sofalizer(
+        self,
+        *,
+        sofa: String = Default(None),
+        gain: Float = Default(0.0),
+        rotation: Float = Default(0.0),
+        elevation: Float = Default(0.0),
+        radius: Float = Default(1.0),
+        type: Int | Literal["time", "freq"] | Default = Default("freq"),
+        speakers: String = Default(None),
+        lfegain: Float = Default(0.0),
+        framesize: Int = Default(1024),
+        normalize: Boolean = Default(True),
+        interpolate: Boolean = Default(False),
+        minphase: Boolean = Default(False),
+        anglestep: Float = Default(0.5),
+        radstep: Float = Default(0.01),
+        extra_options: dict[str, Any] = None,
+    ) -> AudioStream:
+        """
+
+        SOFAlizer (Spatially Oriented Format for Acoustics).
+
+        Args:
+            sofa: sofa filename
+            gain: set gain in dB (from -20 to 40) (default 0)
+            rotation: set rotation (from -360 to 360) (default 0)
+            elevation: set elevation (from -90 to 90) (default 0)
+            radius: set radius (from 0 to 5) (default 1)
+            type: set processing (from 0 to 1) (default freq)
+            speakers: set speaker custom positions
+            lfegain: set lfe gain (from -20 to 40) (default 0)
+            framesize: set frame size (from 1024 to 96000) (default 1024)
+            normalize: normalize IRs (default true)
+            interpolate: interpolate IRs from neighbors (default false)
+            minphase: minphase IRs (default false)
+            anglestep: set neighbor search angle step (from 0.01 to 10) (default 0.5)
+            radstep: set neighbor search radius step (from 0.01 to 1) (default 0.01)
+
+        Returns:
+            default: the audio stream
+
+        References:
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#sofalizer)
+
+        """
+        filter_node = filter_node_factory(
+            FFMpegFilterDef(
+                name="sofalizer", typings_input=("audio",), typings_output=("audio",)
+            ),
+            self,
+            **{
+                "sofa": sofa,
+                "gain": gain,
+                "rotation": rotation,
+                "elevation": elevation,
+                "radius": radius,
+                "type": type,
+                "speakers": speakers,
+                "lfegain": lfegain,
+                "framesize": framesize,
+                "normalize": normalize,
+                "interpolate": interpolate,
+                "minphase": minphase,
+                "anglestep": anglestep,
+                "radstep": radstep,
             }
             | (extra_options or {}),
         )
