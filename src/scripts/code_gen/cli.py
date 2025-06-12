@@ -129,7 +129,12 @@ def generate(outpath: Path | None = None, rebuild: bool = False) -> None:
     ffmpeg_options = gen_option_info()
     ffmpeg_codecs = load_codecs(rebuild)
 
-    render(ffmpeg_filters, ffmpeg_options, ffmpeg_codecs, outpath)
+    render(
+        filters=ffmpeg_filters,
+        options=ffmpeg_options,
+        codecs=ffmpeg_codecs,
+        outpath=outpath,
+    )
     os.system("pre-commit run -a")
 
 

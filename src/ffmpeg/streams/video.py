@@ -1160,30 +1160,6 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def ccrepack(
-        self,
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Repack CEA-708 closed caption metadata
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ccrepack)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="ccrepack", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{} | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
     def chromahold(
         self,
         *,
@@ -2508,47 +2484,6 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def coreimage(
-        self,
-        *,
-        list_filters: Boolean = Default(False),
-        list_generators: Boolean = Default(False),
-        filter: String = Default(None),
-        output_rect: String = Default(None),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Video filtering using CoreImage API.
-
-        Args:
-            list_filters: list available filters (default false)
-            list_generators: list available generators (default false)
-            filter: names and options of filters to apply
-            output_rect: output rectangle within output image
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#coreimage)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="coreimage", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{
-                "list_filters": list_filters,
-                "list_generators": list_generators,
-                "filter": filter,
-                "output_rect": output_rect,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
     def corr(
         self,
         _reference: VideoStream,
@@ -3378,7 +3313,7 @@ class VideoStream(FilterableStream):
         self,
         *,
         filter_type: Int | Literal["derain", "dehaze"] | Default = Default("derain"),
-        dnn_backend: Int = Default(1),
+        dnn_backend: Int | Literal["native"] | Default = Default("native"),
         model: String = Default(None),
         input: String = Default("x"),
         output: String = Default("y"),
@@ -3391,7 +3326,7 @@ class VideoStream(FilterableStream):
 
         Args:
             filter_type: filter type(derain/dehaze) (from 0 to 1) (default derain)
-            dnn_backend: DNN backend (from 0 to 1) (default 1)
+            dnn_backend: DNN backend (from 0 to 1) (default native)
             model: path to model file
             input: input name of the model (default "x")
             output: output name of the model (default "y")
@@ -3677,7 +3612,7 @@ class VideoStream(FilterableStream):
     def dnn_classify(
         self,
         *,
-        dnn_backend: Int | Literal["openvino"] | Default = Default("openvino"),
+        dnn_backend: Int = Default(2),
         model: String = Default(None),
         input: String = Default(None),
         output: String = Default(None),
@@ -3694,7 +3629,7 @@ class VideoStream(FilterableStream):
         Apply DNN classify filter to the input.
 
         Args:
-            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default openvino)
+            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
             model: path to model file
             input: input name of the model
             output: output name of the model
@@ -3736,7 +3671,7 @@ class VideoStream(FilterableStream):
     def dnn_detect(
         self,
         *,
-        dnn_backend: Int | Literal["openvino"] | Default = Default("openvino"),
+        dnn_backend: Int = Default(2),
         model: String = Default(None),
         input: String = Default(None),
         output: String = Default(None),
@@ -3752,7 +3687,7 @@ class VideoStream(FilterableStream):
         Apply DNN detect filter to the input.
 
         Args:
-            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default openvino)
+            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 2)
             model: path to model file
             input: input name of the model
             output: output name of the model
@@ -3792,7 +3727,7 @@ class VideoStream(FilterableStream):
     def dnn_processing(
         self,
         *,
-        dnn_backend: Int | Literal["openvino"] | Default = Default(1),
+        dnn_backend: Int | Literal["native"] | Default = Default("native"),
         model: String = Default(None),
         input: String = Default(None),
         output: String = Default(None),
@@ -3806,7 +3741,7 @@ class VideoStream(FilterableStream):
         Apply DNN processing filter to the input.
 
         Args:
-            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default 1)
+            dnn_backend: DNN backend (from INT_MIN to INT_MAX) (default native)
             model: path to model file
             input: input name of the model
             output: output name of the model
@@ -4072,29 +4007,11 @@ class VideoStream(FilterableStream):
         bordercolor: Color = Default("black"),
         shadowcolor: Color = Default("black"),
         box: Boolean = Default(False),
-        boxborderw: String = Default("0"),
+        boxborderw: Int = Default(0),
         line_spacing: Int = Default(0),
         fontsize: String = Default(None),
-        text_align: Flags
-        | Literal[
-            "left",
-            "L",
-            "right",
-            "R",
-            "center",
-            "C",
-            "top",
-            "T",
-            "bottom",
-            "B",
-            "middle",
-            "M",
-        ]
-        | Default = Default("0"),
         x: String = Default("0"),
         y: String = Default("0"),
-        boxw: Int = Default(0),
-        boxh: Int = Default(0),
         shadowx: Int = Default(0),
         shadowy: Int = Default(0),
         borderw: Int = Default(0),
@@ -4104,7 +4021,6 @@ class VideoStream(FilterableStream):
         expansion: Int | Literal["none", "normal", "strftime"] | Default = Default(
             "normal"
         ),
-        y_align: Int | Literal["text", "baseline", "font"] | Default = Default("text"),
         timecode: String = Default(None),
         tc24hmax: Boolean = Default(False),
         timecode_rate: Rational = Default("0/1"),
@@ -4113,6 +4029,7 @@ class VideoStream(FilterableStream):
         fix_bounds: Boolean = Default(False),
         start_number: Int = Default(0),
         text_source: String = Default(None),
+        text_shaping: Boolean = Default(True),
         ft_load_flags: Flags
         | Literal[
             "default",
@@ -4149,14 +4066,11 @@ class VideoStream(FilterableStream):
             bordercolor: set border color (default "black")
             shadowcolor: set shadow color (default "black")
             box: set box (default false)
-            boxborderw: set box borders width (default "0")
+            boxborderw: set box border width (from INT_MIN to INT_MAX) (default 0)
             line_spacing: set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
             fontsize: set font size
-            text_align: set text alignment (default 0)
             x: set x expression (default "0")
             y: set y expression (default "0")
-            boxw: set box width (from 0 to INT_MAX) (default 0)
-            boxh: set box height (from 0 to INT_MAX) (default 0)
             shadowx: set shadow x offset (from INT_MIN to INT_MAX) (default 0)
             shadowy: set shadow y offset (from INT_MIN to INT_MAX) (default 0)
             borderw: set border width (from INT_MIN to INT_MAX) (default 0)
@@ -4164,7 +4078,6 @@ class VideoStream(FilterableStream):
             basetime: set base time (from I64_MIN to I64_MAX) (default I64_MIN)
             font: Font name (default "Sans")
             expansion: set the expansion mode (from 0 to 2) (default normal)
-            y_align: set the y alignment (from 0 to 2) (default text)
             timecode: set initial timecode
             tc24hmax: set 24 hours max (timecode only) (default false)
             timecode_rate: set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
@@ -4173,6 +4086,7 @@ class VideoStream(FilterableStream):
             fix_bounds: check and fix text coords to avoid clipping (default false)
             start_number: start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
             text_source: the source of text
+            text_shaping: attempt to shape text before drawing (default true)
             ft_load_flags: set font loading flags for libfreetype (default 0)
             enable: timeline editing
 
@@ -4201,11 +4115,8 @@ class VideoStream(FilterableStream):
                 "boxborderw": boxborderw,
                 "line_spacing": line_spacing,
                 "fontsize": fontsize,
-                "text_align": text_align,
                 "x": x,
                 "y": y,
-                "boxw": boxw,
-                "boxh": boxh,
                 "shadowx": shadowx,
                 "shadowy": shadowy,
                 "borderw": borderw,
@@ -4213,7 +4124,6 @@ class VideoStream(FilterableStream):
                 "basetime": basetime,
                 "font": font,
                 "expansion": expansion,
-                "y_align": y_align,
                 "timecode": timecode,
                 "tc24hmax": tc24hmax,
                 "timecode_rate": timecode_rate,
@@ -4222,6 +4132,7 @@ class VideoStream(FilterableStream):
                 "fix_bounds": fix_bounds,
                 "start_number": start_number,
                 "text_source": text_source,
+                "text_shaping": text_shaping,
                 "ft_load_flags": ft_load_flags,
                 "enable": enable,
             }
@@ -4500,9 +4411,9 @@ class VideoStream(FilterableStream):
         deint: Int | Literal["all", "interlaced"] | Default = Default("all"),
         rslope: Int = Default(1),
         redge: Int = Default(2),
-        ecost: Int = Default(2),
-        mcost: Int = Default(1),
-        dcost: Int = Default(1),
+        ecost: Float = Default(1.0),
+        mcost: Float = Default(0.5),
+        dcost: Float = Default(0.5),
         interp: Int | Literal["2p", "4p", "6p"] | Default = Default("4p"),
         enable: String = Default(None),
         extra_options: dict[str, Any] = None,
@@ -4517,9 +4428,9 @@ class VideoStream(FilterableStream):
             deint: specify which frames to deinterlace (from 0 to 1) (default all)
             rslope: specify the search radius for edge slope tracing (from 1 to 15) (default 1)
             redge: specify the search radius for best edge matching (from 0 to 15) (default 2)
-            ecost: specify the edge cost for edge matching (from 0 to 50) (default 2)
-            mcost: specify the middle cost for edge matching (from 0 to 50) (default 1)
-            dcost: specify the distance cost for edge matching (from 0 to 50) (default 1)
+            ecost: specify the edge cost for edge matching (from 0 to 9) (default 1)
+            mcost: specify the middle cost for edge matching (from 0 to 1) (default 0.5)
+            dcost: specify the distance cost for edge matching (from 0 to 1) (default 0.5)
             interp: specify the type of interpolation (from 0 to 2) (default 4p)
             enable: timeline editing
 
@@ -5623,13 +5534,9 @@ class VideoStream(FilterableStream):
         *,
         size: Image_size = Default("hd720"),
         opacity: Float = Default(0.9),
-        mode: Flags
-        | Literal["full", "compact", "nozero", "noeof", "nodisabled"]
-        | Default = Default("0"),
+        mode: Int | Literal["full", "compact"] | Default = Default("full"),
         flags: Flags
         | Literal[
-            "none",
-            "all",
             "queue",
             "frame_count_in",
             "frame_count_out",
@@ -5646,9 +5553,8 @@ class VideoStream(FilterableStream):
             "sample_count_in",
             "sample_count_out",
             "sample_count_delta",
-            "disabled",
         ]
-        | Default = Default("all+queue"),
+        | Default = Default("queue"),
         rate: Video_rate = Default("25"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
@@ -5659,8 +5565,8 @@ class VideoStream(FilterableStream):
         Args:
             size: set monitor size (default "hd720")
             opacity: set video opacity (from 0 to 1) (default 0.9)
-            mode: set mode (default 0)
-            flags: set flags (default all+queue)
+            mode: set mode (from 0 to 1) (default full)
+            flags: set flags (default queue)
             rate: set video rate (default "25")
 
         Returns:
@@ -6612,7 +6518,7 @@ class VideoStream(FilterableStream):
             default: the video stream
 
         References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interlace)
+            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#interlace_002c-interlace_005fvulkan)
 
         """
         filter_node = filter_node_factory(
@@ -6835,76 +6741,6 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def libvmaf(
-        self,
-        _reference: VideoStream,
-        *,
-        log_path: String = Default(None),
-        log_fmt: String = Default("xml"),
-        pool: String = Default(None),
-        n_threads: Int = Default(0),
-        n_subsample: Int = Default(1),
-        model: String = Default("version=vmaf_v0.6.1"),
-        feature: String = Default(None),
-        eof_action: Int | Literal["repeat", "endall", "pass"] | Default = Default(
-            "repeat"
-        ),
-        shortest: Boolean = Default(False),
-        repeatlast: Boolean = Default(True),
-        ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default(
-            "default"
-        ),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Calculate the VMAF between two video streams.
-
-        Args:
-            log_path: Set the file path to be used to write log.
-            log_fmt: Set the format of the log (csv, json, xml, or sub). (default "xml")
-            pool: Set the pool method to be used for computing vmaf.
-            n_threads: Set number of threads to be used when computing vmaf. (from 0 to UINT32_MAX) (default 0)
-            n_subsample: Set interval for frame subsampling used when computing vmaf. (from 1 to UINT32_MAX) (default 1)
-            model: Set the model to be used for computing vmaf. (default "version=vmaf_v0.6.1")
-            feature: Set the feature to be used for computing vmaf.
-            eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
-            shortest: force termination when the shortest input terminates (default false)
-            repeatlast: extend last frame of secondary streams beyond EOF (default true)
-            ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#libvmaf)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="libvmaf",
-                typings_input=("video", "video"),
-                typings_output=("video",),
-            ),
-            self,
-            _reference,
-            **{
-                "log_path": log_path,
-                "log_fmt": log_fmt,
-                "pool": pool,
-                "n_threads": n_threads,
-                "n_subsample": n_subsample,
-                "model": model,
-                "feature": feature,
-                "eof_action": eof_action,
-                "shortest": shortest,
-                "repeatlast": repeatlast,
-                "ts_sync_mode": ts_sync_mode,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
     def limiter(
         self,
         *,
@@ -6952,7 +6788,6 @@ class VideoStream(FilterableStream):
         loop: Int = Default(0),
         size: Int64 = Default(0),
         start: Int64 = Default(0),
-        time: Duration = Default("INT64_MAX"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -6962,8 +6797,7 @@ class VideoStream(FilterableStream):
         Args:
             loop: number of loops (from -1 to INT_MAX) (default 0)
             size: max number of frames to loop (from 0 to 32767) (default 0)
-            start: set the loop start frame (from -1 to I64_MAX) (default 0)
-            time: set the loop start time (default INT64_MAX)
+            start: set the loop start frame (from 0 to I64_MAX) (default 0)
 
         Returns:
             default: the video stream
@@ -6981,7 +6815,6 @@ class VideoStream(FilterableStream):
                 "loop": loop,
                 "size": size,
                 "start": start,
-                "time": time,
             }
             | (extra_options or {}),
         )
@@ -7633,46 +7466,6 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def mcdeint(
-        self,
-        *,
-        mode: Int | Literal["fast", "medium", "slow", "extra_slow"] | Default = Default(
-            "fast"
-        ),
-        parity: Int | Literal["tff", "bff"] | Default = Default("bff"),
-        qp: Int = Default(1),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Apply motion compensating deinterlacing.
-
-        Args:
-            mode: set mode (from 0 to 3) (default fast)
-            parity: set the assumed picture field parity (from -1 to 1) (default bff)
-            qp: set qp (from INT_MIN to INT_MAX) (default 1)
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#mcdeint)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="mcdeint", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{
-                "mode": mode,
-                "parity": parity,
-                "qp": qp,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
     def median(
         self,
         *,
@@ -8027,7 +7820,6 @@ class VideoStream(FilterableStream):
         self,
         *,
         max: Int = Default(0),
-        keep: Int = Default(0),
         hi: Int = Default(768),
         lo: Int = Default(320),
         frac: Float = Default(0.33),
@@ -8039,7 +7831,6 @@ class VideoStream(FilterableStream):
 
         Args:
             max: set the maximum number of consecutive dropped frames (positive), or the minimum interval between dropped frames (negative) (from INT_MIN to INT_MAX) (default 0)
-            keep: set the number of similar consecutive frames to be kept before starting to drop similar frames (from 0 to INT_MAX) (default 0)
             hi: set high dropping threshold (from INT_MIN to INT_MAX) (default 768)
             lo: set low dropping threshold (from INT_MIN to INT_MAX) (default 320)
             frac: set fraction dropping threshold (from 0 to 1) (default 0.33)
@@ -8058,7 +7849,6 @@ class VideoStream(FilterableStream):
             self,
             **{
                 "max": max,
-                "keep": keep,
                 "hi": hi,
                 "lo": lo,
                 "frac": frac,
@@ -8494,49 +8284,6 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def ocr(
-        self,
-        *,
-        datapath: String = Default(None),
-        language: String = Default("eng"),
-        whitelist: String = Default(
-            "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?\"'[]{}("
-        ),
-        blacklist: String = Default(""),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Optical Character Recognition.
-
-        Args:
-            datapath: set datapath
-            language: set language (default "eng")
-            whitelist: set character whitelist (default "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.:;,-+_!?"'[]{}()|/\\=*&%$#@!~ ")
-            blacklist: set character blacklist (default "")
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#ocr)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="ocr", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{
-                "datapath": datapath,
-                "language": language,
-                "whitelist": whitelist,
-                "blacklist": blacklist,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
     def oscilloscope(
         self,
         *,
@@ -8626,7 +8373,6 @@ class VideoStream(FilterableStream):
             "yuv422",
             "yuv422p10",
             "yuv444",
-            "yuv444p10",
             "rgb",
             "gbrp",
             "auto",
@@ -8652,7 +8398,7 @@ class VideoStream(FilterableStream):
             eof_action: Action to take when encountering EOF from secondary input (from 0 to 2) (default repeat)
             eval: specify when to evaluate expressions (from 0 to 1) (default frame)
             shortest: force termination when the shortest input terminates (default false)
-            format: set output format (from 0 to 8) (default yuv420)
+            format: set output format (from 0 to 7) (default yuv420)
             repeatlast: repeat overlay of the last overlay frame (default true)
             alpha: alpha format (from 0 to 1) (default straight)
             ts_sync_mode: How strictly to sync streams based on secondary input timestamps (from 0 to 1) (default default)
@@ -9329,12 +9075,6 @@ class VideoStream(FilterableStream):
             "preferred",
             "total",
             "spectral",
-            "cool",
-            "heat",
-            "fiery",
-            "blues",
-            "green",
-            "helix",
         ]
         | Default = Default("none"),
         opacity: Float = Default(1.0),
@@ -9351,7 +9091,7 @@ class VideoStream(FilterableStream):
             c2: set component #2 expression (default "val")
             c3: set component #3 expression (default "val")
             index: set component as base (from 0 to 3) (default 0)
-            preset: set preset (from -1 to 20) (default none)
+            preset: set preset (from -1 to 14) (default none)
             opacity: set pseudocolor opacity (from 0 to 1) (default 1)
             enable: timeline editing
 
@@ -10131,50 +9871,6 @@ class VideoStream(FilterableStream):
                 "param0": param0,
                 "param1": param1,
                 "eval": eval,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
-    def scale_vt(
-        self,
-        *,
-        w: String = Default("iw"),
-        h: String = Default("ih"),
-        color_matrix: String = Default(None),
-        color_primaries: String = Default(None),
-        color_transfer: String = Default(None),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Scale Videotoolbox frames
-
-        Args:
-            w: Output video width (default "iw")
-            h: Output video height (default "ih")
-            color_matrix: Output colour matrix coefficient set
-            color_primaries: Output colour primaries
-            color_transfer: Output colour transfer characteristics
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#scale_005fvt)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="scale_vt", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{
-                "w": w,
-                "h": h,
-                "color_matrix": color_matrix,
-                "color_primaries": color_primaries,
-                "color_transfer": color_transfer,
             }
             | (extra_options or {}),
         )
@@ -11463,7 +11159,7 @@ class VideoStream(FilterableStream):
     def sr(
         self,
         *,
-        dnn_backend: Int = Default(1),
+        dnn_backend: Int | Literal["native"] | Default = Default("native"),
         scale_factor: Int = Default(2),
         model: String = Default(None),
         input: String = Default("x"),
@@ -11475,7 +11171,7 @@ class VideoStream(FilterableStream):
         Apply DNN-based image super resolution to the input.
 
         Args:
-            dnn_backend: DNN backend used for model execution (from 0 to 1) (default 1)
+            dnn_backend: DNN backend used for model execution (from 0 to 1) (default native)
             scale_factor: scale factor for SRCNN model (from 2 to 4) (default 2)
             model: path to model file specifying network architecture and its parameters
             input: input name of the model (default "x")
@@ -11663,7 +11359,6 @@ class VideoStream(FilterableStream):
         charenc: String = Default(None),
         stream_index: Int = Default(-1),
         force_style: String = Default(None),
-        wrap_unicode: Boolean = Default("auto"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -11678,7 +11373,6 @@ class VideoStream(FilterableStream):
             charenc: set input character encoding
             stream_index: set stream index (from -1 to INT_MAX) (default -1)
             force_style: force subtitle style
-            wrap_unicode: break lines according to the Unicode Line Breaking Algorithm (default auto)
 
         Returns:
             default: the video stream
@@ -11700,7 +11394,6 @@ class VideoStream(FilterableStream):
                 "charenc": charenc,
                 "stream_index": stream_index,
                 "force_style": force_style,
-                "wrap_unicode": wrap_unicode,
             }
             | (extra_options or {}),
         )
@@ -12688,47 +12381,6 @@ class VideoStream(FilterableStream):
         )
         return filter_node.video(0)
 
-    def transpose_vt(
-        self,
-        *,
-        dir: Int
-        | Literal[
-            "cclock_flip", "clock", "cclock", "clock_flip", "reversal", "hflip", "vflip"
-        ]
-        | Default = Default("cclock_flip"),
-        passthrough: Int | Literal["none", "portrait", "landscape"] | Default = Default(
-            "none"
-        ),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Transpose Videotoolbox frames
-
-        Args:
-            dir: set transpose direction (from 0 to 6) (default cclock_flip)
-            passthrough: do not apply transposition if the input matches the specified geometry (from 0 to INT_MAX) (default none)
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#transpose_005fvt)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="transpose_vt", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{
-                "dir": dir,
-                "passthrough": passthrough,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
     def trim(
         self,
         *,
@@ -12865,50 +12517,6 @@ class VideoStream(FilterableStream):
             self,
             **{
                 "layout": layout,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
-    def uspp(
-        self,
-        *,
-        quality: Int = Default(3),
-        qp: Int = Default(0),
-        use_bframe_qp: Boolean = Default(False),
-        codec: String = Default("snow"),
-        enable: String = Default(None),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Apply Ultra Simple / Slow Post-processing filter.
-
-        Args:
-            quality: set quality (from 0 to 8) (default 3)
-            qp: force a constant quantizer parameter (from 0 to 63) (default 0)
-            use_bframe_qp: use B-frames' QP (default false)
-            codec: Codec name (default "snow")
-            enable: timeline editing
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#uspp)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="uspp", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{
-                "quality": quality,
-                "qp": qp,
-                "use_bframe_qp": use_bframe_qp,
-                "codec": codec,
-                "enable": enable,
             }
             | (extra_options or {}),
         )
@@ -13445,7 +13053,6 @@ class VideoStream(FilterableStream):
         mincontrast: Double = Default(0.25),
         show: Int = Default(0),
         tripod: Int = Default(0),
-        fileformat: Int | Literal["ascii", "binary"] | Default = Default("binary"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -13460,7 +13067,6 @@ class VideoStream(FilterableStream):
             mincontrast: below this contrast a field is discarded (0-1) (from 0 to 1) (default 0.25)
             show: 0: draw nothing; 1,2: show fields and transforms (from 0 to 2) (default 0)
             tripod: virtual tripod mode (if >0): motion is compared to a reference reference frame (frame # is the value) (from 0 to INT_MAX) (default 0)
-            fileformat: transforms data file format (from 1 to 2) (default binary)
 
         Returns:
             default: the video stream
@@ -13484,7 +13090,6 @@ class VideoStream(FilterableStream):
                 "mincontrast": mincontrast,
                 "show": show,
                 "tripod": tripod,
-                "fileformat": fileformat,
             }
             | (extra_options or {}),
         )
@@ -13774,7 +13379,6 @@ class VideoStream(FilterableStream):
         tint0: Float = Default(0.0),
         tint1: Float = Default(0.0),
         fitmode: Int | Literal["none", "size"] | Default = Default("none"),
-        input: Int | Literal["all", "first"] | Default = Default("first"),
         extra_options: dict[str, Any] = None,
     ) -> VideoStream:
         """
@@ -13797,7 +13401,6 @@ class VideoStream(FilterableStream):
             tint0: set 1st tint (from -1 to 1) (default 0)
             tint1: set 2nd tint (from -1 to 1) (default 0)
             fitmode: set fit mode (from 0 to 1) (default none)
-            input: set input formats selection (from 0 to 1) (default first)
 
         Returns:
             default: the video stream
@@ -13827,7 +13430,6 @@ class VideoStream(FilterableStream):
                 "tint0": tint0,
                 "tint1": tint1,
                 "fitmode": fitmode,
-                "input": input,
             }
             | (extra_options or {}),
         )
@@ -14010,18 +13612,6 @@ class VideoStream(FilterableStream):
             "zoomin",
             "fadefast",
             "fadeslow",
-            "hlwind",
-            "hrwind",
-            "vuwind",
-            "vdwind",
-            "coverleft",
-            "coverright",
-            "coverup",
-            "coverdown",
-            "revealleft",
-            "revealright",
-            "revealup",
-            "revealdown",
         ]
         | Default = Default("fade"),
         duration: Duration = Default(1.0),
@@ -14034,7 +13624,7 @@ class VideoStream(FilterableStream):
         Cross fade one video with another video.
 
         Args:
-            transition: set cross fade transition (from -1 to 57) (default fade)
+            transition: set cross fade transition (from -1 to 45) (default fade)
             duration: set cross fade duration (default 1)
             offset: set cross fade start relative to first input stream (default 0)
             expr: set expression for custom transition
@@ -14145,38 +13735,6 @@ class VideoStream(FilterableStream):
                 "planes": planes,
                 "sigma": sigma,
                 "enable": enable,
-            }
-            | (extra_options or {}),
-        )
-        return filter_node.video(0)
-
-    def zmq(
-        self,
-        *,
-        bind_address: String = Default("tcp://*:5555"),
-        extra_options: dict[str, Any] = None,
-    ) -> VideoStream:
-        """
-
-        Receive commands through ZMQ and broker them to filters.
-
-        Args:
-            bind_address: set bind address (default "tcp://*:5555")
-
-        Returns:
-            default: the video stream
-
-        References:
-            [FFmpeg Documentation](https://ffmpeg.org/ffmpeg-filters.html#zmq_002c-azmq)
-
-        """
-        filter_node = filter_node_factory(
-            FFMpegFilterDef(
-                name="zmq", typings_input=("video",), typings_output=("video",)
-            ),
-            self,
-            **{
-                "bind_address": bind_address,
             }
             | (extra_options or {}),
         )

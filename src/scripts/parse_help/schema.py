@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Literal
 
@@ -81,6 +82,15 @@ class FFMpegCodec(Serializable):
     flags: str
     description: str
     options: tuple[FFMpegAVOption, ...] = ()
+
+    def filterd_options(self) -> Iterable[FFMpegAVOption]:
+        # NOTE: the nvenv_hevc has alias for some options, so we need to filter them out
+        passed = set()
+        for option in self.options:
+            if option.name.replace("-", "_") in passed:
+                continue
+            passed.add(option.name.replace("-", "_"))
+            yield option
 
     @property
     def codec_type(self) -> Literal["video", "audio", "subtitle"]:

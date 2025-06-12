@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 
 from ..common.serialize import Serializable, serializable
-
-from ..utils.forzendict import FrozenDict
+from ..utils.frozendict import FrozenDict
 
 
 @serializable

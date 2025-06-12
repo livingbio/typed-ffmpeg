@@ -1,3078 +1,6178 @@
 # NOTE: this file is auto-generated, do not modify
-from dataclasses import dataclass
-
+from ..utils.frozendict import FrozenDict
 from .schema import FFMpegDecoderOption
 
 
-@dataclass(frozen=True, kw_only=True)
-class _012v(FFMpegDecoderOption):
-    """Uncompressed 4:2:2 10-bit"""
+def _012v() -> FFMpegDecoderOption:
+    """
+    Uncompressed 4:2:2 10-bit
 
 
-@dataclass(frozen=True, kw_only=True)
-class _4xm(FFMpegDecoderOption):
-    """4X Movie"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class _8bps(FFMpegDecoderOption):
-    """QuickTime 8BPS video"""
+def _4xm() -> FFMpegDecoderOption:
+    """
+    4X Movie
 
 
-@dataclass(frozen=True, kw_only=True)
-class aasc(FFMpegDecoderOption):
-    """Autodesk RLE"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class agm(FFMpegDecoderOption):
-    """Amuse Graphics Movie"""
+def _8bps() -> FFMpegDecoderOption:
+    """
+    QuickTime 8BPS video
 
 
-@dataclass(frozen=True, kw_only=True)
-class aic(FFMpegDecoderOption):
-    """Apple Intermediate Codec"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class alias_pix(FFMpegDecoderOption):
-    """Alias/Wavefront PIX image"""
+def aasc() -> FFMpegDecoderOption:
+    """
+    Autodesk RLE
 
 
-@dataclass(frozen=True, kw_only=True)
-class amv(FFMpegDecoderOption):
-    """AMV Video"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class anm(FFMpegDecoderOption):
-    """Deluxe Paint Animation"""
+def agm() -> FFMpegDecoderOption:
+    """
+    Amuse Graphics Movie
 
 
-@dataclass(frozen=True, kw_only=True)
-class ansi(FFMpegDecoderOption):
-    """ASCII/ANSI art"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class apng(FFMpegDecoderOption):
-    """APNG (Animated Portable Network Graphics) image"""
+def aic() -> FFMpegDecoderOption:
+    """
+    Apple Intermediate Codec
 
 
-@dataclass(frozen=True, kw_only=True)
-class arbc(FFMpegDecoderOption):
-    """Gryphon's Anim Compressor"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class argo(FFMpegDecoderOption):
-    """Argonaut Games Video"""
+def alias_pix() -> FFMpegDecoderOption:
+    """
+    Alias/Wavefront PIX image
 
 
-@dataclass(frozen=True, kw_only=True)
-class asv1(FFMpegDecoderOption):
-    """ASUS V1"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class asv2(FFMpegDecoderOption):
-    """ASUS V2"""
+def amv() -> FFMpegDecoderOption:
+    """
+    AMV Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class aura(FFMpegDecoderOption):
-    """Auravision AURA"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class aura2(FFMpegDecoderOption):
-    """Auravision Aura 2"""
+def anm() -> FFMpegDecoderOption:
+    """
+    Deluxe Paint Animation
 
 
-@dataclass(frozen=True, kw_only=True)
-class libdav1d(FFMpegDecoderOption):
-    """dav1d AV1 decoder by VideoLAN (codec av1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    tilethreads: int | None = None
-    """Tile threads (from 0 to 256) (default 0)"""
 
-    framethreads: int | None = None
-    """Frame threads (from 0 to 256) (default 0)"""
+def ansi() -> FFMpegDecoderOption:
+    """
+    ASCII/ANSI art
 
-    max_frame_delay: int | None = None
-    """Max frame delay (from 0 to 256) (default 0)"""
 
-    filmgrain: bool | None = None
-    """Apply Film Grain (default auto)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    oppoint: int | None = None
-    """Select an operating point of the scalable bitstream (from -1 to 31) (default -1)"""
 
-    alllayers: bool | None = None
-    """Output all spatial layers (default false)"""
+def apng() -> FFMpegDecoderOption:
+    """
+    APNG (Animated Portable Network Graphics) image
 
 
-@dataclass(frozen=True, kw_only=True)
-class av1(FFMpegDecoderOption):
-    """Alliance for Open Media AV1"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    operating_point: int | None = None
-    """Select an operating point of the scalable bitstream (from 0 to 31) (default 0)"""
 
+def arbc() -> FFMpegDecoderOption:
+    """
+    Gryphon's Anim Compressor
 
-@dataclass(frozen=True, kw_only=True)
-class av1_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID AV1 decoder (codec av1)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+def argo() -> FFMpegDecoderOption:
+    """
+    Argonaut Games Video
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+def asv1() -> FFMpegDecoderOption:
+    """
+    ASUS V1
 
-@dataclass(frozen=True, kw_only=True)
-class avrn(FFMpegDecoderOption):
-    """Avid AVI Codec"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class avrp(FFMpegDecoderOption):
-    """Avid 1:1 10-bit RGB Packer"""
 
+def asv2() -> FFMpegDecoderOption:
+    """
+    ASUS V2
 
-@dataclass(frozen=True, kw_only=True)
-class avs(FFMpegDecoderOption):
-    """AVS (Audio Video Standard) video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class avui(FFMpegDecoderOption):
-    """Avid Meridien Uncompressed"""
 
+def aura() -> FFMpegDecoderOption:
+    """
+    Auravision AURA
 
-@dataclass(frozen=True, kw_only=True)
-class ayuv(FFMpegDecoderOption):
-    """Uncompressed packed MS 4:4:4:4"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class bethsoftvid(FFMpegDecoderOption):
-    """Bethesda VID video"""
 
+def aura2() -> FFMpegDecoderOption:
+    """
+    Auravision Aura 2
 
-@dataclass(frozen=True, kw_only=True)
-class bfi(FFMpegDecoderOption):
-    """Brute Force & Ignorance"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class binkvideo(FFMpegDecoderOption):
-    """Bink video"""
 
+def libdav1d(
+    tilethreads: int | None = None,
+    framethreads: int | None = None,
+    max_frame_delay: int | None = None,
+    filmgrain: bool | None = None,
+    oppoint: int | None = None,
+    alllayers: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    dav1d AV1 decoder by VideoLAN (codec av1)
 
-@dataclass(frozen=True, kw_only=True)
-class bintext(FFMpegDecoderOption):
-    """Binary text"""
+    Args:
+        tilethreads: Tile threads (from 0 to 256) (default 0)
+        framethreads: Frame threads (from 0 to 256) (default 0)
+        max_frame_delay: Max frame delay (from 0 to 256) (default 0)
+        filmgrain: Apply Film Grain (default auto)
+        oppoint: Select an operating point of the scalable bitstream (from -1 to 31) (default -1)
+        alllayers: Output all spatial layers (default false)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class bitpacked(FFMpegDecoderOption):
-    """Bitpacked"""
 
+def av1(
+    operating_point: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Alliance for Open Media AV1
 
-@dataclass(frozen=True, kw_only=True)
-class bmp(FFMpegDecoderOption):
-    """BMP (Windows and OS/2 bitmap)"""
+    Args:
+        operating_point: Select an operating point of the scalable bitstream (from 0 to 31) (default 0)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class bmv_video(FFMpegDecoderOption):
-    """Discworld II BMV video"""
 
+def av1_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID AV1 decoder (codec av1)
 
-@dataclass(frozen=True, kw_only=True)
-class brender_pix(FFMpegDecoderOption):
-    """BRender PIX image"""
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class c93(FFMpegDecoderOption):
-    """Interplay C93"""
 
+def avrn() -> FFMpegDecoderOption:
+    """
+    Avid AVI Codec
 
-@dataclass(frozen=True, kw_only=True)
-class cavs(FFMpegDecoderOption):
-    """Chinese AVS (Audio Video Standard) (AVS1-P2, JiZhun profile)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class cdgraphics(FFMpegDecoderOption):
-    """CD Graphics video"""
 
+def avrp() -> FFMpegDecoderOption:
+    """
+    Avid 1:1 10-bit RGB Packer
 
-@dataclass(frozen=True, kw_only=True)
-class cdtoons(FFMpegDecoderOption):
-    """CDToons video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class cdxl(FFMpegDecoderOption):
-    """Commodore CDXL video"""
 
+def avs() -> FFMpegDecoderOption:
+    """
+    AVS (Audio Video Standard) video
 
-@dataclass(frozen=True, kw_only=True)
-class cfhd(FFMpegDecoderOption):
-    """GoPro CineForm HD"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class cinepak(FFMpegDecoderOption):
-    """Cinepak"""
 
+def avui() -> FFMpegDecoderOption:
+    """
+    Avid Meridien Uncompressed
 
-@dataclass(frozen=True, kw_only=True)
-class clearvideo(FFMpegDecoderOption):
-    """Iterated Systems ClearVideo"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class cljr(FFMpegDecoderOption):
-    """Cirrus Logic AccuPak"""
 
+def ayuv() -> FFMpegDecoderOption:
+    """
+    Uncompressed packed MS 4:4:4:4
 
-@dataclass(frozen=True, kw_only=True)
-class cllc(FFMpegDecoderOption):
-    """Canopus Lossless Codec"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class eacmv(FFMpegDecoderOption):
-    """Electronic Arts CMV video (codec cmv)"""
 
+def bethsoftvid() -> FFMpegDecoderOption:
+    """
+    Bethesda VID video
 
-@dataclass(frozen=True, kw_only=True)
-class cpia(FFMpegDecoderOption):
-    """CPiA video format"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class cri(FFMpegDecoderOption):
-    """Cintel RAW"""
 
+def bfi() -> FFMpegDecoderOption:
+    """
+    Brute Force & Ignorance
 
-@dataclass(frozen=True, kw_only=True)
-class camstudio(FFMpegDecoderOption):
-    """CamStudio (codec cscd)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class cyuv(FFMpegDecoderOption):
-    """Creative YUV (CYUV)"""
 
+def binkvideo() -> FFMpegDecoderOption:
+    """
+    Bink video
 
-@dataclass(frozen=True, kw_only=True)
-class dds(FFMpegDecoderOption):
-    """DirectDraw Surface image decoder"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dfa(FFMpegDecoderOption):
-    """Chronomaster DFA"""
 
+def bintext() -> FFMpegDecoderOption:
+    """
+    Binary text
 
-@dataclass(frozen=True, kw_only=True)
-class dirac(FFMpegDecoderOption):
-    """BBC Dirac VC-2"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dnxhd(FFMpegDecoderOption):
-    """VC3/DNxHD"""
 
+def bitpacked() -> FFMpegDecoderOption:
+    """
+    Bitpacked
 
-@dataclass(frozen=True, kw_only=True)
-class dpx(FFMpegDecoderOption):
-    """DPX (Digital Picture Exchange) image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dsicinvideo(FFMpegDecoderOption):
-    """Delphine Software International CIN video"""
 
+def bmp() -> FFMpegDecoderOption:
+    """
+    BMP (Windows and OS/2 bitmap)
 
-@dataclass(frozen=True, kw_only=True)
-class dvvideo(FFMpegDecoderOption):
-    """DV (Digital Video)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dxa(FFMpegDecoderOption):
-    """Feeble Files/ScummVM DXA"""
 
+def bmv_video() -> FFMpegDecoderOption:
+    """
+    Discworld II BMV video
 
-@dataclass(frozen=True, kw_only=True)
-class dxtory(FFMpegDecoderOption):
-    """Dxtory"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dxv(FFMpegDecoderOption):
-    """Resolume DXV"""
 
+def brender_pix() -> FFMpegDecoderOption:
+    """
+    BRender PIX image
 
-@dataclass(frozen=True, kw_only=True)
-class escape124(FFMpegDecoderOption):
-    """Escape 124"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class escape130(FFMpegDecoderOption):
-    """Escape 130"""
 
+def c93() -> FFMpegDecoderOption:
+    """
+    Interplay C93
 
-@dataclass(frozen=True, kw_only=True)
-class exr(FFMpegDecoderOption):
-    """OpenEXR image"""
 
-    layer: str | None = None
-    """Set the decoding layer (default "")"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    part: int | None = None
-    """Set the decoding part (from 0 to INT_MAX) (default 0)"""
 
-    gamma: float | None = None
-    """Set the float gamma value when decoding (from 0.001 to FLT_MAX) (default 1)"""
+def cavs() -> FFMpegDecoderOption:
+    """
+    Chinese AVS (Audio Video Standard) (AVS1-P2, JiZhun profile)
 
-    apply_trc: int | None = None
-    """color transfer characteristics to apply to EXR linear input (from 1 to 18) (default gamma)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class ffv1(FFMpegDecoderOption):
-    """FFmpeg video codec #1"""
 
+def cdgraphics() -> FFMpegDecoderOption:
+    """
+    CD Graphics video
 
-@dataclass(frozen=True, kw_only=True)
-class ffvhuff(FFMpegDecoderOption):
-    """Huffyuv FFmpeg variant"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class fic(FFMpegDecoderOption):
-    """Mirillis FIC"""
 
-    skip_cursor: bool | None = None
-    """skip the cursor (default false)"""
+def cdtoons() -> FFMpegDecoderOption:
+    """
+    CDToons video
 
 
-@dataclass(frozen=True, kw_only=True)
-class fits(FFMpegDecoderOption):
-    """Flexible Image Transport System"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    blank_value: int | None = None
-    """value that is used to replace BLANK pixels in data array (from 0 to 65535) (default 0)"""
 
+def cdxl() -> FFMpegDecoderOption:
+    """
+    Commodore CDXL video
 
-@dataclass(frozen=True, kw_only=True)
-class flashsv(FFMpegDecoderOption):
-    """Flash Screen Video v1"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class flashsv2(FFMpegDecoderOption):
-    """Flash Screen Video v2"""
 
+def cfhd() -> FFMpegDecoderOption:
+    """
+    GoPro CineForm HD
 
-@dataclass(frozen=True, kw_only=True)
-class flic(FFMpegDecoderOption):
-    """Autodesk Animator Flic video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class flv(FFMpegDecoderOption):
-    """FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)"""
 
+def cinepak() -> FFMpegDecoderOption:
+    """
+    Cinepak
 
-@dataclass(frozen=True, kw_only=True)
-class fmvc(FFMpegDecoderOption):
-    """FM Screen Capture Codec"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class fraps(FFMpegDecoderOption):
-    """Fraps"""
 
+def clearvideo() -> FFMpegDecoderOption:
+    """
+    Iterated Systems ClearVideo
 
-@dataclass(frozen=True, kw_only=True)
-class frwu(FFMpegDecoderOption):
-    """Forward Uncompressed"""
 
-    change_field_order: bool | None = None
-    """Change field order (default false)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class g2m(FFMpegDecoderOption):
-    """Go2Meeting"""
+def cljr() -> FFMpegDecoderOption:
+    """
+    Cirrus Logic AccuPak
 
 
-@dataclass(frozen=True, kw_only=True)
-class gdv(FFMpegDecoderOption):
-    """Gremlin Digital Video"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class gem(FFMpegDecoderOption):
-    """GEM Raster image"""
+def cllc() -> FFMpegDecoderOption:
+    """
+    Canopus Lossless Codec
 
 
-@dataclass(frozen=True, kw_only=True)
-class gif(FFMpegDecoderOption):
-    """GIF (Graphics Interchange Format)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    trans_color: int | None = None
-    """color value (ARGB) that is used instead of transparent color (from 0 to UINT32_MAX) (default 16777215)"""
 
+def eacmv() -> FFMpegDecoderOption:
+    """
+    Electronic Arts CMV video (codec cmv)
 
-@dataclass(frozen=True, kw_only=True)
-class h261(FFMpegDecoderOption):
-    """H.261"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class h263(FFMpegDecoderOption):
-    """H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2"""
 
+def cpia() -> FFMpegDecoderOption:
+    """
+    CPiA video format
 
-@dataclass(frozen=True, kw_only=True)
-class h263_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem H.263 decoder wrapper (codec h263)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+def cri() -> FFMpegDecoderOption:
+    """
+    Cintel RAW
 
-@dataclass(frozen=True, kw_only=True)
-class h263i(FFMpegDecoderOption):
-    """Intel H.263"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class h263p(FFMpegDecoderOption):
-    """H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2"""
 
+def camstudio() -> FFMpegDecoderOption:
+    """
+    CamStudio (codec cscd)
 
-@dataclass(frozen=True, kw_only=True)
-class h264(FFMpegDecoderOption):
-    """H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"""
 
-    is_avc: bool | None = None
-    """is avc (default false)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    nal_length_size: int | None = None
-    """nal_length_size (from 0 to 4) (default 0)"""
 
-    enable_er: bool | None = None
-    """Enable error resilience on damaged frames (unsafe) (default auto)"""
+def cyuv() -> FFMpegDecoderOption:
+    """
+    Creative YUV (CYUV)
 
-    x264_build: int | None = None
-    """Assume this x264 version if no x264 version found in any SEI (from -1 to INT_MAX) (default -1)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class h264_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem H.264 decoder wrapper (codec h264)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+def dds() -> FFMpegDecoderOption:
+    """
+    DirectDraw Surface image decoder
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class h264_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID H264 decoder (codec h264)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+def dfa() -> FFMpegDecoderOption:
+    """
+    Chronomaster DFA
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+def dirac() -> FFMpegDecoderOption:
+    """
+    BBC Dirac VC-2
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hap(FFMpegDecoderOption):
-    """Vidvox Hap"""
 
+def dnxhd() -> FFMpegDecoderOption:
+    """
+    VC3/DNxHD
 
-@dataclass(frozen=True, kw_only=True)
-class hdr(FFMpegDecoderOption):
-    """HDR (Radiance RGBE format) image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hevc(FFMpegDecoderOption):
-    """HEVC (High Efficiency Video Coding)"""
 
-    apply_defdispwin: bool | None = None
-    """Apply default display window from VUI (default false)"""
+def dpx() -> FFMpegDecoderOption:
+    """
+    DPX (Digital Picture Exchange) image
 
-    strict_displaywin: bool | None = None
-    """stricly apply default display window size (default false)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hevc_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem HEVC decoder wrapper (codec hevc)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+def dsicinvideo() -> FFMpegDecoderOption:
+    """
+    Delphine Software International CIN video
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hevc_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID HEVC decoder (codec hevc)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+def dvvideo() -> FFMpegDecoderOption:
+    """
+    DV (Digital Video)
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+def dxa() -> FFMpegDecoderOption:
+    """
+    Feeble Files/ScummVM DXA
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hnm4video(FFMpegDecoderOption):
-    """HNM 4 video"""
 
+def dxtory() -> FFMpegDecoderOption:
+    """
+    Dxtory
 
-@dataclass(frozen=True, kw_only=True)
-class hq_hqa(FFMpegDecoderOption):
-    """Canopus HQ/HQA"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hqx(FFMpegDecoderOption):
-    """Canopus HQX"""
 
+def dxv() -> FFMpegDecoderOption:
+    """
+    Resolume DXV
 
-@dataclass(frozen=True, kw_only=True)
-class huffyuv(FFMpegDecoderOption):
-    """Huffyuv / HuffYUV"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hymt(FFMpegDecoderOption):
-    """HuffYUV MT"""
 
+def escape124() -> FFMpegDecoderOption:
+    """
+    Escape 124
 
-@dataclass(frozen=True, kw_only=True)
-class idcinvideo(FFMpegDecoderOption):
-    """id Quake II CIN video (codec idcin)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class idf(FFMpegDecoderOption):
-    """iCEDraw text"""
 
+def escape130() -> FFMpegDecoderOption:
+    """
+    Escape 130
 
-@dataclass(frozen=True, kw_only=True)
-class iff(FFMpegDecoderOption):
-    """IFF ACBM/ANIM/DEEP/ILBM/PBM/RGB8/RGBN (codec iff_ilbm)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class imm4(FFMpegDecoderOption):
-    """Infinity IMM4"""
 
+def exr(
+    layer: str | None = None,
+    part: int | None = None,
+    gamma: float | None = None,
+    apply_trc: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    OpenEXR image
 
-@dataclass(frozen=True, kw_only=True)
-class imm5(FFMpegDecoderOption):
-    """Infinity IMM5"""
+    Args:
+        layer: Set the decoding layer (default "")
+        part: Set the decoding part (from 0 to INT_MAX) (default 0)
+        gamma: Set the float gamma value when decoding (from 0.001 to FLT_MAX) (default 1)
+        apply_trc: color transfer characteristics to apply to EXR linear input (from 1 to 18) (default gamma)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class indeo2(FFMpegDecoderOption):
-    """Intel Indeo 2"""
 
+def ffv1() -> FFMpegDecoderOption:
+    """
+    FFmpeg video codec #1
 
-@dataclass(frozen=True, kw_only=True)
-class indeo3(FFMpegDecoderOption):
-    """Intel Indeo 3"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class indeo4(FFMpegDecoderOption):
-    """Intel Indeo Video Interactive 4"""
 
+def ffvhuff() -> FFMpegDecoderOption:
+    """
+    Huffyuv FFmpeg variant
 
-@dataclass(frozen=True, kw_only=True)
-class indeo5(FFMpegDecoderOption):
-    """Intel Indeo Video Interactive 5"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class interplayvideo(FFMpegDecoderOption):
-    """Interplay MVE video"""
 
+def fic(
+    skip_cursor: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Mirillis FIC
 
-@dataclass(frozen=True, kw_only=True)
-class ipu(FFMpegDecoderOption):
-    """IPU Video"""
+    Args:
+        skip_cursor: skip the cursor (default false)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class jpeg2000(FFMpegDecoderOption):
-    """JPEG 2000"""
 
-    lowres: int | None = None
-    """Lower the decoding resolution by a power of two (from 0 to 33) (default 0)"""
+def fits(
+    blank_value: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Flexible Image Transport System
 
+    Args:
+        blank_value: value that is used to replace BLANK pixels in data array (from 0 to 65535) (default 0)
 
-@dataclass(frozen=True, kw_only=True)
-class jpegls(FFMpegDecoderOption):
-    """JPEG-LS"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class libjxl(FFMpegDecoderOption):
-    """libjxl JPEG XL (codec jpegxl)"""
+def flashsv() -> FFMpegDecoderOption:
+    """
+    Flash Screen Video v1
 
 
-@dataclass(frozen=True, kw_only=True)
-class jv(FFMpegDecoderOption):
-    """Bitmap Brothers JV video"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class kgv1(FFMpegDecoderOption):
-    """Kega Game Video"""
+def flashsv2() -> FFMpegDecoderOption:
+    """
+    Flash Screen Video v2
 
 
-@dataclass(frozen=True, kw_only=True)
-class kmvc(FFMpegDecoderOption):
-    """Karl Morton's video codec"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class lagarith(FFMpegDecoderOption):
-    """Lagarith lossless"""
+def flic() -> FFMpegDecoderOption:
+    """
+    Autodesk Animator Flic video
 
 
-@dataclass(frozen=True, kw_only=True)
-class loco(FFMpegDecoderOption):
-    """LOCO"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class lscr(FFMpegDecoderOption):
-    """LEAD Screen Capture"""
+def flv() -> FFMpegDecoderOption:
+    """
+    FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)
 
 
-@dataclass(frozen=True, kw_only=True)
-class m101(FFMpegDecoderOption):
-    """Matrox Uncompressed SD"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class eamad(FFMpegDecoderOption):
-    """Electronic Arts Madcow Video (codec mad)"""
+def fmvc() -> FFMpegDecoderOption:
+    """
+    FM Screen Capture Codec
 
 
-@dataclass(frozen=True, kw_only=True)
-class magicyuv(FFMpegDecoderOption):
-    """MagicYUV video"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mdec(FFMpegDecoderOption):
-    """Sony PlayStation MDEC (Motion DECoder)"""
+def fraps() -> FFMpegDecoderOption:
+    """
+    Fraps
 
 
-@dataclass(frozen=True, kw_only=True)
-class media100(FFMpegDecoderOption):
-    """Media 100"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mimic(FFMpegDecoderOption):
-    """Mimic"""
+def frwu(
+    change_field_order: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Forward Uncompressed
 
+    Args:
+        change_field_order: Change field order (default false)
 
-@dataclass(frozen=True, kw_only=True)
-class mjpeg(FFMpegDecoderOption):
-    """MJPEG (Motion JPEG)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    extern_huff: bool | None = None
-    """Use external huffman table. (default false)"""
 
+def g2m() -> FFMpegDecoderOption:
+    """
+    Go2Meeting
 
-@dataclass(frozen=True, kw_only=True)
-class mjpeg_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID MJPEG decoder (codec mjpeg)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+def gdv() -> FFMpegDecoderOption:
+    """
+    Gremlin Digital Video
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+def gem() -> FFMpegDecoderOption:
+    """
+    GEM Raster image
 
-@dataclass(frozen=True, kw_only=True)
-class mjpegb(FFMpegDecoderOption):
-    """Apple MJPEG-B"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mmvideo(FFMpegDecoderOption):
-    """American Laser Games MM Video"""
 
+def gif(
+    trans_color: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    GIF (Graphics Interchange Format)
 
-@dataclass(frozen=True, kw_only=True)
-class mobiclip(FFMpegDecoderOption):
-    """MobiClip Video"""
+    Args:
+        trans_color: color value (ARGB) that is used instead of transparent color (from 0 to UINT32_MAX) (default 16777215)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class motionpixels(FFMpegDecoderOption):
-    """Motion Pixels video"""
 
+def h261() -> FFMpegDecoderOption:
+    """
+    H.261
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg1video(FFMpegDecoderOption):
-    """MPEG-1 video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg1_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem MPEG1 decoder wrapper (codec mpeg1video)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+def h263() -> FFMpegDecoderOption:
+    """
+    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg1_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+def h263_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem H.263 decoder wrapper (codec h263)
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+def h263i() -> FFMpegDecoderOption:
+    """
+    Intel H.263
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg2video(FFMpegDecoderOption):
-    """MPEG-2 video"""
 
+def h263p() -> FFMpegDecoderOption:
+    """
+    H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
 
-@dataclass(frozen=True, kw_only=True)
-class mpegvideo(FFMpegDecoderOption):
-    """MPEG-1 video (codec mpeg2video)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg2_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem MPEG2 decoder wrapper (codec mpeg2video)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+def h264(
+    is_avc: bool | None = None,
+    nal_length_size: int | None = None,
+    enable_er: bool | None = None,
+    x264_build: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
+    Args:
+        is_avc: is avc (default false)
+        nal_length_size: nal_length_size (from 0 to 4) (default 0)
+        enable_er: Enable error resilience on damaged frames (unsafe) (default auto)
+        x264_build: Assume this x264 version if no x264 version found in any SEI (from -1 to INT_MAX) (default -1)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg2_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+def h264_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem H.264 decoder wrapper (codec h264)
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+def h264_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID H264 decoder (codec h264)
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg4(FFMpegDecoderOption):
-    """MPEG-4 part 2"""
 
+def hap() -> FFMpegDecoderOption:
+    """
+    Vidvox Hap
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg4_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem MPEG4 decoder wrapper (codec mpeg4)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+def hdr() -> FFMpegDecoderOption:
+    """
+    HDR (Radiance RGBE format) image
 
-@dataclass(frozen=True, kw_only=True)
-class mpeg4_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID MPEG4 decoder (codec mpeg4)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+def hevc(
+    apply_defdispwin: bool | None = None,
+    strict_displaywin: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    HEVC (High Efficiency Video Coding)
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
+    Args:
+        apply_defdispwin: Apply default display window from VUI (default false)
+        strict_displaywin: stricly apply default display window size (default false)
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+def hevc_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem HEVC decoder wrapper (codec hevc)
 
-@dataclass(frozen=True, kw_only=True)
-class msa1(FFMpegDecoderOption):
-    """MS ATC Screen"""
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mscc(FFMpegDecoderOption):
-    """Mandsoft Screen Capture Codec"""
 
+def hevc_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID HEVC decoder (codec hevc)
 
-@dataclass(frozen=True, kw_only=True)
-class msmpeg4v1(FFMpegDecoderOption):
-    """MPEG-4 part 2 Microsoft variant version 1"""
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class msmpeg4v2(FFMpegDecoderOption):
-    """MPEG-4 part 2 Microsoft variant version 2"""
 
+def hnm4video() -> FFMpegDecoderOption:
+    """
+    HNM 4 video
 
-@dataclass(frozen=True, kw_only=True)
-class msmpeg4(FFMpegDecoderOption):
-    """MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class msp2(FFMpegDecoderOption):
-    """Microsoft Paint (MSP) version 2"""
 
+def hq_hqa() -> FFMpegDecoderOption:
+    """
+    Canopus HQ/HQA
 
-@dataclass(frozen=True, kw_only=True)
-class msrle(FFMpegDecoderOption):
-    """Microsoft RLE"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mss1(FFMpegDecoderOption):
-    """MS Screen 1"""
 
+def hqx() -> FFMpegDecoderOption:
+    """
+    Canopus HQX
 
-@dataclass(frozen=True, kw_only=True)
-class mss2(FFMpegDecoderOption):
-    """MS Windows Media Video V9 Screen"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class msvideo1(FFMpegDecoderOption):
-    """Microsoft Video 1"""
 
+def huffyuv() -> FFMpegDecoderOption:
+    """
+    Huffyuv / HuffYUV
 
-@dataclass(frozen=True, kw_only=True)
-class mszh(FFMpegDecoderOption):
-    """LCL (LossLess Codec Library) MSZH"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mts2(FFMpegDecoderOption):
-    """MS Expression Encoder Screen"""
 
+def hymt() -> FFMpegDecoderOption:
+    """
+    HuffYUV MT
 
-@dataclass(frozen=True, kw_only=True)
-class mv30(FFMpegDecoderOption):
-    """MidiVid 3.0"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mvc1(FFMpegDecoderOption):
-    """Silicon Graphics Motion Video Compressor 1"""
 
+def idcinvideo() -> FFMpegDecoderOption:
+    """
+    id Quake II CIN video (codec idcin)
 
-@dataclass(frozen=True, kw_only=True)
-class mvc2(FFMpegDecoderOption):
-    """Silicon Graphics Motion Video Compressor 2"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mvdv(FFMpegDecoderOption):
-    """MidiVid VQ"""
 
+def idf() -> FFMpegDecoderOption:
+    """
+    iCEDraw text
 
-@dataclass(frozen=True, kw_only=True)
-class mvha(FFMpegDecoderOption):
-    """MidiVid Archive Codec"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mwsc(FFMpegDecoderOption):
-    """MatchWare Screen Capture Codec"""
 
+def iff() -> FFMpegDecoderOption:
+    """
+    IFF ACBM/ANIM/DEEP/ILBM/PBM/RGB8/RGBN (codec iff_ilbm)
 
-@dataclass(frozen=True, kw_only=True)
-class mxpeg(FFMpegDecoderOption):
-    """Mobotix MxPEG video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class notchlc(FFMpegDecoderOption):
-    """NotchLC"""
 
+def imm4() -> FFMpegDecoderOption:
+    """
+    Infinity IMM4
 
-@dataclass(frozen=True, kw_only=True)
-class nuv(FFMpegDecoderOption):
-    """NuppelVideo/RTJPEG"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class paf_video(FFMpegDecoderOption):
-    """Amazing Studio Packed Animation File Video"""
 
+def imm5() -> FFMpegDecoderOption:
+    """
+    Infinity IMM5
 
-@dataclass(frozen=True, kw_only=True)
-class pam(FFMpegDecoderOption):
-    """PAM (Portable AnyMap) image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class pbm(FFMpegDecoderOption):
-    """PBM (Portable BitMap) image"""
 
+def indeo2() -> FFMpegDecoderOption:
+    """
+    Intel Indeo 2
 
-@dataclass(frozen=True, kw_only=True)
-class pcx(FFMpegDecoderOption):
-    """PC Paintbrush PCX image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class pdv(FFMpegDecoderOption):
-    """PDV (PlayDate Video)"""
 
+def indeo3() -> FFMpegDecoderOption:
+    """
+    Intel Indeo 3
 
-@dataclass(frozen=True, kw_only=True)
-class pfm(FFMpegDecoderOption):
-    """PFM (Portable FloatMap) image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class pgm(FFMpegDecoderOption):
-    """PGM (Portable GrayMap) image"""
 
+def indeo4() -> FFMpegDecoderOption:
+    """
+    Intel Indeo Video Interactive 4
 
-@dataclass(frozen=True, kw_only=True)
-class pgmyuv(FFMpegDecoderOption):
-    """PGMYUV (Portable GrayMap YUV) image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class pgx(FFMpegDecoderOption):
-    """PGX (JPEG2000 Test Format)"""
 
+def indeo5() -> FFMpegDecoderOption:
+    """
+    Intel Indeo Video Interactive 5
 
-@dataclass(frozen=True, kw_only=True)
-class phm(FFMpegDecoderOption):
-    """PHM (Portable HalfFloatMap) image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class photocd(FFMpegDecoderOption):
-    """Kodak Photo CD"""
 
-    lowres: int | None = None
-    """Lower the decoding resolution by a power of two (from 0 to 4) (default 0)"""
+def interplayvideo() -> FFMpegDecoderOption:
+    """
+    Interplay MVE video
 
 
-@dataclass(frozen=True, kw_only=True)
-class pictor(FFMpegDecoderOption):
-    """Pictor/PC Paint"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pixlet(FFMpegDecoderOption):
-    """Apple Pixlet"""
+def ipu() -> FFMpegDecoderOption:
+    """
+    IPU Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class png(FFMpegDecoderOption):
-    """PNG (Portable Network Graphics) image"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class ppm(FFMpegDecoderOption):
-    """PPM (Portable PixelMap) image"""
+def jpeg2000(
+    lowres: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    JPEG 2000
 
+    Args:
+        lowres: Lower the decoding resolution by a power of two (from 0 to 33) (default 0)
 
-@dataclass(frozen=True, kw_only=True)
-class prores(FFMpegDecoderOption):
-    """Apple ProRes (iCodec Pro)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class prosumer(FFMpegDecoderOption):
-    """Brooktree ProSumer Video"""
+def jpegls() -> FFMpegDecoderOption:
+    """
+    JPEG-LS
 
 
-@dataclass(frozen=True, kw_only=True)
-class psd(FFMpegDecoderOption):
-    """Photoshop PSD file"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class ptx(FFMpegDecoderOption):
-    """V.Flash PTX image"""
+def libjxl() -> FFMpegDecoderOption:
+    """
+    libjxl JPEG XL (codec jpegxl)
 
 
-@dataclass(frozen=True, kw_only=True)
-class qdraw(FFMpegDecoderOption):
-    """Apple QuickDraw"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class qoi(FFMpegDecoderOption):
-    """QOI (Quite OK Image format) image"""
+def jv() -> FFMpegDecoderOption:
+    """
+    Bitmap Brothers JV video
 
 
-@dataclass(frozen=True, kw_only=True)
-class qpeg(FFMpegDecoderOption):
-    """Q-team QPEG"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class qtrle(FFMpegDecoderOption):
-    """QuickTime Animation (RLE) video"""
+def kgv1() -> FFMpegDecoderOption:
+    """
+    Kega Game Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class r10k(FFMpegDecoderOption):
-    """AJA Kona 10-bit RGB Codec"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class r210(FFMpegDecoderOption):
-    """Uncompressed RGB 10-bit"""
+def kmvc() -> FFMpegDecoderOption:
+    """
+    Karl Morton's video codec
 
 
-@dataclass(frozen=True, kw_only=True)
-class rasc(FFMpegDecoderOption):
-    """RemotelyAnywhere Screen Capture"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    skip_cursor: bool | None = None
-    """skip the cursor (default false)"""
 
+def lagarith() -> FFMpegDecoderOption:
+    """
+    Lagarith lossless
 
-@dataclass(frozen=True, kw_only=True)
-class rawvideo(FFMpegDecoderOption):
-    """raw video"""
 
-    top: bool | None = None
-    """top field first (default auto)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class rl2(FFMpegDecoderOption):
-    """RL2 video"""
+def loco() -> FFMpegDecoderOption:
+    """
+    LOCO
 
 
-@dataclass(frozen=True, kw_only=True)
-class roqvideo(FFMpegDecoderOption):
-    """id RoQ video (codec roq)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class rpza(FFMpegDecoderOption):
-    """QuickTime video (RPZA)"""
+def lscr() -> FFMpegDecoderOption:
+    """
+    LEAD Screen Capture
 
 
-@dataclass(frozen=True, kw_only=True)
-class rscc(FFMpegDecoderOption):
-    """innoHeim/Rsupport Screen Capture Codec"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class rtv1(FFMpegDecoderOption):
-    """RTV1 (RivaTuner Video)"""
+def m101() -> FFMpegDecoderOption:
+    """
+    Matrox Uncompressed SD
 
 
-@dataclass(frozen=True, kw_only=True)
-class rv10(FFMpegDecoderOption):
-    """RealVideo 1.0"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class rv20(FFMpegDecoderOption):
-    """RealVideo 2.0"""
+def eamad() -> FFMpegDecoderOption:
+    """
+    Electronic Arts Madcow Video (codec mad)
 
 
-@dataclass(frozen=True, kw_only=True)
-class rv30(FFMpegDecoderOption):
-    """RealVideo 3.0"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class rv40(FFMpegDecoderOption):
-    """RealVideo 4.0"""
+def magicyuv() -> FFMpegDecoderOption:
+    """
+    MagicYUV video
 
 
-@dataclass(frozen=True, kw_only=True)
-class sanm(FFMpegDecoderOption):
-    """LucasArts SANM/Smush video"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class scpr(FFMpegDecoderOption):
-    """ScreenPressor"""
+def mdec() -> FFMpegDecoderOption:
+    """
+    Sony PlayStation MDEC (Motion DECoder)
 
 
-@dataclass(frozen=True, kw_only=True)
-class screenpresso(FFMpegDecoderOption):
-    """Screenpresso"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class sga(FFMpegDecoderOption):
-    """Digital Pictures SGA Video"""
+def media100() -> FFMpegDecoderOption:
+    """
+    Media 100
 
 
-@dataclass(frozen=True, kw_only=True)
-class sgi(FFMpegDecoderOption):
-    """SGI image"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class sgirle(FFMpegDecoderOption):
-    """Silicon Graphics RLE 8-bit video"""
+def mimic() -> FFMpegDecoderOption:
+    """
+    Mimic
 
 
-@dataclass(frozen=True, kw_only=True)
-class sheervideo(FFMpegDecoderOption):
-    """BitJazz SheerVideo"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class simbiosis_imx(FFMpegDecoderOption):
-    """Simbiosis Interactive IMX Video"""
+def mjpeg(
+    extern_huff: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    MJPEG (Motion JPEG)
 
+    Args:
+        extern_huff: Use external huffman table. (default false)
 
-@dataclass(frozen=True, kw_only=True)
-class smackvid(FFMpegDecoderOption):
-    """Smacker video (codec smackvideo)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class smc(FFMpegDecoderOption):
-    """QuickTime Graphics (SMC)"""
+def mjpeg_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MJPEG decoder (codec mjpeg)
 
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
-@dataclass(frozen=True, kw_only=True)
-class smvjpeg(FFMpegDecoderOption):
-    """SMV JPEG"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class snow(FFMpegDecoderOption):
-    """Snow"""
+def mjpegb() -> FFMpegDecoderOption:
+    """
+    Apple MJPEG-B
 
 
-@dataclass(frozen=True, kw_only=True)
-class sp5x(FFMpegDecoderOption):
-    """Sunplus JPEG (SP5X)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class speedhq(FFMpegDecoderOption):
-    """NewTek SpeedHQ"""
+def mmvideo() -> FFMpegDecoderOption:
+    """
+    American Laser Games MM Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class srgc(FFMpegDecoderOption):
-    """Screen Recorder Gold Codec"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class sunrast(FFMpegDecoderOption):
-    """Sun Rasterfile image"""
+def mobiclip() -> FFMpegDecoderOption:
+    """
+    MobiClip Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class librsvg(FFMpegDecoderOption):
-    """Librsvg rasterizer (codec svg)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    width: int | None = None
-    """Width to render to (0 for default) (from 0 to INT_MAX) (default 0)"""
 
-    height: int | None = None
-    """Height to render to (0 for default) (from 0 to INT_MAX) (default 0)"""
+def motionpixels() -> FFMpegDecoderOption:
+    """
+    Motion Pixels video
 
-    keep_ar: bool | None = None
-    """Keep aspect ratio with custom width/height (default true)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class svq1(FFMpegDecoderOption):
-    """Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1"""
 
+def mpeg1video() -> FFMpegDecoderOption:
+    """
+    MPEG-1 video
 
-@dataclass(frozen=True, kw_only=True)
-class svq3(FFMpegDecoderOption):
-    """Sorenson Vector Quantizer 3 / Sorenson Video 3 / SVQ3"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class targa(FFMpegDecoderOption):
-    """Truevision Targa image"""
 
+def mpeg1_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem MPEG1 decoder wrapper (codec mpeg1video)
 
-@dataclass(frozen=True, kw_only=True)
-class targa_y216(FFMpegDecoderOption):
-    """Pinnacle TARGA CineWave YUV16"""
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class tdsc(FFMpegDecoderOption):
-    """TDSC"""
 
+def mpeg1_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MPEG1VIDEO decoder (codec mpeg1video)
 
-@dataclass(frozen=True, kw_only=True)
-class eatgq(FFMpegDecoderOption):
-    """Electronic Arts TGQ video (codec tgq)"""
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class eatgv(FFMpegDecoderOption):
-    """Electronic Arts TGV video (codec tgv)"""
 
+def mpeg2video() -> FFMpegDecoderOption:
+    """
+    MPEG-2 video
 
-@dataclass(frozen=True, kw_only=True)
-class theora(FFMpegDecoderOption):
-    """Theora"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class thp(FFMpegDecoderOption):
-    """Nintendo Gamecube THP video"""
 
+def mpegvideo() -> FFMpegDecoderOption:
+    """
+    MPEG-1 video (codec mpeg2video)
 
-@dataclass(frozen=True, kw_only=True)
-class tiertexseqvideo(FFMpegDecoderOption):
-    """Tiertex Limited SEQ video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class tiff(FFMpegDecoderOption):
-    """TIFF image"""
 
-    subimage: bool | None = None
-    """decode subimage instead if available (default false)"""
+def mpeg2_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem MPEG2 decoder wrapper (codec mpeg2video)
 
-    thumbnail: bool | None = None
-    """decode embedded thumbnail subimage instead if available (default false)"""
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
-    page: int | None = None
-    """page number of multi-page image to decode (starting from 1) (from 0 to 65535) (default 0)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class tmv(FFMpegDecoderOption):
-    """8088flex TMV"""
+def mpeg2_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MPEG2VIDEO decoder (codec mpeg2video)
 
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
-@dataclass(frozen=True, kw_only=True)
-class eatqi(FFMpegDecoderOption):
-    """Electronic Arts TQI Video (codec tqi)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class truemotion1(FFMpegDecoderOption):
-    """Duck TrueMotion 1.0"""
+def mpeg4() -> FFMpegDecoderOption:
+    """
+    MPEG-4 part 2
 
 
-@dataclass(frozen=True, kw_only=True)
-class truemotion2(FFMpegDecoderOption):
-    """Duck TrueMotion 2.0"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class truemotion2rt(FFMpegDecoderOption):
-    """Duck TrueMotion 2.0 Real Time"""
+def mpeg4_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem MPEG4 decoder wrapper (codec mpeg4)
 
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
-@dataclass(frozen=True, kw_only=True)
-class camtasia(FFMpegDecoderOption):
-    """TechSmith Screen Capture Codec (codec tscc)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class tscc2(FFMpegDecoderOption):
-    """TechSmith Screen Codec 2"""
+def mpeg4_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID MPEG4 decoder (codec mpeg4)
 
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
-@dataclass(frozen=True, kw_only=True)
-class txd(FFMpegDecoderOption):
-    """Renderware TXD (TeXture Dictionary) image"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class ultimotion(FFMpegDecoderOption):
-    """IBM UltiMotion (codec ulti)"""
+def msa1() -> FFMpegDecoderOption:
+    """
+    MS ATC Screen
 
 
-@dataclass(frozen=True, kw_only=True)
-class utvideo(FFMpegDecoderOption):
-    """Ut Video"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class v210(FFMpegDecoderOption):
-    """Uncompressed 4:2:2 10-bit"""
+def mscc() -> FFMpegDecoderOption:
+    """
+    Mandsoft Screen Capture Codec
 
-    custom_stride: int | None = None
-    """Custom V210 stride (from -1 to INT_MAX) (default 0)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class v210x(FFMpegDecoderOption):
-    """Uncompressed 4:2:2 10-bit"""
 
+def msmpeg4v1() -> FFMpegDecoderOption:
+    """
+    MPEG-4 part 2 Microsoft variant version 1
 
-@dataclass(frozen=True, kw_only=True)
-class v308(FFMpegDecoderOption):
-    """Uncompressed packed 4:4:4"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class v408(FFMpegDecoderOption):
-    """Uncompressed packed QT 4:4:4:4"""
 
+def msmpeg4v2() -> FFMpegDecoderOption:
+    """
+    MPEG-4 part 2 Microsoft variant version 2
 
-@dataclass(frozen=True, kw_only=True)
-class v410(FFMpegDecoderOption):
-    """Uncompressed 4:4:4 10-bit"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vb(FFMpegDecoderOption):
-    """Beam Software VB"""
 
+def msmpeg4() -> FFMpegDecoderOption:
+    """
+    MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)
 
-@dataclass(frozen=True, kw_only=True)
-class vble(FFMpegDecoderOption):
-    """VBLE Lossless Codec"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vbn(FFMpegDecoderOption):
-    """Vizrt Binary Image"""
 
+def msp2() -> FFMpegDecoderOption:
+    """
+    Microsoft Paint (MSP) version 2
 
-@dataclass(frozen=True, kw_only=True)
-class vc1(FFMpegDecoderOption):
-    """SMPTE VC-1"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vc1_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem VC1 decoder wrapper (codec vc1)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+def msrle() -> FFMpegDecoderOption:
+    """
+    Microsoft RLE
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vc1_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID VC1 decoder (codec vc1)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+def mss1() -> FFMpegDecoderOption:
+    """
+    MS Screen 1
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+def mss2() -> FFMpegDecoderOption:
+    """
+    MS Windows Media Video V9 Screen
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vc1image(FFMpegDecoderOption):
-    """Windows Media Video 9 Image v2"""
 
+def msvideo1() -> FFMpegDecoderOption:
+    """
+    Microsoft Video 1
 
-@dataclass(frozen=True, kw_only=True)
-class vcr1(FFMpegDecoderOption):
-    """ATI VCR1"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class xl(FFMpegDecoderOption):
-    """Miro VideoXL (codec vixl)"""
 
+def mszh() -> FFMpegDecoderOption:
+    """
+    LCL (LossLess Codec Library) MSZH
 
-@dataclass(frozen=True, kw_only=True)
-class vmdvideo(FFMpegDecoderOption):
-    """Sierra VMD video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vmix(FFMpegDecoderOption):
-    """vMix Video"""
 
+def mts2() -> FFMpegDecoderOption:
+    """
+    MS Expression Encoder Screen
 
-@dataclass(frozen=True, kw_only=True)
-class vmnc(FFMpegDecoderOption):
-    """VMware Screen Codec / VMware Video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vnull(FFMpegDecoderOption):
-    """null video"""
 
+def mv30() -> FFMpegDecoderOption:
+    """
+    MidiVid 3.0
 
-@dataclass(frozen=True, kw_only=True)
-class vp3(FFMpegDecoderOption):
-    """On2 VP3"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vp4(FFMpegDecoderOption):
-    """On2 VP4"""
 
+def mvc1() -> FFMpegDecoderOption:
+    """
+    Silicon Graphics Motion Video Compressor 1
 
-@dataclass(frozen=True, kw_only=True)
-class vp5(FFMpegDecoderOption):
-    """On2 VP5"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vp6(FFMpegDecoderOption):
-    """On2 VP6"""
 
+def mvc2() -> FFMpegDecoderOption:
+    """
+    Silicon Graphics Motion Video Compressor 2
 
-@dataclass(frozen=True, kw_only=True)
-class vp6a(FFMpegDecoderOption):
-    """On2 VP6 (Flash version, with alpha channel)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vp6f(FFMpegDecoderOption):
-    """On2 VP6 (Flash version)"""
 
+def mvdv() -> FFMpegDecoderOption:
+    """
+    MidiVid VQ
 
-@dataclass(frozen=True, kw_only=True)
-class vp7(FFMpegDecoderOption):
-    """On2 VP7"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vp8(FFMpegDecoderOption):
-    """On2 VP8"""
 
+def mvha() -> FFMpegDecoderOption:
+    """
+    MidiVid Archive Codec
 
-@dataclass(frozen=True, kw_only=True)
-class vp8_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem VP8 decoder wrapper (codec vp8)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+def mwsc() -> FFMpegDecoderOption:
+    """
+    MatchWare Screen Capture Codec
 
-@dataclass(frozen=True, kw_only=True)
-class libvpx(FFMpegDecoderOption):
-    """libvpx VP8 (codec vp8)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vp8_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID VP8 decoder (codec vp8)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+def mxpeg() -> FFMpegDecoderOption:
+    """
+    Mobotix MxPEG video
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+def notchlc() -> FFMpegDecoderOption:
+    """
+    NotchLC
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vp9(FFMpegDecoderOption):
-    """Google VP9"""
 
+def nuv() -> FFMpegDecoderOption:
+    """
+    NuppelVideo/RTJPEG
 
-@dataclass(frozen=True, kw_only=True)
-class vp9_v4l2m2m(FFMpegDecoderOption):
-    """V4L2 mem2mem VP9 decoder wrapper (codec vp9)"""
 
-    num_output_buffers: int | None = None
-    """Number of buffers in the output context (from 2 to INT_MAX) (default 16)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    num_capture_buffers: int | None = None
-    """Number of buffers in the capture context (from 2 to INT_MAX) (default 20)"""
 
+def paf_video() -> FFMpegDecoderOption:
+    """
+    Amazing Studio Packed Animation File Video
 
-@dataclass(frozen=True, kw_only=True)
-class vp9_cuvid(FFMpegDecoderOption):
-    """Nvidia CUVID VP9 decoder (codec vp9)"""
 
-    deint: int | None = None
-    """Set deinterlacing mode (from 0 to 2) (default weave)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    gpu: str | None = None
-    """GPU to be used for decoding"""
 
-    surfaces: int | None = None
-    """Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)"""
+def pam() -> FFMpegDecoderOption:
+    """
+    PAM (Portable AnyMap) image
 
-    drop_second_field: bool | None = None
-    """Drop second field when deinterlacing (default false)"""
 
-    crop: str | None = None
-    """Crop (top)x(bottom)x(left)x(right)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    resize: str | None = None
-    """Resize (width)x(height)"""
 
+def pbm() -> FFMpegDecoderOption:
+    """
+    PBM (Portable BitMap) image
 
-@dataclass(frozen=True, kw_only=True)
-class vqc(FFMpegDecoderOption):
-    """ViewQuest VQC"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wbmp(FFMpegDecoderOption):
-    """WBMP (Wireless Application Protocol Bitmap) image"""
 
+def pcx() -> FFMpegDecoderOption:
+    """
+    PC Paintbrush PCX image
 
-@dataclass(frozen=True, kw_only=True)
-class wcmv(FFMpegDecoderOption):
-    """WinCAM Motion Video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class webp(FFMpegDecoderOption):
-    """WebP image"""
 
+def pdv() -> FFMpegDecoderOption:
+    """
+    PDV (PlayDate Video)
 
-@dataclass(frozen=True, kw_only=True)
-class wmv1(FFMpegDecoderOption):
-    """Windows Media Video 7"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wmv2(FFMpegDecoderOption):
-    """Windows Media Video 8"""
 
+def pfm() -> FFMpegDecoderOption:
+    """
+    PFM (Portable FloatMap) image
 
-@dataclass(frozen=True, kw_only=True)
-class wmv3(FFMpegDecoderOption):
-    """Windows Media Video 9"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wmv3image(FFMpegDecoderOption):
-    """Windows Media Video 9 Image"""
 
+def pgm() -> FFMpegDecoderOption:
+    """
+    PGM (Portable GrayMap) image
 
-@dataclass(frozen=True, kw_only=True)
-class wnv1(FFMpegDecoderOption):
-    """Winnov WNV1"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wrapped_avframe(FFMpegDecoderOption):
-    """AVPacket to AVFrame passthrough"""
 
+def pgmyuv() -> FFMpegDecoderOption:
+    """
+    PGMYUV (Portable GrayMap YUV) image
 
-@dataclass(frozen=True, kw_only=True)
-class vqavideo(FFMpegDecoderOption):
-    """Westwood Studios VQA (Vector Quantized Animation) video (codec ws_vqa)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class xan_wc3(FFMpegDecoderOption):
-    """Wing Commander III / Xan"""
 
+def pgx() -> FFMpegDecoderOption:
+    """
+    PGX (JPEG2000 Test Format)
 
-@dataclass(frozen=True, kw_only=True)
-class xan_wc4(FFMpegDecoderOption):
-    """Wing Commander IV / Xxan"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class xbin(FFMpegDecoderOption):
-    """eXtended BINary text"""
 
+def phm() -> FFMpegDecoderOption:
+    """
+    PHM (Portable HalfFloatMap) image
 
-@dataclass(frozen=True, kw_only=True)
-class xbm(FFMpegDecoderOption):
-    """XBM (X BitMap) image"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class xface(FFMpegDecoderOption):
-    """X-face image"""
 
+def photocd(
+    lowres: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Kodak Photo CD
 
-@dataclass(frozen=True, kw_only=True)
-class xpm(FFMpegDecoderOption):
-    """XPM (X PixMap) image"""
+    Args:
+        lowres: Lower the decoding resolution by a power of two (from 0 to 4) (default 0)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class xwd(FFMpegDecoderOption):
-    """XWD (X Window Dump) image"""
 
+def pictor() -> FFMpegDecoderOption:
+    """
+    Pictor/PC Paint
 
-@dataclass(frozen=True, kw_only=True)
-class y41p(FFMpegDecoderOption):
-    """Uncompressed YUV 4:1:1 12-bit"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class ylc(FFMpegDecoderOption):
-    """YUY2 Lossless Codec"""
 
+def pixlet() -> FFMpegDecoderOption:
+    """
+    Apple Pixlet
 
-@dataclass(frozen=True, kw_only=True)
-class yop(FFMpegDecoderOption):
-    """Psygnosis YOP Video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class yuv4(FFMpegDecoderOption):
-    """Uncompressed packed 4:2:0"""
 
+def png() -> FFMpegDecoderOption:
+    """
+    PNG (Portable Network Graphics) image
 
-@dataclass(frozen=True, kw_only=True)
-class zerocodec(FFMpegDecoderOption):
-    """ZeroCodec Lossless Video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class zlib(FFMpegDecoderOption):
-    """LCL (LossLess Codec Library) ZLIB"""
 
+def ppm() -> FFMpegDecoderOption:
+    """
+    PPM (Portable PixelMap) image
 
-@dataclass(frozen=True, kw_only=True)
-class zmbv(FFMpegDecoderOption):
-    """Zip Motion Blocks Video"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class _8svx_exp(FFMpegDecoderOption):
-    """8SVX exponential"""
 
+def prores() -> FFMpegDecoderOption:
+    """
+    Apple ProRes (iCodec Pro)
 
-@dataclass(frozen=True, kw_only=True)
-class _8svx_fib(FFMpegDecoderOption):
-    """8SVX fibonacci"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class aac(FFMpegDecoderOption):
-    """AAC (Advanced Audio Coding)"""
 
-    dual_mono_mode: int | None = None
-    """Select the channel to decode for dual mono (from -1 to 2) (default auto)"""
+def prosumer() -> FFMpegDecoderOption:
+    """
+    Brooktree ProSumer Video
 
-    channel_order: int | None = None
-    """Order in which the channels are to be exported (from 0 to 1) (default default)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class aac_fixed(FFMpegDecoderOption):
-    """AAC (Advanced Audio Coding) (codec aac)"""
 
-    dual_mono_mode: int | None = None
-    """Select the channel to decode for dual mono (from -1 to 2) (default auto)"""
+def psd() -> FFMpegDecoderOption:
+    """
+    Photoshop PSD file
 
-    channel_order: int | None = None
-    """Order in which the channels are to be exported (from 0 to 1) (default default)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class aac_latm(FFMpegDecoderOption):
-    """AAC LATM (Advanced Audio Coding LATM syntax)"""
 
+def ptx() -> FFMpegDecoderOption:
+    """
+    V.Flash PTX image
 
-@dataclass(frozen=True, kw_only=True)
-class ac3(FFMpegDecoderOption):
-    """ATSC A/52A (AC-3)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class ac3_fixed(FFMpegDecoderOption):
-    """ATSC A/52A (AC-3) (codec ac3)"""
 
+def qdraw() -> FFMpegDecoderOption:
+    """
+    Apple QuickDraw
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_4xm(FFMpegDecoderOption):
-    """ADPCM 4X Movie"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_adx(FFMpegDecoderOption):
-    """SEGA CRI ADX ADPCM"""
 
+def qoi() -> FFMpegDecoderOption:
+    """
+    QOI (Quite OK Image format) image
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_afc(FFMpegDecoderOption):
-    """ADPCM Nintendo Gamecube AFC"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_agm(FFMpegDecoderOption):
-    """ADPCM AmuseGraphics Movie"""
 
+def qpeg() -> FFMpegDecoderOption:
+    """
+    Q-team QPEG
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_aica(FFMpegDecoderOption):
-    """ADPCM Yamaha AICA"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_argo(FFMpegDecoderOption):
-    """ADPCM Argonaut Games"""
 
+def qtrle() -> FFMpegDecoderOption:
+    """
+    QuickTime Animation (RLE) video
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ct(FFMpegDecoderOption):
-    """ADPCM Creative Technology"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_dtk(FFMpegDecoderOption):
-    """ADPCM Nintendo Gamecube DTK"""
 
+def r10k() -> FFMpegDecoderOption:
+    """
+    AJA Kona 10-bit RGB Codec
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ea(FFMpegDecoderOption):
-    """ADPCM Electronic Arts"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ea_maxis_xa(FFMpegDecoderOption):
-    """ADPCM Electronic Arts Maxis CDROM XA"""
 
+def r210() -> FFMpegDecoderOption:
+    """
+    Uncompressed RGB 10-bit
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ea_r1(FFMpegDecoderOption):
-    """ADPCM Electronic Arts R1"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ea_r2(FFMpegDecoderOption):
-    """ADPCM Electronic Arts R2"""
 
+def rasc(
+    skip_cursor: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    RemotelyAnywhere Screen Capture
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ea_r3(FFMpegDecoderOption):
-    """ADPCM Electronic Arts R3"""
+    Args:
+        skip_cursor: skip the cursor (default false)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ea_xas(FFMpegDecoderOption):
-    """ADPCM Electronic Arts XAS"""
 
+def rawvideo(
+    top: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    raw video
 
-@dataclass(frozen=True, kw_only=True)
-class g722(FFMpegDecoderOption):
-    """G.722 ADPCM (codec adpcm_g722)"""
+    Args:
+        top: top field first (default auto)
 
-    bits_per_codeword: int | None = None
-    """Bits per G722 codeword (from 6 to 8) (default 8)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class g726(FFMpegDecoderOption):
-    """G.726 ADPCM (codec adpcm_g726)"""
+def rl2() -> FFMpegDecoderOption:
+    """
+    RL2 video
 
 
-@dataclass(frozen=True, kw_only=True)
-class g726le(FFMpegDecoderOption):
-    """G.726 ADPCM little-endian (codec adpcm_g726le)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_acorn(FFMpegDecoderOption):
-    """ADPCM IMA Acorn Replay"""
+def roqvideo() -> FFMpegDecoderOption:
+    """
+    id RoQ video (codec roq)
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_alp(FFMpegDecoderOption):
-    """ADPCM IMA High Voltage Software ALP"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_amv(FFMpegDecoderOption):
-    """ADPCM IMA AMV"""
+def rpza() -> FFMpegDecoderOption:
+    """
+    QuickTime video (RPZA)
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_apc(FFMpegDecoderOption):
-    """ADPCM IMA CRYO APC"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_apm(FFMpegDecoderOption):
-    """ADPCM IMA Ubisoft APM"""
+def rscc() -> FFMpegDecoderOption:
+    """
+    innoHeim/Rsupport Screen Capture Codec
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_cunning(FFMpegDecoderOption):
-    """ADPCM IMA Cunning Developments"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_dat4(FFMpegDecoderOption):
-    """ADPCM IMA Eurocom DAT4"""
+def rtv1() -> FFMpegDecoderOption:
+    """
+    RTV1 (RivaTuner Video)
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_dk3(FFMpegDecoderOption):
-    """ADPCM IMA Duck DK3"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_dk4(FFMpegDecoderOption):
-    """ADPCM IMA Duck DK4"""
+def rv10() -> FFMpegDecoderOption:
+    """
+    RealVideo 1.0
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_ea_eacs(FFMpegDecoderOption):
-    """ADPCM IMA Electronic Arts EACS"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_ea_sead(FFMpegDecoderOption):
-    """ADPCM IMA Electronic Arts SEAD"""
+def rv20() -> FFMpegDecoderOption:
+    """
+    RealVideo 2.0
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_iss(FFMpegDecoderOption):
-    """ADPCM IMA Funcom ISS"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_moflex(FFMpegDecoderOption):
-    """ADPCM IMA MobiClip MOFLEX"""
+def rv30() -> FFMpegDecoderOption:
+    """
+    RealVideo 3.0
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_mtf(FFMpegDecoderOption):
-    """ADPCM IMA Capcom's MT Framework"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_oki(FFMpegDecoderOption):
-    """ADPCM IMA Dialogic OKI"""
+def rv40() -> FFMpegDecoderOption:
+    """
+    RealVideo 4.0
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_qt(FFMpegDecoderOption):
-    """ADPCM IMA QuickTime"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_rad(FFMpegDecoderOption):
-    """ADPCM IMA Radical"""
+def sanm() -> FFMpegDecoderOption:
+    """
+    LucasArts SANM/Smush video
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_smjpeg(FFMpegDecoderOption):
-    """ADPCM IMA Loki SDL MJPEG"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_ssi(FFMpegDecoderOption):
-    """ADPCM IMA Simon & Schuster Interactive"""
+def scpr() -> FFMpegDecoderOption:
+    """
+    ScreenPressor
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_wav(FFMpegDecoderOption):
-    """ADPCM IMA WAV"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ima_ws(FFMpegDecoderOption):
-    """ADPCM IMA Westwood"""
+def screenpresso() -> FFMpegDecoderOption:
+    """
+    Screenpresso
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_ms(FFMpegDecoderOption):
-    """ADPCM Microsoft"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_mtaf(FFMpegDecoderOption):
-    """ADPCM MTAF"""
+def sga() -> FFMpegDecoderOption:
+    """
+    Digital Pictures SGA Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_psx(FFMpegDecoderOption):
-    """ADPCM Playstation"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_sbpro_2(FFMpegDecoderOption):
-    """ADPCM Sound Blaster Pro 2-bit"""
+def sgi() -> FFMpegDecoderOption:
+    """
+    SGI image
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_sbpro_3(FFMpegDecoderOption):
-    """ADPCM Sound Blaster Pro 2.6-bit"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_sbpro_4(FFMpegDecoderOption):
-    """ADPCM Sound Blaster Pro 4-bit"""
+def sgirle() -> FFMpegDecoderOption:
+    """
+    Silicon Graphics RLE 8-bit video
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_swf(FFMpegDecoderOption):
-    """ADPCM Shockwave Flash"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_thp(FFMpegDecoderOption):
-    """ADPCM Nintendo THP"""
+def sheervideo() -> FFMpegDecoderOption:
+    """
+    BitJazz SheerVideo
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_thp_le(FFMpegDecoderOption):
-    """ADPCM Nintendo THP (little-endian)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_vima(FFMpegDecoderOption):
-    """LucasArts VIMA audio"""
+def simbiosis_imx() -> FFMpegDecoderOption:
+    """
+    Simbiosis Interactive IMX Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_xa(FFMpegDecoderOption):
-    """ADPCM CDROM XA"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_xmd(FFMpegDecoderOption):
-    """ADPCM Konami XMD"""
+def smackvid() -> FFMpegDecoderOption:
+    """
+    Smacker video (codec smackvideo)
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_yamaha(FFMpegDecoderOption):
-    """ADPCM Yamaha"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class adpcm_zork(FFMpegDecoderOption):
-    """ADPCM Zork"""
+def smc() -> FFMpegDecoderOption:
+    """
+    QuickTime Graphics (SMC)
 
 
-@dataclass(frozen=True, kw_only=True)
-class alac(FFMpegDecoderOption):
-    """ALAC (Apple Lossless Audio Codec)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    extra_bits_bug: bool | None = None
-    """Force non-standard decoding process (default false)"""
 
+def smvjpeg() -> FFMpegDecoderOption:
+    """
+    SMV JPEG
 
-@dataclass(frozen=True, kw_only=True)
-class amrnb(FFMpegDecoderOption):
-    """AMR-NB (Adaptive Multi-Rate NarrowBand) (codec amr_nb)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class amrwb(FFMpegDecoderOption):
-    """AMR-WB (Adaptive Multi-Rate WideBand) (codec amr_wb)"""
 
+def snow() -> FFMpegDecoderOption:
+    """
+    Snow
 
-@dataclass(frozen=True, kw_only=True)
-class anull(FFMpegDecoderOption):
-    """null audio"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class apac(FFMpegDecoderOption):
-    """Marian's A-pac audio"""
 
+def sp5x() -> FFMpegDecoderOption:
+    """
+    Sunplus JPEG (SP5X)
 
-@dataclass(frozen=True, kw_only=True)
-class ape(FFMpegDecoderOption):
-    """Monkey's Audio"""
 
-    max_samples: int | None = None
-    """maximum number of samples decoded per call (from 1 to INT_MAX) (default 4608)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class aptx(FFMpegDecoderOption):
-    """aptX (Audio Processing Technology for Bluetooth)"""
+def speedhq() -> FFMpegDecoderOption:
+    """
+    NewTek SpeedHQ
 
 
-@dataclass(frozen=True, kw_only=True)
-class aptx_hd(FFMpegDecoderOption):
-    """aptX HD (Audio Processing Technology for Bluetooth)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class atrac1(FFMpegDecoderOption):
-    """ATRAC1 (Adaptive TRansform Acoustic Coding)"""
+def srgc() -> FFMpegDecoderOption:
+    """
+    Screen Recorder Gold Codec
 
 
-@dataclass(frozen=True, kw_only=True)
-class atrac3(FFMpegDecoderOption):
-    """ATRAC3 (Adaptive TRansform Acoustic Coding 3)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class atrac3al(FFMpegDecoderOption):
-    """ATRAC3 AL (Adaptive TRansform Acoustic Coding 3 Advanced Lossless)"""
+def sunrast() -> FFMpegDecoderOption:
+    """
+    Sun Rasterfile image
 
 
-@dataclass(frozen=True, kw_only=True)
-class atrac3plus(FFMpegDecoderOption):
-    """ATRAC3+ (Adaptive TRansform Acoustic Coding 3+) (codec atrac3p)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class atrac3plusal(FFMpegDecoderOption):
-    """ATRAC3+ AL (Adaptive TRansform Acoustic Coding 3+ Advanced Lossless) (codec atrac3pal)"""
+def librsvg(
+    width: int | None = None,
+    height: int | None = None,
+    keep_ar: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Librsvg rasterizer (codec svg)
 
+    Args:
+        width: Width to render to (0 for default) (from 0 to INT_MAX) (default 0)
+        height: Height to render to (0 for default) (from 0 to INT_MAX) (default 0)
+        keep_ar: Keep aspect ratio with custom width/height (default true)
 
-@dataclass(frozen=True, kw_only=True)
-class atrac9(FFMpegDecoderOption):
-    """ATRAC9 (Adaptive TRansform Acoustic Coding 9)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class on2avc(FFMpegDecoderOption):
-    """On2 Audio for Video Codec (codec avc)"""
+def svq1() -> FFMpegDecoderOption:
+    """
+    Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1
 
 
-@dataclass(frozen=True, kw_only=True)
-class binkaudio_dct(FFMpegDecoderOption):
-    """Bink Audio (DCT)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class binkaudio_rdft(FFMpegDecoderOption):
-    """Bink Audio (RDFT)"""
+def svq3() -> FFMpegDecoderOption:
+    """
+    Sorenson Vector Quantizer 3 / Sorenson Video 3 / SVQ3
 
 
-@dataclass(frozen=True, kw_only=True)
-class bmv_audio(FFMpegDecoderOption):
-    """Discworld II BMV audio"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class bonk(FFMpegDecoderOption):
-    """Bonk audio"""
+def targa() -> FFMpegDecoderOption:
+    """
+    Truevision Targa image
 
 
-@dataclass(frozen=True, kw_only=True)
-class cbd2_dpcm(FFMpegDecoderOption):
-    """DPCM Cuberoot-Delta-Exact"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class libcodec2(FFMpegDecoderOption):
-    """codec2 decoder using libcodec2 (codec codec2)"""
+def targa_y216() -> FFMpegDecoderOption:
+    """
+    Pinnacle TARGA CineWave YUV16
 
 
-@dataclass(frozen=True, kw_only=True)
-class comfortnoise(FFMpegDecoderOption):
-    """RFC 3389 comfort noise generator"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class cook(FFMpegDecoderOption):
-    """Cook / Cooker / Gecko (RealAudio G2)"""
+def tdsc() -> FFMpegDecoderOption:
+    """
+    TDSC
 
 
-@dataclass(frozen=True, kw_only=True)
-class derf_dpcm(FFMpegDecoderOption):
-    """DPCM Xilam DERF"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class dfpwm(FFMpegDecoderOption):
-    """DFPWM1a audio"""
+def eatgq() -> FFMpegDecoderOption:
+    """
+    Electronic Arts TGQ video (codec tgq)
 
 
-@dataclass(frozen=True, kw_only=True)
-class dolby_e(FFMpegDecoderOption):
-    """Dolby E"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    channel_order: int | None = None
-    """Order in which the channels are to be exported (from 0 to 1) (default default)"""
 
+def eatgv() -> FFMpegDecoderOption:
+    """
+    Electronic Arts TGV video (codec tgv)
 
-@dataclass(frozen=True, kw_only=True)
-class dsd_lsbf(FFMpegDecoderOption):
-    """DSD (Direct Stream Digital), least significant bit first"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dsd_lsbf_planar(FFMpegDecoderOption):
-    """DSD (Direct Stream Digital), least significant bit first, planar"""
 
+def theora() -> FFMpegDecoderOption:
+    """
+    Theora
 
-@dataclass(frozen=True, kw_only=True)
-class dsd_msbf(FFMpegDecoderOption):
-    """DSD (Direct Stream Digital), most significant bit first"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dsd_msbf_planar(FFMpegDecoderOption):
-    """DSD (Direct Stream Digital), most significant bit first, planar"""
 
+def thp() -> FFMpegDecoderOption:
+    """
+    Nintendo Gamecube THP video
 
-@dataclass(frozen=True, kw_only=True)
-class dsicinaudio(FFMpegDecoderOption):
-    """Delphine Software International CIN audio"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dss_sp(FFMpegDecoderOption):
-    """Digital Speech Standard - Standard Play mode (DSS SP)"""
 
+def tiertexseqvideo() -> FFMpegDecoderOption:
+    """
+    Tiertex Limited SEQ video
 
-@dataclass(frozen=True, kw_only=True)
-class dst(FFMpegDecoderOption):
-    """DST (Digital Stream Transfer)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dca(FFMpegDecoderOption):
-    """DCA (DTS Coherent Acoustics) (codec dts)"""
 
-    core_only: bool | None = None
-    """Decode core only without extensions (default false)"""
+def tiff(
+    subimage: bool | None = None,
+    thumbnail: bool | None = None,
+    page: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    TIFF image
 
-    channel_order: int | None = None
-    """Order in which the channels are to be exported (from 0 to 1) (default default)"""
+    Args:
+        subimage: decode subimage instead if available (default false)
+        thumbnail: decode embedded thumbnail subimage instead if available (default false)
+        page: page number of multi-page image to decode (starting from 1) (from 0 to 65535) (default 0)
 
-    downmix: str | None = None
-    """Request a specific channel layout from the decoder"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class dvaudio(FFMpegDecoderOption):
-    """Ulead DV Audio"""
+def tmv() -> FFMpegDecoderOption:
+    """
+    8088flex TMV
 
 
-@dataclass(frozen=True, kw_only=True)
-class eac3(FFMpegDecoderOption):
-    """ATSC A/52B (AC-3, E-AC-3)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class evrc(FFMpegDecoderOption):
-    """EVRC (Enhanced Variable Rate Codec)"""
+def eatqi() -> FFMpegDecoderOption:
+    """
+    Electronic Arts TQI Video (codec tqi)
 
-    postfilter: bool | None = None
-    """enable postfilter (default true)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class fastaudio(FFMpegDecoderOption):
-    """MobiClip FastAudio"""
 
+def truemotion1() -> FFMpegDecoderOption:
+    """
+    Duck TrueMotion 1.0
 
-@dataclass(frozen=True, kw_only=True)
-class flac(FFMpegDecoderOption):
-    """FLAC (Free Lossless Audio Codec)"""
 
-    use_buggy_lpc: bool | None = None
-    """emulate old buggy lavc behavior (default false)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class ftr(FFMpegDecoderOption):
-    """FTR Voice"""
+def truemotion2() -> FFMpegDecoderOption:
+    """
+    Duck TrueMotion 2.0
 
 
-@dataclass(frozen=True, kw_only=True)
-class g723_1(FFMpegDecoderOption):
-    """G.723.1"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    postfilter: bool | None = None
-    """enable postfilter (default true)"""
 
+def truemotion2rt() -> FFMpegDecoderOption:
+    """
+    Duck TrueMotion 2.0 Real Time
 
-@dataclass(frozen=True, kw_only=True)
-class g729(FFMpegDecoderOption):
-    """G.729"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class gremlin_dpcm(FFMpegDecoderOption):
-    """DPCM Gremlin"""
 
+def camtasia() -> FFMpegDecoderOption:
+    """
+    TechSmith Screen Capture Codec (codec tscc)
 
-@dataclass(frozen=True, kw_only=True)
-class gsm(FFMpegDecoderOption):
-    """GSM"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class libgsm(FFMpegDecoderOption):
-    """libgsm GSM (codec gsm)"""
 
+def tscc2() -> FFMpegDecoderOption:
+    """
+    TechSmith Screen Codec 2
 
-@dataclass(frozen=True, kw_only=True)
-class gsm_ms(FFMpegDecoderOption):
-    """GSM Microsoft variant"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class libgsm_ms(FFMpegDecoderOption):
-    """libgsm GSM Microsoft variant (codec gsm_ms)"""
 
+def txd() -> FFMpegDecoderOption:
+    """
+    Renderware TXD (TeXture Dictionary) image
 
-@dataclass(frozen=True, kw_only=True)
-class hca(FFMpegDecoderOption):
-    """CRI HCA"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class hcom(FFMpegDecoderOption):
-    """HCOM Audio"""
 
+def ultimotion() -> FFMpegDecoderOption:
+    """
+    IBM UltiMotion (codec ulti)
 
-@dataclass(frozen=True, kw_only=True)
-class iac(FFMpegDecoderOption):
-    """IAC (Indeo Audio Coder)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class ilbc(FFMpegDecoderOption):
-    """iLBC (Internet Low Bitrate Codec)"""
 
+def utvideo() -> FFMpegDecoderOption:
+    """
+    Ut Video
 
-@dataclass(frozen=True, kw_only=True)
-class imc(FFMpegDecoderOption):
-    """IMC (Intel Music Coder)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class interplay_dpcm(FFMpegDecoderOption):
-    """DPCM Interplay"""
 
+def v210(
+    custom_stride: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Uncompressed 4:2:2 10-bit
 
-@dataclass(frozen=True, kw_only=True)
-class interplayacm(FFMpegDecoderOption):
-    """Interplay ACM"""
+    Args:
+        custom_stride: Custom V210 stride (from -1 to INT_MAX) (default 0)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mace3(FFMpegDecoderOption):
-    """MACE (Macintosh Audio Compression/Expansion) 3:1"""
 
+def v210x() -> FFMpegDecoderOption:
+    """
+    Uncompressed 4:2:2 10-bit
 
-@dataclass(frozen=True, kw_only=True)
-class mace6(FFMpegDecoderOption):
-    """MACE (Macintosh Audio Compression/Expansion) 6:1"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class metasound(FFMpegDecoderOption):
-    """Voxware MetaSound"""
 
+def v308() -> FFMpegDecoderOption:
+    """
+    Uncompressed packed 4:4:4
 
-@dataclass(frozen=True, kw_only=True)
-class misc4(FFMpegDecoderOption):
-    """Micronas SC-4 Audio"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class mlp(FFMpegDecoderOption):
-    """MLP (Meridian Lossless Packing)"""
 
-    downmix: str | None = None
-    """Request a specific channel layout from the decoder"""
+def v408() -> FFMpegDecoderOption:
+    """
+    Uncompressed packed QT 4:4:4:4
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp1(FFMpegDecoderOption):
-    """MP1 (MPEG audio layer 1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp1float(FFMpegDecoderOption):
-    """MP1 (MPEG audio layer 1) (codec mp1)"""
+def v410() -> FFMpegDecoderOption:
+    """
+    Uncompressed 4:4:4 10-bit
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp2(FFMpegDecoderOption):
-    """MP2 (MPEG audio layer 2)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp2float(FFMpegDecoderOption):
-    """MP2 (MPEG audio layer 2) (codec mp2)"""
+def vb() -> FFMpegDecoderOption:
+    """
+    Beam Software VB
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp3float(FFMpegDecoderOption):
-    """MP3 (MPEG audio layer 3) (codec mp3)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp3(FFMpegDecoderOption):
-    """MP3 (MPEG audio layer 3)"""
+def vble() -> FFMpegDecoderOption:
+    """
+    VBLE Lossless Codec
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp3adufloat(FFMpegDecoderOption):
-    """ADU (Application Data Unit) MP3 (MPEG audio layer 3) (codec mp3adu)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp3adu(FFMpegDecoderOption):
-    """ADU (Application Data Unit) MP3 (MPEG audio layer 3)"""
+def vbn() -> FFMpegDecoderOption:
+    """
+    Vizrt Binary Image
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp3on4float(FFMpegDecoderOption):
-    """MP3onMP4 (codec mp3on4)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mp3on4(FFMpegDecoderOption):
-    """MP3onMP4"""
+def vc1() -> FFMpegDecoderOption:
+    """
+    SMPTE VC-1
 
 
-@dataclass(frozen=True, kw_only=True)
-class als(FFMpegDecoderOption):
-    """MPEG-4 Audio Lossless Coding (ALS) (codec mp4als)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class msnsiren(FFMpegDecoderOption):
-    """MSN Siren"""
+def vc1_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem VC1 decoder wrapper (codec vc1)
 
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
-@dataclass(frozen=True, kw_only=True)
-class mpc7(FFMpegDecoderOption):
-    """Musepack SV7 (codec musepack7)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class mpc8(FFMpegDecoderOption):
-    """Musepack SV8 (codec musepack8)"""
+def vc1_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID VC1 decoder (codec vc1)
 
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
-@dataclass(frozen=True, kw_only=True)
-class nellymoser(FFMpegDecoderOption):
-    """Nellymoser Asao"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class opus(FFMpegDecoderOption):
-    """Opus"""
+def vc1image() -> FFMpegDecoderOption:
+    """
+    Windows Media Video 9 Image v2
 
-    apply_phase_inv: bool | None = None
-    """Apply intensity stereo phase inversion (default true)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class libopus(FFMpegDecoderOption):
-    """libopus Opus (codec opus)"""
 
-    apply_phase_inv: bool | None = None
-    """Apply intensity stereo phase inversion (default true)"""
+def vcr1() -> FFMpegDecoderOption:
+    """
+    ATI VCR1
 
 
-@dataclass(frozen=True, kw_only=True)
-class osq(FFMpegDecoderOption):
-    """OSQ (Original Sound Quality)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class paf_audio(FFMpegDecoderOption):
-    """Amazing Studio Packed Animation File Audio"""
+def xl() -> FFMpegDecoderOption:
+    """
+    Miro VideoXL (codec vixl)
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_alaw(FFMpegDecoderOption):
-    """PCM A-law / G.711 A-law"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_bluray(FFMpegDecoderOption):
-    """PCM signed 16|20|24-bit big-endian for Blu-ray media"""
+def vmdvideo() -> FFMpegDecoderOption:
+    """
+    Sierra VMD video
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_dvd(FFMpegDecoderOption):
-    """PCM signed 16|20|24-bit big-endian for DVD media"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_f16le(FFMpegDecoderOption):
-    """PCM 16.8 floating point little-endian"""
+def vmix() -> FFMpegDecoderOption:
+    """
+    vMix Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_f24le(FFMpegDecoderOption):
-    """PCM 24.0 floating point little-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_f32be(FFMpegDecoderOption):
-    """PCM 32-bit floating point big-endian"""
+def vmnc() -> FFMpegDecoderOption:
+    """
+    VMware Screen Codec / VMware Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_f32le(FFMpegDecoderOption):
-    """PCM 32-bit floating point little-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_f64be(FFMpegDecoderOption):
-    """PCM 64-bit floating point big-endian"""
+def vnull() -> FFMpegDecoderOption:
+    """
+    null video
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_f64le(FFMpegDecoderOption):
-    """PCM 64-bit floating point little-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_lxf(FFMpegDecoderOption):
-    """PCM signed 20-bit little-endian planar"""
+def vp3() -> FFMpegDecoderOption:
+    """
+    On2 VP3
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_mulaw(FFMpegDecoderOption):
-    """PCM mu-law / G.711 mu-law"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s16be(FFMpegDecoderOption):
-    """PCM signed 16-bit big-endian"""
+def vp4() -> FFMpegDecoderOption:
+    """
+    On2 VP4
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s16be_planar(FFMpegDecoderOption):
-    """PCM signed 16-bit big-endian planar"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s16le(FFMpegDecoderOption):
-    """PCM signed 16-bit little-endian"""
+def vp5() -> FFMpegDecoderOption:
+    """
+    On2 VP5
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s16le_planar(FFMpegDecoderOption):
-    """PCM signed 16-bit little-endian planar"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s24be(FFMpegDecoderOption):
-    """PCM signed 24-bit big-endian"""
+def vp6() -> FFMpegDecoderOption:
+    """
+    On2 VP6
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s24daud(FFMpegDecoderOption):
-    """PCM D-Cinema audio signed 24-bit"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s24le(FFMpegDecoderOption):
-    """PCM signed 24-bit little-endian"""
+def vp6a() -> FFMpegDecoderOption:
+    """
+    On2 VP6 (Flash version, with alpha channel)
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s24le_planar(FFMpegDecoderOption):
-    """PCM signed 24-bit little-endian planar"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s32be(FFMpegDecoderOption):
-    """PCM signed 32-bit big-endian"""
+def vp6f() -> FFMpegDecoderOption:
+    """
+    On2 VP6 (Flash version)
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s32le(FFMpegDecoderOption):
-    """PCM signed 32-bit little-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s32le_planar(FFMpegDecoderOption):
-    """PCM signed 32-bit little-endian planar"""
+def vp7() -> FFMpegDecoderOption:
+    """
+    On2 VP7
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s64be(FFMpegDecoderOption):
-    """PCM signed 64-bit big-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s64le(FFMpegDecoderOption):
-    """PCM signed 64-bit little-endian"""
+def vp8() -> FFMpegDecoderOption:
+    """
+    On2 VP8
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s8(FFMpegDecoderOption):
-    """PCM signed 8-bit"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_s8_planar(FFMpegDecoderOption):
-    """PCM signed 8-bit planar"""
+def vp8_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem VP8 decoder wrapper (codec vp8)
 
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_sga(FFMpegDecoderOption):
-    """PCM SGA"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_u16be(FFMpegDecoderOption):
-    """PCM unsigned 16-bit big-endian"""
+def libvpx() -> FFMpegDecoderOption:
+    """
+    libvpx VP8 (codec vp8)
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_u16le(FFMpegDecoderOption):
-    """PCM unsigned 16-bit little-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_u24be(FFMpegDecoderOption):
-    """PCM unsigned 24-bit big-endian"""
+def vp8_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID VP8 decoder (codec vp8)
 
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_u24le(FFMpegDecoderOption):
-    """PCM unsigned 24-bit little-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_u32be(FFMpegDecoderOption):
-    """PCM unsigned 32-bit big-endian"""
+def vp9() -> FFMpegDecoderOption:
+    """
+    Google VP9
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_u32le(FFMpegDecoderOption):
-    """PCM unsigned 32-bit little-endian"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_u8(FFMpegDecoderOption):
-    """PCM unsigned 8-bit"""
+def vp9_v4l2m2m(
+    num_output_buffers: int | None = None,
+    num_capture_buffers: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    V4L2 mem2mem VP9 decoder wrapper (codec vp9)
 
+    Args:
+        num_output_buffers: Number of buffers in the output context (from 2 to INT_MAX) (default 16)
+        num_capture_buffers: Number of buffers in the capture context (from 2 to INT_MAX) (default 20)
 
-@dataclass(frozen=True, kw_only=True)
-class pcm_vidc(FFMpegDecoderOption):
-    """PCM Archimedes VIDC"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class qcelp(FFMpegDecoderOption):
-    """QCELP / PureVoice"""
+def vp9_cuvid(
+    deint: int | None = None,
+    gpu: str | None = None,
+    surfaces: int | None = None,
+    drop_second_field: bool | None = None,
+    crop: str | None = None,
+    resize: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Nvidia CUVID VP9 decoder (codec vp9)
 
+    Args:
+        deint: Set deinterlacing mode (from 0 to 2) (default weave)
+        gpu: GPU to be used for decoding
+        surfaces: Maximum surfaces to be used for decoding (from -1 to INT_MAX) (default -1)
+        drop_second_field: Drop second field when deinterlacing (default false)
+        crop: Crop (top)x(bottom)x(left)x(right)
+        resize: Resize (width)x(height)
 
-@dataclass(frozen=True, kw_only=True)
-class qdm2(FFMpegDecoderOption):
-    """QDesign Music Codec 2"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class qdmc(FFMpegDecoderOption):
-    """QDesign Music Codec 1"""
+def vqc() -> FFMpegDecoderOption:
+    """
+    ViewQuest VQC
 
 
-@dataclass(frozen=True, kw_only=True)
-class real_144(FFMpegDecoderOption):
-    """RealAudio 1.0 (14.4K) (codec ra_144)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class real_288(FFMpegDecoderOption):
-    """RealAudio 2.0 (28.8K) (codec ra_288)"""
+def wbmp() -> FFMpegDecoderOption:
+    """
+    WBMP (Wireless Application Protocol Bitmap) image
 
 
-@dataclass(frozen=True, kw_only=True)
-class ralf(FFMpegDecoderOption):
-    """RealAudio Lossless"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class rka(FFMpegDecoderOption):
-    """RKA (RK Audio)"""
+def wcmv() -> FFMpegDecoderOption:
+    """
+    WinCAM Motion Video
 
 
-@dataclass(frozen=True, kw_only=True)
-class roq_dpcm(FFMpegDecoderOption):
-    """DPCM id RoQ"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class s302m(FFMpegDecoderOption):
-    """SMPTE 302M"""
+def webp() -> FFMpegDecoderOption:
+    """
+    WebP image
 
-    non_pcm_mode: int | None = None
-    """Chooses what to do with NON-PCM (from 0 to 3) (default decode_drop)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class sbc(FFMpegDecoderOption):
-    """SBC (low-complexity subband codec)"""
 
+def wmv1() -> FFMpegDecoderOption:
+    """
+    Windows Media Video 7
 
-@dataclass(frozen=True, kw_only=True)
-class sdx2_dpcm(FFMpegDecoderOption):
-    """DPCM Squareroot-Delta-Exact"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class shorten(FFMpegDecoderOption):
-    """Shorten"""
 
+def wmv2() -> FFMpegDecoderOption:
+    """
+    Windows Media Video 8
 
-@dataclass(frozen=True, kw_only=True)
-class sipr(FFMpegDecoderOption):
-    """RealAudio SIPR / ACELP.NET"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class siren(FFMpegDecoderOption):
-    """Siren"""
 
+def wmv3() -> FFMpegDecoderOption:
+    """
+    Windows Media Video 9
 
-@dataclass(frozen=True, kw_only=True)
-class smackaud(FFMpegDecoderOption):
-    """Smacker audio (codec smackaudio)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class sol_dpcm(FFMpegDecoderOption):
-    """DPCM Sol"""
 
+def wmv3image() -> FFMpegDecoderOption:
+    """
+    Windows Media Video 9 Image
 
-@dataclass(frozen=True, kw_only=True)
-class sonic(FFMpegDecoderOption):
-    """Sonic"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class speex(FFMpegDecoderOption):
-    """Speex"""
 
+def wnv1() -> FFMpegDecoderOption:
+    """
+    Winnov WNV1
 
-@dataclass(frozen=True, kw_only=True)
-class libspeex(FFMpegDecoderOption):
-    """libspeex Speex (codec speex)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class tak(FFMpegDecoderOption):
-    """TAK (Tom's lossless Audio Kompressor)"""
 
+def wrapped_avframe() -> FFMpegDecoderOption:
+    """
+    AVPacket to AVFrame passthrough
 
-@dataclass(frozen=True, kw_only=True)
-class truehd(FFMpegDecoderOption):
-    """TrueHD"""
 
-    downmix: str | None = None
-    """Request a specific channel layout from the decoder"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class truespeech(FFMpegDecoderOption):
-    """DSP Group TrueSpeech"""
+def vqavideo() -> FFMpegDecoderOption:
+    """
+    Westwood Studios VQA (Vector Quantized Animation) video (codec ws_vqa)
 
 
-@dataclass(frozen=True, kw_only=True)
-class tta(FFMpegDecoderOption):
-    """TTA (True Audio)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    password: str | None = None
-    """Set decoding password"""
 
+def xan_wc3() -> FFMpegDecoderOption:
+    """
+    Wing Commander III / Xan
 
-@dataclass(frozen=True, kw_only=True)
-class twinvq(FFMpegDecoderOption):
-    """VQF TwinVQ"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class vmdaudio(FFMpegDecoderOption):
-    """Sierra VMD audio"""
 
+def xan_wc4() -> FFMpegDecoderOption:
+    """
+    Wing Commander IV / Xxan
 
-@dataclass(frozen=True, kw_only=True)
-class vorbis(FFMpegDecoderOption):
-    """Vorbis"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class libvorbis(FFMpegDecoderOption):
-    """libvorbis (codec vorbis)"""
 
+def xbin() -> FFMpegDecoderOption:
+    """
+    eXtended BINary text
 
-@dataclass(frozen=True, kw_only=True)
-class wady_dpcm(FFMpegDecoderOption):
-    """DPCM Marble WADY"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wavarc(FFMpegDecoderOption):
-    """Waveform Archiver"""
 
+def xbm() -> FFMpegDecoderOption:
+    """
+    XBM (X BitMap) image
 
-@dataclass(frozen=True, kw_only=True)
-class wavesynth(FFMpegDecoderOption):
-    """Wave synthesis pseudo-codec"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wavpack(FFMpegDecoderOption):
-    """WavPack"""
 
+def xface() -> FFMpegDecoderOption:
+    """
+    X-face image
 
-@dataclass(frozen=True, kw_only=True)
-class ws_snd1(FFMpegDecoderOption):
-    """Westwood Audio (SND1) (codec westwood_snd1)"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wmalossless(FFMpegDecoderOption):
-    """Windows Media Audio Lossless"""
 
+def xpm() -> FFMpegDecoderOption:
+    """
+    XPM (X PixMap) image
 
-@dataclass(frozen=True, kw_only=True)
-class wmapro(FFMpegDecoderOption):
-    """Windows Media Audio 9 Professional"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wmav1(FFMpegDecoderOption):
-    """Windows Media Audio 1"""
 
+def xwd() -> FFMpegDecoderOption:
+    """
+    XWD (X Window Dump) image
 
-@dataclass(frozen=True, kw_only=True)
-class wmav2(FFMpegDecoderOption):
-    """Windows Media Audio 2"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class wmavoice(FFMpegDecoderOption):
-    """Windows Media Audio Voice"""
 
+def y41p() -> FFMpegDecoderOption:
+    """
+    Uncompressed YUV 4:1:1 12-bit
 
-@dataclass(frozen=True, kw_only=True)
-class xan_dpcm(FFMpegDecoderOption):
-    """DPCM Xan"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class xma1(FFMpegDecoderOption):
-    """Xbox Media Audio 1"""
 
+def ylc() -> FFMpegDecoderOption:
+    """
+    YUY2 Lossless Codec
 
-@dataclass(frozen=True, kw_only=True)
-class xma2(FFMpegDecoderOption):
-    """Xbox Media Audio 2"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class ssa(FFMpegDecoderOption):
-    """ASS (Advanced SubStation Alpha) subtitle (codec ass)"""
 
+def yop() -> FFMpegDecoderOption:
+    """
+    Psygnosis YOP Video
 
-@dataclass(frozen=True, kw_only=True)
-class ass(FFMpegDecoderOption):
-    """ASS (Advanced SubStation Alpha) subtitle"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class dvbsub(FFMpegDecoderOption):
-    """DVB subtitles (codec dvb_subtitle)"""
 
-    compute_edt: bool | None = None
-    """compute end of time using pts or timeout (default false)"""
+def yuv4() -> FFMpegDecoderOption:
+    """
+    Uncompressed packed 4:2:0
 
-    compute_clut: bool | None = None
-    """compute clut when not available(-1) or only once (-2) or always(1) or never(0) (default auto)"""
 
-    dvb_substream: int | None = None
-    """(from -1 to 63) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class libzvbi_teletextdec(FFMpegDecoderOption):
-    """Libzvbi DVB teletext decoder (codec dvb_teletext)"""
+def zerocodec() -> FFMpegDecoderOption:
+    """
+    ZeroCodec Lossless Video
 
-    txt_page: str | None = None
-    """page numbers to decode, subtitle for subtitles, * for all (default "*")"""
 
-    txt_default_region: int | None = None
-    """default G0 character set used for decoding (from -1 to 87) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    txt_chop_top: int | None = None
-    """discards the top teletext line (from 0 to 1) (default 1)"""
 
-    txt_format: int | None = None
-    """format of the subtitles (bitmap or text or ass) (from 0 to 2) (default bitmap)"""
+def zlib() -> FFMpegDecoderOption:
+    """
+    LCL (LossLess Codec Library) ZLIB
 
-    txt_left: int | None = None
-    """x offset of generated bitmaps (from 0 to 65535) (default 0)"""
 
-    txt_top: int | None = None
-    """y offset of generated bitmaps (from 0 to 65535) (default 0)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    txt_chop_spaces: int | None = None
-    """chops leading and trailing spaces from text (from 0 to 1) (default 1)"""
 
-    txt_duration: int | None = None
-    """display duration of teletext pages in msecs (from -1 to 8.64e+07) (default -1)"""
+def zmbv() -> FFMpegDecoderOption:
+    """
+    Zip Motion Blocks Video
 
-    txt_transparent: int | None = None
-    """force transparent background of the teletext (from 0 to 1) (default 0)"""
 
-    txt_opacity: int | None = None
-    """set opacity of the transparent background (from -1 to 255) (default -1)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
 
-@dataclass(frozen=True, kw_only=True)
-class dvdsub(FFMpegDecoderOption):
-    """DVD subtitles (codec dvd_subtitle)"""
+def _8svx_exp() -> FFMpegDecoderOption:
+    """
+    8SVX exponential
 
-    palette: str | None = None
-    """set the global palette"""
 
-    ifo_palette: str | None = None
-    """obtain the global palette from .IFO file"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    forced_subs_only: bool | None = None
-    """Only show forced subtitles (default false)"""
 
+def _8svx_fib() -> FFMpegDecoderOption:
+    """
+    8SVX fibonacci
 
-@dataclass(frozen=True, kw_only=True)
-class cc_dec(FFMpegDecoderOption):
-    """Closed Caption (EIA-608 / CEA-708) (codec eia_608)"""
 
-    real_time: bool | None = None
-    """emit subtitle events as they are decoded for real-time display (default false)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    real_time_latency_msec: int | None = None
-    """minimum elapsed time between emitting real-time subtitle events (from 0 to 500) (default 200)"""
 
-    data_field: int | None = None
-    """select data field (from -1 to 1) (default auto)"""
+def aac(
+    dual_mono_mode: int | None = None,
+    channel_order: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    AAC (Advanced Audio Coding)
 
+    Args:
+        dual_mono_mode: Select the channel to decode for dual mono (from -1 to 2) (default auto)
+        channel_order: Order in which the channels are to be exported (from 0 to 1) (default default)
 
-@dataclass(frozen=True, kw_only=True)
-class pgssub(FFMpegDecoderOption):
-    """HDMV Presentation Graphic Stream subtitles (codec hdmv_pgs_subtitle)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    forced_subs_only: bool | None = None
-    """Only show forced subtitles (default false)"""
 
+def aac_fixed(
+    dual_mono_mode: int | None = None,
+    channel_order: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    AAC (Advanced Audio Coding) (codec aac)
 
-@dataclass(frozen=True, kw_only=True)
-class jacosub(FFMpegDecoderOption):
-    """JACOsub subtitle"""
+    Args:
+        dual_mono_mode: Select the channel to decode for dual mono (from -1 to 2) (default auto)
+        channel_order: Order in which the channels are to be exported (from 0 to 1) (default default)
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class microdvd(FFMpegDecoderOption):
-    """MicroDVD subtitle"""
 
+def aac_latm() -> FFMpegDecoderOption:
+    """
+    AAC LATM (Advanced Audio Coding LATM syntax)
 
-@dataclass(frozen=True, kw_only=True)
-class mov_text(FFMpegDecoderOption):
-    """3GPP Timed Text subtitle"""
 
-    width: int | None = None
-    """Frame width, usually video width (from 0 to INT_MAX) (default 0)"""
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-    height: int | None = None
-    """Frame height, usually video height (from 0 to INT_MAX) (default 0)"""
 
+def ac3() -> FFMpegDecoderOption:
+    """
+    ATSC A/52A (AC-3)
 
-@dataclass(frozen=True, kw_only=True)
-class mpl2(FFMpegDecoderOption):
-    """MPL2 subtitle"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class pjs(FFMpegDecoderOption):
-    """PJS subtitle"""
 
+def ac3_fixed() -> FFMpegDecoderOption:
+    """
+    ATSC A/52A (AC-3) (codec ac3)
 
-@dataclass(frozen=True, kw_only=True)
-class realtext(FFMpegDecoderOption):
-    """RealText subtitle"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class sami(FFMpegDecoderOption):
-    """SAMI subtitle"""
 
+def adpcm_4xm() -> FFMpegDecoderOption:
+    """
+    ADPCM 4X Movie
 
-@dataclass(frozen=True, kw_only=True)
-class stl(FFMpegDecoderOption):
-    """Spruce subtitle format"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class srt(FFMpegDecoderOption):
-    """SubRip subtitle (codec subrip)"""
 
+def adpcm_adx() -> FFMpegDecoderOption:
+    """
+    SEGA CRI ADX ADPCM
 
-@dataclass(frozen=True, kw_only=True)
-class subrip(FFMpegDecoderOption):
-    """SubRip subtitle"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class subviewer(FFMpegDecoderOption):
-    """SubViewer subtitle"""
 
+def adpcm_afc() -> FFMpegDecoderOption:
+    """
+    ADPCM Nintendo Gamecube AFC
 
-@dataclass(frozen=True, kw_only=True)
-class subviewer1(FFMpegDecoderOption):
-    """SubViewer1 subtitle"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class text(FFMpegDecoderOption):
-    """Raw text subtitle"""
 
+def adpcm_agm() -> FFMpegDecoderOption:
+    """
+    ADPCM AmuseGraphics Movie
 
-@dataclass(frozen=True, kw_only=True)
-class vplayer(FFMpegDecoderOption):
-    """VPlayer subtitle"""
 
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
 
-@dataclass(frozen=True, kw_only=True)
-class webvtt(FFMpegDecoderOption):
-    """WebVTT subtitle"""
 
+def adpcm_aica() -> FFMpegDecoderOption:
+    """
+    ADPCM Yamaha AICA
 
-@dataclass(frozen=True, kw_only=True)
-class xsub(FFMpegDecoderOption):
-    """XSUB"""
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_argo() -> FFMpegDecoderOption:
+    """
+    ADPCM Argonaut Games
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ct() -> FFMpegDecoderOption:
+    """
+    ADPCM Creative Technology
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_dtk() -> FFMpegDecoderOption:
+    """
+    ADPCM Nintendo Gamecube DTK
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ea() -> FFMpegDecoderOption:
+    """
+    ADPCM Electronic Arts
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ea_maxis_xa() -> FFMpegDecoderOption:
+    """
+    ADPCM Electronic Arts Maxis CDROM XA
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ea_r1() -> FFMpegDecoderOption:
+    """
+    ADPCM Electronic Arts R1
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ea_r2() -> FFMpegDecoderOption:
+    """
+    ADPCM Electronic Arts R2
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ea_r3() -> FFMpegDecoderOption:
+    """
+    ADPCM Electronic Arts R3
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ea_xas() -> FFMpegDecoderOption:
+    """
+    ADPCM Electronic Arts XAS
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def g722(
+    bits_per_codeword: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    G.722 ADPCM (codec adpcm_g722)
+
+    Args:
+        bits_per_codeword: Bits per G722 codeword (from 6 to 8) (default 8)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def g726() -> FFMpegDecoderOption:
+    """
+    G.726 ADPCM (codec adpcm_g726)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def g726le() -> FFMpegDecoderOption:
+    """
+    G.726 ADPCM little-endian (codec adpcm_g726le)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_acorn() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Acorn Replay
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_alp() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA High Voltage Software ALP
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_amv() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA AMV
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_apc() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA CRYO APC
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_apm() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Ubisoft APM
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_cunning() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Cunning Developments
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_dat4() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Eurocom DAT4
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_dk3() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Duck DK3
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_dk4() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Duck DK4
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_ea_eacs() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Electronic Arts EACS
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_ea_sead() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Electronic Arts SEAD
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_iss() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Funcom ISS
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_moflex() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA MobiClip MOFLEX
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_mtf() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Capcom's MT Framework
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_oki() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Dialogic OKI
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_qt() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA QuickTime
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_rad() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Radical
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_smjpeg() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Loki SDL MJPEG
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_ssi() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Simon & Schuster Interactive
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_wav() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA WAV
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ima_ws() -> FFMpegDecoderOption:
+    """
+    ADPCM IMA Westwood
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_ms() -> FFMpegDecoderOption:
+    """
+    ADPCM Microsoft
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_mtaf() -> FFMpegDecoderOption:
+    """
+    ADPCM MTAF
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_psx() -> FFMpegDecoderOption:
+    """
+    ADPCM Playstation
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_sbpro_2() -> FFMpegDecoderOption:
+    """
+    ADPCM Sound Blaster Pro 2-bit
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_sbpro_3() -> FFMpegDecoderOption:
+    """
+    ADPCM Sound Blaster Pro 2.6-bit
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_sbpro_4() -> FFMpegDecoderOption:
+    """
+    ADPCM Sound Blaster Pro 4-bit
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_swf() -> FFMpegDecoderOption:
+    """
+    ADPCM Shockwave Flash
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_thp() -> FFMpegDecoderOption:
+    """
+    ADPCM Nintendo THP
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_thp_le() -> FFMpegDecoderOption:
+    """
+    ADPCM Nintendo THP (little-endian)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_vima() -> FFMpegDecoderOption:
+    """
+    LucasArts VIMA audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_xa() -> FFMpegDecoderOption:
+    """
+    ADPCM CDROM XA
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_xmd() -> FFMpegDecoderOption:
+    """
+    ADPCM Konami XMD
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_yamaha() -> FFMpegDecoderOption:
+    """
+    ADPCM Yamaha
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def adpcm_zork() -> FFMpegDecoderOption:
+    """
+    ADPCM Zork
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def alac(
+    extra_bits_bug: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    ALAC (Apple Lossless Audio Codec)
+
+    Args:
+        extra_bits_bug: Force non-standard decoding process (default false)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def amrnb() -> FFMpegDecoderOption:
+    """
+    AMR-NB (Adaptive Multi-Rate NarrowBand) (codec amr_nb)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def amrwb() -> FFMpegDecoderOption:
+    """
+    AMR-WB (Adaptive Multi-Rate WideBand) (codec amr_wb)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def anull() -> FFMpegDecoderOption:
+    """
+    null audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def apac() -> FFMpegDecoderOption:
+    """
+    Marian's A-pac audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def ape(
+    max_samples: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Monkey's Audio
+
+    Args:
+        max_samples: maximum number of samples decoded per call (from 1 to INT_MAX) (default 4608)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def aptx() -> FFMpegDecoderOption:
+    """
+    aptX (Audio Processing Technology for Bluetooth)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def aptx_hd() -> FFMpegDecoderOption:
+    """
+    aptX HD (Audio Processing Technology for Bluetooth)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def atrac1() -> FFMpegDecoderOption:
+    """
+    ATRAC1 (Adaptive TRansform Acoustic Coding)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def atrac3() -> FFMpegDecoderOption:
+    """
+    ATRAC3 (Adaptive TRansform Acoustic Coding 3)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def atrac3al() -> FFMpegDecoderOption:
+    """
+    ATRAC3 AL (Adaptive TRansform Acoustic Coding 3 Advanced Lossless)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def atrac3plus() -> FFMpegDecoderOption:
+    """
+    ATRAC3+ (Adaptive TRansform Acoustic Coding 3+) (codec atrac3p)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def atrac3plusal() -> FFMpegDecoderOption:
+    """
+    ATRAC3+ AL (Adaptive TRansform Acoustic Coding 3+ Advanced Lossless) (codec atrac3pal)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def atrac9() -> FFMpegDecoderOption:
+    """
+    ATRAC9 (Adaptive TRansform Acoustic Coding 9)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def on2avc() -> FFMpegDecoderOption:
+    """
+    On2 Audio for Video Codec (codec avc)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def binkaudio_dct() -> FFMpegDecoderOption:
+    """
+    Bink Audio (DCT)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def binkaudio_rdft() -> FFMpegDecoderOption:
+    """
+    Bink Audio (RDFT)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def bmv_audio() -> FFMpegDecoderOption:
+    """
+    Discworld II BMV audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def bonk() -> FFMpegDecoderOption:
+    """
+    Bonk audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def cbd2_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Cuberoot-Delta-Exact
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def libcodec2() -> FFMpegDecoderOption:
+    """
+    codec2 decoder using libcodec2 (codec codec2)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def comfortnoise() -> FFMpegDecoderOption:
+    """
+    RFC 3389 comfort noise generator
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def cook() -> FFMpegDecoderOption:
+    """
+    Cook / Cooker / Gecko (RealAudio G2)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def derf_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Xilam DERF
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dfpwm() -> FFMpegDecoderOption:
+    """
+    DFPWM1a audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dolby_e(
+    channel_order: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Dolby E
+
+    Args:
+        channel_order: Order in which the channels are to be exported (from 0 to 1) (default default)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dsd_lsbf() -> FFMpegDecoderOption:
+    """
+    DSD (Direct Stream Digital), least significant bit first
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dsd_lsbf_planar() -> FFMpegDecoderOption:
+    """
+    DSD (Direct Stream Digital), least significant bit first, planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dsd_msbf() -> FFMpegDecoderOption:
+    """
+    DSD (Direct Stream Digital), most significant bit first
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dsd_msbf_planar() -> FFMpegDecoderOption:
+    """
+    DSD (Direct Stream Digital), most significant bit first, planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dsicinaudio() -> FFMpegDecoderOption:
+    """
+    Delphine Software International CIN audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dss_sp() -> FFMpegDecoderOption:
+    """
+    Digital Speech Standard - Standard Play mode (DSS SP)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dst() -> FFMpegDecoderOption:
+    """
+    DST (Digital Stream Transfer)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dca(
+    core_only: bool | None = None,
+    channel_order: int | None = None,
+    downmix: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    DCA (DTS Coherent Acoustics) (codec dts)
+
+    Args:
+        core_only: Decode core only without extensions (default false)
+        channel_order: Order in which the channels are to be exported (from 0 to 1) (default default)
+        downmix: Request a specific channel layout from the decoder
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dvaudio() -> FFMpegDecoderOption:
+    """
+    Ulead DV Audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def eac3() -> FFMpegDecoderOption:
+    """
+    ATSC A/52B (AC-3, E-AC-3)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def evrc(
+    postfilter: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    EVRC (Enhanced Variable Rate Codec)
+
+    Args:
+        postfilter: enable postfilter (default true)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def fastaudio() -> FFMpegDecoderOption:
+    """
+    MobiClip FastAudio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def flac(
+    use_buggy_lpc: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    FLAC (Free Lossless Audio Codec)
+
+    Args:
+        use_buggy_lpc: emulate old buggy lavc behavior (default false)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def ftr() -> FFMpegDecoderOption:
+    """
+    FTR Voice
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def g723_1(
+    postfilter: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    G.723.1
+
+    Args:
+        postfilter: enable postfilter (default true)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def g729() -> FFMpegDecoderOption:
+    """
+    G.729
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def gremlin_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Gremlin
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def gsm() -> FFMpegDecoderOption:
+    """
+    GSM
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def libgsm() -> FFMpegDecoderOption:
+    """
+    libgsm GSM (codec gsm)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def gsm_ms() -> FFMpegDecoderOption:
+    """
+    GSM Microsoft variant
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def libgsm_ms() -> FFMpegDecoderOption:
+    """
+    libgsm GSM Microsoft variant (codec gsm_ms)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def hca() -> FFMpegDecoderOption:
+    """
+    CRI HCA
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def hcom() -> FFMpegDecoderOption:
+    """
+    HCOM Audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def iac() -> FFMpegDecoderOption:
+    """
+    IAC (Indeo Audio Coder)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def ilbc() -> FFMpegDecoderOption:
+    """
+    iLBC (Internet Low Bitrate Codec)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def imc() -> FFMpegDecoderOption:
+    """
+    IMC (Intel Music Coder)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def interplay_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Interplay
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def interplayacm() -> FFMpegDecoderOption:
+    """
+    Interplay ACM
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mace3() -> FFMpegDecoderOption:
+    """
+    MACE (Macintosh Audio Compression/Expansion) 3:1
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mace6() -> FFMpegDecoderOption:
+    """
+    MACE (Macintosh Audio Compression/Expansion) 6:1
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def metasound() -> FFMpegDecoderOption:
+    """
+    Voxware MetaSound
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def misc4() -> FFMpegDecoderOption:
+    """
+    Micronas SC-4 Audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mlp(
+    downmix: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    MLP (Meridian Lossless Packing)
+
+    Args:
+        downmix: Request a specific channel layout from the decoder
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp1() -> FFMpegDecoderOption:
+    """
+    MP1 (MPEG audio layer 1)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp1float() -> FFMpegDecoderOption:
+    """
+    MP1 (MPEG audio layer 1) (codec mp1)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp2() -> FFMpegDecoderOption:
+    """
+    MP2 (MPEG audio layer 2)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp2float() -> FFMpegDecoderOption:
+    """
+    MP2 (MPEG audio layer 2) (codec mp2)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp3float() -> FFMpegDecoderOption:
+    """
+    MP3 (MPEG audio layer 3) (codec mp3)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp3() -> FFMpegDecoderOption:
+    """
+    MP3 (MPEG audio layer 3)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp3adufloat() -> FFMpegDecoderOption:
+    """
+    ADU (Application Data Unit) MP3 (MPEG audio layer 3) (codec mp3adu)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp3adu() -> FFMpegDecoderOption:
+    """
+    ADU (Application Data Unit) MP3 (MPEG audio layer 3)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp3on4float() -> FFMpegDecoderOption:
+    """
+    MP3onMP4 (codec mp3on4)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mp3on4() -> FFMpegDecoderOption:
+    """
+    MP3onMP4
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def als() -> FFMpegDecoderOption:
+    """
+    MPEG-4 Audio Lossless Coding (ALS) (codec mp4als)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def msnsiren() -> FFMpegDecoderOption:
+    """
+    MSN Siren
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mpc7() -> FFMpegDecoderOption:
+    """
+    Musepack SV7 (codec musepack7)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mpc8() -> FFMpegDecoderOption:
+    """
+    Musepack SV8 (codec musepack8)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def nellymoser() -> FFMpegDecoderOption:
+    """
+    Nellymoser Asao
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def opus(
+    apply_phase_inv: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Opus
+
+    Args:
+        apply_phase_inv: Apply intensity stereo phase inversion (default true)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def libopus(
+    apply_phase_inv: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    libopus Opus (codec opus)
+
+    Args:
+        apply_phase_inv: Apply intensity stereo phase inversion (default true)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def osq() -> FFMpegDecoderOption:
+    """
+    OSQ (Original Sound Quality)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def paf_audio() -> FFMpegDecoderOption:
+    """
+    Amazing Studio Packed Animation File Audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_alaw() -> FFMpegDecoderOption:
+    """
+    PCM A-law / G.711 A-law
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_bluray() -> FFMpegDecoderOption:
+    """
+    PCM signed 16|20|24-bit big-endian for Blu-ray media
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_dvd() -> FFMpegDecoderOption:
+    """
+    PCM signed 16|20|24-bit big-endian for DVD media
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_f16le() -> FFMpegDecoderOption:
+    """
+    PCM 16.8 floating point little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_f24le() -> FFMpegDecoderOption:
+    """
+    PCM 24.0 floating point little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_f32be() -> FFMpegDecoderOption:
+    """
+    PCM 32-bit floating point big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_f32le() -> FFMpegDecoderOption:
+    """
+    PCM 32-bit floating point little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_f64be() -> FFMpegDecoderOption:
+    """
+    PCM 64-bit floating point big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_f64le() -> FFMpegDecoderOption:
+    """
+    PCM 64-bit floating point little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_lxf() -> FFMpegDecoderOption:
+    """
+    PCM signed 20-bit little-endian planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_mulaw() -> FFMpegDecoderOption:
+    """
+    PCM mu-law / G.711 mu-law
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s16be() -> FFMpegDecoderOption:
+    """
+    PCM signed 16-bit big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s16be_planar() -> FFMpegDecoderOption:
+    """
+    PCM signed 16-bit big-endian planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s16le() -> FFMpegDecoderOption:
+    """
+    PCM signed 16-bit little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s16le_planar() -> FFMpegDecoderOption:
+    """
+    PCM signed 16-bit little-endian planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s24be() -> FFMpegDecoderOption:
+    """
+    PCM signed 24-bit big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s24daud() -> FFMpegDecoderOption:
+    """
+    PCM D-Cinema audio signed 24-bit
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s24le() -> FFMpegDecoderOption:
+    """
+    PCM signed 24-bit little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s24le_planar() -> FFMpegDecoderOption:
+    """
+    PCM signed 24-bit little-endian planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s32be() -> FFMpegDecoderOption:
+    """
+    PCM signed 32-bit big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s32le() -> FFMpegDecoderOption:
+    """
+    PCM signed 32-bit little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s32le_planar() -> FFMpegDecoderOption:
+    """
+    PCM signed 32-bit little-endian planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s64be() -> FFMpegDecoderOption:
+    """
+    PCM signed 64-bit big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s64le() -> FFMpegDecoderOption:
+    """
+    PCM signed 64-bit little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s8() -> FFMpegDecoderOption:
+    """
+    PCM signed 8-bit
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_s8_planar() -> FFMpegDecoderOption:
+    """
+    PCM signed 8-bit planar
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_sga() -> FFMpegDecoderOption:
+    """
+    PCM SGA
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_u16be() -> FFMpegDecoderOption:
+    """
+    PCM unsigned 16-bit big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_u16le() -> FFMpegDecoderOption:
+    """
+    PCM unsigned 16-bit little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_u24be() -> FFMpegDecoderOption:
+    """
+    PCM unsigned 24-bit big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_u24le() -> FFMpegDecoderOption:
+    """
+    PCM unsigned 24-bit little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_u32be() -> FFMpegDecoderOption:
+    """
+    PCM unsigned 32-bit big-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_u32le() -> FFMpegDecoderOption:
+    """
+    PCM unsigned 32-bit little-endian
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_u8() -> FFMpegDecoderOption:
+    """
+    PCM unsigned 8-bit
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pcm_vidc() -> FFMpegDecoderOption:
+    """
+    PCM Archimedes VIDC
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def qcelp() -> FFMpegDecoderOption:
+    """
+    QCELP / PureVoice
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def qdm2() -> FFMpegDecoderOption:
+    """
+    QDesign Music Codec 2
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def qdmc() -> FFMpegDecoderOption:
+    """
+    QDesign Music Codec 1
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def real_144() -> FFMpegDecoderOption:
+    """
+    RealAudio 1.0 (14.4K) (codec ra_144)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def real_288() -> FFMpegDecoderOption:
+    """
+    RealAudio 2.0 (28.8K) (codec ra_288)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def ralf() -> FFMpegDecoderOption:
+    """
+    RealAudio Lossless
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def rka() -> FFMpegDecoderOption:
+    """
+    RKA (RK Audio)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def roq_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM id RoQ
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def s302m(
+    non_pcm_mode: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    SMPTE 302M
+
+    Args:
+        non_pcm_mode: Chooses what to do with NON-PCM (from 0 to 3) (default decode_drop)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def sbc() -> FFMpegDecoderOption:
+    """
+    SBC (low-complexity subband codec)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def sdx2_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Squareroot-Delta-Exact
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def shorten() -> FFMpegDecoderOption:
+    """
+    Shorten
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def sipr() -> FFMpegDecoderOption:
+    """
+    RealAudio SIPR / ACELP.NET
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def siren() -> FFMpegDecoderOption:
+    """
+    Siren
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def smackaud() -> FFMpegDecoderOption:
+    """
+    Smacker audio (codec smackaudio)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def sol_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Sol
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def sonic() -> FFMpegDecoderOption:
+    """
+    Sonic
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def speex() -> FFMpegDecoderOption:
+    """
+    Speex
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def libspeex() -> FFMpegDecoderOption:
+    """
+    libspeex Speex (codec speex)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def tak() -> FFMpegDecoderOption:
+    """
+    TAK (Tom's lossless Audio Kompressor)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def truehd(
+    downmix: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    TrueHD
+
+    Args:
+        downmix: Request a specific channel layout from the decoder
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def truespeech() -> FFMpegDecoderOption:
+    """
+    DSP Group TrueSpeech
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def tta(
+    password: str | None = None,
+) -> FFMpegDecoderOption:
+    """
+    TTA (True Audio)
+
+    Args:
+        password: Set decoding password
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def twinvq() -> FFMpegDecoderOption:
+    """
+    VQF TwinVQ
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def vmdaudio() -> FFMpegDecoderOption:
+    """
+    Sierra VMD audio
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def vorbis() -> FFMpegDecoderOption:
+    """
+    Vorbis
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def libvorbis() -> FFMpegDecoderOption:
+    """
+    libvorbis (codec vorbis)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wady_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Marble WADY
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wavarc() -> FFMpegDecoderOption:
+    """
+    Waveform Archiver
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wavesynth() -> FFMpegDecoderOption:
+    """
+    Wave synthesis pseudo-codec
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wavpack() -> FFMpegDecoderOption:
+    """
+    WavPack
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def ws_snd1() -> FFMpegDecoderOption:
+    """
+    Westwood Audio (SND1) (codec westwood_snd1)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wmalossless() -> FFMpegDecoderOption:
+    """
+    Windows Media Audio Lossless
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wmapro() -> FFMpegDecoderOption:
+    """
+    Windows Media Audio 9 Professional
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wmav1() -> FFMpegDecoderOption:
+    """
+    Windows Media Audio 1
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wmav2() -> FFMpegDecoderOption:
+    """
+    Windows Media Audio 2
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def wmavoice() -> FFMpegDecoderOption:
+    """
+    Windows Media Audio Voice
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def xan_dpcm() -> FFMpegDecoderOption:
+    """
+    DPCM Xan
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def xma1() -> FFMpegDecoderOption:
+    """
+    Xbox Media Audio 1
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def xma2() -> FFMpegDecoderOption:
+    """
+    Xbox Media Audio 2
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def ssa() -> FFMpegDecoderOption:
+    """
+    ASS (Advanced SubStation Alpha) subtitle (codec ass)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def ass() -> FFMpegDecoderOption:
+    """
+    ASS (Advanced SubStation Alpha) subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dvbsub(
+    compute_edt: bool | None = None,
+    compute_clut: bool | None = None,
+    dvb_substream: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    DVB subtitles (codec dvb_subtitle)
+
+    Args:
+        compute_edt: compute end of time using pts or timeout (default false)
+        compute_clut: compute clut when not available(-1) or only once (-2) or always(1) or never(0) (default auto)
+        dvb_substream: (from -1 to 63) (default -1)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def libzvbi_teletextdec(
+    txt_page: str | None = None,
+    txt_default_region: int | None = None,
+    txt_chop_top: int | None = None,
+    txt_format: int | None = None,
+    txt_left: int | None = None,
+    txt_top: int | None = None,
+    txt_chop_spaces: int | None = None,
+    txt_duration: int | None = None,
+    txt_transparent: int | None = None,
+    txt_opacity: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Libzvbi DVB teletext decoder (codec dvb_teletext)
+
+    Args:
+        txt_page: page numbers to decode, subtitle for subtitles, * for all (default "*")
+        txt_default_region: default G0 character set used for decoding (from -1 to 87) (default -1)
+        txt_chop_top: discards the top teletext line (from 0 to 1) (default 1)
+        txt_format: format of the subtitles (bitmap or text or ass) (from 0 to 2) (default bitmap)
+        txt_left: x offset of generated bitmaps (from 0 to 65535) (default 0)
+        txt_top: y offset of generated bitmaps (from 0 to 65535) (default 0)
+        txt_chop_spaces: chops leading and trailing spaces from text (from 0 to 1) (default 1)
+        txt_duration: display duration of teletext pages in msecs (from -1 to 8.64e+07) (default -1)
+        txt_transparent: force transparent background of the teletext (from 0 to 1) (default 0)
+        txt_opacity: set opacity of the transparent background (from -1 to 255) (default -1)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def dvdsub(
+    palette: str | None = None,
+    ifo_palette: str | None = None,
+    forced_subs_only: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    DVD subtitles (codec dvd_subtitle)
+
+    Args:
+        palette: set the global palette
+        ifo_palette: obtain the global palette from .IFO file
+        forced_subs_only: Only show forced subtitles (default false)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def cc_dec(
+    real_time: bool | None = None,
+    real_time_latency_msec: int | None = None,
+    data_field: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    Closed Caption (EIA-608 / CEA-708) (codec eia_608)
+
+    Args:
+        real_time: emit subtitle events as they are decoded for real-time display (default false)
+        real_time_latency_msec: minimum elapsed time between emitting real-time subtitle events (from 0 to 500) (default 200)
+        data_field: select data field (from -1 to 1) (default auto)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pgssub(
+    forced_subs_only: bool | None = None,
+) -> FFMpegDecoderOption:
+    """
+    HDMV Presentation Graphic Stream subtitles (codec hdmv_pgs_subtitle)
+
+    Args:
+        forced_subs_only: Only show forced subtitles (default false)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def jacosub() -> FFMpegDecoderOption:
+    """
+    JACOsub subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def microdvd() -> FFMpegDecoderOption:
+    """
+    MicroDVD subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mov_text(
+    width: int | None = None,
+    height: int | None = None,
+) -> FFMpegDecoderOption:
+    """
+    3GPP Timed Text subtitle
+
+    Args:
+        width: Frame width, usually video width (from 0 to INT_MAX) (default 0)
+        height: Frame height, usually video height (from 0 to INT_MAX) (default 0)
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def mpl2() -> FFMpegDecoderOption:
+    """
+    MPL2 subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def pjs() -> FFMpegDecoderOption:
+    """
+    PJS subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def realtext() -> FFMpegDecoderOption:
+    """
+    RealText subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def sami() -> FFMpegDecoderOption:
+    """
+    SAMI subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def stl() -> FFMpegDecoderOption:
+    """
+    Spruce subtitle format
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def srt() -> FFMpegDecoderOption:
+    """
+    SubRip subtitle (codec subrip)
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def subrip() -> FFMpegDecoderOption:
+    """
+    SubRip subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def subviewer() -> FFMpegDecoderOption:
+    """
+    SubViewer subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def subviewer1() -> FFMpegDecoderOption:
+    """
+    SubViewer1 subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def text() -> FFMpegDecoderOption:
+    """
+    Raw text subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def vplayer() -> FFMpegDecoderOption:
+    """
+    VPlayer subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def webvtt() -> FFMpegDecoderOption:
+    """
+    WebVTT subtitle
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))
+
+
+def xsub() -> FFMpegDecoderOption:
+    """
+    XSUB
+
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegDecoderOption(kwargs=FrozenDict(locals()))

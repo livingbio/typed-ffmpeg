@@ -247,6 +247,7 @@ env.filters["filter_option_typings"] = filter_option_typings
 
 
 def render(
+    *,
     filters: list[FFMpegFilter],
     options: list[FFMpegOption],
     codecs: list[FFMpegCodec],

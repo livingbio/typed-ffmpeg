@@ -1,15 +1,26 @@
-from dataclasses import dataclass
 from typing import Literal
 from .schema import FFMpegEncoderOption
+from ..utils.frozendict import FrozenDict
 
 {% for codec in codecs %}
 {% if codec.is_encoder %}
-@dataclass(frozen=True, kw_only=True)
-class {{codec.name | option_name_safe }}(FFMpegEncoderOption):
-    """{{codec.description}}"""
-    {% for option in codec.options %}
-    {{option.name| option_name_safe}}: {{option.code_gen_type}} = None
-    """{{option.help}}"""
+def {{codec.name | option_name_safe }}(
+    {% for option in codec.filterd_options() %}
+    {{option.name| option_name_safe}}: {{option.code_gen_type}} = None,
     {% endfor %}
+) -> FFMpegEncoderOption:
+    """
+    {{codec.description}}
+    {% if codec.options | length > 0 %}
+    Args:
+    {%- for option in codec.filterd_options() %}
+        {{option.name | option_name_safe}}: {{option.help}}
+    {%- endfor %}
+    {%- endif %}
+
+    Returns:
+        the set codec options
+    """
+    return FFMpegEncoderOption(kwargs=FrozenDict(locals()))
 {% endif %}
 {% endfor %}
