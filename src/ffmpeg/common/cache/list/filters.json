@@ -53143,7 +53143,7 @@
   {
     "__class__": "FFMpegFilter",
     "description": "Apply LADSPA effect.",
-    "formula_typings_input": null,
+    "formula_typings_input": "[StreamType.audio]",
     "formula_typings_output": null,
     "id": null,
     "is_dynamic_input": true,
@@ -58732,7 +58732,7 @@
   {
     "__class__": "FFMpegFilter",
     "description": "Apply LV2 effect.",
-    "formula_typings_input": null,
+    "formula_typings_input": "[StreamType.audio]",
     "formula_typings_output": null,
     "id": null,
     "is_dynamic_input": true,
@@ -68373,7 +68373,7 @@
   {
     "__class__": "FFMpegFilter",
     "description": "Filter video using an OpenCL program",
-    "formula_typings_input": null,
+    "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
     "is_dynamic_input": true,
@@ -96484,7 +96484,7 @@
   {
     "__class__": "FFMpegFilter",
     "description": "\"VA-API\" vstack",
-    "formula_typings_input": null,
+    "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
     "is_dynamic_input": true,
@@ -98773,7 +98773,7 @@
   {
     "__class__": "FFMpegFilter",
     "description": "\"VA-API\" xstack",
-    "formula_typings_input": null,
+    "formula_typings_input": "[StreamType.video] * int(inputs)",
     "formula_typings_output": null,
     "id": null,
     "is_dynamic_input": true,

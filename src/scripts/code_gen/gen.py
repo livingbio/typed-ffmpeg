@@ -260,15 +260,12 @@ def render(
     """
     outpath.mkdir(exist_ok=True)
     output = []
+
     for template_file in template_folder.glob("**/*.py.jinja"):
         template_path = template_file.relative_to(template_folder)
 
         template = env.get_template(str(template_path))
-        try:
-            code = template.render(filters=filters, options=options)
-        except Exception as e:
-            print(f"Failed to render {template_path}: {e}")
-            continue
+        code = template.render(filters=filters, options=options)
 
         opath = outpath / str(template_path).replace(".jinja", "")
         opath.parent.mkdir(parents=True, exist_ok=True)
