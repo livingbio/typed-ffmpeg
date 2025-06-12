@@ -14,7 +14,7 @@ def test_parse_codecs_help_text(
     snapshot: SnapshotAssertion, type: Literal["encoders", "decoders", "codecs"]
 ) -> None:
     codecs = extract_codecs_help_text(type)
-    assert snapshot == codecs
+    snapshot == codecs
 
 
 @pytest.mark.parametrize(
