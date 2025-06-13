@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Any
 
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
-
+from ...utils.frozendict import FrozenDict, merge, remap, exclude
 
 if TYPE_CHECKING:
     from ..nodes import FilterableStream, OutputNode, OutputStream
@@ -23,7 +23,7 @@ class OutputArgs(ABC):
     def output(
         self,
         *streams: "FilterableStream",
-        filename: str | Path,extra_options: dict[str, Any] = None,
+        filename: str | Path,extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         """
         Output file URL
@@ -37,10 +37,13 @@ class OutputArgs(ABC):
             the output stream
         """
 
-        options = {
-            k: v for k, v in {
-                
-            }.items() if v is not None
+        _remap: dict[str, str] = {
+            
         }
+        options = remap(exclude(locals(), ("filename", "streams", "extra_options", "_remap", "self")), _remap)
 
-        return self._output_node(*streams, filename=filename, **options, **(extra_options or {})).stream()
+        return self._output_node(
+            *streams,
+            filename=str(filename),
+            **merge(options, extra_options)
+        ).stream()

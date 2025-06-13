@@ -2,7 +2,8 @@
 
 
 from pathlib import Path
-from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import FrozenDict, merge, remap, exclude
+
 
 from ..nodes import InputNode
 from ...streams.av import AVStream
@@ -13,7 +14,7 @@ from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags
 
 def input(
     filename: str | Path,
-    *,extra_options: dict[str, Any] = None,
+    *,extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
@@ -31,14 +32,12 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
-
-    options = {
-        k: v for k, v in {
-            
-        }.items() if v is not None
+    _remap: dict[str, str] = {
+         
     }
+    options = remap(exclude(locals(), ("filename", "extra_options", "_remap")), _remap)
 
     return InputNode(
         filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {}) )
+        kwargs=merge(options, extra_options)
     ).stream()
