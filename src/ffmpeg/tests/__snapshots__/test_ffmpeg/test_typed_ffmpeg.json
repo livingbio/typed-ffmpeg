@@ -19,6 +19,7 @@
   "__spec__",
   "afilter",
   "base",
+  "codecs",
   "common",
   "compile",
   "dag",

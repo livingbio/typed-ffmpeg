@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 {{ _components.import_types('...types') }}
 from ...codecs.schema import FFMpegEncoderOption
+from ...utils.frozendict import FrozenDict, merge
 
 
 if TYPE_CHECKING:
@@ -47,17 +48,10 @@ class OutputArgs(ABC):
         Returns:
             the output stream
         """
+        options = {k: v for k, v in locals().items() if k not in ('filename', 'streams', 'encoder_options', 'extra_options', 'self')}
 
-        options = {
-            k: v for k, v in {
-                {% for option in options %}
-                    {%- if option.is_output_option -%}
-                    "{{ option.name}}": {{ option.name | option_name_safe }},
-                    {% endif %}
-                    {% endfor %}
-            }.items() if v is not None
-        }
-
-        kwargs = options | (encoder_options.kwargs | {} if encoder_options else {}) | (extra_options or {})
-
-        return self._output_node(*streams, filename=filename, **options, **kwargs).stream()
+        return self._output_node(
+            *streams,
+            filename=str(filename),
+            **merge(options, encoder_options.kwargs if encoder_options else {}, extra_options)
+        ).stream()

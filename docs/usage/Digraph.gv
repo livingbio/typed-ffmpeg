@@ -2,5 +2,7 @@ digraph {
 	rankdir=LR
 	fontname=Helvetica
 	fontsize=12
-	"3064ec056e14e614" [label=" color= color=black:duration=1:output_typings=(<StreamType.video\\: \\\'video\\\'>\,) " fillcolor="#ffcc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"2b909728b8e78ecc" [label="-i input1" fillcolor="#99cc00" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"40c9ca558343f4bc" [label="-pix_fmt yuv420p -preset slow -tune flim -crf 18 -aq_strength 1.8 -mbtree 0 out.mp4" fillcolor="#99ccff" fontname=Helvetica fontsize=12 shape=box style=filled]
+	"2b909728b8e78ecc" -> "40c9ca558343f4bc" [label="0 -> 0"]
 }

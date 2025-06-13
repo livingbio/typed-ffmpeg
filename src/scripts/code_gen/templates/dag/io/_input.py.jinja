@@ -1,7 +1,7 @@
 {% import "_components.jinja" as _components %}
 
 from pathlib import Path
-from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import FrozenDict, merge
 
 from ..nodes import InputNode
 from ...streams.av import AVStream
@@ -42,20 +42,9 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
-
-    options = {
-        k: v for k, v in {
-            {% for option in options %}
-                {%- if option.is_input_option -%}
-                "{{ option.name}}": {{ option.name | option_name_safe }},
-                {% endif %}
-                {% endfor %}
-        }.items() if v is not None
-    }
-
-    kwargs = options | (decoder_options.kwargs | {} if decoder_options else {}) | (extra_options or {})
+    options = {k: v for k, v in locals().items() if k not in ('filename', 'decoder_options', 'extra_options')}
 
     return InputNode(
         filename=str(filename),
-        kwargs=FrozenDict(kwargs)
+        kwargs=merge(options, decoder_options.kwargs if decoder_options else {}, extra_options)
     ).stream()

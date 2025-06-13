@@ -6,7 +6,7 @@ from ..nodes import OutputNode, OutputStream, FilterableStream
 from typing import Any
 {{ _components.import_types('...types') }}
 
-from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import FrozenDict, merge
 from ...codecs.schema import FFMpegEncoderOption
 
 def output(
@@ -38,20 +38,10 @@ def output(
         the output stream
     """
 
-    options = {
-        k: v for k, v in {
-            {% for option in options %}
-                {%- if option.is_output_option -%}
-                "{{ option.name}}": {{ option.name | option_name_safe }},
-                {% endif %}
-                {% endfor %}
-        }.items() if v is not None
-    }
-
-    kwargs = options | (encoder_options.kwargs | {} if encoder_options else {}) | (extra_options or {})
+    options = {k: v for k, v in locals().items() if k not in ('filename', 'streams', 'encoder_options', 'extra_options')}
 
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=FrozenDict(kwargs)
+        kwargs=merge(options, encoder_options.kwargs if encoder_options else {}, extra_options)
     ).stream()

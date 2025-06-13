@@ -14,7 +14,7 @@ from ...types import (
     String,
     Time,
 )
-from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import merge
 from ..nodes import InputNode
 
 
@@ -145,70 +145,15 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
-
     options = {
         k: v
-        for k, v in {
-            "f": f,
-            "c": c,
-            "codec": codec,
-            "t": t,
-            "to": to,
-            "ss": ss,
-            "sseof": sseof,
-            "seek_timestamp": seek_timestamp,
-            "accurate_seek": accurate_seek,
-            "isync": isync,
-            "itsoffset": itsoffset,
-            "itsscale": itsscale,
-            "re": re,
-            "readrate": readrate,
-            "readrate_initial_burst": readrate_initial_burst,
-            "bitexact": bitexact,
-            "tag": tag,
-            "reinit_filter": reinit_filter,
-            "dump_attachment": dump_attachment,
-            "stream_loop": stream_loop,
-            "discard": discard,
-            "thread_queue_size": thread_queue_size,
-            "find_stream_info": find_stream_info,
-            "r": r,
-            "s": s,
-            "pix_fmt": pix_fmt,
-            "display_rotation": display_rotation,
-            "display_hflip": display_hflip,
-            "display_vflip": display_vflip,
-            "vn": vn,
-            "vcodec": vcodec,
-            "vtag": vtag,
-            "hwaccel": hwaccel,
-            "hwaccel_device": hwaccel_device,
-            "hwaccel_output_format": hwaccel_output_format,
-            "autorotate": autorotate,
-            "ar": ar,
-            "ac": ac,
-            "an": an,
-            "acodec": acodec,
-            "sample_fmt": sample_fmt,
-            "channel_layout": channel_layout,
-            "ch_layout": ch_layout,
-            "guess_layout_max": guess_layout_max,
-            "sn": sn,
-            "scodec": scodec,
-            "fix_sub_duration": fix_sub_duration,
-            "canvas_size": canvas_size,
-            "bsf": bsf,
-            "dcodec": dcodec,
-            "dn": dn,
-            "top": top,
-        }.items()
-        if v is not None
+        for k, v in locals().items()
+        if k not in ("filename", "decoder_options", "extra_options")
     }
 
-    kwargs = (
-        options
-        | (decoder_options.kwargs | {} if decoder_options else {})
-        | (extra_options or {})
-    )
-
-    return InputNode(filename=str(filename), kwargs=FrozenDict(kwargs)).stream()
+    return InputNode(
+        filename=str(filename),
+        kwargs=merge(
+            options, decoder_options.kwargs if decoder_options else {}, extra_options
+        ),
+    ).stream()

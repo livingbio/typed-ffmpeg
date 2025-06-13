@@ -1,0 +1,51 @@
+{
+  "__class__": "OutputStream",
+  "index": null,
+  "node": {
+    "__class__": "OutputNode",
+    "filename": "tmp.mp4",
+    "inputs": [
+      {
+        "__class__": "VideoStream",
+        "index": null,
+        "node": {
+          "__class__": "InputNode",
+          "filename": "input1.mp4",
+          "inputs": [],
+          "kwargs": {}
+        },
+        "optional": false
+      }
+    ],
+    "kwargs": {
+      "border_mask": null,
+      "chroma_elim_threshold": null,
+      "error_rate": null,
+      "intra_penalty": null,
+      "lmax": null,
+      "lmin": null,
+      "luma_elim_threshold": null,
+      "mb_info": null,
+      "mepc": null,
+      "mepre": null,
+      "motion_est": null,
+      "mpv_flags": null,
+      "noise_reduction": null,
+      "obmc": null,
+      "ps": null,
+      "qsquish": null,
+      "quantizer_noise_shaping": null,
+      "rc_buf_aggressivity": null,
+      "rc_eq": null,
+      "rc_init_cplx": null,
+      "rc_qmod_amp": null,
+      "rc_qmod_freq": null,
+      "sc_threshold": null,
+      "skip_cmp": "sad",
+      "skip_exp": null,
+      "skip_factor": null,
+      "skip_threshold": null
+    }
+  },
+  "optional": false
+}

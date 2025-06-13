@@ -112,3 +112,15 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
 
     def __ror__(self, other: Mapping[Any, Any]) -> dict[Any, Any]:
         return dict(other) | dict(self)
+
+
+def merge(*maps: Mapping[Any, Any] | None) -> FrozenDict[Any, Any]:
+    output = {}
+
+    for map in maps:
+        if map is None:
+            continue
+        # exclude None values
+        output.update({k: v for k, v in map.items() if v is not None})
+
+    return FrozenDict(output)
