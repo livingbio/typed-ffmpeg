@@ -70,6 +70,16 @@ Global options (affect whole program instead of just one file):
 """,
             id="global_options",
         ),
+        pytest.param(
+            """
+GIF encoder AVOptions:
+  -gifflags          <flags>      E..V....... set GIF flags (default offsetting+transdiff)
+     offsetting                   E..V....... enable picture offsetting
+     transdiff                    E..V....... enable transparency detection between frames
+  -gifimage          <boolean>    E..V....... enable encoding only images per frame (default false)
+  -global_palette    <boolean>    E..V....... write a palette to the global gif header where feasible (default true)""",
+            id="gif-options",
+        ),
     ],
 )
 def test_parse_all_options(snapshot: SnapshotAssertion, help_text: str) -> None:

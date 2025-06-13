@@ -10,10 +10,11 @@ from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags
 
 
 from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import merge
 
 def output(
     *streams: FilterableStream,
-    filename: str | Path,extra_options: dict[str, Any] = None,
+    filename: str | Path,extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
     Output file URL
@@ -27,14 +28,10 @@ def output(
         the output stream
     """
 
-    options = {
-        k: v for k, v in {
-            
-        }.items() if v is not None
-    }
-
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {}))
+        kwargs=merge({
+            
+        }, extra_options )
     ).stream()

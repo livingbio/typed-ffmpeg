@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 {{ _components.import_types('...types') }}
+from ...utils.frozendict import merge
 
 
 if TYPE_CHECKING:
@@ -26,7 +27,7 @@ class OutputArgs(ABC):
         {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
         {%- endif -%}
         {%- endfor -%}
-        extra_options: dict[str, Any] = None,
+        extra_options: dict[str, Any] | None = None,
     ) -> OutputStream:
         """
         Output file URL
@@ -45,14 +46,10 @@ class OutputArgs(ABC):
             the output stream
         """
 
-        options = {
-            k: v for k, v in {
-                {% for option in options %}
-                    {%- if option.is_output_option -%}
-                    "{{ option.name}}": {{ option.name | option_name_safe }},
-                    {% endif %}
-                    {% endfor %}
-            }.items() if v is not None
-        }
-
-        return self._output_node(*streams, filename=filename, **options, **(extra_options or {})).stream()
+        return self._output_node(*streams, filename=filename, **merge({
+            {% for option in options %}
+                {%- if option.is_output_option -%}
+                "{{ option.name}}": {{ option.name | option_name_safe }},
+                {% endif %}
+            {% endfor %}
+        }, extra_options)).stream()

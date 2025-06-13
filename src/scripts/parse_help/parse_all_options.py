@@ -11,13 +11,13 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
     choices: list[FFMpegOptionChoice] = []
 
     re_option_pattern = re.compile(
-        r"(?P<short_name>[\w\-]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
+        r"(?P<short_name>[\w\-\.\+]+)\s+\<(?P<type>[\w]+)\>\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
     )
     re_choice_pattern = re.compile(
-        r"(?P<short_name>[\w\-\s]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
+        r"(?P<short_name>[\w\-\.\+]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
     )
     re_value_pattern = re.compile(
-        r"(?P<short_name>[\w\-\s]+)\s+(?P<value>[\w\-]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
+        r"(?P<short_name>[\w\-\.\+]+)\s+(?P<value>[\w\-]+)\s+(?P<flags>[\w\.]{11})\s*(?P<help>.*)?"
     )
 
     for line in help_text.split("\n"):
@@ -39,7 +39,7 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
             continue
 
         # AVOptions section
-        if re.findall(r"^[\w]+[\s]+AVOptions:", line):
+        if re.findall(r"^[\w\.\s]+[\s]+AVOptions:", line):
             section = line
             continue
 
@@ -89,7 +89,7 @@ def parse_all_options(help_text: str) -> list[FFMpegAVOption]:
             continue
 
         # Option line
-        if line.startswith("  "):
+        if line.startswith("  ") and not line.startswith("   "):
             if last_option:
                 output.append(
                     FFMpegAVOption(

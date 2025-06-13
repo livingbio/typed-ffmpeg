@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any
 
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
+from ...utils.frozendict import merge
 
 if TYPE_CHECKING:
     from ..nodes import GlobalNode, GlobalStream, OutputStream
@@ -30,7 +31,7 @@ class GlobalArgs(ABC):
 
     def global_args(
         self,
-        *,extra_options: dict[str, Any] = None,
+        *,extra_options: dict[str, Any] | None = None,
     ) -> GlobalStream:
         """
         Set global options.
@@ -42,8 +43,8 @@ class GlobalArgs(ABC):
             GlobalStream: GlobalStream instance
         """
 
-        return self._global_node(
-            **({k: v for k, v in {
+        return self._global_node(**merge(
+            {
                 
-            }.items() if v is not None} | (extra_options or {})),
+            }, extra_options)
         ).stream()

@@ -6,7 +6,7 @@ where hashable dictionaries are needed, such as in sets or as keys in other
 dictionaries. Once created, a FrozenDict cannot be modified.
 """
 
-from collections.abc import Iterator, Mapping
+from collections.abc import Iterable, Iterator, Mapping
 from typing import Any, Generic, TypeVar
 
 K = TypeVar("K")
@@ -106,3 +106,58 @@ class FrozenDict(Mapping[K, V], Generic[K, V]):
             # Create a stable hash based on sorted key-value pairs
             self._hash = hash(frozenset(self._data.items()))
         return self._hash
+
+    def __or__(self, other: Mapping[Any, Any]) -> dict[Any, Any]:
+        return dict(self) | dict(other)
+
+    def __ror__(self, other: Mapping[Any, Any]) -> dict[Any, Any]:
+        return dict(other) | dict(self)
+
+
+def merge(*maps: Mapping[Any, Any] | None) -> FrozenDict[Any, Any]:
+    """
+    Merge multiple dictionaries into a single dictionary.
+
+    Args:
+        *maps: Dictionaries to merge
+
+    Returns:
+        A new dictionary containing the merged contents of all input dictionaries
+    """
+    output = {}
+
+    for map in maps:
+        if map is None:
+            continue
+        # exclude None values
+        output.update({k: v for k, v in map.items() if v is not None})
+
+    return FrozenDict(output)
+
+
+def exclude(maps: Mapping[Any, Any], exclude: Iterable[Any]) -> FrozenDict[Any, Any]:
+    """
+    Exclude the keys of a dictionary.
+
+    Args:
+        maps: Dictionary to exclude from
+        exclude: Keys to exclude
+
+    Returns:
+        A new dictionary with the keys excluded
+    """
+    return FrozenDict({k: v for k, v in maps.items() if k not in exclude})
+
+
+def rekey(maps: Mapping[Any, Any], rekey: Mapping[Any, Any]) -> FrozenDict[Any, Any]:
+    """
+    rekey the keys of a dictionary.
+
+    Args:
+        maps: Dictionary to rekey
+        rekey: Mapping of old keys to new keys
+
+    Returns:
+        A new dictionary with the keys remapped
+    """
+    return FrozenDict({rekey.get(k, k): v for k, v in maps.items()})

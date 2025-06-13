@@ -24,6 +24,7 @@ from .types import (
     Pix_fmt,
     String,
 )
+from .utils.frozendict import merge
 
 
 def acrossfade(
@@ -89,7 +90,7 @@ def acrossfade(
         "hsin2",
     ]
     | Default = Default("tri"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -117,14 +118,16 @@ def acrossfade(
         ),
         _crossfade0,
         _crossfade1,
-        **{
-            "nb_samples": nb_samples,
-            "duration": duration,
-            "overlap": overlap,
-            "curve1": curve1,
-            "curve2": curve2,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "nb_samples": nb_samples,
+                "duration": duration,
+                "overlap": overlap,
+                "curve1": curve1,
+                "curve2": curve2,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -135,7 +138,7 @@ def ainterleave(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -159,11 +162,13 @@ def ainterleave(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "nb_inputs": nb_inputs,
-            "duration": duration,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "nb_inputs": nb_inputs,
+                "duration": duration,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -177,7 +182,7 @@ def alphamerge(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -205,14 +210,16 @@ def alphamerge(
         ),
         _main,
         _alpha,
-        **{
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -220,7 +227,7 @@ def alphamerge(
 def amerge(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -243,10 +250,12 @@ def amerge(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -260,7 +269,7 @@ def amix(
     dropout_transition: Float = Default(2.0),
     weights: String = Default("1 1"),
     normalize: Boolean = Default(True),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -287,14 +296,16 @@ def amix(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "duration": duration,
-            "dropout_transition": dropout_transition,
-            "weights": weights,
-            "normalize": normalize,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "duration": duration,
+                "dropout_transition": dropout_transition,
+                "weights": weights,
+                "normalize": normalize,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -302,7 +313,7 @@ def amix(
 def amultiply(
     _multiply0: AudioStream,
     _multiply1: AudioStream,
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -323,7 +334,7 @@ def amultiply(
         ),
         _multiply0,
         _multiply1,
-        **{} | (extra_options or {}),
+        **merge({}, extra_options),
     )
     return filter_node.audio(0)
 
@@ -338,7 +349,7 @@ def anlmf(
     leakage: Float = Default(0.0),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -365,15 +376,17 @@ def anlmf(
         ),
         _input,
         _desired,
-        **{
-            "order": order,
-            "mu": mu,
-            "eps": eps,
-            "leakage": leakage,
-            "out_mode": out_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "order": order,
+                "mu": mu,
+                "eps": eps,
+                "leakage": leakage,
+                "out_mode": out_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -388,7 +401,7 @@ def anlms(
     leakage: Float = Default(0.0),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -415,15 +428,17 @@ def anlms(
         ),
         _input,
         _desired,
-        **{
-            "order": order,
-            "mu": mu,
-            "eps": eps,
-            "leakage": leakage,
-            "out_mode": out_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "order": order,
+                "mu": mu,
+                "eps": eps,
+                "leakage": leakage,
+                "out_mode": out_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -433,7 +448,7 @@ def apsnr(
     _input1: AudioStream,
     *,
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -455,10 +470,12 @@ def apsnr(
         ),
         _input0,
         _input1,
-        **{
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -472,7 +489,7 @@ def arls(
     delta: Float = Default(2.0),
     out_mode: Int | Literal["i", "d", "o", "n", "e"] | Default = Default("o"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -498,14 +515,16 @@ def arls(
         ),
         _input,
         _desired,
-        **{
-            "order": order,
-            "lambda": _lambda,
-            "delta": delta,
-            "out_mode": out_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "order": order,
+                "lambda": _lambda,
+                "delta": delta,
+                "out_mode": out_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -515,7 +534,7 @@ def asdr(
     _input1: AudioStream,
     *,
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -537,10 +556,12 @@ def asdr(
         ),
         _input0,
         _input1,
-        **{
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -550,7 +571,7 @@ def asisdr(
     _input1: AudioStream,
     *,
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -572,10 +593,12 @@ def asisdr(
         ),
         _input0,
         _input1,
-        **{
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -584,7 +607,7 @@ def astreamselect(
     *streams: AudioStream,
     inputs: Int = Auto("len(streams)"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -609,11 +632,13 @@ def astreamselect(
             typings_output="[StreamType.audio] * len(re.findall(r'\\d+', str(map)))",
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "map": map,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "map": map,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -625,7 +650,7 @@ def axcorrelate(
     *,
     size: Int = Default(256),
     algo: Int | Literal["slow", "fast", "best"] | Default = Default("best"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -650,11 +675,13 @@ def axcorrelate(
         ),
         _axcorrelate0,
         _axcorrelate1,
-        **{
-            "size": size,
-            "algo": algo,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "size": size,
+                "algo": algo,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -908,7 +935,7 @@ def blend(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -949,29 +976,31 @@ def blend(
         ),
         _top,
         _bottom,
-        **{
-            "c0_mode": c0_mode,
-            "c1_mode": c1_mode,
-            "c2_mode": c2_mode,
-            "c3_mode": c3_mode,
-            "all_mode": all_mode,
-            "c0_expr": c0_expr,
-            "c1_expr": c1_expr,
-            "c2_expr": c2_expr,
-            "c3_expr": c3_expr,
-            "all_expr": all_expr,
-            "c0_opacity": c0_opacity,
-            "c1_opacity": c1_opacity,
-            "c2_opacity": c2_opacity,
-            "c3_opacity": c3_opacity,
-            "all_opacity": all_opacity,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "c0_mode": c0_mode,
+                "c1_mode": c1_mode,
+                "c2_mode": c2_mode,
+                "c3_mode": c3_mode,
+                "all_mode": all_mode,
+                "c0_expr": c0_expr,
+                "c1_expr": c1_expr,
+                "c2_expr": c2_expr,
+                "c3_expr": c3_expr,
+                "all_expr": all_expr,
+                "c0_opacity": c0_opacity,
+                "c1_opacity": c1_opacity,
+                "c2_opacity": c2_opacity,
+                "c3_opacity": c3_opacity,
+                "all_opacity": all_opacity,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -990,7 +1019,7 @@ def blend_vulkan(
     c2_opacity: Double = Default(1.0),
     c3_opacity: Double = Default(1.0),
     all_opacity: Double = Default(1.0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1023,19 +1052,21 @@ def blend_vulkan(
         ),
         _top,
         _bottom,
-        **{
-            "c0_mode": c0_mode,
-            "c1_mode": c1_mode,
-            "c2_mode": c2_mode,
-            "c3_mode": c3_mode,
-            "all_mode": all_mode,
-            "c0_opacity": c0_opacity,
-            "c1_opacity": c1_opacity,
-            "c2_opacity": c2_opacity,
-            "c3_opacity": c3_opacity,
-            "all_opacity": all_opacity,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "c0_mode": c0_mode,
+                "c1_mode": c1_mode,
+                "c2_mode": c2_mode,
+                "c3_mode": c3_mode,
+                "all_mode": all_mode,
+                "c0_opacity": c0_opacity,
+                "c1_opacity": c1_opacity,
+                "c2_opacity": c2_opacity,
+                "c3_opacity": c3_opacity,
+                "all_opacity": all_opacity,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1054,7 +1085,7 @@ def bm3d(
     ref: Boolean = Default(False),
     planes: Int = Default(7),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1088,21 +1119,23 @@ def bm3d(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "sigma": sigma,
-            "block": block,
-            "bstep": bstep,
-            "group": group,
-            "range": range,
-            "mstep": mstep,
-            "thmse": thmse,
-            "hdthr": hdthr,
-            "estim": estim,
-            "ref": ref,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "sigma": sigma,
+                "block": block,
+                "bstep": bstep,
+                "group": group,
+                "range": range,
+                "mstep": mstep,
+                "thmse": thmse,
+                "hdthr": hdthr,
+                "estim": estim,
+                "ref": ref,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1117,7 +1150,7 @@ def colormap(
     type: Int | Literal["relative", "absolute"] | Default = Default("absolute"),
     kernel: Int | Literal["euclidean", "weuclidean"] | Default = Default("euclidean"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1146,14 +1179,16 @@ def colormap(
         _default,
         _source,
         _target,
-        **{
-            "patch_size": patch_size,
-            "nb_patches": nb_patches,
-            "type": type,
-            "kernel": kernel,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "patch_size": patch_size,
+                "nb_patches": nb_patches,
+                "type": type,
+                "kernel": kernel,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1164,7 +1199,7 @@ def concat(
     v: Int = Default(1),
     a: Int = Default(0),
     unsafe: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -1191,13 +1226,15 @@ def concat(
             typings_output="[StreamType.video]*int(v) + [StreamType.audio]*int(a)",
         ),
         *streams,
-        **{
-            "n": n,
-            "v": v,
-            "a": a,
-            "unsafe": unsafe,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "n": n,
+                "v": v,
+                "a": a,
+                "unsafe": unsafe,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -1215,7 +1252,7 @@ def convolve(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1244,17 +1281,19 @@ def convolve(
         ),
         _main,
         _impulse,
-        **{
-            "planes": planes,
-            "impulse": impulse,
-            "noise": noise,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "impulse": impulse,
+                "noise": noise,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1268,7 +1307,7 @@ def corr(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1294,14 +1333,16 @@ def corr(
         ),
         _main,
         _reference,
-        **{
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1316,7 +1357,7 @@ def decimate(
     ppsrc: Boolean = Default(False),
     chroma: Boolean = Default(True),
     mixed: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1346,17 +1387,19 @@ def decimate(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "cycle": cycle,
-            "dupthresh": dupthresh,
-            "scthresh": scthresh,
-            "blockx": blockx,
-            "blocky": blocky,
-            "ppsrc": ppsrc,
-            "chroma": chroma,
-            "mixed": mixed,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "cycle": cycle,
+                "dupthresh": dupthresh,
+                "scthresh": scthresh,
+                "blockx": blockx,
+                "blocky": blocky,
+                "ppsrc": ppsrc,
+                "chroma": chroma,
+                "mixed": mixed,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1373,7 +1416,7 @@ def deconvolve(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1404,17 +1447,19 @@ def deconvolve(
         ),
         _main,
         _impulse,
-        **{
-            "planes": planes,
-            "impulse": impulse,
-            "noise": noise,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "impulse": impulse,
+                "noise": noise,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1428,7 +1473,7 @@ def displace(
         "smear"
     ),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1454,11 +1499,13 @@ def displace(
         _source,
         _xmap,
         _ymap,
-        **{
-            "edge": edge,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "edge": edge,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1469,7 +1516,7 @@ def feedback(
     *,
     x: Int = Default(0),
     w: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> tuple[
     VideoStream,
     VideoStream,
@@ -1498,11 +1545,13 @@ def feedback(
         ),
         _default,
         _feedin,
-        **{
-            "x": x,
-            "w": w,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "x": x,
+                "w": w,
+            },
+            extra_options,
+        ),
     )
     return (
         filter_node.video(0),
@@ -1528,7 +1577,7 @@ def fieldmatch(
     blockx: Int = Default(16),
     blocky: Int = Default(16),
     combpel: Int = Default(80),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1564,23 +1613,25 @@ def fieldmatch(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "order": order,
-            "mode": mode,
-            "ppsrc": ppsrc,
-            "field": field,
-            "mchroma": mchroma,
-            "y0": y0,
-            "scthresh": scthresh,
-            "combmatch": combmatch,
-            "combdbg": combdbg,
-            "cthresh": cthresh,
-            "chroma": chroma,
-            "blockx": blockx,
-            "blocky": blocky,
-            "combpel": combpel,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "order": order,
+                "mode": mode,
+                "ppsrc": ppsrc,
+                "field": field,
+                "mchroma": mchroma,
+                "y0": y0,
+                "scthresh": scthresh,
+                "combmatch": combmatch,
+                "combdbg": combdbg,
+                "cthresh": cthresh,
+                "chroma": chroma,
+                "blockx": blockx,
+                "blocky": blocky,
+                "combpel": combpel,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1592,7 +1643,7 @@ def framepack(
     format: Int
     | Literal["sbs", "tab", "frameseq", "lines", "columns"]
     | Default = Default("sbs"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1616,10 +1667,12 @@ def framepack(
         ),
         _left,
         _right,
-        **{
-            "format": format,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "format": format,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1631,7 +1684,7 @@ def freezeframes(
     first: Int64 = Default(0),
     last: Int64 = Default(0),
     replace: Int64 = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1657,12 +1710,14 @@ def freezeframes(
         ),
         _source,
         _replace,
-        **{
-            "first": first,
-            "last": last,
-            "replace": replace,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "first": first,
+                "last": last,
+                "replace": replace,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1676,7 +1731,7 @@ def guided(
     guidance: Int | Literal["off", "on"] | Default = Default("off"),
     planes: Int = Default(1),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1705,16 +1760,18 @@ def guided(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "radius": radius,
-            "eps": eps,
-            "mode": mode,
-            "sub": sub,
-            "guidance": guidance,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "radius": radius,
+                "eps": eps,
+                "mode": mode,
+                "sub": sub,
+                "guidance": guidance,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1732,7 +1789,7 @@ def haldclut(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1760,16 +1817,18 @@ def haldclut(
         ),
         _main,
         _clut,
-        **{
-            "clut": clut,
-            "interp": interp,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "clut": clut,
+                "interp": interp,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1782,7 +1841,7 @@ def headphone(
     type: Int | Literal["time", "freq"] | Default = Default("freq"),
     size: Int = Default(1024),
     hrir: Int | Literal["stereo", "multich"] | Default = Default("stereo"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -1810,15 +1869,17 @@ def headphone(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "map": map,
-            "gain": gain,
-            "lfe": lfe,
-            "type": type,
-            "size": size,
-            "hrir": hrir,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "map": map,
+                "gain": gain,
+                "lfe": lfe,
+                "type": type,
+                "size": size,
+                "hrir": hrir,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -1827,7 +1888,7 @@ def hstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     shortest: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1851,11 +1912,13 @@ def hstack(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1865,7 +1928,7 @@ def hstack_vaapi(
     inputs: Int = Default(2),
     shortest: Boolean = Default(False),
     height: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1890,12 +1953,14 @@ def hstack_vaapi(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-            "height": height,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+                "height": height,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1911,7 +1976,7 @@ def hysteresis(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1941,16 +2006,18 @@ def hysteresis(
         ),
         _base,
         _alt,
-        **{
-            "planes": planes,
-            "threshold": threshold,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "threshold": threshold,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -1964,7 +2031,7 @@ def identity(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -1990,14 +2057,16 @@ def identity(
         ),
         _main,
         _reference,
-        **{
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2008,7 +2077,7 @@ def interleave(
     duration: Int | Literal["longest", "shortest", "first"] | Default = Default(
         "longest"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2032,11 +2101,13 @@ def interleave(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "nb_inputs": nb_inputs,
-            "duration": duration,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "nb_inputs": nb_inputs,
+                "duration": duration,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2046,7 +2117,7 @@ def join(
     inputs: Int = Auto("len(streams)"),
     channel_layout: String = Default("stereo"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -2071,12 +2142,14 @@ def join(
             typings_output=("audio",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "channel_layout": channel_layout,
-            "map": map,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "channel_layout": channel_layout,
+                "map": map,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -2090,7 +2163,7 @@ def ladspa(
     nb_samples: Int = Default(1024),
     duration: Duration = Default(-1e-06),
     latency: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -2117,16 +2190,18 @@ def ladspa(
             name="ladspa", typings_input="[StreamType.audio]", typings_output=("audio",)
         ),
         *streams,
-        **{
-            "file": file,
-            "plugin": plugin,
-            "controls": controls,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "duration": duration,
-            "latency": latency,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "file": file,
+                "plugin": plugin,
+                "controls": controls,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "duration": duration,
+                "latency": latency,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -2299,7 +2374,7 @@ def libplacebo(
     force_icc_lut: Boolean = Default(False),
     force_dither: Boolean = Default(False),
     disable_fbos: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2399,87 +2474,89 @@ def libplacebo(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "w": w,
-            "h": h,
-            "fps": fps,
-            "crop_x": crop_x,
-            "crop_y": crop_y,
-            "crop_w": crop_w,
-            "crop_h": crop_h,
-            "pos_x": pos_x,
-            "pos_y": pos_y,
-            "pos_w": pos_w,
-            "pos_h": pos_h,
-            "format": format,
-            "force_original_aspect_ratio": force_original_aspect_ratio,
-            "force_divisible_by": force_divisible_by,
-            "normalize_sar": normalize_sar,
-            "pad_crop_ratio": pad_crop_ratio,
-            "fillcolor": fillcolor,
-            "corner_rounding": corner_rounding,
-            "extra_opts": extra_opts,
-            "colorspace": colorspace,
-            "range": range,
-            "color_primaries": color_primaries,
-            "color_trc": color_trc,
-            "upscaler": upscaler,
-            "downscaler": downscaler,
-            "frame_mixer": frame_mixer,
-            "lut_entries": lut_entries,
-            "antiringing": antiringing,
-            "sigmoid": sigmoid,
-            "apply_filmgrain": apply_filmgrain,
-            "apply_dolbyvision": apply_dolbyvision,
-            "deband": deband,
-            "deband_iterations": deband_iterations,
-            "deband_threshold": deband_threshold,
-            "deband_radius": deband_radius,
-            "deband_grain": deband_grain,
-            "brightness": brightness,
-            "contrast": contrast,
-            "saturation": saturation,
-            "hue": hue,
-            "gamma": gamma,
-            "peak_detect": peak_detect,
-            "smoothing_period": smoothing_period,
-            "minimum_peak": minimum_peak,
-            "scene_threshold_low": scene_threshold_low,
-            "scene_threshold_high": scene_threshold_high,
-            "percentile": percentile,
-            "gamut_mode": gamut_mode,
-            "tonemapping": tonemapping,
-            "tonemapping_param": tonemapping_param,
-            "inverse_tonemapping": inverse_tonemapping,
-            "tonemapping_lut_size": tonemapping_lut_size,
-            "contrast_recovery": contrast_recovery,
-            "contrast_smoothness": contrast_smoothness,
-            "desaturation_strength": desaturation_strength,
-            "desaturation_exponent": desaturation_exponent,
-            "gamut_warning": gamut_warning,
-            "gamut_clipping": gamut_clipping,
-            "intent": intent,
-            "tonemapping_mode": tonemapping_mode,
-            "tonemapping_crosstalk": tonemapping_crosstalk,
-            "overshoot": overshoot,
-            "hybrid_mix": hybrid_mix,
-            "dithering": dithering,
-            "dither_lut_size": dither_lut_size,
-            "dither_temporal": dither_temporal,
-            "cones": cones,
-            "cone-strength": cone_strength,
-            "custom_shader_path": custom_shader_path,
-            "custom_shader_bin": custom_shader_bin,
-            "skip_aa": skip_aa,
-            "polar_cutoff": polar_cutoff,
-            "disable_linear": disable_linear,
-            "disable_builtin": disable_builtin,
-            "force_icc_lut": force_icc_lut,
-            "force_dither": force_dither,
-            "disable_fbos": disable_fbos,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "w": w,
+                "h": h,
+                "fps": fps,
+                "crop_x": crop_x,
+                "crop_y": crop_y,
+                "crop_w": crop_w,
+                "crop_h": crop_h,
+                "pos_x": pos_x,
+                "pos_y": pos_y,
+                "pos_w": pos_w,
+                "pos_h": pos_h,
+                "format": format,
+                "force_original_aspect_ratio": force_original_aspect_ratio,
+                "force_divisible_by": force_divisible_by,
+                "normalize_sar": normalize_sar,
+                "pad_crop_ratio": pad_crop_ratio,
+                "fillcolor": fillcolor,
+                "corner_rounding": corner_rounding,
+                "extra_opts": extra_opts,
+                "colorspace": colorspace,
+                "range": range,
+                "color_primaries": color_primaries,
+                "color_trc": color_trc,
+                "upscaler": upscaler,
+                "downscaler": downscaler,
+                "frame_mixer": frame_mixer,
+                "lut_entries": lut_entries,
+                "antiringing": antiringing,
+                "sigmoid": sigmoid,
+                "apply_filmgrain": apply_filmgrain,
+                "apply_dolbyvision": apply_dolbyvision,
+                "deband": deband,
+                "deband_iterations": deband_iterations,
+                "deband_threshold": deband_threshold,
+                "deband_radius": deband_radius,
+                "deband_grain": deband_grain,
+                "brightness": brightness,
+                "contrast": contrast,
+                "saturation": saturation,
+                "hue": hue,
+                "gamma": gamma,
+                "peak_detect": peak_detect,
+                "smoothing_period": smoothing_period,
+                "minimum_peak": minimum_peak,
+                "scene_threshold_low": scene_threshold_low,
+                "scene_threshold_high": scene_threshold_high,
+                "percentile": percentile,
+                "gamut_mode": gamut_mode,
+                "tonemapping": tonemapping,
+                "tonemapping_param": tonemapping_param,
+                "inverse_tonemapping": inverse_tonemapping,
+                "tonemapping_lut_size": tonemapping_lut_size,
+                "contrast_recovery": contrast_recovery,
+                "contrast_smoothness": contrast_smoothness,
+                "desaturation_strength": desaturation_strength,
+                "desaturation_exponent": desaturation_exponent,
+                "gamut_warning": gamut_warning,
+                "gamut_clipping": gamut_clipping,
+                "intent": intent,
+                "tonemapping_mode": tonemapping_mode,
+                "tonemapping_crosstalk": tonemapping_crosstalk,
+                "overshoot": overshoot,
+                "hybrid_mix": hybrid_mix,
+                "dithering": dithering,
+                "dither_lut_size": dither_lut_size,
+                "dither_temporal": dither_temporal,
+                "cones": cones,
+                "cone-strength": cone_strength,
+                "custom_shader_path": custom_shader_path,
+                "custom_shader_bin": custom_shader_bin,
+                "skip_aa": skip_aa,
+                "polar_cutoff": polar_cutoff,
+                "disable_linear": disable_linear,
+                "disable_builtin": disable_builtin,
+                "force_icc_lut": force_icc_lut,
+                "force_dither": force_dither,
+                "disable_fbos": disable_fbos,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2491,7 +2568,7 @@ def limitdiff(
     reference: Boolean = Default(False),
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2518,14 +2595,16 @@ def limitdiff(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "threshold": threshold,
-            "elasticity": elasticity,
-            "reference": reference,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "threshold": threshold,
+                "elasticity": elasticity,
+                "reference": reference,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2544,7 +2623,7 @@ def lut2(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2575,19 +2654,21 @@ def lut2(
         ),
         _srcx,
         _srcy,
-        **{
-            "c0": c0,
-            "c1": c1,
-            "c2": c2,
-            "c3": c3,
-            "d": d,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "c0": c0,
+                "c1": c1,
+                "c2": c2,
+                "c3": c3,
+                "d": d,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2599,7 +2680,7 @@ def lv2(
     sample_rate: Int = Default(44100),
     nb_samples: Int = Default(1024),
     duration: Duration = Default(-1e-06),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -2624,14 +2705,16 @@ def lv2(
             name="lv2", typings_input="[StreamType.audio]", typings_output=("audio",)
         ),
         *streams,
-        **{
-            "plugin": plugin,
-            "controls": controls,
-            "sample_rate": sample_rate,
-            "nb_samples": nb_samples,
-            "duration": duration,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "plugin": plugin,
+                "controls": controls,
+                "sample_rate": sample_rate,
+                "nb_samples": nb_samples,
+                "duration": duration,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -2645,7 +2728,7 @@ def maskedclamp(
     overshoot: Int = Default(0),
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2673,13 +2756,15 @@ def maskedclamp(
         _base,
         _dark,
         _bright,
-        **{
-            "undershoot": undershoot,
-            "overshoot": overshoot,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "undershoot": undershoot,
+                "overshoot": overshoot,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2691,7 +2776,7 @@ def maskedmax(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2717,11 +2802,13 @@ def maskedmax(
         _source,
         _filter1,
         _filter2,
-        **{
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2733,7 +2820,7 @@ def maskedmerge(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2759,11 +2846,13 @@ def maskedmerge(
         _base,
         _overlay,
         _mask,
-        **{
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2775,7 +2864,7 @@ def maskedmin(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2801,11 +2890,13 @@ def maskedmin(
         _source,
         _filter1,
         _filter2,
-        **{
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2818,7 +2909,7 @@ def maskedthreshold(
     planes: Int = Default(15),
     mode: Int | Literal["abs", "diff"] | Default = Default("abs"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2845,13 +2936,15 @@ def maskedthreshold(
         ),
         _source,
         _reference,
-        **{
-            "threshold": threshold,
-            "planes": planes,
-            "mode": mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "threshold": threshold,
+                "planes": planes,
+                "mode": mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2868,7 +2961,7 @@ def mergeplanes(
     map2p: Int = Default(0),
     map3s: Int = Default(0),
     map3p: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2900,19 +2993,21 @@ def mergeplanes(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "mapping": mapping,
-            "format": format,
-            "map0s": map0s,
-            "map0p": map0p,
-            "map1s": map1s,
-            "map1p": map1p,
-            "map2s": map2s,
-            "map2p": map2p,
-            "map3s": map3s,
-            "map3p": map3p,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "mapping": mapping,
+                "format": format,
+                "map0s": map0s,
+                "map0p": map0p,
+                "map1s": map1s,
+                "map1p": map1p,
+                "map2s": map2s,
+                "map2p": map2p,
+                "map3s": map3s,
+                "map3p": map3p,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2923,7 +3018,7 @@ def midequalizer(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2948,11 +3043,13 @@ def midequalizer(
         ),
         _in0,
         _in1,
-        **{
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -2967,7 +3064,7 @@ def mix(
         "longest"
     ),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -2995,15 +3092,17 @@ def mix(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "weights": weights,
-            "scale": scale,
-            "planes": planes,
-            "duration": duration,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "weights": weights,
+                "scale": scale,
+                "planes": planes,
+                "duration": duration,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3022,7 +3121,7 @@ def morpho(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3051,17 +3150,19 @@ def morpho(
         ),
         _default,
         _structure,
-        **{
-            "mode": mode,
-            "planes": planes,
-            "structure": structure,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "mode": mode,
+                "planes": planes,
+                "structure": structure,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3075,7 +3176,7 @@ def msad(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3101,14 +3202,16 @@ def msad(
         ),
         _main,
         _reference,
-        **{
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3121,7 +3224,7 @@ def multiply(
     offset: Float = Default(0.5),
     planes: Flags = Default("F"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3146,13 +3249,15 @@ def multiply(
         ),
         _source,
         _factor,
-        **{
-            "scale": scale,
-            "offset": offset,
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "scale": scale,
+                "offset": offset,
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3185,7 +3290,7 @@ def overlay(
     alpha: Int | Literal["straight", "premultiplied"] | Default = Default("straight"),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3216,19 +3321,21 @@ def overlay(
         ),
         _main,
         _overlay,
-        **{
-            "x": x,
-            "y": y,
-            "eof_action": eof_action,
-            "eval": eval,
-            "shortest": shortest,
-            "format": format,
-            "repeatlast": repeatlast,
-            "alpha": alpha,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "x": x,
+                "y": y,
+                "eof_action": eof_action,
+                "eval": eval,
+                "shortest": shortest,
+                "format": format,
+                "repeatlast": repeatlast,
+                "alpha": alpha,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3239,7 +3346,7 @@ def overlay_opencl(
     *,
     x: Int = Default(0),
     y: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3264,11 +3371,13 @@ def overlay_opencl(
         ),
         _main,
         _overlay,
-        **{
-            "x": x,
-            "y": y,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "x": x,
+                "y": y,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3288,7 +3397,7 @@ def overlay_vaapi(
     shortest: Boolean = Default(False),
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3320,18 +3429,20 @@ def overlay_vaapi(
         ),
         _main,
         _overlay,
-        **{
-            "x": x,
-            "y": y,
-            "w": w,
-            "h": h,
-            "alpha": alpha,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "x": x,
+                "y": y,
+                "w": w,
+                "h": h,
+                "alpha": alpha,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3342,7 +3453,7 @@ def overlay_vulkan(
     *,
     x: Int = Default(0),
     y: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3367,11 +3478,13 @@ def overlay_vulkan(
         ),
         _main,
         _overlay,
-        **{
-            "x": x,
-            "y": y,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "x": x,
+                "y": y,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3397,7 +3510,7 @@ def paletteuse(
     new: Boolean = Default(False),
     alpha_threshold: Int = Default(128),
     debug_kdtree: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3426,15 +3539,17 @@ def paletteuse(
         ),
         _default,
         _palette,
-        **{
-            "dither": dither,
-            "bayer_scale": bayer_scale,
-            "diff_mode": diff_mode,
-            "new": new,
-            "alpha_threshold": alpha_threshold,
-            "debug_kdtree": debug_kdtree,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "dither": dither,
+                "bayer_scale": bayer_scale,
+                "diff_mode": diff_mode,
+                "new": new,
+                "alpha_threshold": alpha_threshold,
+                "debug_kdtree": debug_kdtree,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3444,7 +3559,7 @@ def premultiply(
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3469,12 +3584,14 @@ def premultiply(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "planes": planes,
-            "inplace": inplace,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "inplace": inplace,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3489,7 +3606,7 @@ def program_opencl(
     shortest: Boolean = Default(False),
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3519,17 +3636,19 @@ def program_opencl(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "source": source,
-            "kernel": kernel,
-            "inputs": inputs,
-            "size": size,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "source": source,
+                "kernel": kernel,
+                "inputs": inputs,
+                "size": size,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3546,7 +3665,7 @@ def psnr(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3575,17 +3694,19 @@ def psnr(
         ),
         _main,
         _reference,
-        **{
-            "stats_file": stats_file,
-            "stats_version": stats_version,
-            "output_max": output_max,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "stats_file": stats_file,
+                "stats_version": stats_version,
+                "output_max": output_max,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3597,7 +3718,7 @@ def remap(
     *,
     format: Int | Literal["color", "gray"] | Default = Default("color"),
     fill: Color = Default("black"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3623,11 +3744,13 @@ def remap(
         _source,
         _xmap,
         _ymap,
-        **{
-            "format": format,
-            "fill": fill,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "format": format,
+                "fill": fill,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3639,7 +3762,7 @@ def remap_opencl(
     *,
     interp: Int | Literal["near", "linear"] | Default = Default("linear"),
     fill: Color = Default("black"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3665,11 +3788,13 @@ def remap_opencl(
         _source,
         _xmap,
         _ymap,
-        **{
-            "interp": interp,
-            "fill": fill,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "interp": interp,
+                "fill": fill,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3690,7 +3815,7 @@ def sidechaincompress(
     detection: Int | Literal["peak", "rms"] | Default = Default("rms"),
     level_sc: Double = Default(1.0),
     mix: Double = Default(1.0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3725,21 +3850,23 @@ def sidechaincompress(
         ),
         _main,
         _sidechain,
-        **{
-            "level_in": level_in,
-            "mode": mode,
-            "threshold": threshold,
-            "ratio": ratio,
-            "attack": attack,
-            "release": release,
-            "makeup": makeup,
-            "knee": knee,
-            "link": link,
-            "detection": detection,
-            "level_sc": level_sc,
-            "mix": mix,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "level_in": level_in,
+                "mode": mode,
+                "threshold": threshold,
+                "ratio": ratio,
+                "attack": attack,
+                "release": release,
+                "makeup": makeup,
+                "knee": knee,
+                "link": link,
+                "detection": detection,
+                "level_sc": level_sc,
+                "mix": mix,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -3761,7 +3888,7 @@ def sidechaingate(
     link: Int | Literal["average", "maximum"] | Default = Default("average"),
     level_sc: Double = Default(1.0),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3797,22 +3924,24 @@ def sidechaingate(
         ),
         _main,
         _sidechain,
-        **{
-            "level_in": level_in,
-            "mode": mode,
-            "range": range,
-            "threshold": threshold,
-            "ratio": ratio,
-            "attack": attack,
-            "release": release,
-            "makeup": makeup,
-            "knee": knee,
-            "detection": detection,
-            "link": link,
-            "level_sc": level_sc,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "level_in": level_in,
+                "mode": mode,
+                "range": range,
+                "threshold": threshold,
+                "ratio": ratio,
+                "attack": attack,
+                "release": release,
+                "makeup": makeup,
+                "knee": knee,
+                "detection": detection,
+                "link": link,
+                "level_sc": level_sc,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -3828,7 +3957,7 @@ def signature(
     th_xh: Int = Default(116),
     th_di: Int = Default(0),
     th_it: Double = Default(0.5),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3859,18 +3988,20 @@ def signature(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "detectmode": detectmode,
-            "nb_inputs": nb_inputs,
-            "filename": filename,
-            "format": format,
-            "th_d": th_d,
-            "th_dc": th_dc,
-            "th_xh": th_xh,
-            "th_di": th_di,
-            "th_it": th_it,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "detectmode": detectmode,
+                "nb_inputs": nb_inputs,
+                "filename": filename,
+                "format": format,
+                "th_d": th_d,
+                "th_dc": th_dc,
+                "th_xh": th_xh,
+                "th_di": th_di,
+                "th_it": th_it,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -3915,7 +4046,7 @@ def spectrumsynth(
     orientation: Int | Literal["vertical", "horizontal"] | Default = Default(
         "vertical"
     ),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AudioStream:
     """
 
@@ -3945,16 +4076,18 @@ def spectrumsynth(
         ),
         _magnitude,
         _phase,
-        **{
-            "sample_rate": sample_rate,
-            "channels": channels,
-            "scale": scale,
-            "slide": slide,
-            "win_func": win_func,
-            "overlap": overlap,
-            "orientation": orientation,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "sample_rate": sample_rate,
+                "channels": channels,
+                "scale": scale,
+                "slide": slide,
+                "win_func": win_func,
+                "overlap": overlap,
+                "orientation": orientation,
+            },
+            extra_options,
+        ),
     )
     return filter_node.audio(0)
 
@@ -3969,7 +4102,7 @@ def ssim(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -3996,15 +4129,17 @@ def ssim(
         ),
         _main,
         _reference,
-        **{
-            "stats_file": stats_file,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "stats_file": stats_file,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4013,7 +4148,7 @@ def streamselect(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     map: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> FilterNode:
     """
 
@@ -4038,11 +4173,13 @@ def streamselect(
             typings_output="[StreamType.video] * len(re.findall(r'\\d+', str(map)))",
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "map": map,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "map": map,
+            },
+            extra_options,
+        ),
     )
 
     return filter_node
@@ -4056,7 +4193,7 @@ def threshold(
     *,
     planes: Int = Default(15),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4083,11 +4220,13 @@ def threshold(
         _threshold,
         _min,
         _max,
-        **{
-            "planes": planes,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4097,7 +4236,7 @@ def unpremultiply(
     planes: Int = Default(15),
     inplace: Boolean = Default(False),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4122,12 +4261,14 @@ def unpremultiply(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "planes": planes,
-            "inplace": inplace,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "inplace": inplace,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4144,7 +4285,7 @@ def varblur(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4173,17 +4314,19 @@ def varblur(
         ),
         _default,
         _radius,
-        **{
-            "min_r": min_r,
-            "max_r": max_r,
-            "planes": planes,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "min_r": min_r,
+                "max_r": max_r,
+                "planes": planes,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4197,7 +4340,7 @@ def vif(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4223,14 +4366,16 @@ def vif(
         ),
         _main,
         _reference,
-        **{
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4239,7 +4384,7 @@ def vstack(
     *streams: VideoStream,
     inputs: Int = Auto("len(streams)"),
     shortest: Boolean = Default(False),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4263,11 +4408,13 @@ def vstack(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4277,7 +4424,7 @@ def vstack_vaapi(
     inputs: Int = Default(2),
     shortest: Boolean = Default(False),
     width: Int = Default(0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4302,12 +4449,14 @@ def vstack_vaapi(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-            "width": width,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+                "width": width,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4323,7 +4472,7 @@ def xcorrelate(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4353,16 +4502,18 @@ def xcorrelate(
         ),
         _primary,
         _secondary,
-        **{
-            "planes": planes,
-            "secondary": secondary,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "planes": planes,
+                "secondary": secondary,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4437,7 +4588,7 @@ def xfade(
     duration: Duration = Default(1.0),
     offset: Duration = Default(0.0),
     expr: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4462,13 +4613,15 @@ def xfade(
         ),
         _main,
         _xfade,
-        **{
-            "transition": transition,
-            "duration": duration,
-            "offset": offset,
-            "expr": expr,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "transition": transition,
+                "duration": duration,
+                "offset": offset,
+                "expr": expr,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4495,7 +4648,7 @@ def xfade_opencl(
     kernel: String = Default(None),
     duration: Duration = Default(1.0),
     offset: Duration = Default(0.0),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4523,14 +4676,16 @@ def xfade_opencl(
         ),
         _main,
         _xfade,
-        **{
-            "transition": transition,
-            "source": source,
-            "kernel": kernel,
-            "duration": duration,
-            "offset": offset,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "transition": transition,
+                "source": source,
+                "kernel": kernel,
+                "duration": duration,
+                "offset": offset,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4545,7 +4700,7 @@ def xmedian(
     repeatlast: Boolean = Default(True),
     ts_sync_mode: Int | Literal["default", "nearest"] | Default = Default("default"),
     enable: String = Default(None),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4575,17 +4730,19 @@ def xmedian(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "planes": planes,
-            "percentile": percentile,
-            "eof_action": eof_action,
-            "shortest": shortest,
-            "repeatlast": repeatlast,
-            "ts_sync_mode": ts_sync_mode,
-            "enable": enable,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "planes": planes,
+                "percentile": percentile,
+                "eof_action": eof_action,
+                "shortest": shortest,
+                "repeatlast": repeatlast,
+                "ts_sync_mode": ts_sync_mode,
+                "enable": enable,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4597,7 +4754,7 @@ def xstack(
     grid: Image_size = Default(None),
     shortest: Boolean = Default(False),
     fill: String = Default("none"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4624,14 +4781,16 @@ def xstack(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "layout": layout,
-            "grid": grid,
-            "shortest": shortest,
-            "fill": fill,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "layout": layout,
+                "grid": grid,
+                "shortest": shortest,
+                "fill": fill,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)
 
@@ -4644,7 +4803,7 @@ def xstack_vaapi(
     grid: Image_size = Default(None),
     grid_tile_size: Image_size = Default(None),
     fill: String = Default("none"),
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> VideoStream:
     """
 
@@ -4672,14 +4831,16 @@ def xstack_vaapi(
             typings_output=("video",),
         ),
         *streams,
-        **{
-            "inputs": inputs,
-            "shortest": shortest,
-            "layout": layout,
-            "grid": grid,
-            "grid_tile_size": grid_tile_size,
-            "fill": fill,
-        }
-        | (extra_options or {}),
+        **merge(
+            {
+                "inputs": inputs,
+                "shortest": shortest,
+                "layout": layout,
+                "grid": grid,
+                "grid_tile_size": grid_tile_size,
+                "fill": fill,
+            },
+            extra_options,
+        ),
     )
     return filter_node.video(0)

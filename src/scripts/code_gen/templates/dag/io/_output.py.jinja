@@ -7,6 +7,7 @@ from typing import Any
 {{ _components.import_types('...types') }}
 
 from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import merge
 
 def output(
     *streams: FilterableStream,
@@ -16,7 +17,7 @@ def output(
     {{ option.name | option_name_safe }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
-    extra_options: dict[str, Any] = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
     Output file URL
@@ -35,18 +36,14 @@ def output(
         the output stream
     """
 
-    options = {
-        k: v for k, v in {
+    return OutputNode(
+        inputs=streams,
+        filename=str(filename),
+        kwargs=merge({
             {% for option in options %}
                 {%- if option.is_output_option -%}
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        }.items() if v is not None
-    }
-
-    return OutputNode(
-        inputs=streams,
-        filename=str(filename),
-        kwargs=FrozenDict(options | (extra_options or {}))
+        }, extra_options )
     ).stream()

@@ -99,7 +99,7 @@ def option_name_safe(string: str) -> str:
     Returns:
         The option name safe
     """
-    if string in keyword.kwlist:
+    if string in (*keyword.kwlist, "dict", "list", "self"):
         return "_" + string
     if string[0].isdigit():
         return "_" + string
@@ -119,22 +119,25 @@ def option_typing(option: FFMpegOption) -> str:
     Returns:
         The typing of the option
     """
-    if option.type == FFMpegOptionType.OPT_TYPE_FUNC:
-        return "Func"
-    elif option.type == FFMpegOptionType.OPT_TYPE_BOOL:
-        return "Boolean"
-    elif option.type == FFMpegOptionType.OPT_TYPE_STRING:
-        return "String"
-    elif option.type == FFMpegOptionType.OPT_TYPE_INT:
-        return "Int"
-    elif option.type == FFMpegOptionType.OPT_TYPE_INT64:
-        return "Int64"
-    elif option.type == FFMpegOptionType.OPT_TYPE_FLOAT:
-        return "Float"
-    elif option.type == FFMpegOptionType.OPT_TYPE_DOUBLE:
-        return "Double"
-    elif option.type == FFMpegOptionType.OPT_TYPE_TIME:
-        return "Time"
+    match option.type:
+        case FFMpegOptionType.OPT_TYPE_FUNC:
+            return "Func"
+        case FFMpegOptionType.OPT_TYPE_BOOL:
+            return "Boolean"
+        case FFMpegOptionType.OPT_TYPE_STRING:
+            return "String"
+        case FFMpegOptionType.OPT_TYPE_INT:
+            return "Int"
+        case FFMpegOptionType.OPT_TYPE_INT64:
+            return "Int64"
+        case FFMpegOptionType.OPT_TYPE_FLOAT:
+            return "Float"
+        case FFMpegOptionType.OPT_TYPE_DOUBLE:
+            return "Double"
+        case FFMpegOptionType.OPT_TYPE_TIME:
+            return "Time"
+        case _:
+            raise ValueError(f"Unknown option type: {option.type}")
 
 
 def input_typings(ffmpeg_filter: FFMpegFilter) -> str:
