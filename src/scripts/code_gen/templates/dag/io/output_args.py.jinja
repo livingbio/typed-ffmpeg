@@ -48,7 +48,15 @@ class OutputArgs(ABC):
         Returns:
             the output stream
         """
-        options = {k: v for k, v in locals().items() if k not in ('filename', 'streams', 'encoder_options', 'extra_options', 'self')}
+        options = {
+             k: v for k, v in {
+                 {% for option in options %}
+                     {%- if option.is_output_option -%}
+                     "{{ option.name}}": {{ option.name | option_name_safe }},
+                     {% endif %}
+                     {% endfor %}
+             }.items()
+         }
 
         return self._output_node(
             *streams,
