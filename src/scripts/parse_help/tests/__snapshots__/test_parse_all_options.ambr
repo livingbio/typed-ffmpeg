@@ -1,7 +1,7 @@
 # serializer version: 1
 # name: test_parse_all_options[gif-options]
   list([
-    FFMpegAVOption(section='GIF encoder AVOptions:', name='gifflags', type='flags', flags='E..V.......', help='set GIF flags (default offsetting+transdiff)', min=None, max=None, default=None, choices=(FFMpegOptionChoice(name='offsetting', help='enable picture offsetting', flags='E..V.......', value='offsetting'), FFMpegOptionChoice(name='transdiff                    E..V....... enable', help='y detection between frames', flags='transparenc', value='transdiff                    E..V....... enable'))),
+    FFMpegAVOption(section='GIF encoder AVOptions:', name='gifflags', type='flags', flags='E..V.......', help='set GIF flags (default offsetting+transdiff)', min=None, max=None, default=None, choices=(FFMpegOptionChoice(name='offsetting', help='enable picture offsetting', flags='E..V.......', value='offsetting'), FFMpegOptionChoice(name='transdiff', help='enable transparency detection between frames', flags='E..V.......', value='transdiff'))),
     FFMpegAVOption(section='GIF encoder AVOptions:', name='gifimage', type='boolean', flags='E..V.......', help='enable encoding only images per frame (default false)', min=None, max=None, default=None, choices=()),
   ])
 # ---
