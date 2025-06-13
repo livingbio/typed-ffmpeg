@@ -3697,7 +3697,7 @@ class AudioStream(FilterableStream):
         *,
         rate: Int = Default(16000),
         hmm: String = Default(None),
-        _dict: String = Default(None),
+        dict: String = Default(None),
         lm: String = Default(None),
         lmctl: String = Default(None),
         lmname: String = Default(None),
@@ -3711,7 +3711,7 @@ class AudioStream(FilterableStream):
         Args:
             rate: set sampling rate (from 0 to INT_MAX) (default 16000)
             hmm: set directory containing acoustic model files
-            _dict: set pronunciation dictionary
+            dict: set pronunciation dictionary
             lm: set language model file
             lmctl: set language model set
             lmname: set which language model to use
@@ -3733,7 +3733,7 @@ class AudioStream(FilterableStream):
                 {
                     "rate": rate,
                     "hmm": hmm,
-                    "dict": _dict,
+                    "dict": dict,
                     "lm": lm,
                     "lmctl": lmctl,
                     "lmname": lmname,

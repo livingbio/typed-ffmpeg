@@ -4,6 +4,7 @@
 from pathlib import Path
 from typing import Any
 
+from ...codecs.schema import FFMpegEncoderOption
 from ...types import (
     Boolean,
     Float,
@@ -114,6 +115,7 @@ def output(
     dcodec: String = None,
     dn: Boolean = None,
     top: Int = None,
+    encoder_options: FFMpegEncoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> OutputStream:
     """
@@ -217,6 +219,7 @@ def output(
         dcodec: alias for -c:d (select encoder/decoder for data streams)
         dn: disable data
         top: deprecated, use the setfield video filter
+        encoder_options: ffmpeg's encoder options
         extra_options: the arguments for the output
 
     Returns:
@@ -323,6 +326,7 @@ def output(
                 "dn": dn,
                 "top": top,
             },
+            encoder_options.kwargs if encoder_options else {},
             extra_options,
         ),
     ).stream()
