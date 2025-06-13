@@ -9,7 +9,8 @@ from typing import Any
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
 
-from ...utils.frozendict import FrozenDict, merge, remap, exclude
+from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import merge
 
 def output(
     *streams: FilterableStream,
@@ -26,13 +27,11 @@ def output(
     Returns:
         the output stream
     """
-    _remap: dict[str, str] = {
-        
-    }
-    options = remap(exclude(locals(), ("filename", "streams", "extra_options", "_remap")), _remap)
 
     return OutputNode(
         inputs=streams,
         filename=str(filename),
-        kwargs=merge(options, extra_options)
+        kwargs=merge({
+            
+        }, extra_options )
     ).stream()
