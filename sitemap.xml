@@ -45,6 +45,22 @@
          <lastmod>2025-06-13</lastmod>
     </url>
     <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/decoders/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/encoders/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/codecs/schema/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/reference/ffmpeg/common/</loc>
          <lastmod>2025-06-13</lastmod>
     </url>
@@ -302,6 +318,10 @@
     </url>
     <url>
          <loc>https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_all_options/</loc>
+         <lastmod>2025-06-13</lastmod>
+    </url>
+    <url>
+         <loc>https://livingbio.github.io/typed-ffmpeg/reference/scripts/parse_help/parse_codecs/</loc>
          <lastmod>2025-06-13</lastmod>
     </url>
     <url>
