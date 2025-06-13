@@ -2,26 +2,27 @@
 
 
 from pathlib import Path
-from ...utils.frozendict import FrozenDict
+from ...utils.frozendict import FrozenDict, merge, remap, exclude
 
 from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
-from ...utils.frozendict import merge
-
 
 from ...types import Binary, Boolean, Color, Dictionary, Double, Duration, Flags, Float, Func, Image_size, Int, Int64, Pix_fmt, Rational, Sample_fmt, String, Time, Video_rate
 
+from ...codecs.schema import FFMpegDecoderOption
 
 def input(
     filename: str | Path,
-    *,extra_options: dict[str, Any] | None = None,
+    *,decoder_options: FFMpegDecoderOption | None = None,
+    extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
     Input file URL (ffmpeg ``-i`` option)
 
     Args:
         filename: Input file URL
+        decoder_options: ffmpeg's decoder options
         extra_options: ffmpeg's input file options
 
     Returns:
@@ -33,9 +34,12 @@ def input(
     <AVStream:input.mp4:0>
     ```
     """
+    _remap: dict[str, str] = {
+        
+    }
+    options = remap(exclude(locals(), ("filename", "decoder_options", "extra_options", "_remap")), _remap)
+
     return InputNode(
         filename=str(filename),
-        kwargs=merge({
-            
-        }, extra_options )
+        kwargs=merge(options, decoder_options.kwargs if decoder_options else {}, extra_options)
     ).stream()

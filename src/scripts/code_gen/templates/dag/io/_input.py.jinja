@@ -7,6 +7,7 @@ from ..nodes import InputNode
 from ...streams.av import AVStream
 from typing import Any
 from ...utils.frozendict import merge
+from ...codecs.schema import FFMpegDecoderOption
 
 {{ _components.import_types('...types') }}
 
@@ -18,6 +19,7 @@ def input(
     {{ option.name }}: {{ option | option_typing }} = None,
     {%- endif -%}
     {%- endfor -%}
+    decoder_options: FFMpegDecoderOption | None = None,
     extra_options: dict[str, Any] | None = None,
 ) -> AVStream:
     """
@@ -30,6 +32,7 @@ def input(
         {{option.name | option_name_safe}}: {{option.help }}
         {% endif %}
         {%- endfor -%}
+        decoder_options: ffmpeg's decoder options
         extra_options: ffmpeg's input file options
 
     Returns:
@@ -49,5 +52,5 @@ def input(
                 "{{ option.name}}": {{ option.name | option_name_safe }},
                 {% endif %}
                 {% endfor %}
-        }, extra_options )
+        }, decoder_options.kwargs if decoder_options else {}, extra_options )
     ).stream()
